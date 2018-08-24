@@ -8,3 +8,13 @@ C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QASIGEIN\SistemaSIGEI
 C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QASIGEIN\SistemaSIGEIN\SIGE.AccesoDatos\obj\Debug\SIGE.AccesoDatos.csprojResolveAssemblyReference.cache
 C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QASIGEIN\SistemaSIGEIN\SIGE.AccesoDatos\obj\Debug\SIGE.AccesoDatos.dll
 C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QASIGEIN\SistemaSIGEIN\SIGE.AccesoDatos\obj\Debug\SIGE.AccesoDatos.pdb
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Debug\SIGE.AccesoDatos.dll.config
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Debug\SIGE.AccesoDatos.dll
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Debug\SIGE.AccesoDatos.pdb
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Debug\EntityFramework.dll
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Debug\SIGE.Entidades.dll
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Debug\SIGE.Entidades.pdb
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Debug\EntityFramework.xml
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Debug\SIGE.AccesoDatos.csprojResolveAssemblyReference.cache
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Debug\SIGE.AccesoDatos.dll
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Debug\SIGE.AccesoDatos.pdb
