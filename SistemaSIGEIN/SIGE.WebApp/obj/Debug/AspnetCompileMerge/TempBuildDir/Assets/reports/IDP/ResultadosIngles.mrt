@@ -38,7 +38,7 @@
               <Name>Text1</Name>
               <Page isRef="2" />
               <Parent isRef="3" />
-              <Text>Resultados Inglés</Text>
+              <Text>Resultados inglés</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text1>
@@ -214,7 +214,7 @@ de aciertos</Text>
             </Text11>
             <Text12 Ref="16" type="Text" isKey="true">
               <AllowHtmlTags>True</AllowHtmlTags>
-              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Border>None;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>0.4,3.2,14.2,6.6</ClientRectangle>
               <Conditions isList="true" count="0" />
@@ -278,10 +278,10 @@ de aciertos</Text>
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>11/8/2017 1:51:41 PM</ReportChanged>
+  <ReportChanged>6/1/2018 5:41:20 PM</ReportChanged>
   <ReportCreated>11/2/2017 1:27:01 PM</ReportCreated>
-  <ReportFile>C:\Users\usuario\Documents\SIGEIN 50\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosIngles.mrt</ReportFile>
-  <ReportGuid>8994ad9f2c16450cb383eda3309896dd</ReportGuid>
+  <ReportFile>C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosIngles.mrt</ReportFile>
+  <ReportGuid>314d4d1d9740424ea075890219da44c0</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2015.3.0</ReportVersion>

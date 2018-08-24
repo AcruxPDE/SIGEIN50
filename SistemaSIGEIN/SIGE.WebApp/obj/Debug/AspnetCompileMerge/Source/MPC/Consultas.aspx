@@ -313,7 +313,7 @@
             }
 
             function OpenWindowPeriodos() {
-                OpenSelectionWindows("/Comunes/SeleccionPeriodosDesempeno.aspx?CL_TIPO=Bono", "winSeleccion", "Seleccion de periodos a comparar");
+                OpenSelectionWindows("/Comunes/SeleccionPeriodosDesempeno.aspx?CL_TIPO=Bono", "winSeleccion", "Seleccion de períodos a comparar");
             }
 
         function OpenWindowComparar() {
@@ -1009,7 +1009,7 @@
                                     <GroupingSettings CaseSensitive="false" />
                                     <MasterTableView AllowFilteringByColumn="true" AllowPaging="true" ShowHeadersWhenNoRecords="true">
                                         <Columns>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="130" FilterControlWidth="100" HeaderText="Área" DataField="NB_DEPARTAMENTO" DataFormatString="{0:C}" ReadOnly="true"></telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="130" FilterControlWidth="100" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" DataFormatString="{0:C}" ReadOnly="true"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="260" FilterControlWidth="240" HeaderText="Puesto" DataField="NB_PUESTO" DataFormatString="{0:C}" ReadOnly="true"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="130" FilterControlWidth="100" HeaderText="Mínimo" DataField="MN_MINIMO" DataFormatString="{0:C}" ItemStyle-HorizontalAlign="Right" ReadOnly="true"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="130" FilterControlWidth="100" HeaderText="Máximo" DataField="MN_MAXIMO" DataFormatString="{0:C}" ItemStyle-HorizontalAlign="Right" ReadOnly="true"></telerik:GridBoundColumn>
@@ -1125,7 +1125,7 @@
                     <MasterTableView DataKeyNames="idPeriodo" ClientDataKeyNames="idPeriodo" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
                         <Columns>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" FilterControlWidth="40" HeaderText="Clave" DataField="clPeriodo" UniqueName="clPeriodo" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="230" HeaderText="Periodo" DataField="nbPeriodo" UniqueName="nbPeriodo" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="230" HeaderText="Período" DataField="nbPeriodo" UniqueName="nbPeriodo" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="230" HeaderText="Descripción" DataField="dsPeriodo" UniqueName="dsPeriodo" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                             <telerik:GridButtonColumn CommandName="Delete" Text="Eliminar" UniqueName="DeleteColumn" ButtonType="ImageButton" HeaderStyle-Width="30" />
                             
@@ -1134,7 +1134,7 @@
                 </telerik:RadGrid>
                 <div style="height: 10px; clear: both;"></div>
                 <div class="divControlIzquierda">
-                    <telerik:RadButton ID="btnSeleccionar" runat="server" AutoPostBack="false" Width="200" Text="Seleccionar periodos" OnClientClicked="OpenWindowPeriodos"></telerik:RadButton>
+                    <telerik:RadButton ID="btnSeleccionar" runat="server" AutoPostBack="false" Width="200" Text="Seleccionar períodos" OnClientClicked="OpenWindowPeriodos"></telerik:RadButton>
                 </div>
                 <div class="divControlDerecha">
                     <telerik:RadButton ID="btnComparar" runat="server" AutoPostBack="false" Width="100" Text="Comparar" OnClientClicked="OpenWindowComparar"></telerik:RadButton>
@@ -1192,7 +1192,7 @@
                         <div id="divAyudaAnalisisDesviaciones" runat="server" style="display: none">
                             <p>
                                 Esta hoja permite refinar tu búsqueda para el reporte solicitado.																	
-                                Con excepción de los parámetros de periodos que son mandatorios,																	
+                                Con excepción de los parámetros de períodos que son mandatorios,																	
                                 dejando en blanco los criterios solicitados indicas que dicho criterio																	
                                 es irrelevante y el sistema no lo tomará en cuenta para filtrar los datos.																	
                                 En caso de ingresar criterios de búsqueda, éstos serán utilizados para 																	

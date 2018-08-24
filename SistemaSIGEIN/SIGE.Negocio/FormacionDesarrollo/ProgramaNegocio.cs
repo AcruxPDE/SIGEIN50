@@ -37,16 +37,16 @@ namespace SIGE.Negocio.FormacionDesarrollo
             return UtilRespuesta.EnvioRespuesta(oPrograma.EliminaProgramaCapacitacion(pIdPrograma));
         }
      
-        public XElement ObtenerProgramaCapacitacionCompleto(int? pIdPrograma,int? pID_EMPRESA = null)
+        public XElement ObtenerProgramaCapacitacionCompleto(int? pIdPrograma,int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             ProgramaOperaciones oPrograma = new ProgramaOperaciones();
-            return oPrograma.ObtenerProgramasCapacitacionCompleto(pIdPrograma, pID_EMPRESA);
+            return oPrograma.ObtenerProgramasCapacitacionCompleto(pIdPrograma, pID_EMPRESA, pID_ROL);
         }     
 
-        public List<SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION_Result> ObtenerAvancePrograma(int ID_PROGRAMA, int? ID_EMPRESA, string XML_FILTROS)
+        public List<SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION_Result> ObtenerAvancePrograma(int ID_PROGRAMA, int? ID_EMPRESA, string XML_FILTROS, int? ID_ROL)
         {
             ProgramaOperaciones op = new ProgramaOperaciones();
-            return op.ObtenerAvancePrograma(ID_PROGRAMA, ID_EMPRESA, XML_FILTROS);
+            return op.ObtenerAvancePrograma(ID_PROGRAMA, ID_EMPRESA, XML_FILTROS, ID_ROL);
         }
 
          public List<SPE_OBTIENE_K_PROGRAMA_COMPETENCIA_Result> ObtenerCompetenciasPrograma(int? ID_PROGRAMA_COMPETENCIA = null, int? ID_PROGRAMA = null, int? ID_COMPETENCIA = null, string NB_COMPETENCIA = null, string NB_CLASIFICACION = null, string NB_CATEGORIA = null)
@@ -55,10 +55,10 @@ namespace SIGE.Negocio.FormacionDesarrollo
             return op.ObtenerCompetenciasPrograma(ID_PROGRAMA_COMPETENCIA, ID_PROGRAMA, ID_COMPETENCIA, NB_COMPETENCIA, NB_CLASIFICACION, NB_CATEGORIA);
         }
 
-        public List<SPE_OBTIENE_FYD_REPORTE_EVENTO_EVALUADO_Result> ObtenerReporteEvaluado(int? ID_EVENTO, int? ID_EMPLEADO, int? ID_COMPETENCIA)
+        public List<SPE_OBTIENE_FYD_REPORTE_EVENTO_EVALUADO_Result> ObtenerReporteEvaluado(int? ID_EVENTO, int? ID_EMPLEADO, int? ID_COMPETENCIA, int? ID_ROL)
         {
             ProgramaOperaciones op = new ProgramaOperaciones();
-            return op.ObtenerReporteEvaluado(ID_EVENTO, ID_EMPLEADO, ID_COMPETENCIA);
+            return op.ObtenerReporteEvaluado(ID_EVENTO, ID_EMPLEADO, ID_COMPETENCIA, ID_ROL);
         }
 
         public E_RESULTADO TerminarProgramaCapacitacion(int pIdPrograma) 
@@ -67,10 +67,10 @@ namespace SIGE.Negocio.FormacionDesarrollo
             return UtilRespuesta.EnvioRespuesta(oPrograma.TerminaProgramaCapacitacion(pIdPrograma));
         }
 
-        public List<SPE_OBTIENE_K_PROGRAMA_EMPLEADO_Result> ObtieneEmpleadosParticipantes(int? pID_PROGRAMA_EMPLEADO = null, int? pID_PROGRAMA = null, int? pID_EMPLEADO = null, int? pNB_EMPLEADO = null, string pCL_EMPLEADO =null, string pNB_PUESTO =null, string pCL_PUESTO=null, string pNB_DEPARTAMENTO=null, int? pID_EMPRESA = null)
+        public List<SPE_OBTIENE_K_PROGRAMA_EMPLEADO_Result> ObtieneEmpleadosParticipantes(int? pID_PROGRAMA_EMPLEADO = null, int? pID_PROGRAMA = null, int? pID_EMPLEADO = null, int? pNB_EMPLEADO = null, string pCL_EMPLEADO =null, string pNB_PUESTO =null, string pCL_PUESTO=null, string pNB_DEPARTAMENTO=null, int? pID_EMPRESA = null,int? pID_ROL = null)
         {
             ProgramaOperaciones oPrograma = new ProgramaOperaciones();
-            return oPrograma.ObtenerEmpleadosParticipantes(pID_PROGRAMA_EMPLEADO, pID_PROGRAMA, pID_EMPLEADO, pNB_EMPLEADO, pCL_EMPLEADO, pNB_PUESTO, pCL_PUESTO, pNB_DEPARTAMENTO,pID_EMPRESA);
+            return oPrograma.ObtenerEmpleadosParticipantes(pID_PROGRAMA_EMPLEADO, pID_PROGRAMA, pID_EMPLEADO, pNB_EMPLEADO, pCL_EMPLEADO, pNB_PUESTO, pCL_PUESTO, pNB_DEPARTAMENTO, pID_EMPRESA, pID_ROL);
         }
     }
 }

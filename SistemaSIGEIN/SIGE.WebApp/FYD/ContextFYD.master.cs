@@ -17,8 +17,8 @@ namespace SIGE.WebApp.FYD
 
         protected void Page_Load(object sender, EventArgs e)
         {
-             //if (ContextoApp.FYD.LicenciaFormacion.MsgActivo == "1")
-             //   {
+             if (ContextoApp.FYD.LicenciaFormacion.MsgActivo == "1")
+                {
 
                 string vClModulo = "FORMACION";
                 string vModulo = Request.QueryString["m"];
@@ -27,13 +27,14 @@ namespace SIGE.WebApp.FYD
 
                 cssModulo = Utileria.ObtenerCssModulo(vClModulo);
                
-             //   }
+                }
 
-             //else
-             //{
-             //    UtilMensajes.MensajeResultadoDB(RadWindowManager1, ContextoApp.FYD.LicenciaFormacion.MsgActivo, E_TIPO_RESPUESTA_DB.WARNING);
-             //    Response.Redirect(ContextoUsuario.nbHost + "/Logon.aspx");
-             //}
+             else
+             {
+                 UtilMensajes.MensajeResultadoDB(RadWindowManager1, ContextoApp.FYD.LicenciaFormacion.MsgActivo, E_TIPO_RESPUESTA_DB.WARNING);
+                 var myUrl = ResolveUrl("~/Logon.aspx");
+                 Response.Redirect(ContextoUsuario.nbHost + myUrl);
+             }
         }
     }
 }

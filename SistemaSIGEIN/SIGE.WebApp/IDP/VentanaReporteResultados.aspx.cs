@@ -493,6 +493,27 @@ namespace SIGE.WebApp.IDP
                 #endregion
 
 
+                #region Entrevista
+
+
+                string ENTREVISTA_RES_0003 = vListaResultadoPruebas.Exists(x => x.CL_VARIABLE.Equals("ENTREVISTA_RES_0003")) ? vListaResultadoPruebas.Where(x => x.CL_VARIABLE.Equals("ENTREVISTA_RES_0003")).FirstOrDefault().NO_VALOR.ToString("0.00") : null;
+                string SEGURIDAD = vListaResultadosBaremos.Exists(x => x.CL_VARIABLE.Equals("ENT-SEGURIDAD")) ? vListaResultadosBaremos.Where(x => x.CL_VARIABLE.Equals("ENT-SEGURIDAD")).FirstOrDefault().NO_VALOR.ToString("0") : null;
+                vListaBaremos.Add(new E_REPORTE_RESULTADO_BAREMOS { NB_FACTOR = "Seguridad en si mismo", NO_VALOR_RESPUESTA = (ENTREVISTA_RES_0003 == null ? "NC" : ENTREVISTA_RES_0003), NO_VALOR_BAREMOS = (SEGURIDAD == null ? "NC" : SEGURIDAD), DS_FACTOR = "Entrevista" });
+
+                string ENTREVISTA_RES_0004 = vListaResultadoPruebas.Exists(x => x.CL_VARIABLE.Equals("ENTREVISTA_RES_0004")) ? vListaResultadoPruebas.Where(x => x.CL_VARIABLE.Equals("ENTREVISTA_RES_0004")).FirstOrDefault().NO_VALOR.ToString("0.00") : null;
+                string ENFOQUE = vListaResultadosBaremos.Exists(x => x.CL_VARIABLE.Equals("ENT-ENFOQUE")) ? vListaResultadosBaremos.Where(x => x.CL_VARIABLE.Equals("ENT-ENFOQUE")).FirstOrDefault().NO_VALOR.ToString("0") : null;
+                vListaBaremos.Add(new E_REPORTE_RESULTADO_BAREMOS { NB_FACTOR = "Enfoque a resultados", NO_VALOR_RESPUESTA = (ENTREVISTA_RES_0004 == null ? "NC" : ENTREVISTA_RES_0004), NO_VALOR_BAREMOS = (ENFOQUE == null ? "NC" : ENFOQUE), DS_FACTOR = "Entrevista" });
+
+                string ENTREVISTA_RES_0005 = vListaResultadoPruebas.Exists(x => x.CL_VARIABLE.Equals("ENTREVISTA_RES_0005")) ? vListaResultadoPruebas.Where(x => x.CL_VARIABLE.Equals("ENTREVISTA_RES_0005")).FirstOrDefault().NO_VALOR.ToString("0.00") : null;
+                string CONFLICTO = vListaResultadosBaremos.Exists(x => x.CL_VARIABLE.Equals("ENT-CONFLICTO")) ? vListaResultadosBaremos.Where(x => x.CL_VARIABLE.Equals("ENT-CONFLICTO")).FirstOrDefault().NO_VALOR.ToString("0") : null;
+                vListaBaremos.Add(new E_REPORTE_RESULTADO_BAREMOS { NB_FACTOR = "Manejo del conflicto", NO_VALOR_RESPUESTA = (ENTREVISTA_RES_0005 == null ? "NC" : ENTREVISTA_RES_0005), NO_VALOR_BAREMOS = (CONFLICTO == null ? "NC" : CONFLICTO), DS_FACTOR = "Entrevista" });
+
+                string ENTREVISTA_RES_0006 = vListaResultadoPruebas.Exists(x => x.CL_VARIABLE.Equals("ENTREVISTA_RES_0006")) ? vListaResultadoPruebas.Where(x => x.CL_VARIABLE.Equals("ENTREVISTA_RES_0006")).FirstOrDefault().NO_VALOR.ToString("0.00") : null;
+                string CARISMA = vListaResultadosBaremos.Exists(x => x.CL_VARIABLE.Equals("ENT-CARISMA")) ? vListaResultadosBaremos.Where(x => x.CL_VARIABLE.Equals("ENT-CARISMA")).FirstOrDefault().NO_VALOR.ToString("0") : null;
+                vListaBaremos.Add(new E_REPORTE_RESULTADO_BAREMOS { NB_FACTOR = "Carisma", NO_VALOR_RESPUESTA = (ENTREVISTA_RES_0006 == null ? "NC" : ENTREVISTA_RES_0006), NO_VALOR_BAREMOS = (CARISMA == null ? "NC" : CARISMA), DS_FACTOR = "Entrevista" });
+
+                #endregion
+
 
                 PruebasNegocio nSolicitud = new PruebasNegocio();
                 SPE_OBTIENE_BATERIA_PRUEBAS_CANDIDATO_Result candidato = new SPE_OBTIENE_BATERIA_PRUEBAS_CANDIDATO_Result();

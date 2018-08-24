@@ -360,7 +360,7 @@
             wnd.width = 700;
             wnd.vTitulo = "Agregar entrevista";
             wnd.vRadWindowId = "winEntrevista";
-            wnd.vURL = "/IDP/VentanaProcesoSeleccionEntrevista.aspx?IdProcesoSeleccion=" + idProcesoSeleccion;
+            wnd.vURL = "VentanaProcesoSeleccionEntrevista.aspx?IdProcesoSeleccion=" + idProcesoSeleccion;
             if (pIdEntrevista != null) {
                 wnd.vURL += String.format("&IdEntrevista={0}", pIdEntrevista);
                 wnd.vTitulo = "Editar entrevista";
@@ -373,7 +373,7 @@
             wnd.width = 950;
             wnd.vRadWindowId = "winEntrevista";
             if (pIdExperiencia != "" & pIdCandiadto != "") {
-                wnd.vURL = "/IDP/VentanaProcesoSeleccionReferencias.aspx?IdExperiencia=" + pIdExperiencia + "&idCandidato=" + pIdCandiadto;
+                wnd.vURL = "VentanaProcesoSeleccionReferencias.aspx?IdExperiencia=" + pIdExperiencia + "&idCandidato=" + pIdCandiadto;
                 wnd.vTitulo = "Modificar referencia";
             }
             return wnd;
@@ -461,17 +461,17 @@
             var vBtnColonia = $find("<%= btnBuscarColonia.ClientID %>");
 
             if (sender == vBtnEstados)
-                openChildDialog("/Comunes/SeleccionLocalizacion/SeleccionEstado.aspx", "winSeleccion", "Selección de estado");
+                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionEstado.aspx", "winSeleccion", "Selección de estado");
 
             if (sender == vBtnMunicipios) {
                 var clEstado = vLstEstados.get_selectedItem().get_value();
-                openChildDialog("/Comunes/SeleccionLocalizacion/SeleccionMunicipio.aspx?ClEstado=" + clEstado, "winSeleccion", "Selección de municipio");
+                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionMunicipio.aspx?ClEstado=" + clEstado, "winSeleccion", "Selección de municipio");
             }
 
             if (sender == vBtnColonia) {
                 var clEstado = vLstEstados.get_selectedItem().get_value();
                 var clMunicipio = vLstMunicipios.get_selectedItem().get_value();
-                openChildDialog("/Comunes/SeleccionLocalizacion/SeleccionColonia.aspx?ClEstado=" + clEstado + "&ClMunicipio=" + clMunicipio, "winSeleccion", "Selección de colonia");
+                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionColonia.aspx?ClEstado=" + clEstado + "&ClMunicipio=" + clMunicipio, "winSeleccion", "Selección de colonia");
             }
         }
 
@@ -490,7 +490,7 @@
         function OpenComentariosEntrevista() {
             var vidCandidato = '<%=vIdCandidato%> ';
             var idProcesoSeleccion = '<%# vIdProcesoSeleccion %>';
-            OpenSelectionWindowEntrevista("/IDP/VentanaComentariosEntrevista.aspx?IdCandidato=" + vidCandidato + "&IdProcesoSeleccion=" + idProcesoSeleccion, "rwComentarios", "Comentarios de entrevistas")
+            OpenSelectionWindowEntrevista("VentanaComentariosEntrevista.aspx?IdCandidato=" + vidCandidato + "&IdProcesoSeleccion=" + idProcesoSeleccion, "rwComentarios", "Comentarios de entrevistas")
 
         }
         function OpenSelectionWindowEntrevista(pURL, pIdWindow, pTitle, pWindowProperties) {
@@ -522,7 +522,7 @@
         }
 
         function OpenPreview() {
-            var vURL = "/Administracion/VentanaVistaDescriptivo.aspx";
+            var vURL = "../Administracion/VentanaVistaDescriptivo.aspx";
             var vTitulo = "Vista previa descriptivo";
             var vIdPuesto = '<%# vIdPuesto %>';
 
@@ -770,31 +770,26 @@
     <div style="height: calc(100% - 80px);">
         <telerik:RadSplitter ID="rsSolicitud" Width="100%" Height="100%" BorderSize="0" runat="server">
 
-            <telerik:RadPane ID="rpBotones" runat="server" Width="250px" Height="100%">
+            <telerik:RadPane ID="rpBotones" runat="server" Width="220px" Height="100%">
                 <telerik:RadTabStrip ID="tbProcesoSeleccion" runat="server" Align="Right" SelectedIndex="0" OnClientTabSelected="TabSelected" Width="100%" MultiPageID="mpgProcesoSeleccion" Orientation="VerticalLeft" CssClass="divControlDerecha">
                     <Tabs>
                         <telerik:RadTab runat="server" Text="Estatus del participante"></telerik:RadTab>
                         <telerik:RadTab runat="server" Text="Registro de entrevistas"></telerik:RadTab>
                         <telerik:RadTab runat="server" Text="Referencias"></telerik:RadTab>
-                        <telerik:RadTab runat="server" Text="Competencias del puesto"></telerik:RadTab>
-                        <telerik:RadTab runat="server" Text="Aplicación de pruebas"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="Competencias del puesto" Visible="false"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="Aplicación de pruebas" Visible="false"></telerik:RadTab>
                         <telerik:RadTab runat="server" Text="Estudio socioeconómico"></telerik:RadTab>
                         <telerik:RadTab runat="server" Text="Resultados médicos"></telerik:RadTab>
                         <telerik:RadTab runat="server" Text="Documentación del candidato"></telerik:RadTab>
-                        <telerik:RadTab runat="server" Text="Registro de cambios a la solicitud"></telerik:RadTab>
+                      <%--  <telerik:RadTab runat="server" Text="Registro de cambios a la solicitud" Visible="false"></telerik:RadTab>--%>
                     </Tabs>
                 </telerik:RadTabStrip>
             </telerik:RadPane>
-
             <telerik:RadSplitBar ID="rsbResultadoPruebas" runat="server" Width="100%" CollapseMode="Forward" EnableResize="false"></telerik:RadSplitBar>
-
             <telerik:RadPane ID="rpSolicitud" runat="server">
-
                 <%--<div style="height: calc(100% - 50px); border: 1px solid blue;">--%>
                     <telerik:RadMultiPage ID="mpgProcesoSeleccion" runat="server" SelectedIndex="0" Height="100%">
-
                         <telerik:RadPageView ID="EstatusParticipante" runat="server">
-
                             <div class="ctrlBasico" style="height: calc(100% - 10px); width: 60%;">
                                 <telerik:RadGrid ID="grdProcesoSeleccion" HeaderStyle-Font-Bold="true" ShowHeader="true" runat="server" AllowPaging="false"
                                     AllowSorting="true" GroupPanelPosition="Top" Width="100%" GridLines="None"
@@ -930,7 +925,7 @@
                                         <Columns>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" FilterControlWidth="160" DataField="NB_EMPRESA" UniqueName="NB_EMPRESA" HeaderText="Empresa o institución" HeaderStyle-Width="240"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" FilterControlWidth="160" DataField="NB_GIRO" UniqueName="NB_GIRO" HeaderText="Giro" HeaderStyle-Width="240"></telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" FilterControlWidth="70" DataField="FE_INICIO" UniqueName="FE_INICIO" HeaderText="Periodo de" HeaderStyle-Width="100"></telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" FilterControlWidth="70" DataField="FE_INICIO" UniqueName="FE_INICIO" HeaderText="Período de" HeaderStyle-Width="100"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" FilterControlWidth="70" DataField="FE_FIN" UniqueName="FE_FIN" HeaderText="Periodo a" HeaderStyle-Width="100"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" FilterControlWidth="160" DataField="NB_PUESTO" UniqueName="NB_PUESTO" HeaderText="Puesto" HeaderStyle-Width="240"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" FilterControlWidth="180" DataField="DS_FUNCIONES" UniqueName="DS_FUNCIONES" HeaderText="Actividades" HeaderStyle-Width="260"></telerik:GridBoundColumn>

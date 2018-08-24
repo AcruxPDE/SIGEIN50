@@ -51,6 +51,8 @@ namespace SIGE.WebApp.Comunes
             set { ViewState["vs_vXmlTabuladorEmpleado"] = value.ToString(); }
         }
 
+        private int? vIdRol;
+
 
         #region Funciones
 
@@ -63,12 +65,12 @@ namespace SIGE.WebApp.Comunes
 
             vXmlTabuladorEmpleado = vTipoDeSeleccion(vClTipoSeleccion);
             TabuladoresNegocio nTabuladores = new TabuladoresNegocio();
-            var vTabulador = nTabuladores.ObtenieneEmpleadosTabulador(XML_SELECCIONADOS: vXmlTabuladorEmpleado, ID_EMPRESA: ContextoUsuario.oUsuario.ID_EMPRESA);
+            var vTabulador = nTabuladores.ObtenieneEmpleadosTabulador(XML_SELECCIONADOS: vXmlTabuladorEmpleado, ID_EMPRESA: ContextoUsuario.oUsuario.ID_EMPRESA, pIdRol: vIdRol);
             grdTabuladorEmpleado.DataSource = vTabulador;
 
             List<SPE_OBTIENE_EMPLEADOS_TABULADOR_Result> eEmpleados;
 
-            eEmpleados = nTabuladores.ObtenieneEmpleadosTabulador(XML_SELECCIONADOS: vXmlTabuladorEmpleado, ID_EMPRESA: ContextoUsuario.oUsuario.ID_EMPRESA);
+            eEmpleados = nTabuladores.ObtenieneEmpleadosTabulador(XML_SELECCIONADOS: vXmlTabuladorEmpleado, ID_EMPRESA: ContextoUsuario.oUsuario.ID_EMPRESA, pIdRol: vIdRol);
 
             CamposAdicionales cad = new CamposAdicionales();
             DataTable tEmpleados = cad.camposAdicionales(eEmpleados, "M_EMPLEADO_XML_CAMPOS_ADICIONALES", grdTabuladorEmpleado, "M_EMPLEADO");
@@ -114,6 +116,8 @@ namespace SIGE.WebApp.Comunes
 
         protected void Page_Init(object sender, System.EventArgs e)
         {
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
+
             DefineGrid();
         }
 
@@ -130,8 +134,6 @@ namespace SIGE.WebApp.Comunes
                     vClCatalogo = "TABULADOR_EMPLEADO";
             }
         }
-
-
 
         protected void grdTabuladorEmpleado_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {

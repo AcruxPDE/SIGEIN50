@@ -157,6 +157,15 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadButton btnGuardar;
         
         /// <summary>
+        /// btnCancelar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnCancelar;
+        
+        /// <summary>
         /// rnMensaje control.
         /// </summary>
         /// <remarks>

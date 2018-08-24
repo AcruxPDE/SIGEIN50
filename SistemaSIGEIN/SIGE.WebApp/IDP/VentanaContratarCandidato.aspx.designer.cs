@@ -13,6 +13,42 @@ namespace SIGE.WebApp.IDP {
     public partial class VentanaContratarCandidato {
         
         /// <summary>
+        /// lblRequisicion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblRequisicion;
+        
+        /// <summary>
+        /// rlbRequicion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadListBox rlbRequicion;
+        
+        /// <summary>
+        /// btnSeleccionaRequisicion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnSeleccionaRequisicion;
+        
+        /// <summary>
+        /// BtnEliminaRequicion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton BtnEliminaRequicion;
+        
+        /// <summary>
         /// txtClaveSolicitud control.
         /// </summary>
         /// <remarks>

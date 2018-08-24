@@ -157,7 +157,8 @@ namespace SIGE.WebApp.IDP
                     var vTokenCartera = Guid.NewGuid();
                     var vPassCartera = nSolicitud.GenerarContrasenaCartera();
                     var vActualizacion = nSolicitud.ActualizaDatosSolicitudCorreo(item.ID_SOLICITUD, vTokenCartera, vPassCartera, vClUsuario, vNbPrograma);
-                    string vUrl = ContextoUsuario.nbHost + "/Logon.aspx?ClProceso=ACTUALIZACIONCARTERA&FlProceso=" + vTokenCartera;
+                    string myUrl = ResolveUrl("~/Logon.aspx?ClProceso=ACTUALIZACIONCARTERA&FlProceso=");
+                    string vUrl = ContextoUsuario.nbHost + myUrl + vTokenCartera;
                     var vMsgUrl = String.Format("Acceso: <a href={0}>aquí</a><br/><br/>Contraseña: {1}", vUrl, vPassCartera);
 
                  //   respuesta = mail.Send("Candidatos", String.Format("Estimado(a) {0},<br/><br/>{1}<br/><br/>{2}<br/><br/>Saludos cordiales.", item.C_CANDIDATO_NB_EMPLEADO_COMPLETO, ContextoApp.IDP.MensajeActualizacionPeriodica.dsNotificacion.dsMensaje, vMsgUrl));

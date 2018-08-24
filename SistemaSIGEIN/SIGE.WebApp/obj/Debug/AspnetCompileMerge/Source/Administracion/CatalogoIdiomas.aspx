@@ -81,7 +81,7 @@
 
             function ShowPopupEditarIdiomas() {
                 obtenerIdFila();
-
+                
                 if (idIdioma != "") {
 
                     var oWnd = radopen("VentanaCatalogoIdiomas.aspx?&ID=" + idIdioma + "&TIPO=Editar", "RWPopupmodalCatalogoGenericoEditar");

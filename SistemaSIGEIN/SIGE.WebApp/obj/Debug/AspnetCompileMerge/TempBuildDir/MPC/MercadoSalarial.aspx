@@ -19,8 +19,9 @@
 
             function winOpenTabuladores() {
                 var vIdTabulador = '<%= vIdTabulador %>';
+                var myUrl = '<%= ResolveClientUrl("SeleccionTabulador.aspx") %>';
                 if (vIdTabulador != null)
-                    openChildDialog("SeleccionTabulador.aspx?pFgMultSeleccion=0&pIdTabulador=" + vIdTabulador, "winSeleccion", "Selección de tabulador a copiar");
+                    openChildDialog(myUrl + "?pFgMultSeleccion=0&pIdTabulador=" + vIdTabulador, "winSeleccion", "Selección de tabulador a copiar");
             }
 
             function useDataFromChild(pDato) {
@@ -195,7 +196,7 @@
                                 </ColumnGroups>
                                 <Columns>
                                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="70" FilterControlWidth="10" HeaderText="No." DataField="NO_RENGLON" UniqueName="NO_RENGLON" ItemStyle-HorizontalAlign="center"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="200" FilterControlWidth="140" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO"></telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="200" FilterControlWidth="140" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO"></telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="260" FilterControlWidth="200" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="NB_PUESTO"></telerik:GridBoundColumn>
                                     <telerik:GridTemplateColumn HeaderText="Mínimo" ColumnGroupName="MERCADO" HeaderStyle-Width="190" AutoPostBackOnFilter="false" FilterControlWidth="120" DataField="MN_MINIMO" UniqueName="MN_MINIMO">
                                         <ItemTemplate>

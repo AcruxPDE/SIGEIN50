@@ -21,6 +21,7 @@ namespace SIGE.WebApp.EO
 
         private string vClUsuario;
         private string vNbPrograma;
+        private int? vIdRol;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
 
         public int vIdPeriodo
@@ -66,7 +67,20 @@ namespace SIGE.WebApp.EO
             set { ViewState["vs_ves_ds_mensaje_mev"] = value; }
         }
 
+        public string vDsMensajeBajaReplica
+        {
+            get { return (string)ViewState["vs_vDsMensajeBajaReplica"]; }
+            set { ViewState["vs_vDsMensajeBajaReplica"] = value; }
+        }
+
         public string vMensaje;
+
+        public bool vFgMasiva
+        {
+            get { return (bool)ViewState["vs_vFgMasiva"]; }
+            set { ViewState["vs_vFgMasiva"] = value; }
+        }
+
         #endregion
 
         #region Funciones
@@ -82,7 +96,6 @@ namespace SIGE.WebApp.EO
             }
         }
 
-
         private void EnviarCorreo(bool pFgEnviarTodos)
         {
 
@@ -92,7 +105,8 @@ namespace SIGE.WebApp.EO
             int vIdEvaluador;
             string vClCorreo;
             string vNbEvaluador;
-            string vUrl = ContextoUsuario.nbHost + "/Logon.aspx?ClProceso=DESEMPENO";
+            string myUrl = ResolveUrl("~/Logon.aspx?ClProceso=DESEMPENO");
+            string vUrl = ContextoUsuario.nbHost + myUrl;
             GridItemCollection oListaEvaluadores = new GridItemCollection();
             XElement vXmlEvaluados = new XElement("EVALUADORES");
             vIdPeriodoNoEnviado = null;
@@ -103,7 +117,7 @@ namespace SIGE.WebApp.EO
             else
                 oListaEvaluadores = rgCorreos.SelectedItems;
 
-            vNoTotalCorreos = oListaEvaluadores.Count;
+            //vNoTotalCorreos = oListaEvaluadores.Count;
 
             foreach (GridDataItem item in oListaEvaluadores)
             {
@@ -115,48 +129,66 @@ namespace SIGE.WebApp.EO
                 vIdEvaluador = int.Parse(item.GetDataKeyValue("ID_EVALUADOR").ToString());
                 vIdPeriodoMasteTable = int.Parse(item.GetDataKeyValue("ID_PERIODO").ToString());
 
-                if (Utileria.ComprobarFormatoEmail(vClCorreo))
+                if (vFgMasiva)
                 {
+                    PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
+                    var vPeriododDesempeno = nPeriodo.ObtienePeriodosDesempeno(pIdPeriodo: int.Parse(item.GetDataKeyValue("ID_PERIODO").ToString())).FirstOrDefault();
+                    var resultado = nPeriodo.InsertaActualiza_PERIODO(vPeriododDesempeno.ID_PERIODO_DESEMPENO, vPeriododDesempeno.CL_PERIODO, vPeriododDesempeno.NB_PERIODO, vPeriododDesempeno.DS_PERIODO, vPeriododDesempeno.CL_ESTADO_PERIODO, vPeriododDesempeno.DS_NOTAS.ToString(), vPeriododDesempeno.FE_INICIO, (DateTime)vPeriododDesempeno.FE_TERMINO, vPeriododDesempeno.CL_TIPO_CAPTURISTA, vPeriododDesempeno.CL_TIPO_METAS, vClUsuario, vNbPrograma, "A", btnCapturaMasivaYes.Checked);
+                }
 
-                    if (item.GetDataKeyValue("FL_EVALUADOR") != null)
+                DateTime vFechaEnvio = Convert.ToDateTime(item.GetDataKeyValue("FE_ENVIO_SOLICITUD").ToString());
+                if (vFechaEnvio.Date == DateTime.Now.Date)
+                {
+                    vNoTotalCorreos = vNoTotalCorreos + 1;
+                    if (Utileria.ComprobarFormatoEmail(vClCorreo))
                     {
-                        if (item.GetDataKeyValue("CL_TOKEN") != null)
+
+                        if (item.GetDataKeyValue("FL_EVALUADOR") != null)
                         {
-                            vMensaje = vMensaje.Replace("[NB_EVALUADOR]", vNbEvaluador);
-                            vMensaje = vMensaje.Replace("[URL]", vUrl + "&FlProceso=" + item.GetDataKeyValue("FL_EVALUADOR").ToString());
-                            vMensaje = vMensaje.Replace("[CONTRASENA]", item.GetDataKeyValue("CL_TOKEN").ToString());
-
-                            //Envío de correo
-                            bool vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbEvaluador, "Solicitud para calificar metas", vMensaje);
-
-                            
-
-                            if (vEstatusCorreo)
+                            if (item.GetDataKeyValue("CL_TOKEN") != null)
                             {
-                                vXmlEvaluados.Add(new XElement("EVALUADOR", new XAttribute("ID_EVALUADOR", vIdEvaluador), new XAttribute("CL_CORREO_ELECTRONICO", vClCorreo)));
-                                vNoCorreosEnviados++;
-                                (item.FindControl("txtCorreo") as RadTextBox).EnabledStyle.BackColor = System.Drawing.Color.White;
-                                (item.FindControl("txtCorreo") as RadTextBox).HoveredStyle.BackColor = System.Drawing.Color.White;
-                                if (vIdPeriodoNoEnviado != vIdPeriodoMasteTable)
+                                vMensaje = vMensaje.Replace("[NB_EVALUADOR]", vNbEvaluador);
+                                vMensaje = vMensaje.Replace("[URL]", vUrl + "&FlProceso=" + item.GetDataKeyValue("FL_EVALUADOR").ToString());
+                                vMensaje = vMensaje.Replace("[CONTRASENA]", item.GetDataKeyValue("CL_TOKEN").ToString());
+
+                                //Envío de correo
+                                bool vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbEvaluador, "Solicitud para calificar metas", vMensaje);
+
+
+
+                                if (vEstatusCorreo)
                                 {
-                                    InsertaEstatusEnvio(true, vIdPeriodoMasteTable);
+                                    vXmlEvaluados.Add(new XElement("EVALUADOR", new XAttribute("ID_EVALUADOR", vIdEvaluador), new XAttribute("CL_CORREO_ELECTRONICO", vClCorreo)));
+                                    vNoCorreosEnviados++;
+                                    (item.FindControl("txtCorreo") as RadTextBox).EnabledStyle.BackColor = System.Drawing.Color.White;
+                                    (item.FindControl("txtCorreo") as RadTextBox).HoveredStyle.BackColor = System.Drawing.Color.White;
+                                    if (vIdPeriodoNoEnviado != vIdPeriodoMasteTable)
+                                    {
+                                        InsertaEstatusEnvio(true, vIdPeriodoMasteTable);
+                                    }
+                                }
+                                else
+                                {
+                                    (item.FindControl("txtCorreo") as RadTextBox).EnabledStyle.BackColor = System.Drawing.Color.Gold;
+                                    vIdPeriodoNoEnviado = vIdPeriodoMasteTable;
+                                    InsertaEstatusEnvio(false, vIdPeriodoMasteTable);
                                 }
                             }
+
                             else
                             {
                                 (item.FindControl("txtCorreo") as RadTextBox).EnabledStyle.BackColor = System.Drawing.Color.Gold;
                                 vIdPeriodoNoEnviado = vIdPeriodoMasteTable;
                                 InsertaEstatusEnvio(false, vIdPeriodoMasteTable);
                             }
-                        }
 
+                        }
                         else
                         {
                             (item.FindControl("txtCorreo") as RadTextBox).EnabledStyle.BackColor = System.Drawing.Color.Gold;
                             vIdPeriodoNoEnviado = vIdPeriodoMasteTable;
                             InsertaEstatusEnvio(false, vIdPeriodoMasteTable);
                         }
-
                     }
                     else
                     {
@@ -164,12 +196,6 @@ namespace SIGE.WebApp.EO
                         vIdPeriodoNoEnviado = vIdPeriodoMasteTable;
                         InsertaEstatusEnvio(false, vIdPeriodoMasteTable);
                     }
-                }
-                else
-                {
-                    (item.FindControl("txtCorreo") as RadTextBox).EnabledStyle.BackColor = System.Drawing.Color.Gold;
-                    vIdPeriodoNoEnviado = vIdPeriodoMasteTable;
-                    InsertaEstatusEnvio(false, vIdPeriodoMasteTable);
                 }
             }
 
@@ -191,7 +217,7 @@ namespace SIGE.WebApp.EO
 
             if (validacion == "NO_HAY_M_IMPORTANTE_EVALUADOR" || validacion == "NO_HAY_M_IMPORTANTE_EVALUADO")
             {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, "No hay personas para notificar el problema ocurrido, revisa la configuración del periodo", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "No hay personas para notificar el problema ocurrido, revisa la configuración del período", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
                 return;
             }
             else if (validacion == "SI_HAY_IMPORTANTE_EVALUADOR")
@@ -223,9 +249,9 @@ namespace SIGE.WebApp.EO
                 vMensaje = vMensaje.Replace("[CL_PERIODO]", vDatosPeriodo.NB_PERIODO);
 
                 //Envío de correo
-                bool vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbEvaluador, "Periodo de desempeño " + vDatosPeriodo.NB_PERIODO, vMensaje);
+                bool vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbEvaluador, "Período de desempeño " + vDatosPeriodo.NB_PERIODO, vMensaje);
                 if (vEstatusCorreo)
-                    UtilMensajes.MensajeResultadoDB(rwmMensaje, "Ha ocurrido un problema en el periodo. Se ha enviado un correo a la persona que recibe las notificaciones", E_TIPO_RESPUESTA_DB.WARNING, 400, 200, pCallBackFunction: "");
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, "Ha ocurrido un problema en el período. Se ha enviado un correo a la persona que recibe las notificaciones", E_TIPO_RESPUESTA_DB.WARNING, 400, 200, pCallBackFunction: "");
             }
         }
 
@@ -235,12 +261,40 @@ namespace SIGE.WebApp.EO
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
+
             if (!IsPostBack)
             {
                 if (Request.Params["PeriodoId"] != null)
                 {
                     vIdPeriodo = int.Parse(Request.Params["PeriodoId"].ToString());
-                    
+
+                }
+
+                PeriodoDesempenoNegocio periodo = new PeriodoDesempenoNegocio();
+                var oPeriodo = periodo.ObtienePeriodoDesempenoContexto(vIdPeriodo, null);
+                if (oPeriodo != null)
+                {
+                    if (oPeriodo.CL_TIPO_CAPTURISTA == "Coordinador de evaluación")
+                    {
+                        btnEnviar.Enabled = false;
+                        btnEnviarTodos.Enabled = false;
+                        lbMensaje2.Visible = true;
+                    }
+                }
+
+                var vEvaluadores = periodo.ObtenerEvaluadoresPeriodo(vIdPeriodo, vIdRol).FirstOrDefault();
+
+                if (vEvaluadores != null)
+                {
+                    vFgMasiva = vEvaluadores.FG_CAPTURA_MASIVA;
+                    if (vEvaluadores.FG_CAPTURA_MASIVA)
+                    {
+                        dvCapturaMasiva.Visible = true;
+                        btnCapturaMasivaFalse.Checked = true;
+                        btnEnviar.Visible = false;
+                        UtilMensajes.MensajeResultadoDB(rwmMensaje, "Este período tiene metas idénticas para todos los participantes, si se trata de una meta compartida es posible que realices la captura de todo el grupo, el resultado que captures se aplicara a cada uno de los participantes. Selecciona la opción de captura masiva antes de enviar los correos.", E_TIPO_RESPUESTA_DB.SUCCESSFUL, pAlto: 250, pCallBackFunction: "");
+                    }
                 }
             }
 
@@ -250,9 +304,9 @@ namespace SIGE.WebApp.EO
             //vDsMensajeEv = ContextoApp.EO.MensajeDesempenioEvaluado.dsMensaje;
             //vDsMensajeMEv = ContextoApp.EO.MensajeDesempenioMEvaluado.dsMensaje;
             vDsMensaje = ContextoApp.EO.Configuracion.MensajeCapturaResultados.dsMensaje;
-            vDsMensajeE = ContextoApp.EO.Configuracion.MensajeImportantes.dsMensaje;
+            vDsMensajeE = ContextoApp.EO.Configuracion.MensajeBajaReplica.dsMensaje;
             vDsMensajeME = ContextoApp.EO.Configuracion.MensajeBajaNotificador.dsMensaje;
-            vDsMensajeEv = ContextoApp.EO.Configuracion.MensajeImportantes.dsMensaje;
+            vDsMensajeEv = ContextoApp.EO.Configuracion.MensajeBajaReplica.dsMensaje;
             vDsMensajeMEv = ContextoApp.EO.Configuracion.MensajeBajaNotificador.dsMensaje;
             lMensaje.InnerHtml = vDsMensaje;
             lMensaje.InnerHtml = vDsMensaje;

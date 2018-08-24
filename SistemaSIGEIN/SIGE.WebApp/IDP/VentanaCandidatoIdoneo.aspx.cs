@@ -160,6 +160,13 @@ namespace SIGE.WebApp.IDP
 
             RequisicionNegocio nRequisicion = new RequisicionNegocio();
 
+            if (btnCandidatos.Checked)
+                vParametrosBusqueda.Add(new XAttribute("ORIGEN", "SOLICITUDES"));
+            else if (btnEmpleados.Checked)
+                vParametrosBusqueda.Add(new XAttribute("ORIGEN", "EMPLEADOS"));
+            else if (btnAmbos.Checked)
+                vParametrosBusqueda.Add(new XAttribute("ORIGEN", "AMBOS"));
+
             if (dtpInicial.SelectedDate.HasValue)
             {
                 vParametrosBusqueda.Add(new XAttribute("FE_INICIAL", dtpInicial.SelectedDate.Value.ToString("MM/dd/yyyy")));
@@ -174,7 +181,7 @@ namespace SIGE.WebApp.IDP
             if (chkPerfil.Checked)
             {
                 ContextoBusquedaCandidato.oPuestoVsCandidatos.Where(t => t.vIdParametroBusqueda == vIdBusquedaCandidato).FirstOrDefault().vFgBusquedaPerfil = true;
-                grdCandidato.Columns[4].Visible = true;
+                grdCandidato.Columns[6].Visible = true;
                 bool buscarperfil = false;
                 string xmlParameter = "";
                 vParametrosBusqueda.Add(new XAttribute("FG_PERFIL", "1"));
@@ -206,7 +213,7 @@ namespace SIGE.WebApp.IDP
             }
             else
             {
-                grdCandidato.Columns[4].Visible = false;
+                grdCandidato.Columns[6].Visible = false;
                 vParametrosBusqueda.Add(new XAttribute("FG_PERFIL", "0"));
                 ContextoBusquedaCandidato.oPuestoVsCandidatos.Where(t => t.vIdParametroBusqueda == vIdBusquedaCandidato).FirstOrDefault().vFgBusquedaPerfil = false;
             }
@@ -214,7 +221,7 @@ namespace SIGE.WebApp.IDP
 
             if (chkCompetencias.Checked)
             {
-                grdCandidato.Columns[5].Visible = true;
+                grdCandidato.Columns[7].Visible = true;
                 vParametrosBusqueda.Add(new XAttribute("FG_COMPETENCIAS", "1"));
                 vParametrosCompetencias.Add(new XAttribute("PR_COMPATIBILIDAD", txtPrMinimo.Text));
                 vParametrosBusqueda.Add(vParametrosCompetencias);
@@ -222,7 +229,7 @@ namespace SIGE.WebApp.IDP
             }
             else
             {
-                grdCandidato.Columns[5].Visible = false;
+                grdCandidato.Columns[7].Visible = false;
                 vParametrosBusqueda.Add(new XAttribute("FG_COMPETENCIAS", "0"));
                 ContextoBusquedaCandidato.oPuestoVsCandidatos.Where(t => t.vIdParametroBusqueda == vIdBusquedaCandidato).FirstOrDefault().vFgBusquedaCompetencias = false;
             }
@@ -282,6 +289,7 @@ namespace SIGE.WebApp.IDP
                 chkParametroCompEsp.Enabled = false;
                 chkAreasInteres.Enabled = false;
                 txtPrMinimo.Enabled = false;
+                btnCandidatos.Checked = true;
 
                 rtsBuscarCandidato.Tabs[1].Enabled = false;
 
@@ -484,11 +492,11 @@ namespace SIGE.WebApp.IDP
             }
         }
 
-        protected void rgProcesos_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
-        {
-            RequisicionNegocio nReq = new RequisicionNegocio();
-            rgProcesos.DataSource = nReq.ObtenerCandidatosPorRequisicion(pIdRequisicion: vIdRequisicion);
-        }
+        //protected void rgProcesos_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        //{
+        //    RequisicionNegocio nReq = new RequisicionNegocio();
+        //    rgProcesos.DataSource = nReq.ObtenerCandidatosPorRequisicion(pIdRequisicion: vIdRequisicion);
+        //}
 
         protected void grdCandidato_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -520,30 +528,30 @@ namespace SIGE.WebApp.IDP
             }
         }
 
-        protected void rgProcesos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            foreach (GridDataItem item in rgProcesos.SelectedItems)
-            {
-                if (item.GetDataKeyValue("CL_ESTADO").ToString() != null)
-                {
-                    if (item.GetDataKeyValue("CL_ESTADO").ToString() == "Terminado" || item.GetDataKeyValue("CL_ESTADO").ToString() == "TERMINADO")
-                    {
-                        btnVerProceso.Visible = true;
-                        btnProceso.Visible = false;
-                    }
-                    else
-                    {
-                        btnVerProceso.Visible = false;
-                        btnProceso.Visible = true;
-                    }
-                }
-                else
-                {
-                    btnVerProceso.Visible = false;
-                    btnProceso.Visible = true;
-                }
-            }
-        }
+        //protected void rgProcesos_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    foreach (GridDataItem item in rgProcesos.SelectedItems)
+        //    {
+        //        if (item.GetDataKeyValue("CL_ESTADO").ToString() != null)
+        //        {
+        //            if (item.GetDataKeyValue("CL_ESTADO").ToString() == "Terminado" || item.GetDataKeyValue("CL_ESTADO").ToString() == "TERMINADO")
+        //            {
+        //                btnVerProceso.Visible = true;
+        //                btnProceso.Visible = false;
+        //            }
+        //            else
+        //            {
+        //                btnVerProceso.Visible = false;
+        //                btnProceso.Visible = true;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            btnVerProceso.Visible = false;
+        //            btnProceso.Visible = true;
+        //        }
+        //    }
+        //}
     }
 }
 

@@ -31,15 +31,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title></title>
-    <link href="<%# ResolveUrl("~/Assets/images/Icono.png" ) %>" rel='shortcut icon' />
-    <link href="<%# ResolveUrl("~/Assets/css/estilo.css" ) %>" rel="stylesheet" />
+    <link href="<%# ResolveClientUrl("~/Assets/images/Icono.png" ) %>" rel='shortcut icon' />
+    <link href="<%# ResolveClientUrl("~/Assets/css/estilo.css" ) %>" rel="stylesheet" />
 
-    <script src='<%# ResolveUrl(String.Format("~/Assets/js/appIndex.js?v={0}", DateTime.Now.ToString("yyyyMMddHHmmss") )) %>'></script>
-    <script src='<%# ResolveUrl("~/Assets/js/PopUps.js" ) %>'></script>
+    <script src='<%# ResolveClientUrl(String.Format("~/Assets/js/appIndex.js?v={0}", DateTime.Now.ToString("yyyyMMddHHmmss") )) %>'></script>
+    <script src='<%# ResolveClientUrl("~/Assets/js/PopUps.js" ) %>'></script>
 
-    <link href="<%# ResolveUrl("~/Assets/css/bootstrap.min.css" ) %>" rel="stylesheet" class="librerias" data-tipo="css" />
-    <link href="<%# ResolveUrl("~/Assets/library/font-awesome/css/font-awesome.css" ) %>" rel="stylesheet" class="librerias" data-tipo="css" />
-    <link href="<%# ResolveUrl("~/Assets/css/animate.css" ) %>" rel="stylesheet" class="librerias" data-tipo="css" />
+    <link href="<%# ResolveClientUrl("~/Assets/css/bootstrap.min.css" ) %>" rel="stylesheet" class="librerias" data-tipo="css" />
+    <link href="<%# ResolveClientUrl("~/Assets/library/font-awesome/css/font-awesome.css" ) %>" rel="stylesheet" class="librerias" data-tipo="css" />
+    <link href="<%# ResolveClientUrl("~/Assets/css/animate.css" ) %>" rel="stylesheet" class="librerias" data-tipo="css" />
 
     <style type="text/css">
         html, body, form {

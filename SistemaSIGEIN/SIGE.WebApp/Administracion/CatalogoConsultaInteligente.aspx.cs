@@ -24,6 +24,10 @@ namespace SIGE.WebApp.Administracion
             set { ViewState["vs_vLstConsultaInteligente"] = value; }
         }
 
+        public bool vAgregar;
+        public bool vEditar;
+        public bool vEliminar;
+
         #endregion
 
         #region Eventos Load
@@ -32,11 +36,13 @@ namespace SIGE.WebApp.Administracion
         {
               if (ContextoApp.CI.LicenciaConsultasInteligentes.MsgActivo == "1")
             {
+                SeguridadProcesos();
             }
               else
               {
+                  var myUrl = ResolveUrl("~/Logon.aspx");
                   UtilMensajes.MensajeResultadoDB(rwmAlertas, ContextoApp.CI.LicenciaConsultasInteligentes.MsgActivo, E_TIPO_RESPUESTA_DB.WARNING);
-                  Response.Redirect(ContextoUsuario.nbHost + "/Logon.aspx");
+                  Response.Redirect(ContextoUsuario.nbHost + myUrl);
               }
 
         }
@@ -44,6 +50,13 @@ namespace SIGE.WebApp.Administracion
         #endregion
 
         #region Eventos
+
+        protected void SeguridadProcesos()
+        {
+            btnAgregar.Enabled = vAgregar = ContextoUsuario.oUsuario.TienePermiso("P.A");
+            btnEditar.Enabled = vEditar = ContextoUsuario.oUsuario.TienePermiso("P.B");
+            btnEliminar.Enabled = vEliminar = ContextoUsuario.oUsuario.TienePermiso("P.C");
+        }
 
         protected void rdgConsultasInteligentes_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {

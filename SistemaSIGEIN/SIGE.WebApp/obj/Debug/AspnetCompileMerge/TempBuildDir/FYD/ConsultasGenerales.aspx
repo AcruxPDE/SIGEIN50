@@ -7,7 +7,7 @@
         }
 
         function OpenPeriodoSelectionWindow() {
-            OpenSelectionWindow("../Comunes/SeleccionPeriodo.aspx?m=FORMACION", "winSeleccion", "Selección de periodo")
+            OpenSelectionWindow("../Comunes/SeleccionPeriodo.aspx?m=FORMACION", "winSeleccion", "Selección de período")
         }
 
         function OpenPuestoSelectionWindow() {
@@ -15,7 +15,7 @@
         }
 
         function OpenAreaSelectionWindow() {
-            OpenSelectionWindow("/Comunes/SeleccionArea.aspx?m=FORMACION", "winSeleccion", "Selección de áreas");
+            OpenSelectionWindow("/Comunes/SeleccionArea.aspx?m=FORMACION", "winSeleccion", "Selección de áreas/departamento");
         }
 
         function OpenReporteGlobalWindow() {
@@ -24,7 +24,7 @@
             var vFgGrid = $find('<%# chkFormato.ClientID %>').get_checked();
             var vFgFoto = $find('<%# chkIncluir.ClientID %>').get_checked();
 
-            OpenSelectionWindow("../FYD/ReporteGlobal.aspx?IdReporteGlobal=" + vIdReporteGlobal + "&Fgfoto=" + vFgFoto + "&FgGrid=" + vFgGrid, "rwReporte", "Consulta General - Evaluación de competencias");
+            OpenSelectionWindow("../FYD/ReporteGlobal.aspx?IdReporteGlobal=" + vIdReporteGlobal + "&Fgfoto=" + vFgFoto + "&FgGrid=" + vFgGrid , "rwReporte", "Consulta General - Evaluación de competencias");
         }
 
         function OpenReporteComparativoWindow(pIdPeriodo) {
@@ -144,11 +144,11 @@
         <telerik:RadTextBox runat="server" ID="txtTiposEvaluacion" Width="500px" Enabled="false"></telerik:RadTextBox>
     </div>--%>
 
-    <div class="ctrlBasico">
+<%--    <div class="ctrlBasico">
         <table class="ctrlTableForm">
             <tr>
                 <td class="ctrlTableDataContext">
-                    <label>Periodo:</label></td>
+                    <label>Período:</label></td>
                 <td colspan="2" class="ctrlTableDataBorderContext">
                     <div id="txtClavePeriodo" runat="server" style="min-width: 100px;"></div>
                 </td>
@@ -162,16 +162,66 @@
         </table>
     </div>
 
-    <div style="clear: both; height: 10px;"></div>
+    <div style="clear: both; height: 10px;"></div>--%>
 
     <telerik:RadTabStrip runat="server" ID="rtsConsultasGenerales" SelectedIndex="0" Width="100%" MultiPageID="rmpConsultasGenerales">
         <Tabs>
+            <telerik:RadTab Text="Contexto"></telerik:RadTab>
             <telerik:RadTab Text="Reporte global"></telerik:RadTab>
             <telerik:RadTab Text="Reporte comparativo"></telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
-    <div style="height: calc(100% - 130px); width: 100%;">
+    <div style="height: calc(100% - 60px); width: 100%;">
         <telerik:RadMultiPage runat="server" ID="rmpConsultasGenerales" SelectedIndex="0" Width="100%" Height="100%">
+               <telerik:RadPageView ID="rpvContexto" runat="server">  
+
+    <div style="clear: both; height: 10px;"></div>
+                   <div class="ctrlBasico">
+                                    <table class="ctrlTableForm" text-align: left;>
+                                        <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="lbPeriodo" name="lbTabulador" runat="server">Período:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtClPeriodo" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="lbNbPeriodo" name="lbTabulador" runat="server">Descripción:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtDsPeriodo" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                                 <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="Label1" name="lbTabulador" runat="server">Estatus:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtEstatus" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                                      <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="Label2" name="lbTabulador" runat="server">Tipo de evaluación:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtTipoEvaluacion" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                             <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="Label3" name="lbTabulador" runat="server">Notas:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtNotas" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                        </table>
+                                    </div>
+                 </telerik:RadPageView>
+
 
             <telerik:RadPageView runat="server" ID="rpvReporteGeneral">
                 <div style="height: calc(100% - 50px);">
@@ -194,7 +244,7 @@
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="80%" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="M_PUESTO_NB_PUESTO">
                                     <HeaderStyle Font-Bold="true" />
                                 </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="80%" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO">
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="80%" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO">
                                     <HeaderStyle Font-Bold="true" />
                                 </telerik:GridBoundColumn>
                                 <telerik:GridButtonColumn UniqueName="ELIMINAR" Text="Eliminar" CommandName="Delete" ButtonType="ImageButton">
@@ -226,7 +276,7 @@
                     </div>
 
                     <div class="ctrlBasico" style="padding-left: 5px;">
-                        <telerik:RadButton runat="server" ID="btnReporte" Text="Consulta" AutoPostBack="false" OnClientClicked="OpenReporteGlobal"></telerik:RadButton>
+                        <telerik:RadButton runat="server" ID="btnReporte" Text="Reporte" AutoPostBack="false" OnClientClicked="OpenReporteGlobal"></telerik:RadButton>
                     </div>
                 </div>
             </telerik:RadPageView>
@@ -246,7 +296,7 @@
                              <%--   <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" FilterControlWidth="30" HeaderText="Clave" DataField="CL_PERIODO" UniqueName="CL_PERIODO">
                                     <HeaderStyle Font-Bold="true" />
                                 </telerik:GridBoundColumn>--%>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="80%" HeaderText="Periodo" DataField="NB_PERIODO" UniqueName="NB_PERIODO">
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="80%" HeaderText="Período" DataField="NB_PERIODO" UniqueName="NB_PERIODO">
                                     <HeaderStyle Font-Bold="true" />
                                 </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" FilterControlWidth="80%" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO">
@@ -262,7 +312,7 @@
                 </div>
                 <div style="clear: both; height: 5px;"></div>
                 <div class="ctrlBasico">
-                    <telerik:RadButton runat="server" ID="btnAgregarPeriodosComparacion" Text="Agregar periodos" AutoPostBack="false" OnClientClicked="OpenPeriodoSelectionWindow"></telerik:RadButton>
+                    <telerik:RadButton runat="server" ID="btnAgregarPeriodosComparacion" Text="Agregar períodos" AutoPostBack="false" OnClientClicked="OpenPeriodoSelectionWindow"></telerik:RadButton>
                 </div>
 
 
@@ -286,7 +336,7 @@
                         <telerik:RadCheckBox runat="server" ID="chkFoto" Text="Incluir fotografía del evaluado" AutoPostBack="false"></telerik:RadCheckBox>
                     </div>
                     <div class="ctrlBasico">
-                        <telerik:RadButton runat="server" ID="btnReporteComparativa" Text="Reporte" AutoPostBack="false" OnClientClicked="OpenReporteComparativo"></telerik:RadButton>
+                        <telerik:RadButton runat="server" ID="btnReporteComparativa" Text="Consulta" AutoPostBack="false" OnClientClicked="OpenReporteComparativo"></telerik:RadButton>
                     </div>
                 </div>
 

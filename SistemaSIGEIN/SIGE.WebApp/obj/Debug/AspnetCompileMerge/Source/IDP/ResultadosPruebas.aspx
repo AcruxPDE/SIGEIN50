@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/IDP/MenuIDP.master" AutoEventWireup="true" CodeBehind="ResultadosPruebas.aspx.cs" Inherits="SIGE.WebApp.IDP.ResultadosPruebas" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ContextHTML.master" AutoEventWireup="true" CodeBehind="ResultadosPruebas.aspx.cs" Inherits="SIGE.WebApp.IDP.ResultadosPruebas" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
 
     <script src="../Assets/js/Graph.js" type="text/javascript"></script>
     <script type="text/javascript" id="script">
@@ -194,7 +194,7 @@
         }
     </style>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
     <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         <AjaxSettings>
@@ -886,6 +886,9 @@
                     </telerik:RadPageView>
 
                     <telerik:RadPageView ID="RPVPensamiento" runat="server">
+<%--                            <div style="height: calc(100% - 10px);">
+              <telerik:RadSplitter ID="RadSplitter2" Width="100%" Height="100%" BorderSize="0" runat="server">
+            <telerik:RadPane ID="RadPane2" runat="server">  --%>    
                         <div>
                             <div class="ctrlBasico">
                                 <div>
@@ -1091,13 +1094,15 @@
                                     </tbody>
                                 </table>
                                  <div style="clear: both"></div>
-                         <div class="divControlDerecha" style="padding-right:25px;">
+                         <div class="divControlDerecha" style="padding-right:25px; padding-bottom:40px;">
                                 <telerik:RadButton ID="btnImprimeEstilo" runat="server" AutoPostBack="false" Text="Imprimir" OnClientClicked="OpenEstilo"></telerik:RadButton>
                             </div>
                             </div>
                            
                         </div>
-            
+         <%--   </telerik:RadPane>
+                  </telerik:RadSplitter>
+                            </div>    --%>    
                     </telerik:RadPageView>
 
                     <telerik:RadPageView ID="RPVAptitudI" runat="server">

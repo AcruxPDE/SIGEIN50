@@ -10,6 +10,10 @@ using SIGE.Entidades.FormacionDesarrollo;
 using SIGE.Negocio.FormacionDesarrollo;
 using SIGE.WebApp.Comunes;
 using Telerik.Web.UI;
+using System.Xml.Linq;
+using SIGE.Negocio.Utilerias;
+using SIGE.Entidades.EvaluacionOrganizacional;
+using Newtonsoft.Json;
 
 namespace SIGE.WebApp.FYD
 {
@@ -19,11 +23,127 @@ namespace SIGE.WebApp.FYD
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
 
+        public bool vEditar
+        {
+            get { return (bool)ViewState["vs_vEditar"]; }
+            set { ViewState["vs_vEditar"] = value; }
+        }
+
+        public bool vEliminar
+        {
+            get { return (bool)ViewState["vs_vEliminar"]; }
+            set { ViewState["vs_vEliminar"] = value; }
+        }
+
+
         List<E_PROGRAMA> vProgramas
         {
             get { return (List<E_PROGRAMA>)ViewState["vs_vProgramas"]; }
             set { ViewState["vs_vProgramas"] = value; }
         }
+
+        public string validarDsNotas(string vdsNotas)
+        {
+            E_NOTAS pNota = null;
+            if (vdsNotas != null)
+            {
+                XElement vNotas = XElement.Parse(vdsNotas.ToString());
+                if (ValidarRamaXml(vNotas, "NOTA"))
+                {
+                    pNota = vNotas.Elements("NOTA").Select(el => new E_NOTAS
+                    {
+                        DS_NOTA = UtilXML.ValorAtributo<string>(el.Attribute("DS_NOTA")),
+                        FE_NOTA = (DateTime?)UtilXML.ValorAtributo(el.Attribute("FE_NOTA"), E_TIPO_DATO.DATETIME),
+                    }).FirstOrDefault();
+                }
+
+                if (pNota != null)
+                {
+                    if (pNota.DS_NOTA != null)
+                    {
+                        return pNota.DS_NOTA.ToString();
+                    }
+                    else return "";
+                }
+                else
+                    return "";
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public Boolean ValidarRamaXml(XElement parentEl, string elementsName)
+        {
+            var foundEl = parentEl.Element(elementsName);
+
+            if (foundEl != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void SeguridadProcesos()
+        {
+            btnNuevo.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.B.A");
+            vEditar = ContextoUsuario.oUsuario.TienePermiso("K.A.B.B.B");
+            vEliminar = ContextoUsuario.oUsuario.TienePermiso("K.A.B.B.C");
+            btnEditar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.B.D");
+            btnCopiar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.B.E");
+            btnTerminarPrograma.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.B.F");
+            btnAvance.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.B.G");
+        }
+
+
+        private void CargarDatosDetalle(int? pIdPeriodo)
+        {
+            ProgramaNegocio nPrograma = new ProgramaNegocio();
+            SPE_OBTIENE_C_PROGRAMA_Result vPrograma = nPrograma.ObtieneProgramasCapacitacion(pIdPrograma: pIdPeriodo).FirstOrDefault();
+
+            if (vPrograma != null)
+            {
+
+                txtClPeriodo.Text = vPrograma.CL_PROGRAMA;
+                txtDsPeriodo.Text = vPrograma.NB_PROGRAMA;
+                txtClEstatus.Text = vPrograma.CL_ESTADO;
+                txtTipo.Text = vPrograma.CL_TIPO_PROGRAMA;
+                txtUsuarioMod.Text = vPrograma.CL_USUARIO_APP_MODIFICA;
+                txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPrograma.FE_MODIFICA);
+
+                if (vPrograma.DS_NOTAS != null)
+                {
+                    XElement vNotas = XElement.Parse(vPrograma.DS_NOTAS);
+
+                    if (vNotas != null)
+                    {
+                        string vNotasTexto = validarDsNotas(vNotas.ToString());
+                        txtNotas.InnerHtml = vNotasTexto;
+                    }
+                }
+            }
+        }
+
+
+        private void seleccionarPeriodo()
+        {
+            rlvProgramas.SelectedItems.Clear();
+            rlvProgramas.SelectedIndexes.Clear();
+            rlvProgramas.CurrentPageIndex = 0;
+            if (rlvProgramas.Items.Count > 0)
+            {
+                rlvProgramas.Items[0].Selected = true;
+            }
+            rlvProgramas.Rebind();
+
+            string vIdPeriodoSeleccionado = rlvProgramas.Items[0].GetDataKeyValue("ID_PROGRAMA").ToString();
+            if (vIdPeriodoSeleccionado != null)
+            {
+                CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+            }
+        }
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,7 +152,7 @@ namespace SIGE.WebApp.FYD
 
             if (!IsPostBack)
             {
-
+                SeguridadProcesos();
             }
         }
 
@@ -83,14 +203,20 @@ namespace SIGE.WebApp.FYD
                 E_RESULTADO vResultado = nPrograma.EliminaProgramaCapacitacion(idPrograma);
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
                 UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150);
-                txtClPeriodo.Text = "";
-                txtDsPeriodo.Text = "";
-                txtClEstatus.Text = "";
-                txtTipo.Text = "";
-                txtUsuarioMod.Text = "";
-                txtFechaMod.Text = "";
-
+                //txtClPeriodo.Text = "";
+                //txtDsPeriodo.Text = "";
+                //txtClEstatus.Text = "";
+                //txtTipo.Text = "";
+                //txtUsuarioMod.Text = "";
+                //txtFechaMod.Text = "";
+                //txtNotas.InnerHtml = "";
                 rlvProgramas.Rebind();
+
+                string vIdPeriodoSeleccionado = rlvProgramas.SelectedItems[0].GetDataKeyValue("ID_PROGRAMA").ToString();
+                if (vIdPeriodoSeleccionado != null)
+                {
+                    CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+                }
             }
         }
 
@@ -183,17 +309,55 @@ namespace SIGE.WebApp.FYD
             int vIdPeriodoLista = 0;
             if (int.TryParse(item.GetDataKeyValue("ID_PROGRAMA").ToString(), out vIdPeriodoLista))
             {
-                ProgramaNegocio nPrograma = new ProgramaNegocio();
-                SPE_OBTIENE_C_PROGRAMA_Result vPrograma = nPrograma.ObtieneProgramasCapacitacion(pIdPrograma: vIdPeriodoLista).FirstOrDefault();
+                CargarDatosDetalle(vIdPeriodoLista);
 
-                txtClPeriodo.Text = vPrograma.CL_PROGRAMA;
-                txtDsPeriodo.Text = vPrograma.NB_PROGRAMA;
-                txtClEstatus.Text = vPrograma.CL_ESTADO;
-                txtTipo.Text = vPrograma.CL_TIPO_PROGRAMA;
-                txtUsuarioMod.Text = vPrograma.CL_USUARIO_APP_MODIFICA;
-                txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPrograma.FE_MODIFICA);
+                //ProgramaNegocio nPrograma = new ProgramaNegocio();
+                //SPE_OBTIENE_C_PROGRAMA_Result vPrograma = nPrograma.ObtieneProgramasCapacitacion(pIdPrograma: vIdPeriodoLista).FirstOrDefault();
+
+                //txtClPeriodo.Text = vPrograma.CL_PROGRAMA;
+                //txtDsPeriodo.Text = vPrograma.NB_PROGRAMA;
+                //txtClEstatus.Text = vPrograma.CL_ESTADO;
+                //txtTipo.Text = vPrograma.CL_TIPO_PROGRAMA;
+                //txtUsuarioMod.Text = vPrograma.CL_USUARIO_APP_MODIFICA;
+                //txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPrograma.FE_MODIFICA);
+
+                //if (vPrograma.DS_NOTAS != null)
+                //{
+                //    XElement vNotas = XElement.Parse(vPrograma.DS_NOTAS);
+
+                //    if (vNotas != null)
+                //    {
+                //        string vNotasTexto = validarDsNotas(vNotas.ToString());
+                //        txtNotas.InnerHtml = vNotasTexto;
+                //    }
+                //}
+
+
             }
 
+        }
+
+        protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
+        {
+            E_SELECTOR vSeleccion = new E_SELECTOR();
+            string pParameter = e.Argument;
+
+            if (pParameter != null)
+                vSeleccion = JsonConvert.DeserializeObject<E_SELECTOR>(pParameter);
+
+            if (vSeleccion.clTipo == "ACTUALIZARLISTA")
+            {
+                seleccionarPeriodo();
+            }
+            else if (vSeleccion.clTipo == "ACTUALIZAR")
+            {
+                rlvProgramas.Rebind();
+                string vIdPeriodoSeleccionado = rlvProgramas.SelectedItems[0].GetDataKeyValue("ID_PROGRAMA").ToString();
+                if (vIdPeriodoSeleccionado != null)
+                {
+                    CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+                }
+            }
         }
 
     }

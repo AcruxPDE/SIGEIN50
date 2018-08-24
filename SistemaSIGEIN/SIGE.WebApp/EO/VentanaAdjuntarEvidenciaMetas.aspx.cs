@@ -121,6 +121,17 @@ namespace SIGE.WebApp
                 {
                     IdEvaluadoMeta = 0;
                 }
+
+                if (Request.Params["pFgConsulta"] != null)
+                {
+                    if (Request.Params["pFgConsulta"] == "SI")
+                    {
+                        btnAgregarDocumento.Enabled = false;
+                        btnDelDocumentos.Enabled = false;
+                        btnGuardar.Enabled = false;
+                    }
+                }
+
                 vLstDocumentos = new List<E_DOCUMENTO>();
                 var oMeta = neg.ObtieneMetas(pIdEvaluadoMeta: IdEvaluadoMeta).FirstOrDefault();
 
@@ -173,7 +184,7 @@ namespace SIGE.WebApp
                     }
                 }
                 PeriodoDesempenoNegocio nSolicitud = new PeriodoDesempenoNegocio();
-                E_RESULTADO vResultado = nSolicitud.InsertaActualizaEvidenciasMetas(IdEvaluadoMeta, vLstArchivos, vLstDocumentos, vClUsuario, vNbPrograma);
+                E_RESULTADO vResultado = nSolicitud.InsertaActualizaEvidenciasMetas(IdEvaluadoMeta, vLstArchivos, vLstDocumentos, vClUsuario, vNbPrograma, null);
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
                 UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
             }

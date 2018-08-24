@@ -56,6 +56,14 @@ namespace SIGE.WebApp.Comunes
 
             if (!Page.IsPostBack)
             {
+                grdInstructores.AllowMultiRowSelection = true;
+                if (!String.IsNullOrEmpty(Request.QueryString["mulSel"]))
+                {
+                    grdInstructores.AllowMultiRowSelection = (Request.QueryString["mulSel"] == "1");
+                    btnAgregar.Visible = (Request.QueryString["mulSel"] == "1");
+                }
+
+
                 vCompetencias = null;
 
                 //Eventos

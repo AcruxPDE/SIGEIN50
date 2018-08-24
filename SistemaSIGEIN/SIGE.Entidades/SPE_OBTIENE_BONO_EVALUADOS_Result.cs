@@ -21,7 +21,7 @@ namespace SIGE.Entidades
         public string NB_EVALUADO { get; set; }
         public string NB_DEPARTAMENTO { get; set; }
         public string NB_PUESTO { get; set; }
-        public decimal MN_SUELDO { get; set; }
+        public Nullable<decimal> MN_SUELDO { get; set; }
         public decimal MN_TOPE_BONO { get; set; }
         public decimal NO_MONTO_BONO { get; set; }
     }

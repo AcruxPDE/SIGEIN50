@@ -44,24 +44,43 @@
 
         function InsertEmpleado(pDato) {
             var ajaxManager = $find('<%= ramConsultas.ClientID%>');
-                ajaxManager.ajaxRequest(pDato);
-            }
+            ajaxManager.ajaxRequest(pDato);
+        }
 
-            function OpenSelectionTabuladorEmployee() {
-                openChildDialog("SeleccionTabuladorEmpleado.aspx?&IdTabulador=" + <%=vIdTabulador%> + "&vClTipoSeleccion=CONSULTAS", "winSeleccion", "Selección de empleados");
-            }
+        function OpenSelectionTabuladorEmployee() {
+            var myUrl = '<%= ResolveClientUrl("SeleccionTabuladorEmpleado.aspx") %>';
+            openChildDialog(myUrl + "?&IdTabulador=" + <%=vIdTabulador%> + "&vClTipoSeleccion=CONSULTAS", "winSeleccion", "Selección de empleados");
+        }
 
-            function OpenSelectionWindows(pURL, pVentana, pTitle) {
-                var currentWnd = GetRadWindow();
-                var browserWnd = window;
-                if (currentWnd)
-                    browserWnd = currentWnd.BrowserWindow;
-                var WindowsProperties = {
-                    width: browserWnd.innerWidth - 20,
-                    height: browserWnd.innerHeight - 20
-                };
-                openChildDialog(pURL, pVentana, pTitle, WindowsProperties);
+        function OpenSelectionWindows(pURL, pVentana, pTitle) {
+            var currentWnd = GetRadWindow();
+            var browserWnd = window;
+            if (currentWnd)
+                browserWnd = currentWnd.BrowserWindow;
+            var WindowsProperties = {
+                width: browserWnd.innerWidth - 20,
+                height: browserWnd.innerHeight - 20
+            };
+            openChildDialog(pURL, pVentana, pTitle, WindowsProperties);
+        }
+
+        function OpenImprimirReporte() {
+            var pIdTabulador = '<%= vIdTabulador %>';
+                var pNivelMercado = '<%= vCuartilComparativo %>';
+                openChildDialog("ReporteAnalisisDesviaciones.aspx?ID=" + pIdTabulador + "&pNivelMercado=" + pNivelMercado, "winImprimir", "Imprimir consulta");
+        }
+
+        function OpenImprimirGrafica() {
+            var selectedItem = $find("<%=rgAnalisisDesviaciones.ClientID %>").get_masterTableView().get_selectedItems()[0];
+            if (selectedItem != undefined) {
+                var vIdTabuladoNivel = selectedItem.getDataKeyValue("ID_TABULADOR_NIVEL");
+
+                var pIdTabulador = '<%= vIdTabulador %>';
+                var pNivelMercado = '<%= vCuartilComparativo %>';
+                openChildDialog("GraficaAnalisisDesviaciones.aspx?ID=" + pIdTabulador + "&pNivelMercado=" + pNivelMercado + "&pIdTabuladoNivel=" + vIdTabuladoNivel, "winImprimir", "Imprimir consulta");
             }
+        }
+        
 
     </script>
 </asp:Content>
@@ -81,7 +100,7 @@
             <telerik:RadTab Text="Contexto" SelectedIndex="0"></telerik:RadTab>
             <telerik:RadTab Text="Definición de criterios"></telerik:RadTab>
             <telerik:RadTab Text="Análisis de desviaciones"></telerik:RadTab>
-            <telerik:RadTab Text="Gráfica de desviaciones"></telerik:RadTab>
+            <telerik:RadTab Text="Gráfica de desviaciones" ForeColor="White"></telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
     <telerik:RadSplitter ID="rsConsultas" runat="server" Width="100%" Height="95%" BorderSize="0">
@@ -143,8 +162,8 @@
                             <label id="Label3" name="lbRangoNivel" runat="server">Rango de nivel:</label>
                         </div>
                         <div class="ctrlBasico">
-                            <telerik:RadNumericTextBox runat="server" ID="txtComienza" NumberFormat-DecimalDigits="0" Name="rnComienza" Width="140px" MinValue="1" ShowSpinButtons="true" Value="1"></telerik:RadNumericTextBox>
-                            <telerik:RadNumericTextBox runat="server" ID="txtTermina" NumberFormat-DecimalDigits="0" Name="rnTermina" Width="140px" MinValue="1" ShowSpinButtons="true" Value="100"></telerik:RadNumericTextBox>
+                            <telerik:RadNumericTextBox runat="server" ID="txtComienza" NumberFormat-DecimalDigits="0" Name="rnComienza" Width="140px" MinValue="1" ShowSpinButtons="true" Value="1" AutoPostBack="true" OnTextChanged="txtTermina_TextChanged" ></telerik:RadNumericTextBox>
+                            <telerik:RadNumericTextBox runat="server" ID="txtTermina" NumberFormat-DecimalDigits="0" Name="rnTermina" Width="140px" MinValue="1" ShowSpinButtons="true" Value="100" AutoPostBack="true" OnTextChanged="txtTermina_TextChanged" ></telerik:RadNumericTextBox>
                         </div>
                         <div class="ctrlBasico">
                             <label id="Label2"
@@ -213,31 +232,31 @@
                                 <MasterTableView AllowFilteringByColumn="false" AllowPaging="true" ShowHeadersWhenNoRecords="true" DataKeyNames="ID_TABULADOR_NIVEL" ClientDataKeyNames="ID_TABULADOR_NIVEL">
                                     <Columns>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="false" CurrentFilterFunction="Contains" HeaderStyle-Width="150" FilterControlWidth="70" HeaderText="Nivel" DataField="NB_TABULADOR_NIVEL" UniqueName="NB_TABULADOR_NIVEL"></telerik:GridBoundColumn>
-                                        <telerik:GridTemplateColumn AutoPostBackOnFilter="false" AllowFiltering="false" HeaderStyle-Width="150" FilterControlWidth="70" HeaderImageUrl="/Assets/images/Icons/25/ArrowEqual.png" DataField="PR_VERDE" UniqueName="PR_VERDE">
+                                        <telerik:GridTemplateColumn AutoPostBackOnFilter="false" AllowFiltering="false" HeaderStyle-Width="150" FilterControlWidth="70" HeaderImageUrl="../Assets/images/Icons/25/ArrowEqual.png" DataField="PR_VERDE" UniqueName="PR_VERDE">
                                             <HeaderTemplate>
                                                 <span id="Span1" runat="server" style="width: 40px; border: 1px solid gray; background-color: green; border-radius: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;
                                             </HeaderTemplate>
                                             <ItemTemplate><%# string.Format("{0:N2}", Eval("PR_VERDE"))%>% </ItemTemplate>
                                         </telerik:GridTemplateColumn>
-                                        <telerik:GridTemplateColumn AutoPostBackOnFilter="false" AllowFiltering="false" HeaderStyle-Width="150" FilterControlWidth="70" HeaderImageUrl="/Assets/images/Icons/25/ArrowUp.png" DataField="PR_AMARILLO_POS" UniqueName="PR_AMARILLO_POS">
+                                        <telerik:GridTemplateColumn AutoPostBackOnFilter="false" AllowFiltering="false" HeaderStyle-Width="150" FilterControlWidth="70" HeaderImageUrl="../Assets/images/Icons/25/ArrowUp.png" DataField="PR_AMARILLO_POS" UniqueName="PR_AMARILLO_POS">
                                             <HeaderTemplate>
                                                 <span id="Span2" runat="server" style="width: 40px; height: 50px; border: 1px solid gray; background-color: yellow; border-radius: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;
                                             </HeaderTemplate>
                                             <ItemTemplate><%#  string.Format("{0:N2}", Eval("PR_AMARILLO_POS"))%>%</ItemTemplate>
                                         </telerik:GridTemplateColumn>
-                                        <telerik:GridTemplateColumn AutoPostBackOnFilter="false" AllowFiltering="false" HeaderStyle-Width="150" FilterControlWidth="70" HeaderImageUrl="/Assets/images/Icons/25/ArrowDown.png" DataField="PR_AMARILLO_NEG" UniqueName="PR_AMARILLO_NEG">
+                                        <telerik:GridTemplateColumn AutoPostBackOnFilter="false" AllowFiltering="false" HeaderStyle-Width="150" FilterControlWidth="70" HeaderImageUrl="../Assets/images/Icons/25/ArrowDown.png" DataField="PR_AMARILLO_NEG" UniqueName="PR_AMARILLO_NEG">
                                             <HeaderTemplate>
                                                 <span id="Span3" runat="server" style="width: 40px; border: 1px solid gray; background-color: #ffd700; border-radius: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;
                                             </HeaderTemplate>
                                             <ItemTemplate><%#  string.Format("{0:N2}", Eval("PR_AMARILLO_NEG"))%>%</ItemTemplate>
                                         </telerik:GridTemplateColumn>
-                                        <telerik:GridTemplateColumn AutoPostBackOnFilter="false" AllowFiltering="false" HeaderStyle-Width="150" FilterControlWidth="70" HeaderImageUrl="/Assets/images/Icons/25/ArrowUp.png" DataField="PR_ROJO_POS" UniqueName="PR_ROJO_POS">
+                                        <telerik:GridTemplateColumn AutoPostBackOnFilter="false" AllowFiltering="false" HeaderStyle-Width="150" FilterControlWidth="70" HeaderImageUrl="../Assets/images/Icons/25/ArrowUp.png" DataField="PR_ROJO_POS" UniqueName="PR_ROJO_POS">
                                             <HeaderTemplate>
                                                 <span id="Span4" runat="server" style="width: 40px; border: 1px solid gray; background-color: #ff4500; border-radius: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;
                                             </HeaderTemplate>
                                             <ItemTemplate><%#  string.Format("{0:N2}", Eval("PR_ROJO_POS"))%>%</ItemTemplate>
                                         </telerik:GridTemplateColumn>
-                                        <telerik:GridTemplateColumn AutoPostBackOnFilter="false" AllowFiltering="false" HeaderStyle-Width="150" FilterControlWidth="70" HeaderImageUrl="/Assets/images/Icons/25/ArrowDown.png" DataField="PR_ROJO_NEG" UniqueName="PR_ROJO_NEG">
+                                        <telerik:GridTemplateColumn AutoPostBackOnFilter="false" AllowFiltering="false" HeaderStyle-Width="150" FilterControlWidth="70" HeaderImageUrl="../Assets/images/Icons/25/ArrowDown.png" DataField="PR_ROJO_NEG" UniqueName="PR_ROJO_NEG">
                                             <HeaderTemplate>
                                                 <span id="Span5" runat="server" style="width: 40px; border: 1px solid gray; background-color: red; border-radius: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;
                                             </HeaderTemplate>
@@ -248,12 +267,16 @@
                             </telerik:RadGrid>
                         </div>
                         <div style="height: 10px;"></div>
+
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnGrafica" runat="server" name="btnGrafica" OnClientClicked="OnClientClicked" AutoPostBack="false" Text="Gráfica" Width="100"></telerik:RadButton>
+                            <telerik:RadButton ID="btnGrafica" runat="server" name="btnGrafica" OnClientClicked="OnClientClicked" Enabled="false" AutoPostBack="false" Text="Gráfica" Width="100"></telerik:RadButton>
+                        </div>
+                        <div class="ctrlBasico">
+                            <telerik:RadButton ID="btnImprimir" runat="server" AutoPostBack="false" Text="Imprimir" OnClientClicked="OpenImprimirReporte"></telerik:RadButton>
                         </div>
                     </telerik:RadPageView>
-                    <telerik:RadPageView ID="rpvGraficaDesviaciones" runat="server">
-                        <div style="height: calc(100% - 20px); overflow: auto;">
+                    <telerik:RadPageView ID="rpvGraficaDesviaciones" runat="server" Height="100%">
+                        <div style="height: calc(100% - 65px);">
                             <telerik:RadHtmlChart runat="server" ID="PieChartGraficaDesviaciones" Width="100%" Height="100%" Transitions="true" Skin="Silk">
                                 <ChartTitle Text="Gráfica de Desviaciones">
                                     <Appearance Align="Center" Position="Top">
@@ -274,21 +297,29 @@
                                 </PlotArea>
                             </telerik:RadHtmlChart>
                         </div>
+                        <div style="height: 10px;"></div>
+                        <div class="ctrlBasico">
+                            <telerik:RadButton ID="RadButton1" runat="server" AutoPostBack="false" Text="Imprimir" OnClientClicked="OpenImprimirGrafica"></telerik:RadButton>
+                        </div>
                     </telerik:RadPageView>
                 </telerik:RadMultiPage>
             </div>
         </telerik:RadPane>
         <telerik:RadPane ID="rpAyuda" runat="server" Width="20px" Height="90%">
-            <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" Height="100%" ExpandedPaneId="rsConsultas" Width="20px" DockedPaneId="rsbConsultas">
+            <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" Height="100%" ExpandedPaneId="rsConsultas" Width="20px" DockedPaneId="rsbConsultas" ClickToOpen="true">
                 <telerik:RadSlidingPane ID="rsbAyuda" runat="server" CollapseMode="Forward" EnableResize="false" Width="325px" Title="Ayuda" Height="100%">
-                    <div id="divTabuladorMaestro" runat="server" style="padding: 10px; text-align: justify;">
+                    <div id="divTabuladorMaestro" runat="server" style="padding: 15px; text-align: justify;">
                         <p>
-                            Esta hoja permite refinar tu búsqueda para el reporte solicitado.																	
-                                Con excepción de los parámetros de periodos que son mandatorios,																	
-                                dejando en blanco los criterios solicitados indicas que dicho criterio																	
-                                es irrelevante y el sistema no lo tomará en cuenta para filtrar los datos.																	
+                                Utiliza la pestaña "Definición de criterios" para refinar tu búsqueda para el reporte solicitado.
+                            <br />	
+                            <br />																
+                                Con excepción de los parámetros de períodos que son mandatorios,																	
+                                no seleccionando mediante filtros indicas que dichos criterios																	
+                                son irrelevantes y el sistema no lo tomará en cuenta para filtrar los datos.																	
                                 En caso de ingresar criterios de búsqueda, éstos serán utilizados para 																	
-                                acortar el reporte.																	
+                                acotar el reporte.	
+                                <br />
+                                <br />																
                                 Nota: en algunos casos las opciones pueden ser mutuamente exclusivas.																		
                         </p>
                     </div>

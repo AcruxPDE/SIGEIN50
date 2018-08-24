@@ -6,7 +6,8 @@
         function OpenSelectionEmployeeWindow() {
             prueba();
             if (arrIdTabuladores != "") {
-                openChildDialog("../Comunes/SeleccionEmpleado.aspx?&IdTabuladores=" + arrIdTabuladores + "&vClTipoSeleccion=MC_TABULADORES", "winSeleccion", "Selección de  empleados");
+                var myUrl = '<%= ResolveClientUrl("../Comunes/SeleccionEmpleado.aspx") %>';
+                openChildDialog(myUrl + "?&IdTabuladores=" + arrIdTabuladores + "&vClTipoSeleccion=MC_TABULADORES", "winSeleccion", "Selección de  empleados");
             }
         }
 
@@ -21,7 +22,8 @@
         }
 
         function OpenSelectionWindow() {
-            openChildDialog("SeleccionTabulador.aspx", "winSeleccion", "Selección de tabuladores");
+            var myUrl = '<%= ResolveClientUrl("SeleccionTabulador.aspx") %>';
+            openChildDialog(myUrl, "winSeleccion", "Selección de tabuladores");
         }
 
         function useDataFromChild(pDato) {
@@ -70,12 +72,14 @@
            }
 
 
-           function OpenSelectionTabuladorEmployee() {
-               openChildDialog("SeleccionTabuladorEmpleado.aspx?&IdTabulador=" + <%=vIdTabulador%> + "&vClTipoSeleccion=CONSULTAS", "winSeleccion", "Selección de empleados");
+        function OpenSelectionTabuladorEmployee() {
+            var myUrl = '<%= ResolveClientUrl("SeleccionTabuladorEmpleado.aspx") %>';
+            openChildDialog(myUrl + "?&IdTabulador=" + <%=vIdTabulador%> + "&vClTipoSeleccion=CONSULTAS", "winSeleccion", "Selección de empleados");
             }
 
-            function OpenTabuladorEmpleadoSueldo() {
-                openChildDialog("SeleccionTabuladorEmpleado.aspx?&IdTabulador=" + <%=vIdTabulador%> + "&vClTipoSeleccion=CONSULTAS" + "&CatalogoCl=TABULADOR_SUELDOS", "winSeleccion", "Selección de empleados");
+        function OpenTabuladorEmpleadoSueldo() {
+            var myUrl = '<%= ResolveClientUrl("SeleccionTabuladorEmpleado.aspx") %>';
+            openChildDialog(myUrl+"?&IdTabulador=" + <%=vIdTabulador%> + "&vClTipoSeleccion=CONSULTAS" + "&CatalogoCl=TABULADOR_SUELDOS", "winSeleccion", "Selección de empleados");
             }
 
 
@@ -134,8 +138,9 @@
                     }
                 }
 
-                function OpenSelectionWindow() {
-                    openChildDialog("SeleccionTabulador.aspx", "winSeleccion", "Selección de tabuladores");
+        function OpenSelectionWindow() {
+            var myUrl = '<%= ResolveClientUrl("SeleccionTabulador.aspx") %>';
+            openChildDialog(myUrl, "winSeleccion", "Selección de tabuladores");
                 }
 
                 function OpenSelectionWindows(pURL, pVentana, pTitle) {
@@ -151,12 +156,30 @@
                 }
 
                 function OpenWindowPeriodos() {
-                    OpenSelectionWindows("/Comunes/SeleccionPeriodosDesempeno.aspx?CL_TIPO=Bono", "winSeleccion", "Seleccion de periodos a comparar");
+                    OpenSelectionWindows("/Comunes/SeleccionPeriodosDesempeno.aspx?CL_TIPO=Bono", "winSeleccion", "Seleccion de períodos a comparar");
                 }
 
                 function OpenWindowComparar() {
                     OpenSelectionWindows("VentanaConsultaBono.aspx", "winBonos", "Comparación de bonos");
                 }
+
+                //function OpenImprimir() {
+                //    var myPageView = $find('<= rmpTabuladorSueldos.ClientID %>');
+                //    var myIframe = document.getElementById('ifrmPrint');
+                //    var pvContent = myPageView.get_selectedPageView().get_element().innerHTML;
+                //    var myDoc = (myIframe.contentWindow || myIframe.contentDocument);
+                //    if (myDoc.document) myDoc = myDoc.document;
+                //    myDoc.write("<html><head><title>title</title>");
+                //    myDoc.write("</head><body onload='this.focus(); this.print();'>");
+                //    myDoc.write(pvContent + "</body></html>");
+                //    myDoc.close();
+                //}
+
+                function OpenImprimirReporte() {
+                    var pIdTabulador = '<%= vIdTabulador %>';
+                    var pNivelMercado = '<%= vCuartilComparativo %>';
+                openChildDialog("ReporteGraficaAnalisis.aspx?ID=" + pIdTabulador + "&pNivelMercado=" + pNivelMercado, "winImprimir", "Imprimir consulta");
+            }
 
     </script>
 </asp:Content>
@@ -310,7 +333,7 @@
                         </div>--%>
                     </telerik:RadPageView>
                     <telerik:RadPageView ID="rpvGraficaAnalisis" runat="server">
-                        <div style="height: calc(100% - 20px); overflow: auto;">
+                        <div style="height: calc(100% - 60px); overflow: auto;">
                             <telerik:RadHtmlChart runat="server" Height="100%" ID="ScatterChartGraficaAnalisis" Width="100%">
                                 <ChartTitle Text="Sueldos de la versión por niveles">
                                     <Appearance Align="Center" Position="Top" BackgroundColor="Transparent">
@@ -333,6 +356,10 @@
                                 </Legend>
                             </telerik:RadHtmlChart>
                         </div>
+                        <div style="height: 10px;"></div>
+                        <div class="ctrlBasico">
+                            <telerik:RadButton ID="btnImprimir" runat="server" AutoPostBack="false" Text="Imprimir" OnClientClicked="OpenImprimirReporte"></telerik:RadButton>
+                        </div>
                     </telerik:RadPageView>
                 </telerik:RadMultiPage>
             </telerik:RadPane>
@@ -353,4 +380,5 @@
             </telerik:RadPane>
         </telerik:RadSplitter>
     </div>
+    <%--<iframe src="#" style="width: 0; height: 0; border: none" id="ifrmPrint"></iframe>--%>
 </asp:Content>

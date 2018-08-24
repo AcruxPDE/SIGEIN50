@@ -121,15 +121,6 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadListBox lstCompetenciasEspecificas;
         
         /// <summary>
-        /// txtCompetenciasRequeridas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtCompetenciasRequeridas;
-        
-        /// <summary>
         /// lstExperiencia control.
         /// </summary>
         /// <remarks>
@@ -166,40 +157,13 @@ namespace SIGE.WebApp.Administracion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtTipoPuesto;
         
         /// <summary>
-        /// txtArea control.
+        /// lstJefesInmediatos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtArea;
-        
-        /// <summary>
-        /// txtCentroAdmin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtCentroAdmin;
-        
-        /// <summary>
-        /// txtCentroOptvo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtCentroOptvo;
-        
-        /// <summary>
-        /// txtPuestoJefe control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtPuestoJefe;
+        protected global::Telerik.Web.UI.RadListBox lstJefesInmediatos;
         
         /// <summary>
         /// lstPuestosSubordinado control.

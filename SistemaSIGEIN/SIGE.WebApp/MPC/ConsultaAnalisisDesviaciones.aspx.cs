@@ -26,6 +26,7 @@ namespace SIGE.WebApp.MPC
         private string vClUsuario;
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private int? vIdRol;
 
         public int vIdTabulador
         {
@@ -136,7 +137,7 @@ namespace SIGE.WebApp.MPC
         private void ObtenerPlaneacionIncrementos()
         {
             TabuladoresNegocio nTabuladores = new TabuladoresNegocio();
-            vObtienePlaneacionIncremento = nTabuladores.ObtienePlaneacionIncrementos(ID_TABULADOR: vIdTabulador).Select(s => new E_PLANEACION_INCREMENTOS()
+            vObtienePlaneacionIncremento = nTabuladores.ObtienePlaneacionIncrementos(ID_TABULADOR: vIdTabulador, ID_ROL: vIdRol).Select(s => new E_PLANEACION_INCREMENTOS()
             {
                 NUM_ITEM = (int)s.NUM_RENGLON,
                 ID_TABULADOR_EMPLEADO = s.ID_TABULADOR_EMPLEADO,
@@ -173,10 +174,43 @@ namespace SIGE.WebApp.MPC
             }
         }
 
+        protected void GuardarLista()
+        {
+            ContextoTabuladores.oLstEmpleadosDesviaciones = new List<E_REPORTE_TABULADOR_SUELDOS>();
+
+            ContextoTabuladores.oLstEmpleadosDesviaciones.Add(new E_REPORTE_TABULADOR_SUELDOS
+            {
+                ID_TABULADOR = vIdTabulador
+            });
+
+
+            if (vEmpleadosSeleccionados.Count > 0)
+            {
+                foreach (var item in vEmpleadosSeleccionados)
+                {
+                    if (item.ID_TABULADOR_EMPLEADO != null)
+                    {
+                        ContextoTabuladores.oLstEmpleadosDesviaciones.Where(t => t.ID_TABULADOR == vIdTabulador).FirstOrDefault().vLstEmpleadosTabulador.Add((int)item.ID_TABULADOR_EMPLEADO);
+                    }
+                }
+            }
+            else
+            {
+                foreach (var item in vEmpleadosDesviaciones)
+                {
+                    if (item.ID_TABULADOR_EMPLEADO != null)
+                    {
+                        ContextoTabuladores.oLstEmpleadosDesviaciones.Where(t => t.ID_TABULADOR == vIdTabulador).FirstOrDefault().vLstEmpleadosTabulador.Add((int)item.ID_TABULADOR_EMPLEADO);
+                    }
+                }
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!IsPostBack)
             {
@@ -272,12 +306,14 @@ namespace SIGE.WebApp.MPC
                     }
                 }
             }
+
             rgEmpleadosDesviasion.Rebind();
             CalculaPorcentajeNivel();
         }
 
         protected void CargarDatosTabuladorEmpleadoTodos()
         {
+          
             ActualizarLista(int.Parse(rcbNivelMercado.SelectedValue));
             var vEmpleadosTabuladorSeleccionados = vObtienePlaneacionIncremento.ToList();
             foreach (var item in vEmpleadosTabuladorSeleccionados)
@@ -290,6 +326,7 @@ namespace SIGE.WebApp.MPC
                     }
                 }
             }
+
             rgEmpleadosDesviasion.Rebind();
             CalculaPorcentajeNivel();
         }
@@ -365,6 +402,7 @@ namespace SIGE.WebApp.MPC
 
         protected void CalculaPorcentajeNivel()
         {
+            GuardarLista();
             if (vEmpleadosSeleccionados.Count > 0)
             {
                 TabuladoresNegocio nNivelesTabulador = new TabuladoresNegocio();
@@ -531,7 +569,8 @@ namespace SIGE.WebApp.MPC
 
         protected void rgAnalisisDesviaciones_SelectedIndexChanged(object sender, EventArgs e)
         {
-            rtsTabuladorDesviaciones.Tabs[3].Enabled = true;
+            btnGrafica.Enabled = true;
+            rtsTabuladorDesviaciones.Tabs[3].Visible = true;
             GridDataItem item = (GridDataItem)rgAnalisisDesviaciones.SelectedItems[0];
             int dataKey = int.Parse(item.GetDataKeyValue("ID_TABULADOR_NIVEL").ToString());
             var vNivelGrafica = vNivelesTabulador.Where(w => w.ID_TABULADOR_NIVEL == dataKey).ToList().FirstOrDefault();
@@ -539,8 +578,8 @@ namespace SIGE.WebApp.MPC
             PieSeries vSerie = new PieSeries();
 
             vSerie.SeriesItems.Add(vNivelGrafica.PR_VERDE, System.Drawing.Color.Green, "Sueldo dentro del nivel establecido por el tabulador (variación inferior al " + vRangoVerde.ToString() + "%).", false, true);
-            vSerie.SeriesItems.Add(vNivelGrafica.PR_AMARILLO_POS, System.Drawing.Color.Yellow, "Sueldo superior al nivel establecido por el tabulador entre la variación del " + vRangoVerde.ToString() + "% y el " + vRangoAmarillo.ToString() + "%.", false, true);
-            vSerie.SeriesItems.Add(vNivelGrafica.PR_AMARILLO_NEG, System.Drawing.Color.Gold, "Sueldo inferior al nivel establecido por el tabulador entre la variación del " + vRangoVerde.ToString() + "% y el " + vRangoAmarillo.ToString() + "%.", false, true);
+            vSerie.SeriesItems.Add(vNivelGrafica.PR_AMARILLO_POS, System.Drawing.Color.Yellow, "Sueldo superior al nivel establecido por el tabulador entre " + vRangoVerde.ToString() + "% y " + vRangoAmarillo.ToString() + "%.", false, true);
+            vSerie.SeriesItems.Add(vNivelGrafica.PR_AMARILLO_NEG, System.Drawing.Color.Gold, "Sueldo inferior al nivel establecido por el tabulador entre " + vRangoVerde.ToString() + "% y " + vRangoAmarillo.ToString() + "%.", false, true);
             vSerie.SeriesItems.Add(vNivelGrafica.PR_ROJO_POS, System.Drawing.Color.OrangeRed, "Sueldo superior al nivel establecido por el tabulador en más del " + vRangoAmarillo.ToString() + "%.", false, true);
             vSerie.SeriesItems.Add(vNivelGrafica.PR_ROJO_NEG, System.Drawing.Color.Red, "Sueldo inferior al nivel establecido por el tabulador en más del " + vRangoAmarillo.ToString() + "%.", false, true);
 
@@ -671,7 +710,6 @@ namespace SIGE.WebApp.MPC
             return vMnDivisor = pMnSueldo - vMnDivisor;
 
         }
-
 
         protected decimal? CalculaMinimo(int pMnSeleccionado, decimal? pMnMinimo, decimal? pMnPrimerCuartil, decimal? pMnMedio, decimal? pMnSegundoCuartil, decimal? pMnMaximo)
         {
@@ -866,8 +904,8 @@ namespace SIGE.WebApp.MPC
         private void agregaTooltipDesciaciones()
         {
             rgAnalisisDesviaciones.Columns[1].HeaderTooltip = "Sueldo dentro del nivel establecido por el tabulador (variación inferior al " + vRangoVerde.ToString() + "%).";
-            rgAnalisisDesviaciones.Columns[2].HeaderTooltip = "Sueldo superior al nivel establecido por el tabulador entre la variación del " + vRangoVerde.ToString() + "% y el " + vRangoAmarillo.ToString() + "%.";
-            rgAnalisisDesviaciones.Columns[3].HeaderTooltip = "Sueldo inferior al nivel establecido por el tabulador entre la variación del " + vRangoVerde.ToString() + "% y el " + vRangoAmarillo.ToString() + "%.";
+            rgAnalisisDesviaciones.Columns[2].HeaderTooltip = "Sueldo superior al nivel establecido por el tabulador entre " + vRangoVerde.ToString() + "% y " + vRangoAmarillo.ToString() + "%.";
+            rgAnalisisDesviaciones.Columns[3].HeaderTooltip = "Sueldo inferior al nivel establecido por el tabulador entre " + vRangoVerde.ToString() + "% y " + vRangoAmarillo.ToString() + "%.";
             rgAnalisisDesviaciones.Columns[4].HeaderTooltip = "Sueldo superior al nivel establecido por el tabulador en más del " + vRangoAmarillo.ToString() + "%.";
             rgAnalisisDesviaciones.Columns[5].HeaderTooltip = "Sueldo inferior al nivel establecido por el tabulador en más del " + vRangoAmarillo.ToString() + "%.";
 
@@ -913,6 +951,12 @@ namespace SIGE.WebApp.MPC
                 PageSizeCombo.FindItemByText("1000").Attributes.Add("ownerTableViewId", rgAnalisisDesviaciones.MasterTableView.ClientID);
                 PageSizeCombo.FindItemByText(e.Item.OwnerTableView.PageSize.ToString()).Selected = true;
             }
+        }
+
+        protected void txtTermina_TextChanged(object sender, EventArgs e)
+        {
+            ActualizarLista(int.Parse(rcbNivelMercado.SelectedValue));
+            ActualizaListaDesciaciones();
         }
     }
 

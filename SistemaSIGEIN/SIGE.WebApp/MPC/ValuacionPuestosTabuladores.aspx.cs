@@ -599,8 +599,8 @@ namespace SIGE.WebApp.MPC
 
         private void SeguridadProcesos()
         {
-            btnGuardar.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.H.A");
-            btnGaurdarCerrar.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.H.A");
+            btnGuardar.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.H.A");
+            btnGaurdarCerrar.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.H.A");
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -632,10 +632,17 @@ namespace SIGE.WebApp.MPC
                         btnGuardar.Enabled = false;
                     }
 
-                    if (vTabulador.FG_RECALCULAR_NIVELES == true && vNumeroCompetencias > 0)
+                    int TabNivel = 0;
+                    int vCount = nTabulador.ObtieneTabuladorNivel(ID_TABULADOR: vIdTabulador).Count;
+                    if (vCount > 0)
                     {
+                        TabNivel = nTabulador.ObtieneTabuladorNivel(ID_TABULADOR: vIdTabulador).OrderByDescending(w => w.NO_NIVEL).FirstOrDefault().NO_NIVEL;
+                    }
+
+                    if (vTabulador.FG_RECALCULAR_NIVELES == true && vNumeroCompetencias > 0 && TabNivel != vTabulador.NO_NIVELES )
+                    { 
                         lblAdvertencia.Visible = true;
-                        lblAdvertencia.InnerText = "No es posible generar el número de niveles solicitados porque la valuación de las posiciones no es suficientemente alta.";
+                        lblAdvertencia.InnerText = "No es posible generar el # de niveles solicitados porque el número de puestos y/o sus valuaciones no son suficientes.";
                     }
 
                     if (vNumeroCompetencias < 1)
@@ -769,6 +776,8 @@ namespace SIGE.WebApp.MPC
 
             pColumn.HeaderStyle.Width = Unit.Pixel(pWidth);
             pColumn.Visible = pVisible;
+            pColumn.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+            pColumn.HeaderStyle.VerticalAlign = VerticalAlign.Middle;
 
             if (pCentrar)
             {
@@ -864,7 +873,7 @@ namespace SIGE.WebApp.MPC
 
                     if (vDatosFactores != null)
                     {
-                        vEncabezado = "<div title=\"" + vDatosFactores.DS_COMPETENCIA + "\" style=\"writing-mode: tb-rl;height: 130px;font-size: 8pt; color: #FFFFFF;\">" + vDatosFactores.NB_COMPETENCIA + "</div>";
+                        vEncabezado = "<div title=\"" + vDatosFactores.DS_COMPETENCIA + "\" style=\"writing-mode: tb-rl; height: 130px; font-size: 10pt;  color: #FFFFFF;\">" + vDatosFactores.NB_COMPETENCIA + "</div>";
                     }
                 }
             }
@@ -877,7 +886,7 @@ namespace SIGE.WebApp.MPC
                     var vDatosFactores = vListaValuacion.Where(t => t.ID_TABULADOR_FACTOR.ToString() == vIdColumna).FirstOrDefault();
                     if (vDatosFactores != null)
                     {
-                        vEncabezado = "<div title=\"" + vDatosFactores.DS_COMPETENCIA + "\" style=\"writing-mode: tb-rl;height: 130px;font-size: 8pt;\">" + vDatosFactores.NB_COMPETENCIA + "</div>";
+                        vEncabezado = "<div title=\"" + vDatosFactores.DS_COMPETENCIA + "\" style=\"writing-mode: tb-rl; height: 130px; font-size: 10pt;  \">" + vDatosFactores.NB_COMPETENCIA + "</div>";
                     }
                 }
             }

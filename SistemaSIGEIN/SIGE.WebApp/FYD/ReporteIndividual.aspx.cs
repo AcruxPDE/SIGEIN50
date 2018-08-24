@@ -213,7 +213,7 @@ namespace SIGE.WebApp.FYD
                 lblAdvertencia.InnerText = "* Alguno de los períodos que aparecen aún no ha sido cerrados por lo que alguna de las calificaciones podrían ser parciales";
             else
             {
-                lblAdvertencia.InnerText = "* El periodo aún no ha sido cerrado por lo que las calificaciones podrían ser parciales";
+                lblAdvertencia.InnerText = "* El período aún no ha sido cerrado por lo que las calificaciones podrían ser parciales";
                 rtsReportes.Tabs[4].Visible = false;
             }
 
@@ -777,6 +777,23 @@ namespace SIGE.WebApp.FYD
 
         protected void Page_Init(object sender, System.EventArgs e)
         {
+
+            if (Request.Params["IdPeriodo"] != null)
+            {
+                vIdPeriodo = int.Parse(Request.Params["IdPeriodo"].ToString());
+            }
+
+            if (Request.Params["IdEvaluado"] != null)
+            {
+                vIdEvaluado = int.Parse(Request.Params["IdEvaluado"].ToString());
+            }
+
+            if (Request.Params["IdEmpleado"] != null)
+            {
+                vIdEmpleado = int.Parse(Request.Params["IdEmpleado"].ToString());
+            }
+
+
             if (!Page.IsPostBack)
             {
                 oListaPuestos = new List<string>();
@@ -805,24 +822,24 @@ namespace SIGE.WebApp.FYD
                         ContextoReportes.oReporteIndividual = new List<E_REPORTE_INDIVIDUAL>();
                     }
 
-                    if (Request.Params["IdPeriodo"] != null)
-                    {
-                        vIdPeriodo = int.Parse(Request.Params["IdPeriodo"].ToString());
-                    }
+                    //if (Request.Params["IdPeriodo"] != null)
+                    //{
+                    //    vIdPeriodo = int.Parse(Request.Params["IdPeriodo"].ToString()); //SE MUEVE AL INICIO
+                    //}
 
                     ContextoReportes.oReporteIndividual.Add(new E_REPORTE_INDIVIDUAL { vIdReporteIndividual = vIdReporteIndividual, vIdPeriodo = vIdPeriodo });
                     //rtsReportes.Tabs[3].Visible = false;
                 }
 
-                if (Request.Params["IdEvaluado"] != null)
-                {
-                    vIdEvaluado = int.Parse(Request.Params["IdEvaluado"].ToString());
-                }
+                //if (Request.Params["IdEvaluado"] != null)
+                //{
+                //    vIdEvaluado = int.Parse(Request.Params["IdEvaluado"].ToString());//SE MUEVE AL INICIO
+                //}
 
-                if (Request.Params["IdEmpleado"] != null)
-                {
-                    vIdEmpleado = int.Parse(Request.Params["IdEmpleado"].ToString());
-                }
+                //if (Request.Params["IdEmpleado"] != null)
+                //{
+                //    vIdEmpleado = int.Parse(Request.Params["IdEmpleado"].ToString());//SE MUEVE AL INICIO
+                //}
 
                 CargarDatos();
 
@@ -938,14 +955,17 @@ namespace SIGE.WebApp.FYD
             //    }
 
             // CargarDatos();
-
             CuestionarioNegocio nCuestionario = new CuestionarioNegocio();
+            if (!Page.IsPostBack)
+            {
+           
             int vPreguntasAdicionales = nCuestionario.ObtienePreguntasAdicionales(null, vIdPeriodo, null).Count;
             if (vPreguntasAdicionales < 1)
             {
                 rmpReportes.PageViews[5].Visible = false;
                 rtsReportes.Tabs[5].Visible = false;
             }
+        }
 
             List<SPE_OBTIENE_FYD_RESPUESTAS_ADICIONALES_Result> vListaRespuestas = new List<SPE_OBTIENE_FYD_RESPUESTAS_ADICIONALES_Result>();
             vListaRespuestasPreguntas = new List<E_RESPUESTAS_PREGUNTAS_ADICIONALES>();
@@ -1458,6 +1478,7 @@ namespace SIGE.WebApp.FYD
 
         protected void rgResultadosPreguntas_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
+            
             CuestionarioNegocio nPeriodo = new CuestionarioNegocio();
             List<SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_Result> vListaPreguntas = new List<SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_Result>();
             vListaPreguntas = nPeriodo.ObtienePreguntasAdicionales(null, vIdPeriodo, null).ToList();
@@ -1474,16 +1495,16 @@ namespace SIGE.WebApp.FYD
 
         protected void rgResultadosPreguntas_ItemCommand(object sender, GridCommandEventArgs e)
         {
-            if (e.CommandName == RadGrid.ExpandCollapseCommandName)
-            {
-                foreach (GridItem item in e.Item.OwnerTableView.Items)
-                {
-                    if (item.Expanded && item != e.Item)
-                    {
-                        item.Expanded = false;
-                    }
-                }
-            }
+            //if (e.CommandName == RadGrid.ExpandCollapseCommandName)
+            //{
+            //    foreach (GridItem item in e.Item.OwnerTableView.Items)
+            //    {
+            //        if (item.Expanded && item != e.Item)
+            //        {
+            //            item.Expanded = false;
+            //        }
+            //    }
+            //}
         }
 
         protected void rgComparativo_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)

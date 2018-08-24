@@ -3,10 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
     <script>
         function OpenCumPersonal(pIdEvaluado, pIdPeriodo) {
-            var vURL = "../EO/VentanaReporteCumplimientoPersonal.aspx";
+            var vURL = "VentanaReporteCumplimientoPersonal.aspx";
             var vTitulo = "Reporte Cumplimiento Personal";
             vURL = vURL + "?idEvaluado=" + pIdEvaluado + "&idPeriodo=" + pIdPeriodo;
-            OpenSelectionWindow(vURL, "winEvaluado", "Consulta General - Evaluación del desempeño")
+            OpenSelectionWindow(vURL, "winEvaluado", "Reporte cumplimiento personal")
         }
 
         function OpenSelectionWindow(pURL, pIdWindow, pTitle, pWindowProperties) {
@@ -36,11 +36,11 @@
 
         function OpenWindowPeriodos() {
             var vIdPeriodo = ('<%= vIdPeriodo%>');
-            OpenSelectionWindow("/Comunes/SeleccionPeriodosDesempeno.aspx?ID_PERIODO=" + vIdPeriodo + "&CL_TIPO=Global", "winSeleccion", "Seleccion de periodos a comparar");
+            OpenSelectionWindow("../Comunes/SeleccionPeriodosDesempeno.aspx?ID_PERIODO=" + vIdPeriodo + "&CL_TIPO=Global", "winSeleccion", "Seleccion de períodos a comparar");
         }
 
         function OpenWindowComparar() {
-            OpenSelectionWindow("/EO/VentanaComparativaGlobal.aspx?", "winBonos", "Consulta General comparativa - Evaluación del desempeño");
+            OpenSelectionWindow("VentanaComparativaGlobal.aspx?", "winBonos", "Consulta General comparativa - Evaluación de competencias");
         }
 
     </script>
@@ -111,7 +111,7 @@
                                 </tr>
                                 <tr>
                                     <td class="ctrlTableDataContext">
-                                        <label>Tipo de periodo:</label></td>
+                                        <label>Tipo de período:</label></td>
                                     <td class="ctrlTableDataBorderContext">
                                         <div id="txtTipoPeriodo" runat="server" width="170" maxlength="1000" enabled="false"></div>
                                     </td>
@@ -181,7 +181,7 @@
                             Height="100%"
                             Transitions="true"
                             Skin="Silk">
-                            <ChartTitle Text="Cumplimiento global del periodo">
+                            <ChartTitle Text="Cumplimiento global del período">
                                 <Appearance Align="Center" Position="Top">
                                 </Appearance>
                             </ChartTitle>
@@ -227,7 +227,7 @@
                         </telerik:RadGrid>
                         <div style="height: 10px; clear: both;"></div>
                         <div class="divControlIzquierda">
-                            <telerik:RadButton ID="btnSeleccionar" runat="server" AutoPostBack="false" Width="200" Text="Seleccionar periodos" OnClientClicked="OpenWindowPeriodos"></telerik:RadButton>
+                            <telerik:RadButton ID="btnSeleccionar" runat="server" AutoPostBack="false" Width="200" Text="Seleccionar períodos" OnClientClicked="OpenWindowPeriodos"></telerik:RadButton>
                         </div>
                         <div class="divControlDerecha">
                             <telerik:RadButton ID="btnComparar" runat="server" AutoPostBack="false" Width="100" Text="Comparar" OnClientClicked="OpenWindowComparar"></telerik:RadButton>

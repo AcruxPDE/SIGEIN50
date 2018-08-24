@@ -154,7 +154,7 @@
                 <label class="labelTitulo">Se debe responder a 10 preguntas (calificación: 1 es el mínimo y 5 el máximo).</label>
 
                 <div style="clear: both;"></div>
-                <label class="labelTitulo">1. Evaluación por parte del jefe inmediato sobre el cumplimento de las funciones del área contenidas en el Manual de Organización General</label>
+                <label class="labelTitulo">1. Evaluación por parte del jefe inmediato sobre el cumplimento de las funciones del área/departamento contenidas en el Manual de Organización General</label>
 
                 <div id="divCompetencias" runat="server" style="height: 220px; display: block;">
                     <telerik:RadGrid ID="dgvCompetencias" HeaderStyle-Font-Bold="true" runat="server" AutoGenerateColumns="False" Width="100%" Height="100%" OnNeedDataSource="dgvCompetencias_NeedDataSource" OnDataBound="dgvCompetencias_DataBound">

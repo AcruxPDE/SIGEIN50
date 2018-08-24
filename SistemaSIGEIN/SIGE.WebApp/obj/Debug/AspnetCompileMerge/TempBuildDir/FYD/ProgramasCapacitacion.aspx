@@ -41,6 +41,7 @@
                     <telerik:AjaxUpdatedControl ControlID="txtClPeriodo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
                     <telerik:AjaxUpdatedControl ControlID="rlvProgramas" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
                     <telerik:AjaxUpdatedControl ControlID="txtDsPeriodo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                     <telerik:AjaxUpdatedControl ControlID="txtNotas" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
                     <telerik:AjaxUpdatedControl ControlID="txtClEstatus" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
                     <telerik:AjaxUpdatedControl ControlID="txtTipo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
                     <telerik:AjaxUpdatedControl ControlID="txtUsuarioMod" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
@@ -282,13 +283,17 @@
             }
 
             function OpenEditarProgramaWindow() {
+                if ('<%= vEditar %>' == "True") {
                 GetProgramaId();
-
                 if (vIdPrograma != "") {
                     OpenRadWindow(GetProgramaPropierties(vIdPrograma, false));
                 }
                 else {
                     radalert("Selecciona un programa.", 400, 150);
+                }
+                }
+                else {
+                    radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "");
                 }
             }
 
@@ -304,19 +309,26 @@
             }
 
             function ConfirmarEliminar(sender, args) {
-                GetProgramaId();
+                if ('<%= vEliminar %>' == "True") {
 
-                if (vIdPrograma != "") {
-                    //CELL_NOMBRE = MasterTable.getCellByColumnUniqueName(row, "NB_PROGRAMA");
+                    GetProgramaId();
 
-                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
-                    { if (shouldSubmit) { this.click(); } });
+                    if (vIdPrograma != "") {
+                        //CELL_NOMBRE = MasterTable.getCellByColumnUniqueName(row, "NB_PROGRAMA");
 
-                    radconfirm('¿Deseas eliminar el programa de capacitación ' + vNbPrograma + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
-                    args.set_cancel(true);
+                        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
+                        { if (shouldSubmit) { this.click(); } });
 
-                } else {
-                    radalert("Seleccione un programa de capacitación.", 400, 150, "");
+                        radconfirm('¿Deseas eliminar el programa de capacitación ' + vNbPrograma + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                        args.set_cancel(true);
+
+                    } else {
+                        radalert("Seleccione un programa de capacitación.", 400, 150, "");
+                        args.set_cancel(true);
+                    }
+                }
+                else {
+                    radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "");
                     args.set_cancel(true);
                 }
             }
@@ -502,41 +514,50 @@
                         <div class="ctrlBasico">
                             <label style="width: 120px;" id="lblEvento" name="lblEvento" runat="server">Programa:</label>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtClPeriodo" Enabled="false" runat="server" Width="400px" MaxLength="1000"></telerik:RadTextBox>
+                                <telerik:RadTextBox ID="txtClPeriodo" Enabled="false" runat="server" Width="400px" MaxLength="1000" Height="35px" TextMode="MultiLine"></telerik:RadTextBox>
                             </div>
                         </div>
                         <div style="clear: both;"></div>
                         <div class="ctrlBasico">
                             <label style="width: 120px;" id="Label1" name="lblEvento" runat="server">Descripción:</label>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtDsPeriodo" Enabled="false" runat="server" Width="400px" MaxLength="1000"></telerik:RadTextBox>
+                                <telerik:RadTextBox ID="txtDsPeriodo" Enabled="false" runat="server" Width="400px" MaxLength="1000" Height="35px" TextMode="MultiLine"></telerik:RadTextBox>
                             </div>
                         </div>
+
+                        <div style="clear: both;"></div>
+                        <div class="ctrlBasico">
+                            <label style="width: 120px;" id="Label4" name="lblEvento" runat="server">Notas:</label>
+                            <div class="divControlDerecha">
+                                 <div id="txtNotasContenedor"  runat="server" style="width:400px; height:100px; text-align:justify; border: 1px solid #ccc; border-radius:5px; background: #ccc; "><p id="txtNotas" runat="server" style="padding:10px;"></p></div>
+                            </div>
+                        </div>
+
                         <div style="clear: both;"></div>
                         <div class="ctrlBasico">
                             <label style="width: 120px;" id="Label2" name="lblEvento" runat="server">Estatus:</label>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtClEstatus" Enabled="false" runat="server" Width="200px" MaxLength="1000"></telerik:RadTextBox>
+                                <telerik:RadTextBox ID="txtClEstatus" Enabled="false" runat="server" Width="200px" MaxLength="1000" Height="35px" TextMode="MultiLine"></telerik:RadTextBox>
                             </div>
                         </div>
                         <div style="clear: both;"></div>
                         <div class="ctrlBasico">
                             <label style="width: 120px;" id="Label3" name="lblEvento" runat="server">Tipo:</label>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtTipo" Enabled="false" runat="server" Width="400px" MaxLength="1000"></telerik:RadTextBox>
+                                <telerik:RadTextBox ID="txtTipo" Enabled="false" runat="server" Width="400px" MaxLength="1000" Height="35px" TextMode="MultiLine"></telerik:RadTextBox>
                             </div>
                         </div>
                         <div style="clear: both;"></div>
                         <div class="ctrlBasico">
                             <label style="width: 120px;" id="Label5" name="lblCurso" runat="server">Último usuario que modifica:</label>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtUsuarioMod" Enabled="false" runat="server" Width="140px" MaxLength="1000"></telerik:RadTextBox>
+                                <telerik:RadTextBox ID="txtUsuarioMod" Enabled="false" runat="server" Width="140px" MaxLength="1000" Height="35px" TextMode="MultiLine"></telerik:RadTextBox>
                             </div>
                         </div>
                         <div class="ctrlBasico">
                             <label style="width: 120px;" id="Label6" name="lblCurso" runat="server">Última fecha de modificación:</label>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtFechaMod" Enabled="false" runat="server" Width="140px" MaxLength="1000"></telerik:RadTextBox>
+                                <telerik:RadTextBox ID="txtFechaMod" Enabled="false" runat="server" Width="140px" MaxLength="1000" Height="35px" TextMode="MultiLine"></telerik:RadTextBox>
                             </div>
                         </div>
                     </telerik:RadPageView>

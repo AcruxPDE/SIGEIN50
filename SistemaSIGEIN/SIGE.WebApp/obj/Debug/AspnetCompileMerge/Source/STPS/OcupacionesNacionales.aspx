@@ -349,7 +349,7 @@
                 <div style="clear: both; height: 15px;"></div>
                 <div style="height: calc(100% - 70px);">
                     <telerik:RadGrid ID="grdAreas" ShowHeader="true" runat="server" AllowPaging="true"
-                        AllowSorting="true" GroupPanelPosition="Top" Width="730px" GridLines="None"
+                        AllowSorting="true" GroupPanelPosition="Top" Width="1000px" GridLines="None"
                         Height="100%"
                         AllowFilteringByColumn="true"
                         HeaderStyle-Font-Bold="true"
@@ -371,7 +371,7 @@
                             <CommandItemSettings ShowAddNewRecordButton="false" ShowExportToExcelButton="True" ShowExportToCsvButton="false"
                                 RefreshText="Actualizar" AddNewRecordText="Insertar" />
                             <Columns>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave" DataField="CL_AREA" UniqueName="CL_AREA" HeaderStyle-Width="300" FilterControlWidth="230"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave" DataField="CL_AREA" UniqueName="CL_AREA" HeaderStyle-Width="200" FilterControlWidth="130"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre del área" DataField="NB_AREA" UniqueName="NB_AREA" HeaderStyle-Width="400" FilterControlWidth="330"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Último usuario que modifica" DataField="CL_USUARIO_MODIFICA" UniqueName="CL_USUARIO_MODIFICA"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataFormatString="{0:d}"  AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Última fecha de modificación" DataField="FE_MODIFICACION" UniqueName="FE_MODIFICACION" HeaderStyle-Width="150" FilterControlWidth="80" DataType="System.DateTime"></telerik:GridBoundColumn>
@@ -394,7 +394,7 @@
                 <div style="height: calc(100% - 70px);">
 
                     <telerik:RadGrid ID="grdSubareas" ShowHeader="true" runat="server" AllowPaging="true"
-                        AllowSorting="true" GroupPanelPosition="Top" Width="930px" GridLines="None"
+                        AllowSorting="true" GroupPanelPosition="Top" Width="100%" GridLines="None"
                         Height="100%"
                         AllowFilteringByColumn="true"
                         HeaderStyle-Font-Bold="true"
@@ -442,7 +442,7 @@
                 <div style="height: calc(100% - 70px);">
 
                     <telerik:RadGrid ID="grdModulos" ShowHeader="true" runat="server" AllowPaging="true"
-                        AllowSorting="true" GroupPanelPosition="Top" Width="1100px" GridLines="None"
+                        AllowSorting="true" GroupPanelPosition="Top" Width="100%" GridLines="None"
                         Height="100%"
                         AllowFilteringByColumn="true"
                         HeaderStyle-Font-Bold="true"
@@ -491,7 +491,7 @@
                 <div style="height: calc(100% - 70px);">
 
                     <telerik:RadGrid ID="grdOcupaciones" ShowHeader="true" runat="server" AllowPaging="true"
-                        AllowSorting="true" GroupPanelPosition="Top" Width="1300px" GridLines="None"
+                        AllowSorting="true" GroupPanelPosition="Top" Width="100%" GridLines="None"
                         Height="100%"
                         AllowFilteringByColumn="true"
                         HeaderStyle-Font-Bold="true"

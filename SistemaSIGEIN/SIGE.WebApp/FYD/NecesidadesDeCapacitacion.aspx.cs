@@ -282,7 +282,7 @@ namespace SIGE.WebApp.FYD
                 prioridades = xmlPrioridades.ToString();
             }
 
-            UDTT_ARCHIVO excel = neg.ExportarDatosExcel(vIdPeriodo, vIdDepartamento, vNbDepartamento, prioridades);
+            UDTT_ARCHIVO excel = neg.ExportarDatosExcel(vIdPeriodo, vIdDepartamento, vNbDepartamento, prioridades, null);
 
             Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
             Response.AddHeader("Content-Disposition", "attachment; filename=" + excel.NB_ARCHIVO);
@@ -411,7 +411,7 @@ namespace SIGE.WebApp.FYD
 
             if (vFgCargarGrid)
             {
-                grdCapacitacion.DataSource = neg.ObtieneNecesidadesCapacitacionPivot(vIdPeriodo, vIdDepartamento, prioridades, ref vListaTemporal);
+                grdCapacitacion.DataSource = neg.ObtieneNecesidadesCapacitacionPivot(vIdPeriodo, vIdDepartamento, prioridades, ref vListaTemporal, null);
                 vLstDnc = vListaTemporal;
             }
         }

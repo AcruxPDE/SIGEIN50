@@ -25,6 +25,7 @@ namespace SIGE.WebApp.EO
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
         private string vNbFirstRadEditorTagName = "p";
+        private int? vIdRol;
 
         public int vIdPeriodo
         {
@@ -95,6 +96,7 @@ namespace SIGE.WebApp.EO
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!IsPostBack)
             {
@@ -130,9 +132,9 @@ namespace SIGE.WebApp.EO
                     if (vPeriodoClima.CL_ORIGEN_CUESTIONARIO == "PREDEFINIDO")
                         lbCuestionario.InnerText = "Predefinido de SIGEIN";
                     if (vPeriodoClima.CL_ORIGEN_CUESTIONARIO == "COPIA")
-                        lbCuestionario.InnerText = "Copia de otro periodo";
+                        lbCuestionario.InnerText = "Copia de otro período";
                     if (vPeriodoClima.CL_ORIGEN_CUESTIONARIO == "VACIO")
-                        lbCuestionario.InnerText = "Creado desde cero";
+                        lbCuestionario.InnerText = "Creado en blanco";
                     
                     //int countFiltros = nClima.ObtenerFiltrosEvaluadores(vIdPeriodo).Count;
 
@@ -140,6 +142,7 @@ namespace SIGE.WebApp.EO
                     {
                         btnContestarCuestionarios.Visible = false;
                         btnContestarConfidencial.Visible = true;
+                        RadSlidingZone3.Visible = true;
                     }
                     //    var vFiltros = nClima.ObtenerParametrosFiltros(vIdPeriodo).FirstOrDefault();
                     //    if (vFiltros != null)
@@ -195,7 +198,7 @@ namespace SIGE.WebApp.EO
         protected void grdEvaluadorCuestionarios_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            List<E_EVALUADORES_CLIMA> vlstEvaluadores = nClima.ObtieneEvaluadoresCuestionario(pID_PERIODO: vIdPeriodo).Select(s => new E_EVALUADORES_CLIMA
+            List<E_EVALUADORES_CLIMA> vlstEvaluadores = nClima.ObtieneEvaluadoresCuestionario(pID_PERIODO: vIdPeriodo, pIdRol: vIdRol).Select(s => new E_EVALUADORES_CLIMA
             {
                 CL_CORREO_ELECTRONICO = s.CL_CORREO_ELECTRONICO,
                 CL_EMPLEADO = s.CL_EMPLEADO,

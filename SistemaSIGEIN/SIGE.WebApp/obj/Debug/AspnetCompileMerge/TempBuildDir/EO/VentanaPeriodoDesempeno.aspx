@@ -8,8 +8,20 @@
     </style>
     <script type="text/javascript">
 
+        //function closeWindow() {
+        //    GetRadWindow().close();
+        //}
+
         function closeWindow() {
-            GetRadWindow().close();
+            var pDatos = [{
+                accion: "ACTUALIZARLISTA"
+
+            }];
+            cerrarVentana(pDatos);
+        }
+
+        function cerrarVentana(recargarList) {
+            sendDataToParent(recargarList);
         }
 
         function OpenSelectionWindow(pURL, pIdWindow, pTitle) {
@@ -179,7 +191,7 @@
                 </div>
                  <div class="ctrlBasico" id="divCopiaPeriodo" runat="server" visible="false">
                     <div class="divControlIzquierda">
-                        <label id="lblCopiaPeriodo">Copia de Periodo:</label>
+                        <label id="lblCopiaPeriodo">Copia de Período:</label>
                     </div>
                     <div class="divControlDerecha">
                         <telerik:RadButton ID="btnConsecuente" runat="server" ToggleType="Radio"

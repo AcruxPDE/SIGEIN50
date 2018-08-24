@@ -103,22 +103,22 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadFilter ftGrdEmpleados;
         
         /// <summary>
-        /// btnAgregar control.
+        /// btnAgregarInventario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnAgregar;
+        protected global::Telerik.Web.UI.RadButton btnAgregarInventario;
         
         /// <summary>
-        /// btnEditar control.
+        /// btnEditarInventario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnEditar;
+        protected global::Telerik.Web.UI.RadButton btnEditarInventario;
         
         /// <summary>
         /// btnEliminar control.
@@ -139,22 +139,13 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadButton btnDarDeBaja;
         
         /// <summary>
-        /// btnCancelarBaja control.
+        /// btnDarAlta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnCancelarBaja;
-        
-        /// <summary>
-        /// btnReingresoEmpleado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnReingresoEmpleado;
+        protected global::Telerik.Web.UI.RadButton btnDarAlta;
         
         /// <summary>
         /// rnMensaje control.
@@ -238,6 +229,15 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadWindow winSeleccion;
         
         /// <summary>
+        /// winEmpleadoGeneral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadWindow winEmpleadoGeneral;
+        
+        /// <summary>
         /// WinDarBaja control.
         /// </summary>
         /// <remarks>
@@ -299,5 +299,23 @@ namespace SIGE.WebApp.Administracion {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadWindow winReingreso;
+        
+        /// <summary>
+        /// winEmpleadoInventario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadWindow winEmpleadoInventario;
+        
+        /// <summary>
+        /// rnTemplate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadWindowManager rnTemplate;
     }
 }

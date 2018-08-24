@@ -163,7 +163,11 @@ namespace SIGE.Negocio.Administracion
             List<SPE_OBTIENE_FACTORES_CONSULTA_Result> vListaFactores = new List<SPE_OBTIENE_FACTORES_CONSULTA_Result>();
             List<SPE_OBTIENE_COMPETENCIAS_CONSULTA_Result> vListaCompetencias = new List<SPE_OBTIENE_COMPETENCIAS_CONSULTA_Result>();
             List<SPE_OBTIENE_FACTORES_COMPETENCIAS_Result> vListaFactoresCompetencias = new List<SPE_OBTIENE_FACTORES_COMPETENCIAS_Result>();
-
+            
+            //Se agregan los dos lineas siguientes para obtener las variables baremos sin relacionar con competencias
+            PruebasNegocio pruebas = new PruebasNegocio();
+            var vBaremos = pruebas.obtenerVariableBaremos(ID_BATERIA);
+            //-------------------------------------------------------------------------------------------------------
 
             DataTable vDtPivot = new DataTable();
             string vClaseColor = "";
@@ -240,7 +244,8 @@ namespace SIGE.Negocio.Administracion
                             decimal vCivica = Math.Round(vListaDetallada.Where(w => w.CL_VARIABLE == "TV-CÍVICA").Select(s => s.NO_VALOR).FirstOrDefault(), 0);
                             decimal vResBaremos = 0;
                             decimal vErrores = 0;
-                            foreach (var item in vListaDetallada)
+                            //foreach (var item in vListaDetallada)
+                            foreach (var item in vBaremos) // Se cambia la lista por vBaremos 21/06/2018
                             {
                                 if (item.CL_VARIABLE == "L1-CONSTANCIA" || item.CL_VARIABLE == "L1-CUMPLIMIENTO" || item.CL_VARIABLE == "L2-MANTIENE Y CONSERVA" || item.CL_VARIABLE == "IN-REGULATORIO")
                                 {
@@ -258,7 +263,7 @@ namespace SIGE.Negocio.Administracion
                             vErrores = 4 - vResBaremos;
                             if (vErrores >= 2)
                             {
-                                vDr[vFac.ID_FACTOR.ToString() + "E"] = "<span><img title='" + vFac.NB_FACTOR + "(" + vFac.NB_PRUEBA + ")' src='/Assets/images/Baremos" + "Invalido" + ".png' /></span>";
+                                vDr[vFac.ID_FACTOR.ToString() + "E"] = "<span><img title='" + vFac.NB_FACTOR + "(" + vFac.NB_PRUEBA + ")' src='../Assets/images/Baremos" + "Invalido" + ".png' /></span>";
                             }
                             else
                             {
@@ -283,7 +288,7 @@ namespace SIGE.Negocio.Administracion
                                             break;
                                     }
 
-                                    vDr[vFac.ID_FACTOR.ToString() + "E"] = "<span><img title='" + vFac.NB_FACTOR + "(" + vFac.NB_PRUEBA + ")' src='/Assets/images/Baremos" + vImagen + ".png' /></span>";
+                                    vDr[vFac.ID_FACTOR.ToString() + "E"] = "<span><img title='" + vFac.NB_FACTOR + "(" + vFac.NB_PRUEBA + ")' src='../Assets/images/Baremos" + vImagen + ".png' /></span>";
                                 }
                             }
                         }
@@ -308,7 +313,7 @@ namespace SIGE.Negocio.Administracion
                                     break;
                             }
 
-                            vDr[vFac.ID_FACTOR.ToString() + "E"] = "<span><img title='" + vFac.NB_FACTOR + "(" + vFac.NB_PRUEBA + ")' src='/Assets/images/Baremos" + vImagen + ".png' /></span>";
+                            vDr[vFac.ID_FACTOR.ToString() + "E"] = "<span><img title='" + vFac.NB_FACTOR + "(" + vFac.NB_PRUEBA + ")' src='../Assets/images/Baremos" + vImagen + ".png' /></span>";
                         }
                     }
                     else
@@ -317,7 +322,7 @@ namespace SIGE.Negocio.Administracion
                         if (vBuscarResultado != null)
                         {
                             vImagen = "Gris";
-                            vDr[vFac.ID_FACTOR.ToString() + "E"] = "<span><img title='" + vFac.NB_FACTOR + "(" + vFac.NB_PRUEBA + ")'  src='/Assets/images/Baremos" + vImagen + ".png' /></span>";
+                            vDr[vFac.ID_FACTOR.ToString() + "E"] = "<span><img title='" + vFac.NB_FACTOR + "(" + vFac.NB_PRUEBA + ")'  src='../Assets/images/Baremos" + vImagen + ".png' /></span>";
                         }
                     }
                 }

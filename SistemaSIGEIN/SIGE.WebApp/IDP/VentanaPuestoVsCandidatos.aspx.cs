@@ -259,7 +259,7 @@ namespace SIGE.WebApp.IDP
                 vPuesto.Name = "(" + item.CL_PUESTO + ") " + item.NB_PUESTO;
                 rhcPuestoCandidatos.PlotArea.XAxis.Items.Add(item.NB_COMPETENCIA);
                 rhcPuestoCandidatos.PlotArea.XAxis.LabelsAppearance.RotationAngle = 270;
-                rhcPuestoCandidatos.PlotArea.YAxis.MaxValue = 6;
+                rhcPuestoCandidatos.PlotArea.YAxis.MaxValue = 5;
             }
             rhcPuestoCandidatos.PlotArea.Series.Add(vPuesto);
 

@@ -24,6 +24,7 @@ namespace SIGE.WebApp.EO
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
         private string vNbFirstRadEditorTagName = "p";
+        private int? vIdRol;
 
         public int vIdPeriodo
         {
@@ -63,7 +64,8 @@ namespace SIGE.WebApp.EO
             int vIdEvaluador;
             string vClCorreo;
             string vNbEvaluador;
-            string vUrl = ContextoUsuario.nbHost + "/Logon.aspx?ClProceso=CLIMALABORAL";
+            string myUrl = ResolveUrl("~/Logon.aspx?ClProceso=CLIMALABORAL");
+            string vUrl = ContextoUsuario.nbHost + myUrl;
             GridItemCollection oListaEvaluadores = new GridItemCollection();
             XElement vXmlEvaluados = new XElement("EVALUADORES");
 
@@ -199,6 +201,7 @@ namespace SIGE.WebApp.EO
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!Page.IsPostBack)
             {
@@ -237,7 +240,7 @@ namespace SIGE.WebApp.EO
                     if (vPeriodoClima.CL_ORIGEN_CUESTIONARIO == "COPIA")
                        lbCuestionario.InnerText = "Copia de otro periodo";
                     if (vPeriodoClima.CL_ORIGEN_CUESTIONARIO == "VACIO")
-                        lbCuestionario.InnerText = "Creado desde cero";
+                        lbCuestionario.InnerText = "Creado en blanco";
 
                     //int countFiltros = nClima.ObtenerFiltrosEvaluadores(vIdPeriodo).Count;
                     //if (countFiltros > 0)
@@ -292,7 +295,7 @@ namespace SIGE.WebApp.EO
                 vDsMensaje = ContextoApp.EO.MensajeCorreoEvaluador.dsMensaje;
                 lMensaje.InnerHtml = vDsMensaje;
 
-                vCuentaCuestionarios = nClima.ObtieneEvaluadoresCuestionario(pID_PERIODO: vIdPeriodo).Count;
+                vCuentaCuestionarios = nClima.ObtieneEvaluadoresCuestionario(pID_PERIODO: vIdPeriodo, pIdRol: vIdRol).Count;
                 vCuentaContestados = 0;
             }
         }
@@ -331,7 +334,7 @@ namespace SIGE.WebApp.EO
         protected void rgEvaluadores_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            rgEvaluadores.DataSource = nClima.ObtieneEvaluadoresCuestionario(pID_PERIODO: vIdPeriodo);
+            rgEvaluadores.DataSource = nClima.ObtieneEvaluadoresCuestionario(pID_PERIODO: vIdPeriodo, pIdRol: vIdRol);
         }
 
         protected void rgEvaluadores_ItemDataBound(object sender, GridItemEventArgs e)

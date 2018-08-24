@@ -9,14 +9,14 @@
             <telerik:AjaxSetting AjaxControlID="radCmbNiveles">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="radCmbNiveles" UpdatePanelHeight="100%" />
-                    <telerik:AjaxUpdatedControl ControlID="contenidoPruebas" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="grdPruebas" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="radCmbPuesto" />
                     <telerik:AjaxUpdatedControl ControlID="listCandidatos" UpdatePanelHeight="100%" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="radCmbPuesto">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="contenidoPruebas" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="grdPruebas" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="listCandidatos" UpdatePanelHeight="100%" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
@@ -28,7 +28,7 @@
                     <telerik:AjaxUpdatedControl ControlID="listCandidatos" UpdatePanelHeight="100%" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
-            <telerik:AjaxSetting AjaxControlID="PersonalidadLab1">
+<%--            <telerik:AjaxSetting AjaxControlID="PersonalidadLab1">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="listCandidatos" UpdatePanelHeight="100%" />
                 </UpdatedControls>
@@ -97,10 +97,10 @@
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="listCandidatos" UpdatePanelHeight="100%" />
                 </UpdatedControls>
-            </telerik:AjaxSetting>
+            </telerik:AjaxSetting>--%>
             <telerik:AjaxSetting AjaxControlID="radSliderNivel">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="contenidoPruebas" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="grdPruebas" UpdatePanelHeight="100%" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnAddCandidato">
@@ -111,7 +111,7 @@
             <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="grdCandidatos" UpdatePanelHeight="100%" />
-                    <telerik:AjaxUpdatedControl ControlID="contenidoPruebas" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="grdPruebas" UpdatePanelHeight="100%" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             
@@ -277,11 +277,41 @@
                 openChildDialog("../Comunes/SeleccionPuesto.aspx", "winSeleccionCandidato", "Selección de puesto", windowProperties);
             }
 
+            //-------------------------------------------------------------------------------------------------------------------
+
+            function OpenEnviarCorreos() {
+                var windowProperties = {
+                    width: document.documentElement.clientWidth - 300,
+                    height: document.documentElement.clientHeight - 20
+                };
+                openChildDialog("EnvioCorreosPruebas.aspx?pIdCandidatosPruebas=" + '<%= vIdCandidatosPruebas %>', "winSeleccionCandidato", "Envío correos", windowProperties);
+            }
+
+            //function OpenAplicarPruebasInterna() {
+            //    var pFlBateria = '<= vFlBateria %>';
+            //    var pClToken = '<= vClToken %>';
+            //    var pIdCandidato = '<= vIdCandidatoBateria %>';
+
+            //    var vBaterias = [];
+
+            //    var vBateria = {
+            //        flBateria: pFlBateria,
+            //        clToken: pClToken,
+            //        idCandidato: pIdCandidato,
+            //        clTipoCatalogo: "BATERIAINTERNA"
+            //     };
+            //       vBaterias.push(vBateria);
+                
+            //       sendDataToParent(vBaterias);
+            //    //var win = window.open("Pruebas/PruebaBienvenida.aspx?ID=" + pFlBateria + "&T=" + pClToken + "&idCandidato=" + pIdCandidato, '_self', true);
+            //    //win.focus();
+            //}
+
         </script>
     </telerik:RadCodeBlock>
 
 
-    <div style="height: calc(100% - 30px);">
+    <div style="height: calc(100% - 40px);">
 
         <div style="clear: both; height: 5px;"></div>
         <!-- Inicio Secciones de niveles -->
@@ -293,11 +323,11 @@
                 <%-- Etiqueta personalizado --%>
 
                 <div class="ctrlBasico" style="width: 100%;">
-                    <div style="width: 25%; float: left;">
+                    <div style="width: 30%; float: left;">
                         <div class="ctrlBasico">
                             <label>Niveles:</label>
                         </div>
-                        <div style="clear: both;"></div>
+                  <%--      <div style="clear: both;"></div>--%>
 
                         <div class="ctrlBasico">
                             <telerik:RadComboBox runat="server"
@@ -318,7 +348,7 @@
                             </telerik:RadComboBox>
                         </div>
                     </div>
-                    <div style="width: 75%; float: left;">
+                    <div style="width: 70%; float: left;">
                         <div>
                             <div style="display: none" id="divEjecutivo">
                                 <div class="ctrlBasico" style="text-align: justify; font-size: 14px;">
@@ -360,7 +390,7 @@
 
                                 <div class="ctrlBasico" style="width: 100%;">
                                     <telerik:RadGrid ID="grdCandidatos" ShowHeader="true" runat="server" AllowPaging="false"
-                                        Width="100%" GridLines="None" Height="295px" HeaderStyle-Font-Bold="true"
+                                        Width="100%" GridLines="None" Height="340" HeaderStyle-Font-Bold="true"
                                 AllowMultiRowSelection="true"
                                         AllowFilteringByColumn="false" OnItemCommand="grdCandidatos_ItemCommand"
                                         ClientSettings-EnablePostBackOnRowClick="false" OnNeedDataSource="grdCandidatos_NeedDataSource" >
@@ -377,16 +407,16 @@
                                                 <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
                                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Folio" DataField="CL_SOLICITUD" UniqueName="CL_SOLICITUD" HeaderStyle-Width="150"></telerik:GridBoundColumn>
                                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Candidato" DataField="NB_CANDIDATO" UniqueName="NB_CANDIDATO" HeaderStyle-Width="350"></telerik:GridBoundColumn>
-                                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Última batería" DataField="FL_BATERIA" UniqueName="FL_BATERIA" HeaderStyle-Width="100"></telerik:GridBoundColumn>
+                                       <%--         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Última batería" DataField="FL_BATERIA" UniqueName="FL_BATERIA" HeaderStyle-Width="100"></telerik:GridBoundColumn>
                                                 <telerik:GridButtonColumn UniqueName="BTNELIMINAR" Text="Eliminar respuestas" CommandName="Delete" HeaderStyle-Width="150" ConfirmText="Este proceso borrará las respuestas de todas las pruebas de la batería ¿Desea continuar?">
                                                     <ItemStyle Width="10%" />
-                                                </telerik:GridButtonColumn>
+                                                </telerik:GridButtonColumn>--%>
                                             </Columns>
                                         </MasterTableView>
                                     </telerik:RadGrid>
 
                                 </div>
-                                <div class="ctrlBasico">
+            <%--                    <div class="ctrlBasico">
                                     <div class="divControlDerecha">
                                         <telerik:RadButton runat="server" Text="Agregar" OnClientClicked="OpenCandidatoSelectionWindow" ID="btnAddCandidato" AutoPostBack="false" />
                                     </div>
@@ -396,25 +426,25 @@
                                     <div class="divControlDerecha">
                                         <telerik:RadButton ID="btnDelCandidato" runat="server" Text="Eliminar" OnClientClicking="confirmarEliminar2" OnClick="btnDelCandidato_Click"></telerik:RadButton>
                                     </div>
-                                </div>
+                                </div>--%>
                                
-                                <div style="clear: both"></div>
+                              <%--  <div style="clear: both"></div>--%>
                             </div>
 
-                            <div style="clear: both"></div>
+                      <%--      <div style="clear: both"></div>--%>
                         </div>
                     </telerik:RadPageView>
                     <telerik:RadPageView ID="rpPruebas" runat="server">
 
                         <div style="clear: both; height: 10px;"></div>
                         <div>
-                            <div style="border: 1px solid #ddd; border-radius: 5px; display: none" id="divNivelConformePuesto">
-                                <div style="padding-top: 5px">
+                            <div style="border: 1px solid #ddd; border-radius: 5px; display: none; padding:0px;" id="divNivelConformePuesto">
+                                <div style="padding:15px;">
                                     <div class="ctrlBasico">
                                         <div class="ctrlBasico">
                                             <label>Puesto: </label>
                                         </div>
-                                        <div style="clear: both;"></div>
+                                      <%--  <div style="clear: both;"></div>--%>
 
                                         <div class="ctrlBasico">
 
@@ -429,7 +459,7 @@
                                                 Height="300">
                                             </telerik:RadComboBox>--%>
 
-                                            <div class="ctrlBasico" runat="server" id="divPuesto">
+                                            <div class="ctrlBasico" runat="server" id="dvPuesto">
                                                 <%--<label id="lblpuesto" name="lblpuesto">
                                                     <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
                                                     <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>&nbsp;Puesto del jefe inmediato:
@@ -450,11 +480,11 @@
                                             <label>Nivel mínimo de competencia: </label>
                                         </div>
 
-                                        <div style="clear: both;"></div>
+                        <%--                <div style="clear: both;"></div>--%>
                                         <div class="ctrlBasico">
 
                                             <telerik:RadSlider ID="radSliderNivel" runat="server" ItemType="item"
-                                                Width="300px" Height="70px" Visible="true" AnimationDuration="400" CssClass="ItemsSlider" AutoPostBack="true" ThumbsInteractionMode="Free" OnValueChanged="radSliderNivel_ValueChanged">
+                                                Width="300px" Height="50px" Visible="true" DragText="Arrastrar" DecreaseText="Disminuir" IncreaseText="Aumentar" AnimationDuration="400" CssClass="ItemsSlider" AutoPostBack="true" ThumbsInteractionMode="Free" OnValueChanged="radSliderNivel_ValueChanged">
                                                 <Items>
                                                     <telerik:RadSliderItem Text="1" Value="1"></telerik:RadSliderItem>
                                                     <telerik:RadSliderItem Text="2" Value="2"></telerik:RadSliderItem>
@@ -476,7 +506,7 @@
                                 <div style="">
                                     <div class="ctrlBasico">
                                         <div class="divControlDerecha">
-                                            <label>Se aplicarán las pruebas en color verde, dar clic en las pruebas para activar o desactivar.</label>
+                                            <label>Se aplicarán las pruebas seleccionadas en color verde, seleccionar las pruebas para activar o desactivar utilizando la tecla control del teclado (Ctrl) y seleccionado las pruebas.</label>
                                         </div>
                                     </div>
                                     <br />
@@ -488,7 +518,7 @@
 
                         <%--Contenedor de pruebas--%>
 
-                        <div style="border: 1px solid #ddd; border-radius: 5px; display: block" id="divContenedorPruebas">
+           <%--             <div style="border: 1px solid #ddd; border-radius: 5px; display: block" id="divContenedorPruebas">
 
                             <div style="clear: both; height: 10px"></div>
                             <div id="contenidoPruebas" runat="server">
@@ -586,14 +616,46 @@
 
                             </div>
                             <div style="clear: both"></div>
-                        </div>
-
+                        </div>--%>
+                         <telerik:RadGrid
+                ID="grdPruebas"
+                ShowHeader="true"
+                runat="server"
+                AllowPaging="false"
+                GridLines="None"
+                Height="280"
+                Width="100%"
+                AllowMultiRowSelection="true"
+                AutoGenerateColumns="false"
+                HeaderStyle-Font-Bold="true"
+                AllowFilteringByColumn="false"
+                OnNeedDataSource="grdPruebas_NeedDataSource">
+                <ClientSettings EnableRowHoverStyle="true" >
+                    <Selecting AllowRowSelect="true" EnableDragToSelectRows="true" />
+                    <Scrolling AllowScroll="true" UseStaticHeaders="true" SaveScrollPosition="true"></Scrolling>
+                </ClientSettings>
+                <PagerStyle AlwaysVisible="true" />
+               <MasterTableView ClientDataKeyNames="ID_PRUEBA" DataKeyNames="ID_PRUEBA" EnableColumnsViewState="false" AllowPaging="false" AllowFilteringByColumn="false" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="false">
+                        <Columns>                        
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="200" FilterControlWidth="120" HeaderText="Prueba" DataField="NB_PRUEBA" UniqueName="NB_PRUEBA"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Height="300" FilterControlWidth="200" HeaderText="Factores que se evaluan" DataField="DS_PRUEBA_FACTOR" UniqueName="DS_PRUEBA_FACTOR"></telerik:GridBoundColumn>
+                        </Columns>
+                    </MasterTableView>
+            </telerik:RadGrid>
+       <div style="clear: both"></div>
                     </telerik:RadPageView>
                 </telerik:RadMultiPage>
             </div>
-
         </div>
-
+<%--        <div class="ctrlBasico">
+            <telerik:RadButton runat="server" Text="Aplicación interna" ID="btnAplicacionInterna" AutoPostBack="true" OnClick="btnAplicacionInterna_Click" />
+        </div>
+            <div class="ctrlBasico">
+            <telerik:RadButton runat="server" Text="Aplicación externa" ID="btnAplicacionExterna" AutoPostBack="true" OnClick="btnAplicacionExterna_Click" />
+        </div>
+            <div class="ctrlBasico">
+            <telerik:RadButton runat="server" Text="Aplicación masiva" ID="btnAplicacionMasiva" AutoPostBack="false" />
+        </div>--%>
         <div class="divControlDerecha">
             <telerik:RadButton runat="server" Text="Generar batería" ID="btnGenerar" OnClick="btnGenerar_Click" AutoPostBack="true" />
             <telerik:RadButton runat="server" Text="Cancelar" ID="btnCancelar" OnClick="btnCancelar_Click" AutoPostBack="false" OnClientClicked="closeWindow" />

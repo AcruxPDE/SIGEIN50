@@ -11,7 +11,7 @@
                 var vIdEvaluador = vCuestionario.getDataKeyValue("ID_EVALUADOR");
                 var vIdPeriodo = '<%= vIdPeriodo %>';
 
-                var vURL = "/EO/Cuestionarios/CuestionarioClimaLaboralConfidencial.aspx?ID_EVALUADOR=" + vIdEvaluador + "&ID_PERIODO=" + vIdPeriodo + "&FG_HABILITADO=False";
+                var vURL = "Cuestionarios/CuestionarioClimaLaboralConfidencial.aspx?ID_EVALUADOR=" + vIdEvaluador + "&ID_PERIODO=" + vIdPeriodo + "&FG_HABILITADO=False";
                 var vTitulo = "Cuestionario";
 
                 var currentWnd = GetRadWindow();
@@ -42,7 +42,7 @@
                 var vIdEvaluador = vCuestionario.getDataKeyValue("ID_EVALUADOR");
                 var vIdPeriodo = '<%= vIdPeriodo %>';
 
-                var vURL = "/EO/Cuestionarios/CuestionarioClimaLaboral.aspx?ID_EVALUADOR=" + vIdEvaluador + "&ID_PERIODO=" + vIdPeriodo + "&FG_HABILITADO=False";
+                var vURL = "Cuestionarios/CuestionarioClimaLaboral.aspx?ID_EVALUADOR=" + vIdEvaluador + "&ID_PERIODO=" + vIdPeriodo + "&FG_HABILITADO=False";
                 var vTitulo = "Cuestionario";
 
                     var currentWnd = GetRadWindow();
@@ -134,7 +134,7 @@
                                                 <label id="Label2" name="lbNotas" runat="server">Notas:</label>
                                             </td>
                                             <td  class="ctrlTableDataBorderContext">
-                                                <label id="txtNotas" runat="server"></label>
+                                                <div id="txtNotas" runat="server"></div>
                                             </td>
                                         </tr>
                                           <tr>
@@ -216,7 +216,7 @@
                                 <NumberFormat DecimalDigits="0" />
                             </telerik:RadNumericTextBox>
                             <div style="height: 10px;"></div>
-                            <telerik:RadLabel ID="RadLabel2" runat="server" Text="Cuesitonarios por contestar" Width="200" Enabled="false"></telerik:RadLabel>
+                            <telerik:RadLabel ID="RadLabel2" runat="server" Text="Cuestionarios por contestar" Width="200" Enabled="false"></telerik:RadLabel>
                             <telerik:RadNumericTextBox runat="server" ID="txtPorResponder" Width="70px" ReadOnly="true">
                                 <HoveredStyle HorizontalAlign="Right" />
                                 <ReadOnlyStyle HorizontalAlign="Right" />
@@ -232,7 +232,7 @@
                         </td>
                         <td style="width: 70%;">
                             <telerik:RadHtmlChart runat="server" ID="hcCuestionarios" Width="100%" Height="100%" Transitions="true" Skin="Silk">
-                                <ChartTitle Text="Evaluados">
+                                <ChartTitle Text="Cuestionarios">
                                     <Appearance Align="Center" Position="Top">
                                     </Appearance>
                                 </ChartTitle>
@@ -279,11 +279,13 @@
                 </div>
                  <div class="divControlDerecha">
                             <div class="ctrlBasico">
-                                <telerik:RadButton runat="server" ID="btnVerCuestionario" Text="Ver Cuestionario" OnClientClicked="OpenCuestionario"></telerik:RadButton>
-                                <telerik:RadButton runat="server" ID="btnVerCuestionarioConfidencial" Visible="false" Text="Ver Cuestionario" OnClientClicked="OpenCuestionarioConfidencial"></telerik:RadButton>
+                                                                 <telerik:RadButton runat="server" ID="btnEliminarRespuestas" Text="Eliminar respuestas" AutoPostBack="true" OnClick="btnEliminarRespuestas_Click"></telerik:RadButton>
+                                <telerik:RadButton runat="server" ID="btnVerCuestionario" Text="Ver cuestionario" OnClientClicked="OpenCuestionario"></telerik:RadButton>
+                                <telerik:RadButton runat="server" ID="btnVerCuestionarioConfidencial" Visible="false" Text="Ver cuestionario" OnClientClicked="OpenCuestionarioConfidencial"></telerik:RadButton>
                             </div>
                      </div>
             </telerik:RadPageView>
         </telerik:RadMultiPage>
     </div>
+          <telerik:RadWindowManager ID="rwmMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>
 </asp:Content>

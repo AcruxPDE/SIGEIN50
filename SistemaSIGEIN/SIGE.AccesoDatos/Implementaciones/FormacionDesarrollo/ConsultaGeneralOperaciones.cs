@@ -13,14 +13,14 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
     {
         private SistemaSigeinEntities context;
 
-        public List<SPE_OBTIENE_EMPLEADOS_Result> ObtieneEmpleados(XElement pXmlSeleccion = null, bool? pFgFotografia = null, string pCL_USUARIO = null,bool? pFgActivo = null, int? pIdEmpresa = null)
+        public List<SPE_OBTIENE_EMPLEADOS_Result> ObtieneEmpleados(XElement pXmlSeleccion = null, bool? pFgFotografia = null, string pCL_USUARIO = null,bool? pFgActivo = null, int? pIdEmpresa = null, int? pIdRol = null)
         {
             using (context = new SistemaSigeinEntities())
             {
                 string vXmlFiltro = null;
                 if (pXmlSeleccion != null)
                     vXmlFiltro = pXmlSeleccion.ToString();
-                return context.SPE_OBTIENE_EMPLEADOS(vXmlFiltro, pCL_USUARIO, pFgActivo, pFgFotografia, pIdEmpresa).ToList();
+                return context.SPE_OBTIENE_EMPLEADOS(vXmlFiltro, pCL_USUARIO, pFgActivo, pFgFotografia, pIdEmpresa, pIdRol).ToList();
             }
         }
         public List<SPE_OBTIENE_EMPLEADOS_PDE_Result> ObtieneEmpleados_PDE(XElement pXmlSeleccion = null, string pCL_USUARIO = null)
@@ -81,11 +81,11 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
             }
         }
 
-        public List<SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO_Result> ObtenerEvaluadosComparativo(int ID_PERIODO, string XML_PERIODOS, bool FG_FOTO)
+        public List<SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO_Result> ObtenerEvaluadosComparativo(int ID_PERIODO, string XML_PERIODOS, bool FG_FOTO, int? vIdRol)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO(ID_PERIODO, XML_PERIODOS, FG_FOTO).ToList();
+                return context.SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO(ID_PERIODO, XML_PERIODOS, FG_FOTO, vIdRol).ToList();
             }
         }
 
@@ -97,11 +97,11 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
             }
         }
 
-        public List<E_EVALUADO> ObtenerEvaluados(int pIdPeriodo, int? pID_EMPRESA = null)
+        public List<E_EVALUADO> ObtenerEvaluados(int pIdPeriodo, int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             using (context = new SistemaSigeinEntities())
             {
-                var vListaEvaluados = context.SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION(pIdPeriodo,pID_EMPRESA).ToList();
+                var vListaEvaluados = context.SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION(pIdPeriodo, pID_EMPRESA, pID_ROL).ToList();
 
                 var vLstEvaluados = vListaEvaluados.Select(t => new E_EVALUADO
                 {

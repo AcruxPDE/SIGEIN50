@@ -37,6 +37,10 @@
             ajaxManager.ajaxRequest(pDato);
         }
 
+        function OpenImprimirReporte(pIdTabulador, pNivelMercado) {
+            openChildDialog("ReporteTabuladorSueldos.aspx?ID=" + pIdTabulador + "&pNivelMercado=" + pNivelMercado, "winImprimir", "Imprimir consulta");
+        }
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
@@ -197,30 +201,36 @@
                         </div>
                     </telerik:RadPageView>
                     <telerik:RadPageView ID="rpvTabuladorSueldos" runat="server">
-                        <telerik:RadGrid ID="rgdComparacionInventarioPersonal"
-                            runat="server" Height="100%"
-                            AutoGenerateColumns="true"
-                            OnItemCreated="rgdComparacionInventarioPersonal_ItemCreated"
-                            OnNeedDataSource="rgdComparacionInventarioPersonal_NeedDataSource"
-                            HeaderStyle-Font-Bold="true"
-                            OnColumnCreated="rgdComparacionInventarioPersonal_ColumnCreated"
-                            AllowMultiRowSelection="true"
-                            OnItemDataBound="rgdComparacionInventarioPersonal_ItemDataBound"
-                            AllowPaging="false">
-                            <ClientSettings EnablePostBackOnRowClick="false">
-                                <Scrolling UseStaticHeaders="true" AllowScroll="true" />
-                                <Selecting AllowRowSelect="true" />
-                            </ClientSettings>
-                            <GroupingSettings CaseSensitive="false" />
-                            <MasterTableView ClientDataKeyNames="ID_TABULADOR_EMPLEADO, NO_NIVEL" DataKeyNames="ID_TABULADOR_EMPLEADO, NO_NIVEL" EnableColumnsViewState="false" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
-                                <ColumnGroups>
-                                    <telerik:GridColumnGroup HeaderText="Tabulador medio" Name="TABMEDIO" HeaderStyle-HorizontalAlign="Center">
-                                    </telerik:GridColumnGroup>
-                                </ColumnGroups>
-                                <Columns>
-                                </Columns>
-                            </MasterTableView>
-                        </telerik:RadGrid>
+                        <div style="height: calc(100% - 60px);">
+                            <telerik:RadGrid ID="rgdComparacionInventarioPersonal"
+                                runat="server" Height="100%"
+                                AutoGenerateColumns="true"
+                                OnItemCreated="rgdComparacionInventarioPersonal_ItemCreated"
+                                OnNeedDataSource="rgdComparacionInventarioPersonal_NeedDataSource"
+                                HeaderStyle-Font-Bold="true"
+                                OnColumnCreated="rgdComparacionInventarioPersonal_ColumnCreated"
+                                AllowMultiRowSelection="true"
+                                OnItemDataBound="rgdComparacionInventarioPersonal_ItemDataBound"
+                                AllowPaging="false">
+                                <ClientSettings EnablePostBackOnRowClick="false">
+                                    <Scrolling UseStaticHeaders="true" AllowScroll="true" />
+                                    <Selecting AllowRowSelect="true" />
+                                </ClientSettings>
+                                <GroupingSettings CaseSensitive="false" />
+                                <MasterTableView ClientDataKeyNames="ID_TABULADOR_EMPLEADO, NO_NIVEL" DataKeyNames="ID_TABULADOR_EMPLEADO, NO_NIVEL" EnableColumnsViewState="false" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
+                                    <ColumnGroups>
+                                        <telerik:GridColumnGroup HeaderText="Tabulador medio" Name="TABMEDIO" HeaderStyle-HorizontalAlign="Center">
+                                        </telerik:GridColumnGroup>
+                                    </ColumnGroups>
+                                    <Columns>
+                                    </Columns>
+                                </MasterTableView>
+                            </telerik:RadGrid>
+                        </div>
+                        <div style="height: 10px;"></div>
+                        <div class="ctrlBasico">
+                            <telerik:RadButton ID="btnImprimir" runat="server" AutoPostBack="true" Text="Imprimir" OnClick="btnImprimir_Click"></telerik:RadButton>
+                        </div>
                     </telerik:RadPageView>
                 </telerik:RadMultiPage>
                 <%--    </div>--%>

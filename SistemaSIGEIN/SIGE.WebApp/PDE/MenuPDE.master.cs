@@ -23,7 +23,7 @@ namespace SIGE.WebApp.PDE
                 {
 
                     List<E_FUNCION> lstMenuGeneral = ContextoUsuario.oUsuario.oFunciones.Where(w => w.CL_TIPO_FUNCION.Equals(E_TIPO_FUNCION.MENUGRAL.ToString())).ToList();
-                    List<E_FUNCION> lstMenuModulo = ContextoUsuario.oUsuario.oFunciones.Where(w => w.CL_TIPO_FUNCION.Equals(E_TIPO_FUNCION.MENUWEB.ToString())).ToList();
+                    List<E_FUNCION> lstMenuModulo = ContextoUsuario.oUsuario.oFunciones.Where(w => w.CL_TIPO_FUNCION.Equals(E_TIPO_FUNCION.MENUADICIONAL.ToString())).ToList();
 
                     string vClModulo = "ENCUENTRO";
                     string vModulo = Request.QueryString["m"];
@@ -38,7 +38,8 @@ namespace SIGE.WebApp.PDE
                  else
                  {
                      UtilMensajes.MensajeResultadoDB(rwmMensaje, ContextoApp.PDE.LicenciaPuntoEncuentro.MsgActivo, E_TIPO_RESPUESTA_DB.WARNING);
-                     Response.Redirect(ContextoUsuario.nbHost + "/Logon.aspx");
+                     var myUrl = ResolveUrl("~/Logon.aspx");
+                     Response.Redirect(ContextoUsuario.nbHost + myUrl);
                  }
             }
         }

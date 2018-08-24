@@ -25,7 +25,7 @@
 
 
         function OpenPuestoSelectionReporteMaximoMinimoWindow() {
-            OpenSelectionWindow("/Comunes/SeleccionPuesto.aspx?m=FORMACION&CatalogoCl=PLANTILLA&vClTipoSeleccion=PUESTO_OBJETIVO", "winSeleccion", "Selección de puestos");
+            OpenSelectionWindow("../Comunes/SeleccionPuesto.aspx?m=FORMACION&CatalogoCl=PLANTILLA&vClTipoSeleccion=PUESTO_OBJETIVO", "winSeleccion", "Selección de puestos");
         }
 
         function useDataFromChild(pPuestos) {

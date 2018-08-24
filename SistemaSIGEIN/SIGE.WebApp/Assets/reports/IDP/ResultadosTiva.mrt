@@ -25,7 +25,7 @@
   <EngineVersion>EngineV2</EngineVersion>
   <GlobalizationStrings isList="true" count="0" />
   <MetaTags isList="true" count="0" />
-  <Pages isList="true" count="2">
+  <Pages isList="true" count="1">
     <Page1 Ref="2" type="Page" isKey="true">
       <Border>None;Black;2;Solid;False;4;Black</Border>
       <Brush>Transparent</Brush>
@@ -84,7 +84,7 @@
         <DataBand1 Ref="7" type="DataBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,3.2,17.6,20.6</ClientRectangle>
-          <Components isList="true" count="12">
+          <Components isList="true" count="13">
             <Text4 Ref="8" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
@@ -388,6 +388,23 @@ laboral</Text>
                 <Font>Tahoma,12,Bold</Font>
               </Title>
             </Chart1>
+            <Text29 Ref="40" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,15.8,17.6,4.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>e013ddf6fa1848768861edd0aedc37f9</Guid>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text29</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>{DS_TIVA}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text29>
           </Components>
           <Conditions isList="true" count="0" />
           <DataRelationName isNull="true" />
@@ -406,116 +423,13 @@ laboral</Text>
       <PageWidth>21.6</PageWidth>
       <PaperSize>Letter</PaperSize>
       <Report isRef="0" />
-      <Watermark Ref="40" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+      <Watermark Ref="41" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
         <Font>Arial,100</Font>
         <TextBrush>[50:0:0:0]</TextBrush>
       </Watermark>
     </Page1>
-    <Page2 Ref="41" type="Page" isKey="true">
-      <Border>None;Black;2;Solid;False;4;Black</Border>
-      <Brush>Transparent</Brush>
-      <Components isList="true" count="2">
-        <PageHeaderBand2 Ref="42" type="PageHeaderBand" isKey="true">
-          <Brush>Transparent</Brush>
-          <ClientRectangle>0,0.4,17.6,2</ClientRectangle>
-          <Components isList="true" count="3">
-            <Text16 Ref="43" type="Text" isKey="true">
-              <Border>Bottom;[186:20:25];4;Solid;False;4;Black</Border>
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,0,17.6,0.8</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,20</Font>
-              <Guid>c7f23609f1104a478b138c31b45ff2be</Guid>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text16</Name>
-              <Page isRef="41" />
-              <Parent isRef="42" />
-              <Text>Resultados TIVA</Text>
-              <TextBrush>[192:0:0]</TextBrush>
-              <Type>Expression</Type>
-            </Text16>
-            <Text17 Ref="44" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,1,5.8,0.6</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10,Bold</Font>
-              <Guid>cbc87d2d63f0491088c54dbd4962b32d</Guid>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text17</Name>
-              <Page isRef="41" />
-              <Parent isRef="42" />
-              <Text>Folio de solicitud: {CL_SOLICITUD}</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text17>
-            <Text18 Ref="45" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>6.2,1,11.4,0.6</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10,Bold</Font>
-              <Guid>3905b4792cae423cb5eea9e02780e460</Guid>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text18</Name>
-              <Page isRef="41" />
-              <Parent isRef="42" />
-              <Text>Candidato: {NB_CANDIDATO}</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text18>
-          </Components>
-          <Conditions isList="true" count="0" />
-          <Guid>0482223c343740d2a9b323a565c5d495</Guid>
-          <Name>PageHeaderBand2</Name>
-          <Page isRef="41" />
-          <Parent isRef="41" />
-        </PageHeaderBand2>
-        <DataBand2 Ref="46" type="DataBand" isKey="true">
-          <Brush>Transparent</Brush>
-          <ClientRectangle>0,3.2,17.6,20.6</ClientRectangle>
-          <Components isList="true" count="1">
-            <Text29 Ref="47" type="Text" isKey="true">
-              <AllowHtmlTags>True</AllowHtmlTags>
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,0,17.6,8.6</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10</Font>
-              <Guid>5ae45845d0aa43a9b9c8cc57f4f67158</Guid>
-              <HorAlignment>Width</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text29</Name>
-              <Page isRef="41" />
-              <Parent isRef="46" />
-              <Text>{DS_TIVA}</Text>
-              <TextBrush>Black</TextBrush>
-              <TextQuality>Wysiwyg</TextQuality>
-              <Type>Expression</Type>
-            </Text29>
-          </Components>
-          <Conditions isList="true" count="0" />
-          <DataRelationName isNull="true" />
-          <Filters isList="true" count="0" />
-          <Guid>9a7cca30b5cc46ea9d2b58d6de280552</Guid>
-          <Name>DataBand2</Name>
-          <Page isRef="41" />
-          <Parent isRef="41" />
-          <Sort isList="true" count="0" />
-        </DataBand2>
-      </Components>
-      <Conditions isList="true" count="0" />
-      <Guid>3a01b7ee2cc44059890c6088b9dce25a</Guid>
-      <Margins>2,2,2,2</Margins>
-      <Name>Page2</Name>
-      <PageHeight>27.9</PageHeight>
-      <PageWidth>21.6</PageWidth>
-      <PaperSize>Letter</PaperSize>
-      <Report isRef="0" />
-      <Watermark Ref="48" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
-        <Font>Arial,100</Font>
-        <TextBrush>[50:0:0:0]</TextBrush>
-      </Watermark>
-    </Page2>
   </Pages>
-  <PrinterSettings Ref="49" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <PrinterSettings Ref="42" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
   <ReferencedAssemblies isList="true" count="8">
     <value>System.Dll</value>
     <value>System.Drawing.Dll</value>
@@ -527,10 +441,10 @@ laboral</Text>
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>11/8/2017 1:31:25 PM</ReportChanged>
+  <ReportChanged>6/1/2018 5:38:59 PM</ReportChanged>
   <ReportCreated>11/2/2017 4:33:30 PM</ReportCreated>
-  <ReportFile>C:\Users\usuario\Documents\SIGEIN 50\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosTiva.mrt</ReportFile>
-  <ReportGuid>02697bc723d7426f9c96c0fe0a81b62b</ReportGuid>
+  <ReportFile>C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosTiva.mrt</ReportFile>
+  <ReportGuid>9c084a9689514c0b88aa7dfc6590d796</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2015.3.0</ReportVersion>

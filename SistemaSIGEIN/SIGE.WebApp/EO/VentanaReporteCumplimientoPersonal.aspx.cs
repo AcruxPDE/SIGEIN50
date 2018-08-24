@@ -54,6 +54,10 @@ namespace SIGE.WebApp.EO
             {
                 if (item.clOrigen == "COPIA")
                     vOrigen = item.clOrigen + " " + item.clTipoCopia;
+                else if (item.clOrigen == "PREDEFINIDO")
+                    vOrigen = "original";
+                else if (item.clOrigen == "REPLICA")
+                    vOrigen = "réplica";
                 else
                     vOrigen = item.clOrigen;
 
@@ -79,6 +83,20 @@ namespace SIGE.WebApp.EO
             }
 
             rgComparativos.Rebind();
+        }
+
+        private Color ObtieneColorCumplimiento(decimal? pPrCumplimiento)
+        {
+            Color vColor = System.Drawing.ColorTranslator.FromHtml("#F2F2F2");
+
+            if (pPrCumplimiento >= 0 && pPrCumplimiento < 60)
+                vColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+            else if (pPrCumplimiento > 59 && pPrCumplimiento < 76)
+                vColor = System.Drawing.ColorTranslator.FromHtml("#FFFF00");
+            else if (pPrCumplimiento > 75 && pPrCumplimiento < 101)
+                vColor = System.Drawing.ColorTranslator.FromHtml("#00B050");
+
+            return vColor;
         }
 
         #endregion
@@ -114,7 +132,7 @@ namespace SIGE.WebApp.EO
                    // txtPeriodos.InnerText = oPeriodo.DS_PERIODO;
                     txtFechas.InnerText = oPeriodo.FE_INICIO.ToString("d") + " a " + oPeriodo.FE_TERMINO.Value.ToShortDateString();
                 }
-                var oEvaluado = periodo.ObtieneEvaluados(pIdPeriodo: vIdPeriodo, pIdEvaluado: vIdEvaluado).FirstOrDefault();
+                var oEvaluado = periodo.ObtieneEvaluados(pIdPeriodo: vIdPeriodo, pIdEvaluado: vIdEvaluado, pClUsuario: vClUsuario, pNbPrograma: vNbPrograma).FirstOrDefault();
                 if (oEvaluado != null)
                 {
                     txtNoEmpleado.InnerText = oEvaluado.CL_EMPLEADO;
@@ -133,6 +151,8 @@ namespace SIGE.WebApp.EO
                     Color vColor = System.Drawing.ColorTranslator.FromHtml(item.COLOR_NIVEL);
                     vSerie.SeriesItems.Add(new CategorySeriesItem(item.PR_CUMPLIMIENTO, vColor));
                     vSerie.LabelsAppearance.DataFormatString = "{0:N2}%";
+                    vSerie.LabelsAppearance.Visible = false;
+                    vSerie.TooltipsAppearance.DataFormatString = "{0:N2}%";
                     rhcCumplimientoPersonal.PlotArea.XAxis.Items.Add(item.NO_META);
                     rhcCumplimientoPersonal.PlotArea.XAxis.LabelsAppearance.DataFormatString = item.NO_META;
                     rhcCumplimientoPersonal.PlotArea.YAxis.LabelsAppearance.DataFormatString = "{0:N2}%";
@@ -151,6 +171,10 @@ namespace SIGE.WebApp.EO
                 string vOrigenPeriodo;
                 if (oPeriodo.CL_ORIGEN_CUESTIONARIO == "COPIA")
                     vOrigenPeriodo = oPeriodo.CL_ORIGEN_CUESTIONARIO + " " + oPeriodo.CL_TIPO_COPIA;
+                else if (oPeriodo.CL_ORIGEN_CUESTIONARIO == "PREDEFINIDO")
+                    vOrigenPeriodo = "original";
+                else if(oPeriodo.CL_ORIGEN_CUESTIONARIO == "REPLICA")
+                    vOrigenPeriodo = "réplica";
                 else
                     vOrigenPeriodo = oPeriodo.CL_ORIGEN_CUESTIONARIO;
 
@@ -234,6 +258,20 @@ namespace SIGE.WebApp.EO
                 ContextoPeriodos.oLstPeriodosPersonal.RemoveAll(w => w.idPeriodo == vIdPeriodo);
                 rgComparativos.Rebind();
                 
+            }
+        }
+
+        protected void grdCumplimiento_ItemDataBound(object sender, GridItemEventArgs e)
+        {
+            if (e.Item is GridFooterItem)
+            {
+                GridFooterItem footerItem = (GridFooterItem)e.Item;
+                PeriodoDesempenoNegocio nDesempenoGlobal = new PeriodoDesempenoNegocio();
+                var vResultados = nDesempenoGlobal.ObtieneMetasEvaluados(idEvaluadoMeta: null, pIdPeriodo: vIdPeriodo, idEvaluado: vIdEvaluado, no_Meta: null, cl_nivel: null).Sum(s => s.PR_CUMPLIMIENTO_META);
+                footerItem["PR_CUMPLIMIENTO_META"].BackColor = ObtieneColorCumplimiento(decimal.Parse(vResultados.ToString()));
+                footerItem["FG_EVIDENCIA"].BackColor = ObtieneColorCumplimiento(decimal.Parse(vResultados.ToString()));
+                footerItem["FG_EVIDENCIA"].BorderColor = ObtieneColorCumplimiento(decimal.Parse(vResultados.ToString()));
+
             }
         }
     }

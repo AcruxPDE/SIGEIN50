@@ -31,7 +31,7 @@ namespace SIGE.WebApp.MPC
 
         private void SeguridadProcesos()
         {
-            btnGuardarNuevo.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.A.A");
+            btnGuardarNuevo.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.B");
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -120,7 +120,10 @@ namespace SIGE.WebApp.MPC
             TabuladoresNegocio nTabulador = new TabuladoresNegocio();
             E_RESULTADO vResultado = nTabulador.InsertaActualizaTabulador(usuario: vClUsuario, programa: vNbPrograma, pClTipoOperacion: vTipoTransaccion.ToString(), vTabulador: vTabulador);
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
+            if (vTipoTransaccion.ToString() == E_TIPO_OPERACION_DB.I.ToString())
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "closeWindow");
+            else
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "closeEditWindow");
         }
     }
 }

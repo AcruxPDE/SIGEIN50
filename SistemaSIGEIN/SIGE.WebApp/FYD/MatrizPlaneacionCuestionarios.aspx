@@ -76,6 +76,24 @@
     </style>
 
     <script type="text/javascript" id="MyScript">
+
+        var vOnClientBeforeClose_confirm = "¿Estás seguro que quieres salir de la pantalla? Si no se ha guardado, se perderá la selección de evaluadores.";
+        var vOnClientBeforeClose_title = "Cerrar";
+        var vOpenWindowAutorizarDocumento_title = "Registro y Autorización";
+        var vOpenNuevoCuestionarioWindow_title = "Agregar evaluadores";
+        var vconfirmarCrearCuestionarios_confirm = "¿Deseas continuar? Una vez hecho esto no podrás solicitar autorizaciones ni volver a la matriz.";
+
+        if ('<%=vClIdioma%>' != "ES") {
+            vOnClientBeforeClose_confirm = '<%=vOnClientBeforeClose_confirm%>';
+            vOnClientBeforeClose_title = '<%=vOnClientBeforeClose_title%>';
+            vOpenWindowAutorizarDocumento_title = '<%=vOpenWindowAutorizarDocumento_title%>';
+            vOpenNuevoCuestionarioWindow_title = '<%=vOpenNuevoCuestionarioWindow_title%>';
+            vconfirmarCrearCuestionarios_confirm = '<%=vconfirmarCrearCuestionarios_confirm%>';
+
+        }
+
+
+
         function closeWindow() {
             GetRadWindow().close();
         }
@@ -89,7 +107,7 @@
                 }
             }
 
-            radconfirm("¿Estás seguro que quieres salir de la pantalla? Si no se ha guardado, se perderá la selección de evaluadores.", confirmCallback, 400, 170, null, "Cerrar");
+            radconfirm(vOnClientBeforeClose_confirm, confirmCallback, 400, 170, null, vOnClientBeforeClose_title);
         }
 
 
@@ -102,7 +120,7 @@
             if (pIdPeriodo != null) {
                 var vURL = "VentanaDocumentoAutorizar.aspx";
                 vURL = vURL + "?IdPeriodo=" + pIdPeriodo;
-                vTitulo = "Registro y Autorización";
+                vTitulo = vOpenWindowAutorizarDocumento_title;
                 vTipoOperacion = "&TIPO=Agregar";
             }
 
@@ -197,7 +215,7 @@
                 height: browserWnd.innerHeight - 60
             };
 
-            OpenSelectionWindow("AgregarCuestionario.aspx?PeriodoId=<%= vIdPeriodo %>&AccionCerrarCl=REBIND&FgCrearCuestionarios=false", "winAgregarCuestionario", "Agregar evaluadores", windowProperties);
+            OpenSelectionWindow("AgregarCuestionario.aspx?PeriodoId=<%= vIdPeriodo %>&AccionCerrarCl=REBIND&FgCrearCuestionarios=false", "winAgregarCuestionario", vOpenNuevoCuestionarioWindow_title, windowProperties);
         }
 
         function OpenSelectionWindow(pURL, pIdWindow, pTitle, pWindowProperties) {
@@ -237,7 +255,7 @@
 
         function confirmarCrearCuestionarios(sender, args) {
 
-            confirmAction(sender, args, "¿Deseas continuar? Una vez hecho esto no podrás solicitar autorizaciones ni volver a la matriz.");
+            confirmAction(sender, args, vconfirmarCrearCuestionarios_confirm);
         }
 
 
@@ -303,14 +321,15 @@
         <telerik:RadCheckBox runat="server" ID="chkOtro" Text="Otros" AutoPostBack="false" OnClientCheckedChanged="Otros"></telerik:RadCheckBox>
     </div>
 
-    <div style="clear: both; height: 10px;"></div>
+    <div style="clear: both;"></div>
 
     <div style="height: calc(100% - 100px);">
         <telerik:RadGrid ID="grdCuestionarios" runat="server" Height="100%" HeaderStyle-Font-Bold="true" AutoGenerateColumns="false" EnableHeaderContextMenu="true" AllowSorting="true" MasterTableView-TableLayout ="Fixed"
             OnNeedDataSource="grdCuestionarios_NeedDataSource"
             OnItemDataBound="grdCuestionarios_ItemDataBound"
             OnDeleteCommand="grdCuestionarios_DeleteCommand"
-            OnDetailTableDataBind="grdCuestionarios_DetailTableDataBind">
+            OnDetailTableDataBind="grdCuestionarios_DetailTableDataBind"
+            OnPreRender="grdCuestionarios_PreRender">
             <ClientSettings>
                 <Scrolling UseStaticHeaders="false" AllowScroll="true"  />
                 <Selecting AllowRowSelect="true" />
@@ -320,24 +339,24 @@
                 <Columns>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Evaluado" DataField="NB_EMPLEADO_COMPLETO" UniqueName="NB_EVALUADO"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="350" FilterControlWidth="230" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="NB_PUESTO"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="350" FilterControlWidth="230" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="350" FilterControlWidth="230" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO"></telerik:GridBoundColumn>
                 </Columns>
                 <DetailTables>
                     <telerik:GridTableView DataKeyNames="ID_EVALUADO" Name="gtvEvaluadores">
                         <Columns>
-                            <telerik:GridBoundColumn HeaderText="Autoevaluación" DataField="AUTOEVALUACION">
+                            <telerik:GridBoundColumn HeaderText="Autoevaluación" DataField="AUTOEVALUACION" UniqueName="AUTOEVALUACION">
                                 <HeaderStyle Width="310px" />
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn HeaderText="Superior" DataField="SUPERIOR">
+                            <telerik:GridBoundColumn HeaderText="Superior" DataField="SUPERIOR" UniqueName="SUPERIOR">
                                 <HeaderStyle Width="310px" />
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn HeaderText="Subordinado" DataField="SUBORDINADO">
+                            <telerik:GridBoundColumn HeaderText="Subordinado" DataField="SUBORDINADO" UniqueName="SUBORDINADO">
                                 <HeaderStyle Width="310px" />
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn HeaderText="Interrelacionados" DataField="INTERRELACIONADO">
+                            <telerik:GridBoundColumn HeaderText="Interrelacionados" DataField="INTERRELACIONADO" UniqueName="INTERRELACIONADO">
                                 <HeaderStyle Width="310px" />
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn HeaderText="Otros" DataField="OTROS">
+                            <telerik:GridBoundColumn HeaderText="Otros" DataField="OTROS" UniqueName="OTROS">
                                 <HeaderStyle Width="310px" />
                             </telerik:GridBoundColumn>
                         </Columns>
@@ -346,6 +365,7 @@
             </MasterTableView>
         </telerik:RadGrid>
     </div>
+    <div style="clear:both; height:10px;"></div>
     <div class="ctrlBasico">
         <telerik:RadButton runat="server" ID="btnAgregarEmpleado" Text="Agregar evaluadores" AutoPostBack="false" OnClientClicked="OpenNuevoCuestionarioWindow" OnClick="btnAgregarEmpleado_Click"></telerik:RadButton>
     </div>
@@ -353,8 +373,8 @@
         <telerik:RadButton runat="server" ID="btnGuardar" Text="Guardar" OnClick="btnGuardar_Click" ></telerik:RadButton>
     </div>
       <div class="ctrlBasico">
-                        <telerik:RadButton ID="btnRegistroAutorizacion" AutoPostBack="false" Enabled="true" OnClientClicked="ShowAutorizarForm" runat="server" Text="Registro y autorización" Width="200" ToolTip="Da clic si deseas registrar este programa de capacitación y/o deseas realizar un proceso de autorización."></telerik:RadButton>
-                    </div>
+       <telerik:RadButton ID="btnRegistroAutorizacion" AutoPostBack="false" Enabled="true" OnClientClicked="ShowAutorizarForm" runat="server" Text="Registro y autorización" Width="200" ToolTip="Da clic si deseas registrar este programa de capacitación y/o deseas realizar un proceso de autorización."></telerik:RadButton>
+     </div>
     <div class="ctrlBasico">
         <%--<telerik:RadButton runat="server" ID="btnCrearCuestionarios" Text="Crear cuestionarios" OnClick="btnCrearCuestionarios_Click"></telerik:RadButton>--%>
         <telerik:RadButton runat="server" ID="btnCrearCuestionarios" Text="Crear cuestionarios" OnClientClicking="confirmarCrearCuestionarios" Enabled="true" OnClick="btnCrearCuestionarios_Click"></telerik:RadButton>

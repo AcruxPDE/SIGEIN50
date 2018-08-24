@@ -43,9 +43,44 @@
             bottom: 0px;
             margin-bottom: 2px;
         }
+
+
+           /* LA MODAL QUE SE DESPLAEGARA  EN LAS PRUEBAS: NOTA. SE EXTENDIO ESTA CLASE CSS */
+        .TelerikModalOverlay {
+            opacity: 1 !important;
+            background-color: #000 !important;
+        }
+        @media print {
+      body, html, #wrapper {
+          width: 100%;
+      }
     </style>
+
+<script type="text/javascript">
+
+    function ConfirmarEliminarRespuestas(sender, args) {
+                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+                    if (shouldSubmit) {
+                        this.click();
+                    }
+                });
+                radconfirm("Este proceso borrará las respuestas de la prueba, ¿Deseas continuar?", callBackFunction, 400, 150, null, "Eliminar respuestas");
+                args.set_cancel(true);
+            }
+
+</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
+        <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+        <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="btnEliminar">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="splHelp" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+        </AjaxSettings>
+    </telerik:RadAjaxManager>
 
     <telerik:RadCodeBlock ID="RadCodeBlock2" runat="server">
         <script id="MyScript" type="text/javascript">
@@ -200,8 +235,10 @@
     </div>
 
     <div style="clear: both; height: 10px;"></div>
-    <div class="DivBtnTerminarDerecha ">
-        <telerik:RadButton ID="btnTerminar" runat="server" Text="Terminar" AutoPostBack="true" OnClick="btnTerminar_Click" UseSubmitBehavior="false"></telerik:RadButton>
+    <div class="divControlDerecha">
+       
+        <telerik:RadButton ID="btnTerminar" runat="server" Text="Guardar" AutoPostBack="true" OnClick="btnTerminar_Click" UseSubmitBehavior="false"></telerik:RadButton>
+        <%-- <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" AutoPostBack="true" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminar_Click" Visible="true"></telerik:RadButton>--%>
     </div>
 
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>

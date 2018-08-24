@@ -28,6 +28,7 @@ namespace SIGE.WebApp.EO
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
         private XElement SeleccionMetasEvaluado { get; set; }
         private XElement RESULTADOS { get; set; }
+        private int? vIdRol;
         decimal sum = 0;
         decimal vSumaEvaluadas = 0;
 
@@ -79,6 +80,17 @@ namespace SIGE.WebApp.EO
             set { ViewState["vs_vNoReplica"] = value; }
         }
 
+        public string vClTipoMetas
+        {
+            get { return (string)ViewState["vs_vClTipoMetas"]; }
+            set { ViewState["vs_vClTipoMetas"] = value; }
+        }
+
+        private bool vFgCordinador
+        {
+            get { return (bool)ViewState["vs_vFgCordinador"]; }
+            set { ViewState["vs_vFgCordinador"] = value; }
+        }
 
         #endregion
 
@@ -188,7 +200,8 @@ namespace SIGE.WebApp.EO
             {
                 grdEvaluados.Rebind();
                 grdDisenoMetas.Rebind();
-                grdContrasenaEvaluadores.Rebind();
+                GenerarContrasena();
+               // grdContrasenaEvaluadores.Rebind();
             }
             //UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
 
@@ -215,12 +228,26 @@ namespace SIGE.WebApp.EO
                 grdEvaluados.Rebind();
                 grdDisenoMetas.Rebind();
                 rgBono.Rebind();
-                grdContrasenaEvaluadores.Rebind();
+               // grdContrasenaEvaluadores.Rebind();
+                GenerarContrasena();
             }
             else
             {
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
             }
+        }
+
+        protected void GenerarContrasena()
+        {
+            PeriodoNegocio nPeriodo = new PeriodoNegocio();
+
+            E_RESULTADO vResultado = nPeriodo.InsertarActualizarTokenEvaluadores(vIdPeriodo, null, vClUsuario, vNbPrograma, pIdRol: vIdRol);
+            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+
+            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
+
+            if (vResultado.CL_TIPO_ERROR.Equals(E_TIPO_RESPUESTA_DB.SUCCESSFUL))
+                grdContrasenaEvaluadores.Rebind();
         }
 
         private void CargarDatosContexto()
@@ -256,10 +283,18 @@ namespace SIGE.WebApp.EO
             var vPeriodoDesempeno = nPeriodo.ObtienePeriodosDesempeno(pIdPeriodo: vIdPeriodo).FirstOrDefault();
 
             vClOrigenPeriodo = vPeriodoDesempeno.CL_ORIGEN_CUESTIONARIO;
+            vClTipoMetas = vPeriodoDesempeno.CL_TIPO_METAS;
             vNoReplica = vPeriodoDesempeno.NO_REPLICA;
 
             if (vPeriodoDesempeno.CL_TIPO_CAPTURISTA == "OTRO")
                 btnAgregarEvaluador.Visible = true;
+            if (vPeriodoDesempeno.CL_TIPO_CAPTURISTA == "COORDINADOR_EVAL")           
+                vFgCordinador = false;
+            else
+                vFgCordinador = true;
+
+               
+            
             txtRangoPeriodo.Text = vPeriodoDesempeno.FE_INICIO.ToString("d") + " a " + vPeriodoDesempeno.FE_TERMINO.Value.ToShortDateString();
             vIdPeriodoDesempeno = vPeriodoDesempeno.ID_PERIODO_DESEMPENO;
             CargarDatosContexto();
@@ -268,6 +303,13 @@ namespace SIGE.WebApp.EO
             {
                 btnAgregarMeta.Enabled = true;
                 btnModificarMetas.Enabled = true;
+
+                btnAgregarMeta.Text = "Agregar indicador";
+                btnActivarMetas.Text = "Activar indicador";
+                btnDesactivarMetas.Text = "Desactivar indicador";
+                btnModificarMetas.Text = "Editar indicador";
+                btnCopiarMetas.Text = "Copiar indicador";
+                btnGuardarMetas.Text= "Guardar indicadores";
 
                 grdDisenoMetas.MasterTableView.DetailTables[0].Columns[0].Visible = true;
             }
@@ -284,7 +326,7 @@ namespace SIGE.WebApp.EO
             }
 
 
-            if (vPeriodoDesempeno.FG_BONO)
+            if (vPeriodoDesempeno.FG_BONO == true)
             {
                 rbSi.Checked = true;
                 rbIndividualDependiente.Enabled = true;
@@ -310,7 +352,9 @@ namespace SIGE.WebApp.EO
             }
             else
             {
+                if(vPeriodoDesempeno.FG_BONO == false)
                 rbNo.Checked = true;
+
                 rbIndividualDependiente.Enabled = false;
                 rbIndividualIndependiente.Enabled = false;
                 rbGrupal.Enabled = false;
@@ -341,10 +385,11 @@ namespace SIGE.WebApp.EO
         private void GuardarDatos(bool pCerrar)
         {
             PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
-            decimal vNoMonto;
-            decimal vNoPorcentaje;
+            decimal vNoMonto=0;
+            decimal vNoPorcentaje=0;
             string vTipoBono = "N/A";
 
+   
             if (rbIndividualDependiente.Checked)
                 vTipoBono = "DEPENDIENTE";
             if (rbIndividualIndependiente.Checked)
@@ -352,15 +397,38 @@ namespace SIGE.WebApp.EO
             if (rbGrupal.Checked)
                 vTipoBono = "GRUPAL";
 
-            if (rbPorcentaje.Checked)
+            if(rbSi.Checked == true && (rbPorcentaje.Checked == false && rbMonto.Checked == false))
             {
-                vNoPorcentaje = Convert.ToDecimal(txtMontoBono.Text);
-                vNoMonto = 0;
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Indique el monto de bono.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+                return;
+            }
+
+            if (rbSi.Checked == true && vTipoBono == "N/A")
+            {
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Indique el tipo de bono.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+                return;
+            }
+
+           
+
+
+            if (txtMontoBono.Text != null && txtMontoBono.Text != "")
+            {
+                if (rbPorcentaje.Checked)
+                {
+                    vNoPorcentaje = Convert.ToDecimal(txtMontoBono.Text);
+                    vNoMonto = 0;
+                }
+                else
+                {
+                    vNoPorcentaje = 0;
+                    vNoMonto = Convert.ToDecimal(txtMontoBono.Text);
+                }
             }
             else
             {
-                vNoPorcentaje = 0;
-                vNoMonto = Convert.ToDecimal(txtMontoBono.Text);
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Indique la cantidad de monto de bono para el evaluado", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+                return;
             }
 
             var vResultado = nPeriodo.ActualizaConfiguracionDesempeno(vIdPeriodoDesempeno, rbSi.Checked ? 1 : 0, vNoPorcentaje, vNoMonto, vTipoBono, vClUsuario, vNbPrograma);
@@ -376,10 +444,22 @@ namespace SIGE.WebApp.EO
             }
         }
 
+        protected void SeguridadProcesos(bool? pFgConfiguracionCompleta)
+        {
+            bool vFgConfiguracionCompleta = false;
+            if (pFgConfiguracionCompleta == true)
+                vFgConfiguracionCompleta = true;
+
+            btnEnvioSolicitudes.Enabled = ContextoUsuario.oUsuario.TienePermiso("M.A.A.I") && vFgCordinador && vFgConfiguracionCompleta;
+            btnReasignarContrasena.Enabled = vFgCordinador;
+            lbMensaje.Visible = !vFgCordinador;
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
             if (!IsPostBack)
             {
                 if (Request.Params["PeriodoId"] != null)
@@ -400,7 +480,7 @@ namespace SIGE.WebApp.EO
         protected void grdSeleccionEvaluados_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
-            grdEvaluados.DataSource = nPeriodo.ObtieneEvaluados(vIdPeriodo);
+            grdEvaluados.DataSource = nPeriodo.ObtieneEvaluados(pIdPeriodo: vIdPeriodo, pIdRol: vIdRol);
         }
 
         protected void ramConfiguracionPeriodo_AjaxRequest(object sender, Telerik.Web.UI.AjaxRequestEventArgs e)
@@ -422,37 +502,99 @@ namespace SIGE.WebApp.EO
 
             if (vSeleccion.clTipo == "EVALUADOR")
                 AgregarEvaluadores(vSeleccion.oSeleccion.ToString());
+
+            if (vSeleccion.clTipo == "VERIFICACONFIGURACION")
+            {
+                PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
+                var vFgConfigurado = nPeriodo.VerificaConfiguracion(vIdPeriodo).FirstOrDefault();
+                if (vFgConfigurado != null)
+                    SeguridadProcesos(vFgConfigurado.FG_ESTATUS);
+            }
         }
 
         protected void rgBono_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
-            rgBono.DataSource = nPeriodo.ObtieneBonoEvaluados(vIdPeriodo);
+            rgBono.DataSource = nPeriodo.ObtieneBonoEvaluados(vIdPeriodo, vIdRol);
         }
 
         protected void btnCalcularTodos_Click(object sender, EventArgs e)
         {
             if (!rbMonto.Checked & !rbPorcentaje.Checked)
             {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Indique el tipo de bono para el evaluado", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: null);
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Indique un tipo de monto de bono para el evaluado", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: null);
             }
             else
             {
-                decimal vPrBono = decimal.Parse(txtMontoBono.Text);
+                if (txtMontoBono.Text != "" && txtMontoBono.Text != null)
+                {
+
+                    decimal vPrBono = decimal.Parse(txtMontoBono.Text);
+                    string vCltipoBono = rbMonto.Checked ? "MONTO" : "PORCENTAJE";
+
+                    PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
+
+                    if (vCltipoBono == "PORCENTAJE" & vPrBono > 100)
+                    {
+                        vPrBono = 100;
+                        txtMontoBono.Text = "100";
+                    }
+
+                    E_RESULTADO vResultado = nPeriodo.ActualizaEvaluadoTopeBono(vIdPeriodo, vPrBono, vCltipoBono, null, vNbPrograma, vClUsuario);
+                    string vmensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+
+                    if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+                    {
+                        GuardarDatos(false);
+                        rgBono.Rebind();
+                    }
+                    else
+                    {
+                        UtilMensajes.MensajeResultadoDB(rwmMensaje, vmensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
+                    }
+                }
+                else
+                {
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, "Indique la cantidad de monto de bono para el evaluado", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: null);
+                }
+            }
+        }
+
+        protected void btnCalcularSeleccion_Click(object sender, EventArgs e)
+        {
+            if (!rbMonto.Checked & !rbPorcentaje.Checked)
+            {
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Indique un tipo de monto de bono para el evaluado", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: null);
+            }
+            else
+            {
+                 if (txtMontoBono.Text != "" && txtMontoBono.Text != null)
+                {
+                PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
+                XElement vXmlempleados = new XElement("EMPLEADOS");
+                decimal vPrMonto = 0;
                 string vCltipoBono = rbMonto.Checked ? "MONTO" : "PORCENTAJE";
 
-                PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
-
-                if (vCltipoBono == "PORCENTAJE" & vPrBono > 100)
+                foreach (GridDataItem item in rgBono.Items)
                 {
-                    vPrBono = 100;
-                    txtMontoBono.Text = "100";
-                }
 
-                E_RESULTADO vResultado = nPeriodo.ActualizaEvaluadoTopeBono(vIdPeriodo, vPrBono, vCltipoBono, null, vNbPrograma, vClUsuario);
+                    if (((item.FindControl("txtMontoBono") as RadTextBox).Text) != "" && ((item.FindControl("txtMontoBono") as RadTextBox).Text != null))
+                    vPrMonto = decimal.Parse((item.FindControl("txtMontoBono") as RadTextBox).Text);
+
+                    if (vCltipoBono == "PORCENTAJE" & vPrMonto > 100)
+                    {
+                        vPrMonto = 100;
+                        (item.FindControl("txtMontoBono") as RadTextBox).Text = "100";
+                    }
+
+                    vXmlempleados.Add(new XElement("EMPLEADO", new XAttribute("ID_BONO_EVALUADO", item.GetDataKeyValue("ID_BONO_EVALUADO").ToString()), new XAttribute("PR_BONO", vPrMonto)));
+
+                    
+                }
+                E_RESULTADO vResultado = nPeriodo.ActualizaEvaluadoTopeBono(vIdPeriodo, 0, vCltipoBono, vXmlempleados.ToString(), vNbPrograma, vClUsuario);
                 string vmensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
 
-                if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+                if (vResultado.CL_TIPO_ERROR.Equals(E_TIPO_RESPUESTA_DB.SUCCESSFUL))
                 {
                     GuardarDatos(false);
                     rgBono.Rebind();
@@ -461,40 +603,13 @@ namespace SIGE.WebApp.EO
                 {
                     UtilMensajes.MensajeResultadoDB(rwmMensaje, vmensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
                 }
-            }
-        }
-
-        protected void btnCalcularSeleccion_Click(object sender, EventArgs e)
-        {
-            PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
-            XElement vXmlempleados = new XElement("EMPLEADOS");
-            decimal vPrMonto;
-            string vCltipoBono = rbMonto.Checked ? "MONTO" : "PORCENTAJE";
-
-            foreach (GridDataItem item in rgBono.Items)
-            {
-                vPrMonto = decimal.Parse((item.FindControl("txtMontoBono") as RadTextBox).Text);
-
-                if (vCltipoBono == "PORCENTAJE" & vPrMonto > 100)
-                {
-                    vPrMonto = 100;
-                    (item.FindControl("txtMontoBono") as RadTextBox).Text = "100";
                 }
+                 else
+                 {
+                     UtilMensajes.MensajeResultadoDB(rwmMensaje, "Indique la cantidad de monto de bono para el evaluado", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: null);
+                 }
+            }
 
-                vXmlempleados.Add(new XElement("EMPLEADO", new XAttribute("ID_BONO_EVALUADO", item.GetDataKeyValue("ID_BONO_EVALUADO").ToString()), new XAttribute("PR_BONO", vPrMonto)));
-            }
-            E_RESULTADO vResultado = nPeriodo.ActualizaEvaluadoTopeBono(vIdPeriodo, 0, vCltipoBono, vXmlempleados.ToString(), vNbPrograma, vClUsuario);
-            string vmensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-
-            if (vResultado.CL_TIPO_ERROR.Equals(E_TIPO_RESPUESTA_DB.SUCCESSFUL))
-            {
-                GuardarDatos(false);
-                rgBono.Rebind();
-            }
-            else
-            {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, vmensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
-            }
         }
 
         protected void rbNo_Click(object sender, EventArgs e)
@@ -560,7 +675,7 @@ namespace SIGE.WebApp.EO
         protected void grdDisenoMetas_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
-            grdDisenoMetas.DataSource = nPeriodo.ObtieneEvaluados(vIdPeriodo);
+            grdDisenoMetas.DataSource = nPeriodo.ObtieneEvaluados(pIdPeriodo: vIdPeriodo, pIdRol: vIdRol);
         }
 
         protected void grdDisenoMetas_DetailTableDataBind(object sender, GridDetailTableDataBindEventArgs e)
@@ -753,7 +868,7 @@ namespace SIGE.WebApp.EO
                 return;
             }
 
-            var evaluadosEvaluador = nPeriodo.ObtieneEvaluados(vIdPeriodo);
+            var evaluadosEvaluador = nPeriodo.ObtieneEvaluados(pIdPeriodo: vIdPeriodo);
             foreach (var evaluador in evaluadosEvaluador)
             {
                 int? ev = evaluador.NO_EVALUADOR;
@@ -829,20 +944,25 @@ namespace SIGE.WebApp.EO
                     return;
                 }
             }
-            UtilMensajes.MensajeResultadoDB(rwmMensaje, "Proceso exitoso", E_TIPO_RESPUESTA_DB.SUCCESSFUL, pCallBackFunction: null);
+            PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
+            E_RESULTADO vResultado = nPeriodo.EliminaMetaInactivas(vIdPeriodo);
+            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "recargarMetas()");
+
+            //UtilMensajes.MensajeResultadoDB(rwmMensaje, "Proceso exitoso", E_TIPO_RESPUESTA_DB.SUCCESSFUL, pCallBackFunction: null);
         }
 
         protected void grdContrasenaEvaluadores_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             PeriodoNegocio nPeriodo = new PeriodoNegocio();
-            grdContrasenaEvaluadores.DataSource = nPeriodo.ObtieneTokenEvaluadores(vIdPeriodo);
+            grdContrasenaEvaluadores.DataSource = nPeriodo.ObtieneTokenEvaluadores(pIdPeriodo: vIdPeriodo , pIdRol: vIdRol);
         }
 
         protected void btnReasignarTodasContrasenas_Click(object sender, EventArgs e)
         {
             PeriodoNegocio nPeriodo = new PeriodoNegocio();
 
-            E_RESULTADO vResultado = nPeriodo.InsertarActualizarTokenEvaluadores(vIdPeriodo, null, vClUsuario, vNbPrograma);
+            E_RESULTADO vResultado = nPeriodo.InsertarActualizarTokenEvaluadores(vIdPeriodo, null, vClUsuario, vNbPrograma, pIdRol: vIdRol);
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
 
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
@@ -853,18 +973,33 @@ namespace SIGE.WebApp.EO
 
         protected void btnReasignarContrasena_Click(object sender, EventArgs e)
         {
-            foreach (GridDataItem item in grdContrasenaEvaluadores.SelectedItems)
+
+            string vMensaje = "";
+            if (grdContrasenaEvaluadores.SelectedItems.Count > 0)
             {
-                PeriodoNegocio nPeriodo = new PeriodoNegocio();
+                foreach (GridDataItem item in grdContrasenaEvaluadores.SelectedItems)
+                {
+                    PeriodoNegocio nPeriodo = new PeriodoNegocio();
 
-                E_RESULTADO vResultado = nPeriodo.InsertarActualizarTokenEvaluadores(vIdPeriodo, int.Parse(item.GetDataKeyValue("ID_EVALUADOR").ToString()), vClUsuario, vNbPrograma);
-                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                    E_RESULTADO vResultado = nPeriodo.InsertarActualizarTokenEvaluadores(vIdPeriodo, int.Parse(item.GetDataKeyValue("ID_EVALUADOR").ToString()), vClUsuario, vNbPrograma, pIdRol: vIdRol);
+                    vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
 
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
+                    if (!vResultado.CL_TIPO_ERROR.Equals(E_TIPO_RESPUESTA_DB.SUCCESSFUL))
+                    {
+                        //grdContrasenaEvaluadores.Rebind();
+                        UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
+                        return;
+                    }
+                }
 
-                if (vResultado.CL_TIPO_ERROR.Equals(E_TIPO_RESPUESTA_DB.SUCCESSFUL))
-                    grdContrasenaEvaluadores.Rebind();
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, E_TIPO_RESPUESTA_DB.SUCCESSFUL, pCallBackFunction: null);
+                grdContrasenaEvaluadores.Rebind();
             }
+            else
+            {
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Selecciona por lo menos un evaluador para reasignar contraseña.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: null);
+            }
+
         }
 
         protected void grdEvaluados_DetailTableDataBind(object sender, GridDetailTableDataBindEventArgs e)
@@ -935,7 +1070,11 @@ namespace SIGE.WebApp.EO
             }
             else
             {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione una meta.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+                string vTstoIndicadorMeta = " una meta.";
+                if (vClTipoMetas == "DESCRIPTIVO")
+                    vTstoIndicadorMeta = " un indicador.";
+
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione" + vTstoIndicadorMeta, E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
             }
         }
 
@@ -974,7 +1113,11 @@ namespace SIGE.WebApp.EO
             }
             else
             {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione una meta.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+                string vTstoIndicadorMeta = " una meta.";
+                if (vClTipoMetas == "DESCRIPTIVO")
+                    vTstoIndicadorMeta = " un indicador.";
+
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione" + vTstoIndicadorMeta, E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
             }
 
         }
@@ -1022,13 +1165,26 @@ namespace SIGE.WebApp.EO
             }
             else
             {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione por lo menos un evaluado y una meta.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+                string vTstoIndicadorMeta = " una meta.";
+                if(vClTipoMetas=="DESCRIPTIVO")
+                    vTstoIndicadorMeta = " un indicador.";
+
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione por lo menos un evaluado y" + vTstoIndicadorMeta, E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
             }
         }
 
         protected void txtPonderacion_TextChanged(object sender, EventArgs e)
         {
-
+        //    decimal vTotal = 0;
+        //    foreach (GridDataItem item in grdEvaluados.Items)
+        //    {
+        //        RadNumericTextBox radNumericTxtBox = (RadNumericTextBox)item["PR_EVALUADO"].FindControl("txtPonderacion");
+        //        if (radNumericTxtBox != null)
+        //        {
+        //            if (radNumericTxtBox.Text != "")
+        //                vTotal = vTotal + decimal.Parse(radNumericTxtBox.Text);
+        //        }
+        //    }    
         }
 
         protected void rgBono_ItemDataBound(object sender, GridItemEventArgs e)

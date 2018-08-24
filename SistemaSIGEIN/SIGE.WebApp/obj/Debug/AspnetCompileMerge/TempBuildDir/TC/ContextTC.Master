@@ -1,7 +1,7 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/AppSIGE.Master" AutoEventWireup="true" CodeBehind="ContextTC.master.cs" Inherits="SIGE.WebApp.TC.ContextTC" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="/Assets/css/Temas/TC.css" rel="stylesheet" type="text/css" />
+    <link href="../Assets/css/Temas/TC.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="headContexto" runat="server">
     </asp:ContentPlaceHolder>
 </asp:Content>

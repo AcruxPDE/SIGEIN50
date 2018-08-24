@@ -166,6 +166,15 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadGrid rgCorreos;
         
         /// <summary>
+        /// lbMensaje2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbMensaje2;
+        
+        /// <summary>
         /// lbMensaje control.
         /// </summary>
         /// <remarks>
@@ -173,6 +182,33 @@ namespace SIGE.WebApp.EO {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbMensaje;
+        
+        /// <summary>
+        /// dvCapturaMasiva control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvCapturaMasiva;
+        
+        /// <summary>
+        /// btnCapturaMasivaYes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnCapturaMasivaYes;
+        
+        /// <summary>
+        /// btnCapturaMasivaFalse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnCapturaMasivaFalse;
         
         /// <summary>
         /// btnEnviar control.

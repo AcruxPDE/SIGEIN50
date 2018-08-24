@@ -20,6 +20,11 @@ namespace SIGE.WebApp.Administracion
         {
             if (!Page.IsPostBack)
             {
+                var relativePath = "~/api/export/file";
+
+                RadClientExportManager1.PdfSettings.ProxyURL = ResolveUrl(relativePath);
+                RadClientExportManager1.PdfSettings.Author = "Telerik ASP.NET AJAX";
+
                 CargarDatosEmpresas();
 
                 CargarDatosOrganigrama();
@@ -63,7 +68,7 @@ namespace SIGE.WebApp.Administracion
 
             if (vOrganigrama.lstNodoDescendencia.Where(w => w.idNodoSuperior == null).Count() > 1)
             {
-                UtilMensajes.MensajeResultadoDB(rnMensaje, "Por favor selecciona un nodo raíz de la lista de ascendencia.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: null);
+                UtilMensajes.MensajeResultadoDB(rnMensaje, "Por favor selecciona un nodo raíz del selector de puestos.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: null);
             }
             else
             {

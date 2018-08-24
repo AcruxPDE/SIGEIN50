@@ -77,7 +77,8 @@ namespace SIGE.WebApp.EO
             int vIdEvaluador;
             string vClCorreo;
             string vNbEvaluador;
-            string vUrl = ContextoUsuario.nbHost + "/Logon.aspx?ClProceso=CUESTIONARIO";
+            var myUrl = ResolveUrl("~/Logon.aspx?ClProceso=CUESTIONARIO");
+            string vUrl = ContextoUsuario.nbHost + myUrl;
             GridItemCollection oListaEvaluadores = new GridItemCollection();
             XElement vXmlEvaluados = new XElement("EVALUADORES");
 
@@ -158,7 +159,7 @@ namespace SIGE.WebApp.EO
 
             if (validacion == "NO_HAY_M_IMPORTANTE_EVALUADOR" || validacion == "NO_HAY_M_IMPORTANTE_EVALUADO")
             {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, "No hay personas para notificar el problema ocurrido, revisa la configuración del periodo", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "No hay personas para notificar el problema ocurrido, revisa la configuración del período", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
                 return;
             }
             else if (validacion == "SI_HAY_IMPORTANTE_EVALUADOR")
@@ -190,9 +191,9 @@ namespace SIGE.WebApp.EO
                 vMensaje = vMensaje.Replace("[CL_PERIODO]", vDatosPeriodo.NB_PERIODO);
 
                 //Envío de correo
-                bool vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbEvaluador, "Periodo de desempeño " + vDatosPeriodo.NB_PERIODO, vMensaje);
+                bool vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbEvaluador, "Período de desempeño " + vDatosPeriodo.NB_PERIODO, vMensaje);
                 if(vEstatusCorreo)
-                    UtilMensajes.MensajeResultadoDB(rwmMensaje, "Ha ocurrido un problema en el periodo. Se ha enviado un correo a la persona que recibe las notificaciones", E_TIPO_RESPUESTA_DB.WARNING,400,200, pCallBackFunction: "");
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, "Ha ocurrido un problema en el período. Se ha enviado un correo a la persona que recibe las notificaciones", E_TIPO_RESPUESTA_DB.WARNING,400,200, pCallBackFunction: "");
             }
         }
 
@@ -234,7 +235,7 @@ namespace SIGE.WebApp.EO
         {
             List<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result> vEvaluadores = new List<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result>();
             PeriodoDesempenoNegocio eoNegocio = new PeriodoDesempenoNegocio();
-            vEvaluadores = eoNegocio.ObtenerEvaluadoresPeriodo(vIdPeriodo);
+            vEvaluadores = eoNegocio.ObtenerEvaluadoresPeriodo(vIdPeriodo, null);
             rgCorreos.DataSource = vEvaluadores;
         }
 

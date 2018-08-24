@@ -229,6 +229,15 @@ namespace SIGE.WebApp.MPC {
         protected global::Telerik.Web.UI.RadButton btnGrafica;
         
         /// <summary>
+        /// btnImprimir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnImprimir;
+        
+        /// <summary>
         /// rpvGraficaDesviaciones control.
         /// </summary>
         /// <remarks>
@@ -245,6 +254,15 @@ namespace SIGE.WebApp.MPC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadHtmlChart PieChartGraficaDesviaciones;
+        
+        /// <summary>
+        /// RadButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton RadButton1;
         
         /// <summary>
         /// rpAyuda control.

@@ -10,6 +10,7 @@ namespace SIGE.Entidades.Externas
     public class E_PUESTOS
     {
         public int? ID_PUESTO { get; set; }
+        public int? ID_PUESTO_RELACION { get; set; }
         public string CL_PUESTO { get; set; }
         public string NB_PUESTO { get; set; }
         public int? ID_DEPARTAMENTO { get; set; }

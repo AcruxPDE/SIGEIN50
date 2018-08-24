@@ -110,7 +110,9 @@ namespace SIGE.WebApp.Administracion
                     {
                         builder.Append(item.NB_MAIL + ";");
                     }
-                    string vUrl = ContextoUsuario.nbHost + "/Logon.aspx?FlProceso=" + vPlantilla.FL_PLANTILLA.ToString() + "&ClProceso=ENVIOSOLICITUDPLANTILLA";
+
+                    var myUrl = ResolveUrl("~/Logon.aspx?FlProceso=");
+                    string vUrl = ContextoUsuario.nbHost + myUrl + vPlantilla.FL_PLANTILLA.ToString() + "&ClProceso=ENVIOSOLICITUDPLANTILLA";
                     var vMsgUrl = String.Format("Acceso: <a href={0}>aquí</a><br/><br/>", vUrl);
                     var vMensaje = String.Format("Estimado(a) candidato:<br/><br/>{0}<br/><br/>{1}<br/><br/>Saludos cordiales.", txbPrivacidad.Content,vMsgUrl);
                     string vRespuesta = EnvioCorreo(builder.ToString(), vMensaje, "Solicitud empleo");

@@ -14,13 +14,13 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
     {
         SistemaSigeinEntities contexto;
 
-        public List<SPE_OBTIENE_PLAZAS_Result> ObtenerPlazas(int? pIdPlaza, XElement pXmlSeleccion, int? pID_EMPRESA)
+        public List<SPE_OBTIENE_PLAZAS_Result> ObtenerPlazas(int? pIdPlaza, XElement pXmlSeleccion, int? pID_EMPRESA, int? pID_ROL = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
                 if (pXmlSeleccion == null)
                     pXmlSeleccion = new XElement("SELECCION", new XAttribute("CL_TIPO", "ACTIVAS"));
-                return contexto.SPE_OBTIENE_PLAZAS(pIdPlaza, pXmlSeleccion.ToString(),pID_EMPRESA).ToList();
+                return contexto.SPE_OBTIENE_PLAZAS(pIdPlaza, pXmlSeleccion.ToString(), pID_EMPRESA, pID_ROL).ToList();
             }
         }
 
@@ -29,7 +29,7 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
             using (contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
-                contexto.SPE_INSERTA_ACTUALIZA_PLAZA(pOutClRetorno, pPlaza.ID_PLAZA, pPlaza.CL_PLAZA, pPlaza.NB_PLAZA, pPlaza.ID_EMPLEADO, pPlaza.ID_PUESTO, pPlaza.ID_PLAZA_SUPERIOR, pPlaza.ID_EMPRESA, pPlaza.FG_ACTIVO, pClUsuario, pNbPrograma, pClTipoOperacion.ToString());
+                contexto.SPE_INSERTA_ACTUALIZA_PLAZA(pOutClRetorno, pPlaza.ID_PLAZA, pPlaza.CL_PLAZA, pPlaza.NB_PLAZA, pPlaza.ID_EMPLEADO, pPlaza.ID_PUESTO,pPlaza.ID_DEPARTAMENTO, pPlaza.ID_PLAZA_SUPERIOR, pPlaza.ID_EMPRESA, pPlaza.FG_ACTIVO, pPlaza.XML_GRUPOS, pClUsuario, pNbPrograma, pClTipoOperacion.ToString());
                 return XElement.Parse(pOutClRetorno.Value.ToString());
             }
         }

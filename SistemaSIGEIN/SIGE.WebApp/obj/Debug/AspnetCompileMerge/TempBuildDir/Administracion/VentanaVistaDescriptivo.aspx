@@ -385,16 +385,16 @@
                     <span id="txtTipoPuesto" runat="server"></span>
                 </td>
 
-                <td class="ctrlTableDataContext">
+               <%-- <td class="ctrlTableDataContext">
                     <label id="lblarea" name="lblarea">
                         <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
                         <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>
                         <span style="border: 1px solid gray; background: #0087CF; border-radius: 5px;" title="Metodología para la compensación ">&nbsp;&nbsp;</span>&nbsp;Área:
                     </label>
-                </td>
-                <td class="ctrlTableDataBorderContext">
+                </td>--%>
+              <%--  <td class="ctrlTableDataBorderContext">
                     <span id="txtArea" runat="server"></span>
-                </td>
+                </td>--%>
                 <td class="ctrlTableDataContext">
                     <label id="lblcentroadministrativo" name="lblcentroadministrativo">Centro administrativo: </label>
                 </td>
@@ -407,7 +407,7 @@
                 <td class="ctrlTableDataBorderContext">
                     <span id="txtCentroOptvo" runat="server"></span>
                 </td>
-                <td class="ctrlTableDataContext">
+              <%--  <td class="ctrlTableDataContext">
                     <label id="lblpuestoJefeInmediato" name="lblpuestoJefeInmediato">
                         <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
                         <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>&nbsp;Puesto del jefe inmediato:
@@ -415,13 +415,27 @@
                 </td>
                 <td class="ctrlTableDataBorderContext">
                     <span id="txtPuestoJefe" runat="server"></span>
-                </td>
+                </td>--%>
             </tr>
         </table>
     </div>
-
     <div style="clear: both;"></div>
 
+        <div class="ctrlBasico">
+        <div class="BorderRadioComponenteHTML" style="width: 550px; float: left;">
+            <div class="divBarraTitulo">
+                <label style="float: left">Jefe(s) inmediato(s)</label>
+            </div>
+            <div style="padding: 5px">
+                <div class="ctrlBasico" style="text-align: right; width: 100%;">
+                    <telerik:RadListBox runat="server" ID="lstJefesInmediatos" Width="100%" ButtonSettings-AreaWidth="35px"></telerik:RadListBox>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+     <div style="clear: both;"></div>
     <div>
         <label class="labelTitulo" id="lblTituloPuestos" name="lblTituloPuestos">
             <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>

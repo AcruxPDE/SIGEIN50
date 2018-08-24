@@ -738,8 +738,10 @@ namespace SIGE.WebApp.IDP
 
         protected void dgvBateria_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            PruebasNegocio pruebas = new PruebasNegocio();
-            dgvBateria.DataSource = pruebas.ObtieneBateria();
+            //PruebasNegocio pruebas = new PruebasNegocio();
+            //dgvBateria.DataSource = pruebas.ObtieneBateria();
+            SolicitudNegocio nSolicitudes = new SolicitudNegocio();
+            dgvBateria.DataSource = nSolicitudes.ObtieneCandidatosBaterias();
         }
 
         protected void dgvBateria_ItemCommand(object sender, Telerik.Web.UI.GridCommandEventArgs e)
@@ -789,8 +791,10 @@ namespace SIGE.WebApp.IDP
 
         protected void rgBaterias_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
-            PruebasNegocio pruebas = new PruebasNegocio();
-            rgBaterias.DataSource = pruebas.ObtieneBateria();
+            SolicitudNegocio nSolicitudes = new SolicitudNegocio();
+            rgBaterias.DataSource = nSolicitudes.ObtieneCandidatosBaterias();
+            //PruebasNegocio pruebas = new PruebasNegocio();
+            //rgBaterias.DataSource = pruebas.ObtieneBateria();
         }
 
         protected void btnReinicializar_Click(object sender, EventArgs e)
@@ -822,6 +826,16 @@ namespace SIGE.WebApp.IDP
         protected void btnGuardarIntegracion_Click(object sender, EventArgs e)
         {
             GuardarDatosIntegracion();
+        }
+
+        protected void rgPruebas_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+
+        }
+
+        protected void rgPruebas_DetailTableDataBind(object sender, GridDetailTableDataBindEventArgs e)
+        {
+
         }
 
     }

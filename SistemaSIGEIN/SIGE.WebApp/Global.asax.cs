@@ -51,8 +51,7 @@ namespace SIGE.WebApp
 
 
 
-        protected void Application_PreRequestHandlerExecute(object sender, EventArgs e)
-        
+        protected void Application_PreRequestHandlerExecute(object sender, EventArgs e)   
         {
             //Only access session state if it is available
             if (Context.Handler is IRequiresSessionState || Context.Handler is IReadOnlySessionState)

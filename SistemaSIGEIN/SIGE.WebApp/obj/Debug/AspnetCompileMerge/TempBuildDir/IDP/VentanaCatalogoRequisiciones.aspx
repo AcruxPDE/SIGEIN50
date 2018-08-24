@@ -97,7 +97,7 @@
 
             GetPuestoID();
 
-            var vURL = "/IDP/Requisicion/VentanaDescriptivoPuestoRequisicion.aspx?vCrearAutorizar=Crear";
+            var vURL = "../IDP/Requisicion/VentanaDescriptivoPuestoRequisicion.aspx?vCrearAutorizar=Crear";
             var vTitulo = "Agregar descripción del puesto";
 
 
@@ -338,7 +338,7 @@
             var wnd = GetWindowProperties();
             wnd.vTitulo = "Selección de puesto";
             wnd.vURL = "../Comunes/SeleccionPuesto.aspx?mulSel=0";
-            wnd.vRadWindowId = "winSeleccion";
+            wnd.vRadWindowId = "winSeleccionEmpleados";
             return wnd;
         }
 

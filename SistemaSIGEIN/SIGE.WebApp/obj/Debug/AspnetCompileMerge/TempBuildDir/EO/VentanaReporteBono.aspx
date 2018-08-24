@@ -16,7 +16,7 @@
         }
 
         function OpenWindowPeriodos() {
-            OpenSelectionWindows("/Comunes/SeleccionPeriodosDesempeno.aspx?CL_TIPO=Bono", "winSeleccion", "Seleccion de periodos a comparar");
+            OpenSelectionWindows("../Comunes/SeleccionPeriodosDesempeno.aspx?CL_TIPO=Bono&ID_PERIODO=" + '<%= vIdPeriodo %>', "winSeleccion", "Seleccion de períodos a comparar");
         }
 
         function useDataFromChild(pDato) {
@@ -28,7 +28,7 @@
         }
 
         function OpenWindowComparar() {
-            OpenSelectionWindows("/EO/VentanaComparativaBonos.aspx", "winBonos", "Consulta Bono comparativa - Evaluación del desempeño");
+            OpenSelectionWindows("VentanaComparativaBonos.aspx", "winBonos", "Consulta Bono comparativa - Evaluación de competencias");
         }
 
     </script>
@@ -143,7 +143,7 @@
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" FilterControlWidth="30" HeaderText="No. de empleado" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="130" HeaderText="Nombre completo" DataField="NB_EMPLEADO_COMPLETO" UniqueName="NB_EMPLEADO_COMPLETO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="130" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="M_PUESTO_NB_PUESTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" ColumnGroupName="Bono" HeaderText="Sueldo mensual" DataField="MN_SUELDO" UniqueName="MN_SUELDO" DataType="System.Int32" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:C}" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" FilterControlWidth="30" ColumnGroupName="Bono" HeaderText="Bono máximo" DataField="MN_TOPE_BONO" UniqueName="MN_TOPE_BONO" DataType="System.Int32" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:C}" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" FilterControlWidth="30" ColumnGroupName="Bono" HeaderText="% de bono" DataField="NO_MONTO_BONO" UniqueName="NO_MONTO_BONO" DataType="System.Double" ItemStyle-HorizontalAlign="Right" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
@@ -183,7 +183,7 @@
                 </telerik:RadGrid>
                 <div style="height: 10px; clear: both;"></div>
                 <div class="divControlIzquierda">
-                    <telerik:RadButton ID="btnSeleccionar" runat="server" AutoPostBack="false" Width="200" Text="Seleccionar periodos" OnClientClicked="OpenWindowPeriodos"></telerik:RadButton>
+                    <telerik:RadButton ID="btnSeleccionar" runat="server" AutoPostBack="false" Width="200" Text="Seleccionar períodos" OnClientClicked="OpenWindowPeriodos"></telerik:RadButton>
                 </div>
                 <div class="divControlDerecha">
                     <telerik:RadButton ID="btnComparar" runat="server" AutoPostBack="false" Width="100" Text="Comparar" OnClientClicked="OpenWindowComparar"></telerik:RadButton>

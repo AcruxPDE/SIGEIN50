@@ -19,7 +19,7 @@ namespace SIGE.Negocio.Administracion  // reemplazar por la carpeta correspondie
         public List<SPE_OBTIENE_C_COMPETENCIA_Result> ObtieneCompetencias(int? pIdCompetencia = null, string pClCompetencia = null, string pNbCompetencia = null, string pDsCompetencia = null, string pClTipoCompetencia = null, string pClClasificacion = null, bool? pFgActivo = null, string pXmlCamposAdicionales = null, XElement pXmlSeleccion = null)
 		{  
 		    CompetenciaOperaciones oCompetencia = new CompetenciaOperaciones();
-            return oCompetencia.ObtenerCompetencias(pIdCompetencia, pClCompetencia, pNbCompetencia, pDsCompetencia, pClTipoCompetencia, pClClasificacion, pFgActivo, pXmlCamposAdicionales);
+            return oCompetencia.ObtenerCompetencias(pIdCompetencia, pClCompetencia, pNbCompetencia, pDsCompetencia, pClTipoCompetencia, pClClasificacion, pFgActivo,pXmlCamposAdicionales, pXmlSeleccion);
 		}
 
         public List<SPE_OBTIENE_FACTORES_EVALUACION_TABULADOR_Result> ObtenerFactoresValuacion(int? pIdFactor = null)

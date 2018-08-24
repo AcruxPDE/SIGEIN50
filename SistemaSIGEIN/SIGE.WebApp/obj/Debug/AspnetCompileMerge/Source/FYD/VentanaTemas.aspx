@@ -55,7 +55,7 @@
             var vBtnGuradarMaterial = $find("<%= rpvVentanaCompetencia.FindControl("radBtnGuardarMaterial").ClientID %>");
 
             if (sender == vBtnGuardarCompetencia)
-                openChildDialog("/Comunes/SeleccionCompetencia.aspx", "winSeleccionCompetencia", "Selección de competencia");
+                openChildDialog("../Comunes/SeleccionCompetencia.aspx", "winSeleccionCompetencia", "Selección de competencia");
 
             if (sender == vBtnGuradarMaterial)
                 openChildDialog("VentanaTemaMateriales.aspx", "winMaterial", "Agregar material");

@@ -93,7 +93,7 @@
                                                 <label id="Label2" name="lbNotas" runat="server">Notas:</label>
                                             </td>
                                             <td  class="ctrlTableDataBorderContext">
-                                                <label id="txtNotas" runat="server"></label>
+                                                <div id="txtNotas" runat="server"></div>
                                             </td>
                                         </tr>
                                          <tr>
@@ -188,7 +188,7 @@
                                     </Columns>
                                 </MasterTableView>
                             </telerik:RadGrid>
-                            <label id="lbMensaje" runat="server" visible="false" style="color: red;">Todos los cuestionarios para este periodo han sido enviados y contestados.</label>
+                            <label id="lbMensaje" runat="server" visible="false" style="color: red;">No hay cuestionarios creados que enviar o todos los cuestionarios para este período han sido enviados y contestados.</label>
                         </div>
                         <div style="clear: both; height: 10px;"></div>
                         <div class="divControlDerecha">

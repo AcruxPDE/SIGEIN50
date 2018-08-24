@@ -55,6 +55,8 @@ namespace SIGE.WebApp.EO
             set { ViewState["vs_vXmlFiltros"] = value; }
         }
 
+        public int? vIdRol;
+
         #endregion
 
         #region Funciones
@@ -136,6 +138,8 @@ namespace SIGE.WebApp.EO
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
+
             if (!IsPostBack)
             {
                 if (Request.Params["PeriodoID"] != null)
@@ -172,10 +176,56 @@ namespace SIGE.WebApp.EO
                     if (vPeriodoClima.CL_ORIGEN_CUESTIONARIO == "COPIA")
                         lbCuestionario.InnerText = "Copia de otro periodo";
                     if (vPeriodoClima.CL_ORIGEN_CUESTIONARIO == "VACIO")
-                        lbCuestionario.InnerText = "Creado desde cero";
+                        lbCuestionario.InnerText = "Creado en blanco";
 
 
                     MostrarPromedioIndice();
+
+                    if (Request.Params["ClDestino"] != null)
+                    {
+                        string vClDestino = Request.Params["ClDestino"].ToString();
+
+                        if (vClDestino == "INDICE")
+                        {
+                            tbReportes.Tabs[1].Selected = true;
+                            mpgReportes.PageViews[1].Selected = true;
+                            divContexto.Style.Add("display", "none");
+                            divIndice.Style.Add("display", "block");
+                            divDistribucion.Style.Add("display", "none");
+                            divPreguntas.Style.Add("display", "none");
+                            divGlobal.Style.Add("display", "none");
+                        }
+                        else if (vClDestino == "DISTRIBUCION")
+                        {
+                            tbReportes.Tabs[2].Selected = true;
+                            mpgReportes.PageViews[2].Selected = true;
+                            divContexto.Style.Add("display", "none");
+                            divIndice.Style.Add("display", "none");
+                            divDistribucion.Style.Add("display", "block");
+                            divPreguntas.Style.Add("display", "none");
+                            divGlobal.Style.Add("display", "none");
+                        }
+                        else if (vClDestino == "PREGUNTAS")
+                        {
+                            tbReportes.Tabs[3].Selected = true;
+                            mpgReportes.PageViews[3].Selected = true;
+                            divContexto.Style.Add("display", "none");
+                            divIndice.Style.Add("display", "none");
+                            divDistribucion.Style.Add("display", "none");
+                            divPreguntas.Style.Add("display", "block");
+                            divGlobal.Style.Add("display", "none");
+                        }
+                        else if (vClDestino == "GENERAL")
+                        {
+                            tbReportes.Tabs[4].Selected = true;
+                            mpgReportes.PageViews[4].Selected = true;
+                            divContexto.Style.Add("display", "none");
+                            divIndice.Style.Add("display", "none");
+                            divDistribucion.Style.Add("display", "none");
+                            divPreguntas.Style.Add("display", "none");
+                            divGlobal.Style.Add("display", "block");
+                        }
+                    }
                     //int countFiltros = nClima.ObtenerFiltrosEvaluadores(vIdPeriodo).Count;
                     //if (countFiltros > 0)
                     //{
@@ -251,6 +301,7 @@ namespace SIGE.WebApp.EO
         {
             //MostrarGraficaIndice(int.Parse(cmbIndiceSatisfaccion.SelectedValue),null);
             FiltrosIndice();
+
             rgdGraficasIndice.Rebind();
         }
 
@@ -280,37 +331,44 @@ namespace SIGE.WebApp.EO
                 string vColorColumna = ColoresPoncentajes(item.PORCENTAJE);
                 Color vColor = System.Drawing.ColorTranslator.FromHtml(vColorColumna);
                 vCsIndiceSatisfaccion.SeriesItems.Add(item.PORCENTAJE, vColor);
+                rhtColumnChart.PlotArea.YAxis.MaxValue = 100;
+                rhtColumnChart.PlotArea.YAxis.MinValue = 0;
+                rhtColumnChart.PlotArea.YAxis.Step = 10;
                 vCsIndiceSatisfaccion.LabelsAppearance.Visible = false;
                 vCsIndiceSatisfaccion.LabelsAppearance.DataFormatString = "{0:N1}";
                 vCsIndiceSatisfaccion.LabelsAppearance.RotationAngle = 270;
                 vCsIndiceSatisfaccion.TooltipsAppearance.ClientTemplate = item.NOMBRE;
+                vCsIndiceSatisfaccion.TooltipsAppearance.Color = Color.Black;
                 //rhtColumnChart.PlotArea.XAxis.Items.Add(item.NO_NOMBRE.ToString());
                 rhtColumnChart.PlotArea.Series.Add(vCsIndiceSatisfaccion);
             }
 
-
+            
             rgdGraficasIndice.DataSource = plstPorcentajes;
             rgdGraficasIndice.DataBind();
         }
 
         protected void GraficaDimension(XElement pFiltros)
         {
+            rgdGraficasIndice.MasterTableView.GetColumn("NOMBRE").HeaderText = "Dimensión"; 
             ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            List<E_GRAFICAS> vGraficaDimension = nClima.ObtieneGraficaDimension(pID_PERIODO: vIdPeriodo, pXML_FILTROS: pFiltros).Select(s => new E_GRAFICAS { NO_NOMBRE = int.Parse(s.NO_DIMENSION.ToString()), NOMBRE = s.NB_DIMENSION, PORCENTAJE = s.PR_DIMENSION, COLOR_PORCENTAJE = s.COLOR_DIMENSION }).ToList();
+            List<E_GRAFICAS> vGraficaDimension = nClima.ObtieneGraficaDimension(pID_PERIODO: vIdPeriodo, pXML_FILTROS: pFiltros, pIdRol:vIdRol).Select(s => new E_GRAFICAS { NO_NOMBRE = int.Parse(s.NO_DIMENSION.ToString()), NOMBRE = s.NB_DIMENSION, PORCENTAJE = s.PR_DIMENSION, COLOR_PORCENTAJE = s.COLOR_DIMENSION }).ToList();
             GraficasIndiceSatisfaccion(vGraficaDimension);
         }
 
         protected void GraficaTema(XElement pFiltros)
         {
+            rgdGraficasIndice.MasterTableView.GetColumn("NOMBRE").HeaderText = "Tema"; 
             ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            List<E_GRAFICAS> vGraficaTema = nClima.ObtieneGraficaTema(pID_PERIODO: vIdPeriodo, pXML_FILTROS: pFiltros).Select(s => new E_GRAFICAS { NO_NOMBRE = int.Parse(s.NO_TEMA.ToString()), NOMBRE = s.NB_TEMA, PORCENTAJE = s.PR_TEMA, COLOR_PORCENTAJE = s.COLOR_TEMA }).ToList();
+            List<E_GRAFICAS> vGraficaTema = nClima.ObtieneGraficaTema(pID_PERIODO: vIdPeriodo, pXML_FILTROS: pFiltros, pIdRol: vIdRol).Select(s => new E_GRAFICAS { NO_NOMBRE = int.Parse(s.NO_TEMA.ToString()), NOMBRE = s.NB_TEMA, PORCENTAJE = s.PR_TEMA, COLOR_PORCENTAJE = s.COLOR_TEMA }).ToList();
             GraficasIndiceSatisfaccion(vGraficaTema);
         }
 
         protected void GraficaPregunta(XElement pFiltros)
         {
+            rgdGraficasIndice.MasterTableView.GetColumn("NOMBRE").HeaderText = "Pregunta"; 
             ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            List<E_GRAFICAS> vGraficaPregunta = nClima.ObtieneGraficaPregunta(pID_PERIODO: vIdPeriodo, pXML_FILTROS: pFiltros).Select(s => new E_GRAFICAS { NO_NOMBRE = int.Parse(s.NO_PREGUNTA.ToString()), NOMBRE = s.NB_PREGUNTA, PORCENTAJE = s.PR_PREGUNTA, COLOR_PORCENTAJE = s.COLOR_PREGUNTA }).ToList();
+            List<E_GRAFICAS> vGraficaPregunta = nClima.ObtieneGraficaPregunta(pID_PERIODO: vIdPeriodo, pXML_FILTROS: pFiltros, pIdRol: vIdRol).Select(s => new E_GRAFICAS { NO_NOMBRE = int.Parse(s.NO_PREGUNTA.ToString()), NOMBRE = s.NB_PREGUNTA, PORCENTAJE = s.PR_PREGUNTA, COLOR_PORCENTAJE = s.COLOR_PREGUNTA }).ToList();
             GraficasIndiceSatisfaccion(vGraficaPregunta);
         }
 
@@ -411,21 +469,21 @@ namespace SIGE.WebApp.EO
         protected void GraficaDistribucionDimension(string pNbDimension, XElement pFiltros)
         {
             ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            List<E_GRAFICAS> vGraficaDimension = nClima.ObtieneGraficaDistribucionDimension(pID_PERIODO: vIdPeriodo, pNB_DIMENSION: pNbDimension, pXML_FILTROS: pFiltros).Select(s => new E_GRAFICAS { NO_CANTIDAD = s.NO_CANTIDAD, NOMBRE = Respuesta((decimal)s.NO_RESPUESTA), PORCENTAJE = s.PR_DIMENSION, NO_RESPUESTA = s.NO_RESPUESTA }).ToList();
+            List<E_GRAFICAS> vGraficaDimension = nClima.ObtieneGraficaDistribucionDimension(pID_PERIODO: vIdPeriodo, pNB_DIMENSION: pNbDimension, pXML_FILTROS: pFiltros, pIdRol:vIdRol).Select(s => new E_GRAFICAS { NO_CANTIDAD = s.NO_CANTIDAD, NOMBRE = Respuesta((decimal)s.NO_RESPUESTA), PORCENTAJE = s.PR_DIMENSION, NO_RESPUESTA = s.NO_RESPUESTA }).ToList();
             GraficasDistribucion(vGraficaDimension);
         }
 
         protected void GraficaDistribucionTemas(string pNbTema, XElement pFiltros)
         {
             ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            List<E_GRAFICAS> vGraficaTemas = nClima.ObtieneGraficaDistribucionTema(pID_PERIODO: vIdPeriodo, pNB_TEMA: pNbTema, pXML_FILTROS: pFiltros).Select(s => new E_GRAFICAS { NO_CANTIDAD = s.NO_CANTIDAD, NOMBRE = Respuesta((decimal)s.NO_RESPUESTA), PORCENTAJE = s.PR_TEMA, NO_RESPUESTA = s.NO_RESPUESTA }).ToList();
+            List<E_GRAFICAS> vGraficaTemas = nClima.ObtieneGraficaDistribucionTema(pID_PERIODO: vIdPeriodo, pNB_TEMA: pNbTema, pXML_FILTROS: pFiltros, pIdRol:vIdRol).Select(s => new E_GRAFICAS { NO_CANTIDAD = s.NO_CANTIDAD, NOMBRE = Respuesta((decimal)s.NO_RESPUESTA), PORCENTAJE = s.PR_TEMA, NO_RESPUESTA = s.NO_RESPUESTA }).ToList();
             GraficasDistribucion(vGraficaTemas);
         }
 
         protected void GraficaDistribucionPreguntas(string pNbPregunta, XElement pFiltros)
         {
             ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            List<E_GRAFICAS> vGraficaPregunta = nClima.ObtieneGraficaDistribucionPregunta(pID_PERIODO: vIdPeriodo, pNB_PREGUNTA: pNbPregunta, pXML_FILTROS: pFiltros.ToString()).Select(s => new E_GRAFICAS { NO_CANTIDAD = s.NO_CANTIDAD, NOMBRE = Respuesta((decimal)s.NO_RESPUESTA), PORCENTAJE = s.PR_PREGUNTA, NO_RESPUESTA = s.NO_RESPUESTA }).ToList();
+            List<E_GRAFICAS> vGraficaPregunta = nClima.ObtieneGraficaDistribucionPregunta(pID_PERIODO: vIdPeriodo, pNB_PREGUNTA: pNbPregunta, pXML_FILTROS: pFiltros.ToString(), pIdRol: vIdRol).Select(s => new E_GRAFICAS { NO_CANTIDAD = s.NO_CANTIDAD, NOMBRE = Respuesta((decimal)s.NO_RESPUESTA), PORCENTAJE = s.PR_PREGUNTA, NO_RESPUESTA = s.NO_RESPUESTA }).ToList();
             GraficasDistribucion(vGraficaPregunta);
         }
 
@@ -439,7 +497,9 @@ namespace SIGE.WebApp.EO
                 string vColorColumna = ColorRespuesta(item.NO_RESPUESTA);
                 Color vColor = System.Drawing.ColorTranslator.FromHtml(vColorColumna);
                 vSerie.SeriesItems.Add(item.PORCENTAJE, vColor, item.NOMBRE);
-                vSerie.LabelsAppearance.DataFormatString = "{0:N2}%";
+                //vSerie.LabelsAppearance.DataFormatString = "{0:N2}%";
+                vSerie.LabelsAppearance.Visible = false;
+                vSerie.TooltipsAppearance.DataFormatString = "{0:N2}%";
             }
             rhcGraficaDistribucion.PlotArea.Series.Add(vSerie);
             rgGraficaDistribucion.DataSource = plstPorcentajes;
@@ -468,7 +528,7 @@ namespace SIGE.WebApp.EO
         protected void GraficaDistribucionGlobal()
         {
             ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            List<E_GRAFICAS> vGraficaGlobal = nClima.ObtieneGraficaGlobal(pID_PERIODO: vIdPeriodo).Select(s => new E_GRAFICAS { NO_CANTIDAD = s.NO_CANTIDAD, NOMBRE = Respuesta((decimal)s.NO_RESPUESTA), PORCENTAJE = s.PR_GLOBAL, NO_RESPUESTA = s.NO_RESPUESTA }).ToList();
+            List<E_GRAFICAS> vGraficaGlobal = nClima.ObtieneGraficaGlobal(pID_PERIODO: vIdPeriodo, pID_ROL: vIdRol).Select(s => new E_GRAFICAS { NO_CANTIDAD = s.NO_CANTIDAD, NOMBRE = Respuesta((decimal)s.NO_RESPUESTA), PORCENTAJE = s.PR_GLOBAL, NO_RESPUESTA = s.NO_RESPUESTA }).ToList();
             GraficaGlobal(vGraficaGlobal);
         }
 
@@ -481,10 +541,14 @@ namespace SIGE.WebApp.EO
                 string vColorColumna = ColorRespuesta(item.NO_RESPUESTA);
                 Color vColor = System.Drawing.ColorTranslator.FromHtml(vColorColumna);
                 vSerie.SeriesItems.Add(item.PORCENTAJE, vColor, item.NOMBRE);
-                vSerie.LabelsAppearance.DataFormatString = "{0:N2}%";
+                //vSerie.LabelsAppearance.DataFormatString = "{0:N2}%";
+                vSerie.LabelsAppearance.Visible = false;
+                vSerie.TooltipsAppearance.DataFormatString = "{0:N2}%";
                 rhcGraficaGlobal.PlotArea.XAxis.Items.Add(item.NO_NOMBRE.ToString());
                 rhcGraficaGlobal.PlotArea.XAxis.LabelsAppearance.DataFormatString = item.NO_NOMBRE.ToString();
             }
+            
+            
             rhcGraficaGlobal.PlotArea.Series.Add(vSerie);
             rgGraficaGlobal.DataSource = plstPorcentajes;
             rgGraficaGlobal.DataBind();
@@ -536,11 +600,13 @@ namespace SIGE.WebApp.EO
 
             if (rbEdadIndice.Checked == true)
             {
+
                 vXlmEdad = new XElement("EDAD", new XAttribute("EDAD_INICIAL", rnEdadInicial.Text), new XAttribute("EDAD_FINAL", rnEdadFinal.Text));
                 vXlmFiltros.Add(vXlmEdad);
             }
             if (rbAntiguedadIndice.Checked == true)
             {
+
                 vXlmAntiguedad = new XElement("ANTIGUEDAD", new XAttribute("ANTIGUEDAD_INICIAL", rnAntiguedadInicial.Text), new XAttribute("ANTIGUEDAD_FINAL", rnAtiguedadFinal.Text));
                 vXlmFiltros.Add(vXlmAntiguedad);
             }
@@ -670,7 +736,7 @@ namespace SIGE.WebApp.EO
             GridDataItem datItem = (GridDataItem)e.DetailTableView.ParentItem;
             int vIdPregunta = int.Parse(datItem.GetDataKeyValue("ID_PREGUNTA").ToString());
             ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            e.DetailTableView.DataSource = nClima.ObtenerRespuestasAbiertas(pIdPeriodo: vIdPeriodo, pIdPregunta: vIdPregunta, pXmlFiltros: vXmlFiltrosPre).ToList();
+            e.DetailTableView.DataSource = nClima.ObtenerRespuestasAbiertas(pIdPeriodo: vIdPeriodo, pIdPregunta: vIdPregunta, pXmlFiltros: vXmlFiltrosPre, pIdRol: vIdRol).ToList();
         }
 
         protected void rgResultadosPreguntas_ItemCommand(object sender, GridCommandEventArgs e)

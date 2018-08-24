@@ -70,7 +70,7 @@
     <telerik:RadSplitter ID="splPuesto" runat="server" Width="100%" Height="100%" BorderSize="0">
         <telerik:RadPane ID="rpnGridPuesto" runat="server">
             <div style="height: calc(100% - 54px);">
-                <telerik:RadGrid ID="grdPuesto" HeaderStyle-Font-Bold="true" runat="server" Height="100%" AllowMultiRowSelection="true" OnNeedDataSource="grdPuesto_NeedDataSource" AutoGenerateColumns="false" EnableHeaderContextMenu="true" OnItemDataBound="grdPuesto_ItemDataBound" ShowGroupPanel="true" AllowSorting="true">
+                <telerik:RadGrid ID="grdPuesto" HeaderStyle-Font-Bold="true" runat="server" Height="100%" AllowMultiRowSelection="true" OnNeedDataSource="grdPuesto_NeedDataSource" AutoGenerateColumns="false" EnableHeaderContextMenu="true" OnItemDataBound="grdPuesto_ItemDataBound" ShowGroupPanel="false" AllowSorting="true">
                     <ClientSettings>
                         <Scrolling UseStaticHeaders="true" AllowScroll="true" />
                         <Selecting AllowRowSelect="true" />
@@ -83,7 +83,7 @@
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="90" HeaderText="Clave" DataField="CL_PUESTO" UniqueName="CL_PUESTO">
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="90" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="NB_PUESTO"></telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="90" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="90" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO"></telerik:GridBoundColumn>
                         </Columns>
                     </MasterTableView>
                 </telerik:RadGrid>

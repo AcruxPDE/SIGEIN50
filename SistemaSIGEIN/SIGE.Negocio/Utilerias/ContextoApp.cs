@@ -10,6 +10,7 @@ using System.Net.Mail;
 using SIGE.Entidades.Administracion;
 //Licencia
 using System.Linq;
+using SIGE.Negocio.AdministracionSitio;
 
 namespace SIGE.Negocio.Utilerias
 {
@@ -56,6 +57,14 @@ namespace SIGE.Negocio.Utilerias
 
         public static PuntodeEncuentro PDE { get; set; }
 
+        public static AccesoNomina ANOM { get; set; }
+
+        //Lista Campos Nomina - DO
+        public static List<E_CAMPO_NOMINA_DO> vLstCamposNominaDO { get; set; }
+
+        //Idioma del sistema
+        public static string clCultureIdioma { get; set; }
+
         static ContextoApp()
         {
             ConfiguracionOperaciones oConfiguracion = new ConfiguracionOperaciones();
@@ -66,6 +75,9 @@ namespace SIGE.Negocio.Utilerias
 
             XElement vXmlConfiguracion = XElement.Parse(vConfiguracion.XML_CONFIGURACION);
             XElement vXmlInfoEmpresa = vXmlConfiguracion.Element("EMPRESA");
+
+            CamposNominaNegocio nNegocio = new CamposNominaNegocio();
+            vLstCamposNominaDO = nNegocio.ObtenerConfiguracionCampo();
 
             Licencia = new LicenciaSistema();
             InfoEmpresa = new Empresa();
@@ -117,6 +129,11 @@ namespace SIGE.Negocio.Utilerias
             };
 
             ClRutaArchivosTemporales = @"~/App_Data";
+
+            //Idioma del sistema 
+          //  clCultureIdioma = UtilXML.ValorAtributo<string>(vXmlConfiguracion.Element("IDIOMA").Attribute("CULTURE"));
+            clCultureIdioma = "ES";
+
 
             IDP = new IntegracionDePersonal();
             foreach (XElement vXmlMensaje in vXmlConfiguracionIDP.Element("MENSAJES").Elements("MENSAJE"))
@@ -322,9 +339,9 @@ namespace SIGE.Negocio.Utilerias
                 }
 
             foreach (XElement vXmlMensaje in vXmlConfiguracionEO.Element("CONFIGURACION").Element("MENSAJES").Elements("MENSAJE"))
-                if ((UtilXML.ValorAtributo<string>(vXmlMensaje.Attribute("CL_MENSAJE")) == "MENSAJE_BAJA_EMPLEADO"))
+                if ((UtilXML.ValorAtributo<string>(vXmlMensaje.Attribute("CL_MENSAJE")) == "MENSAJE_BAJA_REPLICA"))
                 {
-                    EO.Configuracion.MensajeBajaEmpleado.dsMensaje = vXmlMensaje.Value;
+                    EO.Configuracion.MensajeBajaReplica.dsMensaje = vXmlMensaje.Value;
                 }
 
             foreach (XElement vXmlMensaje in vXmlConfiguracionEO.Element("CONFIGURACION").Element("MENSAJES").Elements("MENSAJE"))
@@ -332,6 +349,12 @@ namespace SIGE.Negocio.Utilerias
                 {
                     EO.Configuracion.MensajeBajaNotificador.dsMensaje = vXmlMensaje.Value;
                 }
+
+            //foreach (XElement vXmlMensaje in vXmlConfiguracionEO.Element("CONFIGURACION").Element("MENSAJES").Elements("MENSAJE"))
+            //    if ((UtilXML.ValorAtributo<string>(vXmlMensaje.Attribute("CL_MENSAJE")) == "MENSAJE_BAJA_REPLICA"))
+            //    {
+            //        EO.Configuracion.MensajeBajaReplica.dsMensaje = vXmlMensaje.Value;
+            //    }
 
             MPC = new Metodologia();
 
@@ -348,6 +371,8 @@ namespace SIGE.Negocio.Utilerias
             PDE = new PuntodeEncuentro();
 
             //Licencia
+            ANOM = new AccesoNomina();
+
         }
 
         public static E_RESULTADO SaveConfiguration(string pClUsuario, string pNbPrograma)
@@ -507,7 +532,7 @@ namespace SIGE.Negocio.Utilerias
                         new XElement("MENSAJES",
                             new XElement("MENSAJE", new XAttribute("CL_MENSAJE", "MENSAJE_CAPTURA_RESULTADOS"), EO.Configuracion.MensajeCapturaResultados.dsMensaje),
                             new XElement("MENSAJE", new XAttribute("CL_MENSAJE", "MENSAJE_IMPORTANTE"), EO.Configuracion.MensajeImportantes.dsMensaje),
-                            new XElement("MENSAJE", new XAttribute("CL_MENSAJE", "MENSAJE_BAJA_EMPLEADO"), EO.Configuracion.MensajeBajaEmpleado.dsMensaje),
+                            new XElement("MENSAJE", new XAttribute("CL_MENSAJE", "MENSAJE_BAJA_REPLICA"), EO.Configuracion.MensajeBajaReplica.dsMensaje),
                             new XElement("MENSAJE", new XAttribute("CL_MENSAJE", "MENSAJE_BAJA_NOTIFICADOR"), EO.Configuracion.MensajeBajaNotificador.dsMensaje)))
                         )
                 );
@@ -742,8 +767,9 @@ namespace SIGE.Negocio.Utilerias
     {
         public Mensaje MensajeCapturaResultados { get; set; }
         public Mensaje MensajeImportantes { get; set; }
-        public Mensaje MensajeBajaEmpleado { get; set; }
+        //public Mensaje MensajeBajaEmpleado { get; set; }
         public Mensaje MensajeBajaNotificador { get; set; }
+        public Mensaje MensajeBajaReplica { get; set; }
 
         public decimal NivelMinimoIndividualIndependiente { get; set; }
         public decimal BonoMinimoIndividualIndependiente { get; set; }
@@ -762,8 +788,9 @@ namespace SIGE.Negocio.Utilerias
 
         public ConfiguracionEvaluacionOrganizacional()
         {
-            MensajeBajaEmpleado = new Mensaje();
+            //MensajeBajaEmpleado = new Mensaje();
             MensajeBajaNotificador = new Mensaje();
+            MensajeBajaReplica = new Mensaje();
             MensajeCapturaResultados = new Mensaje();
             MensajeImportantes = new Mensaje();
             NivelMinimoIndividualIndependiente = 0;
@@ -859,5 +886,19 @@ namespace SIGE.Negocio.Utilerias
             LicenciaPuntoEncuentro = new LicenciaModulo();
         }
     }
+
+    public class AccesoNomina
+    {
+
+        //Licencia
+        public LicenciaModulo LicenciaAccesoModulo { get; set; }
+
+        public AccesoNomina()
+        {
+            LicenciaAccesoModulo = new LicenciaModulo();
+        }
+       
+    }
+
 }
 

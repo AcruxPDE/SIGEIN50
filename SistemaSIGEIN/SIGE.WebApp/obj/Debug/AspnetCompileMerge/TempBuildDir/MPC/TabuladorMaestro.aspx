@@ -36,18 +36,20 @@
             }
 
             function OpenWindow() {
-
-                openChildDialog("/MPC/TabuladorNivel.aspx?&ID=" + <%=vIdTabulador%> + "", "winSeleccion", "Niveles")
+                var myUrl = '<%= ResolveClientUrl("TabuladorNivel.aspx") %>';
+                openChildDialog(myUrl + "?&ID=" + <%=vIdTabulador%> + "", "winSeleccion", "Niveles")
             }
 
             function OpenWindowConfiguracion() {
-                openChildDialog("/MPC/VentanaConfigurarTabulador.aspx?&CL_CONFIGURAR=OCULTAR" + "&ID=" +<%=vIdTabulador%> +"", "winSeleccion", "Configurar")
+                var myUrl = '<%= ResolveClientUrl("VentanaConfigurarTabulador.aspx") %>';
+                openChildDialog(myUrl + "?&CL_CONFIGURAR=OCULTAR" + "&ID=" +<%=vIdTabulador%> +"", "winSeleccion", "Configurar")
             }
 
             function OpenWindowTabuladores() {
                 var vIdTabulador = '<%=vIdTabulador%>';
+                var myUrl = '<%= ResolveClientUrl("SeleccionTabulador.aspx") %>';
                 if (vIdTabulador != null)
-                    openChildDialog("SeleccionTabulador.aspx?pFgMultSeleccion=0&pIdTabulador=" + vIdTabulador, "winSeleccion", "Selección de tabulador a copiar");
+                    openChildDialog(myUrl + "?pFgMultSeleccion=0&pIdTabulador=" + vIdTabulador, "winSeleccion", "Selección de tabulador a copiar");
             }
 
             function useDataFromChild(pDato) {
@@ -292,7 +294,7 @@
                                             <telerik:RadNumericTextBox runat="server" ID="txnMaximo" Type="Currency" AutoPostBack="false" Name="txnMaximo" Width="140px" Text='<%#Eval("MN_MAXIMO") %>' MinValue="0" ShowSpinButtons="true" NumberFormat-DecimalDigits="2" ></telerik:RadNumericTextBox>
                                         </ItemTemplate>
                                     </telerik:GridTemplateColumn>
-                                    <telerik:GridTemplateColumn AutoPostBackOnFilter="true" HeaderStyle-Width="150" FilterControlWidth="70" HeaderText="Siguiente año" DataField="MN_SIGUIENTE" UniqueName="MN_SIGUIENTE" ItemStyle-HorizontalAlign="Right">
+                                    <telerik:GridTemplateColumn AutoPostBackOnFilter="true" HeaderStyle-Width="150" FilterControlWidth="70" HeaderText="Siguiente año" DataField="MN_SIGUIENTE" UniqueName="MN_SIGUIENTE" ItemStyle-HorizontalAlign="Left">
                                         <ItemTemplate>
                                             <%# string.Format("{0:C}",(Eval("MN_SIGUIENTE"))) %>
                                         </ItemTemplate>

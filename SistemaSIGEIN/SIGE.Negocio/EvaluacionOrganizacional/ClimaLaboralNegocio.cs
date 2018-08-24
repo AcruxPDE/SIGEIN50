@@ -42,10 +42,10 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
             return UtilRespuesta.EnvioRespuesta(operaciones.InsertarActualizarEvaluadorClima(pID_PERDIODO, pXML_EVALUADORES, pCL_USUARIO, pNB_PROGRAMA, pTIPO_TRANSACCION));
         }
 
-        public List<SPE_OBTIENE_EO_EVALUADORES_CLIMA_LAB_Result> ObtieneEvaluadoresClima(int? pID_PERIODO = null, int? pID_EMPLEADO = null, int? pID_PUESTO = null, int? pID_EVALUADOR = null)
+        public List<SPE_OBTIENE_EO_EVALUADORES_CLIMA_LAB_Result> ObtieneEvaluadoresClima(int? pID_PERIODO = null, int? pID_EMPLEADO = null, int? pID_PUESTO = null, int? pID_EVALUADOR = null, int? pID_ROL = null)
         {
             ClimaLaboralOperaciones oPeriodo = new ClimaLaboralOperaciones();
-            return oPeriodo.ObtenerEvaluadoresClima(pID_PERIODO, pID_EMPLEADO, pID_PUESTO, pID_EVALUADOR);
+            return oPeriodo.ObtenerEvaluadoresClima(pID_PERIODO, pID_EMPLEADO, pID_PUESTO, pID_EVALUADOR, pID_ROL);
         }
 
         public E_RESULTADO InsertaActualizaPreguntasPeriodo(int? pID_PERIODO, E_PREGUNTAS_PERIODO_CLIMA pPREGUNTAS_PERIODO, string pCL_USUARIO, string pPROGRAMA_APP, string pTIPO_TRANSACCION)
@@ -98,7 +98,7 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
 
             List<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result> vLstEvaluadores = new List<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result>();
             if (pIdEvaluador == null)
-                vLstEvaluadores = oPeriodo.ObtenerTokenEvaluadoresClima(pIdPeriodo);
+                vLstEvaluadores = oPeriodo.ObtenerTokenEvaluadoresClima(pIdPeriodo, null);
             else
                 vLstEvaluadores.Add(new SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result() { ID_EVALUADOR = pIdEvaluador ?? 0 });
 
@@ -121,10 +121,10 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
         }
 
 
-        public List<SPE_OBTIENE_EO_PREGUNTAS_CUESTIONARIO_Result> ObtieneCuestionario(int? pID_EVALUADOR = null, int? pID_PERIODO = null)
+        public List<SPE_OBTIENE_EO_PREGUNTAS_CUESTIONARIO_Result> ObtieneCuestionario(int? pID_EVALUADOR = null, int? pID_PERIODO = null, System.Guid? pFlEvaluador = null)
         {
             ClimaLaboralOperaciones oPeriodo = new ClimaLaboralOperaciones();
-            return oPeriodo.ObtenerCuestionario(pID_EVALUADOR, pID_PERIODO);
+            return oPeriodo.ObtenerCuestionario(pID_EVALUADOR, pID_PERIODO, pFlEvaluador);
         }
 
         public E_RESULTADO ActualizaPreguntasCuestionario(string pXML_RESPUESTAS, string pXmlPreguntasAbiertas, bool pFG_CONTESTADO, int pID_EVALUADOR, string pCL_USUARIO, string pPROGRAMA_APP)
@@ -140,52 +140,52 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
             return UtilRespuesta.EnvioRespuesta(operaciones.InsertarCuestionarioConfiable(pID_PERIODO, pPIN_XML_RESPUESTAS, pPIN_XML_PREGUNTAS_ABIERTAS, pPIN_XML_DATOS_EVALUADOR, pPIN_XML_DATOS_CAMPOS_EXTRA, pClUsuario, pNbPrograma));
         }
 
-        public List<SPE_OBTIENE_CONTROL_AVANCE_EO_DATOS_GRAFICA_Result> ObtieneControlAvance(int? pID_PERIODO = null)
+        public List<SPE_OBTIENE_CONTROL_AVANCE_EO_DATOS_GRAFICA_Result> ObtieneControlAvance(int? pID_PERIODO = null, int? pID_ROL = null)
         {
             ClimaLaboralOperaciones oPeriodo = new ClimaLaboralOperaciones();
-            return oPeriodo.ObtenerControlAvance(pID_PERIODO);
+            return oPeriodo.ObtenerControlAvance(pID_PERIODO, pID_ROL);
         }
 
-        public List<SPE_OBTIENE_EO_EVALUADORES_CUESTIONARIO_Result> ObtieneEvaluadoresCuestionario(int? pID_PERIODO = null, int? pID_EMPLEADO = null, int? pID_PUESTO = null, int? pID_EVALUADOR = null)
+        public List<SPE_OBTIENE_EO_EVALUADORES_CUESTIONARIO_Result> ObtieneEvaluadoresCuestionario(int? pID_PERIODO = null, int? pID_EMPLEADO = null, int? pID_PUESTO = null, int? pID_EVALUADOR = null, int? pIdRol = null)
         {
             ClimaLaboralOperaciones oPeriodo = new ClimaLaboralOperaciones();
-            return oPeriodo.ObtenerEvaluadoresCuestionario(pID_PERIODO, pID_EMPLEADO, pID_PUESTO, pID_EVALUADOR);
+            return oPeriodo.ObtenerEvaluadoresCuestionario(pID_PERIODO, pID_EMPLEADO, pID_PUESTO, pID_EVALUADOR, pIdRol);
         }
 
-        public List<SPE_OBTIENE_EO_GRAFICA_INDICE_DIMENSION_Result> ObtieneGraficaDimension(int? pID_PERIODO = null, XElement pXML_FILTROS = null)
+        public List<SPE_OBTIENE_EO_GRAFICA_INDICE_DIMENSION_Result> ObtieneGraficaDimension(int? pID_PERIODO = null, XElement pXML_FILTROS = null, int? pIdRol = null)
         {
             ClimaLaboralOperaciones oPeriodo = new ClimaLaboralOperaciones();
-            return oPeriodo.ObtenerGraficaDimension(pID_PERIODO, pXML_FILTROS);
+            return oPeriodo.ObtenerGraficaDimension(pID_PERIODO, pXML_FILTROS, pIdRol);
         }
 
-        public List<SPE_OBTIENE_EO_GRAFICA_INDICE_TEMA_Result> ObtieneGraficaTema(int? pID_PERIODO = null, XElement pXML_FILTROS = null)
+        public List<SPE_OBTIENE_EO_GRAFICA_INDICE_TEMA_Result> ObtieneGraficaTema(int? pID_PERIODO = null, XElement pXML_FILTROS = null, int? pIdRol = null)
         {
             ClimaLaboralOperaciones oPeriodo = new ClimaLaboralOperaciones();
-            return oPeriodo.ObtenerGraficaTema(pID_PERIODO, pXML_FILTROS);
+            return oPeriodo.ObtenerGraficaTema(pID_PERIODO, pXML_FILTROS, pIdRol);
         }
 
-        public List<SPE_OBTIENE_EO_GRAFICA_INDICE_PREGUNTA_Result> ObtieneGraficaPregunta(int? pID_PERIODO = null, XElement pXML_FILTROS = null)
+        public List<SPE_OBTIENE_EO_GRAFICA_INDICE_PREGUNTA_Result> ObtieneGraficaPregunta(int? pID_PERIODO = null, XElement pXML_FILTROS = null, int? pIdRol = null)
         {
             ClimaLaboralOperaciones oPeriodo = new ClimaLaboralOperaciones();
-            return oPeriodo.ObtenerGraficaPregunta(pID_PERIODO, pXML_FILTROS);
+            return oPeriodo.ObtenerGraficaPregunta(pID_PERIODO, pXML_FILTROS, pIdRol);
         }
 
-        public List<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_DIMENSION_Result> ObtieneGraficaDistribucionDimension(int? pID_PERIODO = null, string pNB_DIMENSION = null, XElement pXML_FILTROS = null)
+        public List<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_DIMENSION_Result> ObtieneGraficaDistribucionDimension(int? pID_PERIODO = null, string pNB_DIMENSION = null, XElement pXML_FILTROS = null, int? pIdRol = null)
         {
             ClimaLaboralOperaciones oPeriodo = new ClimaLaboralOperaciones();
-            return oPeriodo.ObtenerGraficaDistribucionDimension(pID_PERIODO, pNB_DIMENSION, pXML_FILTROS);
+            return oPeriodo.ObtenerGraficaDistribucionDimension(pID_PERIODO, pNB_DIMENSION, pXML_FILTROS, pIdRol);
         }
 
-        public List<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_TEMA_Result> ObtieneGraficaDistribucionTema(int? pID_PERIODO = null, string pNB_TEMA = null, XElement pXML_FILTROS = null)
+        public List<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_TEMA_Result> ObtieneGraficaDistribucionTema(int? pID_PERIODO = null, string pNB_TEMA = null, XElement pXML_FILTROS = null, int? pIdRol = null)
         {
             ClimaLaboralOperaciones oPeriodo = new ClimaLaboralOperaciones();
-            return oPeriodo.ObtenerGraficaDistribucionTema(pID_PERIODO, pNB_TEMA, pXML_FILTROS);
+            return oPeriodo.ObtenerGraficaDistribucionTema(pID_PERIODO, pNB_TEMA, pXML_FILTROS, pIdRol);
         }
 
-        public List<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_PREGUNTA_Result> ObtieneGraficaDistribucionPregunta(int? pID_PERIODO = null, string pNB_PREGUNTA = null, string pXML_FILTROS = null)
+        public List<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_PREGUNTA_Result> ObtieneGraficaDistribucionPregunta(int? pID_PERIODO = null, string pNB_PREGUNTA = null, string pXML_FILTROS = null, int? pIdRol = null)
         {
             ClimaLaboralOperaciones oPeriodo = new ClimaLaboralOperaciones();
-            return oPeriodo.ObtenerGraficaDistribucionPregunta(pID_PERIODO, pNB_PREGUNTA, pXML_FILTROS);
+            return oPeriodo.ObtenerGraficaDistribucionPregunta(pID_PERIODO, pNB_PREGUNTA, pXML_FILTROS, pIdRol);
         }
 
         public List<SPE_OBTIENE_DIMENSIONES_Result> ObtieneDimensiones(int? pID_DIMENSION = null, string pCL_DIMENSION = null, string pNB_DIMENSION = null, int? pID_PERIODO = null)
@@ -218,10 +218,10 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
             return oPeriodo.ObtenerPreguntas(pID_PREGUNTA, pCL_PREGUNTA_MODULO, pID_PERIODO);
         }
 
-        public List<SPE_OBTIENE_EO_GRAFICA_GLOBAL_Result> ObtieneGraficaGlobal(int? pID_PERIODO = null)
+        public List<SPE_OBTIENE_EO_GRAFICA_GLOBAL_Result> ObtieneGraficaGlobal(int? pID_PERIODO = null, int? pID_ROL = null)
         {
             ClimaLaboralOperaciones oPeriodo = new ClimaLaboralOperaciones();
-            return oPeriodo.ObtenerGraficaGlobal(pID_PERIODO);
+            return oPeriodo.ObtenerGraficaGlobal(pID_PERIODO, pID_ROL);
         }
 
         public SPE_OBTIENE_EO_PERIODO_EVALUADOR_Result ObtenerPeriodoEvaluado(int? pID_EVALUADOR = null, System.Guid? pFL_EVALUADOR = null)
@@ -254,16 +254,16 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
             return UtilRespuesta.EnvioRespuesta(oPeriodo.InsertaCuestionarioPreguntasAbiertas(pIdPeriodo, pClUsuario, pNbPrograma));
         }
 
-        public List<SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_CUESTIONARIO_Result> ObtenerCuestionarioPreAbiertas(int? pID_EVALUADOR = null, int? pID_PERIODO = null)
+        public List<SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_CUESTIONARIO_Result> ObtenerCuestionarioPreAbiertas(int? pID_EVALUADOR = null, int? pID_PERIODO = null, System.Guid? pFlEvaluador = null)
         {
             ClimaLaboralOperaciones oPeriodo = new ClimaLaboralOperaciones();
-            return oPeriodo.ObtenerCuestionarioPreAbiertas(pID_EVALUADOR, pID_PERIODO);
+            return oPeriodo.ObtenerCuestionarioPreAbiertas(pID_EVALUADOR, pID_PERIODO, pFlEvaluador);
         }
 
-        public List<SPE_OBTIENE_EO_RESPUESTAS_PREGUNTAS_ABIERTAS_Result> ObtenerRespuestasAbiertas(int? pIdEvaluador = null, int? pIdPeriodo = null, int? pIdPregunta = null, string pXmlFiltros = null)
+        public List<SPE_OBTIENE_EO_RESPUESTAS_PREGUNTAS_ABIERTAS_Result> ObtenerRespuestasAbiertas(int? pIdEvaluador = null, int? pIdPeriodo = null, int? pIdPregunta = null, string pXmlFiltros = null, int? pIdRol = null)
         {
             ClimaLaboralOperaciones oPeriodo = new ClimaLaboralOperaciones();
-            return oPeriodo.ObtenerRespuestasAbiertas(pIdEvaluador, pIdPeriodo, pIdPregunta, pXmlFiltros);
+            return oPeriodo.ObtenerRespuestasAbiertas(pIdEvaluador, pIdPeriodo, pIdPregunta, pXmlFiltros, pIdRol);
         }
 
         public E_RESULTADO InsertaEvaluadoresFiltro(int? pIdPeriodo = null, string pXmlSeleccionados = null, string pClUsuario = null, string pNbPrograma = null)
@@ -276,6 +276,12 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
         {
             ClimaLaboralOperaciones oPeriodo = new ClimaLaboralOperaciones();
             return UtilRespuesta.EnvioRespuesta(oPeriodo.InsertaFiltroClima(pIdPeriodo, pXmlSeleccionados, pClUsuario, pNbPrograma));
+        }
+
+        public E_RESULTADO ActualizaValidezCuestionario(int? pIdPeriodo = null)
+        {
+            ClimaLaboralOperaciones oPeriodo = new ClimaLaboralOperaciones();
+            return UtilRespuesta.EnvioRespuesta(oPeriodo.ActualizaValidezCuestionario(pIdPeriodo));
         }
         
 
@@ -301,6 +307,12 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
         {
             ClimaLaboralOperaciones oPeriodo = new ClimaLaboralOperaciones();
             return UtilRespuesta.EnvioRespuesta(oPeriodo.InsertaInstruccionesCuestionario(pDsInstrucciones, pIdPeriodo, pClUsuario, pNbPrograma));
+        }
+
+         public E_RESULTADO EliminaRespuestasCuestionario(int? pID_PERIODO = null, int? pID_EVALUADOR = null, int? pID_CUESTIONARIO = null, string pClUsuario = null, string pNbPrograma = null)
+        {
+            ClimaLaboralOperaciones oPeriodo = new ClimaLaboralOperaciones();
+            return UtilRespuesta.EnvioRespuesta(oPeriodo.EliminaRespuestasCuestionario(pID_PERIODO, pID_EVALUADOR, pID_CUESTIONARIO, pClUsuario, pNbPrograma));
         }
 
     }

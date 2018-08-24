@@ -97,7 +97,7 @@
 
             GetPuestoID();
 
-            var vURL = "/IDP/Requisicion/VentanaDescriptivoPuestoRequisicion.aspx?vCrearAutorizar=Crear";
+            var vURL = "../IDP/Requisicion/VentanaDescriptivoPuestoRequisicion.aspx?vCrearAutorizar=Crear";
             var vTitulo = "Agregar descripción del puesto";
 
 
@@ -338,7 +338,7 @@
             var wnd = GetWindowProperties();
             wnd.vTitulo = "Selección de puesto";
             wnd.vURL = "../Comunes/SeleccionPuesto.aspx?mulSel=0";
-            wnd.vRadWindowId = "winSeleccion";
+            wnd.vRadWindowId = "winSeleccionEmpleados";
             return wnd;
         }
 
@@ -431,7 +431,17 @@
         }
 
 
+        //Eliminar el tooltip del control
+        function pageLoad() {
+            var datePicker = $find("<%=rdpAutorizacion.ClientID %>");
+            if (datePicker != null)
+                datePicker.get_popupButton().title = "";
 
+            var datePicker2 = $find("<%=Fe_Requerimiento.ClientID %>");
+            datePicker2.get_popupButton().title = "";
+            var datePicker3 = $find("<%=Fe_solicitud.ClientID %>");
+            datePicker3.get_popupButton().title = "";
+        }
 
 
 
@@ -775,7 +785,7 @@
                                 </Items>
                             </telerik:RadListBox>--%>
                             <telerik:RadTextBox runat="server" ID="txtPuestoReq" Width="300px"></telerik:RadTextBox>
-                            <telerik:RadButton ID="btnAgregarPersonaAutorizaPuesto" runat="server" Text="B" ToolTip="Seleccionar una persona para autorizar el puesto creado desde la requisición" OnClientClicked="OpenSeleccionarEmpleadoAutorizaPuesto" AutoPostBack="false"></telerik:RadButton>
+                            <telerik:RadButton ID="btnAgregarPersonaAutorizaPuesto" runat="server" Text="B" ToolTip="Selecciona una persona para autorizar el puesto creado desde la requisición" OnClientClicked="OpenSeleccionarEmpleadoAutorizaPuesto" AutoPostBack="false"></telerik:RadButton>
                             <telerik:RadButton ID="btnBorrarSeleccionAutorizaPuesto" runat="server" Text="X" ToolTip="Quitar persona" AutoPostBack="false" OnClientClicked="CleanSelectionAutorizaPuesto"></telerik:RadButton>
                             <telerik:RadTextBox runat="server" ID="txtPuestoAutorizaPuesto" Width="300px"></telerik:RadTextBox>
                             <telerik:RadTextBox runat="server" ID="txtPuestoAutorizaCorreo" Width="300px"></telerik:RadTextBox>
@@ -800,7 +810,7 @@
                                 <telerik:RadListBoxItem Text="No Seleccionado" Value="" />
                             </Items>
                         </telerik:RadListBox>
-                        <telerik:RadButton ID="btnBuscarEmpleado" runat="server" Text="B" ToolTip="Seleccionar una persona para autorizar la requisición" OnClientClicked="OpenSeleccionarEmpleadoAutoriza" AutoPostBack="false"></telerik:RadButton>
+                        <telerik:RadButton ID="btnBuscarEmpleado" runat="server" Text="B" ToolTip="Selecciona una persona para autorizar la requisición" OnClientClicked="OpenSeleccionarEmpleadoAutoriza" AutoPostBack="false"></telerik:RadButton>
                         <telerik:RadButton ID="btnBorrarSeleccionAutoriza" runat="server" Text="X" ToolTip="Quitar persona" AutoPostBack="false" OnClientClicked="CleanSelectionAutoriza"></telerik:RadButton>
                         <telerik:RadTextBox runat="server" ID="txtPuestoAutoriza" Width="300px" Enabled="false"></telerik:RadTextBox>
                         <telerik:RadTextBox runat="server" ID="txtCorreoAutorizaReq" Width="300px" Enabled="true"></telerik:RadTextBox>
@@ -833,7 +843,7 @@
                 <telerik:RadSlidingZone ID="slzOpcionesBusqueda" runat="server" Width="18" ClickToOpen="true" SlideDirection="Left">
                     <telerik:RadSlidingPane ID="RSPAdvSearchInstructores" runat="server" Title="Ayuda" Width="300" MinWidth="300" Height="100%">
                         <div style="padding: 20px; text-align: justify">
-                            Te informamos que si el puesto a cubrir no está en el catálogo de puestos, deberás seleccionar como Causa "Nuevo puesto" y antes de guardar dar clic en el botón Notificar a RRHH, para que el área de Recursos Humanos cree el nuevo puesto con las características necesarias.
+                            Te informamos que si el puesto a cubrir no está en el catálogo de puestos, deberás seleccionar como causa "Nuevo puesto" y crearlo para su autorización.
                         </div>
                     </telerik:RadSlidingPane>
                 </telerik:RadSlidingZone>

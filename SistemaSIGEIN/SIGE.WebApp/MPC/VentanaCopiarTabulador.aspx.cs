@@ -124,7 +124,7 @@ namespace SIGE.WebApp.MPC
             TabuladoresNegocio nTabulador = new TabuladoresNegocio();
             E_RESULTADO vResultado = nTabulador.InsertaTabuladorCopia(usuario: vClUsuario, programa: vNbPrograma, pClTipoOperacion: "I", vTabulador: vTabulador);
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
+            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction:"closeWindow");
         }
     }
 }

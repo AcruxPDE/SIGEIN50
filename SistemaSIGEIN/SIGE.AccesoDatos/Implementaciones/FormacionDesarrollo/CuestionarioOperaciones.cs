@@ -10,19 +10,19 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
     {
         private SistemaSigeinEntities contexto;
 
-        public List<SPE_OBTIENE_FYD_EVALUADOS_Result> ObtenerEvaluados(int? pIdCurso)
+        public List<SPE_OBTIENE_FYD_EVALUADOS_Result> ObtenerEvaluados(int? pIdCurso, int? pIdRol )
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_FYD_EVALUADOS(pIdCurso).ToList();
+                return contexto.SPE_OBTIENE_FYD_EVALUADOS(pIdCurso, pIdRol).ToList();
             }
         }
 
-        public List<SPE_OBTIENE_FYD_EVALUADORES_Result> ObtieneEvaluadores(int? pIdPeriodo, string pClTipoEvaluador = null,int? pID_EMPRESA = null)
+        public List<SPE_OBTIENE_FYD_EVALUADORES_Result> ObtieneEvaluadores(int? pIdPeriodo, string pClTipoEvaluador = null,int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_FYD_EVALUADORES(pIdPeriodo, pClTipoEvaluador,pID_EMPRESA).ToList();
+                return contexto.SPE_OBTIENE_FYD_EVALUADORES(pIdPeriodo, pClTipoEvaluador, pID_EMPRESA, pID_ROL).ToList();
             }
         }
 

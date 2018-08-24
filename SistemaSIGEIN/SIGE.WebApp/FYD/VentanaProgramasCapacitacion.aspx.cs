@@ -69,6 +69,8 @@ namespace SIGE.WebApp.FYD
             set { ViewState["vs_vIdPrograma"] = value; }
         }
 
+        public int? vIdRol;
+
         private bool vFgProgramaModificado {
             get { return (bool)ViewState["vs_vpc_fg_programa_modificado"]; }
             set { ViewState["vs_vpc_fg_programa_modificado"] = value; }
@@ -261,8 +263,8 @@ namespace SIGE.WebApp.FYD
         {
             List<string> prioridades = new List<string>();
             prioridades.Add(E_PRIORIDAD.ALTA.ToString());
-            prioridades.Add(E_PRIORIDAD.BAJA.ToString());
             prioridades.Add(E_PRIORIDAD.INTERMEDIA.ToString());
+            prioridades.Add(E_PRIORIDAD.BAJA.ToString());
             cmbPrioridades.DataSource = prioridades;
             cmbPrioridades.DataBind();
         }
@@ -270,7 +272,7 @@ namespace SIGE.WebApp.FYD
         protected void CargarDatosEmpleado(List<int> vSeleccionados)
         {
             EmpleadoNegocio nEmpleado = new EmpleadoNegocio();
-            var empleados = nEmpleado.ObtenerEmpleados(pID_EMPRESA: ContextoUsuario.oUsuario.ID_EMPRESA);
+            var empleados = nEmpleado.ObtenerEmpleados(pID_EMPRESA: ContextoUsuario.oUsuario.ID_EMPRESA, pID_ROL: vIdRol);
 
             var filtroEmpleado = empleados.Where(x => vSeleccionados.Contains(x.M_EMPLEADO_ID_EMPLEADO)).ToList();
             vlstParticipantes = cargarParseEmpleados(filtroEmpleado);
@@ -726,6 +728,7 @@ namespace SIGE.WebApp.FYD
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!IsPostBack)
             {
@@ -748,7 +751,7 @@ namespace SIGE.WebApp.FYD
                 if (ptipo.Equals("Editar"))
                 {
                     vIdPrograma = int.Parse((Request.QueryString["ID"]));
-                    XElement vProgramaCapacitacion = nPrograma.ObtenerProgramaCapacitacionCompleto(vIdPrograma, ContextoUsuario.oUsuario.ID_EMPRESA);
+                    XElement vProgramaCapacitacion = nPrograma.ObtenerProgramaCapacitacionCompleto(vIdPrograma, ContextoUsuario.oUsuario.ID_EMPRESA, pID_ROL: vIdRol);
 
                     if (vProgramaCapacitacion != null)
                     {
@@ -805,7 +808,7 @@ namespace SIGE.WebApp.FYD
                else if (ContextoApp.FYD.ClVistaPrograma.ClVistaPrograma == "MACROS")
                 {
                     tbProgramaCapacitacion.Tabs[2].Visible = false;
-                    rpvMatriz.Visible = false;
+                   // rpvMatriz.Visible = false;
                     btnAceptarMatriz.Visible = false;
                     btnAgregarCombinacionesMatriz.Visible = false;
                 }
@@ -839,6 +842,8 @@ namespace SIGE.WebApp.FYD
                 vSeleccionados = JsonConvert.DeserializeObject<E_SELECTOR_NECESIDADES>(pParameter);
                 GenerarProgramaMatriz(vSeleccionados);
             }
+
+            grdCapacitacionMatriz.Rebind();
             
         }
 
@@ -849,12 +854,18 @@ namespace SIGE.WebApp.FYD
 
         protected void grdCompetencias_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
-            grdCompetencias.DataSource = RevisarCompetenciasSeleccionadas(vlstCompetencias);
+            if (vlstCompetencias != null)
+                grdCompetencias.DataSource = RevisarCompetenciasSeleccionadas(vlstCompetencias);
+            else
+                grdCompetencias.DataSource = vCompetencias;
         }
 
         protected void grdParticipantes_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
-            grdParticipantes.DataSource = RevisarEmpleadosSeleccionados(vlstParticipantes);
+            if (vlstParticipantes != null)
+                grdParticipantes.DataSource = RevisarEmpleadosSeleccionados(vlstParticipantes);
+            else
+                grdParticipantes.DataSource = vEmpleados;
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)

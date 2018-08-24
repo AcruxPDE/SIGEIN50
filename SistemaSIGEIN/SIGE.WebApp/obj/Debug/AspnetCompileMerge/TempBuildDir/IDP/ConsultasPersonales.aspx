@@ -138,7 +138,6 @@
                     <telerik:AjaxUpdatedControl ControlID="pgDetallada" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
-
         </AjaxSettings>
     </telerik:RadAjaxManager>
     <%-- <div style="clear: both; height: 10px;"></div>--%>
@@ -161,13 +160,14 @@
         </table>
     </div>
     <%--    </div>--%>
-    <telerik:RadTabStrip runat="server" ID="tbConsultas" SelectedIndex="0" MultiPageID="mpConsultas">
+<%--    <telerik:RadTabStrip runat="server" ID="tbConsultas" SelectedIndex="0" MultiPageID="mpConsultas" Visible="false">
         <Tabs>
             <telerik:RadTab Text="Resumida"></telerik:RadTab>
             <telerik:RadTab Text="Detallada"></telerik:RadTab>
         </Tabs>
-    </telerik:RadTabStrip>
-    <div style="height: calc(100% - 110px);">
+    </telerik:RadTabStrip>--%>
+      <div style="clear:both; height:10px;"></div>
+    <div style="height: calc(100% - 70px);">
         <telerik:RadMultiPage runat="server" ID="mpConsultas" SelectedIndex="0" Width="100%" Height="100%">
             <telerik:RadPageView ID="pvResumen" runat="server" TabIndex="0" Width="100%" Height="100%">
                 <div style="height: calc(100% - 35px); width: 100%;">
@@ -188,7 +188,7 @@
                             <Columns>
                                 <telerik:GridTemplateColumn DataField="CL_COLOR" UniqueName="CL_COLOR" ItemStyle-HorizontalAlign="Center" HeaderText="Color">
                                     <ItemStyle Width="10px" Height="15px" HorizontalAlign="Center" />
-                                    <HeaderStyle Width="20px" Height="20px" />
+                                    <HeaderStyle Width="25px" Height="20px" />
                                     <ItemTemplate>
                                         <div class="ctrlBasico" style="height: 60px; width: 30px; float: left; background: <%# Eval("CL_COLOR") %>; border-radius: 5px;"></div>
                                     </ItemTemplate>
@@ -209,15 +209,11 @@
                 </div>
 
                 <div style="clear:both; height:5px;"></div>
+                <div class="divControlDerecha">
 
-                <div class="divControlIzquierda">
-                    
                         <telerik:RadButton runat="server" ID="btnImprimir" Text="Imprimir" Width="100px" AutoPostBack="false" OnClientClicked="OpenResumida"></telerik:RadButton>
-                    </div>
-                       <div class="divControlIzquierda">
                         <telerik:RadButton runat="server" ID="btnExportResumen" Text="Exportar a Excel" Width="150px" UseSubmitBehavior="false" OnClick="btnExportResumen_Click"></telerik:RadButton>
-                    </div>
-         
+         </div>
 
             </telerik:RadPageView>
 
@@ -238,10 +234,8 @@
                 </div>
 
                 <div style="clear:both; height:5px;"></div>
-                <div class="divControlIzquierda">
+                <div class="divControlDerecha">
                         <telerik:RadButton runat="server" ID="btnImprimirDetallada" Text="Imprimir" Width="100px" AutoPostBack="false" OnClientClicked="OpenDetallada"></telerik:RadButton>
-                    </div>
-                <div class="divControlIzquierda">
                         <telerik:RadButton runat="server" ID="btnExportarDetalle" Text="Exportar a Excel" Width="150" UseSubmitBehavior="false" OnClick="btnExportarDetalle_Click"></telerik:RadButton>
                 </div>
 

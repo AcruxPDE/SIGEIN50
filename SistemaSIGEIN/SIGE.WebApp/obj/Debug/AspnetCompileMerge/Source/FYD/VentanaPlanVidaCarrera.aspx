@@ -226,7 +226,7 @@
                     <table class="ctrlTableForm">
                         <tr>
                             <td class="ctrlTableDataContext">
-                                <label>Periodo</label></td>
+                                <label>Período</label></td>
                             <td class="ctrlTableDataBorderContext">
                                 <div id="txtPeriodo" runat="server" width="170" maxlength="1000" enabled="false"></div>
                             </td>

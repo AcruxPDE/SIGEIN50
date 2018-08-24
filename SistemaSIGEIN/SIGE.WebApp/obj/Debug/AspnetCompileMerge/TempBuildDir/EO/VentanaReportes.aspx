@@ -8,7 +8,7 @@
         }
 
         function OpenSelectionDepartamentoIndiceWindow() {
-            openChildDialog("../Comunes/SeleccionArea.aspx?CatalogoCl=INDICE_DEPARTAMENTO", "WinCuestionario", "Selección de área");
+            openChildDialog("../Comunes/SeleccionArea.aspx?CatalogoCl=INDICE_DEPARTAMENTO", "WinCuestionario", "Selección de área/departamento");
         }
 
         function OpenSelectionGeneroDistribucionWindow() {
@@ -16,7 +16,7 @@
         }
 
         function OpenSelectionDepartamentoDistribucionWindow() {
-            openChildDialog("../Comunes/SeleccionArea.aspx?CatalogoCl=DISTRIBUCION_DEPARTAMENTO", "WinCuestionario", "Selección de área");
+            openChildDialog("../Comunes/SeleccionArea.aspx?CatalogoCl=DISTRIBUCION_DEPARTAMENTO", "WinCuestionario", "Selección de área/departamento");
         }
 
         function OpenSelectionAdicionales() {
@@ -28,7 +28,7 @@
         }
 
         function OpenSelectionDepartamentoPreguntasWindow() {
-            openChildDialog("../Comunes/SeleccionArea.aspx?CatalogoCl=PREGUNTAS_DEPARTAMENTO", "WinCuestionario", "Selección de área");
+            openChildDialog("../Comunes/SeleccionArea.aspx?CatalogoCl=PREGUNTAS_DEPARTAMENTO", "WinCuestionario", "Selección de área/departamento");
         }
 
         function OpenSelectionGeneroPreguntasWindow() {
@@ -341,7 +341,7 @@
     </telerik:RadAjaxManager>
     <div style="height: 10px;"></div>
     <div style="clear: both;"></div>
-    <div style="height: calc(100% - 70px);">
+    <div style="height: calc(100% - 40px);">
         <telerik:RadSplitter ID="rsReportes" runat="server" Width="100%" Height="100%" BorderSize="0">
             <telerik:RadPane ID="rpReportes" runat="server" Width="20px" Height="100%">
                 <telerik:RadSlidingZone ID="rszReportes" runat="server" SlideDirection="Right" Height="100%" ExpandedPaneId="rsReportes" Width="20px" DockedPaneId="rsbReportes">
@@ -421,7 +421,7 @@
                                                 <label id="Label6" name="lbNotas" runat="server">Notas:</label>
                                             </td>
                                             <td  class="ctrlTableDataBorderContext">
-                                                <label id="txtNotas" runat="server"></label>
+                                                <div id="txtNotas" runat="server"></div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -496,7 +496,7 @@
                         <telerik:RadTabStrip ID="rtIndice" runat="server" SelectedIndex="0" OnClientTabSelected="TabSelected" MultiPageID="mpgIndice">
                             <Tabs>
                                 <telerik:RadTab Text="Parámetros de Análisis" runat="server" SelectedIndex="1"></telerik:RadTab>
-                                <telerik:RadTab Text="Grafica de indice de satisfacción" runat="server" SelectedIndex="2"></telerik:RadTab>
+                                <telerik:RadTab Text="Gráfica de índice de satisfacción" runat="server" SelectedIndex="2"></telerik:RadTab>
                             </Tabs>
                         </telerik:RadTabStrip>
                         <div style="height: calc(100% - 50px);">
@@ -507,7 +507,7 @@
 
                                     <div class="ctrlBasico">
                                         <div class="divControlIzquierda">
-                                            <label id="lblDepartamento" name="lblDepartamento" runat="server">Área:</label>
+                                            <label id="lblDepartamento" name="lblDepartamento" runat="server">Área/Departamento:</label>
                                         </div>
                                         <div class="divControlDerecha">
                                             <telerik:RadListBox ID="lstDepartamentosIndice" Width="200px" Height="100px" runat="server" ValidationGroup="vgDepartamento"></telerik:RadListBox>
@@ -628,19 +628,20 @@
                                     <div class="ctrlBasico" style="width: 40%;">
                                         <telerik:RadGrid ID="rgdGraficasIndice"
                                             runat="server"
+                                            Height="400px"
                                             AllowSorting="false"
                                             AutoGenerateColumns="false">
                                             <ClientSettings>
-                                                <Scrolling UseStaticHeaders="false" AllowScroll="false" />
+                                                <Scrolling UseStaticHeaders="true" AllowScroll="true" />
                                                 <Selecting AllowRowSelect="false" />
                                             </ClientSettings>
                                             <MasterTableView AllowFilteringByColumn="false" AllowPaging="false" ShowHeadersWhenNoRecords="true">
                                                 <Columns>
                                                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="30" HeaderText="#" DataField="NO_NOMBRE" UniqueName="NO_NOMBRE" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Dimensión" DataField="NOMBRE" UniqueName="NOMBRE" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                                    <telerik:GridTemplateColumn HeaderText="Indice de satisfacción" AllowFiltering="true" FilterControlWidth="50px">
-                                                        <ItemStyle Width="40px" Height="30px" HorizontalAlign="Left" />
-                                                        <HeaderStyle Width="40px" Height="30px" />
+                                                    <telerik:GridTemplateColumn HeaderText="Índice de satisfacción" AllowFiltering="true" HeaderStyle-Font-Bold="true" FilterControlWidth="50px">
+                                                        <ItemStyle Width="90px" Height="30px" HorizontalAlign="Left" />
+                                                        <HeaderStyle Width="90px" Height="30px" />
                                                         <ItemTemplate>
                                                             <div class="ctrlBasico" style="height: 30px; width: 70px; float: right; background: <%#Eval("COLOR_PORCENTAJE") %>; border-radius: 5px;"></div>
                                                         </ItemTemplate>
@@ -663,7 +664,7 @@
                         <telerik:RadTabStrip ID="rtDistribucion" runat="server" SelectedIndex="0" MultiPageID="mpgDistribucion">
                             <Tabs>
                                 <telerik:RadTab Text="Parámetros de Análisis"></telerik:RadTab>
-                                <telerik:RadTab Text="Grafica distribución de resultados"></telerik:RadTab>
+                                <telerik:RadTab Text="Gráfica distribución de resultados"></telerik:RadTab>
                             </Tabs>
                         </telerik:RadTabStrip>
 
@@ -674,7 +675,7 @@
                                     <div style="clear: both; height: 10px"></div>
                                     <div class="ctrlBasico">
                                         <div class="divControlIzquierda">
-                                            <label id="lblDepartamentoDistribucion" name="lblDepartamento" runat="server">Área:</label>
+                                            <label id="lblDepartamentoDistribucion" name="lblDepartamento" runat="server">Área/Departamento:</label>
                                         </div>
                                         <div class="divControlDerecha">
                                             <telerik:RadListBox ID="rlbDepartamentoDistribucion" Width="200px" Height="100px" runat="server" ValidationGroup="vgDepartamentoDis"></telerik:RadListBox>
@@ -814,7 +815,7 @@
                                     <div style="clear: both; height: 10px"></div>
                                     <div class="ctrlBasico">
                                         <div class="divControlIzquierda">
-                                            <label id="lbDepPreguntas" name="lbDepPreguntas" runat="server">Área:</label>
+                                            <label id="lbDepPreguntas" name="lbDepPreguntas" runat="server">Área/Departamento:</label>
                                         </div>
                                         <div class="divControlDerecha">
                                             <telerik:RadListBox ID="rlbDepPreguntas" Width="200px" Height="100px" runat="server" ValidationGroup="vgDepartamento"></telerik:RadListBox>
@@ -961,9 +962,12 @@
             <telerik:RadPane ID="rpAyuda" runat="server" Width="20px" Height="100%">
                 <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" Height="100%" ExpandedPaneId="rsReportes" Width="20px" DockedPaneId="rsbReportes">
                     <telerik:RadSlidingPane ID="rsbAyuda" runat="server" CollapseMode="Forward" EnableResize="false" Width="325px" Title="Ayuda" Height="100%">
-                        <div id="divContexto" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
+                        <div id="divContexto" runat="server" style="display: block; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
                             <p>
-                                Información del período.													
+                                Pestaña con información del período.
+                                <br />
+                                <br />
+                    En cada una de las siguientes pestañas podrás realizar las consultas de índice de satisfacción, distribución de resultados, preguntas abiertas y el resultado global.													
                             </p>
                         </div>
                         <div id="divIndice" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
@@ -981,7 +985,7 @@
                             <p>
                                 El reporte de distribución de resultados muestra la partición de 
                                 resultados entre las respuestas a las preguntas realizadas dentro
-                                del periodo.<br />
+                                del período.<br />
                                 <br />
 
                                 Indica los filtros búsqueda para Empleados, así como para las 
@@ -990,7 +994,7 @@
                         </div>
                         <div id="divPreguntas" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
                             <p>
-                                El reporte muestra las respuestas a las preguntas abiertas aplicadas dentro del periodo. Los renglones en blanco representan evaluadores que omitieron su respuesta.<br />
+                                El reporte muestra las respuestas a las preguntas abiertas aplicadas dentro del período. Los renglones en blanco representan evaluadores que omitieron su respuesta.<br />
                                 <br />
 
                                 Indica los filtros búsqueda para Empleados, así como para las preguntas en los cuestionarios. 													
@@ -998,7 +1002,7 @@
                         </div>
                         <div id="divGlobal" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
                             <p>
-                                El reporte presenta los resultados obtenidos en el periodo en base a las opciones que se indican a los evaluadores.													
+                                El reporte presenta los resultados obtenidos en el período en base a las opciones que se indican a los evaluadores.													
                             </p>
                         </div>
                     </telerik:RadSlidingPane>

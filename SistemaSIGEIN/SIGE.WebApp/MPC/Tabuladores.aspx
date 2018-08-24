@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MPC/MenuMC.master" AutoEventWireup="true" CodeBehind="Tabuladores.aspx.cs" Inherits="SIGE.WebApp.MPC.Tabuladores" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         .RadListViewContainer {
@@ -31,13 +32,13 @@
 
             function AbrirVentanaNuevo() {
                 openChildDialog("VentanaNuevoTabulador.aspx", "winMenuTabuladores",
-                        "Nuevo/Editar Tabulador")
+                        "Nuevo/Editar tabulador")
             }
 
             function onCloseWindow(sender, args) {
                 var lista = $find("<%# rlvConsultas.ClientID %>");
-                    lista.rebind();
-                }
+                lista.rebind();
+            }
 
             function OpenWindow(pWindowProperties) {
                 openChildDialog(pWindowProperties.vURL, pWindowProperties.vRadWindowId, pWindowProperties.vTitulo, pWindowProperties);
@@ -99,23 +100,23 @@
             //    $find("<=rlvConsultas.ClientID%>").get_masterTableView().rebind();
             //}
 
-        //    function confirmarEliminar(sender, args) {
-                //var MasterTable = $find("<=grdTabuladores.ClientID %>").get_masterTableView();
-                //var selectedRows = MasterTable.get_selectedItems();
-                //var row = selectedRows[0];
-                //if (row != null) {
-                //    CELL_NOMBRE = MasterTable.getCellByColumnUniqueName(row, "CL_TABULADOR");
-                //    if (selectedRows != "") {
-                //        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
-                //        { if (shouldSubmit) { this.click(); } });
-                //        radconfirm('¿Deseas eliminar el tabulador ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
-                //        args.set_cancel(true);
-                //    }
-                //} else {
-                //    radalert("Selecciona un tabulador", 400, 150, "Error");
-                //    args.set_cancel(true);
-                //}
-        //    }
+            //    function confirmarEliminar(sender, args) {
+            //var MasterTable = $find("<=grdTabuladores.ClientID %>").get_masterTableView();
+            //var selectedRows = MasterTable.get_selectedItems();
+            //var row = selectedRows[0];
+            //if (row != null) {
+            //    CELL_NOMBRE = MasterTable.getCellByColumnUniqueName(row, "CL_TABULADOR");
+            //    if (selectedRows != "") {
+            //        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
+            //        { if (shouldSubmit) { this.click(); } });
+            //        radconfirm('¿Deseas eliminar el tabulador ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+            //        args.set_cancel(true);
+            //    }
+            //} else {
+            //    radalert("Selecciona un tabulador", 400, 150, "Error");
+            //    args.set_cancel(true);
+            //}
+            //    }
 
             function cambiarEstado(sender, args) {
                 var vIdTabulador = GetPeriodoId();
@@ -134,37 +135,37 @@
                 }
             }
 
-                //var MasterTable = $find("<=grdTabuladores.ClientID %>").get_masterTableView();
-                //var selectedRows = MasterTable.get_selectedItems();
-                //var row = selectedRows[0];
-                //if (row != null) {
-                //    CELL_NOMBRE = MasterTable.getCellByColumnUniqueName(row, "CL_TABULADOR");
-                //    if (selectedRows != "") {
-                //        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
-                //        { if (shouldSubmit) { this.click(); } });
-                //        radconfirm('¿Deseas cambiar el estado del tabulador ' + CELL_NOMBRE.innerHTML + ' a Cerrado (Abierto)?', callBackFunction, 400, 170, null, "Cambiar estado");
-                //        args.set_cancel(true);
-                //    }
-                //} else {
-                //    radalert("Selecciona un tabulador", 400, 150, "Error");
-                //    args.set_cancel(true);
-                //}
-        //    }
+            //var MasterTable = $find("<=grdTabuladores.ClientID %>").get_masterTableView();
+            //var selectedRows = MasterTable.get_selectedItems();
+            //var row = selectedRows[0];
+            //if (row != null) {
+            //    CELL_NOMBRE = MasterTable.getCellByColumnUniqueName(row, "CL_TABULADOR");
+            //    if (selectedRows != "") {
+            //        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
+            //        { if (shouldSubmit) { this.click(); } });
+            //        radconfirm('¿Deseas cambiar el estado del tabulador ' + CELL_NOMBRE.innerHTML + ' a Cerrado (Abierto)?', callBackFunction, 400, 170, null, "Cambiar estado");
+            //        args.set_cancel(true);
+            //    }
+            //} else {
+            //    radalert("Selecciona un tabulador", 400, 150, "Error");
+            //    args.set_cancel(true);
+            //}
+            //    }
 
             //  var idTabulador = "";
 
-           // function obtenerIdFila() {
-                //   var grid = $find("<=grdTabuladores.ClientID %>");
-                //  var MasterTable = grid.get_masterTableView();
-                // var selectedRows = MasterTable.get_selectedItems();
-                // if (selectedRows.length != 0) {
-                //   var row = selectedRows[0];
-                //    var SelectDataItem = MasterTable.get_dataItems()[row._itemIndex];
-                //    console.info(SelectDataItem);
-                //    idTabulador = SelectDataItem.getDataKeyValue("ID_TABULADOR");
-                //    vNombre = MasterTable.getCellByColumnUniqueName(SelectDataItem, "CL_TABULADOR").innerHTML;
-                //}
-         //   }
+            // function obtenerIdFila() {
+            //   var grid = $find("<=grdTabuladores.ClientID %>");
+            //  var MasterTable = grid.get_masterTableView();
+            // var selectedRows = MasterTable.get_selectedItems();
+            // if (selectedRows.length != 0) {
+            //   var row = selectedRows[0];
+            //    var SelectDataItem = MasterTable.get_dataItems()[row._itemIndex];
+            //    console.info(SelectDataItem);
+            //    idTabulador = SelectDataItem.getDataKeyValue("ID_TABULADOR");
+            //    vNombre = MasterTable.getCellByColumnUniqueName(SelectDataItem, "CL_TABULADOR").innerHTML;
+            //}
+            //   }
 
             function EditarTabulador() {
                 // OpenPeriodoWindow(GetPeriodoId(), "EDITA");
@@ -173,10 +174,10 @@
                 if (vPermisoEditar == "True") {
                     if (vIdTabulador != "" && vIdTabulador != null) {
                         openChildDialog("VentanaNuevoTabulador.aspx?&ID=" + vIdTabulador, "winMenuTabuladores",
-                            "Nuevo/Editar Tabulador ")
+                            "Nuevo/Editar tabulador ")
                     }
                 }
-                 else {
+                else {
                     radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "");
                 }
             }
@@ -189,7 +190,7 @@
                 var wnd = GetWindowProperties();
                 wnd.width = 750;
                 wnd.height = 550;
-                wnd.vTitulo = "Nuevo/Editar Tabulador";
+                wnd.vTitulo = "Nuevo/Editar tabulador";
                 wnd.vRadWindowId = "winMenuTabuladores";
                 wnd.vURL = "VentanaNuevoTabulador.aspx";
                 if (pIdPeriodo != null) {
@@ -199,7 +200,7 @@
                     }
                     else {
                         wnd.vURL += String.format("?ID={0}&TipoTarea={1}", pIdPeriodo, pTipoTarea);
-                        wnd.vTitulo = "Copiar periodo";
+                        wnd.vTitulo = "Copiar período";
                     }
                 }
                 return wnd;
@@ -238,26 +239,27 @@
             function GetConfiguracionWindowProperties(pIdTabulador) {
                 var wnd = GetWindowProperties();
                 wnd.vTitulo = "Configurar tabulador";
-                wnd.vURL = "/MPC/VentanaConfigurarTabulador.aspx?ID=" + pIdTabulador;
-                wnd.vRadWindowId = "WinTabuladores";
+                var myUrl = '<%= ResolveClientUrl("VentanaConfigurarTabulador.aspx") %>';
+                wnd.vURL = myUrl + "?ID=" + pIdTabulador;
+                wnd.vRadWindowId = "WinTabuladoresConfig";
                 return wnd;
             }
             ///////////////////////////////////////////////////////////////////////////////////////////
-                        function OpenWindowConsultar() {
-                            var vIdTabulador = GetPeriodoId();
-                            if (vIdTabulador != "")
-                                OpenWindow(GetConsultarWindowProperties(vIdTabulador));
-                            else
-                                radalert("Selecciona un tabulador.", 400, 150);
-                        }
+            function OpenWindowConsultar() {
+                var vIdTabulador = GetPeriodoId();
+                if (vIdTabulador != "")
+                    OpenWindow(GetConsultarWindowProperties(vIdTabulador));
+                else
+                    radalert("Selecciona un tabulador.", 400, 150);
+            }
 
-                        function GetConsultarWindowProperties(pIdTabulador) {
-                            var wnd = GetWindowProperties();
-                            wnd.vTitulo = "Consultas";
-                            wnd.vURL = "/MPC/Consultas.aspx?ID=" + pIdTabulador;
-                            wnd.vRadWindowId = "WinTabuladores";
-                            return wnd;
-                        }
+            function GetConsultarWindowProperties(pIdTabulador) {
+                var wnd = GetWindowProperties();
+                wnd.vTitulo = "Consultas";
+                wnd.vURL = "/MPC/Consultas.aspx?ID=" + pIdTabulador;
+                wnd.vRadWindowId = "WinTabuladores";
+                return wnd;
+            }
 
             //////////////////////////////////////////////////////////////////////////////////////////////
             function OpenWindowNiveles() {
@@ -271,7 +273,8 @@
             function GetNivelesWindowProperties(pIdTabulador) {
                 var wnd = GetWindowProperties();
                 wnd.vTitulo = "Nivel";
-                wnd.vURL = "/MPC/TabuladorNivel.aspx?ID=" + pIdTabulador;
+                var myUrl = '<%= ResolveClientUrl("TabuladorNivel.aspx") %>';
+                wnd.vURL = myUrl + "?ID=" + pIdTabulador;
                 wnd.vRadWindowId = "WinTabuladores";
                 return wnd;
             }
@@ -286,7 +289,8 @@
             function GetMercadoWindowProperties(pIdTabulador) {
                 var wnd = GetWindowProperties();
                 wnd.vTitulo = "Mercado salarial";
-                wnd.vURL = "/MPC/MercadoSalarial.aspx?ID=" + pIdTabulador;
+                var myUrl = '<%= ResolveClientUrl("MercadoSalarial.aspx") %>';
+                wnd.vURL = myUrl + "?ID=" + pIdTabulador;
                 wnd.vRadWindowId = "WinTabuladores";
                 return wnd;
             }
@@ -301,7 +305,8 @@
             function GetValuacionWindowProperties(pIdTabulador) {
                 var wnd = GetWindowProperties();
                 wnd.vTitulo = "Valuación puestos";
-                wnd.vURL = "/MPC/ValuacionPuestosTabuladores.aspx?ID=" + pIdTabulador;
+                var myUrl = '<%= ResolveClientUrl("ValuacionPuestosTabuladores.aspx") %>';
+                wnd.vURL = myUrl + "?ID=" + pIdTabulador;
                 wnd.vRadWindowId = "WinTabuladores";
                 return wnd;
             }
@@ -317,7 +322,8 @@
             function GetTabuladorMaestroWindowProperties(pIdTabulador) {
                 var wnd = GetWindowProperties();
                 wnd.vTitulo = "Tabulador maestro";
-                wnd.vURL = "/MPC/TabuladorMaestro.aspx?ID=" + pIdTabulador;
+                var myUrl = '<%= ResolveClientUrl("TabuladorMaestro.aspx") %>';
+                wnd.vURL = myUrl + "?ID=" + pIdTabulador;
                 wnd.vRadWindowId = "WinTabuladores";
                 return wnd;
             }
@@ -333,7 +339,8 @@
             function GetPlaneacionWindowProperties(pIdTabulador) {
                 var wnd = GetWindowProperties();
                 wnd.vTitulo = "Planeación de incrementos";
-                wnd.vURL = "/MPC/VentanaPlaneacionIncrementos.aspx?ID=" + pIdTabulador;
+                var myUrl = '<%= ResolveClientUrl("VentanaPlaneacionIncrementos.aspx") %>';
+                wnd.vURL = myUrl + "?ID=" + pIdTabulador;
                 wnd.vRadWindowId = "WinTabuladores";
                 return wnd;
             }
@@ -348,13 +355,14 @@
 
             function GetConsultarWindowPropertiesSueldos(pIdTabulador) {
                 var wnd = GetWindowProperties();
-                wnd.vTitulo = "Consulta Tabulador - Tabuladores";
-                wnd.vURL = "/MPC/ConsultaTabuladorSueldos.aspx?ID=" + pIdTabulador;
+                wnd.vTitulo = "Consulta tabulador - Tabuladores";
+                var myUrl = '<%= ResolveClientUrl("ConsultaTabuladorSueldos.aspx") %>';
+                wnd.vURL = myUrl + "?ID=" + pIdTabulador;
                 wnd.vRadWindowId = "WinTabuladores";
                 return wnd;
             }
 
-            
+
             //////////////////////////////////////////////////////////////////////////////////////////////
 
             function OpenWindowAnalisis() {
@@ -367,8 +375,9 @@
 
             function GetConsultarWindowPropertiesAnalisis(pIdTabulador) {
                 var wnd = GetWindowProperties();
-                wnd.vTitulo = "Consulta Gráfica de análisis - Tabuladores";
-                wnd.vURL = "/MPC/ConsultaGraficaAnalisis.aspx?ID=" + pIdTabulador;
+                wnd.vTitulo = "Consulta gráfica de análisis - Tabuladores";
+                var myUrl = '<%= ResolveClientUrl("ConsultaGraficaAnalisis.aspx") %>';
+                wnd.vURL = myUrl + "?ID=" + pIdTabulador;
                 wnd.vRadWindowId = "WinTabuladores";
                 return wnd;
             }
@@ -386,8 +395,9 @@
 
             function GetConsultarWindowPropertiesDesviaciones(pIdTabulador) {
                 var wnd = GetWindowProperties();
-                wnd.vTitulo = "Consulta Análisis de desviaciones - Tabuladores";
-                wnd.vURL = "/MPC/ConsultaAnalisisDesviaciones.aspx?ID=" + pIdTabulador;
+                wnd.vTitulo = "Consulta análisis de desviaciones - Tabuladores";
+                var myUrl = '<%= ResolveClientUrl("ConsultaAnalisisDesviaciones.aspx") %>';
+                wnd.vURL = myUrl + "?ID=" + pIdTabulador;
                 wnd.vRadWindowId = "WinTabuladores";
                 return wnd;
             }
@@ -405,7 +415,8 @@
             function GetConsultarWindowPropertiesTabMaestro(pIdTabulador) {
                 var wnd = GetWindowProperties();
                 wnd.vTitulo = "Análisis de desviaciones";
-                wnd.vURL = "/MPC/ConsultaTabuladorMaestro.aspx?ID=" + pIdTabulador;
+                var myUrl = '<%= ResolveClientUrl("ConsultaTabuladorMaestro.aspx") %>';
+                wnd.vURL = myUrl + "?ID=" + pIdTabulador;
                 wnd.vRadWindowId = "WinTabuladores";
                 return wnd;
             }
@@ -423,11 +434,12 @@
             function GetConsultarWindowPropertiesMercadoCons(pIdTabulador) {
                 var wnd = GetWindowProperties();
                 wnd.vTitulo = "Mercado salarial";
-                wnd.vURL = "/MPC/ConsultaMercadoSalarial.aspx?ID=" + pIdTabulador;
+                var myUrl = '<%= ResolveClientUrl("ConsultaMercadoSalarial.aspx") %>';
+                wnd.vURL = myUrl + "?ID=" + pIdTabulador;
                 wnd.vRadWindowId = "WinTabuladores";
                 return wnd;
             }
-            
+
             //////////////////////////////////////////////////////////////////////////////////////////////
 
             function OpenWindowIncrementosCons() {
@@ -441,7 +453,8 @@
             function GetConsultarWindowPropertiesIncrementosCons(pIdTabulador) {
                 var wnd = GetWindowProperties();
                 wnd.vTitulo = "Planeación de incrementos";
-                wnd.vURL = "/MPC/ConsultaIncrementos.aspx?ID=" + pIdTabulador;
+                var myUrl = '<%= ResolveClientUrl("ConsultaIncrementos.aspx") %>';
+                wnd.vURL = myUrl + "?ID=" + pIdTabulador;
                 wnd.vRadWindowId = "WinTabuladores";
                 return wnd;
             }
@@ -459,7 +472,8 @@
             function GetConsultarWindowPropertiesComparacion(pIdTabulador) {
                 var wnd = GetWindowProperties();
                 wnd.vTitulo = "Comparación de sueldo";
-                wnd.vURL = "/MPC/ConsultaComparacionSueldo.aspx?ID=" + pIdTabulador;
+                var myUrl = '<%= ResolveClientUrl("ConsultaComparacionSueldo.aspx") %>';
+                wnd.vURL = myUrl + "?ID=" + pIdTabulador;
                 wnd.vRadWindowId = "WinTabuladores";
                 return wnd;
             }
@@ -482,7 +496,31 @@
                 return wnd;
             }
             //////////////////////////////////////////////////////////////////////////////////////////////
-            
+
+
+
+            function useDataFromChild(pDato) {
+                if (pDato != null) {
+                    switch (pDato[0].accion) {
+                        case "ACTUALIZARLISTA":
+                            var ajaxManager = $find('<%= ramTabulador.ClientID%>');
+                            ajaxManager.ajaxRequest(JSON.stringify({ clTipo: "ACTUALIZARLISTA" }));
+                            break;
+                        case "ACTUALIZAR":
+                            var ajaxManager = $find('<%= ramTabulador.ClientID%>');
+                            ajaxManager.ajaxRequest(JSON.stringify({ clTipo: "ACTUALIZAR" }));
+                            //var list = $find('<= rlvConsultas.ClientID %>');
+                            //list.rebind();
+                            break;
+                    }
+                }
+            }
+
+            function CloseWindowConfig() {
+                var ajaxManager = $find('<%= ramTabulador.ClientID%>');
+                ajaxManager.ajaxRequest(JSON.stringify({ clTipo: "CONFIGURACION" }));
+            }
+
         </script>
     </telerik:RadCodeBlock>
 
@@ -490,29 +528,54 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <telerik:RadAjaxLoadingPanel ID="ralpVersionesTabulador" runat="server"></telerik:RadAjaxLoadingPanel>
-    <telerik:RadAjaxManager ID="ramTabulador" runat="server" DefaultLoadingPanelID="ralpVersionesTabulador">
+    <telerik:RadAjaxManager ID="ramTabulador" runat="server" OnAjaxRequest="ramTabulador_AjaxRequest">
         <AjaxSettings>
-             <telerik:AjaxSetting AjaxControlID="rlvConsultas">
+            <telerik:AjaxSetting AjaxControlID="rlvConsultas">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="rlvConsultas"></telerik:AjaxUpdatedControl>
                     <telerik:AjaxUpdatedControl ControlID="btnCambiarEstado" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
                     <telerik:AjaxUpdatedControl ControlID="btnConfigurar" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
-                      <telerik:AjaxUpdatedControl ControlID="txtClPeriodo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
-                     <telerik:AjaxUpdatedControl ControlID="txtDsPeriodo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
-                     <telerik:AjaxUpdatedControl ControlID="txtClEstatus" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
-                     <telerik:AjaxUpdatedControl ControlID="txtTipo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="txtClPeriodo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="txtDsPeriodo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="txtClEstatus" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="txtNotas" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="txtTipo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
                     <telerik:AjaxUpdatedControl ControlID="txtUsuarioMod" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
-                     <telerik:AjaxUpdatedControl ControlID="txtFechaMod" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="txtFechaMod" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="btnConfigurar" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnValuar" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnIncrementos" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnCapturar" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnCrear" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
-            <telerik:AjaxSetting AjaxControlID="rbAscendente">
+            <telerik:AjaxSetting AjaxControlID="ramTabulador">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="rlvConsultas"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="txtClPeriodo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="txtDsPeriodo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="txtClEstatus" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="txtNotas" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="txtTipo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="txtUsuarioMod" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="txtFechaMod" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+
+                     <telerik:AjaxUpdatedControl ControlID="btnCambiarEstado" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnConfigurar" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnValuar" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnIncrementos" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnCapturar" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnCrear" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="rlvConsultas">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="rlvConsultas"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="rbDescendente">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="rlvConsultas"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="rfFiltros">
@@ -522,24 +585,41 @@
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="rfFiltros">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="rlvConsultas"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnEliminar">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" />
+                    <telerik:AjaxUpdatedControl ControlID="rlvConsultas" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnAgregar">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" />
+                    <telerik:AjaxUpdatedControl ControlID="rlvConsultas" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
-                     <telerik:AjaxSetting AjaxControlID="btnCambiarEstado">
+            <telerik:AjaxSetting AjaxControlID="btnCambiarEstado">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="rlvConsultas" />
                     <telerik:AjaxUpdatedControl ControlID="btnCambiarEstado" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
-                   <%-- <telerik:AjaxUpdatedControl ControlID="btnConfigurar" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>--%>
+                    <telerik:AjaxUpdatedControl ControlID="btnConfigurar" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnValuar" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnIncrementos" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnCapturar" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnCrear" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+
+                    <%-- <telerik:AjaxUpdatedControl ControlID="btnConfigurar" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>--%>
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnReabir">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="rlvConsultas" />
+                    <telerik:AjaxUpdatedControl ControlID="btnCambiarEstado" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnConfigurar" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnValuar" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnIncrementos" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnCapturar" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnCrear" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -568,20 +648,20 @@
                     </LayoutTemplate>
                     <ItemTemplate>
                         <div class="RadListViewContainer">
-                                <div style="padding: 10px; height:130px;">
-                                    <div>
-                                        <label>Versión:</label>
-                                        <%# Eval("CL_TABULADOR") %>
-                                    </div>
-                                    <div>
-                                        <label>Estatus:</label>
-                                        <%# Eval("CL_ESTADO") %>
-                                    </div>
-                                    <div style="overflow: auto; overflow-y: auto; height: 50px;">
-                                        <label>Descripción:</label>
-                                        <%# Eval("NB_TABULADOR") %>
-                                    </div>
+                            <div style="padding: 10px;">
+                                <div style="overflow: auto; overflow-y: auto; height: 35px;">
+                                    <label>Versión:</label>
+                                    <%# Eval("CL_TABULADOR") %>
                                 </div>
+                                <div>
+                                    <label>Estatus:</label>
+                                    <%# Eval("CL_ESTADO") %>
+                                </div>
+                                <div style="overflow: auto; overflow-y: auto; height: 50px;">
+                                    <label>Descripción:</label>
+                                    <%# Eval("NB_TABULADOR") %>
+                                </div>
+                            </div>
                             <%--<div>
                                     <table>
                                         <tr>
@@ -610,20 +690,20 @@
                     </ItemTemplate>
                     <SelectedItemTemplate>
                         <div class="RadListViewContainer Selected">
-                            <div style="padding: 10px; height:130px;">
+                            <div style="padding: 10px;">
+                                <div style="overflow: auto; overflow-y: auto; height: 35px;">
+                                    <label style="color: white;">Versión:</label>
+                                    <%# Eval("CL_TABULADOR") %>
+                                </div>
                                 <div>
-                                        <label style="color: white;">Versión:</label>
-                                        <%# Eval("CL_TABULADOR") %>
-                                    </div>
-                                    <div>
-                                        <label style="color: white;">Estatus:</label>
-                                        <%# Eval("CL_ESTADO") %>
-                                    </div>
-                                    <div style="overflow: auto; overflow-y: auto; height: 50px;">
-                                        <label style="color: white;">Descripción:</label>
-                                        <%# Eval("NB_TABULADOR") %>
-                                    </div>
-              <%--                  <div>
+                                    <label style="color: white;">Estatus:</label>
+                                    <%# Eval("CL_ESTADO") %>
+                                </div>
+                                <div style="overflow: auto; overflow-y: auto; height: 50px;">
+                                    <label style="color: white;">Descripción:</label>
+                                    <%# Eval("NB_TABULADOR") %>
+                                </div>
+                                <%--                  <div>
                                     <table>
                                         <tr>
                                             <td>
@@ -660,114 +740,145 @@
                             No hay versiones disponibles
                         </div>
                     </EmptyDataTemplate>
-
                 </telerik:RadListView>
             </div>
             <div class="ctrlBasico" style="text-align: center">
-                            <telerik:RadTabStrip runat="server" ID="rtsPeriodos" MultiPageID="rmpPeriodos" SelectedIndex="0">
+                <telerik:RadTabStrip runat="server" ID="rtsPeriodos" MultiPageID="rmpPeriodos" SelectedIndex="0">
                     <Tabs>
                         <telerik:RadTab runat="server" Text="Gestionar"></telerik:RadTab>
                         <telerik:RadTab runat="server" Text="Detalles"></telerik:RadTab>
                     </Tabs>
                 </telerik:RadTabStrip>
                 <div style="height: 10px;"></div>
-                 <telerik:RadMultiPage runat="server" ID="rmpPeriodos" SelectedIndex="0" Height="100%" Width="100%">
+                <telerik:RadMultiPage runat="server" ID="rmpPeriodos" SelectedIndex="0" Height="100%" Width="100%">
                     <telerik:RadPageView ID="rpvPeriodos" runat="server">
-
-                <div>
-                    <label class="labelTitulo">Administrar</label>
-                    <telerik:RadButton ID="btnAgregar" runat="server" Text="Agregar" AutoPostBack="false" OnClientClicked="AbrirVentanaNuevo"></telerik:RadButton>
-                    &nbsp;&nbsp;
-            <telerik:RadButton ID="btnConfigurar" runat="server" Text="Configurar" AutoPostBack="false" OnClientClicked="OpenWindowConfigurar"></telerik:RadButton>
-                    &nbsp;&nbsp;
-            <telerik:RadButton ID="btnVerNiveles" runat="server" Text="Ver niveles" AutoPostBack="false" OnClientClicked="OpenWindowNiveles"></telerik:RadButton>
-                    &nbsp;&nbsp;
-            <telerik:RadButton ID="btnCambiarEstado" runat="server" Text="Cerrar versión"  OnClientClicking="cambiarEstado" OnClick="btnCambiarEstado_Click"></telerik:RadButton>
-                    <div style="height: 10px; clear: both;"></div>
-            <telerik:RadButton ID="btnCopiar" runat="server" Text="Copiar de..." AutoPostBack="false" OnClientClicked="CopiarTabulador"></telerik:RadButton>
-                </div>
-                <div style="height: 20px;"></div>
-                <div>
-                    <label class="labelTitulo">Tabuladores</label>
-                    <telerik:RadButton ID="btnValuar" runat="server" Text="Valuación de puestos" AutoPostBack="false" OnClientClicking="OpenWindowValuacion"></telerik:RadButton>
-                    &nbsp;&nbsp;
-            <telerik:RadButton ID="btnCapturar" runat="server" Text="Mercado salarial" AutoPostBack="false" OnClientClicking="OpenWindowMercado"></telerik:RadButton>
-                    &nbsp;&nbsp;
-            <telerik:RadButton ID="btnCrear" runat="server" Text="Tabulador maestro" AutoPostBack="false" OnClientClicking="OpenWindowTabuladorMaestro"></telerik:RadButton>
-                    <div style="height: 10px; clear: both;"></div>
-                    <telerik:RadButton ID="btnIncrementos" runat="server" Text="Planeación de incrementos" AutoPostBack="false" OnClientClicking="OpenWindowPlaneacion"></telerik:RadButton>
-                </div>
-                <div style="height: 20px;"></div>
-                <div>
-                    <label class="labelTitulo">Consultas</label>
-                   <%-- <telerik:RadButton ID="btnConsultas" runat="server" Text="Consultas" AutoPostBack="false" OnClientClicking="OpenWindowConsultar"></telerik:RadButton>
-                     &nbsp;&nbsp;--%>
-                <telerik:RadButton ID="btnConsSueldos" runat="server" Text="Tabulador" AutoPostBack="false" OnClientClicking="OpenWindowTablero"></telerik:RadButton>
-                     &nbsp;&nbsp;
-                <telerik:RadButton ID="btnGraficaAnalisis" runat="server" Text="Gráfica de análisis" AutoPostBack="false" OnClientClicking="OpenWindowAnalisis" ></telerik:RadButton>
-                     &nbsp;&nbsp;
-                <telerik:RadButton ID="btnDesviaciones" runat="server" Text="Análisis de desviaciones" AutoPostBack="false" OnClientClicking="OpenWindowDesviaciones"></telerik:RadButton>
-                   <%-- <div style="height: 10px; clear: both;"></div>
-                <telerik:RadButton ID="btnTabulador" runat="server" Text="Tabulador maestro" AutoPostBack="false"  OnClientClicking="OpenWindowTabuladorMaestroCons"></telerik:RadButton>
-                &nbsp;&nbsp;
-               <telerik:RadButton ID="btnMercado" runat="server" Text="Mercado Salarial" AutoPostBack="false"  OnClientClicking="OpenWindowTabuladorMercadoCons"></telerik:RadButton>
-                     &nbsp;&nbsp;
-               <telerik:RadButton ID="btnIncrementos" runat="server" Text="Planeación de incrementos" AutoPostBack="false"  OnClientClicking="OpenWindowIncrementosCons"></telerik:RadButton>
-                      <div style="height: 10px; clear: both;"></div>
-                <telerik:RadButton ID="btnComparacion" runat="server" Text="Comparación mercado" AutoPostBack="false"  OnClientClicking="OpenWindowComparacion"></telerik:RadButton>
-                &nbsp;&nbsp;
-               <telerik:RadButton ID="btnBono" runat="server" Text="Bono" AutoPostBack="false" OnClientClicking="OpenWindowBono"></telerik:RadButton>
-                </div>--%>
-            </div>
-                        </telerik:RadPageView>
-                        <telerik:RadPageView ID="rpvInformacion" runat="server">
+                        <div>
+                            <label class="labelTitulo">Administrar</label>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnAgregar" runat="server" Text="Agregar" AutoPostBack="false" OnClientClicked="AbrirVentanaNuevo"></telerik:RadButton>
+                            </div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnConfigurar" runat="server" Text="Configurar" AutoPostBack="false" OnClientClicked="OpenWindowConfigurar"></telerik:RadButton>
+                                <%--  &nbsp;&nbsp;
+                            <telerik:RadButton ID="btnVerNiveles" runat="server" Text="Ver niveles" AutoPostBack="false" OnClientClicked="OpenWindowNiveles"></telerik:RadButton>--%>
+                            </div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnCambiarEstado" runat="server" Text="Cerrar" OnClientClicking="cambiarEstado" OnClick="btnCambiarEstado_Click"></telerik:RadButton>
+                            </div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnReabrir" runat="server" Text="Re abrir" OnClick="btnReabrir_Click"></telerik:RadButton>
+                            </div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnCopiar" runat="server" Text="Copiar" AutoPostBack="false" OnClientClicked="CopiarTabulador"></telerik:RadButton>
+                            </div>
+                        </div>
+                        <div style="clear: both;"></div>
+                        <div>
+                            <label class="labelTitulo">Procesos</label>
+                            <telerik:RadButton ID="btnValuar" runat="server" Text="Valuar puestos" AutoPostBack="false" OnClientClicking="OpenWindowValuacion"></telerik:RadButton>
+                            &nbsp;
+                                <telerik:RadButton ID="btnCapturar" runat="server" Text="Integrar mercado salarial" AutoPostBack="false" OnClientClicking="OpenWindowMercado"></telerik:RadButton>
+                            <div style="clear: both; height: 10px;"></div>
+                            <telerik:RadButton ID="btnCrear" runat="server" Text="Validar tabulador maestro" AutoPostBack="false" OnClientClicking="OpenWindowTabuladorMaestro"></telerik:RadButton>
+                            &nbsp;
+                            <telerik:RadButton ID="btnIncrementos" runat="server" Text="Planear incrementos" AutoPostBack="false" OnClientClicking="OpenWindowPlaneacion"></telerik:RadButton>
+                        </div>
+                        <div style="height: 10px; clear: both;"></div>
+                        <div>
+                            <label class="labelTitulo">Consultas</label>
+                            <%-- <telerik:RadButton ID="btnConsultas" runat="server" Text="Consultas" AutoPostBack="false" OnClientClicking="OpenWindowConsultar"></telerik:RadButton>
+                             &nbsp;&nbsp;--%>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnConsSueldos" runat="server" Text="Tabulador" AutoPostBack="false" OnClientClicking="OpenWindowTablero"></telerik:RadButton>
+                            </div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnGraficaAnalisis" runat="server" Text="Gráfica de análisis" AutoPostBack="false" OnClientClicking="OpenWindowAnalisis"></telerik:RadButton>
+                            </div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnDesviaciones" runat="server" Text="Análisis de desviaciones" AutoPostBack="false" OnClientClicking="OpenWindowDesviaciones"></telerik:RadButton>
+                            </div>
+                            <%-- <div style="height: 10px; clear: both;"></div>
+                        <telerik:RadButton ID="btnTabulador" runat="server" Text="Tabulador maestro" AutoPostBack="false"  OnClientClicking="OpenWindowTabuladorMaestroCons"></telerik:RadButton>
+                        &nbsp;&nbsp;
+                       <telerik:RadButton ID="btnMercado" runat="server" Text="Mercado Salarial" AutoPostBack="false"  OnClientClicking="OpenWindowTabuladorMercadoCons"></telerik:RadButton>
+                             &nbsp;&nbsp;
+                       <telerik:RadButton ID="btnIncrementos" runat="server" Text="Planeación de incrementos" AutoPostBack="false"  OnClientClicking="OpenWindowIncrementosCons"></telerik:RadButton>
+                              <div style="height: 10px; clear: both;"></div>
+                        <telerik:RadButton ID="btnComparacion" runat="server" Text="Comparación mercado" AutoPostBack="false"  OnClientClicking="OpenWindowComparacion"></telerik:RadButton>
+                        &nbsp;&nbsp;
+                       <telerik:RadButton ID="btnBono" runat="server" Text="Bono" AutoPostBack="false" OnClientClicking="OpenWindowBono"></telerik:RadButton>
+                        </div>--%>
+                        </div>
+                    </telerik:RadPageView>
+                    <telerik:RadPageView ID="rpvInformacion" runat="server">
                         <div class="ctrlBasico">
-                            <label style="width: 120px;" id="lblEvento" name="lblEvento" runat="server">Periodo:</label>
+                            <div class="divControlIzquierda">
+                                <label style="width: 120px;" id="lblEvento" name="lblEvento" runat="server">Versión:</label>
+                            </div>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtClPeriodo" Enabled="false" runat="server" Width="400px" MaxLength="1000"></telerik:RadTextBox>
+                                <telerik:RadTextBox ID="txtClPeriodo" Enabled="false" runat="server" TextMode="MultiLine" Width="350px" MaxLength="1000" Height="35"></telerik:RadTextBox>
                             </div>
                         </div>
                         <div style="clear: both;"></div>
                         <div class="ctrlBasico">
-                            <label style="width: 120px;" id="Label1" name="lblEvento" runat="server">Descripción:</label>
+                            <div class="divControlIzquierda">
+                                <label style="width: 120px;" id="Label1" name="lblEvento" runat="server">Descripción:</label>
+                            </div>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtDsPeriodo" Enabled="false" runat="server" Width="400px" MaxLength="1000"></telerik:RadTextBox>
+                                <telerik:RadTextBox ID="txtDsPeriodo" Enabled="false" runat="server" Width="350px" TextMode="MultiLine" MaxLength="1000" Height="35"></telerik:RadTextBox>
                             </div>
                         </div>
                         <div style="clear: both;"></div>
                         <div class="ctrlBasico">
-                            <label style="width: 120px;" id="Label2" name="lblEvento" runat="server">Estatus:</label>
+                            <div class="divControlIzquierda">
+                                <label style="width: 120px;" id="Label4" name="lblEvento" runat="server">Notas:</label>
+                            </div>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtClEstatus" Enabled="false" runat="server" Width="200px" MaxLength="1000"></telerik:RadTextBox>
+                                <telerik:RadTextBox ID="txtNotas" Enabled="false" runat="server" Width="350px" TextMode="MultiLine" Height="100px"></telerik:RadTextBox>
                             </div>
                         </div>
                         <div style="clear: both;"></div>
                         <div class="ctrlBasico">
-                            <label style="width: 120px;" id="Label3" name="lblEvento" runat="server">Tipo de puestos:</label>
+                            <div class="divControlIzquierda">
+                                <label style="width: 120px;" id="Label2" name="lblEvento" runat="server">Estatus:</label>
+                            </div>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtTipo" Enabled="false" runat="server" Width="400px" MaxLength="1000"></telerik:RadTextBox>
+                                <telerik:RadTextBox ID="txtClEstatus" Enabled="false" runat="server" Width="200px" TextMode="MultiLine" MaxLength="1000" Height="35"></telerik:RadTextBox>
                             </div>
                         </div>
                         <div style="clear: both;"></div>
                         <div class="ctrlBasico">
-                            <label style="width: 120px;" id="Label5" name="lblCurso" runat="server">Último usuario que modifica:</label>
+                            <div class="divControlIzquierda">
+                                <label style="width: 120px;" id="Label3" name="lblEvento" runat="server">Tipo de puestos:</label>
+                            </div>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtUsuarioMod" Enabled="false" runat="server" Width="140px" MaxLength="1000"></telerik:RadTextBox>
+                                <telerik:RadTextBox ID="txtTipo" Enabled="false" runat="server" Width="350px" TextMode="MultiLine" MaxLength="1000" Height="35"></telerik:RadTextBox>
+                            </div>
+                        </div>
+                        <div style="clear: both;"></div>
+                        <div class="ctrlBasico">
+                            <div class="divControlIzquierda">
+                                <label style="width: 120px;" id="Label5" name="lblCurso" runat="server">Último usuario que modifica:</label>
+                            </div>
+                            <div class="divControlDerecha">
+                                <telerik:RadTextBox ID="txtUsuarioMod" Enabled="false" runat="server" Width="105px" TextMode="MultiLine" MaxLength="1000" Height="35"></telerik:RadTextBox>
                             </div>
                         </div>
                         <div class="ctrlBasico">
-                            <label style="width: 120px;" id="Label6" name="lblCurso" runat="server">Última fecha de modificación:</label>
+                            <div class="divControlIzquierda">
+                                <label style="width: 120px;" id="Label6" name="lblCurso" runat="server">Última fecha de modificación:</label>
+                            </div>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtFechaMod" Enabled="false" runat="server" Width="140px" MaxLength="1000"></telerik:RadTextBox>
+                                <telerik:RadTextBox ID="txtFechaMod" Enabled="false" runat="server" Width="105px" TextMode="MultiLine" MaxLength="1000" Height="35"></telerik:RadTextBox>
                             </div>
                         </div>
                     </telerik:RadPageView>
-                     </telerik:RadMultiPage>
-                </div>
+                </telerik:RadMultiPage>
+            </div>
 
         </telerik:RadPane>
         <telerik:RadPane ID="rpOrdenarFiltrar" runat="server" Scrolling="None" Width="20px">
-            <telerik:RadSlidingZone ID="rszOrdenarFiltrar" runat="server" SlideDirection="Left" ExpandedPaneId="rsVersionesTabulador" Width="20px">
+            <telerik:RadSlidingZone ID="rszOrdenarFiltrar" runat="server" SlideDirection="Left" ClickToOpen="true" ExpandedPaneId="rsVersionesTabulador" Width="20px">
                 <telerik:RadSlidingPane ID="rspOrdenarFiltrar" runat="server" Title="Ordenar y filtrar" Width="450px" RenderMode="Mobile" Height="100%">
                     <div style="clear: both; height: 10px;"></div>
                     <div>
@@ -1036,7 +1147,6 @@
                 ShowContentDuringLoad="false"
                 Modal="true"
                 Behaviors="close"
-                OnClientClose="onCloseWindow"
                 Animation="Fade">
             </telerik:RadWindow>
         </Windows>
@@ -1056,6 +1166,21 @@
             </telerik:RadWindow>
         </Windows>
         <Windows>
+            <telerik:RadWindow
+                ID="WinTabuladoresConfig"
+                runat="server"
+                VisibleStatusbar="false"
+                ShowContentDuringLoad="false"
+                Behaviors="Close"
+                Modal="true"
+                ReloadOnShow="false"
+                Animation="Fade"
+                Width="1350px"
+                OnClientClose="CloseWindowConfig"
+                Height="665px">
+            </telerik:RadWindow>
+        </Windows>
+        <Windows>
             <telerik:RadWindow ID="winSeleccion"
                 runat="server"
                 Title="Seleccionar empleado"
@@ -1069,7 +1194,21 @@
                 Animation="Fade">
             </telerik:RadWindow>
         </Windows>
-         <Windows>
+        <Windows>
+            <telerik:RadWindow ID="winImprimir"
+                runat="server"
+                Title="Imprimir"
+                Height="630px"
+                Width="1100px"
+                ReloadOnShow="true"
+                VisibleStatusbar="false"
+                ShowContentDuringLoad="false"
+                Modal="true"
+                Behaviors="Close"
+                Animation="Fade">
+            </telerik:RadWindow>
+        </Windows>
+        <Windows>
             <telerik:RadWindow ID="winIncrementoGeneral"
                 runat="server"
                 Title="Denifir incremento general"

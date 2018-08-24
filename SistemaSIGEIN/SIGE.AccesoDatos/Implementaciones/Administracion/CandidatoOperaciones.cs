@@ -84,11 +84,11 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
                 return context.SPE_OBTIENE_PUESTO_REQUISICION(pIdRequisicion).FirstOrDefault();
             }
         }
-        public List<SPE_OBTIENE_CANDIDATOS_CONTRATADOS_Result> ObtenerCandidatosContratados()
+        public List<SPE_OBTIENE_CANDIDATOS_CONTRATADOS_Result> ObtenerCandidatosContratados(int? pIdEmpresa = null, int? pIdRol = null)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_CANDIDATOS_CONTRATADOS().ToList();
+                return context.SPE_OBTIENE_CANDIDATOS_CONTRATADOS(pIdEmpresa, pIdRol).ToList();
             }
         }
 

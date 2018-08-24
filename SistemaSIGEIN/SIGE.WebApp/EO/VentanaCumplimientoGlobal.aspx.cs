@@ -14,6 +14,7 @@ using Telerik.Web.UI;
 using SIGE.Negocio.Utilerias;
 using Newtonsoft.Json;
 using WebApp.Comunes;
+using SIGE.WebApp.Comunes;
 
 namespace SIGE.WebApp.EO
 {
@@ -25,6 +26,7 @@ namespace SIGE.WebApp.EO
         private string vClUsuario;
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private int? vIdRol;
 
         public int vIdPeriodo
         {
@@ -50,9 +52,12 @@ namespace SIGE.WebApp.EO
             if (vPrDesempenoGlobal != null)
             {
                 decimal? vNoCumplido = 100 - vPrDesempenoGlobal.CUMPLIDO;
-                vSerie.SeriesItems.Add(vNoCumplido, System.Drawing.Color.Red, "No Cumplido");
+                
+                vSerie.SeriesItems.Add(vNoCumplido, System.Drawing.Color.Red, "No cumplido");
                 vSerie.SeriesItems.Add(vPrDesempenoGlobal.CUMPLIDO, System.Drawing.Color.Green, "Cumplido");
                 vSerie.LabelsAppearance.DataFormatString = "{0:N2}%";
+                vSerie.LabelsAppearance.TextStyle.FontSize = 14;
+                rhcGraficaGlobal.Legend.Appearance.TextStyle.FontSize = 15;
                 rhcGraficaGlobal.PlotArea.Series.Add(vSerie);
             }
             else
@@ -108,6 +113,10 @@ namespace SIGE.WebApp.EO
             {
                 if (item.clOrigen == "COPIA")
                     vOrigen = item.clOrigen + " " + item.clTipoCopia;
+                if (item.clOrigen == "PREDEFINIDO")
+                    vOrigen = "Original";
+                else if (item.clOrigen == "REPLICA")
+                    vOrigen = "réplica";
                 else
                     vOrigen = item.clOrigen;
 
@@ -138,11 +147,26 @@ namespace SIGE.WebApp.EO
             rgComparativos.Rebind();
         }
 
+        private Color ObtieneColorCumplimiento(decimal? pPrCumplimiento)
+        {
+            Color vColor = System.Drawing.ColorTranslator.FromHtml("#F2F2F2");
+
+            if (pPrCumplimiento > 0 && pPrCumplimiento < 60)
+                vColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+            else if (pPrCumplimiento > 59 && pPrCumplimiento < 76)
+                vColor = System.Drawing.ColorTranslator.FromHtml("#FFFF00");
+            else if (pPrCumplimiento > 75 && pPrCumplimiento < 101)
+                vColor = System.Drawing.ColorTranslator.FromHtml("#00B050");
+
+            return vColor;
+        }
+
 
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
             if (!IsPostBack)
             {
                 if (Request.Params["PeriodoId"] != null)
@@ -190,6 +214,10 @@ namespace SIGE.WebApp.EO
                     string vOrigenPeriodo;
                     if (oPeriodo.CL_ORIGEN_CUESTIONARIO == "Copia")
                         vOrigenPeriodo = oPeriodo.CL_ORIGEN_CUESTIONARIO + " "+ oPeriodo.CL_TIPO_COPIA;
+                    if (oPeriodo.CL_ORIGEN_CUESTIONARIO == "PREDEFINIDO")
+                        vOrigenPeriodo = "Original";
+                    else if (oPeriodo.CL_ORIGEN_CUESTIONARIO == "REPLICA")
+                        vOrigenPeriodo = "Réplica";
                     else
                         vOrigenPeriodo = oPeriodo.CL_ORIGEN_CUESTIONARIO;
 
@@ -212,7 +240,7 @@ namespace SIGE.WebApp.EO
         {
             PeriodoDesempenoNegocio nDesempenoGlobal = new PeriodoDesempenoNegocio();
             List<E_OBTIENE_CUMPLIMIENTO_GLOBAL> lDesempenoGlobal = new List<E_OBTIENE_CUMPLIMIENTO_GLOBAL>();
-            lDesempenoGlobal = nDesempenoGlobal.ObtieneCumplimientoGlobal(vIdPeriodo);
+            lDesempenoGlobal = nDesempenoGlobal.ObtieneCumplimientoGlobal(vIdPeriodo, vIdRol);
             rgEvaluados.DataSource = lDesempenoGlobal;
         }
 
@@ -265,6 +293,20 @@ namespace SIGE.WebApp.EO
                 rgComparativos.Rebind();
 
             }
+        }
+
+        protected void rgEvaluados_ItemDataBound(object sender, GridItemEventArgs e)
+        {
+            if (e.Item is GridFooterItem)
+            {
+                
+                GridFooterItem footerItem = (GridFooterItem)e.Item;
+                PeriodoDesempenoNegocio nDesempenoGlobal = new PeriodoDesempenoNegocio();
+                var vDesempenoGlobal = nDesempenoGlobal.ObtieneCumplimientoGlobal(vIdPeriodo, vIdRol).Sum(s => s.C_GENERAL);
+                footerItem["C_GENERAL"].BackColor = ObtieneColorCumplimiento(decimal.Parse(vDesempenoGlobal.ToString()));
+                         
+            }
+
         }
 
     }

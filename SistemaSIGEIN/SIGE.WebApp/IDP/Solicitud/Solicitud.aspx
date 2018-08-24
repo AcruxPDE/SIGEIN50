@@ -1,15 +1,39 @@
 ﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" MasterPageFile="~/AppSIGE.Master" CodeBehind="Solicitud.aspx.cs" Inherits="SIGE.WebApp.IDP.Solicitud.Solicitud" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="/Assets/css/Temas/<%= cssModulo %>" rel="stylesheet" type="text/css" />
-    <link href="/Assets/css/estilo.css?v=<%= DateTime.Now.ToString() %>>" rel="stylesheet" />
-    <script src="/Assets/js/appPruebas.js"></script>
+    <link href='<%# ResolveClientUrl("~/Assets/css/Temas/") %><%= cssModulo %>' rel="stylesheet" type="text/css" />
+    <link href="<%# ResolveClientUrl(String.Format("~/Assets/css/estilo.css?v={0}",DateTime.Now.ToString("yyyyMMddHHmmss") )) %>" rel="stylesheet" />
+    <script src="<%# ResolveClientUrl("~/Assets/js/appPruebas.js") %>"></script>
     <style type="text/css">
        .ruBrowse
        {
            
            width: 150px !important;
        }
+
+        .DivFotoCss {
+           background: #fafafa; 
+           position: absolute; 
+           right: 0px; 
+           margin-right: 50px; 
+           border: 1px solid lightgray; 
+           border-radius: 10px; 
+           padding: 5px;
+        }
+
+         @media only screen and (max-width: 700px) {
+            .DivFotoCss {
+               background: #fafafa; 
+               position: relative;
+               right: 0px; 
+               margin-right: 50px; 
+               border: 1px solid lightgray; 
+               border-radius: 10px; 
+               padding: 5px;
+               width:170px;
+            }
+        }
+
    </style>
     <script id="MyScript" type="text/javascript">
 
@@ -28,7 +52,7 @@
             radconfirm("¿Estás seguro que quieres salir de la pantalla? Si no has guardado los cambios se perderán", confirmCallback, 400, 170, null, "Cerrar");
         }
 
-        function OpenImpresion() {
+        //function OpenImpresion() {
             //var myPageView = $find('<= mpgSolicitud.ClientID %>');
             // var myIframe = document.getElementById('ifrmPrint');
             // var pvContent = myPageView.get_selectedPageView().get_element().innerHTML;
@@ -39,8 +63,8 @@
             // myDoc.write(pvContent + "</body></html>");
             // myDoc.close(); (pvContent + "</body></html>");
             // myDoc.close();
-            var myWindow = window.open("../VentanaImprimirSolicitud.aspx?SolicitudId=" + '<%= vIdSolicitudVS %>', "MsgWindow", "width=650,height=650");
-         }
+         //   var myWindow = window.open("../VentanaImprimirSolicitud.aspx?SolicitudId=" + '<= vIdSolicitudVS %>', "MsgWindow", "width=650,height=650");
+         //}
 
         function OpenSelectionWindowPrivacidad(pURL, pIdWindow, pTitle, pWindowProperties) {
             var currentWnd = GetRadWindow();
@@ -78,31 +102,52 @@
             var vLstColonia = $find("<%= ObtenerClientId(mpgSolicitud, "NB_COLONIA") %>");
             var vBtnColonia = $find("<%= ObtenerClientId(mpgSolicitud, "btnNB_COLONIA") %>");
             var vBtnCP = $find("<%= ObtenerClientId(mpgSolicitud, "btnCL_CODIGO_POSTAL")%>");
+            var vLstEstadosNacimiento = $find("<%= ObtenerClientId(mpgSolicitud, "NB_ESTADO_NACIMIENTO") %>");
+            var vBtnEstadosNacimiento = $find("<%= ObtenerClientId(mpgSolicitud, "btnNB_ESTADO_NACIMIENTO") %>");
 
-            if (sender == vBtnEstados)
-            windowProperties.width = document.documentElement.clientWidth - 100;
-            windowProperties.height = document.documentElement.clientHeight - 20;
-            openChildDialog("/Comunes/SeleccionLocalizacion/SeleccionEstado.aspx", "winSeleccion", "Selección de estado", windowProperties);
-
-            if (sender == vBtnMunicipios) {
-                var clEstado = vLstEstados.get_selectedItem().get_value();
+            if (sender == vBtnEstados) {
                 windowProperties.width = document.documentElement.clientWidth - 100;
                 windowProperties.height = document.documentElement.clientHeight - 20;
-                openChildDialog("/Comunes/SeleccionLocalizacion/SeleccionMunicipio.aspx?ClEstado=" + clEstado, "winSeleccion", "Selección de municipio", windowProperties);
+                var myUrl = '<%= ResolveUrl("~/Comunes/SeleccionLocalizacion/SeleccionEstado.aspx") %>';
+                openChildDialog(myUrl, "winSeleccion", "Selección de estado", windowProperties);
+            }
+
+            if (sender == vBtnMunicipios) {
+                //var clEstado = vLstEstados.get_selectedItem().get_value();
+                var nbEstado = vLstEstados.get_selectedItem().get_value();
+                windowProperties.width = document.documentElement.clientWidth - 100;
+                windowProperties.height = document.documentElement.clientHeight - 20;
+                //var myUrl = '<= ResolveUrl("~/Comunes/SeleccionLocalizacion/SeleccionMunicipio.aspx?ClEstado=") %>';
+                var myUrl = '<%= ResolveUrl("~/Comunes/SeleccionLocalizacion/SeleccionMunicipio.aspx?NbEstado=") %>';
+                //openChildDialog(myUrl + clEstado, "winSeleccion", "Selección de municipio", windowProperties);
+                openChildDialog(myUrl + nbEstado, "winSeleccion", "Selección de municipio", windowProperties);
             }
 
             if (sender == vBtnColonia) {
-                var clEstado = vLstEstados.get_selectedItem().get_value();
-                var clMunicipio = vLstMunicipios.get_selectedItem().get_value();
+                //var clEstado = vLstEstados.get_selectedItem().get_value();
+                //var clMunicipio = vLstMunicipios.get_selectedItem().get_value();
+                var nbEstado = vLstEstados.get_selectedItem().get_value();
+                var nbMunicipio = vLstMunicipios.get_selectedItem().get_value();
                 windowProperties.width = document.documentElement.clientWidth - 100;
                 windowProperties.height = document.documentElement.clientHeight - 20;
-                openChildDialog("/Comunes/SeleccionLocalizacion/SeleccionColonia.aspx?ClEstado=" + clEstado + "&ClMunicipio=" + clMunicipio, "winSeleccion", "Selección de colonia", windowProperties);
+                //var myUrl = '<= ResolveUrl("~/Comunes/SeleccionLocalizacion/SeleccionColonia.aspx?ClEstado=") %>';
+                var myUrl = '<%= ResolveUrl("~/Comunes/SeleccionLocalizacion/SeleccionColonia.aspx?NbEstado=") %>';
+                //openChildDialog(myUrl + clEstado + "&ClMunicipio=" + clMunicipio, "winSeleccion", "Selección de colonia", windowProperties);
+                openChildDialog(myUrl + nbEstado + "&NbMunicipio=" + nbMunicipio, "winSeleccion", "Selección de colonia", windowProperties);
             }
 
             if (sender == vBtnCP) {
                 windowProperties.width = document.documentElement.clientWidth - 100;
                 windowProperties.height = document.documentElement.clientHeight - 20;
-                openChildDialog("/Comunes/SeleccionLocalizacion/SeleccionCP.aspx?CatalogoCl=CODIGOPOSTAL", "winSeleccion", "Selección de código postal", windowProperties);
+                var myUrl = '<%= ResolveUrl("~/Comunes/SeleccionLocalizacion/SeleccionCP.aspx?CatalogoCl=CODIGOPOSTAL") %>';
+                openChildDialog(myUrl, "winSeleccion", "Selección de código postal", windowProperties);
+            }
+
+            if (sender == vBtnEstadosNacimiento) {
+                windowProperties.width = document.documentElement.clientWidth - 100;
+                windowProperties.height = document.documentElement.clientHeight - 20;
+                var myUrl = '<%= ResolveUrl("~/Comunes/SeleccionLocalizacion/SeleccionEstado.aspx?CatalogoCl=ESTADONACIMIENTO") %>';
+                openChildDialog(myUrl, "winSeleccion", "Selección de estado", windowProperties);
             }
         }
 
@@ -126,13 +171,16 @@
                             closeWindow();
                             break;
                     case "ESTADO":
-                            list = $find("<%= ObtenerClientId(mpgSolicitud, "NB_ESTADO") %>");
+                        list = $find("<%= ObtenerClientId(mpgSolicitud, "NB_ESTADO") %>");
+                        vSelectedData.clDato = vSelectedData.nbDato;
                             break;
                     case "MUNICIPIO":
-                            list = $find("<%= ObtenerClientId(mpgSolicitud, "NB_MUNICIPIO") %>");
+                        list = $find("<%= ObtenerClientId(mpgSolicitud, "NB_MUNICIPIO") %>");
+                        vSelectedData.clDato = vSelectedData.nbDato;
                         break;
                     case "COLONIA":
                         list = $find("<%= ObtenerClientId(mpgSolicitud, "NB_COLONIA") %>");
+                        vSelectedData.clDato = vSelectedData.nbDato;
                         break;
                     case "CODIGOPOSTAL":
                         boxt = $find("<%= ObtenerClientId(mpgSolicitud, "CL_CODIGO_POSTAL") %>");
@@ -145,7 +193,10 @@
                         vSelectedData.nbDato = vSelectedData.nbColonia;
                         break;
                         case "ACEPTAR":
-                         break;
+                            break;
+                        case "ESTADONACIMIENTO":
+                            list = $find("<%= ObtenerClientId(mpgSolicitud, "NB_ESTADO_NACIMIENTO") %>");
+                       break;
                 }
 
                 SetListBoxItem(list, vSelectedData.nbDato, vSelectedData.clDato);
@@ -211,7 +262,7 @@
                     <telerik:RadMultiPage ID="mpgSolicitud" runat="server" SelectedIndex="0" Height="100%">
                         <telerik:RadPageView ID="pvwPersonal" runat="server">
 
-                            <div style="background: #fafafa; position: absolute; right: 0px; margin-right: 50px; border: 1px solid lightgray; border-radius: 10px; padding: 5px;">
+                            <div class="DivFotoCss">
                                 <table class="ctrlTableForm">
                                     <tr>
                                         <td style="text-align: center;">
@@ -273,7 +324,7 @@
                                     </ClientSettings>
                                     <MasterTableView ClientDataKeyNames="ID_ARCHIVO,ID_ITEM" DataKeyNames="ID_ARCHIVO,ID_ITEM" AutoGenerateColumns="false" ShowHeadersWhenNoRecords="true">
                                         <Columns>
-                                            <telerik:GridHyperLinkColumn HeaderText="Nombre del documento" DataTextField="NB_DOCUMENTO" DataNavigateUrlFields="ID_ARCHIVO,ID_DOCUMENTO,FE_CREATED_DATE,NB_DOCUMENTO,ID_ITEM" DataNavigateUrlFormatString="/Comunes/ObtenerDocumento.ashx?ArchivoId={0}&ArchivoNb={2:yyyyMMdd}{4}&ArchivoDescargaNb={3}" Target="_blank"></telerik:GridHyperLinkColumn>
+                                            <telerik:GridHyperLinkColumn HeaderText="Nombre del documento" DataTextField="NB_DOCUMENTO" DataNavigateUrlFields="ID_ARCHIVO,ID_DOCUMENTO,FE_CREATED_DATE,NB_DOCUMENTO,ID_ITEM" DataNavigateUrlFormatString="~/Comunes/ObtenerDocumento.ashx?ArchivoId={0}&ArchivoNb={2:yyyyMMdd}{4}&ArchivoDescargaNb={3}" Target="_blank"></telerik:GridHyperLinkColumn>
                                             <telerik:GridBoundColumn HeaderText="Tipo de documento" HeaderStyle-Width="200" DataField="CL_TIPO_DOCUMENTO" UniqueName="CL_TIPO_DOCUMENTO"></telerik:GridBoundColumn>
                                         </Columns>
                                     </MasterTableView>
@@ -287,7 +338,7 @@
                 </div>
             </telerik:RadPane>
             <telerik:RadPane ID="rpAyuda" runat="server" Scrolling="None" Width="22px">
-                <telerik:RadSlidingZone ID="rszAvisoDePrivacidad" runat="server" SlideDirection="Left" ExpandedPaneId="rspAvisoDePrivacidad" Width="22px">
+                <telerik:RadSlidingZone ID="rszAvisoDePrivacidad" runat="server" SlideDirection="Left" ExpandedPaneId="rspAvisoDePrivacidad" Width="22px" ClickToOpen="true">
                     <telerik:RadSlidingPane ID="rspAvisoDePrivacidad" runat="server"  Title="Aviso de privacidad" Width="400px">
                         <div style="padding: 10px; text-align: justify;">
                             <literal id="lbAvisoPrivacidad" runat="server"></literal>
@@ -337,20 +388,21 @@
     </div>
     <input type="hidden" value="" id="AceptaTerminos" name="AceptaTerminos" />
     <div style="clear: both; height: 5px;"></div>
-
-    <div class="ctrlBasico">
+    <div class="divControlDerecha">
+   <%-- <div class="ctrlBasico">--%>
         <telerik:RadButton ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click"></telerik:RadButton>
-    </div>
+  <%--  </div>--%>
 
-    <div class="ctrlBasico">
-        <telerik:RadButton ID="btnGuardarSalir" runat="server" Text="Guardar y salir" OnClick="btnGuardarSalir_Click"></telerik:RadButton>
-    </div>
-  <div class="ctrlBasico">
-              <telerik:RadButton ID="btnImpresion2" runat="server" Text="Imprimir" Visible="false" OnClientClicked="OpenImpresion" AutoPostBack="false"></telerik:RadButton>
-                    </div>
-    <div class="ctrlBasico">
+    <%--<div class="ctrlBasico">--%>
+        <telerik:RadButton ID="btnGuardarSalir" runat="server" Text="Guardar y cerrar" OnClick="btnGuardarSalir_Click"></telerik:RadButton>
+    <%--</div>--%>
+ <%-- <div class="ctrlBasico">--%>
+             <%-- <telerik:RadButton ID="btnImpresion2" runat="server" Text="Imprimir" Visible="false" OnClientClicked="OpenImpresion" AutoPostBack="false"></telerik:RadButton>--%>
+                 <%--   </div>--%>
+  <%--  <div class="ctrlBasico">--%>
         <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" AutoPostBack="false" OnClientClicked="OnClientBeforeClose"></telerik:RadButton>
-    </div>
+   <%-- </div>--%>
+        </div>
 
     <iframe src="#" style="width: 0; height: 0; border: none" id="ifrmPrint"></iframe>
     <telerik:RadWindowManager ID="rwmAlertas" runat="server">
@@ -387,7 +439,8 @@
                     //var oWin = window.radopen(vURL, "winAvisoPrivacidad");
                     //oWin.set_title(vTitulo);
                     document.getElementById("AceptaTerminos").value = 1;
-                    OpenSelectionWindowPrivacidad("/IDP/Solicitud/VentanaSolicitudAvisoPrivacidad.aspx", "winPrivacidad", "Aviso de privacidad")
+                    var vMyUrl = '<%= ResolveUrl("~/IDP/Solicitud/VentanaSolicitudAvisoPrivacidad.aspx") %>';
+                    OpenSelectionWindowPrivacidad(vMyUrl, "winPrivacidad", "Aviso de privacidad")
 
                 }
             }

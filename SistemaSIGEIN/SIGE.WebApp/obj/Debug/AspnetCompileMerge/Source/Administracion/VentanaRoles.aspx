@@ -5,7 +5,7 @@
     <script id="MyScript" type="text/javascript">
         function GetRadWindow() {
             var oWindow = null;
-            if
+            if 
                 (window.radWindow) oWindow = window.radWindow;
             else
                 if (window.frameElement.radWindow)
@@ -16,11 +16,63 @@
         function closeWindow() {
             GetRadWindow().close();
         }
+
+        function OpenSelectionWindow(pURL, pIdWindow, pTitle) {
+            var currentWnd = GetRadWindow();
+            var browserWnd = window;
+            if (currentWnd)
+                browserWnd = currentWnd.BrowserWindow;
+
+            var windowProperties = {
+                width: browserWnd.innerWidth - 20,
+                height: browserWnd.innerHeight - 20
+            };
+            openChildDialog(pURL, pIdWindow, pTitle, windowProperties)
+        }
+
+        function OpenGruposWindows() {
+            OpenSelectionWindow("../Comunes/SeleccionGrupo.aspx?mulSel=1", "winSeleccion", "Selección de grupos")
+        }
+
+        function useDataFromChild(pDato) {
+            if (pDato != null) {
+                console.info(pDato);
+                var vDatosSeleccionados = pDato[0];
+                switch (vDatosSeleccionados.clTipoCatalogo) {
+                    case "GRUPO":
+                        InsertarDato(EncapsularDatos("GRUPO", pDato));
+                        break;
+                }
+            }
+        }
+
+        //FUNCTION INSERTAR DATO
+        function InsertarDato(pDato) {
+            var ajaxManager = $find('<%= RadAjaxManager1.ClientID %>');
+            ajaxManager.ajaxRequest(pDato);
+        }
+
+        //FUNCION ENCAPSULAR DATO
+        function EncapsularDatos(pClTipoDato, pLstDatos) {
+            return JSON.stringify({ clTipo: pClTipoDato, oSeleccion: pLstDatos });
+        }
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
-    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest">
         <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="rgGrupos" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnEliminar">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="rgGrupos" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="rgPlazasGrupo" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="grdMenuGeneral">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="grdMenuGeneral" UpdatePanelHeight="100%" />
@@ -33,7 +85,12 @@
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnGuardar">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="rwmAlertas"/>
+                    <telerik:AjaxUpdatedControl ControlID="rwmAlertas" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="rgGrupos">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="rgPlazasGrupo" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -62,6 +119,15 @@
                     </div>
                 </div>
                 <div style="clear: both;"></div>
+                 <div class="ctrlBasico">
+                    <div class="divControlIzquierda">
+                        <label name="lbPlantilla">Plantilla:</label>
+                    </div>
+                    <div class="divControlDerecha">
+                        <telerik:RadComboBox ID="rcbPlantilla" runat="server" MaxLength="100" AutoPostBack="false" MarkFirstMatch="true" EmptyMessage="Selecciona"></telerik:RadComboBox><br />                      
+                    </div>
+                </div>
+                <div style="clear: both;"></div>
                 <div class="ctrlBasico">
                     <div class="divControlIzquierda">
                         <label name="lblNombre">Activo:</label>
@@ -75,7 +141,7 @@
                         </telerik:RadButton>
                     </div>
                 </div>
-                <div style="clear: both;"></div>
+                <div style="clear: both;"></div>  
                 <div class="divControlDerecha">
                     <div class="ctrlBasico">
                         <telerik:RadButton ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click"></telerik:RadButton>
@@ -93,6 +159,7 @@
                             <telerik:RadTab Text="Menú general"></telerik:RadTab>
                             <telerik:RadTab Text="Menú módulos"></telerik:RadTab>
                             <telerik:RadTab Text="Menú adicionales"></telerik:RadTab>
+                            <telerik:RadTab Text="Visión de grupos"></telerik:RadTab>
                         </Tabs>
                     </telerik:RadTabStrip>
                     <div style="height: calc(100% - 45px);">
@@ -150,6 +217,76 @@
                                         <telerik:TreeListBoundColumn DataField="CL_FUNCION" HeaderText="Clave" UniqueName="CL_FUNCION" HeaderStyle-Width="80"></telerik:TreeListBoundColumn>
                                     </Columns>
                                 </telerik:RadTreeList>
+                            </telerik:RadPageView>
+                            <telerik:RadPageView ID="rpvGrupos" runat="server">
+                                <div style="height: calc(100% - 20)">
+                                    <div style="clear: both; height: 10px;"></div>
+                                    <div class="divControlCenter">
+                                        <div class="ctrlBasico" style="width: 420px; align-content: center;">
+                                            <telerik:RadGrid
+                                                ID="rgGrupos"
+                                                runat="server"
+                                                Width="420"
+                                                Height="300"
+                                                AllowPaging="true"
+                                                AutoGenerateColumns="false"
+                                                HeaderStyle-Font-Bold="true"
+                                                EnableHeaderContextMenu="true"
+                                                AllowMultiRowSelection="false"
+                                                ClientSettings-EnablePostBackOnRowClick="true"
+                                                OnItemCommand="rgGrupos_ItemCommand"
+                                                OnNeedDataSource="rgGrupos_NeedDataSource">
+                                                <GroupingSettings CaseSensitive="False" />
+                                                <ClientSettings>
+                                                    <Scrolling AllowScroll="true" UseStaticHeaders="true" SaveScrollPosition="true" />
+                                                    <Selecting AllowRowSelect="true" />
+                                                </ClientSettings>
+                                                <PagerStyle AlwaysVisible="true" />
+                                                <MasterTableView DataKeyNames="ID_GRUPO" ClientDataKeyNames="ID_GRUPO" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
+                                                    <Columns>
+                                                        <telerik:GridBoundColumn UniqueName="CL_GRUPO" DataField="CL_GRUPO" HeaderText="Clave" AutoPostBackOnFilter="true" HeaderStyle-Width="100" FilterControlWidth="30" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
+                                                        <telerik:GridBoundColumn UniqueName="NB_GRUPO" DataField="NB_GRUPO" HeaderText="Nombre" AutoPostBackOnFilter="true" HeaderStyle-Width="290" FilterControlWidth="220" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
+                                                    </Columns>
+                                                </MasterTableView>
+                                            </telerik:RadGrid>
+                                        </div>
+                                        <div class="ctrlBasico" style="float: left">
+                                            <telerik:RadButton ID="btnAgregar" runat="server" Text="B" AutoPostBack="false" ToolTip="Seleccionar grupos" OnClientClicked="OpenGruposWindows"></telerik:RadButton>
+                                            <div style="clear: both;"></div>
+                                            <telerik:RadButton ID="btnEliminar" runat="server" Text="X" AutoPostBack="true" ToolTip="Eliminar grupo" OnClick="btnEliminar_Click"></telerik:RadButton>
+                                        </div>
+                                    </div>
+                                    <div style="height: 15px; clear: both;"></div>
+                                    <div style="clear: both; height: 10px;"></div>
+                                    <div style="width: calc(100% - 20px);">
+                                        <telerik:RadGrid
+                                            ID="rgPlazasGrupo"
+                                            runat="server"
+                                            Width="100%"
+                                            Height="400"
+                                            AllowPaging="true"
+                                            AutoGenerateColumns="false"
+                                            HeaderStyle-Font-Bold="true"
+                                            EnableHeaderContextMenu="true"
+                                            AllowMultiRowSelection="false"
+                                            OnItemDataBound="rgPlazasGrupo_ItemDataBound"
+                                            OnNeedDataSource="rgPlazasGrupo_NeedDataSource">
+                                            <GroupingSettings CaseSensitive="False" />
+                                            <ClientSettings>
+                                                <Scrolling AllowScroll="true" UseStaticHeaders="true" SaveScrollPosition="true" />
+                                                <Selecting AllowRowSelect="true" />
+                                            </ClientSettings>
+                                            <PagerStyle AlwaysVisible="true" />
+                                            <MasterTableView DataKeyNames="ID_PLAZA" ClientDataKeyNames="ID_PLAZA" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
+                                                <Columns>
+                                                    <telerik:GridBoundColumn UniqueName="CL_PLAZA" DataField="CL_PLAZA" HeaderText="Clave plaza" AutoPostBackOnFilter="true" HeaderStyle-Width="100" FilterControlWidth="30" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
+                                                    <telerik:GridBoundColumn UniqueName="NB_PUESTO" DataField="NB_PUESTO" HeaderText="Nombre puesto" AutoPostBackOnFilter="true" HeaderStyle-Width="200" FilterControlWidth="140" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
+                                                    <telerik:GridBoundColumn UniqueName="NB_EMPLEADO" DataField="NB_EMPLEADO" HeaderText="Nombre empleado" AutoPostBackOnFilter="true" HeaderStyle-Width="250" FilterControlWidth="180" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
+                                                </Columns>
+                                            </MasterTableView>
+                                        </telerik:RadGrid>
+                                    </div>
+                                </div>
                             </telerik:RadPageView>
                         </telerik:RadMultiPage>
                     </div>

@@ -90,10 +90,10 @@ namespace SIGE.WebApp.MPC
 
         private void SeguridadProcesos()
         {
-            btnGuardarCerrar.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.I.A");
-            btnGuardar.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.I.A");
-            btnCopiarMercadoSalarial.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.I.A");
-            btnAjuste.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.I.A");
+            btnGuardarCerrar.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.I.A");
+            btnGuardar.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.I.A");
+            btnCopiarMercadoSalarial.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.I.A");
+            btnAjuste.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.I.A");
 
         }
 

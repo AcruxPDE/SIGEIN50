@@ -22,6 +22,7 @@ namespace SIGE.Entidades.Administracion
         public string clTipoNodo { get; set; }
         public string clTipoGenealogia { get; set; }
         public int noNivel { get; set; }
+        public int noNivelPuesto { get; set; }
         public string cssNodo { get; set; }
     }
 

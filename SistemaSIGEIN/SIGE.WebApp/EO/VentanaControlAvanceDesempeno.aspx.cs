@@ -22,8 +22,9 @@ namespace SIGE.WebApp.EO
         private string vClUsuario;
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private int? vIdRol;
 
-        private int vIdPeriodo
+        public int vIdPeriodo
         {
             get { return (int)ViewState["vs_vcd_id_periodo"]; }
             set { ViewState["vs_vcd_id_periodo"] = value; }
@@ -103,6 +104,7 @@ namespace SIGE.WebApp.EO
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!Page.IsPostBack)
             {
@@ -124,7 +126,7 @@ namespace SIGE.WebApp.EO
         protected void grdControlAvance_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             PeriodoDesempenoNegocio nDesempeno = new PeriodoDesempenoNegocio();
-            grdControlAvance.DataSource = nDesempeno.ObtieneControlAvanceDesempeno(vIdPeriodo);
+            grdControlAvance.DataSource = nDesempeno.ObtieneControlAvanceDesempeno(vIdPeriodo, pIdRol: vIdRol);
         }
 
         protected void btnGuardarPonderacion_Click(object sender, EventArgs e)
@@ -165,7 +167,7 @@ namespace SIGE.WebApp.EO
                 return;
             }
 
-            var evaluadosEvaluador = nPeriodo.ObtieneEvaluados(vIdPeriodo);
+            var evaluadosEvaluador = nPeriodo.ObtieneEvaluados(pIdPeriodo: vIdPeriodo);
             foreach (var evaluador in evaluadosEvaluador)
             {
                 int? ev = evaluador.NO_EVALUADOR;

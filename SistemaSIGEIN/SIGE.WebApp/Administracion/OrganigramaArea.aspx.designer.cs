@@ -31,6 +31,24 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadAjaxManager ramOrganigrama;
         
         /// <summary>
+        /// RadSplitter2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSplitter RadSplitter2;
+        
+        /// <summary>
+        /// RadPane2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPane RadPane2;
+        
+        /// <summary>
         /// lstArea control.
         /// </summary>
         /// <remarks>
@@ -65,6 +83,24 @@ namespace SIGE.WebApp.Administracion {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadCheckBox chkMostrarPuestos;
+        
+        /// <summary>
+        /// btnExportar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnExportar;
+        
+        /// <summary>
+        /// RadClientExportManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadClientExportManager RadClientExportManager1;
         
         /// <summary>
         /// lblMensaje control.

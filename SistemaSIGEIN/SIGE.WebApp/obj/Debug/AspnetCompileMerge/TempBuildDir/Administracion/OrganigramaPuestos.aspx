@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menu.master" AutoEventWireup="true" CodeBehind="OrganigramaPuestos.aspx.cs" Inherits="SIGE.WebApp.Administracion.OrganigramaPuestos" %>
 
+<%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" type="text/css" href="/Assets/css/cssOrgChart.css" />
     <script type="text/javascript" src="/Assets/js/appOrgChart.js"></script>
@@ -63,7 +64,26 @@
             var ajaxManager = $find("<%= ramOrganigrama.ClientID %>");
             ajaxManager.ajaxRequest("seleccionPuesto"); //Making ajax request with the argument        
         }
+
+
     </script>
+     <!-- Load Pako ZLIB library to enable PDF compression -->
+    <script src="../Assets/js/pako.min.js"></script>
+
+    <style type="text/css">
+        .k-pdf-export.RadOrgChart .rocGroup:before,
+        .k-pdf-export.RadOrgChart.rocSimple .rocNode:after,
+        .k-pdf-export.RadOrgChart .rocGroup:after,
+        .k-pdf-export.RadOrgChart.rocSimple .rocItem:after,
+        .k-pdf-export.RadOrgChart.rocSimple .rocItemTemplate:after {
+            width: 1px !important;
+        }
+
+        .kendo-pdf-hide-pseudo-elements:after,
+        .kendo-pdf-hide-pseudo-elements:before {
+            display: none !important;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <telerik:RadAjaxLoadingPanel ID="ralpOrganigrama" runat="server"></telerik:RadAjaxLoadingPanel>
@@ -89,6 +109,9 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
+      <div style="height: calc(100% - 10px);">
+        <telerik:RadSplitter ID="RadSplitter2" Width="100%" Height="100%" BorderSize="0" runat="server">
+            <telerik:RadPane ID="RadPane2" runat="server">        
     <div>
         <div class="ctrlBasico">
             <label name="lblIdPuesto">A partir del puesto:</label>
@@ -108,10 +131,15 @@
         <div class="ctrlBasico">
             <telerik:RadCheckBox ID="chkMostrarEmpleados" runat="server" Text="Mostrar empleados" OnClick="chkMostrarEmpleados_Click"></telerik:RadCheckBox>
         </div>
+         <div class="ctrlBasico"> 
+                    <telerik:RadButton ID="btnExportar"  runat="server" OnClientClicked="exportRadOrgChart" Text="Exportar a pdf" AutoPostBack="false" UseSubmitBehavior="false"></telerik:RadButton>
+                    <telerik:RadClientExportManager runat="server" ID="RadClientExportManager1">
+                    </telerik:RadClientExportManager>
+                    </div>
         <div style="clear: both;">
         </div>
     </div>
-    <div style="height: calc(100% - 40px); overflow: auto;">
+    <div style="height: calc(100% - 50px); overflow: auto;">
         <div style="position: relative;">
             <span style="position: absolute; display:none;">
                 <label name="lblNbAscendencia">Ascendencia:</label><br />
@@ -133,6 +161,9 @@
             </telerik:RadContextMenu>
         </div>
     </div>
+                           </telerik:RadPane>
+        </telerik:RadSplitter>
+    </div>
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true" OnClientClose="returnDataToParentPopup" OnClientShow="centerPopUp">
         <Windows>
             <telerik:RadWindow ID="winEmpleado" runat="server" VisibleStatusbar="false" AutoSize="false" Modal="true" Behaviors="Close" NavigateUrl="~/Administracion/Empleado.aspx"></telerik:RadWindow>
@@ -151,6 +182,16 @@
                 organigrama.initialize();
             });
             //]]>
+
+        </script>
+          <script>
+
+              var $ = $telerik.$;
+
+              function exportRadOrgChart() {
+                  var v = $find('<%=RadClientExportManager1.ClientID%>');
+                v.exportPDF($(".RadOrgChart"));
+            }
 
         </script>
     </telerik:RadCodeBlock>

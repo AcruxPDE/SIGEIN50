@@ -69,10 +69,10 @@ namespace SIGE.WebApp.EO
                 string vFecha = rdtFechaEnvio.SelectedDate == null? "" : rdtFechaEnvio.SelectedDate.Value.ToString("MM/dd/yyyy");
                 if (vFecha != "")
                 {
-                    if (vFecha == DateTime.Now.ToString("MM/dd/yyyy"))
-                    {
+                    //if (vFecha == DateTime.Now.ToString("MM/dd/yyyy"))
+                    //{
                         vIdFechaActual = vPeriodo;
-                    }
+                   //}
                     lFechasEnvio.Add(new E_FECHA_ENVIO_SOLICITUDES
                         {
                             ID_PERIODO = vPeriodo,
@@ -100,10 +100,10 @@ namespace SIGE.WebApp.EO
                     {
                         ClientScript.RegisterStartupScript(GetType(), "script", "OpenSendMessage(" + vIdFechaActual + ");", true);
                     }
-                    else
-                    {
-                        UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "closeWindow");
-                    }
+                    //else
+                    //{
+                    //    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "closeWindow");
+                    //}
                 }
                 else
                 {

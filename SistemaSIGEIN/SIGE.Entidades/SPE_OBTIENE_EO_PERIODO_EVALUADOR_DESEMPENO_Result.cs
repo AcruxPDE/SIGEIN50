@@ -17,8 +17,11 @@ namespace SIGE.Entidades
         public int ID_PERIODO { get; set; }
         public string CL_PERIODO { get; set; }
         public string NB_PERIODO { get; set; }
+        public string CL_ESTADO_PERIODO { get; set; }
         public string NB_EVALUADOR { get; set; }
         public string CL_TOKEN { get; set; }
+        public string CL_ESTADO_EMPLEADO { get; set; }
+        public Nullable<bool> FG_CAPTURA_MASIVA { get; set; }
         public string CL_ESTATUS_CAPTURA { get; set; }
     }
 }

@@ -72,7 +72,7 @@
             ObtenerEvaluado();
 
             if (vIdEmpleado != 0) {
-                OpenSelectionWindow("../Comunes/SeleccionPeriodo.aspx?m=FORMACION&IdEmpleado=" + vIdEmpleado, "winSeleccion", "Selección de periodo")
+                OpenSelectionWindow("../Comunes/SeleccionPeriodo.aspx?m=FORMACION&IdEmpleado=" + vIdEmpleado, "winSeleccion", "Selección de período")
             }
             else {
                 radalert("No has seleccionado un empleado.", 400, 150, "");
@@ -105,7 +105,7 @@
         </AjaxSettings>
     </telerik:RadAjaxManager>
 
-    <div style="clear: both; height: 10px;"></div>
+<%--    <div style="clear: both; height: 10px;"></div>--%>
 
    <%-- <div class="ctrlBasico">
         <label>Periodo:</label>
@@ -120,11 +120,11 @@
         <telerik:RadTextBox runat="server" ID="txtTiposEvaluacion" Width="500px" Enabled="false"></telerik:RadTextBox>
     </div>--%>
 
-     <div class="ctrlBasico">
+<%--     <div class="ctrlBasico">
                     <table class="ctrlTableForm">
                         <tr>
                             <td class="ctrlTableDataContext">
-                                <label>Periodo:</label></td>
+                                <label>Período:</label></td>
                             <td colspan="2" class="ctrlTableDataBorderContext">
                                 <div id="txtNoPeriodo" runat="server" style="min-width: 100px;"></div>
                             </td>
@@ -136,21 +136,71 @@
                             </td>
                         </tr>
                     </table>
-                </div>
+                </div>--%>
 
 
     <div style="clear: both; height: 10px;"></div>
 
-    <telerik:RadTabStrip runat="server" ID="rtsIndividual" MultiPageID="rmpIndividual" SelectedIndex="0" Width="100%">
+    <telerik:RadTabStrip runat="server" ID="rtsIndividual" MultiPageID="rmpIndividual" SelectedIndex="0" Width="100%" >
         <Tabs>
+            <telerik:RadTab runat="server" Text="Contexto"></telerik:RadTab>
             <telerik:RadTab runat="server" Text="Seleccionar evaluado"></telerik:RadTab>
-            <telerik:RadTab runat="server" Text="Seleccionar periodos"></telerik:RadTab>
+            <telerik:RadTab runat="server" Text="Seleccionar períodos"></telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
-    <div style="height: calc(100% - 160px); overflow: auto;">
+    <div style="height: calc(100% - 60px); overflow: auto;">
         <telerik:RadMultiPage runat="server" ID="rmpIndividual" Height="100%" Width="100%" SelectedIndex="0">
-            <telerik:RadPageView runat="server" ID="rpvEmpleados">
+             <telerik:RadPageView ID="rpvContexto" runat="server">  
 
+    <div style="clear: both; height: 10px;"></div>
+                   <div class="ctrlBasico">
+                                    <table class="ctrlTableForm" text-align: left;>
+                                        <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="lbPeriodo" name="lbTabulador" runat="server">Período:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtClPeriodo" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="lbNbPeriodo" name="lbTabulador" runat="server">Descripción:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtDsPeriodo" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                                 <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="Label1" name="lbTabulador" runat="server">Estatus:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtEstatus" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                                      <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="Label2" name="lbTabulador" runat="server">Tipo de evaluación:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtTipoEvaluacion" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                             <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="Label3" name="lbTabulador" runat="server">Notas:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtNotas" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                        </table>
+                                    </div>
+                 </telerik:RadPageView>
+
+            <telerik:RadPageView runat="server" ID="rpvEmpleados">
+                <div style="height: calc(100% - 50px); overflow: auto;">
                 <telerik:RadGrid runat="server" ID="rgEvaluados" OnNeedDataSource="rgEvaluados_NeedDataSource" OnItemCreated="rgEvaluados_ItemCreated" Width="100%" Height="100%">
                     <ClientSettings AllowKeyboardNavigation="true">
                         <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -174,7 +224,12 @@
                         </Columns>
                     </MasterTableView>
                 </telerik:RadGrid>
+                    </div>
+                  <div style="clear: both; height: 10px;"></div>
 
+    <div class="divControlDerecha">
+        <telerik:RadButton runat="server" ID="btnIndividual" Text="Consulta" AutoPostBack="false" OnClientClicked="OpenReporteIndividualWindow"></telerik:RadButton>
+    </div>
             </telerik:RadPageView>
             <telerik:RadPageView runat="server" ID="rpvPeriodos">
 
@@ -207,7 +262,7 @@
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="false" Display="false" HeaderStyle-Width="100" FilterControlWidth="40" HeaderText="Clave" DataField="CL_PERIODO" UniqueName="CL_PERIODO">
                                     <HeaderStyle Font-Bold="true" />
                                 </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="80%" HeaderText="Periodo" DataField="NB_PERIODO" UniqueName="NB_PERIODO">
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="80%" HeaderText="Período" DataField="NB_PERIODO" UniqueName="NB_PERIODO">
                                     <HeaderStyle Font-Bold="true" />
                                 </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" FilterControlWidth="80%" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO">
@@ -222,17 +277,15 @@
                     </telerik:RadGrid>
                 </div>
                 <div style="clear: both; height: 5px;"></div>
+
+    <div class="divControlDerecha">
+        <telerik:RadButton runat="server" ID="btnConsulta" Text="Consulta" AutoPostBack="false" OnClientClicked="OpenReporteIndividualWindow"></telerik:RadButton>
+    </div>
                 <div class="ctrlBasico">
-                    <telerik:RadButton runat="server" ID="btnAgregarPeriodosComparacion" Text="Agregar periodos" AutoPostBack="false" OnClientClicked="OpenPeriodoSelectionWindow"></telerik:RadButton>
+                    <telerik:RadButton runat="server" ID="btnAgregarPeriodosComparacion" Text="Agregar períodos" AutoPostBack="false" OnClientClicked="OpenPeriodoSelectionWindow"></telerik:RadButton>
                 </div>
             </telerik:RadPageView>
         </telerik:RadMultiPage>
-    </div>
-
-    <div style="clear: both; height: 10px;"></div>
-
-    <div class="divControlDerecha">
-        <telerik:RadButton runat="server" ID="btnIndividual" Text="Consulta" AutoPostBack="false" OnClientClicked="OpenReporteIndividualWindow"></telerik:RadButton>
     </div>
 
     <%--<div class="ctrlBasico">

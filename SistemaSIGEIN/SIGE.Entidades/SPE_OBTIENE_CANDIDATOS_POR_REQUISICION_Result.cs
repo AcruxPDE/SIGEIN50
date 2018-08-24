@@ -13,18 +13,16 @@ namespace SIGE.Entidades
     
     public partial class SPE_OBTIENE_CANDIDATOS_POR_REQUISICION_Result
     {
-        public int ID_PROCESO_SELECCION { get; set; }
-        public string CL_ESTADO { get; set; }
-        public System.DateTime FE_INICIO_PROCESO { get; set; }
-        public Nullable<System.DateTime> FE_TERMINO_PROCESO { get; set; }
-        public int ID_REQUISICION { get; set; }
-        public string NB_CANDIDATO { get; set; }
         public string CL_SOLICITUD { get; set; }
+        public Nullable<int> ID_CANDIDATO { get; set; }
+        public Nullable<int> ID_SOLICITUD { get; set; }
+        public Nullable<int> ID_EMPLEADO { get; set; }
+        public string CL_EMPLEADO { get; set; }
+        public string NB_CANDIDATO { get; set; }
         public string CL_SOLICITUD_ESTATUS { get; set; }
-        public Nullable<System.DateTime> FE_SOLICITUD { get; set; }
-        public int ID_CANDIDATO { get; set; }
-        public int ID_SOLICITUD { get; set; }
-        public Nullable<int> ID_BATERIA { get; set; }
-        public Nullable<System.Guid> CL_TOKEN { get; set; }
+        public string CL_ESTATUS_CANDIDATO_REQUISICION { get; set; }
+        public int ID_REQUISICION { get; set; }
+        public Nullable<System.DateTime> FE_INICIO_PROCESO { get; set; }
+        public Nullable<System.DateTime> FE_TERMINO_PROCESO { get; set; }
     }
 }

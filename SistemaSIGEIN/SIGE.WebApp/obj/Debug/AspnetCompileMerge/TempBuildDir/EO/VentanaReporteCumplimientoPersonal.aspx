@@ -4,7 +4,7 @@
     <script>
 
         function ShowInsertForm(IdEvaluadoMeta) {
-            OpenSelectionWindow("../EO/VentanaAdjuntarEvidenciaMetas.aspx?pIdEvaluadoMeta=" + IdEvaluadoMeta, "rwAdjuntarArchivos", "Adjuntar evidencias")
+            OpenSelectionWindow("VentanaAdjuntarEvidenciaMetas.aspx?pIdEvaluadoMeta=" + IdEvaluadoMeta, "rwAdjuntarArchivos", "Adjuntar evidencias")
         }
 
         function onCloseWindow(oWnd, args) {
@@ -38,12 +38,13 @@
 
         function OpenWindowPeriodos() {
             var vIdEvaluado = ('<%= vIdEvaluado%>');
-            OpenSelectionWindow("/Comunes/SeleccionPeriodosDesempeno.aspx?ID_EVALUADO=" + vIdEvaluado + "&CL_TIPO=Individual", "winSeleccion", "Seleccion de periodos a comparar");
+            var vIdPeriodo = ('<%= vIdPeriodo%>');
+            OpenSelectionWindow("../Comunes/SeleccionPeriodosDesempeno.aspx?ID_EVALUADO=" + vIdEvaluado + "&ID_PERIODO=" + vIdPeriodo + "&CL_TIPO=Individual", "winSeleccion", "Seleccion de períodos a comparar");
         }
 
         function OpenWindowComparar() {
             var vIdEvaluado = ('<%= vIdEvaluado%>');
-            OpenSelectionWindow("/EO/VentanaComparativaIndividual.aspx?ID_EVALUADO=" + vIdEvaluado, "winBonos", "Consulta Individual comparativa - Evaluación del desempeño");
+            OpenSelectionWindow("VentanaComparativaIndividual.aspx?ID_EVALUADO=" + vIdEvaluado, "winBonos", "Consulta Individual comparativa - Evaluación del desempeño");
         }
 
     </script>
@@ -235,7 +236,7 @@
                                             <HeaderStyle Width="80" />
                                             <ItemTemplate>
                                                 <div style="width: 90%; text-align: center; cursor: pointer;">
-                                                    <img src='<%# Eval("FG_EVIDENCIA").ToString().Equals("True") ? "/Assets/images/Aceptar.png" : "/Assets/images/Cancelar.png"  %>' onclick="return ShowInsertForm(<%#Eval("ID_EVALUADO_META")%>);" title="Selecciona para ver evidencias adjuntas"/>
+                                                    <img src='<%# Eval("FG_EVIDENCIA").ToString().Equals("True") ? "../Assets/images/Aceptar.png" : "../Assets/images/Cancelar.png"  %>' onclick="return ShowInsertForm(<%#Eval("ID_EVALUADO_META")%>);" title="Selecciona para ver evidencias adjuntas"/>
                                                 </div>
                                             </ItemTemplate>
                                         </telerik:GridTemplateColumn>

@@ -32,6 +32,22 @@ namespace SIGE.AccesoDatos.Implementaciones.MetodologiaCompensacion
 
        #endregion
 
+
+       #region VERIFICA CONFIGURACIÓN  K_TABULADOR
+
+       public List<SPE_VERIFICA_CONFIGURACION_TABULADOR_Result> VerificarTabulador(int? ID_TABULADOR = null)
+       {
+           using (context = new SistemaSigeinEntities())
+           {
+               var q = from vTabuladores in context.SPE_VERIFICA_CONFIGURACION_TABULADOR(ID_TABULADOR)
+                       select vTabuladores;
+               return q.ToList();
+           }
+       }
+
+
+       #endregion
+
        #region OBTIENE DATOS  K_TABULADOR_NIVEL
 
        public List<SPE_OBTIENE_TABULADORES_NIVEL_Result> ObtenerTabuladoresNivel(int? ID_TABULADOR = null)
@@ -58,6 +74,21 @@ namespace SIGE.AccesoDatos.Implementaciones.MetodologiaCompensacion
        }
        
         #endregion
+
+
+       #region   ACTUALIZA ESTATUS  K_TABULADOR
+
+       public XElement ActualizarEstatusTabulador( int? pID_TABULADOR, string pCL_ESTATUS_TABULADOR, string usuario, string programa, string pClTipoOperacion)
+       {
+           using (context = new SistemaSigeinEntities())
+           {
+               ObjectParameter poutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+               context.SPE_ACTUALIZA_ESTATUS_TABULADOR(poutClaveRetorno, pID_TABULADOR, pCL_ESTATUS_TABULADOR, usuario, programa, pClTipoOperacion);
+               return XElement.Parse(poutClaveRetorno.Value.ToString());
+           }
+       }
+
+       #endregion
 
        #region  INSERTA  DATOS COPIA  K_TABULADOR
        public XElement InsertarTabuladorCopia(string pClTipoOperacion, E_TABULADOR vTabuladores, string usuario, string programa)
@@ -123,14 +154,14 @@ namespace SIGE.AccesoDatos.Implementaciones.MetodologiaCompensacion
        #region OBTIENE DATOS  K_TABULADOR_EMPLEADO
 
 
-       public List<SPE_OBTIENE_EMPLEADOS_TABULADOR_Result> ObtenerEmpleadosTabulador(int? ID_TABULADOR = null, XElement XML_SELECCIONADOS = null, int? ID_EMPRESA = null)
+       public List<SPE_OBTIENE_EMPLEADOS_TABULADOR_Result> ObtenerEmpleadosTabulador(int? ID_TABULADOR = null, XElement XML_SELECCIONADOS = null, int? ID_EMPRESA = null, int? ID_ROL = null)
        {
            using (context = new SistemaSigeinEntities())
            {
                string vXmlFiltro = null;
                if (XML_SELECCIONADOS != null)
                    vXmlFiltro = XML_SELECCIONADOS.ToString();
-               var q = from vTabuladores in context.SPE_OBTIENE_EMPLEADOS_TABULADOR(ID_TABULADOR, vXmlFiltro, ID_EMPRESA)
+               var q = from vTabuladores in context.SPE_OBTIENE_EMPLEADOS_TABULADOR(ID_TABULADOR, vXmlFiltro, ID_EMPRESA, ID_ROL)
                        select vTabuladores;
                return q.ToList();
            }
@@ -406,11 +437,11 @@ namespace SIGE.AccesoDatos.Implementaciones.MetodologiaCompensacion
        #endregion
 
        #region OBTIENE PLANEACION DE INCREMENTOS
-       public List<SPE_OBTIENE_PLANEACION_INCREMENTOS_Result> ObtenerPlaneacionIncrementos(int? ID_TABULADOR = null)
+       public List<SPE_OBTIENE_PLANEACION_INCREMENTOS_Result> ObtenerPlaneacionIncrementos(int? ID_TABULADOR = null, int? ID_ROL = null)
        {
            using (context = new SistemaSigeinEntities())
            {
-               var q = from vTabuladores in context.SPE_OBTIENE_PLANEACION_INCREMENTOS(ID_TABULADOR)
+               var q = from vTabuladores in context.SPE_OBTIENE_PLANEACION_INCREMENTOS(ID_TABULADOR, ID_ROL)
                        select vTabuladores;
                return q.ToList();
            }
@@ -419,11 +450,11 @@ namespace SIGE.AccesoDatos.Implementaciones.MetodologiaCompensacion
 
 
        #region OBTIENE CONSULTA SUELDOS
-       public List<SPE_OBTIENE_CONSULTA_SUELDOS_Result> ObtenerConsultaSueldos(int? ID_TABULADOR = null)
+       public List<SPE_OBTIENE_CONSULTA_SUELDOS_Result> ObtenerConsultaSueldos(int? ID_TABULADOR = null, int? ID_ROL = null)
        {
            using (context = new SistemaSigeinEntities())
            {
-               var q = from vTabuladores in context.SPE_OBTIENE_CONSULTA_SUELDOS(ID_TABULADOR)
+               var q = from vTabuladores in context.SPE_OBTIENE_CONSULTA_SUELDOS(ID_TABULADOR, ID_ROL)
                        select vTabuladores;
                return q.ToList();
            }
@@ -431,11 +462,11 @@ namespace SIGE.AccesoDatos.Implementaciones.MetodologiaCompensacion
        #endregion
 
        #region OBTIENE EMPLEADOS PLANEACION DE INCREMENTOS
-       public List<SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS_Result> ObtenerEmpleadosPlaneacionIncrementos(int? ID_TABULADOR = null)
+       public List<SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS_Result> ObtenerEmpleadosPlaneacionIncrementos(int? ID_TABULADOR = null, int? pID_ROL = null, bool? pFG_PLANEACION = null)
        {
            using (context = new SistemaSigeinEntities())
            {
-               var q = from vTabuladores in context.SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS(ID_TABULADOR)
+               var q = from vTabuladores in context.SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS(ID_TABULADOR, pID_ROL, pFG_PLANEACION)
                        select vTabuladores;
                return q.ToList();
            }

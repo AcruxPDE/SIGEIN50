@@ -48,7 +48,8 @@
             //myDoc.write(pvContent + "</body></html>");
             //myDoc.close(); (pvContent + "</body></html>");
             //myDoc.close();
-            var myWindow = window.open("ReporteConsultaGlobal.aspx?IdPuesto=" + '<%= vIdPuesto %>' + "&IdCandidato=" + '<%= vIdCandidato %>', "MsgWindow", "width=650,height=650");
+            openChildDialog("ReporteConsultaGlobal.aspx?IdPuesto=" + '<%= vIdPuesto%>' + "&IdCandidato=" + '<%= vIdCandidato%>', "winImprimir", "Imprimir consulta");
+            //var myWindow = window.open("ReporteConsultaGlobal.aspx?IdPuesto=" + '<= vIdPuesto %>' + "&IdCandidato=" + '<= vIdCandidato %>', "MsgWindow", "width=650,height=650");
         }
 
 

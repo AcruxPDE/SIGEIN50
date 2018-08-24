@@ -14,10 +14,10 @@ namespace SIGE.Negocio.Administracion
 {
     public class DepartamentoNegocio
     {
-        public List<SPE_OBTIENE_M_DEPARTAMENTO_Result> ObtieneDepartamentos(int? pIdDepartamento = null, bool? pFgActivo = null, DateTime? pFeInactivo = null, string pClDepartamento = null, string pNbDepartamento = null, XElement XML_SELECCIONADOS = null, int? ID_EMPRESA = null)
+        public List<SPE_OBTIENE_M_DEPARTAMENTO_Result> ObtieneDepartamentos(int? pIdDepartamento = null, bool? pFgActivo = null, DateTime? pFeInactivo = null, string pClDepartamento = null, string pNbDepartamento = null, XElement XML_SELECCIONADOS = null, int? ID_EMPRESA = null, int? ID_ROL = null)
         {
             DepartamentoOperaciones operaciones = new DepartamentoOperaciones();
-            return operaciones.ObtenerDepartamentos(pIdDepartamento, pFgActivo, pFeInactivo, pClDepartamento, pNbDepartamento, XML_SELECCIONADOS, ID_EMPRESA);
+            return operaciones.ObtenerDepartamentos(pIdDepartamento, pFgActivo, pFeInactivo, pClDepartamento, pNbDepartamento, XML_SELECCIONADOS, ID_EMPRESA, ID_ROL);
         }
 
         public E_RESULTADO InsertaActualiza_M_DEPARTAMENTO(string tipo_transaccion, E_DEPARTAMENTO V_M_DEPARTAMENTO, string usuario, string programa)

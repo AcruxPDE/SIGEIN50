@@ -209,7 +209,7 @@
                     </telerik:RadDatePicker>
                 </div>
                 <div style="clear: both"></div>--%>
-                        <div class="ctrlBasico">
+    <%--                    <div class="ctrlBasico">
                             <label id="lblSemaforoVerde"
                                 name="lblSemaforoVerde"
                                 runat="server">
@@ -232,7 +232,7 @@
                                 MaxLength="800"
                                 Enabled="false">
                             </telerik:RadTextBox>
-                        </div>
+                        </div>--%>
                         <div class="ctrlBasico">
                             <label id="lblCuartilIncremento"
                                 name="lblCuartilIncremento"
@@ -268,7 +268,7 @@
                                     <Columns>
                                         <%--<telerik:GridEditCommandColumn ButtonType="ImageButton" HeaderStyle-Width="40"></telerik:GridEditCommandColumn>--%>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" ReadOnly="true" AllowFiltering="false" HeaderStyle-Width="60" HeaderText="No." DataField="NUM_ITEM" UniqueName="NUM_ITEM" ItemStyle-HorizontalAlign="Center"></telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" ReadOnly="true" HeaderStyle-Width="180" FilterControlWidth="90" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" ReadOnly="true" HeaderStyle-Width="180" FilterControlWidth="90" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" ReadOnly="true" HeaderStyle-Width="210" FilterControlWidth="130" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="NB_PUESTO"></telerik:GridBoundColumn>
                                         <%--<telerik:GridBoundColumn AutoPostBackOnFilter="true" ReadOnly="true" HeaderStyle-Width="210" FilterControlWidth="130" HeaderText="Nombre del ocupante" DataField="NB_EMPLEADO" UniqueName="NB_EMPLEADO"></telerik:GridBoundColumn>--%>
                                         <telerik:GridTemplateColumn AutoPostBackOnFilter="true" ReadOnly="true" HeaderStyle-Width="180" FilterControlWidth="90" HeaderText="Nombre del ocupante" DataField="NB_EMPLEADO" UniqueName="NB_EMPLEADO">

@@ -11,6 +11,11 @@
 
         }
 
+        function CloseWindow(oWnd, args) {
+            GetRadWindow().close();
+        }
+
+
 
         function OpenSelectionWindow(pURL, pIdWindow, pTitle, pWindowProperties) {
             var currentWnd = GetRadWindow();
@@ -163,12 +168,13 @@
                                 </Columns>
                             </MasterTableView>
                         </telerik:RadGrid>
-                    <label id="lbMetasConfiguradas" name="lbMetasConfiguradas" runat="server" visible="false" style="color:red;">Las metas deshabilitadas no cuentan con la configuración necesaria para su evaluación. Revíselas en la configuración del periodo.</label>
+                    <label id="lbMetasConfiguradas" name="lbMetasConfiguradas" runat="server" visible="false" style="color:red;">Las metas deshabilitadas no cuentan con la configuración necesaria para su evaluación. Revíselas en la configuración del período.</label>
 
                     </div>
                     <div class="divControlDerecha">
                         <div style="clear: both; height: 20px;"></div>
                         <telerik:RadButton ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click"></telerik:RadButton>
+                         <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" OnClientClicking="CloseWindow"></telerik:RadButton>
                     </div>
 
                 </telerik:RadPageView>

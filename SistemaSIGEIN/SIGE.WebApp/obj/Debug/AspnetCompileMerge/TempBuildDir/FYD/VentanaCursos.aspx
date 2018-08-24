@@ -17,7 +17,7 @@
             vTitulo = "Editar Tema";
 
             var windowProperties = {};
-            windowProperties.width = document.documentElement.clientWidth - 750;
+            windowProperties.width = document.documentElement.clientWidth - 40;
             windowProperties.height = document.documentElement.clientHeight - 40;
             openChildDialog(vURL, "winAgregarTema", vTitulo, windowProperties);
         }
@@ -42,19 +42,22 @@
 
 
             if (sender == vBtnGuardarTema) {
+                var windowProperties = {};
+                windowProperties.width = document.documentElement.clientWidth - 40;
+                windowProperties.height = document.documentElement.clientHeight - 40;
                 openChildDialog("VentanaTemas.aspx?IdCursoItem=" + '<%# vIdListaCurso %>', "winAgregarTema", "Agregar Tema", windowProperties);
             }
 
             if (sender == vBtnPuesto)
-                openChildDialog("/Comunes/SeleccionPuesto.aspx", "winSeleccion", "Selección de puesto", windowProperties);
+                openChildDialog("../Comunes/SeleccionPuesto.aspx", "winSeleccion", "Selección de puesto", windowProperties);
 
             if (sender == vBtnGuardarCompetencia)
-                openChildDialog("/Comunes/SeleccionCompetencia.aspx", "winSeleccionCompetencia", "Selección de competencia", windowProperties);
+                openChildDialog("../Comunes/SeleccionCompetencia.aspx", "winSeleccionCompetencia", "Selección de competencia", windowProperties);
 
             if (sender == vBtnGuardarInstructor)
                // openChildDialog("/Comunes/SeleccionInstructor.aspx?IdCurso=" + '<%# vIdListaCurso %>' + "&IdCursoInstructor=" + '<%# vCursoId%>' , "winSeleccionInstructor", "Selección de instructor");
               //openChildDialog("/Comunes/SeleccionInstructor.aspx?IdCurso=" + '<%# vIdListaCurso %>' + "&IdCursoInstructor=" + '<%# vCursoId%>' , "winSeleccionInstructor", "Selección de instructor");
-                openChildDialog("/Comunes/SeleccionInstructor.aspx?IdCurso=" + '<%# vIdListaCurso %>', "winSeleccionInstructor", "Selección de instructor" , windowProperties);
+                openChildDialog("../Comunes/SeleccionInstructor.aspx?IdCurso=" + '<%# vIdListaCurso %>', "winSeleccionInstructor", "Selección de instructor" , windowProperties);
              
         }
 

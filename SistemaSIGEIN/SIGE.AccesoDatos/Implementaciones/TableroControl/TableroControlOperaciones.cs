@@ -134,11 +134,11 @@ namespace SIGE.AccesoDatos.Implementaciones.TableroControl
             }
         }
 
-        public List<SPE_OBTIENE_EMPLEADOS_EVALUADOS_TABLERO_Result> ObtenerEvaluadosTableroControl(int? pIdTableroControl, int? pIdEmpleado)
+        public List<SPE_OBTIENE_EMPLEADOS_EVALUADOS_TABLERO_Result> ObtenerEvaluadosTableroControl(int? pIdTableroControl, int? pIdEmpleado, int? pIdRol)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_EMPLEADOS_EVALUADOS_TABLERO(pIdTableroControl, pIdEmpleado).ToList();
+                return context.SPE_OBTIENE_EMPLEADOS_EVALUADOS_TABLERO(pIdTableroControl, pIdEmpleado, pIdRol).ToList();
             }
         }
 

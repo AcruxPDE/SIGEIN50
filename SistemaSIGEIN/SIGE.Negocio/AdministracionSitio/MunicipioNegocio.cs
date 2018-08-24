@@ -11,11 +11,11 @@ namespace SIGE.Negocio.Administracion  // reemplazar por la carpeta correspondie
 {
     public class MunicipioNegocio
     {
-        
-        public List<SPE_OBTIENE_C_MUNICIPIO_Result> ObtieneMunicipios(int? pIdMunicipio = null, String pClPais = null, String pClEstado = null, String pClMunicipio = null, String pNbMunicipio = null)
+
+        public List<SPE_OBTIENE_C_MUNICIPIO_Result> ObtieneMunicipios(int? pIdMunicipio = null, String pClPais = null, String pClEstado = null, String pNbEstado = null, String pClMunicipio = null, String pNbMunicipio = null)
         {
             MunicipioOperaciones operaciones = new MunicipioOperaciones();
-            return operaciones.ObtenerMunicipios(pIdMunicipio, pClPais, pClEstado, pClMunicipio, pNbMunicipio);
+            return operaciones.ObtenerMunicipios(pIdMunicipio, pClPais, pClEstado, pNbEstado, pClMunicipio, pNbMunicipio);
         }
                
         public int InsertaActualiza_C_MUNICIPIO(string tipo_transaccion, SPE_OBTIENE_C_MUNICIPIO_Result V_C_MUNICIPIO, string usuario, string programa)

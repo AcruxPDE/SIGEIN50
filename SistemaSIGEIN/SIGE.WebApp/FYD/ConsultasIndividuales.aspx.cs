@@ -11,6 +11,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using Telerik.Web.UI;
+using WebApp.Comunes;
 
 namespace SIGE.WebApp.FYD
 {
@@ -21,6 +22,8 @@ namespace SIGE.WebApp.FYD
         private string vNbPrograma;
         private int? vIdEmpresa;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private string vNbFirstRadEditorTagName = "p";
+        private int? vIdRol;
 
         public int vIdPeriodo {
             get { return (int)ViewState["vs_ci_id_periodo"]; }
@@ -63,8 +66,11 @@ namespace SIGE.WebApp.FYD
 
             if (oPeriodo != null)
             {
-                txtNbPeriodo.InnerText = oPeriodo.DS_PERIODO;
-                txtNoPeriodo.InnerText = oPeriodo.CL_PERIODO;
+                //txtNbPeriodo.InnerText = oPeriodo.DS_PERIODO;
+                //txtNoPeriodo.InnerText = oPeriodo.CL_PERIODO;
+                txtClPeriodo.InnerText = oPeriodo.CL_PERIODO;
+                txtDsPeriodo.InnerText = oPeriodo.NB_PERIODO;
+                txtEstatus.InnerText = oPeriodo.CL_ESTADO_PERIODO;
 
                 if (oPeriodo.FG_AUTOEVALUACION)
                 {
@@ -91,7 +97,32 @@ namespace SIGE.WebApp.FYD
                     vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? "Otros" : String.Join(", ", vTiposEvaluacion, "Otros");
                 }
 
-                txtTiposEvaluacion.InnerText = vTiposEvaluacion;
+                txtTipoEvaluacion.InnerText = vTiposEvaluacion;
+                if (oPeriodo.DS_NOTAS != null)
+                {
+                    if (oPeriodo.DS_NOTAS.Contains("DS_NOTA"))
+                    {
+                        txtNotas.InnerHtml = Utileria.MostrarNotas(oPeriodo.DS_NOTAS);
+                    }
+                    else
+                    {
+                        XElement vNotas = XElement.Parse(oPeriodo.DS_NOTAS);
+                        if (vNotas != null)
+                        {
+                            vNotas.Name = vNbFirstRadEditorTagName;
+                            txtNotas.InnerHtml = vNotas.ToString();
+                        }
+                    }
+                }
+
+                oLstPeriodos.Add(new E_PERIODO_EVALUACION
+                {
+                    ID_PERIODO = oPeriodo.ID_PERIODO,
+                    CL_PERIODO = oPeriodo.CL_PERIODO,
+                    NB_PERIODO = oPeriodo.NB_PERIODO,
+                    DS_PERIODO = oPeriodo.DS_PERIODO,
+                });
+
             }
         }
 
@@ -150,6 +181,8 @@ namespace SIGE.WebApp.FYD
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
             vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
+
             if (!Page.IsPostBack)
             {
                 vIdReporteIndividual = Guid.NewGuid();
@@ -175,7 +208,7 @@ namespace SIGE.WebApp.FYD
         protected void rgEvaluados_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             ConsultaIndividualNegocio neg = new ConsultaIndividualNegocio();
-            rgEvaluados.DataSource = neg.ObtenerEvaluados(vIdPeriodo, vIdEmpresa );
+            rgEvaluados.DataSource = neg.ObtenerEvaluados(pIdPeriodo: vIdPeriodo, pID_EMPRESA: vIdEmpresa, pID_ROL: vIdRol);
            // rgEvaluados.DataSource = neg.ObtenerEvaluados(vIdPeriodo );
         }
 

@@ -27,6 +27,8 @@ namespace SIGE.WebApp.EO
         private string vClUsuario;
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private int? vIdRol;
+
         public int vIdPeriodo
         {
             get { return (int)ViewState["vsIdPeriodo"]; }
@@ -127,12 +129,13 @@ namespace SIGE.WebApp.EO
 
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
         }
 
         protected void grdEvaluados_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
-            grdEvaluados.DataSource = nPeriodo.ObtieneEvaluados(vIdPeriodo);
+            grdEvaluados.DataSource = nPeriodo.ObtieneEvaluados(pIdPeriodo: vIdPeriodo, pIdRol: vIdRol);
         }
 
         protected void grdEvaluados_ItemDataBound(object sender, GridItemEventArgs e)

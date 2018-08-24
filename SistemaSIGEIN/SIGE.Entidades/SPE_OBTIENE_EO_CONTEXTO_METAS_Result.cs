@@ -24,7 +24,7 @@ namespace SIGE.Entidades
         public string DS_NOTAS { get; set; }
         public string CL_TIPO_PERIODO { get; set; }
         public int ID_PERIODO_DESEMPENO { get; set; }
-        public bool FG_BONO { get; set; }
+        public Nullable<bool> FG_BONO { get; set; }
         public decimal PR_BONO { get; set; }
         public decimal MN_BONO { get; set; }
         public string CL_TIPO_BONO { get; set; }

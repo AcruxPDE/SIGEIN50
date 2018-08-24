@@ -72,7 +72,7 @@
               <Name>Text1</Name>
               <Page isRef="2" />
               <Parent isRef="3" />
-              <Text>Resultados Aptitud mental II</Text>
+              <Text>Resultados aptitud mental II</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text1>
@@ -1288,10 +1288,10 @@
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>11/8/2017 1:20:50 PM</ReportChanged>
+  <ReportChanged>5/30/2018 3:09:38 PM</ReportChanged>
   <ReportCreated>11/2/2017 10:47:56 AM</ReportCreated>
-  <ReportFile>C:\Users\usuario\Documents\SIGEIN 50\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosAptitud2.mrt</ReportFile>
-  <ReportGuid>b804a146bbaa4d9d9326593ed407e5a3</ReportGuid>
+  <ReportFile>C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosAptitud2.mrt</ReportFile>
+  <ReportGuid>adca66ba7b1645e792eb40d06245721a</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2015.3.0</ReportVersion>

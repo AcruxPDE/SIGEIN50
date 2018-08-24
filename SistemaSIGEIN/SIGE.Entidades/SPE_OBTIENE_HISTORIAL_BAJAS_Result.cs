@@ -14,6 +14,7 @@ namespace SIGE.Entidades
     public partial class SPE_OBTIENE_HISTORIAL_BAJAS_Result
     {
         public int ID_EMPLEADO { get; set; }
+        public Nullable<System.DateTime> FE_ALTA { get; set; }
         public System.DateTime FE_BAJA_EFECTIVA { get; set; }
         public string CL_EMPLEADO { get; set; }
         public string NB_EMPLEADO { get; set; }

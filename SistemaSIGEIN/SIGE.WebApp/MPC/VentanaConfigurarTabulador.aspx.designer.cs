@@ -526,6 +526,33 @@ namespace SIGE.WebApp.MPC {
         protected global::Telerik.Web.UI.RadButton btnGuardarConfiguracion;
         
         /// <summary>
+        /// rpvNiveles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPageView rpvNiveles;
+        
+        /// <summary>
+        /// grdNiveles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadGrid grdNiveles;
+        
+        /// <summary>
+        /// btnGuardar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnGuardar;
+        
+        /// <summary>
         /// rwmMensaje control.
         /// </summary>
         /// <remarks>

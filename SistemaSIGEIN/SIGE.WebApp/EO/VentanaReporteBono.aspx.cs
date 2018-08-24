@@ -27,6 +27,7 @@ namespace SIGE.WebApp.EO
         private string vClUsuario;
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private int? vIdRol;
 
         public int vIdPeriodo
         {
@@ -54,6 +55,10 @@ namespace SIGE.WebApp.EO
 
                 if (item.clOrigen == "COPIA")
                     vOrigen = item.clOrigen + " " + item.clTipoCopia;
+                else if (item.clOrigen == "PREDEFINIDO")
+                    vOrigen = "Original";
+                else if (item.clOrigen == "REPLICA")
+                    vOrigen = "Réplica";
                 else
                     vOrigen = item.clOrigen;
 
@@ -214,6 +219,10 @@ namespace SIGE.WebApp.EO
                     string vOrigenPeriodo;
                     if (vPeriodo.CL_ORIGEN_CUESTIONARIO == "COPIA")
                         vOrigenPeriodo = vPeriodo.CL_ORIGEN_CUESTIONARIO + " " + vPeriodo.CL_TIPO_COPIA;
+                    else if (vPeriodo.CL_ORIGEN_CUESTIONARIO == "PREDEFINIDO")
+                        vOrigenPeriodo = "Original";
+                    else if (vPeriodo.CL_ORIGEN_CUESTIONARIO == "REPLICA")
+                        vOrigenPeriodo = "Réplica";
                     else
                         vOrigenPeriodo = vPeriodo.CL_ORIGEN_CUESTIONARIO;
 
@@ -237,6 +246,7 @@ namespace SIGE.WebApp.EO
             }
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
             //PeriodoDesempenoNegocio neg = new PeriodoDesempenoNegocio();
             //E_RESULTADO vResultado = neg.InsertaActualizaBono(vIdPeriodo, vClUsuario, vNbPrograma);
             //string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
@@ -245,7 +255,7 @@ namespace SIGE.WebApp.EO
         protected void grdEvaluados_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
-            grdEvaluados.DataSource = nPeriodo.ObtieneEvaluados(vIdPeriodo);
+            grdEvaluados.DataSource = nPeriodo.ObtieneEvaluados(pIdPeriodo: vIdPeriodo, pClUsuario: vClUsuario, pNbPrograma: vNbPrograma, pIdRol: vIdRol);
         }
 
         protected void rgComparativos_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)

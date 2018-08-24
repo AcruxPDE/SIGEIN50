@@ -23,7 +23,7 @@ namespace SIGE.Entidades
         public string NB_NIVEL_ESCOLARIDAD { get; set; }
         public string NB_PUESTO { get; set; }
         public string NB_DEPARTAMENTO { get; set; }
-        public decimal MN_SUELDO { get; set; }
+        public Nullable<decimal> MN_SUELDO { get; set; }
         public System.DateTime FE_ALTA { get; set; }
         public Nullable<System.DateTime> FE_BAJA { get; set; }
         public Nullable<int> ANTIGUEDAD { get; set; }

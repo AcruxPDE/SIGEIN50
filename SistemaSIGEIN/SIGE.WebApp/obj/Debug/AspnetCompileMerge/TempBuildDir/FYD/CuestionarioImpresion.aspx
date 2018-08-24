@@ -12,7 +12,7 @@
             <table>
                 <tr>
                     <td>
-                        <label>Periodo:</label></td>
+                        <label>Período:</label></td>
                     <td colspan="2" style="border: 1px solid black; padding: 2px 2px 2px 2px; border-radius: 3px 3px;">
                         <div id="txtNoPeriodo" runat="server" style="min-width: 100px;"></div>
                     </td>

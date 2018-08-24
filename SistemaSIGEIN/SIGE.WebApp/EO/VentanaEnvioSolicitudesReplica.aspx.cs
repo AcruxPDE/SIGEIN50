@@ -61,8 +61,8 @@ namespace SIGE.WebApp.EO
                     {
                         lbEnvioSolReplicas.Attributes.Add("style", "Color:Red;");
                         btnAceptar.Enabled = false;
-                        btnCancelar.Enabled = false;
-                        lbEnvioSolReplicas.InnerText = "Para este periodo y sus réplicas ya han sido configuradas las fechas de envío de solicitudes.";
+                        //btnCancelar.Enabled = false;
+                        lbEnvioSolReplicas.InnerText = "*Para este período y sus réplicas ya han sido configuradas las fechas de envío de solicitudes.";
                     }
                     else
                     {
@@ -71,12 +71,14 @@ namespace SIGE.WebApp.EO
                         {
                             lbEnvioSolReplicas.Attributes.Add("style", "Color:Red;");
                             btnAceptar.Enabled = false;
-                            btnCancelar.Enabled = false;
-                            lbEnvioSolReplicas.InnerText = "Este periodo cuenta con evaluados dados de baja y no es posible enviar solicitudes.";
+                            //btnCancelar.Enabled = false;
+                            lbEnvioSolReplicas.InnerText = "*Este período cuenta con evaluados dados de baja y no es posible enviar solicitudes.";
                         }
                         else
                         {
                             lPeriodos = (pNegocio.ObtenerPeriodos(vIdPeriodo));
+
+                            
                             foreach (var item in lPeriodos)
                             {
                                 lPerReplica.Add(new E_OBTIENE_PERIODO_REPLICAS
@@ -101,15 +103,26 @@ namespace SIGE.WebApp.EO
                                     ID_PERIODO_REPLICA = item.ID_PERIODO_REPLICA
                                 });
                             }
-                            var vIdReplica = lPerReplica.Where(t => t.ID_PERIODO == vIdPeriodo).FirstOrDefault();
-                            if (vIdReplica.ID_PERIODO_REPLICA == null)
+
+                            if (lPerReplica != null)
+                                if (lPerReplica.FirstOrDefault().CL_TIPO_CAPTURISTA == "COORDINADOR_EVAL")
                             {
-                                int vReplicas = (pNegocio.ObtenerPeriodos(vIdPeriodo).Count - 1);
-                                lbEnvioSolReplicas.InnerText = "Este periodo tiene " + vReplicas.ToString() + " réplicas, ¿Cuándo quieres enviar solicitud para capturar los resultados del periodo original y sus réplicas?. A continuación se muestran las opciones que podrás elegir para el envío.";
+                                btnAceptar.Enabled = false;
+                                lbEnvioSolReplicas.Attributes.Add("style", "Color:Red;");
+                                lbEnvioSolReplicas.InnerText = "*El evaluador para este periodo es el Coordinador, no se pueden enviar solicitudes, el coordinador realizará la captura ingresando a través del botón capturar.";
                             }
                             else
                             {
-                                lbEnvioSolReplicas.InnerText = "Este periodo es una réplica, ¿Cuándo quieres enviar solicitud para capturar los resultados del periodo original y sus réplicas?. A continuación se muestran las opciones que podrás elegir para el envío.";
+                                var vIdReplica = lPerReplica.Where(t => t.ID_PERIODO == vIdPeriodo).FirstOrDefault();
+                                if (vIdReplica.ID_PERIODO_REPLICA == null)
+                                {
+                                    int vReplicas = (pNegocio.ObtenerPeriodos(vIdPeriodo).Count - 1);
+                                    lbEnvioSolReplicas.InnerText = "*Este período tiene " + vReplicas.ToString() + " réplicas, ¿Cuándo quieres enviar solicitud para capturar los resultados del período original y sus réplicas?. A continuación se muestran las opciones que podrás elegir para el envío.";
+                                }
+                                else
+                                {
+                                    lbEnvioSolReplicas.InnerText = "*Este período es una réplica, ¿Cuándo quieres enviar solicitud para capturar los resultados del período original y sus réplicas?. A continuación se muestran las opciones que podrás elegir para el envío.";
+                                }
                             }
                         }
                     }
@@ -162,8 +175,20 @@ namespace SIGE.WebApp.EO
                     {
                         E_RESULTADO vResultado = pNegocio.InsertaFeEnvioSolicitud(FECHASENVIOSOLICITUDES.ToString(), vClUsuario, vNbPrograma, "I");
                         string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                        UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "OnCloseWindow");
+
+                        if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+                        {
+                            if (vIdPeriodo.ToString() != "")
+                            {
+                                ClientScript.RegisterStartupScript(GetType(), "script", "OpenSendMessageFinal(" + vIdPeriodo.ToString() + ");", true);
+                            }
+                        }
+                        else
+                        {
+                            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                        }
                     }
+
                 }
                 else
                 {
@@ -199,7 +224,18 @@ namespace SIGE.WebApp.EO
                         {
                             E_RESULTADO vResultado = pNegocio.InsertaFeEnvioSolicitud(FECHASENVIOSOLICITUDES.ToString(), vClUsuario, vNbPrograma, "I");
                             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "OnCloseWindow");
+                            //UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "OnCloseWindow");
+                            if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+                            {
+                                if (vIdPeriodo.ToString() != "")
+                                {
+                                    ClientScript.RegisterStartupScript(GetType(), "script", "OpenSendMessageFinal(" + vIdPeriodo.ToString() + ");", true);
+                                }
+                            }
+                            else
+                            {
+                                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                            }
                         }
                     }
                 }
@@ -233,7 +269,18 @@ namespace SIGE.WebApp.EO
                     {
                         E_RESULTADO vResultado = pNegocio.InsertaFeEnvioSolicitud(FECHASENVIOSOLICITUDES.ToString(), vClUsuario, vNbPrograma, "I");
                         string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                        UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "OnCloseWindow");
+                        //UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "OnCloseWindow");
+                        if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+                        {
+                            if (vIdPeriodo.ToString() != "")
+                            {
+                                ClientScript.RegisterStartupScript(GetType(), "script", "OpenSendMessageFinal(" + vIdPeriodo.ToString() + ");", true);
+                            }
+                        }
+                        else
+                        {
+                            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                        }
                     }
                 }
             }
@@ -262,7 +309,18 @@ namespace SIGE.WebApp.EO
                     {
                         E_RESULTADO vResultado = pNegocio.InsertaFeEnvioSolicitud(FECHASENVIOSOLICITUDES.ToString(), vClUsuario, vNbPrograma, "I");
                         string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                        UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "OnCloseWindow");
+                        //UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "OnCloseWindow");
+                        if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+                        {
+                            if (vIdPeriodo.ToString() != "")
+                            {
+                                ClientScript.RegisterStartupScript(GetType(), "script", "OpenSendMessageFinal(" + vIdPeriodo.ToString() + ");", true);
+                            }
+                        }
+                        else
+                        {
+                            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                        }
                     }
                 }
 

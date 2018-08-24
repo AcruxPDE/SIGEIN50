@@ -57,7 +57,7 @@
                     <table class="ctrlTableForm">
                         <tr>
                             <td class="ctrlTableDataContext">
-                                <label>Periodo:</label></td>
+                                <label>Período:</label></td>
                             <td colspan="2" class="ctrlTableDataBorderContext">
                                 <div id="txtNoPeriodo" runat="server" style="min-width: 100px;"></div>
                             </td>

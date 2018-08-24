@@ -95,6 +95,17 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             }
         }
 
+        public XElement InsertaCandidatoEmpleado(int? ID_EMPLEADO = null, string usuario = null, string programa = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                contexto.SPE_INSERTA_SOLICITUD_EMPLEADO(pOutClRetorno, ID_EMPLEADO, usuario, programa);
+
+                return XElement.Parse(pOutClRetorno.Value.ToString());
+            }
+        }
+
         public XElement ActualizaDatosSolicitudCorreo(int? ID_SOLICITUD = null, Guid? CL_ACCESO_CARTERA = null, string CL_CONTRASENA_CARTERA = null, string usuario = null, string programa = null)
         {
             using (contexto = new SistemaSigeinEntities())
@@ -126,6 +137,30 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
                     pXmlSeleccion = (new XElement("SELECCION", new XElement("FILTRO", new XAttribute("CL_TIPO", "TODAS")))).ToString();
 
                 return contexto.SPE_OBTIENE_SOLICITUDES().ToList();
+            }
+        }
+
+        public List<SPE_OBTIENE_SOLICITUDES_PROCESOS_EVALUACION_Result> ObtieneSolicitudesEvaluacion()
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.SPE_OBTIENE_SOLICITUDES_PROCESOS_EVALUACION().ToList();
+            }
+        }
+
+        public List<SPE_OBTIENE_CANDIDATOS_BATERIAS_Result> ObtieneCandidatosBaterias()
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.SPE_OBTIENE_CANDIDATOS_BATERIAS().ToList();
+            }
+        }
+
+        public List<SPE_OBTIENE_EMPLEADOS_PROCESOS_EVALUACION_Result> ObtieneEmpleadosEvaluacion(int? pID_EMPRESA = null, int? pID_ROL = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.SPE_OBTIENE_EMPLEADOS_PROCESOS_EVALUACION(pID_EMPRESA, pID_ROL).ToList();
             }
         }
 
@@ -172,11 +207,11 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             }
         }
 
-        public List<SPE_OBTIENE_DATOS_EMPLEADOS_Result> ObtenerDatosEmpleados()
+        public List<SPE_OBTIENE_DATOS_EMPLEADOS_Result> ObtenerDatosEmpleados(int? pIdEmpresa = null, int? pIdRol = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_DATOS_EMPLEADOS().ToList();
+                return contexto.SPE_OBTIENE_DATOS_EMPLEADOS(pIdEmpresa, pIdRol).ToList();
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using SIGE.Entidades.Administracion;
+﻿using SIGE.Entidades;
+using SIGE.Entidades.Administracion;
 using SIGE.Entidades.Externas;
 using SIGE.Entidades.FormacionDesarrollo;
 using SIGE.Negocio.FormacionDesarrollo;
@@ -11,6 +12,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
+using Telerik.Web.UI;
 
 namespace SIGE.WebApp.FYD
 {
@@ -18,6 +20,7 @@ namespace SIGE.WebApp.FYD
     {
         #region Variables
 
+        private int? vIdRol;
         private List<E_PROGRAMA_COMPETENCIA> vCompetencias
         {
             get { return (List<E_PROGRAMA_COMPETENCIA>)ViewState["vs_vCompetencias"]; }
@@ -36,11 +39,12 @@ namespace SIGE.WebApp.FYD
             set { ViewState["vs_vProgramas"] = value; }
         }
 
+        RadListBoxItem vNoSeleccionado = new RadListBoxItem("No seleccionado", String.Empty);
 
         private E_PERIODO vPeriodo
         {
             get { return (E_PERIODO)ViewState["vs_vPeriodo"]; }
-            set { ViewState["vs_vPeriodos"] = value; }
+            set { ViewState["vs_vPeriodo"] = value; }
         }
 
         private string ptipo
@@ -92,6 +96,62 @@ namespace SIGE.WebApp.FYD
             }
         }
 
+        protected string GenerarXmlProgramaPrograma(int pIdPeriodoDNC)
+        {
+
+            NecesidadesCapacitacionNegocio nNegocio = new NecesidadesCapacitacionNegocio();
+            List<E_NECESIDADES_CAPACITACION> vLstDnc = new List<E_NECESIDADES_CAPACITACION>();
+            List<SPE_OBTIENE_NECESIDADES_CAPACITACION_Result> vListaDnc = new List<SPE_OBTIENE_NECESIDADES_CAPACITACION_Result>();
+            vListaDnc = nNegocio.obtenerNecesidadesCapacitacion(pIdPeriodoDNC, null, "<PRIORIDADES><PRIORIDAD NOMBRE='Alta' /><PRIORIDAD NOMBRE='Intermedia' /></PRIORIDADES>", vIdRol);
+
+            vLstDnc = vListaDnc.Select(t => new E_NECESIDADES_CAPACITACION
+            {
+                ID_PERIODO = t.ID_PERIODO,
+                CL_TIPO_COMPETENCIA = t.CL_TIPO_COMPETENCIA,
+                NB_TIPO_COMPETENCIA = t.NB_TIPO_COMPETENCIA,
+                CL_CLASIFICACION = t.CL_CLASIFICACION,
+                NB_CLASIFICACION_COMPETENCIA = t.NB_CLASIFICACION_COMPETENCIA,
+                DS_COMPETENCIA = t.DS_COMPETENCIA,
+                CL_COLOR = t.CL_COLOR,
+                ID_COMPETENCIA = t.ID_COMPETENCIA,
+                NB_COMPETENCIA = t.NB_COMPETENCIA,
+                ID_EMPLEADO = t.ID_EMPLEADO,
+                CL_EVALUADO = t.CL_EVALUADO,
+                NB_EVALUADO = t.NB_EVALUADO,
+                ID_PUESTO = t.ID_PUESTO,
+                CL_PUESTO = t.CL_PUESTO,
+                NB_PUESTO = t.NB_PUESTO,
+                ID_DEPARTAMENTO = t.ID_DEPARTAMENTO,
+                CL_DEPARTAMENTO = t.CL_DEPARTAMENTO,
+                NB_DEPARTAMENTO = t.NB_DEPARTAMENTO,
+                PR_RESULTADO = t.PR_RESULTADO,
+                NB_PRIORIDAD = t.NB_PRIORIDAD
+            }).ToList();
+
+
+            XElement xmlCapacitaciones = new XElement("CAPACITACIONES");
+
+            xmlCapacitaciones.Add(new XAttribute("CL_PROGRAMA", txtClProgCapacitacion.Text), new XAttribute("NB_PROGRAMA", txtNbProgCapacitacion.Text), new XAttribute("ID_PERIODO", pIdPeriodoDNC + ""));
+
+            foreach (E_NECESIDADES_CAPACITACION item in vLstDnc){
+                xmlCapacitaciones.Add(new XElement("CAPACITACION",
+                new XAttribute("ID_EMPLEADO", item.ID_EMPLEADO.ToString()),
+                new XAttribute("NB_EMPLEADO", item.NB_EVALUADO),
+                new XAttribute("CL_EMPLEADO", item.CL_EVALUADO),
+                new XAttribute("CL_PUESTO", item.CL_PUESTO),
+                new XAttribute("NB_PUESTO", item.NB_PUESTO),
+                new XAttribute("NB_DEPARTAMENTO", item.NB_DEPARTAMENTO),
+                new XAttribute("ID_COMPETENCIA", item.ID_COMPETENCIA),
+                new XAttribute("NB_COMPETENCIA", item.NB_COMPETENCIA),
+                new XAttribute("NB_CLASIFICACION", item.CL_CLASIFICACION),
+                new XAttribute("NB_CATEGORIA", item.CL_TIPO_COMPETENCIA),
+                new XAttribute("CL_PRIORIDAD", item.NB_PRIORIDAD),
+                new XAttribute("PR_RESULTADO", item.PR_RESULTADO)));
+            }
+
+            return xmlCapacitaciones.ToString();
+        }
+
         public void GuardarProgramaCapacitacion()
         {
             var vClEstatusPrograma = (!ptipo.Equals("Editar")) ? new string(CharsToTitleCase(txtEstadoProgCapacitacion.Text).ToArray()) : new string(CharsToTitleCase(pProgramaCapacitacion.CL_ESTADO.ToString()).ToArray());
@@ -129,7 +189,8 @@ namespace SIGE.WebApp.FYD
                 //new XAttribute("NB_PROGRAMA", (!ptipo.Equals("Editar")) ? txtNbProgCapacitacion.Text : pProgramaCapacitacion.NB_PROGRAMA.ToString()),
                 new XAttribute("NB_PROGRAMA", txtNbProgCapacitacion.Text),
                 //new XAttribute("CL_TIPO_PROGRAMA", (!ptipo.Equals("Editar")) ? txtTipoProgCapacitacion.Text : pProgramaCapacitacion.CL_TIPO_PROGRAMA.ToString()),
-                new XAttribute("CL_TIPO_PROGRAMA", txtTipoProgCapacitacion.Text),
+               // new XAttribute("CL_TIPO_PROGRAMA", txtTipoProgCapacitacion.Text),
+                new XAttribute("CL_TIPO_PROGRAMA", rbDnc.Checked ? "Desde DNC" : rbCopia.Checked ? "Copia" : "A partir de 0"),
                 //new XAttribute("CL_VERSION", (!ptipo.Equals("Editar")) ? "" : pProgramaCapacitacion.VERSION.ToString()),
                 new XAttribute("CL_VERSION", plVersion),
                   new XAttribute("CL_ESTADO", vClEstatusPrograma),
@@ -193,9 +254,35 @@ namespace SIGE.WebApp.FYD
                 vIdPrograma = null;
             }
 
-            E_RESULTADO vResultado = nPrograma.InsertaActualizaProgramaCapacitacion(vIdPrograma, programaCapacitacion.ToString(), vClUsuario, vNbPrograma, ContextoUsuario.oUsuario.ID_EMPRESA, vFgProgramaModificado);
-            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "closeWindow");
+            if (rbDnc.Checked && ptipo != "Editar")
+            {
+                if (lstPeriodo.SelectedValue != "")
+                {
+                    NecesidadesCapacitacionNegocio neg = new NecesidadesCapacitacionNegocio();
+                    string vXmlProgramaDnc = GenerarXmlProgramaPrograma(int.Parse(lstPeriodo.SelectedValue.ToString()));
+
+                    E_RESULTADO res = neg.InsertaActualizaProgramaDesdeDNC(vIdPrograma, vXmlProgramaDnc.ToString(), vClUsuario, vNbPrograma);
+                    string vMensaje = res.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, res.CL_TIPO_ERROR, pCallBackFunction: "ReturnDataToParent");
+                }
+                else
+                {
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, "Selecciona el período para generar desde DNC.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
+                    desdeDNC.Style.Add("display", "block");
+                    return;
+                }
+            }
+            else
+            {
+                E_RESULTADO vResultado = nPrograma.InsertaActualizaProgramaCapacitacion(vIdPrograma, programaCapacitacion.ToString(), vClUsuario, vNbPrograma, ContextoUsuario.oUsuario.ID_EMPRESA, vFgProgramaModificado);
+                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+
+                if(ptipo == "Editar")
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "ReturnDataToParentEdit");
+                else
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "ReturnDataToParent");
+
+            }
         }
 
         public void valdarDsNotas()
@@ -308,7 +395,7 @@ namespace SIGE.WebApp.FYD
                 vPeriodo = vProgramaCapacitacion.Element("PERIODOS").Elements("PERIODO").Select(el => new E_PERIODO
                 {
                     ID_PERIODO = UtilXML.ValorAtributo<int>(el.Attribute("ID_PERIODO")),
-                    CL_PERIODO = UtilXML.ValorAtributo<string>(el.Attribute("CL_PRIORIDAD")),
+                    CL_PERIODO = UtilXML.ValorAtributo<string>(el.Attribute("CL_PERIODO")),
                     NB_PERIODO = UtilXML.ValorAtributo<string>(el.Attribute("NB_PERIODO")),
                     DS_PERIODO = UtilXML.ValorAtributo<string>(el.Attribute("DS_PERIODO")),
                     FE_INICIO = UtilXML.ValorAtributo<DateTime>(el.Attribute("FE_INICIO")),
@@ -335,10 +422,16 @@ namespace SIGE.WebApp.FYD
             return false;
         }
 
+        protected void SeguridadProcesos()
+        {
+            btnAceptar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.B.A");
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!IsPostBack)
             {
@@ -355,14 +448,42 @@ namespace SIGE.WebApp.FYD
                     vIdPrograma = int.Parse((Request.QueryString["ID"]));
                     XElement vProgramaCapacitacion = nPrograma.ObtenerProgramaCapacitacionCompleto(vIdPrograma, ContextoUsuario.oUsuario.ID_EMPRESA);
 
+                    SeguridadProcesos();
+
                     if (vProgramaCapacitacion != null)
                     {
                         cargarProgramaCapacitacion(vProgramaCapacitacion);
-
+                       
                         txtClProgCapacitacion.Text = pProgramaCapacitacion.CL_PROGRAMA.ToString();
                         txtEstadoProgCapacitacion.Text = pProgramaCapacitacion.CL_ESTADO.ToString();
                         txtNbProgCapacitacion.Text = pProgramaCapacitacion.NB_PROGRAMA.ToString();
-                        txtTipoProgCapacitacion.Text = pProgramaCapacitacion.CL_TIPO_PROGRAMA.ToString();
+                        if (pProgramaCapacitacion.CL_TIPO_PROGRAMA.ToString() == "A partir de 0")
+                        {
+                            rbCero.Checked = true;
+                            rbCopia.Enabled = false;
+                            rbDnc.Enabled = false;
+                        }
+                        else if (pProgramaCapacitacion.CL_TIPO_PROGRAMA.ToString() == "Desde DNC")
+                        {
+                            rbCero.Enabled = false;
+                            rbCopia.Enabled = false;
+                            rbDnc.Checked = true;
+                            desdeDNC.Style.Add("display", "block");
+                            lstPeriodo.Items.Add((vPeriodo.CL_PERIODO != null) ? new RadListBoxItem(vPeriodo.CL_PERIODO, vPeriodo.ID_PERIODO.ToString()) : vNoSeleccionado);
+                            lstPeriodo.Items.FirstOrDefault().Selected = true;
+                            btnBuscarPeriodo.Enabled = false;
+                            btnEliminarPeriodo.Enabled = false;
+                        }
+                        else if (pProgramaCapacitacion.CL_TIPO_PROGRAMA.ToString() == "Copia")
+                        {
+                            rbCopia.Visible = true;
+                            rbCero.Enabled = false;
+                            rbCopia.Checked = true;
+                            rbDnc.Enabled = false;
+
+                        }
+
+                      //  txtTipoProgCapacitacion.Text = pProgramaCapacitacion.CL_TIPO_PROGRAMA.ToString();
                         valdarDsNotas();
                     }
                 }
@@ -375,16 +496,21 @@ namespace SIGE.WebApp.FYD
                     if (vProgramaCapacitacion != null)
                     {
                         cargarProgramaCapacitacion(vProgramaCapacitacion);
-
-                        txtTipoProgCapacitacion.Text = "Copia";
+                        rbCopia.Visible = true;
+                        rbCopia.Checked = true;
+                        rbDnc.Enabled = false;
+                        rbCero.Enabled = false;
+                       // txtTipoProgCapacitacion.Text = "Copia";
                         txtEstadoProgCapacitacion.Text = "Elaborando";
                     }
 
                 }
                 else
                 {
+                    rbCero.Checked = true;
                     txtEstadoProgCapacitacion.Text = new string(CharsToTitleCase(E_ESTADO_PROGRAMA_CAPACITACION.ELABORANDO.ToString()).ToArray());
-                    txtTipoProgCapacitacion.Text = "A partir de 0";
+                    lstPeriodo.Items.Add(vNoSeleccionado);
+                  //  txtTipoProgCapacitacion.Text = "A partir de 0";
                 }
 
             }

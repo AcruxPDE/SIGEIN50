@@ -18,6 +18,7 @@ namespace SIGE.Entidades
         public string NB_EMPLEADO { get; set; }
         public string NB_PUESTO { get; set; }
         public string NB_DEPARTAMENTO { get; set; }
-        public decimal MN_SUELDO { get; set; }
+        public Nullable<decimal> MN_SUELDO { get; set; }
+        public bool FG_SUELDO_VISIBLE_BONO { get; set; }
     }
 }

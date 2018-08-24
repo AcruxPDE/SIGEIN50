@@ -41,16 +41,16 @@ namespace SIGE.Negocio.FormacionDesarrollo
             return oPeriodo.VerificaConfiguracion(pIdPeriodo, pClPeriodo, pNbPeriodo);
         }
 
-        public List<SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION_Result> ObtieneEvaluados(int pIdPeriodo, int? pID_EMPRESA = null)
+        public List<SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION_Result> ObtieneEvaluados(int pIdPeriodo, int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             PeriodoOperaciones oPeriodo = new PeriodoOperaciones();
-            return oPeriodo.ObtenerEvaluados(pIdPeriodo, pID_EMPRESA);
+            return oPeriodo.ObtenerEvaluados(pIdPeriodo, pID_EMPRESA, pID_ROL);
         }
 
-        public List<SPE_OBTIENE_FYD_CUESTIONARIOS_EVALUADOS_Result> ObtieneEvaluadosCuestionarios(int pIdPeriodo, int? pIdEmpresa = null)
+        public List<SPE_OBTIENE_FYD_CUESTIONARIOS_EVALUADOS_Result> ObtieneEvaluadosCuestionarios(int pIdPeriodo, int? pIdEmpresa = null, int? pIdRol = null)
         {
             PeriodoOperaciones oPeriodo = new PeriodoOperaciones();
-            return oPeriodo.ObtenerEvaluadosCuestionarios(pIdPeriodo, pIdEmpresa);
+            return oPeriodo.ObtenerEvaluadosCuestionarios(pIdPeriodo, pIdEmpresa, pIdRol);
         }
 
         public List<SPE_OBTIENE_FYD_EVALUADOS_AUTORIZACION_Result> ObtenerEvaluadosEvaluadores(int pIdPeriodo, int? pIdEmpresa = null)
@@ -179,22 +179,22 @@ namespace SIGE.Negocio.FormacionDesarrollo
             return UtilRespuesta.EnvioRespuesta(oPeriodo.ActualizarEstatusPeriodo(pIdPeriodo, pClEstatus, pClUsuario, pNbPrograma));
         }
 
-        public E_RESULTADO InsertaPreguntasAdicionales(int pIdPeriodo, string pNbPregunta, XElement pXmlPreguntasAdicionales, E_CL_CUESTIONARIO_OBJETIVO pClCuestionarioObjetivo, string pClUsuario, string pNbPrograma)
+        public E_RESULTADO InsertaPreguntasAdicionales(int? pIdPeriodo = null,int? pIdPregunta = null, string pNbPregunta = null, XElement pXmlPreguntasAdicionales = null, string pClCuestionarioObjetivo = null, string pClUsuario = null, string pNbPrograma = null,string pClTipoTransaccion = null)
         {
             PeriodoOperaciones oPeriodo = new PeriodoOperaciones();
-            return UtilRespuesta.EnvioRespuesta(oPeriodo.InsertarPreguntasAdicionales(pIdPeriodo, pNbPregunta, pXmlPreguntasAdicionales, pClCuestionarioObjetivo, pClUsuario, pNbPrograma));
+            return UtilRespuesta.EnvioRespuesta(oPeriodo.InsertarPreguntasAdicionales(pIdPeriodo, pIdPregunta, pNbPregunta, pXmlPreguntasAdicionales, pClCuestionarioObjetivo, pClUsuario, pNbPrograma, pClTipoTransaccion));
         }
 
-        public List<SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_PERIODO_Result> ObtienePreguntasAdicionales(int pIdPeriodo)
+        public List<SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_PERIODO_Result> ObtienePreguntasAdicionales(int? pIdPeriodo = null, int? pIdPregunta = null)
         {
             PeriodoOperaciones oPeriodo = new PeriodoOperaciones();
-            return oPeriodo.ObtenerPreguntasAdicionales(pIdPeriodo);
+            return oPeriodo.ObtenerPreguntasAdicionales(pIdPeriodo, pIdPregunta);
         }
 
-        public E_RESULTADO EliminaPreguntaAdicional(int pIdPreguntaAdicional)
+        public E_RESULTADO EliminaPreguntaAdicional(string pXmlPreguntas = null)
         {
             PeriodoOperaciones oPeriodo = new PeriodoOperaciones();
-            return UtilRespuesta.EnvioRespuesta(oPeriodo.EliminarPreguntaAdicional(pIdPreguntaAdicional));
+            return UtilRespuesta.EnvioRespuesta(oPeriodo.EliminarPreguntaAdicional(pXmlPreguntas));
         }
 
         public E_RESULTADO EliminaCuestionario(int pIdCuestionario)
@@ -346,13 +346,13 @@ namespace SIGE.Negocio.FormacionDesarrollo
             return oPeriodo.ObtenerCuestionarioEvaluadoEvaludor(pIdPeriodo, pIdEvaluado, pIdEvaluadoEvaluador);
         }
 
-        public List<SPE_OBTIENE_FYD_EVALUADORES_TOKEN_Result> ObtieneTokenEvaluadores(int pIdPeriodo, int? pIdEmpresa = null)
+        public List<SPE_OBTIENE_FYD_EVALUADORES_TOKEN_Result> ObtieneTokenEvaluadores(int pIdPeriodo, int? pIdEmpresa = null, int? pIdRol = null)
         {
             PeriodoOperaciones oPeriodo = new PeriodoOperaciones();
-            return oPeriodo.ObtenerTokenEvaluadores(pIdPeriodo, pIdEmpresa);
+            return oPeriodo.ObtenerTokenEvaluadores(pIdPeriodo, pIdEmpresa, pIdRol);
         }
 
-        public E_RESULTADO InsertarActualizarTokenEvaluadores(int pIdPeriodo, int? pIdEvaluador, string pClUsuario, string pNbPrograma)
+        public E_RESULTADO InsertarActualizarTokenEvaluadores(int pIdPeriodo, int? pIdEvaluador, string pClUsuario, string pNbPrograma, int? pIdRol)
         {
             PeriodoOperaciones oPeriodo = new PeriodoOperaciones();
 
@@ -360,7 +360,7 @@ namespace SIGE.Negocio.FormacionDesarrollo
 
             List<SPE_OBTIENE_FYD_EVALUADORES_TOKEN_Result> vLstEvaluadores = new List<SPE_OBTIENE_FYD_EVALUADORES_TOKEN_Result>();
             if (pIdEvaluador == null)
-                vLstEvaluadores = oPeriodo.ObtenerTokenEvaluadores(pIdPeriodo);
+                vLstEvaluadores = oPeriodo.ObtenerTokenEvaluadores(pIdPeriodo, pIdRol: pIdRol);
             else
                 vLstEvaluadores.Add(new SPE_OBTIENE_FYD_EVALUADORES_TOKEN_Result() { ID_EVALUADOR = pIdEvaluador ?? 0 });
 

@@ -22,6 +22,15 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadPageLayout rplIDP;
         
         /// <summary>
+        /// dvLogo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvLogo;
+        
+        /// <summary>
         /// rbiLogoOrganizacion1 control.
         /// </summary>
         /// <remarks>

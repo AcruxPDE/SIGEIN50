@@ -23,6 +23,7 @@ namespace SIGE.WebApp.EO
 
         private string vClUsuario;
         private string vNbPrograma;
+        private int? vIdRol;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
         private XElement SELECCIONPERIODOS { get; set; }
 
@@ -102,7 +103,7 @@ namespace SIGE.WebApp.EO
             decimal? vMnBonoTotal;
             int vPeriodos;
 
-            vLstEvaluadosReporte = oNegocio.ObtenerEvaluadosDesempeno(SELECCIONPERIODOS.ToString());
+            vLstEvaluadosReporte = oNegocio.ObtenerEvaluadosDesempeno(SELECCIONPERIODOS.ToString(), pIdRol: vIdRol);
        
             DataTable vDtPivot = new DataTable();
 
@@ -138,7 +139,10 @@ namespace SIGE.WebApp.EO
                  vDr["NB_EMPLEADO_COMPLETO"] = item.NB_EMPLEADO;
                  vDr["NB_PUESTO"] = item.NB_PUESTO;
                  vDr["NB_DEPARTAMENTO"] = item.NB_DEPARTAMENTO;
-                 vDr["MN_SUELDO"] = "$"+item.MN_SUELDO.ToString();
+                 if (item.FG_VISIBLE_BONO == true)
+                     vDr["MN_SUELDO"] = "$" + item.MN_SUELDO.ToString();
+                 else
+                     vDr["MN_SUELDO"] = "";
 
                  foreach (var vPeriodo in oLstPeriodos)
                  {
@@ -165,16 +169,18 @@ namespace SIGE.WebApp.EO
                              else
                                  vMnBonoTotal = vMnBonoTotal + 0;
                              vPeriodos = vPeriodos + 1;
-                             if (vResultado.MN_BONO != 0)
-                             {
-                                 vTopeBono = vTopeBono + vResultado.MN_BONO;
-                             }
-                             else if (vResultado.PR_BONO != 0)
-                             {
-                                 decimal vDiasPeriodo = (decimal)((vResultado.FE_TERMINO - vResultado.FE_INICIO).TotalDays);
-                                 decimal vSueldoDia = (item.MN_SUELDO / ((decimal)30.4));
-                                 vTopeBono = vTopeBono + ((vDiasPeriodo + 1) * vSueldoDia * (vResultado.PR_BONO / 100));
-                             }
+
+                             vTopeBono = vTopeBono + vResultado.MN_TOPE_BONO;
+                             //if (vResultado.MN_BONO != 0)
+                             //{
+                             //    vTopeBono = vTopeBono + vResultado.MN_BONO;
+                             //}
+                             //else if (vResultado.PR_BONO != 0)
+                             //{
+                             //    decimal vDiasPeriodo = (decimal)((vResultado.FE_TERMINO - vResultado.FE_INICIO).TotalDays);
+                             //    decimal vSueldoDia = ((decimal)item.MN_SUELDO / ((decimal)30.4));
+                             //    vTopeBono = vTopeBono + ((vDiasPeriodo + 1) * vSueldoDia * (vResultado.PR_BONO / 100));
+                             //}
                          }
 
                         
@@ -214,7 +220,7 @@ namespace SIGE.WebApp.EO
                     ConfigurarColumna(pColumna, 200, "Puesto", true, false, false, true);
                     break;
                 case "NB_DEPARTAMENTO":
-                    ConfigurarColumna(pColumna, 200, "Área", true, false, false, true);
+                    ConfigurarColumna(pColumna, 200, "Área/Departamento", true, false, false, true);
                     break;
                 case "MN_SUELDO":
                     ConfigurarColumna(pColumna, 90, "Sueldo mensual", true, false, false, false);
@@ -310,6 +316,7 @@ namespace SIGE.WebApp.EO
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
             if (!IsPostBack)
             {
                 oLstPeriodos = new List<E_PERIODO_DESEMPENO>();

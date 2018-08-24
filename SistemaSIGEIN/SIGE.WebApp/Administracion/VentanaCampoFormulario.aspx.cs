@@ -103,9 +103,7 @@ namespace SIGE.WebApp.Administracion
             cmbComboboxCatalogo.DataTextField = "NB_CATALOGO_LISTA";
             cmbComboboxCatalogo.DataValueField = "ID_CATALOGO_LISTA";
             cmbComboboxCatalogo.DataBind();
-
-            CargaItemsCatalogoValor();
-
+         
             vClTipoTransaccion = "I";
             if (!vClAccion.Equals("add"))
                 AsignarValores(vClAccion.Equals("copy"));
@@ -136,6 +134,9 @@ namespace SIGE.WebApp.Administracion
                     rpvVacio.Selected = true;
                     break;
             }
+
+            CargaItemsCatalogoValor();
+
         }
 
         protected void AsignarValores(bool pFgCopy)
@@ -170,7 +171,8 @@ namespace SIGE.WebApp.Administracion
                     txtTextboxDefault.Text = UtilXML.ValorAtributo<string>(vXmlCampoFormulario.Attribute("NO_VALOR_DEFECTO"));
                     break;
                 case "COMBOBOX":
-                    cmbComboboxDefault.SelectedValue = UtilXML.ValorAtributo<string>(vXmlCampoFormulario.Attribute("NO_VALOR_DEFECTO"));
+                    string vValor = UtilXML.ValorAtributo<string>(vXmlCampoFormulario.Attribute("NO_VALOR_DEFECTO"));
+                    cmbComboboxDefault.SelectedValue = vValor;
                     break;
                 case "DATEAGE":
                 case "DATEPICKER":
@@ -252,7 +254,7 @@ namespace SIGE.WebApp.Administracion
                     vXmlCampo.SetAttributeValue("NO_DECIMALES", txtNumericboxDecimales.Text);
                     vXmlCampo.SetAttributeValue("NO_ENTEROS", txtNumericboxEnteros.Text);
                     vXmlCampo.SetAttributeValue("CL_DIMENSION", String.Format("{0:N0},{1:N0}", txtNumericboxEnteros.Value + txtNumericboxDecimales.Value, txtNumericboxDecimales.Value));
-                    vXmlCampo.SetAttributeValue("NO_VALOR_DEFECTO", (decimal)txtNumericboxDefault.Value);
+                    vXmlCampo.SetAttributeValue("NO_VALOR_DEFECTO", txtNumericboxDefault.Text ==""? "":((decimal)txtNumericboxDefault.Value).ToString());
                     break;
                 case "CHECKBOX":
                     vXmlCampo.SetAttributeValue("NO_VALOR_DEFECTO", chkCheckboxDefault.Checked ? "1" : "0");

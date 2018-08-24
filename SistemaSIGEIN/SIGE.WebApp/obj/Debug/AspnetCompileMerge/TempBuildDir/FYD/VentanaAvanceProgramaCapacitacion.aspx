@@ -217,7 +217,7 @@
                 <telerik:RadTabStrip ID="tbAvanceProgramaCapacitacion" runat="server" AutoPostBack="true" SelectedIndex="0" MultiPageID="mpgProgramaCapacitacion">
                     <Tabs>
                         <telerik:RadTab Text="Contexto" runat="server"></telerik:RadTab>
-                        <telerik:RadTab Text="Definición de parametros" runat="server"></telerik:RadTab>
+                        <telerik:RadTab Text="Definición de criterios" runat="server"></telerik:RadTab>
                         <telerik:RadTab Text="Avance" runat="server"></telerik:RadTab>
                     </Tabs>
                 </telerik:RadTabStrip>
@@ -353,25 +353,24 @@
                         <%--                        <div class="ctrlBasico">
                             <telerik:RadButton ID="btnSeleccionarTodos" runat="server" OnClick="btnSeleccionarTodos_Click" AutoPostBack="true" Text="Seleccionar todos"></telerik:RadButton>
                         </div>--%>
-                        <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnExportar" runat="server" Text="Exportar a excel" AutoPostBack="true" OnClick="btnExportar_Click"></telerik:RadButton>
-                        </div>
                     </telerik:RadPageView>
                     <telerik:RadPageView ID="rpAvance" runat="server" Height="100%">
                         <%--   <div class="divControlDerecha">
                             <asp:ImageButton ID="Button2" runat="server" Width="20" Height="25" ImageUrl="../Assets/images/excel.png" OnClick="ButtonExcel_Click" AlternateText="Xlsx" />
                         </div>--%>
+                        <div style="height: calc(100% - 40px);">
                         <telerik:RadPivotGrid CssClass="PivotAvances"
                             ID="pgridAvanceProgramaCapacitacion"
                             runat="server"
-                            Width="100%" Height="95%"
+                            Width="100%" Height="100%"
                             RowTableLayout="Tabular"
                             ShowFilterHeaderZone="false"
-                            EmptyValue="5"
+                            EmptyValue="5"                         
                             OnCellDataBound="pgridAvanceProgramaCapacitacion_CellDataBound"
                             ShowColumnHeaderZone="false" AllowFiltering="false" ShowDataHeaderZone="false" ShowRowHeaderZone="true" RenderEmptyStringInDataCells="False">
                             <TotalsSettings ColumnGrandTotalsPosition="None" RowsSubTotalsPosition="None" GrandTotalsVisibility="None" ColumnsSubTotalsPosition="None" />
                             <ClientSettings>
+
                                 <Scrolling AllowVerticalScroll="true" />
                             </ClientSettings>
                             <Fields>
@@ -420,6 +419,11 @@
                                 </telerik:PivotGridAggregateField>
                             </Fields>
                         </telerik:RadPivotGrid>
+                            </div>
+                        <div style="height:5px; clear:both;"></div>
+                                                <div class="ctrlBasico">
+                            <telerik:RadButton ID="btnExportar" runat="server" Text="Exportar a excel" AutoPostBack="true" OnClick="btnExportar_Click"></telerik:RadButton>
+                        </div>
                     </telerik:RadPageView>
                 </telerik:RadMultiPage>
             </telerik:RadPane>
