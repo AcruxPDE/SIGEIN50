@@ -94,6 +94,7 @@
     <Compile Include="AdministracionSitio\AreaInteresNegocio.cs" />
     <Compile Include="AdministracionSitio\CampoAdicionalNegocio.cs" />
     <Compile Include="AdministracionSitio\CampoFormularioNegocio.cs" />
+    <Compile Include="AdministracionSitio\CamposNominaNegocio.cs" />
     <Compile Include="AdministracionSitio\CandidatoNegocio.cs" />
     <Compile Include="AdministracionSitio\CatalogoListaNegocio.cs" />
     <Compile Include="AdministracionSitio\CatalogoTipoNegocio.cs" />
@@ -108,12 +109,14 @@
     <Compile Include="AdministracionSitio\ConfiguracionNegocio.cs" />
     <Compile Include="AdministracionSitio\CuestionarioPreguntaNegocio.cs" />
     <Compile Include="AdministracionSitio\DepartamentoNegocio.cs" />
+    <Compile Include="AdministracionSitio\GruposNegocio.cs" />
     <Compile Include="AdministracionSitio\LicenciaNegocio.cs" />
     <Compile Include="AdministracionSitio\OrganigramaNegocio.cs" />
     <Compile Include="AdministracionSitio\PlazaNegocio.cs" />
     <Compile Include="AdministracionSitio\RolNegocio.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AdministracionSitio\TraduccionIdiomaTextoNegocio.cs" />
     <Compile Include="EvaluacionOrganizacional\ClimaLaboralNegocio.cs" />
     <Compile Include="EvaluacionOrganizacional\ConfiguracionNegocio.cs" />
     <Compile Include="EvaluacionOrganizacional\PeriodoDesempenoNegocio.cs" />

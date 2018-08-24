@@ -114,6 +114,7 @@ namespace SIGE.WebApp.IDP
                     //Si el modo de revision esta activado
                     if (vTipoRevision == "REV")
                     {
+
                         cronometro.Visible = false;
                         vOrtografia1Seconds = 0;
                         btnTerminar.Enabled = false;
@@ -124,13 +125,19 @@ namespace SIGE.WebApp.IDP
                     }
                     else if (vTipoRevision == "EDIT")
                     {
+                        //btnEliminar.Visible = true;// Se agrega para la nueva forma de navegación 06/06/2018
                         cronometro.Visible = false;
                         vOrtografia1Seconds = 0;
                         btnTerminar.Visible = false;
                         btnCorregir.Visible = true;
+                        btnImpresionPrueba.Visible = true; // Se agrega para imprimir en la nueva navegación IDP 06/06/2018
                         //obtener respuestas
                         var respuestas = nKprueba.Obtener_RESULTADO_PRUEBA(vIdPrueba, vClToken);
                         asignarValores(respuestas);
+
+                        var vPrueba = nKprueba.Obtener_K_PRUEBA(pIdPrueba: vIdPrueba, pClTokenExterno: vClToken).FirstOrDefault();
+                        if (vPrueba.NB_TIPO_PRUEBA == "MANUAL")
+                            btnCorregir.Enabled = false;
                     }
                     else
                     {
@@ -695,5 +702,23 @@ namespace SIGE.WebApp.IDP
                 }
             }
         }
+
+        //protected void btnEliminar_Click(object sender, EventArgs e)
+        //{
+        //    if (vIdPrueba != null)
+        //    {
+        //        PruebasNegocio nPruebas = new PruebasNegocio();
+        //        var vResultado = nPruebas.EliminaRespuestasPrueba(vIdPrueba, vClUsuario, vNbPrograma);
+        //        string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals("ES")).FirstOrDefault().DS_MENSAJE;
+        //        if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+        //        {
+        //            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+
+        //        }
+        //        else
+        //            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
+        //    }
+
+        //}
     }
 }

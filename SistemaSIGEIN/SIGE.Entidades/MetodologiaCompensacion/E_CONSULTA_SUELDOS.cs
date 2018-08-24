@@ -58,5 +58,6 @@ namespace SIGE.Entidades.MetodologiaCompensacion
         public int CUARTIL_SELECCIONADO { set; get; }
         public int? NO_VALUACION { set; get; }
         public List<E_CATEGORIA> lstCategorias { set; get; }
+        public Nullable<bool> FG_SUELDO_VISIBLE_TABULADOR { set; get; }
     }
 }

@@ -19,27 +19,27 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
             }
         }
 
-        public SPE_OBTIENE_CONTROL_AVANCE_DATOS_GRAFICA_Result obtenerDatosControlAvance(int idPeriodo) 
+        public SPE_OBTIENE_CONTROL_AVANCE_DATOS_GRAFICA_Result obtenerDatosControlAvance(int idPeriodo, int? pIdRol) 
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_CONTROL_AVANCE_DATOS_GRAFICA(idPeriodo).FirstOrDefault();
+                return contexto.SPE_OBTIENE_CONTROL_AVANCE_DATOS_GRAFICA(idPeriodo, pIdRol).FirstOrDefault();
             }
         }
 
-        public List<SPE_OBTIENE_CONTROL_AVANCE_EVALUADOS_Result> obtieneEmpleadosEvaluados(int idPeriodo, int? pIdEmpresa)
+        public List<SPE_OBTIENE_CONTROL_AVANCE_EVALUADOS_Result> obtieneEmpleadosEvaluados(int idPeriodo, int? pIdEmpresa, int? pIdRol)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_CONTROL_AVANCE_EVALUADOS(idPeriodo, pIdEmpresa).ToList();
+                return contexto.SPE_OBTIENE_CONTROL_AVANCE_EVALUADOS(idPeriodo, pIdEmpresa, pIdRol).ToList();
             }
         }
 
-        public List<SPE_OBTIENE_CONTROL_AVANCE_EVALUADOR_Result> obtieneEmpleadosEvaluadores(int idPeriodo, int? pIdEmpresa)
+        public List<SPE_OBTIENE_CONTROL_AVANCE_EVALUADOR_Result> obtieneEmpleadosEvaluadores(int idPeriodo, int? pIdEmpresa, int? pIdRol)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_CONTROL_AVANCE_EVALUADOR(idPeriodo, pIdEmpresa).ToList();
+                return contexto.SPE_OBTIENE_CONTROL_AVANCE_EVALUADOR(idPeriodo, pIdEmpresa, pIdRol).ToList();
             }
         }
 

@@ -19,6 +19,10 @@ namespace SIGE.Entidades
         public Nullable<decimal> NO_VALOR_RESPUESTA { get; set; }
         public Nullable<int> ID_EVALUADOR { get; set; }
         public bool FG_CONTESTADO { get; set; }
+        public Nullable<System.Guid> FL_EVALUADOR { get; set; }
         public int NO_SECUENCIA { get; set; }
+        public int ID_PERIODO { get; set; }
+        public string NB_PERIODO { get; set; }
+        public string DS_PERIODO { get; set; }
     }
 }

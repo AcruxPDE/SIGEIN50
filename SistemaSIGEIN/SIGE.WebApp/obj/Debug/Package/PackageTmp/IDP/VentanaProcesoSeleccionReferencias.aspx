@@ -114,13 +114,13 @@
                 </tr>
                 <tr>
                     <td class="ctrlTableDataContext">
-                        <label>Periodo de: </label>
+                        <label>Período de: </label>
                     </td>
                     <td class="ctrlTableDataBorderContext">
                         <span runat="server" id="txtInicio" style="width: 300px;"></span>
                     </td>
                     <td class="ctrlTableDataContext">
-                        <label>Periodo a: </label>
+                        <label>Período a: </label>
                     </td>
                     <td class="ctrlTableDataBorderContext">
                         <span runat="server" id="txtFin" style="width: 300px;"></span>

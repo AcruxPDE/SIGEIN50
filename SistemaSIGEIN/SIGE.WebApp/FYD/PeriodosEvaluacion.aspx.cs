@@ -1,7 +1,10 @@
-﻿using SIGE.Entidades;
+﻿using Newtonsoft.Json;
+using SIGE.Entidades;
+using SIGE.Entidades.EvaluacionOrganizacional;
 using SIGE.Entidades.Externas;
 using SIGE.Entidades.FormacionDesarrollo;
 using SIGE.Negocio.FormacionDesarrollo;
+using SIGE.Negocio.Utilerias;
 using SIGE.WebApp.Comunes;
 using System;
 using System.Collections;
@@ -10,6 +13,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 using Telerik.Web.UI;
 
 namespace SIGE.WebApp.FYD
@@ -28,27 +32,156 @@ namespace SIGE.WebApp.FYD
 
         #region Variables para seguridad de procesos
 
-        private bool vAgregarPeriodo;
-        private bool vCerrarPeriodo;
-        private bool vConfigurarPeriodo;
-        private bool vControlAvancePeriodo;
-        private bool vEnvioSolicitudesPeriodo;
-        private bool vGeneralesPeriodo;
-        private bool vIndividualesPeriodo;
-        private bool vDNCPeriodo;
-        private bool vReactivarPeriodo;
-        private bool vContestarCuestionarioPeriodo;
+        private bool vAgregarPeriodo
+        {
+            get { return (bool)ViewState["vs_vAgregarPeriodo"]; }
+            set { ViewState["vs_vAgregarPeriodo"] = value; }
+        }
+
+
+        public bool vEditarPeriodo
+        {
+            get { return (bool)ViewState["vs_vEditarPeriodo"]; }
+            set { ViewState["vs_vEditarPeriodo"] = value; }
+        }
+
+        public bool vEliminarPeriodo
+        {
+            get { return (bool)ViewState["vs_vEliminarPeriodo"]; }
+            set { ViewState["vs_vEliminarPeriodo"] = value; }
+        }
+
+        private bool vConfigurarPeriodo
+        {
+            get { return (bool)ViewState["vs_vConfigurarPeriodo"]; }
+            set {ViewState["vs_vConfigurarPeriodo"] = value; }
+        }
+
+        private bool vCerrarPeriodo
+        {
+            get { return (bool)ViewState["vs_vCerrarPeriodo"]; }
+            set { ViewState["vs_vCerrarPeriodo"] = value; }
+        }
+
+        private bool vReabrirperiodo
+        {
+            get { return (bool)ViewState["vs_vReabrirperiodo"]; }
+            set { ViewState["vs_vReabrirperiodo"] = value; }
+        }
+
+        private bool vCopiarPeriodo
+        {
+            get { return (bool)ViewState["vs_vCopiarPeriodo"]; }
+            set { ViewState["vs_vCopiarPeriodo"] = value; }
+        }
+
+        private bool vEnviarSolicitudes
+        {
+            get { return (bool)ViewState["vs_vEnviarSolicitudes"]; }
+            set { ViewState["vs_vEnviarSolicitudes"] = value; }
+        }
+
+        private bool vContestar
+        {
+            get { return (bool)ViewState["vs_vContestar"]; }
+            set { ViewState["vs_vContestar"] = value; }
+        }
+
+        private bool vControlAvance
+        {
+            get { return (bool)ViewState["vs_vControlAvance"]; }
+            set { ViewState["vs_vControlAvance"] = value; }
+        }
+
+        private bool vConsultaIndividual
+        {
+            get { return (bool)ViewState["vs_vConsultaIndividual"]; }
+            set { ViewState["vs_vConsultaIndividual"] = value; }
+        }
+
+        private bool vConsultaGeneral
+        {
+            get { return (bool)ViewState["vs_vConsultaGeneral"]; }
+            set { ViewState["vs_vConsultaGeneral"] = value; }
+        }
+
+        private bool vNecesidadCap
+        {
+            get { return (bool)ViewState["vs_vNecesidadCap"]; }
+            set { ViewState["vs_vNecesidadCap"] = value; }
+        }
+
 
         #endregion
 
         #region Funciones
 
+        public void SeguridadProcesos()
+        {
+        btnAgregar.Enabled = vAgregarPeriodo = ContextoUsuario.oUsuario.TienePermiso("K.A.A.A");
+        vEditarPeriodo= ContextoUsuario.oUsuario.TienePermiso("K.A.A.B");
+        vEliminarPeriodo= ContextoUsuario.oUsuario.TienePermiso("K.A.A.C");
+        btnConfigurar.Enabled = vConfigurarPeriodo = ContextoUsuario.oUsuario.TienePermiso("K.A.A.D");
+        btnCerrar.Enabled = vCerrarPeriodo = ContextoUsuario.oUsuario.TienePermiso("K.A.A.E");
+        btnReactivar.Enabled = vReabrirperiodo = ContextoUsuario.oUsuario.TienePermiso("K.A.A.F");
+        btnCopiar.Enabled = vCopiarPeriodo = ContextoUsuario.oUsuario.TienePermiso("K.A.A.G");
+        btnEnviarSolicitudes.Enabled = vEnviarSolicitudes = ContextoUsuario.oUsuario.TienePermiso("K.A.A.H");
+        btnContestarCuestionarios.Enabled = vContestar = ContextoUsuario.oUsuario.TienePermiso("K.A.A.I");
+        btnControlAvance.Enabled = vControlAvance = ContextoUsuario.oUsuario.TienePermiso("K.A.A.J");
+        btnIndividuales.Enabled = vConsultaIndividual = ContextoUsuario.oUsuario.TienePermiso("K.A.A.K");
+        btnGenerales.Enabled = vConsultaGeneral = ContextoUsuario.oUsuario.TienePermiso("K.A.A.L");
+        btnNecesidadesCapacitacion.Enabled = vNecesidadCap = ContextoUsuario.oUsuario.TienePermiso("K.A.A.M");
+        }
+
+        public string validarDsNotas(string vdsNotas)
+        {
+            E_NOTAS pNota = null;
+            if (vdsNotas != null)
+            {
+                XElement vNotas = XElement.Parse(vdsNotas.ToString());
+                if (ValidarRamaXml(vNotas, "NOTA"))
+                {
+                    pNota = vNotas.Elements("NOTA").Select(el => new E_NOTAS
+                    {
+                        DS_NOTA = UtilXML.ValorAtributo<string>(el.Attribute("DS_NOTA")),
+                        FE_NOTA = (DateTime?)UtilXML.ValorAtributo(el.Attribute("FE_NOTA"), E_TIPO_DATO.DATETIME),
+                    }).FirstOrDefault();
+                }
+
+                if (pNota != null)
+                {
+                    if (pNota.DS_NOTA != null)
+                    {
+                        return pNota.DS_NOTA.ToString();
+                    }
+                    else return "";
+                }
+                else
+                    return "";
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public Boolean ValidarRamaXml(XElement parentEl, string elementsName)
+        {
+            var foundEl = parentEl.Element(elementsName);
+
+            if (foundEl != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
         private void EstatusBotonesPeriodos(bool pFgEstatus)
         {
-            btnConfigurar.Enabled = pFgEstatus;
-            btnCerrar.Enabled = pFgEstatus;
-            btnEnviarSolicitudes.Enabled = pFgEstatus;
-            btnContestarCuestionarios.Enabled = pFgEstatus;
+            btnConfigurar.Enabled = pFgEstatus && vConfigurarPeriodo;
+            btnCerrar.Enabled = pFgEstatus && vCerrarPeriodo;
+            btnEnviarSolicitudes.Enabled = pFgEstatus && vEnviarSolicitudes;
+            btnContestarCuestionarios.Enabled = pFgEstatus && vContestar;
         }
 
         private string ObtieneTiposEvaluacion(SPE_OBTIENE_FYD_PERIODOS_EVALUACION_Result pPeriodo)
@@ -84,6 +217,19 @@ namespace SIGE.WebApp.FYD
 
         }
 
+        private void seleccionarPeriodo()
+        {
+            rlvPeriodos.SelectedItems.Clear();
+            rlvPeriodos.SelectedIndexes.Clear();
+            rlvPeriodos.CurrentPageIndex = 0;
+            if (rlvPeriodos.Items.Count > 0)
+            {
+                rlvPeriodos.Items[0].Selected = true;
+                rlvPeriodos.Rebind();
+            }
+        }
+
+
         //private void SeguridadProcesos()
         //{
         //    btnAgregar.Enabled = vAgregarPeriodo = ContextoUsuario.oUsuario.TienePermiso("J.A.A.A");
@@ -109,8 +255,9 @@ namespace SIGE.WebApp.FYD
 
             if (!Page.IsPostBack)
             {
-
+                SeguridadProcesos();
             }
+
 
         }
 
@@ -142,6 +289,17 @@ namespace SIGE.WebApp.FYD
                 txtTipoEval.Text = ObtieneTiposEvaluacion(vPeriodo);
                 txtUsuarioMod.Text = vPeriodo.CL_USUARIO_APP_MODIFICA;
                 txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPeriodo.FE_MODIFICA);
+
+                if (vPeriodo.DS_NOTAS != null)
+                {
+                    XElement vNotas = XElement.Parse(vPeriodo.DS_NOTAS);
+
+                    if (vNotas != null)
+                    {
+                        string vNotasTexto = validarDsNotas(vNotas.ToString());
+                        txtNotas.InnerHtml = vNotasTexto;
+                    }
+                }
 
                 //rlvPeriodos.SelectedItemTemplate = null;
 
@@ -235,6 +393,7 @@ namespace SIGE.WebApp.FYD
                 txtTipoEval.Text = "";
                 txtUsuarioMod.Text = "";
                 txtFechaMod.Text = "";
+                txtNotas.InnerHtml = "";
                 vIdPeriodo = null;                
                 rlvPeriodos.Rebind();
                 //rlvPeriodos.SelectedValues.Clear();
@@ -244,7 +403,16 @@ namespace SIGE.WebApp.FYD
 
         protected void ramOrganigrama_AjaxRequest(object sender, AjaxRequestEventArgs e)
         {
+            E_SELECTOR vSeleccion = new E_SELECTOR();
+            string pParameter = e.Argument;
 
+            if (pParameter != null)
+                vSeleccion = JsonConvert.DeserializeObject<E_SELECTOR>(pParameter);
+
+            if (vSeleccion.clTipo == "ACTUALIZARLISTA")
+            {
+                seleccionarPeriodo();
+            }
         }
 
         protected void btnCopiar_Click(object sender, EventArgs e)

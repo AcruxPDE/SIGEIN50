@@ -24,6 +24,7 @@ namespace SIGE.WebApp.TC
 
         private string vClUsuario;
         private string vNbPrograma;
+        private int? vIdRol;
         private XElement vXmlComentarios { get; set; }
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
         List<SPE_OBTIENE_RESULTADOS_FYD_TABLERO_Result> vLstResultFyD;
@@ -31,6 +32,7 @@ namespace SIGE.WebApp.TC
         List<SPE_OBTIENE_RESULTADOS_TABULADORES_TABLERO_Result> vLstTabuladores;
         List<SPE_OBTIENE_COMPATIBILIDAD_PUESTO_TABLERO_Result> vLstCompatibilidad;
         List<SPE_OBTIENE_RESULTADOS_CLIMA_LABORAL_TABLERO_Result> vLstClimaLaboral;
+
 
         private int? vIdTableroControl
         {
@@ -179,7 +181,7 @@ namespace SIGE.WebApp.TC
         {
             TableroControlNegocio nTablero = new TableroControlNegocio();
             vLstColumnas = nTablero.ObtenerPeriodosEvaluadosTableroControl(vIdTableroControl, vIdEmpleado).ToList();
-            vLstEvaluados = nTablero.ObtenerEvaluadosTableroControl(vIdTableroControl, vIdEmpleado).ToList();
+            vLstEvaluados = nTablero.ObtenerEvaluadosTableroControl(vIdTableroControl, vIdEmpleado, pIdRol: vIdRol).ToList();
             vLstCompatibilidad = nTablero.ObtenerCompatibilidadPuestoTablero(vIdTableroControl, vIdEmpleado, vIdPuesto).ToList();
             vLstResultFyD = nTablero.ObtenerResultadosFyDTableroControl(vIdTableroControl, vIdEmpleado, vIdPuesto).ToList();
             vLstResultEd = nTablero.ObtenerResultadosEDTableroControl(vIdTableroControl, vIdEmpleado).ToList();
@@ -208,40 +210,52 @@ namespace SIGE.WebApp.TC
             //  if (vFgComentarios == true)
             vDtPivot.Columns.Add("DS_COMENTARIOS", typeof(string));
 
-            if (vPeriodoTablero.FG_EVALUACION_IDP == true)
-                vDtPivot.Columns.Add("COMPATIVILIDAD_VS_PUESTO", typeof(string));
-
-            foreach (var item in vLstColumnas)
+            if (vPeriodoTablero != null)
             {
-                if (item.CL_TIPO_PERIODO_REFERENCIA == "FD_EVALUACION")
-                    vDtPivot.Columns.Add(item.ID_PERIODO_REFERENCIA.ToString(), typeof(string));
-            }
 
-            foreach (var item in vLstColumnas)
-            {
-                switch (item.CL_TIPO_PERIODO_REFERENCIA)
+                if (vPeriodoTablero.FG_EVALUACION_IDP == true)
+                    vDtPivot.Columns.Add("COMPATIVILIDAD_VS_PUESTO", typeof(string));
+
+                foreach (var item in vLstColumnas)
                 {
-                    case "EO_DESEMPENO":
+                    if (item.CL_TIPO_PERIODO_REFERENCIA == "FD_EVALUACION")
                         vDtPivot.Columns.Add(item.ID_PERIODO_REFERENCIA.ToString(), typeof(string));
-                        break;
-                    case "EO_CLIMA":
-                        vDtPivot.Columns.Add(item.ID_PERIODO_REFERENCIA.ToString(), typeof(string));
-                        break;
-                    case "TABULADOR":
-                        vDtPivot.Columns.Add("T" + item.ID_PERIODO_REFERENCIA.ToString(), typeof(string));
-                        break;
                 }
+
+                foreach (var item in vLstColumnas)
+                {
+                    switch (item.CL_TIPO_PERIODO_REFERENCIA)
+                    {
+                        case "EO_DESEMPENO":
+                            vDtPivot.Columns.Add(item.ID_PERIODO_REFERENCIA.ToString(), typeof(string));
+                            break;
+                        case "EO_CLIMA":
+                            vDtPivot.Columns.Add(item.ID_PERIODO_REFERENCIA.ToString(), typeof(string));
+                            break;
+                        case "TABULADOR":
+                            vDtPivot.Columns.Add("T" + item.ID_PERIODO_REFERENCIA.ToString(), typeof(string));
+                            break;
+                    }
+                }
+
+                if (vPeriodoTablero.FG_EVALUACION_FYD == true)
+                    vDtPivot.Columns.Add("TENDENCIA_FYD", typeof(string));
+                if (vPeriodoTablero.FG_EVALUACION_DESEMPEÑO == true)
+                    vDtPivot.Columns.Add("TENDENCIA_ED", typeof(string));
+
+                vDtPivot.Columns.Add("PROMEDIO", typeof(string));
+
+                if (vPeriodoTablero.FG_EVALUACION_DESEMPEÑO == true)
+                    vDtPivot.Columns.Add("BONO", typeof(string));
+
+
+            }
+            else
+            {
+                vDtPivot.Columns.Add("COMPATIVILIDAD_VS_PUESTO", typeof(string));
+                vDtPivot.Columns.Add("PROMEDIO", typeof(string));
             }
 
-            if (vPeriodoTablero.FG_EVALUACION_FYD == true)
-                vDtPivot.Columns.Add("TENDENCIA_FYD", typeof(string));
-            if (vPeriodoTablero.FG_EVALUACION_DESEMPEÑO == true)
-                vDtPivot.Columns.Add("TENDENCIA_ED", typeof(string));
-
-            vDtPivot.Columns.Add("PROMEDIO", typeof(string));
-
-            if (vPeriodoTablero.FG_EVALUACION_DESEMPEÑO == true)
-                vDtPivot.Columns.Add("BONO", typeof(string));
 
             foreach (var item in vLstEvaluados)
             {
@@ -271,141 +285,146 @@ namespace SIGE.WebApp.TC
                 vDr["NB_EMPLEADO_PUESTO"] = "<p title=\"Clave: " + item.CL_EMPLEADO + ", " + item.CL_DEPARTAMENTO + " " + item.NB_DEPARTAMENTO + ", " + vAdicionales + "\"><a href=\"javascript:OpenInventario(" + item.ID_EMPLEADO + ")\">" + item.NB_EMPLEADO + "</a></p>" + "<p title=\"" + item.CL_PUESTO + "\"><a href=\"javascript:OpenDescriptivo(" + item.ID_PUESTO_PERIODO + ")\">" + item.NB_PUESTO + "</a></p>";
                 vDr["ID_EVALUADO"] = item.ID_EVALUADO.ToString();
 
-                if (vPeriodoTablero.FG_EVALUACION_IDP == true)
+
+                if (vPeriodoTablero != null)
                 {
-                    var vCompatibilidad = vLstCompatibilidad.Where(t => t.ID_EMPLEADO == item.ID_EMPLEADO && t.ID_PUESTO == item.ID_PUESTO_PERIODO).FirstOrDefault();
-                    if (vCompatibilidad != null)
+
+                    if (vPeriodoTablero.FG_EVALUACION_IDP == true)
                     {
-                        if (vCompatibilidad.PROMEDIO != null)
+                        var vCompatibilidad = vLstCompatibilidad.Where(t => t.ID_EMPLEADO == item.ID_EMPLEADO && t.ID_PUESTO == item.ID_PUESTO_PERIODO).FirstOrDefault();
+                        if (vCompatibilidad != null)
                         {
-                            vPorcentajeIDP = vPorcentajeIDP + vCompatibilidad.PROMEDIO;
-                            vDr["COMPATIVILIDAD_VS_PUESTO"] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\"><a href=\"javascript:openComparativaPuesto(" + vCompatibilidad.ID_CANDIDATO + ", " + vCompatibilidad.ID_PUESTO + ")\">" + vCompatibilidad.PROMEDIO.ToString() + "%</a></p>", vCompatibilidad.CL_COLOR_COMPATIBILIDAD);
+                            if (vCompatibilidad.PROMEDIO != null)
+                            {
+                                vPorcentajeIDP = vPorcentajeIDP + vCompatibilidad.PROMEDIO;
+                                vDr["COMPATIVILIDAD_VS_PUESTO"] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\"><a href=\"javascript:openComparativaPuesto(" + vCompatibilidad.ID_CANDIDATO + ", " + vCompatibilidad.ID_PUESTO + ")\">" + vCompatibilidad.PROMEDIO.ToString() + "%</a></p>", vCompatibilidad.CL_COLOR_COMPATIBILIDAD);
+                            }
+                            else
+                            {
+                                vDr["COMPATIVILIDAD_VS_PUESTO"] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\">N/A</p>", "divNa");
+                            }
                         }
+
                         else
                         {
                             vDr["COMPATIVILIDAD_VS_PUESTO"] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\">N/A</p>", "divNa");
                         }
+
+                        vPromedio = vPromedio + ((vPorcentajeIDP) * (vPeriodoTablero.PR_IDP / 100));
                     }
 
-                    else
+                    foreach (var vColumn in vLstColumnas)
                     {
-                        vDr["COMPATIVILIDAD_VS_PUESTO"] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\">N/A</p>", "divNa");
-                    }
-
-                    vPromedio = vPromedio + ((vPorcentajeIDP) * (vPeriodoTablero.PR_IDP / 100));
-                }
-
-                foreach (var vColumn in vLstColumnas)
-                {
-                    if (vColumn.CL_TIPO_PERIODO_REFERENCIA == "FD_EVALUACION")
-                    {
-                        var vResult = vLstResultFyD.Where(t => t.ID_EMPLEADO == item.ID_EMPLEADO && t.ID_PERIODO_REFERENCIA == vColumn.ID_PERIODO_REFERENCIA).FirstOrDefault();
-                        if (vResult != null)
+                        if (vColumn.CL_TIPO_PERIODO_REFERENCIA == "FD_EVALUACION")
                         {
-                            vPorcentajeFYD = vPorcentajeFYD + vResult.PR_CUMPLIMIENTO;
-                            vNumPeriodoFyD = vNumPeriodoFyD + 1;
-                            vDr[vColumn.ID_PERIODO_REFERENCIA.ToString()] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\"><a href=\"javascript:OpenReporteIndividual(" + vResult.ID_EVALUADO + ", " + vResult.ID_PERIODO_REFERENCIA + ")\">" + vResult.PR_CUMPLIMIENTO.ToString() + "%</a></p>", vResult.CL_COLOR_CUMPLIMIENTO);
-                        }
-                        else
-                        {
-                            vDr[vColumn.ID_PERIODO_REFERENCIA.ToString()] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\">N/A<p>", "divNa");
-                        }
-                    }
-
-                    if (vColumn.CL_TIPO_PERIODO_REFERENCIA == "EO_DESEMPENO")
-                    {
-                        var vResult = vLstResultEd.Where(t => t.ID_EMPLEADO == item.ID_EMPLEADO && t.ID_PERIODO_REFERENCIA == vColumn.ID_PERIODO_REFERENCIA).FirstOrDefault();
-                        if (vResult != null)
-                        {
-                            vPorcentajeED = vPorcentajeED + vResult.PR_CUMPLIMIENTO_EVALUADO;
-                            vNumPeriodoED = vNumPeriodoED + 1;
-                            vDr[vColumn.ID_PERIODO_REFERENCIA.ToString()] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\"><a href=\"javascript:OpenReporteCumplimientoPersonal(" + vResult.ID_EVALUADO + ", " + vResult.ID_PERIODO_REFERENCIA + ")\">" + vResult.PR_CUMPLIMIENTO_EVALUADO.ToString() + "%</a></p>", vResult.CL_COLOR_CUMPLIMIENTO);
-                        }
-                        else
-                        {
-                            vDr[vColumn.ID_PERIODO_REFERENCIA.ToString()] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\">N/A</p>", "divNa");
-                        }
-                    }
-
-                    if (vColumn.CL_TIPO_PERIODO_REFERENCIA == "TABULADOR")
-                    {
-                        var vResult = vLstTabuladores.Where(t => t.ID_EMPLEADO == item.ID_EMPLEADO && t.ID_PUESTO == item.ID_PUESTO_PERIODO).FirstOrDefault();
-                        if (vResult != null)
-                        {
-                            string vIcono = ObtenerIconoDiferencia(vResult.DIFERENCIA, vResult.MN_SUELDO_ORIGINAL);
-                            vDr["T" + vColumn.ID_PERIODO_REFERENCIA.ToString()] = "<p title=\"" + vResult.MN_SUELDO_ORIGINAL.ToString() + ", " + item.CL_PUESTO + ", " + item.NB_PUESTO + "\">" + (Math.Abs((decimal)vResult.DIFERENCIA)).ToString() + "% &nbsp;<img src='/Assets/images/Icons/25/Arrow" + vIcono + ".png' /></p>";
-                        }
-                        else
-                        {
-                            vDr["T" + vColumn.ID_PERIODO_REFERENCIA.ToString()] = "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\">N/A</p>";
-                        }
-                    }
-
-                    if (vColumn.CL_TIPO_PERIODO_REFERENCIA == "EO_CLIMA")
-                    {
-                        var vResult = vLstClimaLaboral.Where(t => t.ID_EMPLEADO == item.ID_EMPLEADO && t.ID_PERIODO == vColumn.ID_PERIODO_REFERENCIA).FirstOrDefault();
-                        if (vResult != null)
-                        {
-                            if (vResult.PROMEDIO_RESULTADO != null)
+                            var vResult = vLstResultFyD.Where(t => t.ID_EMPLEADO == item.ID_EMPLEADO && t.ID_PERIODO_REFERENCIA == vColumn.ID_PERIODO_REFERENCIA).FirstOrDefault();
+                            if (vResult != null)
                             {
-                                vPorcentajeCL = vPorcentajeCL + vResult.PROMEDIO_RESULTADO;
-                                vNumPeriodoCL = vNumPeriodoCL + 1;
-                                vDr[vColumn.ID_PERIODO_REFERENCIA.ToString()] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\"><a href=\"javascript:openCuestionarioClima(" + vResult.ID_EVALUADOR + ", " + vResult.ID_PERIODO + ")\">" + vResult.PROMEDIO_RESULTADO.ToString() + "%</a></p>", vResult.COLOR_DIMENSION);
+                                vPorcentajeFYD = vPorcentajeFYD + vResult.PR_CUMPLIMIENTO;
+                                vNumPeriodoFyD = vNumPeriodoFyD + 1;
+                                vDr[vColumn.ID_PERIODO_REFERENCIA.ToString()] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\"><a href=\"javascript:OpenReporteIndividual(" + vResult.ID_EVALUADO + ", " + vResult.ID_PERIODO_REFERENCIA + ")\">" + vResult.PR_CUMPLIMIENTO.ToString() + "%</a></p>", vResult.CL_COLOR_CUMPLIMIENTO);
                             }
                             else
                             {
-                                vPorcentajeCL = vPorcentajeCL + vResult.PROMEDIO_RESULTADO;
-                                vNumPeriodoCL = vNumPeriodoCL + 1;
-                                vDr[vColumn.ID_PERIODO_REFERENCIA.ToString()] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\"><a href=\"javascript:openCuestionarioClima(" + vResult.ID_EVALUADOR + ", " + vResult.ID_PERIODO + ")\">0%</a></p>", vResult.COLOR_DIMENSION);
+                                vDr[vColumn.ID_PERIODO_REFERENCIA.ToString()] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\">N/A<p>", "divNa");
                             }
                         }
-                        else
+
+                        if (vColumn.CL_TIPO_PERIODO_REFERENCIA == "EO_DESEMPENO")
                         {
-                            vDr[vColumn.ID_PERIODO_REFERENCIA.ToString()] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\">N/A</p>", "divNa");
+                            var vResult = vLstResultEd.Where(t => t.ID_EMPLEADO == item.ID_EMPLEADO && t.ID_PERIODO_REFERENCIA == vColumn.ID_PERIODO_REFERENCIA).FirstOrDefault();
+                            if (vResult != null)
+                            {
+                                vPorcentajeED = vPorcentajeED + vResult.PR_CUMPLIMIENTO_EVALUADO;
+                                vNumPeriodoED = vNumPeriodoED + 1;
+                                vDr[vColumn.ID_PERIODO_REFERENCIA.ToString()] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\"><a href=\"javascript:OpenReporteCumplimientoPersonal(" + vResult.ID_EVALUADO + ", " + vResult.ID_PERIODO_REFERENCIA + ")\">" + vResult.PR_CUMPLIMIENTO_EVALUADO.ToString() + "%</a></p>", vResult.CL_COLOR_CUMPLIMIENTO);
+                            }
+                            else
+                            {
+                                vDr[vColumn.ID_PERIODO_REFERENCIA.ToString()] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\">N/A</p>", "divNa");
+                            }
                         }
+
+                        if (vColumn.CL_TIPO_PERIODO_REFERENCIA == "TABULADOR")
+                        {
+                            var vResult = vLstTabuladores.Where(t => t.ID_EMPLEADO == item.ID_EMPLEADO && t.ID_PUESTO == item.ID_PUESTO_PERIODO).FirstOrDefault();
+                            if (vResult != null)
+                            {
+                                string vIcono = ObtenerIconoDiferencia(vResult.DIFERENCIA, vResult.MN_SUELDO_ORIGINAL);
+                                vDr["T" + vColumn.ID_PERIODO_REFERENCIA.ToString()] = "<p title=\"" + vResult.MN_SUELDO_ORIGINAL.ToString() + ", " + item.CL_PUESTO + ", " + item.NB_PUESTO + "\">" + (Math.Abs((decimal)vResult.DIFERENCIA)).ToString() + "% &nbsp;<img src='../Assets/images/Icons/25/Arrow" + vIcono + ".png' /></p>";
+                            }
+                            else
+                            {
+                                vDr["T" + vColumn.ID_PERIODO_REFERENCIA.ToString()] = "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\">N/A</p>";
+                            }
+                        }
+
+                        if (vColumn.CL_TIPO_PERIODO_REFERENCIA == "EO_CLIMA")
+                        {
+                            var vResult = vLstClimaLaboral.Where(t => t.ID_EMPLEADO == item.ID_EMPLEADO && t.ID_PERIODO == vColumn.ID_PERIODO_REFERENCIA).FirstOrDefault();
+                            if (vResult != null)
+                            {
+                                if (vResult.PROMEDIO_RESULTADO != null)
+                                {
+                                    vPorcentajeCL = vPorcentajeCL + vResult.PROMEDIO_RESULTADO;
+                                    vNumPeriodoCL = vNumPeriodoCL + 1;
+                                    vDr[vColumn.ID_PERIODO_REFERENCIA.ToString()] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\"><a href=\"javascript:openCuestionarioClima(" + vResult.ID_EVALUADOR + ", " + vResult.ID_PERIODO + ")\">" + vResult.PROMEDIO_RESULTADO.ToString() + "%</a></p>", vResult.COLOR_DIMENSION);
+                                }
+                                else
+                                {
+                                    vPorcentajeCL = vPorcentajeCL + vResult.PROMEDIO_RESULTADO;
+                                    vNumPeriodoCL = vNumPeriodoCL + 1;
+                                    vDr[vColumn.ID_PERIODO_REFERENCIA.ToString()] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\"><a href=\"javascript:openCuestionarioClima(" + vResult.ID_EVALUADOR + ", " + vResult.ID_PERIODO + ")\">0%</a></p>", vResult.COLOR_DIMENSION);
+                                }
+                            }
+                            else
+                            {
+                                vDr[vColumn.ID_PERIODO_REFERENCIA.ToString()] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\">N/A</p>", "divNa");
+                            }
+                        }
+
                     }
 
+                    if (vPeriodoTablero.FG_EVALUACION_FYD == true)
+                    {
+                        var vResult = vLstResultFyD.Where(t => t.ID_EMPLEADO == item.ID_EMPLEADO && t.ID_PUESTO == item.ID_PUESTO_PERIODO).FirstOrDefault();
+                        if (vResult != null)
+                            vDr["TENDENCIA_FYD"] = String.Format(vDivsCeldasPo, vResult.FYD_TENDENCIA, vResult.CL_COLOR_TENDENCIA);
+                        else
+                            vDr["TENDENCIA_FYD"] = String.Format(vDivsCeldasPo, "N/A", "divNa");
+                    }
+
+                    if (vPeriodoTablero.FG_EVALUACION_DESEMPEÑO == true)
+                    {
+                        var vResult = vLstResultEd.Where(t => t.ID_EMPLEADO == item.ID_EMPLEADO && t.ID_PUESTO_PERIODO == item.ID_PUESTO_PERIODO).FirstOrDefault();
+                        if (vResult != null)
+                            vDr["TENDENCIA_ED"] = String.Format(vDivsCeldasPo, vResult.ED_TENDENCIA, vResult.CL_COLOR_TENDENCIA);
+                        else
+                            vDr["TENDENCIA_ED"] = String.Format(vDivsCeldasPo, "N/A", "divNa");
+                    }
+
+                    if (vPeriodoTablero.FG_EVALUACION_DESEMPEÑO == true)
+                    {
+                        var vBono = vLstResultEd.Where(t => t.ID_EMPLEADO == item.ID_EMPLEADO && t.ID_PUESTO_PERIODO == item.ID_PUESTO_PERIODO).FirstOrDefault();
+                        if (vBono != null)
+                            vDr["BONO"] = "$" + vBono.MN_BONO.ToString();
+                        else
+                            vDr["BONO"] = "N/A";
+                    }
+
+                    if (vNumPeriodoFyD > 0)
+                        vPromedio = vPromedio + ((vPorcentajeFYD / vNumPeriodoFyD) * (vPeriodoTablero.PR_FYD / 100));
+                    if (vNumPeriodoED > 0)
+                        vPromedio = vPromedio + ((vPorcentajeED / vNumPeriodoED) * (vPeriodoTablero.PR_DESEMPENO / 100));
+                    if (vNumPeriodoCL > 0)
+                        vPromedio = vPromedio + ((vPorcentajeCL / vNumPeriodoCL) * (vPeriodoTablero.PR_CLIMA_LABORAL / 100));
+
+                    vDivsCeldaPromedio = ObtenerColorPromedio(vPromedio);
+                    if (vPromedio != null)
+                        vPromedioTotal = (double)vPromedio;
+                    vDr["PROMEDIO"] = String.Format(vDivsCeldasPo, Math.Round(vPromedioTotal, 2).ToString() + "%", vDivsCeldaPromedio);
+
                 }
-
-                if (vPeriodoTablero.FG_EVALUACION_FYD == true)
-                {
-                    var vResult = vLstResultFyD.Where(t => t.ID_EMPLEADO == item.ID_EMPLEADO && t.ID_PUESTO == item.ID_PUESTO_PERIODO).FirstOrDefault();
-                    if (vResult != null)
-                        vDr["TENDENCIA_FYD"] = String.Format(vDivsCeldasPo, vResult.FYD_TENDENCIA, vResult.CL_COLOR_TENDENCIA);
-                    else
-                        vDr["TENDENCIA_FYD"] = String.Format(vDivsCeldasPo, "N/A", "divNa");
-                }
-
-                if (vPeriodoTablero.FG_EVALUACION_DESEMPEÑO == true)
-                {
-                    var vResult = vLstResultEd.Where(t => t.ID_EMPLEADO == item.ID_EMPLEADO && t.ID_PUESTO_PERIODO == item.ID_PUESTO_PERIODO).FirstOrDefault();
-                    if (vResult != null)
-                        vDr["TENDENCIA_ED"] = String.Format(vDivsCeldasPo, vResult.ED_TENDENCIA, vResult.CL_COLOR_TENDENCIA);
-                    else
-                        vDr["TENDENCIA_ED"] = String.Format(vDivsCeldasPo, "N/A", "divNa");
-                }
-
-                if (vPeriodoTablero.FG_EVALUACION_DESEMPEÑO == true)
-                {
-                    var vBono = vLstResultEd.Where(t => t.ID_EMPLEADO == item.ID_EMPLEADO && t.ID_PUESTO_PERIODO == item.ID_PUESTO_PERIODO).FirstOrDefault();
-                    if (vBono != null)
-                        vDr["BONO"] = "$" + vBono.MN_BONO.ToString();
-                    else
-                        vDr["BONO"] = "N/A";
-                }
-
-                if (vNumPeriodoFyD > 0)
-                    vPromedio = vPromedio + ((vPorcentajeFYD / vNumPeriodoFyD) * (vPeriodoTablero.PR_FYD / 100));
-                if (vNumPeriodoED > 0)
-                    vPromedio = vPromedio + ((vPorcentajeED / vNumPeriodoED) * (vPeriodoTablero.PR_DESEMPENO / 100));
-                if (vNumPeriodoCL > 0)
-                    vPromedio = vPromedio + ((vPorcentajeCL / vNumPeriodoCL) * (vPeriodoTablero.PR_CLIMA_LABORAL / 100));
-
-                vDivsCeldaPromedio = ObtenerColorPromedio(vPromedio);
-                if (vPromedio != null)
-                    vPromedioTotal = (double)vPromedio;
-                vDr["PROMEDIO"] = String.Format(vDivsCeldasPo, Math.Round(vPromedioTotal, 2).ToString() + "%", vDivsCeldaPromedio);
-
                 vDtPivot.Rows.Add(vDr);
             }
 
@@ -463,29 +482,37 @@ namespace SIGE.WebApp.TC
         {
             Color vColor = Color.Gray;
             string vIdColumna = "";
+            string vTipoRferencia = "";
             var vUniqueName = pNbColumna.Split(new string[] { "T" }, StringSplitOptions.None);
             if (vUniqueName.Length == 1)
                 vIdColumna = vUniqueName[0].ToString();
             else
-                vIdColumna = vUniqueName[1].ToString();
-
-            var vTipoPeriodo = vLstColumnas.Where(x => x.ID_PERIODO_REFERENCIA.ToString() == vIdColumna).FirstOrDefault();
-            if (vTipoPeriodo != null)
             {
-                switch (vTipoPeriodo.CL_TIPO_PERIODO_REFERENCIA)
+                vIdColumna = vUniqueName[1].ToString();
+                vTipoRferencia = "TABULADOR";
+                vColor = Color.FromArgb(0, 102, 255);
+            }
+
+            if (vTipoRferencia == "")
+            {
+                var vTipoPeriodo = vLstColumnas.Where(x => x.ID_PERIODO_REFERENCIA.ToString() == vIdColumna).FirstOrDefault();
+                if (vTipoPeriodo != null)
                 {
-                    case "FD_EVALUACION":
-                        vColor = Color.DarkOrange;
-                        break;
-                    case "EO_DESEMPENO":
-                        vColor = Color.DarkRed;
-                        break;
-                    case "EO_CLIMA":
-                        vColor = Color.DarkRed;
-                        break;
-                    case "TABULADOR":
-                        vColor = Color.FromArgb(0, 102, 255);
-                        break;
+                    switch (vTipoPeriodo.CL_TIPO_PERIODO_REFERENCIA)
+                    {
+                        case "FD_EVALUACION":
+                            vColor = Color.DarkOrange;
+                            break;
+                        case "EO_DESEMPENO":
+                            vColor = Color.DarkRed;
+                            break;
+                        case "EO_CLIMA":
+                            vColor = Color.DarkRed;
+                            break;
+                        case "TABULADOR":
+                            vColor = Color.FromArgb(0, 102, 255);
+                            break;
+                    }
                 }
             }
 
@@ -517,29 +544,45 @@ namespace SIGE.WebApp.TC
         {
             string vEncabezado = "";
             string vIdColumna = "";
+            string vIdReferencia = "";
             var vUniqueName = pColumna.UniqueName.ToString().Split(new string[] { "T" }, StringSplitOptions.None);
             if (vUniqueName.Length == 1)
                 vIdColumna = vUniqueName[0].ToString();
             else
-                vIdColumna = vUniqueName[1].ToString();
-
-            var vTipoPeriodo = vLstColumnas.Where(x => x.ID_PERIODO_REFERENCIA.ToString() == vIdColumna).FirstOrDefault();
-            if (vTipoPeriodo != null)
             {
-                switch (vTipoPeriodo.CL_TIPO_PERIODO_REFERENCIA)
+                vIdColumna = vUniqueName[1].ToString();
+                vIdReferencia = "TABULADOR";
+            }
+
+
+            if (vIdReferencia == "TABULADOR")
+            {
+                var vTabulador = vLstColumnas.Where(x => x.ID_PERIODO_REFERENCIA.ToString() == vIdColumna && x.CL_TIPO_PERIODO_REFERENCIA == vIdReferencia).FirstOrDefault();
+                  if (vTabulador != null)
+                  {
+                      vEncabezado = "<a style=\"color:white\" href=\"javascript:OpenTabulador(" + vTabulador.ID_PERIODO_REFERENCIA + ")\">" + vTabulador.CL_TABULADOR.ToString() + "</a>";
+                  }
+            }
+            else
+            {
+                var vTipoPeriodo = vLstColumnas.Where(x => x.ID_PERIODO_REFERENCIA.ToString() == vIdColumna).FirstOrDefault();
+                if (vTipoPeriodo != null)
                 {
-                    case "FD_EVALUACION":
-                        vEncabezado = "<a style=\"color:white\" href=\"javascript:OpenPeriodoFyD(" + vTipoPeriodo.ID_PERIODO_REFERENCIA + ")\">" + vTipoPeriodo.CL_PERIODO.ToString() + "</a>";
-                        break;
-                    case "EO_DESEMPENO":
-                        vEncabezado = "<a style=\"color:white\" href=\"javascript:OpenPeriodoED(" + vTipoPeriodo.ID_PERIODO_REFERENCIA + ")\">" + vTipoPeriodo.CL_PERIODO.ToString() + "</a>";
-                        break;
-                    case "EO_CLIMA":
-                        vEncabezado = "<a style=\"color:white\" href=\"javascript:OpenPeriodoCL(" + vTipoPeriodo.ID_PERIODO_REFERENCIA + ")\">" + vTipoPeriodo.CL_PERIODO.ToString() + "</a>";
-                        break;
-                    case "TABULADOR":
-                        vEncabezado = "<a style=\"color:white\" href=\"javascript:OpenTabulador(" + vTipoPeriodo.ID_PERIODO_REFERENCIA + ")\">" + vTipoPeriodo.CL_TABULADOR.ToString() + "</a>";
-                        break;
+                    switch (vTipoPeriodo.CL_TIPO_PERIODO_REFERENCIA)
+                    {
+                        case "FD_EVALUACION":
+                            vEncabezado = "<a style=\"color:white\" href=\"javascript:OpenPeriodoFyD(" + vTipoPeriodo.ID_PERIODO_REFERENCIA + ")\">" + vTipoPeriodo.CL_PERIODO.ToString() + "</a>";
+                            break;
+                        case "EO_DESEMPENO":
+                            vEncabezado = "<a style=\"color:white\" href=\"javascript:OpenPeriodoED(" + vTipoPeriodo.ID_PERIODO_REFERENCIA + ")\">" + vTipoPeriodo.CL_PERIODO.ToString() + "</a>";
+                            break;
+                        case "EO_CLIMA":
+                            vEncabezado = "<a style=\"color:white\" href=\"javascript:OpenPeriodoCL(" + vTipoPeriodo.ID_PERIODO_REFERENCIA + ")\">" + vTipoPeriodo.CL_PERIODO.ToString() + "</a>";
+                            break;
+                        case "TABULADOR":
+                            vEncabezado = "<a style=\"color:white\" href=\"javascript:OpenTabulador(" + vTipoPeriodo.ID_PERIODO_REFERENCIA + ")\">" + vTipoPeriodo.CL_TABULADOR.ToString() + "</a>";
+                            break;
+                    }
                 }
             }
             return vEncabezado;
@@ -553,27 +596,34 @@ namespace SIGE.WebApp.TC
             if (vUniqueName.Length == 1)
                 vIdColumna = vUniqueName[0].ToString();
             else
-                vIdColumna = vUniqueName[1].ToString();
-
-            var vTipoPeriodo = vLstColumnas.Where(x => x.ID_PERIODO_REFERENCIA.ToString() == vIdColumna).FirstOrDefault();
-            if (vTipoPeriodo != null)
             {
-                switch (vTipoPeriodo.CL_TIPO_PERIODO_REFERENCIA)
+                vIdColumna = vUniqueName[1].ToString();
+                 vGrupo = "Tabulador";
+            }
+
+            if (vGrupo == "")
+            {
+                var vTipoPeriodo = vLstColumnas.Where(x => x.ID_PERIODO_REFERENCIA.ToString() == vIdColumna).FirstOrDefault();
+                if (vTipoPeriodo != null)
                 {
-                    case "FD_EVALUACION":
-                        vGrupo = "Formacion";
-                        break;
-                    case "EO_DESEMPENO":
-                        vGrupo = "Desempeno";
-                        break;
-                    case "EO_CLIMA":
-                        vGrupo = "Clima";
-                        break;
-                    case "TABULADOR":
-                        vGrupo = "Tabulador";
-                        break;
+                    switch (vTipoPeriodo.CL_TIPO_PERIODO_REFERENCIA)
+                    {
+                        case "FD_EVALUACION":
+                            vGrupo = "Formacion";
+                            break;
+                        case "EO_DESEMPENO":
+                            vGrupo = "Desempeno";
+                            break;
+                        case "EO_CLIMA":
+                            vGrupo = "Clima";
+                            break;
+                        case "TABULADOR":
+                            vGrupo = "Tabulador";
+                            break;
+                    }
                 }
             }
+
             return vGrupo;
         }
 
@@ -583,6 +633,7 @@ namespace SIGE.WebApp.TC
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!IsPostBack)
             {
@@ -660,25 +711,36 @@ namespace SIGE.WebApp.TC
                     var vPeriodoTablero = nTablero.ObtenerPeriodoTableroControl(null, null, vIdEmpleado, vIdPuesto).FirstOrDefault();
                     btnGuardar.Visible = false;
 
-                    if (vPeriodoTablero.FG_EVALUACION_IDP == true)
-                        txtIdp.Value = (double?)vPeriodoTablero.PR_IDP;
+                    if (vPeriodoTablero != null)
+                    {
+
+                        if (vPeriodoTablero.FG_EVALUACION_IDP == true)
+                            txtIdp.Value = (double?)vPeriodoTablero.PR_IDP;
+                        else
+                            txtIdp.Enabled = false;
+
+                        if (vPeriodoTablero.FG_EVALUACION_FYD == true)
+                            txtFyd.Value = (double?)vPeriodoTablero.PR_FYD;
+                        else
+                            txtFyd.Enabled = false;
+
+                        if (vPeriodoTablero.FG_EVALUACION_DESEMPEÑO == true)
+                            txtDesempeno.Value = (double?)vPeriodoTablero.PR_DESEMPENO;
+                        else
+                            txtDesempeno.Enabled = false;
+
+                        if (vPeriodoTablero.FG_EVALUACION_CLIMA_LABORAL == true)
+                            txtClima.Value = (double?)vPeriodoTablero.PR_CLIMA_LABORAL;
+                        else
+                            txtClima.Enabled = false;
+                    }
                     else
+                    {
                         txtIdp.Enabled = false;
-
-                    if (vPeriodoTablero.FG_EVALUACION_FYD == true)
-                        txtFyd.Value = (double?)vPeriodoTablero.PR_FYD;
-                    else
                         txtFyd.Enabled = false;
-
-                    if (vPeriodoTablero.FG_EVALUACION_DESEMPEÑO == true)
-                        txtDesempeno.Value = (double?)vPeriodoTablero.PR_DESEMPENO;
-                    else
                         txtDesempeno.Enabled = false;
-
-                    if (vPeriodoTablero.FG_EVALUACION_CLIMA_LABORAL == true)
-                        txtClima.Value = (double?)vPeriodoTablero.PR_CLIMA_LABORAL;
-                    else
                         txtClima.Enabled = false;
+                    }
 
 
                 //    grdTableroControl.MasterTableView.Columns[0].Visible = false;

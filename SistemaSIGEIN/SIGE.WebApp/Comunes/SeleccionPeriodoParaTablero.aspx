@@ -40,7 +40,7 @@
                 var browserWnd = window;
                 if (currentWnd)
                     browserWnd = currentWnd.BrowserWindow;
-                browserWnd.radalert("Selecciona un periodo.", 400, 150);
+                browserWnd.radalert("Selecciona un período.", 400, 150);
             }
 
             return false;
@@ -85,7 +85,7 @@
                         <Columns>
                             <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="60" HeaderText="Clave" DataField="CL_PERIODO" UniqueName="CL_PERIODO"></telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="60" HeaderText="Periodo" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="60" HeaderText="Período" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" FilterControlWidth="60" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO"></telerik:GridBoundColumn>
                         </Columns>
                     </MasterTableView>

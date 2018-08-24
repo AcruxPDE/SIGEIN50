@@ -328,6 +328,24 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadGrid grdCompensacion;
         
         /// <summary>
+        /// pvwNomina control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPageView pvwNomina;
+        
+        /// <summary>
+        /// ifNomina control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlIframe ifNomina;
+        
+        /// <summary>
         /// rpAyuda control.
         /// </summary>
         /// <remarks>

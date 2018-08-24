@@ -51,6 +51,12 @@ namespace SIGE.WebApp.FYD
             if (vResultado.CL_TIPO_ERROR.Equals(E_TIPO_RESPUESTA_DB.SUCCESSFUL))
             {
                 CargarDatos();
+                if (vLstPlaneacion.Where(w => w.FG_CUESTIONARIO == true).Count() < 1)
+                {
+                    btnCrearCuestionarios.Enabled = false;
+                    btnRegistroAutorizacion.Enabled = false;
+                }
+
             }
             else
             {

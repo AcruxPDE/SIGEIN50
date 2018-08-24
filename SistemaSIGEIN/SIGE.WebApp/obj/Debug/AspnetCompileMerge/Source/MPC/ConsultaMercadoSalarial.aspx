@@ -79,7 +79,7 @@
                                     <GroupingSettings CaseSensitive="false" />
                                     <MasterTableView AllowFilteringByColumn="true" AllowPaging="true" ShowHeadersWhenNoRecords="true">
                                         <Columns>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="130" FilterControlWidth="100" HeaderText="Área" DataField="NB_DEPARTAMENTO" DataFormatString="{0:C}" ReadOnly="true"></telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="130" FilterControlWidth="100" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" DataFormatString="{0:C}" ReadOnly="true"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="260" FilterControlWidth="240" HeaderText="Puesto" DataField="NB_PUESTO" DataFormatString="{0:C}" ReadOnly="true"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="130" FilterControlWidth="100" HeaderText="Mínimo" DataField="MN_MINIMO" DataFormatString="{0:C}" ItemStyle-HorizontalAlign="Right" ReadOnly="true"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="130" FilterControlWidth="100" HeaderText="Máximo" DataField="MN_MAXIMO" DataFormatString="{0:C}" ItemStyle-HorizontalAlign="Right" ReadOnly="true"></telerik:GridBoundColumn>

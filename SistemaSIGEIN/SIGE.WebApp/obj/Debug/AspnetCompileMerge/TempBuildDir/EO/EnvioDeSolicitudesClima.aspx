@@ -30,7 +30,7 @@
                 <telerik:RadTabStrip ID="rtsSolicitudes" runat="server" SelectedIndex="0" MultiPageID="rmpSolicitudes">
                     <Tabs>
                         <telerik:RadTab Text="Contexto"></telerik:RadTab>
-                        <telerik:RadTab Text="Envio Solicitudes"></telerik:RadTab>
+                        <telerik:RadTab Text="Enviar cuestionarios"></telerik:RadTab>
                     </Tabs>
                 </telerik:RadTabStrip>
                 <telerik:RadMultiPage ID="rmpSolicitudes" runat="server" SelectedIndex="0" Height="82%">
@@ -93,7 +93,7 @@
                                                 <label id="Label2" name="lbNotas" runat="server">Notas:</label>
                                             </td>
                                             <td  class="ctrlTableDataBorderContext">
-                                                <label id="txtNotas" runat="server"></label>
+                                                <div id="txtNotas" runat="server"></div>
                                             </td>
                                         </tr>
                                          <tr>
@@ -178,7 +178,7 @@
                                     </ColumnGroups>
                                     <Columns>
                                         <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30px"></telerik:GridClientSelectColumn>
-                                        <telerik:GridBoundColumn ColumnGroupName="Evaluadores" UniqueName="NB_EVALUADOR" DataField="NB_EVALUADOR" HeaderText="Nombre Completo" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn ColumnGroupName="Evaluadores" UniqueName="NB_EVALUADOR" DataField="NB_EVALUADOR" HeaderText="Nombre completo" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn ColumnGroupName="Evaluadores" UniqueName="NB_PUESTO" DataField="NB_PUESTO" HeaderText="Puesto" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                         <telerik:GridTemplateColumn ColumnGroupName="Evaluadores" UniqueName="CL_CORREO_EVALUADOR" DataField="CL_CORREO_EVALUADOR" HeaderText="Correo electónico" HeaderStyle-Font-Bold="true">
                                             <ItemTemplate>
@@ -188,7 +188,7 @@
                                     </Columns>
                                 </MasterTableView>
                             </telerik:RadGrid>
-                            <label id="lbMensaje" runat="server" visible="false" style="color: red;">Todos los cuestionarios para este periodo han sido enviados y contestados.</label>
+                            <label id="lbMensaje" runat="server" visible="false" style="color: red;">No hay cuestionarios creados que enviar o todos los cuestionarios para este período han sido enviados y contestados.</label>
                         </div>
                         <div style="clear: both; height: 10px;"></div>
                         <div class="divControlDerecha">

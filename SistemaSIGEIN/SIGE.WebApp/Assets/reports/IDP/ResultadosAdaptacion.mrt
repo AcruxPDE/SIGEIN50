@@ -50,7 +50,7 @@
               <Name>Text1</Name>
               <Page isRef="2" />
               <Parent isRef="3" />
-              <Text>Adaptación al medio</Text>
+              <Text>Resultados adaptación al medio</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text1>
@@ -598,7 +598,7 @@
                   </Title>
                 </YRightAxis>
               </Area>
-              <Brush>[255:255:255]</Brush>
+              <Brush>Transparent</Brush>
               <ClientRectangle>0,8.8,17.6,10.6</ClientRectangle>
               <Conditions isList="true" count="0" />
               <ConstantLines isList="true" count="0" />
@@ -1017,10 +1017,10 @@
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>11/8/2017 5:07:09 PM</ReportChanged>
+  <ReportChanged>6/28/2018 8:51:25 AM</ReportChanged>
   <ReportCreated>11/2/2017 1:52:59 PM</ReportCreated>
-  <ReportFile>C:\Users\usuario\Documents\SIGEIN 50\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosAdaptacion.mrt</ReportFile>
-  <ReportGuid>85c3f14e1ee44f1eb02fe3a1771a5ee3</ReportGuid>
+  <ReportFile>C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosAdaptacion.mrt</ReportFile>
+  <ReportGuid>675f36399dff42fe88f7921883f09d4c</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2015.3.0</ReportVersion>

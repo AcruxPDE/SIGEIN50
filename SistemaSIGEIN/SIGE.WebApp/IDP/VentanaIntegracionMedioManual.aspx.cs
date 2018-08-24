@@ -99,15 +99,14 @@ namespace SIGE.WebApp.IDP
                         }
                   //  }
 
-                    if (Request.QueryString["MOD"] != null)
-                    {
-                        clTipoPrueba = Request.QueryString["MOD"];
-                        if (clTipoPrueba.Equals("REV"))
-                        {
-                            btnTerminar.Enabled = false;
-                            
-                        }
-                    }
+                    //if (Request.QueryString["MOD"] != null)
+                    //{
+                    //    clTipoPrueba = Request.QueryString["MOD"];
+                    //    if (clTipoPrueba.Equals("REV"))
+                    //    {
+                    //      //  btnTerminar.Enabled = false; //Se comenta 06/06/2018
+                    //    }
+                    //}
 
                 }
 
@@ -194,7 +193,7 @@ namespace SIGE.WebApp.IDP
             {
                 E_RESULTADO vResultado = negRes.insertaResultadosAdaptacionMedio(RESPUESTAS.ToString(), null, vIdPrueba, vClUsuario, vNbPrograma);
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "CloseTest");
+                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "");
             }
           
         }
@@ -244,7 +243,6 @@ namespace SIGE.WebApp.IDP
             }
 
         }
-
 
         public void AsignarValorRespuestas(string pClVariable, int pnbRespuesta)
         {
@@ -313,5 +311,29 @@ namespace SIGE.WebApp.IDP
         }
 
         #endregion
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+                if (vIdPrueba != null)
+                {
+                    PruebasNegocio nPruebas = new PruebasNegocio();
+                    var vResultado = nPruebas.EliminaRespuestasPrueba(vIdPrueba, vClUsuario, vNbPrograma);
+                    string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                    if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+                    {
+                        UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                        //var prueba = nPruebas.Obtener_RESULTADO_PRUEBA(pClTokenExterno: vClToken, pIdPrueba: vIdPrueba).ToList();
+                        //var vPrueba = nPruebas.Obtener_K_PRUEBA(pIdPrueba: vIdPrueba, pClTokenExterno: vClToken).FirstOrDefault();
+                        //if (prueba != null)
+                        //{
+                        // CargarRespuestas(prueba);                     
+                        //}
+
+                    }
+                    else
+                        UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
+                }
+
+        }
     }
 }

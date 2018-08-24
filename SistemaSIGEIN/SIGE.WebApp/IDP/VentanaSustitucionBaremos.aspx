@@ -39,16 +39,16 @@
     <div style="height: calc(100% - 70px);">
         <div style="clear:both; height:10px;"></div>   
         <telerik:RadGrid
-            ID="dgvBaremos" runat="server" ShowStatusBar="True"
+            ID="dgvBaremos" runat="server" ShowStatusBar="False"
             AutoGenerateColumns="False" AllowPaging="false"
             AllowSorting="True" Width="100%" Height="100%"
+            HeaderStyle-Font-Bold="true"
             OnNeedDataSource="dgvBaremos_NeedDataSource">
             <ClientSettings>
                 <Scrolling UseStaticHeaders="true" AllowScroll="true" />
             </ClientSettings>
             <MasterTableView AllowMultiColumnSorting="true"
                 ShowHeadersWhenNoRecords="true"
-                CommandItemDisplay="Top"
                 Name="Sustitución de Baremos" DataKeyNames="ID_VARIABLE">
                 <CommandItemSettings ShowAddNewRecordButton="false" />
                 <Columns>

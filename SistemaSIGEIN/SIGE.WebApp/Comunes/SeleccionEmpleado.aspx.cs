@@ -13,6 +13,7 @@ using System.Xml;
 using Telerik.Web.UI;
 using SIGE.Entidades.MetodologiaCompensacion;
 using System.Xml.Linq;
+using SIGE.Negocio.Utilerias;
 
 namespace SIGE.WebApp.Comunes
 {
@@ -22,6 +23,7 @@ namespace SIGE.WebApp.Comunes
         private string vClUsuario;
         private string vNbPrograma;
         private int? vIdEmpresa;
+        private int? vIdRol;
 
         private string vClUser
         {
@@ -83,7 +85,7 @@ namespace SIGE.WebApp.Comunes
             XElement vXmlSeleccion = vTipoDeSeleccion(vClTipoSeleccion);
             EmpleadoNegocio nEmpleado = new EmpleadoNegocio();
             List<SPE_OBTIENE_EMPLEADOS_Result> eEmpleados;
-            eEmpleados = nEmpleado.ObtenerEmpleados(pXmlSeleccion: vXmlSeleccion, pClUsuario: vClUsuario, pFgActivo: true, pID_EMPRESA: ContextoUsuario.oUsuario.ID_EMPRESA);
+            eEmpleados = nEmpleado.ObtenerEmpleados(pXmlSeleccion: vXmlSeleccion, pClUsuario: vClUsuario, pFgActivo: true, pID_EMPRESA: vIdEmpresa, pID_ROL: vIdRol); // Se manda el ID ROL como parametro
             CamposAdicionales cad = new CamposAdicionales();
             DataTable tEmpleados = cad.camposAdicionales(eEmpleados, "M_EMPLEADO_XML_CAMPOS_ADICIONALES", grdEmpleados, "M_EMPLEADO");
             grdEmpleados.DataSource = tEmpleados;
@@ -131,6 +133,21 @@ namespace SIGE.WebApp.Comunes
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
             vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+
+            if (Request.QueryString["CLFILTRO"] != null)
+            { //Este parametro se usa para cuando no se requiere filtrar por el ID_ROL
+                if (Request.QueryString["CLFILTRO"] == "NINGUNO")
+                {
+                    vIdRol = null;
+                }
+                else
+                {
+                    vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL; //Se obtiene el id rol del usuario
+                }
+            }
+            else
+                vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL; //Se obtiene el id rol del usuario
+
             DefineGrid();
         }
 

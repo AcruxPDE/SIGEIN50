@@ -14,10 +14,10 @@ namespace SIGE.Negocio.Administracion  // reemplazar por la carpeta correspondie
 {
     public class ColoniaNegocio
     {
-        public List<SPE_OBTIENE_C_COLONIA_Result> ObtieneColonias(int? pIdColonia = null, String pClPais = null, String pClEstado = null, String pClMunicipio = null, String pClColonia = null, String pNbColonia = null, String pClTipoAsentamiento = null, String pClCodigoPostal = null)
+        public List<SPE_OBTIENE_C_COLONIA_Result> ObtieneColonias(int? pIdColonia = null, String pClPais = null, String pClEstado = null, String pNbEstado = null, String pClMunicipio = null, String pNbMunicipio = null, String pClColonia = null, String pNbColonia = null, String pClTipoAsentamiento = null, String pClCodigoPostal = null)
         {
             ColoniaOperaciones operaciones = new ColoniaOperaciones();
-            return operaciones.ObtenerColonias(pIdColonia, pClPais, pClEstado, pClMunicipio, pClColonia, pNbColonia, pClTipoAsentamiento, pClCodigoPostal);
+            return operaciones.ObtenerColonias(pIdColonia, pClPais, pClEstado,pNbEstado, pClMunicipio, pNbMunicipio, pClColonia, pNbColonia, pClTipoAsentamiento, pClCodigoPostal);
         }
                 
         public List<SPE_OBTENER_TIPO_ASENTAMIENTO_Result> Obtener_TIPO_ASENTAMIENTO()

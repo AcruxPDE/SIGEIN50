@@ -606,6 +606,11 @@ namespace SIGE.WebApp.FYD
 
         #endregion
 
+        protected void SeguridadProcesos()
+        {
+            radBtnGuardar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.B.D");
+        }
+
         protected void Page_Init(object sender, EventArgs e)
         {
             InstructorNegocio neg = new InstructorNegocio();
@@ -646,6 +651,8 @@ namespace SIGE.WebApp.FYD
 
                     CargarDatos(vInstructorId);
                     CargarDocumentos();
+
+                    
                 }
                 else
                 {
@@ -681,6 +688,8 @@ namespace SIGE.WebApp.FYD
                     cmbIdTipoTelefono.DataValueField = "NB_VALOR";
                     cmbIdTipoTelefono.DataBind();
                 }
+
+                SeguridadProcesos();
             }
 
             DespacharEventos(Request.Params.Get("__EVENTTARGET"), Request.Params.Get("__EVENTARGUMENT"));

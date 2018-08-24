@@ -37,6 +37,8 @@ namespace SIGE.WebApp.Comunes
 
         private int? vIdEmpresa;
 
+        private int? vIdRol;
+
         public XElement vXmlTipoSeleccion
         {
             get { return XElement.Parse((string)(ViewState["vs_vXmlTipoSeleccion"])); }
@@ -46,7 +48,7 @@ namespace SIGE.WebApp.Comunes
         protected void Page_Load(object sender, EventArgs e)
         {
             vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
-
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
             if (!Page.IsPostBack)
             {
 
@@ -84,7 +86,7 @@ namespace SIGE.WebApp.Comunes
         protected void grdPuesto_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             PuestoNegocio nPuesto = new PuestoNegocio();
-            var vPuesto = nPuesto.ObtienePuestos(XML_PUESTOS_SELECCIONADOS: vXmlTipoSeleccion, ID_EMPRESA: vIdEmpresa);
+            var vPuesto = nPuesto.ObtienePuestos(XML_PUESTOS_SELECCIONADOS: vXmlTipoSeleccion, ID_EMPRESA: vIdEmpresa, ID_ROL: vIdRol);
             grdPuesto.DataSource = vPuesto;
         }
 

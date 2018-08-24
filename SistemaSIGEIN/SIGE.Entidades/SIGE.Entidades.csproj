@@ -55,7 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administracion\COMPETENCIAS_LABORALES.cs" />
+    <Compile Include="Administracion\E_CAMPO_NOMINA_DO.cs" />
     <Compile Include="Administracion\E_CLIENTE.cs" />
+    <Compile Include="Administracion\E_GRUPOS.cs" />
     <Compile Include="Administracion\E_LICENCIA.cs" />
     <Compile Include="Administracion\E_MODULO.cs" />
     <Compile Include="Administracion\E_OBTIENE_COMPETENCIAS_LABORALES.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="Administracion\E_NIVEL_ESCOLARIDAD.cs" />
     <Compile Include="Administracion\E_ORGANIGRAMA.cs" />
     <Compile Include="Administracion\E_PERIODO.cs" />
+    <Compile Include="Administracion\E_PLAZA_GRUPO.cs" />
     <Compile Include="Administracion\E_PUESTO.cs" />
     <Compile Include="Administracion\E_PUESTOS_CONSULTA.cs" />
     <Compile Include="Administracion\E_PUESTOS_CONSULTA_GLOBAL.cs" />
@@ -97,6 +100,8 @@
     <Compile Include="Administracion\E_ROL.cs" />
     <Compile Include="Administracion\E_ROL_FUNCION.cs" />
     <Compile Include="Administracion\E_SECUENCIA.cs" />
+    <Compile Include="Administracion\E_SELECCION_PLAZA.cs" />
+    <Compile Include="Administracion\E_SELECCION_PUESTOS.cs" />
     <Compile Include="Administracion\E_SISTEMA.cs" />
     <Compile Include="Administracion\E_USUARIO.cs" />
     <Compile Include="EvaluacionOrganizacional\E_ADICIONALES_SELECCIONADOS.cs" />
@@ -125,6 +130,7 @@
     <Compile Include="EvaluacionOrganizacional\E_OBTIENE_FUNCIONES_METAS.cs" />
     <Compile Include="EvaluacionOrganizacional\E_OBTIENE_PERIODO_REPLICAS.cs" />
     <Compile Include="EvaluacionOrganizacional\E_PERIODOS_COMPARAR.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_PERIODOS_REPLICAS.cs" />
     <Compile Include="EvaluacionOrganizacional\E_REPLICAS_ENVIAR.cs" />
     <Compile Include="EvaluacionOrganizacional\E_PERIODO_CLIMA.cs" />
     <Compile Include="EvaluacionOrganizacional\E_PERIODO_CLIMA_COPIA.cs" />
@@ -220,12 +226,15 @@
     <Compile Include="FormacionDesarrollo\E_RESPUESTAS_PREGUNTAS_ADICIONALES.cs" />
     <Compile Include="FormacionDesarrollo\E_EVALUADOS_REPORTE_GLOBAL.cs" />
     <Compile Include="IntegracionDePersonal\E_BAREMOS_PRUEBAS_RESPORTE.cs" />
+    <Compile Include="IntegracionDePersonal\E_CANDIDATOS_BATERIA.cs" />
     <Compile Include="IntegracionDePersonal\E_CANDIDATO_IDONEO.cs" />
     <Compile Include="IntegracionDePersonal\E_FACTORES_PRUEBAS.cs" />
     <Compile Include="IntegracionDePersonal\E_PARAMETROS_BUSQUEDA_CANDIDATO.cs" />
+    <Compile Include="IntegracionDePersonal\E_PRUEBAS.cs" />
     <Compile Include="IntegracionDePersonal\E_REPORTE_RESULTADO_BAREMOS.cs" />
     <Compile Include="IntegracionDePersonal\E_RESULTADOS_PRUEBAS_REPORTE.cs" />
     <Compile Include="MetodologiaCompensacion\E_CONSULTA_SUELDOS.cs" />
+    <Compile Include="MetodologiaCompensacion\E_REPORTE_TABULADOR_SUELDOS.cs" />
     <Compile Include="Modulos de apoyo\E_OBTIENE_C_CONSULTA_INTELIGENTE.cs" />
     <Compile Include="PuntoDeEncuentro\E_OBTIENE_EMPLEADOS_GENERA_CONTRASENA.cs" />
     <Compile Include="PuntoDeEncuentro\E_USUARIO_CORREO.cs" />
@@ -236,6 +245,12 @@
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_BUSQUEDA_CANDIDATO_REQUISICION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CANDIDATOS_BATERIAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CANDIDATOS_BATERIA_MASIVA_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_CANDIDATOS_BATERIA_Result.cs">
@@ -250,6 +265,12 @@
     <Compile Include="SPE_OBTIENE_CANDIDATO_IDONEO_PERFIL_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SPE_OBTIENE_CENTROS_ADMINISTRATIVOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CENTROS_OPERATIVOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SPE_OBTIENE_CLAVE_EMPLEADO_INDICE_ROTACION_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
@@ -260,6 +281,9 @@
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_COMPETENCIAS_CONSULTA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CONFIGURACION_CAMPOS_NOMINA_DO_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_CONFIGURACION_LICENCIA_Result.cs">
@@ -301,10 +325,19 @@
     <Compile Include="SPE_OBTIENE_EMPLEADOS_EVALUADOS_TABLERO_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADOS_GENERAL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SPE_OBTIENE_EMPLEADOS_GENERA_CONTRASENA_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADOS_NOMINA_DO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADOS_PROCESOS_EVALUACION_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_EO_BAJAS_PENDIENTES_Result.cs">
@@ -335,6 +368,9 @@
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_EO_FUNCIONES_METAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_METAS_CAPTURA_MASIVA_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_EO_METAS_EVALUADOS_CONSECUENTES_Result.cs">
@@ -368,6 +404,9 @@
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_EO_RESULTADO_EVALUADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_RESULTADO_JERARQUICO_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_EO_TEMAS_Result.cs">
@@ -427,10 +466,25 @@
     <Compile Include="SPE_OBTIENE_FYD_VALIDACION_AUTORIZACIONES_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SPE_OBTIENE_GRUPOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_HISTORIAL_BAJAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SPE_OBTIENE_IDICADORES_METAS_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SPE_OBTIENE_JEFES_DESCRIPTIVO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_PROGRAMA_EMPLEADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SPE_OBTIENE_K_REQUISICION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_LICENCIA_VOLUMEN_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_METAS_COMPARACION_GRAFICA_Result.cs">
@@ -440,6 +494,9 @@
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_METAS_PERIODOS_COMPARACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_M_PUESTOS_GENERAL_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_M_PUESTO_REQUISICION_Result.cs">
@@ -463,6 +520,9 @@
     <Compile Include="SPE_OBTIENE_PERIODOS_PARA_TABLERO_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SPE_OBTIENE_PERIODOS_SOLICITUDES_ENVIAR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SPE_OBTIENE_PERIODOS_TABLERO_CONTROL_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
@@ -475,7 +535,16 @@
     <Compile Include="SPE_OBTIENE_PLANTILLA_FORMULARIO_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PUESTOS_NOMINA_DO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SPE_OBTIENE_PUESTO_VS_CANDIDATOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_RAZON_SOCIAL_NOMINA_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_RESULTADOS_BAREMOS_PRUEBAS_Result.cs">
@@ -499,7 +568,16 @@
     <Compile Include="SPE_OBTIENE_SOLICITUDES_ENVIAR_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SPE_OBTIENE_SOLICITUDES_PROCESOS_EVALUACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SPE_OBTIENE_SOLICITUDES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_SUBORDINADOS_DESCRIPTIVO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_SUELDO_EMPLEADOS_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_S_CONFIGURACION_LICENCIA_Result.cs">
@@ -512,6 +590,9 @@
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_TABULADOR_MAESTRO_RECALCULA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_TRADUCCION_TEXTO_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_USUARIOPDE_Result.cs">
@@ -1168,9 +1249,6 @@
     <Compile Include="SPE_OBTIENE_FYD_ROLES_EVALUADOR_PERIODO_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SPE_OBTIENE_HISTORIAL_BAJAS_Result.cs">
-      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SPE_OBTIENE_INSTRUCTORES_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
@@ -1220,9 +1298,6 @@
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_K_PROGRAMA_COMPETENCIA_Result.cs">
-      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SPE_OBTIENE_K_PROGRAMA_EMPLEADO_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_K_PROGRAMA_Result.cs">
@@ -1370,9 +1445,6 @@
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_SUBAREA_OCUPACION_Result.cs">
-      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SPE_OBTIENE_SUELDO_EMPLEADOS_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_SUELDO_PROMEDIO_PUESTO_Result.cs">

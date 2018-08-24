@@ -32,11 +32,16 @@
         function OpenCapturaResultado() {
             var selectedItem = $find("<%=grdEvaluados.ClientID %>").get_masterTableView().get_selectedItems()[0];
             if (selectedItem != undefined) {
-                var pIdPeriodo = '<%=vIdPeriodo%>';
-                var pIdEvaluado = selectedItem.getDataKeyValue("ID_EVALUADO");
-                OpenSelectionWindow("VentanaManualCapturaResultados.aspx?idPeriodo=" + pIdPeriodo + "&idEvaluado=" + pIdEvaluado, "rwCaptura", "Captura de resultados")
+                var vClEstado = selectedItem.getDataKeyValue("CL_ESTADO_EMPLEADO");
+                if (vClEstado == "ALTA") {
+                    var pIdPeriodo = '<%=vIdPeriodo%>';
+                    var pIdEvaluado = selectedItem.getDataKeyValue("ID_EVALUADO");
+                    OpenSelectionWindow("VentanaManualCapturaResultados.aspx?idPeriodo=" + pIdPeriodo + "&idEvaluado=" + pIdEvaluado, "rwCaptura", "Captura de resultados")
+                }
+                else 
+                    radalert("Evaluado dado de baja.", 400, 150);
             }
-            else
+            else 
                 radalert("Selecciona a un evaluado.", 400, 150);
         }
     </script>
@@ -95,7 +100,7 @@
                         </tr>
                         <tr>
                             <td class="ctrlTableDataContext">
-                                <label>Tipo de periodo:</label></td>
+                                <label>Tipo de período:</label></td>
                             <td class="ctrlTableDataBorderContext">
                                 <div id="txtTipoPeriodo" runat="server" width="170" maxlength="1000" enabled="false"></div>
                             </td>
@@ -137,12 +142,12 @@
                         </ClientSettings>
                         <PagerStyle AlwaysVisible="true" />
                         <GroupingSettings CaseSensitive="false" />
-                        <MasterTableView DataKeyNames="ID_EVALUADO" ClientDataKeyNames="ID_EVALUADO" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
+                        <MasterTableView DataKeyNames="ID_EVALUADO, CL_ESTADO_EMPLEADO" ClientDataKeyNames="ID_EVALUADO, CL_ESTADO_EMPLEADO" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
                             <Columns>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="80" FilterControlWidth="30" HeaderText="No. de empleado" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="130" HeaderText="Nombre completo" DataField="NB_EMPLEADO_COMPLETO" UniqueName="NB_EMPLEADO_COMPLETO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="130" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="M_PUESTO_NB_PUESTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="120" FilterControlWidth="80" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="120" FilterControlWidth="80" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                  <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" FilterControlWidth="60" HeaderText="Estatus" DataField="ESTATUS" UniqueName="ESTATUS" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                             </Columns>
                         </MasterTableView>

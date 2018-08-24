@@ -57,21 +57,21 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
         }
 
 
-        public XElement ObtenerProgramasCapacitacionCompleto( int? pIdPrograma = null,int? pID_EMPRESA = null )
+        public XElement ObtenerProgramasCapacitacionCompleto( int? pIdPrograma = null,int? pID_EMPRESA = null , int? pID_ROL = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
-                contexto.SPE_OBTIENE_PROGRAMA_CAPACITACION(pout_clave_retorno, pIdPrograma, pID_EMPRESA);
+                contexto.SPE_OBTIENE_PROGRAMA_CAPACITACION(pout_clave_retorno, pIdPrograma, pID_EMPRESA, pID_ROL);
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
 
-        public List<SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION_Result> ObtenerAvancePrograma(int ID_PROGRAMA, int? ID_EMPRESA, string XML_FILTROS)
+        public List<SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION_Result> ObtenerAvancePrograma(int ID_PROGRAMA, int? ID_EMPRESA, string XML_FILTROS, int? ID_ROL)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION(ID_PROGRAMA, ID_EMPRESA, XML_FILTROS).ToList();
+                return contexto.SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION(ID_PROGRAMA, ID_EMPRESA, XML_FILTROS, ID_ROL).ToList();
             }
         }
 
@@ -83,19 +83,19 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
             }
         }
 
-        public List<SPE_OBTIENE_FYD_REPORTE_EVENTO_EVALUADO_Result> ObtenerReporteEvaluado(int? ID_EVENTO, int? ID_EMPLEADO, int? ID_COMPETENCIA)
+        public List<SPE_OBTIENE_FYD_REPORTE_EVENTO_EVALUADO_Result> ObtenerReporteEvaluado(int? ID_EVENTO, int? ID_EMPLEADO, int? ID_COMPETENCIA, int? ID_ROL)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_FYD_REPORTE_EVENTO_EVALUADO(ID_EVENTO, ID_EMPLEADO, ID_COMPETENCIA).ToList();
+                return contexto.SPE_OBTIENE_FYD_REPORTE_EVENTO_EVALUADO(ID_EVENTO, ID_EMPLEADO, ID_COMPETENCIA, ID_ROL).ToList();
             }
         }
 
-        public List<SPE_OBTIENE_K_PROGRAMA_EMPLEADO_Result> ObtenerEmpleadosParticipantes(int? pID_PROGRAMA_EMPLEADO = null,int? pID_PROGRAMA = null,int? pID_EMPLEADO =  null, int? pNB_EMPLEADO = null, string pCL_EMPLEADO = null, string pNB_PUESTO = null, string pCL_PUESTO = null, string pNB_DEPARTAMENTO = null, int? pID_EMPRESA = null)
+        public List<SPE_OBTIENE_K_PROGRAMA_EMPLEADO_Result> ObtenerEmpleadosParticipantes(int? pID_PROGRAMA_EMPLEADO = null, int? pID_PROGRAMA = null, int? pID_EMPLEADO = null, int? pNB_EMPLEADO = null, string pCL_EMPLEADO = null, string pNB_PUESTO = null, string pCL_PUESTO = null, string pNB_DEPARTAMENTO = null, int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_K_PROGRAMA_EMPLEADO(pID_PROGRAMA_EMPLEADO,pID_PROGRAMA,pID_EMPLEADO,pNB_EMPLEADO,pCL_EMPLEADO,pNB_PUESTO,pCL_PUESTO,pNB_DEPARTAMENTO,pID_EMPRESA).ToList();
+                return contexto.SPE_OBTIENE_K_PROGRAMA_EMPLEADO(pID_PROGRAMA_EMPLEADO, pID_PROGRAMA, pID_EMPLEADO, pNB_EMPLEADO, pCL_EMPLEADO, pNB_PUESTO, pCL_PUESTO, pNB_DEPARTAMENTO, pID_EMPRESA, pID_ROL).ToList();
             }
         }
 

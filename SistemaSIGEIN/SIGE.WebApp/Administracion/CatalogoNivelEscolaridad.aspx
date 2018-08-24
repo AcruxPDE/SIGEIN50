@@ -152,7 +152,7 @@
 
         <telerik:RadGrid ID="grdNivelEscolaridades" ShowHeader="true" runat="server" AllowPaging="true"
             AllowSorting="true" GroupPanelPosition="Top" GridLines="None"
-            AllowFilteringByColumn="true" Height="100%" Width="700px"
+            AllowFilteringByColumn="true" Height="100%" Width="1000px"
             ClientSettings-EnablePostBackOnRowClick="false"
             OnNeedDataSource="grdNivelEscolaridades_NeedDataSource"
             OnItemDataBound="grdNivelEscolaridades_ItemDataBound"
@@ -179,7 +179,7 @@
                 <Columns>
 
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderText="Clave" CurrentFilterFunction="Contains" DataField="CL_NIVEL_ESCOLARIDAD" UniqueName="CL_NIVEL_ESCOLARIDAD" HeaderStyle-Width="200" FilterControlWidth="130"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderText="Descripción" CurrentFilterFunction="Contains" DataField="DS_NIVEL_ESCOLARIDAD" UniqueName="DS_NIVEL_ESCOLARIDAD" HeaderStyle-Width="400" FilterControlWidth="330"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderText="Descripción" CurrentFilterFunction="Contains" DataField="DS_NIVEL_ESCOLARIDAD" UniqueName="DS_NIVEL_ESCOLARIDAD" HeaderStyle-Width="300" FilterControlWidth="230"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderText="Activo" CurrentFilterFunction="Contains" DataField="NB_ACTIVO" UniqueName="Activo" FilterControlWidth="25" HeaderStyle-Width="95"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderText="ID_NIVEL_ESCOLARIDAD" CurrentFilterFunction="Contains" DataField="ID_NIVEL_ESCOLARIDAD" UniqueName="ID_NIVEL_ESCOLARIDAD" HeaderStyle-Width="0" FilterControlWidth="0"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Último usuario que modifica" DataField="CL_USUARIO_MODIFICA" UniqueName="CL_USUARIO_MODIFICA"></telerik:GridBoundColumn>

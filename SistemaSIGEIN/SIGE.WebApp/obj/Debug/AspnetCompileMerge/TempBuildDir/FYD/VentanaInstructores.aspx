@@ -4,7 +4,7 @@
     <script id="MyScript" type="text/javascript">
 
         function ShowSelecEmpleado() {
-            var vURL = "/Comunes/SeleccionEmpleado.aspx";
+            var vURL = "../Comunes/SeleccionEmpleado.aspx?CLFILTRO=NINGUNO";
             var vTitulo = "Selección de empleado";
             var currentWnd = GetRadWindow();
             var browserWnd = window;
@@ -49,12 +49,12 @@
             };
 
             if (sender == vBtnEstados)
-                openChildDialog("/Comunes/SeleccionLocalizacion/SeleccionEstado.aspx", "winSeleccionLocalizacion", "Selección de estado", windowProperties);
+                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionEstado.aspx", "winSeleccionLocalizacion", "Selección de estado", windowProperties);
 
             if (sender == vBtnMunicipios) {
                 var items = vLstEstados.get_items();
                 var clEstado = items.getItem(0).get_value();
-                openChildDialog("/Comunes/SeleccionLocalizacion/SeleccionMunicipio.aspx?ClEstado=" + clEstado, "winSeleccionLocalizacion", "Selección de municipio", windowProperties);
+                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionMunicipio.aspx?ClEstado=" + clEstado, "winSeleccionLocalizacion", "Selección de municipio", windowProperties);
             }
 
             if (sender == vBtnColonia) {
@@ -62,28 +62,20 @@
                 var clEstado = items.getItem(0).get_value();
                 var items = vLstMunicipios.get_items();
                 var clMunicipio = items.getItem(0).get_value();
-                openChildDialog("/Comunes/SeleccionLocalizacion/SeleccionColonia.aspx?ClEstado=" + clEstado + "&ClMunicipio=" + clMunicipio, "winSeleccionLocalizacion", "Selección de colonia", windowProperties);
+                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionColonia.aspx?ClEstado=" + clEstado + "&ClMunicipio=" + clMunicipio, "winSeleccionLocalizacion", "Selección de colonia", windowProperties);
             }
 
             if (sender == vBtnGuardarCompetencia)
-                openChildDialog("/Comunes/SeleccionCompetencia.aspx", "winSeleccionCompetencia", "Selección de competencia", windowProperties);
+                openChildDialog("../Comunes/SeleccionCompetencia.aspx", "winSeleccionCompetencia", "Selección de competencia", windowProperties);
 
             if (sender == vBtnGuardarCurso) {
                 var vIdInstructor = '<%# vIdInstructor %>';
-                openChildDialog("/Comunes/SeleccionCurso.aspx?IdInstructor=" + vIdInstructor, "winSeleccionCurso", "Selección de curso", windowProperties);
+                openChildDialog("../Comunes/SeleccionCurso.aspx?IdInstructor=" + vIdInstructor, "winSeleccionCurso", "Selección de curso", windowProperties);
             }
-<<<<<<< .working
 
             if (sender == vBtnBuscaCP) {
-                openChildDialog("/Comunes/SeleccionCP.aspx", "winSeleccionLocalizacion", "Selección de Codigo Postal");
+                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionCP.aspx", "winSeleccionCP", "Selección de Codigo Postal", windowProperties);
             }
-||||||| .merge-left.r2516
-=======
-
-            if (sender == vBtnBuscaCP) {
-                openChildDialog("/Comunes/SeleccionLocalizacion/SeleccionCP.aspx", "winSeleccionCP", "Selección de Codigo Postal", windowProperties);
-            }
->>>>>>> .merge-right.r3030
         }
 
         function useDataFromChild(pData) {
@@ -140,29 +132,6 @@
                         var datosCurso = JSON.stringify(arrCurso);
                         __doPostBack(vSelectedData.clTipoCatalogo, datosCurso);
                         break;
-<<<<<<< .working
-                    case "CODIGOPOSTAL":
-
-                        var NB_ESTADO = pData[0].nbEstado;
-                        var CL_ESTADO = pData[0].clEstado;
-                        var NB_MUNICIPIO = pData[0].nbMunicipio;
-                        var CL_MUNICIPIO = pData[0].clMunicipio;
-                        var NB_COLONIA = pData[0].nbColonia;
-                        var CL_COLONIA = pData[0].clColonia;
-                        var NB_CP = pData[0].nbCP;
-                        
-                        listEstado = $find("<%= rpvVentanaInstructor.FindControl("rlbEstado").ClientID %>");
-                        listMunicipio = $find("<%= rpvVentanaInstructor.FindControl("rlbMunicipio").ClientID %>");
-                        listColonia = $find("<%= rpvVentanaInstructor.FindControl("rlbColonia").ClientID %>");
-                        
-                        SetListBoxItem(listEstado, NB_ESTADO, CL_ESTADO);
-                        SetListBoxItem(listMunicipio, NB_MUNICIPIO, CL_MUNICIPIO);
-                        SetListBoxItem(listColonia, NB_COLONIA, CL_COLONIA)
-                        var vTxtCP = $find("<%= rpvVentanaInstructor.FindControl("txtCP").ClientID %>");
-                        vTxtCP.set_value(NB_CP);
-                        break
-||||||| .merge-left.r2516
-=======
                         case "CODIGOPOSTAL":
 
                             var NB_ESTADO = pData[0].nbEstado;
@@ -183,7 +152,6 @@
                             var vTxtCP = $find("<%= rpvVentanaInstructor.FindControl("txtCP").ClientID %>");
                             vTxtCP.set_value(NB_CP);
                             break
->>>>>>> .merge-right.r3030
                 }
             }
         }
@@ -213,22 +181,22 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
-       <%-- <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel2" runat="server"></telerik:RadAjaxLoadingPanel>
-            <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
-            <ClientEvents />
-            <AjaxSettings>
-                <telerik:AjaxSetting AjaxControlID="radBtnAgregarTelefono">
-                    <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="grdTelefono" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel2"></telerik:AjaxUpdatedControl>
-                    <telerik:AjaxUpdatedControl ControlID="mtxtTelParticular" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel2"></telerik:AjaxUpdatedControl>
-                    </UpdatedControls>
-                </telerik:AjaxSetting>
-                <telerik:AjaxSetting AjaxControlID="radBtnBuscaCP">
-                    <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="txtCP" LoadingPanelID="RadAjaxLoadingPanel2"></telerik:AjaxUpdatedControl>
-                    </UpdatedControls>
-                </telerik:AjaxSetting>
-            </AjaxSettings>
+    <%--    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel2" runat="server"></telerik:RadAjaxLoadingPanel>
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+    <ClientEvents />
+    <AjaxSettings>
+    <telerik:AjaxSetting AjaxControlID="radBtnAgregarTelefono">
+    <UpdatedControls>
+    <telerik:AjaxUpdatedControl ControlID="grdTelefono" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel2"></telerik:AjaxUpdatedControl>
+    <telerik:AjaxUpdatedControl ControlID="mtxtTelParticular" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel2"></telerik:AjaxUpdatedControl>
+    </UpdatedControls>
+    </telerik:AjaxSetting>
+    <telerik:AjaxSetting AjaxControlID="radBtnEliminarTelefono">
+    <UpdatedControls>
+    <telerik:AjaxUpdatedControl ControlID="grdTelefono" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel2"></telerik:AjaxUpdatedControl>
+    </UpdatedControls>
+    </telerik:AjaxSetting>
+    </AjaxSettings>
     </telerik:RadAjaxManager>--%>
     <telerik:RadTabStrip ID="RadTabStrip1" runat="server" MultiPageID="rmpVentanaInstructor" SelectedIndex="0">
         <Tabs>
@@ -268,7 +236,7 @@
                         <label id="lblClave" name="lblClave" runat="server">Clave:</label>
                     </div>
                     <div class="divControlDerecha">
-                        <telerik:RadTextBox ID="txtClave" runat="server" Width="180px" MaxLength="20"></telerik:RadTextBox>
+                        <telerik:RadTextBox ID="txtClave" runat="server" Width="180px" MaxLength="50"></telerik:RadTextBox>
                         <telerik:RadButton ID="radBtnBuscarclave" OnClientClicked="ShowSelecEmpleado" AutoPostBack="false" runat="server" Text="B"></telerik:RadButton>
                     </div>
                 </div>
@@ -570,7 +538,7 @@
                         </ClientSettings>
                         <MasterTableView ClientDataKeyNames="ID_ARCHIVO,ID_ITEM" DataKeyNames="ID_ARCHIVO,ID_ITEM" AutoGenerateColumns="false" ShowHeadersWhenNoRecords="true" NoMasterRecordsText="No existen documentos asociados al instructor">
                             <Columns>
-                                <telerik:GridHyperLinkColumn HeaderText="Nombre del documento" DataTextField="NB_DOCUMENTO" DataNavigateUrlFields="ID_ARCHIVO,ID_DOCUMENTO,FE_CREATED_DATE,NB_DOCUMENTO,ID_ITEM" DataNavigateUrlFormatString="/Comunes/ObtenerDocumento.ashx?ArchivoId={0}&ArchivoNb={2:yyyyMMdd}{4}&ArchivoDescargaNb={3}" Target="_blank"></telerik:GridHyperLinkColumn>
+                                <telerik:GridHyperLinkColumn HeaderText="Nombre del documento" DataTextField="NB_DOCUMENTO" DataNavigateUrlFields="ID_ARCHIVO,ID_DOCUMENTO,FE_CREATED_DATE,NB_DOCUMENTO,ID_ITEM" DataNavigateUrlFormatString="~/Comunes/ObtenerDocumento.ashx?ArchivoId={0}&ArchivoNb={2:yyyyMMdd}{4}&ArchivoDescargaNb={3}" Target="_blank"></telerik:GridHyperLinkColumn>
                                 <telerik:GridBoundColumn HeaderText="Tipo de documento" HeaderStyle-Width="200" DataField="CL_TIPO_DOCUMENTO" UniqueName="CL_TIPO_DOCUMENTO"></telerik:GridBoundColumn>
                             </Columns>
                         </MasterTableView>

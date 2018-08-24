@@ -22,6 +22,13 @@ namespace SIGE.WebApp.FYD
         private int? vIdEmpresa;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
 
+        protected void SeguridadProcesos()
+        {
+            btnGuardar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.B.A");
+            btnEditar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.B.B");
+            btnEliminar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.B.C");
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
@@ -58,6 +65,7 @@ namespace SIGE.WebApp.FYD
                 cmbCompetencia.DataValueField = "ID_COMPETENCIA";
                 cmbCompetencia.DataBind();
 
+                SeguridadProcesos();
 
             }
         }

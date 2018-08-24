@@ -2,6 +2,7 @@
 using SIGE.Entidades.Administracion;
 using SIGE.Entidades.Externas;
 using SIGE.Negocio.Administracion;
+using SIGE.Negocio.AdministracionSitio;
 using SIGE.Negocio.FormacionDesarrollo;
 using SIGE.Negocio.Utilerias;
 using SIGE.WebApp.Comunes;
@@ -77,10 +78,18 @@ namespace SIGE.WebApp.Administracion
 
         int? vIdEmpleado;
 
+        int? vIdEmpleadoNominaDo;
+
         public int? vIdCandidato
         {
             get { return (int?)ViewState["vs_vIdCandidato"]; }
             set { ViewState["vs_vIdCandidato"] = value; }
+        }
+
+        public string vUrlNomina
+        {
+            get { return (string)ViewState["vs_vUrlNomina"];}
+            set { ViewState["vs_vUrlNomina"] = value; }
         }
 
         string vClUsuario;
@@ -115,6 +124,12 @@ namespace SIGE.WebApp.Administracion
         {
             get { return (E_REPORTE_EMPLEADO)ViewState["vs_reporte_modular_empleado"]; }
             set { ViewState["vs_reporte_modular_empleado"] = value; }
+        }
+
+        public string vClEstadoEmpleado
+        {
+            get { return (string)ViewState["vs_vClEstadoEmpleado"];}
+            set { ViewState["vs_vClEstadoEmpleado"] = value; }
         }
 
         #endregion
@@ -239,7 +254,8 @@ namespace SIGE.WebApp.Administracion
 
         private void SeguridadProcesos()
         {
-            btnGuardar.Enabled = vGuardar = ContextoUsuario.oUsuario.TienePermiso("B.E");
+            btnGuardar.Enabled = vGuardar = ContextoUsuario.oUsuario.TienePermiso("B.F");
+            btnGuardarSalir.Enabled = vGuardar = ContextoUsuario.oUsuario.TienePermiso("B.F");
         }
 
         private void CargarReporteModular()
@@ -296,14 +312,17 @@ namespace SIGE.WebApp.Administracion
                 }
 
 
-                EmpleadoNegocio nEmpleados = new EmpleadoNegocio();
-                List<SPE_OBTIENE_EMPLEADOS_Result> CatalogoListaNegocioEmp = new List<SPE_OBTIENE_EMPLEADOS_Result>();
-                CatalogoListaNegocioEmp = nEmpleados.ObtenerEmpleados(pID_EMPRESA: vIdEmpresa);
-                if (nEmpleados.ObtenerEmpleados(pID_EMPRESA: vIdEmpresa, pFgActivo: true).Count() + 1 > ContextoApp.InfoEmpresa.Volumen)
+                if (vTipoTransaccion == "I")
                 {
-                    UtilMensajes.MensajeResultadoDB(rwmAlertas, "Se ha alcanzado el máximo número de empleados para la licencia y no es posible agregar más.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
-                    return;
+                    LicenciaNegocio oNegocio = new LicenciaNegocio();
+                    var vEmpleados = oNegocio.ObtenerLicenciaVolumen(pFG_ACTIVO: true).FirstOrDefault();
+                    if (vEmpleados.NO_TOTAL_ALTA >= ContextoApp.InfoEmpresa.Volumen)
+                    {
+                        UtilMensajes.MensajeResultadoDB(rwmAlertas, "Se ha alcanzado el máximo número de empleados para la licencia y no es posible agregar más.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
+                        return;
+                    }
                 }
+
 
 
                 vXmlEmpleadoPlantilla = vXmlRespuesta.Element("PLANTILLA").ToString();
@@ -322,7 +341,7 @@ namespace SIGE.WebApp.Administracion
 
                 if (pFgCerrarVentana)
                 {
-                    UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR);
+                    UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "OnCloseUpdate");
                 }
                 else
                 {
@@ -493,7 +512,6 @@ namespace SIGE.WebApp.Administracion
             }
 
             AsignarAjax();
-            SeguridadProcesos();
             vPlantilla.xmlPlantilla = vXmlEmpleadoPlantilla;
             vClRutaArchivosTemporales = Server.MapPath(ContextoApp.ClRutaArchivosTemporales);
             vNbPrograma = ContextoUsuario.nbPrograma;
@@ -507,8 +525,44 @@ namespace SIGE.WebApp.Administracion
             {
                 int vIdEmpleadoQS = -1;
                 if (int.TryParse(Request.QueryString["EmpleadoId"], out vIdEmpleadoQS))
-
                     vIdEmpleado = vIdEmpleadoQS;
+                else if (int.TryParse(Request.QueryString["EmpleadoNoDoId"], out vIdEmpleadoQS))
+                    vIdEmpleadoNominaDo = vIdEmpleadoQS;
+
+                if (vIdEmpleadoNominaDo != null)
+                {
+                    CamposNominaNegocio oNegocio = new CamposNominaNegocio();
+                    SPE_OBTIENE_EMPLEADOS_NOMINA_DO_Result vEmpleado = oNegocio.ObtieneEmpleadosNominaDo(pID_EMPLEADO_NOMINA_DO: vIdEmpleadoNominaDo).FirstOrDefault();
+                    if (vEmpleado != null)
+                    {
+                        if (vEmpleado.FG_NOMINA == true && ContextoApp.ANOM.LicenciaAccesoModulo.MsgActivo == "1")
+                        {
+                            //Session["__clUsuario__"] = vClUsuario;
+                            tabSolicitud.Tabs[8].Visible = true;
+                            ifNomina.Attributes.Add("src", "/NOMINA/InventarioPersonal/PopupInventarioPersonalNuevoEditar.aspx?clOrigen=DO&clUsuario=" + vClUsuario + "&ID=" + vEmpleado.ID_EMPLEADO_NOMINA);
+                        }
+
+                        if (vEmpleado.FG_DO == true)
+                        {
+                            vIdEmpleado = vEmpleado.ID_EMPLEADO_DO;
+                        }
+                        else
+                        {
+                            tabSolicitud.Tabs[0].Visible = false;
+                            tabSolicitud.Tabs[1].Visible = false;
+                            tabSolicitud.Tabs[2].Visible = false;
+                            tabSolicitud.Tabs[3].Visible = false;
+                            tabSolicitud.Tabs[4].Visible = false;
+                            tabSolicitud.Tabs[5].Visible = false;
+                            tabSolicitud.Tabs[6].Visible = false;
+                            tabSolicitud.Tabs[7].Visible = false;
+                            pvwNomina.Selected = true;
+                            tabSolicitud.Tabs[8].Selected = true;
+                        }
+                       
+                    }
+
+                                   }
 
                 if (Request.QueryString["pFgHabilitaBotones"] == "False")
                 {
@@ -530,10 +584,24 @@ namespace SIGE.WebApp.Administracion
             }
 
             EmpleadoNegocio nEmpleado = new EmpleadoNegocio();
-            SPE_OBTIENE_EMPLEADO_PLANTILLA_Result vSolicitud = nEmpleado.ObtenerPlantilla(null, vIdEmpleado, ContextoUsuario.oUsuario.ID_EMPRESA);
+            // Se agrega ContextoUsuario.oUsuario.ID_PLANTILLA como parametro al spe que obtiene la plantilla.
+            SPE_OBTIENE_EMPLEADO_PLANTILLA_Result vSolicitud = nEmpleado.ObtenerPlantilla(ContextoUsuario.oUsuario.ID_PLANTILLA, vIdEmpleado, ContextoUsuario.oUsuario.ID_EMPRESA);
             vXmlPlantilla = vSolicitud.XML_SOLICITUD_PLANTILLA;
             vXmlDocumentos = vSolicitud.XML_VALORES;
             vIdItemFoto = vSolicitud.ID_ITEM_FOTOGRAFIA;
+
+            if (vSolicitud.CL_ESTADO_EMPLEADO != null)
+            {
+                if (vSolicitud.CL_ESTADO_EMPLEADO != "ALTA")
+                {
+                    btnGuardar.Enabled = false;
+                    btnGuardarSalir.Enabled = false;
+                }
+                else
+                {
+                    SeguridadProcesos();
+                }
+            }
 
             if (vSolicitud.FI_FOTOGRAFIA != null)
             {
@@ -558,7 +626,14 @@ namespace SIGE.WebApp.Administracion
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            //if (vClEstadoEmpleado == "ALTA")
+            //{
             Guardar(false);
+            // }
+            //else
+            //{
+            //    UtilMensajes.MensajeResultadoDB(rwmAlertas, "No se puede guardar un empleado en estado de baja.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction:"");
+            //}
         }
 
         protected void grdDocumentos_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
@@ -662,7 +737,14 @@ namespace SIGE.WebApp.Administracion
 
         protected void btnGuardarSalir_Click(object sender, EventArgs e)
         {
-            Guardar(true);
+            //if (vClEstadoEmpleado == "ALTA")
+            //{
+                Guardar(true);
+            //}
+            //else
+            //{
+            //    UtilMensajes.MensajeResultadoDB(rwmAlertas, "No se puede guardar un empleado en estado de baja.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction:"");
+            //}
         }
 
         protected void grdProgramas_DeleteCommand(object sender, GridCommandEventArgs e)

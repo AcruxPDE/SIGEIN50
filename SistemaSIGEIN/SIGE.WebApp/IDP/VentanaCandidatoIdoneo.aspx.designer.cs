@@ -112,6 +112,33 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadDatePicker dtpFinal;
         
         /// <summary>
+        /// btnCandidatos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnCandidatos;
+        
+        /// <summary>
+        /// btnEmpleados control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnEmpleados;
+        
+        /// <summary>
+        /// btnAmbos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnAmbos;
+        
+        /// <summary>
         /// chkPerfil control.
         /// </summary>
         /// <remarks>
@@ -245,42 +272,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnSeleccion;
-        
-        /// <summary>
-        /// rpvProcesos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadPageView rpvProcesos;
-        
-        /// <summary>
-        /// rgProcesos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid rgProcesos;
-        
-        /// <summary>
-        /// btnProceso control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnProceso;
-        
-        /// <summary>
-        /// btnVerProceso control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnVerProceso;
         
         /// <summary>
         /// rpnAyuda control.

@@ -97,7 +97,7 @@
 
             GetPuestoID();
 
-            var vURL = "/IDP/Requisicion/VentanaDescriptivoPuestoRequisicion.aspx?vCrearAutorizar=Crear";
+            var vURL = "../IDP/Requisicion/VentanaDescriptivoPuestoRequisicion.aspx?vCrearAutorizar=Crear";
             var vTitulo = "Agregar descripción del puesto";
 
 
@@ -338,7 +338,7 @@
             var wnd = GetWindowProperties();
             wnd.vTitulo = "Selección de puesto";
             wnd.vURL = "../Comunes/SeleccionPuesto.aspx?mulSel=0";
-            wnd.vRadWindowId = "winSeleccion";
+            wnd.vRadWindowId = "winSeleccionEmpleados";
             return wnd;
         }
 
@@ -775,7 +775,7 @@
                                 </Items>
                             </telerik:RadListBox>--%>
                             <telerik:RadTextBox runat="server" ID="txtPuestoReq" Width="300px"></telerik:RadTextBox>
-                            <telerik:RadButton ID="btnAgregarPersonaAutorizaPuesto" runat="server" Text="B" ToolTip="Seleccionar una persona para autorizar el puesto creado desde la requisición" OnClientClicked="OpenSeleccionarEmpleadoAutorizaPuesto" AutoPostBack="false"></telerik:RadButton>
+                            <telerik:RadButton ID="btnAgregarPersonaAutorizaPuesto" runat="server" Text="B" ToolTip="Selecciona una persona para autorizar el puesto creado desde la requisición" OnClientClicked="OpenSeleccionarEmpleadoAutorizaPuesto" AutoPostBack="false"></telerik:RadButton>
                             <telerik:RadButton ID="btnBorrarSeleccionAutorizaPuesto" runat="server" Text="X" ToolTip="Quitar persona" AutoPostBack="false" OnClientClicked="CleanSelectionAutorizaPuesto"></telerik:RadButton>
                             <telerik:RadTextBox runat="server" ID="txtPuestoAutorizaPuesto" Width="300px"></telerik:RadTextBox>
                             <telerik:RadTextBox runat="server" ID="txtPuestoAutorizaCorreo" Width="300px"></telerik:RadTextBox>
@@ -800,7 +800,7 @@
                                 <telerik:RadListBoxItem Text="No Seleccionado" Value="" />
                             </Items>
                         </telerik:RadListBox>
-                        <telerik:RadButton ID="btnBuscarEmpleado" runat="server" Text="B" ToolTip="Seleccionar una persona para autorizar la requisición" OnClientClicked="OpenSeleccionarEmpleadoAutoriza" AutoPostBack="false"></telerik:RadButton>
+                        <telerik:RadButton ID="btnBuscarEmpleado" runat="server" Text="B" ToolTip="Selecciona una persona para autorizar la requisición" OnClientClicked="OpenSeleccionarEmpleadoAutoriza" AutoPostBack="false"></telerik:RadButton>
                         <telerik:RadButton ID="btnBorrarSeleccionAutoriza" runat="server" Text="X" ToolTip="Quitar persona" AutoPostBack="false" OnClientClicked="CleanSelectionAutoriza"></telerik:RadButton>
                         <telerik:RadTextBox runat="server" ID="txtPuestoAutoriza" Width="300px" Enabled="false"></telerik:RadTextBox>
                         <telerik:RadTextBox runat="server" ID="txtCorreoAutorizaReq" Width="300px" Enabled="true"></telerik:RadTextBox>

@@ -286,9 +286,9 @@ namespace SIGE.WebApp.EO
             vMontoMnDep = ContextoApp.EO.Configuracion.BonoMinimoIndividualDependiente;
             vMontoGrup = ContextoApp.EO.Configuracion.BonoMinimoGrupal;
 
-            var oEstatus = periodo.ObtieneEvaluados(pIdPeriodo: vIdPeriodo, pIdEvaluado: vsIdEvaluado).FirstOrDefault();
-            if (vClUsuario == "INVITADO" && oEstatus.ESTATUS == "CALIFICADO")
-                btnGuardar.Enabled = false;
+            //var oEstatus = periodo.ObtieneEvaluados(pIdPeriodo: vIdPeriodo, pIdEvaluado: vsIdEvaluado).FirstOrDefault();
+            //if (vClUsuario == "INVITADO" && oEstatus.ESTATUS == "CALIFICADO")
+            //    btnGuardar.Enabled = false;
         }
 
         protected void btnActualizar_Click(object sender, EventArgs e)
@@ -421,7 +421,7 @@ namespace SIGE.WebApp.EO
             {
                 E_RESULTADO vResultado = neg.ActualizaResultadosMetas(vIdPeriodo, vsIdEvaluado, RESULTADOS, vClUsuario, vNbPrograma, cumplimientoTotal);
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "CloseWindow");
             }
             else {
             

@@ -52,7 +52,7 @@ namespace SIGE.WebApp.Comunes
                     foreach (XElement vXmlControl in vXmlContenedor.Elements("CAMPO"))
                     {
                         HtmlGenericControl vControlHTML;
-                        ControlDinamico vControl = new ControlDinamico(vXmlControl, pFgAddValue);
+                        ControlDinamico vControl = new ControlDinamico(vXmlControl, pFgAddValue, pPageView:vPageView);
 
                         if (vControl.CtrlControl != null)
                         {

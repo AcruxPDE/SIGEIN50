@@ -74,10 +74,12 @@ namespace SIGE.WebApp.MPC
 
         private void SeguridadProcesos()
         {
-            btnGuardarCerrar.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.J.A");
-            btnGuardar.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.J.A");
+            btnGuardarCerrar.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.J.A");
+            //btnGuardar.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.J.A");
            // btnConfiguracion.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.J.A");
-            btnCopiarTabulador.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.J.A");
+            btnCopiarTabulador.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.J.A");
+            btnRecalcular.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.J.A");
+            btnMercadoSalarial.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.J.A");
            // btnVerNiveles.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.J.A");
             //btnRecalcular.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.J.A");
            // btnMercadoSalarial.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.J.A");
@@ -115,7 +117,7 @@ namespace SIGE.WebApp.MPC
                     if (vTabulador.CL_ESTADO == "CERRADO")
                     {
                         btnGuardarCerrar.Enabled = false;
-                        btnGuardar.Enabled = false;
+                      //  btnGuardar.Enabled = false;
                        // btnConfiguracion.Enabled = false;
                         btnCopiarTabulador.Enabled = false;
                        // btnVerNiveles.Enabled = false;
@@ -259,10 +261,10 @@ namespace SIGE.WebApp.MPC
             grdTabuladorMaestro.Rebind();
         }             
 
-        protected void btnGuardar_Click(object sender, EventArgs e)
-        {
-            GuardarTabuladorMaestro(false);
-        }
+        //protected void btnGuardar_Click(object sender, EventArgs e)
+        //{
+        //    GuardarTabuladorMaestro(false);
+        //}
 
         protected void btnGuardarCerrar_Click(object sender, EventArgs e)
         {

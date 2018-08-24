@@ -1,6 +1,7 @@
 ﻿using SIGE.Entidades;
 using SIGE.Entidades.FormacionDesarrollo;
 using SIGE.Negocio.FormacionDesarrollo;
+using SIGE.WebApp.Comunes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,6 +33,7 @@ namespace SIGE.WebApp.FYD
             set { ViewState["vs_vIdEmpleado"] = value; }
         }
 
+        private int? vIdRol;
 
         public bool vFgFoto
         {
@@ -529,6 +531,7 @@ namespace SIGE.WebApp.FYD
 
         protected void Page_Init(object sender, System.EventArgs e)
         {
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
             if (Request.Params["FgFoto"] != null)
             {
                 vFgFoto = bool.Parse(Request.Params["FgFoto"].ToString());
@@ -540,7 +543,7 @@ namespace SIGE.WebApp.FYD
                 vIdReporteComparativo = Guid.Parse(Request.Params["IdReporteComparativo"].ToString());
                 CargarDatos();
                 ConsultaGeneralNegocio neg = new ConsultaGeneralNegocio();
-                List<SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO_Result> vLstEvaluadores = neg.ObtenerEvaluadosComparativo(vIdPeriodo, vXmlPeriodos, vFgFoto);
+                List<SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO_Result> vLstEvaluadores = neg.ObtenerEvaluadosComparativo(vIdPeriodo, vXmlPeriodos, vFgFoto, vIdRol);
                 rdComparativo.DataSource = CrearDataTable(vLstEvaluadores, rdComparativo);
             }
         }

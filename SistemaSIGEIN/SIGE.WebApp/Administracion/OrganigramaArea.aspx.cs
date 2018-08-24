@@ -18,6 +18,11 @@ namespace SIGE.WebApp.Administracion
         {
             if (!Page.IsPostBack)
             {
+                var relativePath = "~/api/export/file";
+
+                RadClientExportManager1.PdfSettings.ProxyURL = ResolveUrl(relativePath);
+                RadClientExportManager1.PdfSettings.Author = "Telerik ASP.NET AJAX";
+
                 CargarDatosOrganigrama();
             }
         }

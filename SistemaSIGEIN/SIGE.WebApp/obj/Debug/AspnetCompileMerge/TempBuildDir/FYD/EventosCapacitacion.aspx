@@ -72,7 +72,7 @@
         function GetCalendarioWindowProperties(pIdEvento) {
             var wnd = GetWindowProperties();
 
-            wnd.vTitulo = "Consulta Calendario - Eventos de capacitación";
+            wnd.vTitulo = "Consulta Calendario Eventos de Capacitación";
             wnd.vRadWindowId = "winEvento";
             wnd.vURL = "VentanaCalendarioCurso.aspx";
             if (pIdEvento != null) {
@@ -137,7 +137,7 @@
         function GetReporteEvaluacionResultadosWindowProperties(pIdEvento) {
             var wnd = GetWindowProperties();
 
-            wnd.vTitulo = "Consulta Resultados eventos - Eventos de capacitación";
+            wnd.vTitulo = "Consulta Resultados Eventos de Capacitación";
             wnd.vRadWindowId = "winEvento";
             wnd.vURL = "VentanaEventoReporteParticipacion.aspx";
             if (pIdEvento != null) {
@@ -173,7 +173,12 @@
         }
 
         function OpenEditEventoWindow() {
-            OpenEventoWindow(GetEventoId());
+            if ('<%= vEditar %>' == "True") {
+                OpenEventoWindow(GetEventoId());
+            }
+            else {
+                radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "");
+            }
         }
 
         function OpenEventoWindow(pIdEvento) {
@@ -258,7 +263,7 @@
         }
 
         function ConfirmarEliminar(sender, args) {
-
+            if ('<%= vEliminar %>' == "True") {
             var idEvento = GetEventoId();
             var nbEvento = "";
 
@@ -273,6 +278,11 @@
 
             } else {
                 radalert("Seleccione un evento.", 400, 150, "Error");
+                args.set_cancel(true);
+            }
+            }
+            else {
+                radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "");
                 args.set_cancel(true);
             }
         }
@@ -479,7 +489,7 @@
                                 <label class="labelTitulo" style="text-align: center;">Administrar</label>
                                 <telerik:RadButton runat="server" ID="btnAgregarEvento" Text="Agregar" AutoPostBack="false" OnClientClicked="OpenInsertEventoWindow"></telerik:RadButton>
                                 &nbsp;&nbsp;
-                        <telerik:RadButton ID="btnCopiar" runat="server" Text="Copiar de..." AutoPostBack="false" OnClientClicked="OpenCopyEventoWindow"></telerik:RadButton>
+                        <telerik:RadButton ID="btnCopiar" runat="server" Text="Copiar de" AutoPostBack="false" OnClientClicked="OpenCopyEventoWindow"></telerik:RadButton>
                             </div>
                             <div style="clear: both; height: 10px;"></div>
                             <div>

@@ -26,5 +26,6 @@ namespace SIGE.Entidades
         public Nullable<int> ID_PLAZA_SUPERIOR { get; set; }
         public Nullable<int> NO_NIVEL { get; set; }
         public string CL_TIPO_GENEALOGIA { get; set; }
+        public Nullable<int> NO_NIVEL_ORGANIGRAMA { get; set; }
     }
 }

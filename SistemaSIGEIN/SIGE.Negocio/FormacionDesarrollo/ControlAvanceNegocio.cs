@@ -16,22 +16,22 @@ namespace SIGE.Negocio.FormacionDesarrollo
             return op.ObtenerPeriodoEvaluacion(pIdPeriodo);
         }
 
-        public SPE_OBTIENE_CONTROL_AVANCE_DATOS_GRAFICA_Result obtenerDatosControlAvance(int idPeriodo)
+        public SPE_OBTIENE_CONTROL_AVANCE_DATOS_GRAFICA_Result obtenerDatosControlAvance(int idPeriodo, int? pIdRol)
         {
             ControlAvanceOperaciones op = new ControlAvanceOperaciones();
-            return op.obtenerDatosControlAvance(idPeriodo);
+            return op.obtenerDatosControlAvance(idPeriodo, pIdRol);
         }
 
-        public List<SPE_OBTIENE_CONTROL_AVANCE_EVALUADOS_Result> obtieneEmpleadosEvaluados(int idPeriodo, int? pIdEmpresa)
+        public List<SPE_OBTIENE_CONTROL_AVANCE_EVALUADOS_Result> obtieneEmpleadosEvaluados(int idPeriodo, int? pIdEmpresa, int? pIdRol)
         {
             ControlAvanceOperaciones op = new ControlAvanceOperaciones();
-            return op.obtieneEmpleadosEvaluados(idPeriodo,pIdEmpresa);
+            return op.obtieneEmpleadosEvaluados(idPeriodo, pIdEmpresa, pIdRol);
         }
 
-        public List<SPE_OBTIENE_CONTROL_AVANCE_EVALUADOR_Result> obtieneEmpleadosEvaluadores(int idPeriodo, int? pIdEmpresa)
+        public List<SPE_OBTIENE_CONTROL_AVANCE_EVALUADOR_Result> obtieneEmpleadosEvaluadores(int idPeriodo, int? pIdEmpresa, int? pIdRol)
         {
             ControlAvanceOperaciones op = new ControlAvanceOperaciones();
-            return op.obtieneEmpleadosEvaluadores(idPeriodo ,pIdEmpresa);
+            return op.obtieneEmpleadosEvaluadores(idPeriodo, pIdEmpresa, pIdRol);
         }
     }
 }

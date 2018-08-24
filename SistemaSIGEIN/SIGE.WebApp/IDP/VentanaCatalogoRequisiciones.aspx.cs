@@ -138,6 +138,11 @@ namespace SIGE.WebApp.Administracion
             mail.Send(Asunto, String.Format("{0}", Mensaje));
         }
 
+        public void SeguridadProcesos()
+        {
+            btnGuardarCatalogo.Enabled = ContextoUsuario.oUsuario.TienePermiso("J.A.A.F");
+        }
+
         public void CargarDatos()
         {
             RequisicionNegocio nRequisicion = new RequisicionNegocio();
@@ -233,6 +238,8 @@ namespace SIGE.WebApp.Administracion
 
             txtObservaciones.Content = vRequisicion.DS_COMENTARIOS;
             vIdPuesto = (int)vRequisicion.ID_PUESTO;
+
+            SeguridadProcesos();
 
             if (vRequisicion.CL_ESTATUS_REQUISICION != "CREADA" && vRequisicion.CL_ESTATUS_REQUISICION != "RECHAZADO")
             {
@@ -432,8 +439,8 @@ namespace SIGE.WebApp.Administracion
 
             try
             {
-
-                string vUrl = ContextoUsuario.nbHost + "/Logon.aspx?FlProceso=" + flRequisicion.ToString() + "&ClProceso=" + "AUTORIZAREQUISICION";
+                string myUrl = ResolveUrl("~/Logon.aspx?FlProceso=");
+                string vUrl = ContextoUsuario.nbHost + myUrl + flRequisicion.ToString() + "&ClProceso=" + "AUTORIZAREQUISICION";
                 string vMensajeCorreo = ContextoApp.IDP.NotificacionRrhh.dsAutorizadorRequisicion.dsMensaje;
                 vMensajeCorreo = vMensajeCorreo.Replace("[NB_NOTIFICAR]", vRequisicion.NB_EMPLEADO_AUTORIZA);
                 vMensajeCorreo = vMensajeCorreo.Replace("[NB_CREA_REQUISICION]", vNbSolicitante);
@@ -470,7 +477,8 @@ namespace SIGE.WebApp.Administracion
                 try
                 {
                     string vMensajeCorreo = "";
-                    string vUrl = ContextoUsuario.nbHost + "/Logon.aspx?FlProceso=" + flNotificacion.ToString() + "&ClProceso=" + "NOTIFICACIONRRHH";
+                    string myUrl = ResolveUrl("~/Logon.aspx?FlProceso=");
+                    string vUrl = ContextoUsuario.nbHost + myUrl + flNotificacion.ToString() + "&ClProceso=" + "NOTIFICACIONRRHH";
                     if (pFechaPuesto == null)
                     {
                         vMensajeCorreo = ContextoApp.IDP.NotificacionRrhh.dsCreadorPuesto.dsMensaje;
@@ -519,7 +527,8 @@ namespace SIGE.WebApp.Administracion
                 try
                 {
                     string vMensajeCorreo = "";
-                    string vUrl = ContextoUsuario.nbHost + "/Logon.aspx?FlProceso=" + flRequisicion + "&ClProceso=AUTORIZAREQPUESTO";
+                    string myUrl = ResolveUrl("~/Logon.aspx?FlProceso=");
+                    string vUrl = ContextoUsuario.nbHost + myUrl + flRequisicion + "&ClProceso=AUTORIZAREQPUESTO";
 
                     if (vIdRequisicion == null)
                     {
@@ -847,7 +856,7 @@ namespace SIGE.WebApp.Administracion
 
                     if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
                     {
-                        if (pTipoTransaccion == "I" || pClEstatusRequisicion == "CREADA" && vRequisicion.CL_ESTATUS_REQUISICION == "POR AUTORIZAR")
+                        if (pTipoTransaccion == "I" || pClEstatusRequisicion == "ABIERTA" && vRequisicion.CL_ESTATUS_REQUISICION == "POR AUTORIZAR")
                         {
                             ValidarEnvioCorreos(vRequisicion);
                         }

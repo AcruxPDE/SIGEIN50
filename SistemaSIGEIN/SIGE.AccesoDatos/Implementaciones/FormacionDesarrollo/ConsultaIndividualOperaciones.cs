@@ -12,11 +12,11 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
     {
         SistemaSigeinEntities contexto;
 
-        public List<SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION_Result> ObtenerEvaluados(int pIdPeriodo,int? pID_EMPRESA = null)
+        public List<SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION_Result> ObtenerEvaluados(int pIdPeriodo,int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION(pIdPeriodo,pID_EMPRESA).ToList();
+                return contexto.SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION(pIdPeriodo, pID_EMPRESA, pID_ROL).ToList();
             }
         }
 

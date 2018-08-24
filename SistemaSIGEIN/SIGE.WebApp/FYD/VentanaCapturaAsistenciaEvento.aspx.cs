@@ -19,6 +19,7 @@ namespace SIGE.WebApp.FYD
 
         private string vClUsuario;
         private string vNbPrograma;
+        private int? vIdRol;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
 
         private int vIdEvento {
@@ -127,6 +128,7 @@ namespace SIGE.WebApp.FYD
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!Page.IsPostBack)
             {
@@ -141,7 +143,7 @@ namespace SIGE.WebApp.FYD
                         txtEvento.InnerText = oEvento.NB_EVENTO;
                         txtHorasCurso.InnerText = oEvento.NO_DURACION_CURSO.ToString();
 
-                        vListaParticipantes = neg.ObtieneParticipanteEvento(ID_EVENTO: vIdEvento);
+                        vListaParticipantes = neg.ObtieneParticipanteEvento(ID_EVENTO: vIdEvento, pID_ROL: vIdRol);
                         calcularAsistenciaPromedio();    
                     }
 

@@ -1,4 +1,6 @@
-﻿using SIGE.Negocio.Utilerias;
+﻿using SIGE.Entidades.Administracion;
+using SIGE.Negocio.Utilerias;
+using SIGE.WebApp.Administracion;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -41,8 +43,9 @@ namespace SIGE.WebApp.Comunes
         public Unit DefaultControlUnitHeight;
         public Unit DefaultLabelUnitWidth;
         public bool FgMultiLinea;
+        public RadPageView vPageView;
 
-        public ControlDinamico(XElement pXmlControl, bool pFgAddValue, int pDefaultWidth = 200, int pDefaultHeight = 34, int pDefaultLabelWidth = 150, bool pFgCreateControl = true)
+        public ControlDinamico(XElement pXmlControl, bool pFgAddValue, int pDefaultWidth = 260, int pDefaultHeight = 34, int pDefaultLabelWidth = 150, bool pFgCreateControl = true, RadPageView pPageView = null)
         {
             ClTipoControl = UtilXML.ValorAtributo<string>(pXmlControl.Attribute("CL_TIPO"));
             IdControl = UtilXML.ValorAtributo<string>(pXmlControl.Attribute("ID_CAMPO"));
@@ -55,6 +58,7 @@ namespace SIGE.WebApp.Comunes
             NoLongitud = UtilXML.ValorAtributo<int>(pXmlControl.Attribute("NO_LONGITUD"));
             FgMultiLinea = UtilXML.ValorAtributo<int>(pXmlControl.Attribute("FG_MULTILINEA")) == 0 ? false : true;
             XmlCampo = pXmlControl;
+            vPageView = pPageView;
 
             int? vNoAncho = UtilXML.ValorAtributo<int?>(pXmlControl.Attribute("NO_ANCHO"));
             int? vNoLargo = UtilXML.ValorAtributo<int?>(pXmlControl.Attribute("NO_LARGO"));
@@ -94,10 +98,10 @@ namespace SIGE.WebApp.Comunes
                     {
                         ID = IdControl,
                         ToolTip = NbTooltip,
-                        Text = NbValor != null? NbValor : NbValorDefecto,
+                        Text = NbValor != null ? NbValor : NbValorDefecto,
                         Width = DefaultControlUnitWidth,
                         Height = DefaultControlUnitHeight,
-                        Enabled = FgHabilitado,
+                        ReadOnly = !ObtieneEstado(FgHabilitado, IdControl), //Se cambia el Enable por ReadOnly para que no se pierdan los valores del control deshabilitado al guardar
                         MaxLength = NoLongitud,
                         Rows = FgMultiLinea ? 4 : 1,
                         TextMode = FgMultiLinea ? InputMode.MultiLine : InputMode.SingleLine
@@ -115,7 +119,7 @@ namespace SIGE.WebApp.Comunes
                     decimal? vNoValor = UtilXML.ValorAtributo<decimal?>(pXmlControl.Attribute("NB_VALOR"));
                     decimal? vNbValorDefecto = UtilXML.ValorAtributo<decimal?>(pXmlControl.Attribute("NO_VALOR_DEFECTO"));
                     int? vNoDecimales = UtilXML.ValorAtributo<int>(pXmlControl.Attribute("NO_DECIMALES"));
-                    double vNbValorFinal = vNoValor == null ? ( vNbValorDefecto == null ? 0 : (double)vNbValorDefecto ): (double)vNoValor; 
+                    double vNbValorFinal = vNoValor == null ? (vNbValorDefecto == null ? 0 : (double)vNbValorDefecto) : (double)vNoValor;
 
                     RadNumericTextBox vCtrlNumericBox = new RadNumericTextBox()
                     {
@@ -124,7 +128,7 @@ namespace SIGE.WebApp.Comunes
                         DataType = typeof(decimal),
                         Value = vNbValorFinal,
                         Width = DefaultControlUnitWidth,
-                        Enabled = FgHabilitado
+                        Enabled = ObtieneEstado(FgHabilitado, IdControl)
                     };
 
                     vCtrlNumericBox.NumberFormat.DecimalDigits = vNoDecimales ?? 0;
@@ -139,7 +143,7 @@ namespace SIGE.WebApp.Comunes
                         ToolTip = NbTooltip,
                         Text = NbValor,
                         Width = DefaultControlUnitWidth,
-                        Enabled = FgHabilitado,
+                        Enabled = ObtieneEstado(FgHabilitado, IdControl),
                         Mask = vNbMask,
                         MaxLength = NoLongitud
                     };
@@ -159,12 +163,11 @@ namespace SIGE.WebApp.Comunes
                             ToolTip = NbTooltip,
                             MinDate = new DateTime(1000, 1, 1),
                             SelectedDate = new DateTime(vAnio, vMes, vDia),
-                            
                             Width = DefaultControlUnitWidth,
-                            Enabled = FgHabilitado,
+                            EnableTyping = ObtieneEstado(FgHabilitado, IdControl),
                         };
 
-
+                        vControlFecha.DatePopupButton.Enabled = ObtieneEstado(FgHabilitado, IdControl);
                         vControlFecha.DateInput.DateFormat = "dd/MM/yyyy";
                         vControlFecha.DateInput.DisplayDateFormat = "dd/MM/yyyy";
                         vControlFecha.DateInput.EmptyMessage = "dd/MM/yyyy";
@@ -178,7 +181,7 @@ namespace SIGE.WebApp.Comunes
                             ToolTip = NbTooltip,
                             MinDate = new DateTime(1000, 1, 1),
                             Width = 120,
-                            Enabled = FgHabilitado,
+                            EnableTyping = ObtieneEstado(FgHabilitado, IdControl),
                         };
 
                         if (!String.IsNullOrWhiteSpace(NbValorDefecto))
@@ -192,6 +195,7 @@ namespace SIGE.WebApp.Comunes
                         }
                         else
                         {
+                            vControlFecha.DatePopupButton.Enabled = ObtieneEstado(FgHabilitado, IdControl);
                             vControlFecha.DateInput.DateFormat = "dd/MM/yyyy";
                             vControlFecha.DateInput.DisplayDateFormat = "dd/MM/yyyy";
                             vControlFecha.DateInput.EmptyMessage = "dd/MM/yyyy";
@@ -223,10 +227,12 @@ namespace SIGE.WebApp.Comunes
                             MinDate = new DateTime(1000, 1, 1),
                             SelectedDate = vDateEdad,
                             Width = new Unit(DefaultControlUnitWidth.Value - vCtrlEdadWidth),
-                            Enabled = FgHabilitado,
+                            EnableTyping = ObtieneEstado(FgHabilitado, IdControl),
                             AutoPostBack = true,
-
+                           
                         };
+
+                        vCtrlDate.DatePopupButton.Enabled = ObtieneEstado(FgHabilitado, IdControl);
 
                         vCtrlDate.DateInput.DateFormat = "dd/MM/yyyy";
                         vCtrlDate.DateInput.DisplayDateFormat = "dd/MM/yyyy";
@@ -256,7 +262,7 @@ namespace SIGE.WebApp.Comunes
                             ToolTip = NbTooltip,
                             MinDate = new DateTime(1000, 1, 1),
                             Width = new Unit(DefaultControlUnitWidth.Value - vCtrlEdadWidth),
-                            Enabled = FgHabilitado,
+                            EnableTyping = ObtieneEstado(FgHabilitado, IdControl),
                             AutoPostBack = true,
 
                         };
@@ -273,28 +279,29 @@ namespace SIGE.WebApp.Comunes
                             vCtrlDate.SelectedDate = vDateEdad;
 
                             string vIdControlEdad2 = String.Format("txt{0}", IdControl);
-                           vCtrlEdad = new RadTextBox()
-                            {
-                                ID = vIdControlEdad2,
-                                Text = ObtenerEdad(vDateEdad),
-                                Width = new Unit(vCtrlEdadWidth),
-                                ReadOnly = true,
-                            };
+                            vCtrlEdad = new RadTextBox()
+                             {
+                                 ID = vIdControlEdad2,
+                                 Text = ObtenerEdad(vDateEdad),
+                                 Width = new Unit(vCtrlEdadWidth),
+                                 ReadOnly = true,
+                             };
                         }
                         else
                         {
+                            vCtrlDate.DatePopupButton.Enabled = ObtieneEstado(FgHabilitado, IdControl);
                             vCtrlDate.DateInput.DateFormat = "dd/MM/yyyy";
                             vCtrlDate.DateInput.DisplayDateFormat = "dd/MM/yyyy";
                             vCtrlDate.DateInput.EmptyMessage = "dd/MM/yyyy";
 
                             string vIdControlEdad2 = String.Format("txt{0}", IdControl);
-                           vCtrlEdad = new RadTextBox()
-                            {
-                                ID = vIdControlEdad2,
-                                Text = "",
-                                Width = new Unit(vCtrlEdadWidth),
-                                ReadOnly = true,
-                            };
+                            vCtrlEdad = new RadTextBox()
+                             {
+                                 ID = vIdControlEdad2,
+                                 Text = "",
+                                 Width = new Unit(vCtrlEdadWidth),
+                                 ReadOnly = true,
+                             };
                         }
 
                         vCtrlDate.SelectedDateChanged += (sender, e) => CalcularEdad(sender, e, vCtrlEdad);
@@ -312,7 +319,7 @@ namespace SIGE.WebApp.Comunes
                         ID = IdControl,
                         ToolTip = NbTooltip,
                         Width = DefaultControlUnitWidth,
-                        Enabled = FgHabilitado,
+                        Enabled = ObtieneEstado(FgHabilitado, IdControl),
                         Filter = RadComboBoxFilter.Contains,
                         EmptyMessage = "Selecciona"
                     };
@@ -333,7 +340,7 @@ namespace SIGE.WebApp.Comunes
                     {
                         ID = IdControl,
                         Text = NbValor,
-                        Enabled = FgHabilitado,
+                        ReadOnly = !ObtieneEstado(FgHabilitado, IdControl), //Se cambia el Enable por ReadOnly para que no se pierdan los valores del control deshabilitado al guardar
                         Width = new Unit(DefaultControlUnitWidth.Value - 30),
                         EnableViewState = true,
                         MaxLength = 5
@@ -344,7 +351,8 @@ namespace SIGE.WebApp.Comunes
                         ID = String.Format("{1}{0}", IdControl, NbBoton),
                         Text = "B",
                         AutoPostBack = false,
-                        OnClientClicked = "OpenSelectionWindow"
+                        OnClientClicked = "OpenSelectionWindow",
+                        Enabled = ObtieneEstado(FgHabilitado, IdControl)
                     };
 
                     HtmlGenericControl vContenedorCP = new HtmlGenericControl("span");
@@ -360,7 +368,7 @@ namespace SIGE.WebApp.Comunes
 
                         ID = IdControl,
                         ToolTip = NbTooltip,
-                        Enabled = FgHabilitado,
+                      //  Enabled = ObtieneEstado(FgHabilitado, IdControl),
                         Width = new Unit(DefaultControlUnitWidth.Value - 30),
                         EnableViewState = true,
                         EmptyMessage = "Selecciona",
@@ -379,7 +387,8 @@ namespace SIGE.WebApp.Comunes
                         ID = String.Format("{1}{0}", IdControl, NbBoton),
                         Text = "B",
                         AutoPostBack = false,
-                        OnClientClicked = "OpenSelectionWindow"
+                        OnClientClicked = "OpenSelectionWindow",
+                        Enabled = ObtieneEstado(FgHabilitado, IdControl)
                     };
 
                     HtmlGenericControl vListBox = new HtmlGenericControl("span");
@@ -390,13 +399,13 @@ namespace SIGE.WebApp.Comunes
                 case "CHECKBOX":
                     bool? vFgChecked = UtilXML.ValorAtributo<bool?>(pXmlControl.Attribute("NB_VALOR"));
                     bool? vFgCheckedDefecto = UtilXML.ValorAtributo<bool?>(pXmlControl.Attribute("NO_VALOR_DEFECTO"));
-                    bool? vFgCheckedFinal = vFgChecked == null && vFgCheckedDefecto != null? vFgCheckedDefecto : vFgChecked != null? vFgChecked : false;
+                    bool? vFgCheckedFinal = vFgChecked == null && vFgCheckedDefecto != null ? vFgCheckedDefecto : vFgChecked != null ? vFgChecked : false;
 
                     RadButton vCtrlCheckBox = new RadButton()
                     {
                         ID = IdControl,
                         ToolTip = NbTooltip,
-                        Enabled = FgHabilitado,
+                        Enabled = ObtieneEstado(FgHabilitado, IdControl),
                         Checked = (bool)vFgCheckedFinal,
                         ToggleType = ButtonToggleType.CheckBox,
                         ButtonType = RadButtonType.StandardButton,
@@ -406,7 +415,7 @@ namespace SIGE.WebApp.Comunes
                     vCtrlCheckBox.ToggleStates.Add(new RadButtonToggleState("Sí") { PrimaryIconCssClass = "rbToggleCheckboxChecked" });
                     vCtrlCheckBox.ToggleStates.Add(new RadButtonToggleState("No") { PrimaryIconCssClass = "rbToggleCheckbox" });
                     vControl = vCtrlCheckBox;
-                    
+
 
                     /*
                     RadButton vCtrlCheckBoxYes = new RadButton()
@@ -467,7 +476,7 @@ namespace SIGE.WebApp.Comunes
                         {
                             HtmlGenericControl vContenedorControlGridFormulario = new HtmlGenericControl("div");
                             vContenedorControlGridFormulario.Attributes.Add("class", "ctrlBasico");
-                                vContenedorControlGridFormulario.Controls.Add(vControlGridFormulario.CtrlLabel);
+                            vContenedorControlGridFormulario.Controls.Add(vControlGridFormulario.CtrlLabel);
                             vContenedorControlGridFormulario.Controls.Add(new LiteralControl("<br />"));
                             vContenedorControlGridFormulario.Controls.Add(vControlGridFormulario.CtrlControl);
                             vControlGrid.Controls.Add(vContenedorControlGridFormulario);
@@ -479,7 +488,7 @@ namespace SIGE.WebApp.Comunes
                     {
                         ID = String.Format("{1}{0}", IdControl, NbBotonAgregar),
                         Text = "Agregar",
-                        Enabled = FgHabilitado,
+                        Enabled = ObtieneEstado(FgHabilitado, IdControl),
                         AutoPostBack = true
                     };
 
@@ -617,14 +626,14 @@ namespace SIGE.WebApp.Comunes
                     {
                         ID = String.Format("{1}{0}", IdControl, NbBotonEditar),
                         Text = "Editar",
-                        Enabled = FgHabilitado
+                        Enabled = ObtieneEstado(FgHabilitado, IdControl),
                     };
 
                     RadButton vCtrlBtnDel = new RadButton()
                     {
                         ID = String.Format("{1}{0}", IdControl, NbBotonEliminar),
                         Text = "Eliminar",
-                        Enabled = FgHabilitado
+                        Enabled = ObtieneEstado(FgHabilitado, IdControl),
                     };
 
                     vControlGrid.Controls.Add(vCtrlBtnEdit);
@@ -685,6 +694,21 @@ namespace SIGE.WebApp.Comunes
                 return String.Format("{2}{0} día{1}", vNoDias, vNoDias != 1 ? "s" : String.Empty, vFactor == 0 ? "" : "En ");
 
             return "Hoy";
+        }
+
+        protected bool ObtieneEstado(bool pFgControlHabilitado, string pIdControl)
+        {
+            if (vPageView != null)
+            if (vPageView.Page is Empleado)
+            {
+
+                E_CAMPO_NOMINA_DO vCampoNominaDo = ContextoApp.vLstCamposNominaDO.FirstOrDefault(f => f.CL_CAMPO == pIdControl);
+
+                if (vCampoNominaDo != null)
+                    return vCampoNominaDo.FG_EDITABLE_DO && pFgControlHabilitado;
+            }
+
+            return pFgControlHabilitado;
         }
     }
 }

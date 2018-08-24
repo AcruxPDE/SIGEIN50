@@ -39,7 +39,7 @@
         </div>
         <div style="height:10px; clear:both"></div>
         <div class="divControlDerecha">
-            <telerik:RadButton ID="btnAgregar" runat="server" Text="Agregar" Width="100" OnClick="btnAgregar_Click"></telerik:RadButton>
+            <telerik:RadButton ID="btnAgregar" runat="server" Text="Guardar" Width="100" OnClick="btnAgregar_Click"></telerik:RadButton>
             <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" Width="100" OnClientClicked="CloseWindow"></telerik:RadButton>
         </div>
     </div>

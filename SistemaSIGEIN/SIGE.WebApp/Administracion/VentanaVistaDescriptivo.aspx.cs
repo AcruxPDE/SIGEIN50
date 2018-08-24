@@ -13,6 +13,7 @@ using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using Telerik.Web.UI;
 using SIGE.Entidades.FormacionDesarrollo;
+using SIGE.Entidades;
 
 namespace SIGE.WebApp.Administracion
 {
@@ -295,24 +296,44 @@ namespace SIGE.WebApp.Administracion
                 //btnDirecto.Checked = vDescriptivo.CL_TIPO_PUESTO == "DIRECTO";
                 //btnIndirecto.Checked = vDescriptivo.CL_TIPO_PUESTO == "INDIRECTO";
 
-                foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
+
+                //foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
+                //{
+                //    if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.JEFE.ToString())
+                //    {
+                //        lstJefesInmediatos.InnerText = item.Attribute("NB_PUESTO").Value;
+                //    }
+                //}
+
+                DescriptivoNegocio vNeg = new DescriptivoNegocio();
+                List<SPE_OBTIENE_JEFES_DESCRIPTIVO_Result> vLstJefes = vNeg.ObtenerJefesDescriptivo(vIdDescriptivo).ToList();
+                foreach (SPE_OBTIENE_JEFES_DESCRIPTIVO_Result item in vLstJefes)
                 {
-                    if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.JEFE.ToString())
-                    {
-                        txtPuestoJefe.InnerText = item.Attribute("NB_PUESTO").Value;
-                    }
+                    RadListBoxItem i = new RadListBoxItem();
+                    i.Text = item.CL_PUESTO + " - " + item.NB_PUESTO;
+                    i.Value = item.ID_PUESTO.ToString();
+                    lstJefesInmediatos.Items.Add(i);
                 }
 
-                foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
-                {
-                    if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.SUBORDINADO.ToString())
-                    {
-                        RadListBoxItem i = new RadListBoxItem();
+                //foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
+                //{
+                //    if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.SUBORDINADO.ToString())
+                //    {
+                //        RadListBoxItem i = new RadListBoxItem();
 
-                        i.Text = item.Attribute("NB_PUESTO").Value;
-                        i.Value = item.Attribute("ID_PUESTO_RELACIONADO").Value;
+                //        i.Text = item.Attribute("NB_PUESTO").Value;
+                //        i.Value = item.Attribute("ID_PUESTO_RELACIONADO").Value;
+                //        lstPuestosSubordinado.Items.Add(i);
+                //    }
+                //}
+
+                List<SPE_OBTIENE_SUBORDINADOS_DESCRIPTIVO_Result> vLstSubordinados = vNeg.ObtenerSubordinadosDescriptivo(vIdDescriptivo).ToList();
+                foreach (SPE_OBTIENE_SUBORDINADOS_DESCRIPTIVO_Result item in vLstSubordinados)
+                {
+                        RadListBoxItem i = new RadListBoxItem();
+                        i.Text = item.CL_PUESTO +" - "+ item.NB_PUESTO;
+                        i.Value = item.ID_PUESTO.ToString();
                         lstPuestosSubordinado.Items.Add(i);
-                    }
                 }
 
                 foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
@@ -321,7 +342,7 @@ namespace SIGE.WebApp.Administracion
                     {
                         RadListBoxItem i = new RadListBoxItem();
 
-                        i.Text = item.Attribute("NB_PUESTO").Value;
+                        i.Text = item.Attribute("CL_PUESTO").Value +" - "+ item.Attribute("NB_PUESTO").Value;
                         i.Value = item.Attribute("ID_PUESTO_RELACIONADO").Value;
                         lstPuestosInterrelacionados.Items.Add(i);
                     }
@@ -338,7 +359,7 @@ namespace SIGE.WebApp.Administracion
                     {
                         RadListBoxItem i = new RadListBoxItem();
 
-                        i.Text = item.Attribute("NB_PUESTO").Value;
+                        i.Text = item.Attribute("CL_PUESTO").Value +" - "+ item.Attribute("NB_PUESTO").Value;
                         i.Value = item.Attribute("ID_PUESTO_RELACIONADO").Value;
                         lstAlternativa.Items.Add(i);
                     }
@@ -350,7 +371,7 @@ namespace SIGE.WebApp.Administracion
                     {
                         RadListBoxItem i = new RadListBoxItem();
 
-                        i.Text = item.Attribute("NB_PUESTO").Value;
+                        i.Text = item.Attribute("CL_PUESTO").Value +" - "+ item.Attribute("NB_PUESTO").Value;
                         i.Value = item.Attribute("ID_PUESTO_RELACIONADO").Value;
                         lstLateral.Items.Add(i);
                     }
@@ -380,22 +401,25 @@ namespace SIGE.WebApp.Administracion
                 {
                     E_FUNCION_GENERICA fg = new E_FUNCION_GENERICA();
 
-                    XElement dsDetalle = item.Element("XML_DETALLE").Element("DS_DETALLE");
-                    dsDetalle.Name = vNbFirstRadEditorTagName;
-
-                    if (item.Element("XML_NOTAS") != null)
+                    if (item.Element("XML_DETALLE") != null)
                     {
-                        XElement dsNotas = item.Element("XML_NOTAS").Element("DS_NOTAS");
-                        dsNotas.Name = vNbFirstRadEditorTagName;
-                        fg.DS_NOTAS = dsNotas.ToString();
+                        XElement dsDetalle = item.Element("XML_DETALLE").Element("DS_DETALLE");
+                        dsDetalle.Name = vNbFirstRadEditorTagName;
+
+                        if (item.Element("XML_NOTAS") != null)
+                        {
+                            XElement dsNotas = item.Element("XML_NOTAS").Element("DS_NOTAS");
+                            dsNotas.Name = vNbFirstRadEditorTagName;
+                            fg.DS_NOTAS = dsNotas.ToString();
+                        }
+
+                        fg.ID_FUNCION_GENERICA = int.Parse(item.Attribute("ID_PUESTO_FUNCION").Value);
+                        fg.NB_FUNCION_GENERICA = item.Attribute("NB_PUESTO_FUNCION").Value;
+                        fg.DS_DETALLE = dsDetalle.ToString();
+
+
+                        vFuncionesGenericas.Add(fg);
                     }
-
-                    fg.ID_FUNCION_GENERICA = int.Parse(item.Attribute("ID_PUESTO_FUNCION").Value);
-                    fg.NB_FUNCION_GENERICA = item.Attribute("NB_PUESTO_FUNCION").Value;
-                    fg.DS_DETALLE = dsDetalle.ToString();
-
-
-                    vFuncionesGenericas.Add(fg);
                 }
 
                 foreach (E_COMPETENCIAS item in vListaCompetencias.Where(n => n.ID_PUESTO_FUNCION != 0))
@@ -409,6 +433,7 @@ namespace SIGE.WebApp.Administracion
                     fc.NO_NIVEL = item.NO_VALOR_NIVEL;
                     fc.NB_NIVEL = CrearNivelCompetencia(null).FirstOrDefault(f => f.NO_VALOR.Equals(item.NO_VALOR_NIVEL)).NB_NIVEL;
                     if (vFuncionesGenericas.Count > 0)
+                        if (vFuncionesGenericas.Exists(x => x.ID_FUNCION_GENERICA.Equals(item.ID_PUESTO_FUNCION)))
                         fc.ID_PARENT_ITEM = vFuncionesGenericas.FirstOrDefault(f => item.ID_PUESTO_FUNCION.Equals(f.ID_FUNCION_GENERICA)).ID_ITEM;
 
                     vLstFuncionCompetencia.Add(fc);
@@ -588,23 +613,23 @@ namespace SIGE.WebApp.Administracion
             radCmb.DataBind();
         }
 
-        public void ObtenerAreas()
-        {
-            string vNbArea;
+        //public void ObtenerAreas()
+        //{
+        //    string vNbArea;
 
-            var vArea = vListaAreas.Where(t => t.FG_SELECCIONADO).FirstOrDefault();
+        //    var vArea = vListaAreas.Where(t => t.FG_SELECCIONADO).FirstOrDefault();
 
-            if (vArea != null)
-            {
-                vNbArea = vArea.NB_DEPARTAMENTO;
-            }
-            else
-            {
-                vNbArea = "No seleccionado";
-            }
+        //    if (vArea != null)
+        //    {
+        //        vNbArea = vArea.NB_DEPARTAMENTO;
+        //    }
+        //    else
+        //    {
+        //        vNbArea = "No seleccionado";
+        //    }
 
-            txtArea.InnerText = vNbArea;
-        }
+        //  //  txtArea.InnerText = vNbArea;
+        //}
 
         public void ObtenerCentroAdmvo()
         {
@@ -1305,7 +1330,7 @@ namespace SIGE.WebApp.Administracion
                 ObtenerCompetenciasEspecificas();
                 ObtenerAreaInteres();
 
-                ObtenerAreas();
+                //ObtenerAreas();
 
                 ObtenerCentroAdmvo();
                 ObtenerCentroOptvo();

@@ -52,6 +52,11 @@ namespace SIGE.WebApp.EO
 
         #endregion
 
+        protected void SeguridadProcesos()
+        {
+            btnAceptar.Enabled = ContextoUsuario.oUsuario.TienePermiso("M.A.A.B");
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -71,31 +76,36 @@ namespace SIGE.WebApp.EO
                     else
                     {
                         vIdPeriodoCopia = 0;
+                        SeguridadProcesos();
                     }
              
                     vIdPeriodo = int.Parse(Request.QueryString["PeriodoId"]);
                     PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
                     var vPeriododDesempeno = nPeriodo.ObtienePeriodosDesempeno(pIdPeriodo: vIdPeriodo).FirstOrDefault();
-                    txtDsPeriodo.Text = vPeriododDesempeno.CL_PERIODO;
-                    txtDsDescripcion.Text = vPeriododDesempeno.DS_PERIODO;
-                    //txtDsNotas.Content = vPeriododDesempeno.DS_NOTAS;
-                    vEstadoPeriodo = vPeriododDesempeno.CL_ESTADO_PERIODO;
-                    if (vPeriododDesempeno.CL_ESTADO_PERIODO == "CERRADO")
-                        btnAceptar.Enabled = false;
 
-                    if (vPeriododDesempeno.DS_NOTAS != null)
+                    if (Request.QueryString["Tipo"] != "COPIA")
                     {
-                        if (vPeriododDesempeno.DS_NOTAS.Contains("DS_NOTA"))
+                        txtDsPeriodo.Text = vPeriododDesempeno.CL_PERIODO;
+                        txtDsDescripcion.Text = vPeriododDesempeno.DS_PERIODO;
+                        //txtDsNotas.Content = vPeriododDesempeno.DS_NOTAS;
+                        vEstadoPeriodo = vPeriododDesempeno.CL_ESTADO_PERIODO;
+                        if (vPeriododDesempeno.CL_ESTADO_PERIODO == "CERRADO")
+                            btnAceptar.Enabled = false;
+
+                        if (vPeriododDesempeno.DS_NOTAS != null)
                         {
-                            txtDsNotas.Content = Utileria.MostrarNotas(vPeriododDesempeno.DS_NOTAS);
-                        }
-                        else
-                        {
-                            XElement vRequerimientos = XElement.Parse(vPeriododDesempeno.DS_NOTAS);
-                            if (vRequerimientos != null)
+                            if (vPeriododDesempeno.DS_NOTAS.Contains("DS_NOTA"))
                             {
-                                vRequerimientos.Name = vNbFirstRadEditorTagName;
-                                txtDsNotas.Content = vRequerimientos.ToString();
+                                txtDsNotas.Content = Utileria.MostrarNotas(vPeriododDesempeno.DS_NOTAS);
+                            }
+                            else
+                            {
+                                XElement vRequerimientos = XElement.Parse(vPeriododDesempeno.DS_NOTAS);
+                                if (vRequerimientos != null)
+                                {
+                                    vRequerimientos.Name = vNbFirstRadEditorTagName;
+                                    txtDsNotas.Content = vRequerimientos.ToString();
+                                }
                             }
                         }
                     }
@@ -149,21 +159,22 @@ namespace SIGE.WebApp.EO
                     if(vPeriododDesempeno.CL_ORIGEN_CUESTIONARIO=="REPLICA")
                         txtDsPeriodo.Enabled = false;
 
-                    if (vPeriododDesempeno.CL_ORIGEN_CUESTIONARIO == "REPLICA" && Request.QueryString["Tipo"] == "COPIA")
+                    if (Request.QueryString["Tipo"] == "COPIA")
                         txtDsPeriodo.Enabled = true;
 
-                    var listaEvaluados = nPeriodo.ObtieneEvaluados(vIdPeriodo);
-                    if (listaEvaluados.Count != 0)
-                    {
-                        rbCoordinadorEvaluacion.Enabled = false;
-                        rbOcupantePuesto.Enabled = false;
-                        rbJefeInmediato.Enabled = false;
-                        rbOtro.Enabled = false;
-                    }
+                    //var listaEvaluados = nPeriodo.ObtieneEvaluados(vIdPeriodo);
+                    //if (listaEvaluados.Count != 0)
+                    //{
+                    //    rbCoordinadorEvaluacion.Enabled = false;
+                    //    rbOcupantePuesto.Enabled = false;
+                    //    rbJefeInmediato.Enabled = false;
+                    //    rbOtro.Enabled = false;
+                    //}
                 }
                 else
                 {
                     vIdPeriodo = 0;
+                    rbMetasDescriptivo.Checked = true;
                 }
             }
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
@@ -254,14 +265,15 @@ namespace SIGE.WebApp.EO
 
                 if (vAccion == "I")
                 {
-                    var resultado = nPeriodo.InsertaActualiza_PERIODO(null, txtDsPeriodo.Text, txtDsPeriodo.Text, txtDsDescripcion.Text, vEstadoPeriodo, nodoPrincipal.ToString(), vFechaInicio.Value, vFechaTermino.Value, vCapturistaResultado, vTipoMetas, vClUsuario, vNbPrograma, vAccion);
-                    UtilMensajes.MensajeResultadoDB(rwmMensaje, resultado.MENSAJE[0].DS_MENSAJE.ToString(), resultado.CL_TIPO_ERROR, 400, 150, "sendDataToParent(" + vIdPeriodo + ")");
+                    var resultado = nPeriodo.InsertaActualiza_PERIODO(null, txtDsPeriodo.Text, txtDsPeriodo.Text, txtDsDescripcion.Text, vEstadoPeriodo, nodoPrincipal.ToString(), vFechaInicio.Value, vFechaTermino.Value, vCapturistaResultado, vTipoMetas, vClUsuario, vNbPrograma, vAccion, null);
+                    //UtilMensajes.MensajeResultadoDB(rwmMensaje, resultado.MENSAJE[0].DS_MENSAJE.ToString(), resultado.CL_TIPO_ERROR, 400, 150, "sendDataToParent(" + vIdPeriodo + ")"); Verificar si se usa este sendDataToParent? se cambio por closeWindow
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, resultado.MENSAJE[0].DS_MENSAJE.ToString(), resultado.CL_TIPO_ERROR, 400, 150, "closeWindow");
                 }
                 else
                 {
                     var vPeriododDesempeno = nPeriodo.ObtienePeriodosDesempeno(pIdPeriodo: vIdPeriodo).FirstOrDefault();
                     vIdPeriodoDesempeno = vPeriododDesempeno.ID_PERIODO_DESEMPENO;
-                    var resultado = nPeriodo.InsertaActualiza_PERIODO(vIdPeriodoDesempeno, txtDsPeriodo.Text, txtDsPeriodo.Text, txtDsDescripcion.Text, vEstadoPeriodo, nodoPrincipal.ToString(), vFechaInicio.Value, vFechaTermino.Value, vCapturistaResultado, vTipoMetas, vClUsuario, vNbPrograma, vAccion);
+                    var resultado = nPeriodo.InsertaActualiza_PERIODO(vIdPeriodoDesempeno, txtDsPeriodo.Text, txtDsPeriodo.Text, txtDsDescripcion.Text, vEstadoPeriodo, nodoPrincipal.ToString(), vFechaInicio.Value, vFechaTermino.Value, vCapturistaResultado, vTipoMetas, vClUsuario, vNbPrograma, vAccion, null);
                     UtilMensajes.MensajeResultadoDB(rwmMensaje, resultado.MENSAJE[0].DS_MENSAJE.ToString(), resultado.CL_TIPO_ERROR, 400, 150, "sendDataToParent(" + vIdPeriodo + ")");
                 }
             }

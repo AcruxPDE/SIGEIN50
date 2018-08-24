@@ -25,12 +25,12 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             }
         }
 
-        public XElement InsertarProcesoSeleccion(int? pIdCandidato = null, int? pIdRequisicion = null, string pClUsuario = null, string pNbPrograma = null)
+        public XElement InsertarProcesoSeleccion(int? pIdCandidato = null, int? pIdEmpleado = null, int? pIdRequisicion = null, string pClUsuario = null, string pNbPrograma = null)
         {
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
-                context.SPE_INSERTA_PROCESO_SELECCION(pOutClaveRetorno, pIdCandidato, pIdRequisicion, pClUsuario, pNbPrograma);
+                context.SPE_INSERTA_PROCESO_SELECCION(pOutClaveRetorno, pIdCandidato, pIdEmpleado, pIdRequisicion, pClUsuario, pNbPrograma);
                 return XElement.Parse(pOutClaveRetorno.Value.ToString());
             }
         }
@@ -271,7 +271,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             }
         }
 
-        public XElement InsertarActualizaCopiaSocioEconomico(int idCandidato, int idProceso, string pClUsuario, string pNbPrograma)
+        public XElement InsertarActualizaCopiaSocioEconomico(int? idCandidato, int idProceso, string pClUsuario, string pNbPrograma)
         {
             using (context = new SistemaSigeinEntities())
             {

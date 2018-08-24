@@ -37,7 +37,7 @@
         }
 
         function onCloseWindow(sender, args) {
-            var lista = $find("<%# rlvPeriodos.ClientID%>");
+            var lista = $find('<%# rlvPeriodos.ClientID%>');
             lista.rebind();
         }
 
@@ -59,11 +59,11 @@
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                 { if (shouldSubmit) { this.click(); } });
 
-                radconfirm('¿Deseas cerrar el periodo ' + vNombrePeriodo + ' ?, una vez cerrado ya no será posible configurarlo.', callBackFunction, 400, 170, null, "Cerrar Periodo");
+                radconfirm('¿Deseas cerrar el período ' + vNombrePeriodo + ' ?, una vez cerrado ya no será posible configurarlo.', callBackFunction, 400, 170, null, "Cerrar Periodo");
                 args.set_cancel(true);
             }
             else {
-                radalert("Seleccione un periodo del tablero de control.", 400, 150, "");
+                radalert("Seleccione un período del tablero de control.", 400, 150, "");
                 args.set_cancel(true);
             }
         }
@@ -78,13 +78,13 @@
         }
 
         function AbrirVentanaNuevo() {
-            openChildDialog("VentanaNuevoTableroControl.aspx", "WinTableroControl", "Nuevo periodo")
+            openChildDialog("VentanaNuevoTableroControl.aspx", "WinTableroControl", "Nuevo período")
         }
 
         function OpenEditEventoWindow() {
             var vIdPeriodo = GetPeriodoId();
             if (vIdPeriodo != null) {
-                openChildDialog("VentanaNuevoTableroControl.aspx?pIdPeriodo="+ vIdPeriodo, "WinTableroControl", "Nuevo periodo");
+                openChildDialog("VentanaNuevoTableroControl.aspx?pIdPeriodo="+ vIdPeriodo, "WinTableroControl", "Nuevo período");
             }
         }
 
@@ -96,7 +96,7 @@
                 openChildDialog("VentanaConsultaTablero.aspx?pIdTablero=" + vIdPeriodo, "winConsultatablero", "Consultar periodo", vWindowProperties)
             }
             else {
-                radalert("Selecciona un periodo del tablero de control.", 400, 150);
+                radalert("Selecciona un período del tablero de control.", 400, 150);
             }
         }
 
@@ -108,7 +108,7 @@
                 openChildDialog("VentanaConfiguracionTablero.aspx?pIdPeriodo=" + vIdPeriodo, "WinTableroControl", "Configuración de consulta", vWindowProperties)
             }
             else {
-                radalert("Selecciona un periodo del tablero de control.", 400, 150);
+                radalert("Selecciona un período del tablero de control.", 400, 150);
             }
         }
 
@@ -134,61 +134,62 @@
                 var vWindowPropierties = {
                     height: 200
                 };
-                confirmAction(sender, args, "Deseas copiar el periodo " + vNombrePeriodo + "?, Este proceso no podra revertirse.");
+                confirmAction(sender, args, "Deseas copiar el período " + vNombrePeriodo + "?, Este proceso no podra revertirse.");
             }
             else {
-                radalert("Selecciona un periodo del tablero de control.", 400, 150);
+                radalert("Selecciona un período del tablero de control.", 400, 150);
                 args.set_cancel(true);
             }
         }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+     <telerik:RadAjaxLoadingPanel ID="ralpPeriodos" runat="server"></telerik:RadAjaxLoadingPanel>
     <telerik:RadAjaxManager ID="ramOrganigrama" runat="server">
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="rlvPeriodos">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" LoadingPanelID="ralpPeriodosClima"></telerik:AjaxUpdatedControl>
-                     <telerik:AjaxUpdatedControl ControlID="txtClPeriodo"  LoadingPanelID="ramOrganigrama" />
-                     <telerik:AjaxUpdatedControl ControlID="txtDsPeriodo"  LoadingPanelID="ramOrganigrama" />
-                     <telerik:AjaxUpdatedControl ControlID="txtClEstatus"  LoadingPanelID="ramOrganigrama" />
-                    <telerik:AjaxUpdatedControl ControlID="txtUsuarioMod" LoadingPanelID="ramOrganigrama" />
-                     <telerik:AjaxUpdatedControl ControlID="txtFechaMod"  LoadingPanelID="ramOrganigrama" />
+                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" LoadingPanelID="ralpPeriodos"></telerik:AjaxUpdatedControl>
+                     <telerik:AjaxUpdatedControl ControlID="txtClPeriodo"  LoadingPanelID="ralpPeriodos" ></telerik:AjaxUpdatedControl>
+                     <telerik:AjaxUpdatedControl ControlID="txtDsPeriodo"  LoadingPanelID="ralpPeriodos" ></telerik:AjaxUpdatedControl>
+                     <telerik:AjaxUpdatedControl ControlID="txtClEstatus"  LoadingPanelID="ralpPeriodos" ></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="txtUsuarioMod" LoadingPanelID="ralpPeriodos" ></telerik:AjaxUpdatedControl>
+                     <telerik:AjaxUpdatedControl ControlID="txtFechaMod"  LoadingPanelID="ralpPeriodos" ></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="rbAscendente">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" LoadingPanelID="ralpPeriodosClima"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" LoadingPanelID="ralpPeriodos"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="rbDescendente">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" LoadingPanelID="ralpPeriodosClima"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" LoadingPanelID="ralpPeriodos"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="rfFiltros">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="rfFiltros" LoadingPanelID="ralpPeriodosClima"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="rfFiltros" LoadingPanelID="ralpPeriodos"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="rfFiltros">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" LoadingPanelID="ralpPeriodosClima"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" LoadingPanelID="ralpPeriodos"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnEliminar">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" LoadingPanelID="ralpPeriodosClima" UpdatePanelHeight="100%"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" LoadingPanelID="ralpPeriodos" UpdatePanelHeight="100%"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="rdAgregar">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" LoadingPanelID="ralpPeriodosClima"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" LoadingPanelID="ralpPeriodos"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnCopiar">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" LoadingPanelID="ralpPeriodosClima"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" LoadingPanelID="ralpPeriodos"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -284,7 +285,7 @@
                     <label class="labelTitulo">Administrar</label>
                     <telerik:RadButton ID="btnNuevo" runat="server" Text="Agregar" AutoPostBack="false" OnClientClicked="AbrirVentanaNuevo"></telerik:RadButton>
                     <telerik:RadButton ID="btnConfigurar" runat="server" Text="Configurar" AutoPostBack="false" OnClientClicked="OpenConfigurarTableroWindow"></telerik:RadButton>
-                      <telerik:RadButton ID="btnCerrar" runat="server" Text="Cerrar periodo" OnClientClicking="ConfirmarCerrar" OnClick="btnCerrar_Click"></telerik:RadButton>
+                      <telerik:RadButton ID="btnCerrar" runat="server" Text="Cerrar período" OnClientClicking="ConfirmarCerrar" OnClick="btnCerrar_Click"></telerik:RadButton>
                    <%-- <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" OnClientClicking="ConfirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>--%>
                     <telerik:RadButton ID="btnCopiar" runat="server" Text="Copiar de ..." OnClientClicking="ConfirmarCopiar" OnClick="btnCopiar_Click"></telerik:RadButton>
                 </div>
@@ -296,7 +297,7 @@
                         </telerik:RadPageView>
                       <telerik:RadPageView ID="rpvInformacion" runat="server">
                         <div class="ctrlBasico">
-                            <label style="width: 120px;" id="lblEvento" name="lblEvento" runat="server">Periodo:</label>
+                            <label style="width: 120px;" id="lblEvento" name="lblEvento" runat="server">Período:</label>
                             <div class="divControlDerecha">
                                 <telerik:RadTextBox ID="txtClPeriodo" Enabled="false" runat="server" Width="400px" MaxLength="1000"></telerik:RadTextBox>
                             </div>
@@ -341,7 +342,7 @@
             </div>
         </telerik:RadPane>
         <telerik:RadPane ID="rpAyudaTableroControl" runat="server" Scrolling="None" Width="20px">
-            <telerik:RadSlidingZone ID="rszAyudaTableroControl" runat="server" SlideDirection="Left" ExpandedPaneId="rsClimaLaboral" Width="20px">
+            <telerik:RadSlidingZone ID="rszAyudaTableroControl" runat="server" SlideDirection="Left" ExpandedPaneId="rsClimaLaboral" Width="20px" ClickToOpen="true">
                 <telerik:RadSlidingPane ID="rspAyudaTableroControl" runat="server" Title="Ayuda" Width="240px" RenderMode="Mobile" Height="100%">
                     <div style="padding: 20px; text-align: justify;">
                         <p>
@@ -356,8 +357,8 @@
                             <legend>Ordenar por:</legend>
                             <telerik:RadComboBox ID="cmbOrdenamiento" runat="server">
                                 <Items>
-                                    <telerik:RadComboBoxItem Text="Clave del periodo" Value="CL_PERIODO" />
-                                    <telerik:RadComboBoxItem Text="Nombre del periodo" Value="NB_PERIODO" />
+                                    <telerik:RadComboBoxItem Text="Clave del período" Value="CL_PERIODO" />
+                                    <telerik:RadComboBoxItem Text="Nombre del período" Value="NB_PERIODO" />
                                     <telerik:RadComboBoxItem Text="Estatus" Value="CL_ESTADO_PERIODO" />
                                     <telerik:RadComboBoxItem Text="Fecha de creación" Value="FE_INICIO" />
                                 </Items>

@@ -22,14 +22,14 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar
             }
         }
 
-        public List<SPE_OBTIENE_EMPLEADOS_Result> ObtenerEmpleados(XElement pXmlSeleccion = null, bool? pFgFoto = false, string pClUsuario = null, bool? pFgActivo = null, int? pIdEmpresa = null)
+        public List<SPE_OBTIENE_EMPLEADOS_Result> ObtenerEmpleados(XElement pXmlSeleccion = null, bool? pFgFoto = false, string pClUsuario = null, bool? pFgActivo = null, int? pIdEmpresa = null,int? pIdRol = null)
         {
             using (context = new SistemaSigeinEntities())
             {
                 string vXmlFiltro = null;
                 if (pXmlSeleccion != null)
                     vXmlFiltro = pXmlSeleccion.ToString();
-                return context.SPE_OBTIENE_EMPLEADOS(vXmlFiltro, pClUsuario, pFgActivo, pFgFoto, pIdEmpresa).ToList();
+                return context.SPE_OBTIENE_EMPLEADOS(vXmlFiltro, pClUsuario, pFgActivo, pFgFoto, pIdEmpresa, pIdRol).ToList();
             }
         }
 
@@ -40,6 +40,14 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(int));
                 context.SPE_INSERTA_ACTUALIZA_S_CONFIGURACION_LICENCIA(pout_clave_retorno, CL_CONFIGURACION, NO_CONFIGURACION, CL_USUARIO, NB_PROGRAMA, TIPO_TRANSACCION);
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
+            }
+        }
+
+        public List<SPE_OBTIENE_LICENCIA_VOLUMEN_Result> ObtenerLicenciaVolumen(bool? pFG_ACTIVO = null, int? pID_EMPRESA = null)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                return context.SPE_OBTIENE_LICENCIA_VOLUMEN(pFG_ACTIVO, pID_EMPRESA).ToList();
             }
         }
 	}

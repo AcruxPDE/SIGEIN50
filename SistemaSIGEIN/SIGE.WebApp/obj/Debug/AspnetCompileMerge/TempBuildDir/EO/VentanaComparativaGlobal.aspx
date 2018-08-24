@@ -57,14 +57,14 @@
         }
 
         function OpenCumPersonal(pIdEvaluado, pIdPeriodo) {
-            var vURL = "../EO/VentanaReporteCumplimientoPersonal.aspx";
+            var vURL = "VentanaReporteCumplimientoPersonal.aspx";
             var vTitulo = "Reporte Cumplimiento Personal";
             vURL = vURL + "?idEvaluado=" + pIdEvaluado + "&idPeriodo=" + pIdPeriodo;
             OpenSelectionWindow(vURL, "winEvaluado", "Reporte cumplimiento personal")
         }
 
         function OpenIndividualComparativo(pIdEvaluado,pIdEmpleado) {
-            OpenSelectionWindow("/EO/VentanaComparativaIndividual.aspx?ID_EVALUADO=" + pIdEvaluado + "&ID_EMPLEADO=" + pIdEmpleado + "&CL_ORIGEN=GLOBAL", "winEvaluado", "Comparación desempeño personal");
+            OpenSelectionWindow("VentanaComparativaIndividual.aspx?ID_EVALUADO=" + pIdEvaluado + "&ID_EMPLEADO=" + pIdEmpleado + "&CL_ORIGEN=GLOBAL", "winEvaluado", "Comparación desempeño personal");
         }
 
     </script>

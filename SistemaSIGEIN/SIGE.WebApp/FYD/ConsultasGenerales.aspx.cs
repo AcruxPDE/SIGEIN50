@@ -14,6 +14,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using Telerik.Web.UI;
+using WebApp.Comunes;
 
 namespace SIGE.WebApp.FYD
 {
@@ -25,6 +26,8 @@ namespace SIGE.WebApp.FYD
         private string vClUsuario;
         private string vNbPrograma;
         private int? vIdEmpresa;
+        private int? vIdRol;
+        private string vNbFirstRadEditorTagName = "p";
 
         private XElement vSeleccion { get; set; }
 
@@ -156,8 +159,11 @@ namespace SIGE.WebApp.FYD
 
             if (oPeriodo != null)
             {
-                txtPeriodo.InnerText = oPeriodo.DS_PERIODO;
-                txtClavePeriodo.InnerText = oPeriodo.CL_PERIODO;
+                //txtPeriodo.InnerText = oPeriodo.DS_PERIODO;
+                //txtClavePeriodo.InnerText = oPeriodo.CL_PERIODO;
+                txtClPeriodo.InnerText = oPeriodo.CL_PERIODO;
+                txtDsPeriodo.InnerText = oPeriodo.NB_PERIODO;
+                txtEstatus.InnerText = oPeriodo.CL_ESTADO_PERIODO;
 
                 if (oPeriodo.FG_AUTOEVALUACION)
                 {
@@ -184,12 +190,39 @@ namespace SIGE.WebApp.FYD
                     vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? "Otros" : String.Join(", ", vTiposEvaluacion, "Otros");
                 }
 
-                txtTiposEvaluacion.InnerText = vTiposEvaluacion;
+                txtTipoEvaluacion.InnerText = vTiposEvaluacion;
+
+                if (oPeriodo.DS_NOTAS != null)
+                {
+                    if (oPeriodo.DS_NOTAS.Contains("DS_NOTA"))
+                    {
+                        txtNotas.InnerHtml = Utileria.MostrarNotas(oPeriodo.DS_NOTAS);
+                    }
+                    else
+                    {
+                        XElement vNotas = XElement.Parse(oPeriodo.DS_NOTAS);
+                        if (vNotas != null)
+                        {
+                            vNotas.Name = vNbFirstRadEditorTagName;
+                            txtNotas.InnerHtml = vNotas.ToString();
+                        }
+                    }
+                }
 
                 ConsultaGeneralNegocio nConsulta = new ConsultaGeneralNegocio();
                 vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
-                vLstEvaluados = nConsulta.ObtieneEvaluados(vIdPeriodo,vIdEmpresa);
+                vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
+                vLstEvaluados = nConsulta.ObtieneEvaluados(vIdPeriodo, vIdEmpresa, vIdRol);
                 GuardarEvaluados();
+
+                oLstPeriodos.Add(new E_PERIODO_EVALUACION
+                {
+                    ID_PERIODO = oPeriodo.ID_PERIODO,
+                    CL_PERIODO = oPeriodo.CL_PERIODO,
+                    NB_PERIODO = oPeriodo.NB_PERIODO,
+                    DS_PERIODO = oPeriodo.DS_PERIODO
+                });
+
             }
 
             //oListaPeriodosFuente = neg.ObtenerPeriodosEvaluacion();

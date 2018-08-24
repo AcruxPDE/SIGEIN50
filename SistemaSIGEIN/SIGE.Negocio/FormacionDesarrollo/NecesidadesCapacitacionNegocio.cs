@@ -17,10 +17,10 @@ namespace SIGE.Negocio.FormacionDesarrollo
 {
     public class NecesidadesCapacitacionNegocio
     {
-        public List<SPE_OBTIENE_NECESIDADES_CAPACITACION_Result> obtenerNecesidadesCapacitacion(int? pIdPeriodo, int? pIdDepartamento, string pDsPrioridades)
+        public List<SPE_OBTIENE_NECESIDADES_CAPACITACION_Result> obtenerNecesidadesCapacitacion(int? pIdPeriodo, int? pIdDepartamento, string pDsPrioridades, int? pIdRol)
         {
             NecesidadesCapacitacionOperaciones oNecesidades = new NecesidadesCapacitacionOperaciones();
-            return oNecesidades.obtenerNecesidadesCapacitacion(pIdPeriodo, pIdDepartamento, pDsPrioridades);
+            return oNecesidades.obtenerNecesidadesCapacitacion(pIdPeriodo, pIdDepartamento, pDsPrioridades, pIdRol);
         }
 
         public E_RESULTADO InsertaProgramaDesdeDNC(string xmldatosDnc, string CL_USUARIO, string NB_PROGRAMA)
@@ -52,7 +52,7 @@ namespace SIGE.Negocio.FormacionDesarrollo
             return false;
         }
 
-        public UDTT_ARCHIVO ExportarDatosExcel(int? ID_PERIODO, int? ID_DEPARTAMENTO, string NB_DEPARTAMENTO, string DS_PRIORIDADES)
+        public UDTT_ARCHIVO ExportarDatosExcel(int? ID_PERIODO, int? ID_DEPARTAMENTO, string NB_DEPARTAMENTO, string DS_PRIORIDADES, int? vIdRol)
         {
             NecesidadesCapacitacionOperaciones op = new NecesidadesCapacitacionOperaciones();
             PeriodoOperaciones neg = new PeriodoOperaciones();
@@ -72,7 +72,7 @@ namespace SIGE.Negocio.FormacionDesarrollo
             string vNbFirstRadEditorTagName = "p";
 
             periodo = neg.ObtenerPeriodoEvaluacion(ID_PERIODO.Value);
-            lista = op.obtenerNecesidadesCapacitacion(ID_PERIODO, ID_DEPARTAMENTO, DS_PRIORIDADES);
+            lista = op.obtenerNecesidadesCapacitacion(ID_PERIODO, ID_DEPARTAMENTO, DS_PRIORIDADES, vIdRol);
             Stream newStream = new MemoryStream();
 
             using (ExcelPackage pck = new ExcelPackage(newStream))
@@ -270,7 +270,7 @@ namespace SIGE.Negocio.FormacionDesarrollo
             return excelNecesidadCapacitacion;
         }
 
-        public DataTable ObtieneNecesidadesCapacitacionPivot(int? pIdPeriodo, int? pIdDepartamento, string pDsPrioridades, ref List<E_NECESIDADES_CAPACITACION> vLstDnc)
+        public DataTable ObtieneNecesidadesCapacitacionPivot(int? pIdPeriodo, int? pIdDepartamento, string pDsPrioridades, ref List<E_NECESIDADES_CAPACITACION> vLstDnc, int? pIdRol)
         {
 
             NecesidadesCapacitacionOperaciones oNecesidades = new NecesidadesCapacitacionOperaciones();
@@ -300,7 +300,7 @@ namespace SIGE.Negocio.FormacionDesarrollo
             //
             DataTable vDtPivot = new DataTable();
 
-            vListaDnc = oNecesidades.obtenerNecesidadesCapacitacion(pIdPeriodo, pIdDepartamento, pDsPrioridades);
+            vListaDnc = oNecesidades.obtenerNecesidadesCapacitacion(pIdPeriodo, pIdDepartamento, pDsPrioridades, pIdRol);
 
             vLstDnc = vListaDnc.Select(t => new E_NECESIDADES_CAPACITACION
             {

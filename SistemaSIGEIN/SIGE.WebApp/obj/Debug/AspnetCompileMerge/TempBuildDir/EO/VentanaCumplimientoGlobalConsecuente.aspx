@@ -64,13 +64,13 @@
                                 <label></label>
                             </td>
                             <td class="ctrlTableDataContext">
-                                <label>Periodo original</label></td>
+                                <label>Período original</label></td>
                             <td class="ctrlTableDataContext">
-                                <label style="margin-left: 20px;">Periodo consecuente</label></td>
+                                <label style="margin-left: 20px;">Período consecuente</label></td>
                         </tr>
                         <tr>
                             <td class="ctrlTableDataContext">
-                                <label>Periodo:</label></td>
+                                <label>Período:</label></td>
                             <td class="ctrlTableDataBorderContext">
                                 <a onclick="return ShowInsertForm('<%= vIdPeriodo %>');">
                                     <div id="txtClPeriodo" runat="server" width="170" maxlength="1000" enabled="false" style="cursor: pointer;"></div>
@@ -104,7 +104,7 @@
                         </tr>
                         <tr>
                             <td class="ctrlTableDataContext">
-                                <label>Tipo de periodo:</label></td>
+                                <label>Tipo de período:</label></td>
                             <td class="ctrlTableDataBorderContext">
                                 <div id="txtTipoPeriodo" runat="server" width="170" maxlength="1000" enabled="false"></div>
                             </td>
@@ -159,8 +159,8 @@
                             <Columns>
                                 <telerik:GridBoundColumn HeaderStyle-Width="200" HeaderText="Puesto" DataField="PUESTOS" UniqueName="PUESTOS" CurrentFilterFunction="Contains" FilterControlWidth="180" AutoPostBackOnFilter="true"></telerik:GridBoundColumn>
                                 <telerik:GridHyperLinkColumn HeaderStyle-Width="250" UniqueName="NB_EVALUADO_ORIGINAL" DataTextField="NB_EVALUADO_ORIGINAL" DataNavigateUrlFields="ID_PERIODO_ORIGINAL, ID_PERIODO_CONSECUENTE, ID_EVALUADO_ORIGINAL, ID_EVALUADO_CONSECUENTE" DataNavigateUrlFormatString="javascript:OpenPersonalConsecuente({0},{1},{2},{3})" HeaderText="Nombre" CurrentFilterFunction="Contains" FilterControlWidth="210" AutoPostBackOnFilter="true"></telerik:GridHyperLinkColumn>
-                                <telerik:GridBoundColumn ColumnGroupName="ValorCumplido" CurrentFilterFunction="Contains" HeaderStyle-Width="70" HeaderText="Primer periodo" DataField="C_GLOBAL_ORIGINAL" UniqueName="C_GLOBAL_ORIGINAL" Aggregate="Sum" FooterAggregateFormatString="Total: {0:N2}%" FooterStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%" FilterControlWidth="50" AutoPostBackOnFilter="true" HeaderStyle-HorizontalAlign="Center"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn ColumnGroupName="ValorCumplido" CurrentFilterFunction="Contains" HeaderStyle-Width="70" HeaderText="Periodo consecuente" DataField="C_GLOBAL_CONSECUENTE" UniqueName="C_GLOBAL_CONSECUENTE" Aggregate="Sum" FooterAggregateFormatString="Total: {0:N2}%" FooterStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%" FilterControlWidth="50" AutoPostBackOnFilter="true" HeaderStyle-HorizontalAlign="Center"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn ColumnGroupName="ValorCumplido" CurrentFilterFunction="Contains" HeaderStyle-Width="70" HeaderText="Primer período" DataField="C_GLOBAL_ORIGINAL" UniqueName="C_GLOBAL_ORIGINAL" Aggregate="Sum" FooterAggregateFormatString="Total: {0:N2}%" FooterStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%" FilterControlWidth="50" AutoPostBackOnFilter="true" HeaderStyle-HorizontalAlign="Center"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn ColumnGroupName="ValorCumplido" CurrentFilterFunction="Contains" HeaderStyle-Width="70" HeaderText="Período consecuente" DataField="C_GLOBAL_CONSECUENTE" UniqueName="C_GLOBAL_CONSECUENTE" Aggregate="Sum" FooterAggregateFormatString="Total: {0:N2}%" FooterStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%" FilterControlWidth="50" AutoPostBackOnFilter="true" HeaderStyle-HorizontalAlign="Center"></telerik:GridBoundColumn>
                             </Columns>
                         </MasterTableView>
                     </telerik:RadGrid>
@@ -176,7 +176,7 @@
                         Height="100%"
                         Transitions="true"
                         Skin="Silk">
-                        <ChartTitle Text="Cumplimiento global de periodos consecuentes">
+                        <ChartTitle Text="Cumplimiento global de períodos consecuentes">
                             <Appearance Align="Center" Position="Top">
                             </Appearance>
                         </ChartTitle>

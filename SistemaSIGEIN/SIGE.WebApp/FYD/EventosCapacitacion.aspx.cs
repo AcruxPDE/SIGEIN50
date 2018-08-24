@@ -24,9 +24,24 @@ namespace SIGE.WebApp.FYD
             set { ViewState["vs_ec_lista_eventos"] = value; }
         }
 
-        private int vIdEventoSeleccionado {
+        private int? vIdRol;
+
+        private int vIdEventoSeleccionado 
+        {
             get { return (int)ViewState["vs_ec_id_evento_seleccionado"]; }
             set { ViewState["vs_ec_id_evento_seleccionado"] = value; }
+        }
+
+        public bool vEditar
+        {
+            get { return (bool)ViewState["vs_vEditar"]; }
+            set { ViewState["vs_vEditar"] = value; }
+        }
+
+        public bool vEliminar
+        {
+            get { return (bool)ViewState["vs_vEliminar"]; }
+            set { ViewState["vs_vEliminar"] = value; }
         }
 
         #endregion
@@ -49,7 +64,7 @@ namespace SIGE.WebApp.FYD
         {
             EventoCapacitacionNegocio neg = new EventoCapacitacionNegocio();
 
-            UDTT_ARCHIVO excel = neg.ListaAsistencia(vIdEventoSeleccionado);
+            UDTT_ARCHIVO excel = neg.ListaAsistencia(vIdEventoSeleccionado, vIdRol);
 
             if (excel.FI_ARCHIVO.Length != 0)
             {
@@ -64,14 +79,32 @@ namespace SIGE.WebApp.FYD
             }
         }
 
+        private void SeguridadProcesos()
+        {
+            btnAgregarEvento.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.A");
+            vEditar = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.B");
+            vEliminar = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.C");
+            btnCopiar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.D");
+            btnEnvioCorreo.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.E");
+            btnEnvioCorreoEvaluador.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.F");
+            btnCapturaAsistencia.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.G");
+            btnEvaluacionResultados.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.H");
+            btnCalendario.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.I");
+            btnListaAsistencia.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.J");
+            btnReporteResultados.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.K");
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
+
             if (!Page.IsPostBack)
             {
                 vIdEventoSeleccionado = 0;
                 //ObtenerListaEventos();
+                SeguridadProcesos();
             }
         }
 

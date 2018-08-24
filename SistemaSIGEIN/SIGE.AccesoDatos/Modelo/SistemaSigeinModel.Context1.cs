@@ -62,31 +62,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_CALLE_Result>("SPE_OBTIENE_C_CALLE", pIN_ID_CALLEParameter, pIN_CL_PAISParameter, pIN_CL_ESTADOParameter, pIN_CL_MUNICIPIOParameter, pIN_CL_COLONIAParameter, pIN_CL_CALLEParameter, pIN_NB_CALLEParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_C_CATALOGO_VALOR_Result> SPE_OBTIENE_C_CATALOGO_VALOR(Nullable<int> pIN_ID_CATALOGO_VALOR, string pIN_CL_CATALOGO_VALOR, string pIN_NB_CATALOGO_VALOR, string pIN_DS_CATALOGO_VALOR, Nullable<int> pIN_ID_CATALOGO_LISTA)
-        {
-            var pIN_ID_CATALOGO_VALORParameter = pIN_ID_CATALOGO_VALOR.HasValue ?
-                new ObjectParameter("PIN_ID_CATALOGO_VALOR", pIN_ID_CATALOGO_VALOR) :
-                new ObjectParameter("PIN_ID_CATALOGO_VALOR", typeof(int));
-    
-            var pIN_CL_CATALOGO_VALORParameter = pIN_CL_CATALOGO_VALOR != null ?
-                new ObjectParameter("PIN_CL_CATALOGO_VALOR", pIN_CL_CATALOGO_VALOR) :
-                new ObjectParameter("PIN_CL_CATALOGO_VALOR", typeof(string));
-    
-            var pIN_NB_CATALOGO_VALORParameter = pIN_NB_CATALOGO_VALOR != null ?
-                new ObjectParameter("PIN_NB_CATALOGO_VALOR", pIN_NB_CATALOGO_VALOR) :
-                new ObjectParameter("PIN_NB_CATALOGO_VALOR", typeof(string));
-    
-            var pIN_DS_CATALOGO_VALORParameter = pIN_DS_CATALOGO_VALOR != null ?
-                new ObjectParameter("PIN_DS_CATALOGO_VALOR", pIN_DS_CATALOGO_VALOR) :
-                new ObjectParameter("PIN_DS_CATALOGO_VALOR", typeof(string));
-    
-            var pIN_ID_CATALOGO_LISTAParameter = pIN_ID_CATALOGO_LISTA.HasValue ?
-                new ObjectParameter("PIN_ID_CATALOGO_LISTA", pIN_ID_CATALOGO_LISTA) :
-                new ObjectParameter("PIN_ID_CATALOGO_LISTA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_CATALOGO_VALOR_Result>("SPE_OBTIENE_C_CATALOGO_VALOR", pIN_ID_CATALOGO_VALORParameter, pIN_CL_CATALOGO_VALORParameter, pIN_NB_CATALOGO_VALORParameter, pIN_DS_CATALOGO_VALORParameter, pIN_ID_CATALOGO_LISTAParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_C_DEPENDIENTE_ECONOMICO_Result> SPE_OBTIENE_C_DEPENDIENTE_ECONOMICO(Nullable<int> pIN_ID_DEPENDIENTE_ECONOMICO, string pIN_NB_DEPENDIENTE_ECONOMICO, string pIN_CL_PARENTEZCO, string pIN_CL_GENERO, Nullable<System.DateTime> pIN_FE_NACIMIENTO, Nullable<int> pIN_ID_BITACORA, Nullable<bool> pIN_CL_OCUPACION, Nullable<bool> pIN_FG_ACTIVO)
         {
             var pIN_ID_DEPENDIENTE_ECONOMICOParameter = pIN_ID_DEPENDIENTE_ECONOMICO.HasValue ?
@@ -214,31 +189,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_PREGUNTA", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_GRUPO_PREGUNTA_Result>("SPE_OBTIENE_C_GRUPO_PREGUNTA", pIN_ID_GRUPO_PREGUNTAParameter, pIN_CL_GRUPO_PREGUNTAParameter, pIN_NB_GRUPO_PREGUNTAParameter, pIN_ID_PREGUNTAParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_C_MUNICIPIO_Result> SPE_OBTIENE_C_MUNICIPIO(Nullable<int> pIN_ID_MUNICIPIO, string pIN_CL_PAIS, string pIN_CL_ESTADO, string pIN_CL_MUNICIPIO, string pIN_NB_MUNICIPIO)
-        {
-            var pIN_ID_MUNICIPIOParameter = pIN_ID_MUNICIPIO.HasValue ?
-                new ObjectParameter("PIN_ID_MUNICIPIO", pIN_ID_MUNICIPIO) :
-                new ObjectParameter("PIN_ID_MUNICIPIO", typeof(int));
-    
-            var pIN_CL_PAISParameter = pIN_CL_PAIS != null ?
-                new ObjectParameter("PIN_CL_PAIS", pIN_CL_PAIS) :
-                new ObjectParameter("PIN_CL_PAIS", typeof(string));
-    
-            var pIN_CL_ESTADOParameter = pIN_CL_ESTADO != null ?
-                new ObjectParameter("PIN_CL_ESTADO", pIN_CL_ESTADO) :
-                new ObjectParameter("PIN_CL_ESTADO", typeof(string));
-    
-            var pIN_CL_MUNICIPIOParameter = pIN_CL_MUNICIPIO != null ?
-                new ObjectParameter("PIN_CL_MUNICIPIO", pIN_CL_MUNICIPIO) :
-                new ObjectParameter("PIN_CL_MUNICIPIO", typeof(string));
-    
-            var pIN_NB_MUNICIPIOParameter = pIN_NB_MUNICIPIO != null ?
-                new ObjectParameter("PIN_NB_MUNICIPIO", pIN_NB_MUNICIPIO) :
-                new ObjectParameter("PIN_NB_MUNICIPIO", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_MUNICIPIO_Result>("SPE_OBTIENE_C_MUNICIPIO", pIN_ID_MUNICIPIOParameter, pIN_CL_PAISParameter, pIN_CL_ESTADOParameter, pIN_CL_MUNICIPIOParameter, pIN_NB_MUNICIPIOParameter);
         }
     
         public virtual ObjectResult<SPE_OBTIENE_C_PREGUNTA_Result> SPE_OBTIENE_C_PREGUNTA(Nullable<int> pIN_ID_PREGUNTA, string pIN_CL_PREGUNTA, string pIN_NB_PREGUNTA, string pIN_DS_PREGUNTA, string pIN_CL_TIPO_PREGUNTA, Nullable<decimal> pIN_NO_VALOR, Nullable<bool> pIN_FG_REQUERIDO, Nullable<bool> pIN_FG_ACTIVO, Nullable<int> pIN_ID_COMPETENCIA, Nullable<int> pIN_ID_BITACORA)
@@ -380,35 +330,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_RESPUESTA_Result>("SPE_OBTIENE_C_RESPUESTA", pIN_ID_RESPUESTAParameter, pIN_CL_RESPUESTAParameter, pIN_NB_RESPUESTAParameter, pIN_DS_RESPUESTAParameter, pIN_NO_VALORParameter, pIN_FG_ACTIVOParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_C_ROL_Result> SPE_OBTIENE_C_ROL(Nullable<int> pIN_ID_ROL, string pIN_CL_ROL, string pIN_NB_ROL, string pIN_XML_AUTORIZACION, Nullable<bool> pIN_FG_ACTIVO, Nullable<System.DateTime> pIN_FE_INACTIVO)
-        {
-            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
-                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
-                new ObjectParameter("PIN_ID_ROL", typeof(int));
-    
-            var pIN_CL_ROLParameter = pIN_CL_ROL != null ?
-                new ObjectParameter("PIN_CL_ROL", pIN_CL_ROL) :
-                new ObjectParameter("PIN_CL_ROL", typeof(string));
-    
-            var pIN_NB_ROLParameter = pIN_NB_ROL != null ?
-                new ObjectParameter("PIN_NB_ROL", pIN_NB_ROL) :
-                new ObjectParameter("PIN_NB_ROL", typeof(string));
-    
-            var pIN_XML_AUTORIZACIONParameter = pIN_XML_AUTORIZACION != null ?
-                new ObjectParameter("PIN_XML_AUTORIZACION", pIN_XML_AUTORIZACION) :
-                new ObjectParameter("PIN_XML_AUTORIZACION", typeof(string));
-    
-            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
-                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
-                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
-    
-            var pIN_FE_INACTIVOParameter = pIN_FE_INACTIVO.HasValue ?
-                new ObjectParameter("PIN_FE_INACTIVO", pIN_FE_INACTIVO) :
-                new ObjectParameter("PIN_FE_INACTIVO", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_ROL_Result>("SPE_OBTIENE_C_ROL", pIN_ID_ROLParameter, pIN_CL_ROLParameter, pIN_NB_ROLParameter, pIN_XML_AUTORIZACIONParameter, pIN_FG_ACTIVOParameter, pIN_FE_INACTIVOParameter);
         }
     
         public virtual ObjectResult<SPE_OBTIENE_C_SECUENCIA_Result> SPE_OBTIENE_C_SECUENCIA(string pIN_CL_SECUENCIA, string pIN_CL_PREFIJO, Nullable<int> pIN_NO_ULTIMO_VALOR, Nullable<int> pIN_NO_VALOR_MAXIMO, string pIN_CL_SUFIJO, Nullable<byte> pIN_NO_DIGITOS)
@@ -3801,15 +3722,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_C_EMPRESA", xML_RESULTADO, pIN_ID_EMPRESAParameter, pIN_CL_EMPRESAParameter, pIN_NB_EMPRESAParameter, pIN_NB_RAZON_SOCIALParameter, pIN_CL_USUARIO_APP_CREAParameter, pIN_CL_USUARIO_APP_MODIFICAParameter, pIN_NB_PROGRAMA_CREAParameter, pIN_NB_PROGRAMA_MODIFICAParameter, pIN_TIPO_TRANSACCIONParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_ROL_Result> SPE_OBTIENE_ROL(Nullable<int> pIN_ID_ROL)
-        {
-            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
-                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
-                new ObjectParameter("PIN_ID_ROL", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_ROL_Result>("SPE_OBTIENE_ROL", pIN_ID_ROLParameter);
-        }
-    
         public virtual int SPE_ELIMINA_C_COMPETENCIA_NIVEL(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_NIVEL_COMPETENCIA, string pIN_CL_USUARIO_APP_CREA, string pIN_NB_PROGRAMA_CREA)
         {
             var pIN_ID_NIVEL_COMPETENCIAParameter = pIN_ID_NIVEL_COMPETENCIA.HasValue ?
@@ -3858,43 +3770,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_COMPETENCIA", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_COMPETENCIA_NIVEL_Result>("SPE_OBTIENE_C_COMPETENCIA_NIVEL", pIN_ID_NIVEL_COMPETENCIAParameter, pIN_CL_NIVEL_COMPETENCIAParameter, pIN_NB_NIVEL_COMPETENCIAParameter, pIN_DS_NIVEL_COMPETENCIA_PUESTOParameter, pIN_DS_NIVEL_COMPETENCIA_PERSONAParameter, pIN_NO_VALOR_NIVELParameter, pIN_ID_COMPETENCIAParameter);
-        }
-    
-        public virtual int SPE_INSERTA_ACTUALIZA_ROLES(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_ROL, string pIN_CL_ROL, string pIN_NB_ROL, Nullable<bool> pIN_FG_ACTIVO, string pIN_XML_FUNCIONES, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
-        {
-            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
-                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
-                new ObjectParameter("PIN_ID_ROL", typeof(int));
-    
-            var pIN_CL_ROLParameter = pIN_CL_ROL != null ?
-                new ObjectParameter("PIN_CL_ROL", pIN_CL_ROL) :
-                new ObjectParameter("PIN_CL_ROL", typeof(string));
-    
-            var pIN_NB_ROLParameter = pIN_NB_ROL != null ?
-                new ObjectParameter("PIN_NB_ROL", pIN_NB_ROL) :
-                new ObjectParameter("PIN_NB_ROL", typeof(string));
-    
-            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
-                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
-                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
-    
-            var pIN_XML_FUNCIONESParameter = pIN_XML_FUNCIONES != null ?
-                new ObjectParameter("PIN_XML_FUNCIONES", pIN_XML_FUNCIONES) :
-                new ObjectParameter("PIN_XML_FUNCIONES", typeof(string));
-    
-            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
-                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
-                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
-    
-            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
-                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
-                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
-    
-            var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
-                new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
-                new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_ROLES", xML_RESULTADO, pIN_ID_ROLParameter, pIN_CL_ROLParameter, pIN_NB_ROLParameter, pIN_FG_ACTIVOParameter, pIN_XML_FUNCIONESParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter);
         }
     
         public virtual int SPE_ELIMINA_ROL(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_ROL, string pIN_CL_USUARIO_APP_CREA, string pIN_NB_PROGRAMA_CREA)
@@ -6349,196 +6224,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_C_INSTRUCTOR", xML_RESULTADO, pIN_ID_INSTRUCTORParameter, pIN_CL_INTRUCTORParameter, pIN_CL_USUARIO_APP_CREAParameter, pIN_NB_PROGRAMA_CREAParameter);
         }
     
-        public virtual int SPE_INSERTA_ACTUALIZA_PLAZA(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PLAZA, string pIN_CL_PLAZA, string pIN_NB_PLAZA, Nullable<int> pIN_ID_EMPLEADO, Nullable<int> pIN_ID_PUESTO, Nullable<int> pIN_ID_PLAZA_JEFE, Nullable<int> pIN_ID_EMPRESA, Nullable<bool> pIN_FG_ACTIVO, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
-        {
-            var pIN_ID_PLAZAParameter = pIN_ID_PLAZA.HasValue ?
-                new ObjectParameter("PIN_ID_PLAZA", pIN_ID_PLAZA) :
-                new ObjectParameter("PIN_ID_PLAZA", typeof(int));
-    
-            var pIN_CL_PLAZAParameter = pIN_CL_PLAZA != null ?
-                new ObjectParameter("PIN_CL_PLAZA", pIN_CL_PLAZA) :
-                new ObjectParameter("PIN_CL_PLAZA", typeof(string));
-    
-            var pIN_NB_PLAZAParameter = pIN_NB_PLAZA != null ?
-                new ObjectParameter("PIN_NB_PLAZA", pIN_NB_PLAZA) :
-                new ObjectParameter("PIN_NB_PLAZA", typeof(string));
-    
-            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
-                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
-                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
-    
-            var pIN_ID_PUESTOParameter = pIN_ID_PUESTO.HasValue ?
-                new ObjectParameter("PIN_ID_PUESTO", pIN_ID_PUESTO) :
-                new ObjectParameter("PIN_ID_PUESTO", typeof(int));
-    
-            var pIN_ID_PLAZA_JEFEParameter = pIN_ID_PLAZA_JEFE.HasValue ?
-                new ObjectParameter("PIN_ID_PLAZA_JEFE", pIN_ID_PLAZA_JEFE) :
-                new ObjectParameter("PIN_ID_PLAZA_JEFE", typeof(int));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
-                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
-                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
-    
-            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
-                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
-                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
-    
-            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
-                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
-                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
-    
-            var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
-                new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
-                new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_PLAZA", xML_RESULTADO, pIN_ID_PLAZAParameter, pIN_CL_PLAZAParameter, pIN_NB_PLAZAParameter, pIN_ID_EMPLEADOParameter, pIN_ID_PUESTOParameter, pIN_ID_PLAZA_JEFEParameter, pIN_ID_EMPRESAParameter, pIN_FG_ACTIVOParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter);
-        }
-    
-        public virtual int SPE_INSERTA_ACTUALIZA_C_INSTRUCTOR(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_INSTRUCTOR, string pIN_CL_TIPO_INSTRUCTOR, string pIN_CL_INTRUCTOR, string pIN_NB_INSTRUCTOR, string pIN_NB_VALIDADOR, string pIN_CL_RFC, string pIN_CL_CURP, string pIN_CL_STPS, string pIN_CL_PAIS, string pIN_NB_PAIS, string pIN_CL_ESTADO, string pIN_NB_ESTADO, string pIN_CL_MUNICIPIO, string pIN_NB_MUNICIPIO, string pIN_CL_COLONIA, string pIN_NB_COLONIA, string pIN_NB_CALLE, string pIN_NO_INTERIOR, string pIN_NO_EXTERIOR, string pIN_CL_CODIGO_POSTAL, string pIN_DS_ESCOLARIDAD, Nullable<System.DateTime> pIN_FE_NACIMIENTO, string pIN_XML_TELEFONOS, string pIN_CL_CORREO_ELECTRONICO, Nullable<decimal> pIN_MN_COSTO_HORA, Nullable<decimal> pIN_MN_COSTO_PARTICIPANTE, string pIN_DS_EVIDENCIA_COMPETENCIA, string pIN_XML_COMPETENCIAS, string pIN_XML_CURSOS, string pIN_CL_USUARIO_APP_CREA, string pIN_CL_USUARIO_APP_MODIFICA, string pIN_NB_PROGRAMA_CREA, string pIN_NB_PROGRAMA_MODIFICA, string pIN_TIPO_TRANSACCION)
-        {
-            var pIN_ID_INSTRUCTORParameter = pIN_ID_INSTRUCTOR.HasValue ?
-                new ObjectParameter("PIN_ID_INSTRUCTOR", pIN_ID_INSTRUCTOR) :
-                new ObjectParameter("PIN_ID_INSTRUCTOR", typeof(int));
-    
-            var pIN_CL_TIPO_INSTRUCTORParameter = pIN_CL_TIPO_INSTRUCTOR != null ?
-                new ObjectParameter("PIN_CL_TIPO_INSTRUCTOR", pIN_CL_TIPO_INSTRUCTOR) :
-                new ObjectParameter("PIN_CL_TIPO_INSTRUCTOR", typeof(string));
-    
-            var pIN_CL_INTRUCTORParameter = pIN_CL_INTRUCTOR != null ?
-                new ObjectParameter("PIN_CL_INTRUCTOR", pIN_CL_INTRUCTOR) :
-                new ObjectParameter("PIN_CL_INTRUCTOR", typeof(string));
-    
-            var pIN_NB_INSTRUCTORParameter = pIN_NB_INSTRUCTOR != null ?
-                new ObjectParameter("PIN_NB_INSTRUCTOR", pIN_NB_INSTRUCTOR) :
-                new ObjectParameter("PIN_NB_INSTRUCTOR", typeof(string));
-    
-            var pIN_NB_VALIDADORParameter = pIN_NB_VALIDADOR != null ?
-                new ObjectParameter("PIN_NB_VALIDADOR", pIN_NB_VALIDADOR) :
-                new ObjectParameter("PIN_NB_VALIDADOR", typeof(string));
-    
-            var pIN_CL_RFCParameter = pIN_CL_RFC != null ?
-                new ObjectParameter("PIN_CL_RFC", pIN_CL_RFC) :
-                new ObjectParameter("PIN_CL_RFC", typeof(string));
-    
-            var pIN_CL_CURPParameter = pIN_CL_CURP != null ?
-                new ObjectParameter("PIN_CL_CURP", pIN_CL_CURP) :
-                new ObjectParameter("PIN_CL_CURP", typeof(string));
-    
-            var pIN_CL_STPSParameter = pIN_CL_STPS != null ?
-                new ObjectParameter("PIN_CL_STPS", pIN_CL_STPS) :
-                new ObjectParameter("PIN_CL_STPS", typeof(string));
-    
-            var pIN_CL_PAISParameter = pIN_CL_PAIS != null ?
-                new ObjectParameter("PIN_CL_PAIS", pIN_CL_PAIS) :
-                new ObjectParameter("PIN_CL_PAIS", typeof(string));
-    
-            var pIN_NB_PAISParameter = pIN_NB_PAIS != null ?
-                new ObjectParameter("PIN_NB_PAIS", pIN_NB_PAIS) :
-                new ObjectParameter("PIN_NB_PAIS", typeof(string));
-    
-            var pIN_CL_ESTADOParameter = pIN_CL_ESTADO != null ?
-                new ObjectParameter("PIN_CL_ESTADO", pIN_CL_ESTADO) :
-                new ObjectParameter("PIN_CL_ESTADO", typeof(string));
-    
-            var pIN_NB_ESTADOParameter = pIN_NB_ESTADO != null ?
-                new ObjectParameter("PIN_NB_ESTADO", pIN_NB_ESTADO) :
-                new ObjectParameter("PIN_NB_ESTADO", typeof(string));
-    
-            var pIN_CL_MUNICIPIOParameter = pIN_CL_MUNICIPIO != null ?
-                new ObjectParameter("PIN_CL_MUNICIPIO", pIN_CL_MUNICIPIO) :
-                new ObjectParameter("PIN_CL_MUNICIPIO", typeof(string));
-    
-            var pIN_NB_MUNICIPIOParameter = pIN_NB_MUNICIPIO != null ?
-                new ObjectParameter("PIN_NB_MUNICIPIO", pIN_NB_MUNICIPIO) :
-                new ObjectParameter("PIN_NB_MUNICIPIO", typeof(string));
-    
-            var pIN_CL_COLONIAParameter = pIN_CL_COLONIA != null ?
-                new ObjectParameter("PIN_CL_COLONIA", pIN_CL_COLONIA) :
-                new ObjectParameter("PIN_CL_COLONIA", typeof(string));
-    
-            var pIN_NB_COLONIAParameter = pIN_NB_COLONIA != null ?
-                new ObjectParameter("PIN_NB_COLONIA", pIN_NB_COLONIA) :
-                new ObjectParameter("PIN_NB_COLONIA", typeof(string));
-    
-            var pIN_NB_CALLEParameter = pIN_NB_CALLE != null ?
-                new ObjectParameter("PIN_NB_CALLE", pIN_NB_CALLE) :
-                new ObjectParameter("PIN_NB_CALLE", typeof(string));
-    
-            var pIN_NO_INTERIORParameter = pIN_NO_INTERIOR != null ?
-                new ObjectParameter("PIN_NO_INTERIOR", pIN_NO_INTERIOR) :
-                new ObjectParameter("PIN_NO_INTERIOR", typeof(string));
-    
-            var pIN_NO_EXTERIORParameter = pIN_NO_EXTERIOR != null ?
-                new ObjectParameter("PIN_NO_EXTERIOR", pIN_NO_EXTERIOR) :
-                new ObjectParameter("PIN_NO_EXTERIOR", typeof(string));
-    
-            var pIN_CL_CODIGO_POSTALParameter = pIN_CL_CODIGO_POSTAL != null ?
-                new ObjectParameter("PIN_CL_CODIGO_POSTAL", pIN_CL_CODIGO_POSTAL) :
-                new ObjectParameter("PIN_CL_CODIGO_POSTAL", typeof(string));
-    
-            var pIN_DS_ESCOLARIDADParameter = pIN_DS_ESCOLARIDAD != null ?
-                new ObjectParameter("PIN_DS_ESCOLARIDAD", pIN_DS_ESCOLARIDAD) :
-                new ObjectParameter("PIN_DS_ESCOLARIDAD", typeof(string));
-    
-            var pIN_FE_NACIMIENTOParameter = pIN_FE_NACIMIENTO.HasValue ?
-                new ObjectParameter("PIN_FE_NACIMIENTO", pIN_FE_NACIMIENTO) :
-                new ObjectParameter("PIN_FE_NACIMIENTO", typeof(System.DateTime));
-    
-            var pIN_XML_TELEFONOSParameter = pIN_XML_TELEFONOS != null ?
-                new ObjectParameter("PIN_XML_TELEFONOS", pIN_XML_TELEFONOS) :
-                new ObjectParameter("PIN_XML_TELEFONOS", typeof(string));
-    
-            var pIN_CL_CORREO_ELECTRONICOParameter = pIN_CL_CORREO_ELECTRONICO != null ?
-                new ObjectParameter("PIN_CL_CORREO_ELECTRONICO", pIN_CL_CORREO_ELECTRONICO) :
-                new ObjectParameter("PIN_CL_CORREO_ELECTRONICO", typeof(string));
-    
-            var pIN_MN_COSTO_HORAParameter = pIN_MN_COSTO_HORA.HasValue ?
-                new ObjectParameter("PIN_MN_COSTO_HORA", pIN_MN_COSTO_HORA) :
-                new ObjectParameter("PIN_MN_COSTO_HORA", typeof(decimal));
-    
-            var pIN_MN_COSTO_PARTICIPANTEParameter = pIN_MN_COSTO_PARTICIPANTE.HasValue ?
-                new ObjectParameter("PIN_MN_COSTO_PARTICIPANTE", pIN_MN_COSTO_PARTICIPANTE) :
-                new ObjectParameter("PIN_MN_COSTO_PARTICIPANTE", typeof(decimal));
-    
-            var pIN_DS_EVIDENCIA_COMPETENCIAParameter = pIN_DS_EVIDENCIA_COMPETENCIA != null ?
-                new ObjectParameter("PIN_DS_EVIDENCIA_COMPETENCIA", pIN_DS_EVIDENCIA_COMPETENCIA) :
-                new ObjectParameter("PIN_DS_EVIDENCIA_COMPETENCIA", typeof(string));
-    
-            var pIN_XML_COMPETENCIASParameter = pIN_XML_COMPETENCIAS != null ?
-                new ObjectParameter("PIN_XML_COMPETENCIAS", pIN_XML_COMPETENCIAS) :
-                new ObjectParameter("PIN_XML_COMPETENCIAS", typeof(string));
-    
-            var pIN_XML_CURSOSParameter = pIN_XML_CURSOS != null ?
-                new ObjectParameter("PIN_XML_CURSOS", pIN_XML_CURSOS) :
-                new ObjectParameter("PIN_XML_CURSOS", typeof(string));
-    
-            var pIN_CL_USUARIO_APP_CREAParameter = pIN_CL_USUARIO_APP_CREA != null ?
-                new ObjectParameter("PIN_CL_USUARIO_APP_CREA", pIN_CL_USUARIO_APP_CREA) :
-                new ObjectParameter("PIN_CL_USUARIO_APP_CREA", typeof(string));
-    
-            var pIN_CL_USUARIO_APP_MODIFICAParameter = pIN_CL_USUARIO_APP_MODIFICA != null ?
-                new ObjectParameter("PIN_CL_USUARIO_APP_MODIFICA", pIN_CL_USUARIO_APP_MODIFICA) :
-                new ObjectParameter("PIN_CL_USUARIO_APP_MODIFICA", typeof(string));
-    
-            var pIN_NB_PROGRAMA_CREAParameter = pIN_NB_PROGRAMA_CREA != null ?
-                new ObjectParameter("PIN_NB_PROGRAMA_CREA", pIN_NB_PROGRAMA_CREA) :
-                new ObjectParameter("PIN_NB_PROGRAMA_CREA", typeof(string));
-    
-            var pIN_NB_PROGRAMA_MODIFICAParameter = pIN_NB_PROGRAMA_MODIFICA != null ?
-                new ObjectParameter("PIN_NB_PROGRAMA_MODIFICA", pIN_NB_PROGRAMA_MODIFICA) :
-                new ObjectParameter("PIN_NB_PROGRAMA_MODIFICA", typeof(string));
-    
-            var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
-                new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
-                new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_C_INSTRUCTOR", xML_RESULTADO, pIN_ID_INSTRUCTORParameter, pIN_CL_TIPO_INSTRUCTORParameter, pIN_CL_INTRUCTORParameter, pIN_NB_INSTRUCTORParameter, pIN_NB_VALIDADORParameter, pIN_CL_RFCParameter, pIN_CL_CURPParameter, pIN_CL_STPSParameter, pIN_CL_PAISParameter, pIN_NB_PAISParameter, pIN_CL_ESTADOParameter, pIN_NB_ESTADOParameter, pIN_CL_MUNICIPIOParameter, pIN_NB_MUNICIPIOParameter, pIN_CL_COLONIAParameter, pIN_NB_COLONIAParameter, pIN_NB_CALLEParameter, pIN_NO_INTERIORParameter, pIN_NO_EXTERIORParameter, pIN_CL_CODIGO_POSTALParameter, pIN_DS_ESCOLARIDADParameter, pIN_FE_NACIMIENTOParameter, pIN_XML_TELEFONOSParameter, pIN_CL_CORREO_ELECTRONICOParameter, pIN_MN_COSTO_HORAParameter, pIN_MN_COSTO_PARTICIPANTEParameter, pIN_DS_EVIDENCIA_COMPETENCIAParameter, pIN_XML_COMPETENCIASParameter, pIN_XML_CURSOSParameter, pIN_CL_USUARIO_APP_CREAParameter, pIN_CL_USUARIO_APP_MODIFICAParameter, pIN_NB_PROGRAMA_CREAParameter, pIN_NB_PROGRAMA_MODIFICAParameter, pIN_TIPO_TRANSACCIONParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_ORGANIGRAMA_PUESTOS_EMPLEADOS_Result> SPE_OBTIENE_ORGANIGRAMA_PUESTOS_EMPLEADOS(string pIN_ID_PUESTOS, Nullable<int> pIN_ID_EMPRESA)
         {
             var pIN_ID_PUESTOSParameter = pIN_ID_PUESTOS != null ?
@@ -6584,19 +6269,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_NB_PROGRAMA_CREA", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_C_CURSO", xML_RESULTADO, pIN_ID_CURSOParameter, pIN_CL_CURSOParameter, pIN_CL_USUARIO_APP_CREAParameter, pIN_NB_PROGRAMA_CREAParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_ORGANIGRAMA_PLAZA_Result> SPE_OBTIENE_ORGANIGRAMA_PLAZA(Nullable<int> pIN_ID_PLAZA, Nullable<int> pIN_ID_EMPRESA)
-        {
-            var pIN_ID_PLAZAParameter = pIN_ID_PLAZA.HasValue ?
-                new ObjectParameter("PIN_ID_PLAZA", pIN_ID_PLAZA) :
-                new ObjectParameter("PIN_ID_PLAZA", typeof(int));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_ORGANIGRAMA_PLAZA_Result>("SPE_OBTIENE_ORGANIGRAMA_PLAZA", pIN_ID_PLAZAParameter, pIN_ID_EMPRESAParameter);
         }
     
         public virtual ObjectResult<SPE_OBTIENE_ORGANIGRAMA_PLAZAS_EMPLEADOS_Result> SPE_OBTIENE_ORGANIGRAMA_PLAZAS_EMPLEADOS(string pIN_ID_PLAZAS, Nullable<int> pIN_ID_EMPRESA)
@@ -6851,15 +6523,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_PROGRAMA_DESDE_DNC", xML_RESULTADO, pIN_ID_PROGRAMAParameter, pIN_XML_DATOS_DNCParameter, pIN_CL_USUARIO_APPParameter, pIN_NB_PROGRAMAParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_FYD_EVALUADOS_Result> SPE_OBTIENE_FYD_EVALUADOS(Nullable<int> pIN_ID_EVALUADOR)
-        {
-            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
-                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
-                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_EVALUADOS_Result>("SPE_OBTIENE_FYD_EVALUADOS", pIN_ID_EVALUADORParameter);
         }
     
         public virtual int SPE_ELIMINA_PROGRAMA_CAPACITACION(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PROGRAMA)
@@ -7299,23 +6962,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_PERIODO_DESEMPENO", xML_RESULTADO, pIN_ID_PERIODOParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_EMPLEADO_PLANTILLA_Result> SPE_OBTIENE_EMPLEADO_PLANTILLA(Nullable<int> pIN_ID_PLANTILLA, Nullable<int> pIN_ID_EMPLEADO, Nullable<int> pIN_ID_EMPRESA)
-        {
-            var pIN_ID_PLANTILLAParameter = pIN_ID_PLANTILLA.HasValue ?
-                new ObjectParameter("PIN_ID_PLANTILLA", pIN_ID_PLANTILLA) :
-                new ObjectParameter("PIN_ID_PLANTILLA", typeof(int));
-    
-            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
-                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
-                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EMPLEADO_PLANTILLA_Result>("SPE_OBTIENE_EMPLEADO_PLANTILLA", pIN_ID_PLANTILLAParameter, pIN_ID_EMPLEADOParameter, pIN_ID_EMPRESAParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_VIDA_CARRERA_Result> SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_VIDA_CARRERA(string pIN_XML_PUESTOS, Nullable<int> pIN_ID_EMPLEADO)
         {
             var pIN_XML_PUESTOSParameter = pIN_XML_PUESTOS != null ?
@@ -7327,15 +6973,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_VIDA_CARRERA_Result>("SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_VIDA_CARRERA", pIN_XML_PUESTOSParameter, pIN_ID_EMPLEADOParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_CONTROL_AVANCE_DATOS_GRAFICA_Result> SPE_OBTIENE_CONTROL_AVANCE_DATOS_GRAFICA(Nullable<int> pIN_ID_PERIODO)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CONTROL_AVANCE_DATOS_GRAFICA_Result>("SPE_OBTIENE_CONTROL_AVANCE_DATOS_GRAFICA", pIN_ID_PERIODOParameter);
         }
     
         public virtual int SPE_INSERTA_ACTUALIZA_OTROS_PUESTOS_EVALUADO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO, string pIN_XML_EMPLEADOS, string pIN_XML_PUESTOS, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA)
@@ -7518,15 +7155,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CAMPOS_INVENTARIO_PERSONAL_Result>("SPE_OBTIENE_CAMPOS_INVENTARIO_PERSONAL");
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_EVENTO_LISTA_ASISTENCIA_Result> SPE_OBTIENE_EVENTO_LISTA_ASISTENCIA(Nullable<int> pIN_ID_EVENTO)
-        {
-            var pIN_ID_EVENTOParameter = pIN_ID_EVENTO.HasValue ?
-                new ObjectParameter("PIN_ID_EVENTO", pIN_ID_EVENTO) :
-                new ObjectParameter("PIN_ID_EVENTO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EVENTO_LISTA_ASISTENCIA_Result>("SPE_OBTIENE_EVENTO_LISTA_ASISTENCIA", pIN_ID_EVENTOParameter);
-        }
-    
         public virtual int SPE_ACTUALIZA_ESTATUS_PERIODO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO, string pIN_CL_ESTADO_PERIODO, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA)
         {
             var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
@@ -7675,15 +7303,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_PERIODO", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_PERIODO_CLIMA_LABORAL", xML_RESULTADO, pIN_ID_PERIODOParameter);
-        }
-    
-        public virtual int SPE_ELIMINA_FYD_PREGUNTA_ADICIONAL(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PREGUNTA_ADICIONAL)
-        {
-            var pIN_ID_PREGUNTA_ADICIONALParameter = pIN_ID_PREGUNTA_ADICIONAL.HasValue ?
-                new ObjectParameter("PIN_ID_PREGUNTA_ADICIONAL", pIN_ID_PREGUNTA_ADICIONAL) :
-                new ObjectParameter("PIN_ID_PREGUNTA_ADICIONAL", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_FYD_PREGUNTA_ADICIONAL", xML_RESULTADO, pIN_ID_PREGUNTA_ADICIONALParameter);
         }
     
         public virtual ObjectResult<SPE_OBTIENE_CONFIGURACION_EVALUACION_ORGANIZACIONAL_Result> SPE_OBTIENE_CONFIGURACION_EVALUACION_ORGANIZACIONAL(string pIN_CL_TIPO_NOTIFICACION)
@@ -8495,37 +8114,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_COMPARACION_COMPETENCIAS_PLAN_SUCESION_Result>("SPE_OBTIENE_COMPARACION_COMPETENCIAS_PLAN_SUCESION", pIN_XML_EMPLEADOParameter, pIN_ID_PUESTOParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_EO_PREGUNTAS_CUESTIONARIO_Result> SPE_OBTIENE_EO_PREGUNTAS_CUESTIONARIO(Nullable<int> pIN_ID_EVALUADOR, Nullable<int> pIN_ID_PERIODO)
-        {
-            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
-                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
-                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
-    
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_PREGUNTAS_CUESTIONARIO_Result>("SPE_OBTIENE_EO_PREGUNTAS_CUESTIONARIO", pIN_ID_EVALUADORParameter, pIN_ID_PERIODOParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_CONTROL_AVANCE_EO_DATOS_GRAFICA_Result> SPE_OBTIENE_CONTROL_AVANCE_EO_DATOS_GRAFICA(Nullable<int> pIN_ID_PERIODO)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CONTROL_AVANCE_EO_DATOS_GRAFICA_Result>("SPE_OBTIENE_CONTROL_AVANCE_EO_DATOS_GRAFICA", pIN_ID_PERIODOParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_BONO_EVALUADOS_Result> SPE_OBTIENE_BONO_EVALUADOS(Nullable<int> pIN_ID_PERIODO)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_BONO_EVALUADOS_Result>("SPE_OBTIENE_BONO_EVALUADOS", pIN_ID_PERIODOParameter);
-        }
-    
         public virtual int SPE_ELIMINA_EO_EVALUADOS_DESEMPENO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO, string xML_ID_SELECCIONADOS, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA)
         {
             var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
@@ -8545,19 +8133,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_EO_EVALUADOS_DESEMPENO", xML_RESULTADO, pIN_ID_PERIODOParameter, xML_ID_SELECCIONADOSParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_EO_PERIODO_EVALUADOR_Result> SPE_OBTIENE_EO_PERIODO_EVALUADOR(Nullable<int> pIN_ID_EVALUADOR, Nullable<System.Guid> pIN_FL_EVALUADOR)
-        {
-            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
-                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
-                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
-    
-            var pIN_FL_EVALUADORParameter = pIN_FL_EVALUADOR.HasValue ?
-                new ObjectParameter("PIN_FL_EVALUADOR", pIN_FL_EVALUADOR) :
-                new ObjectParameter("PIN_FL_EVALUADOR", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_PERIODO_EVALUADOR_Result>("SPE_OBTIENE_EO_PERIODO_EVALUADOR", pIN_ID_EVALUADORParameter, pIN_FL_EVALUADORParameter);
         }
     
         public virtual int SPE_ACTUALIZA_EVALUADO_TOPE_BONO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO, Nullable<decimal> pIN_PR_BONO, string pIN_CL_TIPO_BONO, string pIN_XML_EVALUADO, string pIN_NB_PROGRAMA, string pIN_CL_USUARIO)
@@ -8587,48 +8162,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_CL_USUARIO", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ACTUALIZA_EVALUADO_TOPE_BONO", xML_RESULTADO, pIN_ID_PERIODOParameter, pIN_PR_BONOParameter, pIN_CL_TIPO_BONOParameter, pIN_XML_EVALUADOParameter, pIN_NB_PROGRAMAParameter, pIN_CL_USUARIOParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_EO_EVALUADORES_CLIMA_LAB_Result> SPE_OBTIENE_EO_EVALUADORES_CLIMA_LAB(Nullable<int> pIN_ID_PERIDO, Nullable<int> pIN_ID_EMPLEADO, Nullable<int> pIN_ID_PUESTO, Nullable<int> pIN_ID_EVALUADOR)
-        {
-            var pIN_ID_PERIDOParameter = pIN_ID_PERIDO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIDO", pIN_ID_PERIDO) :
-                new ObjectParameter("PIN_ID_PERIDO", typeof(int));
-    
-            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
-                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
-                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
-    
-            var pIN_ID_PUESTOParameter = pIN_ID_PUESTO.HasValue ?
-                new ObjectParameter("PIN_ID_PUESTO", pIN_ID_PUESTO) :
-                new ObjectParameter("PIN_ID_PUESTO", typeof(int));
-    
-            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
-                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
-                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_EVALUADORES_CLIMA_LAB_Result>("SPE_OBTIENE_EO_EVALUADORES_CLIMA_LAB", pIN_ID_PERIDOParameter, pIN_ID_EMPLEADOParameter, pIN_ID_PUESTOParameter, pIN_ID_EVALUADORParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_EO_EVALUADORES_CUESTIONARIO_Result> SPE_OBTIENE_EO_EVALUADORES_CUESTIONARIO(Nullable<int> pIN_ID_PERIDO, Nullable<int> pIN_ID_EMPLEADO, Nullable<int> pIN_ID_PUESTO, Nullable<int> pIN_ID_EVALUADOR)
-        {
-            var pIN_ID_PERIDOParameter = pIN_ID_PERIDO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIDO", pIN_ID_PERIDO) :
-                new ObjectParameter("PIN_ID_PERIDO", typeof(int));
-    
-            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
-                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
-                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
-    
-            var pIN_ID_PUESTOParameter = pIN_ID_PUESTO.HasValue ?
-                new ObjectParameter("PIN_ID_PUESTO", pIN_ID_PUESTO) :
-                new ObjectParameter("PIN_ID_PUESTO", typeof(int));
-    
-            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
-                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
-                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_EVALUADORES_CUESTIONARIO_Result>("SPE_OBTIENE_EO_EVALUADORES_CUESTIONARIO", pIN_ID_PERIDOParameter, pIN_ID_EMPLEADOParameter, pIN_ID_PUESTOParameter, pIN_ID_EVALUADORParameter);
         }
     
         public virtual int SP_CREA_RUTA(string p_FS_CARPETA_MULTIMEDIA, ObjectParameter r_ID_FILESTREAM)
@@ -9406,15 +8939,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_M_PUESTO_PDE_Result>("SPE_OBTIENE_M_PUESTO_PDE", pIN_ID_PUESTOParameter, pIN_FG_ACTIVOParameter, pIN_FE_INACTIVOParameter, pIN_CL_PUESTOParameter, pIN_NB_PUESTOParameter, pIN_ID_DEPARTAMENTOParameter, pIN_XML_CAMPOS_ADICIONALESParameter, pIN_ID_BITACORAParameter, pIN_NO_EDAD_MINIMAParameter, pIN_NO_EDAD_MAXIMAParameter, pIN_CL_GENEROParameter, pIN_CL_ESTADO_CIVILParameter, pIN_XML_REQUERIMIENTOSParameter, pIN_XML_OBSERVACIONESParameter, pIN_XML_RESPONSABILIDADParameter, pIN_XML_AUTORIDADParameter, pIN_XML_CURSOS_ADICIONALESParameter, pIN_XML_MENTORParameter, pIN_CL_TIPO_PUESTOParameter, pIN_ID_CENTRO_ADMINISTRATIVOParameter, pIN_ID_CENTRO_OPERATIVOParameter, pIN_ID_PAQUETE_PRESTACIONESParameter, pIN_XML_PUESTOSParameter, pIN_NB_DEPARTAMENTOParameter, pIN_CL_DEPARTAMENTOParameter, xML_PUESTOS_SELECCIONADOSParameter, pIN_ID_EMPRESAParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO_Result> SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO(Nullable<int> pIN_ID_EVENTO)
-        {
-            var pIN_ID_EVENTOParameter = pIN_ID_EVENTO.HasValue ?
-                new ObjectParameter("PIN_ID_EVENTO", pIN_ID_EVENTO) :
-                new ObjectParameter("PIN_ID_EVENTO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO_Result>("SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO", pIN_ID_EVENTOParameter);
-        }
-    
         public virtual int SPE_ELIMINA_M_PUESTO_PDE(ObjectParameter xML_RESULTADO, string pIN_ID_PUESTO, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_ID_EMPLEADO, Nullable<int> pIN_ID_CAMBIO)
         {
             var pIN_ID_PUESTOParameter = pIN_ID_PUESTO != null ?
@@ -9610,15 +9134,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_OBTIENE_VALIDACION_CAMBIO_DESCRIPTIVO_PUESTO", xML_RESULTADO, pIN_ID_PUESTOParameter, pIN_ID_EMPLEADOParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_EO_GRAFICA_GLOBAL_Result> SPE_OBTIENE_EO_GRAFICA_GLOBAL(Nullable<int> pIN_ID_PERIODO)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_GRAFICA_GLOBAL_Result>("SPE_OBTIENE_EO_GRAFICA_GLOBAL", pIN_ID_PERIODOParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO_DETALLE_Result> SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO_DETALLE(Nullable<int> pIN_ID_EVENTO)
         {
             var pIN_ID_EVENTOParameter = pIN_ID_EVENTO.HasValue ?
@@ -9626,47 +9141,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_EVENTO", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO_DETALLE_Result>("SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO_DETALLE", pIN_ID_EVENTOParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_EVENTO_PARTICIPANTE_Result> SPE_OBTIENE_EVENTO_PARTICIPANTE(Nullable<int> pIN_ID_EVENTO_PARTICIPANTE, Nullable<int> pIN_ID_EVENTO, Nullable<int> pIN_ID_EMPLEADO, string pIN_CL_PARTICIPANTE, string pIN_NB_PARTICIPANTE, string pIN_NB_PUESTO, string pIN_NB_DEPARTAMENTO, Nullable<int> pIN_NO_TIEMPO, Nullable<decimal> pIN_PR_CUMPLIMIENTO)
-        {
-            var pIN_ID_EVENTO_PARTICIPANTEParameter = pIN_ID_EVENTO_PARTICIPANTE.HasValue ?
-                new ObjectParameter("PIN_ID_EVENTO_PARTICIPANTE", pIN_ID_EVENTO_PARTICIPANTE) :
-                new ObjectParameter("PIN_ID_EVENTO_PARTICIPANTE", typeof(int));
-    
-            var pIN_ID_EVENTOParameter = pIN_ID_EVENTO.HasValue ?
-                new ObjectParameter("PIN_ID_EVENTO", pIN_ID_EVENTO) :
-                new ObjectParameter("PIN_ID_EVENTO", typeof(int));
-    
-            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
-                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
-                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
-    
-            var pIN_CL_PARTICIPANTEParameter = pIN_CL_PARTICIPANTE != null ?
-                new ObjectParameter("PIN_CL_PARTICIPANTE", pIN_CL_PARTICIPANTE) :
-                new ObjectParameter("PIN_CL_PARTICIPANTE", typeof(string));
-    
-            var pIN_NB_PARTICIPANTEParameter = pIN_NB_PARTICIPANTE != null ?
-                new ObjectParameter("PIN_NB_PARTICIPANTE", pIN_NB_PARTICIPANTE) :
-                new ObjectParameter("PIN_NB_PARTICIPANTE", typeof(string));
-    
-            var pIN_NB_PUESTOParameter = pIN_NB_PUESTO != null ?
-                new ObjectParameter("PIN_NB_PUESTO", pIN_NB_PUESTO) :
-                new ObjectParameter("PIN_NB_PUESTO", typeof(string));
-    
-            var pIN_NB_DEPARTAMENTOParameter = pIN_NB_DEPARTAMENTO != null ?
-                new ObjectParameter("PIN_NB_DEPARTAMENTO", pIN_NB_DEPARTAMENTO) :
-                new ObjectParameter("PIN_NB_DEPARTAMENTO", typeof(string));
-    
-            var pIN_NO_TIEMPOParameter = pIN_NO_TIEMPO.HasValue ?
-                new ObjectParameter("PIN_NO_TIEMPO", pIN_NO_TIEMPO) :
-                new ObjectParameter("PIN_NO_TIEMPO", typeof(int));
-    
-            var pIN_PR_CUMPLIMIENTOParameter = pIN_PR_CUMPLIMIENTO.HasValue ?
-                new ObjectParameter("PIN_PR_CUMPLIMIENTO", pIN_PR_CUMPLIMIENTO) :
-                new ObjectParameter("PIN_PR_CUMPLIMIENTO", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EVENTO_PARTICIPANTE_Result>("SPE_OBTIENE_EVENTO_PARTICIPANTE", pIN_ID_EVENTO_PARTICIPANTEParameter, pIN_ID_EVENTOParameter, pIN_ID_EMPLEADOParameter, pIN_CL_PARTICIPANTEParameter, pIN_NB_PARTICIPANTEParameter, pIN_NB_PUESTOParameter, pIN_NB_DEPARTAMENTOParameter, pIN_NO_TIEMPOParameter, pIN_PR_CUMPLIMIENTOParameter);
         }
     
         public virtual int SPE_ACTUALIZA_EMPLEADO_COMUNICADO_LEIDO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_COMUNICADO, string pIN_ID_EMPLEADO, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA)
@@ -10118,40 +9592,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_OBTIENE_DOCUMENTO_AUTORIZAR", xML_RESULTADO, pIN_ID_PROGRAMAParameter, pIN_ID_PERIODOParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_DIMENSION_Result> SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_DIMENSION(Nullable<int> pIN_ID_PERIODO, string pIN_NB_DIMENSION, string pIN_XML_FILTROS)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_NB_DIMENSIONParameter = pIN_NB_DIMENSION != null ?
-                new ObjectParameter("PIN_NB_DIMENSION", pIN_NB_DIMENSION) :
-                new ObjectParameter("PIN_NB_DIMENSION", typeof(string));
-    
-            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
-                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
-                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_DIMENSION_Result>("SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_DIMENSION", pIN_ID_PERIODOParameter, pIN_NB_DIMENSIONParameter, pIN_XML_FILTROSParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_TEMA_Result> SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_TEMA(Nullable<int> pIN_ID_PERIODO, string pIN_NB_TEMA, string pIN_XML_FILTROS)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_NB_TEMAParameter = pIN_NB_TEMA != null ?
-                new ObjectParameter("PIN_NB_TEMA", pIN_NB_TEMA) :
-                new ObjectParameter("PIN_NB_TEMA", typeof(string));
-    
-            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
-                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
-                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_TEMA_Result>("SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_TEMA", pIN_ID_PERIODOParameter, pIN_NB_TEMAParameter, pIN_XML_FILTROSParameter);
-        }
-    
         public virtual int SPE_INSERTA_ACTUALIZA_DOCUMENTO_AUTORIZACION(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_DOCUMENTO, Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_PROGRAMA, string pIN_XML_DATOS_CERO, string pIN_CL_USUARIO_APP, string pIN_NB_PROGRAMA)
         {
             var pIN_ID_DOCUMENTOParameter = pIN_ID_DOCUMENTO.HasValue ?
@@ -10304,35 +9744,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SPE_OBTIENE_PDE_CONFIGURACION_PDE", pIN_XML_CONFIGURACIONParameter, pIN_CL_USUARIO_MODIFICAParameter);
         }
     
-        public virtual int SPE_INSERTA_FYD_PREGUNTAS_ADICIONALES_PERIODO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO, string pIN_NB_PREGUNTA, string pIN_XML_PREGUNTAS, string pIN_CL_CUESTIONARIO_OBJETIVO, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_NB_PREGUNTAParameter = pIN_NB_PREGUNTA != null ?
-                new ObjectParameter("PIN_NB_PREGUNTA", pIN_NB_PREGUNTA) :
-                new ObjectParameter("PIN_NB_PREGUNTA", typeof(string));
-    
-            var pIN_XML_PREGUNTASParameter = pIN_XML_PREGUNTAS != null ?
-                new ObjectParameter("PIN_XML_PREGUNTAS", pIN_XML_PREGUNTAS) :
-                new ObjectParameter("PIN_XML_PREGUNTAS", typeof(string));
-    
-            var pIN_CL_CUESTIONARIO_OBJETIVOParameter = pIN_CL_CUESTIONARIO_OBJETIVO != null ?
-                new ObjectParameter("PIN_CL_CUESTIONARIO_OBJETIVO", pIN_CL_CUESTIONARIO_OBJETIVO) :
-                new ObjectParameter("PIN_CL_CUESTIONARIO_OBJETIVO", typeof(string));
-    
-            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
-                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
-                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
-    
-            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
-                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
-                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_FYD_PREGUNTAS_ADICIONALES_PERIODO", xML_RESULTADO, pIN_ID_PERIODOParameter, pIN_NB_PREGUNTAParameter, pIN_XML_PREGUNTASParameter, pIN_CL_CUESTIONARIO_OBJETIVOParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_FYD_PUESTOS_EVALUADO_Result> SPE_OBTIENE_FYD_PUESTOS_EVALUADO(Nullable<int> pIN_ID_EVALUADO)
         {
             var pIN_ID_EVALUADOParameter = pIN_ID_EVALUADO.HasValue ?
@@ -10395,44 +9806,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_USUARIO_PDE", xML_RESULTADO, pIN_CL_USERParameter, pIN_NB_USUARIOParameter, pIN_NB_PASSWORDParameter, pIN_NB_CORREO_ELECTRONICOParameter, pIN_FG_ACTIVOParameter, pIN_FG_CAMBIAR_PASSWORDParameter, pIN_ID_ROLParameter, pIN_ID_EMPLEADOParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_CL_TIPO_MULTIEMPRESAParameter, pIN_TIPO_TRANSACCIONParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_EO_GRAFICA_CAUSA_ROTACION_Result> SPE_OBTIENE_EO_GRAFICA_CAUSA_ROTACION(Nullable<System.DateTime> pIN_FECHA_INICIO, Nullable<System.DateTime> pIN_FECHA_FINAL, string pIN_XML_FILTROS)
-        {
-            var pIN_FECHA_INICIOParameter = pIN_FECHA_INICIO.HasValue ?
-                new ObjectParameter("PIN_FECHA_INICIO", pIN_FECHA_INICIO) :
-                new ObjectParameter("PIN_FECHA_INICIO", typeof(System.DateTime));
-    
-            var pIN_FECHA_FINALParameter = pIN_FECHA_FINAL.HasValue ?
-                new ObjectParameter("PIN_FECHA_FINAL", pIN_FECHA_FINAL) :
-                new ObjectParameter("PIN_FECHA_FINAL", typeof(System.DateTime));
-    
-            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
-                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
-                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_GRAFICA_CAUSA_ROTACION_Result>("SPE_OBTIENE_EO_GRAFICA_CAUSA_ROTACION", pIN_FECHA_INICIOParameter, pIN_FECHA_FINALParameter, pIN_XML_FILTROSParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_EO_GRAFICA_INDICE_ROTACION_Result> SPE_OBTIENE_EO_GRAFICA_INDICE_ROTACION(Nullable<System.DateTime> pIN_FECHA_INICIO, Nullable<System.DateTime> pIN_FECHA_FINAL, string tIPO_REPORTE, string pIN_XML_FILTROS)
-        {
-            var pIN_FECHA_INICIOParameter = pIN_FECHA_INICIO.HasValue ?
-                new ObjectParameter("PIN_FECHA_INICIO", pIN_FECHA_INICIO) :
-                new ObjectParameter("PIN_FECHA_INICIO", typeof(System.DateTime));
-    
-            var pIN_FECHA_FINALParameter = pIN_FECHA_FINAL.HasValue ?
-                new ObjectParameter("PIN_FECHA_FINAL", pIN_FECHA_FINAL) :
-                new ObjectParameter("PIN_FECHA_FINAL", typeof(System.DateTime));
-    
-            var tIPO_REPORTEParameter = tIPO_REPORTE != null ?
-                new ObjectParameter("TIPO_REPORTE", tIPO_REPORTE) :
-                new ObjectParameter("TIPO_REPORTE", typeof(string));
-    
-            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
-                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
-                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_GRAFICA_INDICE_ROTACION_Result>("SPE_OBTIENE_EO_GRAFICA_INDICE_ROTACION", pIN_FECHA_INICIOParameter, pIN_FECHA_FINALParameter, tIPO_REPORTEParameter, pIN_XML_FILTROSParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_FYD_REPORTE_COMPARATIVO_INDIVIDUAL_Result> SPE_OBTIENE_FYD_REPORTE_COMPARATIVO_INDIVIDUAL(Nullable<int> pIN_ID_EMPLEADO, string pIN_XML_PERIODOS)
         {
             var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
@@ -10453,23 +9826,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_COMUNICADO", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_K_COMUNICADO_LEIDO_Result>("SPE_OBTIENE_K_COMUNICADO_LEIDO", pIN_ID_COMUNICADOParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_NECESIDADES_CAPACITACION_Result> SPE_OBTIENE_NECESIDADES_CAPACITACION(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_DEPARTAMENTO, string pIN_DS_PRIORIDADES)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_ID_DEPARTAMENTOParameter = pIN_ID_DEPARTAMENTO.HasValue ?
-                new ObjectParameter("PIN_ID_DEPARTAMENTO", pIN_ID_DEPARTAMENTO) :
-                new ObjectParameter("PIN_ID_DEPARTAMENTO", typeof(int));
-    
-            var pIN_DS_PRIORIDADESParameter = pIN_DS_PRIORIDADES != null ?
-                new ObjectParameter("PIN_DS_PRIORIDADES", pIN_DS_PRIORIDADES) :
-                new ObjectParameter("PIN_DS_PRIORIDADES", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_NECESIDADES_CAPACITACION_Result>("SPE_OBTIENE_NECESIDADES_CAPACITACION", pIN_ID_PERIODOParameter, pIN_ID_DEPARTAMENTOParameter, pIN_DS_PRIORIDADESParameter);
         }
     
         public virtual int SPE_INSERTA_RESULTADOS_INTERES_PERSONAL(ObjectParameter xML_RESULTADO, string pIN_XML_RESULTADOS, Nullable<int> pIN_ID_CUESTIONARIO, Nullable<int> pIN_ID_PRUEBA, string pIN_CL_USUARIO_APP, string pIN_NB_PROGRAMA)
@@ -11828,11 +11184,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CARTERA_A_ELIMINAR_Result>("SPE_OBTIENE_CARTERA_A_ELIMINAR");
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_CANDIDATOS_CONTRATADOS_Result> SPE_OBTIENE_CANDIDATOS_CONTRATADOS()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CANDIDATOS_CONTRATADOS_Result>("SPE_OBTIENE_CANDIDATOS_CONTRATADOS");
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_COMPETENCIAS_LABORALES_Result> SPE_OBTIENE_COMPETENCIAS_LABORALES()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_COMPETENCIAS_LABORALES_Result>("SPE_OBTIENE_COMPETENCIAS_LABORALES");
@@ -11957,24 +11308,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_COMPETENCIA_FACTOR", xML_RESULTADO, xML_COMPETENCIASParameter, pIN_ID_FACTORParameter, pIN_ID_PRUEBAParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_PRUEBAS_FACTORES_COMPETENCIAS_Result> SPE_OBTIENE_PRUEBAS_FACTORES_COMPETENCIAS(Nullable<int> pIN_ID_SELECCION, string pIN_CL_SELECCION)
-        {
-            var pIN_ID_SELECCIONParameter = pIN_ID_SELECCION.HasValue ?
-                new ObjectParameter("PIN_ID_SELECCION", pIN_ID_SELECCION) :
-                new ObjectParameter("PIN_ID_SELECCION", typeof(int));
-    
-            var pIN_CL_SELECCIONParameter = pIN_CL_SELECCION != null ?
-                new ObjectParameter("PIN_CL_SELECCION", pIN_CL_SELECCION) :
-                new ObjectParameter("PIN_CL_SELECCION", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_PRUEBAS_FACTORES_COMPETENCIAS_Result>("SPE_OBTIENE_PRUEBAS_FACTORES_COMPETENCIAS", pIN_ID_SELECCIONParameter, pIN_CL_SELECCIONParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_SUELDO_EMPLEADOS_Result> SPE_OBTIENE_SUELDO_EMPLEADOS()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_SUELDO_EMPLEADOS_Result>("SPE_OBTIENE_SUELDO_EMPLEADOS");
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_TIPO_ENTREVISTA_Result> SPE_OBTIENE_TIPO_ENTREVISTA(Nullable<int> pIN_ID_ENTREVISTA_TIPO, string pIN_CL_ENTREVISTA_TIPO, string pIN_NB_ENTREVISTA_TIPO)
         {
             var pIN_ID_ENTREVISTA_TIPOParameter = pIN_ID_ENTREVISTA_TIPO.HasValue ?
@@ -12067,27 +11400,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_ENTREVISTA", xML_RESULTADO, pIN_ID_ENTREVISTAParameter, pIN_ID_PROCESO_SELECCIONParameter, pIN_ID_ENTREVISTA_TIPOParameter, pIN_FE_ENTREVISTAParameter, pIN_ID_ENTREVISTADORParameter, pIN_NB_ENTREVISTADORParameter, pIN_NB_PUESTO_ENTREVISTADORParameter, pIN_CL_CORREO_ENTREVISTADORParameter, pIN_DS_OBSERVACIONESParameter, pIN_CL_TOKENParameter, pIN_FL_ENTREVISTAParameter, pIN_CL_USUARIO_APPParameter, pIN_NB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter);
         }
     
-        public virtual int SPE_ELIMINA_COMPETENCIA_FACTOR(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_FACTOR, Nullable<int> pIN_ID_COMPETENCIA, string pIN_CL_USUARIO_APP_CREA, string pIN_NB_PROGRAMA_CREA)
-        {
-            var pIN_ID_FACTORParameter = pIN_ID_FACTOR.HasValue ?
-                new ObjectParameter("PIN_ID_FACTOR", pIN_ID_FACTOR) :
-                new ObjectParameter("PIN_ID_FACTOR", typeof(int));
-    
-            var pIN_ID_COMPETENCIAParameter = pIN_ID_COMPETENCIA.HasValue ?
-                new ObjectParameter("PIN_ID_COMPETENCIA", pIN_ID_COMPETENCIA) :
-                new ObjectParameter("PIN_ID_COMPETENCIA", typeof(int));
-    
-            var pIN_CL_USUARIO_APP_CREAParameter = pIN_CL_USUARIO_APP_CREA != null ?
-                new ObjectParameter("PIN_CL_USUARIO_APP_CREA", pIN_CL_USUARIO_APP_CREA) :
-                new ObjectParameter("PIN_CL_USUARIO_APP_CREA", typeof(string));
-    
-            var pIN_NB_PROGRAMA_CREAParameter = pIN_NB_PROGRAMA_CREA != null ?
-                new ObjectParameter("PIN_NB_PROGRAMA_CREA", pIN_NB_PROGRAMA_CREA) :
-                new ObjectParameter("PIN_NB_PROGRAMA_CREA", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_COMPETENCIA_FACTOR", xML_RESULTADO, pIN_ID_FACTORParameter, pIN_ID_COMPETENCIAParameter, pIN_CL_USUARIO_APP_CREAParameter, pIN_NB_PROGRAMA_CREAParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_CAPACITACIONES_EMPLEADO_Result> SPE_OBTIENE_CAPACITACIONES_EMPLEADO()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CAPACITACIONES_EMPLEADO_Result>("SPE_OBTIENE_CAPACITACIONES_EMPLEADO");
@@ -12117,40 +11429,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ACTUALIZA_COMENTARIO_ENTREVISTA", xML_RESULTADO, pIN_ID_ENTREVISTAParameter, pIN_DS_OBSERVACIONESParameter, pIN_CL_USUARIO_APPParameter, pIN_NB_PROGRAMAParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_USUARIO_AUTENTICACION_Result> SPE_OBTIENE_USUARIO_AUTENTICACION(string pIN_CL_USUARIO, string pIN_CL_PASSWORD, string pIN_CL_AUTENTICACION)
-        {
-            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
-                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
-                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
-    
-            var pIN_CL_PASSWORDParameter = pIN_CL_PASSWORD != null ?
-                new ObjectParameter("PIN_CL_PASSWORD", pIN_CL_PASSWORD) :
-                new ObjectParameter("PIN_CL_PASSWORD", typeof(string));
-    
-            var pIN_CL_AUTENTICACIONParameter = pIN_CL_AUTENTICACION != null ?
-                new ObjectParameter("PIN_CL_AUTENTICACION", pIN_CL_AUTENTICACION) :
-                new ObjectParameter("PIN_CL_AUTENTICACION", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_USUARIO_AUTENTICACION_Result>("SPE_OBTIENE_USUARIO_AUTENTICACION", pIN_CL_USUARIOParameter, pIN_CL_PASSWORDParameter, pIN_CL_AUTENTICACIONParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_FYD_EVALUADORES_Result> SPE_OBTIENE_FYD_EVALUADORES(Nullable<int> pIN_ID_PERIODO, string pIN_CL_TIPO_EVALUADOR, Nullable<int> pIN_ID_EMPRESA)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_CL_TIPO_EVALUADORParameter = pIN_CL_TIPO_EVALUADOR != null ?
-                new ObjectParameter("PIN_CL_TIPO_EVALUADOR", pIN_CL_TIPO_EVALUADOR) :
-                new ObjectParameter("PIN_CL_TIPO_EVALUADOR", typeof(string));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_EVALUADORES_Result>("SPE_OBTIENE_FYD_EVALUADORES", pIN_ID_PERIODOParameter, pIN_CL_TIPO_EVALUADORParameter, pIN_ID_EMPRESAParameter);
         }
     
         public virtual int SPE_ACTUALIZA_REFERENCIAS_EXPERIENCIA_LABORAL(ObjectParameter xML_RESULTADO, string pIN_XML_REFERENCIAS, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA)
@@ -12213,19 +11491,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_NB_ARCHIVO", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_K_ADM_COMUNICADO_Result>("SPE_OBTIENE_K_ADM_COMUNICADO", pIN_ID_COMUNICADOParameter, pIN_NB_COMUNICADOParameter, pIN_FE_COMUNICADOParameter, pIN_DS_COMUNICADOParameter, pIN_FE_VISIBLE_DELParameter, pIN_FE_VISIBLE_ALParameter, pIN_ID_ARCHIVOParameter, pIN_FG_PRIVADOParameter, pIN_FG_ESTATUSParameter, pIN_NB_ARCHIVOParameter);
-        }
-    
-        public virtual int SPE_OBTIENE_PROGRAMA_CAPACITACION(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PROGRAMA, Nullable<int> pIN_ID_EMPRESA)
-        {
-            var pIN_ID_PROGRAMAParameter = pIN_ID_PROGRAMA.HasValue ?
-                new ObjectParameter("PIN_ID_PROGRAMA", pIN_ID_PROGRAMA) :
-                new ObjectParameter("PIN_ID_PROGRAMA", typeof(int));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_OBTIENE_PROGRAMA_CAPACITACION", xML_RESULTADO, pIN_ID_PROGRAMAParameter, pIN_ID_EMPRESAParameter);
         }
     
         public virtual ObjectResult<SPE_OBTIENE_COMPETENCIAS_PROCESO_SELECCION_Result> SPE_OBTIENE_COMPETENCIAS_PROCESO_SELECCION(Nullable<int> pIN_ID_CANDIDATO, Nullable<int> pIN_ID_PUESTO)
@@ -13028,23 +12293,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_CONSULTA_INTELIGENTE_Result>("SPE_OBTIENE_C_CONSULTA_INTELIGENTE", iD_CUBOParameter, iD_ARCHIVOParameter, nB_ARCHIVOParameter, nB_CATALOGOParameter, iD_ITEMParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_EMPLEADOS_TABULADOR_Result> SPE_OBTIENE_EMPLEADOS_TABULADOR(Nullable<int> pIN_ID_TABULADOR, string xML_SELECCIONADOS, Nullable<int> pIN_ID_EMPRESA)
-        {
-            var pIN_ID_TABULADORParameter = pIN_ID_TABULADOR.HasValue ?
-                new ObjectParameter("PIN_ID_TABULADOR", pIN_ID_TABULADOR) :
-                new ObjectParameter("PIN_ID_TABULADOR", typeof(int));
-    
-            var xML_SELECCIONADOSParameter = xML_SELECCIONADOS != null ?
-                new ObjectParameter("XML_SELECCIONADOS", xML_SELECCIONADOS) :
-                new ObjectParameter("XML_SELECCIONADOS", typeof(string));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EMPLEADOS_TABULADOR_Result>("SPE_OBTIENE_EMPLEADOS_TABULADOR", pIN_ID_TABULADORParameter, xML_SELECCIONADOSParameter, pIN_ID_EMPRESAParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_METAS_Result> SPE_OBTIENE_METAS(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EVALUADO, Nullable<int> pIN_ID_EVALUADO_META, Nullable<int> pIN_NO_META, Nullable<bool> pIN_FG_EVALUAR)
         {
             var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
@@ -13068,15 +12316,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_FG_EVALUAR", typeof(bool));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_METAS_Result>("SPE_OBTIENE_METAS", pIN_ID_PERIODOParameter, pIN_ID_EVALUADOParameter, pIN_ID_EVALUADO_METAParameter, pIN_NO_METAParameter, pIN_FG_EVALUARParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result> SPE_OBTIENE_EO_EVALUADORES_TOKEN(Nullable<int> pIN_ID_PERIODO)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result>("SPE_OBTIENE_EO_EVALUADORES_TOKEN", pIN_ID_PERIODOParameter);
         }
     
         public virtual int SPE_ACTUALIZA_EO_METAS_EVALUADO(ObjectParameter xML_RESULTADO, string pIN_CL_TIPO_METAS, string pIN_XML_EMPLEADOS, Nullable<int> pIN_ID_PERIODO, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA)
@@ -13306,27 +12545,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_BATERIA", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CONSULTA_PERSONAL_DETALLADA_Result>("SPE_OBTIENE_CONSULTA_PERSONAL_DETALLADA", pIN_ID_BATERIAParameter);
-        }
-    
-        public virtual int SPE_INSERTA_PROCESO_SELECCION(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_CANDIDATO, Nullable<int> pIN_ID_REQUISICION, string pIN_CL_USUARIO_APP, string pIN_NB_PROGRAMA)
-        {
-            var pIN_ID_CANDIDATOParameter = pIN_ID_CANDIDATO.HasValue ?
-                new ObjectParameter("PIN_ID_CANDIDATO", pIN_ID_CANDIDATO) :
-                new ObjectParameter("PIN_ID_CANDIDATO", typeof(int));
-    
-            var pIN_ID_REQUISICIONParameter = pIN_ID_REQUISICION.HasValue ?
-                new ObjectParameter("PIN_ID_REQUISICION", pIN_ID_REQUISICION) :
-                new ObjectParameter("PIN_ID_REQUISICION", typeof(int));
-    
-            var pIN_CL_USUARIO_APPParameter = pIN_CL_USUARIO_APP != null ?
-                new ObjectParameter("PIN_CL_USUARIO_APP", pIN_CL_USUARIO_APP) :
-                new ObjectParameter("PIN_CL_USUARIO_APP", typeof(string));
-    
-            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
-                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
-                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_PROCESO_SELECCION", xML_RESULTADO, pIN_ID_CANDIDATOParameter, pIN_ID_REQUISICIONParameter, pIN_CL_USUARIO_APPParameter, pIN_NB_PROGRAMAParameter);
         }
     
         public virtual ObjectResult<SPE_OBTIENE_ENTREVISTA_PROCESO_SELECCION_Result> SPE_OBTIENE_ENTREVISTA_PROCESO_SELECCION(Nullable<int> pIN_ID_PROCESO_SELECCION, Nullable<int> pIN_ID_ENTREVISTA, Nullable<System.Guid> pIN_FL_ENTREVISTA)
@@ -13718,73 +12936,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_TABULADOR_VALUACION_Result>("SPE_OBTIENE_TABULADOR_VALUACION", pIN_ID_TABULADORParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_FYD_CUESTIONARIOS_EVALUADOS_Result> SPE_OBTIENE_FYD_CUESTIONARIOS_EVALUADOS(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EMPRESA)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_CUESTIONARIOS_EVALUADOS_Result>("SPE_OBTIENE_FYD_CUESTIONARIOS_EVALUADOS", pIN_ID_PERIODOParameter, pIN_ID_EMPRESAParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_FYD_EVALUADORES_TOKEN_Result> SPE_OBTIENE_FYD_EVALUADORES_TOKEN(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EMPRESA)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_EVALUADORES_TOKEN_Result>("SPE_OBTIENE_FYD_EVALUADORES_TOKEN", pIN_ID_PERIODOParameter, pIN_ID_EMPRESAParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_K_PROGRAMA_EMPLEADO_Result> SPE_OBTIENE_K_PROGRAMA_EMPLEADO(Nullable<int> pIN_ID_PROGRAMA_EMPLEADO, Nullable<int> pIN_ID_PROGRAMA, Nullable<int> pIN_ID_EMPLEADO, Nullable<int> pIN_NB_EMPLEADO, string pIN_CL_EMPLEADO, string pIN_NB_PUESTO, string pIN_CL_PUESTO, string pIN_NB_DEPARTAMENTO, Nullable<int> pIN_ID_EMPRESA)
-        {
-            var pIN_ID_PROGRAMA_EMPLEADOParameter = pIN_ID_PROGRAMA_EMPLEADO.HasValue ?
-                new ObjectParameter("PIN_ID_PROGRAMA_EMPLEADO", pIN_ID_PROGRAMA_EMPLEADO) :
-                new ObjectParameter("PIN_ID_PROGRAMA_EMPLEADO", typeof(int));
-    
-            var pIN_ID_PROGRAMAParameter = pIN_ID_PROGRAMA.HasValue ?
-                new ObjectParameter("PIN_ID_PROGRAMA", pIN_ID_PROGRAMA) :
-                new ObjectParameter("PIN_ID_PROGRAMA", typeof(int));
-    
-            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
-                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
-                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
-    
-            var pIN_NB_EMPLEADOParameter = pIN_NB_EMPLEADO.HasValue ?
-                new ObjectParameter("PIN_NB_EMPLEADO", pIN_NB_EMPLEADO) :
-                new ObjectParameter("PIN_NB_EMPLEADO", typeof(int));
-    
-            var pIN_CL_EMPLEADOParameter = pIN_CL_EMPLEADO != null ?
-                new ObjectParameter("PIN_CL_EMPLEADO", pIN_CL_EMPLEADO) :
-                new ObjectParameter("PIN_CL_EMPLEADO", typeof(string));
-    
-            var pIN_NB_PUESTOParameter = pIN_NB_PUESTO != null ?
-                new ObjectParameter("PIN_NB_PUESTO", pIN_NB_PUESTO) :
-                new ObjectParameter("PIN_NB_PUESTO", typeof(string));
-    
-            var pIN_CL_PUESTOParameter = pIN_CL_PUESTO != null ?
-                new ObjectParameter("PIN_CL_PUESTO", pIN_CL_PUESTO) :
-                new ObjectParameter("PIN_CL_PUESTO", typeof(string));
-    
-            var pIN_NB_DEPARTAMENTOParameter = pIN_NB_DEPARTAMENTO != null ?
-                new ObjectParameter("PIN_NB_DEPARTAMENTO", pIN_NB_DEPARTAMENTO) :
-                new ObjectParameter("PIN_NB_DEPARTAMENTO", typeof(string));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_K_PROGRAMA_EMPLEADO_Result>("SPE_OBTIENE_K_PROGRAMA_EMPLEADO", pIN_ID_PROGRAMA_EMPLEADOParameter, pIN_ID_PROGRAMAParameter, pIN_ID_EMPLEADOParameter, pIN_NB_EMPLEADOParameter, pIN_CL_EMPLEADOParameter, pIN_NB_PUESTOParameter, pIN_CL_PUESTOParameter, pIN_NB_DEPARTAMENTOParameter, pIN_ID_EMPRESAParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_NOTIFICACION_REQUISICION_Result> SPE_OBTIENE_NOTIFICACION_REQUISICION(Nullable<int> pIN_ID_NOTIFICACION, Nullable<System.Guid> pIN_FL_NOTIFICACION, Nullable<int> pIN_ID_REQUISICION)
         {
             var pIN_ID_NOTIFICACIONParameter = pIN_ID_NOTIFICACION.HasValue ?
@@ -13965,44 +13116,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CANDIDATO_IDONEO_PERFIL_Result>("SPE_OBTIENE_CANDIDATO_IDONEO_PERFIL", pIN_ID_REQUISICIONParameter, pIN_NO_CANDIDATOSParameter, pIN_XML_CANDIDATOSParameter, pIN_FG_FOTOParameter);
         }
     
-        public virtual int SPE_INSERTA_ACTUALIZA_M_PUESTO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PUESTO, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION, string pIN_XML_PUESTO, string pIN_XML_PUESTO_OCUPACION)
-        {
-            var pIN_ID_PUESTOParameter = pIN_ID_PUESTO.HasValue ?
-                new ObjectParameter("PIN_ID_PUESTO", pIN_ID_PUESTO) :
-                new ObjectParameter("PIN_ID_PUESTO", typeof(int));
-    
-            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
-                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
-                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
-    
-            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
-                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
-                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
-    
-            var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
-                new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
-                new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
-    
-            var pIN_XML_PUESTOParameter = pIN_XML_PUESTO != null ?
-                new ObjectParameter("PIN_XML_PUESTO", pIN_XML_PUESTO) :
-                new ObjectParameter("PIN_XML_PUESTO", typeof(string));
-    
-            var pIN_XML_PUESTO_OCUPACIONParameter = pIN_XML_PUESTO_OCUPACION != null ?
-                new ObjectParameter("PIN_XML_PUESTO_OCUPACION", pIN_XML_PUESTO_OCUPACION) :
-                new ObjectParameter("PIN_XML_PUESTO_OCUPACION", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_M_PUESTO", xML_RESULTADO, pIN_ID_PUESTOParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter, pIN_XML_PUESTOParameter, pIN_XML_PUESTO_OCUPACIONParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_DESCRIPTIVO_Result> SPE_OBTIENE_DESCRIPTIVO(Nullable<int> pIN_ID_DESCRIPTIVO)
-        {
-            var pIN_ID_DESCRIPTIVOParameter = pIN_ID_DESCRIPTIVO.HasValue ?
-                new ObjectParameter("PIN_ID_DESCRIPTIVO", pIN_ID_DESCRIPTIVO) :
-                new ObjectParameter("PIN_ID_DESCRIPTIVO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_DESCRIPTIVO_Result>("SPE_OBTIENE_DESCRIPTIVO", pIN_ID_DESCRIPTIVOParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_DESCRIPTIVOS_PUESTOS_Result> SPE_OBTIENE_DESCRIPTIVOS_PUESTOS()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_DESCRIPTIVOS_PUESTOS_Result>("SPE_OBTIENE_DESCRIPTIVOS_PUESTOS");
@@ -14119,28 +13232,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_M_PUESTO_REQUISICION_Result>("SPE_OBTIENE_M_PUESTO_REQUISICION", pIN_ID_PUESTOParameter, pIN_FG_ACTIVOParameter, pIN_FE_INACTIVOParameter, pIN_CL_PUESTOParameter, pIN_NB_PUESTOParameter, pIN_ID_DEPARTAMENTOParameter, pIN_XML_CAMPOS_ADICIONALESParameter, pIN_ID_BITACORAParameter, pIN_NO_EDAD_MINIMAParameter, pIN_NO_EDAD_MAXIMAParameter, pIN_CL_GENEROParameter, pIN_CL_ESTADO_CIVILParameter, pIN_XML_REQUERIMIENTOSParameter, pIN_XML_OBSERVACIONESParameter, pIN_XML_RESPONSABILIDADParameter, pIN_XML_AUTORIDADParameter, pIN_XML_CURSOS_ADICIONALESParameter, pIN_XML_MENTORParameter, pIN_CL_TIPO_PUESTOParameter, pIN_ID_CENTRO_ADMINISTRATIVOParameter, pIN_ID_CENTRO_OPERATIVOParameter, pIN_ID_PAQUETE_PRESTACIONESParameter, pIN_XML_PUESTOSParameter, pIN_NB_DEPARTAMENTOParameter, pIN_CL_DEPARTAMENTOParameter, xML_PUESTOS_SELECCIONADOSParameter, pIN_ID_EMPRESAParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_CONTROL_AVANCE_EVALUADOS_Result> SPE_OBTIENE_CONTROL_AVANCE_EVALUADOS(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EMPRESA)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CONTROL_AVANCE_EVALUADOS_Result>("SPE_OBTIENE_CONTROL_AVANCE_EVALUADOS", pIN_ID_PERIODOParameter, pIN_ID_EMPRESAParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_CANDIDATOS_BATERIA_Result> SPE_OBTIENE_CANDIDATOS_BATERIA(string xML_EMPLEADOS)
-        {
-            var xML_EMPLEADOSParameter = xML_EMPLEADOS != null ?
-                new ObjectParameter("XML_EMPLEADOS", xML_EMPLEADOS) :
-                new ObjectParameter("XML_EMPLEADOS", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CANDIDATOS_BATERIA_Result>("SPE_OBTIENE_CANDIDATOS_BATERIA", xML_EMPLEADOSParameter);
         }
     
         public virtual int SPE_ELIMINA_RESPUESTAS_BATERIA(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_BATERIA, string pIN_CL_USUARIO_APP, string pIN_NB_PROGRAMA)
@@ -14658,15 +13749,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_EO_PREGUNTAS_PERIODO", xML_RESULTADO, pIN_ID_PERIODOParameter, pIN_ID_PREGUNTAParameter, pIN_ID_PREGUNTA_VERIFICAParameter, pIN_NB_DIMENCIONParameter, pIN_NB_TEMAParameter, pIN_NO_SECUENCIAParameter, pIN_NB_PREGUNTAParameter, pIN_ID_RELACION_PREGUNTAParameter, pIN_NB_PREGUNTA_VERIFICACIONParameter, pIN_NO_SECUENCIA_VERIFICACIONParameter, pIN_FG_HABILITA_VERIFICACIONParameter, pIN_CL_USUARIOParameter, pIN_PROGRMA_APPParameter, pIN_TIPO_TRANSACCIONParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO_Result> SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO(Nullable<int> pIN_ID_PERIODO_DESEMPENO)
-        {
-            var pIN_ID_PERIODO_DESEMPENOParameter = pIN_ID_PERIODO_DESEMPENO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO_DESEMPENO", pIN_ID_PERIODO_DESEMPENO) :
-                new ObjectParameter("PIN_ID_PERIODO_DESEMPENO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO_Result>("SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO", pIN_ID_PERIODO_DESEMPENOParameter);
-        }
-    
         public virtual int SPE_INSERTA_ACTUALIZA_BONO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO, string pIN_CL_USUARIO_APP, string pIN_NB_PROGRAMA)
         {
             var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
@@ -14682,27 +13764,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_BONO", xML_RESULTADO, pIN_ID_PERIODOParameter, pIN_CL_USUARIO_APPParameter, pIN_NB_PROGRAMAParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_CLAVE_EMPLEADO_INDICE_ROTACION_Result> SPE_OBTIENE_CLAVE_EMPLEADO_INDICE_ROTACION(Nullable<System.DateTime> pIN_FECHA_INICIO, Nullable<System.DateTime> pIN_FECHA_FINAL, string tIPO_REPORTE, string pIN_XML_FILTROS)
-        {
-            var pIN_FECHA_INICIOParameter = pIN_FECHA_INICIO.HasValue ?
-                new ObjectParameter("PIN_FECHA_INICIO", pIN_FECHA_INICIO) :
-                new ObjectParameter("PIN_FECHA_INICIO", typeof(System.DateTime));
-    
-            var pIN_FECHA_FINALParameter = pIN_FECHA_FINAL.HasValue ?
-                new ObjectParameter("PIN_FECHA_FINAL", pIN_FECHA_FINAL) :
-                new ObjectParameter("PIN_FECHA_FINAL", typeof(System.DateTime));
-    
-            var tIPO_REPORTEParameter = tIPO_REPORTE != null ?
-                new ObjectParameter("TIPO_REPORTE", tIPO_REPORTE) :
-                new ObjectParameter("TIPO_REPORTE", typeof(string));
-    
-            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
-                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
-                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CLAVE_EMPLEADO_INDICE_ROTACION_Result>("SPE_OBTIENE_CLAVE_EMPLEADO_INDICE_ROTACION", pIN_FECHA_INICIOParameter, pIN_FECHA_FINALParameter, tIPO_REPORTEParameter, pIN_XML_FILTROSParameter);
         }
     
         public virtual ObjectResult<SPE_OBTIENE_EO_PLAZAS_EMPLEADO_Result> SPE_OBTIENE_EO_PLAZAS_EMPLEADO(Nullable<int> pIN_ID_EMPLEADO)
@@ -14802,63 +13863,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_METAS_EVALUADO", xML_RESULTADO, pIN_METAS_EVALUADOS_XMLParameter, pIN_ID_PERIODOParameter, pIN_CL_USUARIO_APPParameter, pIN_NB_PROGRAMAParameter);
         }
     
-        public virtual int SPE_INSERTA_ACTUALIZA_PERIODO_DESEMPENO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO_DESEMPENO, string pIN_CL_PERIODO_DESEMPENO, string pIN_NB_PERIODO_DESEMPENO, string pIN_DS_PERIODO_DESEMPENO, string pIN_CL_ESTADO_PERIODO_DESEMPENO, string pIN_DS_NOTAS, Nullable<System.DateTime> pIN_FE_INICIO, Nullable<System.DateTime> pIN_FE_TERMINO, string pIN_CL_TIPO_CAPTURISTA, string pIN_CL_TIPO_METAS, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
-        {
-            var pIN_ID_PERIODO_DESEMPENOParameter = pIN_ID_PERIODO_DESEMPENO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO_DESEMPENO", pIN_ID_PERIODO_DESEMPENO) :
-                new ObjectParameter("PIN_ID_PERIODO_DESEMPENO", typeof(int));
-    
-            var pIN_CL_PERIODO_DESEMPENOParameter = pIN_CL_PERIODO_DESEMPENO != null ?
-                new ObjectParameter("PIN_CL_PERIODO_DESEMPENO", pIN_CL_PERIODO_DESEMPENO) :
-                new ObjectParameter("PIN_CL_PERIODO_DESEMPENO", typeof(string));
-    
-            var pIN_NB_PERIODO_DESEMPENOParameter = pIN_NB_PERIODO_DESEMPENO != null ?
-                new ObjectParameter("PIN_NB_PERIODO_DESEMPENO", pIN_NB_PERIODO_DESEMPENO) :
-                new ObjectParameter("PIN_NB_PERIODO_DESEMPENO", typeof(string));
-    
-            var pIN_DS_PERIODO_DESEMPENOParameter = pIN_DS_PERIODO_DESEMPENO != null ?
-                new ObjectParameter("PIN_DS_PERIODO_DESEMPENO", pIN_DS_PERIODO_DESEMPENO) :
-                new ObjectParameter("PIN_DS_PERIODO_DESEMPENO", typeof(string));
-    
-            var pIN_CL_ESTADO_PERIODO_DESEMPENOParameter = pIN_CL_ESTADO_PERIODO_DESEMPENO != null ?
-                new ObjectParameter("PIN_CL_ESTADO_PERIODO_DESEMPENO", pIN_CL_ESTADO_PERIODO_DESEMPENO) :
-                new ObjectParameter("PIN_CL_ESTADO_PERIODO_DESEMPENO", typeof(string));
-    
-            var pIN_DS_NOTASParameter = pIN_DS_NOTAS != null ?
-                new ObjectParameter("PIN_DS_NOTAS", pIN_DS_NOTAS) :
-                new ObjectParameter("PIN_DS_NOTAS", typeof(string));
-    
-            var pIN_FE_INICIOParameter = pIN_FE_INICIO.HasValue ?
-                new ObjectParameter("PIN_FE_INICIO", pIN_FE_INICIO) :
-                new ObjectParameter("PIN_FE_INICIO", typeof(System.DateTime));
-    
-            var pIN_FE_TERMINOParameter = pIN_FE_TERMINO.HasValue ?
-                new ObjectParameter("PIN_FE_TERMINO", pIN_FE_TERMINO) :
-                new ObjectParameter("PIN_FE_TERMINO", typeof(System.DateTime));
-    
-            var pIN_CL_TIPO_CAPTURISTAParameter = pIN_CL_TIPO_CAPTURISTA != null ?
-                new ObjectParameter("PIN_CL_TIPO_CAPTURISTA", pIN_CL_TIPO_CAPTURISTA) :
-                new ObjectParameter("PIN_CL_TIPO_CAPTURISTA", typeof(string));
-    
-            var pIN_CL_TIPO_METASParameter = pIN_CL_TIPO_METAS != null ?
-                new ObjectParameter("PIN_CL_TIPO_METAS", pIN_CL_TIPO_METAS) :
-                new ObjectParameter("PIN_CL_TIPO_METAS", typeof(string));
-    
-            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
-                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
-                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
-    
-            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
-                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
-                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
-    
-            var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
-                new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
-                new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_PERIODO_DESEMPENO", xML_RESULTADO, pIN_ID_PERIODO_DESEMPENOParameter, pIN_CL_PERIODO_DESEMPENOParameter, pIN_NB_PERIODO_DESEMPENOParameter, pIN_DS_PERIODO_DESEMPENOParameter, pIN_CL_ESTADO_PERIODO_DESEMPENOParameter, pIN_DS_NOTASParameter, pIN_FE_INICIOParameter, pIN_FE_TERMINOParameter, pIN_CL_TIPO_CAPTURISTAParameter, pIN_CL_TIPO_METASParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter);
-        }
-    
         public virtual int SPE_INSERTA_ACTUALIZA_EVALUADOS_DESEMPENO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO, string xML_ID_SELECCIONADOS, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
         {
             var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
@@ -14939,31 +13943,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_EVALUADOS_TABLERO_CONTROL", xML_RESULTADO, pIN_ID_PERIODOParameter, xML_ID_SELECCIONADOSParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_EMPLEADOS_Result> SPE_OBTIENE_EMPLEADOS(string pIN_XML_SELECCION, string pIN_CL_USUARIO, Nullable<bool> pIN_FG_ACTIVO, Nullable<bool> pIN_FG_FOTO, Nullable<int> pIN_ID_EMPRESA)
-        {
-            var pIN_XML_SELECCIONParameter = pIN_XML_SELECCION != null ?
-                new ObjectParameter("PIN_XML_SELECCION", pIN_XML_SELECCION) :
-                new ObjectParameter("PIN_XML_SELECCION", typeof(string));
-    
-            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
-                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
-                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
-    
-            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
-                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
-                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
-    
-            var pIN_FG_FOTOParameter = pIN_FG_FOTO.HasValue ?
-                new ObjectParameter("PIN_FG_FOTO", pIN_FG_FOTO) :
-                new ObjectParameter("PIN_FG_FOTO", typeof(bool));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EMPLEADOS_Result>("SPE_OBTIENE_EMPLEADOS", pIN_XML_SELECCIONParameter, pIN_CL_USUARIOParameter, pIN_FG_ACTIVOParameter, pIN_FG_FOTOParameter, pIN_ID_EMPRESAParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_CANDIDATO_EVALUADO_Result> SPE_OBTIENE_CANDIDATO_EVALUADO(Nullable<int> pIN_ID_PERIODO)
         {
             var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
@@ -15035,11 +14014,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_CL_TIPO_PERIODO", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_PERIODOS_TABLERO_CONTROL_Result>("SPE_OBTIENE_PERIODOS_TABLERO_CONTROL", pIN_ID_TABLERO_CONTROLParameter, pIN_CL_TIPO_PERIODOParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_PERFIL_EMPLEADOS_Result> SPE_OBTIENE_PERFIL_EMPLEADOS()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_PERFIL_EMPLEADOS_Result>("SPE_OBTIENE_PERFIL_EMPLEADOS");
         }
     
         public virtual int SPE_INSERTA_ACTUALIZA_ESTATUS_ENVIO_CORREO(ObjectParameter xML_RESULTADO, string pIN_XML_USUARIO_CORREO, string pIN_CL_USUARIO_APP, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
@@ -15334,15 +14308,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_PERIODO", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_VERIFICA_CONFIGURACION_METAS_Result>("SPE_VERIFICA_CONFIGURACION_METAS", pIN_ID_PERIODOParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_EVALUADOS_PERIODOS_DESEMPENO_Result> SPE_OBTIENE_EVALUADOS_PERIODOS_DESEMPENO(string pIN_XML_PERIODOS)
-        {
-            var pIN_XML_PERIODOSParameter = pIN_XML_PERIODOS != null ?
-                new ObjectParameter("PIN_XML_PERIODOS", pIN_XML_PERIODOS) :
-                new ObjectParameter("PIN_XML_PERIODOS", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EVALUADOS_PERIODOS_DESEMPENO_Result>("SPE_OBTIENE_EVALUADOS_PERIODOS_DESEMPENO", pIN_XML_PERIODOSParameter);
         }
     
         public virtual ObjectResult<SPE_OBTIENE_PERIODOS_DESEMPENO_COMPARACION_Result> SPE_OBTIENE_PERIODOS_DESEMPENO_COMPARACION(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EVALUADO, string pIN_CL_TIPO_SELECCION)
@@ -15846,79 +14811,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_PARAMETROS_FILTROS_Result>("SPE_OBTIENE_EO_PARAMETROS_FILTROS", pIN_ID_PERIODOParameter, pIN_ID_FILTROParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_EO_GRAFICA_INDICE_DIMENSION_Result> SPE_OBTIENE_EO_GRAFICA_INDICE_DIMENSION(Nullable<int> pIN_ID_PERIODO, string pIN_XML_FILTROS)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
-                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
-                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_GRAFICA_INDICE_DIMENSION_Result>("SPE_OBTIENE_EO_GRAFICA_INDICE_DIMENSION", pIN_ID_PERIODOParameter, pIN_XML_FILTROSParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_EO_GRAFICA_INDICE_PREGUNTA_Result> SPE_OBTIENE_EO_GRAFICA_INDICE_PREGUNTA(Nullable<int> pIN_ID_PERIODO, string pIN_XML_FILTROS)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
-                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
-                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_GRAFICA_INDICE_PREGUNTA_Result>("SPE_OBTIENE_EO_GRAFICA_INDICE_PREGUNTA", pIN_ID_PERIODOParameter, pIN_XML_FILTROSParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_EO_GRAFICA_INDICE_TEMA_Result> SPE_OBTIENE_EO_GRAFICA_INDICE_TEMA(Nullable<int> pIN_ID_PERIODO, string pIN_XML_FILTROS)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
-                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
-                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_GRAFICA_INDICE_TEMA_Result>("SPE_OBTIENE_EO_GRAFICA_INDICE_TEMA", pIN_ID_PERIODOParameter, pIN_XML_FILTROSParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_PERIODO_Result> SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_PERIODO(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_PREGUNTA)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_ID_PREGUNTAParameter = pIN_ID_PREGUNTA.HasValue ?
-                new ObjectParameter("PIN_ID_PREGUNTA", pIN_ID_PREGUNTA) :
-                new ObjectParameter("PIN_ID_PREGUNTA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_PERIODO_Result>("SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_PERIODO", pIN_ID_PERIODOParameter, pIN_ID_PREGUNTAParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_EO_RESPUESTAS_PREGUNTAS_ABIERTAS_Result> SPE_OBTIENE_EO_RESPUESTAS_PREGUNTAS_ABIERTAS(Nullable<int> pIN_ID_EVALUADOR, Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_PREGUNTA, string pIN_XML_FILTROS)
-        {
-            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
-                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
-                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
-    
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_ID_PREGUNTAParameter = pIN_ID_PREGUNTA.HasValue ?
-                new ObjectParameter("PIN_ID_PREGUNTA", pIN_ID_PREGUNTA) :
-                new ObjectParameter("PIN_ID_PREGUNTA", typeof(int));
-    
-            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
-                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
-                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_RESPUESTAS_PREGUNTAS_ABIERTAS_Result>("SPE_OBTIENE_EO_RESPUESTAS_PREGUNTAS_ABIERTAS", pIN_ID_EVALUADORParameter, pIN_ID_PERIODOParameter, pIN_ID_PREGUNTAParameter, pIN_XML_FILTROSParameter);
-        }
-    
         public virtual int SPE_INSERTA_ACTUALIZA_INSTRUCCIONES_CUESTIONARIO(ObjectParameter xML_RESULTADO, string pIN_DS_INSTRUCCIONES, Nullable<int> pIN_ID_PERIODO, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA)
         {
             var pIN_DS_INSTRUCCIONESParameter = pIN_DS_INSTRUCCIONES != null ?
@@ -15953,19 +14845,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_BONOS_EVALUADOS_DESEMPENO_Result>("SPE_OBTIENE_BONOS_EVALUADOS_DESEMPENO", pIN_XML_PERIODOSParameter, pIN_ID_EMPLEADOParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_EO_PERIODO_EVALUADOR_DESEMPENO_Result> SPE_OBTIENE_EO_PERIODO_EVALUADOR_DESEMPENO(Nullable<int> pIN_ID_EVALUADOR, Nullable<System.Guid> pIN_FL_EVALUADOR)
-        {
-            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
-                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
-                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
-    
-            var pIN_FL_EVALUADORParameter = pIN_FL_EVALUADOR.HasValue ?
-                new ObjectParameter("PIN_FL_EVALUADOR", pIN_FL_EVALUADOR) :
-                new ObjectParameter("PIN_FL_EVALUADOR", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_PERIODO_EVALUADOR_DESEMPENO_Result>("SPE_OBTIENE_EO_PERIODO_EVALUADOR_DESEMPENO", pIN_ID_EVALUADORParameter, pIN_FL_EVALUADORParameter);
-        }
-    
         public virtual int SPE_ACTUALIZA_EMPLEADO_REINGRESO(ObjectParameter xML_RESULTADO, string pIN_XML_DATOS_EMPLEADO, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA)
         {
             var pIN_XML_DATOS_EMPLEADOParameter = pIN_XML_DATOS_EMPLEADO != null ?
@@ -15981,15 +14860,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ACTUALIZA_EMPLEADO_REINGRESO", xML_RESULTADO, pIN_XML_DATOS_EMPLEADOParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_EO_BAJAS_PENDIENTES_Result> SPE_OBTIENE_EO_BAJAS_PENDIENTES(Nullable<int> pIN_ID_BAJA_EMPLEADO)
-        {
-            var pIN_ID_BAJA_EMPLEADOParameter = pIN_ID_BAJA_EMPLEADO.HasValue ?
-                new ObjectParameter("PIN_ID_BAJA_EMPLEADO", pIN_ID_BAJA_EMPLEADO) :
-                new ObjectParameter("PIN_ID_BAJA_EMPLEADO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_BAJAS_PENDIENTES_Result>("SPE_OBTIENE_EO_BAJAS_PENDIENTES", pIN_ID_BAJA_EMPLEADOParameter);
         }
     
         public virtual int SPE_ACTUALIZA_BAJA_PENDIENTE_EMPLEADO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_BAJA_EMPLEADO, Nullable<int> pIN_ID_EMPLEADO, Nullable<int> pIN_ID_CAUSA_ROTACION, string pIN_DS_COMENTARIOS, Nullable<System.DateTime> pIN_FE_BAJA_EFECTIVA, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
@@ -16027,19 +14897,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ACTUALIZA_BAJA_PENDIENTE_EMPLEADO", xML_RESULTADO, pIN_ID_BAJA_EMPLEADOParameter, pIN_ID_EMPLEADOParameter, pIN_ID_CAUSA_ROTACIONParameter, pIN_DS_COMENTARIOSParameter, pIN_FE_BAJA_EFECTIVAParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_HISTORIAL_BAJAS_Result> SPE_OBTIENE_HISTORIAL_BAJAS(Nullable<int> pIN_ID_EMPLEADO, Nullable<int> pIN_ID_CAUSA_ROTACION)
-        {
-            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
-                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
-                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
-    
-            var pIN_ID_CAUSA_ROTACIONParameter = pIN_ID_CAUSA_ROTACION.HasValue ?
-                new ObjectParameter("PIN_ID_CAUSA_ROTACION", pIN_ID_CAUSA_ROTACION) :
-                new ObjectParameter("PIN_ID_CAUSA_ROTACION", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_HISTORIAL_BAJAS_Result>("SPE_OBTIENE_HISTORIAL_BAJAS", pIN_ID_EMPLEADOParameter, pIN_ID_CAUSA_ROTACIONParameter);
         }
     
         public virtual ObjectResult<SPE_OBTIENE_C_PRUEBA_SECCION_Result> SPE_OBTIENE_C_PRUEBA_SECCION(Nullable<int> pIN_ID_PRUEBA_SECCION, Nullable<int> pIN_ID_PRUEBA, string pIN_CL_PRUEBA_SECCION, string pIN_NB_PRUEBA_SECCION, Nullable<short> pIN_NO_TIEMPO)
@@ -16094,63 +14951,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_FG_MODIFICA_PROGRAMA", typeof(bool));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_PROGRAMA_DESDE_CERO", xML_RESULTADO, pIN_ID_PROGRAMAParameter, pIN_XML_DATOS_CEROParameter, pIN_CL_USUARIO_APPParameter, pIN_NB_PROGRAMAParameter, pIN_ID_EMPRESAParameter, pIN_FG_MODIFICA_PROGRAMAParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_K_PRUEBA_Result> SPE_OBTIENE_K_PRUEBA(Nullable<int> pIN_ID_PRUEBA, Nullable<int> pIN_ID_PRUEBA_PLANTILLA, Nullable<int> pIN_ID_CANDIDATO, Nullable<int> pIN_ID_EMPLEADO, string pIN_CL_EMPLEADO, string pIN_CL_ESTADO, Nullable<System.DateTime> pIN_FE_INICIO, Nullable<System.DateTime> pIN_FE_TERMINO, Nullable<int> pIN_NO_TIEMPO, Nullable<System.Guid> pIN_CL_TOKEN_EXTERNO, Nullable<System.Guid> pIN_CL_TOKEN_BATERIA, Nullable<int> pIN_ID_BATERIA, Nullable<bool> pIN_FG_ASIGNADA)
-        {
-            var pIN_ID_PRUEBAParameter = pIN_ID_PRUEBA.HasValue ?
-                new ObjectParameter("PIN_ID_PRUEBA", pIN_ID_PRUEBA) :
-                new ObjectParameter("PIN_ID_PRUEBA", typeof(int));
-    
-            var pIN_ID_PRUEBA_PLANTILLAParameter = pIN_ID_PRUEBA_PLANTILLA.HasValue ?
-                new ObjectParameter("PIN_ID_PRUEBA_PLANTILLA", pIN_ID_PRUEBA_PLANTILLA) :
-                new ObjectParameter("PIN_ID_PRUEBA_PLANTILLA", typeof(int));
-    
-            var pIN_ID_CANDIDATOParameter = pIN_ID_CANDIDATO.HasValue ?
-                new ObjectParameter("PIN_ID_CANDIDATO", pIN_ID_CANDIDATO) :
-                new ObjectParameter("PIN_ID_CANDIDATO", typeof(int));
-    
-            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
-                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
-                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
-    
-            var pIN_CL_EMPLEADOParameter = pIN_CL_EMPLEADO != null ?
-                new ObjectParameter("PIN_CL_EMPLEADO", pIN_CL_EMPLEADO) :
-                new ObjectParameter("PIN_CL_EMPLEADO", typeof(string));
-    
-            var pIN_CL_ESTADOParameter = pIN_CL_ESTADO != null ?
-                new ObjectParameter("PIN_CL_ESTADO", pIN_CL_ESTADO) :
-                new ObjectParameter("PIN_CL_ESTADO", typeof(string));
-    
-            var pIN_FE_INICIOParameter = pIN_FE_INICIO.HasValue ?
-                new ObjectParameter("PIN_FE_INICIO", pIN_FE_INICIO) :
-                new ObjectParameter("PIN_FE_INICIO", typeof(System.DateTime));
-    
-            var pIN_FE_TERMINOParameter = pIN_FE_TERMINO.HasValue ?
-                new ObjectParameter("PIN_FE_TERMINO", pIN_FE_TERMINO) :
-                new ObjectParameter("PIN_FE_TERMINO", typeof(System.DateTime));
-    
-            var pIN_NO_TIEMPOParameter = pIN_NO_TIEMPO.HasValue ?
-                new ObjectParameter("PIN_NO_TIEMPO", pIN_NO_TIEMPO) :
-                new ObjectParameter("PIN_NO_TIEMPO", typeof(int));
-    
-            var pIN_CL_TOKEN_EXTERNOParameter = pIN_CL_TOKEN_EXTERNO.HasValue ?
-                new ObjectParameter("PIN_CL_TOKEN_EXTERNO", pIN_CL_TOKEN_EXTERNO) :
-                new ObjectParameter("PIN_CL_TOKEN_EXTERNO", typeof(System.Guid));
-    
-            var pIN_CL_TOKEN_BATERIAParameter = pIN_CL_TOKEN_BATERIA.HasValue ?
-                new ObjectParameter("PIN_CL_TOKEN_BATERIA", pIN_CL_TOKEN_BATERIA) :
-                new ObjectParameter("PIN_CL_TOKEN_BATERIA", typeof(System.Guid));
-    
-            var pIN_ID_BATERIAParameter = pIN_ID_BATERIA.HasValue ?
-                new ObjectParameter("PIN_ID_BATERIA", pIN_ID_BATERIA) :
-                new ObjectParameter("PIN_ID_BATERIA", typeof(int));
-    
-            var pIN_FG_ASIGNADAParameter = pIN_FG_ASIGNADA.HasValue ?
-                new ObjectParameter("PIN_FG_ASIGNADA", pIN_FG_ASIGNADA) :
-                new ObjectParameter("PIN_FG_ASIGNADA", typeof(bool));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_K_PRUEBA_Result>("SPE_OBTIENE_K_PRUEBA", pIN_ID_PRUEBAParameter, pIN_ID_PRUEBA_PLANTILLAParameter, pIN_ID_CANDIDATOParameter, pIN_ID_EMPLEADOParameter, pIN_CL_EMPLEADOParameter, pIN_CL_ESTADOParameter, pIN_FE_INICIOParameter, pIN_FE_TERMINOParameter, pIN_NO_TIEMPOParameter, pIN_CL_TOKEN_EXTERNOParameter, pIN_CL_TOKEN_BATERIAParameter, pIN_ID_BATERIAParameter, pIN_FG_ASIGNADAParameter);
         }
     
         public virtual int SPE_ACTUALIZA_PRUEBAS_CANDIDATOS(ObjectParameter xML_RESULTADO, string pIN_XML_PRUEBAS, Nullable<int> pIN_ID_BATERIA, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA_CREA)
@@ -16344,136 +15144,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_SOLICITUDES_Result>("SPE_OBTIENE_SOLICITUDES");
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_M_PUESTO_Result> SPE_OBTIENE_M_PUESTO(Nullable<int> pIN_ID_PUESTO, Nullable<bool> pIN_FG_ACTIVO, Nullable<System.DateTime> pIN_FE_INACTIVO, string pIN_CL_PUESTO, string pIN_NB_PUESTO, Nullable<int> pIN_ID_DEPARTAMENTO, string pIN_XML_CAMPOS_ADICIONALES, Nullable<int> pIN_ID_BITACORA, Nullable<byte> pIN_NO_EDAD_MINIMA, Nullable<byte> pIN_NO_EDAD_MAXIMA, string pIN_CL_GENERO, string pIN_CL_ESTADO_CIVIL, string pIN_XML_REQUERIMIENTOS, string pIN_XML_OBSERVACIONES, string pIN_XML_RESPONSABILIDAD, string pIN_XML_AUTORIDAD, string pIN_XML_CURSOS_ADICIONALES, string pIN_XML_MENTOR, string pIN_CL_TIPO_PUESTO, Nullable<System.Guid> pIN_ID_CENTRO_ADMINISTRATIVO, Nullable<System.Guid> pIN_ID_CENTRO_OPERATIVO, Nullable<int> pIN_ID_PAQUETE_PRESTACIONES, string pIN_XML_PUESTOS, string pIN_NB_DEPARTAMENTO, string pIN_CL_DEPARTAMENTO, string xML_PUESTOS_SELECCIONADOS, Nullable<int> pIN_ID_EMPRESA)
-        {
-            var pIN_ID_PUESTOParameter = pIN_ID_PUESTO.HasValue ?
-                new ObjectParameter("PIN_ID_PUESTO", pIN_ID_PUESTO) :
-                new ObjectParameter("PIN_ID_PUESTO", typeof(int));
-    
-            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
-                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
-                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
-    
-            var pIN_FE_INACTIVOParameter = pIN_FE_INACTIVO.HasValue ?
-                new ObjectParameter("PIN_FE_INACTIVO", pIN_FE_INACTIVO) :
-                new ObjectParameter("PIN_FE_INACTIVO", typeof(System.DateTime));
-    
-            var pIN_CL_PUESTOParameter = pIN_CL_PUESTO != null ?
-                new ObjectParameter("PIN_CL_PUESTO", pIN_CL_PUESTO) :
-                new ObjectParameter("PIN_CL_PUESTO", typeof(string));
-    
-            var pIN_NB_PUESTOParameter = pIN_NB_PUESTO != null ?
-                new ObjectParameter("PIN_NB_PUESTO", pIN_NB_PUESTO) :
-                new ObjectParameter("PIN_NB_PUESTO", typeof(string));
-    
-            var pIN_ID_DEPARTAMENTOParameter = pIN_ID_DEPARTAMENTO.HasValue ?
-                new ObjectParameter("PIN_ID_DEPARTAMENTO", pIN_ID_DEPARTAMENTO) :
-                new ObjectParameter("PIN_ID_DEPARTAMENTO", typeof(int));
-    
-            var pIN_XML_CAMPOS_ADICIONALESParameter = pIN_XML_CAMPOS_ADICIONALES != null ?
-                new ObjectParameter("PIN_XML_CAMPOS_ADICIONALES", pIN_XML_CAMPOS_ADICIONALES) :
-                new ObjectParameter("PIN_XML_CAMPOS_ADICIONALES", typeof(string));
-    
-            var pIN_ID_BITACORAParameter = pIN_ID_BITACORA.HasValue ?
-                new ObjectParameter("PIN_ID_BITACORA", pIN_ID_BITACORA) :
-                new ObjectParameter("PIN_ID_BITACORA", typeof(int));
-    
-            var pIN_NO_EDAD_MINIMAParameter = pIN_NO_EDAD_MINIMA.HasValue ?
-                new ObjectParameter("PIN_NO_EDAD_MINIMA", pIN_NO_EDAD_MINIMA) :
-                new ObjectParameter("PIN_NO_EDAD_MINIMA", typeof(byte));
-    
-            var pIN_NO_EDAD_MAXIMAParameter = pIN_NO_EDAD_MAXIMA.HasValue ?
-                new ObjectParameter("PIN_NO_EDAD_MAXIMA", pIN_NO_EDAD_MAXIMA) :
-                new ObjectParameter("PIN_NO_EDAD_MAXIMA", typeof(byte));
-    
-            var pIN_CL_GENEROParameter = pIN_CL_GENERO != null ?
-                new ObjectParameter("PIN_CL_GENERO", pIN_CL_GENERO) :
-                new ObjectParameter("PIN_CL_GENERO", typeof(string));
-    
-            var pIN_CL_ESTADO_CIVILParameter = pIN_CL_ESTADO_CIVIL != null ?
-                new ObjectParameter("PIN_CL_ESTADO_CIVIL", pIN_CL_ESTADO_CIVIL) :
-                new ObjectParameter("PIN_CL_ESTADO_CIVIL", typeof(string));
-    
-            var pIN_XML_REQUERIMIENTOSParameter = pIN_XML_REQUERIMIENTOS != null ?
-                new ObjectParameter("PIN_XML_REQUERIMIENTOS", pIN_XML_REQUERIMIENTOS) :
-                new ObjectParameter("PIN_XML_REQUERIMIENTOS", typeof(string));
-    
-            var pIN_XML_OBSERVACIONESParameter = pIN_XML_OBSERVACIONES != null ?
-                new ObjectParameter("PIN_XML_OBSERVACIONES", pIN_XML_OBSERVACIONES) :
-                new ObjectParameter("PIN_XML_OBSERVACIONES", typeof(string));
-    
-            var pIN_XML_RESPONSABILIDADParameter = pIN_XML_RESPONSABILIDAD != null ?
-                new ObjectParameter("PIN_XML_RESPONSABILIDAD", pIN_XML_RESPONSABILIDAD) :
-                new ObjectParameter("PIN_XML_RESPONSABILIDAD", typeof(string));
-    
-            var pIN_XML_AUTORIDADParameter = pIN_XML_AUTORIDAD != null ?
-                new ObjectParameter("PIN_XML_AUTORIDAD", pIN_XML_AUTORIDAD) :
-                new ObjectParameter("PIN_XML_AUTORIDAD", typeof(string));
-    
-            var pIN_XML_CURSOS_ADICIONALESParameter = pIN_XML_CURSOS_ADICIONALES != null ?
-                new ObjectParameter("PIN_XML_CURSOS_ADICIONALES", pIN_XML_CURSOS_ADICIONALES) :
-                new ObjectParameter("PIN_XML_CURSOS_ADICIONALES", typeof(string));
-    
-            var pIN_XML_MENTORParameter = pIN_XML_MENTOR != null ?
-                new ObjectParameter("PIN_XML_MENTOR", pIN_XML_MENTOR) :
-                new ObjectParameter("PIN_XML_MENTOR", typeof(string));
-    
-            var pIN_CL_TIPO_PUESTOParameter = pIN_CL_TIPO_PUESTO != null ?
-                new ObjectParameter("PIN_CL_TIPO_PUESTO", pIN_CL_TIPO_PUESTO) :
-                new ObjectParameter("PIN_CL_TIPO_PUESTO", typeof(string));
-    
-            var pIN_ID_CENTRO_ADMINISTRATIVOParameter = pIN_ID_CENTRO_ADMINISTRATIVO.HasValue ?
-                new ObjectParameter("PIN_ID_CENTRO_ADMINISTRATIVO", pIN_ID_CENTRO_ADMINISTRATIVO) :
-                new ObjectParameter("PIN_ID_CENTRO_ADMINISTRATIVO", typeof(System.Guid));
-    
-            var pIN_ID_CENTRO_OPERATIVOParameter = pIN_ID_CENTRO_OPERATIVO.HasValue ?
-                new ObjectParameter("PIN_ID_CENTRO_OPERATIVO", pIN_ID_CENTRO_OPERATIVO) :
-                new ObjectParameter("PIN_ID_CENTRO_OPERATIVO", typeof(System.Guid));
-    
-            var pIN_ID_PAQUETE_PRESTACIONESParameter = pIN_ID_PAQUETE_PRESTACIONES.HasValue ?
-                new ObjectParameter("PIN_ID_PAQUETE_PRESTACIONES", pIN_ID_PAQUETE_PRESTACIONES) :
-                new ObjectParameter("PIN_ID_PAQUETE_PRESTACIONES", typeof(int));
-    
-            var pIN_XML_PUESTOSParameter = pIN_XML_PUESTOS != null ?
-                new ObjectParameter("PIN_XML_PUESTOS", pIN_XML_PUESTOS) :
-                new ObjectParameter("PIN_XML_PUESTOS", typeof(string));
-    
-            var pIN_NB_DEPARTAMENTOParameter = pIN_NB_DEPARTAMENTO != null ?
-                new ObjectParameter("PIN_NB_DEPARTAMENTO", pIN_NB_DEPARTAMENTO) :
-                new ObjectParameter("PIN_NB_DEPARTAMENTO", typeof(string));
-    
-            var pIN_CL_DEPARTAMENTOParameter = pIN_CL_DEPARTAMENTO != null ?
-                new ObjectParameter("PIN_CL_DEPARTAMENTO", pIN_CL_DEPARTAMENTO) :
-                new ObjectParameter("PIN_CL_DEPARTAMENTO", typeof(string));
-    
-            var xML_PUESTOS_SELECCIONADOSParameter = xML_PUESTOS_SELECCIONADOS != null ?
-                new ObjectParameter("XML_PUESTOS_SELECCIONADOS", xML_PUESTOS_SELECCIONADOS) :
-                new ObjectParameter("XML_PUESTOS_SELECCIONADOS", typeof(string));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_M_PUESTO_Result>("SPE_OBTIENE_M_PUESTO", pIN_ID_PUESTOParameter, pIN_FG_ACTIVOParameter, pIN_FE_INACTIVOParameter, pIN_CL_PUESTOParameter, pIN_NB_PUESTOParameter, pIN_ID_DEPARTAMENTOParameter, pIN_XML_CAMPOS_ADICIONALESParameter, pIN_ID_BITACORAParameter, pIN_NO_EDAD_MINIMAParameter, pIN_NO_EDAD_MAXIMAParameter, pIN_CL_GENEROParameter, pIN_CL_ESTADO_CIVILParameter, pIN_XML_REQUERIMIENTOSParameter, pIN_XML_OBSERVACIONESParameter, pIN_XML_RESPONSABILIDADParameter, pIN_XML_AUTORIDADParameter, pIN_XML_CURSOS_ADICIONALESParameter, pIN_XML_MENTORParameter, pIN_CL_TIPO_PUESTOParameter, pIN_ID_CENTRO_ADMINISTRATIVOParameter, pIN_ID_CENTRO_OPERATIVOParameter, pIN_ID_PAQUETE_PRESTACIONESParameter, pIN_XML_PUESTOSParameter, pIN_NB_DEPARTAMENTOParameter, pIN_CL_DEPARTAMENTOParameter, xML_PUESTOS_SELECCIONADOSParameter, pIN_ID_EMPRESAParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_PLAZAS_Result> SPE_OBTIENE_PLAZAS(Nullable<int> pIN_ID_PLAZA, string pIN_XML_SELECCION, Nullable<int> pIN_ID_EMPRESA)
-        {
-            var pIN_ID_PLAZAParameter = pIN_ID_PLAZA.HasValue ?
-                new ObjectParameter("PIN_ID_PLAZA", pIN_ID_PLAZA) :
-                new ObjectParameter("PIN_ID_PLAZA", typeof(int));
-    
-            var pIN_XML_SELECCIONParameter = pIN_XML_SELECCION != null ?
-                new ObjectParameter("PIN_XML_SELECCION", pIN_XML_SELECCION) :
-                new ObjectParameter("PIN_XML_SELECCION", typeof(string));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_PLAZAS_Result>("SPE_OBTIENE_PLAZAS", pIN_ID_PLAZAParameter, pIN_XML_SELECCIONParameter, pIN_ID_EMPRESAParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_ROLES_Result> SPE_OBTIENE_ROLES(Nullable<int> pIN_ID_ROL)
         {
             var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
@@ -16567,39 +15237,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_EMPRESA_Result>("SPE_OBTIENE_C_EMPRESA", pIN_ID_EMPRESAParameter, pIN_CL_EMPRESAParameter, pIN_NB_EMPRESAParameter, pIN_NB_RAZON_SOCIALParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_M_DEPARTAMENTO_Result> SPE_OBTIENE_M_DEPARTAMENTO(Nullable<int> pIN_ID_DEPARTAMENTO, Nullable<bool> pIN_FG_ACTIVO, Nullable<System.DateTime> pIN_FE_INACTIVO, string pIN_CL_DEPARTAMENTO, string pIN_NB_DEPARTAMENTO, string pIN_XML_SELECCION, Nullable<int> pIN_ID_EMPRESA)
-        {
-            var pIN_ID_DEPARTAMENTOParameter = pIN_ID_DEPARTAMENTO.HasValue ?
-                new ObjectParameter("PIN_ID_DEPARTAMENTO", pIN_ID_DEPARTAMENTO) :
-                new ObjectParameter("PIN_ID_DEPARTAMENTO", typeof(int));
-    
-            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
-                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
-                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
-    
-            var pIN_FE_INACTIVOParameter = pIN_FE_INACTIVO.HasValue ?
-                new ObjectParameter("PIN_FE_INACTIVO", pIN_FE_INACTIVO) :
-                new ObjectParameter("PIN_FE_INACTIVO", typeof(System.DateTime));
-    
-            var pIN_CL_DEPARTAMENTOParameter = pIN_CL_DEPARTAMENTO != null ?
-                new ObjectParameter("PIN_CL_DEPARTAMENTO", pIN_CL_DEPARTAMENTO) :
-                new ObjectParameter("PIN_CL_DEPARTAMENTO", typeof(string));
-    
-            var pIN_NB_DEPARTAMENTOParameter = pIN_NB_DEPARTAMENTO != null ?
-                new ObjectParameter("PIN_NB_DEPARTAMENTO", pIN_NB_DEPARTAMENTO) :
-                new ObjectParameter("PIN_NB_DEPARTAMENTO", typeof(string));
-    
-            var pIN_XML_SELECCIONParameter = pIN_XML_SELECCION != null ?
-                new ObjectParameter("PIN_XML_SELECCION", pIN_XML_SELECCION) :
-                new ObjectParameter("PIN_XML_SELECCION", typeof(string));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_M_DEPARTAMENTO_Result>("SPE_OBTIENE_M_DEPARTAMENTO", pIN_ID_DEPARTAMENTOParameter, pIN_FG_ACTIVOParameter, pIN_FE_INACTIVOParameter, pIN_CL_DEPARTAMENTOParameter, pIN_NB_DEPARTAMENTOParameter, pIN_XML_SELECCIONParameter, pIN_ID_EMPRESAParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_CAMPO_FORMULARIO_Result> SPE_OBTIENE_CAMPO_FORMULARIO(Nullable<int> pIN_ID_CAMPO, string pIN_CL_CAMPO_FORMULARIO, string pIN_NB_CAMPO_FORMULARIO, string pIN_NB_TOOLTIP, string pIN_CL_FORMULARIO, Nullable<bool> pIN_FG_ACTIVO, Nullable<bool> pIN_FG_SISTEMA)
         {
             var pIN_ID_CAMPOParameter = pIN_ID_CAMPO.HasValue ?
@@ -16652,43 +15289,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_AREA_INTERES_Result>("SPE_OBTIENE_C_AREA_INTERES", pIN_ID_AREA_INTERESParameter, pIN_CL_AREA_INTERESParameter, pIN_NB_AREA_INTERESParameter, pIN_FG_ACTIVOParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_C_COLONIA_Result> SPE_OBTIENE_C_COLONIA(Nullable<int> pIN_ID_COLONIA, string pIN_CL_PAIS, string pIN_CL_ESTADO, string pIN_CL_MUNICIPIO, string pIN_CL_COLONIA, string pIN_NB_COLONIA, string pIN_CL_TIPO_ASENTAMIENTO, string pIN_CL_CODIGO_POSTAL)
-        {
-            var pIN_ID_COLONIAParameter = pIN_ID_COLONIA.HasValue ?
-                new ObjectParameter("PIN_ID_COLONIA", pIN_ID_COLONIA) :
-                new ObjectParameter("PIN_ID_COLONIA", typeof(int));
-    
-            var pIN_CL_PAISParameter = pIN_CL_PAIS != null ?
-                new ObjectParameter("PIN_CL_PAIS", pIN_CL_PAIS) :
-                new ObjectParameter("PIN_CL_PAIS", typeof(string));
-    
-            var pIN_CL_ESTADOParameter = pIN_CL_ESTADO != null ?
-                new ObjectParameter("PIN_CL_ESTADO", pIN_CL_ESTADO) :
-                new ObjectParameter("PIN_CL_ESTADO", typeof(string));
-    
-            var pIN_CL_MUNICIPIOParameter = pIN_CL_MUNICIPIO != null ?
-                new ObjectParameter("PIN_CL_MUNICIPIO", pIN_CL_MUNICIPIO) :
-                new ObjectParameter("PIN_CL_MUNICIPIO", typeof(string));
-    
-            var pIN_CL_COLONIAParameter = pIN_CL_COLONIA != null ?
-                new ObjectParameter("PIN_CL_COLONIA", pIN_CL_COLONIA) :
-                new ObjectParameter("PIN_CL_COLONIA", typeof(string));
-    
-            var pIN_NB_COLONIAParameter = pIN_NB_COLONIA != null ?
-                new ObjectParameter("PIN_NB_COLONIA", pIN_NB_COLONIA) :
-                new ObjectParameter("PIN_NB_COLONIA", typeof(string));
-    
-            var pIN_CL_TIPO_ASENTAMIENTOParameter = pIN_CL_TIPO_ASENTAMIENTO != null ?
-                new ObjectParameter("PIN_CL_TIPO_ASENTAMIENTO", pIN_CL_TIPO_ASENTAMIENTO) :
-                new ObjectParameter("PIN_CL_TIPO_ASENTAMIENTO", typeof(string));
-    
-            var pIN_CL_CODIGO_POSTALParameter = pIN_CL_CODIGO_POSTAL != null ?
-                new ObjectParameter("PIN_CL_CODIGO_POSTAL", pIN_CL_CODIGO_POSTAL) :
-                new ObjectParameter("PIN_CL_CODIGO_POSTAL", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_COLONIA_Result>("SPE_OBTIENE_C_COLONIA", pIN_ID_COLONIAParameter, pIN_CL_PAISParameter, pIN_CL_ESTADOParameter, pIN_CL_MUNICIPIOParameter, pIN_CL_COLONIAParameter, pIN_NB_COLONIAParameter, pIN_CL_TIPO_ASENTAMIENTOParameter, pIN_CL_CODIGO_POSTALParameter);
         }
     
         public virtual ObjectResult<SPE_OBTIENE_C_ESCOLARIDAD_Result> SPE_OBTIENE_C_ESCOLARIDAD(Nullable<int> pIN_ID_ESCOLARIDAD, string pIN_CL_ESCOLARIDAD, string pIN_NB_ESCOLARIDAD, string pIN_DS_ESCOLARIDAD, string pIN_CL_NIVEL_ESCOLARIDAD, Nullable<bool> pIN_FG_ACTIVO)
@@ -17189,23 +15789,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CONSULTA_PERSONAL_RESUMEN_Result>("SPE_OBTIENE_CONSULTA_PERSONAL_RESUMEN", pIN_ID_BATERIAParameter, pIN_FG_COMPETENCIA_CEROParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO_Result> SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EVALUADO, Nullable<int> pIN_ID_EVALUADOR)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_ID_EVALUADOParameter = pIN_ID_EVALUADO.HasValue ?
-                new ObjectParameter("PIN_ID_EVALUADO", pIN_ID_EVALUADO) :
-                new ObjectParameter("PIN_ID_EVALUADO", typeof(int));
-    
-            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
-                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
-                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO_Result>("SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO", pIN_ID_PERIODOParameter, pIN_ID_EVALUADOParameter, pIN_ID_EVALUADORParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_PERIODOS_DESEMPENO_COMPARAR_Result> SPE_OBTIENE_PERIODOS_DESEMPENO_COMPARAR(string pIN_XML_PERIODOS)
         {
             var pIN_XML_PERIODOSParameter = pIN_XML_PERIODOS != null ?
@@ -17239,15 +15822,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_XML_PERIODOS", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_GRAFICA_Result>("SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_GRAFICA", pIN_XML_PERIODOSParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_DESEMPENO_Result> SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_DESEMPENO(Nullable<int> pIN_ID_PERIODO)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_DESEMPENO_Result>("SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_DESEMPENO", pIN_ID_PERIODOParameter);
         }
     
         public virtual ObjectResult<SPE_OBTIENE_FACTORES_EVALUACION_TABULADOR_Result> SPE_OBTIENE_FACTORES_EVALUACION_TABULADOR(Nullable<int> pIN_ID_FACTOR_EVALUACION)
@@ -17364,15 +15938,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_PERIODO", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_VALIDACION_AUTORIZACIONES_Result>("SPE_OBTIENE_FYD_VALIDACION_AUTORIZACIONES", pIN_ID_PERIODOParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_PLANEACION_INCREMENTOS_Result> SPE_OBTIENE_PLANEACION_INCREMENTOS(Nullable<int> pIN_ID_TABULADOR)
-        {
-            var pIN_ID_TABULADORParameter = pIN_ID_TABULADOR.HasValue ?
-                new ObjectParameter("PIN_ID_TABULADOR", pIN_ID_TABULADOR) :
-                new ObjectParameter("PIN_ID_TABULADOR", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_PLANEACION_INCREMENTOS_Result>("SPE_OBTIENE_PLANEACION_INCREMENTOS", pIN_ID_TABULADORParameter);
         }
     
         public virtual ObjectResult<SPE_OBTIENE_C_COMPETENCIA_Result> SPE_OBTIENE_C_COMPETENCIA(Nullable<int> pIN_ID_COMPETENCIA, string pIN_CL_COMPETENCIA, string pIN_NB_COMPETENCIA, string pIN_DS_COMPETENCIA, string pIN_CL_TIPO_COMPETENCIA, string pIN_CL_CLASIFICACION, Nullable<bool> pIN_FG_ACTIVO, string pIN_XML_CAMPOS_ADICIONALES, string pIN_XML_SELECCION)
@@ -17714,27 +16279,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ACTUALIZA_K_PRUEBA_CORREGIDA", xML_RESULTADO, iD_PRUEBAParameter, pIN_ID_PRUEBA_PLANTILLAParameter, pIN_ID_CANDIDATOParameter, pIN_ID_EMPLEADOParameter, pIN_CL_EMPLEADOParameter, pIN_CL_ESTADOParameter, pIN_FE_INICIOParameter, pIN_FE_TERMINOParameter, pIN_NO_TIEMPOParameter, pIN_CL_USUARIO_APP_CREAParameter, pIN_CL_USUARIO_APP_MODIFICAParameter, pIN_NB_PROGRAMA_CREAParameter, pIN_NB_PROGRAMA_MODIFICAParameter, pIN_TIPO_TRANSACCIONParameter, pIN_NB_TIPO_PRUEBAParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_CANDIDATOS_POR_REQUISICION_Result> SPE_OBTIENE_CANDIDATOS_POR_REQUISICION(Nullable<int> pIN_ID_REQUISICION, Nullable<int> pIN_ID_PROCESO_SELECCION, Nullable<int> pIN_ID_CANDIDATO, Nullable<int> pIN_ID_SOLICITUD)
-        {
-            var pIN_ID_REQUISICIONParameter = pIN_ID_REQUISICION.HasValue ?
-                new ObjectParameter("PIN_ID_REQUISICION", pIN_ID_REQUISICION) :
-                new ObjectParameter("PIN_ID_REQUISICION", typeof(int));
-    
-            var pIN_ID_PROCESO_SELECCIONParameter = pIN_ID_PROCESO_SELECCION.HasValue ?
-                new ObjectParameter("PIN_ID_PROCESO_SELECCION", pIN_ID_PROCESO_SELECCION) :
-                new ObjectParameter("PIN_ID_PROCESO_SELECCION", typeof(int));
-    
-            var pIN_ID_CANDIDATOParameter = pIN_ID_CANDIDATO.HasValue ?
-                new ObjectParameter("PIN_ID_CANDIDATO", pIN_ID_CANDIDATO) :
-                new ObjectParameter("PIN_ID_CANDIDATO", typeof(int));
-    
-            var pIN_ID_SOLICITUDParameter = pIN_ID_SOLICITUD.HasValue ?
-                new ObjectParameter("PIN_ID_SOLICITUD", pIN_ID_SOLICITUD) :
-                new ObjectParameter("PIN_ID_SOLICITUD", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CANDIDATOS_POR_REQUISICION_Result>("SPE_OBTIENE_CANDIDATOS_POR_REQUISICION", pIN_ID_REQUISICIONParameter, pIN_ID_PROCESO_SELECCIONParameter, pIN_ID_CANDIDATOParameter, pIN_ID_SOLICITUDParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_BITACORA_SOLICITUD_Result> SPE_OBTIENE_BITACORA_SOLICITUD(Nullable<int> pIN_ID_CANDIDATO)
         {
             var pIN_ID_CANDIDATOParameter = pIN_ID_CANDIDATO.HasValue ?
@@ -17852,15 +16396,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_NUEVO_SUELDO_GENERAL", xML_RESULTADO, pIN_ID_TABULADORParameter, pIN_TIPO_INCREMENTOParameter, pIN_CANTIDAD_INCREMENTOParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS_Result> SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS(Nullable<int> pIN_ID_TABULADOR)
-        {
-            var pIN_ID_TABULADORParameter = pIN_ID_TABULADOR.HasValue ?
-                new ObjectParameter("PIN_ID_TABULADOR", pIN_ID_TABULADOR) :
-                new ObjectParameter("PIN_ID_TABULADOR", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS_Result>("SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS", pIN_ID_TABULADORParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_PROCESO_SELECCION_Result> SPE_OBTIENE_PROCESO_SELECCION(Nullable<int> pIN_ID_PROCESO_SELECCION, Nullable<int> pIN_ID_PROCESO_SELECCION_ACTUAL, Nullable<int> pIN_ID_CANDIDATO, Nullable<int> pIN_ID_REQUISICION)
         {
             var pIN_ID_PROCESO_SELECCIONParameter = pIN_ID_PROCESO_SELECCION.HasValue ?
@@ -17880,19 +16415,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_REQUISICION", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_PROCESO_SELECCION_Result>("SPE_OBTIENE_PROCESO_SELECCION", pIN_ID_PROCESO_SELECCIONParameter, pIN_ID_PROCESO_SELECCION_ACTUALParameter, pIN_ID_CANDIDATOParameter, pIN_ID_REQUISICIONParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_BUSQUEDA_CANDIDATO_REQUISICION_Result> SPE_OBTIENE_BUSQUEDA_CANDIDATO_REQUISICION(Nullable<int> pIN_ID_REQUISICION, string pIN_XML_PARAMETROS_BUSQUEDA)
-        {
-            var pIN_ID_REQUISICIONParameter = pIN_ID_REQUISICION.HasValue ?
-                new ObjectParameter("PIN_ID_REQUISICION", pIN_ID_REQUISICION) :
-                new ObjectParameter("PIN_ID_REQUISICION", typeof(int));
-    
-            var pIN_XML_PARAMETROS_BUSQUEDAParameter = pIN_XML_PARAMETROS_BUSQUEDA != null ?
-                new ObjectParameter("PIN_XML_PARAMETROS_BUSQUEDA", pIN_XML_PARAMETROS_BUSQUEDA) :
-                new ObjectParameter("PIN_XML_PARAMETROS_BUSQUEDA", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_BUSQUEDA_CANDIDATO_REQUISICION_Result>("SPE_OBTIENE_BUSQUEDA_CANDIDATO_REQUISICION", pIN_ID_REQUISICIONParameter, pIN_XML_PARAMETROS_BUSQUEDAParameter);
         }
     
         public virtual int SPE_INSERTA_ACTUALIZA_C_PLANTILLA_FORMULARIO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PLANTILLA_FORMULARIO, string pIN_NB_PLANTILLA_FORMULARIO, string pIN_DS_PLANTILLA_FORMULARIO, string pIN_CL_FORMULARIO, string pIN_XML_CAMPOS_FORMULARIO, string pIN_XML_PLANTILLA_FORMULARIO, string pIN_XML_CAMPOS, string pIN_CL_EXPOSICION, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
@@ -18051,39 +16573,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_PERIODO_EVALUADOR_Result>("SPE_OBTIENE_FYD_PERIODO_EVALUADOR", pIN_ID_EVALUADORParameter, pIN_FL_EVALUADORParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_EVENTO_PARTICIPANTE_COMPETENCIA_Result> SPE_OBTIENE_EVENTO_PARTICIPANTE_COMPETENCIA(Nullable<int> pIN_ID_EVENTO_PARTICIPANTE_COMPETENCIA, Nullable<int> pIN_ID_EVENTO, Nullable<int> pIN_ID_PARTICIPANTE, Nullable<int> pIN_ID_COMPETENCIA, Nullable<byte> pIN_NO_EVALUACION, string pIN_NB_COMPETENCIA, Nullable<int> pIN_ID_EMPRESA)
-        {
-            var pIN_ID_EVENTO_PARTICIPANTE_COMPETENCIAParameter = pIN_ID_EVENTO_PARTICIPANTE_COMPETENCIA.HasValue ?
-                new ObjectParameter("PIN_ID_EVENTO_PARTICIPANTE_COMPETENCIA", pIN_ID_EVENTO_PARTICIPANTE_COMPETENCIA) :
-                new ObjectParameter("PIN_ID_EVENTO_PARTICIPANTE_COMPETENCIA", typeof(int));
-    
-            var pIN_ID_EVENTOParameter = pIN_ID_EVENTO.HasValue ?
-                new ObjectParameter("PIN_ID_EVENTO", pIN_ID_EVENTO) :
-                new ObjectParameter("PIN_ID_EVENTO", typeof(int));
-    
-            var pIN_ID_PARTICIPANTEParameter = pIN_ID_PARTICIPANTE.HasValue ?
-                new ObjectParameter("PIN_ID_PARTICIPANTE", pIN_ID_PARTICIPANTE) :
-                new ObjectParameter("PIN_ID_PARTICIPANTE", typeof(int));
-    
-            var pIN_ID_COMPETENCIAParameter = pIN_ID_COMPETENCIA.HasValue ?
-                new ObjectParameter("PIN_ID_COMPETENCIA", pIN_ID_COMPETENCIA) :
-                new ObjectParameter("PIN_ID_COMPETENCIA", typeof(int));
-    
-            var pIN_NO_EVALUACIONParameter = pIN_NO_EVALUACION.HasValue ?
-                new ObjectParameter("PIN_NO_EVALUACION", pIN_NO_EVALUACION) :
-                new ObjectParameter("PIN_NO_EVALUACION", typeof(byte));
-    
-            var pIN_NB_COMPETENCIAParameter = pIN_NB_COMPETENCIA != null ?
-                new ObjectParameter("PIN_NB_COMPETENCIA", pIN_NB_COMPETENCIA) :
-                new ObjectParameter("PIN_NB_COMPETENCIA", typeof(string));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EVENTO_PARTICIPANTE_COMPETENCIA_Result>("SPE_OBTIENE_EVENTO_PARTICIPANTE_COMPETENCIA", pIN_ID_EVENTO_PARTICIPANTE_COMPETENCIAParameter, pIN_ID_EVENTOParameter, pIN_ID_PARTICIPANTEParameter, pIN_ID_COMPETENCIAParameter, pIN_NO_EVALUACIONParameter, pIN_NB_COMPETENCIAParameter, pIN_ID_EMPRESAParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_FYD_REPORTE_GLOBAL_Result> SPE_OBTIENE_FYD_REPORTE_GLOBAL(Nullable<int> pIN_ID_PERIODO, string pIN_XML_EMPLEADOS, Nullable<bool> pIN_FG_FOTO)
         {
             var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
@@ -18099,36 +16588,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_FG_FOTO", typeof(bool));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_REPORTE_GLOBAL_Result>("SPE_OBTIENE_FYD_REPORTE_GLOBAL", pIN_ID_PERIODOParameter, pIN_XML_EMPLEADOSParameter, pIN_FG_FOTOParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION_Result> SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EMPRESA)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION_Result>("SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION", pIN_ID_PERIODOParameter, pIN_ID_EMPRESAParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO_Result> SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO(Nullable<int> pIN_ID_PERIODO, string pIN_XML_PERIODOS, Nullable<bool> pIN_FG_FOTO)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_XML_PERIODOSParameter = pIN_XML_PERIODOS != null ?
-                new ObjectParameter("PIN_XML_PERIODOS", pIN_XML_PERIODOS) :
-                new ObjectParameter("PIN_XML_PERIODOS", typeof(string));
-    
-            var pIN_FG_FOTOParameter = pIN_FG_FOTO.HasValue ?
-                new ObjectParameter("PIN_FG_FOTO", pIN_FG_FOTO) :
-                new ObjectParameter("PIN_FG_FOTO", typeof(bool));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO_Result>("SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO", pIN_ID_PERIODOParameter, pIN_XML_PERIODOSParameter, pIN_FG_FOTOParameter);
         }
     
         public virtual ObjectResult<SPE_OBTIENE_C_CURSO_Result> SPE_OBTIENE_C_CURSO(Nullable<int> pIN_ID_CURSO, string pIN_XML_COMPETENCIAS, Nullable<int> pIN_ID_PROGRAMA)
@@ -18184,19 +16643,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_EVALUADO", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_REPORTE_360_Result>("SPE_OBTIENE_FYD_REPORTE_360", pIN_ID_PERIODOParameter, pIN_ID_EVALUADOParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_CONTROL_AVANCE_EVALUADOR_Result> SPE_OBTIENE_CONTROL_AVANCE_EVALUADOR(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EMPRESA)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CONTROL_AVANCE_EVALUADOR_Result>("SPE_OBTIENE_CONTROL_AVANCE_EVALUADOR", pIN_ID_PERIODOParameter, pIN_ID_EMPRESAParameter);
         }
     
         public virtual int SPE_ELIMINA_EMPLEADO_CAPACITACION(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PROGRAMA, Nullable<int> pIN_ID_EMPLEADO)
@@ -18278,28 +16724,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_REPORTE_GENERAL_INDIVIDUAL_Result>("SPE_OBTIENE_FYD_REPORTE_GENERAL_INDIVIDUAL", pIN_ID_PERIODOParameter, pIN_ID_EVALUADOParameter, pIN_ID_EMPLEADOParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION_Result> SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION(Nullable<int> pIN_ID_PROGRAMA, Nullable<int> pIN_ID_EMPRESA, string pIN_XML_FILTROS)
-        {
-            var pIN_ID_PROGRAMAParameter = pIN_ID_PROGRAMA.HasValue ?
-                new ObjectParameter("PIN_ID_PROGRAMA", pIN_ID_PROGRAMA) :
-                new ObjectParameter("PIN_ID_PROGRAMA", typeof(int));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
-                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
-                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION_Result>("SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION", pIN_ID_PROGRAMAParameter, pIN_ID_EMPRESAParameter, pIN_XML_FILTROSParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_DATOS_EMPLEADOS_Result> SPE_OBTIENE_DATOS_EMPLEADOS()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_DATOS_EMPLEADOS_Result>("SPE_OBTIENE_DATOS_EMPLEADOS");
         }
     
         public virtual ObjectResult<SPE_OBTIENE_C_EVENTO_Result> SPE_OBTIENE_C_EVENTO(Nullable<int> pIN_ID_EVENTO, Nullable<int> pIN_ID_PROGRAMA, Nullable<int> pIN_ID_CURSO, Nullable<int> pIN_ID_INSTRUCTOR, Nullable<int> pIN_ID_EMPLEADO_EVALUADOR, string pIN_CL_EVENTO, string pIN_NB_EVENTO, string pIN_DS_EVENTO, Nullable<System.DateTime> pIN_FE_INICIO, Nullable<System.DateTime> pIN_FE_TERMINO, string pIN_NB_CURSO, string pIN_NB_INSTRUCTOR, string pIN_CL_TIPO_CURSO, string pIN_CL_ESTADO, Nullable<System.DateTime> pIN_FE_EVALUACION, string pIN_DS_LUGAR, Nullable<decimal> pIN_MN_COSTO_DIRECTO, Nullable<decimal> pIN_MN_COSTO_INDIRECTO, Nullable<System.Guid> pIN_FL_EVENTO, string pIN_CL_TOKEN)
@@ -18387,23 +16811,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_EVENTO_Result>("SPE_OBTIENE_C_EVENTO", pIN_ID_EVENTOParameter, pIN_ID_PROGRAMAParameter, pIN_ID_CURSOParameter, pIN_ID_INSTRUCTORParameter, pIN_ID_EMPLEADO_EVALUADORParameter, pIN_CL_EVENTOParameter, pIN_NB_EVENTOParameter, pIN_DS_EVENTOParameter, pIN_FE_INICIOParameter, pIN_FE_TERMINOParameter, pIN_NB_CURSOParameter, pIN_NB_INSTRUCTORParameter, pIN_CL_TIPO_CURSOParameter, pIN_CL_ESTADOParameter, pIN_FE_EVALUACIONParameter, pIN_DS_LUGARParameter, pIN_MN_COSTO_DIRECTOParameter, pIN_MN_COSTO_INDIRECTOParameter, pIN_FL_EVENTOParameter, pIN_CL_TOKENParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_FYD_REPORTE_EVENTO_EVALUADO_Result> SPE_OBTIENE_FYD_REPORTE_EVENTO_EVALUADO(Nullable<int> pIN_ID_EVENTO, Nullable<int> pIN_ID_EMPELADO, Nullable<int> pIN_ID_COMPETENCIA)
-        {
-            var pIN_ID_EVENTOParameter = pIN_ID_EVENTO.HasValue ?
-                new ObjectParameter("PIN_ID_EVENTO", pIN_ID_EVENTO) :
-                new ObjectParameter("PIN_ID_EVENTO", typeof(int));
-    
-            var pIN_ID_EMPELADOParameter = pIN_ID_EMPELADO.HasValue ?
-                new ObjectParameter("PIN_ID_EMPELADO", pIN_ID_EMPELADO) :
-                new ObjectParameter("PIN_ID_EMPELADO", typeof(int));
-    
-            var pIN_ID_COMPETENCIAParameter = pIN_ID_COMPETENCIA.HasValue ?
-                new ObjectParameter("PIN_ID_COMPETENCIA", pIN_ID_COMPETENCIA) :
-                new ObjectParameter("PIN_ID_COMPETENCIA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_REPORTE_EVENTO_EVALUADO_Result>("SPE_OBTIENE_FYD_REPORTE_EVENTO_EVALUADO", pIN_ID_EVENTOParameter, pIN_ID_EMPELADOParameter, pIN_ID_COMPETENCIAParameter);
-        }
-    
         public virtual int SPE_INSERTA_PERIODO_TABLERO_CONTROL(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO, string pIN_CL_PERIODO, string pIN_NB_PERIODO, string pIN_DS_PERIODO, string pIN_DS_NOTAS, Nullable<bool> pIN_FG_EVALUACION_IDP, Nullable<bool> pIN_FG_EVALUACION_FYD, Nullable<bool> pIN_FG_EVALUACION_DESEMPENO, Nullable<bool> pIN_FG_EVALUACION_CLIMA, Nullable<bool> pIN_FG_SITUACION_SALARIAL, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA)
         {
             var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
@@ -18472,19 +16879,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_PUESTO", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_COMPATIBILIDAD_PUESTO_TABLERO_Result>("SPE_OBTIENE_COMPATIBILIDAD_PUESTO_TABLERO", pIN_ID_PERIODOParameter, pIN_ID_EMPLEADOParameter, pIN_ID_PUESTOParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_EMPLEADOS_EVALUADOS_TABLERO_Result> SPE_OBTIENE_EMPLEADOS_EVALUADOS_TABLERO(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EMPLEADO)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
-                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
-                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EMPLEADOS_EVALUADOS_TABLERO_Result>("SPE_OBTIENE_EMPLEADOS_EVALUADOS_TABLERO", pIN_ID_PERIODOParameter, pIN_ID_EMPLEADOParameter);
         }
     
         public virtual ObjectResult<SPE_OBTIENE_PERIODOS_EVALUADOS_TABLERO_Result> SPE_OBTIENE_PERIODOS_EVALUADOS_TABLERO(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EMPLEADO)
@@ -18779,15 +17173,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_K_PROGRAMA_COMPETENCIA_Result>("SPE_OBTIENE_K_PROGRAMA_COMPETENCIA", pIN_ID_PROGRAMA_COMPETENCIAParameter, pIN_ID_PROGRAMAParameter, pIN_ID_COMPETENCIAParameter, pIN_NB_COMPETENCIAParameter, pIN_NB_CLASIFICACIONParameter, pIN_NB_CATEGORIAParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_PERIODO_Result> SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_PERIODO(Nullable<int> pIN_ID_PERIODO)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_PERIODO_Result>("SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_PERIODO", pIN_ID_PERIODOParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_FYD_PERIODOS_EVALUACION_Result> SPE_OBTIENE_FYD_PERIODOS_EVALUACION(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EMPLEADO)
         {
             var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
@@ -18914,68 +17299,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_REPORTE_CURSOS_REALIZADOS_Result>("SPE_OBTIENE_FYD_REPORTE_CURSOS_REALIZADOS", pIN_FE_INICIALParameter, pIN_FE_TERMINOParameter, pIN_CL_TIPO_CURSOParameter, pIN_XML_CURSOSParameter, pIN_XML_INSTRUCTORESParameter, pIN_XML_COMPETENCIASParameter, pIN_XML_PARTICIPANTESParameter, pIN_XML_EVENTOSParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_CONSULTA_SUELDOS_Result> SPE_OBTIENE_CONSULTA_SUELDOS(Nullable<int> pIN_ID_TABULADOR)
-        {
-            var pIN_ID_TABULADORParameter = pIN_ID_TABULADOR.HasValue ?
-                new ObjectParameter("PIN_ID_TABULADOR", pIN_ID_TABULADOR) :
-                new ObjectParameter("PIN_ID_TABULADOR", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CONSULTA_SUELDOS_Result>("SPE_OBTIENE_CONSULTA_SUELDOS", pIN_ID_TABULADORParameter);
-        }
-    
-        public virtual int SPE_INSERTA_ACTUALIZA_PERIODO_CLIMA_LAB(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO, string pIN_CL_PERIODO, string pIN_NB_PERIODO, string pIN_DS_PERIODO, string pIN_CL_ESTADO_PERIODO, string pIN_DS_NOTAS, string pIN_CL_TIPO_CONFIGURACION, string pIN_CL_ORIGEN_CUESTIONARIO, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, Nullable<int> pIN_ID_PERIODO_ORIGEN, string pIN_TIPO_TRANSACCION)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_CL_PERIODOParameter = pIN_CL_PERIODO != null ?
-                new ObjectParameter("PIN_CL_PERIODO", pIN_CL_PERIODO) :
-                new ObjectParameter("PIN_CL_PERIODO", typeof(string));
-    
-            var pIN_NB_PERIODOParameter = pIN_NB_PERIODO != null ?
-                new ObjectParameter("PIN_NB_PERIODO", pIN_NB_PERIODO) :
-                new ObjectParameter("PIN_NB_PERIODO", typeof(string));
-    
-            var pIN_DS_PERIODOParameter = pIN_DS_PERIODO != null ?
-                new ObjectParameter("PIN_DS_PERIODO", pIN_DS_PERIODO) :
-                new ObjectParameter("PIN_DS_PERIODO", typeof(string));
-    
-            var pIN_CL_ESTADO_PERIODOParameter = pIN_CL_ESTADO_PERIODO != null ?
-                new ObjectParameter("PIN_CL_ESTADO_PERIODO", pIN_CL_ESTADO_PERIODO) :
-                new ObjectParameter("PIN_CL_ESTADO_PERIODO", typeof(string));
-    
-            var pIN_DS_NOTASParameter = pIN_DS_NOTAS != null ?
-                new ObjectParameter("PIN_DS_NOTAS", pIN_DS_NOTAS) :
-                new ObjectParameter("PIN_DS_NOTAS", typeof(string));
-    
-            var pIN_CL_TIPO_CONFIGURACIONParameter = pIN_CL_TIPO_CONFIGURACION != null ?
-                new ObjectParameter("PIN_CL_TIPO_CONFIGURACION", pIN_CL_TIPO_CONFIGURACION) :
-                new ObjectParameter("PIN_CL_TIPO_CONFIGURACION", typeof(string));
-    
-            var pIN_CL_ORIGEN_CUESTIONARIOParameter = pIN_CL_ORIGEN_CUESTIONARIO != null ?
-                new ObjectParameter("PIN_CL_ORIGEN_CUESTIONARIO", pIN_CL_ORIGEN_CUESTIONARIO) :
-                new ObjectParameter("PIN_CL_ORIGEN_CUESTIONARIO", typeof(string));
-    
-            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
-                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
-                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
-    
-            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
-                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
-                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
-    
-            var pIN_ID_PERIODO_ORIGENParameter = pIN_ID_PERIODO_ORIGEN.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO_ORIGEN", pIN_ID_PERIODO_ORIGEN) :
-                new ObjectParameter("PIN_ID_PERIODO_ORIGEN", typeof(int));
-    
-            var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
-                new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
-                new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_PERIODO_CLIMA_LAB", xML_RESULTADO, pIN_ID_PERIODOParameter, pIN_CL_PERIODOParameter, pIN_NB_PERIODOParameter, pIN_DS_PERIODOParameter, pIN_CL_ESTADO_PERIODOParameter, pIN_DS_NOTASParameter, pIN_CL_TIPO_CONFIGURACIONParameter, pIN_CL_ORIGEN_CUESTIONARIOParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_ID_PERIODO_ORIGENParameter, pIN_TIPO_TRANSACCIONParameter);
-        }
-    
         public virtual int SPE_INSERTA_PERIODO_CLIMA_LAB_COPIA(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO, string pIN_CL_PERIODO, string pIN_NB_PERIODO, string pIN_DS_PERIODO, string pIN_CL_ESTADO_PERIODO, string pIN_DS_NOTAS, string pIN_CL_TIPO_CONFIGURACION, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA)
         {
             var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
@@ -19015,35 +17338,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_PERIODO_CLIMA_LAB_COPIA", xML_RESULTADO, pIN_ID_PERIODOParameter, pIN_CL_PERIODOParameter, pIN_NB_PERIODOParameter, pIN_DS_PERIODOParameter, pIN_CL_ESTADO_PERIODOParameter, pIN_DS_NOTASParameter, pIN_CL_TIPO_CONFIGURACIONParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_EO_PERIODOS_CLIMA_Result> SPE_OBTIENE_EO_PERIODOS_CLIMA(Nullable<int> pIN_ID_PERIODO, string pIN_CL_PERIODO, string pIN_NB_PERIODO, string pIN_DS_PERIODO, string pIN_CL_ESTADO_PERIODO, Nullable<int> pIN_ID_PERIODO_ORIGEN)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_CL_PERIODOParameter = pIN_CL_PERIODO != null ?
-                new ObjectParameter("PIN_CL_PERIODO", pIN_CL_PERIODO) :
-                new ObjectParameter("PIN_CL_PERIODO", typeof(string));
-    
-            var pIN_NB_PERIODOParameter = pIN_NB_PERIODO != null ?
-                new ObjectParameter("PIN_NB_PERIODO", pIN_NB_PERIODO) :
-                new ObjectParameter("PIN_NB_PERIODO", typeof(string));
-    
-            var pIN_DS_PERIODOParameter = pIN_DS_PERIODO != null ?
-                new ObjectParameter("PIN_DS_PERIODO", pIN_DS_PERIODO) :
-                new ObjectParameter("PIN_DS_PERIODO", typeof(string));
-    
-            var pIN_CL_ESTADO_PERIODOParameter = pIN_CL_ESTADO_PERIODO != null ?
-                new ObjectParameter("PIN_CL_ESTADO_PERIODO", pIN_CL_ESTADO_PERIODO) :
-                new ObjectParameter("PIN_CL_ESTADO_PERIODO", typeof(string));
-    
-            var pIN_ID_PERIODO_ORIGENParameter = pIN_ID_PERIODO_ORIGEN.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO_ORIGEN", pIN_ID_PERIODO_ORIGEN) :
-                new ObjectParameter("PIN_ID_PERIODO_ORIGEN", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_PERIODOS_CLIMA_Result>("SPE_OBTIENE_EO_PERIODOS_CLIMA", pIN_ID_PERIODOParameter, pIN_CL_PERIODOParameter, pIN_NB_PERIODOParameter, pIN_DS_PERIODOParameter, pIN_CL_ESTADO_PERIODOParameter, pIN_ID_PERIODO_ORIGENParameter);
         }
     
         public virtual ObjectResult<SPE_OBTIENE_ADSCRIPCIONES_Result> SPE_OBTIENE_ADSCRIPCIONES(Nullable<int> pIN_ID_CATALOGO_LISTA)
@@ -19101,24 +17395,651 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_DATOS_EVALUADORES_CLIMA_Result>("SPE_OBTIENE_DATOS_EVALUADORES_CLIMA", pIN_ID_PERIODOParameter, pIN_ID_EVALUADORParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_PREGUNTA_Result> SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_PREGUNTA(Nullable<int> pIN_ID_PERIODO, string pIN_NB_PREGUNTA, string pIN_XML_FILTROS)
+        public virtual ObjectResult<SPE_OBTIENE_JEFES_DESCRIPTIVO_Result> SPE_OBTIENE_JEFES_DESCRIPTIVO(Nullable<int> pIN_ID_DESCRIPTIVO)
+        {
+            var pIN_ID_DESCRIPTIVOParameter = pIN_ID_DESCRIPTIVO.HasValue ?
+                new ObjectParameter("PIN_ID_DESCRIPTIVO", pIN_ID_DESCRIPTIVO) :
+                new ObjectParameter("PIN_ID_DESCRIPTIVO", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_JEFES_DESCRIPTIVO_Result>("SPE_OBTIENE_JEFES_DESCRIPTIVO", pIN_ID_DESCRIPTIVOParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_SUBORDINADOS_DESCRIPTIVO_Result> SPE_OBTIENE_SUBORDINADOS_DESCRIPTIVO(Nullable<int> pIN_ID_DESCRIPTIVO)
+        {
+            var pIN_ID_DESCRIPTIVOParameter = pIN_ID_DESCRIPTIVO.HasValue ?
+                new ObjectParameter("PIN_ID_DESCRIPTIVO", pIN_ID_DESCRIPTIVO) :
+                new ObjectParameter("PIN_ID_DESCRIPTIVO", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_SUBORDINADOS_DESCRIPTIVO_Result>("SPE_OBTIENE_SUBORDINADOS_DESCRIPTIVO", pIN_ID_DESCRIPTIVOParameter);
+        }
+    
+        public virtual int SPE_INSERTA_ACTUALIZA_GRUPO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_GRUPO, string pIN_CL_GRUPO, string pIN_NB_GRUPO, string pIN_XML_PLAZAS, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
+        {
+            var pIN_ID_GRUPOParameter = pIN_ID_GRUPO.HasValue ?
+                new ObjectParameter("PIN_ID_GRUPO", pIN_ID_GRUPO) :
+                new ObjectParameter("PIN_ID_GRUPO", typeof(int));
+    
+            var pIN_CL_GRUPOParameter = pIN_CL_GRUPO != null ?
+                new ObjectParameter("PIN_CL_GRUPO", pIN_CL_GRUPO) :
+                new ObjectParameter("PIN_CL_GRUPO", typeof(string));
+    
+            var pIN_NB_GRUPOParameter = pIN_NB_GRUPO != null ?
+                new ObjectParameter("PIN_NB_GRUPO", pIN_NB_GRUPO) :
+                new ObjectParameter("PIN_NB_GRUPO", typeof(string));
+    
+            var pIN_XML_PLAZASParameter = pIN_XML_PLAZAS != null ?
+                new ObjectParameter("PIN_XML_PLAZAS", pIN_XML_PLAZAS) :
+                new ObjectParameter("PIN_XML_PLAZAS", typeof(string));
+    
+            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
+                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
+                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
+    
+            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
+                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
+    
+            var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
+                new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
+                new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_GRUPO", xML_RESULTADO, pIN_ID_GRUPOParameter, pIN_CL_GRUPOParameter, pIN_NB_GRUPOParameter, pIN_XML_PLAZASParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter);
+        }
+    
+        public virtual int SPE_ELIMINA_GRUPO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_GRUPO)
+        {
+            var pIN_ID_GRUPOParameter = pIN_ID_GRUPO.HasValue ?
+                new ObjectParameter("PIN_ID_GRUPO", pIN_ID_GRUPO) :
+                new ObjectParameter("PIN_ID_GRUPO", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_GRUPO", xML_RESULTADO, pIN_ID_GRUPOParameter);
+        }
+    
+        public virtual int SPE_INSERTA_ACTUALIZA_PLAZA(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PLAZA, string pIN_CL_PLAZA, string pIN_NB_PLAZA, Nullable<int> pIN_ID_EMPLEADO, Nullable<int> pIN_ID_PUESTO, Nullable<int> pIN_ID_DEPARTAMENTO, Nullable<int> pIN_ID_PLAZA_JEFE, Nullable<int> pIN_ID_EMPRESA, Nullable<bool> pIN_FG_ACTIVO, string pIN_XML_GRUPOS, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
+        {
+            var pIN_ID_PLAZAParameter = pIN_ID_PLAZA.HasValue ?
+                new ObjectParameter("PIN_ID_PLAZA", pIN_ID_PLAZA) :
+                new ObjectParameter("PIN_ID_PLAZA", typeof(int));
+    
+            var pIN_CL_PLAZAParameter = pIN_CL_PLAZA != null ?
+                new ObjectParameter("PIN_CL_PLAZA", pIN_CL_PLAZA) :
+                new ObjectParameter("PIN_CL_PLAZA", typeof(string));
+    
+            var pIN_NB_PLAZAParameter = pIN_NB_PLAZA != null ?
+                new ObjectParameter("PIN_NB_PLAZA", pIN_NB_PLAZA) :
+                new ObjectParameter("PIN_NB_PLAZA", typeof(string));
+    
+            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
+                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
+                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
+    
+            var pIN_ID_PUESTOParameter = pIN_ID_PUESTO.HasValue ?
+                new ObjectParameter("PIN_ID_PUESTO", pIN_ID_PUESTO) :
+                new ObjectParameter("PIN_ID_PUESTO", typeof(int));
+    
+            var pIN_ID_DEPARTAMENTOParameter = pIN_ID_DEPARTAMENTO.HasValue ?
+                new ObjectParameter("PIN_ID_DEPARTAMENTO", pIN_ID_DEPARTAMENTO) :
+                new ObjectParameter("PIN_ID_DEPARTAMENTO", typeof(int));
+    
+            var pIN_ID_PLAZA_JEFEParameter = pIN_ID_PLAZA_JEFE.HasValue ?
+                new ObjectParameter("PIN_ID_PLAZA_JEFE", pIN_ID_PLAZA_JEFE) :
+                new ObjectParameter("PIN_ID_PLAZA_JEFE", typeof(int));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
+                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
+                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
+    
+            var pIN_XML_GRUPOSParameter = pIN_XML_GRUPOS != null ?
+                new ObjectParameter("PIN_XML_GRUPOS", pIN_XML_GRUPOS) :
+                new ObjectParameter("PIN_XML_GRUPOS", typeof(string));
+    
+            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
+                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
+                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
+    
+            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
+                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
+    
+            var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
+                new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
+                new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_PLAZA", xML_RESULTADO, pIN_ID_PLAZAParameter, pIN_CL_PLAZAParameter, pIN_NB_PLAZAParameter, pIN_ID_EMPLEADOParameter, pIN_ID_PUESTOParameter, pIN_ID_DEPARTAMENTOParameter, pIN_ID_PLAZA_JEFEParameter, pIN_ID_EMPRESAParameter, pIN_FG_ACTIVOParameter, pIN_XML_GRUPOSParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter);
+        }
+    
+        public virtual int SPE_ELIMINA_RESPUESTAS_CUESTIONARIO_PERIODO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EVALUADOR, Nullable<int> pIN_ID_CUESTIONARIO, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA)
         {
             var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
                 new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
                 new ObjectParameter("PIN_ID_PERIODO", typeof(int));
     
-            var pIN_NB_PREGUNTAParameter = pIN_NB_PREGUNTA != null ?
-                new ObjectParameter("PIN_NB_PREGUNTA", pIN_NB_PREGUNTA) :
-                new ObjectParameter("PIN_NB_PREGUNTA", typeof(string));
+            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
+                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
+                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
     
-            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
-                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
-                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
+            var pIN_ID_CUESTIONARIOParameter = pIN_ID_CUESTIONARIO.HasValue ?
+                new ObjectParameter("PIN_ID_CUESTIONARIO", pIN_ID_CUESTIONARIO) :
+                new ObjectParameter("PIN_ID_CUESTIONARIO", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_PREGUNTA_Result>("SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_PREGUNTA", pIN_ID_PERIODOParameter, pIN_NB_PREGUNTAParameter, pIN_XML_FILTROSParameter);
+            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
+                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
+                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
+    
+            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
+                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_RESPUESTAS_CUESTIONARIO_PERIODO", xML_RESULTADO, pIN_ID_PERIODOParameter, pIN_ID_EVALUADORParameter, pIN_ID_CUESTIONARIOParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_CUESTIONARIO_Result> SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_CUESTIONARIO(Nullable<int> pIN_ID_EVALUADOR, Nullable<int> pIN_ID_PERIODO)
+        public virtual ObjectResult<SPE_OBTIENE_EMPLEADO_PLANTILLA_Result> SPE_OBTIENE_EMPLEADO_PLANTILLA(Nullable<int> pIN_ID_PLANTILLA, Nullable<int> pIN_ID_EMPLEADO, Nullable<int> pIN_ID_EMPRESA)
+        {
+            var pIN_ID_PLANTILLAParameter = pIN_ID_PLANTILLA.HasValue ?
+                new ObjectParameter("PIN_ID_PLANTILLA", pIN_ID_PLANTILLA) :
+                new ObjectParameter("PIN_ID_PLANTILLA", typeof(int));
+    
+            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
+                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
+                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EMPLEADO_PLANTILLA_Result>("SPE_OBTIENE_EMPLEADO_PLANTILLA", pIN_ID_PLANTILLAParameter, pIN_ID_EMPLEADOParameter, pIN_ID_EMPRESAParameter);
+        }
+    
+        public virtual int SPE_INSERTA_ACTUALIZA_CAMPO_NOMINA_DO(ObjectParameter xML_RESULTADO, string xML_CONFIGURACION_CAMPOS, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
+        {
+            var xML_CONFIGURACION_CAMPOSParameter = xML_CONFIGURACION_CAMPOS != null ?
+                new ObjectParameter("XML_CONFIGURACION_CAMPOS", xML_CONFIGURACION_CAMPOS) :
+                new ObjectParameter("XML_CONFIGURACION_CAMPOS", typeof(string));
+    
+            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
+                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
+                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
+    
+            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
+                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
+    
+            var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
+                new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
+                new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_CAMPO_NOMINA_DO", xML_RESULTADO, xML_CONFIGURACION_CAMPOSParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter);
+        }
+    
+        public virtual int SPE_INSERTA_ACTUALIZA_PUESTO_NOMINA_DO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PUESTO, string pIN_CL_PUESTO, string pIN_NB_PUESTO, Nullable<bool> pIN_FG_NOMINA, Nullable<bool> pIN_FG_DO, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
+        {
+            var pIN_ID_PUESTOParameter = pIN_ID_PUESTO.HasValue ?
+                new ObjectParameter("PIN_ID_PUESTO", pIN_ID_PUESTO) :
+                new ObjectParameter("PIN_ID_PUESTO", typeof(int));
+    
+            var pIN_CL_PUESTOParameter = pIN_CL_PUESTO != null ?
+                new ObjectParameter("PIN_CL_PUESTO", pIN_CL_PUESTO) :
+                new ObjectParameter("PIN_CL_PUESTO", typeof(string));
+    
+            var pIN_NB_PUESTOParameter = pIN_NB_PUESTO != null ?
+                new ObjectParameter("PIN_NB_PUESTO", pIN_NB_PUESTO) :
+                new ObjectParameter("PIN_NB_PUESTO", typeof(string));
+    
+            var pIN_FG_NOMINAParameter = pIN_FG_NOMINA.HasValue ?
+                new ObjectParameter("PIN_FG_NOMINA", pIN_FG_NOMINA) :
+                new ObjectParameter("PIN_FG_NOMINA", typeof(bool));
+    
+            var pIN_FG_DOParameter = pIN_FG_DO.HasValue ?
+                new ObjectParameter("PIN_FG_DO", pIN_FG_DO) :
+                new ObjectParameter("PIN_FG_DO", typeof(bool));
+    
+            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
+                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
+                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
+    
+            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
+                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
+    
+            var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
+                new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
+                new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_PUESTO_NOMINA_DO", xML_RESULTADO, pIN_ID_PUESTOParameter, pIN_CL_PUESTOParameter, pIN_NB_PUESTOParameter, pIN_FG_NOMINAParameter, pIN_FG_DOParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_CENTROS_ADMINISTRATIVOS_Result> SPE_OBTIENE_CENTROS_ADMINISTRATIVOS(Nullable<System.Guid> pIN_ID_CENTRO_ADMVO, string pIN_CL_CENTRO_ADMVO)
+        {
+            var pIN_ID_CENTRO_ADMVOParameter = pIN_ID_CENTRO_ADMVO.HasValue ?
+                new ObjectParameter("PIN_ID_CENTRO_ADMVO", pIN_ID_CENTRO_ADMVO) :
+                new ObjectParameter("PIN_ID_CENTRO_ADMVO", typeof(System.Guid));
+    
+            var pIN_CL_CENTRO_ADMVOParameter = pIN_CL_CENTRO_ADMVO != null ?
+                new ObjectParameter("PIN_CL_CENTRO_ADMVO", pIN_CL_CENTRO_ADMVO) :
+                new ObjectParameter("PIN_CL_CENTRO_ADMVO", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CENTROS_ADMINISTRATIVOS_Result>("SPE_OBTIENE_CENTROS_ADMINISTRATIVOS", pIN_ID_CENTRO_ADMVOParameter, pIN_CL_CENTRO_ADMVOParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_CENTROS_OPERATIVOS_Result> SPE_OBTIENE_CENTROS_OPERATIVOS(Nullable<System.Guid> pIN_ID_CENTRO_OPTVO, string pIN_CL_CENTRO_OPTVO)
+        {
+            var pIN_ID_CENTRO_OPTVOParameter = pIN_ID_CENTRO_OPTVO.HasValue ?
+                new ObjectParameter("PIN_ID_CENTRO_OPTVO", pIN_ID_CENTRO_OPTVO) :
+                new ObjectParameter("PIN_ID_CENTRO_OPTVO", typeof(System.Guid));
+    
+            var pIN_CL_CENTRO_OPTVOParameter = pIN_CL_CENTRO_OPTVO != null ?
+                new ObjectParameter("PIN_CL_CENTRO_OPTVO", pIN_CL_CENTRO_OPTVO) :
+                new ObjectParameter("PIN_CL_CENTRO_OPTVO", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CENTROS_OPERATIVOS_Result>("SPE_OBTIENE_CENTROS_OPERATIVOS", pIN_ID_CENTRO_OPTVOParameter, pIN_CL_CENTRO_OPTVOParameter);
+        }
+    
+        public virtual int SPE_ELIMINA_PUESTO_NOMINA_DO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PUESTO, string pIN_CL_PUESTO)
+        {
+            var pIN_ID_PUESTOParameter = pIN_ID_PUESTO.HasValue ?
+                new ObjectParameter("PIN_ID_PUESTO", pIN_ID_PUESTO) :
+                new ObjectParameter("PIN_ID_PUESTO", typeof(int));
+    
+            var pIN_CL_PUESTOParameter = pIN_CL_PUESTO != null ?
+                new ObjectParameter("PIN_CL_PUESTO", pIN_CL_PUESTO) :
+                new ObjectParameter("PIN_CL_PUESTO", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_PUESTO_NOMINA_DO", xML_RESULTADO, pIN_ID_PUESTOParameter, pIN_CL_PUESTOParameter);
+        }
+    
+        public virtual int SPE_ELIMINA_EMPLEADO_NOMINA_DO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_EMPLEADO_NOMINA_DO, string pIN_CL_EMPLEADO)
+        {
+            var pIN_ID_EMPLEADO_NOMINA_DOParameter = pIN_ID_EMPLEADO_NOMINA_DO.HasValue ?
+                new ObjectParameter("PIN_ID_EMPLEADO_NOMINA_DO", pIN_ID_EMPLEADO_NOMINA_DO) :
+                new ObjectParameter("PIN_ID_EMPLEADO_NOMINA_DO", typeof(int));
+    
+            var pIN_CL_EMPLEADOParameter = pIN_CL_EMPLEADO != null ?
+                new ObjectParameter("PIN_CL_EMPLEADO", pIN_CL_EMPLEADO) :
+                new ObjectParameter("PIN_CL_EMPLEADO", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_EMPLEADO_NOMINA_DO", xML_RESULTADO, pIN_ID_EMPLEADO_NOMINA_DOParameter, pIN_CL_EMPLEADOParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_RAZON_SOCIAL_NOMINA_Result> SPE_OBTIENE_RAZON_SOCIAL_NOMINA(Nullable<System.Guid> pIN_ID_RAZON_SOCIAL, string pIN_CL_CLIENTE)
+        {
+            var pIN_ID_RAZON_SOCIALParameter = pIN_ID_RAZON_SOCIAL.HasValue ?
+                new ObjectParameter("PIN_ID_RAZON_SOCIAL", pIN_ID_RAZON_SOCIAL) :
+                new ObjectParameter("PIN_ID_RAZON_SOCIAL", typeof(System.Guid));
+    
+            var pIN_CL_CLIENTEParameter = pIN_CL_CLIENTE != null ?
+                new ObjectParameter("PIN_CL_CLIENTE", pIN_CL_CLIENTE) :
+                new ObjectParameter("PIN_CL_CLIENTE", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_RAZON_SOCIAL_NOMINA_Result>("SPE_OBTIENE_RAZON_SOCIAL_NOMINA", pIN_ID_RAZON_SOCIALParameter, pIN_CL_CLIENTEParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_PUESTOS_NOMINA_DO_Result> SPE_OBTIENE_PUESTOS_NOMINA_DO(Nullable<int> pIN_ID_PUESTO_NOMINA_DO, string pIN_CL_PUESTO, Nullable<bool> pIN_FG_DO, Nullable<bool> pIN_FG_NOMINA)
+        {
+            var pIN_ID_PUESTO_NOMINA_DOParameter = pIN_ID_PUESTO_NOMINA_DO.HasValue ?
+                new ObjectParameter("PIN_ID_PUESTO_NOMINA_DO", pIN_ID_PUESTO_NOMINA_DO) :
+                new ObjectParameter("PIN_ID_PUESTO_NOMINA_DO", typeof(int));
+    
+            var pIN_CL_PUESTOParameter = pIN_CL_PUESTO != null ?
+                new ObjectParameter("PIN_CL_PUESTO", pIN_CL_PUESTO) :
+                new ObjectParameter("PIN_CL_PUESTO", typeof(string));
+    
+            var pIN_FG_DOParameter = pIN_FG_DO.HasValue ?
+                new ObjectParameter("PIN_FG_DO", pIN_FG_DO) :
+                new ObjectParameter("PIN_FG_DO", typeof(bool));
+    
+            var pIN_FG_NOMINAParameter = pIN_FG_NOMINA.HasValue ?
+                new ObjectParameter("PIN_FG_NOMINA", pIN_FG_NOMINA) :
+                new ObjectParameter("PIN_FG_NOMINA", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_PUESTOS_NOMINA_DO_Result>("SPE_OBTIENE_PUESTOS_NOMINA_DO", pIN_ID_PUESTO_NOMINA_DOParameter, pIN_CL_PUESTOParameter, pIN_FG_DOParameter, pIN_FG_NOMINAParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EMPLEADOS_NOMINA_DO_Result> SPE_OBTIENE_EMPLEADOS_NOMINA_DO(Nullable<int> pIN_ID_EMPLEADO_NOMINA_DO, string pIN_CL_EMPLEADO, Nullable<System.Guid> pIN_ID_EMPLEADO_NOMINA)
+        {
+            var pIN_ID_EMPLEADO_NOMINA_DOParameter = pIN_ID_EMPLEADO_NOMINA_DO.HasValue ?
+                new ObjectParameter("PIN_ID_EMPLEADO_NOMINA_DO", pIN_ID_EMPLEADO_NOMINA_DO) :
+                new ObjectParameter("PIN_ID_EMPLEADO_NOMINA_DO", typeof(int));
+    
+            var pIN_CL_EMPLEADOParameter = pIN_CL_EMPLEADO != null ?
+                new ObjectParameter("PIN_CL_EMPLEADO", pIN_CL_EMPLEADO) :
+                new ObjectParameter("PIN_CL_EMPLEADO", typeof(string));
+    
+            var pIN_ID_EMPLEADO_NOMINAParameter = pIN_ID_EMPLEADO_NOMINA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPLEADO_NOMINA", pIN_ID_EMPLEADO_NOMINA) :
+                new ObjectParameter("PIN_ID_EMPLEADO_NOMINA", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EMPLEADOS_NOMINA_DO_Result>("SPE_OBTIENE_EMPLEADOS_NOMINA_DO", pIN_ID_EMPLEADO_NOMINA_DOParameter, pIN_CL_EMPLEADOParameter, pIN_ID_EMPLEADO_NOMINAParameter);
+        }
+    
+        public virtual int SPE_INSERTA_ACTUALIZA_EMPLEADO_NOMINA_DO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_EMPLEADO, string pIN_CL_EMPLEADO, string pIN_NB_EMPLEADO, string pIN_NB_APELLIDO_PATERNO, string pIN_NB_APELLIDO_MATERNO, Nullable<bool> pIN_FG_DO, Nullable<bool> pIN_FG_NOMINA, Nullable<bool> pIN_FG_NOMINA_DO, Nullable<int> pIN_ID_PLAZA, Nullable<int> pIN_ID_PUESTO_NOMINA, string pIN_CL_EMPLEADO_NOMINA, Nullable<System.Guid> pIN_ID_RAZON_SOCIAL, Nullable<decimal> pIN_MN_SUELDO_MENSUAL, Nullable<decimal> pIN_MN_SUELDO_DIARIO, Nullable<decimal> pIN_MN_BASE_COTIZACION, Nullable<decimal> pIN_MN_SUELDO_DO, Nullable<bool> pIN_FG_INVENTARIO_VISIBLE, Nullable<bool> pIN_FG_TABULADOR_VISIBLE, Nullable<bool> pIN_FG_BONO_VISIBLE, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
+        {
+            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
+                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
+                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
+    
+            var pIN_CL_EMPLEADOParameter = pIN_CL_EMPLEADO != null ?
+                new ObjectParameter("PIN_CL_EMPLEADO", pIN_CL_EMPLEADO) :
+                new ObjectParameter("PIN_CL_EMPLEADO", typeof(string));
+    
+            var pIN_NB_EMPLEADOParameter = pIN_NB_EMPLEADO != null ?
+                new ObjectParameter("PIN_NB_EMPLEADO", pIN_NB_EMPLEADO) :
+                new ObjectParameter("PIN_NB_EMPLEADO", typeof(string));
+    
+            var pIN_NB_APELLIDO_PATERNOParameter = pIN_NB_APELLIDO_PATERNO != null ?
+                new ObjectParameter("PIN_NB_APELLIDO_PATERNO", pIN_NB_APELLIDO_PATERNO) :
+                new ObjectParameter("PIN_NB_APELLIDO_PATERNO", typeof(string));
+    
+            var pIN_NB_APELLIDO_MATERNOParameter = pIN_NB_APELLIDO_MATERNO != null ?
+                new ObjectParameter("PIN_NB_APELLIDO_MATERNO", pIN_NB_APELLIDO_MATERNO) :
+                new ObjectParameter("PIN_NB_APELLIDO_MATERNO", typeof(string));
+    
+            var pIN_FG_DOParameter = pIN_FG_DO.HasValue ?
+                new ObjectParameter("PIN_FG_DO", pIN_FG_DO) :
+                new ObjectParameter("PIN_FG_DO", typeof(bool));
+    
+            var pIN_FG_NOMINAParameter = pIN_FG_NOMINA.HasValue ?
+                new ObjectParameter("PIN_FG_NOMINA", pIN_FG_NOMINA) :
+                new ObjectParameter("PIN_FG_NOMINA", typeof(bool));
+    
+            var pIN_FG_NOMINA_DOParameter = pIN_FG_NOMINA_DO.HasValue ?
+                new ObjectParameter("PIN_FG_NOMINA_DO", pIN_FG_NOMINA_DO) :
+                new ObjectParameter("PIN_FG_NOMINA_DO", typeof(bool));
+    
+            var pIN_ID_PLAZAParameter = pIN_ID_PLAZA.HasValue ?
+                new ObjectParameter("PIN_ID_PLAZA", pIN_ID_PLAZA) :
+                new ObjectParameter("PIN_ID_PLAZA", typeof(int));
+    
+            var pIN_ID_PUESTO_NOMINAParameter = pIN_ID_PUESTO_NOMINA.HasValue ?
+                new ObjectParameter("PIN_ID_PUESTO_NOMINA", pIN_ID_PUESTO_NOMINA) :
+                new ObjectParameter("PIN_ID_PUESTO_NOMINA", typeof(int));
+    
+            var pIN_CL_EMPLEADO_NOMINAParameter = pIN_CL_EMPLEADO_NOMINA != null ?
+                new ObjectParameter("PIN_CL_EMPLEADO_NOMINA", pIN_CL_EMPLEADO_NOMINA) :
+                new ObjectParameter("PIN_CL_EMPLEADO_NOMINA", typeof(string));
+    
+            var pIN_ID_RAZON_SOCIALParameter = pIN_ID_RAZON_SOCIAL.HasValue ?
+                new ObjectParameter("PIN_ID_RAZON_SOCIAL", pIN_ID_RAZON_SOCIAL) :
+                new ObjectParameter("PIN_ID_RAZON_SOCIAL", typeof(System.Guid));
+    
+            var pIN_MN_SUELDO_MENSUALParameter = pIN_MN_SUELDO_MENSUAL.HasValue ?
+                new ObjectParameter("PIN_MN_SUELDO_MENSUAL", pIN_MN_SUELDO_MENSUAL) :
+                new ObjectParameter("PIN_MN_SUELDO_MENSUAL", typeof(decimal));
+    
+            var pIN_MN_SUELDO_DIARIOParameter = pIN_MN_SUELDO_DIARIO.HasValue ?
+                new ObjectParameter("PIN_MN_SUELDO_DIARIO", pIN_MN_SUELDO_DIARIO) :
+                new ObjectParameter("PIN_MN_SUELDO_DIARIO", typeof(decimal));
+    
+            var pIN_MN_BASE_COTIZACIONParameter = pIN_MN_BASE_COTIZACION.HasValue ?
+                new ObjectParameter("PIN_MN_BASE_COTIZACION", pIN_MN_BASE_COTIZACION) :
+                new ObjectParameter("PIN_MN_BASE_COTIZACION", typeof(decimal));
+    
+            var pIN_MN_SUELDO_DOParameter = pIN_MN_SUELDO_DO.HasValue ?
+                new ObjectParameter("PIN_MN_SUELDO_DO", pIN_MN_SUELDO_DO) :
+                new ObjectParameter("PIN_MN_SUELDO_DO", typeof(decimal));
+    
+            var pIN_FG_INVENTARIO_VISIBLEParameter = pIN_FG_INVENTARIO_VISIBLE.HasValue ?
+                new ObjectParameter("PIN_FG_INVENTARIO_VISIBLE", pIN_FG_INVENTARIO_VISIBLE) :
+                new ObjectParameter("PIN_FG_INVENTARIO_VISIBLE", typeof(bool));
+    
+            var pIN_FG_TABULADOR_VISIBLEParameter = pIN_FG_TABULADOR_VISIBLE.HasValue ?
+                new ObjectParameter("PIN_FG_TABULADOR_VISIBLE", pIN_FG_TABULADOR_VISIBLE) :
+                new ObjectParameter("PIN_FG_TABULADOR_VISIBLE", typeof(bool));
+    
+            var pIN_FG_BONO_VISIBLEParameter = pIN_FG_BONO_VISIBLE.HasValue ?
+                new ObjectParameter("PIN_FG_BONO_VISIBLE", pIN_FG_BONO_VISIBLE) :
+                new ObjectParameter("PIN_FG_BONO_VISIBLE", typeof(bool));
+    
+            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
+                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
+                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
+    
+            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
+                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
+    
+            var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
+                new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
+                new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_EMPLEADO_NOMINA_DO", xML_RESULTADO, pIN_ID_EMPLEADOParameter, pIN_CL_EMPLEADOParameter, pIN_NB_EMPLEADOParameter, pIN_NB_APELLIDO_PATERNOParameter, pIN_NB_APELLIDO_MATERNOParameter, pIN_FG_DOParameter, pIN_FG_NOMINAParameter, pIN_FG_NOMINA_DOParameter, pIN_ID_PLAZAParameter, pIN_ID_PUESTO_NOMINAParameter, pIN_CL_EMPLEADO_NOMINAParameter, pIN_ID_RAZON_SOCIALParameter, pIN_MN_SUELDO_MENSUALParameter, pIN_MN_SUELDO_DIARIOParameter, pIN_MN_BASE_COTIZACIONParameter, pIN_MN_SUELDO_DOParameter, pIN_FG_INVENTARIO_VISIBLEParameter, pIN_FG_TABULADOR_VISIBLEParameter, pIN_FG_BONO_VISIBLEParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_CONFIGURACION_CAMPOS_NOMINA_DO_Result> SPE_OBTIENE_CONFIGURACION_CAMPOS_NOMINA_DO(Nullable<int> pIN_ID_CAMPO, string pIN_CL_CAMPO)
+        {
+            var pIN_ID_CAMPOParameter = pIN_ID_CAMPO.HasValue ?
+                new ObjectParameter("PIN_ID_CAMPO", pIN_ID_CAMPO) :
+                new ObjectParameter("PIN_ID_CAMPO", typeof(int));
+    
+            var pIN_CL_CAMPOParameter = pIN_CL_CAMPO != null ?
+                new ObjectParameter("PIN_CL_CAMPO", pIN_CL_CAMPO) :
+                new ObjectParameter("PIN_CL_CAMPO", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CONFIGURACION_CAMPOS_NOMINA_DO_Result>("SPE_OBTIENE_CONFIGURACION_CAMPOS_NOMINA_DO", pIN_ID_CAMPOParameter, pIN_CL_CAMPOParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_ROL_Result> SPE_OBTIENE_ROL(Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_ROL_Result>("SPE_OBTIENE_ROL", pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_C_ROL_Result> SPE_OBTIENE_C_ROL(Nullable<int> pIN_ID_ROL, string pIN_CL_ROL, string pIN_NB_ROL, string pIN_XML_AUTORIZACION, Nullable<bool> pIN_FG_ACTIVO, Nullable<System.DateTime> pIN_FE_INACTIVO)
+        {
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            var pIN_CL_ROLParameter = pIN_CL_ROL != null ?
+                new ObjectParameter("PIN_CL_ROL", pIN_CL_ROL) :
+                new ObjectParameter("PIN_CL_ROL", typeof(string));
+    
+            var pIN_NB_ROLParameter = pIN_NB_ROL != null ?
+                new ObjectParameter("PIN_NB_ROL", pIN_NB_ROL) :
+                new ObjectParameter("PIN_NB_ROL", typeof(string));
+    
+            var pIN_XML_AUTORIZACIONParameter = pIN_XML_AUTORIZACION != null ?
+                new ObjectParameter("PIN_XML_AUTORIZACION", pIN_XML_AUTORIZACION) :
+                new ObjectParameter("PIN_XML_AUTORIZACION", typeof(string));
+    
+            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
+                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
+                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
+    
+            var pIN_FE_INACTIVOParameter = pIN_FE_INACTIVO.HasValue ?
+                new ObjectParameter("PIN_FE_INACTIVO", pIN_FE_INACTIVO) :
+                new ObjectParameter("PIN_FE_INACTIVO", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_ROL_Result>("SPE_OBTIENE_C_ROL", pIN_ID_ROLParameter, pIN_CL_ROLParameter, pIN_NB_ROLParameter, pIN_XML_AUTORIZACIONParameter, pIN_FG_ACTIVOParameter, pIN_FE_INACTIVOParameter);
+        }
+    
+        public virtual int SPE_INSERTA_ACTUALIZA_ROLES(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_ROL, string pIN_CL_ROL, string pIN_NB_ROL, Nullable<int> pIN_ID_PLANTILLA, Nullable<bool> pIN_FG_ACTIVO, string pIN_XML_FUNCIONES, string pIN_XML_GRUPOS, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
+        {
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            var pIN_CL_ROLParameter = pIN_CL_ROL != null ?
+                new ObjectParameter("PIN_CL_ROL", pIN_CL_ROL) :
+                new ObjectParameter("PIN_CL_ROL", typeof(string));
+    
+            var pIN_NB_ROLParameter = pIN_NB_ROL != null ?
+                new ObjectParameter("PIN_NB_ROL", pIN_NB_ROL) :
+                new ObjectParameter("PIN_NB_ROL", typeof(string));
+    
+            var pIN_ID_PLANTILLAParameter = pIN_ID_PLANTILLA.HasValue ?
+                new ObjectParameter("PIN_ID_PLANTILLA", pIN_ID_PLANTILLA) :
+                new ObjectParameter("PIN_ID_PLANTILLA", typeof(int));
+    
+            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
+                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
+                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
+    
+            var pIN_XML_FUNCIONESParameter = pIN_XML_FUNCIONES != null ?
+                new ObjectParameter("PIN_XML_FUNCIONES", pIN_XML_FUNCIONES) :
+                new ObjectParameter("PIN_XML_FUNCIONES", typeof(string));
+    
+            var pIN_XML_GRUPOSParameter = pIN_XML_GRUPOS != null ?
+                new ObjectParameter("PIN_XML_GRUPOS", pIN_XML_GRUPOS) :
+                new ObjectParameter("PIN_XML_GRUPOS", typeof(string));
+    
+            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
+                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
+                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
+    
+            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
+                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
+    
+            var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
+                new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
+                new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_ROLES", xML_RESULTADO, pIN_ID_ROLParameter, pIN_CL_ROLParameter, pIN_NB_ROLParameter, pIN_ID_PLANTILLAParameter, pIN_FG_ACTIVOParameter, pIN_XML_FUNCIONESParameter, pIN_XML_GRUPOSParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_M_PUESTOS_GENERAL_Result> SPE_OBTIENE_M_PUESTOS_GENERAL(Nullable<int> pIN_ID_PUESTO, Nullable<bool> pIN_FG_ACTIVO, Nullable<System.DateTime> pIN_FE_INACTIVO, string pIN_CL_PUESTO, string pIN_NB_PUESTO, Nullable<int> pIN_ID_DEPARTAMENTO, string pIN_XML_CAMPOS_ADICIONALES, Nullable<int> pIN_ID_BITACORA, Nullable<byte> pIN_NO_EDAD_MINIMA, Nullable<byte> pIN_NO_EDAD_MAXIMA, string pIN_CL_GENERO, string pIN_CL_ESTADO_CIVIL, string pIN_XML_REQUERIMIENTOS, string pIN_XML_OBSERVACIONES, string pIN_XML_RESPONSABILIDAD, string pIN_XML_AUTORIDAD, string pIN_XML_CURSOS_ADICIONALES, string pIN_XML_MENTOR, string pIN_CL_TIPO_PUESTO, Nullable<System.Guid> pIN_ID_CENTRO_ADMINISTRATIVO, Nullable<System.Guid> pIN_ID_CENTRO_OPERATIVO, Nullable<int> pIN_ID_PAQUETE_PRESTACIONES, string pIN_XML_PUESTOS, string pIN_NB_DEPARTAMENTO, string pIN_CL_DEPARTAMENTO, string xML_PUESTOS_SELECCIONADOS, Nullable<int> pIN_ID_EMPRESA)
+        {
+            var pIN_ID_PUESTOParameter = pIN_ID_PUESTO.HasValue ?
+                new ObjectParameter("PIN_ID_PUESTO", pIN_ID_PUESTO) :
+                new ObjectParameter("PIN_ID_PUESTO", typeof(int));
+    
+            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
+                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
+                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
+    
+            var pIN_FE_INACTIVOParameter = pIN_FE_INACTIVO.HasValue ?
+                new ObjectParameter("PIN_FE_INACTIVO", pIN_FE_INACTIVO) :
+                new ObjectParameter("PIN_FE_INACTIVO", typeof(System.DateTime));
+    
+            var pIN_CL_PUESTOParameter = pIN_CL_PUESTO != null ?
+                new ObjectParameter("PIN_CL_PUESTO", pIN_CL_PUESTO) :
+                new ObjectParameter("PIN_CL_PUESTO", typeof(string));
+    
+            var pIN_NB_PUESTOParameter = pIN_NB_PUESTO != null ?
+                new ObjectParameter("PIN_NB_PUESTO", pIN_NB_PUESTO) :
+                new ObjectParameter("PIN_NB_PUESTO", typeof(string));
+    
+            var pIN_ID_DEPARTAMENTOParameter = pIN_ID_DEPARTAMENTO.HasValue ?
+                new ObjectParameter("PIN_ID_DEPARTAMENTO", pIN_ID_DEPARTAMENTO) :
+                new ObjectParameter("PIN_ID_DEPARTAMENTO", typeof(int));
+    
+            var pIN_XML_CAMPOS_ADICIONALESParameter = pIN_XML_CAMPOS_ADICIONALES != null ?
+                new ObjectParameter("PIN_XML_CAMPOS_ADICIONALES", pIN_XML_CAMPOS_ADICIONALES) :
+                new ObjectParameter("PIN_XML_CAMPOS_ADICIONALES", typeof(string));
+    
+            var pIN_ID_BITACORAParameter = pIN_ID_BITACORA.HasValue ?
+                new ObjectParameter("PIN_ID_BITACORA", pIN_ID_BITACORA) :
+                new ObjectParameter("PIN_ID_BITACORA", typeof(int));
+    
+            var pIN_NO_EDAD_MINIMAParameter = pIN_NO_EDAD_MINIMA.HasValue ?
+                new ObjectParameter("PIN_NO_EDAD_MINIMA", pIN_NO_EDAD_MINIMA) :
+                new ObjectParameter("PIN_NO_EDAD_MINIMA", typeof(byte));
+    
+            var pIN_NO_EDAD_MAXIMAParameter = pIN_NO_EDAD_MAXIMA.HasValue ?
+                new ObjectParameter("PIN_NO_EDAD_MAXIMA", pIN_NO_EDAD_MAXIMA) :
+                new ObjectParameter("PIN_NO_EDAD_MAXIMA", typeof(byte));
+    
+            var pIN_CL_GENEROParameter = pIN_CL_GENERO != null ?
+                new ObjectParameter("PIN_CL_GENERO", pIN_CL_GENERO) :
+                new ObjectParameter("PIN_CL_GENERO", typeof(string));
+    
+            var pIN_CL_ESTADO_CIVILParameter = pIN_CL_ESTADO_CIVIL != null ?
+                new ObjectParameter("PIN_CL_ESTADO_CIVIL", pIN_CL_ESTADO_CIVIL) :
+                new ObjectParameter("PIN_CL_ESTADO_CIVIL", typeof(string));
+    
+            var pIN_XML_REQUERIMIENTOSParameter = pIN_XML_REQUERIMIENTOS != null ?
+                new ObjectParameter("PIN_XML_REQUERIMIENTOS", pIN_XML_REQUERIMIENTOS) :
+                new ObjectParameter("PIN_XML_REQUERIMIENTOS", typeof(string));
+    
+            var pIN_XML_OBSERVACIONESParameter = pIN_XML_OBSERVACIONES != null ?
+                new ObjectParameter("PIN_XML_OBSERVACIONES", pIN_XML_OBSERVACIONES) :
+                new ObjectParameter("PIN_XML_OBSERVACIONES", typeof(string));
+    
+            var pIN_XML_RESPONSABILIDADParameter = pIN_XML_RESPONSABILIDAD != null ?
+                new ObjectParameter("PIN_XML_RESPONSABILIDAD", pIN_XML_RESPONSABILIDAD) :
+                new ObjectParameter("PIN_XML_RESPONSABILIDAD", typeof(string));
+    
+            var pIN_XML_AUTORIDADParameter = pIN_XML_AUTORIDAD != null ?
+                new ObjectParameter("PIN_XML_AUTORIDAD", pIN_XML_AUTORIDAD) :
+                new ObjectParameter("PIN_XML_AUTORIDAD", typeof(string));
+    
+            var pIN_XML_CURSOS_ADICIONALESParameter = pIN_XML_CURSOS_ADICIONALES != null ?
+                new ObjectParameter("PIN_XML_CURSOS_ADICIONALES", pIN_XML_CURSOS_ADICIONALES) :
+                new ObjectParameter("PIN_XML_CURSOS_ADICIONALES", typeof(string));
+    
+            var pIN_XML_MENTORParameter = pIN_XML_MENTOR != null ?
+                new ObjectParameter("PIN_XML_MENTOR", pIN_XML_MENTOR) :
+                new ObjectParameter("PIN_XML_MENTOR", typeof(string));
+    
+            var pIN_CL_TIPO_PUESTOParameter = pIN_CL_TIPO_PUESTO != null ?
+                new ObjectParameter("PIN_CL_TIPO_PUESTO", pIN_CL_TIPO_PUESTO) :
+                new ObjectParameter("PIN_CL_TIPO_PUESTO", typeof(string));
+    
+            var pIN_ID_CENTRO_ADMINISTRATIVOParameter = pIN_ID_CENTRO_ADMINISTRATIVO.HasValue ?
+                new ObjectParameter("PIN_ID_CENTRO_ADMINISTRATIVO", pIN_ID_CENTRO_ADMINISTRATIVO) :
+                new ObjectParameter("PIN_ID_CENTRO_ADMINISTRATIVO", typeof(System.Guid));
+    
+            var pIN_ID_CENTRO_OPERATIVOParameter = pIN_ID_CENTRO_OPERATIVO.HasValue ?
+                new ObjectParameter("PIN_ID_CENTRO_OPERATIVO", pIN_ID_CENTRO_OPERATIVO) :
+                new ObjectParameter("PIN_ID_CENTRO_OPERATIVO", typeof(System.Guid));
+    
+            var pIN_ID_PAQUETE_PRESTACIONESParameter = pIN_ID_PAQUETE_PRESTACIONES.HasValue ?
+                new ObjectParameter("PIN_ID_PAQUETE_PRESTACIONES", pIN_ID_PAQUETE_PRESTACIONES) :
+                new ObjectParameter("PIN_ID_PAQUETE_PRESTACIONES", typeof(int));
+    
+            var pIN_XML_PUESTOSParameter = pIN_XML_PUESTOS != null ?
+                new ObjectParameter("PIN_XML_PUESTOS", pIN_XML_PUESTOS) :
+                new ObjectParameter("PIN_XML_PUESTOS", typeof(string));
+    
+            var pIN_NB_DEPARTAMENTOParameter = pIN_NB_DEPARTAMENTO != null ?
+                new ObjectParameter("PIN_NB_DEPARTAMENTO", pIN_NB_DEPARTAMENTO) :
+                new ObjectParameter("PIN_NB_DEPARTAMENTO", typeof(string));
+    
+            var pIN_CL_DEPARTAMENTOParameter = pIN_CL_DEPARTAMENTO != null ?
+                new ObjectParameter("PIN_CL_DEPARTAMENTO", pIN_CL_DEPARTAMENTO) :
+                new ObjectParameter("PIN_CL_DEPARTAMENTO", typeof(string));
+    
+            var xML_PUESTOS_SELECCIONADOSParameter = xML_PUESTOS_SELECCIONADOS != null ?
+                new ObjectParameter("XML_PUESTOS_SELECCIONADOS", xML_PUESTOS_SELECCIONADOS) :
+                new ObjectParameter("XML_PUESTOS_SELECCIONADOS", typeof(string));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_M_PUESTOS_GENERAL_Result>("SPE_OBTIENE_M_PUESTOS_GENERAL", pIN_ID_PUESTOParameter, pIN_FG_ACTIVOParameter, pIN_FE_INACTIVOParameter, pIN_CL_PUESTOParameter, pIN_NB_PUESTOParameter, pIN_ID_DEPARTAMENTOParameter, pIN_XML_CAMPOS_ADICIONALESParameter, pIN_ID_BITACORAParameter, pIN_NO_EDAD_MINIMAParameter, pIN_NO_EDAD_MAXIMAParameter, pIN_CL_GENEROParameter, pIN_CL_ESTADO_CIVILParameter, pIN_XML_REQUERIMIENTOSParameter, pIN_XML_OBSERVACIONESParameter, pIN_XML_RESPONSABILIDADParameter, pIN_XML_AUTORIDADParameter, pIN_XML_CURSOS_ADICIONALESParameter, pIN_XML_MENTORParameter, pIN_CL_TIPO_PUESTOParameter, pIN_ID_CENTRO_ADMINISTRATIVOParameter, pIN_ID_CENTRO_OPERATIVOParameter, pIN_ID_PAQUETE_PRESTACIONESParameter, pIN_XML_PUESTOSParameter, pIN_NB_DEPARTAMENTOParameter, pIN_CL_DEPARTAMENTOParameter, xML_PUESTOS_SELECCIONADOSParameter, pIN_ID_EMPRESAParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_PERIODO_Result> SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_PERIODO(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_PREGUNTA)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_PREGUNTAParameter = pIN_ID_PREGUNTA.HasValue ?
+                new ObjectParameter("PIN_ID_PREGUNTA", pIN_ID_PREGUNTA) :
+                new ObjectParameter("PIN_ID_PREGUNTA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_PERIODO_Result>("SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_PERIODO", pIN_ID_PERIODOParameter, pIN_ID_PREGUNTAParameter);
+        }
+    
+        public virtual int SPE_ACTUALIZA_VALIDEZ_CUESTIONARIO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ACTUALIZA_VALIDEZ_CUESTIONARIO", xML_RESULTADO, pIN_ID_PERIODOParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_CUESTIONARIO_Result> SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_CUESTIONARIO(Nullable<int> pIN_ID_EVALUADOR, Nullable<int> pIN_ID_PERIODO, Nullable<System.Guid> pIN_FL_EVALUADOR)
         {
             var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
                 new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
@@ -19128,7 +18049,66 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
                 new ObjectParameter("PIN_ID_PERIODO", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_CUESTIONARIO_Result>("SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_CUESTIONARIO", pIN_ID_EVALUADORParameter, pIN_ID_PERIODOParameter);
+            var pIN_FL_EVALUADORParameter = pIN_FL_EVALUADOR.HasValue ?
+                new ObjectParameter("PIN_FL_EVALUADOR", pIN_FL_EVALUADOR) :
+                new ObjectParameter("PIN_FL_EVALUADOR", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_CUESTIONARIO_Result>("SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_CUESTIONARIO", pIN_ID_EVALUADORParameter, pIN_ID_PERIODOParameter, pIN_FL_EVALUADORParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_PREGUNTAS_CUESTIONARIO_Result> SPE_OBTIENE_EO_PREGUNTAS_CUESTIONARIO(Nullable<int> pIN_ID_EVALUADOR, Nullable<int> pIN_ID_PERIODO, Nullable<System.Guid> pIN_FL_EVALUADOR)
+        {
+            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
+                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
+                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
+    
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_FL_EVALUADORParameter = pIN_FL_EVALUADOR.HasValue ?
+                new ObjectParameter("PIN_FL_EVALUADOR", pIN_FL_EVALUADOR) :
+                new ObjectParameter("PIN_FL_EVALUADOR", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_PREGUNTAS_CUESTIONARIO_Result>("SPE_OBTIENE_EO_PREGUNTAS_CUESTIONARIO", pIN_ID_EVALUADORParameter, pIN_ID_PERIODOParameter, pIN_FL_EVALUADORParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_PERIODO_EVALUADOR_Result> SPE_OBTIENE_EO_PERIODO_EVALUADOR(Nullable<int> pIN_ID_EVALUADOR, Nullable<System.Guid> pIN_FL_EVALUADOR)
+        {
+            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
+                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
+                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
+    
+            var pIN_FL_EVALUADORParameter = pIN_FL_EVALUADOR.HasValue ?
+                new ObjectParameter("PIN_FL_EVALUADOR", pIN_FL_EVALUADOR) :
+                new ObjectParameter("PIN_FL_EVALUADOR", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_PERIODO_EVALUADOR_Result>("SPE_OBTIENE_EO_PERIODO_EVALUADOR", pIN_ID_EVALUADORParameter, pIN_FL_EVALUADORParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_C_CATALOGO_VALOR_Result> SPE_OBTIENE_C_CATALOGO_VALOR(Nullable<int> pIN_ID_CATALOGO_VALOR, string pIN_CL_CATALOGO_VALOR, string pIN_NB_CATALOGO_VALOR, string pIN_DS_CATALOGO_VALOR, Nullable<int> pIN_ID_CATALOGO_LISTA)
+        {
+            var pIN_ID_CATALOGO_VALORParameter = pIN_ID_CATALOGO_VALOR.HasValue ?
+                new ObjectParameter("PIN_ID_CATALOGO_VALOR", pIN_ID_CATALOGO_VALOR) :
+                new ObjectParameter("PIN_ID_CATALOGO_VALOR", typeof(int));
+    
+            var pIN_CL_CATALOGO_VALORParameter = pIN_CL_CATALOGO_VALOR != null ?
+                new ObjectParameter("PIN_CL_CATALOGO_VALOR", pIN_CL_CATALOGO_VALOR) :
+                new ObjectParameter("PIN_CL_CATALOGO_VALOR", typeof(string));
+    
+            var pIN_NB_CATALOGO_VALORParameter = pIN_NB_CATALOGO_VALOR != null ?
+                new ObjectParameter("PIN_NB_CATALOGO_VALOR", pIN_NB_CATALOGO_VALOR) :
+                new ObjectParameter("PIN_NB_CATALOGO_VALOR", typeof(string));
+    
+            var pIN_DS_CATALOGO_VALORParameter = pIN_DS_CATALOGO_VALOR != null ?
+                new ObjectParameter("PIN_DS_CATALOGO_VALOR", pIN_DS_CATALOGO_VALOR) :
+                new ObjectParameter("PIN_DS_CATALOGO_VALOR", typeof(string));
+    
+            var pIN_ID_CATALOGO_LISTAParameter = pIN_ID_CATALOGO_LISTA.HasValue ?
+                new ObjectParameter("PIN_ID_CATALOGO_LISTA", pIN_ID_CATALOGO_LISTA) :
+                new ObjectParameter("PIN_ID_CATALOGO_LISTA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_CATALOGO_VALOR_Result>("SPE_OBTIENE_C_CATALOGO_VALOR", pIN_ID_CATALOGO_VALORParameter, pIN_CL_CATALOGO_VALORParameter, pIN_NB_CATALOGO_VALORParameter, pIN_DS_CATALOGO_VALORParameter, pIN_ID_CATALOGO_LISTAParameter);
         }
     
         public virtual ObjectResult<SPE_OBTIENE_TABULADOR_MAESTRO_RECALCULA_Result> SPE_OBTIENE_TABULADOR_MAESTRO_RECALCULA(Nullable<int> pIN_ID_TABULADOR, string pIN_XML_NIVELES)
@@ -19144,7 +18124,595 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_TABULADOR_MAESTRO_RECALCULA_Result>("SPE_OBTIENE_TABULADOR_MAESTRO_RECALCULA", pIN_ID_TABULADORParameter, pIN_XML_NIVELESParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_EMPLEADOS_CAMPOS_EXTRA_Result> SPE_OBTIENE_EMPLEADOS_CAMPOS_EXTRA(string pIN_XML_SELECCION, string pIN_CL_USUARIO, Nullable<bool> pIN_FG_ACTIVO, Nullable<bool> pIN_FG_FOTO, Nullable<int> pIN_ID_EMPRESA)
+        public virtual ObjectResult<SPE_OBTIENE_C_COLONIA_Result> SPE_OBTIENE_C_COLONIA(Nullable<int> pIN_ID_COLONIA, string pIN_CL_PAIS, string pIN_CL_ESTADO, string pIN_NB_ESTADO, string pIN_CL_MUNICIPIO, string pIN_NB_MUNICIPIO, string pIN_CL_COLONIA, string pIN_NB_COLONIA, string pIN_CL_TIPO_ASENTAMIENTO, string pIN_CL_CODIGO_POSTAL)
+        {
+            var pIN_ID_COLONIAParameter = pIN_ID_COLONIA.HasValue ?
+                new ObjectParameter("PIN_ID_COLONIA", pIN_ID_COLONIA) :
+                new ObjectParameter("PIN_ID_COLONIA", typeof(int));
+    
+            var pIN_CL_PAISParameter = pIN_CL_PAIS != null ?
+                new ObjectParameter("PIN_CL_PAIS", pIN_CL_PAIS) :
+                new ObjectParameter("PIN_CL_PAIS", typeof(string));
+    
+            var pIN_CL_ESTADOParameter = pIN_CL_ESTADO != null ?
+                new ObjectParameter("PIN_CL_ESTADO", pIN_CL_ESTADO) :
+                new ObjectParameter("PIN_CL_ESTADO", typeof(string));
+    
+            var pIN_NB_ESTADOParameter = pIN_NB_ESTADO != null ?
+                new ObjectParameter("PIN_NB_ESTADO", pIN_NB_ESTADO) :
+                new ObjectParameter("PIN_NB_ESTADO", typeof(string));
+    
+            var pIN_CL_MUNICIPIOParameter = pIN_CL_MUNICIPIO != null ?
+                new ObjectParameter("PIN_CL_MUNICIPIO", pIN_CL_MUNICIPIO) :
+                new ObjectParameter("PIN_CL_MUNICIPIO", typeof(string));
+    
+            var pIN_NB_MUNICIPIOParameter = pIN_NB_MUNICIPIO != null ?
+                new ObjectParameter("PIN_NB_MUNICIPIO", pIN_NB_MUNICIPIO) :
+                new ObjectParameter("PIN_NB_MUNICIPIO", typeof(string));
+    
+            var pIN_CL_COLONIAParameter = pIN_CL_COLONIA != null ?
+                new ObjectParameter("PIN_CL_COLONIA", pIN_CL_COLONIA) :
+                new ObjectParameter("PIN_CL_COLONIA", typeof(string));
+    
+            var pIN_NB_COLONIAParameter = pIN_NB_COLONIA != null ?
+                new ObjectParameter("PIN_NB_COLONIA", pIN_NB_COLONIA) :
+                new ObjectParameter("PIN_NB_COLONIA", typeof(string));
+    
+            var pIN_CL_TIPO_ASENTAMIENTOParameter = pIN_CL_TIPO_ASENTAMIENTO != null ?
+                new ObjectParameter("PIN_CL_TIPO_ASENTAMIENTO", pIN_CL_TIPO_ASENTAMIENTO) :
+                new ObjectParameter("PIN_CL_TIPO_ASENTAMIENTO", typeof(string));
+    
+            var pIN_CL_CODIGO_POSTALParameter = pIN_CL_CODIGO_POSTAL != null ?
+                new ObjectParameter("PIN_CL_CODIGO_POSTAL", pIN_CL_CODIGO_POSTAL) :
+                new ObjectParameter("PIN_CL_CODIGO_POSTAL", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_COLONIA_Result>("SPE_OBTIENE_C_COLONIA", pIN_ID_COLONIAParameter, pIN_CL_PAISParameter, pIN_CL_ESTADOParameter, pIN_NB_ESTADOParameter, pIN_CL_MUNICIPIOParameter, pIN_NB_MUNICIPIOParameter, pIN_CL_COLONIAParameter, pIN_NB_COLONIAParameter, pIN_CL_TIPO_ASENTAMIENTOParameter, pIN_CL_CODIGO_POSTALParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_C_MUNICIPIO_Result> SPE_OBTIENE_C_MUNICIPIO(Nullable<int> pIN_ID_MUNICIPIO, string pIN_CL_PAIS, string pIN_CL_ESTADO, string pIN_NB_ESTADO, string pIN_CL_MUNICIPIO, string pIN_NB_MUNICIPIO)
+        {
+            var pIN_ID_MUNICIPIOParameter = pIN_ID_MUNICIPIO.HasValue ?
+                new ObjectParameter("PIN_ID_MUNICIPIO", pIN_ID_MUNICIPIO) :
+                new ObjectParameter("PIN_ID_MUNICIPIO", typeof(int));
+    
+            var pIN_CL_PAISParameter = pIN_CL_PAIS != null ?
+                new ObjectParameter("PIN_CL_PAIS", pIN_CL_PAIS) :
+                new ObjectParameter("PIN_CL_PAIS", typeof(string));
+    
+            var pIN_CL_ESTADOParameter = pIN_CL_ESTADO != null ?
+                new ObjectParameter("PIN_CL_ESTADO", pIN_CL_ESTADO) :
+                new ObjectParameter("PIN_CL_ESTADO", typeof(string));
+    
+            var pIN_NB_ESTADOParameter = pIN_NB_ESTADO != null ?
+                new ObjectParameter("PIN_NB_ESTADO", pIN_NB_ESTADO) :
+                new ObjectParameter("PIN_NB_ESTADO", typeof(string));
+    
+            var pIN_CL_MUNICIPIOParameter = pIN_CL_MUNICIPIO != null ?
+                new ObjectParameter("PIN_CL_MUNICIPIO", pIN_CL_MUNICIPIO) :
+                new ObjectParameter("PIN_CL_MUNICIPIO", typeof(string));
+    
+            var pIN_NB_MUNICIPIOParameter = pIN_NB_MUNICIPIO != null ?
+                new ObjectParameter("PIN_NB_MUNICIPIO", pIN_NB_MUNICIPIO) :
+                new ObjectParameter("PIN_NB_MUNICIPIO", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_MUNICIPIO_Result>("SPE_OBTIENE_C_MUNICIPIO", pIN_ID_MUNICIPIOParameter, pIN_CL_PAISParameter, pIN_CL_ESTADOParameter, pIN_NB_ESTADOParameter, pIN_CL_MUNICIPIOParameter, pIN_NB_MUNICIPIOParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_PERIODO_Result> SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_PERIODO(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_PREGUNTA)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_PREGUNTAParameter = pIN_ID_PREGUNTA.HasValue ?
+                new ObjectParameter("PIN_ID_PREGUNTA", pIN_ID_PREGUNTA) :
+                new ObjectParameter("PIN_ID_PREGUNTA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_PERIODO_Result>("SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_PERIODO", pIN_ID_PERIODOParameter, pIN_ID_PREGUNTAParameter);
+        }
+    
+        public virtual int SPE_INSERTA_FYD_PREGUNTAS_ADICIONALES_PERIODO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_PREGUNTA_ADICIONAL, string pIN_NB_PREGUNTA, string pIN_XML_PREGUNTAS, string pIN_CL_CUESTIONARIO_OBJETIVO, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_PREGUNTA_ADICIONALParameter = pIN_ID_PREGUNTA_ADICIONAL.HasValue ?
+                new ObjectParameter("PIN_ID_PREGUNTA_ADICIONAL", pIN_ID_PREGUNTA_ADICIONAL) :
+                new ObjectParameter("PIN_ID_PREGUNTA_ADICIONAL", typeof(int));
+    
+            var pIN_NB_PREGUNTAParameter = pIN_NB_PREGUNTA != null ?
+                new ObjectParameter("PIN_NB_PREGUNTA", pIN_NB_PREGUNTA) :
+                new ObjectParameter("PIN_NB_PREGUNTA", typeof(string));
+    
+            var pIN_XML_PREGUNTASParameter = pIN_XML_PREGUNTAS != null ?
+                new ObjectParameter("PIN_XML_PREGUNTAS", pIN_XML_PREGUNTAS) :
+                new ObjectParameter("PIN_XML_PREGUNTAS", typeof(string));
+    
+            var pIN_CL_CUESTIONARIO_OBJETIVOParameter = pIN_CL_CUESTIONARIO_OBJETIVO != null ?
+                new ObjectParameter("PIN_CL_CUESTIONARIO_OBJETIVO", pIN_CL_CUESTIONARIO_OBJETIVO) :
+                new ObjectParameter("PIN_CL_CUESTIONARIO_OBJETIVO", typeof(string));
+    
+            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
+                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
+                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
+    
+            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
+                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
+    
+            var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
+                new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
+                new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_FYD_PREGUNTAS_ADICIONALES_PERIODO", xML_RESULTADO, pIN_ID_PERIODOParameter, pIN_ID_PREGUNTA_ADICIONALParameter, pIN_NB_PREGUNTAParameter, pIN_XML_PREGUNTASParameter, pIN_CL_CUESTIONARIO_OBJETIVOParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter);
+        }
+    
+        public virtual int SPE_ELIMINA_FYD_PREGUNTA_ADICIONAL(ObjectParameter xML_RESULTADO, string pIN_XML_PREGUNTAS_ADICIONALS)
+        {
+            var pIN_XML_PREGUNTAS_ADICIONALSParameter = pIN_XML_PREGUNTAS_ADICIONALS != null ?
+                new ObjectParameter("PIN_XML_PREGUNTAS_ADICIONALS", pIN_XML_PREGUNTAS_ADICIONALS) :
+                new ObjectParameter("PIN_XML_PREGUNTAS_ADICIONALS", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_FYD_PREGUNTA_ADICIONAL", xML_RESULTADO, pIN_XML_PREGUNTAS_ADICIONALSParameter);
+        }
+    
+        public virtual int SPE_ELIMINA_COMPETENCIA_FACTOR(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_FACTOR, string pIN_XML_COMPETENCIAS, string pIN_CL_USUARIO_APP_CREA, string pIN_NB_PROGRAMA_CREA)
+        {
+            var pIN_ID_FACTORParameter = pIN_ID_FACTOR.HasValue ?
+                new ObjectParameter("PIN_ID_FACTOR", pIN_ID_FACTOR) :
+                new ObjectParameter("PIN_ID_FACTOR", typeof(int));
+    
+            var pIN_XML_COMPETENCIASParameter = pIN_XML_COMPETENCIAS != null ?
+                new ObjectParameter("PIN_XML_COMPETENCIAS", pIN_XML_COMPETENCIAS) :
+                new ObjectParameter("PIN_XML_COMPETENCIAS", typeof(string));
+    
+            var pIN_CL_USUARIO_APP_CREAParameter = pIN_CL_USUARIO_APP_CREA != null ?
+                new ObjectParameter("PIN_CL_USUARIO_APP_CREA", pIN_CL_USUARIO_APP_CREA) :
+                new ObjectParameter("PIN_CL_USUARIO_APP_CREA", typeof(string));
+    
+            var pIN_NB_PROGRAMA_CREAParameter = pIN_NB_PROGRAMA_CREA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA_CREA", pIN_NB_PROGRAMA_CREA) :
+                new ObjectParameter("PIN_NB_PROGRAMA_CREA", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_COMPETENCIA_FACTOR", xML_RESULTADO, pIN_ID_FACTORParameter, pIN_XML_COMPETENCIASParameter, pIN_CL_USUARIO_APP_CREAParameter, pIN_NB_PROGRAMA_CREAParameter);
+        }
+    
+        public virtual int SPE_INSERTA_ACTUALIZA_PERIODO_DESEMPENO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO_DESEMPENO, string pIN_CL_PERIODO_DESEMPENO, string pIN_NB_PERIODO_DESEMPENO, string pIN_DS_PERIODO_DESEMPENO, string pIN_CL_ESTADO_PERIODO_DESEMPENO, string pIN_DS_NOTAS, Nullable<System.DateTime> pIN_FE_INICIO, Nullable<System.DateTime> pIN_FE_TERMINO, string pIN_CL_TIPO_CAPTURISTA, string pIN_CL_TIPO_METAS, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION, Nullable<bool> fG_CAPTURA_MASIVA)
+        {
+            var pIN_ID_PERIODO_DESEMPENOParameter = pIN_ID_PERIODO_DESEMPENO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO_DESEMPENO", pIN_ID_PERIODO_DESEMPENO) :
+                new ObjectParameter("PIN_ID_PERIODO_DESEMPENO", typeof(int));
+    
+            var pIN_CL_PERIODO_DESEMPENOParameter = pIN_CL_PERIODO_DESEMPENO != null ?
+                new ObjectParameter("PIN_CL_PERIODO_DESEMPENO", pIN_CL_PERIODO_DESEMPENO) :
+                new ObjectParameter("PIN_CL_PERIODO_DESEMPENO", typeof(string));
+    
+            var pIN_NB_PERIODO_DESEMPENOParameter = pIN_NB_PERIODO_DESEMPENO != null ?
+                new ObjectParameter("PIN_NB_PERIODO_DESEMPENO", pIN_NB_PERIODO_DESEMPENO) :
+                new ObjectParameter("PIN_NB_PERIODO_DESEMPENO", typeof(string));
+    
+            var pIN_DS_PERIODO_DESEMPENOParameter = pIN_DS_PERIODO_DESEMPENO != null ?
+                new ObjectParameter("PIN_DS_PERIODO_DESEMPENO", pIN_DS_PERIODO_DESEMPENO) :
+                new ObjectParameter("PIN_DS_PERIODO_DESEMPENO", typeof(string));
+    
+            var pIN_CL_ESTADO_PERIODO_DESEMPENOParameter = pIN_CL_ESTADO_PERIODO_DESEMPENO != null ?
+                new ObjectParameter("PIN_CL_ESTADO_PERIODO_DESEMPENO", pIN_CL_ESTADO_PERIODO_DESEMPENO) :
+                new ObjectParameter("PIN_CL_ESTADO_PERIODO_DESEMPENO", typeof(string));
+    
+            var pIN_DS_NOTASParameter = pIN_DS_NOTAS != null ?
+                new ObjectParameter("PIN_DS_NOTAS", pIN_DS_NOTAS) :
+                new ObjectParameter("PIN_DS_NOTAS", typeof(string));
+    
+            var pIN_FE_INICIOParameter = pIN_FE_INICIO.HasValue ?
+                new ObjectParameter("PIN_FE_INICIO", pIN_FE_INICIO) :
+                new ObjectParameter("PIN_FE_INICIO", typeof(System.DateTime));
+    
+            var pIN_FE_TERMINOParameter = pIN_FE_TERMINO.HasValue ?
+                new ObjectParameter("PIN_FE_TERMINO", pIN_FE_TERMINO) :
+                new ObjectParameter("PIN_FE_TERMINO", typeof(System.DateTime));
+    
+            var pIN_CL_TIPO_CAPTURISTAParameter = pIN_CL_TIPO_CAPTURISTA != null ?
+                new ObjectParameter("PIN_CL_TIPO_CAPTURISTA", pIN_CL_TIPO_CAPTURISTA) :
+                new ObjectParameter("PIN_CL_TIPO_CAPTURISTA", typeof(string));
+    
+            var pIN_CL_TIPO_METASParameter = pIN_CL_TIPO_METAS != null ?
+                new ObjectParameter("PIN_CL_TIPO_METAS", pIN_CL_TIPO_METAS) :
+                new ObjectParameter("PIN_CL_TIPO_METAS", typeof(string));
+    
+            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
+                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
+                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
+    
+            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
+                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
+    
+            var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
+                new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
+                new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
+    
+            var fG_CAPTURA_MASIVAParameter = fG_CAPTURA_MASIVA.HasValue ?
+                new ObjectParameter("FG_CAPTURA_MASIVA", fG_CAPTURA_MASIVA) :
+                new ObjectParameter("FG_CAPTURA_MASIVA", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_PERIODO_DESEMPENO", xML_RESULTADO, pIN_ID_PERIODO_DESEMPENOParameter, pIN_CL_PERIODO_DESEMPENOParameter, pIN_NB_PERIODO_DESEMPENOParameter, pIN_DS_PERIODO_DESEMPENOParameter, pIN_CL_ESTADO_PERIODO_DESEMPENOParameter, pIN_DS_NOTASParameter, pIN_FE_INICIOParameter, pIN_FE_TERMINOParameter, pIN_CL_TIPO_CAPTURISTAParameter, pIN_CL_TIPO_METASParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter, fG_CAPTURA_MASIVAParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_PERIODO_EVALUADOR_DESEMPENO_Result> SPE_OBTIENE_EO_PERIODO_EVALUADOR_DESEMPENO(Nullable<int> pIN_ID_EVALUADOR, Nullable<System.Guid> pIN_FL_EVALUADOR)
+        {
+            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
+                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
+                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
+    
+            var pIN_FL_EVALUADORParameter = pIN_FL_EVALUADOR.HasValue ?
+                new ObjectParameter("PIN_FL_EVALUADOR", pIN_FL_EVALUADOR) :
+                new ObjectParameter("PIN_FL_EVALUADOR", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_PERIODO_EVALUADOR_DESEMPENO_Result>("SPE_OBTIENE_EO_PERIODO_EVALUADOR_DESEMPENO", pIN_ID_EVALUADORParameter, pIN_FL_EVALUADORParameter);
+        }
+    
+        public virtual int SPE_ACTUALIZA_RESULTADO_METAS_MASIVA(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EVALUADOR, string pIN_XML_RESULTADOS, string pIN_CL_USUARIO_APP, string pIN_NB_PROGRAMA, Nullable<decimal> pIN_CUMPLIMIENTO_TOTAL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
+                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
+                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
+    
+            var pIN_XML_RESULTADOSParameter = pIN_XML_RESULTADOS != null ?
+                new ObjectParameter("PIN_XML_RESULTADOS", pIN_XML_RESULTADOS) :
+                new ObjectParameter("PIN_XML_RESULTADOS", typeof(string));
+    
+            var pIN_CL_USUARIO_APPParameter = pIN_CL_USUARIO_APP != null ?
+                new ObjectParameter("PIN_CL_USUARIO_APP", pIN_CL_USUARIO_APP) :
+                new ObjectParameter("PIN_CL_USUARIO_APP", typeof(string));
+    
+            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
+                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
+    
+            var pIN_CUMPLIMIENTO_TOTALParameter = pIN_CUMPLIMIENTO_TOTAL.HasValue ?
+                new ObjectParameter("PIN_CUMPLIMIENTO_TOTAL", pIN_CUMPLIMIENTO_TOTAL) :
+                new ObjectParameter("PIN_CUMPLIMIENTO_TOTAL", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ACTUALIZA_RESULTADO_METAS_MASIVA", xML_RESULTADO, pIN_ID_PERIODOParameter, pIN_ID_EVALUADORParameter, pIN_XML_RESULTADOSParameter, pIN_CL_USUARIO_APPParameter, pIN_NB_PROGRAMAParameter, pIN_CUMPLIMIENTO_TOTALParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_METAS_CAPTURA_MASIVA_Result> SPE_OBTIENE_EO_METAS_CAPTURA_MASIVA(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EVALUADOR, Nullable<System.Guid> pIN_FL_EVALUADOR)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
+                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
+                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
+    
+            var pIN_FL_EVALUADORParameter = pIN_FL_EVALUADOR.HasValue ?
+                new ObjectParameter("PIN_FL_EVALUADOR", pIN_FL_EVALUADOR) :
+                new ObjectParameter("PIN_FL_EVALUADOR", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_METAS_CAPTURA_MASIVA_Result>("SPE_OBTIENE_EO_METAS_CAPTURA_MASIVA", pIN_ID_PERIODOParameter, pIN_ID_EVALUADORParameter, pIN_FL_EVALUADORParameter);
+        }
+    
+        public virtual int SPE_ELIMINA_EO_METAS_INACTIVAS(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_EO_METAS_INACTIVAS", xML_RESULTADO, pIN_ID_PERIODOParameter);
+        }
+    
+        public virtual int SPE_INSERTA_PERIODOS_DESEMPENO_REPLICA(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO, string pIN_XML_REPLICAS, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_XML_REPLICASParameter = pIN_XML_REPLICAS != null ?
+                new ObjectParameter("PIN_XML_REPLICAS", pIN_XML_REPLICAS) :
+                new ObjectParameter("PIN_XML_REPLICAS", typeof(string));
+    
+            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
+                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
+                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
+    
+            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
+                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
+    
+            var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
+                new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
+                new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_PERIODOS_DESEMPENO_REPLICA", xML_RESULTADO, pIN_ID_PERIODOParameter, pIN_XML_REPLICASParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_PERIODOS_SOLICITUDES_ENVIAR_Result> SPE_OBTIENE_PERIODOS_SOLICITUDES_ENVIAR()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_PERIODOS_SOLICITUDES_ENVIAR_Result>("SPE_OBTIENE_PERIODOS_SOLICITUDES_ENVIAR");
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_K_PRUEBA_Result> SPE_OBTIENE_K_PRUEBA(Nullable<int> pIN_ID_PRUEBA, Nullable<int> pIN_ID_PRUEBA_PLANTILLA, Nullable<int> pIN_ID_CANDIDATO, Nullable<int> pIN_ID_EMPLEADO, string pIN_CL_EMPLEADO, string pIN_CL_ESTADO, Nullable<System.DateTime> pIN_FE_INICIO, Nullable<System.DateTime> pIN_FE_TERMINO, Nullable<int> pIN_NO_TIEMPO, Nullable<System.Guid> pIN_CL_TOKEN_EXTERNO, Nullable<System.Guid> pIN_CL_TOKEN_BATERIA, Nullable<int> pIN_ID_BATERIA, Nullable<bool> pIN_FG_ASIGNADA)
+        {
+            var pIN_ID_PRUEBAParameter = pIN_ID_PRUEBA.HasValue ?
+                new ObjectParameter("PIN_ID_PRUEBA", pIN_ID_PRUEBA) :
+                new ObjectParameter("PIN_ID_PRUEBA", typeof(int));
+    
+            var pIN_ID_PRUEBA_PLANTILLAParameter = pIN_ID_PRUEBA_PLANTILLA.HasValue ?
+                new ObjectParameter("PIN_ID_PRUEBA_PLANTILLA", pIN_ID_PRUEBA_PLANTILLA) :
+                new ObjectParameter("PIN_ID_PRUEBA_PLANTILLA", typeof(int));
+    
+            var pIN_ID_CANDIDATOParameter = pIN_ID_CANDIDATO.HasValue ?
+                new ObjectParameter("PIN_ID_CANDIDATO", pIN_ID_CANDIDATO) :
+                new ObjectParameter("PIN_ID_CANDIDATO", typeof(int));
+    
+            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
+                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
+                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
+    
+            var pIN_CL_EMPLEADOParameter = pIN_CL_EMPLEADO != null ?
+                new ObjectParameter("PIN_CL_EMPLEADO", pIN_CL_EMPLEADO) :
+                new ObjectParameter("PIN_CL_EMPLEADO", typeof(string));
+    
+            var pIN_CL_ESTADOParameter = pIN_CL_ESTADO != null ?
+                new ObjectParameter("PIN_CL_ESTADO", pIN_CL_ESTADO) :
+                new ObjectParameter("PIN_CL_ESTADO", typeof(string));
+    
+            var pIN_FE_INICIOParameter = pIN_FE_INICIO.HasValue ?
+                new ObjectParameter("PIN_FE_INICIO", pIN_FE_INICIO) :
+                new ObjectParameter("PIN_FE_INICIO", typeof(System.DateTime));
+    
+            var pIN_FE_TERMINOParameter = pIN_FE_TERMINO.HasValue ?
+                new ObjectParameter("PIN_FE_TERMINO", pIN_FE_TERMINO) :
+                new ObjectParameter("PIN_FE_TERMINO", typeof(System.DateTime));
+    
+            var pIN_NO_TIEMPOParameter = pIN_NO_TIEMPO.HasValue ?
+                new ObjectParameter("PIN_NO_TIEMPO", pIN_NO_TIEMPO) :
+                new ObjectParameter("PIN_NO_TIEMPO", typeof(int));
+    
+            var pIN_CL_TOKEN_EXTERNOParameter = pIN_CL_TOKEN_EXTERNO.HasValue ?
+                new ObjectParameter("PIN_CL_TOKEN_EXTERNO", pIN_CL_TOKEN_EXTERNO) :
+                new ObjectParameter("PIN_CL_TOKEN_EXTERNO", typeof(System.Guid));
+    
+            var pIN_CL_TOKEN_BATERIAParameter = pIN_CL_TOKEN_BATERIA.HasValue ?
+                new ObjectParameter("PIN_CL_TOKEN_BATERIA", pIN_CL_TOKEN_BATERIA) :
+                new ObjectParameter("PIN_CL_TOKEN_BATERIA", typeof(System.Guid));
+    
+            var pIN_ID_BATERIAParameter = pIN_ID_BATERIA.HasValue ?
+                new ObjectParameter("PIN_ID_BATERIA", pIN_ID_BATERIA) :
+                new ObjectParameter("PIN_ID_BATERIA", typeof(int));
+    
+            var pIN_FG_ASIGNADAParameter = pIN_FG_ASIGNADA.HasValue ?
+                new ObjectParameter("PIN_FG_ASIGNADA", pIN_FG_ASIGNADA) :
+                new ObjectParameter("PIN_FG_ASIGNADA", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_K_PRUEBA_Result>("SPE_OBTIENE_K_PRUEBA", pIN_ID_PRUEBAParameter, pIN_ID_PRUEBA_PLANTILLAParameter, pIN_ID_CANDIDATOParameter, pIN_ID_EMPLEADOParameter, pIN_CL_EMPLEADOParameter, pIN_CL_ESTADOParameter, pIN_FE_INICIOParameter, pIN_FE_TERMINOParameter, pIN_NO_TIEMPOParameter, pIN_CL_TOKEN_EXTERNOParameter, pIN_CL_TOKEN_BATERIAParameter, pIN_ID_BATERIAParameter, pIN_FG_ASIGNADAParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result> SPE_OBTIENE_PRUEBAS_CONFIGURADAS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result>("SPE_OBTIENE_PRUEBAS_CONFIGURADAS");
+        }
+    
+        public virtual int SPE_ACTUALIZA_PRUEBAS_BATERIA(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_BATERIA, string pIN_XML_PRUEBAS, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
+        {
+            var pIN_ID_BATERIAParameter = pIN_ID_BATERIA.HasValue ?
+                new ObjectParameter("PIN_ID_BATERIA", pIN_ID_BATERIA) :
+                new ObjectParameter("PIN_ID_BATERIA", typeof(int));
+    
+            var pIN_XML_PRUEBASParameter = pIN_XML_PRUEBAS != null ?
+                new ObjectParameter("PIN_XML_PRUEBAS", pIN_XML_PRUEBAS) :
+                new ObjectParameter("PIN_XML_PRUEBAS", typeof(string));
+    
+            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
+                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
+                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
+    
+            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
+                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
+    
+            var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
+                new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
+                new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ACTUALIZA_PRUEBAS_BATERIA", xML_RESULTADO, pIN_ID_BATERIAParameter, pIN_XML_PRUEBASParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_CANDIDATOS_BATERIAS_Result> SPE_OBTIENE_CANDIDATOS_BATERIAS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CANDIDATOS_BATERIAS_Result>("SPE_OBTIENE_CANDIDATOS_BATERIAS");
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_PRUEBAS_FACTORES_COMPETENCIAS_Result> SPE_OBTIENE_PRUEBAS_FACTORES_COMPETENCIAS(Nullable<int> pIN_ID_SELECCION, string pIN_CL_SELECCION)
+        {
+            var pIN_ID_SELECCIONParameter = pIN_ID_SELECCION.HasValue ?
+                new ObjectParameter("PIN_ID_SELECCION", pIN_ID_SELECCION) :
+                new ObjectParameter("PIN_ID_SELECCION", typeof(int));
+    
+            var pIN_CL_SELECCIONParameter = pIN_CL_SELECCION != null ?
+                new ObjectParameter("PIN_CL_SELECCION", pIN_CL_SELECCION) :
+                new ObjectParameter("PIN_CL_SELECCION", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_PRUEBAS_FACTORES_COMPETENCIAS_Result>("SPE_OBTIENE_PRUEBAS_FACTORES_COMPETENCIAS", pIN_ID_SELECCIONParameter, pIN_CL_SELECCIONParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_BUSQUEDA_CANDIDATO_REQUISICION_Result> SPE_OBTIENE_BUSQUEDA_CANDIDATO_REQUISICION(Nullable<int> pIN_ID_REQUISICION, string pIN_XML_PARAMETROS_BUSQUEDA)
+        {
+            var pIN_ID_REQUISICIONParameter = pIN_ID_REQUISICION.HasValue ?
+                new ObjectParameter("PIN_ID_REQUISICION", pIN_ID_REQUISICION) :
+                new ObjectParameter("PIN_ID_REQUISICION", typeof(int));
+    
+            var pIN_XML_PARAMETROS_BUSQUEDAParameter = pIN_XML_PARAMETROS_BUSQUEDA != null ?
+                new ObjectParameter("PIN_XML_PARAMETROS_BUSQUEDA", pIN_XML_PARAMETROS_BUSQUEDA) :
+                new ObjectParameter("PIN_XML_PARAMETROS_BUSQUEDA", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_BUSQUEDA_CANDIDATO_REQUISICION_Result>("SPE_OBTIENE_BUSQUEDA_CANDIDATO_REQUISICION", pIN_ID_REQUISICIONParameter, pIN_XML_PARAMETROS_BUSQUEDAParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_CANDIDATOS_POR_REQUISICION_Result> SPE_OBTIENE_CANDIDATOS_POR_REQUISICION(Nullable<int> pIN_ID_REQUISICION, Nullable<int> pIN_ID_PROCESO_SELECCION, Nullable<int> pIN_ID_CANDIDATO, Nullable<int> pIN_ID_SOLICITUD)
+        {
+            var pIN_ID_REQUISICIONParameter = pIN_ID_REQUISICION.HasValue ?
+                new ObjectParameter("PIN_ID_REQUISICION", pIN_ID_REQUISICION) :
+                new ObjectParameter("PIN_ID_REQUISICION", typeof(int));
+    
+            var pIN_ID_PROCESO_SELECCIONParameter = pIN_ID_PROCESO_SELECCION.HasValue ?
+                new ObjectParameter("PIN_ID_PROCESO_SELECCION", pIN_ID_PROCESO_SELECCION) :
+                new ObjectParameter("PIN_ID_PROCESO_SELECCION", typeof(int));
+    
+            var pIN_ID_CANDIDATOParameter = pIN_ID_CANDIDATO.HasValue ?
+                new ObjectParameter("PIN_ID_CANDIDATO", pIN_ID_CANDIDATO) :
+                new ObjectParameter("PIN_ID_CANDIDATO", typeof(int));
+    
+            var pIN_ID_SOLICITUDParameter = pIN_ID_SOLICITUD.HasValue ?
+                new ObjectParameter("PIN_ID_SOLICITUD", pIN_ID_SOLICITUD) :
+                new ObjectParameter("PIN_ID_SOLICITUD", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CANDIDATOS_POR_REQUISICION_Result>("SPE_OBTIENE_CANDIDATOS_POR_REQUISICION", pIN_ID_REQUISICIONParameter, pIN_ID_PROCESO_SELECCIONParameter, pIN_ID_CANDIDATOParameter, pIN_ID_SOLICITUDParameter);
+        }
+    
+        public virtual int SPE_INSERTA_PROCESO_SELECCION(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_CANDIDATO, Nullable<int> pIN_ID_EMPLEADO, Nullable<int> pIN_ID_REQUISICION, string pIN_CL_USUARIO_APP, string pIN_NB_PROGRAMA)
+        {
+            var pIN_ID_CANDIDATOParameter = pIN_ID_CANDIDATO.HasValue ?
+                new ObjectParameter("PIN_ID_CANDIDATO", pIN_ID_CANDIDATO) :
+                new ObjectParameter("PIN_ID_CANDIDATO", typeof(int));
+    
+            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
+                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
+                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
+    
+            var pIN_ID_REQUISICIONParameter = pIN_ID_REQUISICION.HasValue ?
+                new ObjectParameter("PIN_ID_REQUISICION", pIN_ID_REQUISICION) :
+                new ObjectParameter("PIN_ID_REQUISICION", typeof(int));
+    
+            var pIN_CL_USUARIO_APPParameter = pIN_CL_USUARIO_APP != null ?
+                new ObjectParameter("PIN_CL_USUARIO_APP", pIN_CL_USUARIO_APP) :
+                new ObjectParameter("PIN_CL_USUARIO_APP", typeof(string));
+    
+            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
+                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_PROCESO_SELECCION", xML_RESULTADO, pIN_ID_CANDIDATOParameter, pIN_ID_EMPLEADOParameter, pIN_ID_REQUISICIONParameter, pIN_CL_USUARIO_APPParameter, pIN_NB_PROGRAMAParameter);
+        }
+    
+        public virtual int SPE_ACTUALIZA_ESTATUS_REQUISICION(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_REQUISICON, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA)
+        {
+            var pIN_ID_REQUISICONParameter = pIN_ID_REQUISICON.HasValue ?
+                new ObjectParameter("PIN_ID_REQUISICON", pIN_ID_REQUISICON) :
+                new ObjectParameter("PIN_ID_REQUISICON", typeof(int));
+    
+            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
+                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
+                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
+    
+            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
+                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ACTUALIZA_ESTATUS_REQUISICION", xML_RESULTADO, pIN_ID_REQUISICONParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_SOLICITUDES_PROCESOS_EVALUACION_Result> SPE_OBTIENE_SOLICITUDES_PROCESOS_EVALUACION()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_SOLICITUDES_PROCESOS_EVALUACION_Result>("SPE_OBTIENE_SOLICITUDES_PROCESOS_EVALUACION");
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_CANDIDATOS_BATERIA_Result> SPE_OBTIENE_CANDIDATOS_BATERIA(string xML_EMPLEADOS)
+        {
+            var xML_EMPLEADOSParameter = xML_EMPLEADOS != null ?
+                new ObjectParameter("XML_EMPLEADOS", xML_EMPLEADOS) :
+                new ObjectParameter("XML_EMPLEADOS", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CANDIDATOS_BATERIA_Result>("SPE_OBTIENE_CANDIDATOS_BATERIA", xML_EMPLEADOSParameter);
+        }
+    
+        public virtual int SPE_INSERTA_SOLICITUD_EMPLEADO(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_EMPLEADO, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA)
+        {
+            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
+                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
+                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
+    
+            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
+                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
+                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
+    
+            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
+                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_SOLICITUD_EMPLEADO", xML_RESULTADO, pIN_ID_EMPLEADOParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_CANDIDATOS_BATERIA_MASIVA_Result> SPE_OBTIENE_CANDIDATOS_BATERIA_MASIVA(string pIN_NB_CANDIDATO, string pIN_NB_APELLIDO_PATERNO, string pIN_NB_APELLIDO_MATERNO)
+        {
+            var pIN_NB_CANDIDATOParameter = pIN_NB_CANDIDATO != null ?
+                new ObjectParameter("PIN_NB_CANDIDATO", pIN_NB_CANDIDATO) :
+                new ObjectParameter("PIN_NB_CANDIDATO", typeof(string));
+    
+            var pIN_NB_APELLIDO_PATERNOParameter = pIN_NB_APELLIDO_PATERNO != null ?
+                new ObjectParameter("PIN_NB_APELLIDO_PATERNO", pIN_NB_APELLIDO_PATERNO) :
+                new ObjectParameter("PIN_NB_APELLIDO_PATERNO", typeof(string));
+    
+            var pIN_NB_APELLIDO_MATERNOParameter = pIN_NB_APELLIDO_MATERNO != null ?
+                new ObjectParameter("PIN_NB_APELLIDO_MATERNO", pIN_NB_APELLIDO_MATERNO) :
+                new ObjectParameter("PIN_NB_APELLIDO_MATERNO", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CANDIDATOS_BATERIA_MASIVA_Result>("SPE_OBTIENE_CANDIDATOS_BATERIA_MASIVA", pIN_NB_CANDIDATOParameter, pIN_NB_APELLIDO_PATERNOParameter, pIN_NB_APELLIDO_MATERNOParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_ORGANIGRAMA_PLAZA_Result> SPE_OBTIENE_ORGANIGRAMA_PLAZA(Nullable<int> pIN_ID_PLAZA, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_DEPARTAMENTO, string pIN_CL_CAMPO_ADICIONAL, Nullable<int> pIN_NO_NIVELES)
+        {
+            var pIN_ID_PLAZAParameter = pIN_ID_PLAZA.HasValue ?
+                new ObjectParameter("PIN_ID_PLAZA", pIN_ID_PLAZA) :
+                new ObjectParameter("PIN_ID_PLAZA", typeof(int));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_DEPARTAMENTOParameter = pIN_ID_DEPARTAMENTO.HasValue ?
+                new ObjectParameter("PIN_ID_DEPARTAMENTO", pIN_ID_DEPARTAMENTO) :
+                new ObjectParameter("PIN_ID_DEPARTAMENTO", typeof(int));
+    
+            var pIN_CL_CAMPO_ADICIONALParameter = pIN_CL_CAMPO_ADICIONAL != null ?
+                new ObjectParameter("PIN_CL_CAMPO_ADICIONAL", pIN_CL_CAMPO_ADICIONAL) :
+                new ObjectParameter("PIN_CL_CAMPO_ADICIONAL", typeof(string));
+    
+            var pIN_NO_NIVELESParameter = pIN_NO_NIVELES.HasValue ?
+                new ObjectParameter("PIN_NO_NIVELES", pIN_NO_NIVELES) :
+                new ObjectParameter("PIN_NO_NIVELES", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_ORGANIGRAMA_PLAZA_Result>("SPE_OBTIENE_ORGANIGRAMA_PLAZA", pIN_ID_PLAZAParameter, pIN_ID_EMPRESAParameter, pIN_ID_DEPARTAMENTOParameter, pIN_CL_CAMPO_ADICIONALParameter, pIN_NO_NIVELESParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_GRUPOS_Result> SPE_OBTIENE_GRUPOS(Nullable<int> pIN_ID_GRUPO, string pIN_CL_GRUPO, Nullable<bool> pIN_FG_ACTIVO, Nullable<int> pIN_ID_PLAZA)
+        {
+            var pIN_ID_GRUPOParameter = pIN_ID_GRUPO.HasValue ?
+                new ObjectParameter("PIN_ID_GRUPO", pIN_ID_GRUPO) :
+                new ObjectParameter("PIN_ID_GRUPO", typeof(int));
+    
+            var pIN_CL_GRUPOParameter = pIN_CL_GRUPO != null ?
+                new ObjectParameter("PIN_CL_GRUPO", pIN_CL_GRUPO) :
+                new ObjectParameter("PIN_CL_GRUPO", typeof(string));
+    
+            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
+                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
+                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
+    
+            var pIN_ID_PLAZAParameter = pIN_ID_PLAZA.HasValue ?
+                new ObjectParameter("PIN_ID_PLAZA", pIN_ID_PLAZA) :
+                new ObjectParameter("PIN_ID_PLAZA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_GRUPOS_Result>("SPE_OBTIENE_GRUPOS", pIN_ID_GRUPOParameter, pIN_CL_GRUPOParameter, pIN_FG_ACTIVOParameter, pIN_ID_PLAZAParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EMPLEADOS_Result> SPE_OBTIENE_EMPLEADOS(string pIN_XML_SELECCION, string pIN_CL_USUARIO, Nullable<bool> pIN_FG_ACTIVO, Nullable<bool> pIN_FG_FOTO, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
         {
             var pIN_XML_SELECCIONParameter = pIN_XML_SELECCION != null ?
                 new ObjectParameter("PIN_XML_SELECCION", pIN_XML_SELECCION) :
@@ -19166,7 +18734,1344 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
                 new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EMPLEADOS_CAMPOS_EXTRA_Result>("SPE_OBTIENE_EMPLEADOS_CAMPOS_EXTRA", pIN_XML_SELECCIONParameter, pIN_CL_USUARIOParameter, pIN_FG_ACTIVOParameter, pIN_FG_FOTOParameter, pIN_ID_EMPRESAParameter);
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EMPLEADOS_Result>("SPE_OBTIENE_EMPLEADOS", pIN_XML_SELECCIONParameter, pIN_CL_USUARIOParameter, pIN_FG_ACTIVOParameter, pIN_FG_FOTOParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_USUARIO_AUTENTICACION_Result> SPE_OBTIENE_USUARIO_AUTENTICACION(string pIN_CL_USUARIO, string pIN_CL_PASSWORD, string pIN_CL_AUTENTICACION)
+        {
+            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
+                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
+                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
+    
+            var pIN_CL_PASSWORDParameter = pIN_CL_PASSWORD != null ?
+                new ObjectParameter("PIN_CL_PASSWORD", pIN_CL_PASSWORD) :
+                new ObjectParameter("PIN_CL_PASSWORD", typeof(string));
+    
+            var pIN_CL_AUTENTICACIONParameter = pIN_CL_AUTENTICACION != null ?
+                new ObjectParameter("PIN_CL_AUTENTICACION", pIN_CL_AUTENTICACION) :
+                new ObjectParameter("PIN_CL_AUTENTICACION", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_USUARIO_AUTENTICACION_Result>("SPE_OBTIENE_USUARIO_AUTENTICACION", pIN_CL_USUARIOParameter, pIN_CL_PASSWORDParameter, pIN_CL_AUTENTICACIONParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_EVALUADORES_CUESTIONARIO_Result> SPE_OBTIENE_EO_EVALUADORES_CUESTIONARIO(Nullable<int> pIN_ID_PERIDO, Nullable<int> pIN_ID_EMPLEADO, Nullable<int> pIN_ID_PUESTO, Nullable<int> pIN_ID_EVALUADOR, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIDOParameter = pIN_ID_PERIDO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIDO", pIN_ID_PERIDO) :
+                new ObjectParameter("PIN_ID_PERIDO", typeof(int));
+    
+            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
+                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
+                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
+    
+            var pIN_ID_PUESTOParameter = pIN_ID_PUESTO.HasValue ?
+                new ObjectParameter("PIN_ID_PUESTO", pIN_ID_PUESTO) :
+                new ObjectParameter("PIN_ID_PUESTO", typeof(int));
+    
+            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
+                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
+                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_EVALUADORES_CUESTIONARIO_Result>("SPE_OBTIENE_EO_EVALUADORES_CUESTIONARIO", pIN_ID_PERIDOParameter, pIN_ID_EMPLEADOParameter, pIN_ID_PUESTOParameter, pIN_ID_EVALUADORParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_CONTROL_AVANCE_EO_DATOS_GRAFICA_Result> SPE_OBTIENE_CONTROL_AVANCE_EO_DATOS_GRAFICA(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CONTROL_AVANCE_EO_DATOS_GRAFICA_Result>("SPE_OBTIENE_CONTROL_AVANCE_EO_DATOS_GRAFICA", pIN_ID_PERIODOParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_GRAFICA_INDICE_DIMENSION_Result> SPE_OBTIENE_EO_GRAFICA_INDICE_DIMENSION(Nullable<int> pIN_ID_PERIODO, string pIN_XML_FILTROS, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
+                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
+                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_GRAFICA_INDICE_DIMENSION_Result>("SPE_OBTIENE_EO_GRAFICA_INDICE_DIMENSION", pIN_ID_PERIODOParameter, pIN_XML_FILTROSParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_GRAFICA_INDICE_PREGUNTA_Result> SPE_OBTIENE_EO_GRAFICA_INDICE_PREGUNTA(Nullable<int> pIN_ID_PERIODO, string pIN_XML_FILTROS, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
+                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
+                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_GRAFICA_INDICE_PREGUNTA_Result>("SPE_OBTIENE_EO_GRAFICA_INDICE_PREGUNTA", pIN_ID_PERIODOParameter, pIN_XML_FILTROSParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_GRAFICA_INDICE_TEMA_Result> SPE_OBTIENE_EO_GRAFICA_INDICE_TEMA(Nullable<int> pIN_ID_PERIODO, string pIN_XML_FILTROS, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
+                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
+                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_GRAFICA_INDICE_TEMA_Result>("SPE_OBTIENE_EO_GRAFICA_INDICE_TEMA", pIN_ID_PERIODOParameter, pIN_XML_FILTROSParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_DIMENSION_Result> SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_DIMENSION(Nullable<int> pIN_ID_PERIODO, string pIN_NB_DIMENSION, string pIN_XML_FILTROS, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_NB_DIMENSIONParameter = pIN_NB_DIMENSION != null ?
+                new ObjectParameter("PIN_NB_DIMENSION", pIN_NB_DIMENSION) :
+                new ObjectParameter("PIN_NB_DIMENSION", typeof(string));
+    
+            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
+                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
+                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_DIMENSION_Result>("SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_DIMENSION", pIN_ID_PERIODOParameter, pIN_NB_DIMENSIONParameter, pIN_XML_FILTROSParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_PREGUNTA_Result> SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_PREGUNTA(Nullable<int> pIN_ID_PERIODO, string pIN_NB_PREGUNTA, string pIN_XML_FILTROS, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_NB_PREGUNTAParameter = pIN_NB_PREGUNTA != null ?
+                new ObjectParameter("PIN_NB_PREGUNTA", pIN_NB_PREGUNTA) :
+                new ObjectParameter("PIN_NB_PREGUNTA", typeof(string));
+    
+            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
+                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
+                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_PREGUNTA_Result>("SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_PREGUNTA", pIN_ID_PERIODOParameter, pIN_NB_PREGUNTAParameter, pIN_XML_FILTROSParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_TEMA_Result> SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_TEMA(Nullable<int> pIN_ID_PERIODO, string pIN_NB_TEMA, string pIN_XML_FILTROS, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_NB_TEMAParameter = pIN_NB_TEMA != null ?
+                new ObjectParameter("PIN_NB_TEMA", pIN_NB_TEMA) :
+                new ObjectParameter("PIN_NB_TEMA", typeof(string));
+    
+            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
+                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
+                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_TEMA_Result>("SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_TEMA", pIN_ID_PERIODOParameter, pIN_NB_TEMAParameter, pIN_XML_FILTROSParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_RESPUESTAS_PREGUNTAS_ABIERTAS_Result> SPE_OBTIENE_EO_RESPUESTAS_PREGUNTAS_ABIERTAS(Nullable<int> pIN_ID_EVALUADOR, Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_PREGUNTA, string pIN_XML_FILTROS, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
+                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
+                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
+    
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_PREGUNTAParameter = pIN_ID_PREGUNTA.HasValue ?
+                new ObjectParameter("PIN_ID_PREGUNTA", pIN_ID_PREGUNTA) :
+                new ObjectParameter("PIN_ID_PREGUNTA", typeof(int));
+    
+            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
+                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
+                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_RESPUESTAS_PREGUNTAS_ABIERTAS_Result>("SPE_OBTIENE_EO_RESPUESTAS_PREGUNTAS_ABIERTAS", pIN_ID_EVALUADORParameter, pIN_ID_PERIODOParameter, pIN_ID_PREGUNTAParameter, pIN_XML_FILTROSParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_GRAFICA_GLOBAL_Result> SPE_OBTIENE_EO_GRAFICA_GLOBAL(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_GRAFICA_GLOBAL_Result>("SPE_OBTIENE_EO_GRAFICA_GLOBAL", pIN_ID_PERIODOParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_BAJAS_PENDIENTES_Result> SPE_OBTIENE_EO_BAJAS_PENDIENTES(Nullable<int> pIN_ID_BAJA_EMPLEADO, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_BAJA_EMPLEADOParameter = pIN_ID_BAJA_EMPLEADO.HasValue ?
+                new ObjectParameter("PIN_ID_BAJA_EMPLEADO", pIN_ID_BAJA_EMPLEADO) :
+                new ObjectParameter("PIN_ID_BAJA_EMPLEADO", typeof(int));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_BAJAS_PENDIENTES_Result>("SPE_OBTIENE_EO_BAJAS_PENDIENTES", pIN_ID_BAJA_EMPLEADOParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_HISTORIAL_BAJAS_Result> SPE_OBTIENE_HISTORIAL_BAJAS(Nullable<int> pIN_ID_EMPLEADO, Nullable<int> pIN_ID_CAUSA_ROTACION, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
+                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
+                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
+    
+            var pIN_ID_CAUSA_ROTACIONParameter = pIN_ID_CAUSA_ROTACION.HasValue ?
+                new ObjectParameter("PIN_ID_CAUSA_ROTACION", pIN_ID_CAUSA_ROTACION) :
+                new ObjectParameter("PIN_ID_CAUSA_ROTACION", typeof(int));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_HISTORIAL_BAJAS_Result>("SPE_OBTIENE_HISTORIAL_BAJAS", pIN_ID_EMPLEADOParameter, pIN_ID_CAUSA_ROTACIONParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_CLAVE_EMPLEADO_INDICE_ROTACION_Result> SPE_OBTIENE_CLAVE_EMPLEADO_INDICE_ROTACION(Nullable<System.DateTime> pIN_FECHA_INICIO, Nullable<System.DateTime> pIN_FECHA_FINAL, string tIPO_REPORTE, string pIN_XML_FILTROS, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_FECHA_INICIOParameter = pIN_FECHA_INICIO.HasValue ?
+                new ObjectParameter("PIN_FECHA_INICIO", pIN_FECHA_INICIO) :
+                new ObjectParameter("PIN_FECHA_INICIO", typeof(System.DateTime));
+    
+            var pIN_FECHA_FINALParameter = pIN_FECHA_FINAL.HasValue ?
+                new ObjectParameter("PIN_FECHA_FINAL", pIN_FECHA_FINAL) :
+                new ObjectParameter("PIN_FECHA_FINAL", typeof(System.DateTime));
+    
+            var tIPO_REPORTEParameter = tIPO_REPORTE != null ?
+                new ObjectParameter("TIPO_REPORTE", tIPO_REPORTE) :
+                new ObjectParameter("TIPO_REPORTE", typeof(string));
+    
+            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
+                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
+                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CLAVE_EMPLEADO_INDICE_ROTACION_Result>("SPE_OBTIENE_CLAVE_EMPLEADO_INDICE_ROTACION", pIN_FECHA_INICIOParameter, pIN_FECHA_FINALParameter, tIPO_REPORTEParameter, pIN_XML_FILTROSParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_GRAFICA_CAUSA_ROTACION_Result> SPE_OBTIENE_EO_GRAFICA_CAUSA_ROTACION(Nullable<System.DateTime> pIN_FECHA_INICIO, Nullable<System.DateTime> pIN_FECHA_FINAL, string pIN_XML_FILTROS, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_FECHA_INICIOParameter = pIN_FECHA_INICIO.HasValue ?
+                new ObjectParameter("PIN_FECHA_INICIO", pIN_FECHA_INICIO) :
+                new ObjectParameter("PIN_FECHA_INICIO", typeof(System.DateTime));
+    
+            var pIN_FECHA_FINALParameter = pIN_FECHA_FINAL.HasValue ?
+                new ObjectParameter("PIN_FECHA_FINAL", pIN_FECHA_FINAL) :
+                new ObjectParameter("PIN_FECHA_FINAL", typeof(System.DateTime));
+    
+            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
+                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
+                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_GRAFICA_CAUSA_ROTACION_Result>("SPE_OBTIENE_EO_GRAFICA_CAUSA_ROTACION", pIN_FECHA_INICIOParameter, pIN_FECHA_FINALParameter, pIN_XML_FILTROSParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_GRAFICA_INDICE_ROTACION_Result> SPE_OBTIENE_EO_GRAFICA_INDICE_ROTACION(Nullable<System.DateTime> pIN_FECHA_INICIO, Nullable<System.DateTime> pIN_FECHA_FINAL, string tIPO_REPORTE, string pIN_XML_FILTROS, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_FECHA_INICIOParameter = pIN_FECHA_INICIO.HasValue ?
+                new ObjectParameter("PIN_FECHA_INICIO", pIN_FECHA_INICIO) :
+                new ObjectParameter("PIN_FECHA_INICIO", typeof(System.DateTime));
+    
+            var pIN_FECHA_FINALParameter = pIN_FECHA_FINAL.HasValue ?
+                new ObjectParameter("PIN_FECHA_FINAL", pIN_FECHA_FINAL) :
+                new ObjectParameter("PIN_FECHA_FINAL", typeof(System.DateTime));
+    
+            var tIPO_REPORTEParameter = tIPO_REPORTE != null ?
+                new ObjectParameter("TIPO_REPORTE", tIPO_REPORTE) :
+                new ObjectParameter("TIPO_REPORTE", typeof(string));
+    
+            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
+                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
+                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_GRAFICA_INDICE_ROTACION_Result>("SPE_OBTIENE_EO_GRAFICA_INDICE_ROTACION", pIN_FECHA_INICIOParameter, pIN_FECHA_FINALParameter, tIPO_REPORTEParameter, pIN_XML_FILTROSParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO_Result> SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EVALUADO, Nullable<int> pIN_ID_EVALUADOR, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_EVALUADOParameter = pIN_ID_EVALUADO.HasValue ?
+                new ObjectParameter("PIN_ID_EVALUADO", pIN_ID_EVALUADO) :
+                new ObjectParameter("PIN_ID_EVALUADO", typeof(int));
+    
+            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
+                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
+                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
+    
+            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
+                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
+                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
+    
+            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
+                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO_Result>("SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO", pIN_ID_PERIODOParameter, pIN_ID_EVALUADOParameter, pIN_ID_EVALUADORParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO_Result> SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO(Nullable<int> pIN_ID_PERIODO_DESEMPENO, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODO_DESEMPENOParameter = pIN_ID_PERIODO_DESEMPENO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO_DESEMPENO", pIN_ID_PERIODO_DESEMPENO) :
+                new ObjectParameter("PIN_ID_PERIODO_DESEMPENO", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO_Result>("SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO", pIN_ID_PERIODO_DESEMPENOParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_DESEMPENO_Result> SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_DESEMPENO(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_DESEMPENO_Result>("SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_DESEMPENO", pIN_ID_PERIODOParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EMPLEADOS_TABULADOR_Result> SPE_OBTIENE_EMPLEADOS_TABULADOR(Nullable<int> pIN_ID_TABULADOR, string xML_SELECCIONADOS, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_TABULADORParameter = pIN_ID_TABULADOR.HasValue ?
+                new ObjectParameter("PIN_ID_TABULADOR", pIN_ID_TABULADOR) :
+                new ObjectParameter("PIN_ID_TABULADOR", typeof(int));
+    
+            var xML_SELECCIONADOSParameter = xML_SELECCIONADOS != null ?
+                new ObjectParameter("XML_SELECCIONADOS", xML_SELECCIONADOS) :
+                new ObjectParameter("XML_SELECCIONADOS", typeof(string));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EMPLEADOS_TABULADOR_Result>("SPE_OBTIENE_EMPLEADOS_TABULADOR", pIN_ID_TABULADORParameter, xML_SELECCIONADOSParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_CONSULTA_SUELDOS_Result> SPE_OBTIENE_CONSULTA_SUELDOS(Nullable<int> pIN_ID_TABULADOR, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_TABULADORParameter = pIN_ID_TABULADOR.HasValue ?
+                new ObjectParameter("PIN_ID_TABULADOR", pIN_ID_TABULADOR) :
+                new ObjectParameter("PIN_ID_TABULADOR", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CONSULTA_SUELDOS_Result>("SPE_OBTIENE_CONSULTA_SUELDOS", pIN_ID_TABULADORParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_PLANEACION_INCREMENTOS_Result> SPE_OBTIENE_PLANEACION_INCREMENTOS(Nullable<int> pIN_ID_TABULADOR, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_TABULADORParameter = pIN_ID_TABULADOR.HasValue ?
+                new ObjectParameter("PIN_ID_TABULADOR", pIN_ID_TABULADOR) :
+                new ObjectParameter("PIN_ID_TABULADOR", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_PLANEACION_INCREMENTOS_Result>("SPE_OBTIENE_PLANEACION_INCREMENTOS", pIN_ID_TABULADORParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EMPLEADOS_GENERAL_Result> SPE_OBTIENE_EMPLEADOS_GENERAL(string pIN_CL_EMPLEADO, Nullable<bool> pIN_FG_ACTIVO, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_CL_EMPLEADOParameter = pIN_CL_EMPLEADO != null ?
+                new ObjectParameter("PIN_CL_EMPLEADO", pIN_CL_EMPLEADO) :
+                new ObjectParameter("PIN_CL_EMPLEADO", typeof(string));
+    
+            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
+                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
+                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EMPLEADOS_GENERAL_Result>("SPE_OBTIENE_EMPLEADOS_GENERAL", pIN_CL_EMPLEADOParameter, pIN_FG_ACTIVOParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_PLAZAS_Result> SPE_OBTIENE_PLAZAS(Nullable<int> pIN_ID_PLAZA, string pIN_XML_SELECCION, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PLAZAParameter = pIN_ID_PLAZA.HasValue ?
+                new ObjectParameter("PIN_ID_PLAZA", pIN_ID_PLAZA) :
+                new ObjectParameter("PIN_ID_PLAZA", typeof(int));
+    
+            var pIN_XML_SELECCIONParameter = pIN_XML_SELECCION != null ?
+                new ObjectParameter("PIN_XML_SELECCION", pIN_XML_SELECCION) :
+                new ObjectParameter("PIN_XML_SELECCION", typeof(string));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_PLAZAS_Result>("SPE_OBTIENE_PLAZAS", pIN_ID_PLAZAParameter, pIN_XML_SELECCIONParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_CANDIDATOS_CONTRATADOS_Result> SPE_OBTIENE_CANDIDATOS_CONTRATADOS(Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CANDIDATOS_CONTRATADOS_Result>("SPE_OBTIENE_CANDIDATOS_CONTRATADOS", pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_DATOS_EMPLEADOS_Result> SPE_OBTIENE_DATOS_EMPLEADOS(Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_DATOS_EMPLEADOS_Result>("SPE_OBTIENE_DATOS_EMPLEADOS", pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_PERFIL_EMPLEADOS_Result> SPE_OBTIENE_PERFIL_EMPLEADOS(Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_PERFIL_EMPLEADOS_Result>("SPE_OBTIENE_PERFIL_EMPLEADOS", pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_SUELDO_EMPLEADOS_Result> SPE_OBTIENE_SUELDO_EMPLEADOS(Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_SUELDO_EMPLEADOS_Result>("SPE_OBTIENE_SUELDO_EMPLEADOS", pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EMPLEADOS_CAMPOS_EXTRA_Result> SPE_OBTIENE_EMPLEADOS_CAMPOS_EXTRA(string pIN_XML_SELECCION, string pIN_CL_USUARIO, Nullable<bool> pIN_FG_ACTIVO, Nullable<bool> pIN_FG_FOTO, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_XML_SELECCIONParameter = pIN_XML_SELECCION != null ?
+                new ObjectParameter("PIN_XML_SELECCION", pIN_XML_SELECCION) :
+                new ObjectParameter("PIN_XML_SELECCION", typeof(string));
+    
+            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
+                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
+                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
+    
+            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
+                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
+                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
+    
+            var pIN_FG_FOTOParameter = pIN_FG_FOTO.HasValue ?
+                new ObjectParameter("PIN_FG_FOTO", pIN_FG_FOTO) :
+                new ObjectParameter("PIN_FG_FOTO", typeof(bool));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EMPLEADOS_CAMPOS_EXTRA_Result>("SPE_OBTIENE_EMPLEADOS_CAMPOS_EXTRA", pIN_XML_SELECCIONParameter, pIN_CL_USUARIOParameter, pIN_FG_ACTIVOParameter, pIN_FG_FOTOParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EMPLEADOS_EVALUADOS_TABLERO_Result> SPE_OBTIENE_EMPLEADOS_EVALUADOS_TABLERO(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EMPLEADO, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
+                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
+                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EMPLEADOS_EVALUADOS_TABLERO_Result>("SPE_OBTIENE_EMPLEADOS_EVALUADOS_TABLERO", pIN_ID_PERIODOParameter, pIN_ID_EMPLEADOParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION_Result> SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION_Result>("SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION", pIN_ID_PERIODOParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_NECESIDADES_CAPACITACION_Result> SPE_OBTIENE_NECESIDADES_CAPACITACION(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_DEPARTAMENTO, string pIN_DS_PRIORIDADES, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_DEPARTAMENTOParameter = pIN_ID_DEPARTAMENTO.HasValue ?
+                new ObjectParameter("PIN_ID_DEPARTAMENTO", pIN_ID_DEPARTAMENTO) :
+                new ObjectParameter("PIN_ID_DEPARTAMENTO", typeof(int));
+    
+            var pIN_DS_PRIORIDADESParameter = pIN_DS_PRIORIDADES != null ?
+                new ObjectParameter("PIN_DS_PRIORIDADES", pIN_DS_PRIORIDADES) :
+                new ObjectParameter("PIN_DS_PRIORIDADES", typeof(string));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_NECESIDADES_CAPACITACION_Result>("SPE_OBTIENE_NECESIDADES_CAPACITACION", pIN_ID_PERIODOParameter, pIN_ID_DEPARTAMENTOParameter, pIN_DS_PRIORIDADESParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_CONTROL_AVANCE_EVALUADOR_Result> SPE_OBTIENE_CONTROL_AVANCE_EVALUADOR(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CONTROL_AVANCE_EVALUADOR_Result>("SPE_OBTIENE_CONTROL_AVANCE_EVALUADOR", pIN_ID_PERIODOParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_CONTROL_AVANCE_EVALUADOS_Result> SPE_OBTIENE_CONTROL_AVANCE_EVALUADOS(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CONTROL_AVANCE_EVALUADOS_Result>("SPE_OBTIENE_CONTROL_AVANCE_EVALUADOS", pIN_ID_PERIODOParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_CONTROL_AVANCE_DATOS_GRAFICA_Result> SPE_OBTIENE_CONTROL_AVANCE_DATOS_GRAFICA(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_CONTROL_AVANCE_DATOS_GRAFICA_Result>("SPE_OBTIENE_CONTROL_AVANCE_DATOS_GRAFICA", pIN_ID_PERIODOParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_FYD_EVALUADORES_Result> SPE_OBTIENE_FYD_EVALUADORES(Nullable<int> pIN_ID_PERIODO, string pIN_CL_TIPO_EVALUADOR, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_CL_TIPO_EVALUADORParameter = pIN_CL_TIPO_EVALUADOR != null ?
+                new ObjectParameter("PIN_CL_TIPO_EVALUADOR", pIN_CL_TIPO_EVALUADOR) :
+                new ObjectParameter("PIN_CL_TIPO_EVALUADOR", typeof(string));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_EVALUADORES_Result>("SPE_OBTIENE_FYD_EVALUADORES", pIN_ID_PERIODOParameter, pIN_CL_TIPO_EVALUADORParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EVENTO_PARTICIPANTE_Result> SPE_OBTIENE_EVENTO_PARTICIPANTE(Nullable<int> pIN_ID_EVENTO_PARTICIPANTE, Nullable<int> pIN_ID_EVENTO, Nullable<int> pIN_ID_EMPLEADO, string pIN_CL_PARTICIPANTE, string pIN_NB_PARTICIPANTE, string pIN_NB_PUESTO, string pIN_NB_DEPARTAMENTO, Nullable<int> pIN_NO_TIEMPO, Nullable<decimal> pIN_PR_CUMPLIMIENTO, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_EVENTO_PARTICIPANTEParameter = pIN_ID_EVENTO_PARTICIPANTE.HasValue ?
+                new ObjectParameter("PIN_ID_EVENTO_PARTICIPANTE", pIN_ID_EVENTO_PARTICIPANTE) :
+                new ObjectParameter("PIN_ID_EVENTO_PARTICIPANTE", typeof(int));
+    
+            var pIN_ID_EVENTOParameter = pIN_ID_EVENTO.HasValue ?
+                new ObjectParameter("PIN_ID_EVENTO", pIN_ID_EVENTO) :
+                new ObjectParameter("PIN_ID_EVENTO", typeof(int));
+    
+            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
+                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
+                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
+    
+            var pIN_CL_PARTICIPANTEParameter = pIN_CL_PARTICIPANTE != null ?
+                new ObjectParameter("PIN_CL_PARTICIPANTE", pIN_CL_PARTICIPANTE) :
+                new ObjectParameter("PIN_CL_PARTICIPANTE", typeof(string));
+    
+            var pIN_NB_PARTICIPANTEParameter = pIN_NB_PARTICIPANTE != null ?
+                new ObjectParameter("PIN_NB_PARTICIPANTE", pIN_NB_PARTICIPANTE) :
+                new ObjectParameter("PIN_NB_PARTICIPANTE", typeof(string));
+    
+            var pIN_NB_PUESTOParameter = pIN_NB_PUESTO != null ?
+                new ObjectParameter("PIN_NB_PUESTO", pIN_NB_PUESTO) :
+                new ObjectParameter("PIN_NB_PUESTO", typeof(string));
+    
+            var pIN_NB_DEPARTAMENTOParameter = pIN_NB_DEPARTAMENTO != null ?
+                new ObjectParameter("PIN_NB_DEPARTAMENTO", pIN_NB_DEPARTAMENTO) :
+                new ObjectParameter("PIN_NB_DEPARTAMENTO", typeof(string));
+    
+            var pIN_NO_TIEMPOParameter = pIN_NO_TIEMPO.HasValue ?
+                new ObjectParameter("PIN_NO_TIEMPO", pIN_NO_TIEMPO) :
+                new ObjectParameter("PIN_NO_TIEMPO", typeof(int));
+    
+            var pIN_PR_CUMPLIMIENTOParameter = pIN_PR_CUMPLIMIENTO.HasValue ?
+                new ObjectParameter("PIN_PR_CUMPLIMIENTO", pIN_PR_CUMPLIMIENTO) :
+                new ObjectParameter("PIN_PR_CUMPLIMIENTO", typeof(decimal));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EVENTO_PARTICIPANTE_Result>("SPE_OBTIENE_EVENTO_PARTICIPANTE", pIN_ID_EVENTO_PARTICIPANTEParameter, pIN_ID_EVENTOParameter, pIN_ID_EMPLEADOParameter, pIN_CL_PARTICIPANTEParameter, pIN_NB_PARTICIPANTEParameter, pIN_NB_PUESTOParameter, pIN_NB_DEPARTAMENTOParameter, pIN_NO_TIEMPOParameter, pIN_PR_CUMPLIMIENTOParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EVENTO_PARTICIPANTE_COMPETENCIA_Result> SPE_OBTIENE_EVENTO_PARTICIPANTE_COMPETENCIA(Nullable<int> pIN_ID_EVENTO_PARTICIPANTE_COMPETENCIA, Nullable<int> pIN_ID_EVENTO, Nullable<int> pIN_ID_PARTICIPANTE, Nullable<int> pIN_ID_COMPETENCIA, Nullable<byte> pIN_NO_EVALUACION, string pIN_NB_COMPETENCIA, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_EVENTO_PARTICIPANTE_COMPETENCIAParameter = pIN_ID_EVENTO_PARTICIPANTE_COMPETENCIA.HasValue ?
+                new ObjectParameter("PIN_ID_EVENTO_PARTICIPANTE_COMPETENCIA", pIN_ID_EVENTO_PARTICIPANTE_COMPETENCIA) :
+                new ObjectParameter("PIN_ID_EVENTO_PARTICIPANTE_COMPETENCIA", typeof(int));
+    
+            var pIN_ID_EVENTOParameter = pIN_ID_EVENTO.HasValue ?
+                new ObjectParameter("PIN_ID_EVENTO", pIN_ID_EVENTO) :
+                new ObjectParameter("PIN_ID_EVENTO", typeof(int));
+    
+            var pIN_ID_PARTICIPANTEParameter = pIN_ID_PARTICIPANTE.HasValue ?
+                new ObjectParameter("PIN_ID_PARTICIPANTE", pIN_ID_PARTICIPANTE) :
+                new ObjectParameter("PIN_ID_PARTICIPANTE", typeof(int));
+    
+            var pIN_ID_COMPETENCIAParameter = pIN_ID_COMPETENCIA.HasValue ?
+                new ObjectParameter("PIN_ID_COMPETENCIA", pIN_ID_COMPETENCIA) :
+                new ObjectParameter("PIN_ID_COMPETENCIA", typeof(int));
+    
+            var pIN_NO_EVALUACIONParameter = pIN_NO_EVALUACION.HasValue ?
+                new ObjectParameter("PIN_NO_EVALUACION", pIN_NO_EVALUACION) :
+                new ObjectParameter("PIN_NO_EVALUACION", typeof(byte));
+    
+            var pIN_NB_COMPETENCIAParameter = pIN_NB_COMPETENCIA != null ?
+                new ObjectParameter("PIN_NB_COMPETENCIA", pIN_NB_COMPETENCIA) :
+                new ObjectParameter("PIN_NB_COMPETENCIA", typeof(string));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EVENTO_PARTICIPANTE_COMPETENCIA_Result>("SPE_OBTIENE_EVENTO_PARTICIPANTE_COMPETENCIA", pIN_ID_EVENTO_PARTICIPANTE_COMPETENCIAParameter, pIN_ID_EVENTOParameter, pIN_ID_PARTICIPANTEParameter, pIN_ID_COMPETENCIAParameter, pIN_NO_EVALUACIONParameter, pIN_NB_COMPETENCIAParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EVENTO_LISTA_ASISTENCIA_Result> SPE_OBTIENE_EVENTO_LISTA_ASISTENCIA(Nullable<int> pIN_ID_EVENTO, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_EVENTOParameter = pIN_ID_EVENTO.HasValue ?
+                new ObjectParameter("PIN_ID_EVENTO", pIN_ID_EVENTO) :
+                new ObjectParameter("PIN_ID_EVENTO", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EVENTO_LISTA_ASISTENCIA_Result>("SPE_OBTIENE_EVENTO_LISTA_ASISTENCIA", pIN_ID_EVENTOParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO_Result> SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO(Nullable<int> pIN_ID_EVENTO, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_EVENTOParameter = pIN_ID_EVENTO.HasValue ?
+                new ObjectParameter("PIN_ID_EVENTO", pIN_ID_EVENTO) :
+                new ObjectParameter("PIN_ID_EVENTO", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO_Result>("SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO", pIN_ID_EVENTOParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual int SPE_OBTIENE_PROGRAMA_CAPACITACION(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PROGRAMA, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PROGRAMAParameter = pIN_ID_PROGRAMA.HasValue ?
+                new ObjectParameter("PIN_ID_PROGRAMA", pIN_ID_PROGRAMA) :
+                new ObjectParameter("PIN_ID_PROGRAMA", typeof(int));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_OBTIENE_PROGRAMA_CAPACITACION", xML_RESULTADO, pIN_ID_PROGRAMAParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_FYD_REPORTE_EVENTO_EVALUADO_Result> SPE_OBTIENE_FYD_REPORTE_EVENTO_EVALUADO(Nullable<int> pIN_ID_EVENTO, Nullable<int> pIN_ID_EMPELADO, Nullable<int> pIN_ID_COMPETENCIA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_EVENTOParameter = pIN_ID_EVENTO.HasValue ?
+                new ObjectParameter("PIN_ID_EVENTO", pIN_ID_EVENTO) :
+                new ObjectParameter("PIN_ID_EVENTO", typeof(int));
+    
+            var pIN_ID_EMPELADOParameter = pIN_ID_EMPELADO.HasValue ?
+                new ObjectParameter("PIN_ID_EMPELADO", pIN_ID_EMPELADO) :
+                new ObjectParameter("PIN_ID_EMPELADO", typeof(int));
+    
+            var pIN_ID_COMPETENCIAParameter = pIN_ID_COMPETENCIA.HasValue ?
+                new ObjectParameter("PIN_ID_COMPETENCIA", pIN_ID_COMPETENCIA) :
+                new ObjectParameter("PIN_ID_COMPETENCIA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_REPORTE_EVENTO_EVALUADO_Result>("SPE_OBTIENE_FYD_REPORTE_EVENTO_EVALUADO", pIN_ID_EVENTOParameter, pIN_ID_EMPELADOParameter, pIN_ID_COMPETENCIAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION_Result> SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION(Nullable<int> pIN_ID_PROGRAMA, Nullable<int> pIN_ID_EMPRESA, string pIN_XML_FILTROS, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PROGRAMAParameter = pIN_ID_PROGRAMA.HasValue ?
+                new ObjectParameter("PIN_ID_PROGRAMA", pIN_ID_PROGRAMA) :
+                new ObjectParameter("PIN_ID_PROGRAMA", typeof(int));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_XML_FILTROSParameter = pIN_XML_FILTROS != null ?
+                new ObjectParameter("PIN_XML_FILTROS", pIN_XML_FILTROS) :
+                new ObjectParameter("PIN_XML_FILTROS", typeof(string));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION_Result>("SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION", pIN_ID_PROGRAMAParameter, pIN_ID_EMPRESAParameter, pIN_XML_FILTROSParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EMPLEADOS_PROCESOS_EVALUACION_Result> SPE_OBTIENE_EMPLEADOS_PROCESOS_EVALUACION(Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EMPLEADOS_PROCESOS_EVALUACION_Result>("SPE_OBTIENE_EMPLEADOS_PROCESOS_EVALUACION", pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_M_PUESTO_Result> SPE_OBTIENE_M_PUESTO(Nullable<int> pIN_ID_PUESTO, Nullable<bool> pIN_FG_ACTIVO, Nullable<System.DateTime> pIN_FE_INACTIVO, string pIN_CL_PUESTO, string pIN_NB_PUESTO, Nullable<int> pIN_ID_DEPARTAMENTO, string pIN_XML_CAMPOS_ADICIONALES, Nullable<int> pIN_ID_BITACORA, Nullable<byte> pIN_NO_EDAD_MINIMA, Nullable<byte> pIN_NO_EDAD_MAXIMA, string pIN_CL_GENERO, string pIN_CL_ESTADO_CIVIL, string pIN_XML_REQUERIMIENTOS, string pIN_XML_OBSERVACIONES, string pIN_XML_RESPONSABILIDAD, string pIN_XML_AUTORIDAD, string pIN_XML_CURSOS_ADICIONALES, string pIN_XML_MENTOR, string pIN_CL_TIPO_PUESTO, Nullable<System.Guid> pIN_ID_CENTRO_ADMINISTRATIVO, Nullable<System.Guid> pIN_ID_CENTRO_OPERATIVO, Nullable<int> pIN_ID_PAQUETE_PRESTACIONES, string pIN_XML_PUESTOS, string pIN_NB_DEPARTAMENTO, string pIN_CL_DEPARTAMENTO, string xML_PUESTOS_SELECCIONADOS, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PUESTOParameter = pIN_ID_PUESTO.HasValue ?
+                new ObjectParameter("PIN_ID_PUESTO", pIN_ID_PUESTO) :
+                new ObjectParameter("PIN_ID_PUESTO", typeof(int));
+    
+            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
+                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
+                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
+    
+            var pIN_FE_INACTIVOParameter = pIN_FE_INACTIVO.HasValue ?
+                new ObjectParameter("PIN_FE_INACTIVO", pIN_FE_INACTIVO) :
+                new ObjectParameter("PIN_FE_INACTIVO", typeof(System.DateTime));
+    
+            var pIN_CL_PUESTOParameter = pIN_CL_PUESTO != null ?
+                new ObjectParameter("PIN_CL_PUESTO", pIN_CL_PUESTO) :
+                new ObjectParameter("PIN_CL_PUESTO", typeof(string));
+    
+            var pIN_NB_PUESTOParameter = pIN_NB_PUESTO != null ?
+                new ObjectParameter("PIN_NB_PUESTO", pIN_NB_PUESTO) :
+                new ObjectParameter("PIN_NB_PUESTO", typeof(string));
+    
+            var pIN_ID_DEPARTAMENTOParameter = pIN_ID_DEPARTAMENTO.HasValue ?
+                new ObjectParameter("PIN_ID_DEPARTAMENTO", pIN_ID_DEPARTAMENTO) :
+                new ObjectParameter("PIN_ID_DEPARTAMENTO", typeof(int));
+    
+            var pIN_XML_CAMPOS_ADICIONALESParameter = pIN_XML_CAMPOS_ADICIONALES != null ?
+                new ObjectParameter("PIN_XML_CAMPOS_ADICIONALES", pIN_XML_CAMPOS_ADICIONALES) :
+                new ObjectParameter("PIN_XML_CAMPOS_ADICIONALES", typeof(string));
+    
+            var pIN_ID_BITACORAParameter = pIN_ID_BITACORA.HasValue ?
+                new ObjectParameter("PIN_ID_BITACORA", pIN_ID_BITACORA) :
+                new ObjectParameter("PIN_ID_BITACORA", typeof(int));
+    
+            var pIN_NO_EDAD_MINIMAParameter = pIN_NO_EDAD_MINIMA.HasValue ?
+                new ObjectParameter("PIN_NO_EDAD_MINIMA", pIN_NO_EDAD_MINIMA) :
+                new ObjectParameter("PIN_NO_EDAD_MINIMA", typeof(byte));
+    
+            var pIN_NO_EDAD_MAXIMAParameter = pIN_NO_EDAD_MAXIMA.HasValue ?
+                new ObjectParameter("PIN_NO_EDAD_MAXIMA", pIN_NO_EDAD_MAXIMA) :
+                new ObjectParameter("PIN_NO_EDAD_MAXIMA", typeof(byte));
+    
+            var pIN_CL_GENEROParameter = pIN_CL_GENERO != null ?
+                new ObjectParameter("PIN_CL_GENERO", pIN_CL_GENERO) :
+                new ObjectParameter("PIN_CL_GENERO", typeof(string));
+    
+            var pIN_CL_ESTADO_CIVILParameter = pIN_CL_ESTADO_CIVIL != null ?
+                new ObjectParameter("PIN_CL_ESTADO_CIVIL", pIN_CL_ESTADO_CIVIL) :
+                new ObjectParameter("PIN_CL_ESTADO_CIVIL", typeof(string));
+    
+            var pIN_XML_REQUERIMIENTOSParameter = pIN_XML_REQUERIMIENTOS != null ?
+                new ObjectParameter("PIN_XML_REQUERIMIENTOS", pIN_XML_REQUERIMIENTOS) :
+                new ObjectParameter("PIN_XML_REQUERIMIENTOS", typeof(string));
+    
+            var pIN_XML_OBSERVACIONESParameter = pIN_XML_OBSERVACIONES != null ?
+                new ObjectParameter("PIN_XML_OBSERVACIONES", pIN_XML_OBSERVACIONES) :
+                new ObjectParameter("PIN_XML_OBSERVACIONES", typeof(string));
+    
+            var pIN_XML_RESPONSABILIDADParameter = pIN_XML_RESPONSABILIDAD != null ?
+                new ObjectParameter("PIN_XML_RESPONSABILIDAD", pIN_XML_RESPONSABILIDAD) :
+                new ObjectParameter("PIN_XML_RESPONSABILIDAD", typeof(string));
+    
+            var pIN_XML_AUTORIDADParameter = pIN_XML_AUTORIDAD != null ?
+                new ObjectParameter("PIN_XML_AUTORIDAD", pIN_XML_AUTORIDAD) :
+                new ObjectParameter("PIN_XML_AUTORIDAD", typeof(string));
+    
+            var pIN_XML_CURSOS_ADICIONALESParameter = pIN_XML_CURSOS_ADICIONALES != null ?
+                new ObjectParameter("PIN_XML_CURSOS_ADICIONALES", pIN_XML_CURSOS_ADICIONALES) :
+                new ObjectParameter("PIN_XML_CURSOS_ADICIONALES", typeof(string));
+    
+            var pIN_XML_MENTORParameter = pIN_XML_MENTOR != null ?
+                new ObjectParameter("PIN_XML_MENTOR", pIN_XML_MENTOR) :
+                new ObjectParameter("PIN_XML_MENTOR", typeof(string));
+    
+            var pIN_CL_TIPO_PUESTOParameter = pIN_CL_TIPO_PUESTO != null ?
+                new ObjectParameter("PIN_CL_TIPO_PUESTO", pIN_CL_TIPO_PUESTO) :
+                new ObjectParameter("PIN_CL_TIPO_PUESTO", typeof(string));
+    
+            var pIN_ID_CENTRO_ADMINISTRATIVOParameter = pIN_ID_CENTRO_ADMINISTRATIVO.HasValue ?
+                new ObjectParameter("PIN_ID_CENTRO_ADMINISTRATIVO", pIN_ID_CENTRO_ADMINISTRATIVO) :
+                new ObjectParameter("PIN_ID_CENTRO_ADMINISTRATIVO", typeof(System.Guid));
+    
+            var pIN_ID_CENTRO_OPERATIVOParameter = pIN_ID_CENTRO_OPERATIVO.HasValue ?
+                new ObjectParameter("PIN_ID_CENTRO_OPERATIVO", pIN_ID_CENTRO_OPERATIVO) :
+                new ObjectParameter("PIN_ID_CENTRO_OPERATIVO", typeof(System.Guid));
+    
+            var pIN_ID_PAQUETE_PRESTACIONESParameter = pIN_ID_PAQUETE_PRESTACIONES.HasValue ?
+                new ObjectParameter("PIN_ID_PAQUETE_PRESTACIONES", pIN_ID_PAQUETE_PRESTACIONES) :
+                new ObjectParameter("PIN_ID_PAQUETE_PRESTACIONES", typeof(int));
+    
+            var pIN_XML_PUESTOSParameter = pIN_XML_PUESTOS != null ?
+                new ObjectParameter("PIN_XML_PUESTOS", pIN_XML_PUESTOS) :
+                new ObjectParameter("PIN_XML_PUESTOS", typeof(string));
+    
+            var pIN_NB_DEPARTAMENTOParameter = pIN_NB_DEPARTAMENTO != null ?
+                new ObjectParameter("PIN_NB_DEPARTAMENTO", pIN_NB_DEPARTAMENTO) :
+                new ObjectParameter("PIN_NB_DEPARTAMENTO", typeof(string));
+    
+            var pIN_CL_DEPARTAMENTOParameter = pIN_CL_DEPARTAMENTO != null ?
+                new ObjectParameter("PIN_CL_DEPARTAMENTO", pIN_CL_DEPARTAMENTO) :
+                new ObjectParameter("PIN_CL_DEPARTAMENTO", typeof(string));
+    
+            var xML_PUESTOS_SELECCIONADOSParameter = xML_PUESTOS_SELECCIONADOS != null ?
+                new ObjectParameter("XML_PUESTOS_SELECCIONADOS", xML_PUESTOS_SELECCIONADOS) :
+                new ObjectParameter("XML_PUESTOS_SELECCIONADOS", typeof(string));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_M_PUESTO_Result>("SPE_OBTIENE_M_PUESTO", pIN_ID_PUESTOParameter, pIN_FG_ACTIVOParameter, pIN_FE_INACTIVOParameter, pIN_CL_PUESTOParameter, pIN_NB_PUESTOParameter, pIN_ID_DEPARTAMENTOParameter, pIN_XML_CAMPOS_ADICIONALESParameter, pIN_ID_BITACORAParameter, pIN_NO_EDAD_MINIMAParameter, pIN_NO_EDAD_MAXIMAParameter, pIN_CL_GENEROParameter, pIN_CL_ESTADO_CIVILParameter, pIN_XML_REQUERIMIENTOSParameter, pIN_XML_OBSERVACIONESParameter, pIN_XML_RESPONSABILIDADParameter, pIN_XML_AUTORIDADParameter, pIN_XML_CURSOS_ADICIONALESParameter, pIN_XML_MENTORParameter, pIN_CL_TIPO_PUESTOParameter, pIN_ID_CENTRO_ADMINISTRATIVOParameter, pIN_ID_CENTRO_OPERATIVOParameter, pIN_ID_PAQUETE_PRESTACIONESParameter, pIN_XML_PUESTOSParameter, pIN_NB_DEPARTAMENTOParameter, pIN_CL_DEPARTAMENTOParameter, xML_PUESTOS_SELECCIONADOSParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_M_DEPARTAMENTO_Result> SPE_OBTIENE_M_DEPARTAMENTO(Nullable<int> pIN_ID_DEPARTAMENTO, Nullable<bool> pIN_FG_ACTIVO, Nullable<System.DateTime> pIN_FE_INACTIVO, string pIN_CL_DEPARTAMENTO, string pIN_NB_DEPARTAMENTO, string pIN_XML_SELECCION, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_DEPARTAMENTOParameter = pIN_ID_DEPARTAMENTO.HasValue ?
+                new ObjectParameter("PIN_ID_DEPARTAMENTO", pIN_ID_DEPARTAMENTO) :
+                new ObjectParameter("PIN_ID_DEPARTAMENTO", typeof(int));
+    
+            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
+                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
+                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
+    
+            var pIN_FE_INACTIVOParameter = pIN_FE_INACTIVO.HasValue ?
+                new ObjectParameter("PIN_FE_INACTIVO", pIN_FE_INACTIVO) :
+                new ObjectParameter("PIN_FE_INACTIVO", typeof(System.DateTime));
+    
+            var pIN_CL_DEPARTAMENTOParameter = pIN_CL_DEPARTAMENTO != null ?
+                new ObjectParameter("PIN_CL_DEPARTAMENTO", pIN_CL_DEPARTAMENTO) :
+                new ObjectParameter("PIN_CL_DEPARTAMENTO", typeof(string));
+    
+            var pIN_NB_DEPARTAMENTOParameter = pIN_NB_DEPARTAMENTO != null ?
+                new ObjectParameter("PIN_NB_DEPARTAMENTO", pIN_NB_DEPARTAMENTO) :
+                new ObjectParameter("PIN_NB_DEPARTAMENTO", typeof(string));
+    
+            var pIN_XML_SELECCIONParameter = pIN_XML_SELECCION != null ?
+                new ObjectParameter("PIN_XML_SELECCION", pIN_XML_SELECCION) :
+                new ObjectParameter("PIN_XML_SELECCION", typeof(string));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_M_DEPARTAMENTO_Result>("SPE_OBTIENE_M_DEPARTAMENTO", pIN_ID_DEPARTAMENTOParameter, pIN_FG_ACTIVOParameter, pIN_FE_INACTIVOParameter, pIN_CL_DEPARTAMENTOParameter, pIN_NB_DEPARTAMENTOParameter, pIN_XML_SELECCIONParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_EVALUADORES_CLIMA_LAB_Result> SPE_OBTIENE_EO_EVALUADORES_CLIMA_LAB(Nullable<int> pIN_ID_PERIDO, Nullable<int> pIN_ID_EMPLEADO, Nullable<int> pIN_ID_PUESTO, Nullable<int> pIN_ID_EVALUADOR, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIDOParameter = pIN_ID_PERIDO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIDO", pIN_ID_PERIDO) :
+                new ObjectParameter("PIN_ID_PERIDO", typeof(int));
+    
+            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
+                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
+                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
+    
+            var pIN_ID_PUESTOParameter = pIN_ID_PUESTO.HasValue ?
+                new ObjectParameter("PIN_ID_PUESTO", pIN_ID_PUESTO) :
+                new ObjectParameter("PIN_ID_PUESTO", typeof(int));
+    
+            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
+                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
+                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_EVALUADORES_CLIMA_LAB_Result>("SPE_OBTIENE_EO_EVALUADORES_CLIMA_LAB", pIN_ID_PERIDOParameter, pIN_ID_EMPLEADOParameter, pIN_ID_PUESTOParameter, pIN_ID_EVALUADORParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_BONO_EVALUADOS_Result> SPE_OBTIENE_BONO_EVALUADOS(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_BONO_EVALUADOS_Result>("SPE_OBTIENE_BONO_EVALUADOS", pIN_ID_PERIODOParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_FYD_EVALUADORES_TOKEN_Result> SPE_OBTIENE_FYD_EVALUADORES_TOKEN(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_EVALUADORES_TOKEN_Result>("SPE_OBTIENE_FYD_EVALUADORES_TOKEN", pIN_ID_PERIODOParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result> SPE_OBTIENE_EO_EVALUADORES_TOKEN(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result>("SPE_OBTIENE_EO_EVALUADORES_TOKEN", pIN_ID_PERIODOParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EVALUADOS_PERIODOS_DESEMPENO_Result> SPE_OBTIENE_EVALUADOS_PERIODOS_DESEMPENO(string pIN_XML_PERIODOS, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_XML_PERIODOSParameter = pIN_XML_PERIODOS != null ?
+                new ObjectParameter("PIN_XML_PERIODOS", pIN_XML_PERIODOS) :
+                new ObjectParameter("PIN_XML_PERIODOS", typeof(string));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EVALUADOS_PERIODOS_DESEMPENO_Result>("SPE_OBTIENE_EVALUADOS_PERIODOS_DESEMPENO", pIN_XML_PERIODOSParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_FYD_CUESTIONARIOS_EVALUADOS_Result> SPE_OBTIENE_FYD_CUESTIONARIOS_EVALUADOS(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_CUESTIONARIOS_EVALUADOS_Result>("SPE_OBTIENE_FYD_CUESTIONARIOS_EVALUADOS", pIN_ID_PERIODOParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_FYD_EVALUADOS_Result> SPE_OBTIENE_FYD_EVALUADOS(Nullable<int> pIN_ID_EVALUADOR, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_EVALUADORParameter = pIN_ID_EVALUADOR.HasValue ?
+                new ObjectParameter("PIN_ID_EVALUADOR", pIN_ID_EVALUADOR) :
+                new ObjectParameter("PIN_ID_EVALUADOR", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_EVALUADOS_Result>("SPE_OBTIENE_FYD_EVALUADOS", pIN_ID_EVALUADORParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO_Result> SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO(Nullable<int> pIN_ID_PERIODO, string pIN_XML_PERIODOS, Nullable<bool> pIN_FG_FOTO, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_XML_PERIODOSParameter = pIN_XML_PERIODOS != null ?
+                new ObjectParameter("PIN_XML_PERIODOS", pIN_XML_PERIODOS) :
+                new ObjectParameter("PIN_XML_PERIODOS", typeof(string));
+    
+            var pIN_FG_FOTOParameter = pIN_FG_FOTO.HasValue ?
+                new ObjectParameter("PIN_FG_FOTO", pIN_FG_FOTO) :
+                new ObjectParameter("PIN_FG_FOTO", typeof(bool));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO_Result>("SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO", pIN_ID_PERIODOParameter, pIN_XML_PERIODOSParameter, pIN_FG_FOTOParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_DESCRIPTIVO_Result> SPE_OBTIENE_DESCRIPTIVO(Nullable<int> pIN_ID_DESCRIPTIVO)
+        {
+            var pIN_ID_DESCRIPTIVOParameter = pIN_ID_DESCRIPTIVO.HasValue ?
+                new ObjectParameter("PIN_ID_DESCRIPTIVO", pIN_ID_DESCRIPTIVO) :
+                new ObjectParameter("PIN_ID_DESCRIPTIVO", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_DESCRIPTIVO_Result>("SPE_OBTIENE_DESCRIPTIVO", pIN_ID_DESCRIPTIVOParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_K_PROGRAMA_EMPLEADO_Result> SPE_OBTIENE_K_PROGRAMA_EMPLEADO(Nullable<int> pIN_ID_PROGRAMA_EMPLEADO, Nullable<int> pIN_ID_PROGRAMA, Nullable<int> pIN_ID_EMPLEADO, Nullable<int> pIN_NB_EMPLEADO, string pIN_CL_EMPLEADO, string pIN_NB_PUESTO, string pIN_CL_PUESTO, string pIN_NB_DEPARTAMENTO, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_ID_PROGRAMA_EMPLEADOParameter = pIN_ID_PROGRAMA_EMPLEADO.HasValue ?
+                new ObjectParameter("PIN_ID_PROGRAMA_EMPLEADO", pIN_ID_PROGRAMA_EMPLEADO) :
+                new ObjectParameter("PIN_ID_PROGRAMA_EMPLEADO", typeof(int));
+    
+            var pIN_ID_PROGRAMAParameter = pIN_ID_PROGRAMA.HasValue ?
+                new ObjectParameter("PIN_ID_PROGRAMA", pIN_ID_PROGRAMA) :
+                new ObjectParameter("PIN_ID_PROGRAMA", typeof(int));
+    
+            var pIN_ID_EMPLEADOParameter = pIN_ID_EMPLEADO.HasValue ?
+                new ObjectParameter("PIN_ID_EMPLEADO", pIN_ID_EMPLEADO) :
+                new ObjectParameter("PIN_ID_EMPLEADO", typeof(int));
+    
+            var pIN_NB_EMPLEADOParameter = pIN_NB_EMPLEADO.HasValue ?
+                new ObjectParameter("PIN_NB_EMPLEADO", pIN_NB_EMPLEADO) :
+                new ObjectParameter("PIN_NB_EMPLEADO", typeof(int));
+    
+            var pIN_CL_EMPLEADOParameter = pIN_CL_EMPLEADO != null ?
+                new ObjectParameter("PIN_CL_EMPLEADO", pIN_CL_EMPLEADO) :
+                new ObjectParameter("PIN_CL_EMPLEADO", typeof(string));
+    
+            var pIN_NB_PUESTOParameter = pIN_NB_PUESTO != null ?
+                new ObjectParameter("PIN_NB_PUESTO", pIN_NB_PUESTO) :
+                new ObjectParameter("PIN_NB_PUESTO", typeof(string));
+    
+            var pIN_CL_PUESTOParameter = pIN_CL_PUESTO != null ?
+                new ObjectParameter("PIN_CL_PUESTO", pIN_CL_PUESTO) :
+                new ObjectParameter("PIN_CL_PUESTO", typeof(string));
+    
+            var pIN_NB_DEPARTAMENTOParameter = pIN_NB_DEPARTAMENTO != null ?
+                new ObjectParameter("PIN_NB_DEPARTAMENTO", pIN_NB_DEPARTAMENTO) :
+                new ObjectParameter("PIN_NB_DEPARTAMENTO", typeof(string));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_K_PROGRAMA_EMPLEADO_Result>("SPE_OBTIENE_K_PROGRAMA_EMPLEADO", pIN_ID_PROGRAMA_EMPLEADOParameter, pIN_ID_PROGRAMAParameter, pIN_ID_EMPLEADOParameter, pIN_NB_EMPLEADOParameter, pIN_CL_EMPLEADOParameter, pIN_NB_PUESTOParameter, pIN_CL_PUESTOParameter, pIN_NB_DEPARTAMENTOParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS_Result> SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS(Nullable<int> pIN_ID_TABULADOR, Nullable<int> pIN_ID_ROL, Nullable<bool> pIN_FG_PLANEACION)
+        {
+            var pIN_ID_TABULADORParameter = pIN_ID_TABULADOR.HasValue ?
+                new ObjectParameter("PIN_ID_TABULADOR", pIN_ID_TABULADOR) :
+                new ObjectParameter("PIN_ID_TABULADOR", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            var pIN_FG_PLANEACIONParameter = pIN_FG_PLANEACION.HasValue ?
+                new ObjectParameter("PIN_FG_PLANEACION", pIN_FG_PLANEACION) :
+                new ObjectParameter("PIN_FG_PLANEACION", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS_Result>("SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS", pIN_ID_TABULADORParameter, pIN_ID_ROLParameter, pIN_FG_PLANEACIONParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EO_PERIODOS_CLIMA_Result> SPE_OBTIENE_EO_PERIODOS_CLIMA(Nullable<int> pIN_ID_PERIODO, string pIN_CL_PERIODO, string pIN_NB_PERIODO, string pIN_DS_PERIODO, string pIN_CL_ESTADO_PERIODO, Nullable<int> pIN_ID_PERIODO_ORIGEN)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_CL_PERIODOParameter = pIN_CL_PERIODO != null ?
+                new ObjectParameter("PIN_CL_PERIODO", pIN_CL_PERIODO) :
+                new ObjectParameter("PIN_CL_PERIODO", typeof(string));
+    
+            var pIN_NB_PERIODOParameter = pIN_NB_PERIODO != null ?
+                new ObjectParameter("PIN_NB_PERIODO", pIN_NB_PERIODO) :
+                new ObjectParameter("PIN_NB_PERIODO", typeof(string));
+    
+            var pIN_DS_PERIODOParameter = pIN_DS_PERIODO != null ?
+                new ObjectParameter("PIN_DS_PERIODO", pIN_DS_PERIODO) :
+                new ObjectParameter("PIN_DS_PERIODO", typeof(string));
+    
+            var pIN_CL_ESTADO_PERIODOParameter = pIN_CL_ESTADO_PERIODO != null ?
+                new ObjectParameter("PIN_CL_ESTADO_PERIODO", pIN_CL_ESTADO_PERIODO) :
+                new ObjectParameter("PIN_CL_ESTADO_PERIODO", typeof(string));
+    
+            var pIN_ID_PERIODO_ORIGENParameter = pIN_ID_PERIODO_ORIGEN.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO_ORIGEN", pIN_ID_PERIODO_ORIGEN) :
+                new ObjectParameter("PIN_ID_PERIODO_ORIGEN", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_PERIODOS_CLIMA_Result>("SPE_OBTIENE_EO_PERIODOS_CLIMA", pIN_ID_PERIODOParameter, pIN_CL_PERIODOParameter, pIN_NB_PERIODOParameter, pIN_DS_PERIODOParameter, pIN_CL_ESTADO_PERIODOParameter, pIN_ID_PERIODO_ORIGENParameter);
+        }
+    
+        public virtual int SPE_INSERTA_ACTUALIZA_PERIODO_CLIMA_LAB(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO, string pIN_CL_PERIODO, string pIN_NB_PERIODO, string pIN_DS_PERIODO, string pIN_CL_ESTADO_PERIODO, string pIN_DS_NOTAS, string pIN_DS_MENSAJE_CORREO, string pIN_CL_TIPO_CONFIGURACION, string pIN_CL_ORIGEN_CUESTIONARIO, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, Nullable<int> pIN_ID_PERIODO_ORIGEN, string pIN_TIPO_TRANSACCION)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_CL_PERIODOParameter = pIN_CL_PERIODO != null ?
+                new ObjectParameter("PIN_CL_PERIODO", pIN_CL_PERIODO) :
+                new ObjectParameter("PIN_CL_PERIODO", typeof(string));
+    
+            var pIN_NB_PERIODOParameter = pIN_NB_PERIODO != null ?
+                new ObjectParameter("PIN_NB_PERIODO", pIN_NB_PERIODO) :
+                new ObjectParameter("PIN_NB_PERIODO", typeof(string));
+    
+            var pIN_DS_PERIODOParameter = pIN_DS_PERIODO != null ?
+                new ObjectParameter("PIN_DS_PERIODO", pIN_DS_PERIODO) :
+                new ObjectParameter("PIN_DS_PERIODO", typeof(string));
+    
+            var pIN_CL_ESTADO_PERIODOParameter = pIN_CL_ESTADO_PERIODO != null ?
+                new ObjectParameter("PIN_CL_ESTADO_PERIODO", pIN_CL_ESTADO_PERIODO) :
+                new ObjectParameter("PIN_CL_ESTADO_PERIODO", typeof(string));
+    
+            var pIN_DS_NOTASParameter = pIN_DS_NOTAS != null ?
+                new ObjectParameter("PIN_DS_NOTAS", pIN_DS_NOTAS) :
+                new ObjectParameter("PIN_DS_NOTAS", typeof(string));
+    
+            var pIN_DS_MENSAJE_CORREOParameter = pIN_DS_MENSAJE_CORREO != null ?
+                new ObjectParameter("PIN_DS_MENSAJE_CORREO", pIN_DS_MENSAJE_CORREO) :
+                new ObjectParameter("PIN_DS_MENSAJE_CORREO", typeof(string));
+    
+            var pIN_CL_TIPO_CONFIGURACIONParameter = pIN_CL_TIPO_CONFIGURACION != null ?
+                new ObjectParameter("PIN_CL_TIPO_CONFIGURACION", pIN_CL_TIPO_CONFIGURACION) :
+                new ObjectParameter("PIN_CL_TIPO_CONFIGURACION", typeof(string));
+    
+            var pIN_CL_ORIGEN_CUESTIONARIOParameter = pIN_CL_ORIGEN_CUESTIONARIO != null ?
+                new ObjectParameter("PIN_CL_ORIGEN_CUESTIONARIO", pIN_CL_ORIGEN_CUESTIONARIO) :
+                new ObjectParameter("PIN_CL_ORIGEN_CUESTIONARIO", typeof(string));
+    
+            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
+                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
+                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
+    
+            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
+                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
+    
+            var pIN_ID_PERIODO_ORIGENParameter = pIN_ID_PERIODO_ORIGEN.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO_ORIGEN", pIN_ID_PERIODO_ORIGEN) :
+                new ObjectParameter("PIN_ID_PERIODO_ORIGEN", typeof(int));
+    
+            var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
+                new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
+                new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_PERIODO_CLIMA_LAB", xML_RESULTADO, pIN_ID_PERIODOParameter, pIN_CL_PERIODOParameter, pIN_NB_PERIODOParameter, pIN_DS_PERIODOParameter, pIN_CL_ESTADO_PERIODOParameter, pIN_DS_NOTASParameter, pIN_DS_MENSAJE_CORREOParameter, pIN_CL_TIPO_CONFIGURACIONParameter, pIN_CL_ORIGEN_CUESTIONARIOParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_ID_PERIODO_ORIGENParameter, pIN_TIPO_TRANSACCIONParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_TRADUCCION_TEXTO_Result> SPE_OBTIENE_TRADUCCION_TEXTO(string pIN_CL_TEXTO, string pIN_CL_MODULO, string pIN_CL_PROCESO, string pIN_CL_IDIOMA)
+        {
+            var pIN_CL_TEXTOParameter = pIN_CL_TEXTO != null ?
+                new ObjectParameter("PIN_CL_TEXTO", pIN_CL_TEXTO) :
+                new ObjectParameter("PIN_CL_TEXTO", typeof(string));
+    
+            var pIN_CL_MODULOParameter = pIN_CL_MODULO != null ?
+                new ObjectParameter("PIN_CL_MODULO", pIN_CL_MODULO) :
+                new ObjectParameter("PIN_CL_MODULO", typeof(string));
+    
+            var pIN_CL_PROCESOParameter = pIN_CL_PROCESO != null ?
+                new ObjectParameter("PIN_CL_PROCESO", pIN_CL_PROCESO) :
+                new ObjectParameter("PIN_CL_PROCESO", typeof(string));
+    
+            var pIN_CL_IDIOMAParameter = pIN_CL_IDIOMA != null ?
+                new ObjectParameter("PIN_CL_IDIOMA", pIN_CL_IDIOMA) :
+                new ObjectParameter("PIN_CL_IDIOMA", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_TRADUCCION_TEXTO_Result>("SPE_OBTIENE_TRADUCCION_TEXTO", pIN_CL_TEXTOParameter, pIN_CL_MODULOParameter, pIN_CL_PROCESOParameter, pIN_CL_IDIOMAParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_LICENCIA_VOLUMEN_Result> SPE_OBTIENE_LICENCIA_VOLUMEN(Nullable<bool> pIN_FG_ACTIVO, Nullable<int> pIN_ID_EMPRESA)
+        {
+            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
+                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
+                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_LICENCIA_VOLUMEN_Result>("SPE_OBTIENE_LICENCIA_VOLUMEN", pIN_FG_ACTIVOParameter, pIN_ID_EMPRESAParameter);
         }
     }
 }

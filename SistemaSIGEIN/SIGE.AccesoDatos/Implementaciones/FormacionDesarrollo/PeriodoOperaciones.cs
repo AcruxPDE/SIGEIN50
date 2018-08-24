@@ -48,19 +48,19 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
         }
 
 
-        public List<SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION_Result> ObtenerEvaluados(int pIdPeriodo, int? pID_EMPRESA = null)
+        public List<SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION_Result> ObtenerEvaluados(int pIdPeriodo, int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION(pIdPeriodo,pID_EMPRESA).ToList();
+                return contexto.SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION(pIdPeriodo, pID_EMPRESA, pID_ROL).ToList();
             }
         }
 
-        public List<SPE_OBTIENE_FYD_CUESTIONARIOS_EVALUADOS_Result> ObtenerEvaluadosCuestionarios(int pIdPeriodo, int? pIdEmpresa = null)
+        public List<SPE_OBTIENE_FYD_CUESTIONARIOS_EVALUADOS_Result> ObtenerEvaluadosCuestionarios(int pIdPeriodo, int? pIdEmpresa = null, int? vIdRol = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_FYD_CUESTIONARIOS_EVALUADOS(pIdPeriodo, pIdEmpresa).ToList();
+                return contexto.SPE_OBTIENE_FYD_CUESTIONARIOS_EVALUADOS(pIdPeriodo, pIdEmpresa, vIdRol).ToList();
             }
         }
 
@@ -256,30 +256,30 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
             }
         }
 
-        public XElement InsertarPreguntasAdicionales(int pIdPeriodo, string pNbPregunta, XElement pXmlPreguntasAdicionales, E_CL_CUESTIONARIO_OBJETIVO pClCuestionarioObjetivo, string pClUsuario, string pNbPrograma)
+        public XElement InsertarPreguntasAdicionales(int? pIdPeriodo = null, int? pIdPregunta = null, string pNbPregunta = null, XElement pXmlPreguntasAdicionales = null, string pClCuestionarioObjetivo = null, string pClUsuario = null, string pNbPrograma = null, string pClTipoTransaccion = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
-                contexto.SPE_INSERTA_FYD_PREGUNTAS_ADICIONALES_PERIODO(pOutClRetorno, pIdPeriodo, pNbPregunta, pXmlPreguntasAdicionales.ToString(), pClCuestionarioObjetivo.ToString(), pClUsuario, pNbPrograma);
+                contexto.SPE_INSERTA_FYD_PREGUNTAS_ADICIONALES_PERIODO(pOutClRetorno, pIdPeriodo,pIdPregunta, pNbPregunta, pXmlPreguntasAdicionales.ToString(), pClCuestionarioObjetivo, pClUsuario, pNbPrograma,pClTipoTransaccion);
                 return XElement.Parse(pOutClRetorno.Value.ToString());
             }
         }
 
-        public List<SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_PERIODO_Result> ObtenerPreguntasAdicionales(int pIdPeriodo)
+        public List<SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_PERIODO_Result> ObtenerPreguntasAdicionales(int? pIdPeriodo = null, int? pIdPregunta = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_PERIODO(pIdPeriodo).ToList();
+                return contexto.SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_PERIODO(pIdPeriodo, pIdPregunta).ToList();
             }
         }
 
-        public XElement EliminarPreguntaAdicional(int pIdPreguntaAdicional)
+        public XElement EliminarPreguntaAdicional(string  pXmlPreguntas = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
-                contexto.SPE_ELIMINA_FYD_PREGUNTA_ADICIONAL(pOutClRetorno, pIdPreguntaAdicional);
+                contexto.SPE_ELIMINA_FYD_PREGUNTA_ADICIONAL(pOutClRetorno, pXmlPreguntas);
                 return XElement.Parse(pOutClRetorno.Value.ToString());
             }
         }
@@ -419,11 +419,11 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
             }
         }
 
-        public List<SPE_OBTIENE_FYD_EVALUADORES_TOKEN_Result> ObtenerTokenEvaluadores(int pIdPeriodo, int? pIdEmpresa = null)
+        public List<SPE_OBTIENE_FYD_EVALUADORES_TOKEN_Result> ObtenerTokenEvaluadores(int pIdPeriodo, int? pIdEmpresa = null, int? pIdRol = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_FYD_EVALUADORES_TOKEN(pIdPeriodo, pIdEmpresa).ToList();
+                return contexto.SPE_OBTIENE_FYD_EVALUADORES_TOKEN(pIdPeriodo, pIdEmpresa, pIdRol).ToList();
             }
         }
 
@@ -485,7 +485,7 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
             }
         }
 
-        public List<SPE_OBTIENE_EMPLEADOS_Result> ObtenerEmpleados(XElement pXmlSeleccion = null, bool? pFgFoto = null, string pClUsuario = null, bool? pFgActivo = null, int? pIdEmpresa = null)
+        public List<SPE_OBTIENE_EMPLEADOS_Result> ObtenerEmpleados(XElement pXmlSeleccion = null, bool? pFgFoto = null, string pClUsuario = null, bool? pFgActivo = null, int? pIdEmpresa = null, int? pIdRol = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
@@ -500,7 +500,7 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
                     sXmlSeleccion = (new XElement("SELECCION", new XElement("FILTRO", new XAttribute("CL_TIPO", "TODAS")))).ToString();
                 }
 
-                return contexto.SPE_OBTIENE_EMPLEADOS(sXmlSeleccion, pClUsuario, pFgActivo, pFgFoto,pIdEmpresa).ToList();
+                return contexto.SPE_OBTIENE_EMPLEADOS(sXmlSeleccion, pClUsuario, pFgActivo, pFgFoto, pIdEmpresa, pIdRol).ToList();
             }
         }
 

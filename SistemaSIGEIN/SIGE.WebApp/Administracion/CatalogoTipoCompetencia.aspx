@@ -142,7 +142,7 @@
                        OnNeedDataSource="grvTipoCompetencia_NeedDataSource"
                        OnItemDataBound="grvTipoCompetencia_ItemDataBound"
                        Height="100%" 
-                       Width="750">
+                       Width="1000">
           <ExportSettings ExportOnlyData="true" FileName="Cátalogo de tipo de competencias" IgnorePaging="true">
            <Excel Format="Xlsx"  />   
               </ExportSettings>
@@ -157,7 +157,7 @@
            <CommandItemSettings  ShowAddNewRecordButton="false" ShowExportToExcelButton="true" ShowExportToWordButton="false"  ShowExportToPdfButton="false" ShowExportToCsvButton="false"    
                RefreshText="Actualizar"  AddNewRecordText="Insertar" />   
              <Columns>  
-                 <telerik:GridBoundColumn  HeaderText="Clave" DataField="CL_TIPO_COMPETENCIA" AutoPostBackOnFilter="true" HeaderStyle-Width="300" FilterControlWidth="230" CurrentFilterFunction="Contains" UniqueName="CL_TIPO_COMPETENCIA"    Display="true" ReadOnly="false" ></telerik:GridBoundColumn>  
+                 <telerik:GridBoundColumn  HeaderText="Clave" DataField="CL_TIPO_COMPETENCIA" AutoPostBackOnFilter="true" HeaderStyle-Width="200" FilterControlWidth="230" CurrentFilterFunction="Contains" UniqueName="CL_TIPO_COMPETENCIA"    Display="true" ReadOnly="false" ></telerik:GridBoundColumn>  
                  <telerik:GridBoundColumn  HeaderText="Nombre" DataField="NB_TIPO_COMPETENCIA" AutoPostBackOnFilter="true" HeaderStyle-Width="350" FilterControlWidth="280" CurrentFilterFunction="Contains"   UniqueName="NB_TIPO_COMPETENCIA"    Display="true" ReadOnly="false" ></telerik:GridBoundColumn>  
                  <telerik:GridBoundColumn  HeaderText="Activo" DataField="NB_ACTIVO" AutoPostBackOnFilter="true" FilterControlWidth="25" HeaderStyle-Width="95 " CurrentFilterFunction="Contains"  UniqueName="NB_ACTIVO"    Display="true" ReadOnly="false"  ></telerik:GridBoundColumn>  
                  <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Último usuario que modifica" DataField="CL_USUARIO_MODIFICA" UniqueName="CL_USUARIO_MODIFICA"></telerik:GridBoundColumn>

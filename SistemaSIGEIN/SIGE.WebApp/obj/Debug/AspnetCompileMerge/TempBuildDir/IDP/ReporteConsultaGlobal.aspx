@@ -16,37 +16,37 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
-    <div id="dvImprimir" runat="server">
-        <label style="display: block !important; width: 100% !important; padding: 0 !important; margin-bottom: 20px !important; font-size: 21px !important; line-height: inherit !important; color: darkred !important; border: 0 !important; border-bottom: 1px solid #e5e5e5 !important;">
-              Consulta global</label>
+   <div id="dvImprimir" runat="server" style="width: 790px; padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px;">
+        <div style="height: 10px;"></div>
+        <label style="display: block !important; width: 100% !important; padding: 0 !important; margin-bottom: 20px !important; font-size: 21px !important; line-height: inherit !important; border: 0 !important; border-bottom: 1px solid #C6DB95 !important;">
+            Consulta global</label>
             <div style="clear: both; height: 10px"></div>
-        <table class="ctrlTableForm">
-            <tr>
-                <td class="ctrlTableDataContext">
+        <table style="border-collapse:collapse; border: solid 1px;">
+            <tr style="border-collapse:collapse; border: solid 1px;">
+                <td style="border-collapse:collapse; border: solid 1px; padding:10px;">
                     <label>Folio de solicitud: </label>
                 </td>
-                <td class="ctrlTableDataBorderContext">
+                <td style="border-collapse:collapse; border: solid 1px; padding:10px;">
                     <span runat="server" id="txtClSolicitud"></span>
                 </td>
                   </tr>
-            <tr>
-                <td class="ctrlTableDataContext">
+            <tr style="border-collapse:collapse; border: solid 1px;">
+                <td style="border-collapse:collapse; border: solid 1px; padding:10px;">
                     <label>Candidato: </label>
                 </td>
-                <td class="ctrlTableDataBorderContext">
+                <td style="border-collapse:collapse; border: solid 1px; padding:10px;">
                     <span runat="server" id="txtNbCandidato"></span>
                 </td>
                   </tr>
-            <tr>
-                <td class="ctrlTableDataContext">
+            <tr style="border-collapse:collapse; border: solid 1px;">
+                <td style="border-collapse:collapse; border: solid 1px; padding:10px;">
                     <label>Puesto: </label>
                 </td>
-                <td class="ctrlTableDataBorderContext">
+                <td style="border-collapse:collapse; border: solid 1px; padding:10px;">
                     <span runat="server" id="txtNbPuesto"></span>
                 </td>
             </tr>
         </table>
-        <div>
             <div style="clear: both; height: 10px;"></div>
             <telerik:RadHtmlChart runat="server" ID="rhcConsultaGlobal" Width="100%" Height="480" Transitions="true" Skin="Silk">
                 <PlotArea>
@@ -74,8 +74,12 @@
                     </Appearance>
                 </Legend>
             </telerik:RadHtmlChart>
-            <div style="clear: both; height: 15px;"></div>
-            <telerik:RadGrid ID="rgdCompatibilidad"
+                <div style="clear: both; height: 15px;"></div>
+            <div style="width:100%;">
+            <div style="width:50%; float:left;">
+            <div id="dvCompatibilidad" runat="server"></div>
+                </div>
+           <%-- <telerik:RadGrid ID="rgdCompatibilidad"
                 runat="server"
                 AllowSorting="false"
                 AutoGenerateColumns="false"
@@ -89,24 +93,24 @@
                 </ClientSettings>
                 <MasterTableView AllowFilteringByColumn="false" AllowPaging="false" ShowHeadersWhenNoRecords="true" ShowFooter="true">
                     <Columns>
-                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="180" HeaderText="Elemento" DataField="NB_FACTOR" FooterText="Compatibilidad total:" FooterStyle-HorizontalAlign="Right" FooterStyle-Font-Bold="true" UniqueName="NB_FACTOR"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="70" HeaderText="Valor" DataFormatString="{0:N2}%" DataField="PR_VALOR" UniqueName="PR_VALOR" Aggregate="Sum" FooterStyle-Font-Bold="true" FooterAggregateFormatString="{0:N2}%" FooterStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="180" HeaderText="Elemento" DataField="NB_FACTOR" FooterText="Compatibilidad total:" FooterStyle-HorizontalAlign="Right" FooterStyle-Font-Bold="true" UniqueName="NB_FACTOR" ColumnValidationSettings-ModelErrorMessage-BorderStyle="Solid"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="70" HeaderText="Valor" DataFormatString="{0:N2}%" DataField="PR_VALOR" UniqueName="PR_VALOR" Aggregate="Sum" FooterStyle-Font-Bold="true" FooterAggregateFormatString="{0:N2}%" FooterStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" ColumnValidationSettings-ModelErrorMessage-BorderStyle="Solid"></telerik:GridBoundColumn>
                     </Columns>
                 </MasterTableView>
-            </telerik:RadGrid>
-            <div style="clear: both; height: 15px;"></div>
-
-                <table class="ctrlTableForm ctrlTableContext" style="border: solid 1px;">
+            </telerik:RadGrid>--%>
+ <div style="width:50%; float:left;">
+                <table style="border-collapse:collapse; border: solid 1px;">
                     <tr>
-                        <td style="border:1px solid">
+                        <td style="border-collapse:collapse; border:1px solid; padding:10px;">
                             <label>Comentarios:</label></td>
-                        <td colspan="2" style="border:1px solid">
+                        <td colspan="2" style="border-collapse:collapse; border:1px solid; padding:10px;">
                             <div id="txtComentarios" runat="server" style="min-width: 100px; text-align: justify;"></div>
                         </td>
                     </tr>
                 </table>
+     </div>
+                </div>
         </div>
-    </div>
     <iframe src="#" style="width: 0; height: 0; border: none" id="ifrmPrint"></iframe>
     <telerik:RadCodeBlock runat="server" ID="RadCodeBlock1">
         <script type="text/javascript">
@@ -121,7 +125,7 @@
                 myDoc.write(pvContent + "</body></html>");
                 myDoc.close(); (pvContent + "</body></html>");
                 myDoc.close();
-            }, 3000);
+            }, 2000);
         </script>
     </telerik:RadCodeBlock>
 </asp:Content>

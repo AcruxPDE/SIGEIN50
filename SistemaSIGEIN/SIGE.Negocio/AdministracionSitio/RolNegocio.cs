@@ -43,9 +43,11 @@ namespace SIGE.Negocio.Administracion
             {
                 ID_ROL = (vRol.ID_ROL < 0) ? (int?)null : vRol.ID_ROL,
                 CL_ROL = vRol.CL_ROL,
+                ID_PLANTILLA = vRol.ID_PLANTILLA,
                 FG_ACTIVO = vRol.FG_ACTIVO,
                 NB_ROL = vRol.NB_ROL,
-                LST_FUNCIONES = vFunciones
+                LST_FUNCIONES = vFunciones,
+                XML_GRUPOS = vRol.XML_GRUPOS
             };
         }
         

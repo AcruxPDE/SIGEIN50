@@ -35,6 +35,12 @@ namespace SIGE.WebApp.EO.Cuestionarios
             set { ViewState["vs_vIdEvaluado"] = value; }
         }
 
+        public System.Guid? vFlEvaluador
+        {
+            get { return (System.Guid?)ViewState["vs_vFlEvaluador"]; }
+            set { ViewState["vs_vFlEvaluador"] = value; }
+        }
+
 
         public string xmlRespuestasCuestionario
         {
@@ -170,6 +176,11 @@ namespace SIGE.WebApp.EO.Cuestionarios
                     vIdEvaluado = int.Parse(Request.QueryString["ID_EVALUADOR"]);
                 }
 
+                if (Request.QueryString["TOKEN"] != null)
+                {
+                    vFlEvaluador = System.Guid.Parse(Request.QueryString["TOKEN"]);
+                }
+
                 if (Request.Params["FG_HABILITADO"] != null)
                 {
                     vFgHabilitado = bool.Parse(Request.Params["FG_HABILITADO"].ToString());
@@ -179,16 +190,32 @@ namespace SIGE.WebApp.EO.Cuestionarios
                     vFgHabilitado = true;
                 }
 
+                //ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
+                //var vPeriodoClima = nClima.ObtienePeriodosClima(pIdPerido: vIdPeriodo).FirstOrDefault();
+                //txtNoPeriodo.InnerText = vPeriodoClima.NB_PERIODO.ToString() + " - " + vPeriodoClima.DS_PERIODO.ToString();
+                ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
+                var vPeriodoEvaluador = nClima.ObtieneCuestionario(pID_EVALUADOR: vIdEvaluado, pID_PERIODO: vIdPeriodo, pFlEvaluador: vFlEvaluador).FirstOrDefault();
+                if (vPeriodoEvaluador != null)
+                {
+                    txtNoPeriodo.InnerText = vPeriodoEvaluador.NB_PERIODO.ToString() + " - " + vPeriodoEvaluador.DS_PERIODO.ToString();
+                }
+
                 rgCuestionario.Enabled = vFgHabilitado;
                 btnFinalizar.Enabled = vFgHabilitado;
 
+                int vPreguntas = nClima.ObtieneCuestionario(pID_EVALUADOR: vIdEvaluado, pID_PERIODO: vIdPeriodo, pFlEvaluador: vFlEvaluador).Count();
+                int vPreguntasAbiertas = nClima.ObtenerCuestionarioPreAbiertas(pID_EVALUADOR: vIdEvaluado, pID_PERIODO: vIdPeriodo, pFlEvaluador: vFlEvaluador).Count;
+                if (vPreguntas < 1 && vPreguntasAbiertas < 1)
+                    btnFinalizar.Enabled = false;
+                if (vPreguntasAbiertas < 1)
+                 rgPreguntasAbiertas.Visible = false;
             }
         }
 
         protected void rgCuestionario_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            vlstCuestionarios = nClima.ObtieneCuestionario(pID_EVALUADOR: vIdEvaluado, pID_PERIODO: vIdPeriodo).Select(s => new E_PREGUNTAS_CUESTIONARIO_CLIMA
+            vlstCuestionarios = nClima.ObtieneCuestionario(pID_EVALUADOR: vIdEvaluado, pID_PERIODO: vIdPeriodo, pFlEvaluador: vFlEvaluador).Select(s => new E_PREGUNTAS_CUESTIONARIO_CLIMA
             {
                 ID_CUESTIONARIO = s.ID_CUESTIONARIO,
                 ID_CUESTIONARIO_PREGUNTA = s.ID_CUESTIONARIO_PREGUNTA,
@@ -216,7 +243,11 @@ namespace SIGE.WebApp.EO.Cuestionarios
                 vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
 
                     UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
-                    Response.Redirect("~/Logon.aspx");
+                    if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+                    {
+                        var myUrl = ResolveUrl("~/Logon.aspx");
+                        Response.Redirect(myUrl);
+                    }
             }
             else
             {
@@ -225,15 +256,14 @@ namespace SIGE.WebApp.EO.Cuestionarios
             }
         }
 
-
         protected void rgPreguntasAbiertas_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            int vCount = nClima.ObtenerCuestionarioPreAbiertas(pID_EVALUADOR: vIdEvaluado, pID_PERIODO: vIdPeriodo).Count;
-            if (vCount > 0)
-                rgPreguntasAbiertas.DataSource = nClima.ObtenerCuestionarioPreAbiertas(pID_EVALUADOR: vIdEvaluado, pID_PERIODO: vIdPeriodo).ToList();
-            else
-                rgPreguntasAbiertas.Visible = false;
+            //int vCount = nClima.ObtenerCuestionarioPreAbiertas(pID_EVALUADOR: vIdEvaluado, pID_PERIODO: vIdPeriodo, pFlEvaluador: vFlEvaluador).Count;
+            //if (vCount > 0)
+                rgPreguntasAbiertas.DataSource = nClima.ObtenerCuestionarioPreAbiertas(pID_EVALUADOR: vIdEvaluado, pID_PERIODO: vIdPeriodo, pFlEvaluador: vFlEvaluador).ToList();
+            //else
+            //    rgPreguntasAbiertas.Visible = false;
         }
     }
 

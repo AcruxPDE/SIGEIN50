@@ -83,10 +83,10 @@ namespace SIGE.Negocio.MetodologiaCompensacion
        #endregion
 
        #region OBTIENE DATOS  K_TABULADOR_EMPLEADO
-       public List<SPE_OBTIENE_EMPLEADOS_TABULADOR_Result> ObtenieneEmpleadosTabulador(int? ID_TABULADOR = null, XElement XML_SELECCIONADOS = null, int? ID_EMPRESA = null)
+       public List<SPE_OBTIENE_EMPLEADOS_TABULADOR_Result> ObtenieneEmpleadosTabulador(int? ID_TABULADOR = null, XElement XML_SELECCIONADOS = null, int? ID_EMPRESA = null, int? pIdRol = null)
        {
            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
-           return operaciones.ObtenerEmpleadosTabulador(ID_TABULADOR, XML_SELECCIONADOS, ID_EMPRESA);
+           return operaciones.ObtenerEmpleadosTabulador(ID_TABULADOR, XML_SELECCIONADOS, ID_EMPRESA, pIdRol);
        }
        #endregion
 
@@ -401,26 +401,26 @@ namespace SIGE.Negocio.MetodologiaCompensacion
        #endregion
 
        #region OBTIENE PLANEACION DE INCREMENTOS
-       public List<SPE_OBTIENE_PLANEACION_INCREMENTOS_Result> ObtienePlaneacionIncrementos(int? ID_TABULADOR = null)
+       public List<SPE_OBTIENE_PLANEACION_INCREMENTOS_Result> ObtienePlaneacionIncrementos(int? ID_TABULADOR = null, int? ID_ROL = null)
        {
            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
-           return operaciones.ObtenerPlaneacionIncrementos(ID_TABULADOR);
+           return operaciones.ObtenerPlaneacionIncrementos(ID_TABULADOR, ID_ROL);
        }
        #endregion
 
        #region OBTIENE CONSULTA SUELDOS
-        public List<SPE_OBTIENE_CONSULTA_SUELDOS_Result> ObtenerConsultaSueldos(int? ID_TABULADOR = null)
+        public List<SPE_OBTIENE_CONSULTA_SUELDOS_Result> ObtenerConsultaSueldos(int? ID_TABULADOR = null, int? ID_ROL = null)
        {
            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
-           return operaciones.ObtenerConsultaSueldos(ID_TABULADOR);
+           return operaciones.ObtenerConsultaSueldos(ID_TABULADOR, ID_ROL);
        }
          #endregion
 
        #region OBTIENE EMPLEADOS PLANEACION DE INCREMENTOS
-       public List<SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS_Result> ObtieneEmpleadosPlaneacionIncrementos(int? ID_TABULADOR = null)
+       public List<SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS_Result> ObtieneEmpleadosPlaneacionIncrementos(int? ID_TABULADOR = null, int? pID_ROL = null, bool? pFG_PLANECAION = null)
        {
            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
-           return operaciones.ObtenerEmpleadosPlaneacionIncrementos(ID_TABULADOR);
+           return operaciones.ObtenerEmpleadosPlaneacionIncrementos(ID_TABULADOR, pID_ROL, pFG_PLANECAION);
        }
        #endregion
 

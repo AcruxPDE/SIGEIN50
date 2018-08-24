@@ -1,7 +1,7 @@
-C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\trunk\SistemaSIGEIN\SIGE.Entidades\bin\Debug\SIGE.Entidades.dll
-C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\trunk\SistemaSIGEIN\SIGE.Entidades\bin\Debug\SIGE.Entidades.pdb
-C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\trunk\SistemaSIGEIN\SIGE.Entidades\bin\Debug\Newtonsoft.Json.dll
-C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\trunk\SistemaSIGEIN\SIGE.Entidades\bin\Debug\Newtonsoft.Json.xml
-C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\trunk\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.csprojResolveAssemblyReference.cache
-C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\trunk\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.dll
-C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\trunk\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.pdb
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QASIGEIN\SistemaSIGEIN\SIGE.Entidades\bin\Debug\SIGE.Entidades.dll
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QASIGEIN\SistemaSIGEIN\SIGE.Entidades\bin\Debug\SIGE.Entidades.pdb
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QASIGEIN\SistemaSIGEIN\SIGE.Entidades\bin\Debug\Newtonsoft.Json.dll
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QASIGEIN\SistemaSIGEIN\SIGE.Entidades\bin\Debug\Newtonsoft.Json.xml
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QASIGEIN\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.dll
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QASIGEIN\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.pdb
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QASIGEIN\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.csprojResolveAssemblyReference.cache

@@ -165,7 +165,13 @@ namespace SIGE.WebApp.IDP
                 vs_NB_PUESTO = vPuestoCandidatos.FirstOrDefault().NB_PUESTO;
             }
 
-            GraficaPuestoCandidatos(vPuestoCandidatos);
+            lbCandidatos.Controls.Add(GenerarTablaCandidatos(vPuestoCandidatos));
+
+            var vPuestoCompetencia = vPuestoCandidatos.Select(s => new { s.NO_VALOR_NIVEL, s.NB_PUESTO, s.NB_COMPETENCIA, s.CL_PUESTO }).Distinct().ToList();
+            if (vPuestoCompetencia.Count > 0)
+            lbPuestoCom.InnerText = "- (" + vPuestoCompetencia.FirstOrDefault().CL_PUESTO + ") " + vPuestoCompetencia.FirstOrDefault().NB_PUESTO;
+
+            //GraficaPuestoCandidatos(vPuestoCandidatos);
 
             //txtPromedio.Enabled = false;
             //var promedio = vPuestoCandidatos.Average(s => s.PR_TRUNCADO);
@@ -176,37 +182,37 @@ namespace SIGE.WebApp.IDP
             //else if (Convert.ToDouble(promedio) < 0)
             //    txtPromedio.Value = 0;
 
-            List<E_PROMEDIO> vlstPromedios = new List<E_PROMEDIO>();
-            foreach (var item in vListaCandidatos)
-            {
-                List<E_PROMEDIO> vlist = new List<E_PROMEDIO>();
-                foreach (var i in vPuestoCandidatos)
-                {
-                    if (item == i.ID_CANDIDATO && i.NO_VALOR_NIVEL != 0)
-                    {
-                        vlist.Add(new E_PROMEDIO { NB_PUESTO = i.NB_CANDIDATO, PORCENTAJE = i.PR_TRUNCADO, PORCENTAJE_NO_TRUNCADO = i.PR_CANDIDATO });
-                    }
-                }
-                vlstPromedios.Add(new E_PROMEDIO
-                {
-                    NB_PUESTO = vlist.Select(s => s.NB_PUESTO).FirstOrDefault(),
-                    PROMEDIO = vlist.Average(s => s.PORCENTAJE),
-                    FG_SUPERA_130 = vlist.Average(s => s.PORCENTAJE_NO_TRUNCADO) >= 130 ? true : false,
-                    PROMEDIO_TXT = vlist.Average(s => s.PORCENTAJE_NO_TRUNCADO) >= 130 ? Decimal.Round(vlist.Average(s => s.PORCENTAJE) ?? 1, 2).ToString() + "(*)" : Decimal.Round(vlist.Average(s => s.PORCENTAJE) ?? 1, 2).ToString()
-                });
-            }
-            rgdPromedios.DataSource = vlstPromedios.Where(w => w.NB_PUESTO != null);
-            rgdPromedios.DataBind();
-            rgdPromedios.Rebind();
+            //List<E_PROMEDIO> vlstPromedios = new List<E_PROMEDIO>();
+            //foreach (var item in vListaCandidatos)
+            //{
+            //    List<E_PROMEDIO> vlist = new List<E_PROMEDIO>();
+            //    foreach (var i in vPuestoCandidatos)
+            //    {
+            //        if (item == i.ID_CANDIDATO && i.NO_VALOR_NIVEL != 0)
+            //        {
+            //            vlist.Add(new E_PROMEDIO { NB_PUESTO = i.NB_CANDIDATO, PORCENTAJE = i.PR_TRUNCADO, PORCENTAJE_NO_TRUNCADO = i.PR_CANDIDATO });
+            //        }
+            //    }
+            //    vlstPromedios.Add(new E_PROMEDIO
+            //    {
+            //        NB_PUESTO = vlist.Select(s => s.NB_PUESTO).FirstOrDefault(),
+            //        PROMEDIO = vlist.Average(s => s.PORCENTAJE),
+            //        FG_SUPERA_130 = vlist.Average(s => s.PORCENTAJE_NO_TRUNCADO) >= 130 ? true : false,
+            //        PROMEDIO_TXT = vlist.Average(s => s.PORCENTAJE_NO_TRUNCADO) >= 130 ? Decimal.Round(vlist.Average(s => s.PORCENTAJE) ?? 1, 2).ToString() + "(*)" : Decimal.Round(vlist.Average(s => s.PORCENTAJE) ?? 1, 2).ToString()
+            //    });
+            //}
+            //rgdPromedios.DataSource = vlstPromedios.Where(w => w.NB_PUESTO != null);
+            //rgdPromedios.DataBind();
+            //rgdPromedios.Rebind();
 
-            for (int i = 0; i < vlstPromedios.Count; i++)
-            {
-                if (vlstPromedios[i].FG_SUPERA_130 == true)
-                {
-                    divMensajeMayor130.Visible = true;
-                    i = vlstPromedios.Count;
-                }
-            }
+            //for (int i = 0; i < vlstPromedios.Count; i++)
+            //{
+            //    if (vlstPromedios[i].FG_SUPERA_130 == true)
+            //    {
+            //        divMensajeMayor130.Visible = true;
+            //        i = vlstPromedios.Count;
+            //    }
+            //}
         }
 
         protected decimal? CalculaPorcentaje(decimal? pPorcentaje)
@@ -218,175 +224,124 @@ namespace SIGE.WebApp.IDP
             return vPorcentaje;
         }
 
-        protected void GraficaPuestoCandidatos(List<E_GRAFICA_PUESTO_CANDIDATOS> plstPuestoCandidatos)
+        protected HtmlGenericControl GenerarTablaCandidatos(List<E_GRAFICA_PUESTO_CANDIDATOS> plstPuestoCandidatos)
         {
-            List<ColumnSeries> lstCandidatos = new List<ColumnSeries>();
+            HtmlGenericControl vTabla = new HtmlGenericControl("table");
+            vTabla.Attributes.Add("style", "border-collapse: collapse;");
 
-            bool continua = false;
-            rhcPuestoCandidatos.PlotArea.Series.Clear();
-            string vCandidatosComp = "";
+            HtmlGenericControl vCtrlTbody = new HtmlGenericControl("tbody");
 
             foreach (var item in vListaCandidatos)
             {
-                ColumnSeries vCandidatos = new ColumnSeries();
+                string vPuestosComp = "";
 
                 if (plstPuestoCandidatos.Where(w => w.ID_CANDIDATO == item).FirstOrDefault() != null)
                     if (plstPuestoCandidatos.Where(w => w.ID_CANDIDATO == item).FirstOrDefault().CL_SOLICITUD != null)
-                        vCandidatosComp = vCandidatosComp + "- (" + plstPuestoCandidatos.Where(w => w.ID_CANDIDATO == item).FirstOrDefault().CL_SOLICITUD + ")" + plstPuestoCandidatos.Where(w => w.ID_CANDIDATO == item).FirstOrDefault().NB_CANDIDATO + "<br>";
+                        vPuestosComp = "(" + plstPuestoCandidatos.Where(w => w.ID_CANDIDATO == item).FirstOrDefault().CL_SOLICITUD + ") " + plstPuestoCandidatos.Where(w => w.ID_CANDIDATO == item).FirstOrDefault().NB_CANDIDATO;
                     else
-                        vCandidatosComp = vCandidatosComp + "- ()" + plstPuestoCandidatos.Where(w => w.ID_CANDIDATO == item).FirstOrDefault().NB_CANDIDATO + "<br>";
+                        vPuestosComp = "( ) " + plstPuestoCandidatos.Where(w => w.ID_CANDIDATO == item).FirstOrDefault().NB_CANDIDATO;
 
-                foreach (var i in plstPuestoCandidatos)
-                {
-                    if (item == i.ID_CANDIDATO)
-                    {
-                        vCandidatos.SeriesItems.Add(new CategorySeriesItem(i.NO_VALOR_CANDIDATO));
-                        vCandidatos.LabelsAppearance.Visible = false;
 
-                        vCandidatos.Name = "(" + i.CL_SOLICITUD + ")" + i.NB_CANDIDATO;
-                        continua = true;
-                    }
-                }
-                if (continua)
-                {
-                    vCandidatos.SeriesItems.Add(new CategorySeriesItem(0));
-                    lstCandidatos.Add(vCandidatos);
-                    //rhcPuestoCandidatos.PlotArea.Series.Add(vCandidatos);
-                    continua = false;
-                }
+                HtmlGenericControl vCtrlRowNivel = new HtmlGenericControl("tr");
+                vCtrlRowNivel.Attributes.Add("style", "page-break-inside:avoid; page-break-after:auto;");
 
+                HtmlGenericControl vCtrlNivel = new HtmlGenericControl("td");
+                vCtrlNivel.Attributes.Add("style", "font-family:arial; font-size: 11pt;");
+                vCtrlNivel.InnerText = String.Format("{0}", vPuestosComp);
+                vCtrlRowNivel.Controls.Add(vCtrlNivel);
+
+                vCtrlTbody.Controls.Add(vCtrlRowNivel);
             }
-            lbCandidatos.InnerHtml = vCandidatosComp;
+            vTabla.Controls.Add(vCtrlTbody);
 
-            var vPuestoCompetencia = plstPuestoCandidatos.Select(s => new { s.NO_VALOR_NIVEL, s.NB_PUESTO, s.NB_COMPETENCIA, s.CL_PUESTO }).Distinct().ToList();
-            ColumnSeries vPuesto = new ColumnSeries();
-            lbPuestoCom.InnerText = "- (" + vPuestoCompetencia.FirstOrDefault().CL_PUESTO + ") " + vPuestoCompetencia.FirstOrDefault().NB_PUESTO;
-
-
-            foreach (var item in vPuestoCompetencia)
-            {
-                vPuesto.SeriesItems.Add(new CategorySeriesItem(item.NO_VALOR_NIVEL));
-                vPuesto.LabelsAppearance.Visible = false;
-                vPuesto.Name = "(" + item.CL_PUESTO + ") " + item.NB_PUESTO;
-                rhcPuestoCandidatos.PlotArea.XAxis.Items.Add(item.NB_COMPETENCIA);
-                rhcPuestoCandidatos.PlotArea.XAxis.LabelsAppearance.RotationAngle = 270;
-                rhcPuestoCandidatos.PlotArea.YAxis.MaxValue = 6;
-            }
-            rhcPuestoCandidatos.PlotArea.Series.Add(vPuesto);
-
-            foreach (var it in lstCandidatos)
-            {
-                rhcPuestoCandidatos.PlotArea.Series.Add(it);
-            }
+            return vTabla;
         }
 
-        //protected void pgDetalleCompetencia_NeedDataSource(object sender, PivotGridNeedDataSourceEventArgs e)
+        //protected void GraficaPuestoCandidatos(List<E_GRAFICA_PUESTO_CANDIDATOS> plstPuestoCandidatos)
         //{
-        //  //  pgDetalleCompetencia.DataSource = vPuestoCandidatos;
-        //    //Utilerias aux = new Utilerias();
-        //    //DataTable vTablaDetalle = aux.ConvertToDataTable<E_GRAFICA_PUESTO_CANDIDATOS>(vPuestoCandidatos, false);
-        //   // divTabla.Controls.Add(CrearTabla(vPuestoCandidatos));
-        //}
+        //    List<ColumnSeries> lstCandidatos = new List<ColumnSeries>();
 
-        //protected void pgDetalleCompetencia_CellDataBound(object sender, PivotGridCellDataBoundEventArgs e)
-        //{
-        //    if (e.Cell is PivotGridRowHeaderCell)
-        //    {
-        //        if (e.Cell.Controls.Count > 1)
-        //        {
-        //            (e.Cell.Controls[0] as Button).Visible = false;
-        //        }
-        //    }
+        //    bool continua = false;
+        //    rhcPuestoCandidatos.PlotArea.Series.Clear();
+        //    string vCandidatosComp = "";
 
-        //}
-
-        //public List<E_PROMEDIO_CANDIDATO> getPromedios()
-        //{
-        //    vListaCandidatos = new List<int>();
-
-        //    if (vIdPuestoVsCandidatos != Guid.Empty)
-        //    {
-        //        E_PUESTO_VS_CANDIDATOS oPuestoCandidatos = ContextoConsultasComparativas.oPuestoVsCandidatos.Where(t => t.vIdPuestoVsCandidatos == vIdPuestoVsCandidatos).FirstOrDefault();
-        //        vListaCandidatos = oPuestoCandidatos.vListaCandidatos;
-        //    }
-
-        //    var vXelements = vListaCandidatos.Select(x =>
-        //                                   new XElement("CANDIDATO",
-        //                                   new XAttribute("ID_CANDIDATO", x)));
-
-        //    XElement SELECCIONADOS =
-        //    new XElement("CANDIDATOS", vXelements
-        //        );
-
-        //    List<E_PROMEDIO> vlstPromedios = new List<E_PROMEDIO>();
         //    foreach (var item in vListaCandidatos)
         //    {
-        //        List<E_PROMEDIO> vlist = new List<E_PROMEDIO>();
-        //        foreach (var i in vPuestoCandidatos)
+        //        ColumnSeries vCandidatos = new ColumnSeries();
+
+        //        if (plstPuestoCandidatos.Where(w => w.ID_CANDIDATO == item).FirstOrDefault() != null)
+        //            if (plstPuestoCandidatos.Where(w => w.ID_CANDIDATO == item).FirstOrDefault().CL_SOLICITUD != null)
+        //                vCandidatosComp = vCandidatosComp + "- (" + plstPuestoCandidatos.Where(w => w.ID_CANDIDATO == item).FirstOrDefault().CL_SOLICITUD + ")" + plstPuestoCandidatos.Where(w => w.ID_CANDIDATO == item).FirstOrDefault().NB_CANDIDATO + "<br>";
+        //            else
+        //                vCandidatosComp = vCandidatosComp + "- ()" + plstPuestoCandidatos.Where(w => w.ID_CANDIDATO == item).FirstOrDefault().NB_CANDIDATO + "<br>";
+
+        //        foreach (var i in plstPuestoCandidatos)
         //        {
-        //            if (item == i.ID_CANDIDATO && i.NO_VALOR_NIVEL != 0)
+        //            if (item == i.ID_CANDIDATO)
         //            {
-        //                vlist.Add(new E_PROMEDIO { NB_PUESTO = i.NB_CANDIDATO, PORCENTAJE = i.PR_TRUNCADO, PORCENTAJE_NO_TRUNCADO = i.PR_CANDIDATO });
+        //                vCandidatos.SeriesItems.Add(new CategorySeriesItem(i.NO_VALOR_CANDIDATO));
+        //                vCandidatos.LabelsAppearance.Visible = false;
+
+        //                vCandidatos.Name = "(" + i.CL_SOLICITUD + ")" + i.NB_CANDIDATO;
+        //                continua = true;
         //            }
         //        }
-        //        vlstPromedios.Add(new E_PROMEDIO
+        //        if (continua)
         //        {
-        //            NB_PUESTO = vlist.Select(s => s.NB_PUESTO).FirstOrDefault(),
-        //            PROMEDIO = vlist.Average(s => s.PORCENTAJE),
-        //            FG_SUPERA_130 = vlist.Average(s => s.PORCENTAJE_NO_TRUNCADO) >= 130 ? true : false,
-        //            PROMEDIO_TXT = vlist.Average(s => s.PORCENTAJE_NO_TRUNCADO) >= 130 ? Decimal.Round(vlist.Average(s => s.PORCENTAJE) ?? 1, 2).ToString() + "(*)" : Decimal.Round(vlist.Average(s => s.PORCENTAJE) ?? 1, 2).ToString()
-        //        });
+        //            vCandidatos.SeriesItems.Add(new CategorySeriesItem(0));
+        //            lstCandidatos.Add(vCandidatos);
+        //            //rhcPuestoCandidatos.PlotArea.Series.Add(vCandidatos);
+        //            continua = false;
+        //        }
+
         //    }
+        //    lbCandidatos.InnerHtml = vCandidatosComp;
 
-        //    List<E_PROMEDIO_CANDIDATO> listPersonas = new List<E_PROMEDIO_CANDIDATO>();
-        //    listPersonas = vlstPromedios.Select(s => new
-        //    E_PROMEDIO_CANDIDATO
+        //    var vPuestoCompetencia = plstPuestoCandidatos.Select(s => new { s.NO_VALOR_NIVEL, s.NB_PUESTO, s.NB_COMPETENCIA, s.CL_PUESTO }).Distinct().ToList();
+        //    ColumnSeries vPuesto = new ColumnSeries();
+        //    lbPuestoCom.InnerText = "- (" + vPuestoCompetencia.FirstOrDefault().CL_PUESTO + ") " + vPuestoCompetencia.FirstOrDefault().NB_PUESTO;
+
+
+        //    foreach (var item in vPuestoCompetencia)
         //    {
-        //        Persona = s.NB_PUESTO,
-        //        Compatibilidad = s.PROMEDIO_TXT
-        //    }).ToList();
+        //        vPuesto.SeriesItems.Add(new CategorySeriesItem(item.NO_VALOR_NIVEL));
+        //        vPuesto.LabelsAppearance.Visible = false;
+        //        vPuesto.Name = "(" + item.CL_PUESTO + ") " + item.NB_PUESTO;
+        //        rhcPuestoCandidatos.PlotArea.XAxis.Items.Add(item.NB_COMPETENCIA);
+        //        rhcPuestoCandidatos.PlotArea.XAxis.LabelsAppearance.RotationAngle = 270;
+        //        rhcPuestoCandidatos.PlotArea.YAxis.MaxValue = 6;
+        //    }
+        //    rhcPuestoCandidatos.PlotArea.Series.Add(vPuesto);
 
-        //    return listPersonas;
-        //}
-
-        //public string getColor(string pClColor)
-        //{
-        //    //MediumOrchid
-        //    //Yellow
-        //    //SkyBlue
-        //    //LawnGreen
-        //    //OrangeRed
-        //    //Orange
-        //    switch (pClColor)
+        //    foreach (var it in lstCandidatos)
         //    {
-        //        case "MediumOrchid": return "#BA55D3";
-        //        case "Yellow": return "#FFFF00";
-        //        case "LawnGreen": return "#7CFC00";
-        //        case "OrangeRed": return "#FF4500";
-        //        case "Orange": return "#FFA500";
-        //        case "SkyBlue": return "#7EC0EE";
-        //        default: return "#FFFFFF";
+        //        rhcPuestoCandidatos.PlotArea.Series.Add(it);
         //    }
         //}
+
 
         public HtmlGenericControl CrearTabla(List<E_GRAFICA_PUESTO_CANDIDATOS> pValoresTabla)
         {
             var vPuestoCompetencia = pValoresTabla.Select(s => new { s.NO_VALOR_NIVEL, s.NB_PUESTO, s.CL_COMPETENCIA, s.NB_COMPETENCIA, s.DS_COMPETENCIA, s.CL_COLOR, s.CL_PUESTO }).Distinct().ToList();
 
             HtmlGenericControl vCtrlTabla = new HtmlGenericControl("table");
-            vCtrlTabla.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 8pt;");
-            HtmlGenericControl vCtrlColumn = new HtmlGenericControl("tr");
-            vCtrlColumn.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 8pt;");
+            vCtrlTabla.Attributes.Add("style", "border-collapse: collapse; width:100%;");
 
-            HtmlGenericControl vCtrlTh2 = new HtmlGenericControl("th");
-            vCtrlTh2.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 8pt;");
+            HtmlGenericControl vCtrlColumn = new HtmlGenericControl("thead");
+            vCtrlColumn.Attributes.Add("style", "background: #E6E6E6;");
+
+            HtmlGenericControl vCtrlRowEncabezado1 = new HtmlGenericControl("tr");
+            vCtrlRowEncabezado1.Attributes.Add("style", "page-break-inside:avoid; page-break-after:auto;");
+
+            HtmlGenericControl vCtrlTh2 = new HtmlGenericControl("td");
+            vCtrlTh2.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; font-weight:bold; width:150px;");
             vCtrlTh2.InnerText = String.Format("{0}", "Competencia");
-            vCtrlColumn.Controls.Add(vCtrlTh2);
+            vCtrlRowEncabezado1.Controls.Add(vCtrlTh2);
 
-            HtmlGenericControl vCtrlTh3 = new HtmlGenericControl("th");
-            vCtrlTh3.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 8pt;");
+            HtmlGenericControl vCtrlTh3 = new HtmlGenericControl("td");
+            vCtrlTh3.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; font-weight:bold; width:300px;");
             vCtrlTh3.InnerText = String.Format("{0}", "Descripción");
-            vCtrlColumn.Controls.Add(vCtrlTh3);
+            vCtrlRowEncabezado1.Controls.Add(vCtrlTh3);
 
             foreach (var item in vListaCandidatos)
             {
@@ -395,27 +350,36 @@ namespace SIGE.WebApp.IDP
                 {
                     vNbCandidato = pValoresTabla.Where(w => w.ID_CANDIDATO == item).FirstOrDefault().NB_CANDIDATO.ToString();
                     HtmlGenericControl vCtrlThCandidato = new HtmlGenericControl("th");
-                    vCtrlThCandidato.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 8pt;");
+                    vCtrlThCandidato.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; font-weight:bold; width:100px;");
+                    vCtrlThCandidato.Attributes.Add("align", "center");
                     HtmlGenericControl vCtrlDiv = new HtmlGenericControl("div");
                     vCtrlDiv.Attributes.Add("style", "writing-mode:tb-rl; height: 250px;");
                     vCtrlDiv.InnerText = String.Format("{0}", vNbCandidato);
                     vCtrlThCandidato.Controls.Add(vCtrlDiv);
-                    vCtrlColumn.Controls.Add(vCtrlThCandidato);
+                    vCtrlRowEncabezado1.Controls.Add(vCtrlThCandidato);
                 }
             }
+
+
+            vCtrlColumn.Controls.Add(vCtrlRowEncabezado1);
+
             vCtrlTabla.Controls.Add(vCtrlColumn);
+
+            HtmlGenericControl vCtrlTbody = new HtmlGenericControl("tbody");
+
             foreach (var item in vPuestoCompetencia)
             {
                 HtmlGenericControl vCtrlRow = new HtmlGenericControl("tr");
+                vCtrlRow.Attributes.Add("style", "page-break-inside:avoid; page-break-after:auto;");
 
                 HtmlGenericControl vCtrlNbCompetencia = new HtmlGenericControl("td");
-                vCtrlNbCompetencia.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 8pt;");
+                vCtrlNbCompetencia.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; padding: 10px;");
                 vCtrlNbCompetencia.InnerText = String.Format("{0}", item.NB_COMPETENCIA);
                 vCtrlRow.Controls.Add(vCtrlNbCompetencia);
 
 
                 HtmlGenericControl vCtrlDsCompetencia = new HtmlGenericControl("td");
-                vCtrlDsCompetencia.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 8pt;");
+                vCtrlDsCompetencia.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; padding: 10px;");
                 vCtrlDsCompetencia.InnerText = String.Format("{0}", item.DS_COMPETENCIA);
                 vCtrlRow.Controls.Add(vCtrlDsCompetencia);
 
@@ -425,15 +389,22 @@ namespace SIGE.WebApp.IDP
                     if (vCumplimientoCandidato != null)
                     {
                         HtmlGenericControl vCtrlPrCandidato = new HtmlGenericControl("td");
-                        vCtrlPrCandidato.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 8pt;");
+                        vCtrlPrCandidato.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; padding: 10px;");
+                        vCtrlPrCandidato.Attributes.Add("align", "right");
                         vCtrlPrCandidato.InnerText = String.Format("{0}%", vCumplimientoCandidato.PR_CANDIDATO);
                         vCtrlRow.Controls.Add(vCtrlPrCandidato);
                     }
                 }
-                vCtrlTabla.Controls.Add(vCtrlRow);
+                vCtrlTbody.Controls.Add(vCtrlRow);
+
             }
+            vCtrlTabla.Controls.Add(vCtrlTbody);
+
             return vCtrlTabla;
         }
+
+
+        #region Clases
 
         [Serializable]
         public class E_PROMEDIO_CANDIDATO
@@ -470,5 +441,8 @@ namespace SIGE.WebApp.IDP
         {
             public string svcImage { get; set; }
         }
+
+
+        #endregion
     }
 }

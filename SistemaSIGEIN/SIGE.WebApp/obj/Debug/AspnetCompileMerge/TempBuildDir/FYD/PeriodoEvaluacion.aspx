@@ -37,6 +37,20 @@
         function closeWindow() {
             GetRadWindow().close();
         }
+
+
+        //function closeWindow() {
+        //    var pDatos = [{
+        //        accion: "ACTUALIZARLISTA"
+
+        //    }];
+        //    cerrarVentana(pDatos);
+        //}
+
+        //function cerrarVentana(recargarList) {
+        //    sendDataToParent(recargarList);
+        //}
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">

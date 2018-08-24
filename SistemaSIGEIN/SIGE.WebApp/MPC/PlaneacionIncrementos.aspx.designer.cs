@@ -148,42 +148,6 @@ namespace SIGE.WebApp.MPC {
         protected global::Telerik.Web.UI.RadPane rpDefinicionCriterios;
         
         /// <summary>
-        /// lblSemaforoVerde control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblSemaforoVerde;
-        
-        /// <summary>
-        /// txtSemaforoVerde control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtSemaforoVerde;
-        
-        /// <summary>
-        /// lblSemaforoAmarillo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblSemaforoAmarillo;
-        
-        /// <summary>
-        /// txtSemaforoAmarillo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtSemaforoAmarillo;
-        
-        /// <summary>
         /// lblCuartilIncremento control.
         /// </summary>
         /// <remarks>

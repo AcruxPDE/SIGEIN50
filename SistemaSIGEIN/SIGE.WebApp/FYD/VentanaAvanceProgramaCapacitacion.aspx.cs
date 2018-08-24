@@ -75,6 +75,8 @@ namespace SIGE.WebApp.FYD
 
         private string vNbPrograma;
 
+        private int? vIdRol;
+
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
 
         public int vNoEmpleados
@@ -83,53 +85,15 @@ namespace SIGE.WebApp.FYD
             set { ViewState["vs_no_empleados"] = value; }
         }
 
+        public string vXmlSeleccionados
+        {
+            get { return (string)ViewState["vs_vXmlSeleccionados"]; }
+            set { ViewState["vs_vXmlSeleccionados"] = value; }
+        }
+
         #endregion
 
         #region Funciones
-
-        //public List<E_PROGRAMA_CAPACITACION> cargarParseProgramasCapacitacion(List<SPE_OBTIENE_K_PROGRAMA_Result> lista)
-        //{
-        //    List<E_PROGRAMA_CAPACITACION> programas = new List<E_PROGRAMA_CAPACITACION>();
-        //    if (lista.Count > 0)
-        //    {
-        //        foreach (var item in lista)
-        //        {
-        //            programas.Add(new E_PROGRAMA_CAPACITACION
-        //            {
-        //                ID_PROGRAMA_EMPLEADO_COMPETENCIA = item.ID_PROGRAMA_EMPLEADO_COMPETENCIA,
-        //                ID_PROGRAMA = item.ID_PROGRAMA,
-        //                ID_PROGRAMA_COMPETENCIA = item.ID_PROGRAMA_COMPETENCIA,
-        //                ID_PROGRAMA_EMPLEADO = item.ID_PROGRAMA_EMPLEADO,
-        //                CL_PRIORIDAD = item.CL_PRIORIDAD,
-        //                PR_RESULTADO = item.PR_RESULTADO,
-        //                CL_PROGRAMA = item.CL_PROGRAMA,
-        //                NB_PROGRAMA = item.NB_PROGRAMA,
-        //                CL_TIPO_PROGRAMA = item.CL_TIPO_PROGRAMA,
-        //                CL_ESTADO = item.CL_ESTADO,
-        //                CL_VERSION = item.CL_VERSION,
-        //                ID_DOCUMENTO_AUTORIZACION = item.ID_DOCUMENTO_AUTORIZACION,
-        //                NB_COMPETENCIA = item.NB_COMPETENCIA,
-        //                NB_CLASIFICACION_COMPETENCIA = item.NB_CLASIFICACION_COMPETENCIA,
-        //                CL_TIPO_COMPETENCIA = item.CL_TIPO_COMPETENCIA,
-        //                CL_COLOR = item.CL_COLOR,
-        //                NB_EVALUADO = item.NB_EVALUADO,
-        //                CL_EVALUADO = item.CL_EVALUADO,
-        //                NB_PUESTO = item.NB_PUESTO,
-        //                CL_PUESTO = item.CL_PUESTO,
-        //                NB_DEPARTAMENTO = item.NB_DEPARTAMENTO,
-        //                ID_COMPETENCIA = item.ID_COMPETENCIA,
-        //                ID_EMPLEADO = item.ID_EMPLEADO,
-        //                ID_PERIODO = item.ID_PERIODO,
-        //                CL_PERIODO = item.CL_PERIODO,
-        //                NB_PERIODO = item.NB_PERIODO,
-        //                DS_PERIODO = item.DS_PERIODO,
-        //                TIPO_EVALUACION = item.TIPO_EVALUACION,
-        //                DS_NOTAS = (item.DS_NOTAS != null) ? valdarDsNotas(item.DS_NOTAS.ToString()) : ""
-        //            });
-        //        }
-        //    }
-        //    return programas;
-        //}
 
         public string validarDsNotas(string vdsNotas)
         {
@@ -237,6 +201,10 @@ namespace SIGE.WebApp.FYD
                 //vNoEmpleados = (from a in vLista select new { a.ID_EMPLEADO }).Distinct().Count();
 
                 //pgridAvanceProgramaCapacitacion.DataSource = vLstAvancePrograma;
+                ProgramaNegocio nPrograma = new ProgramaNegocio();
+                List<SPE_OBTIENE_K_PROGRAMA_COMPETENCIA_Result> vLstCompetenciasPrograma = new List<SPE_OBTIENE_K_PROGRAMA_COMPETENCIA_Result>();
+                vLstCompetenciasPrograma = nPrograma.ObtenerCompetenciasPrograma(ID_PROGRAMA: pID_PROGRAMA);
+                GenerarColumnasGroupName(vLstCompetenciasPrograma);
             }
         }
 
@@ -252,19 +220,19 @@ namespace SIGE.WebApp.FYD
                     vLstSeleccionadosFiltros.Remove(vEmpleado);
                 }
 
-                GeneraAvance(true);
+                GeneraAvance();
             }
-            else
-            {
-                E_AVANCE_PROGRAMA_CAPACITACION vEmpleado = vLstSeleccionados.Where(w => w.ID_EMPLEADO == pIdEmpleado).FirstOrDefault();
+            //else
+            //{
+            //    E_AVANCE_PROGRAMA_CAPACITACION vEmpleado = vLstSeleccionados.Where(w => w.ID_EMPLEADO == pIdEmpleado).FirstOrDefault();
 
-                if (vEmpleado != null)
-                {
-                    vLstSeleccionados.Remove(vEmpleado);
-                }
+            //    if (vEmpleado != null)
+            //    {
+            //        vLstSeleccionados.Remove(vEmpleado);
+            //    }
 
-                GeneraAvance(true);
-            }
+            //  //  GeneraAvance(true);
+            //}
         }
 
         public void CargarAvancePrograma(string pSeleccionados)
@@ -288,187 +256,187 @@ namespace SIGE.WebApp.FYD
                 }
             }
 
-            GeneraAvance(true);
+            GeneraAvance();
         }
 
-        public void GeneraAvance(bool pFgFiltro)
+        public void GeneraAvance()
         {
-            string vXmlSeleccionados = null;
             ProgramaNegocio neg = new ProgramaNegocio();
 
-            if (vLstSeleccionadosFiltros.Count > 0)
-            {
+            //if (vLstSeleccionadosFiltros.Count > 0)
+            //{
                 if (vLstSeleccionadosFiltros.Count > 0)
                 {
                     vXmlSeleccionados = (new XElement("EMPLEADOS", vLstSeleccionadosFiltros.Select(s => new XElement("EMPLEADO", new XAttribute("ID_EMPLEADO", s.ID_EMPLEADO))))).ToString();
 
                     rgPrograma.Rebind();
+                    rgAvancePrograma.Rebind();
                 }
-                else if (pFgFiltro)
-                    vXmlSeleccionados = "<EMPLEADOS></EMPLEADOS>";
+                //else if (pFgFiltro)
+                //    vXmlSeleccionados = "<EMPLEADOS></EMPLEADOS>";
 
-                var vLista = neg.ObtenerAvancePrograma(pID_PROGRAMA, ContextoUsuario.oUsuario.ID_EMPRESA, vXmlSeleccionados);
-                vLstAvancePrograma = new List<E_AVANCE_PROGRAMA_CAPACITACION>();
-                int vCount = vLstSeleccionadosFiltros.Count();
-                vLstEventos = new List<E_AVANCE_PROGRAMA_CAPACITACION>();
+                //var vLista = neg.ObtenerAvancePrograma(pID_PROGRAMA, ContextoUsuario.oUsuario.ID_EMPRESA, vXmlSeleccionados, vIdRol);
+                //vLstAvancePrograma = new List<E_AVANCE_PROGRAMA_CAPACITACION>();
+                //int vCount = vLstSeleccionadosFiltros.Count();
+                //vLstEventos = new List<E_AVANCE_PROGRAMA_CAPACITACION>();
 
-                foreach (var s in vLista)
-                {
-                    E_AVANCE_PROGRAMA_CAPACITACION vLstItem = new E_AVANCE_PROGRAMA_CAPACITACION
-                    {
-                        ID_PROGRAMA_COMPETENCIA = s.ID_PROGRAMA_COMPETENCIA,
-                        NB_CATEGORIA = s.NB_CATEGORIA,
-                        NB_CLASIFICACION = s.NB_CLASIFICACION,
-                        CL_COLOR = s.CL_COLOR,
-                        ID_COMPETENCIA = s.ID_COMPETENCIA,
-                        NB_COMPETENCIA = s.NB_COMPETENCIA,
-                        //CL_EMPLEADO = String.Format("<a href='#' onclick='OpenInventario({1})'>{0}</a>", s.CL_EMPLEADO, s.ID_EMPLEADO),
-                        CL_EMPLEADO = s.CL_EMPLEADO,
-                        //CL_PUESTO = String.Format("<a href='#' onclick='OpenDescriptivo({1})'>{0}</a>", s.CL_PUESTO, s.ID_PUESTO),
-                        CL_PUESTO = s.CL_PUESTO,
-                        ID_PROGRAMA_EMPLEADO = s.ID_PROGRAMA_COMPETENCIA,
-                        NB_EMPLEADO = String.Format("{0}<br>{1}<br>{2}<br>{3}", String.Format("<a href='#' onclick='OpenInventario({1})'>{0}</a>", s.CL_EMPLEADO, s.ID_EMPLEADO), s.NB_EMPLEADO, String.Format("<a href='#' onclick='OpenDescriptivo({1})'>{0}</a>", s.CL_PUESTO, s.ID_PUESTO), s.NB_PUESTO),
-                        ID_EMPLEADO = s.ID_EMPLEADO,
-                        NB_PUESTO = s.NB_PUESTO,
-                        ID_PROGRAMA_EMPLEADO_COMPETENCIA = s.ID_PROGRAMA_EMPLEADO_COMPETENCIA,
-                        ID_EVENTO = s.ID_EVENTO,
-                        FE_INICIO = s.FE_INICIO,
-                        FE_TERMINO = s.FE_TERMINO,
-                        ID_EVENTO_PARTICIPANTE = s.ID_EVENTO_PARTICIPANTE,
-                        PR_CUMPLIMIENTO = s.PR_CUMPLIMIENTO,
-                        NB_EVENTOS_RELACIONADOS = String.Format("<a href='#' onclick='OpenEvento({1})'>{0}</a>", s.NB_EVENTOS_RELACIONADOS, s.ID_EVENTO),
-                        NO_COLOR_AVANCE = s.NO_COLOR_AVANCE,
-                        CL_COLOR_AVANCE = s.CL_COLOR_AVANCE,
-                        CL_COLOR_ASISTENCIA = s.CL_COLOR_ASISTENCIA
-                    };
+                //foreach (var s in vLista)
+                //{
+                //    E_AVANCE_PROGRAMA_CAPACITACION vLstItem = new E_AVANCE_PROGRAMA_CAPACITACION
+                //    {
+                //        ID_PROGRAMA_COMPETENCIA = s.ID_PROGRAMA_COMPETENCIA,
+                //        NB_CATEGORIA = s.NB_CATEGORIA,
+                //        NB_CLASIFICACION = s.NB_CLASIFICACION,
+                //        CL_COLOR = s.CL_COLOR,
+                //        ID_COMPETENCIA = s.ID_COMPETENCIA,
+                //        NB_COMPETENCIA = s.NB_COMPETENCIA,
+                //        //CL_EMPLEADO = String.Format("<a href='#' onclick='OpenInventario({1})'>{0}</a>", s.CL_EMPLEADO, s.ID_EMPLEADO),
+                //        CL_EMPLEADO = s.CL_EMPLEADO,
+                //        //CL_PUESTO = String.Format("<a href='#' onclick='OpenDescriptivo({1})'>{0}</a>", s.CL_PUESTO, s.ID_PUESTO),
+                //        CL_PUESTO = s.CL_PUESTO,
+                //        ID_PROGRAMA_EMPLEADO = s.ID_PROGRAMA_COMPETENCIA,
+                //        NB_EMPLEADO = String.Format("{0}<br>{1}<br>{2}<br>{3}", String.Format("<a href='#' onclick='OpenInventario({1})'>{0}</a>", s.CL_EMPLEADO, s.ID_EMPLEADO), s.NB_EMPLEADO, String.Format("<a href='#' onclick='OpenDescriptivo({1})'>{0}</a>", s.CL_PUESTO, s.ID_PUESTO), s.NB_PUESTO),
+                //        ID_EMPLEADO = s.ID_EMPLEADO,
+                //        NB_PUESTO = s.NB_PUESTO,
+                //        ID_PROGRAMA_EMPLEADO_COMPETENCIA = s.ID_PROGRAMA_EMPLEADO_COMPETENCIA,
+                //        ID_EVENTO = s.ID_EVENTO,
+                //        FE_INICIO = s.FE_INICIO,
+                //        FE_TERMINO = s.FE_TERMINO,
+                //        ID_EVENTO_PARTICIPANTE = s.ID_EVENTO_PARTICIPANTE,
+                //        PR_CUMPLIMIENTO = s.PR_CUMPLIMIENTO,
+                //        NB_EVENTOS_RELACIONADOS = String.Format("<a href='#' onclick='OpenEvento({1})'>{0}</a>", s.NB_EVENTOS_RELACIONADOS, s.ID_EVENTO),
+                //        NO_COLOR_AVANCE = s.NO_COLOR_AVANCE,
+                //        CL_COLOR_AVANCE = s.CL_COLOR_AVANCE,
+                //        CL_COLOR_ASISTENCIA = s.CL_COLOR_ASISTENCIA
+                //    };
 
-                    E_AVANCE_PROGRAMA_CAPACITACION vLstItemEvento = new E_AVANCE_PROGRAMA_CAPACITACION
-                    {
-                        ID_COMPETENCIA = s.ID_COMPETENCIA,
-                        ID_EVENTO = s.ID_EVENTO,
-                        FE_INICIO = s.FE_INICIO,
-                        FE_TERMINO = s.FE_TERMINO,
-                        ID_EVENTO_PARTICIPANTE = s.ID_EVENTO_PARTICIPANTE,
-                        PR_CUMPLIMIENTO = s.PR_CUMPLIMIENTO,
-                        NB_EVENTOS_RELACIONADOS = s.NB_EVENTOS_RELACIONADOS,
-                        NO_COLOR_AVANCE = s.NO_COLOR_AVANCE,
-                        CL_COLOR_AVANCE = s.CL_COLOR_AVANCE,
-                        CL_COLOR_ASISTENCIA = s.CL_COLOR_ASISTENCIA
-                    };
+                //    E_AVANCE_PROGRAMA_CAPACITACION vLstItemEvento = new E_AVANCE_PROGRAMA_CAPACITACION
+                //    {
+                //        ID_COMPETENCIA = s.ID_COMPETENCIA,
+                //        ID_EVENTO = s.ID_EVENTO,
+                //        FE_INICIO = s.FE_INICIO,
+                //        FE_TERMINO = s.FE_TERMINO,
+                //        ID_EVENTO_PARTICIPANTE = s.ID_EVENTO_PARTICIPANTE,
+                //        PR_CUMPLIMIENTO = s.PR_CUMPLIMIENTO,
+                //        NB_EVENTOS_RELACIONADOS = s.NB_EVENTOS_RELACIONADOS,
+                //        NO_COLOR_AVANCE = s.NO_COLOR_AVANCE,
+                //        CL_COLOR_AVANCE = s.CL_COLOR_AVANCE,
+                //        CL_COLOR_ASISTENCIA = s.CL_COLOR_ASISTENCIA
+                //    };
 
-                    if (!(vLstEventos.Exists(e => e.ID_EVENTO == s.ID_EVENTO && e.ID_COMPETENCIA == s.ID_COMPETENCIA)))
-                        vLstEventos.Add(vLstItemEvento);
+                //    if (!(vLstEventos.Exists(e => e.ID_EVENTO == s.ID_EVENTO && e.ID_COMPETENCIA == s.ID_COMPETENCIA)))
+                //        vLstEventos.Add(vLstItemEvento);
 
-                    vLstAvancePrograma.Add(vLstItem);
-                }
+                //    vLstAvancePrograma.Add(vLstItem);
+                //}
 
-                if (!pFgFiltro)
-                {
-                    foreach (var s in vLista)
-                    {
-                        if (!vLstSeleccionados.Exists(e => e.ID_EMPLEADO == s.ID_EMPLEADO))
-                        {
-                            E_AVANCE_PROGRAMA_CAPACITACION vLstItem = new E_AVANCE_PROGRAMA_CAPACITACION
-                            {
-                                ID_EMPLEADO = s.ID_EMPLEADO,
-                                NB_EMPLEADO = s.NB_EMPLEADO,
-                                NB_PUESTO = s.NB_PUESTO
-                            };
-                            vLstSeleccionados.Add(vLstItem);
-                        }
-                    }
-                }
+                //if (!pFgFiltro)
+                //{
+                //    foreach (var s in vLista)
+                //    {
+                //        if (!vLstSeleccionados.Exists(e => e.ID_EMPLEADO == s.ID_EMPLEADO))
+                //        {
+                //            E_AVANCE_PROGRAMA_CAPACITACION vLstItem = new E_AVANCE_PROGRAMA_CAPACITACION
+                //            {
+                //                ID_EMPLEADO = s.ID_EMPLEADO,
+                //                NB_EMPLEADO = s.NB_EMPLEADO,
+                //                NB_PUESTO = s.NB_PUESTO
+                //            };
+                //            vLstSeleccionados.Add(vLstItem);
+                //        }
+                //    }
+                //}
 
-                vNoEmpleados = (from a in vLista select new { a.ID_EMPLEADO }).Distinct().Count();
-                pgridAvanceProgramaCapacitacion.DataSource = vLstAvancePrograma;
-            }
-            else
-            {
-                if (vLstSeleccionados.Count > 0)
-                {
-                    vXmlSeleccionados = (new XElement("EMPLEADOS", vLstSeleccionados.Select(s => new XElement("EMPLEADO", new XAttribute("ID_EMPLEADO", s.ID_EMPLEADO))))).ToString();
+                //vNoEmpleados = (from a in vLista select new { a.ID_EMPLEADO }).Distinct().Count();
+               // pgridAvanceProgramaCapacitacion.DataSource = vLstAvancePrograma;
+           // }
+            //else
+            //{
+            //    if (vLstSeleccionados.Count > 0)
+            //    {
+            //        vXmlSeleccionados = (new XElement("EMPLEADOS", vLstSeleccionados.Select(s => new XElement("EMPLEADO", new XAttribute("ID_EMPLEADO", s.ID_EMPLEADO))))).ToString();
 
-                    rgPrograma.Rebind();
-                }
-                else if (pFgFiltro)
-                    vXmlSeleccionados = "<EMPLEADOS></EMPLEADOS>";
+            //        rgPrograma.Rebind();
+            //    }
+            //    else if (pFgFiltro)
+            //        vXmlSeleccionados = "<EMPLEADOS></EMPLEADOS>";
 
-                var vLista = neg.ObtenerAvancePrograma(pID_PROGRAMA, ContextoUsuario.oUsuario.ID_EMPRESA, vXmlSeleccionados);
-                vLstAvancePrograma = new List<E_AVANCE_PROGRAMA_CAPACITACION>();
-                int vCount = vLstSeleccionados.Count();
-                vLstEventos = new List<E_AVANCE_PROGRAMA_CAPACITACION>();
+                //var vLista = neg.ObtenerAvancePrograma(pID_PROGRAMA, ContextoUsuario.oUsuario.ID_EMPRESA, vXmlSeleccionados, vIdRol);
+                //vLstAvancePrograma = new List<E_AVANCE_PROGRAMA_CAPACITACION>();
+                //int vCount = vLstSeleccionados.Count();
+                //vLstEventos = new List<E_AVANCE_PROGRAMA_CAPACITACION>();
 
-                foreach (var s in vLista)
-                {
-                    E_AVANCE_PROGRAMA_CAPACITACION vLstItem = new E_AVANCE_PROGRAMA_CAPACITACION
-                    {
-                        ID_PROGRAMA_COMPETENCIA = s.ID_PROGRAMA_COMPETENCIA,
-                        NB_CATEGORIA = s.NB_CATEGORIA,
-                        NB_CLASIFICACION = s.NB_CLASIFICACION,
-                        CL_COLOR = s.CL_COLOR,
-                        ID_COMPETENCIA = s.ID_COMPETENCIA,
-                        NB_COMPETENCIA = s.NB_COMPETENCIA,
-                        //CL_EMPLEADO = String.Format("<a href='#' onclick='OpenInventario({1})'>{0}</a>", s.CL_EMPLEADO, s.ID_EMPLEADO),
-                        CL_EMPLEADO = s.CL_EMPLEADO,
-                        //CL_PUESTO = String.Format("<a href='#' onclick='OpenDescriptivo({1})'>{0}</a>", s.CL_PUESTO, s.ID_PUESTO),
-                        CL_PUESTO = s.CL_PUESTO,
-                        ID_PROGRAMA_EMPLEADO = s.ID_PROGRAMA_COMPETENCIA,
-                        NB_EMPLEADO = String.Format("{0}<br>{1}<br>{2}<br>{3}", String.Format("<a href='#' onclick='OpenInventario({1})'>{0}</a>", s.CL_EMPLEADO, s.ID_EMPLEADO), s.NB_EMPLEADO, String.Format("<a href='#' onclick='OpenDescriptivo({1})'>{0}</a>", s.CL_PUESTO, s.ID_PUESTO), s.NB_PUESTO),
-                        ID_EMPLEADO = s.ID_EMPLEADO,
-                        NB_PUESTO = s.NB_PUESTO,
-                        ID_PROGRAMA_EMPLEADO_COMPETENCIA = s.ID_PROGRAMA_EMPLEADO_COMPETENCIA,
-                        ID_EVENTO = s.ID_EVENTO,
-                        FE_INICIO = s.FE_INICIO,
-                        FE_TERMINO = s.FE_TERMINO,
-                        ID_EVENTO_PARTICIPANTE = s.ID_EVENTO_PARTICIPANTE,
-                        PR_CUMPLIMIENTO = s.PR_CUMPLIMIENTO,
-                        NB_EVENTOS_RELACIONADOS = String.Format("<a href='#' onclick='OpenEvento({1})'>{0}</a>", s.NB_EVENTOS_RELACIONADOS, s.ID_EVENTO),
-                        NO_COLOR_AVANCE = s.NO_COLOR_AVANCE,
-                        CL_COLOR_AVANCE = s.CL_COLOR_AVANCE,
-                        CL_COLOR_ASISTENCIA = s.CL_COLOR_ASISTENCIA
-                    };
+                //foreach (var s in vLista)
+                //{
+                //    E_AVANCE_PROGRAMA_CAPACITACION vLstItem = new E_AVANCE_PROGRAMA_CAPACITACION
+                //    {
+                //        ID_PROGRAMA_COMPETENCIA = s.ID_PROGRAMA_COMPETENCIA,
+                //        NB_CATEGORIA = s.NB_CATEGORIA,
+                //        NB_CLASIFICACION = s.NB_CLASIFICACION,
+                //        CL_COLOR = s.CL_COLOR,
+                //        ID_COMPETENCIA = s.ID_COMPETENCIA,
+                //        NB_COMPETENCIA = s.NB_COMPETENCIA,
+                //        //CL_EMPLEADO = String.Format("<a href='#' onclick='OpenInventario({1})'>{0}</a>", s.CL_EMPLEADO, s.ID_EMPLEADO),
+                //        CL_EMPLEADO = s.CL_EMPLEADO,
+                //        //CL_PUESTO = String.Format("<a href='#' onclick='OpenDescriptivo({1})'>{0}</a>", s.CL_PUESTO, s.ID_PUESTO),
+                //        CL_PUESTO = s.CL_PUESTO,
+                //        ID_PROGRAMA_EMPLEADO = s.ID_PROGRAMA_COMPETENCIA,
+                //        NB_EMPLEADO = String.Format("{0}<br>{1}<br>{2}<br>{3}", String.Format("<a href='#' onclick='OpenInventario({1})'>{0}</a>", s.CL_EMPLEADO, s.ID_EMPLEADO), s.NB_EMPLEADO, String.Format("<a href='#' onclick='OpenDescriptivo({1})'>{0}</a>", s.CL_PUESTO, s.ID_PUESTO), s.NB_PUESTO),
+                //        ID_EMPLEADO = s.ID_EMPLEADO,
+                //        NB_PUESTO = s.NB_PUESTO,
+                //        ID_PROGRAMA_EMPLEADO_COMPETENCIA = s.ID_PROGRAMA_EMPLEADO_COMPETENCIA,
+                //        ID_EVENTO = s.ID_EVENTO,
+                //        FE_INICIO = s.FE_INICIO,
+                //        FE_TERMINO = s.FE_TERMINO,
+                //        ID_EVENTO_PARTICIPANTE = s.ID_EVENTO_PARTICIPANTE,
+                //        PR_CUMPLIMIENTO = s.PR_CUMPLIMIENTO,
+                //        NB_EVENTOS_RELACIONADOS = String.Format("<a href='#' onclick='OpenEvento({1})'>{0}</a>", s.NB_EVENTOS_RELACIONADOS, s.ID_EVENTO),
+                //        NO_COLOR_AVANCE = s.NO_COLOR_AVANCE,
+                //        CL_COLOR_AVANCE = s.CL_COLOR_AVANCE,
+                //        CL_COLOR_ASISTENCIA = s.CL_COLOR_ASISTENCIA
+                //    };
 
-                    E_AVANCE_PROGRAMA_CAPACITACION vLstItemEvento = new E_AVANCE_PROGRAMA_CAPACITACION
-                    {
-                        ID_COMPETENCIA = s.ID_COMPETENCIA,
-                        ID_EVENTO = s.ID_EVENTO,
-                        FE_INICIO = s.FE_INICIO,
-                        FE_TERMINO = s.FE_TERMINO,
-                        ID_EVENTO_PARTICIPANTE = s.ID_EVENTO_PARTICIPANTE,
-                        PR_CUMPLIMIENTO = s.PR_CUMPLIMIENTO,
-                        NB_EVENTOS_RELACIONADOS = s.NB_EVENTOS_RELACIONADOS,
-                        NO_COLOR_AVANCE = s.NO_COLOR_AVANCE,
-                        CL_COLOR_AVANCE = s.CL_COLOR_AVANCE,
-                        CL_COLOR_ASISTENCIA = s.CL_COLOR_ASISTENCIA
-                    };
+                //    E_AVANCE_PROGRAMA_CAPACITACION vLstItemEvento = new E_AVANCE_PROGRAMA_CAPACITACION
+                //    {
+                //        ID_COMPETENCIA = s.ID_COMPETENCIA,
+                //        ID_EVENTO = s.ID_EVENTO,
+                //        FE_INICIO = s.FE_INICIO,
+                //        FE_TERMINO = s.FE_TERMINO,
+                //        ID_EVENTO_PARTICIPANTE = s.ID_EVENTO_PARTICIPANTE,
+                //        PR_CUMPLIMIENTO = s.PR_CUMPLIMIENTO,
+                //        NB_EVENTOS_RELACIONADOS = s.NB_EVENTOS_RELACIONADOS,
+                //        NO_COLOR_AVANCE = s.NO_COLOR_AVANCE,
+                //        CL_COLOR_AVANCE = s.CL_COLOR_AVANCE,
+                //        CL_COLOR_ASISTENCIA = s.CL_COLOR_ASISTENCIA
+                //    };
 
-                    if (!(vLstEventos.Exists(e => e.ID_EVENTO == s.ID_EVENTO && e.ID_COMPETENCIA == s.ID_COMPETENCIA)))
-                        vLstEventos.Add(vLstItemEvento);
+                //    if (!(vLstEventos.Exists(e => e.ID_EVENTO == s.ID_EVENTO && e.ID_COMPETENCIA == s.ID_COMPETENCIA)))
+                //        vLstEventos.Add(vLstItemEvento);
 
-                    vLstAvancePrograma.Add(vLstItem);
-                }
+                //    vLstAvancePrograma.Add(vLstItem);
+                //}
 
-                if (!pFgFiltro)
-                {
-                    foreach (var s in vLista)
-                    {
-                        if (!vLstSeleccionados.Exists(e => e.ID_EMPLEADO == s.ID_EMPLEADO))
-                        {
-                            E_AVANCE_PROGRAMA_CAPACITACION vLstItem = new E_AVANCE_PROGRAMA_CAPACITACION
-                            {
-                                ID_EMPLEADO = s.ID_EMPLEADO,
-                                NB_EMPLEADO = s.NB_EMPLEADO,
-                                NB_PUESTO = s.NB_PUESTO
-                            };
-                            vLstSeleccionados.Add(vLstItem);
-                        }
-                    }
-                }
+                //if (!pFgFiltro)
+                //{
+                //    foreach (var s in vLista)
+                //    {
+                //        if (!vLstSeleccionados.Exists(e => e.ID_EMPLEADO == s.ID_EMPLEADO))
+                //        {
+                //            E_AVANCE_PROGRAMA_CAPACITACION vLstItem = new E_AVANCE_PROGRAMA_CAPACITACION
+                //            {
+                //                ID_EMPLEADO = s.ID_EMPLEADO,
+                //                NB_EMPLEADO = s.NB_EMPLEADO,
+                //                NB_PUESTO = s.NB_PUESTO
+                //            };
+                //            vLstSeleccionados.Add(vLstItem);
+                //        }
+                //    }
+                //}
 
-                vNoEmpleados = (from a in vLista select new { a.ID_EMPLEADO }).Distinct().Count();
-                pgridAvanceProgramaCapacitacion.DataSource = vLstAvancePrograma;
-            }
-          
+               // vNoEmpleados = (from a in vLista select new { a.ID_EMPLEADO }).Distinct().Count();
+               // pgridAvanceProgramaCapacitacion.DataSource = vLstAvancePrograma;
+           // }
+
         }
 
         public Color GetColor(int pNoColor)
@@ -512,29 +480,57 @@ namespace SIGE.WebApp.FYD
             ProgramaNegocio pNegocio = new ProgramaNegocio();
 
             List<SPE_OBTIENE_K_PROGRAMA_COMPETENCIA_Result> vLstCompetencias = pNegocio.ObtenerCompetenciasPrograma(ID_PROGRAMA: pID_PROGRAMA);
-            vLstEmpleados = new List<E_AVANCE_PROGRAMA_CAPACITACION>();
+          List<SPE_OBTIENE_K_PROGRAMA_EMPLEADO_Result>  vLstEmpleadosProgramaExc = new List<SPE_OBTIENE_K_PROGRAMA_EMPLEADO_Result>();
+          List<SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION_Result> vLstPrograma = new List<SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION_Result>();
+          vLstPrograma = pNegocio.ObtenerAvancePrograma(pID_PROGRAMA, ContextoUsuario.oUsuario.ID_EMPRESA, vXmlSeleccionados, vIdRol);
 
 
-            foreach (var item in vLstAvancePrograma)
-            {
-                E_AVANCE_PROGRAMA_CAPACITACION vLstEmp = new E_AVANCE_PROGRAMA_CAPACITACION
-                {
-                    ID_EMPLEADO = item.ID_EMPLEADO,
-                    CL_EMPLEADO = item.CL_EMPLEADO,
-                    NB_EMPLEADO = item.NB_EMPLEADO,
-                    CL_PUESTO = item.CL_PUESTO,
-                    NB_PUESTO = item.NB_PUESTO,
-                };
+         // vLstEmpleadosPrograma = pNegocio.ObtieneEmpleadosParticipantes(pID_PROGRAMA: pID_PROGRAMA, pID_ROL: vIdRol).ToList();
 
-                if (!vLstEmpleados.Exists(e => e.ID_EMPLEADO == item.ID_EMPLEADO))
-                    vLstEmpleados.Add(vLstEmp);
-            }
+          if (vLstSeleccionadosFiltros.Count > 0)
+          {
+              var vLstSeleccionadosExc = pNegocio.ObtieneEmpleadosParticipantes(pID_PROGRAMA: pID_PROGRAMA, pID_ROL: vIdRol).ToList();
+              foreach (var item in vLstSeleccionadosExc)
+              {
+                  if (vLstSeleccionadosFiltros.Exists(e => e.ID_EMPLEADO == item.ID_EMPLEADO))
+                  {
+                      vLstEmpleadosProgramaExc.Add(new SPE_OBTIENE_K_PROGRAMA_EMPLEADO_Result
+                      {
+                          ID_PROGRAMA_EMPLEADO = item.ID_PROGRAMA_EMPLEADO,
+                          ID_PROGRAMA = item.ID_PROGRAMA,
+                          ID_EMPLEADO = item.ID_EMPLEADO,
+                          NB_EMPLEADO = item.NB_EMPLEADO,
+                          CL_EMPLEADO = item.CL_EMPLEADO,
+                          ID_PUESTO = item.ID_PUESTO,
+                          NB_PUESTO = item.NB_PUESTO,
+                          CL_PUESTO = item.CL_PUESTO,
+                          NB_DEPARTAMENTO = item.NB_DEPARTAMENTO,
+                          CL_PROGRAMA = item.CL_PROGRAMA,
+                          NB_PROGRAMA = item.NB_PROGRAMA,
+                          ID_EMPRESA = item.ID_EMPRESA
+                      });
+                  }
+              }
+          }
+          else
+              vLstEmpleadosProgramaExc = pNegocio.ObtieneEmpleadosParticipantes(pID_PROGRAMA: pID_PROGRAMA, pID_ROL: vIdRol);
+            //foreach (var item in vLstAvancePrograma)
+            //{
+            //    E_AVANCE_PROGRAMA_CAPACITACION vLstEmp = new E_AVANCE_PROGRAMA_CAPACITACION
+            //    {
+            //        ID_EMPLEADO = item.ID_EMPLEADO,
+            //        CL_EMPLEADO = item.CL_EMPLEADO,
+            //        NB_EMPLEADO = item.NB_EMPLEADO,
+            //        CL_PUESTO = item.CL_PUESTO,
+            //        NB_PUESTO = item.NB_PUESTO,
+            //    };
+
+            //    if (!vLstEmpleados.Exists(e => e.ID_EMPLEADO == item.ID_EMPLEADO))
+            //        vLstEmpleados.Add(vLstEmp);
+            //}
 
             ProgramaNegocio neg = new ProgramaNegocio();
-            int vColorCompetenciasY = 4;
-            int vEmpleadoX = 5;
-            int vCompetenciaEventoY = 4;
-            int vRenglonEmpleado = 4;
+            int vEmpleadoY = 2;
             try
             {
                 Stream newStream = null;
@@ -547,176 +543,251 @@ namespace SIGE.WebApp.FYD
 
                     ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets[1];
 
-                    foreach (var item in vLstCompetencias)
+                    //foreach (var item in vLstCompetencias)
+                    //{
+                    //   // int vEventosCompetencia = 1;
+
+                    //    //if (vLstEventos.Count > 0)
+                    //    //    vEventosCompetencia = vLstEventos.Where(w => w.ID_COMPETENCIA == item.ID_COMPETENCIA).Count();
+
+                    //    worksheet.Cells[vColorCompetenciasY + 1, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    //    worksheet.Cells[vColorCompetenciasY + 1, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(item.CL_COLOR));
+
+
+                    //    ExcelRange RangoCompetencia = worksheet.Cells[vColorCompetenciasY + 1, 1, (vColorCompetenciasY + 1), 1];
+                    //    RangoCompetencia.Merge = true;
+                    //    RangoCompetencia.Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+
+                    //    vColorCompetenciasY = vColorCompetenciasY + 1;
+                    //}
+
+                    worksheet.Cells[2, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+                    worksheet.Cells[2, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    worksheet.Cells[2, 1].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
+                    worksheet.Cells[2, 1].Value = "No. de empleado";
+                    worksheet.Cells[2, 1].Style.Font.Bold = true;
+                    worksheet.Cells[2, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                    worksheet.Cells[2, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+                    worksheet.Cells[2, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    worksheet.Cells[2, 2].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
+                    worksheet.Cells[2, 2].Value = "Nombre completo";
+                    worksheet.Cells[2, 2].Style.Font.Bold = true;
+                    worksheet.Cells[2, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                    worksheet.Cells[2, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+                    worksheet.Cells[2, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    worksheet.Cells[2, 3].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
+                    worksheet.Cells[2, 3].Value = "Clave de puesto";
+                    worksheet.Cells[2, 3].Style.Font.Bold = true;
+                    worksheet.Cells[2, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                    worksheet.Cells[2, 4].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+                    worksheet.Cells[2, 4].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    worksheet.Cells[2, 4].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
+                    worksheet.Cells[2, 4].Value = "Puesto";
+                    worksheet.Cells[2, 4].Style.Font.Bold = true;
+                    worksheet.Cells[2, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                    //worksheet.Cells[4, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+                    //worksheet.Cells[4, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    //worksheet.Cells[4, 2].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
+                    //worksheet.Cells[4, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                    //worksheet.Cells[4, 3].Value = "Clasificación";
+                    //worksheet.Cells[4, 3].Style.Font.Bold = true;
+                    //worksheet.Cells[4, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+                    //worksheet.Cells[4, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    //worksheet.Cells[4, 3].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
+                    //worksheet.Cells[4, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                    //worksheet.Cells[4, 4].Value = "Competencia";
+                    //worksheet.Cells[4, 4].Style.Font.Bold = true;
+                    //worksheet.Cells[4, 4].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+                    //worksheet.Cells[4, 4].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    //worksheet.Cells[4, 4].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
+                    //worksheet.Cells[4, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                    //worksheet.Cells[4, 5].Value = "Eventos de capacitación asociados";
+                    //worksheet.Cells[4, 5].Style.Font.Bold = true;
+                    //worksheet.Cells[4, 5].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+                    //worksheet.Cells[4, 5].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    //worksheet.Cells[4, 5].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
+                    //worksheet.Cells[4, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                    int vClasificacion = 4;
+                    foreach (var item in vLstCompetencias.Select(s => s.NB_CLASIFICACION).Distinct())
                     {
-                        int vEventosCompetencia = 1;
+                        worksheet.Cells[1, vClasificacion + 1].Value = item;
+                        worksheet.Cells[1, vClasificacion + 1].Style.Font.Bold = true;
+                        worksheet.Cells[1, vClasificacion + 1].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                        worksheet.Cells[1, vClasificacion + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        worksheet.Cells[1, vClasificacion + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet.Cells[1, vClasificacion + 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(vLstCompetencias.Where(w => w.NB_CLASIFICACION == item).Select(s => s.CL_COLOR).FirstOrDefault()));
+                        worksheet.Row(1).Height = 50;
 
-                        if (vLstEventos.Count > 0)
-                            vEventosCompetencia = vLstEventos.Where(w => w.ID_COMPETENCIA == item.ID_COMPETENCIA).Count();
+                        ExcelRange RangoClasificacion = worksheet.Cells[1, vClasificacion + 1, 1, (vLstCompetencias.Where(w => w.NB_CLASIFICACION == item).Count()) + vClasificacion];
+                        RangoClasificacion.Merge = true;
+                        RangoClasificacion.Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
 
-                        worksheet.Cells[vColorCompetenciasY + 1, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet.Cells[vColorCompetenciasY + 1, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(item.CL_COLOR));
-
-
-                        ExcelRange RangoCompetencia = worksheet.Cells[vColorCompetenciasY + 1, 1, (vColorCompetenciasY + vEventosCompetencia), 1];
-                        RangoCompetencia.Merge = true;
-                        RangoCompetencia.Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
-
-                        vColorCompetenciasY = vColorCompetenciasY + vEventosCompetencia;
+                        vClasificacion = vClasificacion + (vLstCompetencias.Where(w => w.NB_CLASIFICACION == item).Count());
                     }
 
-                    worksheet.Cells[4, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
-                    worksheet.Cells[4, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                    worksheet.Cells[4, 1].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
-                    worksheet.Cells[4, 2].Value = "Categoria";
-                    worksheet.Cells[4, 2].Style.Font.Bold = true;
-                    worksheet.Cells[4, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
-                    worksheet.Cells[4, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                    worksheet.Cells[4, 2].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
-                    worksheet.Cells[4, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                    worksheet.Cells[4, 3].Value = "Clasificación";
-                    worksheet.Cells[4, 3].Style.Font.Bold = true;
-                    worksheet.Cells[4, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
-                    worksheet.Cells[4, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                    worksheet.Cells[4, 3].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
-                    worksheet.Cells[4, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                    worksheet.Cells[4, 4].Value = "Competencia";
-                    worksheet.Cells[4, 4].Style.Font.Bold = true;
-                    worksheet.Cells[4, 4].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
-                    worksheet.Cells[4, 4].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                    worksheet.Cells[4, 4].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
-                    worksheet.Cells[4, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                    worksheet.Cells[4, 5].Value = "Eventos de capacitación asociados";
-                    worksheet.Cells[4, 5].Style.Font.Bold = true;
-                    worksheet.Cells[4, 5].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
-                    worksheet.Cells[4, 5].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                    worksheet.Cells[4, 5].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
-                    worksheet.Cells[4, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
                     int vCompetencia = 4;
                     foreach (var item in vLstCompetencias)
                     {
-                        int vEventosCompetencia = 1;
+                       // int vEventosCompetencia = 1;
 
-                        if (vLstEventos.Count > 0)
-                            vEventosCompetencia = vLstEventos.Where(w => w.ID_COMPETENCIA == item.ID_COMPETENCIA).Count();
+                        //if (vLstEventos.Count > 0)
+                        //    vEventosCompetencia = vLstEventos.Where(w => w.ID_COMPETENCIA == item.ID_COMPETENCIA).Count();
 
-                        worksheet.Cells[vCompetencia + 1, 2].Value = item.NB_CATEGORIA;
-                        worksheet.Cells[vCompetencia + 1, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-                        worksheet.Cells[vCompetencia + 1, 3].Value = item.NB_CLASIFICACION;
-                        worksheet.Cells[vCompetencia + 1, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-                        worksheet.Cells[vCompetencia + 1, 4].Value = item.NB_COMPETENCIA;
-                        worksheet.Cells[vCompetencia + 1, 4].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                       
+                        worksheet.Cells[2, vCompetencia + 1].Value = item.NB_COMPETENCIA;
+                        worksheet.Cells[2, vCompetencia + 1].Style.Font.Bold = true;
+                        worksheet.Cells[2, vCompetencia + 1].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                        worksheet.Cells[2, vCompetencia + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        worksheet.Cells[2, vCompetencia + 1].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+                        worksheet.Cells[2, vCompetencia + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet.Cells[2, vCompetencia + 1].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
+                        worksheet.Row(2).Height = 30;
 
-                        ExcelRange RangoCategoria = worksheet.Cells[vCompetencia + 1, 2, (vCompetencia + vEventosCompetencia), 2];
-                        RangoCategoria.Merge = true;
-                        RangoCategoria.Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+                        //worksheet.Cells[vCompetencia + 1].Value = item.NB_COMPETENCIA;
+                        //worksheet.Cells[vCompetencia + 1].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
 
-                        ExcelRange RangoClasificacion = worksheet.Cells[vCompetencia + 1, 3, (vCompetencia + vEventosCompetencia), 3];
-                        RangoClasificacion.Merge = true;
-                        RangoClasificacion.Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+                        //ExcelRange RangoCategoria = worksheet.Cells[vCompetencia + 1, 2, (vCompetencia + vEventosCompetencia), 2];
+                        //RangoCategoria.Merge = true;
+                        //RangoCategoria.Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
 
-                        ExcelRange RangoCompetencia = worksheet.Cells[vCompetencia + 1, 4, (vCompetencia + vEventosCompetencia), 4];
+
+                        ExcelRange RangoCompetencia = worksheet.Cells[2,vCompetencia + 1, 2,(vCompetencia + 1)];
                         RangoCompetencia.Merge = true;
                         RangoCompetencia.Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
 
-                        vCompetencia = vCompetencia + vEventosCompetencia;
+                        vCompetencia = vCompetencia + 1;
                     }
 
-                    foreach (var item in vLstEmpleados.OrderBy(o => o.ID_EMPLEADO))
+                    foreach (var item in vLstEmpleadosProgramaExc)
                     {
-                        worksheet.Cells[1, vEmpleadoX + 1].Value = item.CL_EMPLEADO;
-                        worksheet.Row(1).Height = 20;
-                        worksheet.Cells[1, vEmpleadoX + 1].Style.Font.Bold = true;
-                        worksheet.Cells[1, vEmpleadoX + 1].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
-                        worksheet.Cells[1, vEmpleadoX + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet.Cells[1, vEmpleadoX + 1].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
-                        worksheet.Cells[1, vEmpleadoX + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        worksheet.Cells[vEmpleadoY + 1, 1].Value = item.CL_EMPLEADO;
+                        worksheet.Cells[vEmpleadoY + 1, 1].Style.Font.Bold = true;
+                        worksheet.Cells[vEmpleadoY + 1, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+                        worksheet.Cells[vEmpleadoY + 1, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet.Cells[vEmpleadoY + 1, 1].Style.Fill.BackgroundColor.SetColor(Color.White);
+                        worksheet.Cells[vEmpleadoY + 1, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        worksheet.Cells[2, vEmpleadoX + 1].Value = vLstSeleccionados != null? vLstSeleccionados.Where(w => w.ID_EMPLEADO == item.ID_EMPLEADO).FirstOrDefault().NB_EMPLEADO : item.NB_EMPLEADO;
-                        worksheet.Cells[2, vEmpleadoX + 1].Style.Font.Bold = true;
-                        worksheet.Row(2).Height = 20;
-                        worksheet.Cells[2, vEmpleadoX + 1].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
-                        worksheet.Cells[2, vEmpleadoX + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet.Cells[2, vEmpleadoX + 1].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
-                        worksheet.Cells[2, vEmpleadoX + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        worksheet.Cells[vEmpleadoY + 1, 2].Value = item.NB_EMPLEADO;
+                        worksheet.Cells[vEmpleadoY + 1, 2].Style.Font.Bold = true;
+                        worksheet.Cells[vEmpleadoY + 1, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+                        worksheet.Cells[vEmpleadoY + 1, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet.Cells[vEmpleadoY + 1, 2].Style.Fill.BackgroundColor.SetColor(Color.White);
+                        worksheet.Cells[vEmpleadoY + 1, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        worksheet.Cells[3, vEmpleadoX + 1].Value = item.CL_PUESTO;
-                        worksheet.Row(3).Height = 20;
-                        worksheet.Cells[3, vEmpleadoX + 1].Style.Font.Bold = true;
-                        worksheet.Cells[3, vEmpleadoX + 1].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
-                        worksheet.Cells[3, vEmpleadoX + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet.Cells[3, vEmpleadoX + 1].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
-                        worksheet.Cells[3, vEmpleadoX + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        worksheet.Cells[vEmpleadoY + 1, 3].Value = item.CL_PUESTO;
+                        worksheet.Cells[vEmpleadoY + 1, 3].Style.Font.Bold = true;
+                        worksheet.Cells[vEmpleadoY + 1, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+                        worksheet.Cells[vEmpleadoY + 1, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet.Cells[vEmpleadoY + 1, 3].Style.Fill.BackgroundColor.SetColor(Color.White);
+                        worksheet.Cells[vEmpleadoY + 1, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-                        worksheet.Cells[4, vEmpleadoX + 1].Value = item.NB_PUESTO;
-                        worksheet.Row(4).Height = 20;
-                        worksheet.Cells[4, vEmpleadoX + 1].Style.Font.Bold = true;
-                        worksheet.Cells[4, vEmpleadoX + 1].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
-                        worksheet.Cells[4, vEmpleadoX + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet.Cells[4, vEmpleadoX + 1].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
-                        worksheet.Cells[4, vEmpleadoX + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        worksheet.Cells[vEmpleadoY + 1, 4].Value = item.NB_PUESTO;
+                        worksheet.Cells[vEmpleadoY + 1, 4].Style.Font.Bold = true;
+                        worksheet.Cells[vEmpleadoY + 1, 4].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+                        worksheet.Cells[vEmpleadoY + 1, 4].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet.Cells[vEmpleadoY + 1, 4].Style.Fill.BackgroundColor.SetColor(Color.White);
+                        worksheet.Cells[vEmpleadoY + 1, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        worksheet.Row(vEmpleadoY + 1).Height = 30;
 
-                        vEmpleadoX++;
+                        vEmpleadoY++;
                     }
 
-                    foreach(var itemCompetencia in vLstCompetencias)
+                    int vRengEmpleado = 2;
+                    foreach (var itemEmpleado in vLstEmpleadosProgramaExc)
                     {
-                        int vColumnaEmpleado = 5;
-
-                        var itemsEventos = vLstEventos.Where(w => w.ID_COMPETENCIA == itemCompetencia.ID_COMPETENCIA);
-                        if (itemsEventos != null)
+                        int vColumnaCompetencia = 4;
+                        foreach (var itemCompetencia in vLstCompetencias)
                         {
-                            foreach (var item in itemsEventos)
+                            var vEmpleadoCompetencia = vLstPrograma.Where(w => w.ID_EMPLEADO == itemEmpleado.ID_EMPLEADO && w.ID_COMPETENCIA == itemCompetencia.ID_COMPETENCIA).FirstOrDefault();
+
+                            if(vEmpleadoCompetencia != null)
                             {
-                                vColumnaEmpleado = 5;
-                                worksheet.Cells[vCompetenciaEventoY + 1, 5].Value = item.NB_EVENTOS_RELACIONADOS;
-                                worksheet.Cells[vCompetenciaEventoY + 1, 5].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
-                                worksheet.Row(vCompetenciaEventoY + 1).Height = 20;
+                                    worksheet.Cells[vRengEmpleado + 1, vColumnaCompetencia + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                                    worksheet.Cells[vRengEmpleado + 1, vColumnaCompetencia + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                                    worksheet.Cells[vRengEmpleado + 1, vColumnaCompetencia + 1].Style.Fill.BackgroundColor.SetColor(GetColor(vEmpleadoCompetencia.NO_COLOR_AVANCE));
+                                    worksheet.Cells[vRengEmpleado + 1, vColumnaCompetencia + 1].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
 
-                                foreach (var itemEmpleado in vLstEmpleados)
-                                {
-                                   
-                                    var vEmpleadoAvance = vLstAvancePrograma.Where(w => w.ID_COMPETENCIA == itemCompetencia.ID_COMPETENCIA && w.ID_EMPLEADO == itemEmpleado.ID_EMPLEADO && item.ID_EVENTO == w.ID_EVENTO).FirstOrDefault();
-
-                                    var vLstEvaluado = neg.ObtenerReporteEvaluado(vEmpleadoAvance.ID_EVENTO, vEmpleadoAvance.ID_EMPLEADO, vEmpleadoAvance.ID_COMPETENCIA).FirstOrDefault();
-
-                                    worksheet.Cells[vRenglonEmpleado + 1, vColumnaEmpleado + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                                    worksheet.Cells[vRenglonEmpleado + 1, vColumnaEmpleado + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                                    worksheet.Cells[vRenglonEmpleado + 1, vColumnaEmpleado + 1].Style.Fill.BackgroundColor.SetColor(GetColor(vEmpleadoAvance.NO_COLOR_AVANCE));
-                                    worksheet.Cells[vRenglonEmpleado + 1, vColumnaEmpleado + 1].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
-
-                                    if (vLstEvaluado != null && (vEmpleadoAvance.NO_COLOR_AVANCE == 10 || vEmpleadoAvance.NO_COLOR_AVANCE == 11 || vEmpleadoAvance.NO_COLOR_AVANCE == 12))
+                                    if (vEmpleadoCompetencia != null && (vEmpleadoCompetencia.NO_COLOR_AVANCE == 10 || vEmpleadoCompetencia.NO_COLOR_AVANCE == 11 || vEmpleadoCompetencia.NO_COLOR_AVANCE == 12))
                                     {
-                                        if (vLstEvaluado.PR_EVALUACION_PARTICIPANTE != null)
-                                            worksheet.Cells[vRenglonEmpleado + 1, vColumnaEmpleado + 1].Value = String.Format("{0:0.00}%", vLstEvaluado.PR_EVALUACION_PARTICIPANTE);
+
+                                        if (vEmpleadoCompetencia.ID_EVENTO != null)
+                                            worksheet.Cells[vRengEmpleado + 1, vColumnaCompetencia + 1].Value =  ObtienePorcentajeEvento(vEmpleadoCompetencia.ID_EVENTO, vEmpleadoCompetencia.ID_EMPLEADO, vEmpleadoCompetencia.ID_COMPETENCIA);
                                         else
-                                            worksheet.Cells[vRenglonEmpleado + 1, vColumnaEmpleado + 1].Value = "NC";
+                                            worksheet.Cells[vRengEmpleado + 1, vColumnaCompetencia + 1].Value = "NC";
                                     }
-                                    vColumnaEmpleado++;
-                                }
-
-                                vCompetenciaEventoY++;
-                                vRenglonEmpleado++;
                             }
-                        }
-                        else
-                        {
-                            worksheet.Cells[vCompetenciaEventoY + 1, 5].Value = "";
-                            worksheet.Cells[vCompetenciaEventoY + 1, 5].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
-                            worksheet.Row(vCompetenciaEventoY + 1).Height = 20;
-
-                            foreach(var itemEmpleado in vLstEmpleados)
-                            {
-                                worksheet.Cells[vRenglonEmpleado + 1, vColumnaEmpleado + 1].Value = "";
-                                vColumnaEmpleado++;
+                            else{
+                                 worksheet.Cells[vRengEmpleado + 1, vColumnaCompetencia + 1].Value = "";
+                                 worksheet.Cells[vRengEmpleado+ 1, vColumnaCompetencia + 1].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+                                 worksheet.Row(vRengEmpleado + 1).Height = 30;
                             }
-                            vCompetenciaEventoY++;
-                            vRenglonEmpleado++;
+
+                            vColumnaCompetencia++;
                         }
+                        vRengEmpleado++;
+
+                    }
+
+
+                    //foreach(var itemCompetencia in vLstCompetencias)
+                    //{
+                    //    int vColumnaEmpleado = 5;
+
+                    //    var itemsEventos = vLstEventos.Where(w => w.ID_COMPETENCIA == itemCompetencia.ID_COMPETENCIA);
+                    //    if (itemsEventos != null)
+                    //    {
+                    //        foreach (var item in itemsEventos)
+                    //        {
+                    //            vColumnaEmpleado = 5;
+                    //            worksheet.Cells[vCompetenciaEventoY + 1, 5].Value = item.NB_EVENTOS_RELACIONADOS;
+                    //            worksheet.Cells[vCompetenciaEventoY + 1, 5].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+                    //            worksheet.Row(vCompetenciaEventoY + 1).Height = 20;
+
+                    //            foreach (var itemEmpleado in vLstEmpleados.OrderBy(o=>o.ID_EMPLEADO))
+                    //            {
+                                   
+                    //                var vEmpleadoAvance = vLstAvancePrograma.Where(w => w.ID_COMPETENCIA == itemCompetencia.ID_COMPETENCIA && w.ID_EMPLEADO == itemEmpleado.ID_EMPLEADO && item.ID_EVENTO == w.ID_EVENTO).FirstOrDefault();
+
+                    //                var vLstEvaluado = neg.ObtenerReporteEvaluado(vEmpleadoAvance.ID_EVENTO, vEmpleadoAvance.ID_EMPLEADO, vEmpleadoAvance.ID_COMPETENCIA, vIdRol).FirstOrDefault();
+
+                    //                worksheet.Cells[vRenglonEmpleado + 1, vColumnaEmpleado + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                    //                worksheet.Cells[vRenglonEmpleado + 1, vColumnaEmpleado + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    //                worksheet.Cells[vRenglonEmpleado + 1, vColumnaEmpleado + 1].Style.Fill.BackgroundColor.SetColor(GetColor(vEmpleadoAvance.NO_COLOR_AVANCE));
+                    //                worksheet.Cells[vRenglonEmpleado + 1, vColumnaEmpleado + 1].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+
+                    //                if (vLstEvaluado != null && (vEmpleadoAvance.NO_COLOR_AVANCE == 10 || vEmpleadoAvance.NO_COLOR_AVANCE == 11 || vEmpleadoAvance.NO_COLOR_AVANCE == 12))
+                    //                {
+                    //                    if (vLstEvaluado.PR_EVALUACION_PARTICIPANTE != null)
+                    //                        worksheet.Cells[vRenglonEmpleado + 1, vColumnaEmpleado + 1].Value = String.Format("{0:0.00}%", vLstEvaluado.PR_EVALUACION_PARTICIPANTE);
+                    //                    else
+                    //                        worksheet.Cells[vRenglonEmpleado + 1, vColumnaEmpleado + 1].Value = "NC";
+                    //                }
+                    //                vColumnaEmpleado++;
+                    //            }
+
+                    //            vCompetenciaEventoY++;
+                    //            vRenglonEmpleado++;
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        worksheet.Cells[vCompetenciaEventoY + 1, 5].Value = "";
+                    //        worksheet.Cells[vCompetenciaEventoY + 1, 5].Style.Border.BorderAround(ExcelBorderStyle.Thin, Color.Black);
+                    //        worksheet.Row(vCompetenciaEventoY + 1).Height = 20;
+
+                    //        foreach(var itemEmpleado in vLstEmpleados)
+                    //        {
+                    //            worksheet.Cells[vRenglonEmpleado + 1, vColumnaEmpleado + 1].Value = "";
+                    //            vColumnaEmpleado++;
+                    //        }
+                    //        vCompetenciaEventoY++;
+                    //        vRenglonEmpleado++;
+                    //    }
 
                     
-                    }
+                    //}
 
                     worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
 
@@ -735,13 +806,297 @@ namespace SIGE.WebApp.FYD
             }
         }
 
-        //protected void ButtonExcel_Click(object sender, EventArgs e)
-        //{
-        //    string alternateText = (sender as ImageButton).AlternateText;
-        //    pgridAvanceProgramaCapacitacion.ExportSettings.Excel.Format = (PivotGridExcelFormat)Enum.Parse(typeof(PivotGridExcelFormat), alternateText);
-        //    pgridAvanceProgramaCapacitacion.ExportSettings.IgnorePaging = true;
-        //    pgridAvanceProgramaCapacitacion.ExportToExcel();
-        //}
+        public Color ObtenerColor(string pClColor)
+        {
+
+            Color vColor = System.Drawing.Color.Gray;
+
+            switch (pClColor)
+            {
+                case "Orange":
+                    vColor =  System.Drawing.Color.Orange;
+                    break;
+                case "MediumOrchid":
+                    vColor = System.Drawing.Color.MediumOrchid;
+                    break;
+                case "OrangeRed":
+                    vColor = System.Drawing.Color.OrangeRed;
+                    break;
+                case "Brown":
+                    vColor = System.Drawing.Color.Brown;
+                    break;
+                case "Green":
+                    vColor = System.Drawing.Color.Green;
+                    break;
+                case "SkyBlue":
+                    vColor = System.Drawing.Color.SkyBlue;
+                    break;
+                case "LawnGreen":
+                    vColor = System.Drawing.Color.LawnGreen;
+                    break;
+                case "Yellow":
+                    vColor = System.Drawing.Color.Yellow;
+                    break;
+
+           }
+
+            return vColor;
+        }
+
+        public void GenerarColumnasGroupName(List<SPE_OBTIENE_K_PROGRAMA_COMPETENCIA_Result> pLstCompetencias)
+        {
+            foreach (var item in pLstCompetencias.Select(s => s.NB_CLASIFICACION).Distinct())
+            {
+                GridColumnGroup columnGroupPer = new GridColumnGroup();
+                rgAvancePrograma.MasterTableView.ColumnGroups.Add(columnGroupPer);
+                columnGroupPer.Name = item;
+                columnGroupPer.HeaderText = item;
+                columnGroupPer.HeaderStyle.BackColor = ObtenerColor(pLstCompetencias.Where(w => w.NB_CLASIFICACION == item).FirstOrDefault().CL_COLOR);
+                columnGroupPer.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+            }
+        }
+
+        private DataTable CreateTable()
+        {
+
+            ProgramaNegocio nPrograma = new ProgramaNegocio();
+            List<SPE_OBTIENE_K_PROGRAMA_COMPETENCIA_Result> vLstCompetenciasPrograma = new List<SPE_OBTIENE_K_PROGRAMA_COMPETENCIA_Result>();
+            vLstCompetenciasPrograma = nPrograma.ObtenerCompetenciasPrograma(ID_PROGRAMA: pID_PROGRAMA);
+            //GenerarColumnasGroupName(vLstCompetenciasPrograma);
+
+            DataTable vRadGrid = new DataTable();
+
+            vRadGrid.Columns.Add("ID_EMPLEADO", typeof(int));
+            vRadGrid.Columns.Add("CL_EMPLEADO", typeof(string));
+            vRadGrid.Columns.Add("NB_EMPLEADO", typeof(string));
+            vRadGrid.Columns.Add("CL_PUESTO", typeof(string));
+            vRadGrid.Columns.Add("NB_PUESTO", typeof(string));
+
+            foreach (SPE_OBTIENE_K_PROGRAMA_COMPETENCIA_Result item in vLstCompetenciasPrograma)
+            {
+                vRadGrid.Columns.Add(item.ID_COMPETENCIA.ToString(), typeof(string));
+            }
+
+            List<SPE_OBTIENE_K_PROGRAMA_EMPLEADO_Result> vLstEmpleadosPrograma = new List<SPE_OBTIENE_K_PROGRAMA_EMPLEADO_Result>();
+
+            if (vLstSeleccionadosFiltros.Count > 0)
+            {              
+               var vLstSeleccionados = nPrograma.ObtieneEmpleadosParticipantes(pID_PROGRAMA: pID_PROGRAMA, pID_ROL: vIdRol).ToList();
+               foreach (var item in vLstSeleccionados)
+               {
+                   if(vLstSeleccionadosFiltros.Exists(e => e.ID_EMPLEADO == item.ID_EMPLEADO))
+                   {
+                    vLstEmpleadosPrograma.Add(new SPE_OBTIENE_K_PROGRAMA_EMPLEADO_Result
+                        {
+                    ID_PROGRAMA_EMPLEADO = item.ID_PROGRAMA_EMPLEADO,
+                    ID_PROGRAMA  = item.ID_PROGRAMA,
+                    ID_EMPLEADO = item.ID_EMPLEADO,
+                    NB_EMPLEADO = item.NB_EMPLEADO,
+                    CL_EMPLEADO= item.CL_EMPLEADO,
+                    ID_PUESTO = item.ID_PUESTO,
+                    NB_PUESTO = item.NB_PUESTO,
+                    CL_PUESTO = item.CL_PUESTO,
+                    NB_DEPARTAMENTO = item.NB_DEPARTAMENTO,
+                    CL_PROGRAMA = item.CL_PROGRAMA,
+                    NB_PROGRAMA = item.NB_PROGRAMA,
+                    ID_EMPRESA = item.ID_EMPRESA
+                        });
+                  }
+               }
+            }
+            else
+                vLstEmpleadosPrograma = nPrograma.ObtieneEmpleadosParticipantes(pID_PROGRAMA: pID_PROGRAMA, pID_ROL: vIdRol);
+
+            List<SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION_Result> vLstPrograma = new List<SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION_Result>();
+            vLstPrograma = nPrograma.ObtenerAvancePrograma(pID_PROGRAMA, ContextoUsuario.oUsuario.ID_EMPRESA, vXmlSeleccionados, vIdRol);
+
+
+            foreach (SPE_OBTIENE_K_PROGRAMA_EMPLEADO_Result item in vLstEmpleadosPrograma)
+            {
+                DataRow vRegistro = vRadGrid.NewRow();
+
+                vRegistro["ID_EMPLEADO"] = item.ID_EMPLEADO;
+                vRegistro["CL_EMPLEADO"] = item.CL_EMPLEADO;
+                vRegistro["NB_EMPLEADO"] = String.Format("<a href='#' onclick='OpenInventario({1})'>{0}</a>", item.NB_EMPLEADO, item.ID_EMPLEADO);
+                vRegistro["CL_PUESTO"] = item.CL_PUESTO;
+                vRegistro["NB_PUESTO"] = String.Format("<a href='#' onclick='OpenDescriptivo({1})'>{0}</a>", item.NB_PUESTO, item.ID_PUESTO);
+
+                foreach (SPE_OBTIENE_K_PROGRAMA_COMPETENCIA_Result vCompetencia in vLstCompetenciasPrograma)
+                {
+                    var vCompetenciaEmpleado = vLstPrograma.Where(w => w.ID_EMPLEADO == item.ID_EMPLEADO && w.ID_COMPETENCIA == vCompetencia.ID_COMPETENCIA).FirstOrDefault();
+                    if (vCompetenciaEmpleado != null)
+                    {
+                        if (vCompetenciaEmpleado.NO_COLOR_AVANCE == 11 || vCompetenciaEmpleado.NO_COLOR_AVANCE == 12)
+                            vRegistro[vCompetencia.ID_COMPETENCIA.ToString()] = "<div class='Color" + vCompetenciaEmpleado.NO_COLOR_AVANCE.ToString() + "'><div class='triangulo" + vCompetenciaEmpleado.NO_COLOR_AVANCE.ToString() + "'><br /></div><br />" + String.Format("<p title='{1}')'>{0}</p>", ObtienePorcentajeEvento(vCompetenciaEmpleado.ID_EVENTO, vCompetenciaEmpleado.ID_EMPLEADO, vCompetenciaEmpleado.ID_COMPETENCIA), vCompetenciaEmpleado.NB_EVENTOS_RELACIONADOS) + "</div>";
+                        else if (vCompetenciaEmpleado.NO_COLOR_AVANCE == 10)
+                            vRegistro[vCompetencia.ID_COMPETENCIA.ToString()] = "<div class='Color" + vCompetenciaEmpleado.NO_COLOR_AVANCE.ToString() + "'><div class='triangulo" + vCompetenciaEmpleado.NO_COLOR_AVANCE.ToString() + "'><br /></div>" + String.Format("<p title='{1}')'>{0}</p>", ObtienePorcentajeEvento(vCompetenciaEmpleado.ID_EVENTO, vCompetenciaEmpleado.ID_EMPLEADO, vCompetenciaEmpleado.ID_COMPETENCIA), vCompetenciaEmpleado.NB_EVENTOS_RELACIONADOS) + "</div>";
+                        else
+                            vRegistro[vCompetencia.ID_COMPETENCIA.ToString()] = "<div class='Color" + vCompetenciaEmpleado.NO_COLOR_AVANCE.ToString() + "'><div class='triangulo" + vCompetenciaEmpleado.NO_COLOR_AVANCE.ToString() + "'><br /></div><br /></div>";
+                    }
+                }
+
+                vRadGrid.Rows.Add(vRegistro);
+            }
+
+            return vRadGrid;
+        }
+
+        protected string ObtienePorcentajeEvento(int? pIdEvento, int? pIdEmpleado, int? pIdCompetencia)
+        {
+            string vPorcentaje = "NC";
+            ProgramaNegocio nPrograma = new ProgramaNegocio();
+            var vLstEvaluado = nPrograma.ObtenerReporteEvaluado(pIdEvento, pIdEmpleado, pIdCompetencia, vIdRol).FirstOrDefault();
+
+            if (vLstEvaluado != null)
+            {
+                if (vLstEvaluado.PR_EVALUACION_PARTICIPANTE != null)
+                    vPorcentaje = String.Format("{0:0.00}%", vLstEvaluado.PR_EVALUACION_PARTICIPANTE);
+            }
+
+            return vPorcentaje;
+        }
+
+              private void ConfigurarColumna(GridColumn pColumna, int pWidth, string pEncabezado, bool pVisible, bool pGenerarEncabezado, bool pFiltrarColumna, bool pAlinear)
+        {
+            if (pGenerarEncabezado)
+            {
+               // pEncabezado = GeneraEncabezado(pColumna);
+                //pColumna.ColumnGroupName = "TABMEDIO";
+                //pColumna.ItemStyle.Font.Bold = true;
+            }
+
+            pColumna.HeaderStyle.Width = Unit.Pixel(pWidth);
+            pColumna.HeaderText = pEncabezado;
+            pColumna.Visible = pVisible;
+
+
+            if (pAlinear)
+            {
+                pColumna.ItemStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Right;
+            }
+
+            if (pFiltrarColumna & pVisible)
+            {
+                pColumna.AutoPostBackOnFilter = true;
+                pColumna.CurrentFilterFunction = GridKnownFunction.Contains;
+
+                if (pWidth <= 60)
+                {
+                    (pColumna as GridBoundColumn).FilterControlWidth = Unit.Pixel(pWidth);
+                }
+                else
+                {
+                    (pColumna as GridBoundColumn).FilterControlWidth = Unit.Pixel(pWidth - 70);
+                }
+            }
+            else
+            {
+                (pColumna as GridBoundColumn).AllowFiltering = false;
+            }
+        }
+
+        private void ConfigurarColumnaCompetencia(GridColumn pColumna, int pWidth, string pEncabezado, bool pVisible, bool pGenerarEncabezado, bool pFiltrarColumna, bool pAlinear, bool pColumnGroup)
+        {
+            if (pGenerarEncabezado)
+            {
+                pEncabezado = GeneraEncabezado(pColumna);
+            }
+
+            pColumna.HeaderStyle.Width = Unit.Pixel(pWidth);
+            pColumna.HeaderText = pEncabezado;
+            pColumna.HeaderTooltip = ObtieneTooltip(pColumna);
+            pColumna.Visible = pVisible;
+
+            if (pColumnGroup)
+            {
+                pColumna.ColumnGroupName = GenerarColumnGroupName(pColumna);
+            }
+
+            if (pAlinear)
+            {
+                pColumna.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+                pColumna.ItemStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+            }
+
+            if (pFiltrarColumna & pVisible)
+            {
+                pColumna.AutoPostBackOnFilter = true;
+                pColumna.CurrentFilterFunction = GridKnownFunction.Contains;
+
+                if (pWidth <= 60)
+                {
+                    (pColumna as GridBoundColumn).FilterControlWidth = Unit.Pixel(pWidth);
+                }
+                else
+                {
+                    (pColumna as GridBoundColumn).FilterControlWidth = Unit.Pixel(pWidth - 70);
+                }
+            }
+            else
+            {
+                (pColumna as GridBoundColumn).AllowFiltering = false;
+            }
+        }
+
+        private string ObtieneTooltip(GridColumn pColumna)
+        {
+            int vResultado;
+            string vTooltip = "";
+            string vCompetencia = pColumna.UniqueName.ToString();
+            ProgramaNegocio nPrograma = new ProgramaNegocio();
+            List<SPE_OBTIENE_K_PROGRAMA_COMPETENCIA_Result> vLstCompetenciasPrograma = new List<SPE_OBTIENE_K_PROGRAMA_COMPETENCIA_Result>();
+            vLstCompetenciasPrograma = nPrograma.ObtenerCompetenciasPrograma(ID_PROGRAMA: pID_PROGRAMA);
+
+            if (int.TryParse(vCompetencia, out vResultado))
+            {
+                var vDatosCompetencia = vLstCompetenciasPrograma.Where(w => w.ID_COMPETENCIA == vResultado).FirstOrDefault();
+                if (vDatosCompetencia != null)
+                {
+                    vTooltip = vDatosCompetencia.NB_CATEGORIA;
+                }
+            }
+            return vTooltip;
+        }
+
+        private string GeneraEncabezado(GridColumn pColumna)
+        {
+            int vResultado;
+            string vEncabezado = "";
+            string vEmpleado = pColumna.UniqueName.ToString();
+            ProgramaNegocio nPrograma = new ProgramaNegocio();
+            List<SPE_OBTIENE_K_PROGRAMA_COMPETENCIA_Result> vLstCompetenciasPrograma = new List<SPE_OBTIENE_K_PROGRAMA_COMPETENCIA_Result>();
+            vLstCompetenciasPrograma = nPrograma.ObtenerCompetenciasPrograma(ID_PROGRAMA: pID_PROGRAMA);
+
+            if (int.TryParse(vEmpleado, out vResultado))
+            {
+                var vDatosEmpleado = vLstCompetenciasPrograma.Where(w => w.ID_COMPETENCIA == vResultado ).FirstOrDefault();
+                if (vDatosEmpleado != null)
+                {
+                    vEncabezado = vDatosEmpleado.NB_COMPETENCIA;
+                }
+            }
+            return vEncabezado;
+        }
+
+        private string GenerarColumnGroupName(GridColumn pColumn)
+        {
+            int vResultado;
+            string vGrupo = "";
+            string vIdComptencia = pColumn.UniqueName.ToString();
+            ProgramaNegocio nPrograma = new ProgramaNegocio();
+            List<SPE_OBTIENE_K_PROGRAMA_COMPETENCIA_Result> vLstCompetenciasPrograma = new List<SPE_OBTIENE_K_PROGRAMA_COMPETENCIA_Result>();
+            vLstCompetenciasPrograma = nPrograma.ObtenerCompetenciasPrograma(ID_PROGRAMA: pID_PROGRAMA, ID_COMPETENCIA: int.Parse(vIdComptencia));
+
+            if (int.TryParse(vIdComptencia, out vResultado))
+            {
+                var vDatosEmpleado = vLstCompetenciasPrograma.Where(w => w.ID_COMPETENCIA == vResultado).FirstOrDefault();
+                if (vDatosEmpleado != null)
+                {
+                    vGrupo = vDatosEmpleado.NB_CLASIFICACION;
+                }
+            }
+            return vGrupo;
+        }
 
         #endregion
 
@@ -749,18 +1104,14 @@ namespace SIGE.WebApp.FYD
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!IsPostBack)
             {
                 if (Request.QueryString["IdPrograma"] != null)
                 {
                     pID_PROGRAMA = int.Parse((Request.QueryString["IdPrograma"]));
-
-                    //  CargarDatos();
-                    //txtNbDepartamento.Text = vProgramasCapacitacion.ElementAt(0).NB_DEPARTAMENTO.ToString();
-                    //txtPeriodo.Text = vProgramasCapacitacion.ElementAt(0).CL_PROGRAMA.ToString();
-                    //txtTipoEvaluacion.Text = vProgramasCapacitacion.ElementAt(0).TIPO_EVALUACION.ToString();
-                    //radEditorNotas.Content = vProgramasCapacitacion.ElementAt(0).DS_NOTAS.ToString();
+                
                     vLstSeleccionados = new List<E_AVANCE_PROGRAMA_CAPACITACION>();
                     vLstSeleccionadosFiltros = new List<E_AVANCE_PROGRAMA_CAPACITACION>();
                     vLstAvancePrograma = new List<E_AVANCE_PROGRAMA_CAPACITACION>();
@@ -772,7 +1123,7 @@ namespace SIGE.WebApp.FYD
                     if (Request.Params["clOrigen"].ToString() == "SUCESION")
                     {
                         ProgramaNegocio neg = new ProgramaNegocio();
-                        List<SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION_Result> vlstEmpleado = neg.ObtenerAvancePrograma(pID_PROGRAMA, ContextoUsuario.oUsuario.ID_EMPRESA, null);
+                        List<SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION_Result> vlstEmpleado = neg.ObtenerAvancePrograma(pID_PROGRAMA, ContextoUsuario.oUsuario.ID_EMPRESA,null, vIdRol);
 
                         int vIdEmpleadoSucesion = int.Parse(Request.Params["IdEmpleado"].ToString());
 
@@ -784,15 +1135,9 @@ namespace SIGE.WebApp.FYD
                         };
                         vLstSeleccionados.Add(vLstItem);
 
-                        //btnSeleccionarTodos.Enabled = false;
                         btnEmpleadoFiltro.Enabled = false;
-                        //pgridAvanceProgramaCapacitacion.Visible = false;
-                        //rpgAvanceUnico.Visible = true;
-                        GeneraAvance(true);
                     }
                 }
-                GeneraAvance(false);
-                pgridAvanceProgramaCapacitacion.DataSource = vLstAvancePrograma;
 
             }
         }
@@ -810,186 +1155,6 @@ namespace SIGE.WebApp.FYD
                 }
         }
 
-        protected void pgridAvanceProgramaCapacitacion_CellDataBound(object sender, Telerik.Web.UI.PivotGridCellDataBoundEventArgs e)
-        {
-            if (e.Cell is PivotGridRowHeaderCell)
-            {
-                if (e.Cell.Controls.Count > 1)
-                {
-                    (e.Cell.Controls[0] as Button).Visible = false;
-                }
-            }
-
-            if (e.Cell is PivotGridColumnHeaderCell)
-            {
-                //if (e.Cell.Field.DataField == "CL_PUESTO")
-                //{
-                //    if (e.Cell.Controls.Count > 1)
-                //    {
-                //        (e.Cell.Controls[0] as Button).Visible = false;
-                //        e.Cell.Text = String.Format("<a href='#' onclick='OpenDescriptivo({1})'>{0}</a>", "CHLL", 1);
-                //    }
-                //}
-                //else
-                //{
-                if (e.Cell.Controls.Count > 1)
-                {
-                    (e.Cell.Controls[0] as Button).Visible = false;
-                }
-                // }
-            }
-
-            if (e.Cell is PivotGridDataCell)
-            {
-                ProgramaNegocio neg = new ProgramaNegocio();
-                PivotGridDataCell item = e.Cell as PivotGridDataCell;
-                HtmlGenericControl vCtrlDiv = (HtmlGenericControl)item.FindControl("dvPorcentaje");
-                if (vCtrlDiv != null)
-                {
-                    if (item.FormattedValue.Equals("10.00") || item.FormattedValue.ToString().Equals("11.00") || item.FormattedValue.ToString().Equals("12.00"))
-                    {
-                        // int vIdEmpleado = ObtieneId(item.ParentColumnIndexes[0].ToString());
-                        int vIdEmpleado = int.Parse(item.ParentColumnIndexes[1].ToString());
-                        int vIdEvento = ObtieneId(item.ParentRowIndexes[5].ToString());
-                        int vIdCompetencias = int.Parse(item.ParentRowIndexes[0].ToString());
-                        var vLstEvaluado = neg.ObtenerReporteEvaluado(vIdEvento, vIdEmpleado, vIdCompetencias).FirstOrDefault();
-
-                        if (vLstEvaluado != null)
-                        {
-                            if (vLstEvaluado.PR_EVALUACION_PARTICIPANTE != null)
-                                vCtrlDiv.InnerText = String.Format("{0:0.00}%", vLstEvaluado.PR_EVALUACION_PARTICIPANTE);
-                            else
-                                vCtrlDiv.InnerText = "NC";
-                        }
-                    }
-                }
-                else
-                    vCtrlDiv.InnerHtml = "<br /><br />&nbsp&nbsp&nbsp<br />";
-                //    if (item.FormattedValue == "")
-                //    {
-                //        item.FormattedValue = "5";
-                //    }
-            }
-        }
-
-        //protected void pgridAvanceProgramaCapacitacion_PivotGridCellExporting(object sender, PivotGridCellExportingArgs e)
-        //{
-        //    PivotGridBaseModelCell modelDataCell = e.PivotGridModelCell as PivotGridBaseModelCell;
-        //    if (modelDataCell != null)
-        //    {
-
-        //        if (modelDataCell.Field.DataField == "NO_COLOR_AVANCE")
-        //        {
-        //            int vNoAvance = Convert.ToInt32(modelDataCell.Data);
-        //            switch (vNoAvance)
-        //            {
-        //                case 0:
-        //                    e.ExportedCell.Style.BackColor = Color.Red;
-        //                    e.ExportedCell.Style.ForeColor = Color.Red;
-        //                    e.ExportedCell.Style.BorderTopColor = Color.White;
-        //                    e.ExportedCell.Style.BorderBottomColor = Color.White;
-        //                    e.ExportedCell.Style.BorderLeftColor = Color.White;
-        //                    e.ExportedCell.Style.BorderRightColor = Color.White;
-        //                    break;
-        //                case 2:
-        //                    e.ExportedCell.Style.BackColor = Color.LightSkyBlue;
-        //                    e.ExportedCell.Style.ForeColor = Color.LightSkyBlue;
-        //                    e.ExportedCell.Style.BorderTopColor = Color.White;
-        //                    e.ExportedCell.Style.BorderBottomColor = Color.White;
-        //                    e.ExportedCell.Style.BorderLeftColor = Color.White;
-        //                    e.ExportedCell.Style.BorderRightColor = Color.White;
-        //                    break;
-        //                case 3:
-        //                    e.ExportedCell.Style.BackColor = Color.Orange;
-        //                    e.ExportedCell.Style.ForeColor = Color.Orange;
-        //                    e.ExportedCell.Style.BorderTopColor = Color.White;
-        //                    e.ExportedCell.Style.BorderBottomColor = Color.White;
-        //                    e.ExportedCell.Style.BorderLeftColor = Color.White;
-        //                    e.ExportedCell.Style.BorderRightColor = Color.White;
-        //                    break;
-        //                case 5:
-        //                    e.ExportedCell.Style.ForeColor = Color.White;
-        //                    break;
-        //                case 4:
-        //                    e.ExportedCell.Style.BackColor = Color.Yellow;
-        //                    e.ExportedCell.Style.ForeColor = Color.Yellow;
-        //                    e.ExportedCell.Style.BorderTopColor = Color.White;
-        //                    e.ExportedCell.Style.BorderBottomColor = Color.White;
-        //                    e.ExportedCell.Style.BorderLeftColor = Color.White;
-        //                    e.ExportedCell.Style.BorderRightColor = Color.White;
-        //                    break;
-        //                case 10:
-        //                    e.ExportedCell.Style.BackColor = Color.GreenYellow;
-        //                    e.ExportedCell.Style.ForeColor = Color.GreenYellow;
-        //                    e.ExportedCell.Style.BorderTopColor = Color.White;
-        //                    e.ExportedCell.Style.BorderBottomColor = Color.White;
-        //                    e.ExportedCell.Style.BorderLeftColor = Color.White;
-        //                    e.ExportedCell.Style.BorderRightColor = Color.White;
-        //                    break;
-        //                case 11:
-        //                    e.ExportedCell.Style.BackColor = Color.GreenYellow;
-        //                    e.ExportedCell.Style.BorderRightColor = Color.Red;
-        //                    e.ExportedCell.Style.ForeColor = Color.GreenYellow;
-        //                    e.ExportedCell.Style.BorderRightWidth = new Unit(50);
-        //                    e.ExportedCell.Style.BorderRightStyle = BorderStyle.Solid;
-        //                    e.ExportedCell.Style.BorderTopColor = Color.White;
-        //                    e.ExportedCell.Style.BorderBottomColor = Color.White;
-        //                    e.ExportedCell.Style.BorderLeftColor = Color.White;
-        //                    break;
-        //                case 12:
-        //                    e.ExportedCell.Style.BackColor = Color.GreenYellow;
-        //                    e.ExportedCell.Style.BorderRightColor = Color.Yellow;
-        //                    e.ExportedCell.Style.ForeColor = Color.GreenYellow;
-        //                    e.ExportedCell.Style.BorderRightWidth = new Unit(50);
-        //                    e.ExportedCell.Style.BorderRightStyle = BorderStyle.Solid;
-        //                    e.ExportedCell.Style.BorderTopColor = Color.White;
-        //                    e.ExportedCell.Style.BorderBottomColor = Color.White;
-        //                    e.ExportedCell.Style.BorderLeftColor = Color.White;
-        //                    break;
-        //                default:
-        //                    break;
-        //            }
-
-        //        }
-        //        else if (modelDataCell.Field.DataField == "NB_PUESTO")
-        //        {
-        //            e.ExportedCell.Style.BackColor = Color.Gainsboro;
-        //            e.ExportedCell.Style.Font.Bold = true;
-        //            e.ExportedCell.Table.Columns[e.ExportedCell.ColIndex].Width = 300;
-        //            e.ExportedCell.Table.Rows[e.ExportedCell.ColIndex].Height = 50;
-        //            e.ExportedCell.Style.BorderRightStyle = BorderStyle.Solid;
-        //            e.ExportedCell.Style.BorderTopColor = Color.White;
-        //            e.ExportedCell.Style.BorderBottomColor = Color.White;
-        //            e.ExportedCell.Style.BorderLeftColor = Color.White;
-        //            e.ExportedCell.Style.BorderRightColor = Color.White;
-        //        }
-        //        else
-        //        {
-        //            e.ExportedCell.Style.BackColor = Color.Gainsboro;
-        //            e.ExportedCell.Style.Font.Bold = true;
-        //            e.ExportedCell.Table.Columns[e.ExportedCell.ColIndex].Width = 150;
-        //            e.ExportedCell.Table.Rows[e.ExportedCell.ColIndex].Height = 30;
-        //            e.ExportedCell.Style.BorderRightStyle = BorderStyle.Solid;
-        //            e.ExportedCell.Style.BorderTopColor = Color.White;
-        //            e.ExportedCell.Style.BorderBottomColor = Color.White;
-        //            e.ExportedCell.Style.BorderLeftColor = Color.White;
-        //            e.ExportedCell.Style.BorderRightColor = Color.White;
-        //        }
-
-        //        if (modelDataCell.Field.DataField == "NB_EVENTOS_RELACIONADOS" && modelDataCell.Data == "")
-        //        {
-        //            e.ExportedCell.Style.ForeColor = Color.Gainsboro;
-        //            e.ExportedCell.Table.Columns[e.ExportedCell.ColIndex].Width = 2;
-        //            e.ExportedCell.Style.BorderTopColor = Color.White;
-        //            e.ExportedCell.Style.BorderBottomColor = Color.White;
-        //            e.ExportedCell.Style.BorderLeftColor = Color.White;
-        //            e.ExportedCell.Style.BorderRightColor = Color.White;
-        //        }
-
-        //    }
-
-        //}
-
         protected void rgPrograma_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             rgPrograma.DataSource = vLstSeleccionadosFiltros;
@@ -1004,14 +1169,43 @@ namespace SIGE.WebApp.FYD
             }
         }
 
-        //protected void btnSeleccionarTodos_Click(object sender, EventArgs e)
-        //{
-        //    GeneraAvance(false);
-        //}
-
         protected void btnExportar_Click(object sender, EventArgs e)
         {
             GenerarExcelAvance();
+        }
+
+        protected void rgAvancePrograma_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            rgAvancePrograma.DataSource = CreateTable();
+        }
+
+        protected void rgAvancePrograma_ColumnCreated(object sender, GridColumnCreatedEventArgs e)
+        {
+            switch (e.Column.UniqueName)
+            {
+                case "ID_EMPLEADO":
+                    ConfigurarColumna(e.Column, 0, "", false, false, false, false);
+                    break;
+                case "CL_EMPLEADO":
+                    ConfigurarColumna(e.Column, 100, "No. de empleado", true, false, false, false);
+                    break;
+                case "NB_EMPLEADO":
+                    ConfigurarColumna(e.Column, 200, "Nombre completo", true, false, false, false);
+                    break;
+                case "CL_PUESTO":
+                    ConfigurarColumna(e.Column, 100, "Clave de puesto", true, false, false, false);
+                    break;
+                case "NB_PUESTO":
+                    ConfigurarColumna(e.Column, 200, "Puesto", true, false, false, false);
+                    break;
+                case "column":
+                    break;
+                case "ExpandColumn": 
+                    break;
+                default:
+                    ConfigurarColumnaCompetencia(e.Column, 120, "", true, true, false, true, true);
+                    break;
+            }
         }
 
     }

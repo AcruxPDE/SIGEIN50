@@ -204,11 +204,22 @@
     }
 
 
+            //function ConfirmarEliminarRespuestas(sender, args) {
+            //    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+            //        if (shouldSubmit) {
+            //            this.click();
+            //        }
+            //    });
+            //    radconfirm("Este proceso borrará las respuestas de la prueba, ¿Deseas continuar?", callBackFunction, 400, 150, null, "Eliminar respuestas");
+            //    args.set_cancel(true);
+            //}
+
+
         </script>
     </telerik:RadCodeBlock>
     <label style="font-size: 21px;">Ortografía I</label>
-    <div style="width: 100%; height: calc(100% - 80px); overflow: auto;">
-        <div id="seccion1" style="width: 500px; float: left; margin-top: 3%; margin-left: 5%; border: .1px solid; padding-left: 5px">
+    <div style="width: 100%; height: calc(100% - 100px); overflow: auto;">
+        <div id="seccion1" style="width: 510px; float: left; margin-top: 3%; margin-left: 5%; border: .1px solid; padding-left: 5px">
             <br />
             <label>I.Escribe en los espacios B o V según corresponda:</label><br />
             <div style="height: 20px;"></div>
@@ -349,7 +360,7 @@
             </telerik:RadMaskedTextBox>--%>
             <div style="height: 30px;"></div>
         </div>
-        <div id="seccion2" style="width: 500px; float: left; margin-top: 3%; margin-left: 5%; border: .1px solid; padding-left: 5px">
+        <div id="seccion2" style="width: 510px; float: left; margin-top: 3%; margin-left: 5%; border: .1px solid; padding-left: 5px">
             <br />
             <label>II.Escribe en los espacios C, S o Z, según corresponda:</label><br />
             <div style="height: 20px;"></div>
@@ -517,14 +528,17 @@
         <div class="Cronometro">Tiempo restante <span id="time">15:00</span></div>
     </div>
 
+<%--            <div class="divControlDerecha" style="margin: 2px;">
+                  <telerik:RadButton ID="btnEliminar" runat="server"  Text="Eliminar" AutoPostBack="true" Visible="false" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminar_Click"></telerik:RadButton>
+             </div>--%>
+        <div class="divControlDerecha" style="margin: 2px;">
+        <telerik:RadButton Visible="false" ID="btnImpresionPrueba" runat="server" OnClientClicked="OpenReport" Text="Imprimir" AutoPostBack="false"></telerik:RadButton>
+    </div>
     <div class="divControlDerecha" style="margin: 2px;">
         <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Terminar" AutoPostBack="true"></telerik:RadButton>
     </div>
     <div class="divControlDerecha" style="margin: 2px;">
-        <telerik:RadButton ID="btnCorregir" runat="server" Visible="false" OnClick="btnCorregir_Click" Text="Corregir" AutoPostBack="true"></telerik:RadButton>
-    </div>
-    <div class="divControlDerecha" style="margin: 2px;">
-        <telerik:RadButton Visible="false" ID="btnImpresionPrueba" runat="server" OnClientClicked="OpenReport" Text="Imprimir" AutoPostBack="false"></telerik:RadButton>
+        <telerik:RadButton ID="btnCorregir" runat="server" Visible="false" OnClick="btnCorregir_Click" Text="Guardar" AutoPostBack="true"></telerik:RadButton>
     </div>
 
 

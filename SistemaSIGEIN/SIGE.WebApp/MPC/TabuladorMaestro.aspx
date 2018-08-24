@@ -36,18 +36,20 @@
             }
 
             function OpenWindow() {
-
-                openChildDialog("/MPC/TabuladorNivel.aspx?&ID=" + <%=vIdTabulador%> + "", "winSeleccion", "Niveles")
+                var myUrl = '<%= ResolveClientUrl("TabuladorNivel.aspx") %>';
+                openChildDialog(myUrl + "?&ID=" + <%=vIdTabulador%> + "", "winSeleccion", "Niveles")
             }
 
             function OpenWindowConfiguracion() {
-                openChildDialog("/MPC/VentanaConfigurarTabulador.aspx?&CL_CONFIGURAR=OCULTAR" + "&ID=" +<%=vIdTabulador%> +"", "winSeleccion", "Configurar")
+                var myUrl = '<%= ResolveClientUrl("VentanaConfigurarTabulador.aspx") %>';
+                openChildDialog(myUrl + "?&CL_CONFIGURAR=OCULTAR" + "&ID=" +<%=vIdTabulador%> +"", "winSeleccion", "Configurar")
             }
 
             function OpenWindowTabuladores() {
                 var vIdTabulador = '<%=vIdTabulador%>';
+                var myUrl = '<%= ResolveClientUrl("SeleccionTabulador.aspx") %>';
                 if (vIdTabulador != null)
-                    openChildDialog("SeleccionTabulador.aspx?pFgMultSeleccion=0&pIdTabulador=" + vIdTabulador, "winSeleccion", "Selección de tabulador a copiar");
+                    openChildDialog(myUrl + "?pFgMultSeleccion=0&pIdTabulador=" + vIdTabulador, "winSeleccion", "Selección de tabulador a copiar");
             }
 
             function useDataFromChild(pDato) {
@@ -292,7 +294,7 @@
                                             <telerik:RadNumericTextBox runat="server" ID="txnMaximo" Type="Currency" AutoPostBack="false" Name="txnMaximo" Width="140px" Text='<%#Eval("MN_MAXIMO") %>' MinValue="0" ShowSpinButtons="true" NumberFormat-DecimalDigits="2" ></telerik:RadNumericTextBox>
                                         </ItemTemplate>
                                     </telerik:GridTemplateColumn>
-                                    <telerik:GridTemplateColumn AutoPostBackOnFilter="true" HeaderStyle-Width="150" FilterControlWidth="70" HeaderText="Siguiente año" DataField="MN_SIGUIENTE" UniqueName="MN_SIGUIENTE" ItemStyle-HorizontalAlign="Right">
+                                    <telerik:GridTemplateColumn AutoPostBackOnFilter="true" HeaderStyle-Width="150" FilterControlWidth="70" HeaderText="Siguiente año" DataField="MN_SIGUIENTE" UniqueName="MN_SIGUIENTE" ItemStyle-HorizontalAlign="Left">
                                         <ItemTemplate>
                                             <%# string.Format("{0:C}",(Eval("MN_SIGUIENTE"))) %>
                                         </ItemTemplate>
@@ -305,12 +307,13 @@
                                         <div class="ctrlBasico">
                         <telerik:RadButton ID="btnCopiarTabulador" OnClientClicked="OpenWindowTabuladores" AutoPostBack="true" runat="server" Text="Copiar datos tabulador" Width="200"></telerik:RadButton>
                     </div>
+                      <div class="ctrlBasico">
+                    <telerik:RadButton ID="btnMercadoSalarial" AutoPostBack="true" OnClientClicking="ConfirmaGenerar" OnClick="btnMercadoSalarialBoton_Click" runat="server" Text="Generar desde mercado salarial"  ToolTip="Generar el tabulador en base a los cambios en el mercado salarial."></telerik:RadButton>
+                    </div>
                                         <div class="ctrlBasico">
                         <telerik:RadButton ID="btnRecalcular" AutoPostBack="true" runat="server" Text="Recalcular" Width="100" ToolTip="Recalcula los valores de la tabla en base a los mínimos y máximos." OnClick="btnRecalcular_Click" ></telerik:RadButton>
                     </div>
-                        <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnMercadoSalarial" AutoPostBack="true" OnClientClicking="ConfirmaGenerar" OnClick="btnMercadoSalarialBoton_Click" runat="server" Text="Generar desde mercado salarial"  ToolTip="Generar el tabulador en base a los cambios en el mercado salarial."></telerik:RadButton>
-                    </div>
+                      
                   <%--  <div class="ctrlBasico">
                         <telerik:RadButton ID="btnVerNiveles" OnClientClicked="OpenWindow" AutoPostBack="false" runat="server" Text="Ver niveles" Width="100"></telerik:RadButton>
                     </div>--%>
@@ -322,15 +325,15 @@
                     </div>--%>
 
 
-                    <div class="ctrlBasico">
+                  <%--  <div class="ctrlBasico">
                         <telerik:RadButton ID="btnGuardar" OnClientClicking="ConfirmarGuardar" OnClick="btnGuardar_Click" AutoPostBack="true" runat="server" Text="Guardar" Width="100" ToolTip="Asignar los valores al tabulador y continuar."></telerik:RadButton>
-                    </div>
+                    </div>--%>
                     <div class="ctrlBasico">
                         <telerik:RadButton ID="btnGuardarCerrar" OnClientClicking="ConfirmarGuardar" OnClick="btnGuardarCerrar_Click" AutoPostBack="true" runat="server" Text="Guardar y cerrar" Width="150"></telerik:RadButton>
                     </div>
                 </telerik:RadPane>
                 <telerik:RadPane ID="rpAyudaTabuladorMaestro" runat="server" Scrolling="None" Width="20px">
-                    <telerik:RadSlidingZone ID="rszAyudaTabuladorMaestro" runat="server" SlideDirection="Left" ExpandedPaneId="rsTabuladorMaestro" Width="20px">
+                    <telerik:RadSlidingZone ID="rszAyudaTabuladorMaestro" runat="server" SlideDirection="Left" ExpandedPaneId="rsTabuladorMaestro" Width="20px" ClickToOpen="true">
                         <telerik:RadSlidingPane ID="rspAyudaTabuladorMaestro" runat="server" Title="Ayuda" Width="240px" RenderMode="Mobile" Height="100%">
                             <div style="padding: 20px; text-align: justify;">
                                 <p>Utilice esta tabla para definir el esquema de niveles del tabulador.</p>

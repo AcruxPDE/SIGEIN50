@@ -76,6 +76,15 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadWindowManager rwmAlertas;
         
         /// <summary>
+        /// winSeleccion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadWindow winSeleccion;
+        
+        /// <summary>
         /// winRoles control.
         /// </summary>
         /// <remarks>

@@ -166,7 +166,7 @@ namespace SIGE.WebApp.MPC
                         else if (vResultado.PR_BONO != 0)
                         {
                             decimal vDiasPeriodo = (decimal)((vResultado.FE_TERMINO - vResultado.FE_INICIO).TotalDays);
-                            decimal vSueldoDia = (item.MN_SUELDO / ((decimal)30.4));
+                            decimal vSueldoDia = ((decimal)item.MN_SUELDO / ((decimal)30.4));
                             vTopeBono = vTopeBono + ((vDiasPeriodo + 1) * vSueldoDia * (vResultado.PR_BONO / 100));
                         }
                     }
@@ -208,7 +208,7 @@ namespace SIGE.WebApp.MPC
                     ConfigurarColumna(pColumna, 200, "Puesto", true, false, false, true);
                     break;
                 case "NB_DEPARTAMENTO":
-                    ConfigurarColumna(pColumna, 200, "Área", true, false, false, true);
+                    ConfigurarColumna(pColumna, 200, "Área/Departamento", true, false, false, true);
                     break;
                 case "MN_SUELDO":
                     ConfigurarColumna(pColumna, 90, "Sueldo mensual", true, false, false, false);

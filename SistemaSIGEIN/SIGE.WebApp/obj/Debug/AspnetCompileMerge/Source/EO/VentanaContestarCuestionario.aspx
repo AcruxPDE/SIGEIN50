@@ -108,7 +108,7 @@
             <telerik:RadTab Text="Cuestionarios"></telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
-    <div style="height: calc(100% - 120px); padding-bottom: 10px;">
+    <div style="height: calc(100% - 60px); padding-bottom: 10px;">
         <telerik:RadMultiPage ID="rmpControlAvance" runat="server" SelectedIndex="0" Height="100%">
             <telerik:RadPageView ID="rpvContexto" runat="server">
               <%-- <div class="ctrlBasico">
@@ -170,7 +170,7 @@
                                                 <label id="Label2" name="lbNotas" runat="server">Notas:</label>
                                             </td>
                                             <td  class="ctrlTableDataBorderContext">
-                                                <label id="txtNotas" runat="server"></label>
+                                                <div id="txtNotas" runat="server"></div>
                                             </td>
                                         </tr>
                                          <tr>
@@ -241,6 +241,10 @@
                                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvCuestionarios" runat="server">
+
+                   <telerik:RadSplitter runat="server" ID="rsAyuda" Width="100%" Height="100%" BorderSize="0">
+                              <telerik:RadPane ID="rpGeneral" runat="server">
+                                        <div style="height: calc(100% - 50px);">
                 <telerik:RadGrid ID="grdEvaluadorCuestionarios" runat="server" Height="100%" Width="100%" AutoGenerateColumns="false" HeaderStyle-Font-Bold="true" AllowSorting="true" OnNeedDataSource="grdEvaluadorCuestionarios_NeedDataSource" OnItemDataBound="grdEvaluadorCuestionarios_ItemDataBound">
                     <ClientSettings>
                         <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -261,10 +265,32 @@
                         </Columns>
                     </MasterTableView>
                 </telerik:RadGrid>
+                                            </div>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnContestarCuestionarios" runat="server" Text="Cuestionario" OnClientClicking="OpenCuestionario"></telerik:RadButton>
                     <telerik:RadButton ID="btnContestarConfidencial" Visible="false" runat="server" Text="Cuestionario" OnClientClicked="OpenCuestionarioConfidencial"></telerik:RadButton>
                 </div>
+                 </telerik:RadPane>
+                 <telerik:RadPane ID="RadPane2" runat="server" Width="30">
+                <telerik:RadSlidingZone ID="RadSlidingZone3" Visible="false" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
+                    <telerik:RadSlidingPane ID="RadSlidingPane2" runat="server" Title="Ayuda" Width="300" MinWidth="500" Height="100%">
+                        <div style="padding: 10px; text-align: justify;">
+                            <fieldset>
+                                <legend>
+                                    <label>Capturar cuestionarios:</label>
+                                </legend>
+                               Este período esta configurado como tipo "Sin asignación de evaluadores". 
+                                <br /><br />
+                               Para poder capturar los resultados de los cuestionarios impresos, solo selecciona el botón "Cuestionario". 
+                                Te abrirá una nueva ventana en la cual podrás ingresar la información del evaluador y las respuestas para cada una de las preguntas. 
+                                <br /><br />
+                               Cada que selecciones el botón de cuestionario, te permitirá capturar uno nuevo. Puedes capturar un número indefinido de cuestionarios.
+                            </fieldset>
+                        </div>
+                    </telerik:RadSlidingPane>
+                </telerik:RadSlidingZone>
+            </telerik:RadPane>
+        </telerik:RadSplitter>            
             </telerik:RadPageView>
         </telerik:RadMultiPage>
     </div>

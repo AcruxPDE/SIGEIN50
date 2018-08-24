@@ -37,6 +37,10 @@
             ajaxManager.ajaxRequest(pDato);
         }
 
+        function OpenImprimirReporte(pIdTabulador, pNivelMercado) {
+            openChildDialog("ReporteTabuladorSueldos.aspx?ID=" + pIdTabulador + "&pNivelMercado=" + pNivelMercado, "winImprimir", "Imprimir consulta");
+        }
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
@@ -148,8 +152,8 @@
                             <label id="Label4" name="lbRangoNivel" runat="server">Rango de nivel:</label>
                         </div>
                         <div class="ctrlBasico">
-                            <telerik:RadNumericTextBox runat="server" ID="rntComienzaNivel" NumberFormat-DecimalDigits="0" Name="rnComienza" Width="140px" MinValue="1" ShowSpinButtons="true" Value="1"></telerik:RadNumericTextBox>
-                            <telerik:RadNumericTextBox runat="server" ID="rntTerminaSueldo" NumberFormat-DecimalDigits="0" Name="rnTermina" Width="140px" MinValue="1" ShowSpinButtons="true" Value="100"></telerik:RadNumericTextBox>
+                            <telerik:RadNumericTextBox runat="server" ID="rntComienzaNivel" NumberFormat-DecimalDigits="0" Name="rnComienza" Width="140px" MinValue="1" ShowSpinButtons="true" Value="1" OnTextChanged="rntComienzaNivel_TextChanged" AutoPostBack="true"></telerik:RadNumericTextBox>
+                            <telerik:RadNumericTextBox runat="server" ID="rntTerminaSueldo" NumberFormat-DecimalDigits="0" Name="rnTermina" Width="140px" MinValue="1" ShowSpinButtons="true" Value="100" OnTextChanged="rntComienzaNivel_TextChanged" AutoPostBack="true"></telerik:RadNumericTextBox>
                         </div>
                         <div class="ctrlBasico">
                             <label id="Label5"
@@ -158,7 +162,7 @@
                                 Nivel del mercado:</label>
                         </div>
                         <div class="ctrlBasico">
-                            <telerik:RadComboBox Filter="Contains" runat="server" ID="rcbMercadoTabuladorSueldos" Width="190" MarkFirstMatch="true" AutoPostBack="false" EmptyMessage="Seleccione..."
+                            <telerik:RadComboBox Filter="Contains" runat="server" ID="rcbMercadoTabuladorSueldos" Width="190" MarkFirstMatch="true" AutoPostBack="true" EmptyMessage="Seleccione..." OnSelectedIndexChanged="rcbMercadoTabuladorSueldos_SelectedIndexChanged"
                                 DropDownWidth="190">
                             </telerik:RadComboBox>
                         </div>
@@ -197,36 +201,42 @@
                         </div>
                     </telerik:RadPageView>
                     <telerik:RadPageView ID="rpvTabuladorSueldos" runat="server">
-                        <telerik:RadGrid ID="rgdComparacionInventarioPersonal"
-                            runat="server" Height="100%"
-                            AutoGenerateColumns="true"
-                            OnItemCreated="rgdComparacionInventarioPersonal_ItemCreated"
-                            OnNeedDataSource="rgdComparacionInventarioPersonal_NeedDataSource"
-                            HeaderStyle-Font-Bold="true"
-                            OnColumnCreated="rgdComparacionInventarioPersonal_ColumnCreated"
-                            AllowMultiRowSelection="true"
-                            OnItemDataBound="rgdComparacionInventarioPersonal_ItemDataBound"
-                            AllowPaging="false">
-                            <ClientSettings EnablePostBackOnRowClick="false">
-                                <Scrolling UseStaticHeaders="true" AllowScroll="true" />
-                                <Selecting AllowRowSelect="true" />
-                            </ClientSettings>
-                            <GroupingSettings CaseSensitive="false" />
-                            <MasterTableView ClientDataKeyNames="ID_TABULADOR_EMPLEADO, NO_NIVEL" DataKeyNames="ID_TABULADOR_EMPLEADO, NO_NIVEL" EnableColumnsViewState="false" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
-                                <ColumnGroups>
-                                    <telerik:GridColumnGroup HeaderText="Tabulador medio" Name="TABMEDIO" HeaderStyle-HorizontalAlign="Center">
-                                    </telerik:GridColumnGroup>
-                                </ColumnGroups>
-                                <Columns>
-                                </Columns>
-                            </MasterTableView>
-                        </telerik:RadGrid>
+                        <div style="height: calc(100% - 60px);">
+                            <telerik:RadGrid ID="rgdComparacionInventarioPersonal"
+                                runat="server" Height="100%"
+                                AutoGenerateColumns="true"
+                                OnItemCreated="rgdComparacionInventarioPersonal_ItemCreated"
+                                OnNeedDataSource="rgdComparacionInventarioPersonal_NeedDataSource"
+                                HeaderStyle-Font-Bold="true"
+                                OnColumnCreated="rgdComparacionInventarioPersonal_ColumnCreated"
+                                AllowMultiRowSelection="true"
+                                OnItemDataBound="rgdComparacionInventarioPersonal_ItemDataBound"
+                                AllowPaging="false">
+                                <ClientSettings EnablePostBackOnRowClick="false">
+                                    <Scrolling UseStaticHeaders="true" AllowScroll="true" />
+                                    <Selecting AllowRowSelect="true" />
+                                </ClientSettings>
+                                <GroupingSettings CaseSensitive="false" />
+                                <MasterTableView ClientDataKeyNames="ID_TABULADOR_EMPLEADO, NO_NIVEL" DataKeyNames="ID_TABULADOR_EMPLEADO, NO_NIVEL" EnableColumnsViewState="false" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
+                                    <ColumnGroups>
+                                        <telerik:GridColumnGroup HeaderText="Tabulador medio" Name="TABMEDIO" HeaderStyle-HorizontalAlign="Center">
+                                        </telerik:GridColumnGroup>
+                                    </ColumnGroups>
+                                    <Columns>
+                                    </Columns>
+                                </MasterTableView>
+                            </telerik:RadGrid>
+                        </div>
+                        <div style="height: 10px;"></div>
+                        <div class="ctrlBasico">
+                            <telerik:RadButton ID="btnImprimir" runat="server" AutoPostBack="true" Text="Imprimir" OnClick="btnImprimir_Click"></telerik:RadButton>
+                        </div>
                     </telerik:RadPageView>
                 </telerik:RadMultiPage>
                 <%--    </div>--%>
             </telerik:RadPane>
             <telerik:RadPane ID="rpAyuda" runat="server" Width="20px" Height="90%">
-                <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" Height="100%" ExpandedPaneId="rsConsultas" Width="20px" DockedPaneId="rsbConsultas">
+                <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" Height="100%" ExpandedPaneId="rsConsultas" Width="20px" DockedPaneId="rsbConsultas" ClickToOpen="true">
                     <telerik:RadSlidingPane ID="rsbAyuda" runat="server" CollapseMode="Forward" EnableResize="false" Width="325px" Title="Ayuda" Height="100%">
                         <div id="divTabuladorMaestro" runat="server">
                             <p style="text-align: justify; padding: 10px 10px 10px 10px;">

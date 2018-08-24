@@ -14,7 +14,7 @@
         }
 
         function OpenPuestoSelectionReportePlantillaWindow() {
-            OpenSelectionWindow("/Comunes/SeleccionPuesto.aspx?m=FORMACION&CatalogoCl=PLANTILLA&vClTipoSeleccion=PUESTO_OBJETIVO", "winSeleccion", "Selección de puestos");
+            OpenSelectionWindow("../Comunes/SeleccionPuesto.aspx?CatalogoCl=PLANTILLA&vClTipoSeleccion=PUESTO_OBJETIVO", "winSeleccion", "Selección de puestos");
         }
 
         function OpenSelectionWindow(pURL, pIdWindow, pTitle) {
@@ -110,7 +110,7 @@
                 </div>
             </telerik:RadPane>
             <telerik:RadPane ID="rpAyuda" runat="server" Scrolling="None" Width="22px" Height="50px">
-                <telerik:RadSlidingZone ID="rszAyuda" SlideDirection="Left" runat="server" ExpandedPaneId="rspAyuda" Width="22px">
+                <telerik:RadSlidingZone ID="rszAyuda" SlideDirection="Left" runat="server" ExpandedPaneId="rspAyuda" ClickToOpen="true" Width="22px">
                     <telerik:RadSlidingPane ID="rspAyuda" runat="server" Title="Ayuda" Width="270px" RenderMode="Mobile" Height="100%">
                         <div id="divPlantilla" runat="server" style="display: block; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
                             Plantillas de remplazo

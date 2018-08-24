@@ -32,14 +32,15 @@ namespace SIGE.WebApp.EO
         #endregion
 
         #region Funciones
-      
+
         private void CargarDatos()
         {
 
             txtMensajeCaptura.Content = ContextoApp.EO.Configuracion.MensajeCapturaResultados.dsMensaje;
             txtEmpleadoMensaje.Content = ContextoApp.EO.Configuracion.MensajeImportantes.dsMensaje;
-           // txtMensajeBajaCapturista.Content = ContextoApp.EO.Configuracion.MensajeBajaEmpleado.dsMensaje;
+            // txtMensajeBajaCapturista.Content = ContextoApp.EO.Configuracion.MensajeBajaEmpleado.dsMensaje;
             txtMensajeBajaNotificado.Content = ContextoApp.EO.Configuracion.MensajeBajaNotificador.dsMensaje;
+            txtBajaReplica.Content = ContextoApp.EO.Configuracion.MensajeBajaReplica.dsMensaje;
 
             txtNivelMinimoII.Text = ContextoApp.EO.Configuracion.NivelMinimoIndividualIndependiente.ToString();
             txtBonoMinimoII.Text = ContextoApp.EO.Configuracion.BonoMinimoIndividualIndependiente.ToString();
@@ -60,7 +61,7 @@ namespace SIGE.WebApp.EO
                 lstBusqueda.Items.Clear();
                 lstBusqueda.Items.Add(new RadListBoxItem(vTexto, vValor));
             }
-            
+
 
         }
 
@@ -114,28 +115,38 @@ namespace SIGE.WebApp.EO
             }
         }
 
-        protected void grdCapturaResultados_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
-        {
-            ConfiguracionNegocio nConfiguracion = new ConfiguracionNegocio();
-            grdCapturaResultados.DataSource = nConfiguracion.ObteneConfiguracionEvaluacionOrganizacional("CAPTURISTA");
-        }
+        //protected void grdCapturaResultados_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
+        //{
+        //    ConfiguracionNegocio nConfiguracion = new ConfiguracionNegocio();
+        //    grdCapturaResultados.DataSource = nConfiguracion.ObteneConfiguracionEvaluacionOrganizacional("CAPTURISTA");
+        //}
 
         protected void grdRecepcionMensajes_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             ConfiguracionNegocio nConfiguracion = new ConfiguracionNegocio();
             grdRecepcionMensajes.DataSource = nConfiguracion.ObteneConfiguracionEvaluacionOrganizacional("IMPORTANTE");
+
+            if (nConfiguracion.ObteneConfiguracionEvaluacionOrganizacional("IMPORTANTE").Count() > 0)
+                btnAgregarImportante.Enabled = false;
+            else 
+                btnAgregarImportante.Enabled = true;
         }
 
-        protected void grdBajaCapturista_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
-        {
-            ConfiguracionNegocio nConfiguracion = new ConfiguracionNegocio();
-           // grdBajaCapturista.DataSource = nConfiguracion.ObteneConfiguracionEvaluacionOrganizacional("BAJACAPTURISTA");
-        }
+        //protected void grdBajaCapturista_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
+        //{
+        //    ConfiguracionNegocio nConfiguracion = new ConfiguracionNegocio();
+        //    // grdBajaCapturista.DataSource = nConfiguracion.ObteneConfiguracionEvaluacionOrganizacional("BAJACAPTURISTA");
+        //}
 
         protected void grdBajaNotificado_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             ConfiguracionNegocio nConfiguracion = new ConfiguracionNegocio();
             grdBajaNotificado.DataSource = nConfiguracion.ObteneConfiguracionEvaluacionOrganizacional("BAJANOTIFICADO");
+
+            if (nConfiguracion.ObteneConfiguracionEvaluacionOrganizacional("BAJANOTIFICADO").Count() > 0)
+                btnAltaEmpleadoBajaNotificado.Enabled = false;
+            else
+                btnAltaEmpleadoBajaNotificado.Enabled = true;
         }
 
         protected void ramConfiguracion_AjaxRequest(object sender, Telerik.Web.UI.AjaxRequestEventArgs e)
@@ -153,13 +164,13 @@ namespace SIGE.WebApp.EO
                 listaEmpleados = JsonConvert.DeserializeObject<List<E_SELECTOR_EMPLEADO>>(vSeleccion.oSeleccion.ToString());
                 agregarEmpleados(listaEmpleados, vClTipo);
 
-                if (vSeleccion.clTipo == "CAPTURISTA")
-                    grdCapturaResultados.Rebind();
-                
+                //if (vSeleccion.clTipo == "CAPTURISTA")
+                //    grdCapturaResultados.Rebind();
 
-                if (vSeleccion.clTipo =="IMPORTANTE")
+
+                if (vSeleccion.clTipo == "IMPORTANTE")
                     grdRecepcionMensajes.Rebind();
-                
+
 
                 //if (vSeleccion.clTipo == "BAJACAPTURISTA")
                 //    grdBajaCapturista.Rebind();
@@ -167,14 +178,17 @@ namespace SIGE.WebApp.EO
 
                 if (vSeleccion.clTipo == "BAJANOTIFICADO")
                     grdBajaNotificado.Rebind();
-                
+
+                if (vSeleccion.clTipo == "BAJAREPLICA")
+                    rgBajaReplica.Rebind();
+
             }
         }
-      
-        protected void btnEliminaCapturistas_Click(object sender, EventArgs e)
-        {
-            EliminarEmpleados(grdCapturaResultados);
-        }
+
+        //protected void btnEliminaCapturistas_Click(object sender, EventArgs e)
+        //{
+        //    EliminarEmpleados(grdCapturaResultados);
+        //}
 
         protected void btnEliminarImportante_Click(object sender, EventArgs e)
         {
@@ -211,10 +225,12 @@ namespace SIGE.WebApp.EO
             EO.Configuracion.NivelMinimoIndividualIndependiente = decimal.Parse(txtNivelMinimoII.Text);
             EO.Configuracion.NivelMinimoGrupal = decimal.Parse(txtNivelMinimoG.Text);
 
-           // EO.Configuracion.MensajeBajaEmpleado.dsMensaje = txtMensajeBajaCapturista.Content != "" ? txtMensajeBajaCapturista.Content.Replace("&lt;","") : "N/A";
+            // EO.Configuracion.MensajeBajaEmpleado.dsMensaje = txtMensajeBajaCapturista.Content != "" ? txtMensajeBajaCapturista.Content.Replace("&lt;","") : "N/A";
             EO.Configuracion.MensajeBajaNotificador.dsMensaje = txtMensajeBajaNotificado.Content != "" ? txtMensajeBajaNotificado.Content.Replace("&lt;", "") : "N/A";
             EO.Configuracion.MensajeCapturaResultados.dsMensaje = txtMensajeCaptura.Content != "" ? txtMensajeCaptura.Content.Replace("&lt;", "") : "N/A";
             EO.Configuracion.MensajeImportantes.dsMensaje = txtEmpleadoMensaje.Content != "" ? txtEmpleadoMensaje.Content.Replace("&lt;", "") : "N/A";
+            EO.Configuracion.MensajeBajaReplica.dsMensaje = txtBajaReplica.Content != "" ? txtBajaReplica.Content.Replace("&lt;", "") : "N/A";
+
 
             EO.Configuracion.SueldoAsignacion = rbSueldo.Checked ? "1" : "0";
             EO.Configuracion.CampoExtra = rbExtra.Checked ? "1" : "0";
@@ -226,26 +242,26 @@ namespace SIGE.WebApp.EO
             UtilMensajes.MensajeResultadoDB(rwmMensaje, "Configuración guardada con exito.", E_TIPO_RESPUESTA_DB.SUCCESSFUL, pCallBackFunction: "");
         }
 
-        protected void grdCapturaResultados_ItemDataBound(object sender, GridItemEventArgs e)
-        {
-            if (e.Item is GridPagerItem)
-            {
-                RadComboBox PageSizeCombo = (RadComboBox)e.Item.FindControl("PageSizeComboBox");
+        //protected void grdCapturaResultados_ItemDataBound(object sender, GridItemEventArgs e)
+        //{
+        //    if (e.Item is GridPagerItem)
+        //    {
+        //        RadComboBox PageSizeCombo = (RadComboBox)e.Item.FindControl("PageSizeComboBox");
 
-                PageSizeCombo.Items.Clear();
-                PageSizeCombo.Items.Add(new RadComboBoxItem("10"));
-                PageSizeCombo.FindItemByText("10").Attributes.Add("ownerTableViewId", grdCapturaResultados.MasterTableView.ClientID);
-                PageSizeCombo.Items.Add(new RadComboBoxItem("50"));
-                PageSizeCombo.FindItemByText("50").Attributes.Add("ownerTableViewId", grdCapturaResultados.MasterTableView.ClientID);
-                PageSizeCombo.Items.Add(new RadComboBoxItem("100"));
-                PageSizeCombo.FindItemByText("100").Attributes.Add("ownerTableViewId", grdCapturaResultados.MasterTableView.ClientID);
-                PageSizeCombo.Items.Add(new RadComboBoxItem("500"));
-                PageSizeCombo.FindItemByText("500").Attributes.Add("ownerTableViewId", grdCapturaResultados.MasterTableView.ClientID);
-                PageSizeCombo.Items.Add(new RadComboBoxItem("1000"));
-                PageSizeCombo.FindItemByText("1000").Attributes.Add("ownerTableViewId", grdCapturaResultados.MasterTableView.ClientID);
-                PageSizeCombo.FindItemByText(e.Item.OwnerTableView.PageSize.ToString()).Selected = true;
-            }
-        }
+        //        PageSizeCombo.Items.Clear();
+        //        PageSizeCombo.Items.Add(new RadComboBoxItem("10"));
+        //        PageSizeCombo.FindItemByText("10").Attributes.Add("ownerTableViewId", grdCapturaResultados.MasterTableView.ClientID);
+        //        PageSizeCombo.Items.Add(new RadComboBoxItem("50"));
+        //        PageSizeCombo.FindItemByText("50").Attributes.Add("ownerTableViewId", grdCapturaResultados.MasterTableView.ClientID);
+        //        PageSizeCombo.Items.Add(new RadComboBoxItem("100"));
+        //        PageSizeCombo.FindItemByText("100").Attributes.Add("ownerTableViewId", grdCapturaResultados.MasterTableView.ClientID);
+        //        PageSizeCombo.Items.Add(new RadComboBoxItem("500"));
+        //        PageSizeCombo.FindItemByText("500").Attributes.Add("ownerTableViewId", grdCapturaResultados.MasterTableView.ClientID);
+        //        PageSizeCombo.Items.Add(new RadComboBoxItem("1000"));
+        //        PageSizeCombo.FindItemByText("1000").Attributes.Add("ownerTableViewId", grdCapturaResultados.MasterTableView.ClientID);
+        //        PageSizeCombo.FindItemByText(e.Item.OwnerTableView.PageSize.ToString()).Selected = true;
+        //    }
+        //}
 
         protected void grdRecepcionMensajes_ItemDataBound(object sender, GridItemEventArgs e)
         {
@@ -287,6 +303,44 @@ namespace SIGE.WebApp.EO
                 PageSizeCombo.FindItemByText("1000").Attributes.Add("ownerTableViewId", grdBajaNotificado.MasterTableView.ClientID);
                 PageSizeCombo.FindItemByText(e.Item.OwnerTableView.PageSize.ToString()).Selected = true;
             }
+        }
+
+        protected void rgBajaReplica_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            ConfiguracionNegocio nConfiguracion = new ConfiguracionNegocio();
+            rgBajaReplica.DataSource = nConfiguracion.ObteneConfiguracionEvaluacionOrganizacional("BAJAREPLICA");
+
+            if (nConfiguracion.ObteneConfiguracionEvaluacionOrganizacional("BAJAREPLICA").Count() > 0)
+                btnAgregarEncargado.Enabled = false;
+            else
+                btnAgregarEncargado.Enabled = true;
+
+        }
+
+        protected void rgBajaReplica_ItemDataBound(object sender, GridItemEventArgs e)
+        {
+            if (e.Item is GridPagerItem)
+            {
+                RadComboBox PageSizeCombo = (RadComboBox)e.Item.FindControl("PageSizeComboBox");
+
+                PageSizeCombo.Items.Clear();
+                PageSizeCombo.Items.Add(new RadComboBoxItem("10"));
+                PageSizeCombo.FindItemByText("10").Attributes.Add("ownerTableViewId", rgBajaReplica.MasterTableView.ClientID);
+                PageSizeCombo.Items.Add(new RadComboBoxItem("50"));
+                PageSizeCombo.FindItemByText("50").Attributes.Add("ownerTableViewId", rgBajaReplica.MasterTableView.ClientID);
+                PageSizeCombo.Items.Add(new RadComboBoxItem("100"));
+                PageSizeCombo.FindItemByText("100").Attributes.Add("ownerTableViewId", rgBajaReplica.MasterTableView.ClientID);
+                PageSizeCombo.Items.Add(new RadComboBoxItem("500"));
+                PageSizeCombo.FindItemByText("500").Attributes.Add("ownerTableViewId", rgBajaReplica.MasterTableView.ClientID);
+                PageSizeCombo.Items.Add(new RadComboBoxItem("1000"));
+                PageSizeCombo.FindItemByText("1000").Attributes.Add("ownerTableViewId", rgBajaReplica.MasterTableView.ClientID);
+                PageSizeCombo.FindItemByText(e.Item.OwnerTableView.PageSize.ToString()).Selected = true;
+            }
+        }
+
+        protected void btnEliminarEncargado_Click(object sender, EventArgs e)
+        {
+            EliminarEmpleados(rgBajaReplica);
         }
 
     }

@@ -92,7 +92,7 @@
 
         </script>
     </telerik:RadCodeBlock>
-    <label name="" id="lbltitulo" class="labelTitulo">Prueba TIVA</label>
+    <label name="" id="lbltitulo" class="labelTitulo">TIVA</label>
 
     <div style="height: calc(100% - 100px);">
         <telerik:RadSplitter ID="splHelp" runat="server" Width="100%" Height="100%" BorderSize="0" Orientation="Horizontal">

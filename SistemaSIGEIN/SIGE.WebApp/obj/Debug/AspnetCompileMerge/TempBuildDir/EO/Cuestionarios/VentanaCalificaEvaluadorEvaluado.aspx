@@ -39,10 +39,14 @@
         function OpenCapturaResultado() {
             var selectedItem = $find("<%=grdEvaluados.ClientID %>").get_masterTableView().get_selectedItems()[0];
             if (selectedItem != undefined) {
+                if (selectedItem.getDataKeyValue("CL_ESTADO_EMPLEADO") == "ALTA") {
                 var pIdPeriodo = '<%=vIdPeriodo%>';
                 var pIdEvaluado = selectedItem.getDataKeyValue("ID_EVALUADO");
                 OpenSelectionWindow("VentanaContextoCapturaResultados.aspx?idPeriodo=" + pIdPeriodo + "&idEvaluado=" + pIdEvaluado, "rwCaptura", "Captura de resultados")
-            }
+                }
+                else
+                    radalert("Evaluado dado de baja.", 400, 150);
+                }
             else
                 radalert("Selecciona a un evaluado.", 400, 150);
         }
@@ -101,12 +105,12 @@
                         </ClientSettings>
                         <PagerStyle AlwaysVisible="true" />
                         <GroupingSettings CaseSensitive="false" />
-                        <MasterTableView DataKeyNames="ID_EVALUADO,ESTATUS" ClientDataKeyNames="ID_EVALUADO,ESTATUS" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
+                        <MasterTableView DataKeyNames="ID_EVALUADO,ESTATUS, CL_ESTADO_EMPLEADO" ClientDataKeyNames="ID_EVALUADO,ESTATUS, CL_ESTADO_EMPLEADO" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
                             <Columns>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="80" FilterControlWidth="30" HeaderText="No. de empleado" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="130" HeaderText="Nombre completo" DataField="NB_EMPLEADO_COMPLETO" UniqueName="NB_EMPLEADO_COMPLETO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="130" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="M_PUESTO_NB_PUESTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="120" FilterControlWidth="80" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="120" FilterControlWidth="80" HeaderText="Estatus" DataField="ESTATUS" UniqueName="ESTATUS" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                             </Columns>
                         </MasterTableView>
@@ -118,13 +122,14 @@
                 <telerik:RadSlidingZone ID="rszMensajeInicial" runat="server" SlideDirection="Left" DockedPaneId="rspMensajeInicial" Width="22px">
                     <telerik:RadSlidingPane ID="rspMensajeInicial" runat="server" Title="Mensaje Inicial" Width="340px" RenderMode="Mobile" Height="200">
                         <div style="padding: 10px; text-align: justify;" id="mensajeInicial" runat="server">
-                            <p>Estimado(a): <label runat="server" id="lblEvaluador"></label></p><br />
+                            <p>Estimado(a): <label runat="server" id="lblEvaluador"></label></p>
                             <p>
                                 La lista de evaluados que se muestra, ha sido asignada para que los califiques,
                                 cada evaluado cuenta con una serie de metas a las cuales deberás asignarles un
                                 valor.<br /><br />
-                                A los evaluados que tienen un estatus "CALIFICADO", no se le podrán hacer modificaciones
-                                en los resultados de las metas.
+                               Para calificarlas solo selecciona al evaluado y a continuación da clic en el botón capturar resultados.
+                               <br /><br /> Para salir de la ventana actual selecciona el botón terminar proceso.
+                               <br /><br /> Recuerda que puedes volver a ingresar posteriormente para seguir capturando los resultados de los evaluados.
                             </p>
                         </div>
                     </telerik:RadSlidingPane>
@@ -134,7 +139,7 @@
         </telerik:RadSplitter>
     </div>
     <div class="ctrlBasico" style="float:right;">
-        <telerik:RadButton ID="btnEvaluarMetas" runat="server" Text="Evaluar metas" AutoPostBack="false" OnClientClicking="OpenCapturaResultado"></telerik:RadButton>
+        <telerik:RadButton ID="btnEvaluarMetas" runat="server" Text="Capturar resultados" AutoPostBack="false" OnClientClicking="OpenCapturaResultado"></telerik:RadButton>
         <telerik:RadButton ID="btnTerminar" runat="server" Text="Terminar proceso" OnClientClicking="confirmarTerminar" AutoPostBack="true" OnClick="btnTerminar_Click"></telerik:RadButton>
     </div>
     <div style="clear: both; height: 15px;"></div>

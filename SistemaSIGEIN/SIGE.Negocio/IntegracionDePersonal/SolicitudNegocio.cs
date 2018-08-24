@@ -27,6 +27,12 @@ namespace SIGE.Negocio.Administracion
             return UtilRespuesta.EnvioRespuesta(oSolicitud.InsertarActualizarSolicitud(pXmlSolicitud, pIdSolicitud, pLstArchivoTemporales, pLstDocumentos, pClUsuario, pNbPrograma, vTipoSolicitud));
         }
 
+        public E_RESULTADO InsertaCandidatoEmpleado(int? pIdEmpleado, string pClUsuario, string pNbPrograma)
+        {
+            SolicitudOperaciones oSolicitud = new SolicitudOperaciones();
+            return UtilRespuesta.EnvioRespuesta(oSolicitud.InsertaCandidatoEmpleado(pIdEmpleado, pClUsuario, pNbPrograma));
+        }      
+
         public E_RESULTADO ActualizaDatosSolicitudCorreo(int? pIdSolicitud,Guid? tokenCartera,string passCartera, string pClUsuario, string pNbPrograma)
         {
             SolicitudOperaciones oSolicitud = new SolicitudOperaciones();
@@ -50,6 +56,26 @@ namespace SIGE.Negocio.Administracion
             SolicitudOperaciones operaciones = new SolicitudOperaciones();
             return operaciones.ObtenerCatalogoSolicitudes(pXmlSeleccion);
         }
+
+        public List<SPE_OBTIENE_SOLICITUDES_PROCESOS_EVALUACION_Result> ObtieneSolicitudesEvaluacion()
+        {
+            SolicitudOperaciones operaciones = new SolicitudOperaciones();
+            return operaciones.ObtieneSolicitudesEvaluacion();
+        }
+
+
+        public List<SPE_OBTIENE_CANDIDATOS_BATERIAS_Result> ObtieneCandidatosBaterias()
+        {
+            SolicitudOperaciones operaciones = new SolicitudOperaciones();
+            return operaciones.ObtieneCandidatosBaterias();
+        }
+
+        public List<SPE_OBTIENE_EMPLEADOS_PROCESOS_EVALUACION_Result> ObtieneEmpleadosEvaluacion(int? pID_EMPRESA = null, int? pID_ROL = null)
+        {
+            SolicitudOperaciones operaciones = new SolicitudOperaciones();
+            return operaciones.ObtieneEmpleadosEvaluacion(pID_EMPRESA, pID_ROL);
+        }
+        
 
         public List<SPE_OBTIENE_CARTERA_Result> Obtener_SOLICITUDES_CARTERA(int? ID_SOLICITUD = null, int? ID_CANDIDATO = null, int? ID_EMPLEADO = null, int? ID_DESCRIPTIVO = null, int? ID_REQUISICION = null, String CL_SOLICITUD = null, String CL_ACCESO_EVALUACION = null, int? ID_PLANTILLA_SOLICITUD = null, String DS_COMPETENCIAS_ADICIONALES = null, DateTime? FE_CREACION = null, DateTime? FE_MODIFICACION = null, String CL_USUARIO_APP_CREA = null, String CL_USUARIO_APP_MODIFICA = null, String NB_PROGRAMA_CREA = null, String NB_PROGRAMA_MODIFICA = null)
         {
@@ -110,11 +136,11 @@ namespace SIGE.Negocio.Administracion
             SolicitudOperaciones operaciones = new SolicitudOperaciones();
             return operaciones.ObtenerSolicitudesEmpleo();
         }
-        
-        public List<SPE_OBTIENE_DATOS_EMPLEADOS_Result> ObtieneDatosEmpleados()
+
+        public List<SPE_OBTIENE_DATOS_EMPLEADOS_Result> ObtieneDatosEmpleados(int? pIdEmpresa = null, int? pIdRol = null)
         {
             SolicitudOperaciones operaciones = new SolicitudOperaciones();
-            return operaciones.ObtenerDatosEmpleados();
+            return operaciones.ObtenerDatosEmpleados(pIdEmpresa, pIdRol);
         }
 
         public List<SPE_OBTIENE_ENTREVISTAS_SELECCIONADOS_Result> ObtieneEntrevistasSeleccionados()

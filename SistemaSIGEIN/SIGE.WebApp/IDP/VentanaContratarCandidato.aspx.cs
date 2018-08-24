@@ -68,6 +68,9 @@ namespace SIGE.WebApp.IDP
                 vIdPuesto = rlbPuesto.Items[0].Value;
                 vIdPlazaJefe = rlbJefe.Items[0].Value;
 
+                if (rlbRequicion.SelectedValue != "")
+                  vXmlDatos.Add(new XAttribute("ID_REQUISICION", rlbRequicion.SelectedValue));
+
                 vXmlDatos.Add(new XAttribute("ID_SOLICITUD", vIdSolicitud));
                 vXmlDatos.Add(new XAttribute("CL_EMPLEADO", txtClave.Text));
                 vXmlDatos.Add(new XAttribute("ID_PUESTO", vIdPuesto));
@@ -78,12 +81,14 @@ namespace SIGE.WebApp.IDP
 
                 EmpleadoNegocio nEmpleado = new EmpleadoNegocio();
 
-                if (nEmpleado.ObtenerEmpleados(pID_EMPRESA: null, pFgActivo: true).Count() + 1 > ContextoApp.InfoEmpresa.Volumen)
-                {
-                    UtilMensajes.MensajeResultadoDB(rwmAlertas, "Se ha alcanzado el máximo número de empleados para la licencia y no es posible agregar más.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
-                    return;
-                }
-
+                    LicenciaNegocio oNegocio = new LicenciaNegocio();
+                    var vEmpleados = oNegocio.ObtenerLicenciaVolumen(pFG_ACTIVO: true).FirstOrDefault();
+                    if (vEmpleados.NO_TOTAL_ALTA >= ContextoApp.InfoEmpresa.Volumen)
+                    {
+                        UtilMensajes.MensajeResultadoDB(rwmAlertas, "Se ha alcanzado el máximo número de empleados para la licencia y no es posible agregar más.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
+                        return;
+                    }
+               
                 E_RESULTADO vResultado = nSolicitud.InsertaCandidatoContratado(vXmlDatos.ToString(), vClUsuario, vNbPrograma);
                 UtilMensajes.MensajeResultadoDB(rwmAlertas, vResultado.MENSAJE[0].DS_MENSAJE.ToString(), vResultado.CL_TIPO_ERROR, 400, 150, "closeWindow");
             }

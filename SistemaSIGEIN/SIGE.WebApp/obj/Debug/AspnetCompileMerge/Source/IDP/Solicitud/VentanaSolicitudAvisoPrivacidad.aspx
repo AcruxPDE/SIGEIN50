@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AppSIGE.Master" AutoEventWireup="true" CodeBehind="VentanaSolicitudAvisoPrivacidad.aspx.cs" Inherits="SIGE.WebApp.IDP.Solicitud.VentanaSolicitudAvisoPrivacidad" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-       <link href="/Assets/css/Temas/<%= cssModulo %>" rel="stylesheet" type="text/css" />
-    <%--<link href="/Assets/css/Temas/IP.css" rel="stylesheet" type="text/css" />--%>
-    <link href="/Assets/css/estilo.css?v=<%= DateTime.Now.ToString() %>>" rel="stylesheet" />
-    <script src="/Assets/js/appPruebas.js"></script>
+       <link href='<%# ResolveClientUrl("~/Assets/css/Temas/") %><%= cssModulo %>' rel="stylesheet" type="text/css" />
+    <%--<link href="/Assets/css/Temas/IP.css"<%= cssModulo rel="stylesheet" type="text/css" />--%>
+    <link href="<%# ResolveClientUrl(String.Format("~/Assets/css/estilo.css?v={0}",DateTime.Now.ToString("yyyyMMddHHmmss") )) %>" rel="stylesheet" />
+    <script src="<%# ResolveClientUrl("~/Assets/js/appPruebas.js") %>"></script>
 
     <script type="text/javascript">
 

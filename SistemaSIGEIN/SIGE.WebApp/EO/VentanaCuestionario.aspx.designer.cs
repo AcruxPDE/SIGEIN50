@@ -112,13 +112,22 @@ namespace SIGE.WebApp.EO {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblVerificar;
         
         /// <summary>
-        /// rbVerificacion control.
+        /// btnVerificacionFalse control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton rbVerificacion;
+        protected global::Telerik.Web.UI.RadButton btnVerificacionFalse;
+        
+        /// <summary>
+        /// btnVerificacionTrue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnVerificacionTrue;
         
         /// <summary>
         /// lblPreguntaVerificacion control.

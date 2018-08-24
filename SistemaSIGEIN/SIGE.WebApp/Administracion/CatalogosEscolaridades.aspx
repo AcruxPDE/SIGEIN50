@@ -180,7 +180,7 @@
        
         <telerik:RadGrid ID="grdEscolaridades" ShowHeader="true" runat="server" AllowPaging="true"
             AllowSorting="true" GroupPanelPosition="Top" GridLines="None"
-            AllowFilteringByColumn="true" Height="100%" Width="700px"
+            AllowFilteringByColumn="true" Height="100%" Width="1000px"
             ClientSettings-EnablePostBackOnRowClick="false"
             OnNeedDataSource="grdEscolaridades_NeedDataSource"
             OnItemDataBound="grdEscolaridades_ItemDataBound"

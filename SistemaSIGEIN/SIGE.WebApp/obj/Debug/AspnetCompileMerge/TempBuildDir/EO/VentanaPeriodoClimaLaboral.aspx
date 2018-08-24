@@ -8,6 +8,14 @@
 
         function closeWindow() {
             var pDatos = [{
+                accion: "ACTUALIZARLISTA"
+
+            }];
+            cerrarVentana(pDatos);
+        }
+
+        function closeWindowEdit() {
+            var pDatos = [{
                 accion: "ACTUALIZAR"
 
             }];
@@ -23,7 +31,7 @@
         }
 
         function OpenSelectionWindow() {
-            openChildDialog("../Comunes/SeleccionPeriodoClima.aspx", "WinConfigurar", "Selección de periodo");
+            openChildDialog("../Comunes/SeleccionPeriodoClima.aspx?mulSel=0", "winSeleccion", "Selección de período");
         }
 
         function useDataFromChild(pData) {

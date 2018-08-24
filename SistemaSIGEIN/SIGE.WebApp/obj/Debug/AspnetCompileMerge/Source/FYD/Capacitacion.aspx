@@ -38,7 +38,7 @@
         <table>
             <tr>
                 <td>
-                    <telerik:RadButton ID="btnPeriodosEvaluacion" runat="server" Text="Periodos de evaluación" CssClass="rectangle" ButtonType="LinkButton" NavigateUrl="/FYD/PeriodosEvaluacion.aspx"></telerik:RadButton>
+                    <telerik:RadButton ID="btnPeriodosEvaluacion" runat="server" Text="Períodos de evaluación" CssClass="rectangle" ButtonType="LinkButton" NavigateUrl="/FYD/PeriodosEvaluacion.aspx"></telerik:RadButton>
                 </td>
                 <td>
                     <img src="../Assets/images/FlechaDerecha.png" />

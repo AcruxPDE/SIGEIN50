@@ -102,7 +102,6 @@
                     Height="100%"
                     AutoGenerateColumns="false"
                     EnableHeaderContextMenu="true"
-  
                     AllowSorting="true"
                     HeaderStyle-Font-Bold="true"
                     AllowMultiRowSelection="true"

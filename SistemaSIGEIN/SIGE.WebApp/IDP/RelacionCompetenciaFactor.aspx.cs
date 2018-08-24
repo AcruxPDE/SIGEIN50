@@ -88,6 +88,7 @@ namespace SIGE.WebApp.IDP
             }).ToList();
             rgdFactores.Rebind();
             btnAgregar.Enabled = false;
+            btnEliminar.Enabled = false;
         }
        
         protected void rgdFactores_SelectedIndexChanged(object sender, EventArgs e)
@@ -96,6 +97,7 @@ namespace SIGE.WebApp.IDP
             vIdFactor = int.Parse(item.GetDataKeyValue("ID_SELECCION").ToString());
             CargaCompetencias();
             btnAgregar.Enabled = true;
+            btnEliminar.Enabled = true;
         }
 
         protected void CargaCompetencias() {
@@ -103,6 +105,7 @@ namespace SIGE.WebApp.IDP
             vlstCompetencias = nPruebasNegocio.ObtienePruebasFactores(pID_SELECCION: vIdFactor, pCL_SELECCION: "COMPETENCIAS").Select(s => new E_SELECCIONADOS
             {
                 ID_SELECCION = s.ID_SELECCION,
+                CL_SELECCION = s.CL_SELECCION,
                 NB_SELECCION = s.NB_SELECCION,
                 DS_SELECCION = s.DS_SELECCION
             }).ToList();
@@ -137,21 +140,32 @@ namespace SIGE.WebApp.IDP
             CargaCompetencias();
         }
 
-        protected void rgdCompetencias_ItemCommand(object sender, GridCommandEventArgs e)
-        {
-            if (e.CommandName == "Delete")
-            {
-                GridDataItem item = e.Item as GridDataItem;
-                EliminarCompetencia(int.Parse(item.GetDataKeyValue("ID_SELECCION").ToString()));
-            }
-        }
+        //protected void rgdCompetencias_ItemCommand(object sender, GridCommandEventArgs e)
+        //{
+        //    if (e.CommandName == "Delete")
+        //    {
+        //        GridDataItem item = e.Item as GridDataItem;
+        //        EliminarCompetencia(int.Parse(item.GetDataKeyValue("ID_SELECCION").ToString()));
+        //    }
+        //}
 
-        protected void EliminarCompetencia(int pIdCompetencia) {
+        protected void EliminarCompetencia(XElement pCompetencias)
+        {
             PruebasNegocio nPruebas = new PruebasNegocio();
-            E_RESULTADO vResultado = nPruebas.EliminaCompetenciaFactor(vIdFactor, pIdCompetencia, vClUsuario, vNbPrograma);
+            E_RESULTADO vResultado = nPruebas.EliminaCompetenciaFactor(vIdFactor, pCompetencias.ToString(), vClUsuario, vNbPrograma);
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "OnCloseWindowC");
             CargaCompetencias();
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+            XElement vXmlCompetencias = new XElement("COMPETENCIAS");
+            foreach (GridDataItem item in rgdCompetencias.SelectedItems)
+                vXmlCompetencias.Add(new XElement("COMPETENCIA",
+                                  new XAttribute("ID_COMPETENCIA", item.GetDataKeyValue("ID_SELECCION").ToString())));
+            EliminarCompetencia(vXmlCompetencias);
         }
       
     }

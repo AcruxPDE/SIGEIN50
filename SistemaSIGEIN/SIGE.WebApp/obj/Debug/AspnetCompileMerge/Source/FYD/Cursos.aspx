@@ -22,7 +22,7 @@
                 vTitulo = "Editar Curso";
             }
             var windowProperties = {};
-            windowProperties.width = document.documentElement.clientWidth - 550;
+            windowProperties.width = document.documentElement.clientWidth - 400;
             windowProperties.height = document.documentElement.clientHeight - 40;
             openChildDialog(vURL, "winCurso", vTitulo, windowProperties);
         }

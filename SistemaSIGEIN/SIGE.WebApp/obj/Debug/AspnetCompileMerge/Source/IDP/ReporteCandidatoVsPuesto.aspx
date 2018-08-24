@@ -2,20 +2,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
-    <div id="dvImprimir" runat="server">
-        <div style="height: 850px;">
-            <label style="display: block !important; width: 100% !important; padding: 0 !important; margin-bottom: 20px !important; font-size: 21px !important; line-height: inherit !important; color: darkred !important; border: 0 !important; border-bottom: 1px solid #e5e5e5 !important;">
-                Consulta candidato vs puestos</label>
+    <div id="dvImprimir" runat="server" style="width: 790px; padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px;">
+        <div style="height: 10px;"></div>
+        <label style="display: block !important; width: 100% !important; padding: 0 !important; margin-bottom: 20px !important; font-size: 21px !important; line-height: inherit !important; border: 0 !important; border-bottom: 1px solid #C6DB95 !important;">
+            Consulta candidato vs puestos</label>
             <div style="clear: both; height: 10px"></div>
-            <label style="color: darkred;">Comparativo de persona:</label>
+            <label>Comparativo de persona:</label>
             <div style="clear: both; height: 10px"></div>
-            <label id="lbCandidatosCom" runat="server"></label>
+            <div id="lbCandidatosCom" runat="server"></div>
             <div style="clear: both; height: 10px"></div>
-            <label style="color: darkred;">Contra los siguientes puestos:</label>
+            <label>Contra los siguientes puestos:</label>
             <div style="clear: both; height: 10px"></div>
-            <label id="lbPuestos" runat="server"></label>
-        </div>
-        <div style="clear: both; height: 10px"></div>
+            <div id="dvPuestos" runat="server"></div>
+<%--        <div style="clear: both; height: 10px"></div>
         <div style="height: 1000px;">
             <telerik:RadHtmlChart runat="server" ID="rhcCandidatoPuestos" Height="650" Transitions="true" Skin="Silk">
                 <PlotArea>
@@ -42,8 +41,8 @@
             </telerik:RadHtmlChart>
         </div>
         <br />
-        <br />
-        <div style="clear: both; height: 10px"></div>
+        <br />--%>
+  <%--      <div style="clear: both; height: 10px"></div>
         <div style="width: 60%;">
             <telerik:RadGrid ID="rgdPromedios"
                 runat="server"
@@ -66,8 +65,8 @@
         </div>
         <div runat="server" id="divMensajeMayor130" visible="false">
             <label id="lblPuesto" name="lblPuesto" runat="server">(*) La persona tiene la capacidad para desempeñar el puesto, sin embargo supera en 30% o más los requerimientos de competencias del mismo. Esto es un factor que debe ser considerado para la toma de decisiones</label>
-        </div>
-        <div style="clear: both; height: 10px"></div>
+        </div>--%>
+        <div style="clear: both; height: 20px"></div>
         <%--                 <telerik:RadPivotGrid runat="server" ID="pgDetalleCompetencia" OnNeedDataSource="pgDetalleCompetencia_NeedDataSource" RowTableLayout="Tabular" OnCellDataBound="pgDetalleCompetencia_CellDataBound" 
                             ShowDataHeaderZone="false" ShowRowHeaderZone="false" ShowColumnHeaderZone="false" ShowFilterHeaderZone="false" AllowFiltering="false" AllowSorting="true" Height="100%"  AllowNaturalSort="true">
                             <ClientSettings>
@@ -130,7 +129,7 @@
                 myDoc.write(pvContent + "</body></html>");
                 myDoc.close(); (pvContent + "</body></html>");
                 myDoc.close();
-            }, 3000);
+            }, 2000);
 
         </script>
     </telerik:RadCodeBlock>

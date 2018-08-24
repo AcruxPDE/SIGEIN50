@@ -42,13 +42,11 @@ namespace SIGE.WebApp
             set { ViewState["vs_vFgModuloED"] = value; }
         }
 
-
         public string vFgModuloRDP
         {
             get { return (string)ViewState["vs_vFgModuloRDP"]; }
             set { ViewState["vs_vFgModuloRDP"] = value; }
         }
-
 
         public string vFgModuloMPC
         {
@@ -74,12 +72,22 @@ namespace SIGE.WebApp
             set { ViewState["vs_vFgModuloPDE"] = value; }
         }
 
+        public string vFgAccesoNomina
+        {
+            get { return (string)ViewState["vs_vFgAccesoNomina"]; }
+            set { ViewState["vs_vFgAccesoNomina"] = value; }
+        }
+
         #endregion
+
+        public string vClUsuario { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (ContextoUsuario.oUsuario != null)
+            
             {
+                vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
                 List<E_FUNCION> lstFunciones = ContextoUsuario.oUsuario.oFunciones.Where(w => w.CL_TIPO_FUNCION.Equals(E_TIPO_FUNCION.MENUGRAL.ToString())).ToList();
                 List<E_MENU> lstMenu = Utileria.CrearMenuLista(lstFunciones, "GENERAL", pFgLimpiarEstilo: true);
                 divMenu.Controls.Add(Utileria.CrearMenu(lstMenu, Request.Browser.IsMobileDevice));
@@ -95,9 +103,22 @@ namespace SIGE.WebApp
                 vFgModuloPDE = ContextoApp.PDE.LicenciaPuntoEncuentro.MsgActivo;
                 vFgModuloCI = ContextoApp.CI.LicenciaConsultasInteligentes.MsgActivo;
                 vFgModuloRP = ContextoApp.RP.LicenciaReportes.MsgActivo;
+                vFgAccesoNomina = ContextoApp.ANOM.LicenciaAccesoModulo.MsgActivo;
 
                 lblEmpresa.InnerText = ContextoApp.InfoEmpresa.NbEmpresa;
             }
         }
+
+        //protected void ramMenu_AjaxRequest(object sender, AjaxRequestEventArgs e)
+        //{
+        //     string pParameter = e.Argument;
+
+        //     if (pParameter != null)
+        //     {
+        //         Session["__clUsuario__"] = vClUsuario;
+        //         string url = pParameter + vClUsuario;
+        //         ScriptManager.RegisterStartupScript(Page, typeof(Page), "OpenWindow", "window.open('" + url + "', '_blank');", true);
+        //     }
+        //}
     }
 }

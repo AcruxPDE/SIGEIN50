@@ -13,11 +13,11 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
     {
         SistemaSigeinEntities contexto;
 
-        public List<SPE_OBTIENE_NECESIDADES_CAPACITACION_Result> obtenerNecesidadesCapacitacion(int? ID_PERIODO, int? ID_DEPARTAMENTO, string DS_PRIORIDADES)
+        public List<SPE_OBTIENE_NECESIDADES_CAPACITACION_Result> obtenerNecesidadesCapacitacion(int? ID_PERIODO, int? ID_DEPARTAMENTO, string DS_PRIORIDADES, int? ID_ROL)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_NECESIDADES_CAPACITACION(ID_PERIODO, ID_DEPARTAMENTO, DS_PRIORIDADES).ToList();
+                return contexto.SPE_OBTIENE_NECESIDADES_CAPACITACION(ID_PERIODO, ID_DEPARTAMENTO, DS_PRIORIDADES, ID_ROL).ToList();
             }
         }
 

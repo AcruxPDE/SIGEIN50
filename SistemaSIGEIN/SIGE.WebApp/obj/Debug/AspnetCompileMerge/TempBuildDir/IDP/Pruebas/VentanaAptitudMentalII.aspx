@@ -127,6 +127,7 @@
                         "Esta prueba consta de 75 ejercicios, resuelva todos los que pueda.<br />" +
                         "A partir de la señal dada por el examinador, dispondrás de media hora. Trabaja lo más rápida y exactamente que puedas. No se detenga mucho  en una pregunta. Si llegas a una que no comprendas, pasa a la siguiente.</label>";
                     radconfirm(JustificarTexto(text), callBackFunction, 950, 600, null, "Aptitud mental II");
+
                 }
             };
 
@@ -148,7 +149,7 @@
                         args.set_cancel(true);
                     }
                     else {
-                        window.close();
+                       // window.close();
                 }
             }
 
@@ -219,6 +220,18 @@
                 function scrollTo(hash) {
                     location.hash = "#" + hash;
                 }
+
+
+                //function ConfirmarEliminarRespuestas(sender, args) {
+                //    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+                //        if (shouldSubmit) {
+                //            this.click();
+                //        }
+                //    });
+                //    radconfirm("Este proceso borrará las respuestas de la prueba, ¿Deseas continuar?", callBackFunction, 400, 150, null, "Eliminar respuestas");
+                //    args.set_cancel(true);
+                //}
+
         </script>
     </telerik:RadCodeBlock>
 
@@ -6105,10 +6118,19 @@
         <div class="Cronometro">Tiempo restante <span id="time">15:00</span></div>
     </div>
 
-    <div class="divControlesBoton">
+         <div class="divControlDerecha">
+               <div class="ctrlBasico">
         <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Terminar" AutoPostBack="true"></telerik:RadButton>
-         <telerik:RadButton ID="btnCorregir" runat="server" Visible="false" OnClick="btnCorregir_Click" Text="Corregir" AutoPostBack="true"></telerik:RadButton>
+                   </div>
+               <div class="ctrlBasico">
+         <telerik:RadButton ID="btnCorregir" runat="server" Visible="false" OnClick="btnCorregir_Click" Text="Guardar" AutoPostBack="true"></telerik:RadButton>
+                   </div>
+               <div class="ctrlBasico">
           <telerik:RadButton Visible="false" ID="btnImpresionPrueba" runat="server" OnClientClicked="OpenReport" Text="Imprimir" AutoPostBack="false"></telerik:RadButton>   
+                   </div>
+   <%--          <div class="ctrlBasico">
+                  <telerik:RadButton ID="btnEliminar" runat="server"  Text="Eliminar" AutoPostBack="true" Visible="false" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminar_Click"></telerik:RadButton>
+             </div>--%>
     </div>
 <%--      <div class="DivBtnTerminarDerecha">
        

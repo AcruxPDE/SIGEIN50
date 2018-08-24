@@ -25,7 +25,7 @@
 
 
         function OpenPuestoSelectionReporteMaximoMinimoWindow() {
-            OpenSelectionWindow("/Comunes/SeleccionPuesto.aspx?m=FORMACION&CatalogoCl=PLANTILLA&vClTipoSeleccion=PUESTO_OBJETIVO", "winSeleccion", "Selección de puestos");
+            OpenSelectionWindow("../Comunes/SeleccionPuesto.aspx?CatalogoCl=PLANTILLA&vClTipoSeleccion=PUESTO_OBJETIVO", "winSeleccion", "Selección de puestos");
         }
 
         function useDataFromChild(pPuestos) {
@@ -150,7 +150,7 @@
                 <telerik:RadButton runat="server" ID="btnMaximosMinimos" Text="Emitir" OnClick="btnMaximosMinimos_Click"></telerik:RadButton>
             </telerik:RadPane>
             <telerik:RadPane ID="rpAyuda" runat="server" Scrolling="None" Width="22px" Height="50px">
-                <telerik:RadSlidingZone ID="rszAyuda" SlideDirection="Left" runat="server" ExpandedPaneId="rspAyuda" Width="22px">
+                <telerik:RadSlidingZone ID="rszAyuda" SlideDirection="Left" runat="server" ExpandedPaneId="rspAyuda" Width="22px" ClickToOpen="true">
                     <telerik:RadSlidingPane ID="rspAyuda" runat="server" Title="Ayuda" Width="270px" RenderMode="Mobile" Height="100%">
                         <div id="divMaximo" runat="server" style="display: block; padding-left: 10px; padding-right: 10px; padding-top: 20px; text-align: justify;">
                             <p>

@@ -1,4 +1,6 @@
-﻿using SIGE.Entidades;
+﻿using Newtonsoft.Json;
+using SIGE.Entidades;
+using SIGE.Entidades.Administracion;
 using SIGE.Entidades.Externas;
 using SIGE.Negocio.Administracion;
 using SIGE.Negocio.AdministracionSitio;
@@ -9,6 +11,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 using Telerik.Web.UI;
 
 namespace SIGE.WebApp.Administracion
@@ -35,6 +38,12 @@ namespace SIGE.WebApp.Administracion
             set { ViewState["vs_vClOperacion"] = value; }
         }
 
+        private List<E_GRUPOS> vLstGruposPlaza
+        {
+            get { return (List<E_GRUPOS>)ViewState["vs_vLstGruposPlaza"]; }
+            set { ViewState["vs_vLstGruposPlaza"] = value; }
+        }
+
         #endregion
 
         #region Metodos
@@ -47,6 +56,19 @@ namespace SIGE.WebApp.Administracion
             txtClPlaza.Text = vPlaza.CL_PLAZA;
             txtNbPlaza.Text = vPlaza.NB_PLAZA;
             chkActivo.Checked = vPlaza.FG_ACTIVO || vClOperacion.Equals(E_TIPO_OPERACION_DB.I);
+
+            if (vPlaza.XML_GRUPOS != null)
+            {
+                vLstGruposPlaza = (XElement.Parse(vPlaza.XML_GRUPOS).Elements("GRUPOS")).Select(s => new E_GRUPOS
+                {
+                    ID_GRUPO = int.Parse(s.Attribute("ID_GRUPO").Value)
+                   ,CL_GRUPO = s.Attribute("CL_GRUPO").Value
+                   ,NB_GRUPO = s.Attribute("NB_GRUPO").Value
+                   , FG_SISTEMA = s.Attribute("FG_SISTEMA").Value == "1"? true:false
+                }).ToList();
+            }
+
+
 
             if (vPlaza.ID_EMPLEADO != null)
             {
@@ -70,6 +92,12 @@ namespace SIGE.WebApp.Administracion
                 }
             }
 
+            if (vPlaza.ID_DEPARTAMENTO != null)
+            {
+                lstArea.Items.Clear();
+                lstArea.Items.Add(new RadListBoxItem(vPlaza.NB_DEPARTAMENTO, vPlaza.ID_DEPARTAMENTO.ToString()));
+            }
+
             EmpresaNegocio nEmpresa = new EmpresaNegocio();
             List<SPE_OBTIENE_C_EMPRESA_Result> vEmpresas = nEmpresa.Obtener_C_EMPRESA(ID_EMPRESA: vIdEmpresa);
             cmbEmpresa.DataValueField = "ID_EMPRESA";
@@ -78,8 +106,60 @@ namespace SIGE.WebApp.Administracion
             cmbEmpresa.DataBind();
             cmbEmpresa.SelectedValue = vPlaza.ID_EMPRESA.ToString();
 
+            if (vIdPlaza == 0)
+            {
+                GruposNegocio oNegocio = new GruposNegocio();
+                SPE_OBTIENE_GRUPOS_Result vGrupo = oNegocio.ObtieneGrupos(pCL_GRUPO:"TODOS").FirstOrDefault();
+                if (vGrupo != null)
+                {
+                    vLstGruposPlaza.Add(new E_GRUPOS
+                    {
+                        ID_GRUPO = (int)vGrupo.ID_GRUPO,
+                        CL_GRUPO = vGrupo.CL_GRUPO,
+                        NB_GRUPO = vGrupo.NB_GRUPO,
+                        FG_SISTEMA = (bool)vGrupo.FG_SISTEMA
+                    });
+                }
+            }
+
         }
 
+         protected void AgregarGrupos(string pGruposSeleccion)
+         {
+             List<E_GRUPOS> vGruposSeleccionados = JsonConvert.DeserializeObject<List<E_GRUPOS>>(pGruposSeleccion);
+             foreach (E_GRUPOS item in vGruposSeleccionados)
+             {
+                 if (!vLstGruposPlaza.Exists(e => e.ID_GRUPO == item.ID_GRUPO))
+                 {
+                     vLstGruposPlaza.Add(new E_GRUPOS
+                     {
+                         ID_GRUPO = item.ID_GRUPO,
+                         CL_GRUPO = item.CL_GRUPO,
+                         NB_GRUPO = item.NB_GRUPO
+                     });
+                 }
+             }
+
+             rgGrupos.Rebind();
+         }
+
+         protected string ObtieneGrupos()
+         {
+             XElement vXmlGrupos = null;
+
+             var vGrupos = vLstGruposPlaza.Select(s => new XElement("GRUPO",
+                 new XAttribute("ID_GRUPO", s.ID_GRUPO.ToString())
+                 ));
+
+             vXmlGrupos = new XElement("GRUPOS", vGrupos);
+
+             return vXmlGrupos.ToString();
+         }
+
+         protected void SeguridadProcesos()
+         {
+             btnGuardar.Enabled = ContextoUsuario.oUsuario.TienePermiso("D.D");
+         }
 
         #endregion
 
@@ -99,7 +179,9 @@ namespace SIGE.WebApp.Administracion
                     vClOperacion = E_TIPO_OPERACION_DB.A;
                 }
 
+                vLstGruposPlaza = new List<E_GRUPOS>();
                 CargarDatos(vIdPlaza ?? 0);
+                SeguridadProcesos();
             }
 
 
@@ -139,6 +221,13 @@ namespace SIGE.WebApp.Administracion
                 if (int.TryParse(item.Value, out vIdPlazaJefe))
                     vPlaza.ID_PLAZA_SUPERIOR = vIdPlazaJefe;
 
+            int vIdDepartamento = 0;
+            foreach (RadListBoxItem item in lstArea.Items)
+                if (int.TryParse(item.Value, out vIdDepartamento))
+                    vPlaza.ID_DEPARTAMENTO = vIdDepartamento;
+
+            vPlaza.XML_GRUPOS = ObtieneGrupos();
+
             if (vFgGuardarPlaza)
             {
                 PlazaNegocio nPlaza = new PlazaNegocio();
@@ -147,6 +236,52 @@ namespace SIGE.WebApp.Administracion
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
 
                 UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR);
+            }
+        }
+
+        protected void rgGrupos_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            rgGrupos.DataSource = vLstGruposPlaza;
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            foreach (GridDataItem item in rgGrupos.SelectedItems)
+            {
+                int vIdGrupo = int.Parse(item.GetDataKeyValue("ID_GRUPO").ToString());
+                //string vClGrupo = item.GetDataKeyValue("CL_GRUPO").ToString();
+                bool vFgSistema = bool.Parse(item.GetDataKeyValue("FG_SISTEMA").ToString());
+                if (vFgSistema)
+                {
+                    UtilMensajes.MensajeResultadoDB(rwmAlertas, "Este grupo pertenece al sistema y no es posible eliminarlo.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150,"");
+                    return;
+                }
+
+
+                E_GRUPOS vItem = vLstGruposPlaza.Where(w => w.ID_GRUPO == vIdGrupo).FirstOrDefault();
+
+                if (vItem != null)
+                {
+                    vLstGruposPlaza.Remove(vItem);
+                    rgGrupos.Rebind();
+                }
+
+            }
+        }
+
+        protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
+        {
+            E_SELECTOR vLstDatos = new E_SELECTOR();
+            string pParameter = e.Argument;
+
+            if (pParameter != null)
+            {
+                vLstDatos = JsonConvert.DeserializeObject<E_SELECTOR>(pParameter);
+
+                if (vLstDatos.clTipo == "GRUPO")
+                {
+                    AgregarGrupos(vLstDatos.oSeleccion.ToString());
+                }
             }
         }
     }

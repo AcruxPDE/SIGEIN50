@@ -320,11 +320,18 @@ namespace SIGE.WebApp.IDP
             {
                 cronometro.Visible = false;
                 vTiempoInicio = 0;
+                btnSiguiente.Text = "Guardar"; // Se agrega para la nueva forma de navegación 06/06/2018
+                btnImpresionPrueba.Visible = true; // Se agrega para la nueva forma de navegación 06/06/2018
+               // btnEliminar.Visible = true;// Se agrega para la nueva forma de navegación 06/06/2018
               //  btnTerminar.Text = "Guardar";
                 //btnTerminar.Visible = false;
                 //RadButton1.Visible = false;
                 //RadButton2.Visible = true;
                 //btnCorregir.Visible = true;
+                var vPrueba = nKprueba.Obtener_K_PRUEBA(pIdPrueba: vIdPrueba, pClTokenExterno: vClToken).FirstOrDefault();
+                if (vPrueba.NB_TIPO_PRUEBA == "MANUAL")
+                    btnSiguiente.Enabled = false;
+
                 var respuestas = nKprueba.Obtener_RESULTADO_PRUEBA(vIdPrueba, vClToken);
                 vResultadosRevision = new List<E_RESULTADOS_PRUEBA>();
                 foreach (var item in respuestas)
@@ -2615,6 +2622,24 @@ namespace SIGE.WebApp.IDP
             //        UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultadoSeccion.CL_TIPO_ERROR, 400, 150, "");
             //    }
         }
+
+        //protected void btnEliminar_Click(object sender, EventArgs e)
+        //{
+        //    if (vIdPrueba != null)
+        //    {
+        //        PruebasNegocio nPruebas = new PruebasNegocio();
+        //        var vResultado = nPruebas.EliminaRespuestasPrueba(vIdPrueba, vClUsuario, vNbPrograma);
+        //        string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+        //        if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+        //        {
+        //            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+
+        //        }
+        //        else
+        //            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
+        //    }
+
+        //}
 
         //protected void btnCorregir_Click(object sender, EventArgs e)
         //{

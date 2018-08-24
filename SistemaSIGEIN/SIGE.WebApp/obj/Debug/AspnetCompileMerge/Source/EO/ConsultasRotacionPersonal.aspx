@@ -23,6 +23,15 @@
             openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1", "WinConsultaPersonal", "Selección de campos adicionales");
         }
 
+
+        //Eliminar el tooltip del control
+        function pageLoad() {
+            var datePicker = $find("<%=rdpFechaInicio.ClientID %>");
+            datePicker.get_popupButton().title = "";
+            var datePicker2 = $find("<%=rdpFechaFin.ClientID %>");
+            datePicker2.get_popupButton().title = "";
+        }
+
         //var idEmpleadoBaja = "";
         //var idEmpleado = "";
 
@@ -228,10 +237,10 @@
                     <telerik:RadSlidingPane ID="rsbReportes" runat="server" CollapseMode="Forward" EnableResize="false" Width="250px" Title="Reporte" Height="100%">
                         <telerik:RadTabStrip ID="tbReportes" runat="server" SelectedIndex="0" MultiPageID="mpgReportes" Orientation="VerticalLeft" Width="250" Font-Size="Small" Align="Left">
                             <Tabs>
-                                <telerik:RadTab Text="Parámetros de Análisis" runat="server" SelectedIndex="0"></telerik:RadTab>
-                                <telerik:RadTab Text="Índice de Rotación" runat="server" SelectedIndex="1"></telerik:RadTab>
-                                <telerik:RadTab Text="Causas de Rotación" runat="server" SelectedIndex="2"></telerik:RadTab>
-                                <telerik:RadTab Text="Historial de Bajas" runat="server" SelectedIndex="3"></telerik:RadTab>
+                                <telerik:RadTab Text="Parámetros de análisis" runat="server" SelectedIndex="0"></telerik:RadTab>
+                                <telerik:RadTab Text="Índice de rotación" runat="server" SelectedIndex="1"></telerik:RadTab>
+                                <telerik:RadTab Text="Causas de rotación" runat="server" SelectedIndex="2"></telerik:RadTab>
+                                <telerik:RadTab Text="Histórico de bajas" runat="server" SelectedIndex="3"></telerik:RadTab>
                                <%-- <telerik:RadTab Text="Bajas Pendientes" runat="server" SelectedIndex="3"></telerik:RadTab>--%>
                             </Tabs>
                         </telerik:RadTabStrip>
@@ -250,7 +259,8 @@
                                     Fecha inicio:</label>
                             </div>
                             <div class="divControlDerecha">
-                                <telerik:RadDatePicker ID="rdpFechaInicio" runat="server" Width="150px">
+                                <telerik:RadDatePicker ID="rdpFechaInicio" runat="server" Width="150px" DateInput-ToolTip="Fecha inicio" >
+                                 <Calendar ShowDayCellToolTips="false" ></Calendar>
                                 </telerik:RadDatePicker>
                             </div>
                         </div>
@@ -262,7 +272,7 @@
                                     Fecha fin:</label>
                             </div>
                             <div class="divControlDerecha">
-                                <telerik:RadDatePicker ID="rdpFechaFin" runat="server" Width="150px">
+                                <telerik:RadDatePicker ID="rdpFechaFin" runat="server" Width="150px" DateInput-ToolTip="Fecha fin" >
                                 </telerik:RadDatePicker>
                             </div>
                         </div>
@@ -293,7 +303,7 @@
                         <div style="clear: both; height: 20px"></div>
                         <div class="ctrlBasico">
                             <div class="divControlIzquierda">
-                                <label id="Label5" name="lblDepartamento" runat="server">Área:</label>
+                                <label id="Label5" name="lblDepartamento" runat="server">Área/Departamento:</label>
                             </div>
                             <div class="divControlDerecha">
                                 <telerik:RadListBox ID="lstDepartamentosIndice" Width="200px" Height="100px" runat="server" ValidationGroup="vgDepartamento"></telerik:RadListBox>
@@ -712,6 +722,9 @@
                                             <GroupingSettings CaseSensitive="false" />
                                             <MasterTableView DataKeyNames="ID_EMPLEADO" AllowFilteringByColumn="true" AllowSorting="true" AllowPaging="true">
                                                 <Columns>
+                                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="70" HeaderText="Fecha de ingreso" DataField="FECHA_INGRESO" UniqueName="FECHA_INGRESO" DataFormatString="{0:d}">
+                                                        <HeaderStyle Font-Bold="true" />
+                                                    </telerik:GridBoundColumn>
                                                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="70" HeaderText="Fecha de la baja" DataField="FECHA_BAJA" UniqueName="FECHA_BAJA" DataFormatString="{0:d}">
                                                         <HeaderStyle Font-Bold="true" />
                                                     </telerik:GridBoundColumn>

@@ -89,8 +89,6 @@
                           "escogerías en segundo lugar y así sucesivamente hasta que pongas el número 1 al que " +
                           "escogerías en último lugar; debes de poner un número a todos los factores y no es válido " +
                           "poner empates.</label>";
-
-                    //radconfirm(JustificarTexto(text), callBackFunction, 450, 350, null, "Intereses personales");
                     radconfirm(JustificarTexto(text), callBackFunction, 950, 600, null, "Intereses personales");
                 }
             };
@@ -213,9 +211,20 @@
                 //var wnd = openChildDialog(vURL, "winVistaPrevia", vTitulo, windowProperties);
             }
 
+
+            //function ConfirmarEliminarRespuestas(sender, args) {
+            //    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+            //        if (shouldSubmit) {
+            //            this.click();
+            //        }
+            //    });
+            //    radconfirm("Este proceso borrará las respuestas de la prueba, ¿Deseas continuar?", callBackFunction, 400, 150, null, "Eliminar respuestas");
+            //    args.set_cancel(true);
+            //}
+
         </script>
     </telerik:RadCodeBlock>
-    <label style="font-size: 21px;">Intereses Personales</label>
+    <label style="font-size: 21px;">Intereses personales</label>
     <div style="height: calc(100% - 120px); overflow: auto;">
         <telerik:RadSplitter ID="splHelp" runat="server" Width="100%" Height="100%" BorderSize="0" Orientation="Horizontal">
             <telerik:RadPane ID="rpnOpciones" runat="server" Height="30" Width="100%" Scrolling="None">
@@ -587,11 +596,19 @@
     <div class="ctrlBasico" id="cronometro" runat="server">
         <div class="Cronometro">Tiempo restante <span id="time">05:00</span></div>
     </div>
-    <div class="divControlesBoton">
+        <div class="divControlDerecha">
+                <div class="ctrlBasico">
         <telerik:RadButton ID="btnTerminar" Text="Terminar" AutoPostBack="true" OnClientClicking="close_window" OnClick="btnTerminar_Click" runat="server"></telerik:RadButton>
-         <telerik:RadButton ID="btnCorregir" runat="server" Visible="false" OnClick="btnCorregir_Click" Text="Corregir" AutoPostBack="true"></telerik:RadButton>
-
+                    </div>
+                <div class="ctrlBasico">
+         <telerik:RadButton ID="btnCorregir" runat="server" Visible="false" OnClick="btnCorregir_Click" Text="Guardar" AutoPostBack="true"></telerik:RadButton>
+                    </div>
+                <div class="ctrlBasico">
         <telerik:RadButton ID="btnImpresionPrueba" runat="server" OnClientClicked="OpenReport" Text="Imprimir" AutoPostBack="false" Visible = "false"></telerik:RadButton>
+                    </div>
+<%--              <div class="ctrlBasico">
+                  <telerik:RadButton ID="btnEliminar" runat="server"  Text="Eliminar" AutoPostBack="true" Visible="false" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminar_Click"></telerik:RadButton>
+             </div>--%>
     </div>
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>
 </asp:Content>

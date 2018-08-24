@@ -1,10 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menu.master" AutoEventWireup="true" CodeBehind="OrganigramaArea.aspx.cs" Inherits="SIGE.WebApp.Administracion.OrganigramaArea" %>
+
+<%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link rel="stylesheet" type="text/css" href="/Assets/css/cssOrgChart.css" />
-    <script type="text/javascript" src="/Assets/js/appOrgChart.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Assets/css/cssOrgChart.css" />
+    <script type="text/javascript" src="../Assets/js/appOrgChart.js"></script>
     <script type="text/javascript">
         function OpenAreaSelectionWindow() {
-            OpenSelectionWindow("../Comunes/SeleccionArea.aspx", "winSeleccion", "Selección de área")
+            OpenSelectionWindow("../Comunes/SeleccionArea.aspx", "winSeleccion", "Selección de área/departamento")
         }
 
         function OpenSelectionWindow(pURL, pIdWindow, pTitle) {
@@ -63,6 +65,25 @@
             ajaxManager.ajaxRequest("seleccionArea"); //Making ajax request with the argument        
         }
     </script>
+
+    <!-- Load Pako ZLIB library to enable PDF compression -->
+    <script src="../Assets/js/pako.min.js"></script>
+
+    <style type="text/css">
+        .k-pdf-export.RadOrgChart .rocGroup:before,
+        .k-pdf-export.RadOrgChart.rocSimple .rocNode:after,
+        .k-pdf-export.RadOrgChart .rocGroup:after,
+        .k-pdf-export.RadOrgChart.rocSimple .rocItem:after,
+        .k-pdf-export.RadOrgChart.rocSimple .rocItemTemplate:after {
+            width: 1px !important;
+        }
+
+        .kendo-pdf-hide-pseudo-elements:after,
+        .kendo-pdf-hide-pseudo-elements:before {
+            display: none !important;
+        }
+    </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <telerik:RadAjaxLoadingPanel ID="ralpOrganigrama" runat="server"></telerik:RadAjaxLoadingPanel>
@@ -83,9 +104,12 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
+     <div style="height: calc(100% - 10px);">
+        <telerik:RadSplitter ID="RadSplitter2" Width="100%" Height="100%" BorderSize="0" runat="server">
+            <telerik:RadPane ID="RadPane2" runat="server">    
     <div>
         <div class="ctrlBasico">
-            <label name="lblIdPuesto">A partir del área:</label>
+            <label name="lblIdPuesto">A partir del área/departamento:</label>
             <telerik:RadListBox ID="lstArea" Width="300" runat="server" OnClientItemDoubleClicking="OpenAreaSelectionWindow">
                 <Items>
                     <telerik:RadListBoxItem Text="Todas" Value="" />
@@ -98,10 +122,15 @@
         <div class="ctrlBasico">
             <telerik:RadCheckBox ID="chkMostrarPuestos" runat="server" Text="Mostrar puestos" OnClick="chkMostrarPuestos_Click"></telerik:RadCheckBox>
         </div>
+        <div class="ctrlBasico"> 
+                    <telerik:RadButton ID="btnExportar"  runat="server" OnClientClicked="exportRadOrgChart" Text="Exportar a pdf" AutoPostBack="false" UseSubmitBehavior="false"></telerik:RadButton>
+                    <telerik:RadClientExportManager runat="server" ID="RadClientExportManager1">
+                    </telerik:RadClientExportManager>
+                    </div>
         <div style="clear: both;">
         </div>
     </div>
-    <div style="height: calc(100% - 40px); overflow: auto;">
+    <div style="height: calc(100% - 50px); overflow: auto;">
         <div style="position: relative;">
             <span style="position: absolute; display:none;">
                 <label name="lblNbAscendencia">Ascendencia:</label><br />
@@ -124,6 +153,9 @@
             </telerik:RadContextMenu>
         </div>
     </div>
+     </telerik:RadPane>
+        </telerik:RadSplitter>
+    </div>
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true" OnClientClose="returnDataToParentPopup" OnClientShow="centerPopUp">
         <Windows>
             <telerik:RadWindow ID="winPuesto" runat="server" VisibleStatusbar="false" AutoSize="false" Modal="true" Behaviors="Close" NavigateUrl="~/Administracion/VentanaDescriptivoPuesto.aspx"></telerik:RadWindow>
@@ -144,5 +176,16 @@
             //]]>
 
         </script>
+          <script>
+
+              var $ = $telerik.$;
+
+              function exportRadOrgChart() {
+                  var v = $find('<%=RadClientExportManager1.ClientID%>');
+                  v.exportPDF($(".RadOrgChart"));
+              }
+
+        </script>
+
     </telerik:RadCodeBlock>
 </asp:Content>

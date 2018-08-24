@@ -1,5 +1,6 @@
 ﻿using SIGE.Entidades.FormacionDesarrollo;
 using SIGE.Negocio.FormacionDesarrollo;
+using SIGE.WebApp.Comunes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,8 @@ namespace SIGE.WebApp.FYD
             get { return (int)ViewState["vs_verp_id_evento"]; }
             set { ViewState["vs_verp_id_evento"] = value; }
         }
+
+        private int? vIdRol;
 
         private List<E_EVENTO_PARTICIPANTE_COMPETENCIA> vLstCompetencias {
             get { return (List<E_EVENTO_PARTICIPANTE_COMPETENCIA>)ViewState["vs_verp_lst_competencias"]; }
@@ -48,6 +51,7 @@ namespace SIGE.WebApp.FYD
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
             if (!Page.IsPostBack)
             {
                 if (Request.Params["IdEvento"] != null)
@@ -61,7 +65,7 @@ namespace SIGE.WebApp.FYD
         protected void rgReporte_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             EventoCapacitacionNegocio nEventoCapacitacion = new EventoCapacitacionNegocio();
-            rgReporte.DataSource = nEventoCapacitacion.ObtieneReporteResultadosEvento(vIdEvento);
+            rgReporte.DataSource = nEventoCapacitacion.ObtieneReporteResultadosEvento(vIdEvento, vIdRol);
         }
 
         protected void rgReporte_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)

@@ -7,10 +7,17 @@
             OpenSelectionWindow("VentanaContextoAdjuntarEvidenciaMetas.aspx?pIdEvaluadoMeta=" + IdEvaluadoMeta, "rwAdjuntarArchivos", "Adjuntar evidencias")
 
         }
+
         function onCloseWindow(oWnd, args) {
             $find("<%=grdResultados.ClientID%>").get_masterTableView().rebind();
 
         }
+
+        function CloseWindow(oWnd, args) {
+            GetRadWindow().close();
+        }
+
+
         function OpenSelectionWindow(pURL, pIdWindow, pTitle, pWindowProperties) {
             var currentWnd = GetRadWindow();
             var browserWnd = window;
@@ -46,7 +53,7 @@
                     <table class="ctrlTableForm">
                         <tr>
                             <td class="ctrlTableDataContext">
-                                <label>Periodo:</label></td>
+                                <label>Período:</label></td>
                             <td colspan="2" class="ctrlTableDataBorderContext">
                                 <div id="txtNbPeriodo" runat="server"></div>
                             </td>
@@ -68,7 +75,7 @@
                         </tr>
                         <tr>
                             <td class="ctrlTableDataContext">
-                                <label>Tipo de periodo:</label></td>
+                                <label>Tipo de período:</label></td>
                             <td colspan="2" class="ctrlTableDataBorderContext">
                                 <div id="txtTipoPeriodo" runat="server"></div>
                             </td>
@@ -169,6 +176,7 @@
                     <div class="divControlDerecha">
                         <div style="clear: both; height: 20px;"></div>
                         <telerik:RadButton ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click"></telerik:RadButton>
+                        <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" OnClientClicking="CloseWindow"></telerik:RadButton>
                     </div>
 
                 </telerik:RadPageView>

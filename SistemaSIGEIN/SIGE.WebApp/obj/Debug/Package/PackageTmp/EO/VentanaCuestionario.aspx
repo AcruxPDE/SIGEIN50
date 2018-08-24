@@ -2,6 +2,37 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
     <telerik:RadCodeBlock ID="RadCodeBlock2" runat="server">
+         <style>
+        .RadButton.rbSkinnedButton.uncheckedYes {
+            background-color: #eee !important;
+        }
+
+            .RadButton.rbSkinnedButton.uncheckedYes > .rbDecorated {
+                color: #eee !important;
+            }
+
+        .RadButton.rbSkinnedButton.checkedNo {
+            background-color: #eee !important;
+        }
+
+            .RadButton.rbSkinnedButton.checkedNo > .rbDecorated {
+                color: #333 !important;
+            }
+
+        .RadButton.rbSkinnedButton.uncheckedNo {
+            background-color: #eee !important;
+        }
+
+            .RadButton.rbSkinnedButton.uncheckedNo > .rbDecorated {
+                color: #eee !important;
+            }
+
+        .checkContainer {
+            border-radius: 5px;
+            border: 1px solid lightgray;
+            background: #eee;
+        }
+    </style>
         <script type="text/javascript">
 
             function closeWindow() {
@@ -23,7 +54,19 @@
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
     <telerik:RadAjaxManager runat="server">
         <AjaxSettings>
-            <telerik:AjaxSetting AjaxControlID="rbVerificacion">
+            <%--<telerik:AjaxSetting AjaxControlID="rbVerificacion">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="txtPreguntaVerificacion" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="txnSecuenciaVerificacion" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                </UpdatedControls>
+            </telerik:AjaxSetting>--%>
+            <telerik:AjaxSetting AjaxControlID="btnVerificacionTrue">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="txtPreguntaVerificacion" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="txnSecuenciaVerificacion" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnVerificacionFalse">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="txtPreguntaVerificacion" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                     <telerik:AjaxUpdatedControl ControlID="txnSecuenciaVerificacion" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
@@ -100,14 +143,32 @@
                 <div class="ctrlBasico">
                     <label id="lblVerificar" name="lblNotificar" width="260px" runat="server">Habilitar verificación de invalidez:</label>
                 </div>
-                <div class="ctrlBasico">
+                  <div class="ctrlBasico">
+                 <div class="checkContainer">
+                      
+                        <telerik:RadButton ID="btnVerificacionFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpVerificacionNO" AutoPostBack="true" OnCheckedChanged="btnVerificacionTrue_CheckedChanged">
+                            <ToggleStates>
+                                <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
+                                <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
+                            </ToggleStates>
+                        </telerik:RadButton>
+                       <telerik:RadButton ID="btnVerificacionTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpVerificacionNO" AutoPostBack="true" OnCheckedChanged="btnVerificacionTrue_CheckedChanged">
+                            <ToggleStates>
+                                <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
+                                <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
+                            </ToggleStates>
+                        </telerik:RadButton>
+                    </div>
+                      </div>
+   <%--             <div class="ctrlBasico">
                     <telerik:RadButton ID="rbVerificacion" runat="server" OnCheckedChanged="rbVerificacion_CheckedChanged" ToggleType="CheckBox" name="rbVerificacion" AutoPostBack="true">
                         <ToggleStates>
                             <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
                             <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
                         </ToggleStates>
                     </telerik:RadButton>
-                </div>
+                </div>--%>
+
                 <div style="clear: both;"></div>
 
                 <div class="ctrlBasico">
@@ -174,7 +235,7 @@
         </telerik:RadSplitter>
     </div>
     <div class="divControlDerecha">
-        <telerik:RadButton ID="btnAgregar" runat="server" Text="Aceptar" OnClick="btnAgregar_Click"></telerik:RadButton>
+        <telerik:RadButton ID="btnAgregar" runat="server" Text="Guardar" OnClick="btnAgregar_Click"></telerik:RadButton>
         <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" AutoPostBack="false" OnClientClicked="closeWindow"></telerik:RadButton>
     </div>
     <telerik:RadWindowManager ID="rwmMensaje" runat="server" EnableShadow="true">

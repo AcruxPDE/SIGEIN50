@@ -58,6 +58,15 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadButton btnEditar;
         
         /// <summary>
+        /// btnCancelar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnCancelar;
+        
+        /// <summary>
         /// btnEliminar control.
         /// </summary>
         /// <remarks>
@@ -157,40 +166,13 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadWindow winSeleccionCandidato;
         
         /// <summary>
-        /// winSeleccion control.
+        /// winVistaPrevia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadWindow winSeleccion;
-        
-        /// <summary>
-        /// winAnalisisCompetenicas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadWindow winAnalisisCompetenicas;
-        
-        /// <summary>
-        /// winProcesoSeleccion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadWindow winProcesoSeleccion;
-        
-        /// <summary>
-        /// winEntrevista control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadWindow winEntrevista;
+        protected global::Telerik.Web.UI.RadWindow winVistaPrevia;
         
         /// <summary>
         /// winPerfil control.
@@ -200,24 +182,6 @@ namespace SIGE.WebApp.Administracion {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadWindow winPerfil;
-        
-        /// <summary>
-        /// winDescriptivo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadWindow winDescriptivo;
-        
-        /// <summary>
-        /// winVistaPrevia control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadWindow winVistaPrevia;
         
         /// <summary>
         /// winSeleccionPuestos control.

@@ -114,7 +114,7 @@ namespace SIGE.WebApp.EO
                    // txtPeriodos.InnerText = oPeriodo.DS_PERIODO;
                     txtFechas.InnerText = oPeriodo.FE_INICIO.ToString("d") + " a " + oPeriodo.FE_TERMINO.Value.ToShortDateString();
                 }
-                var oEvaluado = periodo.ObtieneEvaluados(pIdPeriodo: vIdPeriodo, pIdEvaluado: vIdEvaluado).FirstOrDefault();
+                var oEvaluado = periodo.ObtieneEvaluados(pIdPeriodo: vIdPeriodo, pIdEvaluado: vIdEvaluado, pClUsuario: vClUsuario, pNbPrograma: vNbPrograma).FirstOrDefault();
                 if (oEvaluado != null)
                 {
                     txtNoEmpleado.InnerText = oEvaluado.CL_EMPLEADO;

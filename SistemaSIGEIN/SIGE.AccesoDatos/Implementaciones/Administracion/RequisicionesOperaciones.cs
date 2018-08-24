@@ -23,6 +23,8 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 			}
 		}
 
+      
+
         public XElement InsertarActualizarRequisicion(string pTipoTransaccion, E_REQUISICION pRequisicion, string pClUsuario, string pNbPrograma)
 		{
 			using (context = new SistemaSigeinEntities ())
@@ -76,6 +78,25 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
 			}
 		}
+
+
+
+        public XElement ActualizaEstatusRequisicion(int? ID_REQUISICION = null, string usuario = null, string programa = null)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+
+                //Declaramos el objeto de valor de retorno
+                ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                pout_clave_retorno.Value = "";
+
+
+                context.SPE_ACTUALIZA_ESTATUS_REQUISICION(pout_clave_retorno, ID_REQUISICION, usuario, programa);
+                //regresamos el valor de retorno de sql				
+
+                return XElement.Parse(pout_clave_retorno.Value.ToString());
+            }
+        }
 
         //public List<SPE_OBTIENE_C_NOTIFICAR_REQUISICION_Result> Obtener_Tablas_Notificar()
         //{
@@ -152,7 +173,11 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
                     ID_REQUISICION = a.ID_REQUISICION,
                     ID_PROCESO_SELECCION = a.ID_PROCESO_SELECCION,
                     CL_ESTADO_PROCESO = a.CL_ESTADO_PROCESO,
-                    FG_OTRO_PROCESO_SELECCION = a.FG_OTRO_PROCESO_SELECCION
+                    FG_OTRO_PROCESO_SELECCION = a.FG_OTRO_PROCESO_SELECCION,
+                    ID_EMPLEADO = a.ID_EMPLEADO,
+                    CL_EMPLEADO = a.CL_EMPLEADO,
+                    NB_PUESTO = a.NB_PUESTO,
+                    CL_ORIGEN = a.CL_ORIGEN
                 }).ToList();
 
                 return vLista2;

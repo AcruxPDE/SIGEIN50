@@ -101,6 +101,11 @@ namespace SIGE.WebApp.FYD
             }
         }
 
+        private void SeguridadProcesos()
+        {
+            btnGuardar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.A.B");
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -147,6 +152,8 @@ namespace SIGE.WebApp.FYD
                             }
                         }
                     }
+
+                        SeguridadProcesos();
                 }
                 else
                 {
@@ -238,6 +245,7 @@ namespace SIGE.WebApp.FYD
 
                 if (vPeriodoPS)
                     GenerarConfiguracionPS();
+
 
                 UtilMensajes.MensajeResultadoDB(rwmAlertas, resultado.MENSAJE[0].DS_MENSAJE.ToString(), resultado.CL_TIPO_ERROR, 400, 150, "sendDataToParent(" + vIdPeriodo + ")");
             }

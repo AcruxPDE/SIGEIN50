@@ -23,10 +23,10 @@ namespace SIGE.Negocio.Administracion
             return operaciones.obtieneConfiguracion(CL_CONFIGURACION, CL_USUARIO);
         }
 
-        public List<SPE_OBTIENE_EMPLEADOS_Result> ObtenerEmpleados(XElement pXmlSeleccion = null, bool? pFgFoto = null, string pClUsuario = null, bool? pFgActivo = null, int? pID_EMPRESA = null)
+        public List<SPE_OBTIENE_EMPLEADOS_Result> ObtenerEmpleados(XElement pXmlSeleccion = null, bool? pFgFoto = null, string pClUsuario = null, bool? pFgActivo = null, int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             EmpleadoOperaciones oEmpleados = new EmpleadoOperaciones();
-            return oEmpleados.ObtenerEmpleados(pXmlSeleccion, pFgFoto, pClUsuario, pFgActivo, pID_EMPRESA);
+            return oEmpleados.ObtenerEmpleados(pXmlSeleccion, pFgFoto, pClUsuario, pFgActivo, pID_EMPRESA, pID_ROL);
         }
 
         public E_RESULTADO InsertaActualiza_S_CONFIGURACION(string CL_CONFIGURACION = null, string NO_CONFIGURACION = null, string CL_USUARIO = null, string NB_PROGRAMA = null, string TIPO_TRANSACCION = null)
@@ -34,5 +34,12 @@ namespace SIGE.Negocio.Administracion
             LicenciaOperaciones operaciones = new LicenciaOperaciones();
             return UtilRespuesta.EnvioRespuesta(operaciones.InsertaActualiza_S_CONFIGURACION(CL_CONFIGURACION, NO_CONFIGURACION, CL_USUARIO, NB_PROGRAMA, TIPO_TRANSACCION));
         }
+
+        public List<SPE_OBTIENE_LICENCIA_VOLUMEN_Result> ObtenerLicenciaVolumen(bool? pFG_ACTIVO = null, int? pID_EMPRESA = null)
+        {
+            LicenciaOperaciones operaciones = new LicenciaOperaciones();
+            return operaciones.ObtenerLicenciaVolumen(pFG_ACTIVO, pID_EMPRESA);
+        }
+             
     }
 }

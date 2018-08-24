@@ -38,7 +38,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter poutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
-                context.SPE_INSERTA_ACTUALIZA_PERIODO_CLIMA_LAB(poutClaveRetorno, pPeriodo.ID_PERIODO, pPeriodo.CL_PERIODO, pPeriodo.NB_PERIODO, pPeriodo.DS_PERIODO, pPeriodo.CL_ESTADO_PERIODO, pPeriodo.DS_NOTAS,pPeriodo.CL_TIPO_CONFIGURACION, pPeriodo.CL_ORIGEN_CUESTIONARIO, pClUsuario, pNbPrograma, pPeriodo.ID_PERIODO_ORIGEN, pTipoTransaccion);
+                context.SPE_INSERTA_ACTUALIZA_PERIODO_CLIMA_LAB(poutClaveRetorno, pPeriodo.ID_PERIODO, pPeriodo.CL_PERIODO, pPeriodo.NB_PERIODO, pPeriodo.DS_PERIODO, pPeriodo.CL_ESTADO_PERIODO, pPeriodo.DS_NOTAS,pPeriodo.DS_MENSAJE_ENVIO, pPeriodo.CL_TIPO_CONFIGURACION, pPeriodo.CL_ORIGEN_CUESTIONARIO, pClUsuario, pNbPrograma, pPeriodo.ID_PERIODO_ORIGEN, pTipoTransaccion);
                 return XElement.Parse(poutClaveRetorno.Value.ToString());
             }
         }
@@ -63,11 +63,11 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public List<SPE_OBTIENE_EO_EVALUADORES_CLIMA_LAB_Result> ObtenerEvaluadoresClima(int? pIdPeriodo = null, int? pIdEmpleado = null, int? pIdPuesto = null, int? pIdEvaluador = null)
+        public List<SPE_OBTIENE_EO_EVALUADORES_CLIMA_LAB_Result> ObtenerEvaluadoresClima(int? pIdPeriodo = null, int? pIdEmpleado = null, int? pIdPuesto = null, int? pIdEvaluador = null, int? pID_ROL = null)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_EO_EVALUADORES_CLIMA_LAB(pIdPeriodo, pIdEmpleado, pIdPuesto, pIdEvaluador).ToList();
+                return context.SPE_OBTIENE_EO_EVALUADORES_CLIMA_LAB(pIdPeriodo, pIdEmpleado, pIdPuesto, pIdEvaluador, pID_ROL).ToList();
             }
         }
 
@@ -149,11 +149,11 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public List<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result> ObtenerTokenEvaluadoresClima(int pIdPeriodo)
+        public List<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result> ObtenerTokenEvaluadoresClima(int pIdPeriodo, int? pIdRol)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_EO_EVALUADORES_TOKEN(pIdPeriodo).ToList();
+                return context.SPE_OBTIENE_EO_EVALUADORES_TOKEN(pIdPeriodo, pIdRol).ToList();
             }
         }
 
@@ -175,11 +175,11 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public List<SPE_OBTIENE_EO_PREGUNTAS_CUESTIONARIO_Result> ObtenerCuestionario(int? pIdEvaluador = null, int? pIdPeriodo = null)
+        public List<SPE_OBTIENE_EO_PREGUNTAS_CUESTIONARIO_Result> ObtenerCuestionario(int? pIdEvaluador = null, int? pIdPeriodo = null, System.Guid? pFlEvaluador = null)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_EO_PREGUNTAS_CUESTIONARIO(pIdEvaluador, pIdPeriodo).ToList();
+                return context.SPE_OBTIENE_EO_PREGUNTAS_CUESTIONARIO(pIdEvaluador, pIdPeriodo, pFlEvaluador).ToList();
             }
         }
 
@@ -203,11 +203,11 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public List<SPE_OBTIENE_CONTROL_AVANCE_EO_DATOS_GRAFICA_Result> ObtenerControlAvance(int? pIdPeriodo = null)
+        public List<SPE_OBTIENE_CONTROL_AVANCE_EO_DATOS_GRAFICA_Result> ObtenerControlAvance(int? pIdPeriodo = null, int? pIdRol = null)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_CONTROL_AVANCE_EO_DATOS_GRAFICA(pIdPeriodo).ToList();
+                return context.SPE_OBTIENE_CONTROL_AVANCE_EO_DATOS_GRAFICA(pIdPeriodo, pIdRol).ToList();
             }
         }
 
@@ -219,74 +219,74 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public List<SPE_OBTIENE_EO_EVALUADORES_CUESTIONARIO_Result> ObtenerEvaluadoresCuestionario(int? pIdPeriodo = null, int? pIdEmpleado = null, int? pIdPuesto = null, int? pIdEvaluador = null)
+        public List<SPE_OBTIENE_EO_EVALUADORES_CUESTIONARIO_Result> ObtenerEvaluadoresCuestionario(int? pIdPeriodo = null, int? pIdEmpleado = null, int? pIdPuesto = null, int? pIdEvaluador = null, int? pIdRol = null)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_EO_EVALUADORES_CUESTIONARIO(pIdPeriodo, pIdEmpleado, pIdPuesto, pIdEvaluador).ToList();
+                return context.SPE_OBTIENE_EO_EVALUADORES_CUESTIONARIO(pIdPeriodo, pIdEmpleado, pIdPuesto, pIdEvaluador, pIdRol).ToList();
             }
         }
 
-        public List<SPE_OBTIENE_EO_GRAFICA_INDICE_DIMENSION_Result> ObtenerGraficaDimension(int? pIdPeriodo = null, XElement pXmlFiltros = null)
+        public List<SPE_OBTIENE_EO_GRAFICA_INDICE_DIMENSION_Result> ObtenerGraficaDimension(int? pIdPeriodo = null, XElement pXmlFiltros = null, int? pIdRol = null)
         {
             using (context = new SistemaSigeinEntities())
             {
                 string vXML_FILTROS = null;
                 if (pXmlFiltros != null)
                     vXML_FILTROS = pXmlFiltros.ToString();
-                return context.SPE_OBTIENE_EO_GRAFICA_INDICE_DIMENSION(pIdPeriodo, vXML_FILTROS).ToList();
+                return context.SPE_OBTIENE_EO_GRAFICA_INDICE_DIMENSION(pIdPeriodo, vXML_FILTROS, pIdRol).ToList();
             }
         }
 
-        public List<SPE_OBTIENE_EO_GRAFICA_INDICE_TEMA_Result> ObtenerGraficaTema(int? pIdPeriodo = null, XElement pXmlFiltros = null)
+        public List<SPE_OBTIENE_EO_GRAFICA_INDICE_TEMA_Result> ObtenerGraficaTema(int? pIdPeriodo = null, XElement pXmlFiltros = null, int? pIdRol = null)
         {
             using (context = new SistemaSigeinEntities())
             {
                 string vXML_FILTROS = null;
                 if (pXmlFiltros != null)
                     vXML_FILTROS = pXmlFiltros.ToString();
-                return context.SPE_OBTIENE_EO_GRAFICA_INDICE_TEMA(pIdPeriodo, vXML_FILTROS).ToList();
+                return context.SPE_OBTIENE_EO_GRAFICA_INDICE_TEMA(pIdPeriodo, vXML_FILTROS, pIdRol).ToList();
             }
         }
 
-        public List<SPE_OBTIENE_EO_GRAFICA_INDICE_PREGUNTA_Result> ObtenerGraficaPregunta(int? pIdPeriodo = null, XElement pXmlFiltros = null)
+        public List<SPE_OBTIENE_EO_GRAFICA_INDICE_PREGUNTA_Result> ObtenerGraficaPregunta(int? pIdPeriodo = null, XElement pXmlFiltros = null, int? pIdRol = null)
         {
             using (context = new SistemaSigeinEntities())
             {
                 string vXML_FILTROS = null;
                 if (pXmlFiltros != null)
                     vXML_FILTROS = pXmlFiltros.ToString();
-                return context.SPE_OBTIENE_EO_GRAFICA_INDICE_PREGUNTA(pIdPeriodo, vXML_FILTROS).ToList();
+                return context.SPE_OBTIENE_EO_GRAFICA_INDICE_PREGUNTA(pIdPeriodo, vXML_FILTROS, pIdRol).ToList();
             }
         }
 
-        public List<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_DIMENSION_Result> ObtenerGraficaDistribucionDimension(int? pIdPeriodo = null, string pNbDimension = null, XElement pXmlFiltros = null)
+        public List<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_DIMENSION_Result> ObtenerGraficaDistribucionDimension(int? pIdPeriodo = null, string pNbDimension = null, XElement pXmlFiltros = null, int? pIdRol = null)
         {
             using (context = new SistemaSigeinEntities())
             {
                 string vXML_FILTROS = null;
                 if (pXmlFiltros != null)
                     vXML_FILTROS = pXmlFiltros.ToString();
-                return context.SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_DIMENSION(pIdPeriodo, pNbDimension, vXML_FILTROS).ToList();
+                return context.SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_DIMENSION(pIdPeriodo, pNbDimension, vXML_FILTROS, pIdRol).ToList();
             }
         }
 
-        public List<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_TEMA_Result> ObtenerGraficaDistribucionTema(int? pIdPeriodo = null, string pNbTema = null, XElement pXmlFiltros = null)
+        public List<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_TEMA_Result> ObtenerGraficaDistribucionTema(int? pIdPeriodo = null, string pNbTema = null, XElement pXmlFiltros = null, int? pIdRol = null)
         {
             using (context = new SistemaSigeinEntities())
             {
                 string vXML_FILTROS = null;
                 if (pXmlFiltros != null)
                     vXML_FILTROS = pXmlFiltros.ToString();
-                return context.SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_TEMA(pIdPeriodo, pNbTema, vXML_FILTROS).ToList();
+                return context.SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_TEMA(pIdPeriodo, pNbTema, vXML_FILTROS, pIdRol).ToList();
             }
         }
 
-        public List<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_PREGUNTA_Result> ObtenerGraficaDistribucionPregunta(int? pIdPeriodo = null, string pNbPregunta = null, string pXML_FILTROS = null)
+        public List<SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_PREGUNTA_Result> ObtenerGraficaDistribucionPregunta(int? pIdPeriodo = null, string pNbPregunta = null, string pXML_FILTROS = null, int? pIdRol = null)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_PREGUNTA(pIdPeriodo, pNbPregunta, pXML_FILTROS).ToList();
+                return context.SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_PREGUNTA(pIdPeriodo, pNbPregunta, pXML_FILTROS, pIdRol).ToList();
             }
         }
 
@@ -330,11 +330,11 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public List<SPE_OBTIENE_EO_GRAFICA_GLOBAL_Result> ObtenerGraficaGlobal(int? pIdPeriodo = null)
+        public List<SPE_OBTIENE_EO_GRAFICA_GLOBAL_Result> ObtenerGraficaGlobal(int? pIdPeriodo = null, int? pIdRol = null)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_EO_GRAFICA_GLOBAL(pIdPeriodo).ToList();
+                return context.SPE_OBTIENE_EO_GRAFICA_GLOBAL(pIdPeriodo, pIdRol).ToList();
             }
         }
 
@@ -376,19 +376,19 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public List<SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_CUESTIONARIO_Result> ObtenerCuestionarioPreAbiertas(int? pIdEvaluador = null, int? pIdPeriodo = null)
+        public List<SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_CUESTIONARIO_Result> ObtenerCuestionarioPreAbiertas(int? pIdEvaluador = null, int? pIdPeriodo = null, System.Guid? pFlEvaluador = null)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_CUESTIONARIO(pIdEvaluador, pIdPeriodo).ToList();
+                return context.SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_CUESTIONARIO(pIdEvaluador, pIdPeriodo, pFlEvaluador).ToList();
             }
         }
 
-        public List<SPE_OBTIENE_EO_RESPUESTAS_PREGUNTAS_ABIERTAS_Result> ObtenerRespuestasAbiertas(int? pIdEvaluador = null, int? pIdPeriodo = null, int? pIdPregunta = null, string pXmlFiltros = null)
+        public List<SPE_OBTIENE_EO_RESPUESTAS_PREGUNTAS_ABIERTAS_Result> ObtenerRespuestasAbiertas(int? pIdEvaluador = null, int? pIdPeriodo = null, int? pIdPregunta = null, string pXmlFiltros = null, int? pIdRol = null)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_EO_RESPUESTAS_PREGUNTAS_ABIERTAS(pIdEvaluador, pIdPeriodo, pIdPregunta, pXmlFiltros).ToList();
+                return context.SPE_OBTIENE_EO_RESPUESTAS_PREGUNTAS_ABIERTAS(pIdEvaluador, pIdPeriodo, pIdPregunta, pXmlFiltros, pIdRol).ToList();
             }
         }
 
@@ -409,6 +409,17 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 context.SPE_INSERTA_ACTUALIZA_FILTRO_CLIMA_LAB(pOutClRetorno, pIdPeriodo, pXmlSeleccionados, pClUsuario, pNbPrograma);
                 return XElement.Parse(pOutClRetorno.Value.ToString());
+            }
+        }
+
+
+        public XElement ActualizaValidezCuestionario(int? pIdPeriodo = null)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                ObjectParameter pOutRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                context.SPE_ACTUALIZA_VALIDEZ_CUESTIONARIO(pOutRetorno, pIdPeriodo);
+                return XElement.Parse(pOutRetorno.Value.ToString());
             }
         }
 
@@ -446,6 +457,17 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
                 return XElement.Parse(pOutClRetorno.Value.ToString());
             }
         }
+
+        public XElement EliminaRespuestasCuestionario(int? pID_PERIODO = null, int? pID_EVALUADOR = null, int? pID_CUESTIONARIO = null, string pClUsuario = null, string pNbPrograma = null)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                context.SPE_ELIMINA_RESPUESTAS_CUESTIONARIO_PERIODO(pOutClRetorno,  pID_PERIODO,pID_EVALUADOR, pID_CUESTIONARIO, pClUsuario, pNbPrograma);
+                return XElement.Parse(pOutClRetorno.Value.ToString());
+            }
+        }
+        
         
     }
 }

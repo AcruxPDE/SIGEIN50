@@ -19,5 +19,7 @@ namespace SIGE.Entidades
         public string DS_CATALOGO_VALOR { get; set; }
         public int ID_CATALOGO_LISTA { get; set; }
         public string NB_CATALOGO_LISTA { get; set; }
+        public Nullable<System.DateTime> FE_MODIFICACION { get; set; }
+        public string CL_USUARIO_MODIFICA { get; set; }
     }
 }

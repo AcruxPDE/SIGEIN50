@@ -72,9 +72,9 @@ namespace WebApp.Comunes
         {
             List<E_MENU> lstMenu = new List<E_MENU>();
             List<E_FUNCION> lstFuncionRaiz = new List<E_FUNCION>();
-
-            foreach (E_FUNCION funcion in pFunciones)
+            foreach (E_FUNCION funcion in pFunciones.OrderBy(o => o.ID_FUNCION).ToList())
             {
+                
                 E_FUNCION f = new E_FUNCION()
                 {
                     CL_FUNCION = funcion.CL_FUNCION,
@@ -165,6 +165,12 @@ namespace WebApp.Comunes
                 case "COMPENSACION":
                     return "MC.css";
                 case "EVALUACION":
+                    return "EO.css";
+                case "CLIMA":
+                    return "EO.css";
+                case "DESEMPENO":
+                    return "EO.css";
+                case "ROTACION":
                     return "EO.css";
                 case "FORMACION":
                     return "FD.css";
@@ -279,7 +285,6 @@ namespace WebApp.Comunes
 
             return vDsNota;
         }
-
 
         private static Boolean ValidarRamaXml(XElement parentEl, string elementsName)
         {

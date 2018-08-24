@@ -93,7 +93,7 @@
               <Name>Text1</Name>
               <Page isRef="2" />
               <Parent isRef="3" />
-              <Text>Intereses Personales</Text>
+              <Text>Intereses personales</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text1>
@@ -2264,13 +2264,10 @@ Los valores personales son aquellos intereses, metas y preferencias que guían n
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>10/12/2017 12:55:18 PM</ReportChanged>
-  <ReportChanged>10/7/2017 11:38:06 AM</ReportChanged>
+  <ReportChanged>5/30/2018 1:38:00 PM</ReportChanged>
   <ReportCreated>9/29/2017 6:50:34 PM</ReportCreated>
-  <ReportFile>C:\Users\usuario\Documents\SIGEIN 50\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\InteresesPersonales.mrt</ReportFile>
-  <ReportFile>C:\Users\Margarita Salcedo\Documents\Proyectos\SIGEIN\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\InteresesPersonales.mrt</ReportFile>
-  <ReportGuid>39bf47ef5d154e429e4e35152861e37b</ReportGuid>
-  <ReportGuid>2f6371c134874d0fad95abde1414b1b4</ReportGuid>
+  <ReportFile>C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\InteresesPersonales.mrt</ReportFile>
+  <ReportGuid>ca70e49bcece4bee85df36d49d02389d</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2015.3.0</ReportVersion>

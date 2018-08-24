@@ -29,7 +29,7 @@ namespace SIGE.WebApp.FYD
         private string vClUsuario;
         private string vNbPrograma;
         private int? vIdEmpresa;
-
+        private int? vIdRol;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
 
         private E_TIPO_OPERACION_DB vClOperacion
@@ -159,7 +159,7 @@ namespace SIGE.WebApp.FYD
             oCurso.idCurso = evento.ID_CURSO.Value;
             oCurso.noDuracion = Convert.ToInt32(evento.NO_DURACION_CURSO);
             oCurso.nbCurso = evento.NB_CURSO;
-            ListaEmpleados = neg.ObtieneParticipanteEvento(ID_EVENTO: vIdEvento);
+            ListaEmpleados = neg.ObtieneParticipanteEvento(ID_EVENTO: vIdEvento, pID_ROL: vIdRol);
 
             txtHorasCurso.Text = oCurso.noDuracion.ToString();
 
@@ -744,6 +744,11 @@ namespace SIGE.WebApp.FYD
             }
         }
 
+        private void SeguridadProcesos()
+        {
+            btnGuardarEvento.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.A");
+        }
+
         #endregion
 
         protected void Page_Init(object sender, EventArgs e)
@@ -757,6 +762,7 @@ namespace SIGE.WebApp.FYD
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
             vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
             vIdCurso = 0;
             vIdPrograma = 0;
             if (!Page.IsPostBack)
@@ -787,6 +793,8 @@ namespace SIGE.WebApp.FYD
                     vIdEvento = int.Parse(Request.Params["EventoIdCopia"].ToString());
                     cargarEvento();
                 }
+
+                SeguridadProcesos();
 
                 if (Request.Params["clOrigen"] != null)
                 {

@@ -37,7 +37,7 @@
 
         function OpenPeriodoSelectionWindow() {
             idEmpleado = '<%= vIdEmpleado %>';
-            OpenSelectionWindow("../Comunes/SeleccionPeriodo.aspx?m=FORMACION&IdEmpleado=" + idEmpleado, "winSeleccion", "Selección de periodo")
+            OpenSelectionWindow("../Comunes/SeleccionPeriodo.aspx?IdEmpleado=" + idEmpleado, "winSeleccion", "Selección de período")
         }
 
         function OpenAnalisisWindow() {
@@ -151,7 +151,7 @@
             var txtEvaluado = document.getElementById("<%= txtNombreEvaluado.ClientID %>");
             var nombreEvaluado = txtEvaluado.innerHTML;
             idEmpleado = '<%= vIdEmpleado %>';
-            wnd.vURL = "/FYD/PeriodoEvaluacion.aspx?evaluadoPVC=" + nombreEvaluado + "&idEvaluadoPVC=" + idEmpleado + "&idsPuestosPVC=" + arr;
+            wnd.vURL = "PeriodoEvaluacion.aspx?evaluadoPVC=" + nombreEvaluado + "&idEvaluadoPVC=" + idEmpleado + "&idsPuestosPVC=" + arr;
             return wnd;
         }
 
@@ -168,7 +168,7 @@
         function GetConfiguracionWindowProperties(pIdPeriodo) {
             var wnd = GetWindowProperties();
             wnd.vTitulo = "Configuración del periodo";
-            wnd.vURL = "/FYD/ConfiguracionPeriodo.aspx?PeriodoId=" + pIdPeriodo;
+            wnd.vURL = "ConfiguracionPeriodo.aspx?PeriodoId=" + pIdPeriodo;
             wnd.vRadWindowId = "winPeriodo";
             return wnd;
         }
@@ -212,16 +212,6 @@
         </table>
     </div>
 
-    <div class="ctrlBasico">
-        <label>Periodo</label>
-        <telerik:RadListBox ID="lstPeriodos" runat="server" Width="300px">
-            <Items>
-                <telerik:RadListBoxItem Text="No Seleccionado" Value="" />
-            </Items>
-        </telerik:RadListBox>
-        <telerik:RadButton runat="server" ID="btnBuscarPeriodo" Text="B" Width="35px" AutoPostBack="false" OnClientClicked="OpenPeriodoSelectionWindow" />
-    </div>
-
     <div style="clear: both; height: 10px;"></div>
 
 
@@ -253,16 +243,25 @@
     </div>
 
     <div style="clear: both;" />
+        <div class="ctrlBasico">
+        <label>Período</label>
+        <telerik:RadListBox ID="lstPeriodos" runat="server" Width="300px">
+            <Items>
+                <telerik:RadListBoxItem Text="No Seleccionado" Value="" />
+            </Items>
+        </telerik:RadListBox>
+        <telerik:RadButton runat="server" ID="btnBuscarPeriodo" Text="B" Width="35px" AutoPostBack="false" OnClientClicked="OpenPeriodoSelectionWindow" />
+    </div>
     <div class="ctrlBasico" style="text-align: center">
         <div>
             <telerik:RadButton runat="server" ID="btnAnalisis" AutoPostBack="false" Text="Análisis" OnClientClicked="OpenAnalisisWindow"></telerik:RadButton>
             &nbsp;&nbsp;
-                    <telerik:RadButton ID="btnAgregar" runat="server" Text="Crear periodo" AutoPostBack="false" OnClientClicked="OpenInsertPeriodoWindow"></telerik:RadButton>
+                    <telerik:RadButton ID="btnAgregar" runat="server" Text="Crear período" AutoPostBack="false" OnClientClicked="OpenInsertPeriodoWindow"></telerik:RadButton>
         </div>
     </div>
     <telerik:RadWindowManager ID="rwmAlertas" runat="server">
         <Windows>
-            <telerik:RadWindow ID="winPeriodo" runat="server" Title="Agregar/Editar periodo" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Animation="Fade" Modal="true" Behaviors="Close" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
+            <telerik:RadWindow ID="winPeriodo" runat="server" Title="Agregar/Editar período" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Animation="Fade" Modal="true" Behaviors="Close" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
             <telerik:RadWindow ID="winSeleccion" runat="server" Title="Seleccionar" Height="600px" Width="600px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" OnClientClose="returnDataToParentPopup" Modal="true" Behaviors="Close"></telerik:RadWindow>
             <telerik:RadWindow ID="winAnalisis" runat="server" Title="Plan de Vida y Carrera - Análisis de Alternativas de Crecimiento" Height="600px" Width="600px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close"></telerik:RadWindow>
             <telerik:RadWindow ID="winEditarEmpleado" runat="server" VisibleStatusbar="false" AutoSize="false" Modal="true" Behaviors="Close"></telerik:RadWindow>

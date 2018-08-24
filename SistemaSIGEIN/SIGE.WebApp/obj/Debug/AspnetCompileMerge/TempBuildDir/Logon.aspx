@@ -27,7 +27,8 @@
         }
 
         function OpenWindow(pIdSolicitud) {
-            var vURL = "/IDP/Solicitud/Solicitud.aspx";
+            var myUrl = '<%= ResolveClientUrl("IDP/Solicitud/Solicitud.aspx") %>';
+            var vURL = myUrl;
             var vTitulo = "Agregar Solicitud";
             if (pIdSolicitud != null) {
                 vURL = vURL + "?SolicitudId=" + pIdSolicitud;
@@ -41,7 +42,8 @@
 
 
         function OpenWindowPlantilla(pIdPlantilla) {
-            var vURL = "/IDP/Solicitud/Solicitud.aspx";
+            var myUrl = '<%= ResolveClientUrl("IDP/Solicitud/Solicitud.aspx") %>';
+            var vURL = myUrl;
             var vTitulo = "Agregar Solicitud";
             if (pIdPlantilla != null) {
                 vURL = vURL + "?PlantillaId=" + pIdPlantilla;
@@ -173,7 +175,6 @@
                 </div>
             </div>
         </div>
-
         <div class="row" id="ContentCodigoConfirmacion" runat="server">
             <div class="CentrarLogin">
                 <div class="panel panel-default panelNoBottomMargin">
@@ -224,9 +225,7 @@
                 </div>
             </div>
         </div>
-
         <%--Inicio Autorizar programa de capacitación--%>
-
         <div class="row" id="ContentAutorizaDocumentos" runat="server">
             <div class="CentrarLogin">
                 <div class="panel panel-default panelNoBottomMargin">
@@ -243,7 +242,7 @@
                                 </div>
                             </div>
                             <div class="row" style="padding: 10px;">
-                                <label style="width: 110px; padding-right: 10px;">Periodo:</label>
+                                <label style="width: 110px; padding-right: 10px;">Período:</label>
                                 <div class="divControlDerecha">
                                     <telerik:RadTextBox ID="txtProgramaCapacitacion" runat="server" EnableViewState="false"></telerik:RadTextBox>
                                 </div>
@@ -354,7 +353,7 @@
                                 </div>
                             </div>
                             <div class="row" style="padding: 10px;">
-                                <label style="width: 110px; padding-right: 10px;">Periodo:</label>
+                                <label style="width: 110px; padding-right: 10px;">Período:</label>
                                 <div class="divControlDerecha">
                                     <telerik:RadTextBox ID="txtPeriodoCapacitacion" runat="server" EnableViewState="false"></telerik:RadTextBox>
                                 </div>
@@ -411,7 +410,7 @@
                                 </div>
                             </div>
                             <div class="row" style="padding: 10px;">
-                                <label style="width: 110px; padding-right: 10px;">Periodo:</label>
+                                <label style="width: 110px; padding-right: 10px;">Período:</label>
                                 <div class="divControlDerecha">
                                     <telerik:RadTextBox ID="txtPeriodoClima" runat="server" EnableViewState="false"></telerik:RadTextBox>
                                 </div>
@@ -463,7 +462,7 @@
                                 </div>
                             </div>
                             <div class="row" style="padding: 10px;">
-                                <label style="width: 110px; padding-right: 10px;">Periodo:</label>
+                                <label style="width: 110px; padding-right: 10px;">Período:</label>
                                 <div class="divControlDerecha">
                                     <telerik:RadTextBox ID="txtPeriodoDesempeno" runat="server" EnableViewState="false"></telerik:RadTextBox>
                                 </div>
@@ -514,7 +513,7 @@
                                 </div>
                             </div>
                             <div class="row" style="padding: 10px;">
-                                <label style="width: 110px; padding-right: 10px;">Periodo:</label>
+                                <label style="width: 110px; padding-right: 10px;">Período:</label>
                                 <div class="divControlDerecha">
                                     <telerik:RadTextBox ID="txtPeriodoCuestionarioInd" runat="server" EnableViewState="false"></telerik:RadTextBox>
                                 </div>

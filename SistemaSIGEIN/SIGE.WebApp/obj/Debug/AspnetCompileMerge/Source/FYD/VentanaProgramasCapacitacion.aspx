@@ -283,6 +283,7 @@
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="grdParticipantes" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                     <telerik:AjaxUpdatedControl ControlID="grdCompetencias" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                     <telerik:AjaxUpdatedControl ControlID="grdCapacitacionMatriz" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="grdParticipantes">
@@ -521,7 +522,7 @@
                                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO" HeaderStyle-Width="100" FilterControlWidth="30"></telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre" DataField="NB_EMPLEADO" UniqueName="NB_EMPLEADO" HeaderStyle-Width="200" FilterControlWidth="120"></telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="NB_PUESTO" HeaderStyle-Width="100" FilterControlWidth="30"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO" HeaderStyle-Width="100" FilterControlWidth="30"></telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO" HeaderStyle-Width="100" FilterControlWidth="30"></telerik:GridBoundColumn>
                                 </Columns>
                             </MasterTableView>
                         </telerik:RadGrid>
@@ -684,8 +685,10 @@
                     </telerik:RadGrid>
                     <div style="clear: both; height: 5px;"></div>
                     <div class="ctrlBasico">
-                        <telerik:RadButton ID="btnQuitarSeleccionados" OnClick="btnQuitarSeleccionados_Click" OnClientClicking="ConfirmarEliminarPrograma" runat="server" Text="Quitar los seleccionados del Programa de capacitación" Width="100%"></telerik:RadButton>
-                        <telerik:RadButton ID="btnAutoriza" OnClientClicked="OpenAutorizacionProgramaWindow" AutoPostBack="false" runat="server" Text="Registro y autorización" Width="200" ToolTip="Da clic si deseas registrar este programa de capacitación y/o deseas realizar un proceso de autorización."></telerik:RadButton>
+                        <telerik:RadButton ID="btnQuitarSeleccionados" OnClick="btnQuitarSeleccionados_Click" OnClientClicking="ConfirmarEliminarPrograma" runat="server" Text="Eliminar" ></telerik:RadButton>                  
+                    </div>
+                    <div class="ctrlBasico">
+                           <telerik:RadButton ID="btnAutoriza" OnClientClicked="OpenAutorizacionProgramaWindow" AutoPostBack="false" runat="server" Text="Registro y autorización" Width="200" ToolTip="Da clic si deseas registrar este programa de capacitación y/o deseas realizar un proceso de autorización."></telerik:RadButton>
                     </div>
                 </div>
             </telerik:RadPageView>

@@ -89,6 +89,165 @@ namespace SIGE.WebApp.EO
             return vDepartamentos;
         }
 
+        protected HtmlGenericControl GenerarCuestionario()
+        {
+            HtmlGenericControl vTabla = new HtmlGenericControl("table");
+            vTabla.Attributes.Add("style", "border-collapse: collapse;");
+
+
+            HtmlGenericControl vCtrlColumn = new HtmlGenericControl("thead");
+            vCtrlColumn.Attributes.Add("style", "background: #E6E6E6;");
+
+            HtmlGenericControl vCtrlTh1 = new HtmlGenericControl("td");
+            vCtrlTh1.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; font-weight:bold; width:50px;");
+            vCtrlTh1.Attributes.Add("align", "center");
+            vCtrlTh1.InnerText = String.Format("{0}", "#");
+            vCtrlColumn.Controls.Add(vCtrlTh1);
+
+            HtmlGenericControl vCtrlTh2 = new HtmlGenericControl("td");
+            vCtrlTh2.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; font-weight:bold; width:300px;");
+            vCtrlTh2.InnerText = String.Format("{0}", "Pregunta");
+            vCtrlColumn.Controls.Add(vCtrlTh2);
+
+            HtmlGenericControl vCtrlTh3 = new HtmlGenericControl("td");
+            vCtrlTh3.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; font-weight:bold; width:110px;");
+            vCtrlTh3.Attributes.Add("align", "center");
+            vCtrlTh3.InnerText = String.Format("{0}", "Totalmente de acuerdo");
+            vCtrlColumn.Controls.Add(vCtrlTh3);
+
+            HtmlGenericControl vCtrlTh4 = new HtmlGenericControl("td");
+            vCtrlTh4.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; font-weight:bold; width:110px;");
+            vCtrlTh4.Attributes.Add("align", "center");
+            vCtrlTh4.InnerText = String.Format("{0}", "Casi siempre de acuerdo");
+            vCtrlColumn.Controls.Add(vCtrlTh4);
+
+            HtmlGenericControl vCtrlTh5 = new HtmlGenericControl("td");
+            vCtrlTh5.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; font-weight:bold; width:110px;");
+            vCtrlTh5.Attributes.Add("align", "center");
+            vCtrlTh5.InnerText = String.Format("{0}", "Casi siempre en desacuerdo");
+            vCtrlColumn.Controls.Add(vCtrlTh5);
+
+            HtmlGenericControl vCtrlTh6 = new HtmlGenericControl("td");
+            vCtrlTh6.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; font-weight:bold; width:110px;");
+            vCtrlTh6.Attributes.Add("align", "center");
+            vCtrlTh6.InnerText = String.Format("{0}", "Totalmente en desacuerdo");
+            vCtrlColumn.Controls.Add(vCtrlTh6);
+
+            vTabla.Controls.Add(vCtrlColumn);
+
+            ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
+            List<E_PREGUNTAS_PERIODO_CLIMA> lstCuestionario = nClima.ObtienePreguntasPeriodo(pID_PERIODO: vIdPeriodo).Select(s => new E_PREGUNTAS_PERIODO_CLIMA
+            {
+                NB_PREGUNTA = s.NB_PREGUNTA,
+                NO_SECUENCIA = s.NO_SECUENCIA,
+            }).ToList();
+
+            HtmlGenericControl vCtrlTbody = new HtmlGenericControl("tbody");
+
+            foreach (var item in lstCuestionario)
+            {
+                HtmlGenericControl vCtrlRow = new HtmlGenericControl("tr");
+                vCtrlRow.Attributes.Add("style", "page-break-inside:avoid; page-break-after:auto;");
+
+                HtmlGenericControl vCtrlSecuencia = new HtmlGenericControl("td");
+                vCtrlSecuencia.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; padding: 10px;");
+                vCtrlSecuencia.Attributes.Add("align", "center");
+                vCtrlSecuencia.InnerText = String.Format("{0}", item.NO_SECUENCIA);
+                vCtrlRow.Controls.Add(vCtrlSecuencia);
+
+                HtmlGenericControl vCtrlNbPregunta = new HtmlGenericControl("td");
+                vCtrlNbPregunta.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; padding: 10px;");
+                vCtrlNbPregunta.InnerText = String.Format("{0}", item.NB_PREGUNTA);
+                vCtrlRow.Controls.Add(vCtrlNbPregunta);
+
+                HtmlGenericControl vCtrlButton1 = new HtmlGenericControl("td");
+                vCtrlButton1.Attributes.Add("style", "border: 1px solid #000000;");
+                vCtrlButton1.Attributes.Add("align", "center");
+                HtmlInputRadioButton radioButton = new HtmlInputRadioButton();
+                vCtrlButton1.Controls.Add(radioButton);
+                vCtrlRow.Controls.Add(vCtrlButton1);
+
+                HtmlGenericControl vCtrlButton2 = new HtmlGenericControl("td");
+                vCtrlButton2.Attributes.Add("style", "border: 1px solid #000000;");
+                vCtrlButton2.Attributes.Add("align", "center");
+                HtmlInputRadioButton radioButton2 = new HtmlInputRadioButton();
+                vCtrlButton2.Controls.Add(radioButton2);
+                vCtrlRow.Controls.Add(vCtrlButton2);
+
+                HtmlGenericControl vCtrlButton3 = new HtmlGenericControl("td");
+                vCtrlButton3.Attributes.Add("style", "border: 1px solid #000000;");
+                vCtrlButton3.Attributes.Add("align", "center");
+                HtmlInputRadioButton radioButton3 = new HtmlInputRadioButton();
+                vCtrlButton3.Controls.Add(radioButton3);
+                vCtrlRow.Controls.Add(vCtrlButton3);
+
+                HtmlGenericControl vCtrlButton4 = new HtmlGenericControl("td");
+                vCtrlButton4.Attributes.Add("style", "border: 1px solid #000000;");
+                vCtrlButton4.Attributes.Add("align", "center");
+                HtmlInputRadioButton radioButton4 = new HtmlInputRadioButton();
+                vCtrlButton4.Controls.Add(radioButton4);
+                vCtrlRow.Controls.Add(vCtrlButton4);
+
+                vCtrlTbody.Controls.Add(vCtrlRow);
+            }
+
+            vTabla.Controls.Add(vCtrlTbody);
+
+            return vTabla;
+        }
+
+        protected HtmlGenericControl GenerarPreguntasAbiertas()
+        {
+            ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
+            List<SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_PERIODO_Result> vLstPreguntas = nClima.ObtenerPreguntasAbiertas(vIdPeriodo, null).ToList();
+
+            HtmlGenericControl vTabla = new HtmlGenericControl("table");
+            if (vLstPreguntas.Count > 0)
+            {
+                vTabla.Attributes.Add("style", "border-collapse: collapse;");
+
+                HtmlGenericControl vCtrlColumn = new HtmlGenericControl("thead");
+                vCtrlColumn.Attributes.Add("style", "background: #E6E6E6;");
+
+                HtmlGenericControl vCtrlTh1 = new HtmlGenericControl("td");
+                vCtrlTh1.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; font-weight:bold; width:348px;");
+                vCtrlTh1.Attributes.Add("align", "justify");
+                vCtrlTh1.InnerText = String.Format("{0}", "Pregunta abierta");
+                vCtrlColumn.Controls.Add(vCtrlTh1);
+
+                HtmlGenericControl vCtrlTh2 = new HtmlGenericControl("td");
+                vCtrlTh2.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; font-weight:bold; width:442px;");
+                vCtrlTh2.InnerText = String.Format("{0}", "Respuesta");
+                vCtrlColumn.Controls.Add(vCtrlTh2);
+
+                vTabla.Controls.Add(vCtrlColumn);
+
+                HtmlGenericControl vCtrlTbody = new HtmlGenericControl("tbody");
+
+                foreach (var item in vLstPreguntas)
+                {
+                    HtmlGenericControl vCtrlRow = new HtmlGenericControl("tr");
+                    vCtrlRow.Attributes.Add("style", "page-break-inside:avoid; page-break-after:auto;");
+
+                    HtmlGenericControl vCtrlSecuencia = new HtmlGenericControl("td");
+                    vCtrlRow.Attributes.Add("height","80px;");
+                    vCtrlSecuencia.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; padding: 10px;");
+                    vCtrlSecuencia.Attributes.Add("align", "justify");
+                    vCtrlSecuencia.InnerText = String.Format("{0}", item.NB_PREGUNTA);
+                    vCtrlRow.Controls.Add(vCtrlSecuencia);
+
+                    HtmlGenericControl vCtrlNbPregunta = new HtmlGenericControl("td");
+                    vCtrlNbPregunta.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; padding: 10px;");
+                    vCtrlRow.Controls.Add(vCtrlNbPregunta);
+
+                    vCtrlTbody.Controls.Add(vCtrlRow);
+                }
+
+                vTabla.Controls.Add(vCtrlTbody);
+            }
+            return vTabla;
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -119,17 +278,19 @@ namespace SIGE.WebApp.EO
                             {
                                 lbAntiguedad.Visible = true;
                                 txtAntiguedades.Visible = true;
-                               // txtAntiguedades.Value = vFiltros.ANTIGUEDAD_INICIO + " - " + vFiltros.ANTIGUEDAD_FINAL + " años";
+                                // txtAntiguedades.Value = vFiltros.ANTIGUEDAD_INICIO + " - " + vFiltros.ANTIGUEDAD_FINAL + " años";
                             }
                             if (vFiltros.CL_GENERO != null)
-                            {
-                                lbGenero.Visible = true;
-                                CheckBox vCheckM = new CheckBox();
-                                vCheckM.Text = "Masculino";
-                                CheckBox vCheckF = new CheckBox();
-                                vCheckF.Text = "Femenino";
-                                dvGeneros.Controls.Add(vCheckF);
-                                dvGeneros.Controls.Add(vCheckM);
+                            {                             
+                                    lbGenero.Visible = true;
+                                    CheckBox vCheckM = new CheckBox();
+                                    vCheckM.Text = "Masculino";
+                                    CheckBox vCheckF = new CheckBox();
+                                    vCheckF.Text = "Femenino";
+                                    if (vFiltros.CL_GENERO == "Femenino")
+                                    dvGeneros.Controls.Add(vCheckF);
+                                    if (vFiltros.CL_GENERO == "Masculino")
+                                    dvGeneros.Controls.Add(vCheckM);
                             }
 
                             if (vFiltros.XML_DEPARTAMENTOS != null)
@@ -151,7 +312,6 @@ namespace SIGE.WebApp.EO
 
                             if (vFiltros.XML_CAMPOS_ADICIONALES != null)
                             {
-
                                 RotacionPersonalNegocio negocio = new RotacionPersonalNegocio();
                                 ObtieneAdicionales(vFiltros.XML_CAMPOS_ADICIONALES);
                                 foreach (E_CAMPOS_ADICIONALES item in vLstCamposAdicionales)
@@ -159,7 +319,7 @@ namespace SIGE.WebApp.EO
                                     var ListaAdscripcion = negocio.ObtieneCatalogoAdscripciones(item.ID_CATALOGO_LISTA).FirstOrDefault();
                                     var row = new HtmlTableRow();
                                     var cell = new HtmlTableCell() { InnerHtml = "<label name='adscripcion' name='name' width='100'>" + ListaAdscripcion.NB_CAMPO + ":" + "</ label>" };
-                                    cell.Attributes.Add("style", "width:100px;");
+                                    cell.Attributes.Add("style", "width:150px;");
                                     row.Cells.Add(cell);
                                     cell = new HtmlTableCell();
                                     cell.Style.Add("Height", "30px");
@@ -176,37 +336,46 @@ namespace SIGE.WebApp.EO
                                     tbAdscripciones.Rows.Add(row);
                                 }
                             }
-
                         }
                     }
+                    else
+                    {
+                        dvMostrar.Visible = false;
+                    }
 
+
+                    dvCuestionario.Controls.Add(GenerarCuestionario());
+                    dvPreguntasAbiertas.Controls.Add(GenerarPreguntasAbiertas());
                 }
             }
         }
 
-        protected void rgCuestionario_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
-        {
-            ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            int vCantPreguntas = nClima.ObtienePreguntasPeriodo(pID_PERIODO: vIdPeriodo).Count();
-            rgCuestionario.Height = (vCantPreguntas + 1) * 82;
+        //protected void rgCuestionario_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
+        //{
+        //    ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
+        //    int vCantPreguntas = nClima.ObtienePreguntasPeriodo(pID_PERIODO: vIdPeriodo).Count();
+        //    rgCuestionario.Height = (vCantPreguntas + 1) * 72;
 
-            List<E_PREGUNTAS_PERIODO_CLIMA> lstCuestionario = nClima.ObtienePreguntasPeriodo(pID_PERIODO: vIdPeriodo).Select(s => new E_PREGUNTAS_PERIODO_CLIMA
-            {
-                NB_PREGUNTA = s.NB_PREGUNTA,
-                NO_SECUENCIA = s.NO_SECUENCIA,
-            }).ToList();
-            rgCuestionario.DataSource = lstCuestionario;
-        }
+        //    List<E_PREGUNTAS_PERIODO_CLIMA> lstCuestionario = nClima.ObtienePreguntasPeriodo(pID_PERIODO: vIdPeriodo).Select(s => new E_PREGUNTAS_PERIODO_CLIMA
+        //    {
+        //        NB_PREGUNTA = s.NB_PREGUNTA,
+        //        NO_SECUENCIA = s.NO_SECUENCIA,
+        //    }).ToList();
+        //    rgCuestionario.DataSource = lstCuestionario;
+        //}
 
-        protected void rgPreguntasAbiertas_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
-        {
-            ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            int vCount = nClima.ObtenerPreguntasAbiertas(vIdPeriodo, null).Count;
-            if (vCount > 0)
-                rgPreguntasAbiertas.DataSource = nClima.ObtenerPreguntasAbiertas(vIdPeriodo, null).ToList();
-            else
-                rgPreguntasAbiertas.Visible = false;
-        }
+        //protected void rgPreguntasAbiertas_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
+        //{
+        //    ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
+        //    int vCount = nClima.ObtenerPreguntasAbiertas(vIdPeriodo, null).Count;
+        //    rgPreguntasAbiertas.Height = (vCount + 1) * 72;
+
+
+        //    if (vCount > 0)
+        //        rgPreguntasAbiertas.DataSource = nClima.ObtenerPreguntasAbiertas(vIdPeriodo, null).ToList();
+        //    else
+        //        rgPreguntasAbiertas.Visible = false;
+        //}
     }
 
     [Serializable]

@@ -28,6 +28,7 @@ namespace SIGE.Entidades.Externas
         public string XML_CAMPOS_ADICIONALES { get; set; }
         public int? ID_BITACORA { get; set; }
         public string CL_POSICION_ORGANIGRAMA { get; set; }
+        public int? NO_NIVEL_ORGANIGRAMA { get; set; }
         public string XML_PUESTO_ESCOLARIDAD { get; set; }
         public string XML_PUESTO_EXPERIENCIA { get; set; }
         public string XML_PUESTOS_RELACIONADOS { get; set; }
@@ -50,6 +51,7 @@ namespace SIGE.Entidades.Externas
         public int? NO_MINIMO_PLAZAS { get; set; }
         public string DS_COMPETENCIAS_REQUERIDAS { get; set; }
         public string ESTATUS { get; set; }
+        public string XML_DOCUMENTOS { get; set; }
         //public string XML_ESCOLARIDADES { get; set; }
         //public string XML_COMPETENCIAS { get; set; }
 

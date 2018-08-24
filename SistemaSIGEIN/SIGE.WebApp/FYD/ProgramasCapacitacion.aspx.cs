@@ -10,6 +10,9 @@ using SIGE.Entidades.FormacionDesarrollo;
 using SIGE.Negocio.FormacionDesarrollo;
 using SIGE.WebApp.Comunes;
 using Telerik.Web.UI;
+using System.Xml.Linq;
+using SIGE.Negocio.Utilerias;
+using SIGE.Entidades.EvaluacionOrganizacional;
 
 namespace SIGE.WebApp.FYD
 {
@@ -19,10 +22,77 @@ namespace SIGE.WebApp.FYD
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
 
+        public bool vEditar
+        {
+            get { return (bool)ViewState["vs_vEditar"]; }
+            set { ViewState["vs_vEditar"] = value; }
+        }
+
+        public bool vEliminar
+        {
+            get { return (bool)ViewState["vs_vEliminar"]; }
+            set { ViewState["vs_vEliminar"] = value; }
+        }
+
+
         List<E_PROGRAMA> vProgramas
         {
             get { return (List<E_PROGRAMA>)ViewState["vs_vProgramas"]; }
             set { ViewState["vs_vProgramas"] = value; }
+        }
+
+        public string validarDsNotas(string vdsNotas)
+        {
+            E_NOTAS pNota = null;
+            if (vdsNotas != null)
+            {
+                XElement vNotas = XElement.Parse(vdsNotas.ToString());
+                if (ValidarRamaXml(vNotas, "NOTA"))
+                {
+                    pNota = vNotas.Elements("NOTA").Select(el => new E_NOTAS
+                    {
+                        DS_NOTA = UtilXML.ValorAtributo<string>(el.Attribute("DS_NOTA")),
+                        FE_NOTA = (DateTime?)UtilXML.ValorAtributo(el.Attribute("FE_NOTA"), E_TIPO_DATO.DATETIME),
+                    }).FirstOrDefault();
+                }
+
+                if (pNota != null)
+                {
+                    if (pNota.DS_NOTA != null)
+                    {
+                        return pNota.DS_NOTA.ToString();
+                    }
+                    else return "";
+                }
+                else
+                    return "";
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public Boolean ValidarRamaXml(XElement parentEl, string elementsName)
+        {
+            var foundEl = parentEl.Element(elementsName);
+
+            if (foundEl != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void SeguridadProcesos()
+        {
+            btnNuevo.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.B.A");
+            vEditar = ContextoUsuario.oUsuario.TienePermiso("K.A.B.B.B");
+            vEliminar = ContextoUsuario.oUsuario.TienePermiso("K.A.B.B.C");
+            btnEditar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.B.D");
+            btnCopiar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.B.E");
+            btnTerminarPrograma.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.B.F");
+            btnAvance.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.B.G");
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -32,7 +102,7 @@ namespace SIGE.WebApp.FYD
 
             if (!IsPostBack)
             {
-
+                SeguridadProcesos();
             }
         }
 
@@ -89,6 +159,7 @@ namespace SIGE.WebApp.FYD
                 txtTipo.Text = "";
                 txtUsuarioMod.Text = "";
                 txtFechaMod.Text = "";
+                txtNotas.InnerHtml = "";
 
                 rlvProgramas.Rebind();
             }
@@ -192,6 +263,19 @@ namespace SIGE.WebApp.FYD
                 txtTipo.Text = vPrograma.CL_TIPO_PROGRAMA;
                 txtUsuarioMod.Text = vPrograma.CL_USUARIO_APP_MODIFICA;
                 txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPrograma.FE_MODIFICA);
+
+                if (vPrograma.DS_NOTAS != null)
+                {
+                    XElement vNotas = XElement.Parse(vPrograma.DS_NOTAS);
+
+                    if (vNotas != null)
+                    {
+                        string vNotasTexto = validarDsNotas(vNotas.ToString());
+                        txtNotas.InnerHtml = vNotasTexto;
+                    }
+                }
+
+
             }
 
         }

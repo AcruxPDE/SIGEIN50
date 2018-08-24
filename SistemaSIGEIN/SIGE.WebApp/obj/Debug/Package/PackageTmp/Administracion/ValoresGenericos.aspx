@@ -162,7 +162,7 @@
      
     <div style="height:calc(100% - 140px);">
       <telerik:RadGrid ID="grvValoresGenericos" ShowHeader="true"  runat="server" AllowPaging="true" 
-          AllowSorting="true"   GroupPanelPosition="Top" GridLines="None"  Width="1200px"
+          AllowSorting="true"   GroupPanelPosition="Top" GridLines="None"  Width="100%"
           AllowAutomaticUpdates="true"  ClientSettings-EnablePostBackOnRowClick ="false" Height="100%"  AllowFilteringByColumn="true"  
           OnNeedDataSource="GridValoresGenericos_NeedDataSource" 
           HeaderStyle-Font-Bold="true" 
@@ -181,9 +181,11 @@
            <CommandItemSettings  ShowAddNewRecordButton="false" ShowExportToExcelButton="True"  ShowExportToCsvButton="false"    
                RefreshText="Actualizar"  AddNewRecordText="Insertar" />   
              <Columns>  
-                 <telerik:GridBoundColumn AutoPostBackOnFilter="true"  CurrentFilterFunction="Contains" HeaderStyle-Width="330" FilterControlWidth="250" HeaderText="Clave" DataField="CL_CATALOGO_VALOR"   UniqueName="CL_CATALOGO_VALOR"  Display="true" ReadOnly="false"  ></telerik:GridBoundColumn>  
-                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="450" FilterControlWidth="380" HeaderText="Nombre" DataField="NB_CATALOGO_VALOR"   UniqueName="NB_CATALOGO_VALOR"  Display="true" ReadOnly="false" ></telerik:GridBoundColumn>  
-                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="350" FilterControlWidth="280" HeaderText="Descripción" DataField="DS_CATALOGO_VALOR"   UniqueName="DS_CATALOGO_VALOR"  Display="true" ReadOnly="false"  ></telerik:GridBoundColumn>  
+                 <telerik:GridBoundColumn AutoPostBackOnFilter="true"  CurrentFilterFunction="Contains" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Clave" DataField="CL_CATALOGO_VALOR"   UniqueName="CL_CATALOGO_VALOR"  Display="true" ReadOnly="false"  ></telerik:GridBoundColumn>  
+                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="250" FilterControlWidth="180" HeaderText="Nombre" DataField="NB_CATALOGO_VALOR"   UniqueName="NB_CATALOGO_VALOR"  Display="true" ReadOnly="false" ></telerik:GridBoundColumn>  
+                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="300" FilterControlWidth="220" HeaderText="Descripción" DataField="DS_CATALOGO_VALOR"   UniqueName="DS_CATALOGO_VALOR"  Display="true" ReadOnly="false"  ></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Último usuario que modifica" DataField="CL_USUARIO_MODIFICA" UniqueName="CL_USUARIO_MODIFICA"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataFormatString="{0:d}"  AutoPostBackOnFilter="true" HeaderText="Última fecha de modificación" DataField="FE_MODIFICACION" UniqueName="FE_MODIFICACION" HeaderStyle-Width="150" FilterControlWidth="80" DataType="System.DateTime"></telerik:GridBoundColumn>  
              </Columns>    
        </MasterTableView> 
    </telerik:RadGrid> 

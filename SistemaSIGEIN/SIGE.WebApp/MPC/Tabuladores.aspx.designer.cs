@@ -112,15 +112,6 @@ namespace SIGE.WebApp.MPC {
         protected global::Telerik.Web.UI.RadButton btnConfigurar;
         
         /// <summary>
-        /// btnVerNiveles control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnVerNiveles;
-        
-        /// <summary>
         /// btnCambiarEstado control.
         /// </summary>
         /// <remarks>
@@ -128,6 +119,15 @@ namespace SIGE.WebApp.MPC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnCambiarEstado;
+        
+        /// <summary>
+        /// btnReabrir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnReabrir;
         
         /// <summary>
         /// btnCopiar control.
@@ -245,6 +245,24 @@ namespace SIGE.WebApp.MPC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadTextBox txtDsPeriodo;
+        
+        /// <summary>
+        /// Label4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label4;
+        
+        /// <summary>
+        /// txtNotas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox txtNotas;
         
         /// <summary>
         /// Label2 control.
@@ -416,6 +434,15 @@ namespace SIGE.WebApp.MPC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadWindow winSeleccion;
+        
+        /// <summary>
+        /// winImprimir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadWindow winImprimir;
         
         /// <summary>
         /// winIncrementoGeneral control.

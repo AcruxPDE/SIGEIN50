@@ -14,6 +14,7 @@ using Telerik.Web.UI;
 using SIGE.Negocio.Utilerias;
 using Newtonsoft.Json;
 using WebApp.Comunes;
+using SIGE.WebApp.Comunes;
 
 namespace SIGE.WebApp.EO
 {
@@ -25,6 +26,7 @@ namespace SIGE.WebApp.EO
         private string vClUsuario;
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private int? vIdRol;
 
         public int vIdPeriodo
         {
@@ -50,9 +52,12 @@ namespace SIGE.WebApp.EO
             if (vPrDesempenoGlobal != null)
             {
                 decimal? vNoCumplido = 100 - vPrDesempenoGlobal.CUMPLIDO;
+                
                 vSerie.SeriesItems.Add(vNoCumplido, System.Drawing.Color.Red, "No Cumplido");
                 vSerie.SeriesItems.Add(vPrDesempenoGlobal.CUMPLIDO, System.Drawing.Color.Green, "Cumplido");
                 vSerie.LabelsAppearance.DataFormatString = "{0:N2}%";
+                vSerie.LabelsAppearance.TextStyle.FontSize = 14;
+                rhcGraficaGlobal.Legend.Appearance.TextStyle.FontSize = 15;
                 rhcGraficaGlobal.PlotArea.Series.Add(vSerie);
             }
             else
@@ -143,6 +148,7 @@ namespace SIGE.WebApp.EO
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
             if (!IsPostBack)
             {
                 if (Request.Params["PeriodoId"] != null)
@@ -212,7 +218,7 @@ namespace SIGE.WebApp.EO
         {
             PeriodoDesempenoNegocio nDesempenoGlobal = new PeriodoDesempenoNegocio();
             List<E_OBTIENE_CUMPLIMIENTO_GLOBAL> lDesempenoGlobal = new List<E_OBTIENE_CUMPLIMIENTO_GLOBAL>();
-            lDesempenoGlobal = nDesempenoGlobal.ObtieneCumplimientoGlobal(vIdPeriodo);
+            lDesempenoGlobal = nDesempenoGlobal.ObtieneCumplimientoGlobal(vIdPeriodo, vIdRol);
             rgEvaluados.DataSource = lDesempenoGlobal;
         }
 

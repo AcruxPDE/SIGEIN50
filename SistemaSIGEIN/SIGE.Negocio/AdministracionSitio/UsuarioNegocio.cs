@@ -112,7 +112,8 @@ namespace SIGE.Negocio.Administracion
                 vUsuario.ID_EMPLEADO_PDE = vAutenticacion.ID_EMPLEADO.ToString();
                 vUsuario.ID_PUESTO = vAutenticacion.ID_PUESTO;
                 vUsuario.ID_PUESTO_PDE = vAutenticacion.ID_PUESTO.ToString();
-                vUsuario.oRol = new E_ROL() { NB_ROL = vAutenticacion.NB_ROL };
+                vUsuario.oRol = new E_ROL() { ID_ROL = vAutenticacion.ID_ROL, NB_ROL = vAutenticacion.NB_ROL };
+                vUsuario.ID_PLANTILLA = vAutenticacion.ID_PLANTILLA; // SE AGREGA EL ID DE LA PLANTILLA LIGADA AL ROL
                 vUsuario.ID_EMPRESA = vAutenticacion.ID_EMPRESA;
                 if (vAutenticacion.XML_DATA!=null)
                     vUsuario.oFunciones = XElement.Parse(vAutenticacion.XML_DATA).Elements("FUNCION").Select(f => new E_FUNCION()

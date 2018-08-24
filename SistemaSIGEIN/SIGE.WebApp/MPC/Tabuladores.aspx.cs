@@ -10,6 +10,7 @@ using SIGE.Entidades;
 using Telerik.Web.UI;
 using SIGE.Entidades.Externas;
 using SIGE.WebApp.Comunes;
+using Newtonsoft.Json;
 
 namespace SIGE.WebApp.MPC
 {
@@ -46,22 +47,77 @@ namespace SIGE.WebApp.MPC
             set { ViewState["vs_vFgEliminar"] = value; }
         }
 
+        public bool vCambiarEstado
+        {
+            get { return (bool)ViewState["vs_vCambiarEstado"]; }
+            set { ViewState["vs_vCambiarEstado"] = value; }
+        }
+
+
+        public bool vConfigurar
+        {
+            get { return (bool)ViewState["vs_vConfigurar"]; }
+            set { ViewState["vs_vConfigurar"] = value; }
+        }
+
+
+        public bool vValuar
+        {
+            get { return (bool)ViewState["vs_vValuar"]; }
+            set { ViewState["vs_vValuar"] = value; }
+        }
+
+
+        public bool vIncrementos
+        {
+            get { return (bool)ViewState["vs_vIncrementos"]; }
+            set { ViewState["vs_vIncrementos"] = value; }
+        }
+
+
+        public bool vCapturar
+        {
+            get { return (bool)ViewState["vs_vCapturar"]; }
+            set { ViewState["vs_vCapturar"] = value; }
+        }
+
+
+        public bool vCrear
+        {
+            get { return (bool)ViewState["vs_vCrear"]; }
+            set { ViewState["vs_vCrear"] = value; }
+        }
+
+        private void seleccionarPeriodo()
+        {
+            rlvConsultas.SelectedItems.Clear();
+            rlvConsultas.SelectedIndexes.Clear();
+            rlvConsultas.CurrentPageIndex = 0;
+            if (rlvConsultas.Items.Count > 0)
+            {
+                rlvConsultas.Items[0].Selected = true;
+            }
+
+            rlvConsultas.Rebind();
+        }
+
         private void SeguridadProcesos()
         {
-            btnAgregar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.A.A");
-            vFgEditar = ContextoUsuario.oUsuario.TienePermiso("K.A.A.B");
-            vFgEliminar = ContextoUsuario.oUsuario.TienePermiso("K.A.A.C");
-            btnConfigurar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.A.D");
-            btnVerNiveles.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.A.E");
-            btnCambiarEstado.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.A.F");
-            btnCopiar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.A.G");
-            btnValuar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.A.H");
-            btnCapturar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.A.I");
-            btnCrear.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.A.J");
-            btnIncrementos.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.A.K");
-            btnConsSueldos.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.A.L");
-            btnGraficaAnalisis.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.A.M");
-            btnDesviaciones.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.A.N");
+            btnAgregar.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.A");
+            vFgEditar = ContextoUsuario.oUsuario.TienePermiso("O.A.A.B");
+            vFgEliminar = ContextoUsuario.oUsuario.TienePermiso("O.A.A.C");
+            btnConfigurar.Enabled = vConfigurar = ContextoUsuario.oUsuario.TienePermiso("O.A.A.D");
+            //btnVerNiveles.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.A.E");       
+            btnCambiarEstado.Enabled = vCambiarEstado = ContextoUsuario.oUsuario.TienePermiso("O.A.A.E");
+            btnReabrir.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.F");
+            btnCopiar.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.G");
+            btnValuar.Enabled = vValuar = ContextoUsuario.oUsuario.TienePermiso("O.A.A.H");
+            btnCapturar.Enabled = vCapturar  = ContextoUsuario.oUsuario.TienePermiso("O.A.A.I");
+            btnCrear.Enabled = vCrear = ContextoUsuario.oUsuario.TienePermiso("O.A.A.J");
+            btnIncrementos.Enabled = vIncrementos = ContextoUsuario.oUsuario.TienePermiso("O.A.A.K");
+            btnConsSueldos.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.L");
+            btnGraficaAnalisis.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.M");
+            btnDesviaciones.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.N");
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -88,7 +144,13 @@ namespace SIGE.WebApp.MPC
         private void EstatusBotonesPeriodos(bool pFgEstatus)
         {
             //btnConfigurar.Enabled = pFgEstatus;
-            btnCambiarEstado.Enabled = pFgEstatus;
+            btnCambiarEstado.Enabled = pFgEstatus && vCambiarEstado;
+            btnConfigurar.Enabled = pFgEstatus && vConfigurar;
+            btnValuar.Enabled = pFgEstatus && vValuar;
+            btnIncrementos.Enabled = pFgEstatus && vIncrementos;
+            btnCapturar.Enabled = pFgEstatus && vCapturar;
+            btnCrear.Enabled = pFgEstatus && vCrear;
+            
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
@@ -99,12 +161,13 @@ namespace SIGE.WebApp.MPC
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje.MENSAJE[0].DS_MENSAJE.ToString(), vMensaje.CL_TIPO_ERROR, 400, 150, "");
                 vIdConsulta = null;
                 rlvConsultas.Rebind();
-                rlvConsultas.SelectedValues.Clear();
-                rlvConsultas.SelectedItems.Clear();
+                //rlvConsultas.SelectedValues.Clear();
+                //rlvConsultas.SelectedItems.Clear();
 
                 txtClPeriodo.Text = "";
                 txtDsPeriodo.Text = "";
                 txtClEstatus.Text = "";
+                txtNotas.Text = "";
                 txtTipo.Text = "";
                 txtUsuarioMod.Text = "";
                 txtFechaMod.Text = "";
@@ -204,11 +267,12 @@ namespace SIGE.WebApp.MPC
                 SPE_OBTIENE_TABULADORES_Result vPeriodo =  nTabulador.ObtenerTabuladores(ID_TABULADOR: vIdConsulta).FirstOrDefault();
 
                 txtClPeriodo.Text = vPeriodo.CL_TABULADOR;
-                txtDsPeriodo.Text = vPeriodo.DS_TABULADOR;
+                txtDsPeriodo.Text = vPeriodo.NB_TABULADOR;
                 txtClEstatus.Text = vPeriodo.CL_ESTADO;
                 txtTipo.Text = vPeriodo.CL_TIPO_PUESTO;
                 txtUsuarioMod.Text = vPeriodo.CL_USUARIO_APP_MODIFICA;
                 txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPeriodo.FE_ULTIMA_MODIFICACION);
+                txtNotas.Text = vPeriodo.DS_TABULADOR;
 
 
                 //DESACTIVAR BOTONES
@@ -255,6 +319,60 @@ namespace SIGE.WebApp.MPC
             }
 
             rlvConsultas.Rebind();
+        }
+
+        protected void btnReabrir_Click(object sender, EventArgs e)
+        {
+            TabuladoresNegocio nTabulador = new TabuladoresNegocio();
+            var vpTabulador = nTabulador.ObtenerTabuladores(ID_TABULADOR: vIdConsulta).FirstOrDefault();
+
+            if (vpTabulador.CL_ESTADO == "ABIERTO")
+            {
+                vpTabulador.CL_ESTADO = "CERRADO";
+            }
+            else
+            {
+                vpTabulador.CL_ESTADO = "ABIERTO";
+            }
+            vTabulador = new E_TABULADOR
+            {
+                CL_TABULADOR = vpTabulador.CL_TABULADOR,
+                ID_TABULADOR = vpTabulador.ID_TABULADOR,
+                NB_TABULADOR = vpTabulador.NB_TABULADOR,
+                DS_TABULADOR = vpTabulador.DS_TABULADOR,
+                NO_NIVELES = vpTabulador.NO_NIVELES,
+                NO_CATEGORIAS = vpTabulador.NO_CATEGORIAS,
+                PR_INFLACION = vpTabulador.PR_INFLACION,
+                PR_PROGRESION = vpTabulador.PR_PROGRESION,
+                XML_VARIACION = vpTabulador.XML_VARIACION,
+                ID_CUARTIL_INCREMENTO = vpTabulador.ID_CUARTIL_INCREMENTO,
+                ID_CUARTIL_INFLACIONAL = vpTabulador.ID_CUARTIL_INFLACIONAL,
+                FE_CREACION = vpTabulador.FE_CREACION,
+                FE_VIGENCIA = vpTabulador.FE_VIGENCIA,
+                CL_ESTADO = vpTabulador.CL_ESTADO,
+                CL_SUELDO_COMPARACION = vpTabulador.CL_SUELDO_COMPARACION,
+                CL_TIPO_PUESTO = vpTabulador.CL_TIPO_PUESTO
+            };
+
+            E_RESULTADO vResultado = nTabulador.InsertaActualizaTabulador(usuario: vClUsuario, programa: vNbPrograma, pClTipoOperacion: E_TIPO_OPERACION_DB.A.ToString(), vTabulador: vTabulador);
+            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+            rlvConsultas.Rebind();
+            EstatusBotonesPeriodos(true);
+            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "");
+        }
+
+        protected void ramTabulador_AjaxRequest(object sender, AjaxRequestEventArgs e)
+        {
+            E_SELECTOR vSeleccion = new E_SELECTOR();
+            string pParameter = e.Argument;
+
+            if (pParameter != null)
+                vSeleccion = JsonConvert.DeserializeObject<E_SELECTOR>(pParameter);
+
+            if (vSeleccion.clTipo == "ACTUALIZARLISTA")
+            {
+                seleccionarPeriodo();
+            }
         }
 
     }

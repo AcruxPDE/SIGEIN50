@@ -17,12 +17,26 @@ namespace SIGE.WebApp.Administracion
         private string vNbPrograma;
         private int? vIdEmpresa;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private int? vIdRol;
+
+        protected void SeguridadProcesos()
+        {
+            btnAgregar.Enabled = ContextoUsuario.oUsuario.TienePermiso("D.A");
+            btnEditar.Enabled = ContextoUsuario.oUsuario.TienePermiso("D.B");
+            btnEliminar.Enabled = ContextoUsuario.oUsuario.TienePermiso("D.C");
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
             vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
+
+            if (!IsPostBack)
+            {
+                SeguridadProcesos();
+            }
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
@@ -42,7 +56,7 @@ namespace SIGE.WebApp.Administracion
         protected void grdPlazas_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             PlazaNegocio nPlaza = new PlazaNegocio();
-            grdPlazas.DataSource = nPlaza.ObtienePlazas(pID_EMPRESA: vIdEmpresa);
+            grdPlazas.DataSource = nPlaza.ObtienePlazas(pID_EMPRESA: vIdEmpresa, pID_ROL: vIdRol);
         }
 
         protected void grdPlazas_ItemDataBound(object sender, GridItemEventArgs e)

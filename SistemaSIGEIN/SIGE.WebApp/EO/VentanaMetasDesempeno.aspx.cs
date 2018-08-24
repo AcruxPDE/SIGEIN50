@@ -231,11 +231,11 @@ namespace SIGE.WebApp.EO
                                 rbSiNo.Checked = false;
                                 if (oMeta.NB_CUMPLIMIENTO_ACTUAL != "")
                                     dtpActual.SelectedDate = Convert.ToDateTime(oMeta.NB_CUMPLIMIENTO_ACTUAL);
-                                if (oMeta.NB_CUMPLIMIENTO_ACTUAL != "")
+                                if (oMeta.NB_CUMPLIMIENTO_MINIMO != "")
                                     dtpMinimo.SelectedDate = Convert.ToDateTime(oMeta.NB_CUMPLIMIENTO_MINIMO);
-                                if (oMeta.NB_CUMPLIMIENTO_ACTUAL != "")
+                                if (oMeta.NB_CUMPLIMIENTO_SATISFACTORIO != "")
                                     dtpSatisfactoria.SelectedDate = Convert.ToDateTime(oMeta.FE_CUMPLIMIENTO_SATISFACTORIO);
-                                if (oMeta.NB_CUMPLIMIENTO_ACTUAL != "")
+                                if (oMeta.NB_CUMPLIMIENTO_SOBRESALIENTE != "")
                                     dtpSobresaliente.SelectedDate = Convert.ToDateTime(oMeta.FE_CUMPLIMIENTO_SOBRESALIENTE);
                                 break;
                             case "Si/No":
@@ -327,7 +327,7 @@ namespace SIGE.WebApp.EO
                 {
                     if (vCltipoMeta != "")
                     {
-                        if ((vPrMeta != null && vNbActual != "" && vNbMinimo != "" && vNbSatisfactorio != "" && vNbSobresaliente != "") || (vCltipoMeta == "Si/No" && vPrMeta != null))
+                        if ((vPrMeta != null && vNbMinimo != "" && vNbSatisfactorio != "" && vNbSobresaliente != "") || (vCltipoMeta == "Si/No" && vPrMeta != null))
                         {
                             E_RESULTADO vResultado = nPeriodo.InsetaActualizaMetasEvaluados(vIdMetaEvaluado, vIdPeriodo, vIdEvaluado, dsMetas, vNoMeta, cmbIndicador.Text, txtMeta.Text, vCltipoMeta, null, vFgActivo, vNbActual, vNbMinimo, vNbSatisfactorio, vNbSobresaliente, vPrMeta, null, null, null, vClUsuario, vNbPrograma, vTipoTransaccion);
                             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
@@ -355,7 +355,7 @@ namespace SIGE.WebApp.EO
                             if (vCltipoMeta == "Si/No")
                                 UtilMensajes.MensajeResultadoDB(rwmMensaje, "El campo ponderación es requerido.", E_TIPO_RESPUESTA_DB.WARNING);
                             else
-                                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Los campos actual, mínimo,  satisfactoría, sobresaliente y ponderación son requeridos.", E_TIPO_RESPUESTA_DB.WARNING);
+                                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Los campos mínimo,  satisfactoría, sobresaliente y ponderación son requeridos.", E_TIPO_RESPUESTA_DB.WARNING);
                         }
                     }
                     else
@@ -377,6 +377,10 @@ namespace SIGE.WebApp.EO
 
         private void LimpiarControles()
         {
+            cmbFunciones.Text = string.Empty;
+            cmbFunciones.SelectedIndex = -1;
+            cmbIndicador.Text = string.Empty;
+            cmbIndicador.Items.Clear();
             txtMeta.Text = "";
             rbPorcentual.Checked = false;
             rbMonto.Checked = false;
@@ -393,8 +397,8 @@ namespace SIGE.WebApp.EO
             txtPonderacion.Text = "";
             txtPSatisfactoria.Text = "";
             txtPSobresaliente.Text = "";
-            txtSMaximo.Text = "";
-            txtSMinimo.Text = "";
+            //txtSMaximo.Text = "";
+            //txtSMinimo.Text = "";
             dtpActual.Clear();
             dtpMinimo.Clear();
             dtpSatisfactoria.Clear();
@@ -523,6 +527,7 @@ namespace SIGE.WebApp.EO
                 {
                     vNoMeta = int.Parse(Request.Params["NoMeta"].ToString());
                     vMeta = int.Parse(Request.Params["Meta"].ToString());
+                    RadPane2.Visible = false;
                     CargarDatos();
                 }
                 else

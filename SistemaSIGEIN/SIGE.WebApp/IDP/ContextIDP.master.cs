@@ -30,7 +30,8 @@ namespace SIGE.WebApp.IDP
              else
              {
                  UtilMensajes.MensajeResultadoDB(RadWindowManager1, ContextoApp.IDP.LicenciaIntegracion.MsgActivo, E_TIPO_RESPUESTA_DB.WARNING);
-                 Response.Redirect(ContextoUsuario.nbHost + "/Logon.aspx");
+                 var myUrl = ResolveUrl("~/Logon.aspx");
+                 Response.Redirect(ContextoUsuario.nbHost + myUrl);
                 
              }
         }

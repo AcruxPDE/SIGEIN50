@@ -38,11 +38,11 @@ namespace SIGE.Entidades
         public string CL_CODIGO_POSTAL { get; set; }
         public string M_EMPLEADO_CL_CORREO_ELECTRONICO { get; set; }
         public string M_EMPLEADO_ACTIVO { get; set; }
-        public System.DateTime FE_NACIMIENTO { get; set; }
+        public Nullable<System.DateTime> FE_NACIMIENTO { get; set; }
         public string DS_LUGAR_NACIMIENTO { get; set; }
         public System.DateTime FE_ALTA { get; set; }
         public Nullable<System.DateTime> FE_BAJA { get; set; }
-        public decimal MN_SUELDO { get; set; }
+        public Nullable<decimal> MN_SUELDO { get; set; }
         public Nullable<decimal> MN_SUELDO_VARIABLE { get; set; }
         public string DS_SUELDO_COMPOSICION { get; set; }
         public string CL_PUESTO { get; set; }

@@ -76,6 +76,13 @@
     </style>
 
     <script type="text/javascript" id="MyScript">
+
+        var vOnClientBeforeClose_confirm = "¿Estás seguro que quieres salir de la pantalla? Si no se ha guardado, se perderá la selección de evaluadores.";
+        var vOnClientBeforeClose_title = "Cerrar";
+        var vOpenWindowAutorizarDocumento_title = "Registro y Autorización";
+        var vOpenNuevoCuestionarioWindow_title = "Agregar evaluadores";
+        var vconfirmarCrearCuestionarios_confirm = "¿Deseas continuar? Una vez hecho esto no podrás solicitar autorizaciones ni volver a la matriz.";
+
         function closeWindow() {
             GetRadWindow().close();
         }
@@ -89,7 +96,7 @@
                 }
             }
 
-            radconfirm("¿Estás seguro que quieres salir de la pantalla? Si no se ha guardado, se perderá la selección de evaluadores.", confirmCallback, 400, 170, null, "Cerrar");
+            radconfirm(OnClientBeforeClose_confirm, confirmCallback, 400, 170, null, vOnClientBeforeClose_title);
         }
 
 
@@ -102,7 +109,7 @@
             if (pIdPeriodo != null) {
                 var vURL = "VentanaDocumentoAutorizar.aspx";
                 vURL = vURL + "?IdPeriodo=" + pIdPeriodo;
-                vTitulo = "Registro y Autorización";
+                vTitulo = vOpenWindowAutorizarDocumento_title;
                 vTipoOperacion = "&TIPO=Agregar";
             }
 
@@ -197,7 +204,7 @@
                 height: browserWnd.innerHeight - 60
             };
 
-            OpenSelectionWindow("AgregarCuestionario.aspx?PeriodoId=<%= vIdPeriodo %>&AccionCerrarCl=REBIND&FgCrearCuestionarios=false", "winAgregarCuestionario", "Agregar evaluadores", windowProperties);
+            OpenSelectionWindow("AgregarCuestionario.aspx?PeriodoId=<%= vIdPeriodo %>&AccionCerrarCl=REBIND&FgCrearCuestionarios=false", "winAgregarCuestionario", vOpenNuevoCuestionarioWindow_title, windowProperties);
         }
 
         function OpenSelectionWindow(pURL, pIdWindow, pTitle, pWindowProperties) {
@@ -237,7 +244,7 @@
 
         function confirmarCrearCuestionarios(sender, args) {
 
-            confirmAction(sender, args, "¿Deseas continuar? Una vez hecho esto no podrás solicitar autorizaciones ni volver a la matriz.");
+            confirmAction(sender, args, vconfirmarCrearCuestionarios_confirm);
         }
 
 
@@ -320,7 +327,7 @@
                 <Columns>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Evaluado" DataField="NB_EMPLEADO_COMPLETO" UniqueName="NB_EVALUADO"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="350" FilterControlWidth="230" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="NB_PUESTO"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="350" FilterControlWidth="230" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="350" FilterControlWidth="230" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO"></telerik:GridBoundColumn>
                 </Columns>
                 <DetailTables>
                     <telerik:GridTableView DataKeyNames="ID_EVALUADO" Name="gtvEvaluadores">

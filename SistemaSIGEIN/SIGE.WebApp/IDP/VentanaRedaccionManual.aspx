@@ -106,7 +106,7 @@
             }
         </script>
     </telerik:RadCodeBlock>
-     <div style="clear:both; height:15px;"></div>
+         <label name="" id="lbltitulo" class="labelTitulo">Redacción</label>
     <div style="height: calc(100% - 40px);">
         <telerik:RadSplitter ID="splHelp" runat="server" Width="100%" Height="100%" BorderSize="0" Orientation="Horizontal">
             <telerik:RadPane ID="rpnPrueba" runat="server">
@@ -114,7 +114,7 @@
                     <div style="border: 1px solid #ddd">
                             <div style="font-weight:bold;">Definición del factor</div>
                              <div class="JustificarTexto">
-                            <label id="Label1" runat="server">Capacidad para expresar de manera escrita ideas o pensamientos que se expresan en una forma adecuada gramaticalmente, que cumplan con las reglas ortográficas y que tengan un adecuado manejo del lenguaje.</label>
+                            Capacidad para expresar de manera escrita ideas o pensamientos que se expresan en una forma adecuada gramaticalmente, que cumplan con las reglas ortográficas y que tengan un adecuado manejo del lenguaje.
                         </div>
                     </div>
                     <div style="clear: both; height: 20px"></div>

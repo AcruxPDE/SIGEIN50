@@ -99,7 +99,7 @@
                                     contenedor.style.display = 'none';
                                 }
 
-                               c = Cronometro(segundos, display);
+                                c = Cronometro(segundos, display);
                             }
                         }
                         else {
@@ -125,11 +125,11 @@
                         }
                     });
 
-                        var text = "¿Estás seguro que deseas terminar tu prueba?";
-                        radconfirm(text, callBackFunction, 400, 150, null, "");
-                        args.set_cancel(true);
-                    
-                    }
+                    var text = "¿Estás seguro que deseas terminar tu prueba?";
+                    radconfirm(text, callBackFunction, 400, 150, null, "");
+                    args.set_cancel(true);
+
+                }
                 else {
                     // window.close();
                     window.location = "Default.aspx?ty=sig";
@@ -201,10 +201,20 @@
                 win.focus();
             }
 
+            //function ConfirmarEliminarRespuestas(sender, args) {
+            //    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+            //        if (shouldSubmit) {
+            //            this.click();
+            //        }
+            //    });
+            //    radconfirm("Este proceso borrará las respuestas de la prueba, ¿Deseas continuar?", callBackFunction, 400, 150, null, "Eliminar respuestas");
+            //    args.set_cancel(true);
+            //}
+
 
         </script>
     </telerik:RadCodeBlock>
-
+      <label style="font-size: 21px;">TIVA</label>
     <div style="height: calc(100% - 100px);">
         <telerik:RadSplitter ID="splHelp" runat="server" Width="100%" Height="100%" BorderSize="0" Orientation="Horizontal">
 
@@ -214,19 +224,21 @@
                         <table>
                             <tr>
                                 <td style="width: 10px;">&nbsp;</td>
-                                <td style="background-color: white; padding: 5px;"><label>Lee con atención las siguientes preguntas, elige entre las posibles respuestas aquella que 
+                                <td style="background-color: white; padding: 5px;">
+                                    <label class="JustificarTexto">
+                                        Lee con atención las siguientes preguntas, elige entre las posibles respuestas aquella que 
                           más se aplica a tu forma de actuar. Cada pregunta cuenta con un tiempo límite para ser contestada, 
                           por lo que te sugerimos no detenerte demasiado y seleccionar tu respuesta con rapidez.
                                     <br />
-                                    <br />
-                                    Este test no tiene preguntas correctas o incorrectas, por lo que puedes sentirte libre de contestar 
+                                        <br />
+                                        Este test no tiene preguntas correctas o incorrectas, por lo que puedes sentirte libre de contestar 
                           de manera totalmente honesta y objetiva. Sin embargo, este test cuenta con un sistema para invalidarlo si
                            no está de acuerdo a los demás resultados de tu batería, te suplicamos ser honesto en tus respuestas.</label>
                                 </td>
                             </tr>
                         </table>
-                   
-                     
+
+
                     </telerik:RadSlidingPane>
                 </telerik:RadSlidingZone>
             </telerik:RadPane>
@@ -1351,10 +1363,19 @@
     <div class="DivMoveLeft" id="cronometro" runat="server">
         <div class="Cronometro">Tiempo restante <span id="time">15:00</span></div>
     </div>
-    <div class="divControlesBoton">
-        <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Terminar" AutoPostBack="true"></telerik:RadButton>
-         <telerik:RadButton ID="btnCorregir" runat="server" Visible="false" OnClick="btnCorregir_Click" Text="Corregir" AutoPostBack="true"></telerik:RadButton>
-          <telerik:RadButton ID="btnImpresionPrueba" runat="server" OnClientClicked="OpenReport" Text="Imprimir" AutoPostBack="false" Visible="false"></telerik:RadButton>   
+    <div class="divControlDerecha">
+        <div class="ctrlBasico">
+            <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Terminar" AutoPostBack="true"></telerik:RadButton>
+        </div>
+        <div class="ctrlBasico">
+            <telerik:RadButton ID="btnCorregir" runat="server" Visible="false" OnClick="btnCorregir_Click" Text="Guardar" AutoPostBack="true"></telerik:RadButton>
+        </div>
+        <div class="ctrlBasico">
+            <telerik:RadButton ID="btnImpresionPrueba" runat="server" OnClientClicked="OpenReport" Text="Imprimir" AutoPostBack="false" Visible="false"></telerik:RadButton>
+        </div>
+<%--                     <div class="ctrlBasico">
+                  <telerik:RadButton ID="btnEliminar" runat="server"  Text="Eliminar" AutoPostBack="true" Visible="false" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminar_Click"></telerik:RadButton>
+             </div>--%>
     </div>
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>
 </asp:Content>

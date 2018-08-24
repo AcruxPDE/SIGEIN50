@@ -116,7 +116,7 @@
     <div style="height: calc(100% - 100px);">
 
         <telerik:RadGrid ID="grdCatExperProf" ShowHeader="true" runat="server" AllowPaging="true"
-            AllowSorting="true" GroupPanelPosition="Top" Width="600px" GridLines="None"
+            AllowSorting="true" GroupPanelPosition="Top" Width="1000px" GridLines="None"
             Height="100%"
             AllowFilteringByColumn="true"
             HeaderStyle-Font-Bold="true"

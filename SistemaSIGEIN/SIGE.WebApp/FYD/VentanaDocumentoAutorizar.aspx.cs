@@ -501,7 +501,7 @@ namespace SIGE.WebApp.FYD
                 }
                 else
                 {
-                    vTitulo = "Solicitud de autorización de periodo de evaluación";
+                    vTitulo = "Solicitud de autorización de período de evaluación";
                 }
 
 
@@ -525,8 +525,8 @@ namespace SIGE.WebApp.FYD
                     //string vClToken = documentoMail.CL_TOKEN.ToString();
                     mail.addToAddress(vCorreoElectronico, vDocumento.NB_EMPLEADO);
                     //contador++;
-
-                    string vUrl = ContextoUsuario.nbHost + "/Logon.aspx?AUTORIZA=PROGRAMACAPACITACION&TOKEN=" + vDocumento.FL_AUTORIZACION.ToString();
+                    string myUrl = ResolveUrl("~/Logon.aspx?AUTORIZA=PROGRAMACAPACITACION&TOKEN=");
+                    string vUrl = ContextoUsuario.nbHost + myUrl + vDocumento.FL_AUTORIZACION.ToString();
 
 
                     try

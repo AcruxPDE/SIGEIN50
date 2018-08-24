@@ -80,7 +80,7 @@
                         <Columns>
                             <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="160" FilterControlWidth="80" HeaderText="Clave" DataField="CL_PERIODO" UniqueName="CL_PERIODO"></telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="160" FilterControlWidth="80" HeaderText="Periodo" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="160" FilterControlWidth="80" HeaderText="Período" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="220" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO"></telerik:GridBoundColumn>
                         </Columns>
                     </MasterTableView>

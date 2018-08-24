@@ -109,10 +109,10 @@ namespace SIGE.Negocio.TableroControl
                      ).ToList();
         }
 
-        public List<E_EVALUADOS_TABLERO_CONTROL> ObtenerEvaluadosTableroControl(int? pIdTableroControl, int? pIdEmpleado)
+        public List<E_EVALUADOS_TABLERO_CONTROL> ObtenerEvaluadosTableroControl(int? pIdTableroControl, int? pIdEmpleado, int? pIdRol)
         {
             TableroControlOperaciones oTableroControl = new TableroControlOperaciones();
-            var vEvaluados = oTableroControl.ObtenerEvaluadosTableroControl(pIdTableroControl, pIdEmpleado).ToList();
+            var vEvaluados = oTableroControl.ObtenerEvaluadosTableroControl(pIdTableroControl, pIdEmpleado, pIdRol).ToList();
             return (from x in vEvaluados
                     select new E_EVALUADOS_TABLERO_CONTROL
                     {

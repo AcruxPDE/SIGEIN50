@@ -22,6 +22,7 @@ namespace SIGE.WebApp.IDP.Pruebas
     public partial class VentanaIngles : System.Web.UI.Page
     {
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+
         private List<E_PREGUNTA> vRespuestas
         {
             get { return (List<E_PREGUNTA>)ViewState["vsRespuestas"]; }
@@ -33,6 +34,7 @@ namespace SIGE.WebApp.IDP.Pruebas
             get { return (string)ViewState["vsvClUsuario"]; }
             set { ViewState["vsvClUsuario"] = value; }
         }
+
         private string vNbPrograma
         {
             get { return (string)ViewState["vsvNbPrograma"]; }
@@ -44,46 +46,55 @@ namespace SIGE.WebApp.IDP.Pruebas
             get { return (int)ViewState["vsIdEvaluado"]; }
             set { ViewState["vsIdEvaluado"] = value; }
         }
+
         public Guid vClToken
         {
             get { return (Guid)ViewState["vsClToken"]; }
             set { ViewState["vsClToken"] = value; }
         }
+
         public List<E_PRUEBA_TIEMPO> vSeccionesPrueba
         {
             get { return (List<E_PRUEBA_TIEMPO>)ViewState["vSeccionesPrueba"]; }
             set { ViewState["vSeccionesPrueba"] = value; }
         }
+
         public int? vTiempoInicio
         {
             get { return (int?)ViewState["vTiempoInicio"]; }
             set { ViewState["vTiempoInicio"] = value; }
         }
+
         public int? vSeccionAtime
         {
             get { return (int?)ViewState["vSeccionAtime"]; }
             set { ViewState["vSeccionAtime"] = value; }
         }
+
         public int? vSeccionBtime
         {
             get { return (int?)ViewState["vSeccionBtime"]; }
             set { ViewState["vSeccionBtime"] = value; }
         }
+
         public int? vSeccionCtime
         {
             get { return (int?)ViewState["vSeccionCtime"]; }
             set { ViewState["vSeccionCtime"] = value; }
         }
+
         public int? vSeccionDtime
         {
             get { return (int?)ViewState["vSeccionDtime"]; }
             set { ViewState["vSeccionDtime"] = value; }
         }
+
         public int vIndexMultiPage
         {
             get { return (int)ViewState["vIndexMultipage"]; }
             set { ViewState["vIndexMultipage"] = value; }
         }
+
         public int vRadAlertAltura
         {
             get { return (int)ViewState["vRadAlertAltura"]; }
@@ -95,11 +106,13 @@ namespace SIGE.WebApp.IDP.Pruebas
             get { return (string)ViewState["vsTipoRevision"]; }
             set { ViewState["vsTipoRevision"] = value; }
         }
+
         public List<E_RESULTADOS_PRUEBA> vResultadosRevision
         {
             get { return (List<E_RESULTADOS_PRUEBA>)ViewState["vsResultadosRevision"]; }
             set { ViewState["vsResultadosRevision"] = value; }
         }
+
         public bool MostrarCronometro
         {
             get { return (bool)ViewState["vsMostrarCronometroING"]; }
@@ -124,11 +137,17 @@ namespace SIGE.WebApp.IDP.Pruebas
                    cronometro.Visible = false;
                    vTiempoInicio = 0;
                    btnTerminar.Text = "Guardar";
+                  // btnEliminar.Visible = true;// Se agrega para la nueva forma de navegación 06/06/2018
+                   btnImpresionPrueba.Visible = true; // Se agrega para imprimir en la nueva navegación IDP 06/06/2018
                    if (vTipoRevision == "REV")
                    {
                        btnTerminar.Enabled = false;
-                       btnImpresionPrueba.Visible = true;
                    }
+
+                   var vPrueba = nKprueba.Obtener_K_PRUEBA(pIdPrueba: vIdPrueba, pClTokenExterno: vClToken).FirstOrDefault();
+                   if (vPrueba.NB_TIPO_PRUEBA == "MANUAL")
+                       btnTerminar.Enabled = false;
+
                    //obtener respuestas
                    var respuestas = nKprueba.Obtener_RESULTADO_PRUEBA(vIdPrueba, vClToken);
                    vResultadosRevision = new List<E_RESULTADOS_PRUEBA>();
@@ -1217,7 +1236,6 @@ namespace SIGE.WebApp.IDP.Pruebas
             }
         }
 
-
         public void controltime(int? vPosicionPrueba, int? vTiempoPrueba)
         {
             vSeccionAtime = vSeccionesPrueba.ElementAt(0).NO_TIEMPO * 60;
@@ -1530,5 +1548,22 @@ namespace SIGE.WebApp.IDP.Pruebas
             }
         }
 
+        //protected void btnEliminar_Click(object sender, EventArgs e)
+        //{
+        //    if (vIdPrueba != null)
+        //    {
+        //        PruebasNegocio nPruebas = new PruebasNegocio();
+        //        var vResultado = nPruebas.EliminaRespuestasPrueba(vIdPrueba, vClUsuario, vNbPrograma);
+        //        string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+        //        if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+        //        {
+        //            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+
+        //        }
+        //        else
+        //            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
+        //    }
+
+        //}
     }
 }

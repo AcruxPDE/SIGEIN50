@@ -67,16 +67,16 @@
                 if (selectedItem != undefined)
                     OpenWindow(selectedItem.getDataKeyValue("ID_DEPARTAMENTO"));
                 else
-                    radalert("Selecciona una área.", 400, 150);
+                    radalert("Selecciona una área/departamento.", 400, 150);
             }
 
             function OpenWindow(pIdArea) {
                 var vURL = "VentanaCatalogoAreas.aspx";
-                var vTitulo = "Agregar Área";
+                var vTitulo = "Agregar área/departamento";
                 var vTipoOperacion = "?TIPO=Agregar";
                 if (pIdArea != null) {
                     vURL = vURL + "?ID=" + pIdArea;
-                    vTitulo = "Editar área";
+                    vTitulo = "Editar área/departamento";
                     vTipoOperacion = "&TIPO=Editar";
                 }
                 var oWin = window.radopen(vURL + vTipoOperacion, "winArea");
@@ -113,11 +113,11 @@
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas eliminar el área ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                        radconfirm('¿Deseas eliminar el área/departamento ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Seleccione una área.", 400, 150, "");
+                    radalert("Seleccione una área/departamento.", 400, 150, "");
                     args.set_cancel(true);
                 }
             }
@@ -125,9 +125,9 @@
         </script>
     </telerik:RadCodeBlock>
 
-    <label class="labelTitulo">Áreas</label>
+    <label class="labelTitulo">Áreas/Departamentos</label>
     <div style="height: calc(100% - 100px);">
-        <telerik:RadGrid ID="grdDepartamentos" ShowHeader="true" runat="server" AllowPaging="true" AllowSorting="true" GroupPanelPosition="Top" Width="950px" Height="100%" AllowFilteringByColumn="true"
+        <telerik:RadGrid ID="grdDepartamentos" ShowHeader="true" runat="server" AllowPaging="true" AllowSorting="true" GroupPanelPosition="Top" Width="1000px" Height="100%" AllowFilteringByColumn="true"
             OnNeedDataSource="grdDepartamentos_NeedDataSource" HeaderStyle-Font-Bold="true" OnItemDataBound="grdDepartamentos_ItemDataBound">
              <GroupingSettings CaseSensitive="false" />
             <ExportSettings FileName="CatalogoAreas" ExportOnlyData="true" IgnorePaging="true">
@@ -169,8 +169,8 @@
 
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true">
         <Windows>
-            <telerik:RadWindow ID="winSeleccion" runat="server" Title="Seleccionar área" Width="800" Height="600" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
-            <telerik:RadWindow ID="winArea" runat="server" Title="Agregar/Editar Área" Height="400" Width="600" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="onCloseWindow"></telerik:RadWindow>
+            <telerik:RadWindow ID="winSeleccion" runat="server" Title="Seleccionar área/departamento" Width="800" Height="600" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
+            <telerik:RadWindow ID="winArea" runat="server" Title="Agregar/Editar Área/Departamento" Height="400" Width="600" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="onCloseWindow"></telerik:RadWindow>
         </Windows>
     </telerik:RadWindowManager>
 </asp:Content>

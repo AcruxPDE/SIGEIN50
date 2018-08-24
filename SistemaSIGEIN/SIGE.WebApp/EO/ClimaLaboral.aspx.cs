@@ -13,6 +13,7 @@ using SIGE.Negocio.FormacionDesarrollo;
 using WebApp.Comunes;
 using System.Xml.Linq;
 using SIGE.Entidades;
+using Newtonsoft.Json;
 
 
 
@@ -25,6 +26,7 @@ namespace SIGE.WebApp.EO
         private string vClUsuario;
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private string vNbFirstRadEditorTagName = "p";
 
         public int? vIdPeriodo
         {
@@ -36,6 +38,42 @@ namespace SIGE.WebApp.EO
         {
             get { return (List<E_PERIODO_CLIMA>)ViewState["vs_vListaPeriodo"]; }
             set { ViewState["vs_vListaPeriodo"] = value; }
+        }
+
+        public bool vConfigurar
+        {
+            get { return (bool)ViewState["vs_vConfigurar"]; }
+            set { ViewState["vs_vConfigurar"] = value; }
+        }
+
+        public bool vCerrar
+        {
+            get { return (bool)ViewState["vs_vCerrar"]; }
+            set { ViewState["vs_vCerrar"] = value; }
+        }
+
+        public bool vEnviarSolicitudes
+        {
+            get { return (bool)ViewState["vs_vEnviarSolicitudes"]; }
+            set { ViewState["vs_vEnviarSolicitudes"] = value; }
+        }
+
+        public bool vContestar
+        {
+            get { return (bool)ViewState["vs_vContestar"]; }
+            set { ViewState["vs_vContestar"] = value; }
+        }
+
+        public bool vEditar
+        {
+            get { return (bool)ViewState["vs_vEditar"]; }
+            set { ViewState["vs_vEditar"] = value; }
+        }
+
+        public bool vEliminar
+        {
+            get { return (bool)ViewState["vs_vEliminar"]; }
+            set { ViewState["vs_vEliminar"] = value; }
         }
 
         #endregion
@@ -64,16 +102,47 @@ namespace SIGE.WebApp.EO
 
         private void EstatusBotonesPeriodos(bool pFgEstatus)
         {
-            btnConfigurar.Enabled = pFgEstatus;
-            btnCerrar.Enabled = pFgEstatus;
-            btnEnviarSolicitudes.Enabled = pFgEstatus;
-            btnContestar.Enabled = pFgEstatus;
+            btnConfigurar.Enabled = pFgEstatus && vConfigurar;
+            btnCerrar.Enabled = pFgEstatus && vCerrar;
+            btnEnviarSolicitudes.Enabled = pFgEstatus && vEnviarSolicitudes;
+            btnContestar.Enabled = pFgEstatus && vContestar;
         }
 
         private void ordenarListView(string ordenamiento)
         {
             var campo = cmbOrdenamiento.SelectedValue;
             rlvPeriodos.Items[0].FireCommandEvent(RadListView.SortCommandName, campo + ordenamiento);
+        }
+
+        private void seleccionarPeriodo()
+        {
+            rlvPeriodos.SelectedItems.Clear();
+            rlvPeriodos.SelectedIndexes.Clear();
+            rlvPeriodos.CurrentPageIndex = 0;
+            if (rlvPeriodos.Items.Count > 0)
+            {
+                rlvPeriodos.Items[0].Selected = true;
+            }
+            rlvPeriodos.Rebind();
+        }
+
+        private void SeguridadProcesos()
+        {
+            rdAgregar.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.A");
+            vEditar = ContextoUsuario.oUsuario.TienePermiso("L.A.A.B");
+            vEliminar = ContextoUsuario.oUsuario.TienePermiso("L.A.A.C");
+            btnConfigurar.Enabled = vConfigurar  = ContextoUsuario.oUsuario.TienePermiso("L.A.A.D");
+            btnCerrar.Enabled = vCerrar = ContextoUsuario.oUsuario.TienePermiso("L.A.A.E");
+            btnReactivar.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.F");
+            btnCopiar.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.G");
+            btnVistaPreviaCuestionario.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.H");
+            btnEnviarSolicitudes.Enabled = vEnviarSolicitudes = ContextoUsuario.oUsuario.TienePermiso("L.A.A.I");
+            btnContestar.Enabled = vContestar = ContextoUsuario.oUsuario.TienePermiso("L.A.A.J");
+            btnControlAvance.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.K");
+            btnReportes.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.L");
+            btnRDistribucion.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.M");
+            btnPreguntasAbiertas.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.N");
+            btnGlobal.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.O");
         }
 
         #endregion
@@ -84,6 +153,9 @@ namespace SIGE.WebApp.EO
             vNbPrograma = ContextoUsuario.nbPrograma;
 
             //ObtenerLista();
+
+            if (!IsPostBack)
+                SeguridadProcesos();
 
             Page.Title = "Clima laboral";
         }
@@ -128,6 +200,23 @@ namespace SIGE.WebApp.EO
                 txtTipo.Text = vPeriodo.CL_ORIGEN_CUESTIONARIO;
                 txtUsuarioMod.Text = vPeriodo.CL_USUARIO_APP_MODIFICA;
                 txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPeriodo.FE_MODIFICA);
+
+                if (vPeriodo.DS_NOTAS != null)
+                {
+                    if (vPeriodo.DS_NOTAS.Contains("DS_NOTA"))
+                    {
+                        txtNotas.InnerHtml = Utileria.MostrarNotas(vPeriodo.DS_NOTAS);
+                    }
+                    else
+                    {
+                        XElement vRequerimientos = XElement.Parse(vPeriodo.DS_NOTAS);
+                        if (vRequerimientos != null)
+                        {
+                            vRequerimientos.Name = vNbFirstRadEditorTagName;
+                            txtNotas.InnerHtml = vRequerimientos.ToString();
+                        }
+                    }
+                }
 
                 //var vPeriodo = vListaPeriodo.Where(w => w.ID_PERIODO == vIdPeriodo).FirstOrDefault();
 
@@ -196,5 +285,20 @@ namespace SIGE.WebApp.EO
             EstatusBotonesPeriodos(true);
             //txtDsEstado.Text = "ABIERTO";
         }
+
+        protected void ramOrganigrama_AjaxRequest(object sender, AjaxRequestEventArgs e)
+        {
+            E_SELECTOR vSeleccion = new E_SELECTOR();
+            string pParameter = e.Argument;
+
+            if (pParameter != null)
+                vSeleccion = JsonConvert.DeserializeObject<E_SELECTOR>(pParameter);
+
+            if (vSeleccion.clTipo == "ACTUALIZARLISTA")
+            {
+                seleccionarPeriodo();
+            }
+        }
+
     }
 }

@@ -31,69 +31,6 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadAjaxManager ramConfiguracionPeriodo;
         
         /// <summary>
-        /// txtIdPeriodo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtIdPeriodo;
-        
-        /// <summary>
-        /// txtNbPeriodo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtNbPeriodo;
-        
-        /// <summary>
-        /// chkFgEvaluadorAutoevaluacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton chkFgEvaluadorAutoevaluacion;
-        
-        /// <summary>
-        /// chkFgEvaluadorSupervisor control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton chkFgEvaluadorSupervisor;
-        
-        /// <summary>
-        /// chkFgEvaluadorSubordinados control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton chkFgEvaluadorSubordinados;
-        
-        /// <summary>
-        /// chkFgEvaluadorInterrelacionados control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton chkFgEvaluadorInterrelacionados;
-        
-        /// <summary>
-        /// chkFgEvaluadorOtros control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton chkFgEvaluadorOtros;
-        
-        /// <summary>
         /// InsertEvaluados control.
         /// </summary>
         /// <remarks>
@@ -121,6 +58,105 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadMultiPage rmpConfiguracionPeriodo;
         
         /// <summary>
+        /// rpvContexto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPageView rpvContexto;
+        
+        /// <summary>
+        /// lbPeriodo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbPeriodo;
+        
+        /// <summary>
+        /// txtClPeriodo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtClPeriodo;
+        
+        /// <summary>
+        /// lbNbPeriodo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbNbPeriodo;
+        
+        /// <summary>
+        /// txtDsPeriodo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtDsPeriodo;
+        
+        /// <summary>
+        /// lbEstatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbEstatus;
+        
+        /// <summary>
+        /// txtEstatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtEstatus;
+        
+        /// <summary>
+        /// lbClTipoEval control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbClTipoEval;
+        
+        /// <summary>
+        /// txtTipoEvaluacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtTipoEvaluacion;
+        
+        /// <summary>
+        /// lblDsNotas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDsNotas;
+        
+        /// <summary>
+        /// txtNotas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtNotas;
+        
+        /// <summary>
         /// rpvTipoEvaluacion control.
         /// </summary>
         /// <remarks>
@@ -139,6 +175,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadButton btnEvaluacionPorPuesto;
         
         /// <summary>
+        /// lblPorPuesto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPorPuesto;
+        
+        /// <summary>
         /// chkFgPuestoActual control.
         /// </summary>
         /// <remarks>
@@ -146,6 +191,15 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton chkFgPuestoActual;
+        
+        /// <summary>
+        /// lblFgPuestoActual control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblFgPuestoActual;
         
         /// <summary>
         /// chkFgOtrosPuestos control.
@@ -157,6 +211,24 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadButton chkFgOtrosPuestos;
         
         /// <summary>
+        /// lblFgOtrosPuestos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblFgOtrosPuestos;
+        
+        /// <summary>
+        /// lblPlanVidaCarrera control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPlanVidaCarrera;
+        
+        /// <summary>
         /// chkFgRutaVertical control.
         /// </summary>
         /// <remarks>
@@ -164,6 +236,15 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton chkFgRutaVertical;
+        
+        /// <summary>
+        /// lblFgRutaVertical control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblFgRutaVertical;
         
         /// <summary>
         /// chkFgRutaVerticalAlternativa control.
@@ -175,6 +256,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadButton chkFgRutaVerticalAlternativa;
         
         /// <summary>
+        /// lblFgRutaVerticalAlternativa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblFgRutaVerticalAlternativa;
+        
+        /// <summary>
         /// chkFgRutaHorizontalAlternativa control.
         /// </summary>
         /// <remarks>
@@ -182,6 +272,15 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton chkFgRutaHorizontalAlternativa;
+        
+        /// <summary>
+        /// lblFgRutaHorizontalAlternativa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblFgRutaHorizontalAlternativa;
         
         /// <summary>
         /// btnEvaluacionPorEstandar control.
@@ -202,6 +301,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadButton chkFgCompetenciasGenericas;
         
         /// <summary>
+        /// lblFgGenericas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblFgGenericas;
+        
+        /// <summary>
         /// chkFgCompetenciasEspecificas control.
         /// </summary>
         /// <remarks>
@@ -211,6 +319,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadButton chkFgCompetenciasEspecificas;
         
         /// <summary>
+        /// lblEspecificas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEspecificas;
+        
+        /// <summary>
         /// chkFgCompetenciasInstitucionales control.
         /// </summary>
         /// <remarks>
@@ -218,6 +335,15 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton chkFgCompetenciasInstitucionales;
+        
+        /// <summary>
+        /// lblFgInstitucionales control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblFgInstitucionales;
         
         /// <summary>
         /// btnEvaluacionPorOtras control.
@@ -263,6 +389,24 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divConfiguracionInterrelacionados;
+        
+        /// <summary>
+        /// lgInterrelacionado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lgInterrelacionado;
+        
+        /// <summary>
+        /// lblLstCamposInterrelacionados control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblLstCamposInterrelacionados;
         
         /// <summary>
         /// lstCamposInterrelacionados control.
@@ -319,6 +463,24 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadPageView rpvMensajeInicial;
         
         /// <summary>
+        /// lblNbMensajeInicial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNbMensajeInicial;
+        
+        /// <summary>
+        /// lblDsMensajeInicial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDsMensajeInicial;
+        
+        /// <summary>
         /// txtDsMensajeInicial control.
         /// </summary>
         /// <remarks>
@@ -346,6 +508,42 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadButton btnAgregarCampoAdicional;
         
         /// <summary>
+        /// btnEditar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnEditar;
+        
+        /// <summary>
+        /// btnEliminar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnEliminar;
+        
+        /// <summary>
+        /// btnGuardar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnGuardar;
+        
+        /// <summary>
+        /// btnGuardarCerrar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnGuardarCerrar;
+        
+        /// <summary>
         /// rpvPonderacion control.
         /// </summary>
         /// <remarks>
@@ -353,6 +551,33 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadPageView rpvPonderacion;
+        
+        /// <summary>
+        /// lblNbMensajeEval control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNbMensajeEval;
+        
+        /// <summary>
+        /// lgPorEval control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lgPorEval;
+        
+        /// <summary>
+        /// chkFgPonderarEvaluadoresAuto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton chkFgPonderarEvaluadoresAuto;
         
         /// <summary>
         /// chkFgPonderarEvaluadores control.
@@ -373,6 +598,15 @@ namespace SIGE.WebApp.FYD {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPonderarEvaluadores;
         
         /// <summary>
+        /// lblNoAutoevaluacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNoAutoevaluacion;
+        
+        /// <summary>
         /// txtPrAutoevaluacion control.
         /// </summary>
         /// <remarks>
@@ -380,6 +614,15 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadNumericTextBox txtPrAutoevaluacion;
+        
+        /// <summary>
+        /// lblNoSuperior control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNoSuperior;
         
         /// <summary>
         /// txtPrSuperior control.
@@ -391,6 +634,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadNumericTextBox txtPrSuperior;
         
         /// <summary>
+        /// lblNoSubordinados control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNoSubordinados;
+        
+        /// <summary>
         /// txtPrSubordinados control.
         /// </summary>
         /// <remarks>
@@ -398,6 +650,15 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadNumericTextBox txtPrSubordinados;
+        
+        /// <summary>
+        /// lblNoInterrelacionados control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNoInterrelacionados;
         
         /// <summary>
         /// txtPrInterrelacionados control.
@@ -409,6 +670,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadNumericTextBox txtPrInterrelacionados;
         
         /// <summary>
+        /// lblNoOtros control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNoOtros;
+        
+        /// <summary>
         /// txtPrOtros control.
         /// </summary>
         /// <remarks>
@@ -416,6 +686,15 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadNumericTextBox txtPrOtros;
+        
+        /// <summary>
+        /// lblNoTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNoTotal;
         
         /// <summary>
         /// txtPrTotal control.
@@ -436,6 +715,42 @@ namespace SIGE.WebApp.FYD {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPonderacionCompetencias;
         
         /// <summary>
+        /// lblNbMensajeComp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNbMensajeComp;
+        
+        /// <summary>
+        /// lgPorCompetencia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lgPorCompetencia;
+        
+        /// <summary>
+        /// div1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div1;
+        
+        /// <summary>
+        /// chkFgPonderarCompetenciasAuto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton chkFgPonderarCompetenciasAuto;
+        
+        /// <summary>
         /// chkFgPonderacionCompetencia control.
         /// </summary>
         /// <remarks>
@@ -454,6 +769,15 @@ namespace SIGE.WebApp.FYD {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPonderarCompetencias;
         
         /// <summary>
+        /// lblPrGenericas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPrGenericas;
+        
+        /// <summary>
         /// txtPrGenericas control.
         /// </summary>
         /// <remarks>
@@ -461,6 +785,15 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadNumericTextBox txtPrGenericas;
+        
+        /// <summary>
+        /// lblPrEspecificas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPrEspecificas;
         
         /// <summary>
         /// txtPrEspecificas control.
@@ -472,6 +805,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadNumericTextBox txtPrEspecificas;
         
         /// <summary>
+        /// lblPrInstitucionales control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPrInstitucionales;
+        
+        /// <summary>
         /// txtPrInstitucionales control.
         /// </summary>
         /// <remarks>
@@ -479,6 +821,15 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadNumericTextBox txtPrInstitucionales;
+        
+        /// <summary>
+        /// lblPrTotalCom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPrTotalCom;
         
         /// <summary>
         /// txtPrTotalCompetencias control.
@@ -634,6 +985,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadSlidingPane rspOtroEvaluadorManual;
         
         /// <summary>
+        /// lblNbEvaluadorExterno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNbEvaluadorExterno;
+        
+        /// <summary>
         /// txtNbEvaluadorExterno control.
         /// </summary>
         /// <remarks>
@@ -643,6 +1003,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadTextBox txtNbEvaluadorExterno;
         
         /// <summary>
+        /// lblPuestoEvaluadorExterno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPuestoEvaluadorExterno;
+        
+        /// <summary>
         /// txtNbEvaluadorExternoPuesto control.
         /// </summary>
         /// <remarks>
@@ -650,6 +1019,15 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadTextBox txtNbEvaluadorExternoPuesto;
+        
+        /// <summary>
+        /// lblClCorreoElectronico control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblClCorreoElectronico;
         
         /// <summary>
         /// txtClCorreoElectronico control.
@@ -769,6 +1147,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadSlidingPane rspAyudaCuestionario;
         
         /// <summary>
+        /// txtAyuda control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtAyuda;
+        
+        /// <summary>
         /// btnPlaneacionMatriz control.
         /// </summary>
         /// <remarks>
@@ -830,15 +1217,6 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadGrid grdContrasenaEvaluadores;
-        
-        /// <summary>
-        /// btnReasignarTodasContrasenas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnReasignarTodasContrasenas;
         
         /// <summary>
         /// btnReasignarContrasena control.

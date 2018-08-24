@@ -229,15 +229,6 @@ namespace SIGE.WebApp.MPC {
         protected global::Telerik.Web.UI.RadButton btnCopiarTabulador;
         
         /// <summary>
-        /// btnRecalcular control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnRecalcular;
-        
-        /// <summary>
         /// btnMercadoSalarial control.
         /// </summary>
         /// <remarks>
@@ -247,13 +238,13 @@ namespace SIGE.WebApp.MPC {
         protected global::Telerik.Web.UI.RadButton btnMercadoSalarial;
         
         /// <summary>
-        /// btnGuardar control.
+        /// btnRecalcular control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnGuardar;
+        protected global::Telerik.Web.UI.RadButton btnRecalcular;
         
         /// <summary>
         /// btnGuardarCerrar control.

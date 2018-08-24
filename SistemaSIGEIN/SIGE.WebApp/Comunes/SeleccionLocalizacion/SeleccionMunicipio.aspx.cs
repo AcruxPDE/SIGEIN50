@@ -27,6 +27,12 @@ namespace SIGE.WebApp.Comunes.SeleccionLocalizacion
             set { ViewState["vs_vIdEstado"] = value; }
         }
 
+        string vNbEstado
+        {
+            get { return (string)ViewState["vs_vNbEstado"]; }
+            set { ViewState["vs_vNbEstado"] = value; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -34,13 +40,14 @@ namespace SIGE.WebApp.Comunes.SeleccionLocalizacion
                 vClPais = (String.IsNullOrEmpty(Request.QueryString["ClPais"])) ? "México" : Request.QueryString["ClPais"];
                 vClEstado = (String.IsNullOrEmpty(Request.QueryString["ClEstado"])) ? null : Request.QueryString["ClEstado"];
                 vIdEstado = (String.IsNullOrEmpty(Request.QueryString["IdEstado"])) ? (int?)null : int.Parse(Request.QueryString["IdEstado"]);
+                vNbEstado = (String.IsNullOrEmpty(Request.QueryString["NbEstado"])) ? null : Request.QueryString["NbEstado"];
             }
         }
 
         protected void grdMunicipios_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             MunicipioNegocio nMunicipio = new MunicipioNegocio();
-            grdMunicipios.DataSource = nMunicipio.ObtieneMunicipios(pClPais: vClPais, pClEstado: vClEstado);
+            grdMunicipios.DataSource = nMunicipio.ObtieneMunicipios(pClPais: vClPais, pClEstado: vClEstado, pNbEstado: vNbEstado);
         }
     }
 }

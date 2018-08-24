@@ -50,7 +50,7 @@
               <Name>Text1</Name>
               <Page isRef="2" />
               <Parent isRef="3" />
-              <Text>Resultados Ortografía I, II, III</Text>
+              <Text>Resultados ortografía I, II, III</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text1>
@@ -687,10 +687,10 @@ de aciertos</Text>
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>11/8/2017 1:34:36 PM</ReportChanged>
+  <ReportChanged>5/30/2018 3:12:02 PM</ReportChanged>
   <ReportCreated>11/2/2017 11:27:41 AM</ReportCreated>
-  <ReportFile>C:\Users\usuario\Documents\SIGEIN 50\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosOrtografia.mrt</ReportFile>
-  <ReportGuid>0bd3efca734f4fcda040e387a9a12ea8</ReportGuid>
+  <ReportFile>C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosOrtografia.mrt</ReportFile>
+  <ReportGuid>b413f89f386d4a3092effa8a62d764eb</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2015.3.0</ReportVersion>

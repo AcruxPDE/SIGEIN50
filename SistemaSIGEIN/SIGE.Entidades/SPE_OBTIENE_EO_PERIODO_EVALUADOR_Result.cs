@@ -20,5 +20,6 @@ namespace SIGE.Entidades
         public string NB_EVALUADOR { get; set; }
         public string CL_TOKEN { get; set; }
         public bool FG_CONTESTADO { get; set; }
+        public string CL_ESTADO_EMPLEADO { get; set; }
     }
 }

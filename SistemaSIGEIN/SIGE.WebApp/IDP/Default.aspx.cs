@@ -26,7 +26,11 @@ namespace SIGE.WebApp.IDP
         protected void Page_Load(object sender, EventArgs e)
         {
             vNbUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
-            rbiLogoOrganizacion1.DataValue = ContextoApp.InfoEmpresa.FiLogotipo.FiArchivo;
+
+            if (ContextoApp.InfoEmpresa.FiLogotipo.FiArchivo != null)
+                rbiLogoOrganizacion1.DataValue = ContextoApp.InfoEmpresa.FiLogotipo.FiArchivo;
+            else
+            dvLogo.Visible = false;
         }
     }
 }

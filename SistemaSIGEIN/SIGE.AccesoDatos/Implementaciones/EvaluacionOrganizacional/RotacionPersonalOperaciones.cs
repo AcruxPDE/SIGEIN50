@@ -35,44 +35,44 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public List<SPE_OBTIENE_HISTORIAL_BAJAS_Result> ObtenerHistorialBajas(int? pID_EMPLEADO = null,int? pID_CAUSA_ROTACION = null)
+        public List<SPE_OBTIENE_HISTORIAL_BAJAS_Result> ObtenerHistorialBajas(int? pID_EMPLEADO = null,int? pID_CAUSA_ROTACION = null, int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_HISTORIAL_BAJAS(pID_EMPLEADO, pID_CAUSA_ROTACION).ToList(); 
+                return context.SPE_OBTIENE_HISTORIAL_BAJAS(pID_EMPLEADO, pID_CAUSA_ROTACION, pID_EMPRESA, pID_ROL).ToList(); 
             }
         }
 
-        public List<SPE_OBTIENE_EO_GRAFICA_INDICE_ROTACION_Result> ObtenerGraficaIndiceRotacion(DateTime? pFECHA_INICIO = null, DateTime? pFECHA_FINAL = null, string pTIPO_REPORTE = null, XElement pXML_FILTROS = null)
+        public List<SPE_OBTIENE_EO_GRAFICA_INDICE_ROTACION_Result> ObtenerGraficaIndiceRotacion(DateTime? pFECHA_INICIO = null, DateTime? pFECHA_FINAL = null, string pTIPO_REPORTE = null, XElement pXML_FILTROS = null, int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             using (context = new SistemaSigeinEntities())
             {
                 string vXML_FILTROS = null;
                 if (pXML_FILTROS != null)
                     vXML_FILTROS = pXML_FILTROS.ToString();
-                return context.SPE_OBTIENE_EO_GRAFICA_INDICE_ROTACION(pFECHA_INICIO, pFECHA_FINAL, pTIPO_REPORTE, vXML_FILTROS).ToList();
+                return context.SPE_OBTIENE_EO_GRAFICA_INDICE_ROTACION(pFECHA_INICIO, pFECHA_FINAL, pTIPO_REPORTE, vXML_FILTROS, pID_EMPRESA, pID_ROL).ToList();
             }
         }
 
-        public List<SPE_OBTIENE_EO_GRAFICA_CAUSA_ROTACION_Result> ObtenerGraficaCausaRotacion(DateTime? pFECHA_INICIO = null, DateTime? pFECHA_FINAL = null, XElement pXML_FILTROS = null)
+        public List<SPE_OBTIENE_EO_GRAFICA_CAUSA_ROTACION_Result> ObtenerGraficaCausaRotacion(DateTime? pFECHA_INICIO = null, DateTime? pFECHA_FINAL = null, XElement pXML_FILTROS = null, int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             using (context = new SistemaSigeinEntities())
             {
                 string vXML_FILTROS = null;
                 if (pXML_FILTROS != null)
                     vXML_FILTROS = pXML_FILTROS.ToString();
-                return context.SPE_OBTIENE_EO_GRAFICA_CAUSA_ROTACION(pFECHA_INICIO, pFECHA_FINAL, vXML_FILTROS).ToList();
+                return context.SPE_OBTIENE_EO_GRAFICA_CAUSA_ROTACION(pFECHA_INICIO, pFECHA_FINAL, vXML_FILTROS, pID_EMPRESA, pID_ROL).ToList();
             }
         }
 
-        public List<SPE_OBTIENE_CLAVE_EMPLEADO_INDICE_ROTACION_Result> ObtenerEmpleadosIndiceRotacion(DateTime? pFECHA_INICIO = null, DateTime? pFECHA_FINAL = null, string pTIPO_REPORTE = null, XElement pXML_FILTROS = null)
+        public List<SPE_OBTIENE_CLAVE_EMPLEADO_INDICE_ROTACION_Result> ObtenerEmpleadosIndiceRotacion(DateTime? pFECHA_INICIO = null, DateTime? pFECHA_FINAL = null, string pTIPO_REPORTE = null, XElement pXML_FILTROS = null, int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             using (context = new SistemaSigeinEntities())
             {
                 string vXML_FILTROS = null;
                 if (pXML_FILTROS != null)
                     vXML_FILTROS = pXML_FILTROS.ToString();
-                return context.SPE_OBTIENE_CLAVE_EMPLEADO_INDICE_ROTACION(pFECHA_INICIO, pFECHA_FINAL, pTIPO_REPORTE,vXML_FILTROS).ToList();
+                return context.SPE_OBTIENE_CLAVE_EMPLEADO_INDICE_ROTACION(pFECHA_INICIO, pFECHA_FINAL, pTIPO_REPORTE,vXML_FILTROS, pID_EMPRESA, pID_ROL).ToList();
             }
         }
 
@@ -92,11 +92,11 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public List<SPE_OBTIENE_EO_BAJAS_PENDIENTES_Result> ObtieneBajasPendientes( int? pIdBajaEmpleado = null)
+        public List<SPE_OBTIENE_EO_BAJAS_PENDIENTES_Result> ObtieneBajasPendientes( int? pIdBajaEmpleado = null, int? pIdEmpresa = null, int? pIdRol = null)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_EO_BAJAS_PENDIENTES(pIdBajaEmpleado).ToList();
+                return context.SPE_OBTIENE_EO_BAJAS_PENDIENTES(pIdBajaEmpleado, pIdEmpresa, pIdRol).ToList();
             }
         }
 

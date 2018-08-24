@@ -26,9 +26,9 @@ namespace SIGE.WebApp.FYD
             set { ViewState["vs_ps_id_empleado"] = value; }
         }
 
-        public int vIdPuesto
+        public int? vIdPuesto
         {
-            get { return (int)ViewState["vs_ps_id_puesto"]; }
+            get { return (int?)ViewState["vs_ps_id_puesto"]; }
             set { ViewState["vs_ps_id_puesto"] = value; }
         }
 
@@ -225,7 +225,7 @@ namespace SIGE.WebApp.FYD
                     if ((vItem.PR_COMPETENCIAS == "Parcial"))
                         div.InnerHtml = "<label style='padding-left:10px; font-weight:normal;'>Evaluación de competencias:" + "</label>&nbsp<label style='color:red; font-weight:normal;'>" + vItem.PR_COMPETENCIAS + "</label>";
                     else if (vItem.ID_PERIODO_COMPETENCIAS == 0)
-                        div.InnerHtml = "<label style='padding-left:10px; font-weight:normal;'>Evaluación de competencias:</label><label style='color:red; font-weight:normal;'>" + "</label>&nbsp<label>" + vItem.PR_COMPETENCIAS + "</label>";
+                        div.InnerHtml = "<label style='padding-left:10px; font-weight:normal;'>Evaluación de competencias:</label><label style='color:red; font-weight:normal;'>" + vItem.FE_INICIO_COMPETENCIAS + "</label>";
                     else
                         div.InnerHtml = "<label style='padding-left:10px;'><a href='javascript:OpenPlanSucesionWindow(" + vItem.ID_EMPLEADO + ")'><u>Evaluación de competencias</u></a></label>";
                     break;

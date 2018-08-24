@@ -252,8 +252,10 @@
     <Content Include="Administracion\CatalogoCompetencias.aspx" />
     <Content Include="Administracion\CatalogoConsultaInteligente.aspx" />
     <Content Include="Administracion\CatalogoNivelEscolaridad.aspx" />
+    <Content Include="Administracion\ConfiguracionIntegracionNominaDo.aspx" />
     <Content Include="Administracion\DescriptivoPuestosFactores.aspx" />
     <Content Include="Administracion\Empleado.aspx" />
+    <Content Include="Administracion\Grupos.aspx" />
     <Content Include="Administracion\InventarioDePersonal.aspx" />
     <Content Include="Administracion\OrganigramaArea.aspx" />
     <Content Include="Administracion\OrganigramaPlazas.aspx" />
@@ -269,11 +271,17 @@
     <Content Include="Administracion\ReportesCompetenciasLaborales.aspx" />
     <Content Include="Administracion\ReporteSolicitudEmpleo.aspx" />
     <Content Include="Administracion\ReportesSueldoEmpleado.aspx" />
+    <Content Include="Administracion\Solicitudes.aspx" />
     <Content Include="Administracion\VentanaCampoFormulario.aspx" />
     <Content Include="Administracion\ReporteCandidatosContratados.aspx" />
+    <Content Include="Administracion\VentanaConfigurarInventario.aspx" />
     <Content Include="Administracion\VentanaConsultaInteligente.aspx" />
+    <Content Include="Administracion\VentanaCreaDescriptivo.aspx" />
     <Content Include="Administracion\VentanaDescriptivoFactores.aspx" />
     <Content Include="Administracion\VentanaEnvioSolicitud.aspx" />
+    <Content Include="Administracion\VentanaGrupos.aspx" />
+    <Content Include="Administracion\VentanaInventarioPersonalNomina.aspx" />
+    <Content Include="Administracion\VentanaOrganigramaPlazas.aspx" />
     <Content Include="Administracion\VentanaReingresoEmpleado.aspx" />
     <Content Include="Administracion\VentanaVerOrganigrama.aspx" />
     <Content Include="Assets\AdvancedTools.xml">
@@ -351,6 +359,7 @@
     <Content Include="Assets\images\Icons\25\CircledUserMale.png" />
     <Content Include="Assets\images\Icons\25\ComboChart.png" />
     <Content Include="Assets\images\Icons\25\ConferenceCall.png" />
+    <Content Include="Assets\images\Icons\25\cursos.png" />
     <Content Include="Assets\images\Icons\25\Diploma.png" />
     <Content Include="Assets\images\Icons\25\Document.png" />
     <Content Include="Assets\images\Icons\25\EditProperty.png" />
@@ -361,6 +370,7 @@
     <Content Include="Assets\images\Icons\25\igual.png" />
     <Content Include="Assets\images\Icons\25\menor.png" />
     <Content Include="Assets\images\Icons\25\noaplica.png" />
+    <Content Include="Assets\images\Icons\25\podio.png" />
     <Content Include="Assets\images\Icons\25\profile.png" />
     <Content Include="Assets\images\Icons\25\resume.png" />
     <Content Include="Assets\images\Icons\25\Settings.png" />
@@ -524,13 +534,76 @@
     <Content Include="Assets\library\font-awesome\scss\_rotated-flipped.scss" />
     <Content Include="Assets\library\font-awesome\scss\_stacked.scss" />
     <Content Include="Assets\library\font-awesome\scss\_variables.scss" />
+    <Content Include="Assets\js\pako.min.js" />
+    <Content Include="Assets\js\pako_deflate.min.js" />
     <Content Include="Assets\PDETools.xml" />
     <Content Include="Assets\reports\IDP\Descriptivo.mrt" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAmarillo0.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAmarillo1.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAmarillo10.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAmarillo11.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAmarillo12.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAmarillo13.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAmarillo2.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAmarillo3.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAmarillo4.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAmarillo5.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAmarillo6.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAmarillo7.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAmarillo8.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAmarillo9.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAzul0.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAzul1.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAzul10.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAzul11.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAzul12.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAzul13.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAzul2.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAzul3.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAzul4.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAzul5.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAzul6.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAzul7.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAzul8.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoAzul9.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoRojo0.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoRojo1.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoRojo10.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoRojo11.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoRojo12.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoRojo13.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoRojo2.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoRojo3.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoRojo4.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoRojo5.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoRojo6.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoRojo7.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoRojo8.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoRojo9.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoVerde0.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoVerde1.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoVerde10.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoVerde11.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoVerde12.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoVerde13.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoVerde2.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoVerde3.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoVerde4.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoVerde5.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoVerde6.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoVerde7.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoVerde8.jpg" />
+    <Content Include="Assets\reports\IDP\LifoLaboral2\LifoVerde9.jpg" />
     <Content Include="Assets\reports\IDP\Prueba.mrt" />
     <Content Include="Comunes\SeleccionAdscripciones.aspx" />
+    <Content Include="Comunes\SeleccionCentroAdmvo.aspx" />
+    <Content Include="Comunes\SeleccionCentroOptvo.aspx" />
+    <Content Include="Comunes\SeleccionGrupo.aspx" />
     <Content Include="Comunes\SeleccionLocalizacion\SeleccionCP.aspx" />
     <Content Include="Comunes\SeleccionPeriodoParaTablero.aspx" />
     <Content Include="Comunes\SeleccionPeriodosDesempeno.aspx" />
+    <Content Include="Comunes\SeleccionPruebas.aspx" />
+    <Content Include="Comunes\SeleccionPuestoNominaDo.aspx" />
     <Content Include="Comunes\SeleccionUsuario.aspx" />
     <Content Include="Comunes\SelectorFactoresEval.aspx" />
     <Content Include="Comunes\SelectorRequisiciones.aspx" />
@@ -543,6 +616,7 @@
     <Content Include="EO\Cuestionarios\Cuestionarios.aspx" />
     <Content Include="EO\Cuestionarios\Evaluar.aspx" />
     <Content Include="EO\Cuestionarios\ReporteJerarquico.aspx" />
+    <Content Include="EO\Cuestionarios\VentanaCapturaMasiva.aspx" />
     <Content Include="EO\Cuestionarios\VentanaContextoAdjuntarEvidenciaMetas.aspx" />
     <Content Include="EO\CumplimientoPersonalConsecuente.aspx" />
     <Content Include="EO\PeriodosEvaluacion.aspx" />
@@ -556,12 +630,15 @@
     <Content Include="EO\VentanaEnvioSolicitudesReplica.aspx" />
     <Content Include="EO\VentanaFiltrosSeleccion.aspx" />
     <Content Include="EO\VentanaManualCapturaResultados.aspx" />
+    <Content Include="EO\VentanaMetasperiodo.aspx" />
     <Content Include="EO\VentanaPreguntaAbierta.aspx" />
+    <Content Include="EO\VentanaReporteMetasPeriodo.aspx" />
     <Content Include="EO\VentanaSolicitudesReplicas.aspx" />
     <Content Include="FYD\Configuracion.aspx" />
     <Content Include="FYD\ConsultaMaximosMinimos.aspx" />
     <Content Include="FYD\ConsultaPlantillaRemplazo.aspx" />
     <Content Include="FYD\CuestionarioImpresion.aspx" />
+    <Content Include="FYD\EvaluacionCompetencia\CuestionariosInterno.aspx" />
     <Content Include="FYD\ReporteCursosRealizados.aspx" />
     <Content Include="FYD\ReporteGlobalComparativoImpresion.aspx" />
     <Content Include="FYD\ReporteGlobalImpresion.aspx" />
@@ -570,7 +647,13 @@
     <Content Include="FYD\VentanaPlanSucesionPrincipal.aspx" />
     <Content Include="FYD\VentanaPlanVidaCarreraPrincipal.aspx" />
     <Content Include="FYD\VentanaVerCuestionario.aspx" />
+    <Content Include="IDP\Consultas.aspx" />
+    <Content Include="IDP\EnvioCorreosPruebas.aspx" />
+    <Content Include="IDP\GraficaCandidatoVsPuesto.aspx" />
+    <Content Include="IDP\GraficaPuestoVsCandidatos.aspx" />
+    <Content Include="IDP\Pruebas\AplicacionBateriasMasiva.aspx" />
     <Content Include="IDP\Pruebas\ReporteadorPruebasIDP.aspx" />
+    <Content Include="IDP\Pruebas\VentanaObtenerFolioSolicitud.aspx" />
     <Content Include="IDP\ReporteadorConsultas.aspx" />
     <Content Include="IDP\ReporteadorResultadosPruebas.aspx" />
     <Content Include="IDP\ReporteCandidatoVsPuesto.aspx" />
@@ -659,6 +742,10 @@
     <Content Include="Global.asax" />
     <Content Include="IDP\Pruebas\PruebaBienvenida.aspx" />
     <Content Include="IDP\Requisicion\VentanaVistaDescriptivo.aspx" />
+    <Content Include="IDP\VentanaAgregarPruebas.aspx" />
+    <Content Include="IDP\VentanaAplicarPruebas.aspx" />
+    <Content Include="IDP\VentanaAsignarRequisicion.aspx" />
+    <Content Include="IDP\VentanaCapturaManualPruebas.aspx" />
     <Content Include="IDP\VentanaComentariosEntrevista.aspx" />
     <Content Include="IDP\ConsultasComparativas.aspx" />
     <Content Include="IDP\RelacionCompetenciaFactor.aspx" />
@@ -675,6 +762,7 @@
     <Content Include="IDP\VentanaConsultaGlobal.aspx" />
     <Content Include="IDP\VentanaContratarCandidato.aspx" />
     <Content Include="IDP\VentanaReporteResultados.aspx" />
+    <Content Include="IDP\VentanaRevisarPruebas.aspx" />
     <Content Include="ModulosApoyo\ConsultaReportes.aspx" />
     <Content Include="ModulosApoyo\DiseñoReportes.aspx" />
     <Content Include="ModulosApoyo\ReportesPersonalizados.aspx" />
@@ -688,7 +776,11 @@
     <Content Include="MPC\Consultas.aspx" />
     <Content Include="MPC\ConsultaTabuladorMaestro.aspx" />
     <Content Include="MPC\ConsultaTabuladorSueldos.aspx" />
+    <Content Include="MPC\GraficaAnalisisDesviaciones.aspx" />
     <Content Include="MPC\PlaneacionIncrementos.aspx" />
+    <Content Include="MPC\ReporteAnalisisDesviaciones.aspx" />
+    <Content Include="MPC\ReporteGraficaAnalisis.aspx" />
+    <Content Include="MPC\ReporteTabuladorSueldos.aspx" />
     <Content Include="MPC\SeleccionTabulador.aspx" />
     <Content Include="MPC\SeleccionTabuladorEmpleado.aspx" />
     <Content Include="EO\Configuracion.aspx" />
@@ -781,7 +873,6 @@
     <Content Include="IDP\Pruebas\VentanaOrtografiaI.aspx" />
     <Content Include="IDP\AplicacionPruebas.aspx" />
     <Content Include="IDP\Solicitud\Solicitud.aspx" />
-    <Content Include="IDP\Solicitudes.aspx" />
     <Content Include="IDP\ProcesoSeleccion.aspx" />
     <Content Include="IDP\AgregarPruebas.aspx" />
     <Content Include="IDP\Pruebas\VentanaAptitudMentalI.aspx" />
@@ -930,6 +1021,13 @@
     <Compile Include="Administracion\CatalogoNivelEscolaridad.aspx.designer.cs">
       <DependentUpon>CatalogoNivelEscolaridad.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Administracion\ConfiguracionIntegracionNominaDo.aspx.cs">
+      <DependentUpon>ConfiguracionIntegracionNominaDo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administracion\ConfiguracionIntegracionNominaDo.aspx.designer.cs">
+      <DependentUpon>ConfiguracionIntegracionNominaDo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administracion\ContextoConsultaGlobal.cs" />
     <Compile Include="Administracion\DescriptivoPuestosFactores.aspx.cs">
       <DependentUpon>DescriptivoPuestosFactores.aspx</DependentUpon>
@@ -944,6 +1042,13 @@
     </Compile>
     <Compile Include="Administracion\Empleado.aspx.designer.cs">
       <DependentUpon>Empleado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Grupos.aspx.cs">
+      <DependentUpon>Grupos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administracion\Grupos.aspx.designer.cs">
+      <DependentUpon>Grupos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administracion\InventarioDePersonal.aspx.cs">
       <DependentUpon>InventarioDePersonal.aspx</DependentUpon>
@@ -1050,6 +1155,13 @@
     <Compile Include="Administracion\ReportesSueldoEmpleado.aspx.designer.cs">
       <DependentUpon>ReportesSueldoEmpleado.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Administracion\Solicitudes.aspx.cs">
+      <DependentUpon>Solicitudes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administracion\Solicitudes.aspx.designer.cs">
+      <DependentUpon>Solicitudes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administracion\VentanaCampoFormulario.aspx.cs">
       <DependentUpon>VentanaCampoFormulario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1064,12 +1176,26 @@
     <Compile Include="Administracion\ReporteCandidatosContratados.aspx.designer.cs">
       <DependentUpon>ReporteCandidatosContratados.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Administracion\VentanaConfigurarInventario.aspx.cs">
+      <DependentUpon>VentanaConfigurarInventario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administracion\VentanaConfigurarInventario.aspx.designer.cs">
+      <DependentUpon>VentanaConfigurarInventario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administracion\VentanaConsultaInteligente.aspx.cs">
       <DependentUpon>VentanaConsultaInteligente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Administracion\VentanaConsultaInteligente.aspx.designer.cs">
       <DependentUpon>VentanaConsultaInteligente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\VentanaCreaDescriptivo.aspx.cs">
+      <DependentUpon>VentanaCreaDescriptivo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administracion\VentanaCreaDescriptivo.aspx.designer.cs">
+      <DependentUpon>VentanaCreaDescriptivo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administracion\VentanaDescriptivoFactores.aspx.cs">
       <DependentUpon>VentanaDescriptivoFactores.aspx</DependentUpon>
@@ -1085,6 +1211,27 @@
     <Compile Include="Administracion\VentanaEnvioSolicitud.aspx.designer.cs">
       <DependentUpon>VentanaEnvioSolicitud.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Administracion\VentanaGrupos.aspx.cs">
+      <DependentUpon>VentanaGrupos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administracion\VentanaGrupos.aspx.designer.cs">
+      <DependentUpon>VentanaGrupos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\VentanaInventarioPersonalNomina.aspx.cs">
+      <DependentUpon>VentanaInventarioPersonalNomina.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administracion\VentanaInventarioPersonalNomina.aspx.designer.cs">
+      <DependentUpon>VentanaInventarioPersonalNomina.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\VentanaOrganigramaPlazas.aspx.cs">
+      <DependentUpon>VentanaOrganigramaPlazas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administracion\VentanaOrganigramaPlazas.aspx.designer.cs">
+      <DependentUpon>VentanaOrganigramaPlazas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administracion\VentanaReingresoEmpleado.aspx.cs">
       <DependentUpon>VentanaReingresoEmpleado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1099,12 +1246,38 @@
     <Compile Include="Administracion\VentanaVerOrganigrama.aspx.designer.cs">
       <DependentUpon>VentanaVerOrganigrama.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\RadGrid.Main.pt-BR.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RadGrid.Main.pt-BR.resx</DependentUpon>
+    </Compile>
     <Compile Include="Comunes\SeleccionAdscripciones.aspx.cs">
       <DependentUpon>SeleccionAdscripciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Comunes\SeleccionAdscripciones.aspx.designer.cs">
       <DependentUpon>SeleccionAdscripciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Comunes\SeleccionCentroAdmvo.aspx.cs">
+      <DependentUpon>SeleccionCentroAdmvo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comunes\SeleccionCentroAdmvo.aspx.designer.cs">
+      <DependentUpon>SeleccionCentroAdmvo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Comunes\SeleccionCentroOptvo.aspx.cs">
+      <DependentUpon>SeleccionCentroOptvo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comunes\SeleccionCentroOptvo.aspx.designer.cs">
+      <DependentUpon>SeleccionCentroOptvo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Comunes\SeleccionGrupo.aspx.cs">
+      <DependentUpon>SeleccionGrupo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comunes\SeleccionGrupo.aspx.designer.cs">
+      <DependentUpon>SeleccionGrupo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Comunes\SeleccionLocalizacion\SeleccionCP.aspx.cs">
       <DependentUpon>SeleccionCP.aspx</DependentUpon>
@@ -1126,6 +1299,20 @@
     </Compile>
     <Compile Include="Comunes\SeleccionPeriodosDesempeno.aspx.designer.cs">
       <DependentUpon>SeleccionPeriodosDesempeno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Comunes\SeleccionPruebas.aspx.cs">
+      <DependentUpon>SeleccionPruebas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comunes\SeleccionPruebas.aspx.designer.cs">
+      <DependentUpon>SeleccionPruebas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Comunes\SeleccionPuestoNominaDo.aspx.cs">
+      <DependentUpon>SeleccionPuestoNominaDo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comunes\SeleccionPuestoNominaDo.aspx.designer.cs">
+      <DependentUpon>SeleccionPuestoNominaDo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Comunes\SeleccionUsuario.aspx.cs">
       <DependentUpon>SeleccionUsuario.aspx</DependentUpon>
@@ -1211,6 +1398,13 @@
     </Compile>
     <Compile Include="EO\Cuestionarios\ReporteJerarquico.aspx.designer.cs">
       <DependentUpon>ReporteJerarquico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EO\Cuestionarios\VentanaCapturaMasiva.aspx.cs">
+      <DependentUpon>VentanaCapturaMasiva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EO\Cuestionarios\VentanaCapturaMasiva.aspx.designer.cs">
+      <DependentUpon>VentanaCapturaMasiva.aspx</DependentUpon>
     </Compile>
     <Compile Include="EO\Cuestionarios\VentanaContextoAdjuntarEvidenciaMetas.aspx.cs">
       <DependentUpon>VentanaContextoAdjuntarEvidenciaMetas.aspx</DependentUpon>
@@ -1303,12 +1497,26 @@
     <Compile Include="EO\VentanaManualCapturaResultados.aspx.designer.cs">
       <DependentUpon>VentanaManualCapturaResultados.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EO\VentanaMetasperiodo.aspx.cs">
+      <DependentUpon>VentanaMetasperiodo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EO\VentanaMetasperiodo.aspx.designer.cs">
+      <DependentUpon>VentanaMetasperiodo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EO\VentanaPreguntaAbierta.aspx.cs">
       <DependentUpon>VentanaPreguntaAbierta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="EO\VentanaPreguntaAbierta.aspx.designer.cs">
       <DependentUpon>VentanaPreguntaAbierta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EO\VentanaReporteMetasPeriodo.aspx.cs">
+      <DependentUpon>VentanaReporteMetasPeriodo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EO\VentanaReporteMetasPeriodo.aspx.designer.cs">
+      <DependentUpon>VentanaReporteMetasPeriodo.aspx</DependentUpon>
     </Compile>
     <Compile Include="EO\VentanaSolicitudesReplicas.aspx.cs">
       <DependentUpon>VentanaSolicitudesReplicas.aspx</DependentUpon>
@@ -1344,6 +1552,13 @@
     </Compile>
     <Compile Include="FYD\CuestionarioImpresion.aspx.designer.cs">
       <DependentUpon>CuestionarioImpresion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FYD\EvaluacionCompetencia\CuestionariosInterno.aspx.cs">
+      <DependentUpon>CuestionariosInterno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FYD\EvaluacionCompetencia\CuestionariosInterno.aspx.designer.cs">
+      <DependentUpon>CuestionariosInterno.aspx</DependentUpon>
     </Compile>
     <Compile Include="FYD\ReporteCursosRealizados.aspx.cs">
       <DependentUpon>ReporteCursosRealizados.aspx</DependentUpon>
@@ -1401,13 +1616,56 @@
     <Compile Include="FYD\VentanaVerCuestionario.aspx.designer.cs">
       <DependentUpon>VentanaVerCuestionario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="IDP\Consultas.aspx.cs">
+      <DependentUpon>Consultas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IDP\Consultas.aspx.designer.cs">
+      <DependentUpon>Consultas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="IDP\ContextoBusquedaCandidato.cs" />
+    <Compile Include="IDP\ContextoCandidatosBateria.cs" />
+    <Compile Include="IDP\EnvioCorreosPruebas.aspx.cs">
+      <DependentUpon>EnvioCorreosPruebas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IDP\EnvioCorreosPruebas.aspx.designer.cs">
+      <DependentUpon>EnvioCorreosPruebas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IDP\GraficaCandidatoVsPuesto.aspx.cs">
+      <DependentUpon>GraficaCandidatoVsPuesto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IDP\GraficaCandidatoVsPuesto.aspx.designer.cs">
+      <DependentUpon>GraficaCandidatoVsPuesto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IDP\GraficaPuestoVsCandidatos.aspx.cs">
+      <DependentUpon>GraficaPuestoVsCandidatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IDP\GraficaPuestoVsCandidatos.aspx.designer.cs">
+      <DependentUpon>GraficaPuestoVsCandidatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IDP\Pruebas\AplicacionBateriasMasiva.aspx.cs">
+      <DependentUpon>AplicacionBateriasMasiva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IDP\Pruebas\AplicacionBateriasMasiva.aspx.designer.cs">
+      <DependentUpon>AplicacionBateriasMasiva.aspx</DependentUpon>
+    </Compile>
     <Compile Include="IDP\Pruebas\ReporteadorPruebasIDP.aspx.cs">
       <DependentUpon>ReporteadorPruebasIDP.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="IDP\Pruebas\ReporteadorPruebasIDP.aspx.designer.cs">
       <DependentUpon>ReporteadorPruebasIDP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IDP\Pruebas\VentanaObtenerFolioSolicitud.aspx.cs">
+      <DependentUpon>VentanaObtenerFolioSolicitud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IDP\Pruebas\VentanaObtenerFolioSolicitud.aspx.designer.cs">
+      <DependentUpon>VentanaObtenerFolioSolicitud.aspx</DependentUpon>
     </Compile>
     <Compile Include="IDP\ReporteadorConsultas.aspx.cs">
       <DependentUpon>ReporteadorConsultas.aspx</DependentUpon>
@@ -2035,6 +2293,34 @@
     <Compile Include="IDP\Requisicion\VentanaVistaDescriptivo.aspx.designer.cs">
       <DependentUpon>VentanaVistaDescriptivo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="IDP\VentanaAgregarPruebas.aspx.cs">
+      <DependentUpon>VentanaAgregarPruebas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IDP\VentanaAgregarPruebas.aspx.designer.cs">
+      <DependentUpon>VentanaAgregarPruebas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IDP\VentanaAplicarPruebas.aspx.cs">
+      <DependentUpon>VentanaAplicarPruebas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IDP\VentanaAplicarPruebas.aspx.designer.cs">
+      <DependentUpon>VentanaAplicarPruebas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IDP\VentanaAsignarRequisicion.aspx.cs">
+      <DependentUpon>VentanaAsignarRequisicion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IDP\VentanaAsignarRequisicion.aspx.designer.cs">
+      <DependentUpon>VentanaAsignarRequisicion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IDP\VentanaCapturaManualPruebas.aspx.cs">
+      <DependentUpon>VentanaCapturaManualPruebas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IDP\VentanaCapturaManualPruebas.aspx.designer.cs">
+      <DependentUpon>VentanaCapturaManualPruebas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="IDP\VentanaComentariosEntrevista.aspx.cs">
       <DependentUpon>VentanaComentariosEntrevista.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2148,6 +2434,13 @@
     <Compile Include="IDP\VentanaReporteResultados.aspx.designer.cs">
       <DependentUpon>VentanaReporteResultados.aspx</DependentUpon>
     </Compile>
+    <Compile Include="IDP\VentanaRevisarPruebas.aspx.cs">
+      <DependentUpon>VentanaRevisarPruebas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IDP\VentanaRevisarPruebas.aspx.designer.cs">
+      <DependentUpon>VentanaRevisarPruebas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ModulosApoyo\ConsultaReportes.aspx.cs">
       <DependentUpon>ConsultaReportes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2247,12 +2540,41 @@
       <DependentUpon>ConsultaTabuladorSueldos.aspx</DependentUpon>
     </Compile>
     <Compile Include="MPC\ContextoBono.cs" />
+    <Compile Include="MPC\ContextoTabuladores.cs" />
+    <Compile Include="MPC\GraficaAnalisisDesviaciones.aspx.cs">
+      <DependentUpon>GraficaAnalisisDesviaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MPC\GraficaAnalisisDesviaciones.aspx.designer.cs">
+      <DependentUpon>GraficaAnalisisDesviaciones.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MPC\PlaneacionIncrementos.aspx.cs">
       <DependentUpon>PlaneacionIncrementos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MPC\PlaneacionIncrementos.aspx.designer.cs">
       <DependentUpon>PlaneacionIncrementos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MPC\ReporteAnalisisDesviaciones.aspx.cs">
+      <DependentUpon>ReporteAnalisisDesviaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MPC\ReporteAnalisisDesviaciones.aspx.designer.cs">
+      <DependentUpon>ReporteAnalisisDesviaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MPC\ReporteGraficaAnalisis.aspx.cs">
+      <DependentUpon>ReporteGraficaAnalisis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MPC\ReporteGraficaAnalisis.aspx.designer.cs">
+      <DependentUpon>ReporteGraficaAnalisis.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MPC\ReporteTabuladorSueldos.aspx.cs">
+      <DependentUpon>ReporteTabuladorSueldos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MPC\ReporteTabuladorSueldos.aspx.designer.cs">
+      <DependentUpon>ReporteTabuladorSueldos.aspx</DependentUpon>
     </Compile>
     <Compile Include="MPC\SeleccionTabulador.aspx.cs">
       <DependentUpon>SeleccionTabulador.aspx</DependentUpon>
@@ -2907,13 +3229,6 @@
     </Compile>
     <Compile Include="IDP\Solicitud\Solicitud.aspx.designer.cs">
       <DependentUpon>Solicitud.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="IDP\Solicitudes.aspx.cs">
-      <DependentUpon>Solicitudes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="IDP\Solicitudes.aspx.designer.cs">
-      <DependentUpon>Solicitudes.aspx</DependentUpon>
     </Compile>
     <Compile Include="IDP\ProcesoSeleccion.aspx.cs">
       <DependentUpon>ProcesoSeleccion.aspx</DependentUpon>
@@ -3817,6 +4132,7 @@
     <Content Include="Assets\reports\IDP\ResultadosLaboral2.mrt" />
     <Content Include="Assets\reports\IDP\ReporteConsultaPersonalDetallada.mrt" />
     <Content Include="Assets\reports\IDP\ReporteConsultaResumida.mrt" />
+    <Content Include="Assets\js\pako_inflate.min.js" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -3875,6 +4191,7 @@
     <Content Include="App_GlobalResources\RadGrid.Main.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>RadGrid.Main.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -3882,6 +4199,12 @@
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\RadGrid.Main.pt-BR.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>RadGrid.Main.pt-BR.designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -3912,8 +4235,7 @@
           <IISAppRootUrl>http://localhost:7192/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>http://localhost/SIGEIN/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

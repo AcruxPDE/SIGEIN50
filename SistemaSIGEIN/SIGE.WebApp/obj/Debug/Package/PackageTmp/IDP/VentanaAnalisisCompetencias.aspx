@@ -24,7 +24,7 @@
     <script type="text/javascript">
     
         function OpenPreview() {
-            var vURL = "/Administracion/VentanaVistaDescriptivo.aspx";
+            var vURL = "../Administracion/VentanaVistaDescriptivo.aspx";
             var vTitulo = "Vista previa descriptivo";
             var vIdPuesto = '<%# vIdPuesto %>';
 

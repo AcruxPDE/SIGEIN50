@@ -82,8 +82,15 @@
                 <telerik:RadSlidingZone ID="rszAuxiliares" runat="server" SlideDirection="Left" Width="25px">
                     <telerik:RadSlidingPane ID="rspAyuda" runat="server" Title="Ayuda" Width="200px" RenderMode="Mobile" Height="100%">
                         <div style="padding: 10px; text-align: justify;">
-                            <p>Envio Correos</p>
-                            <p></p>
+                            <p>Envío Correos</p>
+                            <br /><br />
+                            <p>En esta página te permite enviar por correo electrónico la liga al acceso de una solicitud utilizando la plantilla seleccionada.
+                                <br />
+                                Puedes configurar el mensaje que recibirán los candidatos y agregar los correos a quienes se les enviara el acceso a la solicitud.
+                                <br />
+                                <br />
+                                Si deseas salir de la ventana actual sin enviar solicitudes selecciona cancelar, de lo contrario enviar. 
+                            </p>
                         </div>
                     </telerik:RadSlidingPane>
                 </telerik:RadSlidingZone>

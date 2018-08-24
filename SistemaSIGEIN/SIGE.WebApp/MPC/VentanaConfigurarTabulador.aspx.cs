@@ -26,6 +26,7 @@ namespace SIGE.WebApp.MPC
 
         private string vClUsuario;
         private string vNbPrograma;
+        private int? vIdRol;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
         String vTipoTransaccion = "";
         public string vClickedItemEventName = "ClickedItemEvent";
@@ -94,6 +95,7 @@ namespace SIGE.WebApp.MPC
             btnSeleccionarFactores.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.D.A");
             btnSeleccionarPuestos.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.D.A");
             btnSelecionarCompetenciaEspecifica.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.D.A");
+            btnGuardar.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.D.A");
         }
 
         protected void DespacharEventos(string pCatalogo, string pSeleccionados)
@@ -251,12 +253,31 @@ namespace SIGE.WebApp.MPC
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "onCloseWindowE");
         }
 
+        public int vNivelesTabulador
+        {
+            get { return (int)ViewState["vs_vNivelesTabulador"]; }
+            set { ViewState["vs_vNivelesTabulador"] = value; }
+        }
+
+        private List<E_NIVELES> vTabuladorNivel
+        {
+            get { return (List<E_NIVELES>)ViewState["vs_vTabuladorNivel"]; }
+            set { ViewState["vs_vTabuladorNivel"] = value; }
+        }
+
+        public string vCL_GUARDAR
+        {
+            get { return (string)ViewState["vs_vCL_GUARDAR"]; }
+            set { ViewState["vs_vCL_GUARDAR"] = value; }
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!IsPostBack)
             {
@@ -298,7 +319,7 @@ namespace SIGE.WebApp.MPC
                     {
                         TabNivel = nTabulador.ObtieneTabuladorNivel(ID_TABULADOR: vIdTabulador).OrderByDescending(w => w.NO_NIVEL).FirstOrDefault().NO_NIVEL;
                     }
-                    if (vTabulador.FG_RECALCULAR_NIVELES == true && TabNivel > 0)
+                    if (vTabulador.FG_RECALCULAR_NIVELES == true && TabNivel > 0 && TabNivel != vTabulador.NO_NIVELES)
                     {
                         lblAdvertencia.Visible = true;
                         lblAdvertencia.InnerText = "*No fue posible generar el número de niveles solicitados, el número real es " + TabNivel.ToString();
@@ -309,6 +330,7 @@ namespace SIGE.WebApp.MPC
                     txtVigencia.InnerText = vTabulador.FE_VIGENCIA.ToString("dd/MM/yyyy");
                     txtFecha.InnerText = vTabulador.FE_CREACION.ToString("dd/MM/yyyy");
                     txtPuestos.InnerText = vTabulador.CL_TIPO_PUESTO;
+                    vNivelesTabulador = vTabulador.NO_NIVELES;
                     if (vTabulador.CL_ESTADO == "CERRADO")
                     {
                         btnAgregarCompetencia.Enabled = false;
@@ -430,7 +452,17 @@ namespace SIGE.WebApp.MPC
             TabuladoresNegocio nTabulador = new TabuladoresNegocio();
             E_RESULTADO vResultado = nTabulador.InsertaActualizaTabulador(usuario: vClUsuario, programa: vNbPrograma, pClTipoOperacion: vTipoTransaccion.ToString(), vTabulador: vTabulador);
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
+            if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+            {
+                rtsConfiguracion.Tabs[4].Enabled = true;
+                rpvNiveles.Selected = true;
+                rtsConfiguracion.Tabs[4].Selected = true;
+                vNivelesTabulador = int.Parse(rntNivelesACrear.Text);
+                grdNiveles.Rebind();
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction:"");
+            }
+            else
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
         }
 
         protected void grdEmpleadosSeleccionados_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
@@ -441,7 +473,7 @@ namespace SIGE.WebApp.MPC
                                                     new XElement("TIPO",
                                                     new XAttribute("ID_TABULADOR", vIdTabulador))));
             TabuladoresNegocio nTabulador = new TabuladoresNegocio();
-            grdEmpleadosSeleccionados.DataSource = nTabulador.ObtenieneEmpleadosTabulador(XML_SELECCIONADOS: vXmlIdTabulador);
+            grdEmpleadosSeleccionados.DataSource = nTabulador.ObtenieneEmpleadosTabulador(XML_SELECCIONADOS: vXmlIdTabulador, pIdRol: vIdRol);
         }
 
         protected void grdCompetenciasSeleccionadas_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
@@ -540,6 +572,76 @@ namespace SIGE.WebApp.MPC
                 PageSizeCombo.FindItemByText("1000").Attributes.Add("ownerTableViewId", grdCompetenciasSeleccionadas.MasterTableView.ClientID);
                 PageSizeCombo.FindItemByText(e.Item.OwnerTableView.PageSize.ToString()).Selected = true;
             }
+        }
+        
+        protected void grdNiveles_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            TabuladoresNegocio nTabulador = new TabuladoresNegocio();
+            var vTabuladorNivel = nTabulador.ObtieneTabuladorNivel(ID_TABULADOR: vIdTabulador);
+            grdNiveles.DataSource = vTabuladorNivel;
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            int vIdTabuladorNivel = 0;
+            vTabuladorNivel = new List<E_NIVELES>();
+            foreach (GridDataItem item in grdNiveles.MasterTableView.Items)
+            { 
+                vIdTabuladorNivel = (int.Parse(item.GetDataKeyValue("ID_TABULADOR_NIVEL").ToString()));
+                RadTextBox vClNivel = (RadTextBox)item.FindControl("txtClNivel");
+                RadTextBox vNbNivel = (RadTextBox)item.FindControl("txtNbNivel");
+                RadNumericTextBox vOrden = (RadNumericTextBox)item.FindControl("txnOrden");
+                RadNumericTextBox vProgresion = (RadNumericTextBox)item.FindControl("txnProgresion");
+
+                vTabuladorNivel.Add(new E_NIVELES { ID_TABULADOR_NIVEL = vIdTabuladorNivel, CL_TABULADOR_NIVEL = vClNivel.Text, NB_TABULADOR_NIVEL = vNbNivel.Text, NO_ORDEN = int.Parse(vOrden.Text), PR_PROGRESION = decimal.Parse(vProgresion.Text)});
+            }
+
+            var dups = vTabuladorNivel.GroupBy(x => x.NO_ORDEN).Where(x => x.Count() > 1).Select(x => x.Key).ToList();
+
+            if (dups.Count == 0)
+            {
+
+                TabuladoresNegocio nTabulador = new TabuladoresNegocio();
+                var vTabuladorProgresion = nTabulador.ObtieneTabuladorNivel(ID_TABULADOR: vIdTabulador).ToList();
+
+                var vPrTavulador = vTabuladorNivel.Select(s => s.PR_PROGRESION).ToList();
+                var vPrProgresion = vTabuladorProgresion.Select(s => s.PR_PROGRESION).ToList();
+
+                if (vPrTavulador.SequenceEqual(vPrProgresion))
+                    vCL_GUARDAR = "GUARDAR";
+                else vCL_GUARDAR = "PR_GUARDAR";
+
+                var vXelements = vTabuladorNivel.Select(x =>
+                                               new XElement("NIVEL",
+                                               new XAttribute("ID_TABULADOR_NIVEL", x.ID_TABULADOR_NIVEL),
+                                               new XAttribute("CL_TABULADOR_NIVEL", x.CL_TABULADOR_NIVEL),
+                                               new XAttribute("NB_TABULADOR_NIVEL", x.NB_TABULADOR_NIVEL),
+                                               new XAttribute("NO_ORDEN", x.NO_ORDEN),
+                                               new XAttribute("PR_PROGRESION", x.PR_PROGRESION)
+                                    ));
+                XElement TABULADORNIVEL =
+                new XElement("NIVELES", vXelements
+                );
+
+                E_RESULTADO vResultado = nTabulador.ActualizaTabuladorNivel(vIdTabulador, TABULADORNIVEL.ToString(), vClUsuario, vNbPrograma);
+                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "closeWindow");
+            }
+
+            else {
+
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "No se pueden repetir valores en el número de orden.", E_TIPO_RESPUESTA_DB.ERROR);
+            }
+        }
+
+        protected void grdNiveles_ItemDataBound(object sender, GridItemEventArgs e)
+        {
+            if (e.Item is GridDataItem)
+            {
+                GridDataItem item = (GridDataItem)e.Item;
+                RadNumericTextBox txnOrden = (RadNumericTextBox)item.FindControl("txnOrden");
+                txnOrden.MaxValue = vNivelesTabulador;
+            } 
         }
 
     }

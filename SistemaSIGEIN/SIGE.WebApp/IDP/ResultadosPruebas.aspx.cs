@@ -378,6 +378,7 @@ namespace SIGE.WebApp.IDP
                        var vResultadosORTOGRAFIAII = vResultados.Exists(ex => ex.CL_PRUEBA.Equals("ORTOGRAFIA-2")) ? vResultados.Where(r => r.CL_PRUEBA.Equals("ORTOGRAFIA-2")).ToList(): null;
                        var vResultadosORTOGRAFIAIII = vResultados.Exists(ex => ex.CL_PRUEBA.Equals("ORTOGRAFIA-3")) ? vResultados.Where(r => r.CL_PRUEBA.Equals("ORTOGRAFIA-3")).ToList(): null;
                        List<GRD_ORT_TEC_ING> vlstOrtografias = new List<GRD_ORT_TEC_ING>();
+                       if (vResultadosORTOGRAFIAI != null)
                        if (vResultadosORTOGRAFIAI.Count > 0)
                        {
                            ORTOGRAFIA1_TOTAL = vResultadosORTOGRAFIAI.Exists(ex => ex.CL_VARIABLE.Equals("ORTOGRAFIA1-REP-TOTAL")) ? vResultadosORTOGRAFIAI.Where(x => x.CL_VARIABLE.Equals("ORTOGRAFIA1-REP-TOTAL")).FirstOrDefault().NO_VALOR : null;
@@ -391,6 +392,7 @@ namespace SIGE.WebApp.IDP
                            AgregarColumasSeries(0);
                        }
 
+                       if (vResultadosORTOGRAFIAII != null)
                        if (vResultadosORTOGRAFIAII.Count > 0)
                        {
                            ORTOGRAFIA2_TOTAL = vResultadosORTOGRAFIAII.Exists(ex => ex.CL_VARIABLE.Equals("ORTOGRAFIA2-REP-TOTAL")) ? vResultadosORTOGRAFIAII.Where(x => x.CL_VARIABLE.Equals("ORTOGRAFIA2-REP-TOTAL")).FirstOrDefault().NO_VALOR : null;
@@ -404,6 +406,7 @@ namespace SIGE.WebApp.IDP
                            AgregarColumasSeries(0);
                        }
 
+                       if (vResultadosORTOGRAFIAIII != null)
                        if (vResultadosORTOGRAFIAIII.Count > 0)
                        {
                            ORTOGRAFIA3_TOTAL = vResultadosORTOGRAFIAIII.Exists(ex => ex.CL_VARIABLE.Equals("ORTOGRAFIA3-REP-TOTAL"))?  vResultadosORTOGRAFIAIII.Where(x => x.CL_VARIABLE.Equals("ORTOGRAFIA3-REP-TOTAL")).FirstOrDefault().NO_VALOR : null;

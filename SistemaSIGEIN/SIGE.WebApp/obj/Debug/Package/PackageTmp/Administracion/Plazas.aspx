@@ -3,27 +3,52 @@
     <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
         <script type="text/javascript">
             function ShowInsertForm() {
-                OpenWindow(null);
+                OpenWindow(GetPlazasWindowsPropierties(null));
                 return false;
             }
 
             function ShowEditForm() {
                 var selectedItem = $find("<%=grdPlazas.ClientID %>").get_masterTableView().get_selectedItems()[0];
                 if (selectedItem != undefined)
-                    OpenWindow(selectedItem.getDataKeyValue("ID_PLAZA"));
+                    OpenWindow(GetPlazasWindowsPropierties(selectedItem.getDataKeyValue("ID_PLAZA")));
                 else
                     radalert("Selecciona una plaza.", 400, 150);
             }
 
-            function OpenWindow(pIdRol) {
-                var vURL = "VentanaPlaza.aspx";
-                var vTitulo = "Agregar Plaza";
-                if (pIdRol != null) {
-                    vURL = vURL + "?PlazaId=" + pIdRol;
-                    vTitulo = "Editar Plaza";
+            function GetPlazasWindowsPropierties(pIdPlaza) {
+                var currentWnd = GetRadWindow();
+                var browserWnd = window;
+                if (currentWnd)
+                    browserWnd = currentWnd.BrowserWindow;
+
+                var windowProperties = {
+                    width: browserWnd.innerWidth - 700,
+                    height: browserWnd.innerHeight - 40
+                };
+                if (pIdPlaza != null)
+                {
+                    windowProperties.vTitulo = "Editar plaza";
+                    windowProperties.vURL = "VentanaPlaza.aspx?PlazaId=" + pIdPlaza;
+                    windowProperties.vRadWindowId = "winPlazas";
                 }
-                var oWin = window.radopen(vURL, "winPlazas");
-                oWin.set_title(vTitulo);
+                else {
+                    windowProperties.vTitulo = "Agregar plaza";
+                    windowProperties.vURL = "VentanaPlaza.aspx";
+                    windowProperties.vRadWindowId = "winPlazas";
+                }
+                return windowProperties;
+            }
+
+            function OpenWindow(pWindowProperties) {
+                openChildDialog(pWindowProperties.vURL, pWindowProperties.vRadWindowId, pWindowProperties.vTitulo, pWindowProperties);
+                //var vURL = "VentanaPlaza.aspx";
+                //var vTitulo = "Agregar Plaza";
+                //if (pIdRol != null) {
+                //    vURL = vURL + "?PlazaId=" + pIdRol;
+                //    vTitulo = "Editar Plaza";
+                //}
+                //var oWin = window.radopen(vURL, "winPlazas");
+                //oWin.set_title(vTitulo);
             }
 
             function onCloseWindow(oWnd, args) {
@@ -95,7 +120,7 @@
     <telerik:RadWindowManager ID="rwmAlertas" runat="server">
         <Windows>
             <telerik:RadWindow ID="winSeleccion" runat="server" Title="Seleccionar empleado" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
-            <telerik:RadWindow ID="winPlazas" runat="server" Title="Agregar/Editar Plaza" Height="440px" Width="570px" VisibleStatusbar="false" Modal="true" Behaviors="Close" OnClientClose="onCloseWindow"></telerik:RadWindow>
+            <telerik:RadWindow ID="winPlazas" runat="server" Title="Agregar/Editar Plaza" VisibleStatusbar="false" Modal="true" Behaviors="Close" OnClientClose="onCloseWindow"></telerik:RadWindow>
         </Windows>
     </telerik:RadWindowManager>
 </asp:Content>

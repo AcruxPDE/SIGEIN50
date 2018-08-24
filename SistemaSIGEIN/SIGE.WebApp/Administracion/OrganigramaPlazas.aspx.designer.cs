@@ -31,6 +31,24 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadAjaxManager ramOrganigrama;
         
         /// <summary>
+        /// RadSplitter2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSplitter RadSplitter2;
+        
+        /// <summary>
+        /// RadPane2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPane RadPane2;
+        
+        /// <summary>
         /// lstPlaza control.
         /// </summary>
         /// <remarks>
@@ -67,49 +85,103 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadComboBox cmbEmpresas;
         
         /// <summary>
-        /// chkMostrarEmpleados control.
+        /// rlbArea control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadCheckBox chkMostrarEmpleados;
+        protected global::Telerik.Web.UI.RadListBox rlbArea;
         
         /// <summary>
-        /// lblMensaje control.
+        /// RadButton1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMensaje;
+        protected global::Telerik.Web.UI.RadButton RadButton1;
         
         /// <summary>
-        /// lstAscendencia control.
+        /// RadButton2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadListBox lstAscendencia;
+        protected global::Telerik.Web.UI.RadButton RadButton2;
         
         /// <summary>
-        /// rocPlazas control.
+        /// RadListBox2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadOrgChart rocPlazas;
+        protected global::Telerik.Web.UI.RadListBox RadListBox2;
         
         /// <summary>
-        /// RadContextMenu1 control.
+        /// RadButton3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadContextMenu RadContextMenu1;
+        protected global::Telerik.Web.UI.RadButton RadButton3;
+        
+        /// <summary>
+        /// RadButton4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton RadButton4;
+        
+        /// <summary>
+        /// txtNiveles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadNumericTextBox txtNiveles;
+        
+        /// <summary>
+        /// btnOrganigrama control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnOrganigrama;
+        
+        /// <summary>
+        /// rpAyuda control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPane rpAyuda;
+        
+        /// <summary>
+        /// rszAyuda control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSlidingZone rszAyuda;
+        
+        /// <summary>
+        /// RadSlidingPane1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSlidingPane RadSlidingPane1;
         
         /// <summary>
         /// rnMensaje control.

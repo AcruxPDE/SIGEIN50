@@ -31,15 +31,6 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadAjaxManager ramConsultas;
         
         /// <summary>
-        /// rtsConsultas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTabStrip rtsConsultas;
-        
-        /// <summary>
         /// rmpConsultas control.
         /// </summary>
         /// <remarks>
@@ -292,15 +283,6 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadWindowManager rwmMensaje;
         
         /// <summary>
-        /// winSeleccion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadWindow winSeleccion;
-        
-        /// <summary>
         /// rwConsulta control.
         /// </summary>
         /// <remarks>
@@ -317,5 +299,14 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadWindow winReportes;
+        
+        /// <summary>
+        /// winImprimir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadWindow winImprimir;
     }
 }

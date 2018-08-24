@@ -13,7 +13,6 @@
         }
 
         function addSelection() {
-            var info = null;
             var masterTable = $find("<%= grdPlazas.ClientID %>").get_masterTableView();
             var selectedItems = masterTable.get_selectedItems();
             if (selectedItems.length > 0) {
@@ -56,6 +55,16 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
+    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" DefaultLoadingPanelID="RadAjaxLoadingPanel1">
+        <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="grdPlazas">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="grdPlazas" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            </AjaxSettings>
+        </telerik:RadAjaxManager>
     <div style="height: calc(100% - 60px);">
         <telerik:RadGrid ID="grdPlazas" HeaderStyle-Font-Bold="true" runat="server" Height="100%" AllowMultiRowSelection="true" OnNeedDataSource="grdPlazas_NeedDataSource" AutoGenerateColumns="false" EnableHeaderContextMenu="true" AllowSorting="true" OnItemDataBound="grdPlazas_ItemDataBound">
             <ClientSettings>

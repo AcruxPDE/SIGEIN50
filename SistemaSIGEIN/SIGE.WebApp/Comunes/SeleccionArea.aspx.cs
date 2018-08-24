@@ -45,15 +45,24 @@ namespace SIGE.WebApp.Comunes
 
         private int? vIdEmpresa;
 
+        private int? vIdRol;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!Page.IsPostBack)
             {
                 vClCatalogo = Request.QueryString["CatalogoCl"];
                 if (String.IsNullOrEmpty(vClCatalogo))
                     vClCatalogo = "DEPARTAMENTO";
+
+                if (!String.IsNullOrEmpty(Request.QueryString["mulSel"]))
+                {
+                    grdArea.AllowMultiRowSelection = (Request.QueryString["mulSel"] == "1");
+                    btnAgregar.Visible = (Request.QueryString["mulSel"] == "1");
+                }
 
 
                 vClTipoPuesto = Request.QueryString["vClTipoPuesto"];
@@ -74,7 +83,7 @@ namespace SIGE.WebApp.Comunes
         protected void grdArea_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             DepartamentoNegocio nDepartamento = new DepartamentoNegocio();
-            var vDepartamento = nDepartamento.ObtieneDepartamentos(XML_SELECCIONADOS: vXmlTipoSeleccion, ID_EMPRESA: vIdEmpresa);
+            var vDepartamento = nDepartamento.ObtieneDepartamentos(XML_SELECCIONADOS: vXmlTipoSeleccion, ID_EMPRESA: vIdEmpresa, ID_ROL: vIdRol);
             grdArea.DataSource = vDepartamento;
         }
 

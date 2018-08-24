@@ -181,6 +181,11 @@ namespace SIGE.WebApp.Administracion
             return true;
         }
 
+        private void SeguridadProcesos()
+        {
+            btnGuardarCatalogo.Enabled = ContextoUsuario.oUsuario.TienePermiso("E.E");
+        }
+
         //private void GuardarDatos()
         //{
         //    string vTipotransaccion = "";
@@ -318,6 +323,8 @@ namespace SIGE.WebApp.Administracion
                 {
                     CargarDatos();
                 }
+
+                SeguridadProcesos();
 
                 //else
                 //{

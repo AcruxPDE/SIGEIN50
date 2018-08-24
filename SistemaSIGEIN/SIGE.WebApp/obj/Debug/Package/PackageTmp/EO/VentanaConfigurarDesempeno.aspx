@@ -45,6 +45,11 @@
             }
         }
 
+        function ConfirmarEliminarInactivas(sender, args) {
+            vMensaje = "¿Las metas inactivas serán eliminadas, estas seguro que deseas continuar?, este proceso no podrá revertirse";
+            var vWindowsProperties = { height: 200 };
+            confirmAction(sender, args, vMensaje, vWindowsProperties);
+        }
 
         function OpenEnvioSolicitudes() {
             var vIdPeriodo = '<%= vIdPeriodo %>';
@@ -77,7 +82,7 @@
             wnd.vURL = "VentanaEnvioSolicitudes.aspx";
             if (pIdPeriodo != null) {
                 wnd.vURL += String.format("?PeriodoId={0}", pIdPeriodo);
-                wnd.vTitulo = "Envío de solicitudes";
+                wnd.vTitulo = "Enviar evaluaciones";
             }
             return wnd;
         }
@@ -101,22 +106,22 @@
         }
 
         function OpenEmpleadosSelectionWindow() {
-            OpenSelectionWindow("/Comunes/SeleccionEmpleado.aspx?m=FORMACION", "winSeleccion", "Selección de evaluados");
+            OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx", "winSeleccion", "Selección de evaluados");
         }
 
         function OpenPuestoSelectionWindow() {
-            OpenSelectionWindow("/Comunes/SeleccionPuesto.aspx?mulSel=1", "winSeleccion", "Selección de evaluados por puestos");
+            OpenSelectionWindow("../Comunes/SeleccionPuesto.aspx?mulSel=1", "winSeleccion", "Selección de evaluados por puestos");
         }
 
         function OpenAreaSelectionWindow() {
-            OpenSelectionWindow("/Comunes/SeleccionArea.aspx?m=FORMACION", "winSeleccion", "Selección de evaluados por áreas");
+            OpenSelectionWindow("../Comunes/SeleccionArea.aspx?", "winSeleccion", "Selección de evaluados por áreas/departamento");
         }
 
         function OpenEmpleadosSelectionWindowEvaluador() {
             var masterTable = $find("<%= grdEvaluados.ClientID %>").get_masterTableView();
             var selectedItems = masterTable.get_selectedItems();
             if (selectedItems.length > 0) {
-                OpenSelectionWindow("/Comunes/SeleccionEmpleado.aspx?CatalogoCl=EVALUADOR", "winSeleccion", "Selección de evaluadores");
+                OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?CatalogoCl=EVALUADOR&mulSel=0&CLFILTRO=NINGUNO", "winSeleccion", "Selección de evaluadores");
             }
             else {
                 radalert("Selecciona un evaluado.", 400, 150);
@@ -215,8 +220,8 @@
                 browserWnd = currentWnd.BrowserWindow;
 
             var windowProperties = {
-                width: 1150,
-                height: 650
+                width: 1200,
+                height: browserWnd.innerHeight - 20
             };
             openChildDialog(pURL, pIdWindow, pTitle, windowProperties)
         }
@@ -370,7 +375,7 @@
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="grdEvaluados" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="grdDisenoMetas" UpdatePanelHeight="100%" />
-                      <telerik:AjaxUpdatedControl ControlID="grdContrasenaEvaluadores" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="grdContrasenaEvaluadores" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="rgBono" UpdatePanelHeight="100%" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
@@ -489,7 +494,7 @@
             <telerik:RadTab Text="Contraseñas"></telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
-    <div style="height: calc(100% - 100px); width: 100%;">
+    <div style="height: calc(100% - 55px); width: 100%;">
         <telerik:RadMultiPage ID="rmpConfiguracion" runat="server" SelectedIndex="0" Height="100%">
             <telerik:RadPageView runat="server" Width="100%">
                 <div class="divControlIzquierda" style="width: 60%; text-align: left;">
@@ -501,7 +506,7 @@
                                 <div id="txtClPeriodo" runat="server"></div>
                             </td>
                         </tr>
-                       <%-- <tr>
+                        <%-- <tr>
                             <td class="ctrlTableDataContext">
                                 <label>Nombre del periodo:</label></td>
                             <td colspan="2" class="ctrlTableDataBorderContext">
@@ -515,7 +520,7 @@
                                 <div id="txtPeriodos" runat="server"></div>
                             </td>
                         </tr>
-                                                <tr>
+                        <tr>
                             <td class="ctrlTableDataContext">
                                 <label>Notas:</label></td>
                             <td class="ctrlTableDataBorderContext">
@@ -531,7 +536,7 @@
                         </tr>
                         <tr>
                             <td class="ctrlTableDataContext">
-                                <label>Tipo de periodo:</label></td>
+                                <label>Tipo de período:</label></td>
                             <td class="ctrlTableDataBorderContext">
                                 <div id="txtTipoPeriodo" runat="server" width="170" maxlength="1000" enabled="false"></div>
                             </td>
@@ -561,232 +566,281 @@
                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvSeleccionEvaluados" runat="server">
-                <div style="height: calc(100% - 20px); width: 100%;">
-                    <telerik:RadGrid ID="grdEvaluados" runat="server" Height="100%"
-                        AutoGenerateColumns="false"
-                        EnableHeaderContextMenu="true"
-                        AllowSorting="true"
-                        OnItemCommand="grdEvaluados_ItemCommand"
-                        AllowMultiRowSelection="true"
-                        OnNeedDataSource="grdSeleccionEvaluados_NeedDataSource"
-                        HeaderStyle-Font-Bold="true"
-                        OnDetailTableDataBind="grdEvaluados_DetailTableDataBind" ShowFooter="true">
-                        <ClientSettings>
-                            <Scrolling UseStaticHeaders="true" AllowScroll="true" />
-                            <Selecting AllowRowSelect="true" />
-                        </ClientSettings>
-                        <PagerStyle AlwaysVisible="true" />
-                        <GroupingSettings CaseSensitive="false" />
-                        <MasterTableView DataKeyNames="ID_EMPLEADO,ID_EVALUADO,CL_EMPLEADO,NB_EMPLEADO_COMPLETO,NB_PUESTO,NB_DEPARTAMENTO,PR_EVALUADO"
-                            AllowPaging="false" AllowSorting="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true"
-                            EnableHeaderContextFilterMenu="true" ClientDataKeyNames="ID_EVALUADO" EnableHierarchyExpandAll="true" HierarchyDefaultExpanded="false">
-                            <Columns>
-                                <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="60" HeaderText="No. de empleado" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="200" FilterControlWidth="130" HeaderStyle-Font-Bold="true" HeaderText="Nombre completo" DataField="NB_EMPLEADO_COMPLETO" UniqueName="NB_EMPLEADO_COMPLETO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Nombre" DataField="NB_EMPLEADO" UniqueName="NB_EMPLEADO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Apellido paterno" DataField="NB_APELLIDO_PATERNO" UniqueName="NB_APELLIDO_PATERNO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Apellido materno" DataField="NB_APELLIDO_MATERNO" UniqueName="NB_APELLIDO_MATERNO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderStyle-Font-Bold="true" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="M_PUESTO_NB_PUESTO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Clave del área" DataField="CL_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_CL_DEPARTAMENTO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderStyle-Font-Bold="true" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Género" DataField="CL_GENERO" UniqueName="CL_GENERO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Estado civil" DataField="CL_ESTADO_CIVIL" UniqueName="CL_ESTADO_CIVIL"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Nombre del cónyuge" DataField="NB_CONYUGUE" UniqueName="NB_CONYUGUE"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="RFC" DataField="CL_RFC" UniqueName="CL_RFC"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="CURP" DataField="CL_CURP" UniqueName="CL_CURP"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="NSS" DataField="CL_NSS" UniqueName="CL_NSS"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Tipo sanguíneo" DataField="CL_TIPO_SANGUINEO" UniqueName="CL_TIPO_SANGUINEO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Nacionalidad" DataField="CL_NACIONALIDAD" UniqueName="CL_NACIONALIDAD"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="País" DataField="NB_PAIS" UniqueName="NB_PAIS"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Entidad federativa" DataField="NB_ESTADO" UniqueName="NB_ESTADO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Municipio" DataField="NB_MUNICIPIO" UniqueName="NB_MUNICIPIO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Colonia" DataField="NB_COLONIA" UniqueName="NB_COLONIA"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Calle" DataField="NB_CALLE" UniqueName="NB_CALLE"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="No. Exterior" DataField="NO_EXTERIOR" UniqueName="NO_EXTERIOR"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="No. Interior" DataField="NO_INTERIOR" UniqueName="NO_INTERIOR"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Código postal" DataField="CL_CODIGO_POSTAL" UniqueName="CL_CODIGO_POSTAL"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Correo electrónico" DataField="CL_CORREO_ELECTRONICO" UniqueName="CL_CORREO_ELECTRONICO"></telerik:GridBoundColumn>
-                                <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" ShowFilterIcon="false" HeaderStyle-Width="130" FilterControlWidth="120" HeaderText="Natalicio" DataField="FE_NACIMIENTO" UniqueName="FE_NACIMIENTO" DataFormatString="{0:d}"></telerik:GridDateTimeColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Lugar de nacimiento" DataField="DS_LUGAR_NACIMIENTO" UniqueName="DS_LUGAR_NACIMIENTO"></telerik:GridBoundColumn>
-                                <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" ShowFilterIcon="false" HeaderStyle-Width="130" FilterControlWidth="120" HeaderText="Fecha de alta" DataField="FE_ALTA" UniqueName="FE_ALTA" DataFormatString="{0:d}"></telerik:GridDateTimeColumn>
-                                <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" ShowFilterIcon="false" HeaderStyle-Width="130" FilterControlWidth="120" HeaderText="Fecha de baja" DataField="FE_BAJA" UniqueName="FE_BAJA" DataFormatString="{0:d}"></telerik:GridDateTimeColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Sueldo" DataField="MN_SUELDO" UniqueName="MN_SUELDO" DataFormatString="{0:c}" ItemStyle-HorizontalAlign="Right"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Sueldo variable" DataField="MN_SUELDO_VARIABLE" UniqueName="MN_SUELDO_VARIABLE" DataFormatString="{0:c}" ItemStyle-HorizontalAlign="Right"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Composición del sueldo" DataField="DS_SUELDO_COMPOSICION" UniqueName="DS_SUELDO_COMPOSICION"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Clave de la empresa" DataField="CL_EMPRESA" UniqueName="CL_EMPRESA"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="200" FilterControlWidth="130" HeaderText="Nombre de la empresa" DataField="NB_EMPRESA" UniqueName="NB_EMPRESA"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Razón social" DataField="NB_RAZON_SOCIAL" UniqueName="NB_RAZON_SOCIAL"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="110" FilterControlWidth="40" HeaderText="Estado" DataField="CL_ESTADO_EMPLEADO" UniqueName="CL_ESTADO_EMPLEADO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="95" FilterControlWidth="25" HeaderText="Activo" DataField="FG_ACTIVO" UniqueName="FG_ACTIVO"></telerik:GridBoundColumn>
-                                <telerik:GridTemplateColumn HeaderText="Ponderación" FilterControlWidth="30px" DataType="System.Decimal" HeaderStyle-Font-Bold="true" DataField="PR_EVALUADO" UniqueName="PR_EVALUADO" Aggregate="Sum" FooterAggregateFormatString="Cumplimiento general: {0:N2}%" FooterStyle-HorizontalAlign="Center">
-                                    <ItemStyle Width="90px" HorizontalAlign="Left" />
-                                    <HeaderStyle Width="90px" />
-                                    <ItemTemplate>
-                                        <telerik:RadNumericTextBox ID="txtPonderacion" MinValue="0" Text='<%# Eval("PR_EVALUADO")%>' MaxValue="100" NumberFormat-DecimalDigits="2" DataType="Decimal" runat="server" Width="100px" OnTextChanged="txtPonderacion_TextChanged">
-                                        </telerik:RadNumericTextBox>
-                                    </ItemTemplate>
-                                </telerik:GridTemplateColumn>
-                            </Columns>
-                            <DetailTables>
-                                <telerik:GridTableView DataKeyNames="ID_EVALUADO,ID_EVALUADOR" ClientDataKeyNames="ID_EVALUADO,ID_EVALUADOR" Name="gtvEvaluadores"
-                                    NoDetailRecordsText="No se han asignado evaluadores">
+                <telerik:RadSplitter runat="server" ID="RadSplitter1" Width="100%" Height="100%" BorderSize="0">
+                    <telerik:RadPane ID="RadPane1" runat="server">
+                        <div style="height: calc(100% - 65px); width: 100%;">
+                            <telerik:RadGrid ID="grdEvaluados" runat="server" Height="100%"
+                                AutoGenerateColumns="false"
+                                EnableHeaderContextMenu="true"
+                                AllowSorting="true"
+                                OnItemCommand="grdEvaluados_ItemCommand"
+                                AllowMultiRowSelection="true"
+                                OnNeedDataSource="grdSeleccionEvaluados_NeedDataSource"
+                                HeaderStyle-Font-Bold="true"
+                                OnDetailTableDataBind="grdEvaluados_DetailTableDataBind" ShowFooter="true">
+                                <ClientSettings>
+                                    <Scrolling UseStaticHeaders="true" AllowScroll="true" />
+                                    <Selecting AllowRowSelect="true" />
+                                </ClientSettings>
+                                <PagerStyle AlwaysVisible="true" />
+                                <GroupingSettings CaseSensitive="false" />
+                                <MasterTableView DataKeyNames="ID_EMPLEADO,ID_EVALUADO,CL_EMPLEADO,NB_EMPLEADO_COMPLETO,NB_PUESTO,NB_DEPARTAMENTO,PR_EVALUADO"
+                                    AllowPaging="false" AllowSorting="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true"
+                                    EnableHeaderContextFilterMenu="true" ClientDataKeyNames="ID_EVALUADO" EnableHierarchyExpandAll="true" HierarchyDefaultExpanded="false">
                                     <Columns>
-                                        <telerik:GridBoundColumn UniqueName="NB_EVALUADOR" DataField="NB_EVALUADOR" HeaderText="Evaluador" HeaderStyle-Font-Bold="true">
-                                            <HeaderStyle Width="150" />
-                                            <ItemStyle Width="150" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="NB_PUESTO" DataField="NB_PUESTO" HeaderText="Puesto" HeaderStyle-Font-Bold="true">
-                                            <HeaderStyle Width="150" />
-                                            <ItemStyle Width="150" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="CL_CORREO_ELECTRONICO" DataField="CL_CORREO_ELECTRONICO" HeaderText="Correo electrónico" HeaderStyle-Font-Bold="true">
-                                            <HeaderStyle Width="150" />
-                                            <ItemStyle Width="150" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridButtonColumn CommandName="Delete" Text="Eliminar" UniqueName="Delete" ButtonType="ImageButton" HeaderStyle-Width="30"
-                                            ConfirmTextFormatString="¿Desea eliminar el evaluador?" ConfirmTitle="Confirmar" ConfirmDialogWidth="400" HeaderStyle-Font-Bold="true"
-                                            ConfirmDialogHeight="150" ConfirmDialogType="RadWindow" />
-                                    </Columns>
-                                </telerik:GridTableView>
-                            </DetailTables>
-                        </MasterTableView>
-                    </telerik:RadGrid>
-                </div>
-                <div style="clear: both; height: 10px;"></div>
-                <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnSeleccionPorPersona" runat="server" Text="Agregar desde inventario" AutoPostBack="false" OnClientClicked="OpenEmpleadosSelectionWindow"></telerik:RadButton>
-                </div>
-                <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnSeleccionPorPuesto" runat="server" Text="Agregar desde descriptivos de puesto" AutoPostBack="false" OnClientClicked="OpenPuestoSelectionWindow"></telerik:RadButton>
-                </div>
-                <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnSeleccionPorArea" runat="server" Text="Agregar desde áreas" AutoPostBack="false" OnClientClicked="OpenAreaSelectionWindow"></telerik:RadButton>
-                </div>
-                <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnAgregarEvaluador" Visible="false" runat="server" AutoPostBack="false" OnClientClicked="OpenEmpleadosSelectionWindowEvaluador" Text="Agregar evaluador"></telerik:RadButton>
-                </div>
-                <div class="divControlesBoton">
-                    <div class="ctrlBasico">
-                        <telerik:RadButton runat="server" ID="btnReasignarPonderacion" AutoPostBack="true" Text="Reasignar ponderación" OnClick="btnReasignarPonderacion_Click"></telerik:RadButton>
-                    </div>
-                    <div class="ctrlBasico">
-                        <telerik:RadButton runat="server" ID="btnGuardarEvaluado" Text="Guardar" OnClick="btnGuardarEvaluado_Click"></telerik:RadButton>
-                    </div>
-                </div>
-                <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnEliminarEvaluado" runat="server" Text="Eliminar" OnClientClicking="confirmarEliminarEvaluados" OnClick="btnEliminarEvaluado_Click"></telerik:RadButton>
-                </div>
-            </telerik:RadPageView>
-            <telerik:RadPageView ID="rpvDisenoMetas" runat="server">
-                <div style="clear: both; height: 5px;"></div>
-                <div style="height: calc(100% - 40px);">
-                    <telerik:RadGrid ID="grdDisenoMetas" runat="server"
-                        Height="100%" AutoGenerateColumns="false" EnableHierarchyExpandAll="true" MasterTableView-HierarchyDefaultExpanded="true"
-                        EnableHeaderContextMenu="true" AllowSorting="true"
-                        AllowMultiRowSelection="true"
-                        OnNeedDataSource="grdDisenoMetas_NeedDataSource"
-                        OnDetailTableDataBind="grdDisenoMetas_DetailTableDataBind"
-                        OnItemDataBound="grdDisenoMetas_ItemDataBound"
-                        OnItemCommand="grdDisenoMetas_ItemCommand" HeaderStyle-Font-Bold="true">
-                        <ClientSettings>
-                            <Scrolling UseStaticHeaders="true" AllowScroll="true" />
-                            <Selecting AllowRowSelect="true" />
-                        </ClientSettings>
-                        <PagerStyle AlwaysVisible="false" />
-                        <GroupingSettings CaseSensitive="false" />
-                        <MasterTableView DataKeyNames="ID_EMPLEADO,ID_EVALUADO" ClientDataKeyNames="ID_EVALUADO" AllowPaging="true"
-                            AllowFilteringByColumn="true" AllowSorting="true" Name="Evaluados"
-                            ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
-                            <Columns>
-                                <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" FilterControlWidth="30" HeaderText="No. de Empleado" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" FilterControlWidth="130" HeaderText="Nombre completo" DataField="NB_EMPLEADO_COMPLETO" UniqueName="NB_EMPLEADO_COMPLETO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="200" FilterControlWidth="80" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="M_PUESTO_NB_PUESTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="200" FilterControlWidth="80" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                            </Columns>
-                            <DetailTables>
-                                <telerik:GridTableView DataKeyNames="ID_EVALUADO_META,ID_EVALUADO,NO_META, FG_EVALUAR" ClientDataKeyNames="ID_EVALUADO_META,ID_EVALUADO,NO_META, FG_EVALUAR" Name="gtvMetas"
-                                    NoDetailRecordsText="No se han asignado metas en el descriptivo de puestos" ShowFooter="true">
-                                    <Columns>
-                                        <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30"></telerik:GridClientSelectColumn>
-                                        <telerik:GridTemplateColumn HeaderText="Estatus" DataField="FG_EVALUAR" UniqueName="FG_EVALUAR" AllowFiltering="false" HeaderStyle-Font-Bold="true">
-                                            <HeaderStyle Width="50" />
+                                        <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="60" HeaderText="No. de empleado" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="200" FilterControlWidth="130" HeaderStyle-Font-Bold="true" HeaderText="Nombre completo" DataField="NB_EMPLEADO_COMPLETO" UniqueName="NB_EMPLEADO_COMPLETO"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Nombre" DataField="NB_EMPLEADO" UniqueName="NB_EMPLEADO"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Apellido paterno" DataField="NB_APELLIDO_PATERNO" UniqueName="NB_APELLIDO_PATERNO"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Apellido materno" DataField="NB_APELLIDO_MATERNO" UniqueName="NB_APELLIDO_MATERNO"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderStyle-Font-Bold="true" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="M_PUESTO_NB_PUESTO"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Clave del área/departamento" DataField="CL_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_CL_DEPARTAMENTO"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderStyle-Font-Bold="true" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Género" DataField="CL_GENERO" UniqueName="CL_GENERO"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Estado civil" DataField="CL_ESTADO_CIVIL" UniqueName="CL_ESTADO_CIVIL"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Nombre del cónyuge" DataField="NB_CONYUGUE" UniqueName="NB_CONYUGUE"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="RFC" DataField="CL_RFC" UniqueName="CL_RFC"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="CURP" DataField="CL_CURP" UniqueName="CL_CURP"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="NSS" DataField="CL_NSS" UniqueName="CL_NSS"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Tipo sanguíneo" DataField="CL_TIPO_SANGUINEO" UniqueName="CL_TIPO_SANGUINEO"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Nacionalidad" DataField="CL_NACIONALIDAD" UniqueName="CL_NACIONALIDAD"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="País" DataField="NB_PAIS" UniqueName="NB_PAIS"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Entidad federativa" DataField="NB_ESTADO" UniqueName="NB_ESTADO"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Municipio" DataField="NB_MUNICIPIO" UniqueName="NB_MUNICIPIO"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Colonia" DataField="NB_COLONIA" UniqueName="NB_COLONIA"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Calle" DataField="NB_CALLE" UniqueName="NB_CALLE"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="No. Exterior" DataField="NO_EXTERIOR" UniqueName="NO_EXTERIOR"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="No. Interior" DataField="NO_INTERIOR" UniqueName="NO_INTERIOR"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Código postal" DataField="CL_CODIGO_POSTAL" UniqueName="CL_CODIGO_POSTAL"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Correo electrónico" DataField="CL_CORREO_ELECTRONICO" UniqueName="CL_CORREO_ELECTRONICO"></telerik:GridBoundColumn>
+                                        <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" ShowFilterIcon="false" HeaderStyle-Width="130" FilterControlWidth="120" HeaderText="Natalicio" DataField="FE_NACIMIENTO" UniqueName="FE_NACIMIENTO" DataFormatString="{0:d}"></telerik:GridDateTimeColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Lugar de nacimiento" DataField="DS_LUGAR_NACIMIENTO" UniqueName="DS_LUGAR_NACIMIENTO"></telerik:GridBoundColumn>
+                                        <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" ShowFilterIcon="false" HeaderStyle-Width="130" FilterControlWidth="120" HeaderText="Fecha de alta" DataField="FE_ALTA" UniqueName="FE_ALTA" DataFormatString="{0:d}"></telerik:GridDateTimeColumn>
+                                        <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" ShowFilterIcon="false" HeaderStyle-Width="130" FilterControlWidth="120" HeaderText="Fecha de baja" DataField="FE_BAJA" UniqueName="FE_BAJA" DataFormatString="{0:d}"></telerik:GridDateTimeColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Sueldo" DataField="MN_SUELDO" UniqueName="MN_SUELDO" DataFormatString="{0:c}" ItemStyle-HorizontalAlign="Right"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Sueldo variable" DataField="MN_SUELDO_VARIABLE" UniqueName="MN_SUELDO_VARIABLE" DataFormatString="{0:c}" ItemStyle-HorizontalAlign="Right"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Composición del sueldo" DataField="DS_SUELDO_COMPOSICION" UniqueName="DS_SUELDO_COMPOSICION"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Clave de la empresa" DataField="CL_EMPRESA" UniqueName="CL_EMPRESA"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="200" FilterControlWidth="130" HeaderText="Nombre de la empresa" DataField="NB_EMPRESA" UniqueName="NB_EMPRESA"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Razón social" DataField="NB_RAZON_SOCIAL" UniqueName="NB_RAZON_SOCIAL"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="110" FilterControlWidth="40" HeaderText="Estado" DataField="CL_ESTADO_EMPLEADO" UniqueName="CL_ESTADO_EMPLEADO"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="95" FilterControlWidth="25" HeaderText="Activo" DataField="FG_ACTIVO" UniqueName="FG_ACTIVO"></telerik:GridBoundColumn>
+                                        <telerik:GridTemplateColumn HeaderText="Ponderación" FilterControlWidth="30px" DataType="System.Decimal" HeaderStyle-Font-Bold="true" DataField="PR_EVALUADO" UniqueName="PR_EVALUADO" Aggregate="Sum" FooterAggregateFormatString="Cumplimiento general: {0:N2}%" FooterStyle-HorizontalAlign="Center">
+                                            <ItemStyle Width="90px" HorizontalAlign="Left" />
+                                            <HeaderStyle Width="90px" />
                                             <ItemTemplate>
-                                                <div style="width: 80%; text-align: center;">
-                                                    <img src='<%# Eval("FG_EVALUAR").ToString().Equals("True") ? "/Assets/images/Aceptar.png" : "/Assets/images/Cancelar.png"  %>' />
-                                                </div>
+                                                <telerik:RadNumericTextBox ID="txtPonderacion" MinValue="0" Text='<%# Eval("PR_EVALUADO")%>' MaxValue="100" NumberFormat-DecimalDigits="2" DataType="Decimal" runat="server" Width="100px" OnTextChanged="txtPonderacion_TextChanged">
+                                                </telerik:RadNumericTextBox>
                                             </ItemTemplate>
                                         </telerik:GridTemplateColumn>
-                                        <telerik:GridBoundColumn UniqueName="NB_INDICADOR" DataField="NB_INDICADOR" HeaderText="Indicador" HeaderStyle-Font-Bold="true">
-                                            <HeaderStyle Width="150" />
-                                            <ItemStyle Width="150" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="DS_META" DataField="DS_META" HeaderText="Meta" HeaderStyle-Font-Bold="true">
-                                            <HeaderStyle Width="120" />
-                                            <ItemStyle Width="120" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="CL_TIPO_META" DataField="CL_TIPO_META" HeaderText="Tipo de meta" HeaderStyle-Font-Bold="true">
-                                            <HeaderStyle Width="80" />
-                                            <ItemStyle Width="80" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="NB_CUMPLIMIENTO_ACTUAL" DataField="NB_CUMPLIMIENTO_ACTUAL" HeaderText="Actual" DataType="System.String" HeaderStyle-Font-Bold="true">
-                                            <HeaderStyle Width="80" />
-                                            <ItemStyle HorizontalAlign="Right" Width="80" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="NB_CUMPLIMIENTO_MINIMO" DataField="NB_CUMPLIMIENTO_MINIMO" HeaderText="Mínimo" DataType="System.String" HeaderStyle-Font-Bold="true">
-                                            <HeaderStyle Width="80" />
-                                            <ItemStyle HorizontalAlign="Right" Width="80" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="NB_CUMPLIMIENTO_SATISFACTORIO" DataField="NB_CUMPLIMIENTO_SATISFACTORIO" HeaderText="Satisfactorio" DataType="System.String" HeaderStyle-Font-Bold="true">
-                                            <HeaderStyle Width="80" />
-                                            <ItemStyle HorizontalAlign="Right" Width="80" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="NB_CUMPLIMIENTO_SOBRESALIENTE" DataField="NB_CUMPLIMIENTO_SOBRESALIENTE" HeaderText="Sobresaliente" DataType="System.String" HeaderStyle-Font-Bold="true">
-                                            <HeaderStyle Width="80" />
-                                            <ItemStyle HorizontalAlign="Right" Width="80" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="PR_META" DataField="PR_META" HeaderText="Ponderación" DataType="System.Double" HeaderStyle-Font-Bold="true">
-                                            <HeaderStyle Width="80" />
-                                            <ItemStyle HorizontalAlign="Right" Width="80" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridButtonColumn CommandName="Delete" Text="Eliminar" UniqueName="Delete" HeaderText="Eliminar" ButtonType="ImageButton" HeaderStyle-Width="40"
-                                            ConfirmText="¿Desea eliminar la meta?"
-                                            ConfirmTextFormatString="¿Desea eliminar la meta?" ConfirmTitle="Confirmar" ConfirmDialogWidth="400"
-                                            ConfirmDialogHeight="150" ConfirmDialogType="RadWindow" />
                                     </Columns>
-                                </telerik:GridTableView>
-                            </DetailTables>
-                        </MasterTableView>
-                    </telerik:RadGrid>
-                    <div style="clear: both; height: 10px;"></div>
-                    <div class="ctrlBasico">
-                        <telerik:RadButton ID="btnAgregarMeta" runat="server" name="btnAgregarMeta" AutoPostBack="false" Text="Agregar metas" OnClientClicked="OpenAgregarMetasWindow" Enabled="false"></telerik:RadButton>
-                    </div>
-                    <div class="ctrlBasico">
-                        <telerik:RadButton ID="btnActivarMetas" runat="server" AutoPostBack="true" Text="Activar metas" OnClick="btnActivarMetas_Click"></telerik:RadButton>
-                    </div>
-                                        <div class="ctrlBasico">
-                        <telerik:RadButton ID="btnDesactivarMetas" runat="server" OnClick="btnDesactivarMetas_Click" Text="Desactivar metas"></telerik:RadButton>
-                    </div>
-                     <div class="ctrlBasico">
-                        <telerik:RadButton ID="btnModificarMetas" runat="server" AutoPostBack="false" Text="Editar metas" OnClientClicked="OpenModificarMetasWindow" Enabled="false"></telerik:RadButton>
-                    </div>
-                    <div class="ctrlBasico">
-                        <telerik:RadButton ID="btnCopiarMetas" runat="server" OnClick="btnCopiarMetas_Click" Text="Copiar metas"></telerik:RadButton>
-                    </div>
-                    <div class="divControlesBoton">
-                        <div class="ctrlBasico">
-                            <telerik:RadButton runat="server" ID="btnGuardarMetas" Text="Guardar metas" OnClick="btnGuardarMetas_Click"></telerik:RadButton>
+                                    <DetailTables>
+                                        <telerik:GridTableView DataKeyNames="ID_EVALUADO,ID_EVALUADOR" ClientDataKeyNames="ID_EVALUADO,ID_EVALUADOR" Name="gtvEvaluadores"
+                                            NoDetailRecordsText="No se han asignado evaluadores">
+                                            <Columns>
+                                                <telerik:GridBoundColumn UniqueName="NB_EVALUADOR" DataField="NB_EVALUADOR" HeaderText="Evaluador" HeaderStyle-Font-Bold="true">
+                                                    <HeaderStyle Width="150" />
+                                                    <ItemStyle Width="150" />
+                                                </telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn UniqueName="NB_PUESTO" DataField="NB_PUESTO" HeaderText="Puesto" HeaderStyle-Font-Bold="true">
+                                                    <HeaderStyle Width="150" />
+                                                    <ItemStyle Width="150" />
+                                                </telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn UniqueName="CL_CORREO_ELECTRONICO" DataField="CL_CORREO_ELECTRONICO" HeaderText="Correo electrónico" HeaderStyle-Font-Bold="true">
+                                                    <HeaderStyle Width="150" />
+                                                    <ItemStyle Width="150" />
+                                                </telerik:GridBoundColumn>
+                                                <telerik:GridButtonColumn CommandName="Delete" UniqueName="Delete" ButtonType="ImageButton" HeaderStyle-Width="30"
+                                                    ConfirmTextFormatString="¿Desea eliminar el evaluador?" ConfirmTitle="Confirmar" ConfirmDialogWidth="400" HeaderStyle-Font-Bold="true"
+                                                    ConfirmDialogHeight="150" ConfirmDialogType="RadWindow" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" />
+                                            </Columns>
+                                        </telerik:GridTableView>
+                                    </DetailTables>
+                                </MasterTableView>
+                            </telerik:RadGrid>
                         </div>
-                    </div>
-                </div>
+                        <div style="clear: both; height: 10px;"></div>
+                        <div class="ctrlBasico">
+                            <telerik:RadButton ID="btnSeleccionPorPersona" runat="server" Text="Seleccionar por persona" AutoPostBack="false" OnClientClicked="OpenEmpleadosSelectionWindow"></telerik:RadButton>
+                        </div>
+                        <div class="ctrlBasico">
+                            <telerik:RadButton ID="btnSeleccionPorPuesto" runat="server" Text="Seleccionar por puesto" AutoPostBack="false" OnClientClicked="OpenPuestoSelectionWindow"></telerik:RadButton>
+                        </div>
+                        <div class="ctrlBasico">
+                            <telerik:RadButton ID="btnSeleccionPorArea" runat="server" Text="Seleccionar por área/departamento" AutoPostBack="false" OnClientClicked="OpenAreaSelectionWindow"></telerik:RadButton>
+                        </div>
+                        <div class="ctrlBasico">
+                            <telerik:RadButton ID="btnAgregarEvaluador" Visible="false" runat="server" AutoPostBack="false" OnClientClicked="OpenEmpleadosSelectionWindowEvaluador" Text="Agregar evaluador"></telerik:RadButton>
+                        </div>
+                        <div class="divControlesBoton">
+                            <div class="ctrlBasico">
+                                <telerik:RadButton runat="server" ID="btnReasignarPonderacion" AutoPostBack="true" Text="Reasignar ponderación" OnClick="btnReasignarPonderacion_Click"></telerik:RadButton>
+                            </div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton runat="server" ID="btnGuardarEvaluado" Text="Guardar" OnClick="btnGuardarEvaluado_Click"></telerik:RadButton>
+                            </div>
+                        </div>
+                        <div class="ctrlBasico">
+                            <telerik:RadButton ID="btnEliminarEvaluado" runat="server" Text="Eliminar" OnClientClicking="confirmarEliminarEvaluados" OnClick="btnEliminarEvaluado_Click"></telerik:RadButton>
+                        </div>
+
+                    </telerik:RadPane>
+                    <telerik:RadPane ID="RadPane2" runat="server" Width="30">
+                        <telerik:RadSlidingZone ID="RadSlidingZone2" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
+                            <telerik:RadSlidingPane ID="RadSlidingPane1" runat="server" Title="Ayuda" Width="300" MinWidth="500" Height="100%">
+                                <div style="padding: 10px; text-align: justify;">
+                                    <fieldset>
+                                        <legend>
+                                            <label>Selección de evaluados:</label>
+                                        </legend>
+                                        Está página te permitirá seleccionar a los evaluados ya sea por persona, puesto o área/departamento. 
+                                     <br />
+                                        Podrás capturar la ponderación asignada a cada evaluado directamente o asignar una ponderación equitativa para todos, seleccionando el botón "Reasignar ponderación". Recuerda que la suma total debe ser 100%.
+                                     <br />
+                                        Una vez que hayas seleccionado a los evaluados y asignado una ponderación da clic en guardar para verificar la correcta configuración.  
+      
+                                    </fieldset>
+                                </div>
+                            </telerik:RadSlidingPane>
+                        </telerik:RadSlidingZone>
+                    </telerik:RadPane>
+                </telerik:RadSplitter>
+            </telerik:RadPageView>
+            <telerik:RadPageView ID="rpvDisenoMetas" runat="server">
+                <telerik:RadSplitter runat="server" ID="spHelp1" Width="100%" Height="100%" BorderSize="0">
+                    <telerik:RadPane ID="rpHelp1" runat="server">
+                        <div style="height: calc(100% - 65px); width: 100%;">
+                            <telerik:RadGrid ID="grdDisenoMetas" runat="server"
+                                Height="100%" AutoGenerateColumns="false" EnableHierarchyExpandAll="true" MasterTableView-HierarchyDefaultExpanded="true"
+                                EnableHeaderContextMenu="true" AllowSorting="true"
+                                AllowMultiRowSelection="true"
+                                OnNeedDataSource="grdDisenoMetas_NeedDataSource"
+                                OnDetailTableDataBind="grdDisenoMetas_DetailTableDataBind"
+                                OnItemDataBound="grdDisenoMetas_ItemDataBound"
+                                OnItemCommand="grdDisenoMetas_ItemCommand" HeaderStyle-Font-Bold="true">
+                                <ClientSettings>
+                                    <Scrolling UseStaticHeaders="true" AllowScroll="true" SaveScrollPosition="true" />
+                                    <Selecting AllowRowSelect="true" />
+                                </ClientSettings>
+                                <PagerStyle AlwaysVisible="false" />
+                                <GroupingSettings CaseSensitive="false" />
+                                <MasterTableView DataKeyNames="ID_EMPLEADO,ID_EVALUADO" ClientDataKeyNames="ID_EVALUADO" AllowPaging="true"
+                                    AllowFilteringByColumn="true" AllowSorting="true" Name="Evaluados"
+                                    ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
+                                    <Columns>
+                                        <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" FilterControlWidth="30" HeaderText="No. de Empleado" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" FilterControlWidth="130" HeaderText="Nombre completo" DataField="NB_EMPLEADO_COMPLETO" UniqueName="NB_EMPLEADO_COMPLETO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="200" FilterControlWidth="80" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="M_PUESTO_NB_PUESTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="200" FilterControlWidth="80" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                    </Columns>
+                                    <DetailTables>
+                                        <telerik:GridTableView DataKeyNames="ID_EVALUADO_META,ID_EVALUADO,NO_META, FG_EVALUAR" ClientDataKeyNames="ID_EVALUADO_META,ID_EVALUADO,NO_META, FG_EVALUAR" Name="gtvMetas"
+                                            NoDetailRecordsText="No se han asignado metas en el descriptivo de puestos" ShowFooter="true">
+                                            <Columns>
+                                                <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30"></telerik:GridClientSelectColumn>
+                                                <telerik:GridTemplateColumn HeaderText="Estatus" DataField="FG_EVALUAR" UniqueName="FG_EVALUAR" AllowFiltering="false" HeaderStyle-Font-Bold="true">
+                                                    <HeaderStyle Width="50" />
+                                                    <ItemTemplate>
+                                                        <div style="width: 80%; text-align: center;">
+                                                            <img src='<%# Eval("FG_EVALUAR").ToString().Equals("True") ? "../Assets/images/Aceptar.png" : "../Assets/images/Cancelar.png"  %>' />
+                                                        </div>
+                                                    </ItemTemplate>
+                                                </telerik:GridTemplateColumn>
+                                                <telerik:GridBoundColumn UniqueName="NB_INDICADOR" DataField="NB_INDICADOR" HeaderText="Indicador" HeaderStyle-Font-Bold="true">
+                                                    <HeaderStyle Width="150" />
+                                                    <ItemStyle Width="150" />
+                                                </telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn UniqueName="DS_META" DataField="DS_META" HeaderText="Meta" HeaderStyle-Font-Bold="true">
+                                                    <HeaderStyle Width="120" />
+                                                    <ItemStyle Width="120" />
+                                                </telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn UniqueName="CL_TIPO_META" DataField="CL_TIPO_META" HeaderText="Tipo de meta" HeaderStyle-Font-Bold="true">
+                                                    <HeaderStyle Width="80" />
+                                                    <ItemStyle Width="80" />
+                                                </telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn UniqueName="NB_CUMPLIMIENTO_ACTUAL" DataField="NB_CUMPLIMIENTO_ACTUAL" HeaderText="Actual" DataType="System.String" HeaderStyle-Font-Bold="true">
+                                                    <HeaderStyle Width="80" />
+                                                    <ItemStyle HorizontalAlign="Right" Width="80" />
+                                                </telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn UniqueName="NB_CUMPLIMIENTO_MINIMO" DataField="NB_CUMPLIMIENTO_MINIMO" HeaderText="Mínimo" DataType="System.String" HeaderStyle-Font-Bold="true">
+                                                    <HeaderStyle Width="80" />
+                                                    <ItemStyle HorizontalAlign="Right" Width="80" />
+                                                </telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn UniqueName="NB_CUMPLIMIENTO_SATISFACTORIO" DataField="NB_CUMPLIMIENTO_SATISFACTORIO" HeaderText="Satisfactorio" DataType="System.String" HeaderStyle-Font-Bold="true">
+                                                    <HeaderStyle Width="80" />
+                                                    <ItemStyle HorizontalAlign="Right" Width="80" />
+                                                </telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn UniqueName="NB_CUMPLIMIENTO_SOBRESALIENTE" DataField="NB_CUMPLIMIENTO_SOBRESALIENTE" HeaderText="Sobresaliente" DataType="System.String" HeaderStyle-Font-Bold="true">
+                                                    <HeaderStyle Width="80" />
+                                                    <ItemStyle HorizontalAlign="Right" Width="80" />
+                                                </telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn UniqueName="PR_META" DataField="PR_META" HeaderText="Ponderación" DataType="System.Double" HeaderStyle-Font-Bold="true">
+                                                    <HeaderStyle Width="80" />
+                                                    <ItemStyle HorizontalAlign="Right" Width="80" />
+                                                </telerik:GridBoundColumn>
+                                                <telerik:GridButtonColumn CommandName="Delete" Text="Eliminar" UniqueName="Delete" ButtonType="ImageButton" HeaderStyle-Width="40"
+                                                    ConfirmText="¿Desea eliminar la meta?"
+                                                    ConfirmTextFormatString="¿Desea eliminar la meta?" ConfirmTitle="Confirmar" ConfirmDialogWidth="400"
+                                                    ConfirmDialogHeight="150" ConfirmDialogType="RadWindow" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" />
+                                            </Columns>
+                                        </telerik:GridTableView>
+                                    </DetailTables>
+                                </MasterTableView>
+                            </telerik:RadGrid>
+                        </div>
+                        <div style="clear: both; height: 10px;"></div>
+                        <div class="ctrlBasico">
+                            <telerik:RadButton ID="btnAgregarMeta" runat="server" name="btnAgregarMeta" AutoPostBack="false" Text="Agregar metas" OnClientClicked="OpenAgregarMetasWindow" Enabled="false"></telerik:RadButton>
+                        </div>
+                        <div class="ctrlBasico">
+                            <telerik:RadButton ID="btnActivarMetas" runat="server" AutoPostBack="true" Text="Activar metas" OnClick="btnActivarMetas_Click"></telerik:RadButton>
+                        </div>
+                        <div class="ctrlBasico">
+                            <telerik:RadButton ID="btnDesactivarMetas" runat="server" OnClick="btnDesactivarMetas_Click" Text="Desactivar metas"></telerik:RadButton>
+                        </div>
+                        <div class="ctrlBasico">
+                            <telerik:RadButton ID="btnModificarMetas" runat="server" AutoPostBack="false" Text="Editar metas" OnClientClicked="OpenModificarMetasWindow" Enabled="false"></telerik:RadButton>
+                        </div>
+                        <div class="ctrlBasico">
+                            <telerik:RadButton ID="btnCopiarMetas" runat="server" OnClick="btnCopiarMetas_Click" Text="Copiar metas"></telerik:RadButton>
+                        </div>
+                        <div class="divControlesBoton">
+                            <div class="ctrlBasico">
+                                <telerik:RadButton runat="server" ID="btnGuardarMetas" Text="Guardar metas" OnClientClicking="ConfirmarEliminarInactivas" OnClick="btnGuardarMetas_Click"></telerik:RadButton>
+                            </div>
+                        </div>
+                    </telerik:RadPane>
+                    <telerik:RadPane ID="rpHelpAyuda1" runat="server" Width="30">
+                        <telerik:RadSlidingZone ID="RadSlidingZone1" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
+                            <telerik:RadSlidingPane ID="rspMensaje" runat="server" Title="Ayuda" Width="300" MinWidth="500" Height="100%">
+                                <div style="padding: 10px; text-align: justify;">
+                                    <fieldset>
+                                        <legend>
+                                            <label>Diseñar metas:</label>
+                                        </legend>
+                                        Está página te permitirá diseñar metas de evaluación facilmente. 
+                                     <br />
+                                        Copiar metas:
+                                <br />
+                                        Podrás copiar metas a los empleados que elijas.
+                                   Una vez que hayas diseñado una meta, sus niveles y ponderación, para copiarlos a otros evaluador deberás seleccionar aquellas metas que desees copiar, después selecciona la(s) personas a quien se le asignaran los elementos a copiar y por último da clic en el botón "Copiar metas"  para realizar el copiado.            
+                                    </fieldset>
+                                </div>
+                            </telerik:RadSlidingPane>
+                        </telerik:RadSlidingZone>
+                    </telerik:RadPane>
+                </telerik:RadSplitter>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvDefinirBono" runat="server">
+                 <telerik:RadSplitter runat="server" ID="RadSplitter2" Width="100%" Height="100%" BorderSize="0">
+                    <telerik:RadPane ID="RadPane3" runat="server">
+                        <div style="height: calc(100% - 65px); width: 100%;">
                 <div class="ctrlBasico">
                     <fieldset>
                         <legend>
-                            <telerik:RadLabel runat="server" ID="lblDsAsignarBono">¿Desea asignar un bono para este periodo?</telerik:RadLabel>
+                            <telerik:RadLabel runat="server" ID="lblDsAsignarBono">¿Desea asignar un bono para este período?</telerik:RadLabel>
                         </legend>
                         <div style="margin-left: 10px;">
                             <div class="ctrlBasico">
@@ -833,7 +887,7 @@
                                 </telerik:RadButton>
                             </div>
                             <div class="ctrlBasico">
-                                <telerik:RadNumericTextBox ID="txtMontoBono" InputType="Number" Width="120px" runat="server" AutoPostBack="false" NumberFormat-DecimalDigits="2">
+                                <telerik:RadNumericTextBox ID="txtMontoBono" InputType="Number" Width="120px" runat="server" AutoPostBack="false" MinValue="0" NumberFormat-DecimalDigits="2">
                                     <EnabledStyle HorizontalAlign="Right" />
                                 </telerik:RadNumericTextBox>
                             </div>
@@ -885,7 +939,7 @@
                 <div class="ctrlBasico">
                     <fieldset>
                         <legend>
-                            <telerik:RadLabel runat="server" ID="rlPeriodo" Enabled="false" Text="Rango de periodo"></telerik:RadLabel>
+                            <telerik:RadLabel runat="server" ID="rlPeriodo" Enabled="false" Text="Rango de período"></telerik:RadLabel>
                         </legend>
                         <div style="margin-left: 10px;">
                             <div class="ctrlBasico">
@@ -913,7 +967,7 @@
                                     <ItemStyle Width="200px" />
                                     <HeaderStyle Width="200px" />
                                 </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn UniqueName="NB_DEPARTAMENTO" HeaderText="Área" DataField="NB_DEPARTAMENTO" HeaderStyle-Font-Bold="true">
+                                <telerik:GridBoundColumn UniqueName="NB_DEPARTAMENTO" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" HeaderStyle-Font-Bold="true">
                                     <ItemStyle Width="200px" />
                                     <HeaderStyle Width="200px" />
                                 </telerik:GridBoundColumn>
@@ -936,30 +990,51 @@
                         </MasterTableView>
                     </telerik:RadGrid>
                 </div>
+                            </div>
                 <div class="divControlesBoton">
                     <div class="ctrlBasico">
-                        <telerik:RadButton runat="server" ID="btnGuardarCerrar" Text="Guardar y cerrar" OnClick="btnGuardarCerrar_Click"></telerik:RadButton>
-                    </div>
-                    <div class="ctrlBasico">
                         <telerik:RadButton runat="server" ID="btnGuardar" Text="Guardar" OnClick="btnGuardar_Click"></telerik:RadButton>
+                    </div>
+                                        <div class="ctrlBasico">
+                        <telerik:RadButton runat="server" ID="btnGuardarCerrar" Text="Guardar y cerrar" OnClick="btnGuardarCerrar_Click"></telerik:RadButton>
                     </div>
                     <div class="ctrlBasico">
                         <telerik:RadButton runat="server" ID="btnCancelar" Text="Cancelar" OnClientClicked="closeWindow"></telerik:RadButton>
                     </div>
                 </div>
+
+                 </telerik:RadPane>
+                    <telerik:RadPane ID="RadPane4" runat="server" Width="30">
+                        <telerik:RadSlidingZone ID="RadSlidingZone3" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
+                            <telerik:RadSlidingPane ID="RadSlidingPane2" runat="server" Title="Ayuda" Width="300" MinWidth="500" Height="100%">
+                                <div style="padding: 10px; text-align: justify;">
+                                    <fieldset>
+                                        <legend>
+                                            <label>Definir bono:</label>
+                                        </legend>
+                                        Define el bono que en este período se aplicará a los evaluados. Dejalo en 0 si no deseas aplicar bono. 
+                                 
+                                    </fieldset>
+                                </div>
+                            </telerik:RadSlidingPane>
+                        </telerik:RadSlidingZone>
+                    </telerik:RadPane>
+                </telerik:RadSplitter>
+
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvContasenas" runat="server">
                 <div style="height: calc(100% - 45px); padding-bottom: 10px;">
-                    <telerik:RadGrid ID="grdContrasenaEvaluadores" runat="server" Height="100%" AutoGenerateColumns="false" AllowSorting="true"
+                    <telerik:RadGrid ID="grdContrasenaEvaluadores" runat="server" Height="100%" AllowMultiRowSelection="true" AutoGenerateColumns="false" AllowSorting="true"
                         OnNeedDataSource="grdContrasenaEvaluadores_NeedDataSource" HeaderStyle-Font-Bold="true" OnItemDataBound="grdContrasenaEvaluadores_ItemDataBound">
                         <ClientSettings EnableAlternatingItems="true">
                             <Scrolling UseStaticHeaders="true" AllowScroll="true" />
-                            <Selecting AllowRowSelect="true" />
+                            <Selecting AllowRowSelect="true" CellSelectionMode="MultiCell" />
                         </ClientSettings>
                         <PagerStyle AlwaysVisible="true" />
                         <GroupingSettings CaseSensitive="false" />
                         <MasterTableView DataKeyNames="ID_EVALUADOR" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
                             <Columns>
+                                <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="130" FilterControlWidth="60" HeaderText="Evaluador" DataField="NB_EVALUADOR" UniqueName="NB_EVALUADOR" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="200" FilterControlWidth="130" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="NB_PUESTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Contraseña" DataField="CL_TOKEN" UniqueName="CL_TOKEN" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
@@ -968,14 +1043,16 @@
                     </telerik:RadGrid>
                 </div>
                 <div style="clear: both;"></div>
-                <div class="ctrlBasico">
+                <label id="lbMensaje" runat="server" visible="false" style="color: red;">*El evaluador para este periodo es el Coordinador, no se pueden enviar solicitudes, el coordinador realizará la captura ingresando a través del botón capturar.</label>
+                <div style="clear: both;"></div>
+              <%--  <div class="ctrlBasico">
                     <telerik:RadButton ID="btnReasignarTodasContrasenas" runat="server" Text="Reasignar contraseñas a todos" OnClick="btnReasignarTodasContrasenas_Click"></telerik:RadButton>
-                </div>
+                </div>--%>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnReasignarContrasena" runat="server" Text="Reasignar contraseña al evaluador seleccionado" OnClick="btnReasignarContrasena_Click"></telerik:RadButton>
                 </div>
-                  <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnEnvioSolicitudes" runat="server" Text="Enviar solicitudes" OnClientClicking="OpenEnvioSolicitudes"></telerik:RadButton>
+                <div class="ctrlBasico">
+                    <telerik:RadButton ID="btnEnvioSolicitudes" runat="server" Text="Enviar evaluaciones" OnClientClicking="OpenEnvioSolicitudes"></telerik:RadButton>
                 </div>
                 <div class="divControlDerecha">
                     <telerik:RadButton runat="server" ID="btnCerraryGuaradar" Text="Guardar y cerrar" OnClientClicked="CloseWindowConfig"></telerik:RadButton>

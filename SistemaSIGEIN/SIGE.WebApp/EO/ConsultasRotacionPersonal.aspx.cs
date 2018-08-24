@@ -23,6 +23,7 @@ namespace SIGE.WebApp.EO
         private string vNbPrograma;
         private int? vIdEmpresa;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private int? vIdRol;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -48,6 +49,8 @@ namespace SIGE.WebApp.EO
             }
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
         }
 
         DateTime GetLastDay(DateTime date)
@@ -58,11 +61,12 @@ namespace SIGE.WebApp.EO
         protected void grdHistorialBaja_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             RotacionPersonalNegocio nRotacion = new RotacionPersonalNegocio();
-            var vRotacion = nRotacion.ObtienePeriodosClima().Select(s => new E_HISTORIAL_BAJA
+            var vRotacion = nRotacion.ObtenerHistorialBajas(pID_EMPRESA: vIdEmpresa, pID_ROL: vIdRol).Select(s => new E_HISTORIAL_BAJA
             {
                 CL_EMPLEADO = s.CL_EMPLEADO,
                 CL_ESTADO = s.CL_ACTIVO,
                 DS_COMENTARIO = s.DS_COMENTARIOS,
+                FECHA_INGRESO = s.FE_ALTA,
                 FECHA_BAJA = s.FE_BAJA_EFECTIVA,
                 FECHA_REINGRESO = s.FE_REINGRESO,
                 NB_EMPLEADO = s.NB_EMPLEADO,
@@ -129,10 +133,10 @@ namespace SIGE.WebApp.EO
 
 
             RotacionPersonalNegocio nRotacion = new RotacionPersonalNegocio();
-            List<E_GRAFICA_ROTACION> vGraficaRotacion = nRotacion.ObtieneGraficaIndiceRotacion(pFECHA_INICIO: vFechaInicio, pFECHA_FINAL: vFechaFinal, pTIPO_REPORTE: vTipoReporte, pXML_FILTROS: pFiltros).Select(s => new E_GRAFICA_ROTACION { FECHA = s.FECHA, NO_CANTIDAD = s.CANTIDAD_BAJA, NO_EMPLEADOS_ALTA = s.NO_EMPLEADOS_ALTA, NO_EMPLEADOS_BAJA = s.NO_EMPLEADOS_BAJA, PR_TOTAL_BAJA = s.PR_TOTAL_EMPLEADOS }).ToList();
+            List<E_GRAFICA_ROTACION> vGraficaRotacion = nRotacion.ObtieneGraficaIndiceRotacion(pFECHA_INICIO: vFechaInicio, pFECHA_FINAL: vFechaFinal, pTIPO_REPORTE: vTipoReporte, pXML_FILTROS: pFiltros, pID_EMPRESA: vIdEmpresa, pID_ROL: vIdRol).Select(s => new E_GRAFICA_ROTACION { FECHA = s.FECHA, NO_CANTIDAD = s.CANTIDAD_BAJA, NO_EMPLEADOS_ALTA = s.NO_EMPLEADOS_ALTA, NO_EMPLEADOS_BAJA = s.NO_EMPLEADOS_BAJA, PR_TOTAL_BAJA = s.PR_TOTAL_EMPLEADOS }).ToList();
             PintaGraficaIndiceRotacion(vGraficaRotacion);
 
-            var vEmpleados = nRotacion.ObtieneEmpleadosIndiceRotacion(pFECHA_INICIO: vFechaInicio, pFECHA_FINAL: vFechaFinal, pTIPO_REPORTE: vTipoReporte, pXML_FILTROS: pFiltros);
+            var vEmpleados = nRotacion.ObtieneEmpleadosIndiceRotacion(pFECHA_INICIO: vFechaInicio, pFECHA_FINAL: vFechaFinal, pTIPO_REPORTE: vTipoReporte, pXML_FILTROS: pFiltros, pID_EMPRESA: vIdEmpresa, pID_ROL: vIdRol);
             rgEmpleadosGrafica.DataSource = vEmpleados;
             rgEmpleadosGrafica.DataBind();
         }
@@ -149,10 +153,10 @@ namespace SIGE.WebApp.EO
                 vSeries.SeriesItems.Add(item.NO_CANTIDAD);
                 vSeries.LabelsAppearance.Visible = false;
                 vSeries.MarkersAppearance.Visible = true;
-                rhlIndiceRotacion.PlotArea.XAxis.Items.Add(item.FECHA.ToString());
+                rhlIndiceRotacion.PlotArea.XAxis.Items.Add(item.FECHA.Value.ToShortDateString().ToString());
                 //rhlIndiceRotacion.PlotArea.XAxis.LabelsAppearance.ClientTemplate = item.FECHA.ToString();
                 rhlIndiceRotacion.PlotArea.XAxis.LabelsAppearance.RotationAngle = 270;
-                rhlIndiceRotacion.PlotArea.XAxis.LabelsAppearance.DataFormatString = "dd/MM/yyyy";
+               // rhlIndiceRotacion.PlotArea.XAxis.LabelsAppearance.DataFormatString = "dd/MM/yyyy";
                 //rhlIndiceRotacion.PlotArea.XAxis.DataLabelsField = item.FECHA.ToString();
                 // rhlIndiceRotacion.PlotArea.XAxis.Items.Add(item.FECHA.ToString());
             }
@@ -161,7 +165,7 @@ namespace SIGE.WebApp.EO
             List<E_PORCENTAJE_EMPLEADOS> vlstPorcentanjes = new List<E_PORCENTAJE_EMPLEADOS>();
             var vPorcentajes = pGraficaIndice.FirstOrDefault();
 
-            vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Bajas en el periodo", PR_CANTIDAD = vPorcentajes.NO_EMPLEADOS_BAJA.ToString() });
+            vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Bajas en el período", PR_CANTIDAD = vPorcentajes.NO_EMPLEADOS_BAJA.ToString() });
             vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Personal en inventario", PR_CANTIDAD = vPorcentajes.NO_EMPLEADOS_ALTA.ToString() });
             vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Indice de rotación", PR_CANTIDAD = vPorcentajes.PR_TOTAL_BAJA + "%" });
 
@@ -220,7 +224,7 @@ namespace SIGE.WebApp.EO
             DateTime? vFechaFinal = rdpFechaFin.SelectedDate;
 
             RotacionPersonalNegocio nRotacion = new RotacionPersonalNegocio();
-            List<E_GRAFICA_ROTACION> vGraficaCausaRotacion = nRotacion.ObtieneGraficaCausaRotacion(pFECHA_INICIO: vFechaInicio, pFECHA_FINAL: vFechaFinal, pXML_FILTROS: pFiltros).Select(s => new E_GRAFICA_ROTACION { NB_CAUSA = s.NB_CATALOGO_VALOR, NO_CANTIDAD = s.NO_CANTIDAD, PR_CANTIDAD = s.PR_CANTIDAD, NO_EMPLEADOS_ALTA = s.NO_EMPLEADOS_ALTA, NO_EMPLEADOS_BAJA = s.NO_EMPLEADOS_BAJA, PR_TOTAL_BAJA = s.PR_TOTAL_BAJA }).ToList();
+            List<E_GRAFICA_ROTACION> vGraficaCausaRotacion = nRotacion.ObtieneGraficaCausaRotacion(pFECHA_INICIO: vFechaInicio, pFECHA_FINAL: vFechaFinal, pXML_FILTROS: pFiltros, pID_EMPRESA: vIdEmpresa, pID_ROL: vIdRol).Select(s => new E_GRAFICA_ROTACION { NB_CAUSA = s.NB_CATALOGO_VALOR, NO_CANTIDAD = s.NO_CANTIDAD, PR_CANTIDAD = s.PR_CANTIDAD, NO_EMPLEADOS_ALTA = s.NO_EMPLEADOS_ALTA, NO_EMPLEADOS_BAJA = s.NO_EMPLEADOS_BAJA, PR_TOTAL_BAJA = s.PR_TOTAL_BAJA }).ToList();
             PintaGraficaCausaRotacion(vGraficaCausaRotacion);
         }
 
@@ -241,7 +245,7 @@ namespace SIGE.WebApp.EO
             var vPorcentajes = plstPorcentajes.FirstOrDefault();
 
             //0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-            vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Bajas en el periodo", PR_CANTIDAD = vPorcentajes != null ? vPorcentajes.NO_EMPLEADOS_BAJA.ToString() : "0" });
+            vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Bajas en el período", PR_CANTIDAD = vPorcentajes != null ? vPorcentajes.NO_EMPLEADOS_BAJA.ToString() : "0" });
             vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Personal en inventario", PR_CANTIDAD = vPorcentajes != null ? vPorcentajes.NO_EMPLEADOS_ALTA.ToString() : "0" });
             vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Indice de rotación", PR_CANTIDAD = vPorcentajes != null ? vPorcentajes.PR_TOTAL_BAJA.ToString() + "%" : "0%" });
 

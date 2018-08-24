@@ -314,7 +314,7 @@
             </div>--%>
             </telerik:RadPane>
             <telerik:RadPane ID="rpAyuda" runat="server" Width="22px" ShowContentDuringLoad="false">
-                <telerik:RadSlidingZone ID="rszPrograma" runat="server" SlideDirection="Left" Width="22px">
+                <telerik:RadSlidingZone ID="rszPrograma" runat="server" SlideDirection="Left" Width="22px" ClickToOpen="true">
                     <telerik:RadSlidingPane ID="rspNuevoPrograma" runat="server" Title="Configuración de tablero" Width="240px" RenderMode="Mobile" Height="200">
                         <div style="margin-left:10px;">
                         <div style="clear: both;"></div>

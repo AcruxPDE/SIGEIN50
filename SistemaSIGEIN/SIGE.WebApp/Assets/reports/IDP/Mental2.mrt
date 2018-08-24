@@ -407,7 +407,7 @@
               <Name>Text1</Name>
               <Page isRef="2" />
               <Parent isRef="3" />
-              <Text>Aptitud Mental II</Text>
+              <Text>Aptitud mental II</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text1>
@@ -1468,7 +1468,7 @@ No se detenga mucho en una pregunta. Si llegas a una que no comprendas, pasa a l
               <Name>Text37</Name>
               <Page isRef="77" />
               <Parent isRef="78" />
-              <Text>Aptitud Mental II</Text>
+              <Text>Aptitud mental II</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text37>
@@ -3569,7 +3569,7 @@ sepan dónde están</Text>
               <Name>Text52</Name>
               <Page isRef="226" />
               <Parent isRef="227" />
-              <Text>Aptitud Mental II</Text>
+              <Text>Aptitud mental II</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text52>
@@ -5665,7 +5665,7 @@ mas escasos</Text>
               <Name>Text202</Name>
               <Page isRef="375" />
               <Parent isRef="376" />
-              <Text>Aptitud Mental II</Text>
+              <Text>Aptitud mental II</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text202>
@@ -7588,7 +7588,7 @@ CON DIME ERES QUIEN DIRE ANDAS Y TE QUIEN</Text>
               <Name>Text265</Name>
               <Page isRef="511" />
               <Parent isRef="512" />
-              <Text>Aptitud Mental II</Text>
+              <Text>Aptitud mental II</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text265>
@@ -9406,7 +9406,7 @@ es malo</Text>
               <Name>Text302</Name>
               <Page isRef="638" />
               <Parent isRef="639" />
-              <Text>Aptitud Mental II</Text>
+              <Text>Aptitud mental II</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text302>
@@ -11502,7 +11502,7 @@ que tiene cola</Text>
               <Name>Text423</Name>
               <Page isRef="787" />
               <Parent isRef="788" />
-              <Text>Aptitud Mental II</Text>
+              <Text>Aptitud mental II</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text423>
@@ -12651,10 +12651,10 @@ Y   SUMA   CUATRO   ESCRIBA   TRES   LA   UNO   DE</Text>
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>10/18/2017 1:28:53 PM</ReportChanged>
+  <ReportChanged>5/30/2018 1:44:03 PM</ReportChanged>
   <ReportCreated>10/13/2017 12:13:56 PM</ReportCreated>
-  <ReportFile>C:\Users\usuario\Documents\SIGEIN 50\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\Mental2.mrt</ReportFile>
-  <ReportGuid>8354d0441b7140b884be9e238d2cd424</ReportGuid>
+  <ReportFile>C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\Mental2.mrt</ReportFile>
+  <ReportGuid>d13e62ec0a7a45d69638e3fb003eb442</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2015.3.0</ReportVersion>
