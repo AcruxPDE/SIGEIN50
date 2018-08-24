@@ -1,0 +1,27 @@
+﻿<div ng-controller="InicioController">
+
+  <div class="row">
+     <ol class="breadcrumb">
+       <li><a href="javascript:Navegacion(2,'menu.html')">Menú principal</a></li>
+       <li><a href="javascript:Navegacion(2,'index.html')">{{Modulo}}</a></li>
+       <li class="active">{{Seccion}}</li>
+     </ol>
+  </div>
+
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-lg-6 col-xs-12">
+            <fieldset>
+                <legend>{{NombreModulo}}</legend>
+                <div ng-bind-html="Contenidohtml">
+                </div>
+            </fieldset>
+           
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-6 col-xs-12">
+            <div>
+                <img ng-src="{{ImagenModulo}}" alt="Imagen modulo" class="img-responsive" />
+            </div>
+        </div>
+    </div>
+</div>

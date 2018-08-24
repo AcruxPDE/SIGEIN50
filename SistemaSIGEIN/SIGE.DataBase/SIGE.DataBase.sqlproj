@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>SIGE.DataBase</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{1a22e366-3441-472b-8171-fd18bf126e9a}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>SIGE.DataBase</RootNamespace>
+    <AssemblyName>SIGE.DataBase</AssemblyName>
+    <ModelCollation>3082,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Modern_Spanish_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <IncludeSchemaNameInFileName>True</IncludeSchemaNameInFileName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="ADM\" />
+    <Folder Include="ADM\Tables\" />
+    <Folder Include="IDP\" />
+    <Folder Include="IDP\Tables\" />
+    <Folder Include="ADM\Views\" />
+    <Folder Include="IDP\Views\" />
+    <Folder Include="IDP\Functions\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="ADM\Functions\" />
+    <Folder Include="ADM\Stored Procedures\" />
+    <Folder Include="IDP\Stored Procedures\" />
+    <Folder Include="Security\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="ADM\Tables\M_PUESTO.sql" />
+    <Build Include="ADM\Tables\C_COMPETENCIA.sql" />
+    <Build Include="ADM\Tables\C_PUESTO_ESCOLARIDAD.sql" />
+    <Build Include="IDP\Tables\K_BATERIA_PRUEBA.sql" />
+    <Build Include="ADM\Tables\C_PUESTO_EXPERIENCIA.sql" />
+    <Build Include="ADM\Tables\K_REQUISICION.sql" />
+    <Build Include="ADM\Tables\C_CAMPO_ADICIONAL.sql" />
+    <Build Include="ADM\Tables\C_PUESTO_COMPETENCIA.sql" />
+    <Build Include="IDP\Tables\K_COMPETENCIA_FACTOR.sql" />
+    <Build Include="ADM\Tables\C_FUNCION_INDICADOR.sql" />
+    <Build Include="ADM\Tables\K_ARCHIVO.sql" />
+    <Build Include="IDP\Tables\C_EMPLEADO_ESCOLARIDAD.sql" />
+    <Build Include="ADM\Tables\C_CANDIDATO.sql" />
+    <Build Include="IDP\Tables\K_PRUEBA_FACTOR.sql" />
+    <Build Include="IDP\Tables\C_PRUEBA_NIVEL.sql" />
+    <Build Include="ADM\Tables\C_NIVEL_ESCOLARIDAD.sql" />
+    <Build Include="ADM\Tables\C_USUARIO.sql" />
+    <Build Include="ADM\Tables\C_PUESTO_RELACIONADO.sql" />
+    <Build Include="ADM\Tables\C_CENTRO_ADMVO.sql" />
+    <Build Include="ADM\Tables\S_TIPO_RELACION_PUESTO.sql" />
+    <Build Include="ADM\Tables\K_SOLICITUD.sql" />
+    <Build Include="ADM\Tables\S_FUNCION.sql" />
+    <Build Include="ADM\Tables\C_CATALOGO_VALOR.sql" />
+    <Build Include="ADM\Tables\C_CENTRO_OPTVO.sql" />
+    <Build Include="ADM\Tables\S_TIPO_DATO.sql" />
+    <Build Include="ADM\Tables\C_SECUENCIA.sql" />
+    <Build Include="ADM\Tables\C_PREGUNTA.sql" />
+    <Build Include="ADM\Tables\C_EVALUADOR_EXTERNO.sql" />
+    <Build Include="ADM\Tables\C_RESPUESTA.sql" />
+    <Build Include="ADM\Tables\C_EMPLEADO_IDIOMA.sql" />
+    <Build Include="IDP\Tables\K_PRUEBA_NIVEL.sql" />
+    <Build Include="ADM\Tables\C_DOCUMENTO.sql" />
+    <Build Include="ADM\Tables\C_ROL_FUNCION.sql" />
+    <Build Include="ADM\Tables\C_EMPLEADO_RELACIONADO.sql" />
+    <Build Include="IDP\Tables\K_CANDIDATO_COMPETENCIA.sql" />
+    <Build Include="ADM\Tables\K_CUESTIONARIO_PREGUNTA.sql" />
+    <Build Include="ADM\Tables\C_MUNICIPIO.sql" />
+    <Build Include="ADM\Tables\C_COLONIA.sql" />
+    <Build Include="ADM\Tables\C_ESTADO.sql" />
+    <Build Include="ADM\Tables\C_PARIENTE.sql" />
+    <Build Include="ADM\Tables\C_CALLE.sql" />
+    <Build Include="IDP\Tables\C_FACTOR.sql" />
+    <Build Include="IDP\Tables\C_PRUEBA_SECCION.sql" />
+    <Build Include="ADM\Tables\C_PERIODO.sql" />
+    <Build Include="IDP\Tables\C_CUESTIONARIO.sql" />
+    <Build Include="ADM\Tables\K_EVALUADO_PERIODO.sql" />
+    <Build Include="ADM\Tables\C_PLANTILLA_FORMULARIO.sql" />
+    <Build Include="IDP\Tables\C_VARIABLE.sql" />
+    <Build Include="ADM\Tables\C_DEPENDIENTE_ECONOMICO.sql" />
+    <Build Include="ADM\Tables\S_CONFIGURACION.sql" />
+    <Build Include="IDP\Tables\C_PRUEBA.sql" />
+    <Build Include="ADM\Tables\S_CATALOGO_TIPO.sql" />
+    <Build Include="ADM\Tables\H_EMPLEADO.sql" />
+    <Build Include="ADM\Tables\K_EVALUADO_EVALUADOR.sql" />
+    <Build Include="ADM\Tables\C_PUESTO_FUNCION.sql" />
+    <Build Include="ADM\Tables\C_CATALOGO_LISTA.sql" />
+    <Build Include="ADM\Tables\C_GRUPO_PREGUNTA.sql" />
+    <Build Include="ADM\Tables\C_ESCOLARIDAD.sql" />
+    <Build Include="ADM\Tables\H_DEPARTAMENTO.sql" />
+    <Build Include="ADM\Tables\C_EMPRESA.sql" />
+    <Build Include="ADM\Tables\C_IDIOMA.sql" />
+    <Build Include="ADM\Tables\H_PUESTO.sql" />
+    <Build Include="ADM\Tables\S_TIPO_COMPETENCIA.sql" />
+    <Build Include="ADM\Tables\C_AREA_INTERES.sql" />
+    <Build Include="ADM\Tables\M_DEPARTAMENTO.sql" />
+    <Build Include="ADM\Tables\K_CUESTIONARIO.sql" />
+    <Build Include="IDP\Tables\K_PRUEBA_SECCION.sql" />
+    <Build Include="ADM\Tables\C_ROL.sql" />
+    <Build Include="ADM\Tables\K_EXPERIENCIA_LABORAL.sql" />
+    <Build Include="ADM\Tables\M_EMPLEADO.sql" />
+    <Build Include="IDP\Tables\K_RESULTADO.sql" />
+    <Build Include="ADM\Tables\K_EMPLEADO_COMPETENCIA.sql" />
+    <Build Include="ADM\Tables\C_INDICADOR_DESEMPENO.sql" />
+    <Build Include="ADM\Tables\C_COMPETENCIA_NIVEL.sql" />
+    <Build Include="ADM\Tables\K_ERROR.sql" />
+    <Build Include="ADM\Tables\K_AREA_INTERES.sql" />
+    <Build Include="ADM\Tables\C_CLASIFICACION_COMPETENCIA.sql" />
+    <Build Include="IDP\Tables\K_PRUEBA.sql" />
+    <Build Include="ADM\Views\VW_OBTIENE_MESES.sql" />
+    <Build Include="ADM\Views\VW_TIPO_ESCOLARIDAD.sql" />
+    <Build Include="ADM\Views\VW_TIPO_ASENTAMIENTO.sql" />
+    <Build Include="ADM\Views\VW_TIPO_LICENCIA.sql" />
+    <Build Include="ADM\Views\VW_PAIS.sql" />
+    <Build Include="ADM\Views\VW_ESTADO_REQUISICION.sql" />
+    <Build Include="ADM\Views\VW_CAUSAS_REQUISICION.sql" />
+    <Build Include="ADM\Views\VW_ESTADO_ESCOLARIDAD.sql" />
+    <Build Include="ADM\Views\VW_IDIOMA_NIVEL_DOMINIO.sql" />
+    <Build Include="ADM\Views\VW_IDIOMA_CERTIFICADO.sql" />
+    <Build Include="IDP\Views\VW_OBTIENE_PORCENTAJES_IDIOMAS.sql" />
+    <Build Include="ADM\Views\VW_RED_SOCIAL.sql" />
+    <Build Include="ADM\Views\VW_ZONA_LOCALIDAD.sql" />
+    <Build Include="ADM\Views\VW_PARENTEZCO.sql" />
+    <Build Include="IDP\Functions\F_OBTIENE_VALORES_BAREMOS.sql" />
+    <Build Include="dbo\Functions\F_OBTENER_EDAD.sql" />
+    <Build Include="dbo\Functions\F_GETDATE.sql" />
+    <Build Include="dbo\Functions\F_ERROR_INSERTAR_DATOS.sql" />
+    <Build Include="IDP\Functions\F_OBTIENE_CI.sql" />
+    <Build Include="dbo\Functions\F_ERROR_CREAR_ENCABEZADO.sql" />
+    <Build Include="dbo\Functions\F_ERROR_INSERTAR_MENSAJES.sql" />
+    <Build Include="IDP\Functions\F_OBTIENE_VALORES_ESTILO_PENSAMIENTO.sql" />
+    <Build Include="dbo\Functions\F_ERROR_MENSAJES.sql" />
+    <Build Include="dbo\Functions\FUNCT_CATALOGO_CATALOGOS.sql" />
+    <Build Include="ADM\Functions\F_OBTENER_CATALOGO.sql" />
+    <Build Include="IDP\Functions\F_OBTIENE_DATOS_CONSULTA_PERSONAL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_COMPETENCIA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_K_EMPLEADO_COMPETENCIA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_USUARIO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_ESTADO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_K_EMPLEADO_COMPETENCIA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_ESTADO.sql" />
+    <Build Include="ADM\Stored Procedures\SP_OBTIENE_ANIOS.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_ESTADO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_RESULTADOS_INTERES_PERSONAL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_EVALUADOR_EXTERNO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_BATERIA_PRUEBAS.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_EVALUADOR_EXTERNO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_ESCOLARIDADES.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_EVALUADOR_EXTERNO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_DESCRIPTIVO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_MUNICIPIO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_USUARIO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_MUNICIPIO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_MUNICIPIO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_K_EXPERIENCIA_LABORAL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_PUESTO_FUNCION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_PERIODO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_RESULTADOS_ADAPTACION.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_K_PREGUNTA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_PUESTO_FUNCION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_PERIODO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_K_AREA_INTERES.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_PUESTO_FUNCION.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_VARIABLES_BAREMOS.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_PERIODO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_K_AREA_INTERES.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_ROL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_K_AREA_INTERES.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_BAREMOS_LABORAL2.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_BAREMOS_LABORAL1.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_ROL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_PUESTO_COMPETENCIA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_BAREMOS_PENSAMIENTO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_ROL_FUNCION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_PUESTO_COMPETENCIA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_BAREMOS_INTERES_PERSONAL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_ROL_FUNCION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_PUESTO_COMPETENCIA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_BAREMOS_TECNICAPC.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_ROL_FUNCION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_NOTIFICAR_REQUISICION.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_ACTUALIZA_TIEMPO_PRUEBA_SECCION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_SECUENCIA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_USUARIO_AUTENTICACION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_SECUENCIA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_BAREMOS_ADAPTACION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_SECUENCIA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_S_TIPO_COMPETENCIA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_BAREMOS_APTITUD2.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_M_DEPARTAMENTO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_S_TIPO_COMPETENCIA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_BAREMOS_APTITUD1.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_M_DEPARTAMENTO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_SUELDO_PROMEDIO_PUESTO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_S_TIPO_COMPETENCIA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_BAREMOS_TIVA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_M_DEPARTAMENTO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_REP_RESULT_PUESTO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_M_EMPLEADO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_REP_RESULT_PUESTO_ESCOLARIDADES.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_K_REQUISICION_CANDIDATO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_M_EMPLEADO.sql" />
+    <Build Include="ADM\Stored Procedures\SP_CREA_RUTA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_REP_RESULT_PUESTO_COMPETENCIAS_PERFIL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_M_EMPLEADO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_REP_RESULT_PUESTO_EXPERIENCIA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_GENERA_VARIABLES_BAREMOS.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_REP_RESULT_PUESTO_RELACIONES.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_VARIABLES_BAREMOS.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_REP_RESULT_PUESTO_FUNCIONES.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_PREGUNTA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_S_CONFIGURACION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_PREGUNTA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_S_CONFIGURACION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_PREGUNTA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_S_FUNCION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_S_FUNCION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_S_FUNCION.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_S_TIPO_DATO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_REP_RESULT_PUESTO_CAMPOS_ADICIONALES.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_S_TIPO_DATO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_S_TIPO_DATO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_USUARIO_CAMBIAR_PASSWORD.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_VW_TIPO_ESCOLARIDAD.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_PUESTO_RELACIONADO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_K_EXPERIENCIA_LABORAL.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_RESULTADOS_LABORAL1.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_PRUEBA_POR_PUESTO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_S_CATALOGO_TIPO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_PUESTO_RELACIONADO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_S_CATALOGO_TIPO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_PUESTO_RELACIONADO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_K_EXPERIENCIA_LABORAL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_S_CATALOGO_TIPO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_S_TIPO_RELACION_PUESTO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_CATALOGO_LISTA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_S_TIPO_RELACION_PUESTO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_CATALOGO_LISTA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_S_TIPO_RELACION_PUESTO.sql" />
+    <Build Include="ADM\Stored Procedures\SP_OBTIENE_SECUENCIA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_CATALOGO_LISTA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_CATALOGO_VALOR.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_CATALOGO_VALOR.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_GENERA_PRUEBAS_CANDIDATOS.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_CATALOGO_VALOR.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_SOLICITUD.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_C_PRUEBA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_ELIMINA_C_PRUEBA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_DOCUMENTO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTENER_TIPO_ASENTAMIENTO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_PRUEBA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_ACTUALIZA_SOLICITUD.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_DOCUMENTO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_C_PRUEBA_NIVEL.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_RESULTADOS_TECNICAPC.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_DOCUMENTO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_ELIMINA_C_PRUEBA_NIVEL.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_PRUEBA_NIVEL.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_K_PRUEBA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_ELIMINA_K_PRUEBA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_BAREMOS_ORTOGRAFIAS.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_VW_TIPO_LICENCIA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_ACTUALIZA_K_PRUEBA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_VW_PAIS.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_C_PRUEBA_SECCION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_DATOS_CP.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_ELIMINA_C_PRUEBA_SECCION.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_RESULTADOS_ORTOGRAFIAS.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_PRUEBA_SECCION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_EMPLEADOS.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_K_PRUEBA_NIVEL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_COLONIA_CP.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_VW_CAUSAS_REQUISICION.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_ACTUALIZA_K_PRUEBA_NIVEL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_VW_ESTADO_REQUISICION.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_ACTUALIZA_K_SOLICITUD.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_K_REQUISICION.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_CUESTIONARIO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_CENTROS_ADMVOS.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_CONSULTA_PERSONAL_RESUMEN.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_C_CUESTIONARIO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_CONSULTA_PERSONAL_DETALLADA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_ELIMINA_C_CUESTIONARIO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_EMPLEADO_RELACIONADO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_CONFIGURACION.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_ELIMINA_K_PRUEBA_NIVEL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_RESPUESTA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_K_REQUISICION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_RESPUESTA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_K_REQUISICION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_RESPUESTA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INICIA_CUESTIONARIO_PRUEBA_SECCION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_FECHA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_EMPLEADO_RELACIONADO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_K_SOLICITUD.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_EMPLEADO_RELACIONADO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_C_FACTOR.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_EMPLEADO_ESCOLARIDAD.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_RESULTADOS_INGLES.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_DEPENDIENTE_ECONOMICO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_RESULTADOS_REDACCION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_DEPENDIENTE_ECONOMICO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_PLANTILLA_FORMULARIO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_RESPUESTAS_APTITUD1.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_RESULTADOS_LABORAL2.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_K_EVALUADO_PERIODO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_EMPLEADO_ESCOLARIDAD.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_RESULTADO_PRUEBA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_K_EVALUADO_PERIODO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_DEPENDIENTE_ECONOMICO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_SOLICITUDES.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_K_EVALUADO_PERIODO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ESTABLECE_PLANTILLA_FORMULARIO_GENERAL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_PLANTILLA_FORMULARIO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_CAMPO_ADICIONAL_XML.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_CENTRO_ADMVO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_PLANTILLA_FORMULARIO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_CANDIDATO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_C_CANDIDATO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_FUNCIONES.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_ELIMINA_C_CANDIDATO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_USUARIOS.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_CENTRO_ADMVO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_ESCOLARIDAD.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_ROLES.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_ESCOLARIDAD.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_CLASIFICACION_COMPETENCIA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_ESCOLARIDAD.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_TIEMPO_PRUEBA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_CLASIFICACION_COMPETENCIA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_IDIOMA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_REPORTES_INTERES_PERSONAL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_CLASIFICACION_COMPETENCIA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_SOLICITUD_PLANTILLA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_IDIOMA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_C_EMPLEADO_ESCOLARIDAD.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_CENTROS_OPTVOS.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_GRUPO_PREGUNTA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_NIVEL_ESCOLARIDAD.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_REPORTE_APTITUD1.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_ELIMINA_C_EMPLEADO_ESCOLARIDAD.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_NIVEL_ESCOLARIDAD.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_RESULTADOS_BATERIA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_EMPLEADO_ESCOLARIDAD.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_GRUPO_PREGUNTA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_ROL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_NIVEL_ESCOLARIDAD.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_GRUPO_PREGUNTA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_EMPRESA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_COMPETENCIA_NIVEL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_EMPRESA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_K_EVALUADO_EVALUADOR.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_COMPETENCIA_NIVEL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_EMPRESA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_K_EVALUADO_EVALUADOR.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_S_ERROR.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_K_EVALUADO_EVALUADOR.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_ROLES.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_IDIOMA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_PARIENTE.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_PARIENTE.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_AREA_INTERES.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_PARIENTE.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_REPORTES_INGLES.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_ACTUALIZA_BATERIAS_ENVIADAS.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_REPORTE_PENSAMIENTO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_ELIMINA_K_PRUEBA_SECCION.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_REPORTE_TIVA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_ACTUALIZA_K_PRUEBA_SECCION.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_VW_OBTIENE_PORCENTAJES_IDIOMAS.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_K_CUESTIONARIO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_REPORTE_ORTOGRAFIAS.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_AREA_INTERES.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_REPORTE_LABORAL2.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_K_CUESTIONARIO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_REPORTE_APTITUD2.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_K_CUESTIONARIO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_REPORTE_LABORAL1.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_AREA_INTERES.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_REPORTE_TECNICAPC.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_FOLIO_SECUENCIA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_RESULTADOS_PENSAMIENTO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_ROL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_EMPLEADO_IDIOMA.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_OBTIENE_K_PRUEBA_SECCION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_EMPLEADO_IDIOMA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_K_CUESTIONARIO_PREGUNTA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_USUARIO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_REPORTE_ADAPTACION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_EMPLEADO_IDIOMA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_K_CUESTIONARIO_PREGUNTA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_EMPLEADO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_M_PUESTO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_CAMPO_ADICIONAL_XML.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_CALLE.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_RESULTADOS_APTITUD2.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INICIA_CUESTIONARIO_PRUEBA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_CALLE.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_RESULTADOS_TIVA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_K_SOLICITUD.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_CALLE.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_RESULTADOS_APTITUD_1.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_K_SOLICITUD.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_M_PUESTO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_M_PUESTO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_CAMPO_ADICIONAL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_CAMPO_ADICIONAL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_CENTRO_OPTVO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_S_CONFIGURACION.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_CAMPO_ADICIONAL.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_VW_PARENTEZCO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_CENTRO_OPTVO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_COLONIA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_VW_PARENTEZCO.sql" />
+    <Build Include="IDP\Stored Procedures\SPE_INSERTA_ACTUALIZA_K_CUESTIONARIO_PREGUNTA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_USUARIO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_COLONIA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_VW_PARENTEZCO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_USUARIO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_COLONIA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_INSERTA_ACTUALIZA_C_USUARIO.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_C_COMPETENCIA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_ELIMINA_C_COMPETENCIA.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_VW_OBTIENE_MESES.sql" />
+    <Build Include="ADM\Stored Procedures\SPE_OBTIENE_K_EMPLEADO_COMPETENCIA.sql" />
+    <Build Include="Security\ADM.sql" />
+    <Build Include="Security\IDP.sql" />
+  </ItemGroup>
+</Project>

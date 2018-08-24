@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Acceso denegado</title>
+</head>
+<body data-ng-controller="AccesoController">
+    <div class="container"> 
+        <div class="row alert alert-warning">
+            <div style="text-align:center;">
+                <div style="clear:both"></div>
+                <i class="fa fa-exclamation-triangle" style="font-size:20px"></i> 
+                <span  style="padding-left: 10px;"> {{mensaje}} </span>  
+                <input type="button" class="btn btn-link" value="Salir" data-ng-click="salir()"  />
+            </div>
+        </div>       
+    </div>
+</body>
+</html>

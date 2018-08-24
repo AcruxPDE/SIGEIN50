@@ -1,0 +1,22 @@
+-- =============================================
+-- Proyecto: Sistema SIGEIN 5.0
+-- Copyright (c) - Acrux - 2015
+-- Author: Jesús Vázquez Pereyra
+-- CREATE date: 13/10/2015
+-- Description: Vista de tipo de niveles de escolaridad para la tabla  C_NIVEL_ESCOLARIDAD
+-- =============================================
+--drop view VW_TIPO_ESCOLARIDAD
+alter view ADM.VW_TIPO_ESCOLARIDAD
+AS 
+
+SELECT 'PRIMARIA' AS  CL_NIVEL_ESCOLARIDAD, 'Primaria' AS DS_NIVEL_ESCOLARIDAD, 1 AS CL_NIVEL
+UNION
+SELECT 'SECUNDARIA' AS  CL_NIVEL_ESCOLARIDAD, 'Secundaria' AS DS_NIVEL_ESCOLARIDAD, 2 AS CL_NIVEL
+UNION
+SELECT 'PREPARATORIA' AS  CL_NIVEL_ESCOLARIDAD, 'Preparatoria' AS DS_NIVEL_ESCOLARIDAD, 3 AS CL_NIVEL
+UNION
+SELECT 'TECNICA' AS  CL_NIVEL_ESCOLARIDAD, 'Carrera Técnica' AS DS_NIVEL_ESCOLARIDAD, 4 AS CL_NIVEL
+UNION
+SELECT 'LICENCIATURA' AS  CL_NIVEL_ESCOLARIDAD, 'Licenciatura' AS DS_NIVEL_ESCOLARIDAD, 5 AS CL_NIVEL
+UNION
+SELECT 'POSTGRADO' AS  CL_NIVEL_ESCOLARIDAD, 'Postgrado' AS DS_NIVEL_ESCOLARIDAD, 6 AS CL_NIVEL

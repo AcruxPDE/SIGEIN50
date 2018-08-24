@@ -1,0 +1,50 @@
+-- =============================================
+-- Proyecto: Sistema SIGEIN 5.0
+-- Copyright (c) - Acrux - 2014
+-- Author: Julio Díaz
+-- CREATE date: 27/11/2014
+-- Description: Crea una ruta en la FileTable
+-- =============================================
+-- 26/10/2015 JDR Se agrega funcionalidad para regresar el ID de la carpeta cuando esta existe
+-- =============================================
+ALTER PROCEDURE [ADM].[SP_CREA_RUTA]
+	@P_FS_CARPETA_MULTIMEDIA VARCHAR(255)
+   ,@R_ID_FILESTREAM UNIQUEIDENTIFIER OUT
+
+AS
+BEGIN       
+	DECLARE @V_FS_CARPETA_I NVARCHAR(255) = ''
+		, @V_FS_CARPETA_D NVARCHAR(255) = ''
+		, @V_FS_CARPETA NVARCHAR(255) = ''
+		, @V_FG_TERMINADO INT = 1
+		, @V_FG_TRY_INSERT BIT = 0
+
+	DECLARE @V_FS_ARCHIVO_INSERTADO TABLE (
+		STREAM_ID UNIQUEIDENTIFIER
+	)
+
+	SET @V_FS_CARPETA_D = @P_FS_CARPETA_MULTIMEDIA
+
+	WHILE (@V_FG_TERMINADO > 0) BEGIN
+		SELECT @V_FG_TERMINADO = CHARINDEX('\', @V_FS_CARPETA_D, 2)
+			, @V_FS_CARPETA = REPLACE(CASE WHEN @V_FG_TERMINADO > 0 THEN LEFT(@V_FS_CARPETA_D, @V_FG_TERMINADO - 1) ELSE @V_FS_CARPETA_D END, '\', '')
+			, @V_FS_CARPETA_I = @V_FS_CARPETA_I + CASE WHEN @V_FG_TERMINADO > 0 THEN LEFT(@V_FS_CARPETA_D, @V_FG_TERMINADO - 1) ELSE @V_FS_CARPETA_D END
+			, @V_FS_CARPETA_D = CASE WHEN @V_FG_TERMINADO > 0 THEN RIGHT(@V_FS_CARPETA_D, LEN(@V_FS_CARPETA_D) - @V_FG_TERMINADO + 1) ELSE '' END
+
+--		SELECT @V_FS_CARPETA, @V_FS_CARPETA_I, @V_FS_CARPETA_D 
+		IF (@V_FG_TRY_INSERT = 1) BEGIN
+			IF NOT EXISTS (SELECT TOP 1 1 FROM FS_ARCHIVOS WHERE file_stream.GetFileNamespacePath() = @V_FS_CARPETA_I) BEGIN
+				INSERT INTO FS_ARCHIVOS (name, path_locator, is_directory)
+				OUTPUT INSERTED.stream_id INTO @V_FS_ARCHIVO_INSERTADO
+				SELECT @V_FS_CARPETA, dbo.GetNewPathLocator(GetPathLocator(FileTableRootPath() + REPLACE(@V_FS_CARPETA_I, '\' + @V_FS_CARPETA, ''))), 1
+
+				SELECT TOP 1 @R_ID_FILESTREAM = STREAM_ID FROM @V_FS_ARCHIVO_INSERTADO
+				DELETE FROM @V_FS_ARCHIVO_INSERTADO
+			END ELSE IF (@V_FG_TERMINADO <= 0) BEGIN
+				SELECT TOP 1 @R_ID_FILESTREAM = STREAM_ID FROM FS_ARCHIVOS WHERE file_stream.GetFileNamespacePath() = @V_FS_CARPETA_I
+			END
+		END
+
+		SET @V_FG_TRY_INSERT = 1
+	END
+END
