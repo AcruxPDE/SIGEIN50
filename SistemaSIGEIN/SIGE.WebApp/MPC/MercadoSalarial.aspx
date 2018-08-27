@@ -17,11 +17,23 @@
                 GetRadWindow().close();
             }
 
+            function GetWindowProperties() {
+                var currentWnd = GetRadWindow();
+                var browserWnd = window;
+                if (currentWnd)
+                    browserWnd = currentWnd.BrowserWindow;
+                return {
+                    width: browserWnd.innerWidth - 30,
+                    height: browserWnd.innerHeight - 20
+                };
+            }
+
             function winOpenTabuladores() {
+                var vPropierties = GetWindowProperties();
                 var vIdTabulador = '<%= vIdTabulador %>';
                 var myUrl = '<%= ResolveClientUrl("SeleccionTabulador.aspx") %>';
                 if (vIdTabulador != null)
-                    openChildDialog(myUrl + "?pFgMultSeleccion=0&pIdTabulador=" + vIdTabulador, "winSeleccion", "Selección de tabulador a copiar");
+                    openChildDialog(myUrl + "?pFgMultSeleccion=0&pIdTabulador=" + vIdTabulador, "winSeleccion", "Selección de tabulador a copiar", vPropierties);
             }
 
             function useDataFromChild(pDato) {

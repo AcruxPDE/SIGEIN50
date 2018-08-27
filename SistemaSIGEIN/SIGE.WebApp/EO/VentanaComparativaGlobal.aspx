@@ -81,7 +81,7 @@
     <div style="height: calc(100% - 120px);">
         <telerik:RadMultiPage ID="rmpReporteGlobal" runat="server" SelectedIndex="0" Height="100%">
             <telerik:RadPageView ID="rpvContexto" runat="server">
-                <div style="clear: both; height: 10px;"></div>
+               <%-- <div style="clear: both; height: 10px;"></div>--%>
                    <%-- <div class="divControlDerecha" style="width: 15%; text-align: left; margin-right:3%;">
                         <fieldset>
                             <legend>
@@ -138,7 +138,8 @@
                             </table>
                         </fieldset>
                     </div>--%>
-                <telerik:RadGrid
+                  <div id="dvContexto" runat="server"></div>
+                <%--<telerik:RadGrid
                     ID="rgContexto"
                     runat="server"
                     Height="90%"
@@ -168,7 +169,7 @@
                             <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" Visible="true" Display="true" HeaderStyle-Width="120" FilterControlWidth="90" ColumnGroupName="Fechas" HeaderText="a" DataField="FE_TERMINO_PERIODO" UniqueName="FE_TERMINO_PERIODO" DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Right"></telerik:GridDateTimeColumn>
                         </Columns>
                     </MasterTableView>
-                </telerik:RadGrid>
+                </telerik:RadGrid>--%>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvReporte" runat="server">
                 <div style="clear: both; height: 10px;"></div>

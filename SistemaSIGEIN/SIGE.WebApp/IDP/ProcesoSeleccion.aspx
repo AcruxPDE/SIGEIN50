@@ -943,7 +943,7 @@
                             <div style="height: 10px; clear: both;"></div>
 
                             <div class="ctrlBasico">
-                                <telerik:RadButton runat="server" ID="btnAgregarReferencia" OnClientClicked="ShowPopupEditarExperiencia" Text="Modificar referencia" AutoPostBack="false"></telerik:RadButton>
+                                <telerik:RadButton runat="server" ID="btnAgregarReferencia" OnClientClicked="ShowPopupEditarExperiencia" Text="Editar" AutoPostBack="false"></telerik:RadButton>
                             </div>
                             <%-- <div style="clear: both; height: 10px"></div>
                 <div class="ctrlBasico">

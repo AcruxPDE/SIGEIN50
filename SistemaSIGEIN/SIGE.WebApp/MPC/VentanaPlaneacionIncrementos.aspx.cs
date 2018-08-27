@@ -385,6 +385,7 @@ namespace SIGE.WebApp.MPC
                 bool vCerrarVentana = pFgCerrarVentana;
                 string vCallBackFunction = vCerrarVentana ? "onCloseWindow" : null;
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: vCallBackFunction);
+                grdPlaneacionIncrementos.Rebind();
             }
         }
 

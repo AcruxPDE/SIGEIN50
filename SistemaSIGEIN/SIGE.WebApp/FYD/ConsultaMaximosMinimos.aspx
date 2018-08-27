@@ -90,7 +90,7 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <label class="labelTitulo">Reporte de Máximos y Mínimos</label>
+    <label class="labelTitulo">Reporte de máximos y mínimos</label>
     <div style="height: calc(100% - 60px); width: 100%;">
         <telerik:RadSplitter ID="rsReportes" Width="100%" Height="100%" BorderSize="0" runat="server">
             <telerik:RadPane ID="rpReportes" runat="server" Height="100%">
@@ -147,7 +147,7 @@
                 </div>
                 <div style="clear: both; height: 10px;"></div>
                 <div class="ctrlBasico">
-                <telerik:RadButton runat="server" ID="btnMaximosMinimos" Text="Emitir" OnClick="btnMaximosMinimos_Click"></telerik:RadButton>
+                <telerik:RadButton runat="server" ID="btnMaximosMinimos" Text="Consulta" OnClick="btnMaximosMinimos_Click"></telerik:RadButton>
                     </div>
             </telerik:RadPane>
             <telerik:RadPane ID="rpAyuda" runat="server" Scrolling="None" Width="22px" Height="50px">

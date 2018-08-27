@@ -12,8 +12,20 @@
     </style>
     <script type="text/javascript">
 
+        function GetWindowProperties() {
+            var currentWnd = GetRadWindow();
+            var browserWnd = window;
+            if (currentWnd)
+                browserWnd = currentWnd.BrowserWindow;
+            return {
+                width: browserWnd.innerWidth - 30,
+                height: browserWnd.innerHeight - 20
+            };
+        }
+
         function OpenTabuladorEmpleadoSueldo() {
-            openChildDialog("SeleccionTabuladorEmpleado.aspx?&IdTabulador=" + <%=vIdTabulador%> + "&vClTipoSeleccion=CONSULTAS" + "&CatalogoCl=TABULADOR_SUELDOS", "winSeleccion", "Selección de empleados");
+            var vPropierties = GetWindowProperties();
+            openChildDialog("SeleccionTabuladorEmpleado.aspx?&IdTabulador=" + <%=vIdTabulador%> + "&vClTipoSeleccion=CONSULTAS" + "&CatalogoCl=TABULADOR_SUELDOS", "winSeleccion", "Selección de empleados", vPropierties);
         }
 
         function useDataFromChild(pDato) {
@@ -38,7 +50,9 @@
         }
 
         function OpenImprimirReporte(pIdTabulador, pNivelMercado) {
-            openChildDialog("ReporteTabuladorSueldos.aspx?ID=" + pIdTabulador + "&pNivelMercado=" + pNivelMercado, "winImprimir", "Imprimir consulta");
+            var vPropierties = GetWindowProperties();
+            vPropierties.width = 1100;
+            openChildDialog("ReporteTabuladorSueldos.aspx?ID=" + pIdTabulador + "&pNivelMercado=" + pNivelMercado, "winImprimir", "Imprimir consulta", vPropierties);
         }
 
     </script>

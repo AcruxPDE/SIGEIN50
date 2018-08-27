@@ -31,8 +31,9 @@
         <script type="text/javascript">
 
             function AbrirVentanaNuevo() {
-                openChildDialog("VentanaNuevoTabulador.aspx", "winMenuTabuladores",
-                        "Nuevo/Editar tabulador")
+                var vPropierties = GetWindowProperties();
+                vPropierties.width = 650;
+                openChildDialog("VentanaNuevoTabulador.aspx", "winMenuTabuladores", "Nuevo/Editar tabulador", vPropierties)
             }
 
             function onCloseWindow(sender, args) {

@@ -223,17 +223,17 @@
                 </Columns>
             </MasterTableView>
         </telerik:RadGrid>
-         <label id="lbMensaje" runat="server" visible="false">*Este proceso ya ha sido terminado. Puedes crear uno nuevo seleccionando "Iniciar nuevo proceso de evaluación".</label>
+         <label id="lbMensaje" runat="server" visible="false">*Este proceso ya ha sido terminado. Puedes crear uno nuevo seleccionando "Iniciar nuevo".</label>
 
     <div style="clear: both; height: 10px;"></div>
         <div class="divControlDerecha" style="padding-right:10px;"> 
-        <telerik:RadButton ID="btnIniciarProceso" AutoPostBack="true" runat="server" Text="Iniciar nuevo proceso de evaluación" OnClientClicking="ConfirmarNuevoProceso" OnClick="btnIniciarProceso_Click"></telerik:RadButton>
+        <telerik:RadButton ID="btnIniciarProceso" AutoPostBack="true" runat="server" Text="Iniciar nuevo" OnClientClicking="ConfirmarNuevoProceso" OnClick="btnIniciarProceso_Click"></telerik:RadButton>
         </div>
           <div class="divControlDerecha" style="padding-right:10px;">
-        <telerik:RadButton ID="btnContinuarProceso" AutoPostBack="false" runat="server" Text="Continuar con el proceso de evaluación" OnClientClicked="OpenProcesoSeleccionContinuarWindow"></telerik:RadButton>
+        <telerik:RadButton ID="btnContinuarProceso" AutoPostBack="false" runat="server" Text="Continuar" OnClientClicked="OpenProcesoSeleccionContinuarWindow"></telerik:RadButton>
     </div>
          <div class="divControlDerecha">
-        <telerik:RadButton ID="btnVerProceso" runat="server" Visible="false" Text="Ver proceso de evaluación" OnClientClicked="OpenProcesoSeleccionVerWindow"  AutoPostBack="false"></telerik:RadButton>
+        <telerik:RadButton ID="btnVerProceso" runat="server" Visible="false" Text="Ver" OnClientClicked="OpenProcesoSeleccionVerWindow"  AutoPostBack="false"></telerik:RadButton>
     </div>
         
             </div>
