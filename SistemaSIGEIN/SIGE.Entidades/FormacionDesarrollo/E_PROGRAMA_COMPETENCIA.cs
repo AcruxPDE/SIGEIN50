@@ -12,6 +12,7 @@ namespace SIGE.Entidades.FormacionDesarrollo
         public int ID_PROGRAMA_COMPETENCIA { get; set; }
         public int ID_PROGRAMA { get; set; }
         public int ID_COMPETENCIA { get; set; }
+        public int NO_ORDEN { get; set; }
         public string NB_COMPETENCIA { get; set; }
         public string CL_COMPETENCIA { get; set; }
         public string NB_CLASIFICACION { get; set; }

@@ -4780,17 +4780,6 @@
     <FunctionImport Name="SPE_OBTIENE_FYD_VALIDACION_AUTORIZACIONES" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_FYD_VALIDACION_AUTORIZACIONES_Result)">
       <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="SPE_OBTIENE_C_COMPETENCIA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_COMPETENCIA_Result)">
-      <Parameter Name="PIN_ID_COMPETENCIA" Mode="In" Type="Int32" />
-      <Parameter Name="PIN_CL_COMPETENCIA" Mode="In" Type="String" />
-      <Parameter Name="PIN_NB_COMPETENCIA" Mode="In" Type="String" />
-      <Parameter Name="PIN_DS_COMPETENCIA" Mode="In" Type="String" />
-      <Parameter Name="PIN_CL_TIPO_COMPETENCIA" Mode="In" Type="String" />
-      <Parameter Name="PIN_CL_CLASIFICACION" Mode="In" Type="String" />
-      <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
-      <Parameter Name="PIN_XML_CAMPOS_ADICIONALES" Mode="In" Type="String" />
-      <Parameter Name="PIN_XML_SELECCION" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="SPE_OBTIENE_TABULADORES" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_TABULADORES_Result)">
       <Parameter Name="PIN_ID_TABULADOR" Mode="In" Type="Int32" />
       <Parameter Name="PIN_CL_TABULADOR" Mode="In" Type="String" />
@@ -5998,6 +5987,17 @@
     </FunctionImport>
     <FunctionImport Name="SPE_VERIFICA_CONFIGURACION_TABULADOR" ReturnType="Collection(SistemaSigeinModel.SPE_VERIFICA_CONFIGURACION_TABULADOR_Result)">
       <Parameter Name="PIN_ID_TABULADOR" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPE_OBTIENE_C_COMPETENCIA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_COMPETENCIA_Result)">
+      <Parameter Name="PIN_ID_COMPETENCIA" Mode="In" Type="Int32" />
+      <Parameter Name="PIN_CL_COMPETENCIA" Mode="In" Type="String" />
+      <Parameter Name="PIN_NB_COMPETENCIA" Mode="In" Type="String" />
+      <Parameter Name="PIN_DS_COMPETENCIA" Mode="In" Type="String" />
+      <Parameter Name="PIN_CL_TIPO_COMPETENCIA" Mode="In" Type="String" />
+      <Parameter Name="PIN_CL_CLASIFICACION" Mode="In" Type="String" />
+      <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
+      <Parameter Name="PIN_XML_CAMPOS_ADICIONALES" Mode="In" Type="String" />
+      <Parameter Name="PIN_XML_SELECCION" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="SPE_OBTIENE_C_CALLE_Result">
@@ -9386,37 +9386,6 @@
     <Property Type="Int32" Name="NUM_AUTORIZADOS" Nullable="true" />
     <Property Type="Int32" Name="NUM_CONTESTADOS" Nullable="true" />
   </ComplexType>
-  <ComplexType Name="SPE_OBTIENE_C_COMPETENCIA_Result">
-    <Property Type="Int32" Name="ID_COMPETENCIA" Nullable="false" />
-    <Property Type="String" Name="CL_COMPETENCIA" Nullable="false" MaxLength="32" />
-    <Property Type="String" Name="NB_COMPETENCIA" Nullable="false" MaxLength="200" />
-    <Property Type="String" Name="DS_COMPETENCIA" Nullable="true" MaxLength="1000" />
-    <Property Type="String" Name="CL_TIPO_COMPETENCIA" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="NB_TIPO_COMPETENCIA" Nullable="true" MaxLength="13" />
-    <Property Type="String" Name="CL_CLASIFICACION" Nullable="true" MaxLength="200" />
-    <Property Type="Boolean" Name="FG_ACTIVO" Nullable="false" />
-    <Property Type="String" Name="NB_ACTIVO" Nullable="true" MaxLength="2" />
-    <Property Type="String" Name="XML_CAMPOS_ADICIONALES" Nullable="true" MaxLength="Max" />
-    <Property Type="String" Name="DS_TIPO_COMPETENCIA" Nullable="true" MaxLength="200" />
-    <Property Type="String" Name="NB_TIPO_COMPETENCIA1" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="NB_CLASIFICACION_COMPETENCIA" Nullable="true" MaxLength="200" />
-    <Property Type="String" Name="DS_CLASIFICACION_COMPETENCIA" Nullable="true" MaxLength="1000" />
-    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PUESTO_N0" Nullable="true" MaxLength="2000" />
-    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PERSONA_N0" Nullable="true" MaxLength="2000" />
-    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PUESTO_N1" Nullable="true" MaxLength="2000" />
-    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PERSONA_N1" Nullable="true" MaxLength="2000" />
-    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PUESTO_N2" Nullable="true" MaxLength="2000" />
-    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PERSONA_N2" Nullable="true" MaxLength="2000" />
-    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PUESTO_N3" Nullable="true" MaxLength="2000" />
-    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PERSONA_N3" Nullable="true" MaxLength="2000" />
-    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PUESTO_N4" Nullable="true" MaxLength="2000" />
-    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PERSONA_N4" Nullable="true" MaxLength="2000" />
-    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PUESTO_N5" Nullable="true" MaxLength="2000" />
-    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PERSONA_N5" Nullable="true" MaxLength="2000" />
-    <Property Type="String" Name="DS_FILTRO" Nullable="false" MaxLength="1" />
-    <Property Type="DateTime" Name="FE_MODIFICACION" Nullable="true" />
-    <Property Type="String" Name="CL_USUARIO_MODIFICA" Nullable="true" MaxLength="50" />
-  </ComplexType>
   <ComplexType Name="SPE_OBTIENE_TABULADORES_Result">
     <Property Type="Int32" Name="ID_TABULADOR" Nullable="false" />
     <Property Type="String" Name="CL_TABULADOR" Nullable="false" MaxLength="20" />
@@ -11879,5 +11848,37 @@
   <ComplexType Name="SPE_VERIFICA_CONFIGURACION_TABULADOR_Result">
     <Property Type="Int32" Name="ID_TABULADOR" Nullable="false" />
     <Property Type="Boolean" Name="FG_CONFIGURACION" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPE_OBTIENE_C_COMPETENCIA_Result">
+    <Property Type="Int32" Name="ID_COMPETENCIA" Nullable="false" />
+    <Property Type="String" Name="CL_COMPETENCIA" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="NB_COMPETENCIA" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="DS_COMPETENCIA" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="CL_TIPO_COMPETENCIA" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="NB_TIPO_COMPETENCIA1" Nullable="true" MaxLength="13" />
+    <Property Type="String" Name="CL_CLASIFICACION" Nullable="true" MaxLength="200" />
+    <Property Type="Boolean" Name="FG_ACTIVO" Nullable="false" />
+    <Property Type="String" Name="NB_ACTIVO" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="XML_CAMPOS_ADICIONALES" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="DS_TIPO_COMPETENCIA" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="NB_TIPO_COMPETENCIA" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NB_CLASIFICACION_COMPETENCIA" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="DS_CLASIFICACION_COMPETENCIA" Nullable="true" MaxLength="1000" />
+    <Property Type="Byte" Name="NO_ORDEN" Nullable="true" />
+    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PUESTO_N0" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PERSONA_N0" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PUESTO_N1" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PERSONA_N1" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PUESTO_N2" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PERSONA_N2" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PUESTO_N3" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PERSONA_N3" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PUESTO_N4" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PERSONA_N4" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PUESTO_N5" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="DS_NIVEL_COMPETENCIA_PERSONA_N5" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="DS_FILTRO" Nullable="false" MaxLength="1" />
+    <Property Type="DateTime" Name="FE_MODIFICACION" Nullable="true" />
+    <Property Type="String" Name="CL_USUARIO_MODIFICA" Nullable="true" MaxLength="50" />
   </ComplexType>
 </Schema>

@@ -365,7 +365,8 @@ namespace SIGE.WebApp.FYD
                         NB_CLASIFICACION = item.NB_CLASIFICACION,
                         NB_CATEGORIA = item.NB_CATEGORIA,
                         CL_PROGRAMA = item.CL_PROGRAMA,
-                        NB_PROGRAMA = item.NB_PROGRAMA
+                        NB_PROGRAMA = item.NB_PROGRAMA, 
+                        NO_ORDEN = 0
                     });
                 }
             }

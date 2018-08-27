@@ -15923,47 +15923,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_FYD_VALIDACION_AUTORIZACIONES_Result>("SPE_OBTIENE_FYD_VALIDACION_AUTORIZACIONES", pIN_ID_PERIODOParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_C_COMPETENCIA_Result> SPE_OBTIENE_C_COMPETENCIA(Nullable<int> pIN_ID_COMPETENCIA, string pIN_CL_COMPETENCIA, string pIN_NB_COMPETENCIA, string pIN_DS_COMPETENCIA, string pIN_CL_TIPO_COMPETENCIA, string pIN_CL_CLASIFICACION, Nullable<bool> pIN_FG_ACTIVO, string pIN_XML_CAMPOS_ADICIONALES, string pIN_XML_SELECCION)
-        {
-            var pIN_ID_COMPETENCIAParameter = pIN_ID_COMPETENCIA.HasValue ?
-                new ObjectParameter("PIN_ID_COMPETENCIA", pIN_ID_COMPETENCIA) :
-                new ObjectParameter("PIN_ID_COMPETENCIA", typeof(int));
-    
-            var pIN_CL_COMPETENCIAParameter = pIN_CL_COMPETENCIA != null ?
-                new ObjectParameter("PIN_CL_COMPETENCIA", pIN_CL_COMPETENCIA) :
-                new ObjectParameter("PIN_CL_COMPETENCIA", typeof(string));
-    
-            var pIN_NB_COMPETENCIAParameter = pIN_NB_COMPETENCIA != null ?
-                new ObjectParameter("PIN_NB_COMPETENCIA", pIN_NB_COMPETENCIA) :
-                new ObjectParameter("PIN_NB_COMPETENCIA", typeof(string));
-    
-            var pIN_DS_COMPETENCIAParameter = pIN_DS_COMPETENCIA != null ?
-                new ObjectParameter("PIN_DS_COMPETENCIA", pIN_DS_COMPETENCIA) :
-                new ObjectParameter("PIN_DS_COMPETENCIA", typeof(string));
-    
-            var pIN_CL_TIPO_COMPETENCIAParameter = pIN_CL_TIPO_COMPETENCIA != null ?
-                new ObjectParameter("PIN_CL_TIPO_COMPETENCIA", pIN_CL_TIPO_COMPETENCIA) :
-                new ObjectParameter("PIN_CL_TIPO_COMPETENCIA", typeof(string));
-    
-            var pIN_CL_CLASIFICACIONParameter = pIN_CL_CLASIFICACION != null ?
-                new ObjectParameter("PIN_CL_CLASIFICACION", pIN_CL_CLASIFICACION) :
-                new ObjectParameter("PIN_CL_CLASIFICACION", typeof(string));
-    
-            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
-                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
-                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
-    
-            var pIN_XML_CAMPOS_ADICIONALESParameter = pIN_XML_CAMPOS_ADICIONALES != null ?
-                new ObjectParameter("PIN_XML_CAMPOS_ADICIONALES", pIN_XML_CAMPOS_ADICIONALES) :
-                new ObjectParameter("PIN_XML_CAMPOS_ADICIONALES", typeof(string));
-    
-            var pIN_XML_SELECCIONParameter = pIN_XML_SELECCION != null ?
-                new ObjectParameter("PIN_XML_SELECCION", pIN_XML_SELECCION) :
-                new ObjectParameter("PIN_XML_SELECCION", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_COMPETENCIA_Result>("SPE_OBTIENE_C_COMPETENCIA", pIN_ID_COMPETENCIAParameter, pIN_CL_COMPETENCIAParameter, pIN_NB_COMPETENCIAParameter, pIN_DS_COMPETENCIAParameter, pIN_CL_TIPO_COMPETENCIAParameter, pIN_CL_CLASIFICACIONParameter, pIN_FG_ACTIVOParameter, pIN_XML_CAMPOS_ADICIONALESParameter, pIN_XML_SELECCIONParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_TABULADORES_Result> SPE_OBTIENE_TABULADORES(Nullable<int> pIN_ID_TABULADOR, string pIN_CL_TABULADOR, string pIN_NB_TABULADOR, string pIN_DS_TABULADOR, Nullable<System.DateTime> pIN_FE_VIGENCIA, string pIN_CL_TIPO_PUESTO, string pIN_CL_ESTADO, Nullable<byte> pIN_NO_NIVELES, Nullable<byte> pIN_NO_CATEGORIAS, Nullable<decimal> pIN_PR_PROGRESION, Nullable<decimal> pIN_PR_INFLACION, Nullable<int> pIN_ID_CUARTIL_INFLACIONAL, Nullable<int> pIN_ID_CUARTIL_INCREMENTO, Nullable<int> pIN_ID_CUARTIL_MERCADO, string pIN_CL_SUELDO_COMPARACION, string pIN_XML_VARIACION, string pIN_CL_ORIGEN_NIVELES, Nullable<System.DateTime> pIN_FE_CREACION, string pIN_CL_USUARIO_APP_CREA)
         {
             var pIN_ID_TABULADORParameter = pIN_ID_TABULADOR.HasValue ?
@@ -20106,6 +20065,47 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_TABULADOR", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_VERIFICA_CONFIGURACION_TABULADOR_Result>("SPE_VERIFICA_CONFIGURACION_TABULADOR", pIN_ID_TABULADORParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_C_COMPETENCIA_Result> SPE_OBTIENE_C_COMPETENCIA(Nullable<int> pIN_ID_COMPETENCIA, string pIN_CL_COMPETENCIA, string pIN_NB_COMPETENCIA, string pIN_DS_COMPETENCIA, string pIN_CL_TIPO_COMPETENCIA, string pIN_CL_CLASIFICACION, Nullable<bool> pIN_FG_ACTIVO, string pIN_XML_CAMPOS_ADICIONALES, string pIN_XML_SELECCION)
+        {
+            var pIN_ID_COMPETENCIAParameter = pIN_ID_COMPETENCIA.HasValue ?
+                new ObjectParameter("PIN_ID_COMPETENCIA", pIN_ID_COMPETENCIA) :
+                new ObjectParameter("PIN_ID_COMPETENCIA", typeof(int));
+    
+            var pIN_CL_COMPETENCIAParameter = pIN_CL_COMPETENCIA != null ?
+                new ObjectParameter("PIN_CL_COMPETENCIA", pIN_CL_COMPETENCIA) :
+                new ObjectParameter("PIN_CL_COMPETENCIA", typeof(string));
+    
+            var pIN_NB_COMPETENCIAParameter = pIN_NB_COMPETENCIA != null ?
+                new ObjectParameter("PIN_NB_COMPETENCIA", pIN_NB_COMPETENCIA) :
+                new ObjectParameter("PIN_NB_COMPETENCIA", typeof(string));
+    
+            var pIN_DS_COMPETENCIAParameter = pIN_DS_COMPETENCIA != null ?
+                new ObjectParameter("PIN_DS_COMPETENCIA", pIN_DS_COMPETENCIA) :
+                new ObjectParameter("PIN_DS_COMPETENCIA", typeof(string));
+    
+            var pIN_CL_TIPO_COMPETENCIAParameter = pIN_CL_TIPO_COMPETENCIA != null ?
+                new ObjectParameter("PIN_CL_TIPO_COMPETENCIA", pIN_CL_TIPO_COMPETENCIA) :
+                new ObjectParameter("PIN_CL_TIPO_COMPETENCIA", typeof(string));
+    
+            var pIN_CL_CLASIFICACIONParameter = pIN_CL_CLASIFICACION != null ?
+                new ObjectParameter("PIN_CL_CLASIFICACION", pIN_CL_CLASIFICACION) :
+                new ObjectParameter("PIN_CL_CLASIFICACION", typeof(string));
+    
+            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
+                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
+                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
+    
+            var pIN_XML_CAMPOS_ADICIONALESParameter = pIN_XML_CAMPOS_ADICIONALES != null ?
+                new ObjectParameter("PIN_XML_CAMPOS_ADICIONALES", pIN_XML_CAMPOS_ADICIONALES) :
+                new ObjectParameter("PIN_XML_CAMPOS_ADICIONALES", typeof(string));
+    
+            var pIN_XML_SELECCIONParameter = pIN_XML_SELECCION != null ?
+                new ObjectParameter("PIN_XML_SELECCION", pIN_XML_SELECCION) :
+                new ObjectParameter("PIN_XML_SELECCION", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_COMPETENCIA_Result>("SPE_OBTIENE_C_COMPETENCIA", pIN_ID_COMPETENCIAParameter, pIN_CL_COMPETENCIAParameter, pIN_NB_COMPETENCIAParameter, pIN_DS_COMPETENCIAParameter, pIN_CL_TIPO_COMPETENCIAParameter, pIN_CL_CLASIFICACIONParameter, pIN_FG_ACTIVOParameter, pIN_XML_CAMPOS_ADICIONALESParameter, pIN_XML_SELECCIONParameter);
         }
     }
 }

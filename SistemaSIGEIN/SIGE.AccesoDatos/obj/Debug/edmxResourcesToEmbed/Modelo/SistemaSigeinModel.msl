@@ -4699,41 +4699,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="SPE_OBTIENE_C_COMPETENCIA" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_C_COMPETENCIA">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_C_COMPETENCIA_Result">
-          <ScalarProperty Name="ID_COMPETENCIA" ColumnName="ID_COMPETENCIA" />
-          <ScalarProperty Name="CL_COMPETENCIA" ColumnName="CL_COMPETENCIA" />
-          <ScalarProperty Name="NB_COMPETENCIA" ColumnName="NB_COMPETENCIA" />
-          <ScalarProperty Name="DS_COMPETENCIA" ColumnName="DS_COMPETENCIA" />
-          <ScalarProperty Name="CL_TIPO_COMPETENCIA" ColumnName="CL_TIPO_COMPETENCIA" />
-          <ScalarProperty Name="NB_TIPO_COMPETENCIA" ColumnName="NB_TIPO_COMPETENCIA" />
-          <ScalarProperty Name="CL_CLASIFICACION" ColumnName="CL_CLASIFICACION" />
-          <ScalarProperty Name="FG_ACTIVO" ColumnName="FG_ACTIVO" />
-          <ScalarProperty Name="NB_ACTIVO" ColumnName="NB_ACTIVO" />
-          <ScalarProperty Name="XML_CAMPOS_ADICIONALES" ColumnName="XML_CAMPOS_ADICIONALES" />
-          <ScalarProperty Name="DS_TIPO_COMPETENCIA" ColumnName="DS_TIPO_COMPETENCIA" />
-          <ScalarProperty Name="NB_TIPO_COMPETENCIA1" ColumnName="NB_TIPO_COMPETENCIA1" />
-          <ScalarProperty Name="NB_CLASIFICACION_COMPETENCIA" ColumnName="NB_CLASIFICACION_COMPETENCIA" />
-          <ScalarProperty Name="DS_CLASIFICACION_COMPETENCIA" ColumnName="DS_CLASIFICACION_COMPETENCIA" />
-          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PUESTO_N0" ColumnName="DS_NIVEL_COMPETENCIA_PUESTO_N0" />
-          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PERSONA_N0" ColumnName="DS_NIVEL_COMPETENCIA_PERSONA_N0" />
-          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PUESTO_N1" ColumnName="DS_NIVEL_COMPETENCIA_PUESTO_N1" />
-          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PERSONA_N1" ColumnName="DS_NIVEL_COMPETENCIA_PERSONA_N1" />
-          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PUESTO_N2" ColumnName="DS_NIVEL_COMPETENCIA_PUESTO_N2" />
-          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PERSONA_N2" ColumnName="DS_NIVEL_COMPETENCIA_PERSONA_N2" />
-          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PUESTO_N3" ColumnName="DS_NIVEL_COMPETENCIA_PUESTO_N3" />
-          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PERSONA_N3" ColumnName="DS_NIVEL_COMPETENCIA_PERSONA_N3" />
-          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PUESTO_N4" ColumnName="DS_NIVEL_COMPETENCIA_PUESTO_N4" />
-          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PERSONA_N4" ColumnName="DS_NIVEL_COMPETENCIA_PERSONA_N4" />
-          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PUESTO_N5" ColumnName="DS_NIVEL_COMPETENCIA_PUESTO_N5" />
-          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PERSONA_N5" ColumnName="DS_NIVEL_COMPETENCIA_PERSONA_N5" />
-          <ScalarProperty Name="DS_FILTRO" ColumnName="DS_FILTRO" />
-          <ScalarProperty Name="FE_MODIFICACION" ColumnName="FE_MODIFICACION" />
-          <ScalarProperty Name="CL_USUARIO_MODIFICA" ColumnName="CL_USUARIO_MODIFICA" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="SPE_OBTIENE_TABULADORES" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_TABULADORES">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_TABULADORES_Result">
@@ -7816,6 +7781,42 @@
         <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_VERIFICA_CONFIGURACION_TABULADOR_Result">
           <ScalarProperty Name="ID_TABULADOR" ColumnName="ID_TABULADOR" />
           <ScalarProperty Name="FG_CONFIGURACION" ColumnName="FG_CONFIGURACION" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPE_OBTIENE_C_COMPETENCIA" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_C_COMPETENCIA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_C_COMPETENCIA_Result">
+          <ScalarProperty Name="ID_COMPETENCIA" ColumnName="ID_COMPETENCIA" />
+          <ScalarProperty Name="CL_COMPETENCIA" ColumnName="CL_COMPETENCIA" />
+          <ScalarProperty Name="NB_COMPETENCIA" ColumnName="NB_COMPETENCIA" />
+          <ScalarProperty Name="DS_COMPETENCIA" ColumnName="DS_COMPETENCIA" />
+          <ScalarProperty Name="CL_TIPO_COMPETENCIA" ColumnName="CL_TIPO_COMPETENCIA" />
+          <ScalarProperty Name="NB_TIPO_COMPETENCIA1" ColumnName="NB_TIPO_COMPETENCIA1" />
+          <ScalarProperty Name="CL_CLASIFICACION" ColumnName="CL_CLASIFICACION" />
+          <ScalarProperty Name="FG_ACTIVO" ColumnName="FG_ACTIVO" />
+          <ScalarProperty Name="NB_ACTIVO" ColumnName="NB_ACTIVO" />
+          <ScalarProperty Name="XML_CAMPOS_ADICIONALES" ColumnName="XML_CAMPOS_ADICIONALES" />
+          <ScalarProperty Name="DS_TIPO_COMPETENCIA" ColumnName="DS_TIPO_COMPETENCIA" />
+          <ScalarProperty Name="NB_TIPO_COMPETENCIA" ColumnName="NB_TIPO_COMPETENCIA" />
+          <ScalarProperty Name="NB_CLASIFICACION_COMPETENCIA" ColumnName="NB_CLASIFICACION_COMPETENCIA" />
+          <ScalarProperty Name="DS_CLASIFICACION_COMPETENCIA" ColumnName="DS_CLASIFICACION_COMPETENCIA" />
+          <ScalarProperty Name="NO_ORDEN" ColumnName="NO_ORDEN" />
+          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PUESTO_N0" ColumnName="DS_NIVEL_COMPETENCIA_PUESTO_N0" />
+          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PERSONA_N0" ColumnName="DS_NIVEL_COMPETENCIA_PERSONA_N0" />
+          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PUESTO_N1" ColumnName="DS_NIVEL_COMPETENCIA_PUESTO_N1" />
+          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PERSONA_N1" ColumnName="DS_NIVEL_COMPETENCIA_PERSONA_N1" />
+          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PUESTO_N2" ColumnName="DS_NIVEL_COMPETENCIA_PUESTO_N2" />
+          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PERSONA_N2" ColumnName="DS_NIVEL_COMPETENCIA_PERSONA_N2" />
+          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PUESTO_N3" ColumnName="DS_NIVEL_COMPETENCIA_PUESTO_N3" />
+          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PERSONA_N3" ColumnName="DS_NIVEL_COMPETENCIA_PERSONA_N3" />
+          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PUESTO_N4" ColumnName="DS_NIVEL_COMPETENCIA_PUESTO_N4" />
+          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PERSONA_N4" ColumnName="DS_NIVEL_COMPETENCIA_PERSONA_N4" />
+          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PUESTO_N5" ColumnName="DS_NIVEL_COMPETENCIA_PUESTO_N5" />
+          <ScalarProperty Name="DS_NIVEL_COMPETENCIA_PERSONA_N5" ColumnName="DS_NIVEL_COMPETENCIA_PERSONA_N5" />
+          <ScalarProperty Name="DS_FILTRO" ColumnName="DS_FILTRO" />
+          <ScalarProperty Name="FE_MODIFICACION" ColumnName="FE_MODIFICACION" />
+          <ScalarProperty Name="CL_USUARIO_MODIFICA" ColumnName="CL_USUARIO_MODIFICA" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
