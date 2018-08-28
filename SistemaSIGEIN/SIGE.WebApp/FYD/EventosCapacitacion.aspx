@@ -525,7 +525,7 @@
                                 <telerik:RadButton ID="btnEnvioCorreo" runat="server" Text="Envío de correos a participantes" AutoPostBack="false" OnClientClicked="OpenEnvioCorreoParticipantesWindow"></telerik:RadButton>
                             </div>
                             <div class="ctrlBasico">
-                                <telerik:RadButton ID="btnEnvioCorreoEvaluador" runat="server" Text="Envío de correos a evaluadores" AutoPostBack="false" OnClientClicked="OpenEnvioCorreoEvaluadorWindow"></telerik:RadButton>
+                                <telerik:RadButton ID="btnEnvioCorreoEvaluador" runat="server" Text="Envío de correo a evaluador" AutoPostBack="false" OnClientClicked="OpenEnvioCorreoEvaluadorWindow"></telerik:RadButton>
                             </div>
                             <div style="clear: both;"></div>
                             <div class="ctrlBasico">

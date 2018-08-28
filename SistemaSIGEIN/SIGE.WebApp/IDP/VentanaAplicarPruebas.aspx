@@ -290,7 +290,7 @@
                     width: document.documentElement.clientWidth - 300,
                     height: document.documentElement.clientHeight - 20
                 };
-                openChildDialog("EnvioCorreosPruebas.aspx?pIdCandidatosPruebas=" + '<%= vIdCandidatosPruebas %>', "winSeleccionCandidato", "Envío correos", windowProperties);
+                openChildDialog("EnvioCorreosPruebas.aspx?pIdCandidatosPruebas=" + '<%= vIdCandidatosPruebas %>', "winSeleccionCandidato", "Envío de pruebas", windowProperties);
             }
 
             function OpenAplicarPruebasInterna() {
@@ -677,7 +677,9 @@
         </div>
         <div class="divControlDerecha">
            <%-- <telerik:RadButton runat="server" Text="Generar batería" ID="btnGenerar" OnClick="btnGenerar_Click" AutoPostBack="true" />--%>
+            <div class="ctrlBasico">
             <telerik:RadButton runat="server" Text="Cancelar" ID="btnCancelar" OnClick="btnCancelar_Click" AutoPostBack="false" OnClientClicked="closeWindow" />
+                </div>
         </div>
     </div>
     <telerik:RadWindowManager ID="rwmAlertas"  runat="server" OnClientClose="returnDataToParentPopup">

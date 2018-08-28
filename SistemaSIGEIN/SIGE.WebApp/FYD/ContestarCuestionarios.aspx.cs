@@ -46,8 +46,8 @@ namespace SIGE.WebApp.FYD
                     //txtNoPeriodo.InnerText = periodo.CL_PERIODO;
                     //txtNbPeriodo.InnerText = periodo.DS_PERIODO;
                     vEstadoPeriodo = Request.QueryString["EstadoPeriodo"].ToString();
-                    txtClPeriodo.InnerText = periodo.CL_PERIODO;
-                    txtDsPeriodo.InnerText = periodo.NB_PERIODO;
+                    txtClPeriodo.InnerText = periodo.NB_PERIODO;
+                    txtDsPeriodo.InnerText = periodo.DS_PERIODO;
                     txtEstatus.InnerText = periodo.CL_ESTADO_PERIODO;
                     string vTiposEvaluacion = "";
 

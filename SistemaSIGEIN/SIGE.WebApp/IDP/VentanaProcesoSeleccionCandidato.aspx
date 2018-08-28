@@ -177,8 +177,7 @@
     </telerik:RadAjaxManager>
 
 
-    <div style="height: 10px; clear: both;"></div>
-        <div>
+        <div class="ctrlBasico">
         <table class="ctrlTableForm">
             <tr>
                 <td class="ctrlTableDataContext">
@@ -196,12 +195,11 @@
             </tr>
         </table>
     </div>
-
     <div style="clear: both;"></div>
-    <div style="height: calc(100% - 60px);">
+    <div style="height: calc(100% - 100px);">
         <telerik:RadGrid ID="grdProcesoSeleccion" ShowHeader="true" runat="server" AllowPaging="true"
             AllowSorting="true" GroupPanelPosition="Top" Width="100%" GridLines="None"
-            Height="85%" AllowFilteringByColumn="true" ClientSettings-EnablePostBackOnRowClick="true" OnItemDataBound="grdProcesoSeleccion_ItemDataBound"
+            Height="100%" AllowFilteringByColumn="true" ClientSettings-EnablePostBackOnRowClick="true" OnItemDataBound="grdProcesoSeleccion_ItemDataBound"
             OnNeedDataSource="grdProcesoSeleccion_NeedDataSource" HeaderStyle-Font-Bold="true" OnSelectedIndexChanged="grdProcesoSeleccion_SelectedIndexChanged">
             <GroupingSettings CaseSensitive="False" />
             <ClientSettings>
@@ -217,14 +215,14 @@
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Puesto establecido en la requisición" DataField="NB_PUESTO" UniqueName="NB_PUESTO" HeaderStyle-Width="200" FilterControlWidth="130"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Fecha de inicio" DataField="FE_INICIO_PROCESO" UniqueName="FE_INICIO_PROCESO" HeaderStyle-Width="120" FilterControlWidth="60" DataFormatString="{0:d}"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Fecha de término" DataField="FE_TERMINO_PROCESO" UniqueName="FE_TERMINO_PROCESO" HeaderStyle-Width="120" FilterControlWidth="60" DataFormatString="{0:d}"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Estado" DataField="CL_ESTADO" UniqueName="CL_ESTADO" HeaderStyle-Width="100" FilterControlWidth="60"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Estatus" DataField="CL_ESTADO" UniqueName="CL_ESTADO" HeaderStyle-Width="100" FilterControlWidth="60"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Observaciones" DataField="DS_OBSERVACIONES_TERMINO_PROCESO" UniqueName="DS_OBSERVACIONES_TERMINO_PROCESO" HeaderStyle-Width="200" FilterControlWidth="130"></telerik:GridBoundColumn>
 
                 </Columns>
             </MasterTableView>
         </telerik:RadGrid>
          <label id="lbMensaje" runat="server" visible="false">*Este proceso ya ha sido terminado. Puedes crear uno nuevo seleccionando "Iniciar nuevo".</label>
-
+                    </div>
     <div style="clear: both; height: 10px;"></div>
         <div class="divControlDerecha" style="padding-right:10px;"> 
         <telerik:RadButton ID="btnIniciarProceso" AutoPostBack="true" runat="server" Text="Iniciar nuevo" OnClientClicking="ConfirmarNuevoProceso" OnClick="btnIniciarProceso_Click"></telerik:RadButton>
@@ -236,7 +234,6 @@
         <telerik:RadButton ID="btnVerProceso" runat="server" Visible="false" Text="Ver" OnClientClicked="OpenProcesoSeleccionVerWindow"  AutoPostBack="false"></telerik:RadButton>
     </div>
         
-            </div>
     <telerik:RadWindowManager ID="rnMensaje" runat="server"></telerik:RadWindowManager>
 
 </asp:Content>

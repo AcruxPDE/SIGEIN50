@@ -56,8 +56,7 @@
         </telerik:AjaxSetting>
     </AjaxSettings>
     </telerik:RadAjaxManager>
-        <div style="height: 10px; clear: both;"></div>
-        <div style="height: calc(100% - 70px);">
+        <div style="height: calc(100% - 60px);">
             <telerik:RadGrid
                 ID="grdPruebas"
                 ShowHeader="true"
@@ -79,7 +78,7 @@
                 <MasterTableView ClientDataKeyNames="ID_PRUEBA_PLANTILLA" DataKeyNames="ID_PRUEBA_PLANTILLA" ShowHeadersWhenNoRecords="true" AutoGenerateColumns="false" PageSize="20"
                     HorizontalAlign="NotSet" EditMode="EditForms">
                     <Columns>
-                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre de la prueba" DataField="NB_PRUEBA" UniqueName="NB_PRUEBA" HeaderStyle-Width="150"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre de la prueba" DataField="NB_PRUEBA" UniqueName="NB_PRUEBA" HeaderStyle-Width="200"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Estatus" DataField="CL_ESTADO" UniqueName="CL_ESTADO" HeaderStyle-Width="100"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Último usuario que modifica" DataField="CL_USUARIO_MODIFICA" UniqueName="CL_USUARIO_MODIFICA" HeaderStyle-Width="100"></telerik:GridBoundColumn>
                         <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Última fecha de modificación" DataField="FE_MODIFICACION" UniqueName="FE_MODIFICACION" HeaderStyle-Width="100" DataFormatString="{0:d}"></telerik:GridDateTimeColumn>

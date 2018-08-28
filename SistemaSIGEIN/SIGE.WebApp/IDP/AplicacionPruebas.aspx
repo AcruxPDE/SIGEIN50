@@ -347,7 +347,7 @@
             var vIdRequisicion = '<%= vIdRequisicion %>';
 
                 var vURL = "VentanaAsignarRequisicion.aspx";
-                var vTitulo = "Asignar candidato a requisicion";
+                var vTitulo = "Asignar candidato a requisición";
 
                 var grid = $find("<%=grdSolicitudes.ClientID %>");
                 var MasterTable = grid.get_masterTableView();
@@ -620,12 +620,12 @@
                             <div style="clear: both; height: 10px;"></div>
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" Text="Crear batería" ID="btnCrearBateria" AutoPostBack="true" OnClick="btnCrearBateria_Click" />
-                            </div>
-                            <div class="ctrlBasico">
-                                <telerik:RadButton runat="server" Text="Aplicar pruebas" ID="btnAplicarPruebas" AutoPostBack="true" OnClick="btnAplicarPruebas_Click" />
-                            </div>
+                            </div>                          
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" Text="Agregar pruebas" ID="btnAgrgarPruebas" AutoPostBack="false" OnClientClicked="OpenAgregarPruebas" />
+                            </div>
+                             <div class="ctrlBasico">
+                                <telerik:RadButton runat="server" Text="Aplicar pruebas" ID="btnAplicarPruebas" AutoPostBack="true" OnClick="btnAplicarPruebas_Click" />
                             </div>
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" Text="Captura manual" ID="btnCapturaManual" AutoPostBack="false" OnClientClicked="OpenCapturaManual" />
@@ -691,12 +691,12 @@
                             <div style="clear: both; height: 10px;"></div>
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" Text="Crear batería" ID="btnCrearBateriaEmp" AutoPostBack="true" OnClick="btnCrearBateriaEmp_Click" />
-                            </div>
-                            <div class="ctrlBasico">
-                                <telerik:RadButton runat="server" Text="Aplicar pruebas" ID="btnAplicarPruebaEmp" AutoPostBack="true" OnClick="btnAplicarPruebaEmp_Click" />
-                            </div>
+                            </div>         
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" Text="Agregar pruebas" ID="btnAgregarPruebaEmp" AutoPostBack="false" OnClientClicked="OpenAgregarPruebasEmp" />
+                            </div>
+                             <div class="ctrlBasico">
+                                <telerik:RadButton runat="server" Text="Aplicar pruebas" ID="btnAplicarPruebaEmp" AutoPostBack="true" OnClick="btnAplicarPruebaEmp_Click" />
                             </div>
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" Text="Captura manual" ID="btnManualEmp" AutoPostBack="false" OnClientClicked="OpenManualEmp" />

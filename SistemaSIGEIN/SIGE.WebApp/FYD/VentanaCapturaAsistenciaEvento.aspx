@@ -86,7 +86,7 @@
                         <ItemStyle Width="50px" />
                         <HeaderStyle Width="50px" />
                         <ItemTemplate>
-                            <telerik:RadNumericTextBox runat="server" ID="txtTiempo" Width="100%" AutoPostBack="false" Text='<%# Bind("NO_TIEMPO") %>' NumberFormat-DecimalDigits="0" ShowSpinButtons="false">
+                            <telerik:RadNumericTextBox runat="server" ID="txtTiempo" Width="100%" AutoPostBack="false" Text='<%# Bind("NO_TIEMPO") %>' NumberFormat-DecimalDigits="0" MinValue="0" ShowSpinButtons="false">
                                 <EnabledStyle HorizontalAlign="Right" />
                             </telerik:RadNumericTextBox>
                         </ItemTemplate>

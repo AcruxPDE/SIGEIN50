@@ -485,8 +485,8 @@ namespace SIGE.WebApp.FYD
                         string vTiposEvaluacion = "";
                         //txtPeriodo.InnerText = vPeriodo.CL_PERIODO;
                         //txtNombrePeriodo.InnerText = vPeriodo.DS_PERIODO;
-                        txtClPeriodo.InnerText = vPeriodo.CL_PERIODO;
-                        txtDsPeriodo.InnerText = vPeriodo.NB_PERIODO;
+                        txtClPeriodo.InnerText = vPeriodo.NB_PERIODO;
+                        txtDsPeriodo.InnerText = vPeriodo.DS_PERIODO;
                         txtEstatus.InnerText = vPeriodo.CL_ESTADO_PERIODO;
 
                         if (vPeriodo.FG_AUTOEVALUACION)

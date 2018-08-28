@@ -161,8 +161,8 @@ namespace SIGE.WebApp.FYD
             {
                 //txtPeriodo.InnerText = oPeriodo.DS_PERIODO;
                 //txtClavePeriodo.InnerText = oPeriodo.CL_PERIODO;
-                txtClPeriodo.InnerText = oPeriodo.CL_PERIODO;
-                txtDsPeriodo.InnerText = oPeriodo.NB_PERIODO;
+                txtClPeriodo.InnerText = oPeriodo.NB_PERIODO;
+                txtDsPeriodo.InnerText = oPeriodo.DS_PERIODO;
                 txtEstatus.InnerText = oPeriodo.CL_ESTADO_PERIODO;
 
                 if (oPeriodo.FG_AUTOEVALUACION)
