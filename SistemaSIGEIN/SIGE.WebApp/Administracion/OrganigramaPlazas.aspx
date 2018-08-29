@@ -335,7 +335,7 @@
                     <telerik:RadSlidingPane ID="RadSlidingPane1" runat="server" Title="Ayuda" Width="270px" RenderMode="Mobile" Height="100%">
                         <div style="display: block; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
                             <p>
-                                Aquí podrás refinar tu búsqueda para la generación del organigrama.
+                                Aquí podrás definir tu búsqueda para la generación del organigrama.
                                 <br />
                                 En caso de ingresar criterios de búsqueda, éstos serán utilizados para acotar el diagrama. 
                                <br />

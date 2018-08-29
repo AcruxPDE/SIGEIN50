@@ -216,7 +216,7 @@
                                 <telerik:RadSlidingPane ID="rsbAyuda" runat="server" CollapseMode="Forward" EnableResize="false" Width="325px" Title="Ayuda" Height="100%">
                                     <div id="divTabuladorMaestro" runat="server" style="padding: 15px; text-align: justify;">
                                         <p>
-                                            Utiliza la pestaña "Definición de criterios" para refinar tu búsqueda para el reporte solicitado.
+                                            Utiliza la pestaña "Definición de criterios" para definir tu búsqueda para el reporte solicitado.
                                             <br />
                                             <br />
                                             Con excepción de los parámetros de períodos que son mandatorios,																	
@@ -301,7 +301,7 @@
                                 <telerik:RadSlidingPane ID="RadSlidingPane1" runat="server" CollapseMode="Forward" EnableResize="false" Width="325px" Title="Ayuda" Height="100%">
                                     <div id="div1" runat="server" style="padding: 15px; text-align: justify;">
                                         <p>
-                                            Utiliza la pestaña "Definición de criterios" para refinar tu búsqueda para el reporte solicitado.
+                                            Utiliza la pestaña "Definición de criterios" para definir tu búsqueda para el reporte solicitado.
                                             <br />
                                             <br />
                                             Con excepción de los parámetros de períodos que son mandatorios,																	
@@ -390,7 +390,7 @@
                                 <telerik:RadSlidingPane ID="RadSlidingPane2" runat="server" CollapseMode="Forward" EnableResize="false" Width="325px" Title="Ayuda" Height="100%">
                                     <div id="div2" runat="server" style="padding: 15px; text-align: justify;">
                                         <p>
-                                            Utiliza la pestaña "Definición de criterios" para refinar tu búsqueda para el reporte solicitado.
+                                            Utiliza la pestaña "Definición de criterios" para definir tu búsqueda para el reporte solicitado.
                             <br />
                                             <br />
                                             Con excepción de los parámetros de períodos que son mandatorios,																	

@@ -88,7 +88,7 @@
         </div>
         <div style="height: 10px; clear: both;"></div>
         <div class="ctrlBasico">
-            <telerik:RadButton ID="btnSeleccionar" runat="server" AutoPostBack="false" Text="Seleccionar" OnClientClicked="OpenSeleccionaPruebas"></telerik:RadButton>
+            <telerik:RadButton ID="btnSeleccionar" runat="server" AutoPostBack="false" Text="Asignar" OnClientClicked="OpenSeleccionaPruebas"></telerik:RadButton>
         </div>
         <div class="divControlDerecha">
             <telerik:RadButton ID="btnCancelar" runat="server" AutoPostBack="false" Text="Cancelar" OnClientClicked="CloseWindow"></telerik:RadButton>

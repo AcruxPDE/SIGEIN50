@@ -12771,19 +12771,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EST_SOC_DATO_LABORAL_Result>("SPE_OBTIENE_EST_SOC_DATO_LABORAL", pIN_ID_DATO_LABORALParameter, pIN_ID_ESTUDIO_SOCIOECONOMICOParameter);
         }
     
-        public virtual ObjectResult<SPE_EVALUADOR_POR_EVALUADO_Result> SPE_EVALUADOR_POR_EVALUADO(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EVALUADO)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            var pIN_ID_EVALUADOParameter = pIN_ID_EVALUADO.HasValue ?
-                new ObjectParameter("PIN_ID_EVALUADO", pIN_ID_EVALUADO) :
-                new ObjectParameter("PIN_ID_EVALUADO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_EVALUADOR_POR_EVALUADO_Result>("SPE_EVALUADOR_POR_EVALUADO", pIN_ID_PERIODOParameter, pIN_ID_EVALUADOParameter);
-        }
-    
         public virtual int SPE_INSERTA_TABULADOR_COPIA(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_TABULADOR, string pIN_CL_TABULADOR, string pIN_NB_TABULADOR, string pIN_DS_TABULADOR, Nullable<System.DateTime> pIN_FE_VIGENCIA, string pIN_CL_TIPO_PUESTO, string pIN_CL_ESTADO, Nullable<byte> pIN_NO_NIVELES, Nullable<byte> pIN_NO_CATEGORIAS, Nullable<decimal> pIN_PR_PROGRESION, Nullable<decimal> pIN_PR_INFLACION, Nullable<int> pIN_ID_CUARTIL_INFLACIONAL, Nullable<int> pIN_ID_CUARTIL_INCREMENTO, Nullable<int> pIN_ID_CUARTIL_MERCADO, string pIN_CL_SUELDO_COMPARACION, string pIN_XML_VARIACION, string pIN_CL_ORIGEN_NIVELES, Nullable<System.DateTime> pIN_FE_CREACION, string pIN_CL_USUARIO_APP_CREA, string pIN_CL_USUARIO_APP_MODIFICA, string pIN_NB_PROGRAMA_CREA, string pIN_PROGRAMA_MODIFICA, string pIN_TIPO_TRANSACCION)
         {
             var pIN_ID_TABULADORParameter = pIN_ID_TABULADOR.HasValue ?
@@ -20106,6 +20093,19 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_XML_SELECCION", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_COMPETENCIA_Result>("SPE_OBTIENE_C_COMPETENCIA", pIN_ID_COMPETENCIAParameter, pIN_CL_COMPETENCIAParameter, pIN_NB_COMPETENCIAParameter, pIN_DS_COMPETENCIAParameter, pIN_CL_TIPO_COMPETENCIAParameter, pIN_CL_CLASIFICACIONParameter, pIN_FG_ACTIVOParameter, pIN_XML_CAMPOS_ADICIONALESParameter, pIN_XML_SELECCIONParameter);
+        }
+    
+        public virtual ObjectResult<SPE_EVALUADOR_POR_EVALUADO_Result> SPE_EVALUADOR_POR_EVALUADO(Nullable<int> pIN_ID_PERIODO, Nullable<int> pIN_ID_EVALUADO)
+        {
+            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
+                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
+                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
+    
+            var pIN_ID_EVALUADOParameter = pIN_ID_EVALUADO.HasValue ?
+                new ObjectParameter("PIN_ID_EVALUADO", pIN_ID_EVALUADO) :
+                new ObjectParameter("PIN_ID_EVALUADO", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_EVALUADOR_POR_EVALUADO_Result>("SPE_EVALUADOR_POR_EVALUADO", pIN_ID_PERIODOParameter, pIN_ID_EVALUADOParameter);
         }
     }
 }

@@ -9844,10 +9844,6 @@
             <Parameter Name="PIN_ID_DATO_LABORAL" Mode="In" Type="Int32" />
             <Parameter Name="PIN_ID_ESTUDIO_SOCIOECONOMICO" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SPE_EVALUADOR_POR_EVALUADO" ReturnType="Collection(SistemaSigeinModel.SPE_EVALUADOR_POR_EVALUADO_Result)">
-            <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EVALUADO" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SPE_INSERTA_TABULADOR_COPIA">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="PIN_ID_TABULADOR" Mode="In" Type="Int32" />
@@ -12012,6 +12008,10 @@
             <Parameter Name="PIN_XML_CAMPOS_ADICIONALES" Mode="In" Type="String" />
             <Parameter Name="PIN_XML_SELECCION" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SPE_EVALUADOR_POR_EVALUADO" ReturnType="Collection(SistemaSigeinModel.SPE_EVALUADOR_POR_EVALUADO_Result)">
+            <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
+            <Parameter Name="PIN_ID_EVALUADO" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SPE_OBTIENE_C_CALLE_Result">
           <Property Type="Int32" Name="ID_CALLE" Nullable="false" />
@@ -13889,15 +13889,6 @@
           <Property Type="Decimal" Name="NO_ANTIGUEDAD_EMPRESA" Nullable="true" Precision="5" Scale="2" />
           <Property Type="String" Name="CL_TIPO_SUELDO" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="NB_TIPO_SUELDO" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="SPE_EVALUADOR_POR_EVALUADO_Result">
-          <Property Type="Int32" Name="ID_PERIODO" Nullable="false" />
-          <Property Type="Int32" Name="ID_EVALUADO" Nullable="false" />
-          <Property Type="Int32" Name="ID_EVALUADOR" Nullable="false" />
-          <Property Type="String" Name="NB_EVALUADOR" Nullable="false" MaxLength="300" />
-          <Property Type="String" Name="CL_CORREO_ELECTRONICO" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="CL_PUESTO" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="NB_PUESTO" Nullable="false" MaxLength="200" />
         </ComplexType>
         <ComplexType Name="SPE_OBTIENE_TABULADOR_VALUACION_Result">
           <Property Type="Int32" Name="ID_PUESTO" Nullable="false" />
@@ -17894,6 +17885,16 @@
           <Property Type="DateTime" Name="FE_MODIFICACION" Nullable="true" />
           <Property Type="String" Name="CL_USUARIO_MODIFICA" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="SPE_EVALUADOR_POR_EVALUADO_Result">
+          <Property Type="Int32" Name="ID_PERIODO" Nullable="false" />
+          <Property Type="Int32" Name="ID_EVALUADO" Nullable="false" />
+          <Property Type="Int32" Name="ID_EVALUADOR" Nullable="false" />
+          <Property Type="String" Name="NB_EVALUADOR" Nullable="false" MaxLength="300" />
+          <Property Type="String" Name="CL_CORREO_ELECTRONICO" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CL_PUESTO" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NB_PUESTO" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CL_ESTADO" Nullable="true" MaxLength="20" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -20689,19 +20690,6 @@
                 <ScalarProperty Name="NO_ANTIGUEDAD_EMPRESA" ColumnName="NO_ANTIGUEDAD_EMPRESA" />
                 <ScalarProperty Name="CL_TIPO_SUELDO" ColumnName="CL_TIPO_SUELDO" />
                 <ScalarProperty Name="NB_TIPO_SUELDO" ColumnName="NB_TIPO_SUELDO" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SPE_EVALUADOR_POR_EVALUADO" FunctionName="SistemaSigeinModel.Store.SPE_EVALUADOR_POR_EVALUADO">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_EVALUADOR_POR_EVALUADO_Result">
-                <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
-                <ScalarProperty Name="ID_EVALUADO" ColumnName="ID_EVALUADO" />
-                <ScalarProperty Name="ID_EVALUADOR" ColumnName="ID_EVALUADOR" />
-                <ScalarProperty Name="NB_EVALUADOR" ColumnName="NB_EVALUADOR" />
-                <ScalarProperty Name="CL_CORREO_ELECTRONICO" ColumnName="CL_CORREO_ELECTRONICO" />
-                <ScalarProperty Name="CL_PUESTO" ColumnName="CL_PUESTO" />
-                <ScalarProperty Name="NB_PUESTO" ColumnName="NB_PUESTO" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -25717,6 +25705,20 @@
                 <ScalarProperty Name="DS_FILTRO" ColumnName="DS_FILTRO" />
                 <ScalarProperty Name="FE_MODIFICACION" ColumnName="FE_MODIFICACION" />
                 <ScalarProperty Name="CL_USUARIO_MODIFICA" ColumnName="CL_USUARIO_MODIFICA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPE_EVALUADOR_POR_EVALUADO" FunctionName="SistemaSigeinModel.Store.SPE_EVALUADOR_POR_EVALUADO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_EVALUADOR_POR_EVALUADO_Result">
+                <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
+                <ScalarProperty Name="ID_EVALUADO" ColumnName="ID_EVALUADO" />
+                <ScalarProperty Name="ID_EVALUADOR" ColumnName="ID_EVALUADOR" />
+                <ScalarProperty Name="NB_EVALUADOR" ColumnName="NB_EVALUADOR" />
+                <ScalarProperty Name="CL_CORREO_ELECTRONICO" ColumnName="CL_CORREO_ELECTRONICO" />
+                <ScalarProperty Name="CL_PUESTO" ColumnName="CL_PUESTO" />
+                <ScalarProperty Name="NB_PUESTO" ColumnName="NB_PUESTO" />
+                <ScalarProperty Name="CL_ESTADO" ColumnName="CL_ESTADO" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

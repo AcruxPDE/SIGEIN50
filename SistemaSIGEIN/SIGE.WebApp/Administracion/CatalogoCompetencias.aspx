@@ -163,8 +163,6 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-
-
     <telerik:RadWindowManager ID="RadWindowManager1" runat="server" EnableShadow="true">
         <Windows>
             <telerik:RadWindow ID="rwCompetenciaNuevo" runat="server" Title="Tipo de competencia" Height="600"

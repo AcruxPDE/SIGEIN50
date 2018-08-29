@@ -2792,19 +2792,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="SPE_EVALUADOR_POR_EVALUADO" FunctionName="SistemaSigeinModel.Store.SPE_EVALUADOR_POR_EVALUADO">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_EVALUADOR_POR_EVALUADO_Result">
-          <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
-          <ScalarProperty Name="ID_EVALUADO" ColumnName="ID_EVALUADO" />
-          <ScalarProperty Name="ID_EVALUADOR" ColumnName="ID_EVALUADOR" />
-          <ScalarProperty Name="NB_EVALUADOR" ColumnName="NB_EVALUADOR" />
-          <ScalarProperty Name="CL_CORREO_ELECTRONICO" ColumnName="CL_CORREO_ELECTRONICO" />
-          <ScalarProperty Name="CL_PUESTO" ColumnName="CL_PUESTO" />
-          <ScalarProperty Name="NB_PUESTO" ColumnName="NB_PUESTO" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="SPE_INSERTA_TABULADOR_COPIA" FunctionName="SistemaSigeinModel.Store.SPE_INSERTA_TABULADOR_COPIA" />
     <FunctionImportMapping FunctionImportName="SPE_ELIMINA_EO_EVALUADOR_EVALUADO" FunctionName="SistemaSigeinModel.Store.SPE_ELIMINA_EO_EVALUADOR_EVALUADO" />
     <FunctionImportMapping FunctionImportName="SPE_ELIMINA_EO_METAS_EVALUADO" FunctionName="SistemaSigeinModel.Store.SPE_ELIMINA_EO_METAS_EVALUADO" />
@@ -7817,6 +7804,20 @@
           <ScalarProperty Name="DS_FILTRO" ColumnName="DS_FILTRO" />
           <ScalarProperty Name="FE_MODIFICACION" ColumnName="FE_MODIFICACION" />
           <ScalarProperty Name="CL_USUARIO_MODIFICA" ColumnName="CL_USUARIO_MODIFICA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPE_EVALUADOR_POR_EVALUADO" FunctionName="SistemaSigeinModel.Store.SPE_EVALUADOR_POR_EVALUADO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_EVALUADOR_POR_EVALUADO_Result">
+          <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
+          <ScalarProperty Name="ID_EVALUADO" ColumnName="ID_EVALUADO" />
+          <ScalarProperty Name="ID_EVALUADOR" ColumnName="ID_EVALUADOR" />
+          <ScalarProperty Name="NB_EVALUADOR" ColumnName="NB_EVALUADOR" />
+          <ScalarProperty Name="CL_CORREO_ELECTRONICO" ColumnName="CL_CORREO_ELECTRONICO" />
+          <ScalarProperty Name="CL_PUESTO" ColumnName="CL_PUESTO" />
+          <ScalarProperty Name="NB_PUESTO" ColumnName="NB_PUESTO" />
+          <ScalarProperty Name="CL_ESTADO" ColumnName="CL_ESTADO" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

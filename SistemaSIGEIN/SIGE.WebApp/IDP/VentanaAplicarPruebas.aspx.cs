@@ -235,6 +235,10 @@ namespace SIGE.WebApp.IDP
             {
                 btnAplicacionInterna.Enabled = false;
             }
+            else
+            {
+                btnAplicacionMasiva.Enabled = false;
+            }
         }
 
         protected void grdCandidatos_ItemCommand(object sender, GridCommandEventArgs e)
