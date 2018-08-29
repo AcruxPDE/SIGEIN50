@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TC/ContextTC.Master" AutoEventWireup="true" CodeBehind="VentanaNuevoTableroControl.aspx.cs" Inherits="SIGE.WebApp.TC.VentanaNuevoTableroControl" %>
+﻿7<%@ Page Title="" Language="C#" MasterPageFile="~/TC/ContextTC.Master" AutoEventWireup="true" CodeBehind="VentanaNuevoTableroControl.aspx.cs" Inherits="SIGE.WebApp.TC.VentanaNuevoTableroControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
     <style>

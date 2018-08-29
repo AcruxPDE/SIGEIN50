@@ -81,7 +81,7 @@
 
          function OpenCrearBateriasEmpleado() {
              var pIdCandidatosPruebas = '<%= vIdGeneraBaterias%>';
-            openChildDialog("AgregarPruebas.aspx?pIdCandidatosPruebas=" + pIdCandidatosPruebas, "winPruebasEmp", "Crear batería", GetWindowProperties());
+            openChildDialog("AgregarPruebas.aspx?pIdCandidatosPruebas=" + pIdCandidatosPruebas, "winPruebasEmp", "Asignar pruebas", GetWindowProperties());
         }
 
         function OpenAplicarPruebasEmp() {
@@ -174,7 +174,7 @@
 
         function OpenCrearBaterias() {
             var pIdCandidatosPruebas = '<%= vIdGeneraBaterias%>';
-            openChildDialog("AgregarPruebas.aspx?pIdCandidatosPruebas=" + pIdCandidatosPruebas, "winPruebas", "Crear batería", GetWindowProperties());
+            openChildDialog("AgregarPruebas.aspx?pIdCandidatosPruebas=" + pIdCandidatosPruebas, "winPruebas", "Asignar pruebas", GetWindowProperties());
         }
 
         function OpenAplicarPruebas() {
@@ -619,13 +619,13 @@
                             </div>
                             <div style="clear: both; height: 10px;"></div>
                             <div class="ctrlBasico">
-                                <telerik:RadButton runat="server" Text="Crear batería" ID="btnCrearBateria" AutoPostBack="true" OnClick="btnCrearBateria_Click" />
+                                <telerik:RadButton runat="server" Text="Asignar pruebas" ID="btnCrearBateria" AutoPostBack="true" OnClick="btnCrearBateria_Click" />
                             </div>                          
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" Text="Agregar pruebas" ID="btnAgrgarPruebas" AutoPostBack="false" OnClientClicked="OpenAgregarPruebas" />
                             </div>
                              <div class="ctrlBasico">
-                                <telerik:RadButton runat="server" Text="Aplicar pruebas" ID="btnAplicarPruebas" AutoPostBack="true" OnClick="btnAplicarPruebas_Click" />
+                                <telerik:RadButton runat="server" ToolTip="Da clic en esta opción para para que selecciones la forma más apta de aplicación de psicometría para tu(s) candidato(s)." Text="Aplicar pruebas" ID="btnAplicarPruebas" AutoPostBack="true" OnClick="btnAplicarPruebas_Click" />
                             </div>
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" Text="Captura manual" ID="btnCapturaManual" AutoPostBack="false" OnClientClicked="OpenCapturaManual" />
@@ -690,13 +690,13 @@
                             </div>
                             <div style="clear: both; height: 10px;"></div>
                             <div class="ctrlBasico">
-                                <telerik:RadButton runat="server" Text="Crear batería" ID="btnCrearBateriaEmp" AutoPostBack="true" OnClick="btnCrearBateriaEmp_Click" />
+                                <telerik:RadButton runat="server" Text="Asignar pruebas" ID="btnCrearBateriaEmp" AutoPostBack="true" OnClick="btnCrearBateriaEmp_Click" />
                             </div>         
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" Text="Agregar pruebas" ID="btnAgregarPruebaEmp" AutoPostBack="false" OnClientClicked="OpenAgregarPruebasEmp" />
                             </div>
                              <div class="ctrlBasico">
-                                <telerik:RadButton runat="server" Text="Aplicar pruebas" ID="btnAplicarPruebaEmp" AutoPostBack="true" OnClick="btnAplicarPruebaEmp_Click" />
+                                <telerik:RadButton runat="server" ToolTip="Da clic en esta opción para para que selecciones la forma más apta de aplicación de psicometría para tu(s) empleado(s)." Text="Aplicar pruebas" ID="btnAplicarPruebaEmp" AutoPostBack="true" OnClick="btnAplicarPruebaEmp_Click" />
                             </div>
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" Text="Captura manual" ID="btnManualEmp" AutoPostBack="false" OnClientClicked="OpenManualEmp" />

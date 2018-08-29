@@ -1293,7 +1293,7 @@
                         <div style="clear: both"></div>
                         <div class="ctrlBasico">
                             <telerik:RadButton ID="btnGuardarCartera" runat="server" GroupName="btnGuardarCartera" AutoPostBack="true" Text="Guardar" OnClick="btnGuardarCartera_Click"></telerik:RadButton>
-                            <telerik:RadButton ID="btnEjecutarLimpiaCartera" runat="server" AutoPostBack="true" Text="Ejecutar Depuración" OnClick="btnEjecutarLimpiaCartera_Click"></telerik:RadButton>
+                            <%--<telerik:RadButton ID="btnEjecutarLimpiaCartera" runat="server" AutoPostBack="true" Text="Ejecutar Depuración" OnClick="btnEjecutarLimpiaCartera_Click"></telerik:RadButton>--%>
                         </div>
                     </telerik:RadPane>
                     <telerik:RadPane ID="rpAyuda" runat="server" Scrolling="None" Width="22px">

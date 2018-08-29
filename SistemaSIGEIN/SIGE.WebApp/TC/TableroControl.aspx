@@ -66,11 +66,11 @@
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                 { if (shouldSubmit) { this.click(); } });
 
-                radconfirm('¿Deseas cerrar el período ' + vNombrePeriodo + ' ?, una vez cerrado ya no será posible configurarlo.', callBackFunction, 400, 170, null, "Cerrar Periodo");
+                radconfirm('¿Deseas cerrar el tablero ' + vNombrePeriodo + ' ?, una vez cerrado ya no será posible configurarlo.', callBackFunction, 400, 170, null, "Cerrar tablero");
                 args.set_cancel(true);
             }
             else {
-                radalert("Seleccione un período del tablero de control.", 400, 150, "");
+                radalert("Seleccione un tablero de control.", 400, 150, "");
                 args.set_cancel(true);
             }
         }
@@ -86,14 +86,14 @@
 
         function AbrirVentanaNuevo() {
             var vWindowsPropierties = vWindowsPropiertiesAgregar();
-            openChildDialog("VentanaNuevoTableroControl.aspx", "WinTableroControl", "Agregar período", vWindowsPropierties)
+            openChildDialog("VentanaNuevoTableroControl.aspx", "WinTableroControl", "Agregar tablero", vWindowsPropierties)
         }
 
         function OpenEditEventoWindow() {
             var vWindowsPropierties = vWindowsPropiertiesAgregar();
             var vIdPeriodo = GetPeriodoId();
             if (vIdPeriodo != null) {
-                openChildDialog("VentanaNuevoTableroControl.aspx?pIdPeriodo=" + vIdPeriodo, "WinTableroControl", "Editar período", vWindowsPropierties);
+                openChildDialog("VentanaNuevoTableroControl.aspx?pIdPeriodo=" + vIdPeriodo, "WinTableroControl", "Editar tablero", vWindowsPropierties);
             }
         }
 
@@ -102,10 +102,10 @@
             var vIdPeriodo = GetPeriodoId();
 
             if (vIdPeriodo != null) {
-                openChildDialog("VentanaConsultaTablero.aspx?pIdTablero=" + vIdPeriodo, "winConsultatablero", "Consultar período", vWindowProperties)
+                openChildDialog("VentanaConsultaTablero.aspx?pIdTablero=" + vIdPeriodo, "winConsultatablero", "Consultar tablero", vWindowProperties)
             }
             else {
-                radalert("Selecciona un período del tablero de control.", 400, 150);
+                radalert("Selecciona un tablero de control.", 400, 150);
             }
         }
 
@@ -114,10 +114,10 @@
             var vIdPeriodo = GetPeriodoId();
 
             if (vIdPeriodo != null) {
-                openChildDialog("VentanaConfiguracionTablero.aspx?pIdPeriodo=" + vIdPeriodo, "WinTableroControl", "Configuración de período", vWindowProperties)
+                openChildDialog("VentanaConfiguracionTablero.aspx?pIdPeriodo=" + vIdPeriodo, "WinTableroControl", "Configuración de tablero", vWindowProperties)
             }
             else {
-                radalert("Selecciona un período del tablero de control.", 400, 150);
+                radalert("Selecciona un tablero de control.", 400, 150);
             }
         }
 
@@ -128,10 +128,10 @@
                 var vWindowPropierties = {
                     height: 200
                 };
-                confirmAction(sender, args, "Deseas eliminar el período " + vNombrePeriodo + "?, Este proceso no podra revertirse.");
+                confirmAction(sender, args, "Deseas eliminar el tablero " + vNombrePeriodo + "?, Este proceso no podra revertirse.");
             }
             else {
-                radalert("Selecciona un período del tablero de control.", 400, 150);
+                radalert("Selecciona un tablero de control.", 400, 150);
                 args.set_cancel(true);
             }
         }
@@ -143,10 +143,10 @@
                 var vWindowPropierties = {
                     height: 200
                 };
-                confirmAction(sender, args, "Deseas copiar el período " + vNombrePeriodo + "?, Este proceso no podra revertirse.");
+                confirmAction(sender, args, "Deseas copiar el tablero " + vNombrePeriodo + "?, Este proceso no podra revertirse.");
             }
             else {
-                radalert("Selecciona un período del tablero de control.", 400, 150);
+                radalert("Selecciona un tablero de control.", 400, 150);
                 args.set_cancel(true);
             }
         }
@@ -273,7 +273,7 @@
                     </SelectedItemTemplate>
                     <EmptyDataTemplate>
                         <div class="RadListViewContainer" style="overflow: auto; text-align: center; width: 660px; height: 100px;">
-                            No hay consultas disponibles
+                            No hay tableros disponibles
                         </div>
                     </EmptyDataTemplate>
                 </telerik:RadListView>
@@ -297,7 +297,7 @@
                                 <telerik:RadButton ID="btnConfigurar" runat="server" Text="Configurar" AutoPostBack="false" OnClientClicked="OpenConfigurarTableroWindow"></telerik:RadButton>
                             </div>
                             <div class="ctrlBasico">
-                                <telerik:RadButton ID="btnCerrar" runat="server" Text="Cerrar período" OnClientClicking="ConfirmarCerrar" OnClick="btnCerrar_Click"></telerik:RadButton>
+                                <telerik:RadButton ID="btnCerrar" runat="server" Text="Cerrar tablero" OnClientClicking="ConfirmarCerrar" OnClick="btnCerrar_Click"></telerik:RadButton>
                             </div>
                             <%-- <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" OnClientClicking="ConfirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>--%>
                             <div class="ctrlBasico">
@@ -313,7 +313,7 @@
                     <telerik:RadPageView ID="rpvInformacion" runat="server">
                         <div class="ctrlBasico">
                             <div class="divControlIzquierda">
-                                <label style="width: 120px;" id="lblEvento" name="lblEvento" runat="server">Período:</label>
+                                <label style="width: 120px;" id="lblEvento" name="lblEvento" runat="server">Tablero:</label>
                             </div>
                             <div class="divControlDerecha">
                                 <telerik:RadTextBox ID="txtClPeriodo" Enabled="false" runat="server" Width="350px" MaxLength="1000"></telerik:RadTextBox>
@@ -370,7 +370,7 @@
                 <telerik:RadSlidingPane ID="rspAyudaTableroControl" runat="server" Title="Ayuda" Width="240px" RenderMode="Mobile" Height="100%">
                     <div style="padding: 20px; text-align: justify;">
                         <p>
-                            Utiliza esta página para crear, configurar, consultar o eliminar un período del tablero de control.
+                            Utiliza esta página para crear, configurar, consultar o eliminar un tablero de control.
                         </p>
                     </div>
                 </telerik:RadSlidingPane>
@@ -381,8 +381,8 @@
                             <legend>Ordenar por:</legend>
                             <telerik:RadComboBox ID="cmbOrdenamiento" runat="server">
                                 <Items>
-                                    <telerik:RadComboBoxItem Text="Clave del período" Value="CL_PERIODO" />
-                                    <telerik:RadComboBoxItem Text="Nombre del período" Value="NB_PERIODO" />
+                                    <telerik:RadComboBoxItem Text="Clave del tablero" Value="CL_PERIODO" />
+                                    <telerik:RadComboBoxItem Text="Nombre del tablero" Value="NB_PERIODO" />
                                     <telerik:RadComboBoxItem Text="Estatus" Value="CL_ESTADO_PERIODO" />
                                     <telerik:RadComboBoxItem Text="Fecha de creación" Value="FE_INICIO" />
                                 </Items>

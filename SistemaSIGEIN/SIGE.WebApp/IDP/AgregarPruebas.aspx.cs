@@ -1417,7 +1417,7 @@ namespace SIGE.WebApp.IDP
                     {
                         //PruebasNegocio nPruebas = new PruebasNegocio();
                         //var vBateria = nPruebas.ObtieneBateria(pIdBateria: vIdBateria).FirstOrDefault();
-                        rtsConfiguracionClima.Tabs.ElementAt(0).Visible = false;
+                        rtsConfiguracion.Tabs.ElementAt(0).Visible = false;
                         rmpCapturaResultados.SelectedIndex = 1;
                         radCmbNiveles.SelectedValue = "PER";
                         radCmbNiveles.Enabled = false;
@@ -1649,7 +1649,7 @@ namespace SIGE.WebApp.IDP
                         string vMensaje = resultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
                         if (resultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
                         {
-                            UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, resultado.CL_TIPO_ERROR, pCallBackFunction: "closeWindow");
+                            UtilMensajes.MensajeResultadoDB(rwmAlertas, "Pruebas asignadas con éxito.", resultado.CL_TIPO_ERROR, pCallBackFunction: "closeWindow");
 
                         }
                         else

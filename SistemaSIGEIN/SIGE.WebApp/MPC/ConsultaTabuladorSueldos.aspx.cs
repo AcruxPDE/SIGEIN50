@@ -1029,7 +1029,7 @@ namespace SIGE.WebApp.MPC
                     break;
                 case "ExpandColumn": break;
                 default:
-                    ConfigurarColumna(e.Column, 150, "", true, true, false, true);
+                    ConfigurarColumna(e.Column, 120, "", true, true, false, true);
                     break;
             }
 

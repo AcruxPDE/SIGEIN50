@@ -364,7 +364,7 @@
                     </div>
 
                 </div>
-                <telerik:RadTabStrip ID="rtsConfiguracionClima" runat="server" SelectedIndex="0" MultiPageID="rmpCapturaResultados">
+                <telerik:RadTabStrip ID="rtsConfiguracion" runat="server" SelectedIndex="0" MultiPageID="rmpCapturaResultados">
                     <Tabs>
                         <telerik:RadTab SelectedIndex="0" Text="Candidatos"></telerik:RadTab>
                         <telerik:RadTab SelectedIndex="1" Text="Pruebas"></telerik:RadTab>
@@ -389,7 +389,7 @@
 
                                             <Columns>
 
-                                                <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
+                                         
                                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Folio" DataField="CL_SOLICITUD" UniqueName="CL_SOLICITUD" HeaderStyle-Width="150"></telerik:GridBoundColumn>
                                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Candidato" DataField="NB_CANDIDATO" UniqueName="NB_CANDIDATO" HeaderStyle-Width="350"></telerik:GridBoundColumn>
                                        <%--         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Última batería" DataField="FL_BATERIA" UniqueName="FL_BATERIA" HeaderStyle-Width="100"></telerik:GridBoundColumn>
@@ -416,16 +416,14 @@
                       <%--      <div style="clear: both"></div>--%>
                     </telerik:RadPageView>
                     <telerik:RadPageView ID="rpPruebas" runat="server" Height="100%">
-                        <div style="height:calc(100% - 20px);">
-                            <div style="border: 1px solid #ddd; border-radius: 5px; display: none; padding:0px;" id="divNivelConformePuesto">
-                                <div style="padding:15px;">
+                        <div style="height:calc(100% - 300px);">
+                            <div style="border: 1px solid #ddd; border-radius: 5px; display: none; padding:15px;" id="divNivelConformePuesto">
                                     <div class="ctrlBasico">
                                         <div class="ctrlBasico">
                                             <label>Puesto: </label>
                                         </div>
                                       <%--  <div style="clear: both;"></div>--%>
 
-                                        <div class="ctrlBasico">
 
                                             <%--<telerik:RadComboBox runat="server"
                                                 ID="radCmbPuesto"
@@ -452,7 +450,6 @@
                                                 <telerik:RadButton runat="server" ID="btnBuscarPuesto" Text="B" Width="35px" AutoPostBack="false" OnClientClicked="OpenPuestosSelectionWindow" />
                                             </div>
 
-                                        </div>
                                     </div>
                                     <div class="ctrlBasico" style="padding-left: 100px;">
                                         <div class="ctrlBasico">
@@ -476,7 +473,6 @@
                                     </div>
                                     <div style="clear: both"></div>
                                 </div>
-                            </div>
 
                                     <div class="ctrlBasico"  style="border: 1px solid #ddd; border-radius: 5px; display: none" id="divPersonalizado">
                                         <div class="divControlDerecha">
@@ -593,7 +589,7 @@
                 runat="server"
                 AllowPaging="false"
                 GridLines="None"
-                Height="280"
+                Height="230"
                 Width="100%"
                 AllowMultiRowSelection="true"
                 AutoGenerateColumns="false"

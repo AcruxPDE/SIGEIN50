@@ -221,17 +221,17 @@
 
   <div style="clear: both; height: 10px;"></div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnGuardar" OnClientClicking="ShowPopupmodalClasificacionCompetenciaNuevo" AutoPostBack="false" runat="server" Text="Agregar"></telerik:RadButton>
+        <telerik:RadButton ID="btnGuardar" ToolTip="Selecciona esta opción si deseas dar alta una nueva competencia al catálogo." OnClientClicking="ShowPopupmodalClasificacionCompetenciaNuevo" AutoPostBack="false" runat="server" Text="Agregar"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowPopupmodalCatalogoGenericoEditar" AutoPostBack="false" runat="server" Text="Editar"></telerik:RadButton>
+        <telerik:RadButton ID="btnEditar" ToolTip="Selecciona esta opción si deseas modificar el contenido de alguna de las competencias." OnClientClicked="ShowPopupmodalCatalogoGenericoEditar" AutoPostBack="false" runat="server" Text="Editar"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" OnClientClicking="ConfirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
+        <telerik:RadButton ID="btnEliminar" ToolTip="Selecciona la competencia que deseas eliminar de tu catálogo y enseguida da clic en esta opción." runat="server" Text="Eliminar" OnClientClicking="ConfirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
     </div>
   
     <div class="ctrlBasico">
-        <telerik:RadButton ID="buttonDock" runat="server" Text="Copiar" OnClientClicking="ConfirmarCopiar" AutoPostBack="false"></telerik:RadButton>
+        <telerik:RadButton ID="buttonDock" runat="server" ToolTip="Selecciona esta opción si deseas utilizar el contenido de los niveles de alguna de las competencias que tienes integrada en tu catálogo." Text="Copiar" OnClientClicking="ConfirmarCopiar" AutoPostBack="false"></telerik:RadButton>
     </div>
 
     <telerik:RadWindowManager ID="rnMensaje" runat="server"></telerik:RadWindowManager>

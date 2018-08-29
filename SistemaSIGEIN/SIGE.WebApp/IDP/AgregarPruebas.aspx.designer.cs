@@ -85,13 +85,13 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadLabel lblPersonalizado;
         
         /// <summary>
-        /// rtsConfiguracionClima control.
+        /// rtsConfiguracion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTabStrip rtsConfiguracionClima;
+        protected global::Telerik.Web.UI.RadTabStrip rtsConfiguracion;
         
         /// <summary>
         /// rmpCapturaResultados control.
