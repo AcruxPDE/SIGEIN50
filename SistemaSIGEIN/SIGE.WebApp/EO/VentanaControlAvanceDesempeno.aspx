@@ -31,8 +31,7 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <div style="height: calc(100% - 70px);">
-        <div style="clear: both; height: 10px;"></div>
+    <div style="height: calc(100% - 60px);">
         <telerik:RadTabStrip ID="rtsControlAvance" runat="server" SelectedIndex="0" MultiPageID="rmpControlAvance">
             <Tabs>
                 <telerik:RadTab Text="Contexto"></telerik:RadTab>

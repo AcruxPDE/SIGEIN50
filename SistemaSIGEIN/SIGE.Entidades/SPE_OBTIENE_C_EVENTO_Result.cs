@@ -39,7 +39,7 @@ namespace SIGE.Entidades
         public decimal MN_COSTO_INDIRECTO { get; set; }
         public bool FG_INCLUIR_EN_PLANTILLA { get; set; }
         public string CL_CURSO { get; set; }
-        public decimal NO_DURACION_CURSO { get; set; }
+        public Nullable<decimal> NO_DURACION_CURSO { get; set; }
         public Nullable<System.Guid> FL_EVENTO { get; set; }
         public string CL_TOKEN { get; set; }
         public string XML_CAMPOS_ADICIONALES { get; set; }

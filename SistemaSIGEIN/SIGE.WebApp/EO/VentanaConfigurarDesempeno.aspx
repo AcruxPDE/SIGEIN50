@@ -47,6 +47,9 @@
             }
         }
 
+        function OpenRemplazaBaja(pIdEvaluado, pIdPeriodo) {
+        }
+
         function ConfirmarEliminarInactivas(sender, args) {
             if ('<%= vClTipoMetas %>' == "DESCRIPTIVO")
                 vMensaje = "¿Los indicadores inactivos serán eliminados, estas seguro que deseas continuar?, este proceso no podrá revertirse";
@@ -395,6 +398,9 @@
                 var ajaxManager = $find('<%= ramConfiguracionPeriodo.ClientID%>');
                 ajaxManager.ajaxRequest(JSON.stringify({ clTipo: "VERIFICACONFIGURACION"}));
             }
+
+            if (vValueTab == 1 && '<%= vFgBajas%>' == "True")
+                radalert("Existen evaluados o evaluadores dados de baja en el período.", 400, 150);
         }
 
     </script>
@@ -517,7 +523,6 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <div style="height: 10px;"></div>
     <telerik:RadTabStrip ID="rtsConfiguracionPeriodoDesempeno" runat="server" SelectedIndex="0" MultiPageID="rmpConfiguracion" OnClientTabSelected="OnClientSelected">
         <Tabs>
             <telerik:RadTab Text="Contexto" Value="0"></telerik:RadTab>
@@ -528,6 +533,7 @@
         </Tabs>
     </telerik:RadTabStrip>
     <div style="height: calc(100% - 55px); width: 100%;">
+            <div style="height: 10px;"></div>
         <telerik:RadMultiPage ID="rmpConfiguracion" runat="server" SelectedIndex="0" Height="100%">
             <telerik:RadPageView runat="server" Width="100%">
                 <div class="divControlIzquierda" style="width: 60%; text-align: left;">
@@ -610,6 +616,7 @@
                                 AllowMultiRowSelection="true"
                                 OnNeedDataSource="grdSeleccionEvaluados_NeedDataSource"
                                 HeaderStyle-Font-Bold="true"
+                                OnItemDataBound="grdEvaluados_ItemDataBound"
                                 OnDetailTableDataBind="grdEvaluados_DetailTableDataBind" ShowFooter="true">
                                 <ClientSettings>
                                     <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -617,7 +624,7 @@
                                 </ClientSettings>
                                 <PagerStyle AlwaysVisible="true" />
                                 <GroupingSettings CaseSensitive="false" />
-                                <MasterTableView DataKeyNames="ID_EMPLEADO,ID_EVALUADO,CL_EMPLEADO,NB_EMPLEADO_COMPLETO,NB_PUESTO,NB_DEPARTAMENTO,PR_EVALUADO"
+                                <MasterTableView DataKeyNames="ID_EMPLEADO,ID_EVALUADO,CL_EMPLEADO,NB_EMPLEADO_COMPLETO,NB_PUESTO,NB_DEPARTAMENTO,PR_EVALUADO, CL_ESTADO_EMPLEADO"
                                     AllowPaging="false" AllowSorting="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true"
                                     EnableHeaderContextFilterMenu="true" ClientDataKeyNames="ID_EVALUADO" EnableHierarchyExpandAll="true" HierarchyDefaultExpanded="false">
                                     <Columns>

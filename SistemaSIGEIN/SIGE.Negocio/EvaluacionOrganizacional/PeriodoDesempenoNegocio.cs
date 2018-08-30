@@ -236,6 +236,7 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
                         FE_CAPTURA_METAS = x.FE_CAPTURA_METAS,
                         MN_TOPE_BONO = x.MN_TOPE_BONO,
                         NO_MONTO_BONO = x.NO_MONTO_BONO,
+                        CL_MONTO_BONO = x.CL_MONTO_BONO,
                         PR_CUMPLIMIENTO_EVALUADO = x.PR_CUMPLIMIENTO_EVALUADO,
                         MN_BONO_TOTAL = x.MN_BONO_TOTAL,
                         ESTATUS = x.ESTATUS

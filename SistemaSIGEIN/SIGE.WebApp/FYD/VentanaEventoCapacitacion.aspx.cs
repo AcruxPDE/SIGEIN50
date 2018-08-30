@@ -105,6 +105,9 @@ namespace SIGE.WebApp.FYD
             txtClave.Text = evento.CL_EVENTO;
             txtNombre.Text = evento.NB_EVENTO;
 
+            txtEvento.InnerText = evento.CL_EVENTO;
+            txtDescripcionEvento.InnerText = evento.NB_EVENTO;
+
             if (evento.ID_PROGRAMA.HasValue)
             {
                 rbVinculado.Checked = true;
@@ -156,7 +159,10 @@ namespace SIGE.WebApp.FYD
             FechasEventos = neg.ObtieneEventoCalendario(ID_EVENTO: vIdEvento);
 
             oCurso = new E_SELECTOR_CURSO();
+
+            if (evento.ID_CURSO != null)
             oCurso.idCurso = evento.ID_CURSO.Value;
+
             oCurso.noDuracion = Convert.ToInt32(evento.NO_DURACION_CURSO);
             oCurso.nbCurso = evento.NB_CURSO;
             ListaEmpleados = neg.ObtieneParticipanteEvento(ID_EVENTO: vIdEvento, pID_ROL: vIdRol);
@@ -440,10 +446,11 @@ namespace SIGE.WebApp.FYD
             {
                 XElement vXmlCA = GeneralXmlAdicionales();
 
-                evento.CL_ESTADO = cmbEstado.SelectedValue;
-                evento.CL_EVENTO = txtClave.Text;
+                    evento.CL_EVENTO = txtClave.Text;
+                    evento.DS_EVENTO = txtNombre.Text;
+
+                evento.CL_ESTADO = cmbEstado.SelectedValue;        
                 evento.CL_TIPO_CURSO = cmbTipo.SelectedValue;
-                evento.DS_EVENTO = txtNombre.Text;
                 evento.DS_LUGAR = txtLugarEvento.Text;
                 evento.DS_REFRIGERIO = txtRefrigerio.Text;
                 evento.XML_CAMPOS_ADICIONALES = vXmlCA.ToString();
@@ -793,6 +800,8 @@ namespace SIGE.WebApp.FYD
 
                 if (Request.Params["EventoIdCopia"] != null)
                 {
+                    dvContextoEvento.Visible = false;
+                    dvDatosEvento.Visible = true;
                     vIdEvento = int.Parse(Request.Params["EventoIdCopia"].ToString());
                     cargarEvento();
                 }

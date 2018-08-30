@@ -92,6 +92,12 @@ namespace SIGE.WebApp.EO
             set { ViewState["vs_vFgCordinador"] = value; }
         }
 
+        public bool vFgBajas
+        {
+            get { return (bool)ViewState["vs_vFgBajas"]; }
+            set { ViewState["vs_vFgBajas"] = value; }
+        }
+
         #endregion
 
         #region Funciones
@@ -262,7 +268,14 @@ namespace SIGE.WebApp.EO
                 txtFechas.InnerText = oPeriodo.FE_INICIO.ToString("d") + " a " + oPeriodo.FE_TERMINO.Value.ToShortDateString();
                 txtTipoMetas.InnerText = oPeriodo.CL_TIPO_PERIODO;
                 txtTipoCapturista.InnerText = Utileria.LetrasCapitales(oPeriodo.CL_TIPO_CAPTURISTA);
-                txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO;
+
+                if (oPeriodo.FG_BONO == true && oPeriodo.FG_MONTO == true)
+                    txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO + " (monto)";
+                else if (oPeriodo.FG_BONO == true && oPeriodo.FG_PORCENTUAL == true)
+                    txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO + " (porcentual)";
+                else
+                    txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO;
+
                 txtTipoPeriodo.InnerText = oPeriodo.CL_ORIGEN_CUESTIONARIO;
 
                 if (oPeriodo.DS_NOTAS != null)
@@ -279,6 +292,15 @@ namespace SIGE.WebApp.EO
         private void CargarDatos()
         {
             PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
+
+            E_RESULTADO vResultado = nPeriodo.InsertaPeriodoDesempenoReplica(pIdPeriodo: vIdPeriodo, pCL_USUARIO: vClUsuario, pNB_PROGRAMA: vNbPrograma, pTipoTransaccion: "V");
+            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+
+            if (vMensaje == "No hay empleados dados de baja")
+                vFgBajas = false;
+            else
+                vFgBajas = true;
+
 
             var vPeriodoDesempeno = nPeriodo.ObtienePeriodosDesempeno(pIdPeriodo: vIdPeriodo).FirstOrDefault();
 
@@ -1226,6 +1248,22 @@ namespace SIGE.WebApp.EO
                 PageSizeCombo.Items.Add(new RadComboBoxItem("1000"));
                 PageSizeCombo.FindItemByText("1000").Attributes.Add("ownerTableViewId", grdContrasenaEvaluadores.MasterTableView.ClientID);
                 PageSizeCombo.FindItemByText(e.Item.OwnerTableView.PageSize.ToString()).Selected = true;
+            }
+        }
+
+        protected void grdEvaluados_ItemDataBound(object sender, GridItemEventArgs e)
+        {
+            if (e.Item is GridDataItem && e.Item.OwnerTableView.Name != "gtvEvaluadores")
+            {
+                GridDataItem item = (GridDataItem)e.Item;
+          
+                string vClEstadoEmpleado = item.GetDataKeyValue("CL_ESTADO_EMPLEADO").ToString();
+                int vIdEvaluado = int.Parse(item.GetDataKeyValue("ID_EVALUADO").ToString());
+                if (vClEstadoEmpleado != null && vClEstadoEmpleado != "Alta")
+                {
+                    item["CL_ESTADO_EMPLEADO"].Text = "<a href='javascript:OpenRemplazaBaja(" + vIdEvaluado + "," + vIdPeriodo + ")'>" + vClEstadoEmpleado + "</a>";
+                }
+
             }
         }
     }

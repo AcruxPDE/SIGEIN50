@@ -350,6 +350,32 @@
         </AjaxSettings>
     </telerik:RadAjaxManager>
 
+
+    <div id="dvContextoEvento" runat="server">
+    <div class="ctrlBasico">
+        <table class="ctrlTableForm">
+            <tr>
+                <td class="ctrlTableDataContext">
+                    <label>Clave del evento:</label></td>
+                <td class="ctrlTableDataBorderContext">
+                    <div id="txtEvento" runat="server" width="170" maxlength="1000" enabled="false"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="ctrlBasico">
+        <table class="ctrlTableForm">
+            <tr>
+                <td class="ctrlTableDataContext">
+                    <label>Descripción:</label></td>
+                <td class="ctrlTableDataBorderContext">
+                    <div id="txtDescripcionEvento" runat="server" width="170" maxlength="1000" enabled="false"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </div>
+
     <telerik:RadTabStrip ID="rtsEventos" runat="server" MultiPageID="rmpEventos" SelectedIndex="0" Width="100%">
         <Tabs>
             <telerik:RadTab Text="Evento"></telerik:RadTab>
@@ -359,17 +385,17 @@
         </Tabs>
     </telerik:RadTabStrip>
 
-    <div style="height: calc(100% - 100px); overflow: auto;">
+    <div style="height: calc(100% - 140px); overflow: auto;">
 
         <telerik:RadMultiPage ID="rmpEventos" runat="server" Width="100%" Height="100%" SelectedIndex="0">
 
             <telerik:RadPageView ID="rpvEvento" runat="server">
 
                 <div style="clear: both; height: 10px;"></div>
-
+                <div id="dvDatosEvento" runat="server" visible="false">
                 <div class="ctrlBasico">
                     <label class="Etiqueta">Clave:</label>
-                    <telerik:RadTextBox runat="server" ID="txtClave" Width="100px" MaxLength="50"></telerik:RadTextBox>
+                    <telerik:RadTextBox runat="server" ID="txtClave" Width="200px" MaxLength="50"></telerik:RadTextBox>
                 </div>
 
                 <div style="clear: both; height: 2px;"></div>
@@ -380,6 +406,7 @@
                 </div>
 
                 <div style="clear: both; height: 2px;"></div>
+                </div>
 
                 <div class="ctrlBasico" style="padding-left: 200px;">
                     <telerik:RadButton runat="server" RenderMode="Lightweight" OnClick="rbVinculado_Click" AutoPostBack="true" ID="rbVinculado" Text="Vinculado a un programa de capacitación" ToggleType="Radio" ButtonType="ToggleButton" GroupName="programa" OnClientCheckedChanged="ProgramaVinculado" Checked="true" ToolTip="En este apartado deberás especificar si deseas que este evento de capacitación esté vinculado con algún programa de capacitación que hayas creado, esta opción te permitirá que automáticamente se registre el estatus de los cursos en el programa. Una vez que hayas vinculado un evento a uno o más programas únicamente podrás seleccionar cursos y participantes que hayas aprovado en el programa(s) de capacitación que has seleccionado.">

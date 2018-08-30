@@ -28,6 +28,8 @@ namespace SIGE.Entidades
         public decimal PR_BONO { get; set; }
         public decimal MN_BONO { get; set; }
         public string CL_TIPO_BONO { get; set; }
+        public Nullable<bool> FG_MONTO { get; set; }
+        public Nullable<bool> FG_PORCENTUAL { get; set; }
         public string CL_TIPO_CAPTURISTA { get; set; }
         public string CL_TIPO_METAS { get; set; }
         public string CL_ORIGEN_CUESTIONARIO { get; set; }

@@ -52,7 +52,7 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
                                  MN_COSTO_DIRECTO = a.MN_COSTO_DIRECTO,
                                  MN_COSTO_INDIRECTO = a.MN_COSTO_INDIRECTO,
                                  FG_INCLUIR_EN_PLANTILLA = a.FG_INCLUIR_EN_PLANTILLA,
-                                 NO_DURACION_CURSO = a.NO_DURACION_CURSO,
+                                 NO_DURACION_CURSO = a.NO_DURACION_CURSO == null ? 0 : (decimal)a.NO_DURACION_CURSO,
                                  XML_PARTICIPANTES = a.XML_PARTICIPANTES,
                                  FL_EVENTO = a.FL_EVENTO,
                                  CL_TOKEN = a.CL_TOKEN,

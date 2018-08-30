@@ -278,7 +278,7 @@ namespace SIGE.WebApp.EO
             //0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
             vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Bajas en el período", PR_CANTIDAD = vPorcentajes != null ? vPorcentajes.NO_EMPLEADOS_BAJA.ToString() : "0" });
             vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Personal en inventario", PR_CANTIDAD = vPorcentajes != null ? vPorcentajes.NO_EMPLEADOS_ALTA.ToString() : "0" });
-            vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Indice de rotación", PR_CANTIDAD = vPorcentajes != null ? vPorcentajes.PR_TOTAL_BAJA.ToString() + "%" : "0%" });
+            vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Indice de rotación", PR_CANTIDAD = vPorcentajes != null ? vPorcentajes.PR_TOTAL_BAJA.ToString() + "%" : "0.00%" });
 
             if (vlstPorcentanjes != null)
             {

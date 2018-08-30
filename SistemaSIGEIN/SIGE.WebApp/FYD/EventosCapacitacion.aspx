@@ -46,9 +46,24 @@
         function GetEventoWindowProperties(pIdEvento) {
             var wnd = GetWindowProperties();
 
-            wnd.vTitulo = "Agregar evento";
+            wnd.vTitulo = "Configurar evento";
             wnd.vRadWindowId = "winEvento";
             wnd.vURL = "VentanaEventoCapacitacion.aspx";
+            if (pIdEvento != null) {
+                wnd.vURL += String.format("?EventoId={0}", pIdEvento);
+                wnd.vTitulo = "Configurar evento";
+            }
+            return wnd;
+        }
+
+
+        function GetEditarEventoWindowProperties(pIdEvento) {
+            var wnd = GetWindowProperties();
+            wnd.height = 300;
+            wnd.width = 700;
+            wnd.vTitulo = "Agregar evento";
+            wnd.vRadWindowId = "winEvento";
+            wnd.vURL = "VentanaNuevoEvento.aspx";
             if (pIdEvento != null) {
                 wnd.vURL += String.format("?EventoId={0}", pIdEvento);
                 wnd.vTitulo = "Editar evento";
@@ -169,12 +184,16 @@
         }
 
         function OpenInsertEventoWindow() {
-            OpenEventoWindow(null);
+            if (GetEventoId() != null) {
+                OpenEventoWindow(GetEventoId());
+            } else {
+                radalert("Seleccione un evento.", 400, 150, "Error");
+            }
         }
 
         function OpenEditEventoWindow() {
             if ('<%= vEditar %>' == "True") {
-                OpenEventoWindow(GetEventoId());
+                OpenEditarEventoWindow(GetEventoId());
             }
             else {
                 radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "");
@@ -183,6 +202,10 @@
 
         function OpenEventoWindow(pIdEvento) {
             OpenWindow(GetEventoWindowProperties(pIdEvento));
+        }
+
+        function OpenEditarEventoWindow(pIdEvento) {
+            OpenWindow(GetEditarEventoWindowProperties(pIdEvento));
         }
 
         function OpenCopyEventoWindow(pIdEvento) {
@@ -227,6 +250,13 @@
             else {
                 radalert("Selecciona un evento.", 400, 150);
             }
+        }
+
+        function OpenNuevoEvento() {
+            var wnd = GetWindowProperties();
+            wnd.height = 300;
+            wnd.width = 700;
+            openChildDialog("VentanaNuevoEvento.aspx", "winEvento", "Agregar evento", wnd);
         }
 
         function OpenEnvioCorreoEvaluadorWindow() {
@@ -320,10 +350,13 @@
                      <telerik:AjaxUpdatedControl ControlID="rlvEventos" UpdatePanelHeight="100%" />
                       <telerik:AjaxUpdatedControl ControlID="txtNbEvento" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="txtDescripcion" UpdatePanelHeight="100%" />
-                    <telerik:AjaxUpdatedControl ControlID="txtEstado" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="txtTipo" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="txtCurso" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="txtFechaMod" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="txtUsuarioMod" UpdatePanelHeight="100%" />
+
+                     <telerik:AjaxUpdatedControl ControlID="rtbInicio" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="rtbTermino" UpdatePanelHeight="100%" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="rfFiltros">
@@ -345,11 +378,14 @@
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="txtNbEvento" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="txtDescripcion" UpdatePanelHeight="100%" />
-                    <telerik:AjaxUpdatedControl ControlID="txtEstado" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="txtTipo" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="txtCurso" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="txtFechaMod" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="txtUsuarioMod" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="rlvEventos" UpdatePanelHeight="100%" />
+
+                     <telerik:AjaxUpdatedControl ControlID="rtbInicio" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="rtbTermino" UpdatePanelHeight="100%" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnAgregarEvento">
@@ -514,7 +550,9 @@
                     <telerik:RadPageView ID="rpvGestionar" runat="server">
                         <div>
                             <label class="labelTitulo" style="text-align: center;">Administrar</label>
-                                <telerik:RadButton runat="server" ID="btnAgregarEvento" Text="Agregar" AutoPostBack="false" OnClientClicked="OpenInsertEventoWindow"></telerik:RadButton>
+                              <telerik:RadButton ID="btnCrear" runat="server" Text="Agregar" AutoPostBack="false" OnClientClicked="OpenNuevoEvento" ></telerik:RadButton>
+                               &nbsp;
+                             <telerik:RadButton runat="server" ID="btnAgregarEvento" Text="Configurar" AutoPostBack="false" OnClientClicked="OpenInsertEventoWindow"></telerik:RadButton>
                                 &nbsp;
                                 <telerik:RadButton ID="btnCopiar" runat="server" Text="Copiar" AutoPostBack="false" OnClientClicked="OpenCopyEventoWindow"></telerik:RadButton>
                         </div>
@@ -576,12 +614,33 @@
                         <div style="clear: both;"></div>
                         <div class="ctrlBasico">
                             <div class="divControlIzquierda">
-                                <label style="width: 120px;" id="lblEstado" name="lblEstado" runat="server">Estatus:</label>
+                                <label style="width: 120px;" id="lblEstado" name="lblEstado" runat="server">Tipo:</label>
                             </div>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtEstado" Enabled="false" runat="server" Width="200px" MaxLength="1000"></telerik:RadTextBox>
+                                <telerik:RadTextBox ID="txtTipo" Enabled="false" runat="server" Width="200px" MaxLength="1000"></telerik:RadTextBox>
                             </div>
                         </div>
+
+
+                          <div style="clear: both;"></div>
+                        <div class="ctrlBasico">
+                            <div class="divControlIzquierda">
+                                <label style="width: 120px;" id="Label3" name="lblCurso" runat="server">Fecha de inicio:</label>
+                            </div>
+                            <div class="divControlDerecha">
+                                <telerik:RadTextBox ID="rtbInicio" Enabled="false" runat="server" Width="105px" MaxLength="1000"></telerik:RadTextBox>
+                            </div>
+                        </div>
+                        <div class="ctrlBasico">
+                            <div class="divControlIzquierda">
+                                <label style="width: 120px;" id="Label4" name="lblCurso" runat="server">Fecha de término:</label>
+                            </div>
+                            <div class="divControlDerecha">
+                                <telerik:RadTextBox ID="rtbTermino" Enabled="false" runat="server" Width="105px" MaxLength="1000"></telerik:RadTextBox>
+                            </div>
+                        </div>
+
+
                         <div style="clear: both;"></div>
                         <div class="ctrlBasico">
                             <div class="divControlIzquierda">

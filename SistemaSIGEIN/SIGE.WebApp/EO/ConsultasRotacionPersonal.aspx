@@ -544,7 +544,7 @@
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="120" DataField="NB_CANTIDAD" ItemStyle-Font-Bold="true" UniqueName="NB_CANTIDAD">
                                                 <HeaderStyle Font-Bold="true" />
                                             </telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="30" DataField="PR_CANTIDAD" UniqueName="PR_CANTIDAD" ItemStyle-HorizontalAlign="Right">
+                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains"  HeaderStyle-Width="30" DataField="PR_CANTIDAD" UniqueName="PR_CANTIDAD" ItemStyle-HorizontalAlign="Right">
                                                 <HeaderStyle Font-Bold="true" />
                                             </telerik:GridBoundColumn>
                                         </Columns>

@@ -184,7 +184,14 @@ namespace SIGE.WebApp.EO
                         txtFechas.InnerText = oPeriodo.FE_INICIO.ToString("d") + " a " + oPeriodo.FE_TERMINO.Value.ToShortDateString();
                         txtTipoMetas.InnerText = oPeriodo.CL_TIPO_PERIODO;
                         txtTipoCapturista.InnerText = Utileria.LetrasCapitales(oPeriodo.CL_TIPO_CAPTURISTA);
-                        txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO;
+
+                        if (oPeriodo.FG_BONO == true && oPeriodo.FG_MONTO == true)
+                            txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO + " (monto)";
+                        else if (oPeriodo.FG_BONO == true && oPeriodo.FG_PORCENTUAL == true)
+                            txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO + " (porcentual)";
+                        else
+                            txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO;
+
                         txtTipoPeriodo.InnerText = oPeriodo.CL_ORIGEN_CUESTIONARIO;
 
                         if (oPeriodo.DS_NOTAS != null)

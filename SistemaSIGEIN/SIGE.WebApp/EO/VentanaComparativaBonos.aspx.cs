@@ -312,6 +312,54 @@ namespace SIGE.WebApp.EO
             rgBonosComparativos.MasterTableView.Columns.Add(ColumnPeriodo);
         }
 
+        public void GenerarContexto()
+        {
+            HtmlGenericControl vCtrlTabla = new HtmlGenericControl("table");
+            vCtrlTabla.Attributes.Add("class", "ctrlTableForm ctrlTableContext");
+
+            HtmlGenericControl vCtrlColumn = new HtmlGenericControl("tr");
+
+
+            HtmlGenericControl vCtrlTh = new HtmlGenericControl("th");
+
+            vCtrlTh.InnerText = String.Format("{0}", "Período");
+            vCtrlColumn.Controls.Add(vCtrlTh);
+
+            HtmlGenericControl vCtrlTh2 = new HtmlGenericControl("th");
+
+            vCtrlTh2.InnerText = String.Format("{0}", "Descripción");
+            vCtrlColumn.Controls.Add(vCtrlTh2);
+
+            HtmlGenericControl vCtrlTh3 = new HtmlGenericControl("th");
+
+            vCtrlTh3.InnerText = String.Format("{0}", "Fecha");
+            vCtrlColumn.Controls.Add(vCtrlTh3);
+
+            vCtrlTabla.Controls.Add(vCtrlColumn);
+
+            foreach (var item in oLstPeriodos)
+            {
+                HtmlGenericControl vCtrlRow = new HtmlGenericControl("tr");
+
+                HtmlGenericControl vCtrlColumnaClPeriodo = new HtmlGenericControl("td");
+                vCtrlColumnaClPeriodo.InnerText = String.Format("{0}", item.CL_TIPO_PERIODO);
+                vCtrlRow.Controls.Add(vCtrlColumnaClPeriodo);
+
+                HtmlGenericControl vCtrlColumnaNbPeriodo = new HtmlGenericControl("td");
+                vCtrlColumnaNbPeriodo.InnerHtml = String.Format("{0}", item.DS_PERIODO);
+                vCtrlRow.Controls.Add(vCtrlColumnaNbPeriodo);
+
+                HtmlGenericControl vCtrlColumnaFePeriodo = new HtmlGenericControl("td");
+                vCtrlColumnaFePeriodo.InnerHtml = String.Format("{0}", item.FE_INICIO_PERIODO.ToShortDateString() + " a " + item.FE_TERMINO_PERIODO.ToShortDateString());
+                vCtrlRow.Controls.Add(vCtrlColumnaFePeriodo);
+
+                vCtrlTabla.Controls.Add(vCtrlRow);
+                dvContexto.Controls.Add(vCtrlTabla);
+            }
+
+        }
+
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -346,6 +394,7 @@ namespace SIGE.WebApp.EO
 
                 }
 
+                GenerarContexto();
                 generarReporte();
             }
 
@@ -372,7 +421,7 @@ namespace SIGE.WebApp.EO
 
         protected void rgContexto_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            rgContexto.DataSource = oLstPeriodos;
+          //  rgContexto.DataSource = oLstPeriodos;
         }
     }
 }

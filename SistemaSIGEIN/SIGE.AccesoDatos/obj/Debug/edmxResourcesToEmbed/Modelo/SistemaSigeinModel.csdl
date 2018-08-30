@@ -4991,28 +4991,6 @@
       <Parameter Name="PIN_ID_EVALUADO" Mode="In" Type="Int32" />
       <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="SPE_OBTIENE_C_EVENTO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_EVENTO_Result)">
-      <Parameter Name="PIN_ID_EVENTO" Mode="In" Type="Int32" />
-      <Parameter Name="PIN_ID_PROGRAMA" Mode="In" Type="Int32" />
-      <Parameter Name="PIN_ID_CURSO" Mode="In" Type="Int32" />
-      <Parameter Name="PIN_ID_INSTRUCTOR" Mode="In" Type="Int32" />
-      <Parameter Name="PIN_ID_EMPLEADO_EVALUADOR" Mode="In" Type="Int32" />
-      <Parameter Name="PIN_CL_EVENTO" Mode="In" Type="String" />
-      <Parameter Name="PIN_NB_EVENTO" Mode="In" Type="String" />
-      <Parameter Name="PIN_DS_EVENTO" Mode="In" Type="String" />
-      <Parameter Name="PIN_FE_INICIO" Mode="In" Type="DateTime" />
-      <Parameter Name="PIN_FE_TERMINO" Mode="In" Type="DateTime" />
-      <Parameter Name="PIN_NB_CURSO" Mode="In" Type="String" />
-      <Parameter Name="PIN_NB_INSTRUCTOR" Mode="In" Type="String" />
-      <Parameter Name="PIN_CL_TIPO_CURSO" Mode="In" Type="String" />
-      <Parameter Name="PIN_CL_ESTADO" Mode="In" Type="String" />
-      <Parameter Name="PIN_FE_EVALUACION" Mode="In" Type="DateTime" />
-      <Parameter Name="PIN_DS_LUGAR" Mode="In" Type="String" />
-      <Parameter Name="PIN_MN_COSTO_DIRECTO" Mode="In" Type="Decimal" />
-      <Parameter Name="PIN_MN_COSTO_INDIRECTO" Mode="In" Type="Decimal" />
-      <Parameter Name="PIN_FL_EVENTO" Mode="In" Type="Guid" />
-      <Parameter Name="PIN_CL_TOKEN" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="SPE_INSERTA_PERIODO_TABLERO_CONTROL">
       <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
       <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
@@ -5674,14 +5652,6 @@
       <Parameter Name="PIN_ID_EMPRESA" Mode="In" Type="Int32" />
       <Parameter Name="PIN_ID_ROL" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO_Result)">
-      <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
-      <Parameter Name="PIN_ID_EVALUADO" Mode="In" Type="Int32" />
-      <Parameter Name="PIN_ID_EVALUADOR" Mode="In" Type="Int32" />
-      <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
-      <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
-      <Parameter Name="PIN_ID_ROL" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO_Result)">
       <Parameter Name="PIN_ID_PERIODO_DESEMPENO" Mode="In" Type="Int32" />
       <Parameter Name="PIN_ID_ROL" Mode="In" Type="Int32" />
@@ -5972,10 +5942,6 @@
     <FunctionImport Name="SPE_OBTIENE_EO_PERIODOS_DESEMPENO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_EO_PERIODOS_DESEMPENO_Result)">
       <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="SPE_OBTIENE_EO_CONTEXTO_METAS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_EO_CONTEXTO_METAS_Result)">
-      <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
-      <Parameter Name="PIN_ID_EVALUADO" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="SPE_OBTIENE_PERIODOS_DESEMPENO_COMPARACION" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_PERIODOS_DESEMPENO_COMPARACION_Result)">
       <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
       <Parameter Name="PIN_ID_EVALUADO" Mode="In" Type="Int32" />
@@ -5998,6 +5964,40 @@
     <FunctionImport Name="SPE_EVALUADOR_POR_EVALUADO" ReturnType="Collection(SistemaSigeinModel.SPE_EVALUADOR_POR_EVALUADO_Result)">
       <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
       <Parameter Name="PIN_ID_EVALUADO" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO_Result)">
+      <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="PIN_ID_EVALUADO" Mode="In" Type="Int32" />
+      <Parameter Name="PIN_ID_EVALUADOR" Mode="In" Type="Int32" />
+      <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
+      <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
+      <Parameter Name="PIN_ID_ROL" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPE_OBTIENE_EO_CONTEXTO_METAS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_EO_CONTEXTO_METAS_Result)">
+      <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="PIN_ID_EVALUADO" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPE_OBTIENE_C_EVENTO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_EVENTO_Result)">
+      <Parameter Name="PIN_ID_EVENTO" Mode="In" Type="Int32" />
+      <Parameter Name="PIN_ID_PROGRAMA" Mode="In" Type="Int32" />
+      <Parameter Name="PIN_ID_CURSO" Mode="In" Type="Int32" />
+      <Parameter Name="PIN_ID_INSTRUCTOR" Mode="In" Type="Int32" />
+      <Parameter Name="PIN_ID_EMPLEADO_EVALUADOR" Mode="In" Type="Int32" />
+      <Parameter Name="PIN_CL_EVENTO" Mode="In" Type="String" />
+      <Parameter Name="PIN_NB_EVENTO" Mode="In" Type="String" />
+      <Parameter Name="PIN_DS_EVENTO" Mode="In" Type="String" />
+      <Parameter Name="PIN_FE_INICIO" Mode="In" Type="DateTime" />
+      <Parameter Name="PIN_FE_TERMINO" Mode="In" Type="DateTime" />
+      <Parameter Name="PIN_NB_CURSO" Mode="In" Type="String" />
+      <Parameter Name="PIN_NB_INSTRUCTOR" Mode="In" Type="String" />
+      <Parameter Name="PIN_CL_TIPO_CURSO" Mode="In" Type="String" />
+      <Parameter Name="PIN_CL_ESTADO" Mode="In" Type="String" />
+      <Parameter Name="PIN_FE_EVALUACION" Mode="In" Type="DateTime" />
+      <Parameter Name="PIN_DS_LUGAR" Mode="In" Type="String" />
+      <Parameter Name="PIN_MN_COSTO_DIRECTO" Mode="In" Type="Decimal" />
+      <Parameter Name="PIN_MN_COSTO_INDIRECTO" Mode="In" Type="Decimal" />
+      <Parameter Name="PIN_FL_EVENTO" Mode="In" Type="Guid" />
+      <Parameter Name="PIN_CL_TOKEN" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="SPE_OBTIENE_C_CALLE_Result">
@@ -9716,42 +9716,6 @@
     <Property Type="Int64" Name="NO_LINEA" Nullable="true" />
     <Property Type="Int32" Name="NO_ORDEN" Nullable="false" />
   </ComplexType>
-  <ComplexType Name="SPE_OBTIENE_C_EVENTO_Result">
-    <Property Type="Int32" Name="ID_EVENTO" Nullable="false" />
-    <Property Type="String" Name="CL_EVENTO" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="NB_EVENTO" Nullable="false" MaxLength="200" />
-    <Property Type="String" Name="DS_EVENTO" Nullable="false" MaxLength="2000" />
-    <Property Type="Int32" Name="ID_PROGRAMA" Nullable="true" />
-    <Property Type="String" Name="NB_PROGRAMA" Nullable="true" MaxLength="100" />
-    <Property Type="DateTime" Name="FE_INICIO" Nullable="false" Precision="23" />
-    <Property Type="DateTime" Name="FE_TERMINO" Nullable="false" Precision="23" />
-    <Property Type="Int32" Name="ID_CURSO" Nullable="true" />
-    <Property Type="String" Name="NB_CURSO" Nullable="true" MaxLength="300" />
-    <Property Type="Int32" Name="ID_INSTRUCTOR" Nullable="true" />
-    <Property Type="String" Name="NB_INSTRUCTOR" Nullable="true" MaxLength="300" />
-    <Property Type="String" Name="CL_TIPO_CURSO" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="CL_ESTADO" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="NB_ESTADO" Nullable="true" MaxLength="10" />
-    <Property Type="Int32" Name="ID_EMPLEADO_EVALUADOR" Nullable="true" />
-    <Property Type="String" Name="CL_EVALUADOR" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="NB_EVALUADOR" Nullable="true" MaxLength="302" />
-    <Property Type="String" Name="CL_CORREO_EVALUADOR" Nullable="true" MaxLength="200" />
-    <Property Type="DateTime" Name="FE_EVALUACION" Nullable="true" Precision="23" />
-    <Property Type="String" Name="DS_LUGAR" Nullable="true" MaxLength="2000" />
-    <Property Type="String" Name="DS_REFRIGERIO" Nullable="true" MaxLength="Max" />
-    <Property Type="Decimal" Name="MN_COSTO_DIRECTO" Nullable="false" Precision="13" Scale="2" />
-    <Property Type="Decimal" Name="MN_COSTO_INDIRECTO" Nullable="false" Precision="13" Scale="2" />
-    <Property Type="Boolean" Name="FG_INCLUIR_EN_PLANTILLA" Nullable="false" />
-    <Property Type="String" Name="CL_CURSO" Nullable="false" MaxLength="20" />
-    <Property Type="Decimal" Name="NO_DURACION_CURSO" Nullable="false" Precision="12" Scale="2" />
-    <Property Type="Guid" Name="FL_EVENTO" Nullable="true" />
-    <Property Type="String" Name="CL_TOKEN" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="XML_CAMPOS_ADICIONALES" Nullable="true" MaxLength="Max" />
-    <Property Type="String" Name="XML_PLANTILLA_CAMPOS_ADICIONALES" Nullable="true" MaxLength="Max" />
-    <Property Type="String" Name="XML_PARTICIPANTES" Nullable="true" MaxLength="Max" />
-    <Property Type="String" Name="CL_USUARIO_APP_MODIFICA" Nullable="true" MaxLength="50" />
-    <Property Type="DateTime" Name="FE_MODIFICA" Nullable="true" />
-  </ComplexType>
   <ComplexType Name="SPE_OBTIENE_COMPATIBILIDAD_PUESTO_TABLERO_Result">
     <Property Type="Int32" Name="ID_CANDIDATO" Nullable="true" />
     <Property Type="Int32" Name="ID_PUESTO" Nullable="true" />
@@ -10839,59 +10803,6 @@
     <Property Type="Int32" Name="NO_EMPLEADOS_ALTA" Nullable="true" />
     <Property Type="Decimal" Name="PR_TOTAL_EMPLEADOS" Nullable="true" Precision="8" Scale="1" />
   </ComplexType>
-  <ComplexType Name="SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO_Result">
-    <Property Type="Int32" Name="ID_EMPLEADO" Nullable="false" />
-    <Property Type="String" Name="CL_EMPLEADO" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="NB_EMPLEADO_COMPLETO" Nullable="false" MaxLength="302" />
-    <Property Type="String" Name="NB_EMPLEADO" Nullable="false" MaxLength="100" />
-    <Property Type="String" Name="NB_APELLIDO_PATERNO" Nullable="false" MaxLength="100" />
-    <Property Type="String" Name="NB_APELLIDO_MATERNO" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="CL_ESTADO_EMPLEADO" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="CL_GENERO" Nullable="true" MaxLength="1" />
-    <Property Type="String" Name="CL_ESTADO_CIVIL" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="NB_CONYUGUE" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="CL_RFC" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="CL_CURP" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="CL_NSS" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="CL_TIPO_SANGUINEO" Nullable="true" MaxLength="10" />
-    <Property Type="String" Name="CL_NACIONALIDAD" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="NB_PAIS" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="NB_ESTADO" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="NB_MUNICIPIO" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="NB_COLONIA" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="NB_CALLE" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="NO_INTERIOR" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="NO_EXTERIOR" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="CL_CODIGO_POSTAL" Nullable="true" MaxLength="10" />
-    <Property Type="String" Name="M_EMPLEADO_CL_CORREO_ELECTRONICO" Nullable="true" MaxLength="200" />
-    <Property Type="String" Name="M_EMPLEADO_ACTIVO" Nullable="false" MaxLength="2" />
-    <Property Type="DateTime" Name="FE_NACIMIENTO" Nullable="true" />
-    <Property Type="String" Name="DS_LUGAR_NACIMIENTO" Nullable="true" MaxLength="200" />
-    <Property Type="DateTime" Name="FE_ALTA" Nullable="false" />
-    <Property Type="DateTime" Name="FE_BAJA" Nullable="true" />
-    <Property Type="Decimal" Name="MN_SUELDO" Nullable="true" Precision="12" Scale="2" />
-    <Property Type="Decimal" Name="MN_SUELDO_VARIABLE" Nullable="true" Precision="13" Scale="2" />
-    <Property Type="String" Name="DS_SUELDO_COMPOSICION" Nullable="true" MaxLength="512" />
-    <Property Type="String" Name="CL_PUESTO" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="NB_PUESTO" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="XML_RESPONSABILIDAD" Nullable="true" MaxLength="Max" />
-    <Property Type="String" Name="CL_EMPRESA" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="NB_EMPRESA" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="NB_RAZON_SOCIAL" Nullable="true" MaxLength="200" />
-    <Property Type="String" Name="CL_DEPARTAMENTO" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="NB_DEPARTAMENTO" Nullable="true" MaxLength="100" />
-    <Property Type="Int32" Name="ID_EVALUADO" Nullable="false" />
-    <Property Type="Int32" Name="NO_TOTAL_METAS" Nullable="true" />
-    <Property Type="Int32" Name="NO_TOTAL_METAS_ACTIVAS" Nullable="true" />
-    <Property Type="Decimal" Name="PR_EVALUADO" Nullable="true" Precision="12" Scale="2" />
-    <Property Type="Int32" Name="NO_EVALUADOR" Nullable="true" />
-    <Property Type="DateTime" Name="FE_CAPTURA_METAS" Nullable="true" Precision="23" />
-    <Property Type="Decimal" Name="MN_TOPE_BONO" Nullable="true" Precision="12" Scale="2" />
-    <Property Type="Decimal" Name="NO_MONTO_BONO" Nullable="true" Precision="12" Scale="2" />
-    <Property Type="Decimal" Name="PR_CUMPLIMIENTO_EVALUADO" Nullable="true" Precision="12" Scale="2" />
-    <Property Type="Decimal" Name="MN_BONO_TOTAL" Nullable="true" Precision="12" Scale="2" />
-    <Property Type="String" Name="ESTATUS" Nullable="false" MaxLength="13" />
-  </ComplexType>
   <ComplexType Name="SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO_Result">
     <Property Type="Int32" Name="ID_PERIODO" Nullable="false" />
     <Property Type="Int32" Name="ID_EVALUADO" Nullable="false" />
@@ -11792,27 +11703,6 @@
     <Property Type="DateTime" Name="FE_MODIFICA" Nullable="true" />
     <Property Type="Int32" Name="NO_REPLICA" Nullable="true" />
   </ComplexType>
-  <ComplexType Name="SPE_OBTIENE_EO_CONTEXTO_METAS_Result">
-    <Property Type="Int32" Name="ID_PERIODO" Nullable="false" />
-    <Property Type="String" Name="CL_PERIODO" Nullable="false" MaxLength="32" />
-    <Property Type="String" Name="NB_PERIODO" Nullable="false" MaxLength="100" />
-    <Property Type="String" Name="DS_PERIODO" Nullable="true" MaxLength="200" />
-    <Property Type="DateTime" Name="FE_INICIO" Nullable="false" Precision="23" />
-    <Property Type="DateTime" Name="FE_TERMINO" Nullable="true" Precision="23" />
-    <Property Type="String" Name="CL_ESTADO_PERIODO" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="CL_TIPO_COPIA" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="DS_NOTAS" Nullable="true" />
-    <Property Type="String" Name="CL_TIPO_PERIODO" Nullable="true" MaxLength="24" />
-    <Property Type="Int32" Name="ID_PERIODO_DESEMPENO" Nullable="false" />
-    <Property Type="Boolean" Name="FG_BONO" Nullable="true" />
-    <Property Type="Decimal" Name="PR_BONO" Nullable="false" Precision="5" Scale="2" />
-    <Property Type="Decimal" Name="MN_BONO" Nullable="false" Precision="13" Scale="2" />
-    <Property Type="String" Name="CL_TIPO_BONO" Nullable="true" MaxLength="18" />
-    <Property Type="String" Name="CL_TIPO_CAPTURISTA" Nullable="true" MaxLength="25" />
-    <Property Type="String" Name="CL_TIPO_METAS" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="CL_ORIGEN_CUESTIONARIO" Nullable="true" MaxLength="19" />
-    <Property Type="Decimal" Name="PR_EVALUADO" Nullable="true" Precision="12" Scale="2" />
-  </ComplexType>
   <ComplexType Name="SPE_OBTIENE_PERIODOS_DESEMPENO_COMPARACION_Result">
     <Property Type="Int32" Name="ID_PERIODO" Nullable="false" />
     <Property Type="String" Name="CL_PERIODO" Nullable="false" MaxLength="32" />
@@ -11881,5 +11771,118 @@
     <Property Type="String" Name="CL_PUESTO" Nullable="true" MaxLength="20" />
     <Property Type="String" Name="NB_PUESTO" Nullable="true" MaxLength="200" />
     <Property Type="String" Name="CL_ESTADO" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO_Result">
+    <Property Type="Int32" Name="ID_EMPLEADO" Nullable="false" />
+    <Property Type="String" Name="CL_EMPLEADO" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="NB_EMPLEADO_COMPLETO" Nullable="false" MaxLength="302" />
+    <Property Type="String" Name="NB_EMPLEADO" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="NB_APELLIDO_PATERNO" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="NB_APELLIDO_MATERNO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CL_ESTADO_EMPLEADO" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="CL_GENERO" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="CL_ESTADO_CIVIL" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="NB_CONYUGUE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CL_RFC" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="CL_CURP" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="CL_NSS" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="CL_TIPO_SANGUINEO" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="CL_NACIONALIDAD" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="NB_PAIS" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NB_ESTADO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NB_MUNICIPIO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NB_COLONIA" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NB_CALLE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NO_INTERIOR" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="NO_EXTERIOR" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="CL_CODIGO_POSTAL" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="M_EMPLEADO_CL_CORREO_ELECTRONICO" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="M_EMPLEADO_ACTIVO" Nullable="false" MaxLength="2" />
+    <Property Type="DateTime" Name="FE_NACIMIENTO" Nullable="true" />
+    <Property Type="String" Name="DS_LUGAR_NACIMIENTO" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="FE_ALTA" Nullable="false" />
+    <Property Type="DateTime" Name="FE_BAJA" Nullable="true" />
+    <Property Type="Decimal" Name="MN_SUELDO" Nullable="true" Precision="12" Scale="2" />
+    <Property Type="Decimal" Name="MN_SUELDO_VARIABLE" Nullable="true" Precision="13" Scale="2" />
+    <Property Type="String" Name="DS_SUELDO_COMPOSICION" Nullable="true" MaxLength="512" />
+    <Property Type="String" Name="CL_PUESTO" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="NB_PUESTO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="XML_RESPONSABILIDAD" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="CL_EMPRESA" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="NB_EMPRESA" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NB_RAZON_SOCIAL" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CL_DEPARTAMENTO" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="NB_DEPARTAMENTO" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="ID_EVALUADO" Nullable="false" />
+    <Property Type="Int32" Name="NO_TOTAL_METAS" Nullable="true" />
+    <Property Type="Int32" Name="NO_TOTAL_METAS_ACTIVAS" Nullable="true" />
+    <Property Type="Decimal" Name="PR_EVALUADO" Nullable="true" Precision="12" Scale="2" />
+    <Property Type="Int32" Name="NO_EVALUADOR" Nullable="true" />
+    <Property Type="DateTime" Name="FE_CAPTURA_METAS" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="MN_TOPE_BONO" Nullable="true" Precision="12" Scale="2" />
+    <Property Type="Decimal" Name="NO_MONTO_BONO" Nullable="true" Precision="12" Scale="2" />
+    <Property Type="String" Name="CL_MONTO_BONO" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="PR_CUMPLIMIENTO_EVALUADO" Nullable="true" Precision="12" Scale="2" />
+    <Property Type="Decimal" Name="MN_BONO_TOTAL" Nullable="true" Precision="12" Scale="2" />
+    <Property Type="String" Name="ESTATUS" Nullable="false" MaxLength="13" />
+  </ComplexType>
+  <ComplexType Name="SPE_OBTIENE_EO_CONTEXTO_METAS_Result">
+    <Property Type="Int32" Name="ID_PERIODO" Nullable="false" />
+    <Property Type="String" Name="CL_PERIODO" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="NB_PERIODO" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DS_PERIODO" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="FE_INICIO" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FE_TERMINO" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CL_ESTADO_PERIODO" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="CL_TIPO_COPIA" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="DS_NOTAS" Nullable="true" />
+    <Property Type="String" Name="CL_TIPO_PERIODO" Nullable="true" MaxLength="24" />
+    <Property Type="Int32" Name="ID_PERIODO_DESEMPENO" Nullable="false" />
+    <Property Type="Boolean" Name="FG_BONO" Nullable="true" />
+    <Property Type="Decimal" Name="PR_BONO" Nullable="false" Precision="5" Scale="2" />
+    <Property Type="Decimal" Name="MN_BONO" Nullable="false" Precision="13" Scale="2" />
+    <Property Type="String" Name="CL_TIPO_BONO" Nullable="true" MaxLength="18" />
+    <Property Type="Boolean" Name="FG_MONTO" Nullable="true" />
+    <Property Type="Boolean" Name="FG_PORCENTUAL" Nullable="true" />
+    <Property Type="String" Name="CL_TIPO_CAPTURISTA" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="CL_TIPO_METAS" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CL_ORIGEN_CUESTIONARIO" Nullable="true" MaxLength="19" />
+    <Property Type="Decimal" Name="PR_EVALUADO" Nullable="true" Precision="12" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="SPE_OBTIENE_C_EVENTO_Result">
+    <Property Type="Int32" Name="ID_EVENTO" Nullable="false" />
+    <Property Type="String" Name="CL_EVENTO" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="NB_EVENTO" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="DS_EVENTO" Nullable="false" MaxLength="2000" />
+    <Property Type="Int32" Name="ID_PROGRAMA" Nullable="true" />
+    <Property Type="String" Name="NB_PROGRAMA" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="FE_INICIO" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FE_TERMINO" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="ID_CURSO" Nullable="true" />
+    <Property Type="String" Name="NB_CURSO" Nullable="true" MaxLength="300" />
+    <Property Type="Int32" Name="ID_INSTRUCTOR" Nullable="true" />
+    <Property Type="String" Name="NB_INSTRUCTOR" Nullable="true" MaxLength="300" />
+    <Property Type="String" Name="CL_TIPO_CURSO" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="CL_ESTADO" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="NB_ESTADO" Nullable="true" MaxLength="13" />
+    <Property Type="Int32" Name="ID_EMPLEADO_EVALUADOR" Nullable="true" />
+    <Property Type="String" Name="CL_EVALUADOR" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="NB_EVALUADOR" Nullable="true" MaxLength="302" />
+    <Property Type="String" Name="CL_CORREO_EVALUADOR" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="FE_EVALUACION" Nullable="true" Precision="23" />
+    <Property Type="String" Name="DS_LUGAR" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="DS_REFRIGERIO" Nullable="true" MaxLength="Max" />
+    <Property Type="Decimal" Name="MN_COSTO_DIRECTO" Nullable="false" Precision="13" Scale="2" />
+    <Property Type="Decimal" Name="MN_COSTO_INDIRECTO" Nullable="false" Precision="13" Scale="2" />
+    <Property Type="Boolean" Name="FG_INCLUIR_EN_PLANTILLA" Nullable="false" />
+    <Property Type="String" Name="CL_CURSO" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="NO_DURACION_CURSO" Nullable="true" Precision="12" Scale="2" />
+    <Property Type="Guid" Name="FL_EVENTO" Nullable="true" />
+    <Property Type="String" Name="CL_TOKEN" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="XML_CAMPOS_ADICIONALES" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="XML_PLANTILLA_CAMPOS_ADICIONALES" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="XML_PARTICIPANTES" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="CL_USUARIO_APP_MODIFICA" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="FE_MODIFICA" Nullable="true" />
   </ComplexType>
 </Schema>

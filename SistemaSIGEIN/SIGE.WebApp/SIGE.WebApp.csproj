@@ -644,6 +644,7 @@
     <Content Include="FYD\ReporteGlobalImpresion.aspx" />
     <Content Include="FYD\VentanaAgregarPrograma.aspx" />
     <Content Include="FYD\VentanaEvaluacionCompetenciasPS.aspx" />
+    <Content Include="FYD\VentanaNuevoEvento.aspx" />
     <Content Include="FYD\VentanaPlanSucesionPrincipal.aspx" />
     <Content Include="FYD\VentanaPlanVidaCarreraPrincipal.aspx" />
     <Content Include="FYD\VentanaVerCuestionario.aspx" />
@@ -1599,6 +1600,13 @@
     </Compile>
     <Compile Include="FYD\VentanaEvaluacionCompetenciasPS.aspx.designer.cs">
       <DependentUpon>VentanaEvaluacionCompetenciasPS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FYD\VentanaNuevoEvento.aspx.cs">
+      <DependentUpon>VentanaNuevoEvento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FYD\VentanaNuevoEvento.aspx.designer.cs">
+      <DependentUpon>VentanaNuevoEvento.aspx</DependentUpon>
     </Compile>
     <Compile Include="FYD\VentanaPlanSucesionPrincipal.aspx.cs">
       <DependentUpon>VentanaPlanSucesionPrincipal.aspx</DependentUpon>
