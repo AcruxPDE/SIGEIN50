@@ -34,11 +34,7 @@ namespace SIGE.Entidades
         public Nullable<decimal> SUELDO_MENSUAL { get; set; }
         public Nullable<decimal> SUELDO_DIARIO { get; set; }
         public Nullable<decimal> BASE_COTIZACION { get; set; }
-<<<<<<< HEAD
-        public Nullable<decimal> SUELDO_DO { get; set; }
-=======
         public decimal SUELDO_DO { get; set; }
->>>>>>> DEV
         public bool FG_SUELDO_VISIBLE_INVENTARIO { get; set; }
         public bool FG_SUELDO_VISIBLE_TABULADOR { get; set; }
         public bool FG_SUELDO_VISIBLE_BONO { get; set; }
