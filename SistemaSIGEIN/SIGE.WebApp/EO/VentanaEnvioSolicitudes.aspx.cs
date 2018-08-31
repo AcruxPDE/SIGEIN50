@@ -126,9 +126,6 @@ namespace SIGE.WebApp.EO
                 txtFechas.InnerText = oPeriodo.FE_INICIO.ToString("d") + " a " + oPeriodo.FE_TERMINO.Value.ToShortDateString();
                 txtTipoMetas.InnerText = oPeriodo.CL_TIPO_PERIODO;
                 txtTipoCapturista.InnerText = Utileria.LetrasCapitales(oPeriodo.CL_TIPO_CAPTURISTA);
-<<<<<<< HEAD
-                txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO;
-=======
 
 
 
@@ -139,7 +136,6 @@ namespace SIGE.WebApp.EO
                 else
                     txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO;
 
->>>>>>> DEV
                 txtTipoPeriodo.InnerText = oPeriodo.CL_ORIGEN_CUESTIONARIO;
                 if (oPeriodo.CL_TIPO_CAPTURISTA == "Coordinador de evaluación")
                 {

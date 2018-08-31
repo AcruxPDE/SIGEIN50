@@ -327,15 +327,11 @@ namespace SIGE.WebApp.IDP
                     else
                     {
                         if (item.GetDataKeyValue("CL_SOLICITUD") != null)
-<<<<<<< HEAD
-                            UtilMensajes.MensajeResultadoDB(rnMensaje, "La solicitud " + item.GetDataKeyValue("CL_SOLICITUD").ToString() + " ya cuenta con una batería creada. Elimina sus respuestas para volverla a aplicar.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
-                        else
-                            UtilMensajes.MensajeResultadoDB(rnMensaje, "Una de las solicitudes seleccionada ya cuenta con una batería creada. Elimina sus respuestas para volverla a aplicar.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
-=======
+
                             UtilMensajes.MensajeResultadoDB(rnMensaje, "La solicitud " + item.GetDataKeyValue("CL_SOLICITUD").ToString() + " ya cuenta con una batería creada. Elimina sus respuestas para asignar una nueva.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
                         else
                             UtilMensajes.MensajeResultadoDB(rnMensaje, "Una de las solicitudes seleccionada ya cuenta con una batería creada. Elimina sus respuestas para asignar una nueva.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
->>>>>>> DEV
+
                         return;
                     }
                 }
@@ -410,15 +406,9 @@ namespace SIGE.WebApp.IDP
                     else
                     {
                         if (item.GetDataKeyValue("M_EMPLEADO_CL_EMPLEADO") != null)
-<<<<<<< HEAD
-                            UtilMensajes.MensajeResultadoDB(rnMensaje, "El empleado " + item.GetDataKeyValue("M_EMPLEADO_CL_EMPLEADO").ToString() + " ya cuenta con una batería creada. Elimina sus respuestas para volverla a aplicar.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
-                        else
-                            UtilMensajes.MensajeResultadoDB(rnMensaje, "Uno de los empleados seleccionados ya cuenta con una batería creada. Elimina sus respuestas para volverla a aplicar.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
-=======
                             UtilMensajes.MensajeResultadoDB(rnMensaje, "El empleado " + item.GetDataKeyValue("M_EMPLEADO_CL_EMPLEADO").ToString() + " ya cuenta con una batería creada. Elimina sus respuestas para asignar una nueva.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
                         else
                             UtilMensajes.MensajeResultadoDB(rnMensaje, "Uno de los empleados seleccionados ya cuenta con una batería creada. Elimina sus respuestas para asignar una nueva.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
->>>>>>> DEV
                         return;
                     }
                 }

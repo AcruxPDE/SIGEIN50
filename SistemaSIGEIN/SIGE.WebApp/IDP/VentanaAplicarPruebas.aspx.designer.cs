@@ -40,7 +40,7 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadCodeBlock RadCodeBlock2;
         
         /// <summary>
-<<<<<<< HEAD
+        /// 
         /// radCmbNiveles control.
         /// </summary>
         /// <remarks>
@@ -113,8 +113,7 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadPageView rpvCandidatos;
         
         /// <summary>
-=======
->>>>>>> DEV
+
         /// grdCandidatos control.
         /// </summary>
         /// <remarks>
@@ -133,7 +132,7 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadButton btnDelCandidato;
         
         /// <summary>
-<<<<<<< HEAD
+
         /// rpPruebas control.
         /// </summary>
         /// <remarks>
@@ -188,8 +187,7 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadGrid grdPruebas;
         
         /// <summary>
-=======
->>>>>>> DEV
+
         /// btnAplicacionInterna control.
         /// </summary>
         /// <remarks>

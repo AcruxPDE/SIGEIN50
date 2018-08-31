@@ -63,11 +63,8 @@ namespace SIGE.Negocio.Utilerias
         public static List<E_CAMPO_NOMINA_DO> vLstCamposNominaDO { get; set; }
 
         //Idioma del sistema
-<<<<<<< HEAD
-       public static string clCultureIdioma { get; set; }
-=======
+
         public static string clCultureIdioma { get; set; }
->>>>>>> DEV
 
         static ContextoApp()
         {

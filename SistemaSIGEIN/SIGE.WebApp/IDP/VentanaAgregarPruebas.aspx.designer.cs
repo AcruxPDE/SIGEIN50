@@ -49,8 +49,7 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadButton btnSeleccionar;
         
         /// <summary>
-<<<<<<< HEAD
-=======
+
         /// btnEliminar control.
         /// </summary>
         /// <remarks>
@@ -60,7 +59,7 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadButton btnEliminar;
         
         /// <summary>
->>>>>>> DEV
+
         /// btnCancelar control.
         /// </summary>
         /// <remarks>

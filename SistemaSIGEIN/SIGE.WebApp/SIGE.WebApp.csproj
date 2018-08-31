@@ -4222,7 +4222,6 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>RadFilter.Main.es.designer.cs</LastGenOutput>
     </Content>
-    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

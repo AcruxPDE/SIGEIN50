@@ -546,19 +546,6 @@ namespace SIGE.WebApp.Administracion
                     if (item.Element("XML_DETALLE") != null)
                     {
 
-<<<<<<< HEAD
-                    if (item.Element("XML_DETALLE") != null)
-                    {
-                        XElement dsDetalle = item.Element("XML_DETALLE").Element("DS_DETALLE");
-                        dsDetalle.Name = vNbFirstRadEditorTagName;
-
-                        if (item.Element("XML_NOTAS") != null)
-                        {
-                            XElement dsNotas = item.Element("XML_NOTAS").Element("DS_NOTAS");
-                            dsNotas.Name = vNbFirstRadEditorTagName;
-                            fg.DS_NOTAS = dsNotas.ToString();
-                        }
-=======
                         XElement dsDetalle = item.Element("XML_DETALLE").Element("DS_DETALLE");
                         dsDetalle.Name = vNbFirstRadEditorTagName;
 
@@ -572,16 +559,7 @@ namespace SIGE.WebApp.Administracion
                         fg.ID_FUNCION_GENERICA = int.Parse(item.Attribute("ID_PUESTO_FUNCION").Value);
                         fg.NB_FUNCION_GENERICA = item.Attribute("NB_PUESTO_FUNCION").Value;
                         fg.DS_DETALLE = dsDetalle.ToString();
->>>>>>> DEV
 
-                        fg.ID_FUNCION_GENERICA = int.Parse(item.Attribute("ID_PUESTO_FUNCION").Value);
-                        fg.NB_FUNCION_GENERICA = item.Attribute("NB_PUESTO_FUNCION").Value;
-                        fg.DS_DETALLE = dsDetalle.ToString();
-
-<<<<<<< HEAD
-
-=======
->>>>>>> DEV
                         vFuncionesGenericas.Add(fg);
                     }
                 }

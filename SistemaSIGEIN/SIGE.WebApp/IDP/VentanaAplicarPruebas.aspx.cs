@@ -63,7 +63,6 @@ namespace SIGE.WebApp.IDP
         #endregion
 
         #region Funciones
-<<<<<<< HEAD
 
         //protected void agregarTooltips()
         //{
@@ -1107,9 +1106,7 @@ namespace SIGE.WebApp.IDP
             return lstPruebas;
         }
 
-=======
-     
->>>>>>> DEV
+
         protected void CargarDesdeContexto(List<int> pIdCandidatos)
         {
 
@@ -1148,16 +1145,12 @@ namespace SIGE.WebApp.IDP
 
                 lstCandidatoS.Add(f);
             }
-<<<<<<< HEAD
 
-            //grdCandidatos.Rebind();
-=======
->>>>>>> DEV
         }
 
         protected void GenerarBaterias(string clTipoAplicacion)
         {
-<<<<<<< HEAD
+
             //if (vIdBateria == null)
             //{
                 //Validaciones
@@ -1388,10 +1381,10 @@ namespace SIGE.WebApp.IDP
                         break;
                 }
             }
-=======
+
           if (clTipoAplicacion == "EXTERNA")
           ClientScript.RegisterStartupScript(GetType(), "script", "OpenEnviarCorreos();", true);
->>>>>>> DEV
+
         }
 
         #endregion
@@ -1402,17 +1395,14 @@ namespace SIGE.WebApp.IDP
             vNbPrograma = ContextoUsuario.nbPrograma;
             List<SPE_OBTIENE_CANDIDATOS_BATERIA_Result> lstCandidatos = new List<SPE_OBTIENE_CANDIDATOS_BATERIA_Result>();
 
-<<<<<<< HEAD
             //  agregarTooltips();
 
-=======
->>>>>>> DEV
+
             if (!IsPostBack)
             {
 
                 lstCandidatoS = new List<E_CANDIDATO>();
                 PuestoNegocio negocio = new PuestoNegocio();
-<<<<<<< HEAD
                 //radCmbPuesto.DataValueField = "ID_PUESTO";
                 //radCmbPuesto.DataTextField = "NB_PUESTO";
                 //radCmbPuesto.DataSource = negocio.ObtienePuestos();
@@ -1420,8 +1410,7 @@ namespace SIGE.WebApp.IDP
                 CambiarEstatusDePruebas(false);
 
                 radSliderNivel.SelectedValue = radSliderNivel.Items[1].Value;
-=======
->>>>>>> DEV
+
 
                 if (Request.Params["pIdCandidatosPruebas"] != null)
                 {
@@ -1435,23 +1424,9 @@ namespace SIGE.WebApp.IDP
                     vIdBateria = int.Parse(Request.Params["pIdBateria"]);
                     if (vIdBateria != null)
                     {
-<<<<<<< HEAD
-                        //PruebasNegocio nPruebas = new PruebasNegocio();
-                        //var vBateria = nPruebas.ObtieneBateria(pIdBateria: vIdBateria).FirstOrDefault();
-                        rtsConfiguracionClima.Tabs.ElementAt(0).Visible = false;
-                        rmpCapturaResultados.SelectedIndex = 1;
-                        radCmbNiveles.SelectedValue = "PER";
-                        radCmbNiveles.Enabled = false;
-                        ClientScript.RegisterStartupScript(GetType(), "script", "EditPruebas();", true);
-                        // btnGenerar.Text = "Aceptar";
-=======
-                        ClientScript.RegisterStartupScript(GetType(), "script", "EditPruebas();", true);
->>>>>>> DEV
 
-                        PruebasNegocio pruebas = new PruebasNegocio();
-                        List<SPE_OBTIENE_K_PRUEBA_Result> vLstPruebas = new List<SPE_OBTIENE_K_PRUEBA_Result>();
-                        vLstPruebas = pruebas.Obtener_K_PRUEBA(pIdBateria: vIdBateria, pFgAsignada: true);
-<<<<<<< HEAD
+                        ClientScript.RegisterStartupScript(GetType(), "script", "EditPruebas();", true);
+
                         SeleccionarPruebas(vLstPruebas);
                         //if (vBateria != null)
                         //{
@@ -1460,14 +1435,13 @@ namespace SIGE.WebApp.IDP
                         //        UtilMensajes.MensajeResultadoDB(rwmAlertas, "Este candidato cuenta con pruebas concluidas. Si se vuelven a generar pruebas iguales a las concluidas se eliminaran los resultados anteriores de manera automática.", E_TIPO_RESPUESTA_DB.WARNING, 400, 200, "");
                         //    }
                         //}
-=======
->>>>>>> DEV
+
                     }
                 }
 
             }
         }
-<<<<<<< HEAD
+
 
         protected void radCmbPuesto_Load(object sender, EventArgs e)
         {
@@ -1738,9 +1712,7 @@ namespace SIGE.WebApp.IDP
         //    }
         //}
 
-=======
-      
->>>>>>> DEV
+
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/IDP/AplicacionPruebas.aspx");
@@ -1769,11 +1741,7 @@ namespace SIGE.WebApp.IDP
             string pParameter = e.Argument;
             if (pParameter.Equals("Puesto"))
             {
-<<<<<<< HEAD
-                Pruebas();
-=======
                 //Pruebas();
->>>>>>> DEV
             }
             else
             {
@@ -1833,13 +1801,12 @@ namespace SIGE.WebApp.IDP
             {
                 btnAplicacionInterna.Enabled = false;
             }
-<<<<<<< HEAD
-=======
+
             else
             {
                 btnAplicacionMasiva.Enabled = false;
             }
->>>>>>> DEV
+
         }
 
         protected void grdCandidatos_ItemCommand(object sender, GridCommandEventArgs e)
@@ -1875,31 +1842,13 @@ namespace SIGE.WebApp.IDP
             }
         }
 
-<<<<<<< HEAD
-        protected void lstPuesto_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (lstPuesto.SelectedValue != "")
-            //{
-            //    Pruebas();
-            //}
-        }
 
-        protected void lstPuesto_TextChanged(object sender, EventArgs e)
-        {
-            if (lstPuesto.SelectedValue != "")
-            {
-                //Pruebas();
-            }
-        }
 
-=======
->>>>>>> DEV
         protected void btnAplicacionExterna_Click(object sender, EventArgs e)
         {
             GenerarBaterias("EXTERNA");
         }
 
-<<<<<<< HEAD
         //protected void btnAplicacionInterna_Click(object sender, EventArgs e)
         //{
         //  //  GenerarBaterias("INTERNA");
@@ -1928,7 +1877,6 @@ namespace SIGE.WebApp.IDP
             grdPruebas.DataSource = pNeg.ObtenerPruebasConfiguradas();
         }
 
-=======
->>>>>>> DEV
+
     }
 }

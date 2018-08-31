@@ -5093,13 +5093,11 @@
           <Parameter Name="PIN_ID_PUESTO" Type="int" Mode="In" />
           <Parameter Name="PIN_VALOR_COMPETENCIA" Type="decimal" Mode="In" />
         </Function>
-<<<<<<< HEAD
-        <Function Name="SPE_OBTIENE_PRUEBAS_CONFIGURADAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP" />
-=======
+
         <Function Name="SPE_OBTIENE_PRUEBAS_CONFIGURADAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
           <Parameter Name="PIN_ID_BATERIA" Type="int" Mode="In" />
         </Function>
->>>>>>> DEV
+
         <Function Name="SPE_OBTIENE_PRUEBAS_FACTORES_COMPETENCIAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
           <Parameter Name="PIN_ID_SELECCION" Type="int" Mode="In" />
           <Parameter Name="PIN_CL_SELECCION" Type="nvarchar" Mode="In" />
@@ -5161,17 +5159,7 @@
           <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="SPE_ACTUALIZA_ESTATUS_TABULADOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MC">
-<<<<<<< HEAD
-          <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
-          <Parameter Name="PIN_ID_TABULADOR" Type="int" Mode="In" />
-          <Parameter Name="PIN_CL_ESTADO" Type="nvarchar" Mode="In" />
-          <Parameter Name="PIN_CL_USUARIO_APP_MODIFICA" Type="nvarchar" Mode="In" />
-          <Parameter Name="PIN_PROGRAMA_MODIFICA" Type="nvarchar" Mode="In" />
-          <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
-        </Function>
-        <Function Name="SPE_ACTUALIZA_MERCADO_TABULADOR_NIVEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MC">
-=======
->>>>>>> DEV
+
           <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
           <Parameter Name="PIN_ID_TABULADOR" Type="int" Mode="In" />
           <Parameter Name="PIN_CL_ESTADO" Type="nvarchar" Mode="In" />
@@ -10813,20 +10801,6 @@
           <FunctionImport Name="SPE_OBTIENE_FYD_VALIDACION_AUTORIZACIONES" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_FYD_VALIDACION_AUTORIZACIONES_Result)">
           <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
           </FunctionImport>
-<<<<<<< HEAD
-          <FunctionImport Name="SPE_OBTIENE_C_COMPETENCIA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_COMPETENCIA_Result)">
-            <Parameter Name="PIN_ID_COMPETENCIA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_COMPETENCIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_COMPETENCIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_DS_COMPETENCIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_TIPO_COMPETENCIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_CLASIFICACION" Mode="In" Type="String" />
-            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_XML_CAMPOS_ADICIONALES" Mode="In" Type="String" />
-            <Parameter Name="PIN_XML_SELECCION" Mode="In" Type="String" />
-          </FunctionImport>
-=======
->>>>>>> DEV
           <FunctionImport Name="SPE_OBTIENE_TABULADORES" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_TABULADORES_Result)">
             <Parameter Name="PIN_ID_TABULADOR" Mode="In" Type="Int32" />
             <Parameter Name="PIN_CL_TABULADOR" Mode="In" Type="String" />
@@ -11042,31 +11016,7 @@
             <Parameter Name="PIN_ID_EVALUADO" Mode="In" Type="Int32" />
             <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
           </FunctionImport>
-<<<<<<< HEAD
-          <FunctionImport Name="SPE_OBTIENE_C_EVENTO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_EVENTO_Result)">
-            <Parameter Name="PIN_ID_EVENTO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PROGRAMA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_CURSO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_INSTRUCTOR" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EMPLEADO_EVALUADOR" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_EVENTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_EVENTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_DS_EVENTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_FE_INICIO" Mode="In" Type="DateTime" />
-            <Parameter Name="PIN_FE_TERMINO" Mode="In" Type="DateTime" />
-            <Parameter Name="PIN_NB_CURSO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_INSTRUCTOR" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_TIPO_CURSO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_ESTADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_FE_EVALUACION" Mode="In" Type="DateTime" />
-            <Parameter Name="PIN_DS_LUGAR" Mode="In" Type="String" />
-            <Parameter Name="PIN_MN_COSTO_DIRECTO" Mode="In" Type="Decimal" />
-            <Parameter Name="PIN_MN_COSTO_INDIRECTO" Mode="In" Type="Decimal" />
-            <Parameter Name="PIN_FL_EVENTO" Mode="In" Type="Guid" />
-            <Parameter Name="PIN_CL_TOKEN" Mode="In" Type="String" />
-          </FunctionImport>
-=======
->>>>>>> DEV
+
           <FunctionImport Name="SPE_INSERTA_PERIODO_TABLERO_CONTROL">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
@@ -11238,8 +11188,7 @@
           </FunctionImport>
           <FunctionImport Name="SPE_OBTIENE_JEFES_DESCRIPTIVO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_JEFES_DESCRIPTIVO_Result)">
           <Parameter Name="PIN_ID_DESCRIPTIVO" Mode="In" Type="Int32" />
-<<<<<<< HEAD
-=======
+
           </FunctionImport>
           <FunctionImport Name="SPE_OBTIENE_SUBORDINADOS_DESCRIPTIVO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_SUBORDINADOS_DESCRIPTIVO_Result)">
           <Parameter Name="PIN_ID_DESCRIPTIVO" Mode="In" Type="Int32" />
@@ -11448,221 +11397,12 @@
             <Parameter Name="PIN_NB_CATALOGO_VALOR" Mode="In" Type="String" />
             <Parameter Name="PIN_DS_CATALOGO_VALOR" Mode="In" Type="String" />
             <Parameter Name="PIN_ID_CATALOGO_LISTA" Mode="In" Type="Int32" />
->>>>>>> DEV
+
           </FunctionImport>
           <FunctionImport Name="SPE_OBTIENE_SUBORDINADOS_DESCRIPTIVO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_SUBORDINADOS_DESCRIPTIVO_Result)">
           <Parameter Name="PIN_ID_DESCRIPTIVO" Mode="In" Type="Int32" />
           </FunctionImport>
-<<<<<<< HEAD
-          <FunctionImport Name="SPE_INSERTA_ACTUALIZA_GRUPO">
-            <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
-            <Parameter Name="PIN_ID_GRUPO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_GRUPO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_GRUPO" Mode="In" Type="String" />
-            <Parameter Name="PIN_XML_PLAZAS" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
-            <Parameter Name="PIN_TIPO_TRANSACCION" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_ELIMINA_GRUPO">
-            <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
-            <Parameter Name="PIN_ID_GRUPO" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_INSERTA_ACTUALIZA_PLAZA">
-            <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
-            <Parameter Name="PIN_ID_PLAZA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_PLAZA" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PLAZA" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PUESTO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_DEPARTAMENTO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PLAZA_JEFE" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EMPRESA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_XML_GRUPOS" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
-            <Parameter Name="PIN_TIPO_TRANSACCION" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_ELIMINA_RESPUESTAS_CUESTIONARIO_PERIODO">
-            <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
-            <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EVALUADOR" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_CUESTIONARIO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_EMPLEADO_PLANTILLA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_EMPLEADO_PLANTILLA_Result)">
-            <Parameter Name="PIN_ID_PLANTILLA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EMPRESA" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_INSERTA_ACTUALIZA_CAMPO_NOMINA_DO">
-            <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
-            <Parameter Name="XML_CONFIGURACION_CAMPOS" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
-            <Parameter Name="PIN_TIPO_TRANSACCION" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_INSERTA_ACTUALIZA_PUESTO_NOMINA_DO">
-            <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
-            <Parameter Name="PIN_ID_PUESTO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_PUESTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PUESTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_FG_NOMINA" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_FG_DO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
-            <Parameter Name="PIN_TIPO_TRANSACCION" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_CENTROS_ADMINISTRATIVOS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_CENTROS_ADMINISTRATIVOS_Result)">
-            <Parameter Name="PIN_ID_CENTRO_ADMVO" Mode="In" Type="Guid" />
-            <Parameter Name="PIN_CL_CENTRO_ADMVO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_CENTROS_OPERATIVOS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_CENTROS_OPERATIVOS_Result)">
-            <Parameter Name="PIN_ID_CENTRO_OPTVO" Mode="In" Type="Guid" />
-            <Parameter Name="PIN_CL_CENTRO_OPTVO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_ELIMINA_PUESTO_NOMINA_DO">
-            <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
-            <Parameter Name="PIN_ID_PUESTO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_PUESTO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_ELIMINA_EMPLEADO_NOMINA_DO">
-            <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
-            <Parameter Name="PIN_ID_EMPLEADO_NOMINA_DO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_EMPLEADO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_RAZON_SOCIAL_NOMINA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_RAZON_SOCIAL_NOMINA_Result)">
-            <Parameter Name="PIN_ID_RAZON_SOCIAL" Mode="In" Type="Guid" />
-            <Parameter Name="PIN_CL_CLIENTE" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_PUESTOS_NOMINA_DO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_PUESTOS_NOMINA_DO_Result)">
-            <Parameter Name="PIN_ID_PUESTO_NOMINA_DO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_PUESTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_FG_DO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_FG_NOMINA" Mode="In" Type="Boolean" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_EMPLEADOS_NOMINA_DO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_EMPLEADOS_NOMINA_DO_Result)">
-            <Parameter Name="PIN_ID_EMPLEADO_NOMINA_DO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_EMPLEADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_EMPLEADO_NOMINA" Mode="In" Type="Guid" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_INSERTA_ACTUALIZA_EMPLEADO_NOMINA_DO">
-            <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
-            <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_EMPLEADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_EMPLEADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_APELLIDO_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_APELLIDO_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="PIN_FG_DO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_FG_NOMINA" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_FG_NOMINA_DO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_ID_PLAZA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PUESTO_NOMINA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_EMPLEADO_NOMINA" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_RAZON_SOCIAL" Mode="In" Type="Guid" />
-            <Parameter Name="PIN_MN_SUELDO_MENSUAL" Mode="In" Type="Decimal" />
-            <Parameter Name="PIN_MN_SUELDO_DIARIO" Mode="In" Type="Decimal" />
-            <Parameter Name="PIN_MN_BASE_COTIZACION" Mode="In" Type="Decimal" />
-            <Parameter Name="PIN_MN_SUELDO_DO" Mode="In" Type="Decimal" />
-            <Parameter Name="PIN_FG_INVENTARIO_VISIBLE" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_FG_TABULADOR_VISIBLE" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_FG_BONO_VISIBLE" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
-            <Parameter Name="PIN_TIPO_TRANSACCION" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_CONFIGURACION_CAMPOS_NOMINA_DO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_CONFIGURACION_CAMPOS_NOMINA_DO_Result)">
-            <Parameter Name="PIN_ID_CAMPO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_CAMPO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_ROL" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_ROL_Result)">
-          <Parameter Name="PIN_ID_ROL" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_ROL" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_ROL_Result)">
-            <Parameter Name="PIN_ID_ROL" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_ROL" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_ROL" Mode="In" Type="String" />
-            <Parameter Name="PIN_XML_AUTORIZACION" Mode="In" Type="String" />
-            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_FE_INACTIVO" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_INSERTA_ACTUALIZA_ROLES">
-            <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
-            <Parameter Name="PIN_ID_ROL" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_ROL" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_ROL" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_PLANTILLA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_XML_FUNCIONES" Mode="In" Type="String" />
-            <Parameter Name="PIN_XML_GRUPOS" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
-            <Parameter Name="PIN_TIPO_TRANSACCION" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_M_PUESTOS_GENERAL" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_M_PUESTOS_GENERAL_Result)">
-            <Parameter Name="PIN_ID_PUESTO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_FE_INACTIVO" Mode="In" Type="DateTime" />
-            <Parameter Name="PIN_CL_PUESTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PUESTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_DEPARTAMENTO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_XML_CAMPOS_ADICIONALES" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_BITACORA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_NO_EDAD_MINIMA" Mode="In" Type="Byte" />
-            <Parameter Name="PIN_NO_EDAD_MAXIMA" Mode="In" Type="Byte" />
-            <Parameter Name="PIN_CL_GENERO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_ESTADO_CIVIL" Mode="In" Type="String" />
-            <Parameter Name="PIN_XML_REQUERIMIENTOS" Mode="In" Type="String" />
-            <Parameter Name="PIN_XML_OBSERVACIONES" Mode="In" Type="String" />
-            <Parameter Name="PIN_XML_RESPONSABILIDAD" Mode="In" Type="String" />
-            <Parameter Name="PIN_XML_AUTORIDAD" Mode="In" Type="String" />
-            <Parameter Name="PIN_XML_CURSOS_ADICIONALES" Mode="In" Type="String" />
-            <Parameter Name="PIN_XML_MENTOR" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_TIPO_PUESTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_CENTRO_ADMINISTRATIVO" Mode="In" Type="Guid" />
-            <Parameter Name="PIN_ID_CENTRO_OPERATIVO" Mode="In" Type="Guid" />
-            <Parameter Name="PIN_ID_PAQUETE_PRESTACIONES" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_XML_PUESTOS" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_DEPARTAMENTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_DEPARTAMENTO" Mode="In" Type="String" />
-            <Parameter Name="XML_PUESTOS_SELECCIONADOS" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_EMPRESA" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_PERIODO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_PERIODO_Result)">
-            <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PREGUNTA" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_ACTUALIZA_VALIDEZ_CUESTIONARIO">
-            <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
-            <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_CUESTIONARIO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_CUESTIONARIO_Result)">
-            <Parameter Name="PIN_ID_EVALUADOR" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_FL_EVALUADOR" Mode="In" Type="Guid" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_EO_PREGUNTAS_CUESTIONARIO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_EO_PREGUNTAS_CUESTIONARIO_Result)">
-            <Parameter Name="PIN_ID_EVALUADOR" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_FL_EVALUADOR" Mode="In" Type="Guid" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_EO_PERIODO_EVALUADOR" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_EO_PERIODO_EVALUADOR_Result)">
-            <Parameter Name="PIN_ID_EVALUADOR" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_FL_EVALUADOR" Mode="In" Type="Guid" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_CATALOGO_VALOR" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_CATALOGO_VALOR_Result)">
-            <Parameter Name="PIN_ID_CATALOGO_VALOR" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_CATALOGO_VALOR" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_CATALOGO_VALOR" Mode="In" Type="String" />
-            <Parameter Name="PIN_DS_CATALOGO_VALOR" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_CATALOGO_LISTA" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_TABULADOR_MAESTRO_RECALCULA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_TABULADOR_MAESTRO_RECALCULA_Result)">
-            <Parameter Name="PIN_ID_TABULADOR" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_XML_NIVELES" Mode="In" Type="String" />
-          </FunctionImport>
+
           <FunctionImport Name="SPE_OBTIENE_C_COLONIA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_COLONIA_Result)">
             <Parameter Name="PIN_ID_COLONIA" Mode="In" Type="Int32" />
             <Parameter Name="PIN_CL_PAIS" Mode="In" Type="String" />
@@ -11675,20 +11415,7 @@
             <Parameter Name="PIN_CL_TIPO_ASENTAMIENTO" Mode="In" Type="String" />
             <Parameter Name="PIN_CL_CODIGO_POSTAL" Mode="In" Type="String" />
           </FunctionImport>
-=======
-          <FunctionImport Name="SPE_OBTIENE_C_COLONIA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_COLONIA_Result)">
-            <Parameter Name="PIN_ID_COLONIA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_PAIS" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_ESTADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_ESTADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_MUNICIPIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_MUNICIPIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_COLONIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_COLONIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_TIPO_ASENTAMIENTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_CODIGO_POSTAL" Mode="In" Type="String" />
-          </FunctionImport>
->>>>>>> DEV
+
           <FunctionImport Name="SPE_OBTIENE_C_MUNICIPIO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_MUNICIPIO_Result)">
             <Parameter Name="PIN_ID_MUNICIPIO" Mode="In" Type="Int32" />
             <Parameter Name="PIN_CL_PAIS" Mode="In" Type="String" />
@@ -11786,10 +11513,7 @@
             <Parameter Name="PIN_ID_BATERIA" Mode="In" Type="Int32" />
             <Parameter Name="PIN_FG_ASIGNADA" Mode="In" Type="Boolean" />
           </FunctionImport>
-<<<<<<< HEAD
-          <FunctionImport Name="SPE_OBTIENE_PRUEBAS_CONFIGURADAS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result)" />
-=======
->>>>>>> DEV
+
           <FunctionImport Name="SPE_ACTUALIZA_PRUEBAS_BATERIA">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="PIN_ID_BATERIA" Mode="In" Type="Int32" />
@@ -11957,17 +11681,7 @@
             <Parameter Name="PIN_ID_EMPRESA" Mode="In" Type="Int32" />
             <Parameter Name="PIN_ID_ROL" Mode="In" Type="Int32" />
           </FunctionImport>
-<<<<<<< HEAD
-          <FunctionImport Name="SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO_Result)">
-            <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EVALUADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EVALUADOR" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_ROL" Mode="In" Type="Int32" />
-          </FunctionImport>
-=======
->>>>>>> DEV
+
           <FunctionImport Name="SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO_Result)">
             <Parameter Name="PIN_ID_PERIODO_DESEMPENO" Mode="In" Type="Int32" />
             <Parameter Name="PIN_ID_ROL" Mode="In" Type="Int32" />
@@ -12258,22 +11972,14 @@
           <FunctionImport Name="SPE_OBTIENE_EO_PERIODOS_DESEMPENO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_EO_PERIODOS_DESEMPENO_Result)">
           <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
           </FunctionImport>
-<<<<<<< HEAD
-          <FunctionImport Name="SPE_OBTIENE_EO_CONTEXTO_METAS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_EO_CONTEXTO_METAS_Result)">
-            <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EVALUADO" Mode="In" Type="Int32" />
-          </FunctionImport>
-=======
->>>>>>> DEV
+
           <FunctionImport Name="SPE_OBTIENE_PERIODOS_DESEMPENO_COMPARACION" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_PERIODOS_DESEMPENO_COMPARACION_Result)">
             <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
             <Parameter Name="PIN_ID_EVALUADO" Mode="In" Type="Int32" />
             <Parameter Name="PIN_CL_TIPO_SELECCION" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SPE_VERIFICA_CONFIGURACION_TABULADOR" ReturnType="Collection(SistemaSigeinModel.SPE_VERIFICA_CONFIGURACION_TABULADOR_Result)">
-<<<<<<< HEAD
-            <Parameter Name="PIN_ID_TABULADOR" Mode="In" Type="Int32" />
-=======
+
           <Parameter Name="PIN_ID_TABULADOR" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SPE_OBTIENE_C_COMPETENCIA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_COMPETENCIA_Result)">
@@ -12334,7 +12040,7 @@
             <Parameter Name="PIN_ID_BATERIA" Mode="In" Type="Int32" />
             <Parameter Name="PIN_CL_USUARIO_APP" Mode="In" Type="String" />
             <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
->>>>>>> DEV
+
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SPE_OBTIENE_C_CALLE_Result">
@@ -15291,38 +14997,7 @@
           <Property Type="String" Name="CL_ESTADO_PERIODO" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="DS_NOTAS" Nullable="true" />
           <Property Type="String" Name="CL_TIPO_PERIODO" Nullable="false" MaxLength="20" />
-<<<<<<< HEAD
-          <Property Type="Int32" Name="ID_PERIODO_DESEMPENO" Nullable="false" />
-          <Property Type="Boolean" Name="FG_BONO" Nullable="false" />
-          <Property Type="Decimal" Name="PR_BONO" Nullable="false" Precision="5" Scale="2" />
-          <Property Type="Decimal" Name="MN_BONO" Nullable="false" Precision="13" Scale="2" />
-          <Property Type="String" Name="CL_TIPO_BONO" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="CL_TIPO_CAPTURISTA" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="CL_TIPO_METAS" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="CL_ORIGEN_CUESTIONARIO" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="ID_PERIODO_REPLICA" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="SPE_OBTIENE_EO_EVALUADORES_REPLICAS_Result">
-          <Property Type="Int32" Name="ID_PERIODO" Nullable="false" />
-          <Property Type="String" Name="CL_PERIODO" Nullable="false" MaxLength="32" />
-          <Property Type="String" Name="NB_PERIODO" Nullable="false" MaxLength="100" />
-          <Property Type="Int32" Name="ID_EVALUADOR" Nullable="false" />
-          <Property Type="String" Name="NB_EVALUADOR" Nullable="false" MaxLength="300" />
-          <Property Type="String" Name="NB_PUESTO" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="CL_TOKEN" Nullable="true" MaxLength="20" />
-          <Property Type="Guid" Name="FL_EVALUADOR" Nullable="true" />
-          <Property Type="String" Name="CL_CORREO_ELECTRONICO" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="CL_EVALUADOR" Nullable="true" MaxLength="20" />
-          <Property Type="Int32" Name="ID_PERIODO_REPLICA" Nullable="true" />
-          <Property Type="DateTime" Name="FE_ENVIO_SOLICITUD" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="SPE_OBTIENE_CONFIGURACION_PERIODO_REPLICAS_Result">
-          <Property Type="Int32" Name="ID_PERIODO" Nullable="false" />
-          <Property Type="DateTime" Name="FE_ENVIO_SOLICITUD" Nullable="true" />
-          <Property Type="Boolean" Name="FG_ENVIO_SOLICITUD" Nullable="true" />
-          <Property Type="String" Name="NB_EMPLEADO" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="CL_ESTADO_EMPLEADO" Nullable="false" MaxLength="20" />
-=======
+
           <Property Type="String" Name="DS_NOTAS" Nullable="true" MaxLength="Max" />
           <Property Type="Int32" Name="ID_BITACORA" Nullable="true" />
           <Property Type="String" Name="XML_CAMPOS_ADICIONALES" Nullable="true" MaxLength="Max" />
@@ -15360,7 +15035,7 @@
           <Property Type="String" Name="CL_ENTREVISTA_TIPO" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="NB_ENTREVISTA_TIPO" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="DS_ENTREVISTA_TIPO" Nullable="true" MaxLength="1000" />
->>>>>>> DEV
+
         </ComplexType>
         <ComplexType Name="SPE_OBTIENE_SOLICITUDES_ENVIAR_Result">
           <Property Type="Int32" Name="ID_EVALUADOR" Nullable="false" />
@@ -15443,50 +15118,7 @@
           <Property Type="Int32" Name="ID_PERIODO" Nullable="false" />
           <Property Type="Boolean" Name="FG_ESTATUS" Nullable="true" />
         </ComplexType>
-<<<<<<< HEAD
-        <ComplexType Name="SPE_OBTIENE_EO_PERIODOS_DESEMPENO_CUESTIONARIO_Result">
-          <Property Type="Int32" Name="ID_PERIODO" Nullable="false" />
-          <Property Type="String" Name="CL_PERIODO" Nullable="false" MaxLength="32" />
-          <Property Type="String" Name="NB_PERIODO" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="DS_PERIODO" Nullable="true" MaxLength="200" />
-          <Property Type="DateTime" Name="FE_INICIO" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="FE_TERMINO" Nullable="true" Precision="23" />
-          <Property Type="String" Name="CL_ESTADO_PERIODO" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="DS_NOTAS" Nullable="true" />
-          <Property Type="String" Name="CL_TIPO_PERIODO" Nullable="false" MaxLength="20" />
-          <Property Type="Int32" Name="ID_PERIODO_DESEMPENO" Nullable="false" />
-          <Property Type="Boolean" Name="FG_BONO" Nullable="false" />
-          <Property Type="Decimal" Name="PR_BONO" Nullable="false" Precision="5" Scale="2" />
-          <Property Type="Decimal" Name="MN_BONO" Nullable="false" Precision="13" Scale="2" />
-          <Property Type="String" Name="CL_TIPO_BONO" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="CL_TIPO_CAPTURISTA" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="CL_TIPO_METAS" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="CL_ORIGEN_CUESTIONARIO" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="ID_PERIODO_REPLICA" Nullable="true" />
-          <Property Type="String" Name="CL_TIPO_COPIA" Nullable="true" MaxLength="20" />
-          <Property Type="Int32" Name="NO_REPLICA" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="SPE_OBTIENE_EO_EVALUADORES_Result">
-          <Property Type="Int32" Name="ID_EVALUADOR" Nullable="false" />
-          <Property Type="String" Name="NB_EVALUADOR" Nullable="false" MaxLength="300" />
-          <Property Type="String" Name="NB_PUESTO" Nullable="true" MaxLength="200" />
-          <Property Type="Boolean" Name="FG_EVALUA_TODOS" Nullable="false" />
-          <Property Type="Guid" Name="FL_EVALUADOR" Nullable="true" />
-          <Property Type="String" Name="CL_TOKEN" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="CL_EVALUA_TODOS" Nullable="false" MaxLength="2" />
-          <Property Type="String" Name="CL_TIPO_EVALUADOR" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="CL_CORREO_EVALUADOR" Nullable="true" MaxLength="200" />
-          <Property Type="Int32" Name="NO_CUESTIONARIOS_CONTESTADOS" Nullable="true" />
-          <Property Type="Int32" Name="NO_CUESTIONARIOS" Nullable="true" />
-          <Property Type="String" Name="DS_CUESTIONARIOS" Nullable="true" MaxLength="64" />
-        </ComplexType>
-        <ComplexType Name="SPE_OBTIENE_EO_RESULTADO_EVALUADOS_Result">
-          <Property Type="String" Name="NB_EVALUADOR" Nullable="false" MaxLength="300" />
-          <Property Type="String" Name="NB_EVALUADO" Nullable="false" MaxLength="300" />
-          <Property Type="String" Name="NB_DEPARTAMENTO" Nullable="true" MaxLength="100" />
-          <Property Type="DateTime" Name="FE_MODIFICACION" Nullable="true" Precision="23" />
-          <Property Type="Decimal" Name="NO_PUNTAJE" Nullable="true" Precision="38" Scale="6" />
-=======
+
         <ComplexType Name="SPE_OBTIENE_K_ADM_COMUNICADO_Result">
           <Property Type="Int32" Name="ID_COMUNICADO" Nullable="false" />
           <Property Type="String" Name="NB_COMUNICADO" Nullable="false" MaxLength="200" />
@@ -15503,7 +15135,6 @@
           <Property Type="Int32" Name="COMENTARIOS" Nullable="true" />
           <Property Type="String" Name="TIPO_COMUNICADO" Nullable="true" MaxLength="1" />
           <Property Type="String" Name="TIPO_ACCION" Nullable="true" MaxLength="1" />
->>>>>>> DEV
         </ComplexType>
         <ComplexType Name="SPE_OBTIENE_EO_EVALUADOS_Result">
           <Property Type="Int32" Name="ID_EVALUADO_EVALUADOR" Nullable="false" />
@@ -15666,7 +15297,7 @@
           <Property Type="Int32" Name="ID_BATERIA" Nullable="true" />
           <Property Type="Guid" Name="CL_TOKEN" Nullable="true" />
         </ComplexType>
-<<<<<<< HEAD
+
         <ComplexType Name="SPE_OBTIENE_SOLICITUDES_Result">
           <Property Type="Int32" Name="ID_SOLICITUD" Nullable="false" />
           <Property Type="Int32" Name="ID_CANDIDATO" Nullable="true" />
@@ -16199,7 +15830,7 @@
           <Property Type="String" Name="NB_EMPLEADO_SUPLENTE" Nullable="true" MaxLength="200" />
           <Property Type="Decimal" Name="MN_SUELDO" Nullable="true" Precision="12" Scale="2" />
           <Property Type="Decimal" Name="MN_SUELDO_SUGERIDO" Nullable="true" Precision="12" Scale="2" />
->>>>>>> DEV
+
         </ComplexType>
         <ComplexType Name="SPE_OBTIENE_FACTORES_CONSULTA_Result">
           <Property Type="Int32" Name="ID_FACTOR" Nullable="false" />
@@ -16248,38 +15879,7 @@
           <Property Type="Int32" Name="NO_REPLICA" Nullable="true" />
           <Property Type="String" Name="NB_PUESTO" Nullable="false" MaxLength="100" />
         </ComplexType>
-<<<<<<< HEAD
-        <ComplexType Name="SPE_OBTIENE_METAS_COMPARAR_DESEMPENO_Result">
-          <Property Type="Int32" Name="ID_META_EVALUADO" Nullable="false" />
-          <Property Type="Int32" Name="ID_PERIODO" Nullable="true" />
-          <Property Type="Int32" Name="ID_EVALUADO_PERIODO" Nullable="true" />
-          <Property Type="Int64" Name="NO_META" Nullable="true" />
-          <Property Type="String" Name="DS_FUNCION" Nullable="true" MaxLength="300" />
-          <Property Type="String" Name="NB_INDICADOR" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="DS_META" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="CL_TIPO_META" Nullable="true" MaxLength="20" />
-          <Property Type="Boolean" Name="FG_VALIDA_CUMPLIMIENTO" Nullable="true" />
-          <Property Type="Boolean" Name="FG_EVALUAR" Nullable="true" />
-          <Property Type="String" Name="NB_CUMPLIMIENTO_ACTUAL" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="NB_CUMPLIMIENTO_MINIMO" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="NB_CUMPLIMIENTO_SATISFACTORIO" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="NB_CUMPLIMIENTO_SOBRESALIENTE" Nullable="true" MaxLength="100" />
-          <Property Type="Decimal" Name="PR_META" Nullable="false" Precision="12" Scale="2" />
-          <Property Type="String" Name="NB_RESULTADO" Nullable="false" MaxLength="100" />
-          <Property Type="Decimal" Name="PR_RESULTADO" Nullable="false" Precision="12" Scale="2" />
-          <Property Type="Int32" Name="CL_NIVEL" Nullable="false" />
-          <Property Type="Decimal" Name="PR_CUMPLIMIENTO_META" Nullable="false" Precision="12" Scale="2" />
-          <Property Type="Boolean" Name="FG_EVIDENCIA" Nullable="false" />
-          <Property Type="Decimal" Name="PR_EVALUADO" Nullable="false" Precision="12" Scale="2" />
-          <Property Type="String" Name="NIVEL_ALCANZADO" Nullable="false" MaxLength="13" />
-          <Property Type="String" Name="COLOR_NIVEL" Nullable="false" MaxLength="7" />
-        </ComplexType>
-        <ComplexType Name="SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_GRAFICA_Result">
-          <Property Type="Int64" Name="NUM_PERIODO" Nullable="true" />
-          <Property Type="Int32" Name="ID_PERIODO" Nullable="false" />
-          <Property Type="String" Name="CL_PERIODO" Nullable="false" MaxLength="32" />
-          <Property Type="Decimal" Name="CUMPLIDO" Nullable="true" Precision="38" Scale="2" />
-=======
+
         <ComplexType Name="SPE_OBTIENE_DESCRIPTIVO_REQUISICION_Result">
           <Property Type="Int32" Name="ID_PUESTO" Nullable="true" />
           <Property Type="Boolean" Name="FG_ACTIVO" Nullable="true" />
@@ -16351,14 +15951,14 @@
           <Property Type="String" Name="NB_PUESTO" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="NB_DEPARTAMENTO" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="REPORTA_A" Nullable="true" MaxLength="100" />
->>>>>>> DEV
+
         </ComplexType>
         <ComplexType Name="SPE_OBTIENE_FACTORES_EVALUACION_TABULADOR_Result">
           <Property Type="Int32" Name="ID_FACTOR_EVALUACION" Nullable="false" />
           <Property Type="String" Name="NB_FACTOR_EVALUACION" Nullable="false" MaxLength="26" />
           <Property Type="String" Name="DS_FACTOR_EVALUACION" Nullable="false" MaxLength="582" />
         </ComplexType>
-<<<<<<< HEAD
+
         <ComplexType Name="SPE_OBTIENE_FYD_EVALUADOS_AUTORIZACION_Result">
           <Property Type="Int32" Name="ID_EVALUADO" Nullable="false" />
           <Property Type="String" Name="CL_EVALUADO" Nullable="true" MaxLength="20" />
@@ -16406,14 +16006,14 @@
           <Property Type="Int32" Name="NO_NIVEL" Nullable="false" />
           <Property Type="String" Name="DS_COMPETENCIA" Nullable="true" MaxLength="1000" />
           <Property Type="String" Name="CL_TIPO_COMPETENCIA" Nullable="true" MaxLength="20" />
-=======
+
         <ComplexType Name="SPE_OBTIENE_K_REQUISICION_CANDIDATO_Result">
           <Property Type="Int32" Name="ID_CANDIDATO" Nullable="true" />
           <Property Type="String" Name="XML_CANDIDATOS" Nullable="true" MaxLength="Max" />
           <Property Type="String" Name="XML_K_AREA_INTERES" Nullable="true" MaxLength="Max" />
           <Property Type="String" Name="XML_EMPLEADOS_COMPETENCIAS" Nullable="true" MaxLength="Max" />
           <Property Type="String" Name="XML_EMPLEADOS_ESCOLARIDADES" Nullable="true" MaxLength="Max" />
->>>>>>> DEV
+
         </ComplexType>
         <ComplexType Name="SPE_OBTIENE_CUESTIONARIOS_EVALUACION_Result">
           <Property Type="Int32" Name="ID_CUESTIONARIO" Nullable="false" />
@@ -33925,35 +33525,7 @@
                 <ScalarProperty Name="NB_EMPRESA" ColumnName="NB_EMPRESA" />
                 <ScalarProperty Name="NB_RAZON_SOCIAL" ColumnName="NB_RAZON_SOCIAL" />
                 <ScalarProperty Name="CL_DEPARTAMENTO" ColumnName="CL_DEPARTAMENTO" />
-<<<<<<< HEAD
-                <ScalarProperty Name="CL_EMPLEADO" ColumnName="CL_EMPLEADO" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="FG_SUELDO_VISIBLE_TABULADOR" ColumnName="FG_SUELDO_VISIBLE_TABULADOR" />
-                <ScalarProperty Name="FG_PLANEACION_INCREMENTO" ColumnName="FG_PLANEACION_INCREMENTO" />
-                <ScalarProperty Name="MN_SUELDO_ORIGINAL" ColumnName="MN_SUELDO_ORIGINAL" />
-                <ScalarProperty Name="MN_SUELDO_NUEVO" ColumnName="MN_SUELDO_NUEVO" />
-                <ScalarProperty Name="FE_CAMBIO_SUELDO" ColumnName="FE_CAMBIO_SUELDO" />
-                <ScalarProperty Name="MN_MAXIMO_MINIMO" ColumnName="MN_MAXIMO_MINIMO" />
-                <ScalarProperty Name="MN_MINIMO_MINIMO" ColumnName="MN_MINIMO_MINIMO" />
-                <ScalarProperty Name="MN_MAXIMO_PRIMER_CUARTIL" ColumnName="MN_MAXIMO_PRIMER_CUARTIL" />
-                <ScalarProperty Name="MN_MINIMO_PRIMER_CUARTIL" ColumnName="MN_MINIMO_PRIMER_CUARTIL" />
-                <ScalarProperty Name="MN_MAXIMO_MEDIO" ColumnName="MN_MAXIMO_MEDIO" />
-                <ScalarProperty Name="MN_MINIMO_MEDIO" ColumnName="MN_MINIMO_MEDIO" />
-                <ScalarProperty Name="MN_MAXIMO_SEGUNDO_CUARTIL" ColumnName="MN_MAXIMO_SEGUNDO_CUARTIL" />
-                <ScalarProperty Name="MN_MINIMO_SEGUNDO_CUARTIL" ColumnName="MN_MINIMO_SEGUNDO_CUARTIL" />
-                <ScalarProperty Name="MN_MAXIMO_MAXIMO" ColumnName="MN_MAXIMO_MAXIMO" />
-                <ScalarProperty Name="MN_MINIMO_MAXIMO" ColumnName="MN_MINIMO_MAXIMO" />
-                <ScalarProperty Name="NB_TABULADOR_NIVEL" ColumnName="NB_TABULADOR_NIVEL" />
-                <ScalarProperty Name="MN_MINIMO" ColumnName="MN_MINIMO" />
-                <ScalarProperty Name="MN_MAXIMO" ColumnName="MN_MAXIMO" />
-                <ScalarProperty Name="XML_CATEGORIA" ColumnName="XML_CATEGORIA" />
-                <ScalarProperty Name="NO_VALUACION" ColumnName="NO_VALUACION" />
-                <ScalarProperty Name="ID_TABULADOR_NIVEL" ColumnName="ID_TABULADOR_NIVEL" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SPE_OBTIENE_EO_PERIODOS_CLIMA" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_EO_PERIODOS_CLIMA">
-=======
+
                 <ScalarProperty Name="NB_DEPARTAMENTO" ColumnName="NB_DEPARTAMENTO" />
                 <ScalarProperty Name="ID_EVALUADO" ColumnName="ID_EVALUADO" />
                 <ScalarProperty Name="NO_TOTAL_METAS" ColumnName="NO_TOTAL_METAS" />
@@ -33971,7 +33543,7 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPE_OBTIENE_EO_CONTEXTO_METAS" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_EO_CONTEXTO_METAS">
->>>>>>> DEV
+
             <ResultMapping>
               <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_EO_CONTEXTO_METAS_Result">
                 <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
@@ -33994,127 +33566,7 @@
                 <ScalarProperty Name="CL_TIPO_CAPTURISTA" ColumnName="CL_TIPO_CAPTURISTA" />
                 <ScalarProperty Name="CL_TIPO_METAS" ColumnName="CL_TIPO_METAS" />
                 <ScalarProperty Name="CL_ORIGEN_CUESTIONARIO" ColumnName="CL_ORIGEN_CUESTIONARIO" />
-<<<<<<< HEAD
-                <ScalarProperty Name="ID_PERIODO_ORIGEN" ColumnName="ID_PERIODO_ORIGEN" />
-                <ScalarProperty Name="FG_CUESTIONARIOS_CREADOS" ColumnName="FG_CUESTIONARIOS_CREADOS" />
-                <ScalarProperty Name="DS_INSTRUCCIONES" ColumnName="DS_INSTRUCCIONES" />
-                <ScalarProperty Name="DS_MENSAJE_CORREO" ColumnName="DS_MENSAJE_CORREO" />
-                <ScalarProperty Name="CL_USUARIO_APP_MODIFICA" ColumnName="CL_USUARIO_APP_MODIFICA" />
-                <ScalarProperty Name="FE_MODIFICA" ColumnName="FE_MODIFICA" />
-                <ScalarProperty Name="NB_PERIODO_ORIGEN" ColumnName="NB_PERIODO_ORIGEN" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SPE_INSERTA_ACTUALIZA_PERIODO_CLIMA_LAB" FunctionName="SistemaSigeinModel.Store.SPE_INSERTA_ACTUALIZA_PERIODO_CLIMA_LAB" />
-          <FunctionImportMapping FunctionImportName="SPE_OBTIENE_TRADUCCION_TEXTO" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_TRADUCCION_TEXTO">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_TRADUCCION_TEXTO_Result">
-                <ScalarProperty Name="ID_TEXTO" ColumnName="ID_TEXTO" />
-                <ScalarProperty Name="CL_TEXTO" ColumnName="CL_TEXTO" />
-                <ScalarProperty Name="DS_TEXTO" ColumnName="DS_TEXTO" />
-                <ScalarProperty Name="CL_MODULO" ColumnName="CL_MODULO" />
-                <ScalarProperty Name="CL_PROCESO" ColumnName="CL_PROCESO" />
-                <ScalarProperty Name="CL_IDIOMA" ColumnName="CL_IDIOMA" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SPE_OBTIENE_LICENCIA_VOLUMEN" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_LICENCIA_VOLUMEN">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_LICENCIA_VOLUMEN_Result">
-                <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
-                <ScalarProperty Name="NO_EMPLEADOS_DO" ColumnName="NO_EMPLEADOS_DO" />
-                <ScalarProperty Name="NO_EMPLEADOS_NOMINA" ColumnName="NO_EMPLEADOS_NOMINA" />
-                <ScalarProperty Name="NO_TOTAL_ALTA" ColumnName="NO_TOTAL_ALTA" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SPE_ACTUALIZA_ESTATUS_TABULADOR" FunctionName="SistemaSigeinModel.Store.SPE_ACTUALIZA_ESTATUS_TABULADOR" />
-          <FunctionImportMapping FunctionImportName="SPE_OBTIENE_EO_PERIODOS_DESEMPENO" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_EO_PERIODOS_DESEMPENO">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_EO_PERIODOS_DESEMPENO_Result">
-                <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
-                <ScalarProperty Name="CL_PERIODO" ColumnName="CL_PERIODO" />
-                <ScalarProperty Name="NB_PERIODO" ColumnName="NB_PERIODO" />
-                <ScalarProperty Name="DS_PERIODO" ColumnName="DS_PERIODO" />
-                <ScalarProperty Name="FE_INICIO" ColumnName="FE_INICIO" />
-                <ScalarProperty Name="FE_TERMINO" ColumnName="FE_TERMINO" />
-                <ScalarProperty Name="CL_ESTADO_PERIODO" ColumnName="CL_ESTADO_PERIODO" />
-                <ScalarProperty Name="DS_NOTAS" ColumnName="DS_NOTAS" />
-                <ScalarProperty Name="CL_TIPO_PERIODO" ColumnName="CL_TIPO_PERIODO" />
-                <ScalarProperty Name="ID_PERIODO_DESEMPENO" ColumnName="ID_PERIODO_DESEMPENO" />
-                <ScalarProperty Name="FG_BONO" ColumnName="FG_BONO" />
-                <ScalarProperty Name="PR_BONO" ColumnName="PR_BONO" />
-                <ScalarProperty Name="MN_BONO" ColumnName="MN_BONO" />
-                <ScalarProperty Name="CL_TIPO_BONO" ColumnName="CL_TIPO_BONO" />
-                <ScalarProperty Name="CL_TIPO_CAPTURISTA" ColumnName="CL_TIPO_CAPTURISTA" />
-                <ScalarProperty Name="CL_TIPO_METAS" ColumnName="CL_TIPO_METAS" />
-                <ScalarProperty Name="CL_ORIGEN_CUESTIONARIO" ColumnName="CL_ORIGEN_CUESTIONARIO" />
-                <ScalarProperty Name="ID_PERIODO_REPLICA" ColumnName="ID_PERIODO_REPLICA" />
-                <ScalarProperty Name="CL_TIPO_COPIA" ColumnName="CL_TIPO_COPIA" />
-                <ScalarProperty Name="CL_USUARIO_APP_MODIFICA" ColumnName="CL_USUARIO_APP_MODIFICA" />
-                <ScalarProperty Name="FE_MODIFICA" ColumnName="FE_MODIFICA" />
-                <ScalarProperty Name="NO_REPLICA" ColumnName="NO_REPLICA" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SPE_OBTIENE_EO_CONTEXTO_METAS" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_EO_CONTEXTO_METAS">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_EO_CONTEXTO_METAS_Result">
-                <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
-                <ScalarProperty Name="CL_PERIODO" ColumnName="CL_PERIODO" />
-                <ScalarProperty Name="NB_PERIODO" ColumnName="NB_PERIODO" />
-                <ScalarProperty Name="DS_PERIODO" ColumnName="DS_PERIODO" />
-                <ScalarProperty Name="FE_INICIO" ColumnName="FE_INICIO" />
-                <ScalarProperty Name="FE_TERMINO" ColumnName="FE_TERMINO" />
-                <ScalarProperty Name="CL_ESTADO_PERIODO" ColumnName="CL_ESTADO_PERIODO" />
-                <ScalarProperty Name="CL_TIPO_COPIA" ColumnName="CL_TIPO_COPIA" />
-                <ScalarProperty Name="DS_NOTAS" ColumnName="DS_NOTAS" />
-                <ScalarProperty Name="CL_TIPO_PERIODO" ColumnName="CL_TIPO_PERIODO" />
-                <ScalarProperty Name="ID_PERIODO_DESEMPENO" ColumnName="ID_PERIODO_DESEMPENO" />
-                <ScalarProperty Name="FG_BONO" ColumnName="FG_BONO" />
-                <ScalarProperty Name="PR_BONO" ColumnName="PR_BONO" />
-                <ScalarProperty Name="MN_BONO" ColumnName="MN_BONO" />
-                <ScalarProperty Name="CL_TIPO_BONO" ColumnName="CL_TIPO_BONO" />
-                <ScalarProperty Name="CL_TIPO_CAPTURISTA" ColumnName="CL_TIPO_CAPTURISTA" />
-                <ScalarProperty Name="CL_TIPO_METAS" ColumnName="CL_TIPO_METAS" />
-                <ScalarProperty Name="CL_ORIGEN_CUESTIONARIO" ColumnName="CL_ORIGEN_CUESTIONARIO" />
-                <ScalarProperty Name="PR_EVALUADO" ColumnName="PR_EVALUADO" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SPE_OBTIENE_PERIODOS_DESEMPENO_COMPARACION" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_PERIODOS_DESEMPENO_COMPARACION">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_PERIODOS_DESEMPENO_COMPARACION_Result">
-                <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
-                <ScalarProperty Name="CL_PERIODO" ColumnName="CL_PERIODO" />
-                <ScalarProperty Name="NB_PERIODO" ColumnName="NB_PERIODO" />
-                <ScalarProperty Name="DS_PERIODO" ColumnName="DS_PERIODO" />
-                <ScalarProperty Name="FE_INICIO" ColumnName="FE_INICIO" />
-                <ScalarProperty Name="FE_TERMINO" ColumnName="FE_TERMINO" />
-                <ScalarProperty Name="CL_ESTADO_PERIODO" ColumnName="CL_ESTADO_PERIODO" />
-                <ScalarProperty Name="DS_NOTAS" ColumnName="DS_NOTAS" />
-                <ScalarProperty Name="CL_TIPO_PERIODO" ColumnName="CL_TIPO_PERIODO" />
-                <ScalarProperty Name="ID_PERIODO_DESEMPENO" ColumnName="ID_PERIODO_DESEMPENO" />
-                <ScalarProperty Name="FG_BONO" ColumnName="FG_BONO" />
-                <ScalarProperty Name="PR_BONO" ColumnName="PR_BONO" />
-                <ScalarProperty Name="MN_BONO" ColumnName="MN_BONO" />
-                <ScalarProperty Name="CL_TIPO_BONO" ColumnName="CL_TIPO_BONO" />
-                <ScalarProperty Name="CL_TIPO_CAPTURISTA" ColumnName="CL_TIPO_CAPTURISTA" />
-                <ScalarProperty Name="CL_TIPO_METAS" ColumnName="CL_TIPO_METAS" />
-                <ScalarProperty Name="CL_ORIGEN_CUESTIONARIO" ColumnName="CL_ORIGEN_CUESTIONARIO" />
-                <ScalarProperty Name="ID_PERIODO_REPLICA" ColumnName="ID_PERIODO_REPLICA" />
-                <ScalarProperty Name="CL_TIPO_COPIA" ColumnName="CL_TIPO_COPIA" />
-                <ScalarProperty Name="NO_REPLICA" ColumnName="NO_REPLICA" />
-                <ScalarProperty Name="ID_EVALUADO" ColumnName="ID_EVALUADO" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SPE_VERIFICA_CONFIGURACION_TABULADOR" FunctionName="SistemaSigeinModel.Store.SPE_VERIFICA_CONFIGURACION_TABULADOR">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_VERIFICA_CONFIGURACION_TABULADOR_Result">
-                <ScalarProperty Name="ID_TABULADOR" ColumnName="ID_TABULADOR" />
-                <ScalarProperty Name="FG_CONFIGURACION" ColumnName="FG_CONFIGURACION" />
-=======
+
                 <ScalarProperty Name="PR_EVALUADO" ColumnName="PR_EVALUADO" />
               </ComplexTypeMapping>
             </ResultMapping>

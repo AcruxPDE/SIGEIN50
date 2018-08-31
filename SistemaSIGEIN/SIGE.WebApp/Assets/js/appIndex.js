@@ -6,10 +6,7 @@ CambiarLenguaje = function (lang) {
 
 //FUNCION NAVEGACION DEL MENU PRINCIPAL
 NavegacionMenu = function (modulo, fgActivo, clUsuario) {
-<<<<<<< HEAD
-   // fgActivo = "1";
-=======
->>>>>>> DEV
+
     sessionStorage.setItem("modulo", modulo);
     var navigateURL = "";
 

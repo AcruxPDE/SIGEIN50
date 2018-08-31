@@ -39,13 +39,8 @@ namespace SIGE.WebApp.FYD
             //txtNbPeriodo.InnerText = periodo.DS_PERIODO;
             btnEnvioCuestionarios.Enabled = (periodo.CL_ESTADO_PERIODO.ToUpper() == "CERRADO") ? false : true;
 
-<<<<<<< HEAD
-            txtClPeriodo.InnerText = periodo.CL_PERIODO;
-            txtDsPeriodo.InnerText = periodo.NB_PERIODO;
-=======
             txtClPeriodo.InnerText = periodo.NB_PERIODO;
             txtDsPeriodo.InnerText = periodo.DS_PERIODO;
->>>>>>> DEV
             txtEstatus.InnerText = periodo.CL_ESTADO_PERIODO;
             string vTiposEvaluacion = "";
 

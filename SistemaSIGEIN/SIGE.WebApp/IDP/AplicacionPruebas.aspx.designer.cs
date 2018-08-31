@@ -76,37 +76,26 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadButton btnCrearBateria;
         
         /// <summary>
-<<<<<<< HEAD
-        /// btnAplicarPruebas control.
-=======
+
         /// btnAgrgarPruebas control.
->>>>>>> DEV
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::Telerik.Web.UI.RadButton btnAplicarPruebas;
-        
-        /// <summary>
-        /// btnAgrgarPruebas control.
-=======
         protected global::Telerik.Web.UI.RadButton btnAgrgarPruebas;
         
         /// <summary>
         /// btnAplicarPruebas control.
->>>>>>> DEV
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::Telerik.Web.UI.RadButton btnAgrgarPruebas;
-=======
+
         protected global::Telerik.Web.UI.RadButton btnAplicarPruebas;
->>>>>>> DEV
         
         /// <summary>
         /// btnCapturaManual control.
@@ -199,37 +188,27 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadButton btnCrearBateriaEmp;
         
         /// <summary>
-<<<<<<< HEAD
-        /// btnAplicarPruebaEmp control.
-=======
+
         /// btnAgregarPruebaEmp control.
->>>>>>> DEV
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::Telerik.Web.UI.RadButton btnAplicarPruebaEmp;
-        
-        /// <summary>
-        /// btnAgregarPruebaEmp control.
-=======
+
         protected global::Telerik.Web.UI.RadButton btnAgregarPruebaEmp;
         
         /// <summary>
         /// btnAplicarPruebaEmp control.
->>>>>>> DEV
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::Telerik.Web.UI.RadButton btnAgregarPruebaEmp;
-=======
+
         protected global::Telerik.Web.UI.RadButton btnAplicarPruebaEmp;
->>>>>>> DEV
         
         /// <summary>
         /// btnManualEmp control.

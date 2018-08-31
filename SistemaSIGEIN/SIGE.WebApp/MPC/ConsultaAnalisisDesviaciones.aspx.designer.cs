@@ -382,20 +382,9 @@ namespace SIGE.WebApp.MPC {
         protected global::Telerik.Web.UI.RadHtmlChart PieChartGraficaDesviaciones;
         
         /// <summary>
-<<<<<<< HEAD
-        /// RadButton1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton RadButton1;
-        
-        /// <summary>
-        /// rpAyuda control.
-=======
+
         /// RadPane4 control.
->>>>>>> DEV
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.

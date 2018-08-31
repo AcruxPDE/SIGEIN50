@@ -473,13 +473,6 @@ namespace SIGE.WebApp.EO
                         btmSleccionarArea.Enabled = false;
                         btnEliminarEvaluador.Enabled = false;
                         btnAplicar.Enabled = false;
-<<<<<<< HEAD
-                    }
-                    else
-                    {
-                        divMensajeCuestionarios.Visible = false;
-=======
->>>>>>> DEV
                     }
                     else
                     {
@@ -592,21 +585,12 @@ namespace SIGE.WebApp.EO
                         btmSleccionarArea.Enabled = false;
                         btnEliminarEvaluador.Enabled = false;
                         btnAplicar.Enabled = false;
-<<<<<<< HEAD
 
                         btnSeleccionar.Enabled = false;
                         btnSeleccionarPuesto.Enabled = false;
                         btnEliminarEvaluador.Enabled = false;
                         btmSleccionarArea.Enabled = false;
 
-=======
-
-                        btnSeleccionar.Enabled = false;
-                        btnSeleccionarPuesto.Enabled = false;
-                        btnEliminarEvaluador.Enabled = false;
-                        btmSleccionarArea.Enabled = false;
-
->>>>>>> DEV
                         SeguridadProcesos(true);
                     }
                 }
@@ -683,7 +667,7 @@ namespace SIGE.WebApp.EO
         protected void btnReasignarContrasena_Click(object sender, EventArgs e)
         {
             string vMensaje = "";
-<<<<<<< HEAD
+
             if (grdEmpleadosContrasenias.SelectedItems.Count > 0)
             {
                 foreach (GridDataItem item in grdEmpleadosContrasenias.SelectedItems)
@@ -707,25 +691,7 @@ namespace SIGE.WebApp.EO
             else
             {
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, "Selecciona por lo menos un evaluador para reasignar contraseña.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: null);
-=======
-            foreach (GridDataItem item in grdEmpleadosContrasenias.SelectedItems)
-            {
-                ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-                E_RESULTADO vResultado = nClima.InsertarActualizarTokenEvaluadoresClima(vIdPeriodo, int.Parse(item.GetDataKeyValue("ID_EVALUADOR").ToString()), vClUsuario, vNbPrograma);
-                vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                
-               // UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindowC");
-                if (!vResultado.CL_TIPO_ERROR.Equals(E_TIPO_RESPUESTA_DB.SUCCESSFUL))
-                {
-                    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindowC");
-                    return;
-                }
-                   
->>>>>>> DEV
             }
-
-            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, E_TIPO_RESPUESTA_DB.SUCCESSFUL, pCallBackFunction: "onCloseWindowC");
-            grdEmpleadosContrasenias.Rebind();
         }
 
         protected void grdEmpleadosContrasenias_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)

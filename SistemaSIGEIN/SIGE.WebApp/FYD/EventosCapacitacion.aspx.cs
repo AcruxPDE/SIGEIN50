@@ -103,9 +103,7 @@ namespace SIGE.WebApp.FYD
             {
                 txtNbEvento.Text = evento.CL_EVENTO;
                 txtDescripcion.Text = evento.DS_EVENTO;
-<<<<<<< HEAD
-                txtEstado.Text = evento.NB_ESTADO;
-=======
+
                 
                 if(evento.CL_TIPO_CURSO == "INDIVIDUAL")
                     txtTipo.Text = "Individual";
@@ -114,7 +112,7 @@ namespace SIGE.WebApp.FYD
 
                 rtbInicio.Text = String.Format("{0:dd/MM/yyyy}", evento.FE_INICIO);
                 rtbTermino.Text = String.Format("{0:dd/MM/yyyy}", evento.FE_TERMINO);
->>>>>>> DEV
+
                 txtCurso.Text = evento.NB_CURSO;
                 txtUsuarioMod.Text = evento.CL_USUARIO_APP_MODIFICA;
                 txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", evento.FE_MODIFICA);

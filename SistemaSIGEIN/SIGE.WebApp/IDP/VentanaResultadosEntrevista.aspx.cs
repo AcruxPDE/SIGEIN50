@@ -114,11 +114,9 @@ namespace SIGE.WebApp.IDP
                     PruebasNegocio nKprueba = new PruebasNegocio();
                     vIdPrueba = int.Parse(Request.QueryString["ID"]);
                     vClToken = new Guid(Request.QueryString["T"]);
-<<<<<<< HEAD
-                     btnTerminar.Text = "Terminar";
-=======
+
                      btnTerminar.Text = "Guardar";
->>>>>>> DEV
+
 
                      CargarFactores();
 

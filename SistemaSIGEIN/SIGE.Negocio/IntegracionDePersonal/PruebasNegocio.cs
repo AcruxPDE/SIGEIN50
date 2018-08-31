@@ -29,17 +29,12 @@ namespace SIGE.Negocio.Administracion
             return operaciones.ObtenerCandidatoFolio(pNbCandidato, pNbPaterno, pNbMaterno);
         }
 
-<<<<<<< HEAD
-        public List<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result> ObtenerPruebasConfiguradas()
-        {
-            PruebasOperaciones operaciones = new PruebasOperaciones();
-            return operaciones.ObtenerPruebasConfiguradas();
-=======
+
         public List<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result> ObtenerPruebasConfiguradas(int? pID_BATERIA = null)
         {
             PruebasOperaciones operaciones = new PruebasOperaciones();
             return operaciones.ObtenerPruebasConfiguradas(pID_BATERIA);
->>>>>>> DEV
+
         }   
 
         public E_RESULTADO InsertaActualiza_C_PRUEBA(string tipo_transaccion, SPE_OBTIENE_C_PRUEBA_Result v_c_prueba, string usuario, string programa)

@@ -37,19 +37,11 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             }
         }
 
-<<<<<<< HEAD
-        public List<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result> ObtenerPruebasConfiguradas()
-        {
-            using (context = new SistemaSigeinEntities())
-            {
-                return context.SPE_OBTIENE_PRUEBAS_CONFIGURADAS().ToList();
-=======
         public List<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result> ObtenerPruebasConfiguradas(int? pID_BATERIA = null)
         {
             using (context = new SistemaSigeinEntities())
             {
                 return context.SPE_OBTIENE_PRUEBAS_CONFIGURADAS(pID_BATERIA).ToList();
->>>>>>> DEV
             }
         }
                

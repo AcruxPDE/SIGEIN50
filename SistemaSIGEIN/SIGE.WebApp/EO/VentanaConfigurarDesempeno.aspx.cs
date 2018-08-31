@@ -91,15 +91,13 @@ namespace SIGE.WebApp.EO
             get { return (bool)ViewState["vs_vFgCordinador"]; }
             set { ViewState["vs_vFgCordinador"] = value; }
         }
-<<<<<<< HEAD
-=======
+
 
         public bool vFgBajas
         {
             get { return (bool)ViewState["vs_vFgBajas"]; }
             set { ViewState["vs_vFgBajas"] = value; }
         }
->>>>>>> DEV
 
         #endregion
 
@@ -423,7 +421,7 @@ namespace SIGE.WebApp.EO
                 vTipoBono = "GRUPAL";
 
             if(rbSi.Checked == true && (rbPorcentaje.Checked == false && rbMonto.Checked == false))
-<<<<<<< HEAD
+
             {
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, "Indique el monto de bono.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
                 return;
@@ -431,15 +429,6 @@ namespace SIGE.WebApp.EO
 
             if (rbSi.Checked == true && vTipoBono == "N/A")
             {
-=======
-            {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Indique el monto de bono.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
-                return;
-            }
-
-            if (rbSi.Checked == true && vTipoBono == "N/A")
-            {
->>>>>>> DEV
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, "Indique el tipo de bono.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
                 return;
             }
@@ -598,19 +587,11 @@ namespace SIGE.WebApp.EO
         protected void btnCalcularSeleccion_Click(object sender, EventArgs e)
         {
             if (!rbMonto.Checked & !rbPorcentaje.Checked)
-<<<<<<< HEAD
             {
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, "Indique un tipo de monto de bono para el evaluado", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: null);
             }
             else
             {
-=======
-            {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Indique un tipo de monto de bono para el evaluado", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: null);
-            }
-            else
-            {
->>>>>>> DEV
                  if (txtMontoBono.Text != "" && txtMontoBono.Text != null)
                 {
                 PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
@@ -1016,10 +997,8 @@ namespace SIGE.WebApp.EO
 
         protected void btnReasignarContrasena_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-=======
 
->>>>>>> DEV
+
             string vMensaje = "";
             if (grdContrasenaEvaluadores.SelectedItems.Count > 0)
             {
@@ -1040,13 +1019,7 @@ namespace SIGE.WebApp.EO
 
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, E_TIPO_RESPUESTA_DB.SUCCESSFUL, pCallBackFunction: null);
                 grdContrasenaEvaluadores.Rebind();
-<<<<<<< HEAD
-            }
-            else
-            {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Selecciona por lo menos un evaluador para reasignar contraseña.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: null);
-=======
->>>>>>> DEV
+
             }
             else
             {

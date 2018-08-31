@@ -34,7 +34,6 @@ C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIG
 C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.Replicas\bin\Debug\Telerik.Windows.Zip.xml
 C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.exe
 C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.pdb
-C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.csprojResolveAssemblyReference.cache
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.exe
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.pdb
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\SIGE.Replicas.exe.config

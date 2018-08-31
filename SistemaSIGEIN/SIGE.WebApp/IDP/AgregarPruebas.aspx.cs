@@ -1143,17 +1143,10 @@ namespace SIGE.WebApp.IDP
 
                 lstCandidatoS.Add(f);
             }
-<<<<<<< HEAD
 
             //grdCandidatos.Rebind();
         }
 
-=======
-
-            //grdCandidatos.Rebind();
-        }
-
->>>>>>> DEV
         protected void GenerarBaterias(string clTipoAplicacion)
         {
              if (vIdBateria == null)
@@ -1242,7 +1235,6 @@ namespace SIGE.WebApp.IDP
             //    }
             //    else
             //    {
-<<<<<<< HEAD
 
             //        List<E_PRUEBA_CANDIDATO> lstPruebas = obtenPruebasSeleccionadas();
             //        if (lstPruebas.Count() <= 0)
@@ -1279,44 +1271,7 @@ namespace SIGE.WebApp.IDP
             //}
         }
 
-=======
 
-            //        List<E_PRUEBA_CANDIDATO> lstPruebas = obtenPruebasSeleccionadas();
-            //        if (lstPruebas.Count() <= 0)
-            //        {
-            //            UtilMensajes.MensajeResultadoDB(rwmAlertas, "Ninguna prueba disponible.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
-            //        }
-            //        else
-            //        {
-            //            //Generar XML's
-            //            var vXelementsPrueba = lstPruebas.Select(x =>
-            //                                    new XElement("PRUEBA",
-            //                                    new XAttribute("ID_PRUEBA_PLANTILLA", x.ID_PRUEBA_PLANTILLA),
-            //                                    new XAttribute("CL_PRUEBA", x.CL_PRUEBA),
-            //                                    new XAttribute("CL_ESTADO", x.CL_ESTADO),
-            //                                    new XAttribute("FG_ASIGNADA", x.FG_ASIGNADA))
-            //                        );
-            //            XElement xmlPruebas = new XElement("PRUEBAS", vXelementsPrueba);
-
-
-            //            PruebasNegocio objInsertar = new PruebasNegocio();
-            //            var resultado = objInsertar.ActualizarPruebasEmpleado(xmlPruebas, vIdBateria, vClUsuario, vNbPrograma);
-            //            string vMensaje = resultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-            //            if (resultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
-            //            {
-            //                UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, resultado.CL_TIPO_ERROR, pCallBackFunction: "closeWindow");
-
-            //            }
-            //            else
-            //            {
-            //                UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
-            //            }
-            //        }
-            //    }
-            //}
-        }
-
->>>>>>> DEV
         protected void SeleccionpruebasNivelEje()
         {
             foreach(GridDataItem item in grdPruebas.Items)
