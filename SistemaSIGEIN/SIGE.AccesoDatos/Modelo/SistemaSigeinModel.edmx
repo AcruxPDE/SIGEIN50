@@ -4163,6 +4163,13 @@
           <Parameter Name="PIN_CL_USUARIO_APP_CREA" Type="nvarchar" Mode="In" />
           <Parameter Name="PIN_NB_PROGRAMA_CREA" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="SPE_ELIMINA_PRUEBA_RESPUESTAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
+          <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+          <Parameter Name="PIN_XML_PRUEBAS" Type="xml" Mode="In" />
+          <Parameter Name="PIN_ID_BATERIA" Type="int" Mode="In" />
+          <Parameter Name="PIN_CL_USUARIO_APP" Type="nvarchar" Mode="In" />
+          <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="SPE_ELIMINA_RESPUESTAS_BATERIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
           <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
           <Parameter Name="PIN_ID_BATERIA" Type="int" Mode="In" />
@@ -5086,7 +5093,9 @@
           <Parameter Name="PIN_ID_PUESTO" Type="int" Mode="In" />
           <Parameter Name="PIN_VALOR_COMPETENCIA" Type="decimal" Mode="In" />
         </Function>
-        <Function Name="SPE_OBTIENE_PRUEBAS_CONFIGURADAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP" />
+        <Function Name="SPE_OBTIENE_PRUEBAS_CONFIGURADAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
+          <Parameter Name="PIN_ID_BATERIA" Type="int" Mode="In" />
+        </Function>
         <Function Name="SPE_OBTIENE_PRUEBAS_FACTORES_COMPETENCIAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
           <Parameter Name="PIN_ID_SELECCION" Type="int" Mode="In" />
           <Parameter Name="PIN_CL_SELECCION" Type="nvarchar" Mode="In" />
@@ -11497,7 +11506,6 @@
             <Parameter Name="PIN_ID_BATERIA" Mode="In" Type="Int32" />
             <Parameter Name="PIN_FG_ASIGNADA" Mode="In" Type="Boolean" />
           </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_PRUEBAS_CONFIGURADAS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result)" />
           <FunctionImport Name="SPE_ACTUALIZA_PRUEBAS_BATERIA">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="PIN_ID_BATERIA" Mode="In" Type="Int32" />
@@ -12011,6 +12019,16 @@
             <Parameter Name="PIN_MN_COSTO_INDIRECTO" Mode="In" Type="Decimal" />
             <Parameter Name="PIN_FL_EVENTO" Mode="In" Type="Guid" />
             <Parameter Name="PIN_CL_TOKEN" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPE_OBTIENE_PRUEBAS_CONFIGURADAS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result)">
+          <Parameter Name="PIN_ID_BATERIA" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPE_ELIMINA_PRUEBA_RESPUESTAS">
+            <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
+            <Parameter Name="PIN_XML_PRUEBAS" Mode="In" Type="String" />
+            <Parameter Name="PIN_ID_BATERIA" Mode="In" Type="Int32" />
+            <Parameter Name="PIN_CL_USUARIO_APP" Mode="In" Type="String" />
+            <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SPE_OBTIENE_C_CALLE_Result">
@@ -16494,15 +16512,6 @@
           <Property Type="DateTime" Name="FE_MODIFICACION" Nullable="true" />
           <Property Type="String" Name="CL_USUARIO_MODIFICA" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <ComplexType Name="SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result">
-          <Property Type="Int32" Name="ID_PRUEBA" Nullable="false" />
-          <Property Type="String" Name="CL_PRUEBA" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="NB_PRUEBA" Nullable="false" MaxLength="100" />
-          <Property Type="Int32" Name="ID_CUESTIONARIO" Nullable="false" />
-          <Property Type="Int16" Name="NO_TIEMPO_PRUEBA" Nullable="false" />
-          <Property Type="Int32" Name="NO_ORDEN" Nullable="true" />
-          <Property Type="String" Name="DS_PRUEBA_FACTOR" Nullable="false" MaxLength="297" />
-        </ComplexType>
         <ComplexType Name="SPE_OBTIENE_CANDIDATOS_BATERIAS_Result">
           <Property Type="Int64" Name="RENGLON" Nullable="true" />
           <Property Type="Int32" Name="ID_SOLICITUD" Nullable="false" />
@@ -17897,6 +17906,15 @@
           <Property Type="String" Name="XML_PARTICIPANTES" Nullable="true" MaxLength="Max" />
           <Property Type="String" Name="CL_USUARIO_APP_MODIFICA" Nullable="true" MaxLength="50" />
           <Property Type="DateTime" Name="FE_MODIFICA" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result">
+          <Property Type="Int32" Name="ID_PRUEBA" Nullable="false" />
+          <Property Type="String" Name="CL_PRUEBA" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="NB_PRUEBA" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="ID_CUESTIONARIO" Nullable="false" />
+          <Property Type="Int16" Name="NO_TIEMPO_PRUEBA" Nullable="false" />
+          <Property Type="Int32" Name="NO_ORDEN" Nullable="true" />
+          <Property Type="String" Name="DS_PRUEBA_FACTOR" Nullable="false" MaxLength="297" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -24009,19 +24027,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SPE_OBTIENE_PRUEBAS_CONFIGURADAS" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_PRUEBAS_CONFIGURADAS">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result">
-                <ScalarProperty Name="ID_PRUEBA" ColumnName="ID_PRUEBA" />
-                <ScalarProperty Name="CL_PRUEBA" ColumnName="CL_PRUEBA" />
-                <ScalarProperty Name="NB_PRUEBA" ColumnName="NB_PRUEBA" />
-                <ScalarProperty Name="ID_CUESTIONARIO" ColumnName="ID_CUESTIONARIO" />
-                <ScalarProperty Name="NO_TIEMPO_PRUEBA" ColumnName="NO_TIEMPO_PRUEBA" />
-                <ScalarProperty Name="NO_ORDEN" ColumnName="NO_ORDEN" />
-                <ScalarProperty Name="DS_PRUEBA_FACTOR" ColumnName="DS_PRUEBA_FACTOR" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPE_ACTUALIZA_PRUEBAS_BATERIA" FunctionName="SistemaSigeinModel.Store.SPE_ACTUALIZA_PRUEBAS_BATERIA" />
           <FunctionImportMapping FunctionImportName="SPE_OBTIENE_CANDIDATOS_BATERIAS" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_CANDIDATOS_BATERIAS">
             <ResultMapping>
@@ -25728,6 +25733,20 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPE_OBTIENE_PRUEBAS_CONFIGURADAS" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_PRUEBAS_CONFIGURADAS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result">
+                <ScalarProperty Name="ID_PRUEBA" ColumnName="ID_PRUEBA" />
+                <ScalarProperty Name="CL_PRUEBA" ColumnName="CL_PRUEBA" />
+                <ScalarProperty Name="NB_PRUEBA" ColumnName="NB_PRUEBA" />
+                <ScalarProperty Name="ID_CUESTIONARIO" ColumnName="ID_CUESTIONARIO" />
+                <ScalarProperty Name="NO_TIEMPO_PRUEBA" ColumnName="NO_TIEMPO_PRUEBA" />
+                <ScalarProperty Name="NO_ORDEN" ColumnName="NO_ORDEN" />
+                <ScalarProperty Name="DS_PRUEBA_FACTOR" ColumnName="DS_PRUEBA_FACTOR" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPE_ELIMINA_PRUEBA_RESPUESTAS" FunctionName="SistemaSigeinModel.Store.SPE_ELIMINA_PRUEBA_RESPUESTAS" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

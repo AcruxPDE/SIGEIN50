@@ -29,10 +29,10 @@ namespace SIGE.Negocio.Administracion
             return operaciones.ObtenerCandidatoFolio(pNbCandidato, pNbPaterno, pNbMaterno);
         }
 
-        public List<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result> ObtenerPruebasConfiguradas()
+        public List<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result> ObtenerPruebasConfiguradas(int? pID_BATERIA = null)
         {
             PruebasOperaciones operaciones = new PruebasOperaciones();
-            return operaciones.ObtenerPruebasConfiguradas();
+            return operaciones.ObtenerPruebasConfiguradas(pID_BATERIA);
         }   
 
         public E_RESULTADO InsertaActualiza_C_PRUEBA(string tipo_transaccion, SPE_OBTIENE_C_PRUEBA_Result v_c_prueba, string usuario, string programa)
@@ -102,6 +102,12 @@ namespace SIGE.Negocio.Administracion
         {
             PruebasOperaciones oPruebas = new PruebasOperaciones();
             return UtilRespuesta.EnvioRespuesta(oPruebas.EliminarRespuestasPrueba(pIdPrueba, pClUsuario, pNbPrograma));
+        }
+
+        public E_RESULTADO EliminarPruebaBateria(string pXmlPruebas = null, int? pIdBateria = null, string pClUsuario = null, string pNbPrograma = null)
+        {
+            PruebasOperaciones oPruebas = new PruebasOperaciones();
+            return UtilRespuesta.EnvioRespuesta(oPruebas.EliminarPruebaBateria(pXmlPruebas, pIdBateria, pClUsuario, pNbPrograma));
         }
 
         public E_RESULTADO EliminaBateriaPruebas(string pXmlBaterias = null, string pNbUsuario = null, string pNbPrograma = null)

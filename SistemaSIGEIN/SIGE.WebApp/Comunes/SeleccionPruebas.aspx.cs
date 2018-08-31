@@ -11,18 +11,32 @@ namespace SIGE.WebApp.Comunes
 {
     public partial class SeleccionPruebas : System.Web.UI.Page
     {
+
+        #region Variables
+
+        private int? vIdBateria
+        {
+            get { return(int?)ViewState["vs_vIdBateria"];}
+            set { ViewState["vs_vIdBateria"] = value; }
+        }
+
+        #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-
+                if (Request.Params["pIdBateria"] != null)
+                {
+                    vIdBateria = int.Parse(Request.Params["pIdBateria"].ToString());
+                }
             }
         }
 
         protected void grdPruebas_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             PruebasNegocio pNeg = new PruebasNegocio();
-            grdPruebas.DataSource = pNeg.ObtenerPruebasConfiguradas();
+            grdPruebas.DataSource = pNeg.ObtenerPruebasConfiguradas(vIdBateria);
         }
 
         protected void grdPruebas_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)

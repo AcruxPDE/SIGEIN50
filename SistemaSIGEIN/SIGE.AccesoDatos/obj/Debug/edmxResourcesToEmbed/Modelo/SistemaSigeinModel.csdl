@@ -5484,7 +5484,6 @@
       <Parameter Name="PIN_ID_BATERIA" Mode="In" Type="Int32" />
       <Parameter Name="PIN_FG_ASIGNADA" Mode="In" Type="Boolean" />
     </FunctionImport>
-    <FunctionImport Name="SPE_OBTIENE_PRUEBAS_CONFIGURADAS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result)" />
     <FunctionImport Name="SPE_ACTUALIZA_PRUEBAS_BATERIA">
       <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
       <Parameter Name="PIN_ID_BATERIA" Mode="In" Type="Int32" />
@@ -5998,6 +5997,16 @@
       <Parameter Name="PIN_MN_COSTO_INDIRECTO" Mode="In" Type="Decimal" />
       <Parameter Name="PIN_FL_EVENTO" Mode="In" Type="Guid" />
       <Parameter Name="PIN_CL_TOKEN" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPE_OBTIENE_PRUEBAS_CONFIGURADAS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result)">
+      <Parameter Name="PIN_ID_BATERIA" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPE_ELIMINA_PRUEBA_RESPUESTAS">
+      <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
+      <Parameter Name="PIN_XML_PRUEBAS" Mode="In" Type="String" />
+      <Parameter Name="PIN_ID_BATERIA" Mode="In" Type="Int32" />
+      <Parameter Name="PIN_CL_USUARIO_APP" Mode="In" Type="String" />
+      <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="SPE_OBTIENE_C_CALLE_Result">
@@ -10481,15 +10490,6 @@
     <Property Type="DateTime" Name="FE_MODIFICACION" Nullable="true" />
     <Property Type="String" Name="CL_USUARIO_MODIFICA" Nullable="true" MaxLength="50" />
   </ComplexType>
-  <ComplexType Name="SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result">
-    <Property Type="Int32" Name="ID_PRUEBA" Nullable="false" />
-    <Property Type="String" Name="CL_PRUEBA" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="NB_PRUEBA" Nullable="false" MaxLength="100" />
-    <Property Type="Int32" Name="ID_CUESTIONARIO" Nullable="false" />
-    <Property Type="Int16" Name="NO_TIEMPO_PRUEBA" Nullable="false" />
-    <Property Type="Int32" Name="NO_ORDEN" Nullable="true" />
-    <Property Type="String" Name="DS_PRUEBA_FACTOR" Nullable="false" MaxLength="297" />
-  </ComplexType>
   <ComplexType Name="SPE_OBTIENE_CANDIDATOS_BATERIAS_Result">
     <Property Type="Int64" Name="RENGLON" Nullable="true" />
     <Property Type="Int32" Name="ID_SOLICITUD" Nullable="false" />
@@ -11884,5 +11884,14 @@
     <Property Type="String" Name="XML_PARTICIPANTES" Nullable="true" MaxLength="Max" />
     <Property Type="String" Name="CL_USUARIO_APP_MODIFICA" Nullable="true" MaxLength="50" />
     <Property Type="DateTime" Name="FE_MODIFICA" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result">
+    <Property Type="Int32" Name="ID_PRUEBA" Nullable="false" />
+    <Property Type="String" Name="CL_PRUEBA" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="NB_PRUEBA" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="ID_CUESTIONARIO" Nullable="false" />
+    <Property Type="Int16" Name="NO_TIEMPO_PRUEBA" Nullable="false" />
+    <Property Type="Int32" Name="NO_ORDEN" Nullable="true" />
+    <Property Type="String" Name="DS_PRUEBA_FACTOR" Nullable="false" MaxLength="297" />
   </ComplexType>
 </Schema>

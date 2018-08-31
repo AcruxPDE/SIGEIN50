@@ -19,7 +19,7 @@
                 height: browserWnd.innerHeight - 20
             };
 
-            openChildDialog("../Comunes/SeleccionPruebas.aspx", "winSeleccion", "Seleccionar pruebas", windowProperties);
+            openChildDialog("../Comunes/SeleccionPruebas.aspx?pIdBateria=" + '<%= vIdBateria %>', "winSeleccion", "Asignar pruebas", windowProperties);
         }
 
 
@@ -31,6 +31,25 @@
                         break;
                 }
             }
+        }
+
+        function ConfirmarEliminar(sender, args) {
+            var MasterTable = $find("<%=grdPruebas.ClientID %>").get_masterTableView();
+            var selectedRows = MasterTable.get_selectedItems();
+                var row = selectedRows[0];
+                if (row != null) {
+                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+                        if (shouldSubmit) {
+                            this.click();
+                        }
+                    });
+                    radconfirm("Este proceso borrará la prueba seleccionada y sus posibles respuestas ¿Deseas continuar?", callBackFunction, 400, 180, null, "Eliminar prueba");
+                    args.set_cancel(true);
+                }
+                else {
+                    radalert("Selecciona una prueba", 400, 150, "Warning");
+                    args.set_cancel(true);
+                }
         }
 
 
@@ -50,6 +69,11 @@
     <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" DefaultLoadingPanelID="RadAjaxLoadingPanel1" OnAjaxRequest="RadAjaxManager1_AjaxRequest">
     <AjaxSettings>
         <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
+            <UpdatedControls>
+                <telerik:AjaxUpdatedControl ControlID="grdPruebas" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelRenderMode="Inline" />
+            </UpdatedControls>
+        </telerik:AjaxSetting>
+                <telerik:AjaxSetting AjaxControlID="btnEliminar">
             <UpdatedControls>
                 <telerik:AjaxUpdatedControl ControlID="grdPruebas" LoadingPanelID="RadAjaxLoadingPanel1" UpdatePanelRenderMode="Inline" />
             </UpdatedControls>
@@ -75,9 +99,10 @@
                     <Scrolling AllowScroll="true" UseStaticHeaders="true" SaveScrollPosition="true"></Scrolling>
                 </ClientSettings>
                 <PagerStyle AlwaysVisible="true" />
-                <MasterTableView ClientDataKeyNames="ID_PRUEBA_PLANTILLA" DataKeyNames="ID_PRUEBA_PLANTILLA" ShowHeadersWhenNoRecords="true" AutoGenerateColumns="false" PageSize="20"
+                <MasterTableView ClientDataKeyNames="ID_PRUEBA_PLANTILLA" DataKeyNames="ID_PRUEBA_PLANTILLA, ID_PRUEBA" ShowHeadersWhenNoRecords="true" AutoGenerateColumns="false" PageSize="20"
                     HorizontalAlign="NotSet" EditMode="EditForms">
                     <Columns>
+                         <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35" HeaderText="Sel."></telerik:GridClientSelectColumn>
                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre de la prueba" DataField="NB_PRUEBA" UniqueName="NB_PRUEBA" HeaderStyle-Width="200"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Estatus" DataField="CL_ESTADO" UniqueName="CL_ESTADO" HeaderStyle-Width="100"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Último usuario que modifica" DataField="CL_USUARIO_MODIFICA" UniqueName="CL_USUARIO_MODIFICA" HeaderStyle-Width="100"></telerik:GridBoundColumn>
@@ -89,6 +114,9 @@
         <div style="height: 10px; clear: both;"></div>
         <div class="ctrlBasico">
             <telerik:RadButton ID="btnSeleccionar" runat="server" AutoPostBack="false" Text="Asignar" OnClientClicked="OpenSeleccionaPruebas"></telerik:RadButton>
+        </div>
+            <div class="ctrlBasico">
+            <telerik:RadButton ID="btnEliminar" runat="server" AutoPostBack="true" Text="Eliminar" OnClientClicking="ConfirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
         </div>
         <div class="divControlDerecha">
             <telerik:RadButton ID="btnCancelar" runat="server" AutoPostBack="false" Text="Cancelar" OnClientClicked="CloseWindow"></telerik:RadButton>

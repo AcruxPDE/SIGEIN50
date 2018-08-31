@@ -4158,6 +4158,13 @@
     <Parameter Name="PIN_CL_USUARIO_APP_CREA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA_CREA" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="SPE_ELIMINA_PRUEBA_RESPUESTAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_XML_PRUEBAS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_ID_BATERIA" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_USUARIO_APP" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="SPE_ELIMINA_RESPUESTAS_BATERIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
     <Parameter Name="PIN_ID_BATERIA" Type="int" Mode="In" />
@@ -5081,7 +5088,9 @@
     <Parameter Name="PIN_ID_PUESTO" Type="int" Mode="In" />
     <Parameter Name="PIN_VALOR_COMPETENCIA" Type="decimal" Mode="In" />
   </Function>
-  <Function Name="SPE_OBTIENE_PRUEBAS_CONFIGURADAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP" />
+  <Function Name="SPE_OBTIENE_PRUEBAS_CONFIGURADAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
+    <Parameter Name="PIN_ID_BATERIA" Type="int" Mode="In" />
+  </Function>
   <Function Name="SPE_OBTIENE_PRUEBAS_FACTORES_COMPETENCIAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
     <Parameter Name="PIN_ID_SELECCION" Type="int" Mode="In" />
     <Parameter Name="PIN_CL_SELECCION" Type="nvarchar" Mode="In" />

@@ -6105,19 +6105,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="SPE_OBTIENE_PRUEBAS_CONFIGURADAS" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_PRUEBAS_CONFIGURADAS">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result">
-          <ScalarProperty Name="ID_PRUEBA" ColumnName="ID_PRUEBA" />
-          <ScalarProperty Name="CL_PRUEBA" ColumnName="CL_PRUEBA" />
-          <ScalarProperty Name="NB_PRUEBA" ColumnName="NB_PRUEBA" />
-          <ScalarProperty Name="ID_CUESTIONARIO" ColumnName="ID_CUESTIONARIO" />
-          <ScalarProperty Name="NO_TIEMPO_PRUEBA" ColumnName="NO_TIEMPO_PRUEBA" />
-          <ScalarProperty Name="NO_ORDEN" ColumnName="NO_ORDEN" />
-          <ScalarProperty Name="DS_PRUEBA_FACTOR" ColumnName="DS_PRUEBA_FACTOR" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="SPE_ACTUALIZA_PRUEBAS_BATERIA" FunctionName="SistemaSigeinModel.Store.SPE_ACTUALIZA_PRUEBAS_BATERIA" />
     <FunctionImportMapping FunctionImportName="SPE_OBTIENE_CANDIDATOS_BATERIAS" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_CANDIDATOS_BATERIAS">
       <ResultMapping>
@@ -7824,5 +7811,19 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPE_OBTIENE_PRUEBAS_CONFIGURADAS" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_PRUEBAS_CONFIGURADAS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result">
+          <ScalarProperty Name="ID_PRUEBA" ColumnName="ID_PRUEBA" />
+          <ScalarProperty Name="CL_PRUEBA" ColumnName="CL_PRUEBA" />
+          <ScalarProperty Name="NB_PRUEBA" ColumnName="NB_PRUEBA" />
+          <ScalarProperty Name="ID_CUESTIONARIO" ColumnName="ID_CUESTIONARIO" />
+          <ScalarProperty Name="NO_TIEMPO_PRUEBA" ColumnName="NO_TIEMPO_PRUEBA" />
+          <ScalarProperty Name="NO_ORDEN" ColumnName="NO_ORDEN" />
+          <ScalarProperty Name="DS_PRUEBA_FACTOR" ColumnName="DS_PRUEBA_FACTOR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPE_ELIMINA_PRUEBA_RESPUESTAS" FunctionName="SistemaSigeinModel.Store.SPE_ELIMINA_PRUEBA_RESPUESTAS" />
   </EntityContainerMapping>
 </Mapping>

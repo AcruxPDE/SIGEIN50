@@ -18316,11 +18316,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_K_PRUEBA_Result>("SPE_OBTIENE_K_PRUEBA", pIN_ID_PRUEBAParameter, pIN_ID_PRUEBA_PLANTILLAParameter, pIN_ID_CANDIDATOParameter, pIN_ID_EMPLEADOParameter, pIN_CL_EMPLEADOParameter, pIN_CL_ESTADOParameter, pIN_FE_INICIOParameter, pIN_FE_TERMINOParameter, pIN_NO_TIEMPOParameter, pIN_CL_TOKEN_EXTERNOParameter, pIN_CL_TOKEN_BATERIAParameter, pIN_ID_BATERIAParameter, pIN_FG_ASIGNADAParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result> SPE_OBTIENE_PRUEBAS_CONFIGURADAS()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result>("SPE_OBTIENE_PRUEBAS_CONFIGURADAS");
-        }
-    
         public virtual int SPE_ACTUALIZA_PRUEBAS_BATERIA(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_BATERIA, string pIN_XML_PRUEBAS, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
         {
             var pIN_ID_BATERIAParameter = pIN_ID_BATERIA.HasValue ?
@@ -20106,6 +20101,36 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_CL_TOKEN", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_EVENTO_Result>("SPE_OBTIENE_C_EVENTO", pIN_ID_EVENTOParameter, pIN_ID_PROGRAMAParameter, pIN_ID_CURSOParameter, pIN_ID_INSTRUCTORParameter, pIN_ID_EMPLEADO_EVALUADORParameter, pIN_CL_EVENTOParameter, pIN_NB_EVENTOParameter, pIN_DS_EVENTOParameter, pIN_FE_INICIOParameter, pIN_FE_TERMINOParameter, pIN_NB_CURSOParameter, pIN_NB_INSTRUCTORParameter, pIN_CL_TIPO_CURSOParameter, pIN_CL_ESTADOParameter, pIN_FE_EVALUACIONParameter, pIN_DS_LUGARParameter, pIN_MN_COSTO_DIRECTOParameter, pIN_MN_COSTO_INDIRECTOParameter, pIN_FL_EVENTOParameter, pIN_CL_TOKENParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result> SPE_OBTIENE_PRUEBAS_CONFIGURADAS(Nullable<int> pIN_ID_BATERIA)
+        {
+            var pIN_ID_BATERIAParameter = pIN_ID_BATERIA.HasValue ?
+                new ObjectParameter("PIN_ID_BATERIA", pIN_ID_BATERIA) :
+                new ObjectParameter("PIN_ID_BATERIA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result>("SPE_OBTIENE_PRUEBAS_CONFIGURADAS", pIN_ID_BATERIAParameter);
+        }
+    
+        public virtual int SPE_ELIMINA_PRUEBA_RESPUESTAS(ObjectParameter xML_RESULTADO, string pIN_XML_PRUEBAS, Nullable<int> pIN_ID_BATERIA, string pIN_CL_USUARIO_APP, string pIN_NB_PROGRAMA)
+        {
+            var pIN_XML_PRUEBASParameter = pIN_XML_PRUEBAS != null ?
+                new ObjectParameter("PIN_XML_PRUEBAS", pIN_XML_PRUEBAS) :
+                new ObjectParameter("PIN_XML_PRUEBAS", typeof(string));
+    
+            var pIN_ID_BATERIAParameter = pIN_ID_BATERIA.HasValue ?
+                new ObjectParameter("PIN_ID_BATERIA", pIN_ID_BATERIA) :
+                new ObjectParameter("PIN_ID_BATERIA", typeof(int));
+    
+            var pIN_CL_USUARIO_APPParameter = pIN_CL_USUARIO_APP != null ?
+                new ObjectParameter("PIN_CL_USUARIO_APP", pIN_CL_USUARIO_APP) :
+                new ObjectParameter("PIN_CL_USUARIO_APP", typeof(string));
+    
+            var pIN_NB_PROGRAMAParameter = pIN_NB_PROGRAMA != null ?
+                new ObjectParameter("PIN_NB_PROGRAMA", pIN_NB_PROGRAMA) :
+                new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_PRUEBA_RESPUESTAS", xML_RESULTADO, pIN_XML_PRUEBASParameter, pIN_ID_BATERIAParameter, pIN_CL_USUARIO_APPParameter, pIN_NB_PROGRAMAParameter);
         }
     }
 }
