@@ -1273,119 +1273,119 @@ namespace SIGE.WebApp.IDP
             //}
         }
 
-        protected void SeleccionpruebasNivelEje()
-        {
-            foreach (GridDataItem item in grdPruebas.Items)
-            {
-                switch (int.Parse(item.GetDataKeyValue("ID_PRUEBA").ToString()))
-                {
-                    case 1: //1 Adaptación al medio
-                        item.Selected = true;
-                        break;
-                    case 2: //2	Mental I
-                        item.Selected = true;
-                        break;
-                    case 3: //3	Mental II
-                        item.Selected = false;
-                        break;
-                    case 4: //4	Inglés
-                        item.Selected = false;
-                        break;
-                    case 5: //5	Intereses personales
-                        item.Selected = true;
-                        break;
-                    case 6: //6	Laboral I
-                        item.Selected = true;
-                        break;
-                    case 7: //7	Laboral II
-                        item.Selected = true;
-                        break;
-                    case 8: //8	Otografía I
-                        item.Selected = true;
-                        break;
-                    case 9: //9	Ortografia II
-                        item.Selected = true;
-                        break;
-                    case 10: //10	Ortografia III
-                        item.Selected = true;
-                        break;
-                    case 11: //11	Estilo de pensamiento
-                        item.Selected = true;
-                        break;
-                    case 12: //12	Redacción
-                        item.Selected = true;
-                        break;
-                    case 13: //13	Técnica PC
-                        item.Selected = true;
-                        break;
-                    case 14: //14	TIVA
-                        item.Selected = true;
-                        break;
-                    case 15: //15	entrevista
-                        item.Selected = true;
-                        break;
-                }
-            }
-        }
+        //protected void SeleccionpruebasNivelEje()
+        //{
+        //    foreach (GridDataItem item in grdPruebas.Items)
+        //    {
+        //        switch (int.Parse(item.GetDataKeyValue("ID_PRUEBA").ToString()))
+        //        {
+        //            case 1: //1 Adaptación al medio
+        //                item.Selected = true;
+        //                break;
+        //            case 2: //2	Mental I
+        //                item.Selected = true;
+        //                break;
+        //            case 3: //3	Mental II
+        //                item.Selected = false;
+        //                break;
+        //            case 4: //4	Inglés
+        //                item.Selected = false;
+        //                break;
+        //            case 5: //5	Intereses personales
+        //                item.Selected = true;
+        //                break;
+        //            case 6: //6	Laboral I
+        //                item.Selected = true;
+        //                break;
+        //            case 7: //7	Laboral II
+        //                item.Selected = true;
+        //                break;
+        //            case 8: //8	Otografía I
+        //                item.Selected = true;
+        //                break;
+        //            case 9: //9	Ortografia II
+        //                item.Selected = true;
+        //                break;
+        //            case 10: //10	Ortografia III
+        //                item.Selected = true;
+        //                break;
+        //            case 11: //11	Estilo de pensamiento
+        //                item.Selected = true;
+        //                break;
+        //            case 12: //12	Redacción
+        //                item.Selected = true;
+        //                break;
+        //            case 13: //13	Técnica PC
+        //                item.Selected = true;
+        //                break;
+        //            case 14: //14	TIVA
+        //                item.Selected = true;
+        //                break;
+        //            case 15: //15	entrevista
+        //                item.Selected = true;
+        //                break;
+        //        }
+        //    }
+        //}
 
-        protected void SeleccionpruebasNivelOpe()
-        {
-            foreach (GridDataItem item in grdPruebas.Items)
-            {
-                switch (int.Parse(item.GetDataKeyValue("ID_PRUEBA").ToString()))
-                {
-                    case 1: //1 Adaptación al medio
-                        item.Selected = true;
-                        break;
-                    case 2: //2	Mental I
-                        item.Selected = false;
-                        break;
-                    case 3: //3	Mental II
-                        item.Selected = true;
-                        break;
-                    case 4: //4	Inglés
-                        item.Selected = false;
-                        break;
-                    case 5: //5	Intereses personales
-                        item.Selected = true;
-                        break;
-                    case 6: //6	Laboral I
-                        item.Selected = false;
-                        break;
-                    case 7: //7	Laboral II
-                        item.Selected = true;
-                        break;
-                    case 8: //8	Otografía I
-                        item.Selected = true;
-                        break;
-                    case 9: //9	Ortografia II
-                        item.Selected = true;
-                        break;
-                    case 10: //10	Ortografia III
-                        item.Selected = true;
-                        break;
-                    case 11: //11	Estilo de pensamiento
-                        item.Selected = true;
-                        break;
-                    case 12: //12	Redacción
-                        item.Selected = true;
-                        break;
-                    case 13: //13	Técnica PC
-                        item.Selected = true;
-                        break;
-                    case 14: //14	TIVA
-                        item.Selected = true;
-                        break;
-                    case 15: //15	entrevista
-                        item.Selected = true;
-                        break;
-                }
-            }
+        //protected void SeleccionpruebasNivelOpe()
+        //{
+        //    foreach (GridDataItem item in grdPruebas.Items)
+        //    {
+        //        switch (int.Parse(item.GetDataKeyValue("ID_PRUEBA").ToString()))
+        //        {
+        //            case 1: //1 Adaptación al medio
+        //                item.Selected = true;
+        //                break;
+        //            case 2: //2	Mental I
+        //                item.Selected = false;
+        //                break;
+        //            case 3: //3	Mental II
+        //                item.Selected = true;
+        //                break;
+        //            case 4: //4	Inglés
+        //                item.Selected = false;
+        //                break;
+        //            case 5: //5	Intereses personales
+        //                item.Selected = true;
+        //                break;
+        //            case 6: //6	Laboral I
+        //                item.Selected = false;
+        //                break;
+        //            case 7: //7	Laboral II
+        //                item.Selected = true;
+        //                break;
+        //            case 8: //8	Otografía I
+        //                item.Selected = true;
+        //                break;
+        //            case 9: //9	Ortografia II
+        //                item.Selected = true;
+        //                break;
+        //            case 10: //10	Ortografia III
+        //                item.Selected = true;
+        //                break;
+        //            case 11: //11	Estilo de pensamiento
+        //                item.Selected = true;
+        //                break;
+        //            case 12: //12	Redacción
+        //                item.Selected = true;
+        //                break;
+        //            case 13: //13	Técnica PC
+        //                item.Selected = true;
+        //                break;
+        //            case 14: //14	TIVA
+        //                item.Selected = true;
+        //                break;
+        //            case 15: //15	entrevista
+        //                item.Selected = true;
+        //                break;
+        //        }
+        //    }
 
-          if (clTipoAplicacion == "EXTERNA")
-          ClientScript.RegisterStartupScript(GetType(), "script", "OpenEnviarCorreos();", true);
+        //  if (clTipoAplicacion == "EXTERNA")
+        //  ClientScript.RegisterStartupScript(GetType(), "script", "OpenEnviarCorreos();", true);
 
-        }
+        //}
 
         #endregion
 
@@ -1427,7 +1427,7 @@ namespace SIGE.WebApp.IDP
 
                         ClientScript.RegisterStartupScript(GetType(), "script", "EditPruebas();", true);
 
-                        SeleccionarPruebas(vLstPruebas);
+                      //  SeleccionarPruebas(vLstPruebas);
                         //if (vBateria != null)
                         //{
                         //    if (vBateria.ESTATUS.Equals("TERMINADA"))
