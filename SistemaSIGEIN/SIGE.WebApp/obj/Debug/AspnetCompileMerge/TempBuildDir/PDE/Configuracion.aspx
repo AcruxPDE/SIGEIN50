@@ -151,7 +151,7 @@
         <telerik:RadButton ID="btnEliminarPlantilla" runat="server" Text="Eliminar" AutoPostBack="true" OnClientClicking="confirmarEliminar" OnClick="btnEliminarPlantilla_Click"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnCopiarPlantilla" runat="server" Text="Copiar de..." AutoPostBack="false"  OnClientClicked="ShowInsertForm" ></telerik:RadButton>
+        <telerik:RadButton ID="btnCopiarPlantilla" runat="server" Text="Copiar" AutoPostBack="false"  OnClientClicked="ShowInsertForm" ></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
         <telerik:RadButton ID="btnEstablecerGeneral" runat="server" Text="Establecer por defecto" AutoPostBack="true"   OnClientClicking="confirmarEstablecerGeneral" OnClick="btnEstablecerGeneral_Click"></telerik:RadButton>

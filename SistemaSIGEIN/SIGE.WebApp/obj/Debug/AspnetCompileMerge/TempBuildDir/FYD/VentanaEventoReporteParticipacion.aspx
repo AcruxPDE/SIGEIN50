@@ -52,7 +52,7 @@
 <%--                    <telerik:GridBoundColumn UniqueName="NB_DEPARTAMENTO" DataField="NB_DEPARTAMENTO" HeaderText="Departamento" CurrentFilterFunction="Contains" FilterControlWidth="130">
                         <HeaderStyle Width="200" />
                     </telerik:GridBoundColumn>--%>
-                    <telerik:GridBoundColumn UniqueName="PR_EVALUACION_PARTICIPANTE" DataField="PR_EVALUACION_PARTICIPANTE" HeaderText="Promedio" DataFormatString="{0:N2}" Aggregate="Avg" FooterAggregateFormatString="Promedio General: {0:N2}" CurrentFilterFunction="Contains" FilterControlWidth="130">
+                    <telerik:GridBoundColumn UniqueName="PR_EVALUACION_PARTICIPANTE" DataField="PR_EVALUACION_PARTICIPANTE" HeaderText="Promedio" DataFormatString="{0:N2}" Aggregate="Avg" FooterAggregateFormatString="Promedio grupal: {0:N2}" CurrentFilterFunction="Contains" FilterControlWidth="130">
                         <HeaderStyle Width="200" />
                         <ItemStyle HorizontalAlign="Right" />
                         <FooterStyle HorizontalAlign="Right" />
@@ -64,7 +64,7 @@
                                     <Columns>
                                         <telerik:GridBoundColumn HeaderText="Clave" DataField="CL_COMPETENCIA" HeaderStyle-Width="100" UniqueName="CL_COMPETENCIA"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn HeaderText="Nombre" DataField="NB_COMPETENCIA" UniqueName="NB_COMPETENCIA"></telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn HeaderText="Promedio" DataField="PR_EVALUACION_COMPETENCIA" UniqueName="PR_EVALUACION_COMPETENCIA" DataFormatString="{0:N2}">
+                                        <telerik:GridBoundColumn HeaderText="Nivel de competencia" DataField="PR_EVALUACION_COMPETENCIA" UniqueName="PR_EVALUACION_COMPETENCIA" DataFormatString="{0:N2}">
                                             <ItemStyle HorizontalAlign="Right" />
                                             <HeaderStyle Width="100px" />
                                         </telerik:GridBoundColumn>

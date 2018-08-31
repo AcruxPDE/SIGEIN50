@@ -438,7 +438,7 @@
                     </SelectedItemTemplate>
                     <EmptyDataTemplate>
                         <div class="RadListViewContainer" style="overflow: auto; text-align: center; width: 660px; height: 100px;">
-                            No hay periodos disponibles
+                            No hay períodos disponibles
                         </div>
                     </EmptyDataTemplate>
 
@@ -484,8 +484,8 @@
                             <legend>Ordenar por:</legend>
                             <telerik:RadComboBox ID="cmbOrdenamiento" runat="server">
                                 <Items>
-                                    <telerik:RadComboBoxItem Text="Clave del periodo" Value="CL_PERIODO" />
-                                    <telerik:RadComboBoxItem Text="Nombre del periodo" Value="NB_PERIODO" />
+                                    <telerik:RadComboBoxItem Text="Clave del período" Value="CL_PERIODO" />
+                                    <telerik:RadComboBoxItem Text="Nombre del período" Value="NB_PERIODO" />
                                     <telerik:RadComboBoxItem Text="Estatus" Value="CL_ESTADO_PERIODO" />
                                     <telerik:RadComboBoxItem Text="Fecha de inicio del evento" Value="FE_INICIO" />
                                 </Items>
@@ -517,7 +517,7 @@
     <div style="clear: both;"></div>
     <telerik:RadWindowManager ID="rwmAlertas" runat="server">
         <Windows>
-            <telerik:RadWindow ID="winPeriodo" runat="server" Title="Agregar/Editar periodo" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Animation="Fade" Modal="true" Behaviors="Close" OnClientClose="onCloseWindow"></telerik:RadWindow>
+            <telerik:RadWindow ID="winPeriodo" runat="server" Title="Agregar/Editar período" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Animation="Fade" Modal="true" Behaviors="Close" OnClientClose="onCloseWindow"></telerik:RadWindow>
             <telerik:RadWindow ID="winAgregarCuestionario" runat="server" Title="Seleccionar" Height="600px" Width="600px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Animation="Fade" OnClientClose="returnDataToParentPopup" Modal="true" Behaviors="Close"></telerik:RadWindow>
             <telerik:RadWindow ID="winMatrizCuestionarios" runat="server" Title="Seleccionar" Height="600px" Width="600px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Animation="Fade" OnClientClose="returnDataToParentPopup" Modal="true" Behaviors="Close"></telerik:RadWindow>
             <telerik:RadWindow ID="winSeleccion" runat="server" Title="Seleccionar" Height="600px" Width="600px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Animation="Fade" OnClientClose="returnDataToParentPopup" Modal="true" Behaviors="Close"></telerik:RadWindow>

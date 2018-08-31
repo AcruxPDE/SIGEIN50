@@ -51,7 +51,7 @@ namespace SIGE.WebApp.Comunes
         protected void grdRequisiciones_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             RequisicionNegocio nRequisicion = new RequisicionNegocio();
-            grdRequisiciones.DataSource = nRequisicion.ObtieneRequisicion(pIdEmpresa: ContextoUsuario.oUsuario.ID_EMPRESA, pIdCandidato: vIdCandidato);
+            grdRequisiciones.DataSource = nRequisicion.ObtieneRequisicion(pIdEmpresa: ContextoUsuario.oUsuario.ID_EMPRESA);
         }
 
         protected void grdRequisiciones_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)

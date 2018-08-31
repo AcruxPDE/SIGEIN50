@@ -33,7 +33,11 @@ namespace SIGE.WebApp.EO.Cuestionarios
             if (vIdEvaluador != null)
             {
                 PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
-              // grdReporteJerarquico.DataSource = nPeriodo.ObtieneResultadoJerarquico((int)vIdEvaluador);
+<<<<<<< HEAD
+               // grdReporteJerarquico.DataSource = nPeriodo.ObtieneResultadoJerarquico((int)vIdEvaluador);
+=======
+              //  grdReporteJerarquico.DataSource = nPeriodo.ObtieneResultadoJerarquico((int)vIdEvaluador);
+>>>>>>> DEV
             }
         }
 

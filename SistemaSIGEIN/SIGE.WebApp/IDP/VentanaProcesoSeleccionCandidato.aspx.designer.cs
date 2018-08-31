@@ -31,6 +31,24 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadAjaxManager ramProcesoSeleccion;
         
         /// <summary>
+        /// txtClaveSolicitud control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtClaveSolicitud;
+        
+        /// <summary>
+        /// txtCandidato control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtCandidato;
+        
+        /// <summary>
         /// grdProcesoSeleccion control.
         /// </summary>
         /// <remarks>

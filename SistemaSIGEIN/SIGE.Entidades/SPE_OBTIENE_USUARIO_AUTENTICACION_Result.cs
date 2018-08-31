@@ -20,7 +20,9 @@ namespace SIGE.Entidades
         public string NB_PASSWORD { get; set; }
         public string NB_CORREO_ELECTRONICO { get; set; }
         public bool FG_ACTIVO { get; set; }
+        public Nullable<int> ID_ROL { get; set; }
         public string NB_ROL { get; set; }
+        public Nullable<int> ID_PLANTILLA { get; set; }
         public Nullable<int> ID_EMPLEADO { get; set; }
         public int ID_PUESTO { get; set; }
         public Nullable<int> ID_EMPRESA { get; set; }

@@ -19,6 +19,9 @@ namespace SIGE.Entidades
         public string CL_PLAZA { get; set; }
         public string NB_PLAZA { get; set; }
         public Nullable<int> ID_EMPRESA { get; set; }
+        public string XML_GRUPOS { get; set; }
+        public Nullable<int> ID_DEPARTAMENTO { get; set; }
+        public string NB_DEPARTAMENTO { get; set; }
         public Nullable<int> ID_PUESTO { get; set; }
         public string CL_PUESTO { get; set; }
         public string NB_PUESTO { get; set; }

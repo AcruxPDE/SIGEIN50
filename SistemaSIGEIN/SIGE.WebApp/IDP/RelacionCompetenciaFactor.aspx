@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/IDP/MenuIDP.master" AutoEventWireup="true" CodeBehind="RelacionCompetenciaFactor.aspx.cs" Inherits="SIGE.WebApp.IDP.RelacionCompetenciaFactor" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
        <script type="text/javascript">
+
            function OpenSelectionCompetencias() {
                var currentWnd = GetRadWindow();
                var browserWnd = window;
@@ -11,8 +12,6 @@
                    width: browserWnd.innerWidth - 40,
                    height: browserWnd.innerHeight - 20
                };
-
-
                openChildDialog("../Comunes/SeleccionCompetencia.aspx?vClTipoSeleccion=GEN", "winSeleccion", "Selección de competencias", windowProperties)
            }
 
@@ -36,6 +35,22 @@
                    ajaxManager.ajaxRequest(datos);
                }
            }
+
+           function ConfirmarEliminar(sender, args) {
+               var masterTable = $find("<%= rgdCompetencias.ClientID %>").get_masterTableView();
+               var selectedItems = masterTable.get_selectedItems();
+               if (selectedItems.length > 0) {
+                   var vMensaje = "";    
+                   vMensaje = "¿Deseas eliminar las competencias seleccionadas?, este proceso no podrá revertirse.";             
+                   var vWindowsProperties = { height: 180 };
+                   confirmAction(sender, args, vMensaje, vWindowsProperties);
+               }
+               else {
+                   radalert("Selecciona una competencia.", 400, 150);
+                   args.set_cancel(true);
+               }
+           }
+
            </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -48,6 +63,7 @@
                     <telerik:AjaxUpdatedControl ControlID="rgdFactores" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                     <telerik:AjaxUpdatedControl ControlID="rgdPruebas" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                     <telerik:AjaxUpdatedControl ControlID="btnAgregar" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                     <telerik:AjaxUpdatedControl ControlID="btnEliminar" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -57,6 +73,7 @@
                     <telerik:AjaxUpdatedControl ControlID="rgdCompetencias" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                     <telerik:AjaxUpdatedControl ControlID="rgdFactores" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                    <telerik:AjaxUpdatedControl ControlID="btnAgregar" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                     <telerik:AjaxUpdatedControl ControlID="btnEliminar" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -123,7 +140,7 @@
                 <CommandItemSettings ShowAddNewRecordButton="false" ShowExportToExcelButton="True" ShowExportToCsvButton="false" ShowRefreshButton="false"
                     AddNewRecordText="Insertar" />
                 <Columns>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="100" FilterControlWidth="70%" HeaderText="Factor" DataField="NB_SELECCION" UniqueName="NB_SELECCION"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="100" FilterControlWidth="70%" HeaderText="Factor de prueba" DataField="NB_SELECCION" UniqueName="NB_SELECCION"></telerik:GridBoundColumn>
                 </Columns>
             </MasterTableView>
         </telerik:RadGrid>
@@ -140,11 +157,10 @@
             ShowHeader="true"
             OnNeedDataSource="rgdCompetencias_NeedDataSource"
             AllowMultiRowSelection="true"
-            OnItemCommand="rgdCompetencias_ItemCommand"
             >
             <ClientSettings >
                 <Scrolling UseStaticHeaders="true" AllowScroll="true" />
-                <Selecting AllowRowSelect="true" />
+                <Selecting AllowRowSelect="true" CellSelectionMode="MultiCell" />
             </ClientSettings>
             <PagerStyle AlwaysVisible="true" />
             <GroupingSettings CaseSensitive="false" />
@@ -152,9 +168,11 @@
                 <CommandItemSettings ShowAddNewRecordButton="false" ShowExportToExcelButton="True" ShowExportToCsvButton="false" ShowRefreshButton="false"
                     AddNewRecordText="Insertar" />
                 <Columns>
+                    <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30"></telerik:GridClientSelectColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="80" FilterControlWidth="60%" HeaderText="Clave" DataField="CL_SELECCION" UniqueName="CL_SELECCION"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="100" FilterControlWidth="60%" HeaderText="Competencia" DataField="NB_SELECCION" UniqueName="NB_SELECCION"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="200" FilterControlWidth="60%" HeaderText="Descripción" DataField="DS_SELECCION" UniqueName="DS_SELECCION"></telerik:GridBoundColumn>
-                    <telerik:GridButtonColumn UniqueName="ELIMINAR" Text="Eliminar" CommandName="Delete" HeaderStyle-Width="30" ButtonType="ImageButton" ConfirmText="Este proceso eliminara la relación de la competencia del factor ¿Desea continuar?"></telerik:GridButtonColumn>
+                 <%--   <telerik:GridButtonColumn UniqueName="ELIMINAR" Text="Eliminar" CommandName="Delete" HeaderStyle-Width="30" ButtonType="ImageButton" ConfirmText="Este proceso eliminara la relación de la competencia del factor ¿Desea continuar?"></telerik:GridButtonColumn>--%>
 
                 </Columns>
             </MasterTableView>
@@ -163,6 +181,9 @@
           <div class="ctrlBasico">
                     <telerik:RadButton runat="server" Enabled="false" ID="btnAgregar" Text="Agregar" AutoPostBack="false" OnClientClicked="OpenSelectionCompetencias"></telerik:RadButton>
          </div>
+         <div class="ctrlBasico">
+         <telerik:RadButton runat="server" Enabled="false" ID="btnEliminar" Text="Eliminar" AutoPostBack="true" OnClientClicking="ConfirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
+             </div>
     </div>
     </div>
      <telerik:RadWindowManager ID="rwmMensaje" runat="server" EnableShadow="true" OnClientClose="returnDataToParentPopup">

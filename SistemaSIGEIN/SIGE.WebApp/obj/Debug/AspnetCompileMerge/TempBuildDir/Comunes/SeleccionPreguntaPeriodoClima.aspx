@@ -27,10 +27,11 @@
                         nbPregunta: masterTable.getCellByColumnUniqueName(selectedItem, "NB_PREGUNTAs").innerHTML,
                         clTipoCatalogo: "PREGUNTAS_CLIMA"
                     };
-
-                    vPreguntas.push(vPregunta);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vPreguntas.length;
+                    if (!existeElemento(vPregunta)) {
+                        vPreguntas.push(vPregunta);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vPreguntas.length;
+                    }
                 }
 
                 return true;
@@ -43,6 +44,15 @@
                 browserWnd.radalert("Selecciona una pregunta.", 400, 150);
             }
 
+            return false;
+        }
+
+        function existeElemento(pPregunta) {
+            for (var i = 0; i < vPreguntas.length; i++) {
+                var vValue = vPreguntas[i];
+                if (vValue.idPregunta == pPregunta.idPregunta)
+                    return true;
+            }
             return false;
         }
 

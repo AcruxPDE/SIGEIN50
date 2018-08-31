@@ -21,7 +21,7 @@ namespace SIGE.WebApp.ModulosApoyo
                 if (ContextoUsuario.oUsuario != null)
                 {
                     List<E_FUNCION> lstMenuGeneral = ContextoUsuario.oUsuario.oFunciones.Where(w => w.CL_TIPO_FUNCION.Equals(E_TIPO_FUNCION.MENUGRAL.ToString())).ToList();
-                    List<E_FUNCION> lstMenuModulo = ContextoUsuario.oUsuario.oFunciones.Where(w => w.CL_TIPO_FUNCION.Equals(E_TIPO_FUNCION.MENUWEB.ToString())).ToList();
+                    List<E_FUNCION> lstMenuModulo = ContextoUsuario.oUsuario.oFunciones.Where(w => w.CL_TIPO_FUNCION.Equals(E_TIPO_FUNCION.MENUADICIONAL.ToString())).ToList();
 
                     string vClModulo = "REPORTES_PERSONALIZADOS";
                     string vModulo = Request.QueryString["m"];
@@ -36,7 +36,8 @@ namespace SIGE.WebApp.ModulosApoyo
             else
             {
                 UtilMensajes.MensajeResultadoDB(RadWindowManager1, ContextoApp.RP.LicenciaReportes.MsgActivo, E_TIPO_RESPUESTA_DB.WARNING);
-                Response.Redirect(ContextoUsuario.nbHost + "/Logon.aspx");
+                var myUrl = ResolveUrl("~/Logon.aspx");
+                Response.Redirect(ContextoUsuario.nbHost + myUrl);
             }
         }
     }

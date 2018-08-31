@@ -1,8 +1,8 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/AppSIGE.Master" AutoEventWireup="true" CodeBehind="ContextIDP.master.cs" Inherits="SIGE.WebApp.IDP.ContextIDP" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="/Assets/css/Temas/<%= cssModulo %>" rel="stylesheet" type="text/css"/>
-    <script src="/Assets/js/appPruebas.js"></script>
+    <link href='<%# ResolveClientUrl("~/Assets/css/Temas/") %><%= cssModulo %>'  rel="stylesheet" type="text/css"/>
+    <script src="<%# ResolveClientUrl("~/Assets/js/appPruebas.js")%>"></script>
     <asp:ContentPlaceHolder ID="headContexto" runat="server">
     </asp:ContentPlaceHolder>
 </asp:Content>

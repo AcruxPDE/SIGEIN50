@@ -8,8 +8,31 @@
     </style>
     <script type="text/javascript">
 
+        //function closeWindow() {
+        //    GetRadWindow().close();
+        //}
+
         function closeWindow() {
-            GetRadWindow().close();
+            var pDatos = [{
+                accion: "ACTUALIZARLISTA"
+
+            }];
+            cerrarVentana(pDatos);
+        }
+
+<<<<<<< HEAD
+        function cerrarVentanaActualiza() {
+            var pDatos = [{
+                accion: "ACTUALIZA"
+
+            }];
+            cerrarVentana(pDatos);
+        }
+
+=======
+>>>>>>> DEV
+        function cerrarVentana(recargarList) {
+            sendDataToParent(recargarList);
         }
 
         function OpenSelectionWindow(pURL, pIdWindow, pTitle) {
@@ -107,15 +130,15 @@
                         <label id="Label1">Diseño de metas:</label>
                     </div>
                     <div class="divControlDerecha">
-                        <telerik:RadButton ID="rbMetasCero" runat="server" ToggleType="Radio"
-                            GroupName="grbDisenoMetas" AutoPostBack="false" Text="A partir de cero">
+                        <telerik:RadButton ID="rbMetasDescriptivo" runat="server" ToggleType="Radio"
+                            GroupName="grbDisenoMetas" AutoPostBack="false" Text="A partir del descriptivo">
                             <ToggleStates>
                                 <telerik:RadButtonToggleState PrimaryIconCssClass="rbToggleRadioChecked"></telerik:RadButtonToggleState>
                                 <telerik:RadButtonToggleState CssClass="unchecked" PrimaryIconCssClass="rbToggleRadio"></telerik:RadButtonToggleState>
                             </ToggleStates>
                         </telerik:RadButton>
-                        <telerik:RadButton ID="rbMetasDescriptivo" runat="server" ToggleType="Radio"
-                            GroupName="grbDisenoMetas" AutoPostBack="false" Text="A partir del descriptivo">
+                       <telerik:RadButton ID="rbMetasCero" runat="server" ToggleType="Radio"
+                            GroupName="grbDisenoMetas" AutoPostBack="false" Text="A partir de cero">
                             <ToggleStates>
                                 <telerik:RadButtonToggleState PrimaryIconCssClass="rbToggleRadioChecked"></telerik:RadButtonToggleState>
                                 <telerik:RadButtonToggleState CssClass="unchecked" PrimaryIconCssClass="rbToggleRadio"></telerik:RadButtonToggleState>
@@ -179,18 +202,18 @@
                 </div>
                  <div class="ctrlBasico" id="divCopiaPeriodo" runat="server" visible="false">
                     <div class="divControlIzquierda">
-                        <label id="lblCopiaPeriodo">Copia de Periodo:</label>
+                        <label id="lblCopiaPeriodo">Copia de Período:</label>
                     </div>
                     <div class="divControlDerecha">
                         <telerik:RadButton ID="btnConsecuente" runat="server" ToggleType="Radio"
-                            GroupName="grbTipoCopia" AutoPostBack="false" Text="Consecuente">
+                            GroupName="grbTipoCopia" AutoPostBack="false" Text="Consecuente" ToolTip="Es cuando desees comparar los resultados de la(s) persona(s) elegidas en el período original. Esto te permitirá analizar el desempeño del grupo evaluado durante varios periodos. En las consultas comparativas podrás comparar estas consultas entre sí.">
                             <ToggleStates>
                                 <telerik:RadButtonToggleState PrimaryIconCssClass="rbToggleRadioChecked"></telerik:RadButtonToggleState>
                                 <telerik:RadButtonToggleState CssClass="unchecked" PrimaryIconCssClass="rbToggleRadio"></telerik:RadButtonToggleState>
                             </ToggleStates>
                         </telerik:RadButton>
                         <telerik:RadButton ID="btnIndependiente" runat="server" ToggleType="Radio"
-                            GroupName="grbTipoCopia" AutoPostBack="false" Text="Independiente">
+                            GroupName="grbTipoCopia" AutoPostBack="false" Text="Independiente" ToolTip="Es cuando desees usar este período como base para crear otro período diferente e independiente del original, podrás utilizar alguna(s) meta(s) o evaluado(s) como base para otros periodos. En las consultas comparativas no podrás comparar estos períodos entre sí.">
                             <ToggleStates>
                                 <telerik:RadButtonToggleState PrimaryIconCssClass="rbToggleRadioChecked"></telerik:RadButtonToggleState>
                                 <telerik:RadButtonToggleState CssClass="unchecked" PrimaryIconCssClass="rbToggleRadio"></telerik:RadButtonToggleState>

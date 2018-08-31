@@ -51,15 +51,41 @@
                 radalert("Selecciona un programa.", 400, 150);
                 return;
             } else {
-                OpenSelectionWindow("/Comunes/SeleccionCurso.aspx?Idprograma=" + programa + "&pVinculado=" + vinculo_check, "winSeleccion", "Selección de curso");
+<<<<<<< HEAD
+                OpenSelectionWindow("../Comunes/SeleccionCurso.aspx?Idprograma=" + programa + "&pVinculado=" + vinculo_check + "&mulSel=0", "winSeleccion", "Selección de curso");
+=======
+                OpenSelectionWindow("../Comunes/SeleccionCurso.aspx?Idprograma=" + programa + "&pVinculado=" + vinculo_check, "winSeleccion", "Selección de curso");
+>>>>>>> DEV
 
             }
         }
 
 
+        //Eliminar el tooltip del control
+        function pageLoad() {
+            var datePicker = $find("<%= dtpEvaluacion.ClientID %>");
+            datePicker.get_popupButton().title = "";
+            var datePicker2 = $find("<%=dtpInicial.ClientID %>");
+            datePicker2.get_popupButton().title = "";
+            var datePicker3 = $find("<%=dtpFinal.ClientID %>");
+            datePicker3.get_popupButton().title = "";
+            var datePicker4 = $find("<%=dpFecha.ClientID %>");
+            datePicker4.get_popupButton().title = "";
+            //var datePicker5 = $find("<=tpHoraInicial.ClientID %>");
+            //datePicker5.get_popupButton().title = "";
+            //var datePicker6 = $find("<=tpHorafinal.ClientID %>");
+            //datePicker6.get_popupButton().title = "";
+            
+        }
+
+
         function OpenSelectionProgramaWindow(sender, args) {
 
-            OpenSelectionWindow("/Comunes/SeleccionProgramaCapacitacion.aspx?vClTipoSeleccion=TERMINADO", "winSeleccion", "Selección de programa de capacitación");
+<<<<<<< HEAD
+            OpenSelectionWindow("../Comunes/SeleccionProgramaCapacitacion.aspx?vClTipoSeleccion=TERMINADO&mulSel=0", "winSeleccion", "Selección de programa de capacitación");
+=======
+            OpenSelectionWindow("../Comunes/SeleccionProgramaCapacitacion.aspx?vClTipoSeleccion=TERMINADO", "winSeleccion", "Selección de programa de capacitación");
+>>>>>>> DEV
         }
 
         function OpenSelectionInstructorWindow(sender, args) {
@@ -74,7 +100,11 @@
             var item = list.getItem(0);
             var valorCurso = item.get_text();
             if (valorCurso != "No Seleccionado") {
-                OpenSelectionWindow("/Comunes/SeleccionInstructor.aspx?IdCursoInstructor=" + curso, "winSeleccion", "Selección de instructor");
+<<<<<<< HEAD
+                OpenSelectionWindow("../Comunes/SeleccionInstructor.aspx?IdCursoInstructor=" + curso + "&mulSel=0", "winSeleccion", "Selección de instructor");
+=======
+                OpenSelectionWindow("../Comunes/SeleccionInstructor.aspx?IdCursoInstructor=" + curso, "winSeleccion", "Selección de instructor");
+>>>>>>> DEV
             } else {
                 radalert("Selecciona un curso.", 400, 150);
                 return;
@@ -83,12 +113,16 @@
 
         function OpenSelectionParticipantesWindow(sender, args) {
 
-            OpenSelectionWindow("/Comunes/SeleccionEmpleado.aspx?CatalogoCl=PARTICIPANTE", "winSeleccion", "Selección de participantes");
+            OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?CatalogoCl=PARTICIPANTE", "winSeleccion", "Selección de participantes");
         }
 
         function OpenSelectionEvaluadorWindow(sender, args) {
 
-            OpenSelectionWindow("/Comunes/SeleccionEmpleado.aspx?CatalogoCl=EVALUADOR", "winSeleccion", "Selección de evaluador");
+<<<<<<< HEAD
+            OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?CatalogoCl=EVALUADOR&CLFILTRO=NINGUNO&mulSel=0", "winSeleccion", "Selección de evaluador");
+=======
+            OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?CatalogoCl=EVALUADOR", "winSeleccion", "Selección de evaluador");
+>>>>>>> DEV
         }
 
         function useDataFromChild(pData) {
@@ -264,6 +298,20 @@
             vListBox.commitChanges();
         }
 
+        function ReturnDataToParentEdit() {
+            var vAcciones = [];
+            var vAccion = { clTipoCatalogo: "ACTUALIZAR" };
+            vAcciones.push(vAccion);
+            sendDataToParent(vAcciones);
+        }
+
+        function ReturnDataToParent() {
+            var vAcciones = [];
+            var vAccion = { clTipoCatalogo: "ACTUALIZARLISTA" };
+            vAcciones.push(vAccion);
+            sendDataToParent(vAcciones);
+        }
+
     </script>
 
 </asp:Content>
@@ -337,7 +385,7 @@
 
                 <div class="ctrlBasico">
                     <label class="Etiqueta">Clave:</label>
-                    <telerik:RadTextBox runat="server" ID="txtClave" Width="100px"></telerik:RadTextBox>
+                    <telerik:RadTextBox runat="server" ID="txtClave" Width="100px" MaxLength="50"></telerik:RadTextBox>
                 </div>
 
                 <div style="clear: both; height: 2px;"></div>
@@ -409,8 +457,8 @@
                     <label class="Etiqueta">Tipo:</label>
                     <telerik:RadComboBox runat="server" ID="cmbTipo">
                         <Items>
-                            <telerik:RadComboBoxItem Text="Interno" Value="INTERNO" />
-                            <telerik:RadComboBoxItem Text="Externo" Value="EXTERNO" />
+                            <telerik:RadComboBoxItem Text="Grupal" Value="GRUPAL" />
+                            <telerik:RadComboBoxItem Text="Individual" Value="INDIVIDUAL" />
                         </Items>
                     </telerik:RadComboBox>
                 </div>
@@ -601,7 +649,7 @@
                             <Columns>
                                 <telerik:GridBoundColumn UniqueName="CL_PARTICIPANTE" DataField="CL_PARTICIPANTE" HeaderText="No. de Empleado"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn UniqueName="NB_PARTICIPANTE" DataField="NB_PARTICIPANTE" HeaderText="Nombre"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn UniqueName="NB_DEPARTAMENTO" DataField="NB_DEPARTAMENTO" HeaderText="Área"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn UniqueName="NB_DEPARTAMENTO" DataField="NB_DEPARTAMENTO" HeaderText="Área/Departamento"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn UniqueName="NB_PUESTO" DataField="NB_PUESTO" HeaderText="Puesto"></telerik:GridBoundColumn>
                                 <telerik:GridButtonColumn CommandName="Delete" ButtonType="ImageButton" Text="Eliminar" UniqueName="DeleteColumn" ConfirmTextFields="NB_PARTICIPANTE" ConfirmTextFormatString="¿Desea eliminar a {0} de la lista de participantes?" ConfirmDialogWidth="400" ConfirmDialogHeight="150" ConfirmDialogType="RadWindow">
                                     <HeaderStyle Width="30" />

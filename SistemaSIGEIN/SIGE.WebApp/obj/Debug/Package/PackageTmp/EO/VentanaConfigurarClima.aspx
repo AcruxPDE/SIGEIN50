@@ -32,15 +32,15 @@
         }
 
         function OpenEmpleadosSelectionWindow() {
-            OpenSelectionWindow("/Comunes/SeleccionEmpleado.aspx", "WinClimaLaboral", "Selección de evaluados");
+            OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx", "WinClimaLaboral", "Selección de evaluados");
         }
 
         function OpenPuestoSelectionWindow() {
-            OpenSelectionWindow("/Comunes/SeleccionPuesto.aspx?mulSel=1", "WinClimaLaboral", "Selección de puestos");
+            OpenSelectionWindow("../Comunes/SeleccionPuesto.aspx?mulSel=1", "WinClimaLaboral", "Selección de puestos");
         }
 
         function OpenAreaSelectionWindow() {
-            OpenSelectionWindow("/Comunes/SeleccionArea.aspx", "WinClimaLaboral", "Selección de áreas");
+            OpenSelectionWindow("../Comunes/SeleccionArea.aspx", "WinClimaLaboral", "Selección de áreas/departamentos");
         }
 
         function OpenFiltrosSelectionWindow() {
@@ -83,7 +83,7 @@
             };
 
             windowProperties.width = 1050;
-            windowProperties.vTitulo = "Envío de cuestionarios";
+            windowProperties.vTitulo = "Enviar cuestionarios";
             windowProperties.vURL = "EnvioDeSolicitudesClima.aspx?PeriodoId=" + pIdPeriodo;
             windowProperties.vRadWindowId = "WinClimaLaboral";
             return windowProperties;
@@ -131,18 +131,18 @@
                         break;
                     case "ADSCRIPCION":
                         var vListBox = $find("<%= rlbAdicionales.ClientID%>");
-                            InsertAdicionales(pDato, vListBox);
-                            break;
-                    }
+                        InsertAdicionales(pDato, vListBox);
+                        break;
                 }
             }
+        }
 
-            function EncapsularSeleccion(pClTipoSeleccion, pLstSeleccion) {
-                return JSON.stringify({ clTipo: pClTipoSeleccion, oSeleccion: pLstSeleccion });
-            }
+        function EncapsularSeleccion(pClTipoSeleccion, pLstSeleccion) {
+            return JSON.stringify({ clTipo: pClTipoSeleccion, oSeleccion: pLstSeleccion });
+        }
 
-            function InsertEvaluado(pDato) {
-                var ajaxManager = $find('<%= ramConfiguracionPeriodoClima.ClientID%>');
+        function InsertEvaluado(pDato) {
+            var ajaxManager = $find('<%= ramConfiguracionPeriodoClima.ClientID%>');
             ajaxManager.ajaxRequest(pDato);
         }
 
@@ -183,154 +183,187 @@
             }
         }
 
+        function ConfirmValidez(sender, args) {
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
+            { if (shouldSubmit) { this.click(); } });
+
+            radconfirm('¿Estás seguro de eliminar la validez del cuestionario? Una vez realizado ya no podrá revertirse. ', callBackFunction, 400, 170, null, "Eliminar validez");
+            args.set_cancel(true);
+        }
+
         function EditarPreguntaAbierta(sender, args) {
             obtenerFilaPrAbiertas();
             if (idPregunta != "") {
-                openChildDialog("VentanaPreguntaAbierta.aspx?ID_PREGUNTA=" + idPregunta + "&ID_PERIODO=" + <%=vIdPeriodo%> + "", "WinPreguntas",
-                       "Agregar pregunta abierta")
-            } else {
-                radalert("Selecciona una pregunta.", 400, 150, "Error");
-                args.set_cancel(true);
-            }
+                openChildDialog("VentanaPreguntaAbierta.aspx?ID_PREGUNTA=" + idPregunta + "&ID_PERIODO=" + <%=vIdPeriodo%> + "", "WinPreguntas", "Editar pregunta abierta")
+        } else {
+            radalert("Selecciona una pregunta.", 400, 150, "Error");
+            args.set_cancel(true);
         }
+    }
 
-        function OpenSelectionDepartamento() {
-            openChildDialog("../Comunes/SeleccionArea.aspx?CatalogoCl=INDICE_DEPARTAMENTO", "WinCuestionario", "Selección de área");
-        }
-        function OpenSelectionGenero() {
-            openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=INDICE_GENERO", "WinCuestionario", "Selección de género");
-        }
+    function OpenSelectionDepartamento() {
+        openChildDialog("../Comunes/SeleccionArea.aspx?CatalogoCl=INDICE_DEPARTAMENTO", "WinCuestionario", "Selección de área/departamento");
+    }
+    function OpenSelectionGenero() {
+        openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=INDICE_GENERO" + "&mulSel=0", "WinCuestionario", "Selección de género");
+    }
 
-        function OpenSelectionAdicionales() {
-            openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1" + "&ClLista=IS", "WinConsultaPersonal", "Selección de campos adicionales");
-        }
+    function OpenSelectionAdicionales() {
+        openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1" + "&ClLista=IS", "WinConsultaPersonal", "Selección de campos adicionales");
+    }
 
 
-        function DeleteDepartamento() {
-            var vListBox = $find("<%=rlbDepartamento.ClientID %>");
+    function DeleteDepartamento() {
+        var vListBox = $find("<%=rlbDepartamento.ClientID %>");
             Delete(vListBox);
         }
 
         function DeleteAdicionales() {
             var vListAdscripcion = $find("<%= rlbAdicionales.ClientID %>");
-            Delete(vListAdscripcion);
-        }
+        Delete(vListAdscripcion);
+    }
 
-        function DeleteGenero() {
-            var vListBox = $find("<%=rlbGenero.ClientID %>");
-            Delete(vListBox);
-        }
+    function DeleteGenero() {
+        var vListBox = $find("<%=rlbGenero.ClientID %>");
+        Delete(vListBox);
+    }
 
-        function InsertGenero(list, vSelectedData) {
-            if (list != undefined) {
-                list.trackChanges();
-                var items = list.get_items();
-                items.clear();
-                var item = new Telerik.Web.UI.RadListBoxItem();
-                item.set_text(vSelectedData.nbCatalogoValor);
-                item.set_value(vSelectedData.clCatalogoValor);
-                item.set_selected(true);
-                items.add(item);
-                list.commitChanges();
-            }
-        }
-
-        function InsertDepartamentos(pDato, pListBox) {
-            var arrSeleccion = [];
-            for (var i = 0; i < pDato.length; i++)
-                arrSeleccion.push({
-                    idItem: pDato[i].idArea,
-                    nbItem: pDato[i].nbArea
-                });
-
-            OrdenarSeleccion(arrSeleccion, pListBox);
-        }
-
-        function InsertAdicionales(pDato, pListBox) {
-            var arrSeleccion = [];
-            for (var i = 0; i < pDato.length; i++)
-                arrSeleccion.push({
-                    idItem: pDato[i].idCampo,
-                    nbItem: pDato[i].nbValor
-                });
-            OrdenarSeleccion(arrSeleccion, pListBox);
-        }
-
-        function OrdenarSeleccion(pSeleccion, vListBox) {
-            vListBox.trackChanges();
-
-            var items = vListBox.get_items();
-
-            for (var i = 0; i < items.get_count() ; i++) {
-                var item = items.getItem(i);
-                var itemValue = item.get_value();
-                var itemText = item.get_text();
-                if (itemValue != "0") {
-                    var vFgItemEncontrado = false;
-                    for (var j = 0; j < pSeleccion.length; j++)
-                        vFgItemEncontrado = vFgItemEncontrado || (pSeleccion[j].idItem == itemValue);
-                    if (!vFgItemEncontrado)
-                        pSeleccion.push({
-                            idItem: itemValue,
-                            nbItem: itemText
-                        });
-                }
-            }
-            var arrOriginal = [];
-            for (var i = 0; i < pSeleccion.length; i++)
-                arrOriginal.push(pSeleccion[i].nbItem);
-
-            var arrOrdenados = arrOriginal.slice();
-
-            arrOrdenados.sort();
-
-            var arrItemsOrdenados = [];
-
-            for (var i = 0; i < arrOrdenados.length; i++)
-                arrItemsOrdenados.push(pSeleccion[arrOriginal.indexOf(arrOrdenados[i])]);
-
+    function InsertGenero(list, vSelectedData) {
+        if (list != undefined) {
+            list.trackChanges();
+            var items = list.get_items();
             items.clear();
-
-            for (var i = 0, len = arrItemsOrdenados.length; i < len; i++)
-                ChangeListItem(arrItemsOrdenados[i].idItem, arrItemsOrdenados[i].nbItem, vListBox);
-
-            vListBox.commitChanges();
-        }
-
-        function ChangeListItem(pIdItem, pNbItem, pListBox) {
-            var items = pListBox.get_items();
             var item = new Telerik.Web.UI.RadListBoxItem();
-            item.set_text(pNbItem);
-            item.set_value(pIdItem);
-            items.add(item);
+            item.set_text(vSelectedData.nbCatalogoValor);
+            item.set_value(vSelectedData.clCatalogoValor);
             item.set_selected(true);
+            items.add(item);
+            list.commitChanges();
         }
+    }
 
-        function Delete(vListBox) {
-            var vSelectedItems = vListBox.get_selectedItems();
-            vListBox.trackChanges();
-            if (vSelectedItems)
-                vSelectedItems.forEach(function (item) {
-                    vListBox.get_items().remove(item);
-                });
-            vListBox.commitChanges();
+    function InsertDepartamentos(pDato, pListBox) {
+        var arrSeleccion = [];
+        for (var i = 0; i < pDato.length; i++)
+            arrSeleccion.push({
+                idItem: pDato[i].idArea,
+                nbItem: pDato[i].nbArea
+            });
+
+        OrdenarSeleccion(arrSeleccion, pListBox);
+    }
+
+    function InsertAdicionales(pDato, pListBox) {
+        var arrSeleccion = [];
+        for (var i = 0; i < pDato.length; i++)
+            arrSeleccion.push({
+                idItem: pDato[i].idCampo,
+                nbItem: pDato[i].nbValor
+            });
+        OrdenarSeleccion(arrSeleccion, pListBox);
+    }
+
+    function OrdenarSeleccion(pSeleccion, vListBox) {
+        vListBox.trackChanges();
+
+        var items = vListBox.get_items();
+
+        for (var i = 0; i < items.get_count() ; i++) {
+            var item = items.getItem(i);
+            var itemValue = item.get_value();
+            var itemText = item.get_text();
+            if (itemValue != "0") {
+                var vFgItemEncontrado = false;
+                for (var j = 0; j < pSeleccion.length; j++)
+                    vFgItemEncontrado = vFgItemEncontrado || (pSeleccion[j].idItem == itemValue);
+                if (!vFgItemEncontrado)
+                    pSeleccion.push({
+                        idItem: itemValue,
+                        nbItem: itemText
+                    });
+            }
         }
+        var arrOriginal = [];
+        for (var i = 0; i < pSeleccion.length; i++)
+            arrOriginal.push(pSeleccion[i].nbItem);
 
-        function ConfirmarAsignar(sender, args) {
-            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
-            { if (shouldSubmit) { this.click(); } });
+        var arrOrdenados = arrOriginal.slice();
 
-            radconfirm('¿Deseas asignar las preguntas al cuestionario?, este proceso no te permitirá rediseñar las preguntas.', callBackFunction, 400, 170, null, "Asignar cuestionarios");
-            args.set_cancel(true);
-        }
+        arrOrdenados.sort();
 
-        function ConfirmarAsignarPreguntas(sender, args) {
-            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
-            { if (shouldSubmit) { this.click(); } });
+        var arrItemsOrdenados = [];
 
-            radconfirm('¿Deseas asignar los cuestionarios a los evaluadores?, este proceso no te permitirá rediseñar el cuestionario.', callBackFunction, 400, 170, null, "Asignar cuestionarios");
-            args.set_cancel(true);
-        }
+        for (var i = 0; i < arrOrdenados.length; i++)
+            arrItemsOrdenados.push(pSeleccion[arrOriginal.indexOf(arrOrdenados[i])]);
+
+        items.clear();
+
+        for (var i = 0, len = arrItemsOrdenados.length; i < len; i++)
+            ChangeListItem(arrItemsOrdenados[i].idItem, arrItemsOrdenados[i].nbItem, vListBox);
+
+        vListBox.commitChanges();
+    }
+
+    function ChangeListItem(pIdItem, pNbItem, pListBox) {
+        var items = pListBox.get_items();
+        var item = new Telerik.Web.UI.RadListBoxItem();
+        item.set_text(pNbItem);
+        item.set_value(pIdItem);
+        items.add(item);
+        item.set_selected(true);
+    }
+
+    function Delete(vListBox) {
+        var vSelectedItems = vListBox.get_selectedItems();
+        vListBox.trackChanges();
+        if (vSelectedItems)
+            vSelectedItems.forEach(function (item) {
+                vListBox.get_items().remove(item);
+            });
+        vListBox.commitChanges();
+    }
+
+    function ConfirmarAsignar(sender, args) {
+        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
+        { if (shouldSubmit) { this.click(); } });
+
+        radconfirm('¿Deseas asignar los cuestionarios a los evaluadores?, este proceso no te permitirá rediseñar el cuestionario.', callBackFunction, 400, 170, null, "Asignar cuestionarios");
+        args.set_cancel(true);
+    }
+
+    function ConfirmarAsignarPreguntas(sender, args) {
+        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
+        { if (shouldSubmit) { this.click(); } });
+
+        radconfirm('¿Deseas asignar las preguntas al cuestionario?, este proceso no te permitirá rediseñar las preguntas.', callBackFunction, 400, 170, null, "Asignar cuestionarios");
+        args.set_cancel(true);
+    }
+
+
+    function ConfirmaElimina(sender, args) {
+        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
+        { if (shouldSubmit) { this.click(); } });
+
+        radconfirm('¿Estás seguro de eliminar esta pregunta?, este proceso no podrá revertirse. ', callBackFunction, 400, 170, null, "Eliminar pregunta abierta");
+        args.set_cancel(true);
+    }
+
+    function ConfirmEliminaPregunta(sender, args) {
+        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
+        { if (shouldSubmit) { this.click(); } });
+
+        radconfirm('¿Estás seguro de eliminar esta pregunta?, este proceso no podrá revertirse. ', callBackFunction, 400, 170, null, "Eliminar pregunta");
+        args.set_cancel(true);
+    }
+
+
+    function ConfirmActualizaMnesaje(sender, args) {
+        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
+        { if (shouldSubmit) { this.click(); } });
+
+        radconfirm('¿Estás seguro de actualizar el mensaje envío cuestionarios?, Recuerda que este mensaje es único para todos los períodos. Para más información ve a la sección de ayuda.', callBackFunction, 460, 180, null, "Actualizar mensaje");
+        args.set_cancel(true);
+    }
 
     </script>
 </asp:Content>
@@ -352,8 +385,13 @@
             <telerik:AjaxSetting AjaxControlID="btnReasignarContrasena">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="grdEmpleadosContrasenias" UpdatePanelHeight="100%" />
-                </UpdatedControls>
+                </UpdatedControls>               
             </telerik:AjaxSetting>
+               <telerik:AjaxSetting AjaxControlID="btnGuardar">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnGuardar" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+                               </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnSeleccionar">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="grdEmpleadosSeleccionados" UpdatePanelHeight="100%" />
@@ -380,13 +418,13 @@
                     <telerik:AjaxUpdatedControl ControlID="rgPreguntas" UpdatePanelHeight="100%" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
-            <telerik:AjaxSetting AjaxControlID="btnGuardarAbierta">
+           <%-- <telerik:AjaxSetting AjaxControlID="btnGuardarAbierta">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="btnEditarAbierta" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="btnEliminarAbierta" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="btnAgregarAbierta" UpdatePanelHeight="100%" />
                 </UpdatedControls>
-            </telerik:AjaxSetting>
+            </telerik:AjaxSetting>--%>
             <telerik:AjaxSetting AjaxControlID="btnEliminarEvaluador">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="grdEmpleadosSeleccionados" UpdatePanelHeight="100%" />
@@ -398,30 +436,35 @@
                     <telerik:AjaxUpdatedControl ControlID="btnEditar" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline" />
                     <telerik:AjaxUpdatedControl ControlID="btnEliminar" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline" />
                     <telerik:AjaxUpdatedControl ControlID="btnAgregarPregunta" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline" />
+                      <telerik:AjaxUpdatedControl ControlID="btnEditarAbierta" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="btnEliminarAbierta" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline"  />
+                    <telerik:AjaxUpdatedControl ControlID="btnAgregarAbierta" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline" />
+                     <telerik:AjaxUpdatedControl ControlID="btnSeleccionar" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="btnSeleccionarPuesto" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline" />
+                      <telerik:AjaxUpdatedControl ControlID="btnEliminarEvaluador" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="btmSleccionarArea" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="btnCrearCuestionarios" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="btnEnvioCuestionarios" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <div style="height: calc(100% - 10px);">
-
-        <telerik:RadSplitter runat="server" ID="spHelp" Width="100%" Height="100%" BorderSize="0">
-            <telerik:RadPane ID="RadPane1" runat="server">
                 <telerik:RadTabStrip ID="rtsConfiguracionClima" runat="server" SelectedIndex="0" MultiPageID="rmpConfiguracion">
                     <Tabs>
                         <telerik:RadTab Text="Contexto"></telerik:RadTab>
                         <telerik:RadTab Text="Selección de evaluadores"></telerik:RadTab>
                         <telerik:RadTab Text="Parámetros adicionales"></telerik:RadTab>
-                        <telerik:RadTab Text="Cuestionario"></telerik:RadTab>
                         <telerik:RadTab Text="Preguntas abiertas"></telerik:RadTab>
-                        <telerik:RadTab Text="Contraseñas"></telerik:RadTab>
+                        <telerik:RadTab Text="Cuestionario"></telerik:RadTab>
                         <telerik:RadTab Text="Mensajes"></telerik:RadTab>
+                        <telerik:RadTab Text="Contraseñas"></telerik:RadTab>
                     </Tabs>
                 </telerik:RadTabStrip>
                 <div style="height: 10px;"></div>
                 <div style="height: calc(100% - 60px);">
                     <telerik:RadMultiPage ID="rmpConfiguracion" runat="server" SelectedIndex="0" Height="100%">
                         <telerik:RadPageView ID="rpvContexto" runat="server">
-          <%--                  <div class="ctrlBasico">
+                             <%--  <div class="ctrlBasico">
                                 <table class="ctrlTableForm">
                                     <tr>
                                         <td class="ctrlTableDataContext">
@@ -431,9 +474,7 @@
                                                     <telerik:RadButtonToggleState CssClass="unchecked"></telerik:RadButtonToggleState>
                                                 </ToggleStates>
                                             </telerik:RadButton>
-                                        </td>
-                              
-                             
+                                        </td>              
                                         <td class="ctrlTableDataContext">
                                             <telerik:RadButton ID="btnCopia" runat="server" ToggleType="CheckBox" AutoPostBack="false" Width="260" ReadOnly="true" Text="Cuestionario copia de otro periodo">
                                                 <ToggleStates>
@@ -479,7 +520,7 @@
                                                 <label id="Label2" name="lbNotas" runat="server">Notas:</label>
                                             </td>
                                             <td  class="ctrlTableDataBorderContext">
-                                                <label id="txtNotas" runat="server"></label>
+                                                <div id="txtNotas" runat="server"></div>
                                             </td>
                                         </tr>
                                            <tr>
@@ -550,7 +591,7 @@
                                 </div>
                         </telerik:RadPageView>
                         <telerik:RadPageView ID="rpvSeleccionEvaluados" runat="server">
-                            <div style="height: calc(100% - 30px);" class="ctrlBasico">
+                            <div style="height: calc(100% - 40px);" class="ctrlBasico">
                                 <telerik:RadGrid ID="grdEmpleadosSeleccionados" runat="server" HeaderStyle-Font-Bold="true" AllowMultiRowSelection="true" OnNeedDataSource="grdEmpleadosSeleccionados_NeedDataSource" AutoGenerateColumns="false" Height="100%" OnItemDataBound="grdEmpleadosSeleccionados_ItemDataBound">
                                     <ClientSettings>
                                         <Scrolling AllowScroll="true" UseStaticHeaders="true" />
@@ -564,29 +605,29 @@
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="90" FilterControlWidth="40" HeaderText="No. de Empleado" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="160" FilterControlWidth="100" HeaderText="Nombre completo" DataField="NB_EVALUADOR" UniqueName="NB_EVALUADOR" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="160" FilterControlWidth="100" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="NB_PUESTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="160" FilterControlWidth="100" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="NB_AREA" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="160" FilterControlWidth="100" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="NB_AREA" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                         </Columns>
                                     </MasterTableView>
                                 </telerik:RadGrid>
                             </div>
                             <div style="clear: both;"></div>
-                            <div style="color: red;" runat="server" id="dvMenEval" visible="false">Evaluadores seleccionados confidencialmente mediante filtros de selección.</div>
-                            <div style="color: red;" runat="server" id="dvMensa2" visible="false">Evaluadores seleccionados confidencialmente mediante filtros de selección.</div>
+                           <%-- <div style="color: red;" runat="server" id="dvMenEval" visible="false">Evaluadores seleccionados confidencialmente mediante filtros de selección.</div>
+                            <div style="color: red;" runat="server" id="dvMensa2" visible="false">Evaluadores seleccionados confidencialmente mediante filtros de selección.</div>--%>
                             <telerik:RadButton ID="btnSeleccionar" runat="server" Text="Seleccionar por persona" OnClientClicked="OpenEmpleadosSelectionWindow"></telerik:RadButton>
                             <telerik:RadButton ID="btnSeleccionarPuesto" runat="server" Text="Seleccionar por puesto" OnClientClicked="OpenPuestoSelectionWindow"></telerik:RadButton>
-                            <telerik:RadButton ID="btmSleccionarArea" runat="server" Text="Seleccionar por área" OnClientClicked="OpenAreaSelectionWindow"></telerik:RadButton>
+                            <telerik:RadButton ID="btmSleccionarArea" runat="server" Text="Seleccionar por área/departamento" OnClientClicked="OpenAreaSelectionWindow"></telerik:RadButton>
                             <telerik:RadButton ID="btnEliminarEvaluador" runat="server" Text="Eliminar" OnClick="btnEliminarEvaluador_Click"></telerik:RadButton>
                         </telerik:RadPageView>
                         <telerik:RadPageView ID="rpvCampos" runat="server">
                             <div style="clear: both;"></div>
-                            <div style="height: calc(100% - 100px);">
+                            <div style="height: calc(100% - 60px);">
                                 <div style="clear: both; height: 20px"></div>
                                 <div class="ctrlBasico">
                                     <div class="divControlIzquierda">
-                                        <telerik:RadButton RenderMode="Lightweight" ID="chkarea" runat="server" ToggleType="CheckBox" ButtonType="ToggleButton"
+                                        <%--<telerik:RadButton RenderMode="Lightweight" ID="chkarea" runat="server" ToggleType="CheckBox" ButtonType="ToggleButton"
                                             AutoPostBack="false">
-                                        </telerik:RadButton>
-                                        <label id="lblDepartamentoDistribucion" name="lblDepartamento" runat="server">Área:</label>
+                                        </telerik:RadButton>--%>
+                                        <label id="lblDepartamentoDistribucion" name="lblDepartamento" runat="server">Área/Departamento:</label>
                                     </div>
                                     <div class="divControlDerecha">
                                         <telerik:RadListBox ID="rlbDepartamento" Width="200px" Height="100px" runat="server" ValidationGroup="vgDepartamentoDis"></telerik:RadListBox>
@@ -596,9 +637,9 @@
                                 </div>
                                 <div class="ctrlBasico">
                                     <div class="divControlIzquierda">
-                                        <telerik:RadButton RenderMode="Lightweight" ID="chkgenero" runat="server" ToggleType="CheckBox" ButtonType="ToggleButton"
+                                        <%--              <telerik:RadButton RenderMode="Lightweight" ID="chkgenero" runat="server" ToggleType="CheckBox" ButtonType="ToggleButton"
                                             AutoPostBack="false">
-                                        </telerik:RadButton>
+                                        </telerik:RadButton>--%>
                                         <label id="Label3" name="lblGenero" runat="server">Género:</label>
                                     </div>
                                     <div class="divControlDerecha">
@@ -610,9 +651,9 @@
                                 <div style="height: 10px; clear: both;"></div>
                                 <div class="ctrlBasico">
                                     <div class="divControlIzquierda">
-                                        <telerik:RadButton RenderMode="Lightweight" ID="chkadicionales" runat="server" ToggleType="CheckBox" ButtonType="ToggleButton"
+                                        <%--        <telerik:RadButton RenderMode="Lightweight" ID="chkadicionales" runat="server" ToggleType="CheckBox" ButtonType="ToggleButton"
                                             AutoPostBack="false">
-                                        </telerik:RadButton>
+                                        </telerik:RadButton>--%>
                                         <label id="Label1" name="lbAdscripciones" runat="server">Campos adicionales:</label>
                                     </div>
                                     <div class="divControlDerecha">
@@ -636,7 +677,7 @@
                                     </div>
                                 </div>
                                 <div class="ctrlBasico">
-                                    <div class="divControlIzquierda" >
+                                    <div class="divControlIzquierda">
                                         <telerik:RadButton RenderMode="Lightweight" ID="rbAntiguedad" runat="server" ToggleType="CheckBox" ButtonType="ToggleButton"
                                             AutoPostBack="false">
                                         </telerik:RadButton>
@@ -646,88 +687,184 @@
                                         <telerik:RadNumericTextBox runat="server" ID="rntAntiguedadInicial" NumberFormat-DecimalDigits="0" Value="0" Name="rnAntiguedadInicial" Width="60px" MinValue="0" ShowSpinButtons="true"></telerik:RadNumericTextBox>
                                         a
                                         <telerik:RadNumericTextBox runat="server" ID="rntAntiguedadFinal" NumberFormat-DecimalDigits="0" Value="30" Name="rnAtiguedadFinal" Width="60px" MinValue="1" ShowSpinButtons="true"></telerik:RadNumericTextBox>
-                                        años.
+                                        meses.
                                     </div>
                                 </div>
                             </div>
-                            <div style="clear: both; height: 5px"></div>
-                            <div class="ctrlBasico" style="margin-left: 5%;">
+                            <div style="clear: both; height: 10px"></div>
+                            <div class="divControlDerecha" style="padding-right: 30px;">
                                 <telerik:RadButton ID="btnAplicar" runat="server" name="btnAplicar" AutoPostBack="true" Text="Guardar" Width="100" OnClick="btnAplicar_Click"></telerik:RadButton>
                             </div>
                         </telerik:RadPageView>
-                        <telerik:RadPageView ID="rpvCuestionario" runat="server">
-                            <div style="clear: both;"></div>
-                            <div style="height: calc(100% - 60px);" class="ctrlBasico">
-                                <telerik:RadGrid ID="grdPreguntasCuestionario" HeaderStyle-Font-Bold="true" runat="server" AllowMultiRowSelection="true" AutoGenerateColumns="false" Height="100%" OnNeedDataSource="grdPreguntasCuestionario_NeedDataSource" AllowSorting="true" OnItemDataBound="grdPreguntasCuestionario_ItemDataBound">
-                                    <ClientSettings>
-                                        <Scrolling AllowScroll="true" UseStaticHeaders="true" />
-                                        <Selecting AllowRowSelect="true" CellSelectionMode="MultiCell" />
-                                    </ClientSettings>
-                                    <PagerStyle AlwaysVisible="true" />
-                                    <GroupingSettings CaseSensitive="false" />
-                                    <MasterTableView DataKeyNames="ID_PREGUNTA" ClientDataKeyNames="ID_PREGUNTA" AllowPaging="true">
-                                        <Columns>
-                                            <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30"></telerik:GridClientSelectColumn>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="90" HeaderText="Dimensión" DataField="NB_DIMENSION" UniqueName="NB_DIMENSION" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="110" HeaderText="Tema" DataField="NB_TEMA" UniqueName="NB_TEMA" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="160" HeaderText="Pregunta" DataField="NB_PREGUNTA" UniqueName="NB_PREGUNTA" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="50" HeaderText="Secuencia" DataField="NO_SECUENCIA" UniqueName="NO_SECUENCIA" HeaderStyle-Font-Bold="true" HeaderStyle-HorizontalAlign="Center"></telerik:GridBoundColumn>
-                                        </Columns>
-                                    </MasterTableView>
-                                </telerik:RadGrid>
-                            </div>
-                            <div class="ctrlBasico">
-                                <telerik:RadButton ID="btnEditar" runat="server" Text="Editar" OnClientClicking="EditarPregunta"></telerik:RadButton>
-                            </div>
-                            <div class="ctrlBasico">
-                                <telerik:RadButton ID="btnEliminar" runat="server" OnClick="btnEliminar_Click" Text="Eliminar"></telerik:RadButton>
-                            </div>
-                            <div class="ctrlBasico">
-                                <telerik:RadButton ID="btnAgregarPregunta" runat="server" Text="Agregar Pregunta" OnClientClicked="AbrirVentanaCuestionario"></telerik:RadButton>
-                            </div>
-                            <div class="ctrlBasico">
-                                <telerik:RadButton ID="btnCrearCuestionarios" runat="server" Text="Crear cuestionarios" ToolTip="Esta opción te permite asignar los cuestionarios a los evaluadores seleccionados, una vez realizado este proceso no se podrá rediseñar el cuestionario." OnClientClicking="ConfirmarAsignar" OnClick="btnCrearCuestionarios_Click"></telerik:RadButton>
-                            </div>
-                            <div style="clear: both;"></div>
-                            <div style="color: red;" runat="server" id="divMensajeCuestionarios">No se puede modificar las preguntas por que ya existen cuestionarios creados.</div>
-                        </telerik:RadPageView>
                         <telerik:RadPageView ID="rpvPreguntasAbiertas" runat="server">
-                            <div style="clear: both;"></div>
-                            <div style="height: calc(100% - 60px);" class="ctrlBasico">
-                                <telerik:RadGrid ID="rgPreguntas" HeaderStyle-Font-Bold="true" runat="server" AllowMultiRowSelection="true" AutoGenerateColumns="false" Height="100%" OnNeedDataSource="rgPreguntas_NeedDataSource" AllowSorting="true" OnItemDataBound="rgPreguntas_ItemDataBound">
-                                    <ClientSettings>
-                                        <Scrolling AllowScroll="true" UseStaticHeaders="true" />
-                                        <Selecting AllowRowSelect="true" CellSelectionMode="MultiCell" />
-                                    </ClientSettings>
-                                    <PagerStyle AlwaysVisible="true" />
-                                    <GroupingSettings CaseSensitive="false" />
-                                    <MasterTableView DataKeyNames="ID_PREGUNTA" ClientDataKeyNames="ID_PREGUNTA, ID_PREGUNTA" AllowPaging="true">
-                                        <Columns>
-                                            <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30"></telerik:GridClientSelectColumn>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="200" HeaderText="Pregunta" DataField="NB_PREGUNTA" UniqueName="NB_PREGUNTA" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="300" HeaderText="Descripción" DataField="DS_PREGUNTA" UniqueName="DS_PREGUNTA" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                        </Columns>
-                                    </MasterTableView>
-                                </telerik:RadGrid>
+                            <div style="height: calc(100% - 50px);">
+                                <telerik:RadSplitter runat="server" ID="spHelp1" Width="100%" Height="100%" BorderSize="0">
+                                    <telerik:RadPane ID="rpHelp1" runat="server">
+                                        <div style="clear: both;"></div>
+                                        <telerik:RadGrid ID="rgPreguntas" HeaderStyle-Font-Bold="true" runat="server" AllowMultiRowSelection="true" AutoGenerateColumns="false" Height="100%" OnNeedDataSource="rgPreguntas_NeedDataSource" AllowSorting="true" OnItemDataBound="rgPreguntas_ItemDataBound">
+                                            <ClientSettings>
+                                                <Scrolling AllowScroll="true" UseStaticHeaders="true" />
+                                                <Selecting AllowRowSelect="true" CellSelectionMode="MultiCell" />
+                                            </ClientSettings>
+                                            <PagerStyle AlwaysVisible="true" />
+                                            <GroupingSettings CaseSensitive="false" />
+                                            <MasterTableView DataKeyNames="ID_PREGUNTA" ClientDataKeyNames="ID_PREGUNTA, ID_PREGUNTA" AllowPaging="true">
+                                                <Columns>
+                                                    <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30"></telerik:GridClientSelectColumn>
+                                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="200" HeaderText="Pregunta" DataField="NB_PREGUNTA" UniqueName="NB_PREGUNTA" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="300" HeaderText="Descripción" DataField="DS_PREGUNTA" UniqueName="DS_PREGUNTA" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                                </Columns>
+                                            </MasterTableView>
+                                        </telerik:RadGrid>
+                                    </telerik:RadPane>
+                                    <telerik:RadPane ID="rpHelpAyuda1" runat="server" Width="30">
+                                        <telerik:RadSlidingZone ID="RadSlidingZone1" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
+                                            <telerik:RadSlidingPane ID="rspMensaje" runat="server" Title="Ayuda" Width="300" MinWidth="500" Height="100%">
+                                                <div style="padding: 10px; text-align: justify;">
+                                
+                                                        Las preguntas abiertas ayudan a solicitar respuestas libres al evaluador. Al permitir texto libre en las respuestas, estas pueden ser variadas 
+                                                         ya que reflejan la opinión personal de cada uno.<br />
+                                                        <br />
+
+                                                        Aquí puedes crearlas añadiendo la pregunta y una descripción de la misma. Dicha descripción aparecerá como tooltip en cada pregunta. 
+                                                        <br />
+                                                        <br />
+                                                        Las preguntas abiertas se podrán editar y eliminar. Al crear los cuestionarios automáticamente se agregarán al cuestionario de cada evaluador.                   
+                                                </div>
+                                            </telerik:RadSlidingPane>
+                                        </telerik:RadSlidingZone>
+                                    </telerik:RadPane>
+                                </telerik:RadSplitter>
+                            </div>
+                            <div style="height: 10px; clear: both;"></div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnAgregarAbierta" runat="server" Text="Agregar" OnClientClicked="AbrirVentanaPreguntaAbierta"></telerik:RadButton>
                             </div>
                             <div class="ctrlBasico">
                                 <telerik:RadButton ID="btnEditarAbierta" runat="server" Text="Editar" OnClientClicking="EditarPreguntaAbierta"></telerik:RadButton>
                             </div>
                             <div class="ctrlBasico">
-                                <telerik:RadButton ID="btnEliminarAbierta" runat="server" OnClick="btnEliminarAbierta_Click" Text="Eliminar"></telerik:RadButton>
+                                <telerik:RadButton ID="btnEliminarAbierta" runat="server" OnClientClicking="ConfirmaElimina" OnClick="btnEliminarAbierta_Click" Text="Eliminar"></telerik:RadButton>
                             </div>
                             <div class="ctrlBasico">
-                                <telerik:RadButton ID="btnAgregarAbierta" runat="server" Text="Agregar Pregunta" OnClientClicked="AbrirVentanaPreguntaAbierta"></telerik:RadButton>
+                                <label style="color: red;" runat="server" id="dvPreguntasAbiertas" visible="false">No se pueden modificar las preguntas abiertas por que ya fueron asignadas al cuestionario.</label>
                             </div>
-                            <div class="ctrlBasico">
+                           <%-- <div class="ctrlBasico">
                                 <telerik:RadButton ID="btnGuardarAbierta" runat="server" Text="Asignar preguntas a cuestionario" ToolTip="Esta opción te permite asignar las preguntas abiertas al cuestionario, una vez realizado este proceso no se podrán diseñar preguntas abiertas." OnClientClicking="ConfirmarAsignarPreguntas" OnClick="btnGuardarAbierta_Click"></telerik:RadButton>
+                            </div>--%>
+                        </telerik:RadPageView>
+                        <telerik:RadPageView ID="rpvCuestionario" runat="server">
+                            <div style="height: calc(100% - 50px);">
+                                <telerik:RadSplitter runat="server" ID="rsHelp2" Width="100%" Height="100%" BorderSize="0">
+                                    <telerik:RadPane ID="rpHelp2" runat="server">
+                                        <div style="clear: both;"></div>
+                                        <telerik:RadGrid ID="grdPreguntasCuestionario" HeaderStyle-Font-Bold="true" runat="server" AllowMultiRowSelection="true" AutoGenerateColumns="false" Height="100%" OnNeedDataSource="grdPreguntasCuestionario_NeedDataSource" AllowSorting="true" OnItemDataBound="grdPreguntasCuestionario_ItemDataBound">
+                                            <ClientSettings>
+                                                <Scrolling AllowScroll="true" UseStaticHeaders="true" />
+                                                <Selecting AllowRowSelect="true" CellSelectionMode="MultiCell" />
+                                            </ClientSettings>
+                                            <PagerStyle AlwaysVisible="true" />
+                                            <GroupingSettings CaseSensitive="false" />
+                                            <MasterTableView DataKeyNames="ID_PREGUNTA" ClientDataKeyNames="ID_PREGUNTA" AllowPaging="true">
+                                                <Columns>
+                                                    <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30"></telerik:GridClientSelectColumn>
+                                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="90" HeaderText="Dimensión" DataField="NB_DIMENSION" UniqueName="NB_DIMENSION" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="110" HeaderText="Tema" DataField="NB_TEMA" UniqueName="NB_TEMA" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="160" HeaderText="Pregunta" DataField="NB_PREGUNTA" UniqueName="NB_PREGUNTA" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="50" HeaderText="Secuencia" DataField="NO_SECUENCIA" UniqueName="NO_SECUENCIA" HeaderStyle-Font-Bold="true" HeaderStyle-HorizontalAlign="Center"></telerik:GridBoundColumn>
+                                                </Columns>
+                                            </MasterTableView>
+                                        </telerik:RadGrid>
+                                    </telerik:RadPane>
+                                    <telerik:RadPane ID="rpHelpAyuda2" runat="server" Width="30">
+                                        <telerik:RadSlidingZone ID="RadSlidingZone2" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
+                                            <telerik:RadSlidingPane ID="RadSlidingPane1" runat="server" Title="Ayuda" Width="300" MinWidth="500" Height="100%">
+                                                <div style="padding: 10px; text-align: justify;">
+                               
+                                                        En esta parte puedes crear tu cuestionario, agregar preguntas, editarlas o eliminarlas.
+                                                        <br />   
+                                                        Recuerda que si tu cuestionario es predefinido de Sigein no podrás editar ni eliminar la validez de las preguntas, sólo de aquellas que se hayan agregado como nuevas.  
+                                                        <br />
+                                                        Si deseas eliminar la validez del cuestionario completo solo deberás seleccionar el botón "Eliminar validez".                              
+                                                        <br />
+                                                        <br />
+                                                        Una vez creados los cuestionarios ya no será posible realizar ninguna modificación.               
+
+                                                </div>
+                                            </telerik:RadSlidingPane>
+                                        </telerik:RadSlidingZone>
+                                    </telerik:RadPane>
+                                </telerik:RadSplitter>
                             </div>
-                            <div style="clear: both;"></div>
-                            <div style="color: red;" runat="server" id="dvPreguntasAbiertas" visible="false">No se pueden modificar las preguntas abiertas por que ya fueron asignadas al cuestionario.</div>
+                            <div style="height: 10px; clear: both;"></div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnAgregarPregunta" runat="server" Text="Agregar" OnClientClicked="AbrirVentanaCuestionario"></telerik:RadButton>
+                            </div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnEditar" runat="server" Text="Editar" OnClientClicking="EditarPregunta"></telerik:RadButton>
+                            </div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnEliminar" runat="server" OnClientClicking="ConfirmEliminaPregunta" OnClick="btnEliminar_Click" Text="Eliminar"></telerik:RadButton>
+                            </div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnValidez" runat="server" OnClick="btnValidez_Click" OnClientClicking="ConfirmValidez" Text="Eliminar validez"></telerik:RadButton>
+                            </div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnCrearCuestionarios" runat="server" Text="Crear cuestionarios" ToolTip="Esta opción te permite asignar los cuestionarios a los evaluadores seleccionados, una vez realizado este proceso no se podrá rediseñar el cuestionario." OnClientClicking="ConfirmarAsignar" OnClick="btnCrearCuestionarios_Click"></telerik:RadButton>
+                            </div>
+                            <div class="ctrlBasico">
+                                <label style="color: red;" runat="server" id="divMensajeCuestionarios">No se puede modificar las preguntas por que ya existen cuestionarios creados.</label>
+                            </div>
+                        </telerik:RadPageView>
+                        <telerik:RadPageView ID="rpvMensaje" runat="server">
+                            <div style="height: calc(100% - 50px);">
+                                <telerik:RadSplitter runat="server" ID="RadSplitter1" Width="100%" Height="100%" BorderSize="0">
+                                    <telerik:RadPane ID="RadPane1" runat="server">
+                                        <div class="ctrlBasico" style="padding: 10px; text-align: justify; height:100%; width:50%;">
+                                            <fieldset>
+                                                <legend>
+                                                    <label>Mensaje envio cuestionarios:</label></legend>
+                                                <telerik:RadEditor ID="lMensaje" runat="server" Width="100%" Height="100%" EditModes="Design" ToolsFile="~/Assets/AdvancedTools.xml"></telerik:RadEditor>
+                                            </fieldset>
+                                           <%--<div style="height: 10px; clear: both;"></div>
+                                            <div class="divControlDerecha">
+                                                <telerik:RadButton ID="btnGuardar" runat="server" Text="Guardar" AutoPostBack="true" OnClick="btnGuardar_Click"></telerik:RadButton>
+                                            </div>--%>
+                                        </div>
+                                        <div class="ctrlBasico" style="padding: 10px; text-align: justify; height:100%; width:50%;">
+                                            <fieldset>
+                                                <legend>
+                                                    <label>Instrucciones cuestionario impreso:</label></legend>
+                                                <telerik:RadEditor ID="reInstrucciones" runat="server" Width="100%" Height="100%" EditModes="Design" ToolsFile="~/Assets/AdvancedTools.xml"></telerik:RadEditor>
+                                            </fieldset>
+                                             <%-- <div style="height: 10px; clear: both;"></div>
+                                             <div class="divControlDerecha">
+                                                <telerik:RadButton ID="btnInstrucciones" runat="server" Text="Guardar" AutoPostBack="true" OnClick="btnInstrucciones_Click"></telerik:RadButton>
+                                            </div>--%>
+                                        </div>
+                                    </telerik:RadPane>
+                                    <telerik:RadPane ID="RadPane2" runat="server" Width="30">
+                                        <telerik:RadSlidingZone ID="RadSlidingZone3" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
+                                            <telerik:RadSlidingPane ID="RadSlidingPane2" runat="server" Title="Ayuda" Width="300" MinWidth="500" Height="100%">
+                                                <div style="padding: 10px; text-align: justify;">
+      
+                                                        En esta parte puedes configurar el mensaje para el cuestionario impreso del período y el mensaje de envío de los cuestionarios de clima laboral.<br />
+                                                        <br />
+                                                        En el mensaje de envío de cuestionarios no deberán eliminarse o modificarse las palabras entre corchetes ([EVALUADOR], [CONTRASENA]), así como la palabra "aquí" ya que estos se remplazan por los datos de cada evaluador. 
+                                                </div>
+                                            </telerik:RadSlidingPane>
+                                        </telerik:RadSlidingZone>
+                                    </telerik:RadPane>
+                                </telerik:RadSplitter>
+                            </div>
+                            <div style="height: 10px; clear: both;"></div>
+                            <div class="divControlDerecha" style="padding-right:30px;">
+                                <telerik:RadButton ID="btnGuardar" runat="server" Text="Guardar" UseSubmitBehavior="false" AutoPostBack="true" OnClick="btnGuardar_Click"></telerik:RadButton>
+                            </div>
                         </telerik:RadPageView>
                         <telerik:RadPageView ID="rpvEmpleadoContrasenia" runat="server">
                             <div style="clear: both;"></div>
-                            <div style="height: calc(100% - 40px);" class="ctrlBasico">
+                            <div style="height: calc(100% - 30px);" class="ctrlBasico">
                                 <telerik:RadGrid ID="grdEmpleadosContrasenias" runat="server" HeaderStyle-Font-Bold="true" AutoGenerateColumns="false" AllowMultiRowSelection="true" Height="100%" OnNeedDataSource="grdEmpleadosContrasenias_NeedDataSource" OnItemDataBound="grdEmpleadosContrasenias_ItemDataBound">
                                     <ClientSettings>
                                         <Scrolling AllowScroll="true" UseStaticHeaders="true" />
@@ -741,45 +878,19 @@
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="90" FilterControlWidth="10" HeaderText="No. de Empleado" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Nombre completo" DataField="NB_EVALUADOR" UniqueName="NB_EVALUADOR" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="NB_PUESTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="90" FilterControlWidth="10" HeaderText="Contraseña" DataField="CL_TOKEN" UniqueName="CL_TOKEN" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                         </Columns>
                                     </MasterTableView>
                                 </telerik:RadGrid>
                             </div>
-                            <telerik:RadButton ID="btnReasignarTodasContrasenas" runat="server" Text="Reasignar a todos" OnClick="btnReasignarTodasContrasenas_Click"></telerik:RadButton>
-                            <telerik:RadButton ID="btnReasignarContrasena" runat="server" Text="Reasignar contraseña a evaluadores seleccionados" OnClick="btnReasignarContrasena_Click"></telerik:RadButton>
-                             <telerik:RadButton ID="btnEnvioCuestionarios" runat="server" Text="Enviar cuestionarios" OnClientClicking="OpenEnvioSolicitudesWindow"></telerik:RadButton>
-                        </telerik:RadPageView>
-                        <telerik:RadPageView ID="rpvMensaje" runat="server">
-                            <div style="height: calc(100% - 30px);">
-                                <div class="ctrlBasico" style="padding: 10px; text-align: justify;">
-                                    <fieldset>
-                                        <legend>
-                                            <label>Mensaje envio cuestionarios:</label></legend>
-                                        <telerik:RadEditor ID="lMensaje" runat="server" Width="540" Height="350" EditModes="Design" ToolsFile="~/Assets/AdvancedTools.xml"></telerik:RadEditor>
-                                    </fieldset>
-                                    <div style="height: 10px; clear: both;"></div>
-                                    <div class="divControlDerecha">
-                                        <telerik:RadButton ID="btnGuardar" runat="server" Text="Actualizar" AutoPostBack="true" OnClick="btnGuardar_Click"></telerik:RadButton>
-                                    </div>
-                                </div>
-                                <div class="ctrlBasico" style="padding: 10px; text-align: justify;">
-                                    <fieldset>
-                                        <legend>
-                                            <label>Instrucciones cuestionario impreso:</label></legend>
-                                        <telerik:RadEditor ID="reInstrucciones" runat="server" Width="540" Height="350" EditModes="Design" ToolsFile="~/Assets/AdvancedTools.xml"></telerik:RadEditor>
-                                    </fieldset>
-                                    <div style="height: 10px; clear: both;"></div>
-                                    <div class="divControlDerecha">
-                                        <telerik:RadButton ID="btnInstrucciones" runat="server" Text="Actualizar" AutoPostBack="true" OnClick="btnInstrucciones_Click"></telerik:RadButton>
-                                    </div>
-                                </div>
-                            </div>
+                              <div style="clear: both;"></div>
+                           <%-- <telerik:RadButton ID="btnReasignarTodasContrasenas" runat="server" Text="Reasignar a todos" OnClick="btnReasignarTodasContrasenas_Click"></telerik:RadButton>--%>
+                            <telerik:RadButton ID="btnReasignarContrasena" runat="server" Text="Reasignar contraseña al evaluador seleccionado" OnClick="btnReasignarContrasena_Click"></telerik:RadButton>
+                             <telerik:RadButton ID="btnEnvioCuestionarios" runat="server" Text="Enviar cuestionarios" Enabled="false" OnClientClicking="OpenEnvioSolicitudesWindow"></telerik:RadButton>
                         </telerik:RadPageView>
                     </telerik:RadMultiPage>
-                </div>
-            </telerik:RadPane>
+          <%--  </telerik:RadPane>
             <telerik:RadPane ID="RadPane2" runat="server" Width="30">
                 <telerik:RadSlidingZone ID="RadSlidingZone1" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
                     <telerik:RadSlidingPane ID="rspMensaje" runat="server" Title="Ayuda" Width="500" MinWidth="500" Height="100%">
@@ -791,13 +902,11 @@
                                 Las preguntas abiertas ayudan a solicitar respuestas libres al evaluador. Al permitir texto libre en las respuestas, estas pueden ser variadas 
                                 ya que reflejan la opinión personal de cada uno.<br />
                                 <br />
-
                                 En la pestaña "Preguntas abiertas" puedes crearlas añadiendo la pregunta y una descripción de la misma. Dicha descripción aparecerá como tooltip en cada pregunta. 
                                 Las preguntas abiertas se podrán editar y eliminar. Al terminar de diseñarlas deberás dar click al botón "Asignar preguntas" mismas que 
                                 se agregaran al cuestionario original y se asignaran a los evaluadores.
                                 <br />
                                 <br />
-
                                 Después de dicha acción ya no se podrán editar, eliminar o crear nuevas preguntas. 
                                 (Recuerda que para asignar las preguntas abiertas deberás haber asignado el cuestionario anteriormente).
                                 
@@ -806,7 +915,7 @@
                     </telerik:RadSlidingPane>
                 </telerik:RadSlidingZone>
             </telerik:RadPane>
-        </telerik:RadSplitter>
+        </telerik:RadSplitter>--%>
     </div>
     <telerik:RadWindowManager ID="rwmMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>
 </asp:Content>

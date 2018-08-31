@@ -21,7 +21,7 @@
 
         function OpenWindowCopiarTramites(pIdTramite, pXmlTramite) {
             var vURL = "VentanaCopiarFormatoTramite.aspx?Indice=" + pIdTramite;
-            var vTitulo = "Copiar de";
+            var vTitulo = "Copiar";
             var oWin = window.radopen(vURL, "rwTramites", document.documentElement.clientWidth - 550, document.documentElement.clientHeight - 180);
             oWin.set_title(vTitulo);
 

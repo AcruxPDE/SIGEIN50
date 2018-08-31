@@ -21,12 +21,11 @@ namespace SIGE.WebApp.Administracion
     {
         #region Variables
 
-
         private string vClUsuario = string.Empty;
         private string vNbPrograma = string.Empty;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
-        //StringBuilder builder = new StringBuilder();
 
+        //StringBuilder builder = new StringBuilder();
         //string Email { set; get; }
 
         private int vIdRequisicion
@@ -45,13 +44,25 @@ namespace SIGE.WebApp.Administracion
 
         #endregion
 
-        protected void Page_Load(object sender, EventArgs e)
-        {            
-            vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
-            vNbPrograma = ContextoUsuario.nbPrograma;
+        protected void SeguridadProcesos()
+        {
+            btnGuardar.Enabled = ContextoUsuario.oUsuario.TienePermiso("J.A.A.A");
+            btnEditar.Enabled = ContextoUsuario.oUsuario.TienePermiso("J.A.A.B");
+            btnCancelar.Enabled = ContextoUsuario.oUsuario.TienePermiso("J.A.A.C");
+            btnEliminar.Enabled = ContextoUsuario.oUsuario.TienePermiso("J.A.A.D");
+            btnBuscarCandidato.Enabled = ContextoUsuario.oUsuario.TienePermiso("J.A.A.E");
         }
 
-        
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
+            vNbPrograma = ContextoUsuario.nbPrograma;
+
+            if (!IsPostBack)
+                SeguridadProcesos();
+
+        }
+
         protected void grdRequisicion_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             RequisicionNegocio nRequisicion = new RequisicionNegocio();
@@ -64,21 +75,20 @@ namespace SIGE.WebApp.Administracion
             RequisicionNegocio negocio = new RequisicionNegocio();
             foreach (GridDataItem item in grdRequisicion.SelectedItems)
             {
-                vEstatus = item.GetDataKeyValue("CL_ESTATUS_REQUISICION").ToString();
-                if (vEstatus == "CREADA")
-                {
+                //vEstatus = item.GetDataKeyValue("CL_ESTATUS_REQUISICION").ToString();
+                //if (vEstatus == "CREADA")
+                //{
+                vIdRequisicion = (int.Parse(item.GetDataKeyValue("ID_REQUISICION").ToString()));
+                //  var vObtenerKrequisicion = negocio.ObtieneRequisicion(pIdRequisicion: vIdRequisicion).FirstOrDefault();
+                E_RESULTADO vResultado = negocio.Elimina_K_REQUISICION(ID_REQUISICION: vIdRequisicion, programa: vNbPrograma, usuario: vClUsuario);
+                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindow");
+                //}
+                //else
+                //{
+                //    UtilMensajes.MensajeResultadoDB(rnMensaje, "Esta requisición no se puede eliminar por que está: " + vEstatus, E_TIPO_RESPUESTA_DB.WARNING, 400, 200);
 
-                    vIdRequisicion = (int.Parse(item.GetDataKeyValue("ID_REQUISICION").ToString()));
-                    var vObtenerKrequisicion = negocio.ObtieneRequisicion(pIdRequisicion: vIdRequisicion).FirstOrDefault();
-                    E_RESULTADO vResultado = negocio.Elimina_K_REQUISICION(ID_REQUISICION: vIdRequisicion, programa: vNbPrograma, usuario: vClUsuario);
-                    string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                    UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindow");
-                }
-                else
-                {
-                    UtilMensajes.MensajeResultadoDB(rnMensaje, "Esta requisición no se puede eliminar por que está: " + vEstatus, E_TIPO_RESPUESTA_DB.WARNING, 400, 200);
-
-                }
+                //}
             }
         }
 
@@ -94,6 +104,19 @@ namespace SIGE.WebApp.Administracion
 
         protected void grdRequisicion_ItemDataBound(object sender, GridItemEventArgs e)
         {
+
+            if (e.Item is GridDataItem)
+            {
+                GridDataItem item = (GridDataItem)e.Item;
+
+                if (e.Item.OwnerTableView.Name == "CandidatosAsociados")
+                {
+                    GridDataItem dataItem = e.Item as GridDataItem;
+                    if (dataItem["CL_ESTATUS_CANDIDATO_REQUISICION"].Text == "Contratado")
+                        item.BackColor = System.Drawing.ColorTranslator.FromHtml("#C6DB95");
+                }
+            }
+
             if (e.Item is GridPagerItem)
             {
                 RadComboBox PageSizeCombo = (RadComboBox)e.Item.FindControl("PageSizeComboBox");
@@ -110,6 +133,18 @@ namespace SIGE.WebApp.Administracion
                 PageSizeCombo.Items.Add(new RadComboBoxItem("1000"));
                 PageSizeCombo.FindItemByText("1000").Attributes.Add("ownerTableViewId", grdRequisicion.MasterTableView.ClientID);
                 PageSizeCombo.FindItemByText(e.Item.OwnerTableView.PageSize.ToString()).Selected = true;
+            }
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            RequisicionNegocio negocio = new RequisicionNegocio();
+            foreach (GridDataItem item in grdRequisicion.SelectedItems)
+            {
+                vIdRequisicion = (int.Parse(item.GetDataKeyValue("ID_REQUISICION").ToString()));
+                E_RESULTADO vResultado = negocio.ActualizaEstatusRequisicion(ID_REQUISICION: vIdRequisicion, programa: vNbPrograma, usuario: vClUsuario);
+                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindow");
             }
         }
 
@@ -130,7 +165,7 @@ namespace SIGE.WebApp.Administracion
         //    get { return (int)ViewState["vIdAutoriza"]; }
         //    set { ViewState["vIdAutoriza"] = value; }
         //}
-     
+
         //private string vNbPuesto
         //{
         //    get { return (string)ViewState["vNbPuesto"]; }
@@ -147,14 +182,14 @@ namespace SIGE.WebApp.Administracion
         //    get { return (string)ViewState["vCausa"]; }
         //    set { ViewState["vCausa"] = value; }
         //}
-        
+
 
         //protected void btnNotificar_Click(object sender, EventArgs e)
         //{
         //    //vIdAutoriza = 0;
         //    //Mail mail = new Mail(ContextoApp.mailConfiguration);    
         //    //EmpleadoNegocio nEmpleado = new EmpleadoNegocio();
-           
+
         //    //foreach (GridDataItem item in grdRequisicion.SelectedItems)
         //    //{
 
@@ -169,7 +204,7 @@ namespace SIGE.WebApp.Administracion
         //    //        vID_RQUISICION = (int)item.GetDataKeyValue("ID_REQUISICION");
         //    //        vEstatusPuesto = item.GetDataKeyValue("CL_ESTATUS").ToString();
         //    //        vCausa =item.GetDataKeyValue("CL_CAUSA").ToString();
-                   
+
         //    //        var vUsuarioInfo = nEmpleado.Obtener_M_EMPLEADO(ID_EMPLEADO: vIdAutoriza).FirstOrDefault();
         //    //        if (vUsuarioInfo != null)
         //    //        {
@@ -225,9 +260,7 @@ namespace SIGE.WebApp.Administracion
         //    //        UtilMensajes.MensajeResultadoDB(rnMensaje, "Esta requisición no cuenta con una persona asignada para autorizar, puedes editar la requisisción para agregarla.", E_TIPO_RESPUESTA_DB.ERROR, 400, 180);
         //    //    }
         //    //}
-
         //}
-
         //public void EnvioCorreo(string Email, string Mensaje, string Asunto)
         //{
         //    Mail mail = new Mail(ContextoApp.mailConfiguration);
@@ -235,8 +268,5 @@ namespace SIGE.WebApp.Administracion
         //    RadProgressContext progress = RadProgressContext.Current;
         //    mail.Send(Asunto, Mensaje);
         //}
-
-
-
     }
 }

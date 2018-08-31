@@ -1,0 +1,125 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/IDP/ContextIDP.master" AutoEventWireup="true" CodeBehind="VentanaCapturaManualPruebas.aspx.cs" Inherits="SIGE.WebApp.IDP.VentanaCapturaManualPruebas" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
+    <div style="height: calc(100% - 10px);">
+        <telerik:RadSplitter ID="rsCapturaManual" Width="100%" Height="100%" BorderSize="0" runat="server">
+            <telerik:RadPane ID="rpBotones" runat="server" Width="200px" Height="100%">
+                <telerik:RadTabStrip ID="tbCapturaManual" runat="server" Align="Right" SelectedIndex="0" Width="100%" MultiPageID="mpgCapturaManual" Orientation="VerticalLeft" CssClass="divControlDerecha">
+                    <Tabs>
+                        <telerik:RadTab runat="server" Text="Personalidad laboral I" Enabled="false"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="Intereses personales" Enabled="false"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="Estilo de pensamiento" Enabled="false"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="Aptitud mental I" Enabled="false"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="Aptitud mental II" Enabled="false"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="Personalidad laboral II" Enabled="false"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="Adaptación al medio" Enabled="false"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="TIVA" Enabled="false"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="Ortografía I" Enabled="false"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="Ortografía II" Enabled="false"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="Ortografía III" Enabled="false"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="Técnica PC" Enabled="false"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="Redacción" Enabled="false"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="Prueba de inglés" Enabled="false"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="Factores adicionales" Enabled="false"></telerik:RadTab>
+                    </Tabs>
+                </telerik:RadTabStrip>
+            </telerik:RadPane>
+            <telerik:RadSplitBar ID="rsbCapturaManual" runat="server" Width="100%" CollapseMode="Forward" EnableResize="false"></telerik:RadSplitBar>
+            <telerik:RadPane ID="rpCapturaManual" runat="server">
+                <telerik:RadMultiPage ID="mpgCapturaManual" runat="server" SelectedIndex="0" Height="100%">
+                    <telerik:RadPageView ID="rpvLaboralI" runat="server">
+<<<<<<< HEAD
+                        <iframe id="ifLaboralI" runat="server" frameborder="1"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvInteresesPersonales" runat="server">
+                        <iframe id="ifInteresesPersonales" runat="server" frameborder="1"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvEstilo" runat="server">
+                        <iframe id="ifEstilo" runat="server" frameborder="1"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvMentalI" runat="server">
+                        <iframe id="ifMentalI" runat="server" frameborder="1"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvMentalII" runat="server">
+                        <iframe id="ifMentalII" runat="server" frameborder="1"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvLaboralII" runat="server">
+                        <iframe id="ifLaboralII" runat="server" frameborder="1"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvAdáptacion" runat="server">
+                        <iframe id="ifAdaptacion" runat="server" frameborder="1"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvTiva" runat="server">
+                        <iframe id="ifTiva" runat="server" frameborder="1"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvOrtografiaI" runat="server">
+                        <iframe id="ifOrtografiaI" runat="server" frameborder="1"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvOrtgrafiaII" runat="server">
+                        <iframe id="ifOrtografiaII" runat="server" frameborder="1"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvOrtografiaIII" runat="server">
+                        <iframe id="ifOrtografiaIII" runat="server" frameborder="1"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvTecnica" runat="server">
+                        <iframe id="ifTecnica" runat="server" frameborder="1"></iframe>
+=======
+                        <iframe id="ifLaboralI" runat="server" frameborder="1" style="padding:10px;"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvInteresesPersonales" runat="server">
+                        <iframe id="ifInteresesPersonales" runat="server" frameborder="1" style="padding:10px;"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvEstilo" runat="server">
+                        <iframe id="ifEstilo" runat="server" frameborder="1" style="padding:10px;"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvMentalI" runat="server">
+                        <iframe id="ifMentalI" runat="server" frameborder="1" style="padding:10px;"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvMentalII" runat="server">
+                        <iframe id="ifMentalII" runat="server" frameborder="1" style="padding:10px;"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvLaboralII" runat="server">
+                        <iframe id="ifLaboralII" runat="server" frameborder="1" style="padding:10px;"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvAdáptacion" runat="server">
+                        <iframe id="ifAdaptacion" runat="server" frameborder="1" style="padding:10px;"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvTiva" runat="server">
+                        <iframe id="ifTiva" runat="server" frameborder="1" style="padding:10px;"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvOrtografiaI" runat="server">
+                        <iframe id="ifOrtografiaI" runat="server" frameborder="1" style="padding:10px;"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvOrtgrafiaII" runat="server">
+                        <iframe id="ifOrtografiaII" runat="server" frameborder="1" style="padding:10px;"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvOrtografiaIII" runat="server">
+                        <iframe id="ifOrtografiaIII" runat="server" frameborder="1" style="padding:10px;"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvTecnica" runat="server">
+                        <iframe id="ifTecnica" runat="server" frameborder="1" style="padding:10px;"></iframe>
+>>>>>>> DEV
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvRedaccion" runat="server">
+                        <iframe id="ifRedaccion" runat="server" frameborder="1"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvIngles" runat="server">
+<<<<<<< HEAD
+                        <iframe id="ifIngles" runat="server" frameborder="1"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvFactoresAdicionales" runat="server">
+                        <iframe id="ifFactoresAdicionales" runat="server" frameborder="1"></iframe>
+=======
+                        <iframe id="ifIngles" runat="server" frameborder="1" style="padding:10px;"></iframe>
+                    </telerik:RadPageView>
+                     <telerik:RadPageView ID="rpvFactoresAdicionales" runat="server">
+                        <iframe id="ifFactoresAdicionales" runat="server" frameborder="1" style="padding:10px;"></iframe>
+>>>>>>> DEV
+                    </telerik:RadPageView>
+                </telerik:RadMultiPage>
+            </telerik:RadPane>
+        </telerik:RadSplitter>
+    </div>
+</asp:Content>

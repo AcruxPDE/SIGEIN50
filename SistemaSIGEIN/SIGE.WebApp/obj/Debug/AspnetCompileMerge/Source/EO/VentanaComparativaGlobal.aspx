@@ -57,14 +57,18 @@
         }
 
         function OpenCumPersonal(pIdEvaluado, pIdPeriodo) {
-            var vURL = "../EO/VentanaReporteCumplimientoPersonal.aspx";
+            var vURL = "VentanaReporteCumplimientoPersonal.aspx";
+<<<<<<< HEAD
+            var vTitulo = "Reporte cumplimiento Personal";
+=======
             var vTitulo = "Reporte Cumplimiento Personal";
+>>>>>>> DEV
             vURL = vURL + "?idEvaluado=" + pIdEvaluado + "&idPeriodo=" + pIdPeriodo;
             OpenSelectionWindow(vURL, "winEvaluado", "Reporte cumplimiento personal")
         }
 
         function OpenIndividualComparativo(pIdEvaluado,pIdEmpleado) {
-            OpenSelectionWindow("/EO/VentanaComparativaIndividual.aspx?ID_EVALUADO=" + pIdEvaluado + "&ID_EMPLEADO=" + pIdEmpleado + "&CL_ORIGEN=GLOBAL", "winEvaluado", "Comparación desempeño personal");
+            OpenSelectionWindow("VentanaComparativaIndividual.aspx?ID_EVALUADO=" + pIdEvaluado + "&ID_EMPLEADO=" + pIdEmpleado + "&CL_ORIGEN=GLOBAL", "winEvaluado", "Comparación desempeño personal");
         }
 
     </script>
@@ -210,7 +214,7 @@
                         Height="100%"
                         Transitions="true"
                         Skin="Silk">
-                        <ChartTitle Text="Cumplimiento global de periodos">
+                        <ChartTitle Text="Cumplimiento general de periodos">
                             <Appearance Align="Center" Position="Top">
                             </Appearance>
                         </ChartTitle>
@@ -219,6 +223,7 @@
                             </Appearance>
                         </Legend>
                         <PlotArea>
+                            <YAxis MinValue="0" MaxValue="100" Step="10" ></YAxis>
                         </PlotArea>
                     </telerik:RadHtmlChart>
                 </div>

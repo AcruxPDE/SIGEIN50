@@ -18,5 +18,6 @@ namespace SIGE.Entidades
         public string CL_SOLICITUD { get; set; }
         public Nullable<int> ID_BATERIA { get; set; }
         public string FOLIO_BATERIA { get; set; }
+        public Nullable<System.Guid> CL_TOKEN { get; set; }
     }
 }

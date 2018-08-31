@@ -19,7 +19,12 @@
         <script type="text/javascript">
 
             function OnCloseWindow() {
-                window.location = "/Logout.aspx"
+<<<<<<< HEAD
+                var vUrl = '<%= ResolveClientUrl("~/Logout.aspx") %>';
+                window.location = vUrl;
+=======
+                window.location = "~/Logout.aspx"
+>>>>>>> DEV
             }
 
             function closeWindow() {
@@ -393,7 +398,7 @@
                     <label id="lblarea" name="lblarea">
                         <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
                         <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>
-                        <span style="border: 1px solid gray; background: #0087CF; border-radius: 5px;" title="Metodología para la compensación ">&nbsp;&nbsp;</span>&nbsp;Área:
+                        <span style="border: 1px solid gray; background: #0087CF; border-radius: 5px;" title="Metodología para la compensación ">&nbsp;&nbsp;</span>&nbsp;Área/Departamento:
                     </label>
                 </td>
                 <td class="ctrlTableDataBorderContext">

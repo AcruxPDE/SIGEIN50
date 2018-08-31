@@ -274,6 +274,15 @@ namespace SIGE.WebApp.MPC {
         protected global::Telerik.Web.UI.RadHtmlChart ScatterChartGraficaAnalisis;
         
         /// <summary>
+        /// btnImprimir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnImprimir;
+        
+        /// <summary>
         /// rpAyuda control.
         /// </summary>
         /// <remarks>

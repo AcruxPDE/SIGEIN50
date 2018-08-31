@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using Telerik.Web.UI;
 using WebApp.Comunes;
@@ -141,7 +142,7 @@ namespace SIGE.WebApp.IDP
         {
             CargarDatos();
             GraficaConsultaGlobal(vLstCalificaciones);
-            rgdCompatibilidad.Rebind();
+            //rgdCompatibilidad.Rebind();
             if (vLstCalificaciones[0].DS_COMENTARIOS != null)
             {
                 txtComentarios.InnerHtml = Utileria.MostrarNotas(vLstCalificaciones[0].DS_COMENTARIOS);
@@ -171,12 +172,61 @@ namespace SIGE.WebApp.IDP
 
                 CargarDatos();
                 GraficaConsultaGlobal(vLstCalificaciones);
+                dvCompatibilidad.Controls.Add(GeneraTabla());
             }
         }
 
-        protected void rgdCompatibilidad_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        protected HtmlGenericControl GeneraTabla()
         {
-            rgdCompatibilidad.DataSource = vLstCalificaciones;
+            HtmlGenericControl vTabla = new HtmlGenericControl("table");
+            vTabla.Attributes.Add("style", "border-collapse: collapse;");
+
+            HtmlGenericControl vCtrlColumn = new HtmlGenericControl("thead");
+            vCtrlColumn.Attributes.Add("style", "background: #E6E6E6;");
+
+            HtmlGenericControl vCtrlRowEncabezado1 = new HtmlGenericControl("tr");
+            vCtrlRowEncabezado1.Attributes.Add("style", "page-break-inside:avoid; page-break-after:auto;");
+
+            HtmlGenericControl vCtrlTh1 = new HtmlGenericControl("td");
+            vCtrlTh1.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; font-weight:bold; width:200px;");
+            vCtrlTh1.InnerText = String.Format("{0}", "Elemento");
+            vCtrlRowEncabezado1.Controls.Add(vCtrlTh1);
+
+            HtmlGenericControl vCtrlTh2 = new HtmlGenericControl("td");
+            vCtrlTh2.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; font-weight:bold; width:100px;");
+            vCtrlTh2.InnerText = String.Format("{0}", "Valor");
+            vCtrlRowEncabezado1.Controls.Add(vCtrlTh2);
+
+            vCtrlColumn.Controls.Add(vCtrlRowEncabezado1);
+
+            vTabla.Controls.Add(vCtrlColumn);
+
+            HtmlGenericControl vCtrlTbody = new HtmlGenericControl("tbody");
+
+            foreach (var item in vLstCalificaciones)
+            {
+                HtmlGenericControl vCtrlRowNivel = new HtmlGenericControl("tr");
+                vCtrlRowNivel.Attributes.Add("style", "page-break-inside:avoid; page-break-after:auto;");
+
+                HtmlGenericControl vCtrlNivel = new HtmlGenericControl("td");
+                vCtrlNivel.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt;");
+                vCtrlNivel.InnerText = String.Format("{0}", item.NB_FACTOR);
+                vCtrlRowNivel.Controls.Add(vCtrlNivel);
+
+                HtmlGenericControl vCtrlPromedio = new HtmlGenericControl("td");
+                vCtrlPromedio.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt;");
+                vCtrlPromedio.Attributes.Add("align", "right");
+                vCtrlPromedio.InnerText = String.Format("{0:N2}", item.PR_VALOR);
+                vCtrlRowNivel.Controls.Add(vCtrlPromedio);
+
+                vCtrlTbody.Controls.Add(vCtrlRowNivel);
+            }
+
+            vTabla.Controls.Add(vCtrlTbody);
+
+            return vTabla;
+
+           // rgdCompatibilidad.DataSource = vLstCalificaciones;
         }
 
     }

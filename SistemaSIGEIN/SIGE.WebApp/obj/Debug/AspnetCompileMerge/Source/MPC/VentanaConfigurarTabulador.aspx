@@ -214,6 +214,7 @@
             <telerik:RadTab Text="Valores de valuación" SelectedIndex="2"></telerik:RadTab>
             <%-- <telerik:RadTab Text="Nivel de mercado" SelectedIndex="3"></telerik:RadTab>--%>
             <telerik:RadTab Text="Parámetros" SelectedIndex="3"></telerik:RadTab>
+            <telerik:RadTab Text="Niveles" SelectedIndex="4"></telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
     <div style="height: calc(100% - 60px);">
@@ -302,20 +303,20 @@
                         </div>
                         <div style="clear: both; height: 10px;"></div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnSeleccionarEmpleados" runat="server" name="btnSeleccionarEmpleados" AutoPostBack="false" Text="Seleccionar por persona"  OnClientClicked="OpenEmployeeSelectionWindow"></telerik:RadButton>
+                            <telerik:RadButton ID="btnSeleccionarEmpleados" runat="server" name="btnSeleccionarEmpleados" AutoPostBack="false" Text="Seleccionar por persona" OnClientClicked="OpenEmployeeSelectionWindow"></telerik:RadButton>
                         </div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnSeleccionarPuestos" runat="server" name="btnSeleccionarPuestos" AutoPostBack="false" Text="Seleccionar por puesto"  OnClientClicked="OpenPuestosSelectionWindow"></telerik:RadButton>
+                            <telerik:RadButton ID="btnSeleccionarPuestos" runat="server" name="btnSeleccionarPuestos" AutoPostBack="false" Text="Seleccionar por puesto" OnClientClicked="OpenPuestosSelectionWindow"></telerik:RadButton>
                         </div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnSeleccionarAreas" runat="server" name="btnSeleccionarAreas" AutoPostBack="false" Text="Seleccionar por área/departamento"  OnClientClicked="OpenSelectionDepartamento"></telerik:RadButton>
+                            <telerik:RadButton ID="btnSeleccionarAreas" runat="server" name="btnSeleccionarAreas" AutoPostBack="false" Text="Seleccionar por área/departamento" OnClientClicked="OpenSelectionDepartamento"></telerik:RadButton>
                         </div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnEliminarEmpleados" OnClick="btnEliminarEmpleados_Click" runat="server" name="btnEliminarEmpleados" AutoPostBack="true" Text="Eliminar" ></telerik:RadButton>
+                            <telerik:RadButton ID="btnEliminarEmpleados" OnClick="btnEliminarEmpleados_Click" runat="server" name="btnEliminarEmpleados" AutoPostBack="true" Text="Eliminar"></telerik:RadButton>
                         </div>
                     </telerik:RadPane>
                     <telerik:RadPane ID="rpAyudaSeleccionEmpleados" runat="server" Scrolling="None" Width="22px">
-                        <telerik:RadSlidingZone ID="rszSeleccionEmpleados" runat="server" SlideDirection="Left" ExpandedPaneId="rsSeleccionEmpleados" Width="22px">
+                        <telerik:RadSlidingZone ID="rszSeleccionEmpleados" runat="server" SlideDirection="Left" ExpandedPaneId="rsSeleccionEmpleados" Width="22px" ClickToOpen="true">
                             <telerik:RadSlidingPane ID="rspAyudaSeleccionEmpleados" runat="server" Title="Ayuda" Width="250px" RenderMode="Mobile" Height="100%">
                                 <div style="padding: 10px; text-align: justify;">
                                     <p>
@@ -385,7 +386,7 @@
                         </div>
                     </telerik:RadPane>
                     <telerik:RadPane ID="rpAyudaFactoresValuacion" runat="server" Scrolling="None" Width="22px">
-                        <telerik:RadSlidingZone ID="rszFactoresValuacion" runat="server" SlideDirection="Left" ExpandedPaneId="rsFactoresValuacion" Width="22px">
+                        <telerik:RadSlidingZone ID="rszFactoresValuacion" runat="server" SlideDirection="Left" ExpandedPaneId="rsFactoresValuacion" Width="22px" ClickToOpen="true">
                             <telerik:RadSlidingPane ID="rspAyudaFactoresValuacion" runat="server" Title="Ayuda" Width="240px" RenderMode="Mobile" Height="200">
                                 <div style="padding: 10px; text-align: justify;">
                                     <p>Determina los factores de valuación con los que deseas realizar el tabulador de sueldos. Te recomendamos no elegir más de 4 factores.</p>
@@ -421,7 +422,6 @@
                     </telerik:RadPane>
                 </telerik:RadSplitter>
             </telerik:RadPageView>--%>
-
             <telerik:RadPageView ID="rpvNivelesParametros" runat="server">
                 <div style="clear: both; height: 10px;"></div>
                 <div class="ctrlBasico">
@@ -431,7 +431,7 @@
                         Nivel de mercado:</label>
                     <telerik:RadComboBox Filter="Contains" runat="server" ID="cmbNivelMercado" ToolTip="Para fines comparativos el sistema utiliza uno de los niveles de los cuartiles del mercado salarial, esta decisión puede conservarse grabando de manera preseterminada tu selección." Width="190" MarkFirstMatch="true" AutoPostBack="false" DropDownWidth="190" EmptyMessage="Seleccione...">
                     </telerik:RadComboBox>
-                        *Nivel de mercado con el que se presentaran las consultas por defecto.
+                    *Nivel de mercado con el que se presentaran las consultas por defecto.
                 </div>
                 <div style="clear: both;"></div>
                 <div class="ctrlBasico">
@@ -558,7 +558,56 @@
                 </div>
                 <div style="height: 15px; clear: both"></div>
                 <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnGuardarConfiguracion" runat="server" name="btnGuardarConfiguracion" AutoPostBack="true" Text="Guardar"  OnClick="btnGuardarConfiguracion_Click"></telerik:RadButton>
+                    <telerik:RadButton ID="btnGuardarConfiguracion" runat="server" name="btnGuardarConfiguracion" AutoPostBack="true" Text="Guardar" OnClick="btnGuardarConfiguracion_Click"></telerik:RadButton>
+                </div>
+            </telerik:RadPageView>
+            <telerik:RadPageView ID="rpvNiveles" runat="server">
+                <div style="height: calc(100% - 50px);">
+                    <telerik:RadGrid ID="grdNiveles"
+                        runat="server"
+                        Width="850px"
+                        Height="100%"
+                        AllowSorting="true"
+                        AllowFilteringByColumn="true"
+                        ShowHeader="true"
+                        HeaderStyle-Font-Bold="true"
+                        OnItemDataBound="grdNiveles_ItemDataBound"
+                        OnNeedDataSource="grdNiveles_NeedDataSource">
+                        <GroupingSettings CaseSensitive="false" />
+                        <ClientSettings>
+                            <Scrolling AllowScroll="true" UseStaticHeaders="true"></Scrolling>
+                        </ClientSettings>
+                        <PagerStyle AlwaysVisible="true" />
+                        <MasterTableView AutoGenerateColumns="false" DataKeyNames="ID_TABULADOR_NIVEL" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true">
+                            <Columns>
+                                <telerik:GridTemplateColumn HeaderText="Clave" HeaderStyle-Width="100" FilterControlWidth="60" AutoPostBackOnFilter="false" DataField="CL_TABULADOR_NIVEL" UniqueName="CL_TABULADOR_NIVEL">
+                                    <ItemTemplate>
+                                        <telerik:RadTextBox ID="txtClNivel" runat="server" Enabled="false" Width="90px" MaxLength="800" Text='<%#Eval("CL_TABULADOR_NIVEL") %>'></telerik:RadTextBox>
+                                    </ItemTemplate>
+                                </telerik:GridTemplateColumn>
+                                <telerik:GridTemplateColumn HeaderText="Nombre" HeaderStyle-Width="180" FilterControlWidth="150" AutoPostBackOnFilter="false" DataField="NB_TABULADOR_NIVEL" UniqueName="NB_TABULADOR_NIVEL">
+                                    <ItemTemplate>
+                                        <telerik:RadTextBox ID="txtNbNivel" runat="server" Width="220px" MaxLength="800" Text='<%#Eval("NB_TABULADOR_NIVEL") %>'></telerik:RadTextBox>
+                                    </ItemTemplate>
+                                </telerik:GridTemplateColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="70" FilterControlWidth="40" HeaderText="Nivel" DataField="NO_NIVEL" UniqueName="NO_NIVEL" ItemStyle-HorizontalAlign="Center"></telerik:GridBoundColumn>
+                                <telerik:GridTemplateColumn HeaderText="Orden" HeaderStyle-Width="70" FilterControlWidth="50" AutoPostBackOnFilter="false" DataField="NO_ORDEN" UniqueName="NO_ORDEN">
+                                    <ItemTemplate>
+                                        <telerik:RadNumericTextBox runat="server" ID="txnOrden" Name="txnOrden" Width="60px" MinValue="1" ShowSpinButtons="true" Text='<%#Eval("NO_ORDEN") %>' NumberFormat-DecimalDigits="0"></telerik:RadNumericTextBox>
+                                    </ItemTemplate>
+                                </telerik:GridTemplateColumn>
+                                <telerik:GridTemplateColumn HeaderText="Progresión" HeaderStyle-Width="70" FilterControlWidth="50" AutoPostBackOnFilter="false" DataField="PR_PROGRESION" UniqueName="PR_PROGRESION">
+                                    <ItemTemplate>
+                                        <telerik:RadNumericTextBox runat="server" ID="txnProgresion" Name="txtProgresion" Width="60px" MinValue="0" ShowSpinButtons="true" Text='<%#Eval("PR_PROGRESION") %>' NumberFormat-DecimalDigits="0" ToolTip="Indica el porcentaje para el incremento entre las posibilidades por nivel."></telerik:RadNumericTextBox>
+                                    </ItemTemplate>
+                                </telerik:GridTemplateColumn>
+                            </Columns>
+                        </MasterTableView>
+                    </telerik:RadGrid>
+                </div>
+                <div style="clear: both; height: 10px;"></div>
+                <div class="ctrlBasico">
+                    <telerik:RadButton ID="btnGuardar" AutoPostBack="true" OnClick="btnGuardar_Click" runat="server" Text="Guardar" Width="100"></telerik:RadButton>
                 </div>
             </telerik:RadPageView>
         </telerik:RadMultiPage>

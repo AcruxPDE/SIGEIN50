@@ -148,6 +148,15 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadGrid grdControlAvance;
         
         /// <summary>
+        /// btnVerMetas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnVerMetas;
+        
+        /// <summary>
         /// btnGuardarPonderacion control.
         /// </summary>
         /// <remarks>

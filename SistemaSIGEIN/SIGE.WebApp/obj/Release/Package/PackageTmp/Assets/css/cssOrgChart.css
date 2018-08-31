@@ -1,0 +1,19 @@
+﻿.RadOrgChart .rocItemContent, .RadOrgChart .rocItemTemplate {
+    height: auto !important;
+}
+
+.RadOrgChart .rocItem {
+    height: auto !important;
+}
+
+.cssVacante .rocItemContent {
+    background-color: #d1fd91 !important;
+}
+
+.cssStaff .rocGroup {
+    background-color: #d2e9ff !important;
+    height: initial !important;
+}
+
+
+

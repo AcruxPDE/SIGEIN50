@@ -1,4 +1,5 @@
-﻿using SIGE.Entidades;
+﻿using Newtonsoft.Json;
+using SIGE.Entidades;
 using SIGE.Entidades.Externas;
 using SIGE.Entidades.FormacionDesarrollo;
 using SIGE.Negocio.FormacionDesarrollo;
@@ -24,9 +25,24 @@ namespace SIGE.WebApp.FYD
             set { ViewState["vs_ec_lista_eventos"] = value; }
         }
 
-        private int vIdEventoSeleccionado {
+        private int? vIdRol;
+
+        private int vIdEventoSeleccionado 
+        {
             get { return (int)ViewState["vs_ec_id_evento_seleccionado"]; }
             set { ViewState["vs_ec_id_evento_seleccionado"] = value; }
+        }
+
+        public bool vEditar
+        {
+            get { return (bool)ViewState["vs_vEditar"]; }
+            set { ViewState["vs_vEditar"] = value; }
+        }
+
+        public bool vEliminar
+        {
+            get { return (bool)ViewState["vs_vEliminar"]; }
+            set { ViewState["vs_vEliminar"] = value; }
         }
 
         #endregion
@@ -49,7 +65,7 @@ namespace SIGE.WebApp.FYD
         {
             EventoCapacitacionNegocio neg = new EventoCapacitacionNegocio();
 
-            UDTT_ARCHIVO excel = neg.ListaAsistencia(vIdEventoSeleccionado);
+            UDTT_ARCHIVO excel = neg.ListaAsistencia(vIdEventoSeleccionado, vIdRol);
 
             if (excel.FI_ARCHIVO.Length != 0)
             {
@@ -64,14 +80,79 @@ namespace SIGE.WebApp.FYD
             }
         }
 
+        private void SeguridadProcesos()
+        {
+            btnAgregarEvento.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.A");
+            vEditar = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.B");
+            vEliminar = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.C");
+            btnCopiar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.D");
+            btnEnvioCorreo.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.E");
+            btnEnvioCorreoEvaluador.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.F");
+            btnCapturaAsistencia.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.G");
+            btnEvaluacionResultados.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.H");
+            btnCalendario.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.I");
+            btnListaAsistencia.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.J");
+            btnReporteResultados.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.K");
+        }
+
+        private void CargarDatosDetalle(int? pIdPeriodo)
+        {
+            var evento = ListaEventos.Where(t => t.ID_EVENTO == pIdPeriodo).FirstOrDefault();
+
+            if (evento != null)
+            {
+                txtNbEvento.Text = evento.CL_EVENTO;
+                txtDescripcion.Text = evento.DS_EVENTO;
+<<<<<<< HEAD
+                txtEstado.Text = evento.NB_ESTADO;
+=======
+                
+                if(evento.CL_TIPO_CURSO == "INDIVIDUAL")
+                    txtTipo.Text = "Individual";
+                else
+                    txtTipo.Text = "Grupal";
+
+                rtbInicio.Text = String.Format("{0:dd/MM/yyyy}", evento.FE_INICIO);
+                rtbTermino.Text = String.Format("{0:dd/MM/yyyy}", evento.FE_TERMINO);
+>>>>>>> DEV
+                txtCurso.Text = evento.NB_CURSO;
+                txtUsuarioMod.Text = evento.CL_USUARIO_APP_MODIFICA;
+                txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", evento.FE_MODIFICA);
+                rlvEventos.Rebind();
+            }                
+        }
+
+
+        private void seleccionarPeriodo()
+        {
+            rlvEventos.SelectedItems.Clear();
+            rlvEventos.SelectedIndexes.Clear();
+            rlvEventos.CurrentPageIndex = 0;
+            if (rlvEventos.Items.Count > 0)
+            {
+                rlvEventos.Items[0].Selected = true;
+            }
+            rlvEventos.Rebind();
+
+            string vIdPeriodoSeleccionado = rlvEventos.Items[0].GetDataKeyValue("ID_EVENTO").ToString();
+            if (vIdPeriodoSeleccionado != null)
+            {
+                CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+            }
+        }
+
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
+
             if (!Page.IsPostBack)
             {
                 vIdEventoSeleccionado = 0;
                 //ObtenerListaEventos();
+                SeguridadProcesos();
             }
         }
 
@@ -88,17 +169,18 @@ namespace SIGE.WebApp.FYD
                 
                 RadListViewDataItem item = e.ListViewItem as RadListViewDataItem;
                 vIdEventoSeleccionado = int.Parse(item.GetDataKeyValue("ID_EVENTO").ToString());
-                var evento = ListaEventos.Where(t => t.ID_EVENTO == vIdEventoSeleccionado).FirstOrDefault();
+                CargarDatosDetalle(vIdEventoSeleccionado);
+                //var evento = ListaEventos.Where(t => t.ID_EVENTO == vIdEventoSeleccionado).FirstOrDefault();
 
-                if (evento != null)
-                {
-                    txtNbEvento.Text = evento.CL_EVENTO;
-                    txtDescripcion.Text = evento.DS_EVENTO;
-                    txtEstado.Text = evento.NB_ESTADO;
-                    txtCurso.Text = evento.NB_CURSO;
-                    txtUsuarioMod.Text = evento.CL_USUARIO_APP_MODIFICA;
-                    txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", evento.FE_MODIFICA);
-                }                
+                //if (evento != null)
+                //{
+                //    txtNbEvento.Text = evento.CL_EVENTO;
+                //    txtDescripcion.Text = evento.DS_EVENTO;
+                //    txtEstado.Text = evento.NB_ESTADO;
+                //    txtCurso.Text = evento.NB_CURSO;
+                //    txtUsuarioMod.Text = evento.CL_USUARIO_APP_MODIFICA;
+                //    txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", evento.FE_MODIFICA);
+                //}                
             }
         }
         
@@ -129,12 +211,19 @@ namespace SIGE.WebApp.FYD
 
                 UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, null);
 
-                vIdEventoSeleccionado = 0;
-                txtCurso.Text = "";
-                txtDescripcion.Text = "";
-                txtEstado.Text = "";
-                txtNbEvento.Text = "";
+                //vIdEventoSeleccionado = 0;
+                //txtCurso.Text = "";
+                //txtDescripcion.Text = "";
+                //txtEstado.Text = "";
+                //txtNbEvento.Text = "";
                 rlvEventos.Rebind();
+                string vIdPeriodoSeleccionado = rlvEventos.SelectedItems[0].GetDataKeyValue("ID_EVENTO").ToString();
+                if (vIdPeriodoSeleccionado != null)
+                {
+                    CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+                }
+
+
             }                        
         }
 
@@ -150,6 +239,29 @@ namespace SIGE.WebApp.FYD
             rlvEventos.FilterExpressions.Add(provider.ListViewExpressions[0]);
             rlvEventos.Rebind();
 
+        }
+
+        protected void ramEventos_AjaxRequest(object sender, AjaxRequestEventArgs e)
+        {
+            E_SELECTOR vSeleccion = new E_SELECTOR();
+            string pParameter = e.Argument;
+
+            if (pParameter != null)
+                vSeleccion = JsonConvert.DeserializeObject<E_SELECTOR>(pParameter);
+
+            if (vSeleccion.clTipo == "ACTUALIZARLISTA")
+            {
+                seleccionarPeriodo();
+            }
+            else if (vSeleccion.clTipo == "ACTUALIZAR")
+            {
+                rlvEventos.Rebind();
+                string vIdPeriodoSeleccionado = rlvEventos.SelectedItems[0].GetDataKeyValue("ID_EVENTO").ToString();
+                if (vIdPeriodoSeleccionado != null)
+                {
+                    CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+                }
+            }
         }
     }
 }

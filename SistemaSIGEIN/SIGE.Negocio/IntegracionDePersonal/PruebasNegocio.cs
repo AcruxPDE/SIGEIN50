@@ -23,6 +23,25 @@ namespace SIGE.Negocio.Administracion
             return operaciones.Obtener_C_PRUEBA(pIdPrueba, pClPrueba, pNbPrueba, pIdCuestionario, pNoTiempo); //fe_creacion, fe_modificacion, cl_usuario_app_crea, cl_usuario_app_modifica, nb_programa_crea, nb_programa_modifica);
         }
 
+        public List<SPE_OBTIENE_CANDIDATOS_BATERIA_MASIVA_Result> ObtenerCandidatoFolio(string pNbCandidato = null, string pNbPaterno = null, string pNbMaterno = null )
+        {
+            PruebasOperaciones operaciones = new PruebasOperaciones();
+            return operaciones.ObtenerCandidatoFolio(pNbCandidato, pNbPaterno, pNbMaterno);
+        }
+
+<<<<<<< HEAD
+        public List<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result> ObtenerPruebasConfiguradas()
+        {
+            PruebasOperaciones operaciones = new PruebasOperaciones();
+            return operaciones.ObtenerPruebasConfiguradas();
+=======
+        public List<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result> ObtenerPruebasConfiguradas(int? pID_BATERIA = null)
+        {
+            PruebasOperaciones operaciones = new PruebasOperaciones();
+            return operaciones.ObtenerPruebasConfiguradas(pID_BATERIA);
+>>>>>>> DEV
+        }   
+
         public E_RESULTADO InsertaActualiza_C_PRUEBA(string tipo_transaccion, SPE_OBTIENE_C_PRUEBA_Result v_c_prueba, string usuario, string programa)
         {
             PruebasOperaciones operaciones = new PruebasOperaciones();
@@ -68,6 +87,12 @@ namespace SIGE.Negocio.Administracion
             return UtilRespuesta.EnvioRespuesta(operaciones.InsertaActualiza_K_PRUEBA(tipo_transaccion, pID_PRUEBA, v_k_prueba, usuario, programa));
         }
 
+        public E_RESULTADO InsertaActualizaPruebasBateria(int pID_BATERIA, string pXmlPruebas, string usuario, string programa, string clTipoTransaccion)
+        {
+            PruebasOperaciones operaciones = new PruebasOperaciones();
+            return UtilRespuesta.EnvioRespuesta(operaciones.InsertaActualizaPruebasBateria(pID_BATERIA, pXmlPruebas, usuario, programa, clTipoTransaccion));
+        }
+
         public E_RESULTADO CorrigePrueba(string tipo_transaccion, int pID_PRUEBA, SPE_OBTIENE_K_PRUEBA_Result v_k_prueba, string usuario, string programa)
         {
             PruebasOperaciones operaciones = new PruebasOperaciones();
@@ -84,6 +109,12 @@ namespace SIGE.Negocio.Administracion
         {
             PruebasOperaciones oPruebas = new PruebasOperaciones();
             return UtilRespuesta.EnvioRespuesta(oPruebas.EliminarRespuestasPrueba(pIdPrueba, pClUsuario, pNbPrograma));
+        }
+
+        public E_RESULTADO EliminarPruebaBateria(string pXmlPruebas = null, int? pIdBateria = null, string pClUsuario = null, string pNbPrograma = null)
+        {
+            PruebasOperaciones oPruebas = new PruebasOperaciones();
+            return UtilRespuesta.EnvioRespuesta(oPruebas.EliminarPruebaBateria(pXmlPruebas, pIdBateria, pClUsuario, pNbPrograma));
         }
 
         public E_RESULTADO EliminaBateriaPruebas(string pXmlBaterias = null, string pNbUsuario = null, string pNbPrograma = null)
@@ -222,10 +253,10 @@ namespace SIGE.Negocio.Administracion
             return UtilRespuesta.EnvioRespuesta(operaciones.InsertaCompetenciaFactor(pXML_COMPETENCIAS, pID_FACTOR, pID_PRUEBA, pCL_USUARIO, pNB_PROGRAMA));
         }
 
-        public E_RESULTADO EliminaCompetenciaFactor(int pID_FACTOR, int pID_COMPETENCIA, string usuario, string programa)
+        public E_RESULTADO EliminaCompetenciaFactor(int pID_FACTOR, string pXmlCompetencias, string usuario, string programa)
         {
             PruebasOperaciones operaciones = new PruebasOperaciones();
-            return UtilRespuesta.EnvioRespuesta(operaciones.EliminarCompetenciaFactor(pID_FACTOR, pID_COMPETENCIA, usuario, programa));
+            return UtilRespuesta.EnvioRespuesta(operaciones.EliminarCompetenciaFactor(pID_FACTOR, pXmlCompetencias, usuario, programa));
         }
 
         public SPE_OBTIENE_BATERIA_PRUEBAS_CANDIDATO_Result ObtenienePruebasResultadosCandidatos(int? pIdBateria = null)

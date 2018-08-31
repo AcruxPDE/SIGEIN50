@@ -16,13 +16,58 @@ namespace SIGE.WebApp.Administracion
 {
     public partial class OrganigramaPlazas : System.Web.UI.Page
     {
+        protected string ObtieneCssClass(bool pFgEmpleados, int vNivelDiferencia)
+        {
+            string vCssClass = "";
+            switch(vNivelDiferencia)
+            {
+                case 1 :
+                    vCssClass = "cssNivel1" + pFgEmpleados.ToString();
+                break;
+                case 2:
+                   vCssClass = "cssNivel2" + pFgEmpleados.ToString();
+                break;
+                case 3:
+                   vCssClass = "cssNivel3" + pFgEmpleados.ToString();
+                break;
+                case 4:
+                   vCssClass = "cssNivel4" + pFgEmpleados.ToString();
+                break;
+                case 5:
+                   vCssClass = "cssNivel5" + pFgEmpleados.ToString();
+                break;
+                case 6:
+                   vCssClass = "cssNivel6" + pFgEmpleados.ToString();
+                break;
+                case 7:
+                   vCssClass = "cssNivel7" + pFgEmpleados.ToString();
+                break;
+                case 8:
+                   vCssClass = "cssNivel8" + pFgEmpleados.ToString();
+                break;
+                case 9:
+                   vCssClass = "cssNivel9" + pFgEmpleados.ToString();
+                break;
+                case 10:
+                   vCssClass = "cssNivel10" + pFgEmpleados.ToString();
+                break;              
+            }
+
+            return vCssClass;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-                CargarDatosEmpresas();
+               // var relativePath = "~/api/export/file";
 
-                CargarDatosOrganigrama();
+                //RadClientExportManager1.PdfSettings.ProxyURL = ResolveUrl(relativePath);
+                //RadClientExportManager1.PdfSettings.Author = "Telerik ASP.NET AJAX";
+
+
+                CargarDatosEmpresas();
+               // CargarDatosOrganigrama();
             }
         }
 
@@ -48,69 +93,97 @@ namespace SIGE.WebApp.Administracion
             cmbEmpresas.SelectedIndex = 0;
         }
 
-        protected void CargarDatosOrganigrama(int? pIdEmpresa = null, bool? pFgMostrarEmpleados = false, int? pIdPlaza = null)
-        {
-            OrganigramaNegocio nOrganigrama = new OrganigramaNegocio();
-            E_ORGANIGRAMA vOrganigrama = nOrganigrama.ObtieneOrganigramaPlazas(pIdPlaza, pIdEmpresa, (bool)pFgMostrarEmpleados);
+        //protected void CargarDatosOrganigrama(int? pIdEmpresa = null, bool? pFgMostrarEmpleados = false, int? pIdPlaza = null)
+        //{
+        //    OrganigramaNegocio nOrganigrama = new OrganigramaNegocio();
+        //    E_ORGANIGRAMA vOrganigrama = nOrganigrama.ObtieneOrganigramaPlazas(pIdPlaza, pIdEmpresa, (bool)pFgMostrarEmpleados);
 
-            lstAscendencia.DataTextField = "nbNodo";
-            lstAscendencia.DataValueField = "idNodo";
-            lstAscendencia.DataSource = vOrganigrama.lstNodoAscendencia.OrderByDescending(o => o.noNivel);
-            lstAscendencia.DataBind();
+        //    lstAscendencia.DataTextField = "nbNodo";
+        //    lstAscendencia.DataValueField = "idNodo";
+        //    lstAscendencia.DataSource = vOrganigrama.lstNodoAscendencia.OrderByDescending(o => o.noNivel);
+        //    lstAscendencia.DataBind();
 
-            if (vOrganigrama.lstNodoDescendencia.Count == 0)
-                vOrganigrama.lstNodoDescendencia.Add(new E_ORGANIGRAMA_NODO() { nbNodo = "No hay datos" });
+        //    if (vOrganigrama.lstNodoDescendencia.Count == 0)
+        //        vOrganigrama.lstNodoDescendencia.Add(new E_ORGANIGRAMA_NODO() { nbNodo = "No hay datos" });
 
-            if (vOrganigrama.lstNodoDescendencia.Where(w => w.idNodoSuperior == null).Count() > 1)
-            {
-                //UtilMensajes.MensajeResultadoDB(rnMensaje, "Por favor selecciona un nodo raíz de la lista de ascendencia.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: null);
-                lblMensaje.Style.Add("display", "block");
-            }
-            else
-            {
-                rocPlazas.GroupEnabledBinding.NodeBindingSettings.DataFieldID = "idNodo";
-                rocPlazas.GroupEnabledBinding.NodeBindingSettings.DataFieldParentID = "idNodoSuperior";
-                rocPlazas.RenderedFields.NodeFields.Add(new OrgChartRenderedField() { DataField = "nbNodo" });
-                rocPlazas.GroupEnabledBinding.NodeBindingSettings.DataSource = vOrganigrama.lstNodoDescendencia;
+        //    if (vOrganigrama.lstNodoDescendencia.Where(w => w.idNodoSuperior == null).Count() > 1)
+        //    {
+        //        UtilMensajes.MensajeResultadoDB(rnMensaje, "Por favor selecciona un nodo raíz del selector de plazas.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: null);
+        //        lblMensaje.Style.Add("display", "block");
+        //    }
+        //    else
+        //    {
+        //        int vDiferenciaNievels = vOrganigrama.lstNodoDescendencia.Where(w => w.idNodoSuperior == null).FirstOrDefault().noNivelPuesto - vOrganigrama.lstNodoDescendencia.Where(w => w.idNodoSuperior == null).FirstOrDefault().noNivel;
+        //        if (vDiferenciaNievels > 0)
+        //            foreach (var item in vOrganigrama.lstNodoDescendencia) item.noNivelPuesto = item.noNivelPuesto - vDiferenciaNievels;
 
-                if ((bool)pFgMostrarEmpleados)
-                {
-                    rocPlazas.GroupEnabledBinding.GroupItemBindingSettings.DataFieldID = "idItem";
-                    rocPlazas.GroupEnabledBinding.GroupItemBindingSettings.DataFieldNodeID = "idNodo";
-                    rocPlazas.GroupEnabledBinding.GroupItemBindingSettings.DataSource = vOrganigrama.lstGrupo;
-                }
-                rocPlazas.DataBind();
-                lblMensaje.Style.Add("display", "none");
-            }
-        }
 
-        protected void rocPlazas_NodeDataBound(object sender, OrgChartNodeDataBoundEventArguments e)
-        {
-            if (((E_ORGANIGRAMA_NODO)e.Node.DataItem).clTipoNodo == "STAFF")
-                e.Node.CssClass = "cssStaff";
+        //        rocPlazas.GroupEnabledBinding.NodeBindingSettings.DataFieldID = "idNodo";
+        //        rocPlazas.GroupEnabledBinding.NodeBindingSettings.DataFieldParentID = "idNodoSuperior";
+        //        rocPlazas.RenderedFields.NodeFields.Add(new OrgChartRenderedField() { DataField = "nbNodo" });
+        //        rocPlazas.GroupEnabledBinding.NodeBindingSettings.DataSource = vOrganigrama.lstNodoDescendencia;
 
-            foreach (OrgChartGroupItem groupItem in e.Node.GroupItems)
-                if (!String.IsNullOrWhiteSpace(((E_ORGANIGRAMA_GRUPO)groupItem.DataItem).cssItem))
-                    groupItem.CssClass = ((E_ORGANIGRAMA_GRUPO)groupItem.DataItem).cssItem; // "cssVacante";
-        }
+        //        if ((bool)pFgMostrarEmpleados)
+        //        {
+        //            rocPlazas.GroupEnabledBinding.GroupItemBindingSettings.DataFieldID = "idItem";
+        //            rocPlazas.GroupEnabledBinding.GroupItemBindingSettings.DataFieldNodeID = "idNodo";
+        //            rocPlazas.GroupEnabledBinding.GroupItemBindingSettings.DataSource = vOrganigrama.lstGrupo;
+        //        }
+        //        rocPlazas.DataBind();
+        //        lblMensaje.Style.Add("display", "none");
+        //    }
+        //}
 
-        protected void cmbEmpresas_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
-        {
-            CargarDatosOrganigrama(int.Parse(cmbEmpresas.SelectedValue), chkMostrarEmpleados.Checked, ObtieneIdPlaza());
-        }
+        //protected void rocPlazas_NodeDataBound(object sender, OrgChartNodeDataBoundEventArguments e)
+        //{
+        //    if (((E_ORGANIGRAMA_NODO)e.Node.DataItem).clTipoNodo == "STAFF")
+        //        e.Node.CssClass = "cssStaff";
 
-        protected void chkMostrarEmpleados_Click(object sender, EventArgs e)
-        {
-            CargarDatosOrganigrama(int.Parse(cmbEmpresas.SelectedValue), chkMostrarEmpleados.Checked, ObtieneIdPlaza());
-        }
+        //    foreach (OrgChartGroupItem groupItem in e.Node.GroupItems)
+        //        if (!String.IsNullOrWhiteSpace(((E_ORGANIGRAMA_GRUPO)groupItem.DataItem).cssItem))
+        //            groupItem.CssClass = ((E_ORGANIGRAMA_GRUPO)groupItem.DataItem).cssItem; // "cssVacante";
 
-        protected void ramOrganigrama_AjaxRequest(object sender, AjaxRequestEventArgs e)
-        {
-            if (e.Argument == "seleccionPlaza")
-            {
-                CargarDatosOrganigrama(int.Parse(cmbEmpresas.SelectedValue), chkMostrarEmpleados.Checked, ObtieneIdPlaza());
-            }
-        }
+
+        //    //CssNivelDentroDeOrganigrama
+        //    if (((E_ORGANIGRAMA_NODO)e.Node.DataItem).noNivelPuesto > ((E_ORGANIGRAMA_NODO)e.Node.DataItem).noNivel)
+        //    {
+        //        int vNivelDiferencia = ((E_ORGANIGRAMA_NODO)e.Node.DataItem).noNivelPuesto - ((E_ORGANIGRAMA_NODO)e.Node.DataItem).noNivel;
+
+        //        e.Node.CssClass = ObtieneCssClass((bool)chkMostrarEmpleados.Checked, vNivelDiferencia);
+        //        //if ((bool)chkMostrarEmpleados.Checked)
+        //        //{
+        //        //    if (vNivelDiferencia == 2)
+        //        //        e.Node.CssClass = "cssNivel3Emp";
+        //        //    if (vNivelDiferencia == 1)
+        //        //        e.Node.CssClass = "cssNivel2Emp";
+        //        //}
+        //        //else
+        //        //{
+        //        //    if (vNivelDiferencia == 2)
+        //        //        e.Node.CssClass = "cssNivel3";
+        //        //    if (vNivelDiferencia == 1)
+        //        //        e.Node.CssClass = "cssNivel2";
+        //        //}
+        //    }
+        //}
+
+        //protected void cmbEmpresas_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+        //{
+        //    CargarDatosOrganigrama(int.Parse(cmbEmpresas.SelectedValue), chkMostrarEmpleados.Checked, ObtieneIdPlaza());
+        //}
+
+        //protected void chkMostrarEmpleados_Click(object sender, EventArgs e)
+        //{
+        //    CargarDatosOrganigrama(int.Parse(cmbEmpresas.SelectedValue), chkMostrarEmpleados.Checked, ObtieneIdPlaza());
+        //}
+
+        //protected void ramOrganigrama_AjaxRequest(object sender, AjaxRequestEventArgs e)
+        //{
+        //    if (e.Argument == "seleccionPlaza")
+        //    {
+        //        CargarDatosOrganigrama(int.Parse(cmbEmpresas.SelectedValue), chkMostrarEmpleados.Checked, ObtieneIdPlaza());
+        //    }
+        //}
 
         protected int? ObtieneIdPlaza()
         {

@@ -1,0 +1,205 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Prueba.master.cs" Inherits="SIGE.WebApp.IDP.Pruebas.Prueba" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title></title>
+    <link href="<%# ResolveUrl("/Assets/images/Icono.png" ) %>" rel='shortcut icon' />
+    <link href="<%# ResolveUrl("/Assets/css/estilo.css" ) %>" rel="stylesheet" />
+
+    <script src='<%# ResolveUrl("/Assets/js/jquery.min.js" ) %>'></script>
+    <script src='<%# ResolveUrl("/Assets/js/appIndex.js" ) %>'></script>
+    <script src='<%# ResolveUrl("/Assets/js/PopUps.js" ) %>'></script>
+
+    <link href="<%# ResolveUrl("/Assets/css/bootstrap.min.css" ) %>" rel="stylesheet" class="librerias" data-tipo="css" />
+    <link href="<%# ResolveUrl("/Assets/library/font-awesome/css/font-awesome.css" ) %>" rel="stylesheet" class="librerias" data-tipo="css" />
+    <link href="<%# ResolveUrl("/Assets/css/animate.css" ) %>" rel="stylesheet" class="librerias" data-tipo="css" />
+
+    <link href="/Assets/css/Temas/IP.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/css/estilo.css?v=<%= DateTime.Now.ToString() %>>" rel="stylesheet" />
+    <script src="/Assets/js/appPruebas.js"></script>
+
+     <style type="text/css">
+        html, body, form {
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            overflow: auto;
+        }
+
+        a img {
+            border: none;
+        }
+
+        .riDisabled {
+            background-color: lightgray !important;
+            color: black !important;
+            /*		font-weight: bold !important;*/
+        }
+
+        .ctrlBasico {
+            float: left;
+            padding-right: 10px;
+            padding-bottom: 10px;
+        }
+
+        .ctrlComboBoxCell {
+            float: left;
+            padding-right: 10px;
+            padding-bottom: 0px;
+        }
+
+        .RightAligned {
+            text-align: right;
+        }
+
+        .labelTitulo {
+            display: block !important;
+            width: 100% !important;
+            padding: 0 !important;
+            margin-bottom: 20px !important;
+            font-size: 21px !important;
+            line-height: inherit !important;
+            color: #333 !important;
+            border: 0 !important;
+            border-bottom: 1px solid #e5e5e5 !important;
+        }
+
+        .RadMenu ul {
+            background: #FFF !important;
+            border: 0px !important;
+        }
+
+        .bodySetup {
+            width: 100%;
+            height: 100%;
+        }
+
+        .RadGrid .rgExpXLS {
+            background-position: 8px -44px !important;
+        }
+
+        /* posiciones de los controles de un formulario */
+        .divControlDerecha {
+            float: right;
+        }
+
+        .divControlIzquierda {
+            text-align: right;
+            float: left;
+            margin-right: 15px;
+            width: 120px;
+        }
+
+        .divControlIzquierda label {
+            margin-top: 5px;
+        }
+
+        .divControlesBoton {
+            float: right;
+            padding-right: 10px;
+            padding-bottom: 10px;
+        }
+
+        .RadMenu {
+            z-index: 2896 !important;
+        }
+
+        .ctrlComboBoxCell {
+            float: left;
+            padding-right: 10px;
+            padding-bottom: 0px;
+        }
+
+        .divControlCenter {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .divBarraTitulo {
+            height: 44px;
+            line-height: 30px;
+            background-color: #eee;
+            border-color: #ddd;
+            box-shadow: none;
+            padding: 5px;
+            -webkit-border-top-left-radius: 5px;
+            -webkit-border-top-right-radius: 5px;
+            -moz-border-radius-topleft: 5px;
+            -moz-border-radius-topright: 5px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .BorderRadioComponenteHTML {
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .Base {
+            display: inline-block;
+            font: 12px/18px "segoe ui",arial,sans-serif;
+            height: 20px;
+            overflow: hidden;
+            text-align: center;
+            vertical-align: middle;
+            width: 95px;
+            color: #fff;
+            border: 1px solid #333;
+        }
+
+        .L0 {
+            border: 0 none;
+        }
+
+        .L1 {
+            background-color: #ff3933;
+        }
+
+        .L2 {
+            background-color: #ff6633;
+        }
+
+        .L3 {
+            background-color: #ff3399;
+        }
+
+        .L4 {
+            background-color: #cccc33;
+        }
+
+        .L5 {
+            background-color: #33cc00;
+        }
+        .riLabel
+   {
+      font: 10px "segoe ui" ,arial,sans-serif !important;
+   }
+    </style>
+
+</head>
+<body>  
+
+    <form id="form1" runat="server">  
+        <telerik:RadScriptManager runat="server" ID="RadScriptManager1" EnablePageMethods="true" />
+        <telerik:RadSkinManager ID="RadSkinManager1" runat="server" Skin="Bootstrap" >
+        </telerik:RadSkinManager>
+        <telerik:RadFormDecorator ID="QsfFromDecorator" runat="server" DecoratedControls="All" EnableRoundedCorners="true" DecorationZoneID="DivBody" />
+    <asp:ContentPlaceHolder ID="headPruebas" runat="server">
+    </asp:ContentPlaceHolder>
+
+    
+    <div id="DivBody" class="bodySetup">
+        <asp:ContentPlaceHolder ID="ContentPruebas" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

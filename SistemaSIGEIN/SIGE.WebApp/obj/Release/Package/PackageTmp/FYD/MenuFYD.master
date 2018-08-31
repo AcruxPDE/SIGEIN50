@@ -1,0 +1,22 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/FYD/ContextFYD.master" AutoEventWireup="true" CodeBehind="MenuFYD.master.cs" Inherits="SIGE.WebApp.FYD.MenuFYD" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
+    <div>
+        <div style="float: left; padding: 9px;">
+            <img src="../Assets/images/Logo.png" height="30" />
+        </div>
+        <div runat="server" id="divMenu"></div>
+    </div>
+    <div style="clear: both;" class="BordeModulo"></div>
+    <div style="height: calc(100% - 75px); border: 0px solid black; padding: 20px 20px 0px 20px">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+
+     <telerik:RadWindowManager ID="RadWindowManager1" EnableShadow="true" runat="server"></telerik:RadWindowManager>
+</asp:Content>

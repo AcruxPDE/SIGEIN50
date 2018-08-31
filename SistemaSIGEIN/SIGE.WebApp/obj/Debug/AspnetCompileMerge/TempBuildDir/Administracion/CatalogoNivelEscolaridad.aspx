@@ -145,14 +145,11 @@
         </AjaxSettings>
     </telerik:RadAjaxManager>
     <label class="labelTitulo">Niveles de escolaridad</label>
-
-
-
-    <div id="ContenidoGrid" class="ctrlBasico" style="height: calc(100% - 100px);">
+    <div id="ContenidoGrid" class="ctrlBasico" style="height: calc(100% - 90px);">
 
         <telerik:RadGrid ID="grdNivelEscolaridades" ShowHeader="true" runat="server" AllowPaging="true"
             AllowSorting="true" GroupPanelPosition="Top" GridLines="None"
-            AllowFilteringByColumn="true" Height="100%" Width="700px"
+            AllowFilteringByColumn="true" Height="100%" Width="1000px"
             ClientSettings-EnablePostBackOnRowClick="false"
             OnNeedDataSource="grdNivelEscolaridades_NeedDataSource"
             OnItemDataBound="grdNivelEscolaridades_ItemDataBound"
@@ -179,7 +176,7 @@
                 <Columns>
 
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderText="Clave" CurrentFilterFunction="Contains" DataField="CL_NIVEL_ESCOLARIDAD" UniqueName="CL_NIVEL_ESCOLARIDAD" HeaderStyle-Width="200" FilterControlWidth="130"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderText="Descripción" CurrentFilterFunction="Contains" DataField="DS_NIVEL_ESCOLARIDAD" UniqueName="DS_NIVEL_ESCOLARIDAD" HeaderStyle-Width="400" FilterControlWidth="330"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderText="Descripción" CurrentFilterFunction="Contains" DataField="DS_NIVEL_ESCOLARIDAD" UniqueName="DS_NIVEL_ESCOLARIDAD" HeaderStyle-Width="300" FilterControlWidth="230"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderText="Activo" CurrentFilterFunction="Contains" DataField="NB_ACTIVO" UniqueName="Activo" FilterControlWidth="25" HeaderStyle-Width="95"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderText="ID_NIVEL_ESCOLARIDAD" CurrentFilterFunction="Contains" DataField="ID_NIVEL_ESCOLARIDAD" UniqueName="ID_NIVEL_ESCOLARIDAD" HeaderStyle-Width="0" FilterControlWidth="0"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Último usuario que modifica" DataField="CL_USUARIO_MODIFICA" UniqueName="CL_USUARIO_MODIFICA"></telerik:GridBoundColumn>
@@ -189,21 +186,18 @@
             </MasterTableView>
         </telerik:RadGrid>
     </div>
-
-    <br />
-
     <div style="clear: both;"></div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowPopupAgregarEscolaridades" AutoPostBack="false" runat="server" Text="Agregar" Width="100"></telerik:RadButton>
+        <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowPopupAgregarEscolaridades" AutoPostBack="false" runat="server" Text="Agregar"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowPopupEditarEscolaridades" AutoPostBack="false" runat="server" Text="Editar" Width="100"></telerik:RadButton>
+        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowPopupEditarEscolaridades" AutoPostBack="false" runat="server" Text="Editar" ></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" Width="100" AutoPostBack="true" OnClick="btnEliminar_click" OnClientClicking="ConfirmarEliminar"></telerik:RadButton>
+        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" AutoPostBack="true" OnClick="btnEliminar_click" OnClientClicking="ConfirmarEliminar"></telerik:RadButton>
     </div>
 
-
+       <div style="clear: both;"></div>
     <telerik:RadWindowManager ID="RadWindowManager1" runat="server" EnableShadow="true">
         <Windows>
             <telerik:RadWindow ID="RWPopupmodalCatalogoGenericoEditar" runat="server" Title="Agregar Catálogos de Escolaridades" Height="320"

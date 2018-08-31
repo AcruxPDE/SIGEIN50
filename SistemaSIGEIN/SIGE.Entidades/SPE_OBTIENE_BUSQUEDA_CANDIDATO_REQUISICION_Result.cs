@@ -14,7 +14,7 @@ namespace SIGE.Entidades
     public partial class SPE_OBTIENE_BUSQUEDA_CANDIDATO_REQUISICION_Result
     {
         public Nullable<int> ID_CANDIDATO { get; set; }
-        public int ID_SOLICITUD { get; set; }
+        public Nullable<int> ID_SOLICITUD { get; set; }
         public string CL_SOLICITUD { get; set; }
         public string NB_CANDIDATO { get; set; }
         public string CL_SOLICITUD_ESTATUS { get; set; }
@@ -35,5 +35,9 @@ namespace SIGE.Entidades
         public Nullable<int> ID_REQUISICION { get; set; }
         public Nullable<int> ID_PROCESO_SELECCION { get; set; }
         public string FG_OTRO_PROCESO_SELECCION { get; set; }
+        public Nullable<int> ID_EMPLEADO { get; set; }
+        public string CL_EMPLEADO { get; set; }
+        public string NB_PUESTO { get; set; }
+        public string CL_ORIGEN { get; set; }
     }
 }

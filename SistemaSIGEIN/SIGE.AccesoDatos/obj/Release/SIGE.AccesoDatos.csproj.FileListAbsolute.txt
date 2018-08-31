@@ -1,0 +1,23 @@
+<<<<<<< HEAD
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QA\SistemaSIGEIN\SIGE.AccesoDatos\bin\Release\SIGE.AccesoDatos.dll.config
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QA\SistemaSIGEIN\SIGE.AccesoDatos\bin\Release\SIGE.AccesoDatos.dll
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QA\SistemaSIGEIN\SIGE.AccesoDatos\bin\Release\SIGE.AccesoDatos.pdb
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QA\SistemaSIGEIN\SIGE.AccesoDatos\bin\Release\EntityFramework.dll
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QA\SistemaSIGEIN\SIGE.AccesoDatos\bin\Release\SIGE.Entidades.dll
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QA\SistemaSIGEIN\SIGE.AccesoDatos\bin\Release\SIGE.Entidades.pdb
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QA\SistemaSIGEIN\SIGE.AccesoDatos\bin\Release\EntityFramework.xml
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QA\SistemaSIGEIN\SIGE.AccesoDatos\obj\Release\SIGE.AccesoDatos.csprojResolveAssemblyReference.cache
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QA\SistemaSIGEIN\SIGE.AccesoDatos\obj\Release\SIGE.AccesoDatos.dll
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QA\SistemaSIGEIN\SIGE.AccesoDatos\obj\Release\SIGE.AccesoDatos.pdb
+=======
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.AccesoDatos\bin\Release\SIGE.AccesoDatos.dll.config
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.AccesoDatos\bin\Release\SIGE.AccesoDatos.dll
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.AccesoDatos\bin\Release\SIGE.AccesoDatos.pdb
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.AccesoDatos\bin\Release\EntityFramework.dll
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.AccesoDatos\bin\Release\SIGE.Entidades.dll
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.AccesoDatos\bin\Release\SIGE.Entidades.pdb
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.AccesoDatos\bin\Release\EntityFramework.xml
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.AccesoDatos\obj\Release\SIGE.AccesoDatos.csprojResolveAssemblyReference.cache
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.AccesoDatos\obj\Release\SIGE.AccesoDatos.dll
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.AccesoDatos\obj\Release\SIGE.AccesoDatos.pdb
+>>>>>>> DEV

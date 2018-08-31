@@ -12,6 +12,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using Telerik.Web.UI;
+using WebApp.Comunes;
 
 namespace SIGE.WebApp.FYD
 {
@@ -29,6 +30,8 @@ namespace SIGE.WebApp.FYD
             get { return (bool)ViewState["vs_nc_fg_cargar_grid"]; }
         }
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private string vNbFirstRadEditorTagName = "p";
+        private int? vIdRol;
 
         public int vIdPeriodo
         {
@@ -171,25 +174,25 @@ namespace SIGE.WebApp.FYD
 
             if (vCltrans == E_TIPO_OPERACION_DB.I)
             {
-                if (txtClavePrograma.Text == "" & vAceptado)
-                {
-                    vMensaje = "El campo clave de programa es obligatorio";
-                    vAceptado = false;
-                }
+                //if (txtClavePrograma.Text == "" & vAceptado)
+                //{
+                //    vMensaje = "El campo clave de programa es obligatorio";
+                //    vAceptado = false;
+                //}
 
-                if (txtNombrePrograma.Text == "" & vAceptado)
-                {
-                    vMensaje = "El campo nombre de programa es obligatorio";
-                    vAceptado = false;
-                }
+                //if (txtNombrePrograma.Text == "" & vAceptado)
+                //{
+                //    vMensaje = "El campo nombre de programa es obligatorio";
+                //    vAceptado = false;
+                //}
             }
             else
             {
-                if (lstProgramas.Items[0].Value == "")
-                {
-                    vMensaje = "Seleccione un programa";
-                    vAceptado = false;
-                }
+                //if (lstProgramas.Items[0].Value == "")
+                //{
+                //    vMensaje = "Seleccione un programa";
+                //    vAceptado = false;
+                //}
             }
 
 
@@ -210,33 +213,33 @@ namespace SIGE.WebApp.FYD
 
         private void GuardarPrograma(E_SELECTOR_NECESIDADES pSeleccionados)
         {
-            List<E_NECESIDADES_CAPACITACION> vListaSeleccion = ObtenerSeleccionados(pSeleccionados);
-            NecesidadesCapacitacionNegocio neg = new NecesidadesCapacitacionNegocio();
-            xmlCapacitaciones = new XElement("CAPACITACIONES");
+            //List<E_NECESIDADES_CAPACITACION> vListaSeleccion = ObtenerSeleccionados(pSeleccionados);
+            //NecesidadesCapacitacionNegocio neg = new NecesidadesCapacitacionNegocio();
+            //xmlCapacitaciones = new XElement("CAPACITACIONES");
 
-            xmlCapacitaciones.Add(new XAttribute("CL_PROGRAMA", txtClavePrograma.Text), new XAttribute("NB_PROGRAMA", txtNombrePrograma.Text), new XAttribute("ID_PERIODO", vIdPeriodo + ""));
+            //xmlCapacitaciones.Add(new XAttribute("CL_PROGRAMA", txtClavePrograma.Text), new XAttribute("NB_PROGRAMA", txtNombrePrograma.Text), new XAttribute("ID_PERIODO", vIdPeriodo + ""));
 
-            foreach (E_NECESIDADES_CAPACITACION item in vListaSeleccion)
-            {
-                xmlCapacitaciones.Add(new XElement("CAPACITACION",
-                new XAttribute("ID_EMPLEADO", item.ID_EMPLEADO.ToString()),
-                new XAttribute("NB_EMPLEADO", item.NB_EVALUADO),
-                new XAttribute("CL_EMPLEADO", item.CL_EVALUADO),
-                new XAttribute("CL_PUESTO", item.CL_PUESTO),
-                new XAttribute("NB_PUESTO", item.NB_PUESTO),
-                new XAttribute("NB_DEPARTAMENTO", item.NB_DEPARTAMENTO),
-                new XAttribute("ID_COMPETENCIA", item.ID_COMPETENCIA),
-                new XAttribute("NB_COMPETENCIA", item.NB_COMPETENCIA),
-                new XAttribute("NB_CLASIFICACION", item.CL_CLASIFICACION),
-                new XAttribute("NB_CATEGORIA", item.CL_TIPO_COMPETENCIA),
-                new XAttribute("CL_PRIORIDAD", item.NB_PRIORIDAD),
-                new XAttribute("PR_RESULTADO", item.PR_RESULTADO)));
-            }
+            //foreach (E_NECESIDADES_CAPACITACION item in vListaSeleccion)
+            //{
+            //    xmlCapacitaciones.Add(new XElement("CAPACITACION",
+            //    new XAttribute("ID_EMPLEADO", item.ID_EMPLEADO.ToString()),
+            //    new XAttribute("NB_EMPLEADO", item.NB_EVALUADO),
+            //    new XAttribute("CL_EMPLEADO", item.CL_EVALUADO),
+            //    new XAttribute("CL_PUESTO", item.CL_PUESTO),
+            //    new XAttribute("NB_PUESTO", item.NB_PUESTO),
+            //    new XAttribute("NB_DEPARTAMENTO", item.NB_DEPARTAMENTO),
+            //    new XAttribute("ID_COMPETENCIA", item.ID_COMPETENCIA),
+            //    new XAttribute("NB_COMPETENCIA", item.NB_COMPETENCIA),
+            //    new XAttribute("NB_CLASIFICACION", item.CL_CLASIFICACION),
+            //    new XAttribute("NB_CATEGORIA", item.CL_TIPO_COMPETENCIA),
+            //    new XAttribute("CL_PRIORIDAD", item.NB_PRIORIDAD),
+            //    new XAttribute("PR_RESULTADO", item.PR_RESULTADO)));
+            //}
 
 
-            E_RESULTADO res = neg.InsertaActualizaProgramaDesdeDNC(vIdPrograma, xmlCapacitaciones.ToString(), vClUsuario, vNbPrograma);
-            string vMensaje = res.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, res.CL_TIPO_ERROR);
+            //E_RESULTADO res = neg.InsertaActualizaProgramaDesdeDNC(vIdPrograma, xmlCapacitaciones.ToString(), vClUsuario, vNbPrograma);
+            //string vMensaje = res.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+            //UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, res.CL_TIPO_ERROR);
         }
 
         private void ActualizarPrograma(E_SELECTOR_NECESIDADES pSeleccionados)
@@ -308,7 +311,7 @@ namespace SIGE.WebApp.FYD
                 prioridades = xmlPrioridades.ToString();
             }
 
-            UDTT_ARCHIVO excel = neg.ExportarDatosExcel(vIdPeriodo, vIdDepartamento, vNbDepartamento, prioridades);
+            UDTT_ARCHIVO excel = neg.ExportarDatosExcel(vIdPeriodo, vIdDepartamento, vNbDepartamento, prioridades, vIdRol);
 
             Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
             Response.AddHeader("Content-Disposition", "attachment; filename=" + excel.NB_ARCHIVO);
@@ -453,6 +456,8 @@ namespace SIGE.WebApp.FYD
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
+
             vListaEmpleadoCompetencia = "";
 
             vFgAlta = chkAlta.Checked;
@@ -477,8 +482,63 @@ namespace SIGE.WebApp.FYD
                     if (vPeriodo != null)
                     {
                         vFgCargarGrid = true;
-                        txtPeriodo.InnerText = vPeriodo.CL_PERIODO;
-                        txtNombrePeriodo.InnerText = vPeriodo.DS_PERIODO;
+                        string vTiposEvaluacion = "";
+                        //txtPeriodo.InnerText = vPeriodo.CL_PERIODO;
+                        //txtNombrePeriodo.InnerText = vPeriodo.DS_PERIODO;
+<<<<<<< HEAD
+                        txtClPeriodo.InnerText = vPeriodo.CL_PERIODO;
+                        txtDsPeriodo.InnerText = vPeriodo.NB_PERIODO;
+=======
+                        txtClPeriodo.InnerText = vPeriodo.NB_PERIODO;
+                        txtDsPeriodo.InnerText = vPeriodo.DS_PERIODO;
+>>>>>>> DEV
+                        txtEstatus.InnerText = vPeriodo.CL_ESTADO_PERIODO;
+
+                        if (vPeriodo.FG_AUTOEVALUACION)
+                        {
+                            vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? "Autoevaluación" : String.Join(", ", vTiposEvaluacion, "Autoevaluacion");
+                        }
+
+                        if (vPeriodo.FG_SUPERVISOR)
+                        {
+                            vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? "Superior" : String.Join(", ", vTiposEvaluacion, "Superior");
+                        }
+
+                        if (vPeriodo.FG_SUBORDINADOS)
+                        {
+                            vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? "Subordinado" : String.Join(", ", vTiposEvaluacion, "Subordinado");
+                        }
+
+                        if (vPeriodo.FG_INTERRELACIONADOS)
+                        {
+                            vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? "Interrelacionado" : String.Join(", ", vTiposEvaluacion, "Interrelacionado");
+                        }
+
+                        if (vPeriodo.FG_OTROS_EVALUADORES)
+                        {
+                            vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? "Otros" : String.Join(", ", vTiposEvaluacion, "Otros");
+                        }
+
+                        txtTipoEvaluacion.InnerText = vTiposEvaluacion;
+
+                        if (vPeriodo.DS_NOTAS != null)
+                        {
+                            if (vPeriodo.DS_NOTAS.Contains("DS_NOTA"))
+                            {
+                                txtNotas.InnerHtml = Utileria.MostrarNotas(vPeriodo.DS_NOTAS);
+                            }
+                            else
+                            {
+                                XElement vNotas = XElement.Parse(vPeriodo.DS_NOTAS);
+                                if (vNotas != null)
+                                {
+                                    vNotas.Name = vNbFirstRadEditorTagName;
+                                    txtNotas.InnerHtml = vNotas.ToString();
+                                }
+                            }
+                        }
+
+
                         vFgAlta = chkAlta.Checked;
                         vFgIntermedia = chkIntermedia.Checked;
                         vFgNonecesaria = chkNoNecesaria.Checked;
@@ -496,7 +556,7 @@ namespace SIGE.WebApp.FYD
             //grdCapacitacion.Columns.Clear();
             if (vFgCargarGrid)
             {
-                grdCapacitacion.DataSource = neg.ObtieneNecesidadesCapacitacionPivot(vIdPeriodo, vIdDepartamento, prioridades, ref vListaTemporal);
+                grdCapacitacion.DataSource = neg.ObtieneNecesidadesCapacitacionPivot(vIdPeriodo, vIdDepartamento, prioridades, ref vListaTemporal, vIdRol);
                 vLstDnc = vListaTemporal;
             }
         }

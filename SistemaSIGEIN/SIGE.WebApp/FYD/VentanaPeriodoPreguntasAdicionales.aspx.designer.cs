@@ -49,6 +49,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadPane rpPreguntas;
         
         /// <summary>
+        /// lblClave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblClave;
+        
+        /// <summary>
         /// txtClave control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadTextBox txtClave;
+        
+        /// <summary>
+        /// lblNombre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNombre;
         
         /// <summary>
         /// txtNombre control.
@@ -67,6 +85,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadTextBox txtNombre;
         
         /// <summary>
+        /// lblTooltip control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTooltip;
+        
+        /// <summary>
         /// txtTooltip control.
         /// </summary>
         /// <remarks>
@@ -74,6 +101,15 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadTextBox txtTooltip;
+        
+        /// <summary>
+        /// lblTipoControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTipoControl;
         
         /// <summary>
         /// cmbTipoControl control.
@@ -112,6 +148,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadPageView rpvTextbox;
         
         /// <summary>
+        /// lblTextboxLongitud control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTextboxLongitud;
+        
+        /// <summary>
         /// txtTextboxLongitud control.
         /// </summary>
         /// <remarks>
@@ -119,6 +164,15 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadNumericTextBox txtTextboxLongitud;
+        
+        /// <summary>
+        /// lblTextboxDefault control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTextboxDefault;
         
         /// <summary>
         /// txtTextboxDefault control.
@@ -139,6 +193,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadPageView rpvDate;
         
         /// <summary>
+        /// lblDateDefault control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDateDefault;
+        
+        /// <summary>
         /// txtDateDefault control.
         /// </summary>
         /// <remarks>
@@ -157,6 +220,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadPageView rpvCombobox;
         
         /// <summary>
+        /// lblComboboxCatalogo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblComboboxCatalogo;
+        
+        /// <summary>
         /// cmbComboboxCatalogo control.
         /// </summary>
         /// <remarks>
@@ -164,6 +236,15 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadComboBox cmbComboboxCatalogo;
+        
+        /// <summary>
+        /// lblComboboxDefault control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblComboboxDefault;
         
         /// <summary>
         /// cmbComboboxDefault control.
@@ -184,6 +265,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadPageView rpvMaskbox;
         
         /// <summary>
+        /// lblMaskboxMascara control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMaskboxMascara;
+        
+        /// <summary>
         /// txtMaskboxMascara control.
         /// </summary>
         /// <remarks>
@@ -202,6 +292,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadPageView rpvNumericbox;
         
         /// <summary>
+        /// lblNumericboxEnteros control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNumericboxEnteros;
+        
+        /// <summary>
         /// txtNumericboxEnteros control.
         /// </summary>
         /// <remarks>
@@ -211,6 +310,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadNumericTextBox txtNumericboxEnteros;
         
         /// <summary>
+        /// lblNumericboxDecimales control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNumericboxDecimales;
+        
+        /// <summary>
         /// txtNumericboxDecimales control.
         /// </summary>
         /// <remarks>
@@ -218,6 +326,15 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadNumericTextBox txtNumericboxDecimales;
+        
+        /// <summary>
+        /// lblNumericboxDefault control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNumericboxDefault;
         
         /// <summary>
         /// txtNumericboxDefault control.
@@ -238,6 +355,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadPageView rpvCheckbox;
         
         /// <summary>
+        /// lblCheckboxDefault control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCheckboxDefault;
+        
+        /// <summary>
         /// chkCheckboxDefault control.
         /// </summary>
         /// <remarks>
@@ -245,6 +371,15 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton chkCheckboxDefault;
+        
+        /// <summary>
+        /// lblGrupoCuestionario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblGrupoCuestionario;
         
         /// <summary>
         /// btnCuestionarioAutoevaluacion control.
@@ -308,6 +443,15 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadSlidingPane rspAyudaCuestionario;
+        
+        /// <summary>
+        /// pTextoAyuda control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pTextoAyuda;
         
         /// <summary>
         /// rwmAlertas control.

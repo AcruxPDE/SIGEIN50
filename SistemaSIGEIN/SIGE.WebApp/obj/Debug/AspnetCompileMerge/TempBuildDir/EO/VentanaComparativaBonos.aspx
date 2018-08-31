@@ -75,10 +75,8 @@
                             <ColumnGroups>
                             <telerik:GridColumnGroup Name="Desempeno" HeaderText="% Desempeño y bono" HeaderStyle-Font-Bold="true"
                                 HeaderStyle-HorizontalAlign="Center" />
-                        </ColumnGroups>
-                          
-                            <Columns>
-                             
+                        </ColumnGroups>         
+                            <Columns>                            
                             </Columns>
                         </MasterTableView>
                     </telerik:RadGrid>

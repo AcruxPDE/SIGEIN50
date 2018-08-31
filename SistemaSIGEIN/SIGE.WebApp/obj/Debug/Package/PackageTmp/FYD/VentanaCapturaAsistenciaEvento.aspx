@@ -20,7 +20,7 @@
         </AjaxSettings>
     </telerik:RadAjaxManager>
 
-    <div style="clear: both; height: 5px;"></div>
+    <div style="clear: both; height: 10px;"></div>
 
     <%--<div class="ctrlBasico">
         <div class="divControlIzquierda">
@@ -64,7 +64,7 @@
                         </tr>
                     </table>
                 </div>
-    <div style="clear: both; height: 10px;"></div>
+    <div style="clear: both;"></div>
 
     <div style="overflow: auto; height: calc(100% - 170px);">
         <telerik:RadGrid runat="server" ID="rgAsistencia" HeaderStyle-Font-Bold="true" OnNeedDataSource="rgAsistencia_NeedDataSource" AutoGenerateColumns="false" Width="100%" Height="100%">
@@ -74,11 +74,11 @@
             <GroupingSettings CaseSensitive="false" />
             <MasterTableView EditMode="InPlace" DataKeyNames="ID_EVENTO_PARTICIPANTE">
                 <Columns>
-                    <telerik:GridBoundColumn UniqueName="CL_PARTICIPANTE" DataField="CL_PARTICIPANTE" HeaderText="Clave" ReadOnly="true">
+                    <telerik:GridBoundColumn UniqueName="CL_PARTICIPANTE" DataField="CL_PARTICIPANTE" HeaderText="No. de Empleado" ReadOnly="true">
                         <HeaderStyle Width="50px" />
                         <ItemStyle Width="50px" />
                     </telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn UniqueName="NB_PARTICIPANTE" DataField="NB_PARTICIPANTE" HeaderText="Nombre" ReadOnly="true">
+                    <telerik:GridBoundColumn UniqueName="NB_PARTICIPANTE" DataField="NB_PARTICIPANTE" HeaderText="Nombre completo" ReadOnly="true">
                         <HeaderStyle Width="400px" />
                         <ItemStyle Width="400px" />
                     </telerik:GridBoundColumn>
@@ -91,7 +91,7 @@
                             </telerik:RadNumericTextBox>
                         </ItemTemplate>
                     </telerik:GridTemplateColumn>
-                    <telerik:GridBoundColumn UniqueName="PR_CUMPLIMIENTO" DataField="PR_CUMPLIMIENTO" HeaderText="% de asistencia" ReadOnly="true" >
+                    <telerik:GridBoundColumn UniqueName="PR_CUMPLIMIENTO" DataField="PR_CUMPLIMIENTO" HeaderText="% de asistencia individual" ReadOnly="true" >
                         <HeaderStyle Width="50px" />
                         <ItemStyle Width="50px" HorizontalAlign="Right" />
                     </telerik:GridBoundColumn>
@@ -111,9 +111,11 @@
     <div class="ctrlBasico">
         <telerik:RadButton runat="server" ID="btnCalcular" Text="Recalcular" AutoPostBack="true" OnClick="btnCalcular_Click"></telerik:RadButton>
     </div>
-    <div style="clear: both; height: 10px;"></div>
+    <div style="clear: both;"></div>
     <div class="divControlesBoton">
+        <div class="ctrlBasico">
         <telerik:RadButton runat="server" ID="btnAceptar" Text="Aceptar" OnClick="btnAceptar_Click"></telerik:RadButton>
+            </div>
         <telerik:RadButton runat="server" ID="btnCancelar" Text="Cancelar" AutoPostBack="false" OnClientClicked="closeWindow"></telerik:RadButton>
     </div>
     <telerik:RadWindowManager ID="rwmAsistencia" runat="server" EnableShadow="true"></telerik:RadWindowManager>

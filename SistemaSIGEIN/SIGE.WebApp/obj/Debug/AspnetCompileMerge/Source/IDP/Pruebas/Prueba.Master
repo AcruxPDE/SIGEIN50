@@ -1,31 +1,30 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Prueba.master.cs" Inherits="SIGE.WebApp.IDP.Pruebas.Prueba" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title></title>
-    <link href="<%# ResolveUrl("/Assets/images/Icono.png" ) %>" rel='shortcut icon' />
-    <link href="<%# ResolveUrl("/Assets/css/estilo.css" ) %>" rel="stylesheet" />
+    <link href='../../Assets/images/Icono.png' rel='shortcut icon' />
+    <link href='../../Assets/css/estilo.css' rel='stylesheet' />
 
-    <script src='<%# ResolveUrl("/Assets/js/jquery.min.js" ) %>'></script>
-    <script src='<%# ResolveUrl("/Assets/js/appIndex.js" ) %>'></script>
-    <script src='<%# ResolveUrl("/Assets/js/PopUps.js" ) %>'></script>
+    <script src='../../Assets/js/jquery.min.js'></script>
+    <script src='../../Assets/js/appIndex.js'></script>
+    <script src='../../Assets/js/PopUps.js'></script>
 
-    <link href="<%# ResolveUrl("/Assets/css/bootstrap.min.css" ) %>" rel="stylesheet" class="librerias" data-tipo="css" />
-    <link href="<%# ResolveUrl("/Assets/library/font-awesome/css/font-awesome.css" ) %>" rel="stylesheet" class="librerias" data-tipo="css" />
-    <link href="<%# ResolveUrl("/Assets/css/animate.css" ) %>" rel="stylesheet" class="librerias" data-tipo="css" />
+    <link href='../../Assets/css/bootstrap.min.css' rel='stylesheet' class='librerias' data-tipo='css' />
+    <link href='../../Assets/library/font-awesome/css/font-awesome.css' rel='stylesheet' class='librerias' data-tipo='css' />
+    <link href='../../Assets/css/animate.css' rel='stylesheet' class='librerias' data-tipo='css' />
 
-    <link href="/Assets/css/Temas/IP.css" rel="stylesheet" type="text/css" />
-    <link href="/Assets/css/estilo.css?v=<%= DateTime.Now.ToString() %>>" rel="stylesheet" />
-    <script src="/Assets/js/appPruebas.js"></script>
+    <link href='../../Assets/css/Temas/IP.css' rel="stylesheet" type="text/css" />
+    <link href='<%# String.Format("../../Assets/css/estilo.css?v={0}",DateTime.Now.ToString("yyyyMMddHHmmss")) %>' rel="stylesheet" />
+    <script src='../../Assets/js/appPruebas.js'></script>
 
-     <style type="text/css">
+    <style type="text/css">
         html, body, form {
-            height: 100%;
+            height: 100%; /*mi comentario*/
             margin: 0px;
             padding: 0px;
             overflow: auto;
@@ -95,9 +94,9 @@
             width: 120px;
         }
 
-        .divControlIzquierda label {
-            margin-top: 5px;
-        }
+            .divControlIzquierda label {
+                margin-top: 5px;
+            }
 
         .divControlesBoton {
             float: right;
@@ -177,29 +176,28 @@
         .L5 {
             background-color: #33cc00;
         }
-        .riLabel
-   {
-      font: 10px "segoe ui" ,arial,sans-serif !important;
-   }
+
+        .riLabel {
+            font: 10px "segoe ui",arial,sans-serif !important;
+        }
     </style>
 
 </head>
-<body>  
+<body>
 
-    <form id="form1" runat="server">  
+    <form id="form1" runat="server">
         <telerik:RadScriptManager runat="server" ID="RadScriptManager1" EnablePageMethods="true" />
-        <telerik:RadSkinManager ID="RadSkinManager1" runat="server" Skin="Bootstrap" >
+        <telerik:RadSkinManager ID="RadSkinManager1" runat="server" Skin="Bootstrap">
         </telerik:RadSkinManager>
         <telerik:RadFormDecorator ID="QsfFromDecorator" runat="server" DecoratedControls="All" EnableRoundedCorners="true" DecorationZoneID="DivBody" />
-    <asp:ContentPlaceHolder ID="headPruebas" runat="server">
-    </asp:ContentPlaceHolder>
-
-    
-    <div id="DivBody" class="bodySetup">
-        <asp:ContentPlaceHolder ID="ContentPruebas" runat="server">
-        
+        <asp:ContentPlaceHolder ID="headPruebas" runat="server">
         </asp:ContentPlaceHolder>
-    </div>
+
+
+        <div id="DivBody" class="bodySetup">
+            <asp:ContentPlaceHolder ID="ContentPruebas" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
     </form>
 </body>
 </html>

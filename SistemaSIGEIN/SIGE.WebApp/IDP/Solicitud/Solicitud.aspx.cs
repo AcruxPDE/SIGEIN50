@@ -353,6 +353,12 @@ namespace SIGE.WebApp.IDP.Solicitud
             }
         }
 
+        private void SeguridadProcesos()
+        {
+            btnGuardar.Enabled = ContextoUsuario.oUsuario.TienePermiso("A.F");
+            btnGuardarSalir.Enabled = ContextoUsuario.oUsuario.TienePermiso("A.F");
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -362,17 +368,16 @@ namespace SIGE.WebApp.IDP.Solicitud
             if (vModulo != null)
                 vClModulo = vModulo;
             vFgAceptaTermino = true;
-            
 
             cssModulo = Utileria.ObtenerCssModulo(vClModulo);
 
             vNbPrograma = ContextoUsuario.nbPrograma;
             vClUsuario = (ContextoUsuario.oUsuario != null) ? ContextoUsuario.oUsuario.CL_USUARIO : "INVITADO SOLICITUD";
 
-            if (vClUsuario != "INVITADO SOLICITUD")
-            {
-                btnImpresion2.Visible = true;
-            }
+            //if (vClUsuario != "INVITADO SOLICITUD")
+            //{
+            //    btnImpresion2.Visible = true;
+            //}
 
             if (!Page.IsPostBack)
             {
@@ -415,7 +420,11 @@ namespace SIGE.WebApp.IDP.Solicitud
                         btnGuardar.Enabled = false;
                         btnGuardarSalir.Enabled = false;
                     }
+
                 }
+
+                if (ContextoUsuario.oUsuario != null)
+                SeguridadProcesos();
 
                 if (Request.QueryString["PlantillaId"] != null)
                 {

@@ -49,24 +49,6 @@ namespace SIGE.WebApp.FYD {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtNombrePuesto;
         
         /// <summary>
-        /// lstPeriodos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadListBox lstPeriodos;
-        
-        /// <summary>
-        /// btnBuscarPeriodo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnBuscarPeriodo;
-        
-        /// <summary>
         /// rocNatural control.
         /// </summary>
         /// <remarks>
@@ -92,6 +74,24 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadOrgChart rocHorizontal;
+        
+        /// <summary>
+        /// lstPeriodos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadListBox lstPeriodos;
+        
+        /// <summary>
+        /// btnBuscarPeriodo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnBuscarPeriodo;
         
         /// <summary>
         /// btnAnalisis control.

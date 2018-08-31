@@ -13,6 +13,24 @@ namespace SIGE.WebApp.EO {
     public partial class DarBajaEmpleado {
         
         /// <summary>
+        /// ralpBajas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadAjaxLoadingPanel ralpBajas;
+        
+        /// <summary>
+        /// ramBajas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadAjaxManager ramBajas;
+        
+        /// <summary>
         /// rgEmpleadosBaja control.
         /// </summary>
         /// <remarks>

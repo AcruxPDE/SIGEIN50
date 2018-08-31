@@ -26,7 +26,7 @@
   <EngineVersion>EngineV2</EngineVersion>
   <GlobalizationStrings isList="true" count="0" />
   <MetaTags isList="true" count="0" />
-  <Pages isList="true" count="6">
+  <Pages isList="true" count="5">
     <Page1 Ref="2" type="Page" isKey="true">
       <Border>None;Black;2;Solid;False;4;Black</Border>
       <Brush>Transparent</Brush>
@@ -45,7 +45,7 @@
               <Name>Text1</Name>
               <Page isRef="2" />
               <Parent isRef="3" />
-              <Text>Resultados Intereses personales</Text>
+              <Text>Resultados intereses personales</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text1>
@@ -487,7 +487,7 @@
             </Chart1>
             <Text15 Ref="63" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,14.6,17.6,2.2</ClientRectangle>
+              <ClientRectangle>0,14.8,17.6,2.2</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10</Font>
               <HorAlignment>Width</HorAlignment>
@@ -501,7 +501,7 @@
             </Text15>
             <Text16 Ref="64" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,14,4,0.4</ClientRectangle>
+              <ClientRectangle>0,14.2,4,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10,Bold</Font>
               <Margins>0,0,0,0</Margins>
@@ -514,7 +514,7 @@
             </Text16>
             <Text17 Ref="65" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,17.8,17.6,2.2</ClientRectangle>
+              <ClientRectangle>0,18,17.6,2.2</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10</Font>
               <Guid>2eee5cac9a294f77aa2c70774cdf2417</Guid>
@@ -529,7 +529,7 @@
             </Text17>
             <Text78 Ref="66" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,4,17.6,0.6</ClientRectangle>
+              <ClientRectangle>0,4,17.6,1</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,12,Bold</Font>
               <HorAlignment>Center</HorAlignment>
@@ -543,7 +543,7 @@
             </Text78>
             <Text18 Ref="67" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,17.2,4,0.4</ClientRectangle>
+              <ClientRectangle>0,17.4,4,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10,Bold</Font>
               <Guid>4ba28de35aa2452686da26cdf1df8e97</Guid>
@@ -597,7 +597,7 @@
               <Name>Text21</Name>
               <Page isRef="69" />
               <Parent isRef="70" />
-              <Text>Resultados Intereses personales</Text>
+              <Text>Resultados intereses personales</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text21>
@@ -625,10 +625,10 @@
         <DataBand2 Ref="73" type="DataBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,3.4,17.6,20.4</ClientRectangle>
-          <Components isList="true" count="10">
+          <Components isList="true" count="14">
             <Text35 Ref="74" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,4.6,17.6,2.8</ClientRectangle>
+              <ClientRectangle>0,4,17.6,2.2</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10</Font>
               <Guid>31ba8dbe6e954f17a5de3c0a2ceff8b8</Guid>
@@ -643,7 +643,7 @@
             </Text35>
             <Text36 Ref="75" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,4,4,0.4</ClientRectangle>
+              <ClientRectangle>0,3.4,4,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10,Bold</Font>
               <Guid>df4cd3f396d3445eb8011e620f094d88</Guid>
@@ -657,7 +657,7 @@
             </Text36>
             <Text37 Ref="76" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,8.4,17.6,2.4</ClientRectangle>
+              <ClientRectangle>0,7,17.6,1.6</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10</Font>
               <Guid>f2a0d6958fab40d582aba45b5297ea8e</Guid>
@@ -672,7 +672,7 @@
             </Text37>
             <Text38 Ref="77" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,7.8,4,0.4</ClientRectangle>
+              <ClientRectangle>0,6.4,4,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10,Bold</Font>
               <Guid>932f95a0447844d3b98e7a58a80f11b2</Guid>
@@ -686,7 +686,7 @@
             </Text38>
             <Text39 Ref="78" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,12,17.6,2.4</ClientRectangle>
+              <ClientRectangle>0,9.4,17.6,2.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10</Font>
               <Guid>e1409027732c46daa35e609eda5616df</Guid>
@@ -701,7 +701,7 @@
             </Text39>
             <Text40 Ref="79" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,11.2,4,0.4</ClientRectangle>
+              <ClientRectangle>0,8.8,4,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10,Bold</Font>
               <Guid>42f104618fb7468b9b15885930bf41fc</Guid>
@@ -715,7 +715,7 @@
             </Text40>
             <Text24 Ref="80" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,14.8,4,0.4</ClientRectangle>
+              <ClientRectangle>0,12,4,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10,Bold</Font>
               <Guid>a83842b4bd7d48deb6d1f199d7f9c4d6</Guid>
@@ -729,7 +729,7 @@
             </Text24>
             <Text23 Ref="81" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,15.6,17.6,2.6</ClientRectangle>
+              <ClientRectangle>0,12.6,17.6,2.2</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10</Font>
               <Guid>148a58a7786740639ee9ef417a9bc118</Guid>
@@ -744,7 +744,7 @@
             </Text23>
             <Text19 Ref="82" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,0.8,17.6,2.8</ClientRectangle>
+              <ClientRectangle>0,0.6,17.6,2.6</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10</Font>
               <Guid>d1bc2ff7671f4ee19bc96cd7db2f3979</Guid>
@@ -757,12 +757,70 @@
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text19>
-            <Text20 Ref="83" type="Text" isKey="true">
+            <Text25 Ref="83" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,0.2,4,0.4</ClientRectangle>
+              <ClientRectangle>0,15.6,17.6,2.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>733485345dde40268b6a4001bc3b4bb1</Guid>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text25</Name>
+              <Page isRef="69" />
+              <Parent isRef="73" />
+              <Text>Este individuo muestra un desinterés por las cosas materiales, prefiriendo los conceptos más intangibles de servicios personales y relaciones espirituales. Como tal, las aplicaciones de carrera se inclinan fuertemente a servir, más que a la explotación de otros para lograr ganancias materiales. Una característica clave de esta persona es ayudar a las víctimas o desvalidos. En el manejo de negocios, tenderá a ser impráctico, careciendo de interés por costos o beneficios. En el puesto de ventas, tiende a ignorar precios o plazos de entrega. </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text25>
+            <Text26 Ref="84" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,15,4,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10,Bold</Font>
-              <Guid>779fc790aa544763993062fe0ec373a9</Guid>
+              <Guid>d917542a5b504bcb8e44372db03242db</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text26</Name>
+              <Page isRef="69" />
+              <Parent isRef="73" />
+              <Text>ECONÓMICO BAJO:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text26>
+            <Text27 Ref="85" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,18.6,17.6,1.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>4b701a9cb01141f1bfde7e0962a03760</Guid>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text27</Name>
+              <Page isRef="69" />
+              <Parent isRef="73" />
+              <Text>Esta persona no está interesada en el gusto o la belleza estética. Tiende a ser práctico y programático. Juzga objetos, cosas o programas por su utilidad, producción o ingreso financiero. Es olvidadizo o distraído respecto a las cualidades de forma, diseño, estilo o clase. Como tal, son considerados por los estetas como seres sencillos y no personas en su totalidad. </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text27>
+            <Text28 Ref="86" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,18,4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>2e3c8b76b9194c1f884719e5dcec9d0f</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text28</Name>
+              <Page isRef="69" />
+              <Parent isRef="73" />
+              <Text>ESTETICO BAJO:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text28>
+            <Text20 Ref="87" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>4cbe2af8213e4d66bebdf5b56b3623f8</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text20</Name>
               <Page isRef="69" />
@@ -790,20 +848,20 @@
       <PageWidth>21.6</PageWidth>
       <PaperSize>Letter</PaperSize>
       <Report isRef="0" />
-      <Watermark Ref="84" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+      <Watermark Ref="88" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
         <Font>Arial,100</Font>
         <TextBrush>[50:0:0:0]</TextBrush>
       </Watermark>
     </Page2>
-    <Page3 Ref="85" type="Page" isKey="true">
+    <Page3 Ref="89" type="Page" isKey="true">
       <Border>None;Black;2;Solid;False;4;Black</Border>
       <Brush>Transparent</Brush>
       <Components isList="true" count="2">
-        <PageHeaderBand3 Ref="86" type="PageHeaderBand" isKey="true">
+        <PageHeaderBand3 Ref="90" type="PageHeaderBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,0.4,17.6,2.2</ClientRectangle>
           <Components isList="true" count="2">
-            <Text33 Ref="87" type="Text" isKey="true">
+            <Text33 Ref="91" type="Text" isKey="true">
               <Border>Bottom;[186:20:25];4;Solid;False;2;[186:20:25]</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>0,0.2,19.6,1</ClientRectangle>
@@ -812,13 +870,13 @@
               <Guid>a3e80e084403457798c35736b3da5c44</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text33</Name>
-              <Page isRef="85" />
-              <Parent isRef="86" />
-              <Text>Resultados Intereses personales</Text>
+              <Page isRef="89" />
+              <Parent isRef="90" />
+              <Text>Resultados intereses personales</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text33>
-            <Text34 Ref="88" type="Text" isKey="true">
+            <Text34 Ref="92" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>0,1.4,19.6,0.6</ClientRectangle>
               <Conditions isList="true" count="0" />
@@ -826,8 +884,8 @@
               <Guid>ed6d18956d57404da4aba7399b067ab9</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text34</Name>
-              <Page isRef="85" />
-              <Parent isRef="86" />
+              <Page isRef="89" />
+              <Parent isRef="90" />
               <Text>Folio de solicitud: {CL_SOLICITUD}  Candidato: {NB_CANDIDATO}</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
@@ -836,224 +894,253 @@
           <Conditions isList="true" count="0" />
           <Guid>9c8c409d7d0a4bf48cc03ef610aa2e56</Guid>
           <Name>PageHeaderBand3</Name>
-          <Page isRef="85" />
-          <Parent isRef="85" />
+          <Page isRef="89" />
+          <Parent isRef="89" />
         </PageHeaderBand3>
-        <DataBand3 Ref="89" type="DataBand" isKey="true">
+        <DataBand3 Ref="93" type="DataBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,3.4,17.6,20.4</ClientRectangle>
-          <Components isList="true" count="14">
-            <Text43 Ref="90" type="Text" isKey="true">
+          <Components isList="true" count="16">
+            <Text43 Ref="94" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,14.6,17.6,1.8</ClientRectangle>
+              <ClientRectangle>0,7.6,17.6,1.6</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10</Font>
               <Guid>bae7b6ed708e49dfa4d563ffaf268684</Guid>
               <HorAlignment>Width</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text43</Name>
-              <Page isRef="85" />
-              <Parent isRef="89" />
+              <Page isRef="89" />
+              <Parent isRef="93" />
               <Text>Esta persona tiene juicios morales basados en un fundamento teórico puro. Preocupado por el mantenimiento del orden de su cosmos, esta persona continuamente expondrá sus creencias a un riguroso examen. Cuestionador y lógico, irá detrás del reconocimiento de un orden existente para preguntar ¿Por qué?. Es generalmente un individuo cooperativo y disciplinado, guiado por un profundo sentido de moralidad.</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text43>
-            <Text44 Ref="91" type="Text" isKey="true">
+            <Text44 Ref="95" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,14,5.8,0.4</ClientRectangle>
+              <ClientRectangle>0,7,5.8,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10,Bold</Font>
               <Guid>0c7ae4722611460a8a3868dd3dfdb78f</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text44</Name>
-              <Page isRef="85" />
-              <Parent isRef="89" />
+              <Page isRef="89" />
+              <Parent isRef="93" />
               <Text>TEÓRICO - REGULATORIO:</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text44>
-            <Text41 Ref="92" type="Text" isKey="true">
+            <Text41 Ref="96" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,12.4,17.6,1.4</ClientRectangle>
+              <ClientRectangle>0,5.4,17.6,1.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10</Font>
               <Guid>2541a04d09fc43ab8822c9fc68360b63</Guid>
               <HorAlignment>Width</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text41</Name>
-              <Page isRef="85" />
-              <Parent isRef="89" />
+              <Page isRef="89" />
+              <Parent isRef="93" />
               <Text>Este individuo es independiente e individualista. Quiere tomar decisiones independientes a códigos o costumbres. Se resiste a ser cuidadoso y resentirá que otros prescriban por él. Puede interpretar la ley para sus propias necesidades y racionalizar para justificar sus acciones individuales. </Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text41>
-            <Text42 Ref="93" type="Text" isKey="true">
+            <Text42 Ref="97" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,11.8,4,0.4</ClientRectangle>
+              <ClientRectangle>0,4.8,4,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10,Bold</Font>
               <Guid>20f1747c79934daaba37357cea31634d</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text42</Name>
-              <Page isRef="85" />
-              <Parent isRef="89" />
+              <Page isRef="89" />
+              <Parent isRef="93" />
               <Text>REGULATORIO BAJO:</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text42>
-            <Text45 Ref="94" type="Text" isKey="true">
+            <Text45 Ref="98" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,17.6,17.6,2.6</ClientRectangle>
+              <ClientRectangle>0,10,17.6,2.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10</Font>
               <Guid>6290f40164c548d7bcbf56be10414528</Guid>
               <HorAlignment>Width</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text45</Name>
-              <Page isRef="85" />
-              <Parent isRef="89" />
+              <Page isRef="89" />
+              <Parent isRef="93" />
               <Text>Esta persona disfruta estando a cargo de las empresas, pues disfruta ejerciendo su autoridad y dirigiendo a otros hacia fines o resultados. También disfruta la naturaleza competitiva de los negocios, luchando duro para ganar. Dotado de una alta dosis de pragmatismo y de un agudo sentido de los valores, concentra sus recursos donde tiene más posibilidades de ganar. Usualmente disfruta del reconocimiento y el status y puede encontrar maneras tangibles de publicar su posición por medio de símbolos de status como automóviles caros y oficinas grandes y bien amuebladas. </Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text45>
-            <Text46 Ref="95" type="Text" isKey="true">
+            <Text46 Ref="99" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,17,5.8,0.4</ClientRectangle>
+              <ClientRectangle>0,9.4,5.8,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10,Bold</Font>
               <Guid>a26d4bcf3d7547a7ae9ce489e6adf3f7</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text46</Name>
-              <Page isRef="85" />
-              <Parent isRef="89" />
+              <Page isRef="89" />
+              <Parent isRef="93" />
               <Text>POLÍTICO - ECONÓMICO:</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text46>
-            <Text25 Ref="96" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,0.8,17.6,2.4</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10</Font>
-              <Guid>fa89816e9b644efaa285243be3ae9837</Guid>
-              <HorAlignment>Width</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text25</Name>
-              <Page isRef="85" />
-              <Parent isRef="89" />
-              <Text>Este individuo muestra un desinterés por las cosas materiales, prefiriendo los conceptos más intangibles de servicios personales y relaciones espirituales. Como tal, las aplicaciones de carrera se inclinan fuertemente a servir, más que a la explotación de otros para lograr ganancias materiales. Una característica clave de esta persona es ayudar a las víctimas o desvalidos. En el manejo de negocios, tenderá a ser impráctico, careciendo de interés por costos o beneficios. En el puesto de ventas, tiende a ignorar precios o plazos de entrega. </Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text25>
-            <Text26 Ref="97" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,0.2,4,0.4</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10,Bold</Font>
-              <Guid>2c4bd37e254b4c6c9c9acb8cb6d5d0c0</Guid>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text26</Name>
-              <Page isRef="85" />
-              <Parent isRef="89" />
-              <Text>ECONÓMICO BAJO:</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text26>
-            <Text27 Ref="98" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,4.2,17.6,2</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10</Font>
-              <Guid>64ba2c9db58c4dd5b23299256f4c02f4</Guid>
-              <HorAlignment>Width</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text27</Name>
-              <Page isRef="85" />
-              <Parent isRef="89" />
-              <Text>Esta persona no está interesada en el gusto o la belleza estética. Tiende a ser práctico y programático. Juzga objetos, cosas o programas por su utilidad, producción o ingreso financiero. Es olvidadizo o distraído respecto a las cualidades de forma, diseño, estilo o clase. Como tal, son considerados por los estetas como seres sencillos y no personas en su totalidad. </Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text27>
-            <Text28 Ref="99" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,3.6,4,0.4</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10,Bold</Font>
-              <Guid>91ef95fcd39d4cc19679493bc7a16d01</Guid>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text28</Name>
-              <Page isRef="85" />
-              <Parent isRef="89" />
-              <Text>ESTETICO BAJO:</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text28>
             <Text29 Ref="100" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,7.2,17.6,1.4</ClientRectangle>
+              <ClientRectangle>0,0.6,17.6,1.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10</Font>
               <Guid>bf6ed8f4af7c459098d78c23d5cefb24</Guid>
               <HorAlignment>Width</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text29</Name>
-              <Page isRef="85" />
-              <Parent isRef="89" />
+              <Page isRef="89" />
+              <Parent isRef="93" />
               <Text>Este individuo tiende a ser indiferente hacia la gente menesterosa o desamparada, quienes tienen menos bienes materiales o riqueza. Tiende a creer que cada persona obtiene lo que se merece. Carece de compasión por los extraños. Sus valores primarios son poco cambiados y producen predisposiciones y prejuicios con otra gente. </Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text29>
             <Text30 Ref="101" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,6.6,4,0.4</ClientRectangle>
+              <ClientRectangle>0,0,4,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10,Bold</Font>
               <Guid>838f0fec5f8042a3afc19083a942a4dc</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text30</Name>
-              <Page isRef="85" />
-              <Parent isRef="89" />
+              <Page isRef="89" />
+              <Parent isRef="93" />
               <Text>SOCIAL BAJO:</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text30>
             <Text31 Ref="102" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,9,4,0.4</ClientRectangle>
+              <ClientRectangle>0,2.2,4,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10,Bold</Font>
               <Guid>2e84f7174868459db9eb7532a08d7f58</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text31</Name>
-              <Page isRef="85" />
-              <Parent isRef="89" />
+              <Page isRef="89" />
+              <Parent isRef="93" />
               <Text>POLÍTICO BAJO:</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text31>
             <Text32 Ref="103" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,9.6,17.6,1.8</ClientRectangle>
+              <ClientRectangle>0,2.8,17.6,1.8</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10</Font>
               <Guid>0a4fe5eb512a4440bc66ea36c37b930e</Guid>
               <HorAlignment>Width</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text32</Name>
-              <Page isRef="85" />
-              <Parent isRef="89" />
+              <Page isRef="89" />
+              <Parent isRef="93" />
               <Text>El ejercicio del poder no vale la pena, debido a las adversidades que uno debe afrontar al ganarlo. Una persona con puntuaciones bajas en esta área está particularmente consciente de los riesgos del manejo del poder y de que requiere de contacto con personas o situaciones no deseables. Sin embargo, está dispuesto a ejercer el liderazgo detrás de escena para ganar una causa. </Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text32>
+            <Text47 Ref="104" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,12.6,4.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>9069cc90f3994bfdb15367d51d9401fa</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text47</Name>
+              <Page isRef="89" />
+              <Parent isRef="93" />
+              <Text>ARTÍSTICO - ESTÉTICO:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text47>
+            <Text48 Ref="105" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,13.2,17.6,2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>7324468dcbfa413893f8616e3d06a11f</Guid>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text48</Name>
+              <Page isRef="89" />
+              <Parent isRef="93" />
+              <Text>Busca la belleza artística o la creatividad en áreas de expresión cultural. Busca la forma y la armonía, la gracia y la simetría. Sus percepciones pueden variar. Esta persona es apta para ser perfeccionista en el diseño, el color y los detalles. Demanda libertad para crear sus propias cosas. Su aguda sensibilidad por lo bello, puede estar acompañada por su intolerancia a lo feo. Objeta la falta de sensibilidad refinada cuando es vista en un comercialismo grueso. </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text48>
+            <Text51 Ref="106" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,16,17.6,2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>cb72e266f36d4af28ac6cb3bacf7d8e5</Guid>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text51</Name>
+              <Page isRef="89" />
+              <Parent isRef="93" />
+              <Text>Esta persona disfruta descubriendo ideas nuevas y útiles. Cae dentro del mundo de la ciencia o de los conceptos. Este estilo se refuerza por encontrar aplicaciones prácticas y útiles para sus ideas. Aplica frecuentemente sistemas lógicos a la administración, esforzándose por hacer una ciencia más que un arte. Mientras esta persona es frecuentemente muy creativa, usualmente canaliza su creatividad hacia lo tangible y lo objetivo y la mayoría de las veces mide sus éxitos en pesos y centavos. </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text51>
+            <Text52 Ref="107" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,15.4,5.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>853d9796f866405998ba9d850ad90654</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text52</Name>
+              <Page isRef="89" />
+              <Parent isRef="93" />
+              <Text>TEÓRICO - ECONÓMICO:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text52>
+            <Text53 Ref="108" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,18.8,17.6,2.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>db85f0100f0f4742b2b66fdf2d81e289</Guid>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text53</Name>
+              <Page isRef="89" />
+              <Parent isRef="93" />
+              <Text>Esta persona está enfocada al éxito y a tener influencia sobre los otros. Utiliza el conocimiento y el cálculo de opciones para favorecer sus ambiciones. Es personalmente ambicioso, atraído por el mundo de la razón y de los hechos. Puede parecer no estar consciente de las consecuencias sociales de sus actos. Por esta razón puede ser muy efectivo en situaciones que requieren de un razonamiento frío asociado con acciones firmes y positivas. Usualmente son respetados por su fuerza ante la adversidad y su habilidad para pensar bajo presión. </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text53>
+            <Text54 Ref="109" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,18.2,4.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>1247d697890846b4bbe4d77afb509467</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text54</Name>
+              <Page isRef="89" />
+              <Parent isRef="93" />
+              <Text>TEÓRICO - POLÍTICO:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text54>
           </Components>
           <Conditions isList="true" count="0" />
           <DataRelationName isNull="true" />
           <Filters isList="true" count="0" />
           <Guid>569eb39606e8470d9434aeba1ecaf44e</Guid>
           <Name>DataBand3</Name>
-          <Page isRef="85" />
-          <Parent isRef="85" />
+          <Page isRef="89" />
+          <Parent isRef="89" />
           <Sort isList="true" count="0" />
         </DataBand3>
       </Components>
@@ -1065,20 +1152,20 @@
       <PageWidth>21.6</PageWidth>
       <PaperSize>Letter</PaperSize>
       <Report isRef="0" />
-      <Watermark Ref="104" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+      <Watermark Ref="110" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
         <Font>Arial,100</Font>
         <TextBrush>[50:0:0:0]</TextBrush>
       </Watermark>
     </Page3>
-    <Page4 Ref="105" type="Page" isKey="true">
+    <Page4 Ref="111" type="Page" isKey="true">
       <Border>None;Black;2;Solid;False;4;Black</Border>
       <Brush>Transparent</Brush>
       <Components isList="true" count="2">
-        <PageHeaderBand4 Ref="106" type="PageHeaderBand" isKey="true">
+        <PageHeaderBand4 Ref="112" type="PageHeaderBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,0.4,17.6,2.2</ClientRectangle>
           <Components isList="true" count="2">
-            <Text57 Ref="107" type="Text" isKey="true">
+            <Text57 Ref="113" type="Text" isKey="true">
               <Border>Bottom;[186:20:25];4;Solid;False;2;[186:20:25]</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>0,0.2,19.6,1</ClientRectangle>
@@ -1087,13 +1174,13 @@
               <Guid>45b3d41b7ab64f8cbc7029d793eff659</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text57</Name>
-              <Page isRef="105" />
-              <Parent isRef="106" />
-              <Text>Resultados Intereses personales</Text>
+              <Page isRef="111" />
+              <Parent isRef="112" />
+              <Text>Resultados intereses personales</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text57>
-            <Text58 Ref="108" type="Text" isKey="true">
+            <Text58 Ref="114" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>0,1.4,19.6,0.6</ClientRectangle>
               <Conditions isList="true" count="0" />
@@ -1101,8 +1188,8 @@
               <Guid>0040284b54c14b27b97c0734fad88455</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text58</Name>
-              <Page isRef="105" />
-              <Parent isRef="106" />
+              <Page isRef="111" />
+              <Parent isRef="112" />
               <Text>Folio de solicitud: {CL_SOLICITUD}  Candidato: {NB_CANDIDATO}</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
@@ -1111,195 +1198,224 @@
           <Conditions isList="true" count="0" />
           <Guid>3742e2d1444d403aa778f05b5be5fcec</Guid>
           <Name>PageHeaderBand4</Name>
-          <Page isRef="105" />
-          <Parent isRef="105" />
+          <Page isRef="111" />
+          <Parent isRef="111" />
         </PageHeaderBand4>
-        <DataBand4 Ref="109" type="DataBand" isKey="true">
+        <DataBand4 Ref="115" type="DataBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,3.4,17.6,20.4</ClientRectangle>
-          <Components isList="true" count="12">
-            <Text49 Ref="110" type="Text" isKey="true">
+          <Components isList="true" count="14">
+            <Text49 Ref="116" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,13.6,6.4,0.4</ClientRectangle>
+              <ClientRectangle>0,3.2,6.4,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10,Bold</Font>
               <Guid>e89a309e644044398d64613aa27de663</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text49</Name>
-              <Page isRef="105" />
-              <Parent isRef="109" />
+              <Page isRef="111" />
+              <Parent isRef="115" />
               <Text>ECONÓMICO - REGULATORIO:</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text49>
-            <Text50 Ref="111" type="Text" isKey="true">
+            <Text50 Ref="117" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,14.2,17.6,2.4</ClientRectangle>
+              <ClientRectangle>0,3.8,17.6,2.2</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10</Font>
               <Guid>6a2479da428a4d9cb309eca26be37f64</Guid>
               <HorAlignment>Width</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text50</Name>
-              <Page isRef="105" />
-              <Parent isRef="109" />
+              <Page isRef="111" />
+              <Parent isRef="115" />
               <Text>Tiende a guiarse por principios y un estricto sentido del orden. Motivado a maximizar beneficios, aplica sistemas y disciplinas que monitorean y controlan la actividad económica. Tiende a creer que toda la actividad de la empresa debe ser guiada por un plan o un grupo de estándares y principios predeterminados que sirvan como modelo para la acción. Aunque es generalmente cooperativo, puede revelarse a algo que contradice su noción de lo que es correcto. </Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text50>
-            <Text59 Ref="112" type="Text" isKey="true">
+            <Text59 Ref="118" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,17.6,17.6,2</ClientRectangle>
+              <ClientRectangle>0,6.8,17.6,2</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10</Font>
               <Guid>4b530cc3fad8496c9adff186863832f8</Guid>
               <HorAlignment>Width</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text59</Name>
-              <Page isRef="105" />
-              <Parent isRef="109" />
+              <Page isRef="111" />
+              <Parent isRef="115" />
               <Text>Este individuo puede sentirse dividido en ocasiones entre su deseo de poder y su deseo de paz y armonía. Tiende a ser sensitivo al color, la luz, el sonido y la forma, y quizá especialmente talentoso en el empleo de los mismos para expresar sus pensamientos y sus sentimientos. Usualmente ambicioso, empujará hasta llegar a la cumbre de su campo o para asegurar que sus enfoques o puntos de vista sean los ganadores del día. </Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text59>
-            <Text60 Ref="113" type="Text" isKey="true">
+            <Text60 Ref="119" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,17,6,0.4</ClientRectangle>
+              <ClientRectangle>0,6.2,6,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10,Bold</Font>
               <Guid>32d3630060644f3da5c99ebb81fe8bbc</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text60</Name>
-              <Page isRef="105" />
-              <Parent isRef="109" />
+              <Page isRef="111" />
+              <Parent isRef="115" />
               <Text>ESTÉTICO - POLÍTICO:</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text60>
-            <Text47 Ref="114" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,0.4,4.6,0.4</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10,Bold</Font>
-              <Guid>d77e6cd92b0940f3bcfdd252e7f1faed</Guid>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text47</Name>
-              <Page isRef="105" />
-              <Parent isRef="109" />
-              <Text>ARTÍSTICO - ESTÉTICO:</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text47>
-            <Text48 Ref="115" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,1,17.6,2.2</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10</Font>
-              <Guid>d4dbea8feac849e8ae6d4109edd9ea8d</Guid>
-              <HorAlignment>Width</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text48</Name>
-              <Page isRef="105" />
-              <Parent isRef="109" />
-              <Text>Busca la belleza artística o la creatividad en áreas de expresión cultural. Busca la forma y la armonía, la gracia y la simetría. Sus percepciones pueden variar. Esta persona es apta para ser perfeccionista en el diseño, el color y los detalles. Demanda libertad para crear sus propias cosas. Su aguda sensibilidad por lo bello, puede estar acompañada por su intolerancia a lo feo. Objeta la falta de sensibilidad refinada cuando es vista en un comercialismo grueso. </Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text48>
-            <Text51 Ref="116" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,4.2,17.6,2.2</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10</Font>
-              <Guid>c9dcf9d185cf42608b4577971bf2281d</Guid>
-              <HorAlignment>Width</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text51</Name>
-              <Page isRef="105" />
-              <Parent isRef="109" />
-              <Text>Esta persona disfruta descubriendo ideas nuevas y útiles. Cae dentro del mundo de la ciencia o de los conceptos. Este estilo se refuerza por encontrar aplicaciones prácticas y útiles para sus ideas. Aplica frecuentemente sistemas lógicos a la administración, esforzándose por hacer una ciencia más que un arte. Mientras esta persona es frecuentemente muy creativa, usualmente canaliza su creatividad hacia lo tangible y lo objetivo y la mayoría de las veces mide sus éxitos en pesos y centavos. </Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text51>
-            <Text52 Ref="117" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,3.6,5.2,0.4</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10,Bold</Font>
-              <Guid>890b2bcb092e4a6d98a15dd3faf522c1</Guid>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text52</Name>
-              <Page isRef="105" />
-              <Parent isRef="109" />
-              <Text>TEÓRICO - ECONÓMICO:</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text52>
-            <Text53 Ref="118" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,7.4,17.6,2.4</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10</Font>
-              <Guid>4770f472d35c458194c2bd6fac76b839</Guid>
-              <HorAlignment>Width</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text53</Name>
-              <Page isRef="105" />
-              <Parent isRef="109" />
-              <Text>Esta persona está enfocada al éxito y a tener influencia sobre los otros. Utiliza el conocimiento y el cálculo de opciones para favorecer sus ambiciones. Es personalmente ambicioso, atraído por el mundo de la razón y de los hechos. Puede parecer no estar consciente de las consecuencias sociales de sus actos. Por esta razón puede ser muy efectivo en situaciones que requieren de un razonamiento frío asociado con acciones firmes y positivas. Usualmente son respetados por su fuerza ante la adversidad y su habilidad para pensar bajo presión. </Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text53>
-            <Text54 Ref="119" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,6.8,4.8,0.4</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10,Bold</Font>
-              <Guid>0f01acc1ed4044329bf8e738749d16b1</Guid>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text54</Name>
-              <Page isRef="105" />
-              <Parent isRef="109" />
-              <Text>TEÓRICO - POLÍTICO:</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text54>
             <Text55 Ref="120" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,10.2,4,0.4</ClientRectangle>
+              <ClientRectangle>0,0.2,4,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10,Bold</Font>
               <Guid>c1a5a76ecf084a8ba4494bbad15ec570</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text55</Name>
-              <Page isRef="105" />
-              <Parent isRef="109" />
+              <Page isRef="111" />
+              <Parent isRef="115" />
               <Text>TEÓRICO - SOCIAL:</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text55>
             <Text56 Ref="121" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,10.8,17.6,2.4</ClientRectangle>
+              <ClientRectangle>0,0.8,17.6,2.2</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10</Font>
               <Guid>867fa0fd47f14d6789a8137257b9b6e6</Guid>
               <HorAlignment>Width</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text56</Name>
-              <Page isRef="105" />
-              <Parent isRef="109" />
+              <Page isRef="111" />
+              <Parent isRef="115" />
               <Text>Este individuo tiende a ser altruista y desinteresado, pues busca ayudar a su prójimo a través del uso del conocimiento y la razón. Convencido de que el conocimiento y el entendimiento puede proporcionar las mejores soluciones a los problemas, esta persona propone sistemas y lógica para enfrentar la mayoría de los problemas. Su deseo de ayudar a otros, va acompañado de una curiosidad innata, llevándole a confiar en la investigación y en la aplicación de métodos científicos para la solución de problemas humanos. </Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text56>
+            <Text67 Ref="122" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,9.6,17.6,2.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>bc8dfaa63357470b859a07936c6c5a5f</Guid>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text67</Name>
+              <Page isRef="111" />
+              <Parent isRef="115" />
+              <Text>Este individuo es generalmente gracioso y armonioso. Es reflexivo y naturalmente inquisitivo, muestra una alta sensibilidad al color, el diseño, el balance y la forma. El idealismo caracteriza a este estilo, que es devoto de la armonía y la belleza, así como de la dedicación a aprender la verdad. Frecuentemente trabaja con facilidad, pues usa su conocimiento para preservar la existencia de balance o crear un nuevo orden en el nombre de la armonía o la belleza. </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text67>
+            <Text68 Ref="123" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,9,4.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>9f456e0091f6442cb279786c4dff3969</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text68</Name>
+              <Page isRef="111" />
+              <Parent isRef="115" />
+              <Text>TEÓRICO - ESTÉTICO:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text68>
+            <Text69 Ref="124" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,12.6,17.6,2.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>e09fa6a35f5144538bedb78c102d8c4d</Guid>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text69</Name>
+              <Page isRef="111" />
+              <Parent isRef="115" />
+              <Text>Este individuo tiende a ser armonioso, busca un ambiente sereno y elegante. Tiende a coleccionar objetos bellos de valor. Aprecia la gracia y la belleza de las cosas, pero también busca algo de utilidad. Para esta persona, la belleza por sí misma es fría. Sin embargo, toda la vida es más rica cuando la belleza es parte de ella. Generalmente es sensitivo al color, la forma y los sonidos y se esfuerza por lograr el balance y la armonía. De este modo, sus relaciones con otros son usualmente positivas y pacíficas. </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text69>
+            <Text70 Ref="125" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,12,5,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>0533e157208448cabdccf8c6c030af9c</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text70</Name>
+              <Page isRef="111" />
+              <Parent isRef="115" />
+              <Text>ECONÓMICO - ESTÉTICO:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text70>
+            <Text66 Ref="126" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,15,4.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>1ede771da4d94d3b9cf19dfdf4ed9cd4</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text66</Name>
+              <Page isRef="111" />
+              <Parent isRef="115" />
+              <Text>ECONÓMICO - SOCIAL:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text66>
+            <Text102 Ref="127" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,15.6,17.6,1.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>0536920b22244ed7a883084826741075</Guid>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text102</Name>
+              <Page isRef="111" />
+              <Parent isRef="115" />
+              <Text>Este individuo tiende a seguir la creencia de proveer el máximo beneficio, por el máximo número y el menor costo. De este modo, extiende sus recursos hasta el límite para promover el bienestar social. Tiene un buen sentido del valor y se inclina hacia el manejo o solución de problemas de tipo práctico. No obstante, es sensitivo y se preocupa por la gente. Frecuentemente dedica su tiempo y energía desinteresadamente a ayudar a otros. </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text102>
+            <Text81 Ref="128" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,18.2,17.6,2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>f071518ffc3a4c9596ea6ac54b24d487</Guid>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text81</Name>
+              <Page isRef="111" />
+              <Parent isRef="115" />
+              <Text>Este individuo tiende a buscar la expresión artística de sus inquietudes o amor hacia los demás. Generalmente es sensitivo y gracioso, por lo que establece contacto con los demás de una manera cálida y personal, llegándose a ver envuelto en el caos de la vida de otros. Altamente armonizante con la belleza de su mundo, ve como una fuerte de felicidad que disfruta al participar con otra gente.</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text81>
+            <Text82 Ref="129" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,17.6,4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>5d33d1f106a64baf979728662d82ae79</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text82</Name>
+              <Page isRef="111" />
+              <Parent isRef="115" />
+              <Text>ESTÉTICO - SOCIAL:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text82>
           </Components>
           <Conditions isList="true" count="0" />
           <DataRelationName isNull="true" />
           <Filters isList="true" count="0" />
           <Guid>464ca54491314fb193513d42b90547d6</Guid>
           <Name>DataBand4</Name>
-          <Page isRef="105" />
-          <Parent isRef="105" />
+          <Page isRef="111" />
+          <Parent isRef="111" />
           <Sort isList="true" count="0" />
         </DataBand4>
       </Components>
@@ -1311,20 +1427,20 @@
       <PageWidth>21.6</PageWidth>
       <PaperSize>Letter</PaperSize>
       <Report isRef="0" />
-      <Watermark Ref="122" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+      <Watermark Ref="130" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
         <Font>Arial,100</Font>
         <TextBrush>[50:0:0:0]</TextBrush>
       </Watermark>
     </Page4>
-    <Page5 Ref="123" type="Page" isKey="true">
+    <Page5 Ref="131" type="Page" isKey="true">
       <Border>None;Black;2;Solid;False;4;Black</Border>
       <Brush>Transparent</Brush>
       <Components isList="true" count="2">
-        <PageHeaderBand5 Ref="124" type="PageHeaderBand" isKey="true">
+        <PageHeaderBand5 Ref="132" type="PageHeaderBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,0.4,17.6,2.2</ClientRectangle>
           <Components isList="true" count="2">
-            <Text79 Ref="125" type="Text" isKey="true">
+            <Text79 Ref="133" type="Text" isKey="true">
               <Border>Bottom;[186:20:25];4;Solid;False;2;[186:20:25]</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>0,0.2,17.6,1</ClientRectangle>
@@ -1333,13 +1449,13 @@
               <Guid>eed9342d941d4792b9db99a31a78c256</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text79</Name>
-              <Page isRef="123" />
-              <Parent isRef="124" />
-              <Text>Resultados Intereses personales</Text>
+              <Page isRef="131" />
+              <Parent isRef="132" />
+              <Text>Resultados intereses personales</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text79>
-            <Text80 Ref="126" type="Text" isKey="true">
+            <Text80 Ref="134" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>0,1.4,17.6,0.6</ClientRectangle>
               <Conditions isList="true" count="0" />
@@ -1347,8 +1463,8 @@
               <Guid>555bda143e824a939631414591f3b9f5</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text80</Name>
-              <Page isRef="123" />
-              <Parent isRef="124" />
+              <Page isRef="131" />
+              <Parent isRef="132" />
               <Text>Folio de solicitud: {CL_SOLICITUD}  Candidato: {NB_CANDIDATO}</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
@@ -1357,195 +1473,137 @@
           <Conditions isList="true" count="0" />
           <Guid>e193d14e6e3640a3934b5ae404a56e27</Guid>
           <Name>PageHeaderBand5</Name>
-          <Page isRef="123" />
-          <Parent isRef="123" />
+          <Page isRef="131" />
+          <Parent isRef="131" />
         </PageHeaderBand5>
-        <DataBand5 Ref="127" type="DataBand" isKey="true">
+        <DataBand5 Ref="135" type="DataBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,3.4,17.6,20.4</ClientRectangle>
-          <Components isList="true" count="12">
-            <Text67 Ref="128" type="Text" isKey="true">
+          <Components isList="true" count="8">
+            <Text83 Ref="136" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,0.8,17.6,2.2</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10</Font>
-              <Guid>e6e7032c627d44b897c577eb1844ec79</Guid>
-              <HorAlignment>Width</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text67</Name>
-              <Page isRef="123" />
-              <Parent isRef="127" />
-              <Text>Este individuo es generalmente gracioso y armonioso. Es reflexivo y naturalmente inquisitivo, muestra una alta sensibilidad al color, el diseño, el balance y la forma. El idealismo caracteriza a este estilo, que es devoto de la armonía y la belleza, así como de la dedicación a aprender la verdad. Frecuentemente trabaja con facilidad, pues usa su conocimiento para preservar la existencia de balance o crear un nuevo orden en el nombre de la armonía o la belleza. </Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text67>
-            <Text68 Ref="129" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,0.2,4.4,0.4</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10,Bold</Font>
-              <Guid>6066e7af7a8f424c96ca99a7c0848da5</Guid>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text68</Name>
-              <Page isRef="123" />
-              <Parent isRef="127" />
-              <Text>TEÓRICO - ESTÉTICO:</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text68>
-            <Text69 Ref="130" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,4,17.6,2.2</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10</Font>
-              <Guid>3eb156fd5f8347d49a8053018b8bb6e3</Guid>
-              <HorAlignment>Width</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text69</Name>
-              <Page isRef="123" />
-              <Parent isRef="127" />
-              <Text>Este individuo tiende a ser armonioso, busca un ambiente sereno y elegante. Tiende a coleccionar objetos bellos de valor. Aprecia la gracia y la belleza de las cosas, pero también busca algo de utilidad. Para esta persona, la belleza por sí misma es fría. Sin embargo, toda la vida es más rica cuando la belleza es parte de ella. Generalmente es sensitivo al color, la forma y los sonidos y se esfuerza por lograr el balance y la armonía. De este modo, sus relaciones con otros son usualmente positivas y pacíficas. </Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text69>
-            <Text70 Ref="131" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,3.4,5,0.4</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10,Bold</Font>
-              <Guid>1c4dbc44b4224728b7756cb4a640b9dd</Guid>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text70</Name>
-              <Page isRef="123" />
-              <Parent isRef="127" />
-              <Text>ECONÓMICO - ESTÉTICO:</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text70>
-            <Text66 Ref="132" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,6.6,4.4,0.4</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10,Bold</Font>
-              <Guid>d5010ec554954c08b5a632396c287c1d</Guid>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text66</Name>
-              <Page isRef="123" />
-              <Parent isRef="127" />
-              <Text>ECONÓMICO - SOCIAL:</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text66>
-            <Text81 Ref="133" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,10.4,17.6,2</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10</Font>
-              <Guid>2454a1faa12d4911927b0d501fb95048</Guid>
-              <HorAlignment>Width</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text81</Name>
-              <Page isRef="123" />
-              <Parent isRef="127" />
-              <Text>Este individuo tiende a buscar la expresión artística de sus inquietudes o amor hacia los demás. Generalmente es sensitivo y gracioso, por lo que establece contacto con los demás de una manera cálida y personal, llegándose a ver envuelto en el caos de la vida de otros. Altamente armonizante con la belleza de su mundo, ve como una fuerte de felicidad que disfruta al participar con otra gente.</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text81>
-            <Text82 Ref="134" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,9.8,4,0.4</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10,Bold</Font>
-              <Guid>b5e201b816a1416fb9c1d011926886e2</Guid>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text82</Name>
-              <Page isRef="123" />
-              <Parent isRef="127" />
-              <Text>ESTÉTICO - SOCIAL:</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text82>
-            <Text83 Ref="135" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,12.8,5,0.4</ClientRectangle>
+              <ClientRectangle>0,0,5,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10,Bold</Font>
               <Guid>3927d844c6da43c6b7ec0f67fe31bca5</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text83</Name>
-              <Page isRef="123" />
-              <Parent isRef="127" />
+              <Page isRef="131" />
+              <Parent isRef="135" />
               <Text>ESTÉTICO - REGULATORIO:</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text83>
-            <Text84 Ref="136" type="Text" isKey="true">
+            <Text84 Ref="137" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,13.4,17.6,1.6</ClientRectangle>
+              <ClientRectangle>0,0.6,17.6,1.6</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10</Font>
               <Guid>5619c70fbb6a4259ab9f3d65ed70c876</Guid>
               <HorAlignment>Width</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text84</Name>
-              <Page isRef="123" />
-              <Parent isRef="127" />
+              <Page isRef="131" />
+              <Parent isRef="135" />
               <Text>Este individuo es sereno y disciplinado, aprecia el balance y el orden de su universo. Busca la forma, la gracia y la simetría. Es cooperativo y auto controlado, tiende a gobernarse así mismo por un profundo sentido de lo correcto y lo incorrecto. Se identifica con una fuerza reconocida del bien y busca la unidad en el cosmos. </Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text84>
-            <Text85 Ref="137" type="Text" isKey="true">
+            <Text85 Ref="138" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,15.4,5.6,0.4</ClientRectangle>
+              <ClientRectangle>0,2.6,5.6,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10,Bold</Font>
               <Guid>d1afbe2b3ef3421a91778640505865aa</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text85</Name>
-              <Page isRef="123" />
-              <Parent isRef="127" />
+              <Page isRef="131" />
+              <Parent isRef="135" />
               <Text>POLÍTICO - SOCIAL:</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text85>
-            <Text97 Ref="138" type="Text" isKey="true">
+            <Text97 Ref="139" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,16,17.6,2.4</ClientRectangle>
+              <ClientRectangle>0,3.2,17.6,2.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,10</Font>
               <Guid>bf4f5b4a593f46ebba1c678fcc940230</Guid>
               <HorAlignment>Width</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text97</Name>
-              <Page isRef="123" />
-              <Parent isRef="127" />
+              <Page isRef="131" />
+              <Parent isRef="135" />
               <Text>Este individuo es activista social, el campeón de los desvalidos. Profundamente sensitivo al sufrimiento humano, este individuo se siente impulsado a tomar la acción, hacer cambios y corregir errores. Es ambicioso y disfruta teniendo el poder y el control para imponer sus ideas. Generalmente interesado en promover el bienestar de otros. Compite agresivamente por su causa. Tales personas están listas para comprometerse en una controversia para favorecer sus objetivos. </Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text97>
-            <Text102 Ref="139" type="Text" isKey="true">
+            <Text98 Ref="140" type="Text" isKey="true">
               <Brush>Transparent</Brush>
-              <ClientRectangle>0,7.2,17.6,2.2</ClientRectangle>
+              <ClientRectangle>0,5.8,5.6,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
-              <Font>Arial,10</Font>
-              <Guid>c53bc5070c5247329e1852e27573d9d3</Guid>
-              <HorAlignment>Width</HorAlignment>
+              <Font>Arial,10,Bold</Font>
+              <Guid>26581fbac913487499c7bbbb213f2f50</Guid>
               <Margins>0,0,0,0</Margins>
-              <Name>Text102</Name>
-              <Page isRef="123" />
-              <Parent isRef="127" />
-              <Text>Este individuo tiende a seguir la creencia de proveer el máximo beneficio, por el máximo número y el menor costo. De este modo, extiende sus recursos hasta el límite para promover el bienestar social. Tiene un buen sentido del valor y se inclina hacia el manejo o solución de problemas de tipo práctico. No obstante, es sensitivo y se preocupa por la gente. Frecuentemente dedica su tiempo y energía desinteresadamente a ayudar a otros. </Text>
+              <Name>Text98</Name>
+              <Page isRef="131" />
+              <Parent isRef="135" />
+              <Text>SOCIAL - REGULATORIO:</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
-            </Text102>
+            </Text98>
+            <Text99 Ref="141" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,6.4,17.6,2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>840fcde5029c4646a59c511ad443a375</Guid>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text99</Name>
+              <Page isRef="131" />
+              <Parent isRef="135" />
+              <Text>Este individuo tiende a ser ordenado, así como cálido y amistoso. Generalmente es un individuo guiado por la ética y por un profundo sentido de lo correcto o lo incorrecto. Tiende a poner los problemas humanos en la perspectiva de algún orden cósmico. Motivado a promover la armonía y a ser cooperativo, se resistirá a cualquier acción que afecte sus creencias o estándares. </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text99>
+            <Text100 Ref="142" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,8.8,5.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>20068ee8623842fbade55b0cf8e734dd</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text100</Name>
+              <Page isRef="131" />
+              <Parent isRef="135" />
+              <Text>POLÍTICO - REGULATORIO:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text100>
+            <Text101 Ref="143" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,9.4,17.6,2.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>98c3156c3e6d41609f6253358ee965e8</Guid>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text101</Name>
+              <Page isRef="131" />
+              <Parent isRef="135" />
+              <Text>Este individuo busca status e imponer sus ideas de acuerdo a lo correcto o incorrecto. Tiende a gobernarse a sí mismo por un código de conducta en obediencia y una alta autoridad. Busca unidad en su propio cosmos y una relación con esta totalidad. Busca control sobre otros, tratando de hacerlo desde su propio punto de vista acerca de lo que el mundo debería ser. Dispuesto a pelear por sus creencias, desafía cualquier oponente en el nombre de lo moralmente justo y distingue el bien del mal, luchando siempre del lado del bien. </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text101>
           </Components>
           <Conditions isList="true" count="0" />
           <DataRelationName isNull="true" />
           <Filters isList="true" count="0" />
           <Guid>ef50f7ce00f74c7b901858cc07365b68</Guid>
           <Name>DataBand5</Name>
-          <Page isRef="123" />
-          <Parent isRef="123" />
+          <Page isRef="131" />
+          <Parent isRef="131" />
           <Sort isList="true" count="0" />
         </DataBand5>
       </Components>
@@ -1557,142 +1615,13 @@
       <PageWidth>21.6</PageWidth>
       <PaperSize>Letter</PaperSize>
       <Report isRef="0" />
-      <Watermark Ref="140" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+      <Watermark Ref="144" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
         <Font>Arial,100</Font>
         <TextBrush>[50:0:0:0]</TextBrush>
       </Watermark>
     </Page5>
-    <Page6 Ref="141" type="Page" isKey="true">
-      <Border>None;Black;2;Solid;False;4;Black</Border>
-      <Brush>Transparent</Brush>
-      <Components isList="true" count="2">
-        <PageHeaderBand6 Ref="142" type="PageHeaderBand" isKey="true">
-          <Brush>Transparent</Brush>
-          <ClientRectangle>0,0.4,17,2.2</ClientRectangle>
-          <Components isList="true" count="2">
-            <Text62 Ref="143" type="Text" isKey="true">
-              <Border>Bottom;[186:20:25];4;Solid;False;2;[186:20:25]</Border>
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,0.2,17,1</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,20</Font>
-              <Guid>6595625a6a794e258fa09bc16ad44057</Guid>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text62</Name>
-              <Page isRef="141" />
-              <Parent isRef="142" />
-              <Text>Resultados Intereses personales</Text>
-              <TextBrush>[192:0:0]</TextBrush>
-              <Type>Expression</Type>
-            </Text62>
-            <Text65 Ref="144" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,1.4,17,0.6</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10,Bold</Font>
-              <Guid>7299db8ba55743d6ae4acbac6efa757c</Guid>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text65</Name>
-              <Page isRef="141" />
-              <Parent isRef="142" />
-              <Text>Folio de solicitud: {CL_SOLICITUD}  Candidato: {NB_CANDIDATO}</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text65>
-          </Components>
-          <Conditions isList="true" count="0" />
-          <Guid>1371c079e1ba4f4486cb92d9d05b8bb1</Guid>
-          <Name>PageHeaderBand6</Name>
-          <Page isRef="141" />
-          <Parent isRef="141" />
-        </PageHeaderBand6>
-        <DataBand6 Ref="145" type="DataBand" isKey="true">
-          <Brush>Transparent</Brush>
-          <ClientRectangle>0,3.4,17,21.6</ClientRectangle>
-          <Components isList="true" count="4">
-            <Text98 Ref="146" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,0.2,5.6,0.4</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10,Bold</Font>
-              <Guid>dff88e2eaad9449d898616af76762119</Guid>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text98</Name>
-              <Page isRef="141" />
-              <Parent isRef="145" />
-              <Text>SOCIAL - REGULATORIO:</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text98>
-            <Text99 Ref="147" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,0.8,17,2</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10</Font>
-              <Guid>dc972030e36e4f5e907908fefe68596c</Guid>
-              <HorAlignment>Width</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text99</Name>
-              <Page isRef="141" />
-              <Parent isRef="145" />
-              <Text>Este individuo tiende a ser ordenado, así como cálido y amistoso. Generalmente es un individuo guiado por la ética y por un profundo sentido de lo correcto o lo incorrecto. Tiende a poner los problemas humanos en la perspectiva de algún orden cósmico. Motivado a promover la armonía y a ser cooperativo, se resistirá a cualquier acción que afecte sus creencias o estándares. </Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text99>
-            <Text100 Ref="148" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,3.2,5.6,0.4</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10,Bold</Font>
-              <Guid>1659c3e9b17c45c4b1ab6832ff518807</Guid>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text100</Name>
-              <Page isRef="141" />
-              <Parent isRef="145" />
-              <Text>POLÍTICO - REGULATORIO:</Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text100>
-            <Text101 Ref="149" type="Text" isKey="true">
-              <Brush>Transparent</Brush>
-              <ClientRectangle>0,3.8,17,2.2</ClientRectangle>
-              <Conditions isList="true" count="0" />
-              <Font>Arial,10</Font>
-              <Guid>2ecb4989979640e9b8135fb5669420e8</Guid>
-              <HorAlignment>Width</HorAlignment>
-              <Margins>0,0,0,0</Margins>
-              <Name>Text101</Name>
-              <Page isRef="141" />
-              <Parent isRef="145" />
-              <Text>Este individuo busca status e imponer sus ideas de acuerdo a lo correcto o incorrecto. Tiende a gobernarse a sí mismo por un código de conducta en obediencia y una alta autoridad. Busca unidad en su propio cosmos y una relación con esta totalidad. Busca control sobre otros, tratando de hacerlo desde su propio punto de vista acerca de lo que el mundo debería ser. Dispuesto a pelear por sus creencias, desafía cualquier oponente en el nombre de lo moralmente justo y distingue el bien del mal, luchando siempre del lado del bien. </Text>
-              <TextBrush>Black</TextBrush>
-              <Type>Expression</Type>
-            </Text101>
-          </Components>
-          <Conditions isList="true" count="0" />
-          <DataRelationName isNull="true" />
-          <Filters isList="true" count="0" />
-          <Guid>035f0e6778934ffa8cd4ad0dd096412e</Guid>
-          <Name>DataBand6</Name>
-          <Page isRef="141" />
-          <Parent isRef="141" />
-          <Sort isList="true" count="0" />
-        </DataBand6>
-      </Components>
-      <Conditions isList="true" count="0" />
-      <Guid>e2732f7927be4b6cb731af90485cdfd0</Guid>
-      <Margins>2,2,2,2</Margins>
-      <Name>Page6</Name>
-      <PageHeight>29.7</PageHeight>
-      <PageWidth>21</PageWidth>
-      <Report isRef="0" />
-      <Watermark Ref="150" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
-        <Font>Arial,100</Font>
-        <TextBrush>[50:0:0:0]</TextBrush>
-      </Watermark>
-    </Page6>
   </Pages>
-  <PrinterSettings Ref="151" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <PrinterSettings Ref="145" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
   <ReferencedAssemblies isList="true" count="8">
     <value>System.Dll</value>
     <value>System.Drawing.Dll</value>
@@ -1704,10 +1633,10 @@
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>11/8/2017 12:46:52 PM</ReportChanged>
+  <ReportChanged>6/1/2018 5:33:00 PM</ReportChanged>
   <ReportCreated>11/1/2017 5:15:21 PM</ReportCreated>
-  <ReportFile>C:\Users\usuario\Documents\SIGEIN 50\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosInteresesPersonales.mrt</ReportFile>
-  <ReportGuid>910bf3d595e54b008a017b9862c5b9b7</ReportGuid>
+  <ReportFile>C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosInteresesPersonales.mrt</ReportFile>
+  <ReportGuid>e3b548d900b046798eeada4b1caed77f</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2015.3.0</ReportVersion>

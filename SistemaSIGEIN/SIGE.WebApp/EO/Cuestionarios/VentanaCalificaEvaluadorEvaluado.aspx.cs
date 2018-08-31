@@ -84,7 +84,8 @@ namespace SIGE.WebApp.EO
 
         protected void btnTerminar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Logon.aspx");
+            var myUrl = ResolveUrl("~/Logon.aspx");
+            Response.Redirect(myUrl);
         }
 
         protected void RadAjaxManager1_AjaxRequest(object sender, Telerik.Web.UI.AjaxRequestEventArgs e)

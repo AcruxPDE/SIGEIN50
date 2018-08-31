@@ -31,6 +31,8 @@ namespace SIGE.Negocio.Utilerias
         public DateTime FechaFinalProceso { get; set; }
         public bool fgCuestionarioContestado { get; set; }
         public string clEstatusProceso { get; set; }
+        public string clEstadoEmpleado { get; set; } //Se agrega para verificar estatud de evaluador (ALTA/BAJA)
+        public bool? fgCapturaMasiva { get; set; } //Se agrega para verificar si el periodo de desempeño sera captura masiva
 
         public string MensajeError { get; set; }
 
@@ -136,6 +138,7 @@ namespace SIGE.Negocio.Utilerias
                         UsuarioProceso = oClimaEvaluador.NB_EVALUADOR;
                         ContraseñaProceso = oClimaEvaluador.CL_TOKEN;
                         fgCuestionarioContestado = oClimaEvaluador.FG_CONTESTADO;
+                        clEstadoEmpleado = oClimaEvaluador.CL_ESTADO_EMPLEADO;
                         MensajeError = "";
                         resultado = true;
                     }
@@ -248,7 +251,10 @@ namespace SIGE.Negocio.Utilerias
                         NombreProceso = oDesempenoEvaluador.NB_PERIODO;
                         UsuarioProceso = oDesempenoEvaluador.NB_EVALUADOR;
                         ContraseñaProceso = oDesempenoEvaluador.CL_TOKEN;
-                        clEstatusProceso = oDesempenoEvaluador.CL_ESTATUS_CAPTURA;
+                        //clEstatusProceso = oDesempenoEvaluador.CL_ESTATUS_CAPTURA;
+                        clEstatusProceso = oDesempenoEvaluador.CL_ESTADO_PERIODO;
+                        clEstadoEmpleado = oDesempenoEvaluador.CL_ESTADO_EMPLEADO;
+                        fgCapturaMasiva = oDesempenoEvaluador.FG_CAPTURA_MASIVA;
                         MensajeError = "";
                         resultado = true;
                     }
@@ -508,6 +514,12 @@ namespace SIGE.Negocio.Utilerias
                 return false;
             }
 
+            if (clEstadoEmpleado != "ALTA")
+            {
+                MensajeError = "Evaluador dado de baja.";
+                return false;
+            }
+
             return true;
         }
 
@@ -593,11 +605,24 @@ namespace SIGE.Negocio.Utilerias
                 return false;
             }
 
-            if (clEstatusProceso.Equals("TERMINADO"))
+            if (clEstadoEmpleado != "ALTA")
             {
-                    MensajeError = "El proceso de captura ha concluido. Muchas gracias por tu ayuda.";
+                MensajeError = "Evaluador dado de baja.";
                 return false;
             }
+
+            //if (clEstatusProceso.Equals("TERMINADO"))
+            //{
+            //        MensajeError = "El proceso de captura ha concluido. Muchas gracias por tu ayuda.";
+            //    return false;
+            //}
+
+             if (clEstatusProceso.Equals("Cerrado") || clEstatusProceso.Equals("CERRADO"))
+            {
+                MensajeError = "El período actual ya ha sido cerrado. Notifique a su administrador.";
+                return false;
+            }
+
             return true;
         }
 
@@ -642,6 +667,9 @@ namespace SIGE.Negocio.Utilerias
 
         private void NavegacionPeriodoDesempeno()
         {
+            if(fgCapturaMasiva == true)
+            Url = "EO/Cuestionarios/VentanaCapturaMasiva.aspx?IdEvaluador=" + IdProceso + "&TOKEN=" + FolioProceso.ToString() + "&ID_PERIODO=" + IdPeriodo;
+            else
             Url = "EO/Cuestionarios/VentanaCalificaEvaluadorEvaluado.aspx?IdEvaluador=" + IdProceso + "&TOKEN=" + FolioProceso.ToString() + "&ID_PERIODO=" + IdPeriodo;
         }
 

@@ -63,6 +63,15 @@ namespace SIGE.WebApp.Comunes
         {
             if (!Page.IsPostBack)
             {
+                grdCursos.AllowMultiRowSelection = true;
+                if (!String.IsNullOrEmpty(Request.QueryString["mulSel"]))
+                {
+                    grdCursos.AllowMultiRowSelection = (Request.QueryString["mulSel"] == "1");
+                    btnAgregar.Visible = (Request.QueryString["mulSel"] == "1");
+                }
+
+
+
                 vFiltroCompetencias = null;
 
                 if (Request.Params["IdInstructor"] != null)

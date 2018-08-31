@@ -5,14 +5,18 @@ CambiarLenguaje = function (lang) {
 }
 
 //FUNCION NAVEGACION DEL MENU PRINCIPAL
-NavegacionMenu = function (modulo, fgActivo) {
+NavegacionMenu = function (modulo, fgActivo, clUsuario) {
+<<<<<<< HEAD
+   // fgActivo = "1";
+=======
+>>>>>>> DEV
     sessionStorage.setItem("modulo", modulo);
     var navigateURL = "";
 
     switch (modulo) {
         case 1:
             if (fgActivo == "1")
-                navigateURL = '/IDP/Default.aspx';
+                navigateURL = 'IDP/Default.aspx';
             else {
                 alert(fgActivo)
                 navigateURL = '';
@@ -20,7 +24,7 @@ NavegacionMenu = function (modulo, fgActivo) {
             break;
         case 2:
             if (fgActivo == "1")
-                navigateURL = '/FYD/Default.aspx';
+                navigateURL = 'FYD/Default.aspx';
             else {
                 alert(fgActivo)
                 navigateURL = '';
@@ -28,7 +32,7 @@ NavegacionMenu = function (modulo, fgActivo) {
             break;
         case 3:
             if (fgActivo == "1")
-                navigateURL = '/MPC/Default.aspx';
+                navigateURL = 'MPC/Default.aspx';
             else {
                 alert(fgActivo)
                 navigateURL = '';
@@ -47,10 +51,18 @@ NavegacionMenu = function (modulo, fgActivo) {
             }
             break;
         case 5:
-            navigateURL = '';
+            if (fgActivo == "1") {
+            var arrUrl = window.location.href.split('/');
+            window.open(arrUrl[0] + '//' + arrUrl[2] + '/NOMINA/Menu.aspx?clUsuario=' + clUsuario , '_blank')
+            }
+            else {
+                alert(fgActivo)
+                navigateURL = '';
+            }
+            break;
         case 6:
             if (fgActivo == "1")
-                navigateURL = '/PDE/VentanaInicioPDE.aspx';
+                navigateURL = 'PDE/VentanaInicioPDE.aspx';
             else {
                 alert(fgActivo)
                 navigateURL = '';
@@ -58,7 +70,7 @@ NavegacionMenu = function (modulo, fgActivo) {
             break;
         case 7:
             if (fgActivo == "1")
-                navigateURL = '/Administracion/CatalogoConsultaInteligente.aspx';
+                navigateURL = 'Administracion/CatalogoConsultaInteligente.aspx';
             else {
                 alert(fgActivo)
                 navigateURL = '';
@@ -66,7 +78,7 @@ NavegacionMenu = function (modulo, fgActivo) {
             break;
         case 8:
             if (fgActivo == "1")
-                navigateURL = '/ModulosApoyo/ReportesPersonalizados.aspx';
+                navigateURL = 'ModulosApoyo/ReportesPersonalizados.aspx';
             else {
                 alert(fgActivo)
                 navigateURL = '';
@@ -134,7 +146,7 @@ PopupClick = function (Cell, fgActivo) {
     switch (idTag) {
         case "1":
             if (fgActivo == "1")
-                navigateURL = '/EO/Default.aspx?m=CLIMA';
+                navigateURL = 'EO/Default.aspx?m=CLIMA';
             else {
                 alert(fgActivo)
                 navigateURL = '';
@@ -142,7 +154,7 @@ PopupClick = function (Cell, fgActivo) {
             break;
         case "2":
             if (fgActivo == "1")
-                navigateURL = '/EO/Default.aspx?m=DESEMPENO';
+                navigateURL = 'EO/Default.aspx?m=DESEMPENO';
             else {
                 alert(fgActivo)
                 navigateURL = '';
@@ -150,7 +162,7 @@ PopupClick = function (Cell, fgActivo) {
             break;
         case "3":
             if (fgActivo == "1")
-                navigateURL = '/EO/Default.aspx?m=ROTACION';
+                navigateURL = 'EO/Default.aspx?m=ROTACION';
             else {
                 alert(fgActivo)
                 navigateURL = '';

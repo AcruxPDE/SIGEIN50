@@ -31,6 +31,7 @@ namespace SIGE.Entidades
         public string XML_PUESTO_OCUPACION { get; set; }
         public Nullable<int> ID_BITACORA { get; set; }
         public string CL_POSICION_ORGANIGRAMA { get; set; }
+        public Nullable<int> NO_NIVEL_ORGANIGRAMA { get; set; }
         public string CL_DOCUMENTO { get; set; }
         public string CL_VERSION { get; set; }
         public Nullable<System.DateTime> FE_ELABORACION { get; set; }
@@ -52,5 +53,6 @@ namespace SIGE.Entidades
         public string XML_CATALOGOS { get; set; }
         public Nullable<int> NO_PLAZAS_MIN { get; set; }
         public string DS_COMPETENCIAS_REQUERIDAS { get; set; }
+        public string XML_DOCUMENTOS_PUESTO { get; set; }
     }
 }

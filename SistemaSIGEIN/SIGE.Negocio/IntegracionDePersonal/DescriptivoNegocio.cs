@@ -184,6 +184,7 @@ namespace SIGE.Negocio.Administracion
                 XML_CAMPOS_ADICIONALES = vDescriptivo.XML_CAMPOS_ADICIONALES,
                 ID_BITACORA = vDescriptivo.ID_BITACORA,
                 CL_POSICION_ORGANIGRAMA = vDescriptivo.CL_POSICION_ORGANIGRAMA,
+                NO_NIVEL_ORGANIGRAMA = vDescriptivo.NO_NIVEL_ORGANIGRAMA,
 
                 CL_DOCUMENTO = vDescriptivo.CL_DOCUMENTO,
                 CL_VERSION = vDescriptivo.CL_VERSION,
@@ -207,6 +208,7 @@ namespace SIGE.Negocio.Administracion
                 XML_PUESTO_FUNCION = vDescriptivo.XML_PUESTO_FUNCION,
                 XML_PUESTO_INDICADOR = vDescriptivo.XML_PUESTO_INDICADOR,
                 XML_PUESTOS_RELACIONADOS = vDescriptivo.XML_PUESTOS_RELACIONADOS,
+                XML_DOCUMENTOS = vDescriptivo.XML_DOCUMENTOS_PUESTO,
 
                 LST_ESCOLARIDADES = vEscolaridades,
                 LST_CATALOGO_GENERO = vCatalogoGenero,
@@ -649,6 +651,19 @@ namespace SIGE.Negocio.Administracion
         {
             DescriptivoOperaciones oDescriptivo = new DescriptivoOperaciones();
             return oDescriptivo.ObtenerDescriptivosPuestos();
+        }
+
+
+        public List<SPE_OBTIENE_JEFES_DESCRIPTIVO_Result> ObtenerJefesDescriptivo(int? pIdPuesto)
+        {
+            DescriptivoOperaciones oDescriptivo = new DescriptivoOperaciones();
+            return oDescriptivo.ObtenerJefesDescriptivo(pIdPuesto);
+        }
+
+        public List<SPE_OBTIENE_SUBORDINADOS_DESCRIPTIVO_Result> ObtenerSubordinadosDescriptivo(int? pIdPuesto)
+        {
+            DescriptivoOperaciones oDescriptivo = new DescriptivoOperaciones();
+            return oDescriptivo.ObtenerSubordinadosDescriptivo(pIdPuesto);
         }
 
     }

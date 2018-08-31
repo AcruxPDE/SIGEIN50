@@ -51,8 +51,8 @@
     </div>
     <div style="clear:both;">
         <div class="divControlesBoton">    
-            <telerik:RadButton ID="btnGuardarCatalogo" Width="100px" OnClick="btnGuardarCatalogo_Click" Text="Guardar" runat="server"></telerik:RadButton>
-            <telerik:RadButton ID="btnCancelarCatalogo" Width="100px" OnClientClicking="closeWindow" Text="Cancelar" runat="server"></telerik:RadButton>
+            <telerik:RadButton ID="btnGuardarCatalogo"  OnClick="btnGuardarCatalogo_Click" Text="Guardar" runat="server"></telerik:RadButton>
+            <telerik:RadButton ID="btnCancelarCatalogo" OnClientClicking="closeWindow" Text="Cancelar" runat="server"></telerik:RadButton>
         </div>
     </div>
       <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>

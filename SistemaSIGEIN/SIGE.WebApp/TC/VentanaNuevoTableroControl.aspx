@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TC/ContextTC.Master" AutoEventWireup="true" CodeBehind="VentanaNuevoTableroControl.aspx.cs" Inherits="SIGE.WebApp.TC.VentanaNuevoTableroControl" %>
+﻿7<%@ Page Title="" Language="C#" MasterPageFile="~/TC/ContextTC.Master" AutoEventWireup="true" CodeBehind="VentanaNuevoTableroControl.aspx.cs" Inherits="SIGE.WebApp.TC.VentanaNuevoTableroControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
     <style>
@@ -35,7 +35,7 @@
 
     <script type="text/javascript">
 
-        function closeWindow() {
+        function OncloseWindow() {
             GetRadWindow().close();
         }
 
@@ -200,7 +200,7 @@
             <telerik:RadButton ID="btnGuardar" runat="server" Text="Aceptar" AutoPostBack="true" OnClick="btnGuardar_Click"></telerik:RadButton>
         </div>
         <div class="ctrlBasico">
-            <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" AutoPostBack="false" OnClientClicked="closeWindow"></telerik:RadButton>
+            <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" AutoPostBack="false" OnClientClicked="OncloseWindow"></telerik:RadButton>
         </div>
     </div>
     <telerik:RadWindowManager ID="rwmAlertas" runat="server"></telerik:RadWindowManager>

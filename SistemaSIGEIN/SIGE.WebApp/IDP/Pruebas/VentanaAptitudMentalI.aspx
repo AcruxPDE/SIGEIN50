@@ -666,6 +666,16 @@
                 }
             }
 
+            //function ConfirmarEliminarRespuestas(sender, args) {
+            //    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+            //        if (shouldSubmit) {
+            //            this.click();
+            //        }
+            //    });
+            //    radconfirm("Este proceso borrará las respuestas de la prueba, ¿Deseas continuar?", callBackFunction, 400, 150, null, "Eliminar respuestas");
+            //    args.set_cancel(true);
+            //}
+
         </script>
     </telerik:RadCodeBlock>
     <label class="labelPregunta" style="font-size:21px;">Aptitud mental I</label>
@@ -8016,7 +8026,7 @@
                                             <div class="ctrlBasico">
                                                 <telerik:RadButton ID="IbtnPreg12Resp5" runat="server" ButtonType="ToggleButton" ToggleType="Radio"
                                                     AutoPostBack="false" BorderWidth="0" BackColor="transparent" GroupName="RbtnIPregunta12"
-                                                    Text="Leghorn" Skin="Metro" OnClientClicking="valueChanged" CssClass ="Contenedor9">
+                                                    Text="Longhorn" Skin="Metro" OnClientClicking="valueChanged" CssClass ="Contenedor9">
                                                     <ToggleStates>
                                                         <telerik:RadButtonToggleState PrimaryIconCssClass="rbToggleRadioChecked"></telerik:RadButtonToggleState>
                                                         <telerik:RadButtonToggleState PrimaryIconCssClass="rbToggleRadio"></telerik:RadButtonToggleState>
@@ -8909,8 +8919,13 @@
         <div class="ctrlBasico">
             <%--<telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Siguiente" AutoPostBack="true" Visible="false"></telerik:RadButton>--%>
             <telerik:RadButton ID="btnSiguiente" runat="server" OnClientClicked="llamaAjaxRequest" Text="Siguiente" AutoPostBack="false"></telerik:RadButton>
+            </div> 
+            <div class="ctrlBasico">
             <telerik:RadButton ID="btnImpresionPrueba" runat="server" OnClientClicked="OpenReport" Text="Imprimir" AutoPostBack="false" Visible = "false"></telerik:RadButton>
         </div>
+<%--       <div class="ctrlBasico">
+            <telerik:RadButton ID="btnEliminar" runat="server"  Text="Eliminar" AutoPostBack="true" Visible="false" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminar_Click"></telerik:RadButton>
+        </div>--%>
         <%-- <div class="ctrlBasico">
               <telerik:RadButton ID="btnCorregir" runat="server" Visible="false" OnClick="btnCorregir_Click" Text="Corregir" AutoPostBack="true"></telerik:RadButton>
             <telerik:RadButton ID="RadButton2" runat="server" Visible="false" OnClientClicked="llamaAjaxRequest" Text="Siguiente" AutoPostBack="false"></telerik:RadButton>

@@ -82,8 +82,8 @@
 
         function GetConfiguracionWindowProperties(pIdPeriodo) {
             var wnd = GetWindowProperties();
-            wnd.vTitulo = "Configuración del periodo";
-            wnd.vURL = "/FYD/ConfiguracionPeriodo.aspx?PeriodoId=" + pIdPeriodo;
+            wnd.vTitulo = "Configuración del período";
+            wnd.vURL = "ConfiguracionPeriodo.aspx?PeriodoId=" + pIdPeriodo;
             wnd.vRadWindowId = "winPeriodo";
             return wnd;
         }
@@ -162,14 +162,14 @@
 
             wnd.width = 750;
             wnd.height = 600;
-            wnd.vTitulo = "Agregar periodo";
+            wnd.vTitulo = "Agregar período";
             wnd.vRadWindowId = "winPeriodo";
             
             var txtPuestoEval = document.getElementById("<%= txtPuesto.ClientID %>");
             var nombrePeriodo = "Evaluación plan de Sucesión " + txtPuestoEval.innerHTML;
             var idPuesto = '<%= vIdPuesto %>';
             var idsEmpleados = '<%= vXmlEmpleados %>';
-            wnd.vURL = "/FYD/PeriodoEvaluacion.aspx?evaluadoPS=" + nombrePeriodo + "&idPuestoPS=" + idPuesto + "&idsEmpleadosPS=" + idsEmpleados;
+            wnd.vURL = "PeriodoEvaluacion.aspx?evaluadoPS=" + nombrePeriodo + "&idPuestoPS=" + idPuesto + "&idsEmpleadosPS=" + idsEmpleados;
             return wnd;
         }
 
@@ -241,7 +241,7 @@
                      </div>
 
                          <div class="ctrlBasico" style="text-align: center">
-                    <telerik:RadButton ID="btnAgregar" runat="server" Text="Crear periodo" AutoPostBack="false" OnClientClicked="OpenInsertPeriodoWindow"></telerik:RadButton>
+                    <telerik:RadButton ID="btnAgregar" runat="server" Text="Crear período" AutoPostBack="false" OnClientClicked="OpenInsertPeriodoWindow"></telerik:RadButton>
     </div>
 
                     <div style="clear: both; height: 10px;"></div>

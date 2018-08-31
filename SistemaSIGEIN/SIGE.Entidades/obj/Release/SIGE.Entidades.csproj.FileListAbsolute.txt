@@ -1,0 +1,15 @@
+<<<<<<< HEAD
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QA\SistemaSIGEIN\SIGE.Entidades\bin\Release\SIGE.Entidades.dll
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QA\SistemaSIGEIN\SIGE.Entidades\bin\Release\SIGE.Entidades.pdb
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QA\SistemaSIGEIN\SIGE.Entidades\bin\Release\Newtonsoft.Json.dll
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QA\SistemaSIGEIN\SIGE.Entidades\bin\Release\Newtonsoft.Json.xml
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QA\SistemaSIGEIN\SIGE.Entidades\obj\Release\SIGE.Entidades.dll
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QA\SistemaSIGEIN\SIGE.Entidades\obj\Release\SIGE.Entidades.pdb
+=======
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.Entidades\bin\Release\SIGE.Entidades.dll
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.Entidades\bin\Release\SIGE.Entidades.pdb
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.Entidades\bin\Release\Newtonsoft.Json.dll
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.Entidades\bin\Release\Newtonsoft.Json.xml
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.Entidades\obj\Release\SIGE.Entidades.dll
+C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.Entidades\obj\Release\SIGE.Entidades.pdb
+>>>>>>> DEV

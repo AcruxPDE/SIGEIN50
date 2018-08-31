@@ -14,12 +14,12 @@
             };
 
             if (sender == vBtnPlaza) {
-                openChildDialog("/Comunes/SeleccionPlaza.aspx?TipoSeleccionCl=VACANTES", "winSeleccion", "Selección de la plaza a ocupar", windowProperties);
+                openChildDialog("../Comunes/SeleccionPlaza.aspx?TipoSeleccionCl=VACANTES&mulSel=0", "winSeleccion", "Selección de la plaza a ocupar", windowProperties);
             }
 
             if (sender == vBtnPlazaJefe) {
                 var list = $find("<%=rlbPuesto.ClientID %>");
-                openChildDialog("/Comunes/SeleccionPlaza.aspx?CatalogoCl=PLAZAJEFE&TipoSeleccionCl=JEFE", "winSeleccion", "Selección del jefe inmediato", windowProperties);
+                openChildDialog("../Comunes/SeleccionPlaza.aspx?CatalogoCl=PLAZAJEFE&TipoSeleccionCl=JEFE&mulSel=0", "winSeleccion", "Selección del jefe inmediato", windowProperties);
             }
 
             //if (sender == vbtnRequisicion) {
@@ -28,7 +28,14 @@
             //    openChildDialog("/Comunes/SelectorRequisiciones.aspx?CandidatoId=" + idCandidato, "winSeleccion", "Selección de la requisición", windowProperties);
             //}
 
+         }
+
+         //Eliminar el tooltip del control
+         function pageLoad() {
+             var datePicker = $find("<%=rdpFechaIngreso.ClientID %>");
+            datePicker.get_popupButton().title = "";
         }
+
 
         function useDataFromChild(pPuestos) {
             if (pPuestos != null) {
@@ -42,12 +49,12 @@
                         var vListaJefe = $find("<%=rlbJefe.ClientID %>");
                         SetListBoxItem(vListaJefe, vPuestoSeleccionado.clPlaza, vPuestoSeleccionado.idPlaza);
                         break;
-
                     case "PLAZA":
                         var vListaPuesto = $find("<%=rlbPuesto.ClientID %>");
                         SetListBoxItem(vListaPuesto, vPuestoSeleccionado.clPlaza, vPuestoSeleccionado.idPlaza);
+                        var vListaJefe = $find("<%=rlbJefe.ClientID %>");
+                        SetListBoxItem(vListaJefe, vPuestoSeleccionado.clPlazaSuperior, vPuestoSeleccionado.idPlazaSuperior);
                         break;
-
                     case "REQUISICION":
                         break;
 
@@ -56,19 +63,20 @@
         }
 
         function SetListBoxItem(list, text, value) {
-            if (list != undefined) {
+            if (list != undefined && value != null) {
                 list.trackChanges();
 
                 var items = list.get_items();
                 items.clear();
 
                 var item = new Telerik.Web.UI.RadListBoxItem();
-                item.set_text(text);
-                item.set_value(value);
-                item.set_selected(true);
-                items.add(item);
+                    item.set_text(text);
+                    item.set_value(value);
+                    item.set_selected(true);
+                    items.add(item);
 
-                list.commitChanges();
+                    list.commitChanges();
+                
             }
         }
 
@@ -95,9 +103,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
-
-
-    
+<div style="height:calc(100% - 80px);">
     <div>
         <table class="ctrlTableForm">
             <tr>
@@ -164,23 +170,30 @@
         </div>
 
         <div style="clear: both;"></div>
-
+        <div class="ctrlBasico">
+            <div class="divControlIzquierda">
+                <label>Fecha de ingreso: </label>
+            </div>
+            <div class="divControlDerecha">
+                <telerik:RadDatePicker runat="server" ID="rdpFechaIngreso" Width="150px" ></telerik:RadDatePicker>
+            </div>
+        </div>
+               <div style="clear: both;"></div>
         <div class="ctrlBasico">
             <div class="divControlIzquierda">
                 <label>Salario: </label>
             </div>
             <div class="divControlDerecha">
-                <telerik:RadNumericTextBox runat="server" ID="txtSueldo" NumberFormat-DecimalDigits="2" Width="200px"></telerik:RadNumericTextBox>
+                <telerik:RadNumericTextBox runat="server" ID="txtSueldo" NumberFormat-DecimalDigits="2" Width="150px"></telerik:RadNumericTextBox>
             </div>
-        </div>
-
+        </div>             
     </fieldset>
-
+    </div>
     <div style="clear: both; height: 10px;"></div>
 
     <div class="divControlDerecha">
         <div class="ctrlBasico">
-            <telerik:RadButton runat="server" ID="btnGurdar" Text="Guardar" OnClick="btnGurdar_Click"></telerik:RadButton>
+            <telerik:RadButton runat="server" ID="btnGurdar" Text="Guardar" AutoPostBack="true" OnClick="btnGurdar_Click"></telerik:RadButton>
         </div>
 
         <div class="ctrlBasico">

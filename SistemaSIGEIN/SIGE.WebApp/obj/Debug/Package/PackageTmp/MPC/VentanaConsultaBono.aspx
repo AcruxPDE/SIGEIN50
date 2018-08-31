@@ -40,7 +40,7 @@
                                 HeaderStyle-HorizontalAlign="Center" />
                         </ColumnGroups>
                         <Columns>
-                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" Visible="true" Display="true" HeaderStyle-Width="180" FilterControlWidth="120" HeaderText="Periodo" DataField="CL_TIPO_PERIODO" UniqueName="CL_TIPO_PERIODO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" Visible="true" Display="true" HeaderStyle-Width="180" FilterControlWidth="120" HeaderText="Período" DataField="CL_TIPO_PERIODO" UniqueName="CL_TIPO_PERIODO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" Visible="true" Display="true" HeaderStyle-Width="250" FilterControlWidth="180" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" Visible="true" Display="true" HeaderStyle-Width="250" FilterControlWidth="180" HeaderText="Notas" DataField="XML_DS_NOTAS" UniqueName="XML_DS_NOTAS" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                             <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="100" ColumnGroupName="Fechas" HeaderText="De" DataField="FE_INICIO_PERIODO" UniqueName="FE_INICIO_PERIODO" DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Right"></telerik:GridDateTimeColumn>

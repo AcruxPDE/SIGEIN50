@@ -14,6 +14,7 @@ namespace SIGE.Entidades
     public partial class SPE_OBTIENE_PRUEBAS_FACTORES_COMPETENCIAS_Result
     {
         public Nullable<int> ID_SELECCION { get; set; }
+        public string CL_SELECCION { get; set; }
         public string NB_SELECCION { get; set; }
         public string DS_SELECCION { get; set; }
     }

@@ -20,5 +20,6 @@ namespace SIGE.Entidades
         public Nullable<System.Guid> FL_EVALUADOR { get; set; }
         public string CL_CORREO_ELECTRONICO { get; set; }
         public string CL_EVALUADOR { get; set; }
+        public bool FG_CAPTURA_MASIVA { get; set; }
     }
 }

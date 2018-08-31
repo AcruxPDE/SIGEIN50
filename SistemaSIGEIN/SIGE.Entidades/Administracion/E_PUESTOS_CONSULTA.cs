@@ -12,5 +12,6 @@ namespace SIGE.Entidades.Administracion
         public int ID_PUESTO { get; set; }
         public string CL_PUESTO { get; set; }
         public string NB_PUESTO { get; set; }
+        public int? NUMERO_PLAZAS { get; set; }
     }
 }

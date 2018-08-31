@@ -253,14 +253,14 @@ namespace SIGE.WebApp.FYD
 
         protected void grdpuestos_ColumnCreated(object sender, GridColumnCreatedEventArgs e)
         {
-            if (e.Column.UniqueName == "Item")
-            {
-                e.Column.HeaderStyle.Width = Unit.Pixel(20);
-            }
-            else
-            {
-                e.Column.HeaderStyle.Width = Unit.Pixel(150);
-            }
+            //if (e.Column.UniqueName == "Item")
+            //{
+            //    e.Column.HeaderStyle.Width = Unit.Pixel(20);
+            //}
+            //else
+            //{
+            //    e.Column.HeaderStyle.Width = Unit.Pixel(150);
+            //}
         }
 
         protected void grdpuestos_ItemDataBound(object sender, GridItemEventArgs e)

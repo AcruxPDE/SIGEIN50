@@ -22,6 +22,8 @@ namespace SIGE.Entidades
         public string CL_DEPARTAMENTO { get; set; }
         public string CL_EMPLEADO { get; set; }
         public string NOMBRE { get; set; }
+        public bool FG_SUELDO_VISIBLE_TABULADOR { get; set; }
+        public bool FG_PLANEACION_INCREMENTO { get; set; }
         public decimal MN_SUELDO_ORIGINAL { get; set; }
         public decimal MN_SUELDO_NUEVO { get; set; }
         public System.DateTime FE_CAMBIO_SUELDO { get; set; }

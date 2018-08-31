@@ -92,7 +92,7 @@ namespace SIGE.WebApp.TC
             else
             {
                 var vResultado = nTableroControl.InsertarTableroControl(vTableroControl, vClUsuario, vNbPrograma);
-                UtilMensajes.MensajeResultadoDB(rwmAlertas, vResultado.MENSAJE[0].DS_MENSAJE.ToString(), vResultado.CL_TIPO_ERROR, 400, 150, "closeWindow");
+                UtilMensajes.MensajeResultadoDB(rwmAlertas, vResultado.MENSAJE[0].DS_MENSAJE.ToString(), vResultado.CL_TIPO_ERROR, 400, 150, "OncloseWindow");
             }
         }
 
@@ -148,7 +148,7 @@ namespace SIGE.WebApp.TC
             List<E_PERIODOS_EVALUADOS> vLstColumnas = nTablero.ObtenerPeriodosEvaluadosTableroControl(null, vIdEmpleado).ToList();
             XElement vXmlPeriodos = new XElement("PERIODOS", vLstColumnas.Select(s => new XElement("PERIODO", new XAttribute("ID_PERIODO", s.ID_PERIODO), new XAttribute("NB_PERIODO", (s.CL_PERIODO == null? s.CL_TABULADOR : s.CL_PERIODO)), new XAttribute("CL_TIPO_PERIODO", s.CL_TIPO_PERIODO_REFERENCIA))));
             var vResultado = nTablero.InsertarTableroControlSucesion(pIdPeriodo,vIdEmpleado, vIdPuesto, vXmlPeriodos.ToString(), vClUsuario, vNbPrograma);
-            UtilMensajes.MensajeResultadoDB(rwmAlertas, vResultado.MENSAJE[0].DS_MENSAJE.ToString(), vResultado.CL_TIPO_ERROR, 400, 150, "closeWindow");
+            UtilMensajes.MensajeResultadoDB(rwmAlertas, vResultado.MENSAJE[0].DS_MENSAJE.ToString(), vResultado.CL_TIPO_ERROR, 400, 150, "OncloseWindow");
         }
 
         #endregion

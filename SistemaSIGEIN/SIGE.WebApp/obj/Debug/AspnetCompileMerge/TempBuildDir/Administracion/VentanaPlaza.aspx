@@ -31,8 +31,16 @@
             OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?mulSel=0", "winSeleccion", "Selección de empleado")
         }
 
+        function OpenAreaSelectionWindow() {
+            OpenSelectionWindow("../Comunes/SeleccionArea.aspx?mulSel=0", "winSeleccion", "Selección de área/departamento")
+        }
+
+        function OpenGruposWindows() {
+            OpenSelectionWindow("../Comunes/SeleccionGrupo.aspx?mulSel=1", "winSeleccion", "Selección de grupos")
+        }
+
         function CleanEmployeeSelection(sender, args) {
-            ChangeListItem("", "Todos", $find("<%=lstEmpleado.ClientID %>"));
+            ChangeListItem("", "No Seleccionado", $find("<%=lstEmpleado.ClientID %>"));
         }
 
         function useDataFromChild(pDato) {
@@ -61,12 +69,31 @@
                         vLstDato.idItem = vDatosSeleccionados.idPlaza;
                         vLstDato.nbItem = vDatosSeleccionados.nbPlaza;
                         break;
+                    case "DEPARTAMENTO":
+                        list = $find("<%= lstArea.ClientID %>");
+                        vLstDato.idItem = vDatosSeleccionados.idArea;
+                        vLstDato.nbItem = vDatosSeleccionados.nbArea;
+                        break;
+                    case "GRUPO":
+                        InsertarDato(EncapsularDatos("GRUPO", pDato));
+                         break;
                 }
 
                 if (list)
                     ChangeListItem(vLstDato.idItem, vLstDato.nbItem, list);
             }
         }
+
+        //FUNCTION INSERTAR DATO
+        function InsertarDato(pDato) {
+            var ajaxManager = $find('<%= RadAjaxManager1.ClientID %>');
+                ajaxManager.ajaxRequest(pDato);
+            }
+
+            //FUNCION ENCAPSULAR DATO
+            function EncapsularDatos(pClTipoDato, pLstDatos) {
+                return JSON.stringify({ clTipo: pClTipoDato, oSeleccion: pLstDatos });
+            }
 
         function ChangeListItem(pIdItem, pNbItem, pList) {
             var vListBox = pList;
@@ -85,23 +112,39 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
+     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel2" runat="server"></telerik:RadAjaxLoadingPanel>
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest">
+        <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="btnEliminar">
+                <UpdatedControls>
+                     <telerik:AjaxUpdatedControl ControlID="rgGrupos" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel2"></telerik:AjaxUpdatedControl>
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+             <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="rgGrupos" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel2"></telerik:AjaxUpdatedControl>
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            </AjaxSettings>
+        </telerik:RadAjaxManager>
+    <div style="height: calc(100% - 50px); overflow: auto;">
     <div style="height: 10px;"></div>
     <div class="ctrlBasico">
         <div class="divControlIzquierda">
-            <label name="lblClUsuario">Clave:</label>
+            <label name="lblClUsuario">*Clave:</label>
         </div>
         <div class="divControlDerecha">
-            <telerik:RadTextBox ID="txtClPlaza" name="txtClPlaza" runat="server"></telerik:RadTextBox><br />
+            <telerik:RadTextBox ID="txtClPlaza" Width="300" name="txtClPlaza" runat="server"></telerik:RadTextBox><br />
             <asp:RequiredFieldValidator ID="reqtxtClPlaza" runat="server" Display="Dynamic" ControlToValidate="txtClPlaza" ErrorMessage="Campo obligatorio" CssClass="validacion"></asp:RequiredFieldValidator>
         </div>
     </div>
     <div style="clear: both;"></div>
     <div class="ctrlBasico">
         <div class="divControlIzquierda">
-            <label name="lblClUsuario">Nombre:</label>
+            <label name="lblClUsuario">*Nombre:</label>
         </div>
         <div class="divControlDerecha">
-            <telerik:RadTextBox ID="txtNbPlaza" name="txtNbPlaza" runat="server"></telerik:RadTextBox><br />
+            <telerik:RadTextBox ID="txtNbPlaza" Width="300" name="txtNbPlaza" runat="server"></telerik:RadTextBox><br />
             <asp:RequiredFieldValidator ID="reqtxtNbPlaza" runat="server" Display="Dynamic" ControlToValidate="txtNbPlaza" ErrorMessage="Campo obligatorio" CssClass="validacion"></asp:RequiredFieldValidator>
         </div>
     </div>
@@ -148,6 +191,19 @@
             <telerik:RadButton ID="btnlstPlazaJefe" runat="server" Text="B" OnClientClicked="OpenPlazaSelectionWindow" AutoPostBack="false"></telerik:RadButton>
         </div>
     </div>
+    <div class="ctrlBasico">
+        <div class="divControlIzquierda">
+            <label name="lblArea">Área/Departamento:</label>
+        </div>
+        <div class="divControlDerecha">
+            <telerik:RadListBox ID="lstArea" Width="300" runat="server" OnClientItemDoubleClicking="OpenAreaSelectionWindow">
+                <Items>
+                    <telerik:RadListBoxItem Text="No seleccionado" Value="" />
+                </Items>
+            </telerik:RadListBox>
+            <telerik:RadButton ID="btnArea" runat="server" Text="B" OnClientClicked="OpenAreaSelectionWindow" AutoPostBack="false"></telerik:RadButton>
+        </div>
+    </div>
     <div style="clear: both;"></div>
     <div class="ctrlBasico">
         <div class="divControlIzquierda">
@@ -172,6 +228,50 @@
         </div>
     </div>
     <div style="clear: both;"></div>
+        <div class="ctrlBasico">
+            <div class="divControlIzquierda">
+                 <label name="lblMiembro">Miembro de:</label>
+            </div>
+            <div class="divControlDerecha">
+    <div class="ctrlBasico" style="width: 420px;">
+        <telerik:RadGrid
+            ID="rgGrupos"
+            runat="server"
+            Width="420"
+            Height="300"
+            AllowPaging="true"
+            AutoGenerateColumns="false"
+            HeaderStyle-Font-Bold="true"
+            EnableHeaderContextMenu="true"
+            AllowMultiRowSelection="true"
+            OnNeedDataSource="rgGrupos_NeedDataSource">
+            <GroupingSettings CaseSensitive="False" />
+            <ClientSettings>
+                <Scrolling AllowScroll="true" UseStaticHeaders="true" SaveScrollPosition="true" />
+                <Selecting AllowRowSelect="true" EnableDragToSelectRows="true" />
+            </ClientSettings>
+            <PagerStyle AlwaysVisible="true" />
+<<<<<<< HEAD
+            <MasterTableView DataKeyNames="ID_GRUPO, FG_SISTEMA" ClientDataKeyNames="ID_GRUPO" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
+=======
+            <MasterTableView DataKeyNames="ID_GRUPO" ClientDataKeyNames="ID_GRUPO" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
+>>>>>>> DEV
+                <Columns>
+                    <telerik:GridBoundColumn UniqueName="CL_GRUPO" DataField="CL_GRUPO" HeaderText="Clave" AutoPostBackOnFilter="true" HeaderStyle-Width="100" FilterControlWidth="30" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn UniqueName="NB_GRUPO" DataField="NB_GRUPO" HeaderText="Nombre" AutoPostBackOnFilter="true" HeaderStyle-Width="290" FilterControlWidth="220" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
+                </Columns>
+            </MasterTableView>
+        </telerik:RadGrid>
+    </div>
+    <div class="ctrlBasico" style="float: left">
+        <telerik:RadButton ID="btnAgregar" runat="server" Text="B" AutoPostBack="false" ToolTip="Seleccionar grupos" OnClientClicked="OpenGruposWindows"></telerik:RadButton>
+        <div style="clear: both;"></div>
+        <telerik:RadButton ID="btnEliminar" runat="server" Text="X" AutoPostBack="true" ToolTip="Eliminar grupo" OnClick="btnEliminar_Click"></telerik:RadButton>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
     <div class="divControlDerecha">
         <div class="ctrlBasico">
             <telerik:RadButton ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click"></telerik:RadButton>

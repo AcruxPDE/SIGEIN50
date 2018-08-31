@@ -2,16 +2,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <label class="labelTitulo">Competencias Laborales</label>
     <div style="height: calc(100% - 60px);">
-        <div style="clear: both; height: 10px;"></div>
-        <label class="labelTitulo">Competencias Laborales</label>
         <telerik:RadGrid 
             ID="grdCompLaborales" 
             runat="server" 
             AutoGenerateColumns="false" 
             ShowGroupPanel="True" 
             AllowPaging="true"
-            Height="99%" 
+            Height="100%" 
             AllowSorting="true" 
             HeaderStyle-Font-Bold="true"
             AllowFilteringByColumn="true"
@@ -39,7 +38,7 @@
                 </GroupByExpressions>
                 <CommandItemSettings ShowExportToExcelButton="true" ShowAddNewRecordButton="false" />
                 <Columns>
-                    <telerik:GridBoundColumn AllowFiltering="false" CurrentFilterFunction="Contains" HeaderText="Renglón" DataField="RENGLON" UniqueName="RENGLON" HeaderStyle-Width="90"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AllowFiltering="false" CurrentFilterFunction="Contains" HeaderText="#" HeaderStyle-HorizontalAlign="Center" DataField="RENGLON" UniqueName="RENGLON" HeaderStyle-Width="50"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave" DataField="CLAVE" UniqueName="CLAVE" HeaderStyle-Width="100" FilterControlWidth="30"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Competencia" DataField="COMPETENCIA" UniqueName="COMPETENCIA" HeaderStyle-Width="250" FilterControlWidth="180"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Descripción" DataField="DESCRIPCION" UniqueName="DESCRIPCION" HeaderStyle-Width="350" FilterControlWidth="270"></telerik:GridBoundColumn>

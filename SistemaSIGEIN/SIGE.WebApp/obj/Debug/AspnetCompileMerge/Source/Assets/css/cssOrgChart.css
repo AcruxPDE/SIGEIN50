@@ -1,4 +1,4 @@
-﻿.RadOrgChart .rocItemContent, .RadOrgChart .rocItemTemplate {
+﻿/*.RadOrgChart .rocItemContent, .RadOrgChart .rocItemTemplate {
     height: auto !important;
 }
 
@@ -13,7 +13,303 @@
 .cssStaff .rocGroup {
     background-color: #d2e9ff !important;
     height: initial !important;
+}*/
+
+/*Se comenta el estilo css anterior para dar paso al estilo para los diferentes niveles del organigrama. Configurado desde el descriptivo*/
+
+.RadOrgChart .rocItemContent, .RadOrgChart .rocItemTemplate {
+    width: 250px !important;
+    height: auto !important;
+}
+
+.RadOrgChart .rocItem {
+    width: 250px !important;
+    height: auto !important;
+}
+
+.cssStaff .rocGroup {
+    background-color: #d2e9ff !important;
+    height: initial !important;
+}
+
+.cssVacante .rocItemContent {
+    background-color: #d1fd91 !important;
 }
 
 
+/*Nivel diferencia 1 sin empleado*/
+.cssNivel1False > .rocGroup {
+    margin-top: 140px !important;
+}
 
+.cssNivel1False > .rocNodeLines > .rocLineUp {
+    height: 165px !important;
+}
+
+.cssNivel1False > .rocNodeLines > .rocLineDown {
+    top: 200px !important;
+}
+
+/*Nivel diferencia 2 sin empleado*/
+.cssNivel2False > .rocGroup {
+    margin-top: 257px !important;
+}
+
+.cssNivel2False > .rocNodeLines > .rocLineUp {
+    height: 307px !important;
+}
+
+.cssNivel2False > .rocNodeLines > .rocLineDown {
+    top: 517px !important;
+}
+
+
+/*Nivel diferencia 3 sin empleado*/
+.cssNivel3False > .rocGroup {
+    margin-top: 385.5px !important;
+}
+
+.cssNivel3False > .rocNodeLines > .rocLineUp {
+    height: 460.5px !important;
+}
+
+.cssNivel3False > .rocNodeLines > .rocLineDown {
+    top: 775.5px !important;
+}
+
+
+/*Nivel diferencia 4 sin empleado*/
+.cssNivel4False > .rocGroup {
+    margin-top: 514px !important;
+}
+
+.cssNivel4False > .rocNodeLines > .rocLineUp {
+    height: 614px !important;
+}
+
+.cssNivel4False > .rocNodeLines > .rocLineDown {
+    top: 1034px !important;
+}
+
+
+/*Nivel diferencia 5 sin empleado*/
+.cssNivel5False > .rocGroup {
+    margin-top: 514px !important;
+}
+
+.cssNivel5False > .rocNodeLines > .rocLineUp {
+    height: 614px !important;
+}
+
+.cssNivel5False > .rocNodeLines > .rocLineDown {
+    top: 1034px !important;
+}
+
+
+/*Nivel diferencia 6 sin empleado*/
+.cssNivel6False > .rocGroup {
+    margin-top: 771px !important;
+}
+
+.cssNivel6False > .rocNodeLines > .rocLineUp {
+    height: 921px !important;
+}
+
+.cssNivel6False > .rocNodeLines > .rocLineDown {
+    top: 1551px !important;
+}
+
+
+/*Nivel diferencia 7 sin empleado*/
+.cssNivel7False > .rocGroup {
+    margin-top: 899.5px !important;
+}
+
+.cssNivel7False > .rocNodeLines > .rocLineUp {
+    height: 1074.5px !important;
+}
+
+.cssNivel7False > .rocNodeLines > .rocLineDown {
+    top: 1809.5px !important;
+}
+
+
+/*Nivel diferencia 8 sin empleado*/
+.cssNivel8False > .rocGroup {
+    margin-top: 1028px !important;
+}
+
+.cssNivel8False > .rocNodeLines > .rocLineUp {
+    height: 1228px !important;
+}
+
+.cssNivel8False > .rocNodeLines > .rocLineDown {
+    top: 2068px !important;
+}
+
+
+/*Nivel diferencia 9 sin empleado*/
+.cssNivel9False > .rocGroup {
+    margin-top: 1156.5px !important;
+}
+
+.cssNivel9False > .rocNodeLines > .rocLineUp {
+    height: 1381.5px !important;
+}
+
+.cssNivel9False > .rocNodeLines > .rocLineDown {
+    top: 2326.5px !important;
+}
+
+
+/*Nivel diferencia 10 sin empleado*/
+.cssNivel10False > .rocGroup {
+    margin-top: 1285px !important;
+}
+
+.cssNivel10False > .rocNodeLines > .rocLineUp {
+    height: 1535px !important;
+}
+
+.cssNivel10False > .rocNodeLines > .rocLineDown {
+    top: 2585px !important;
+}
+
+
+/********************************************************************/
+
+/*Nivel diferencia 1 con empleado*/
+.cssNivel1True > .rocGroup {
+    margin-top: 190px !important;
+}
+
+.cssNivel1True > .rocNodeLines > .rocLineUp {
+    height: 215px !important;
+}
+
+.cssNivel1True > .rocNodeLines > .rocLineDown {
+    top: 250px !important;
+}
+
+/*Nivel diferencia 2 con empleado*/
+.cssNivel2True > .rocGroup {
+    margin-top: 370px !important;
+}
+
+.cssNivel2True > .rocNodeLines > .rocLineUp {
+    height: 420px !important;
+}
+
+.cssNivel2True > .rocNodeLines > .rocLineDown {
+    top: 630px !important;
+}
+
+/*Nivel diferencia 3 con empleado*/
+.cssNivel3True > .rocGroup {
+    margin-top: 555px !important;
+}
+
+.cssNivel3True > .rocNodeLines > .rocLineUp {
+    height: 630px !important;
+}
+
+.cssNivel3True > .rocNodeLines > .rocLineDown {
+    top: 945px !important;
+}
+
+
+/*Nivel diferencia 4 con empleado*/
+.cssNivel4True > .rocGroup {
+    margin-top: 740px !important;
+}
+
+.cssNivel4True > .rocNodeLines > .rocLineUp {
+    height: 840px !important;
+}
+
+.cssNivel4True > .rocNodeLines > .rocLineDown {
+    top: 1260px !important;
+}
+
+/*Nivel diferencia 5 con empleado*/
+.cssNivel5True > .rocGroup {
+    margin-top: 925px !important;
+}
+
+.cssNivel5True > .rocNodeLines > .rocLineUp {
+    height: 1050px !important;
+}
+
+.cssNivel5True > .rocNodeLines > .rocLineDown {
+    top: 1575px !important;
+}
+
+
+/*Nivel diferencia 6 con empleado*/
+.cssNivel6True > .rocGroup {
+    margin-top: 1110px !important;
+}
+
+.cssNivel6True > .rocNodeLines > .rocLineUp {
+    height: 1260px !important;
+}
+
+.cssNivel6True > .rocNodeLines > .rocLineDown {
+    top: 1890px !important;
+}
+
+
+/*Nivel diferencia 7 con empleado*/
+.cssNivel7True > .rocGroup {
+    margin-top: 1295px !important;
+}
+
+.cssNivel7True > .rocNodeLines > .rocLineUp {
+    height: 1470px !important;
+}
+
+.cssNivel7True > .rocNodeLines > .rocLineDown {
+    top: 2205px !important;
+}
+
+
+/*Nivel diferencia 8 con empleado*/
+.cssNivel8True > .rocGroup {
+    margin-top: 1480px !important;
+}
+
+.cssNivel8True > .rocNodeLines > .rocLineUp {
+    height: 1680px !important;
+}
+
+.cssNivel8True > .rocNodeLines > .rocLineDown {
+    top: 2520px !important;
+}
+
+
+/*Nivel diferencia 9 con empleado*/
+.cssNivel9True > .rocGroup {
+    margin-top: 1665px !important;
+}
+
+.cssNive9True > .rocNodeLines > .rocLineUp {
+    height: 1890px !important;
+}
+
+.cssNivel9True > .rocNodeLines > .rocLineDown {
+    top: 2835px !important;
+}
+
+
+/*Nivel diferencia 10 con empleado*/
+.cssNivel10True > .rocGroup {
+    margin-top: 1850px !important;
+}
+
+.cssNivel10True > .rocNodeLines > .rocLineUp {
+    height: 2100px !important;
+}
+
+.cssNivel10True > .rocNodeLines > .rocLineDown {
+    top: 3150px !important;
+}

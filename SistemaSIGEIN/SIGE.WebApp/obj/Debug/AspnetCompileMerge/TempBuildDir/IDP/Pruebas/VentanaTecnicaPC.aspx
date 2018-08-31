@@ -55,11 +55,10 @@
             padding: 3px 0px 3px 0px;
         }
 
-         Table td .subrayado {
+            Table td .subrayado {
                 max-width: 600px;
                 border-bottom: 1px dotted gray;
             }
-      
     </style>
 </asp:Content>
 
@@ -105,7 +104,7 @@
                                     contenedor.style.display = 'none';
                                 }
 
-                               c = Cronometro(segundos, display);
+                                c = Cronometro(segundos, display);
                             }
                         }
                         else {
@@ -127,16 +126,16 @@
 
 
 
-                 var windowProperties = {
-                     width: document.documentElement.clientWidth - 20,
-                     height: document.documentElement.clientHeight - 20
-                 };
+                var windowProperties = {
+                    width: document.documentElement.clientWidth - 20,
+                    height: document.documentElement.clientHeight - 20
+                };
 
-                 vURL = vURL + "?IdPrueba=" + IdPrueba + "&ClToken=" + ClToken + "&ClPrueba=TECNICAPC";
-                 var win = window.open(vURL, '_blank');
-                 win.focus();
-                 //var wnd = openChildDialog(vURL, "winVistaPrevia", vTitulo, windowProperties);
-             }
+                vURL = vURL + "?IdPrueba=" + IdPrueba + "&ClToken=" + ClToken + "&ClPrueba=TECNICAPC";
+                var win = window.open(vURL, '_blank');
+                win.focus();
+                //var wnd = openChildDialog(vURL, "winVistaPrevia", vTitulo, windowProperties);
+            }
 
             function close_window(sender, args) {
                 if (vPruebaEstatus != "Terminado") {
@@ -205,12 +204,21 @@
                 return flag;
             }
 
+            //function ConfirmarEliminarRespuestas(sender, args) {
+            //    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+            //        if (shouldSubmit) {
+            //            this.click();
+            //        }
+            //    });
+            //    radconfirm("Este proceso borrará las respuestas de la prueba, ¿Deseas continuar?", callBackFunction, 400, 150, null, "Eliminar respuestas");
+            //    args.set_cancel(true);
+            //}
 
         </script>
     </telerik:RadCodeBlock>
 
 
-   <label style="font-size:21px;">Técnica PC</label>
+    <label style="font-size: 21px;">Técnica PC</label>
     <div style="height: calc(100% - 100px);">
 
         <telerik:RadSplitter ID="splHelp" runat="server" Width="100%" Height="100%" BorderSize="0" Orientation="Horizontal">
@@ -218,8 +226,9 @@
             <telerik:RadPane ID="rpnAyudaTexto" runat="server" Height="30" Width="100%" Scrolling="None">
                 <telerik:RadSlidingZone ID="slzOpciones" runat="server" Width="30" ClickToOpen="true">
                     <telerik:RadSlidingPane ID="RSPHelp" runat="server" Title="Instrucciones" Width="100%" Height="200">
-                        <div style="margin: 10px; text-align:justify;">
-                            <p><label id="Label104" runat="server">Contesta SI o NO, en cada una de las opciones A, B, C y D (por favor contesta todas las opciones).</label></p>
+                        <div style="margin: 10px; text-align: justify;">
+                            <p>
+                                <label id="Label104" runat="server">Contesta SI o NO, en cada una de las opciones A, B, C y D (por favor contesta todas las opciones).</label></p>
                         </div>
                     </telerik:RadSlidingPane>
 
@@ -263,14 +272,14 @@
                                 <td>
                                     <telerik:RadButton ID="btnPregunta1Resp1SI" runat="server" ButtonType="ToggleButton" ToggleType="Radio"
                                         AutoPostBack="false" BorderWidth="0" BackColor="transparent" GroupName="RbtnPregunta1A"
-                                        Text="Sí" Skin="Metro" OnClientClicking="valueChanged" CssClass="Contenedor"  Value="1"  >
+                                        Text="Sí" Skin="Metro" OnClientClicking="valueChanged" CssClass="Contenedor" Value="1">
                                     </telerik:RadButton>
                                 </td>
 
                                 <td>
                                     <telerik:RadButton ID="btnPregunta1Resp1NO" runat="server" ButtonType="ToggleButton" ToggleType="Radio"
                                         AutoPostBack="false" BorderWidth="0" BackColor="transparent" GroupName="RbtnPregunta1A"
-                                        Text="No" Skin="Metro"  OnClientClicking="valueChanged" CssClass="Contenedor" Value="0" >
+                                        Text="No" Skin="Metro" OnClientClicking="valueChanged" CssClass="Contenedor" Value="0">
                                     </telerik:RadButton>
                                 </td>
                             </tr>
@@ -427,7 +436,7 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
@@ -511,7 +520,7 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
@@ -603,7 +612,7 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
@@ -695,7 +704,7 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
@@ -791,7 +800,7 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
@@ -881,7 +890,7 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
@@ -966,7 +975,7 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
@@ -1053,7 +1062,7 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
@@ -1120,7 +1129,7 @@
                             </tr>
 
                             <tr>
-                                <td  class="subrayado">
+                                <td class="subrayado">
                                     <label id="Label50" style="margin-left: 5px;" runat="server" name="">d.	SUMA(A150:A169)</label>
                                 </td>
                                 <td>
@@ -1136,7 +1145,7 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
@@ -1228,20 +1237,20 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
                             <%--Pregunta 12--%>
 
                             <tr>
-                                <td colspan="3">                                    
+                                <td colspan="3">
                                     <label id="Label107" style="font-weight: bold;" runat="server" name="">Internet</label>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td colspan="3">                                    
+                                <td colspan="3">
                                     <label id="Label56" style="font-weight: bold;" runat="server" name="">12. Un navegador de internet (Internet Explorer, FireFox, Opera) es: </label>
                                 </td>
                             </tr>
@@ -1323,7 +1332,7 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
@@ -1405,7 +1414,7 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
@@ -1487,7 +1496,7 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
@@ -1578,7 +1587,7 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
@@ -1671,7 +1680,7 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
@@ -1755,7 +1764,7 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
@@ -1838,7 +1847,7 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
@@ -1921,7 +1930,7 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
@@ -2004,7 +2013,7 @@
                                     </telerik:RadButton>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td colspan="3">&nbsp</td>
                             </tr>
@@ -2105,10 +2114,19 @@
         <div class="Cronometro">Tiempo restante <span id="time">15:00</span></div>
     </div>
 
-    <div  class="divControlesBoton">
-        <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Terminar" AutoPostBack="true"></telerik:RadButton>
-         <telerik:RadButton ID="btnCorregir" runat="server" Visible="false" OnClick="btnCorregir_Click" Text="Corregir" AutoPostBack="true"></telerik:RadButton>
-            <telerik:RadButton Visible="false" ID="btnImpresionPrueba" runat="server" OnClientClicked="OpenReport" Text="Imprimir" AutoPostBack="false"></telerik:RadButton>   
+    <div class="divControlDerecha">
+        <div class="ctrlBasico">
+            <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Terminar" AutoPostBack="true"></telerik:RadButton>
+        </div>
+        <div class="ctrlBasico">
+            <telerik:RadButton ID="btnCorregir" runat="server" Visible="false" OnClick="btnCorregir_Click" Text="Guardar" AutoPostBack="true"></telerik:RadButton>
+        </div>
+        <div class="ctrlBasico">
+            <telerik:RadButton Visible="false" ID="btnImpresionPrueba" runat="server" OnClientClicked="OpenReport" Text="Imprimir" AutoPostBack="false"></telerik:RadButton>
+        </div>
+<%--                     <div class="ctrlBasico">
+                  <telerik:RadButton ID="btnEliminar" runat="server"  Text="Eliminar" AutoPostBack="true" Visible="false" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminar_Click"></telerik:RadButton>
+             </div>--%>
     </div>
 
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>

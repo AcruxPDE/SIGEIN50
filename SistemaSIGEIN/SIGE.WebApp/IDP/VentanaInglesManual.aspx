@@ -128,7 +128,7 @@
 
     <div style="clear: both; height: 10px;"></div>
     <div class="DivBtnTerminarDerecha ">
-        <telerik:RadButton ID="btnTerminar" runat="server" Text="Terminar" AutoPostBack="true" OnClick="btnTerminar_Click"></telerik:RadButton>
+        <telerik:RadButton ID="btnTerminar" runat="server" Text="Guardar" AutoPostBack="true" OnClick="btnTerminar_Click"></telerik:RadButton>
     </div>
 
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>

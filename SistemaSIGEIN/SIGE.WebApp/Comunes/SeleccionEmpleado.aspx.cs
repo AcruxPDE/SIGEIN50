@@ -13,6 +13,10 @@ using System.Xml;
 using Telerik.Web.UI;
 using SIGE.Entidades.MetodologiaCompensacion;
 using System.Xml.Linq;
+using SIGE.Negocio.Utilerias;
+using SIGE.Entidades.Administracion;
+using SIGE.Entidades.Externas;
+using SIGE.Negocio.AdministracionSitio;
 
 namespace SIGE.WebApp.Comunes
 {
@@ -22,6 +26,8 @@ namespace SIGE.WebApp.Comunes
         private string vClUsuario;
         private string vNbPrograma;
         private int? vIdEmpresa;
+        private int? vIdRol;
+        public string vClIdioma = ContextoApp.clCultureIdioma;
 
         private string vClUser
         {
@@ -65,6 +71,18 @@ namespace SIGE.WebApp.Comunes
             set { ViewState["vs_vIdPrograma"] = value; }
         }
 
+        public string vaddSelection_label
+        {
+            get { return (string)ViewState["vs_vaddSelection_label"]; }
+            set { ViewState["vs_vaddSelection_label"] = value; }
+        }
+
+        public string vaddSelection_alert
+        {
+            get { return (string)ViewState["vs_vaddSelection_alert"]; }
+            set { ViewState["vs_vaddSelection_alert"] = value; }
+        }
+
         public XElement vXmlTipoSeleccion
         {
             get { return XElement.Parse((string)(ViewState["vs_vXmlTipoSeleccion"] ?? new XElement("SELECCION").ToString())); }
@@ -83,7 +101,7 @@ namespace SIGE.WebApp.Comunes
             XElement vXmlSeleccion = vTipoDeSeleccion(vClTipoSeleccion);
             EmpleadoNegocio nEmpleado = new EmpleadoNegocio();
             List<SPE_OBTIENE_EMPLEADOS_Result> eEmpleados;
-            eEmpleados = nEmpleado.ObtenerEmpleados(pXmlSeleccion: vXmlSeleccion, pClUsuario: vClUsuario, pFgActivo: true, pID_EMPRESA: ContextoUsuario.oUsuario.ID_EMPRESA);
+            eEmpleados = nEmpleado.ObtenerEmpleados(pXmlSeleccion: vXmlSeleccion, pClUsuario: vClUsuario, pFgActivo: true, pID_EMPRESA: vIdEmpresa, pID_ROL: vIdRol); // Se manda el ID ROL como parametro
             CamposAdicionales cad = new CamposAdicionales();
             DataTable tEmpleados = cad.camposAdicionales(eEmpleados, "M_EMPLEADO_XML_CAMPOS_ADICIONALES", grdEmpleados, "M_EMPLEADO");
             grdEmpleados.DataSource = tEmpleados;
@@ -123,6 +141,30 @@ namespace SIGE.WebApp.Comunes
             return vXmlSeleccion;
         }
 
+        //Método de traduccion
+        private void TraducirTextos()
+        {
+             //Asignar texto variables vista
+            TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+            List<SPE_OBTIENE_TRADUCCION_TEXTO_Result> vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_MODULO: "ADM", pCL_PROCESO: "CO_SELECTOREMPLEADO", pCL_IDIOMA: "PORT");
+            if (vLstTextosTraduccion.Count > 0)
+            {
+
+                //Asignar texto variables javascript
+                vaddSelection_label = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vaddSelection_label").FirstOrDefault().DS_TEXTO;
+                vaddSelection_alert = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vaddSelection_alert").FirstOrDefault().DS_TEXTO;
+
+                //Asignar texto a botones
+                btnAgregar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnAgregar").FirstOrDefault().DS_TEXTO;
+                btnSeleccion.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnSeleccion").FirstOrDefault().DS_TEXTO;
+                btnCancelar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnCancelar").FirstOrDefault().DS_TEXTO;
+
+                //Asignar texto a RadSlidingPane
+                slpAdvSearch.Title = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vslpAdvSearch").FirstOrDefault().DS_TEXTO;
+            }
+
+        }
+
 
         #endregion
 
@@ -131,6 +173,21 @@ namespace SIGE.WebApp.Comunes
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
             vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+
+            if (Request.QueryString["CLFILTRO"] != null)
+            { //Este parametro se usa para cuando no se requiere filtrar por el ID_ROL
+                if (Request.QueryString["CLFILTRO"] == "NINGUNO")
+                {
+                    vIdRol = null;
+                }
+                else
+                {
+                    vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL; //Se obtiene el id rol del usuario
+                }
+            }
+            else
+                vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL; //Se obtiene el id rol del usuario
+
             DefineGrid();
         }
 
@@ -153,6 +210,9 @@ namespace SIGE.WebApp.Comunes
                 //    vClCatalogo = Request.QueryString["Catalogo"];
                 //if (Request.QueryString["Catalogo"] == "SUPLENTE")
                 //    vClCatalogo = "SUPLENTE";
+
+                if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+                    TraducirTextos();
             }
 
             if (vClModulo == "MC_PUESTO")
@@ -184,6 +244,144 @@ namespace SIGE.WebApp.Comunes
                 PageSizeCombo.Items.Add(new RadComboBoxItem("1000"));
                 PageSizeCombo.FindItemByText("1000").Attributes.Add("ownerTableViewId", grdEmpleados.MasterTableView.ClientID);
                 PageSizeCombo.FindItemByText(e.Item.OwnerTableView.PageSize.ToString()).Selected = true;
+            }
+        }
+
+        protected void grdEmpleados_PreRender(object sender, EventArgs e)
+        {
+            if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+            {
+                //Asignar texto variables vista
+                TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+                List<SPE_OBTIENE_TRADUCCION_TEXTO_Result> vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_MODULO: "ADM", pCL_PROCESO: "CO_SELECTOREMPLEADO", pCL_IDIOMA: "PORT");
+                if (vLstTextosTraduccion.Count > 0)
+                {
+                    foreach (GridColumn col in grdEmpleados.MasterTableView.Columns)
+                    {
+                        switch (col.UniqueName)
+                        {
+                            case "M_EMPLEADO_CL_EMPLEADO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_CL_EMPLEADO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_NB_EMPLEADO_COMPLETO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_NB_EMPLEADO_COMPLETO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_NB_EMPLEADO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_NB_EMPLEADO").FirstOrDefault().DS_TEXTO;
+                                break;
+
+                            case "M_EMPLEADO_NB_APELLIDO_PATERNO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_NB_APELLIDO_PATERNO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_NB_APELLIDO_MATERNO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_NB_APELLIDO_MATERNO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_PUESTO_CL_PUESTO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_PUESTO_CL_PUESTO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_PUESTO_NB_PUESTO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_PUESTO_NB_PUESTO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_DEPARTAMENTO_CL_DEPARTAMENTO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_DEPARTAMENTO_CL_DEPARTAMENTO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_DEPARTAMENTO_NB_DEPARTAMENTO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_DEPARTAMENTO_NB_DEPARTAMENTO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_CL_GENERO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_CL_GENERO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_CL_ESTADO_CIVIL":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_CL_ESTADO_CIVIL").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_NB_CONYUGUE":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_NB_CONYUGUE").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_CL_RFC":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_CL_RFC").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_CL_CURP":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_CL_CURP").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_CL_NSS":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_CL_NSS").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_CL_TIPO_SANGUINEO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_CL_TIPO_SANGUINEO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_CL_NACIONALIDAD":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_CL_NACIONALIDAD").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_NB_PAIS":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_NB_PAIS").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_NB_ESTADO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_NB_ESTADO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_NB_MUNICIPIO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_NB_MUNICIPIO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_NB_COLONIA":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_NB_COLONIA").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_NB_CALLE":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_NB_CALLE").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_NO_EXTERIOR":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_NO_EXTERIOR").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_NO_INTERIOR":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_NO_INTERIOR").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_CL_CODIGO_POSTAL":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_CL_CODIGO_POSTAL").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_NB_EMPRESA":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_NB_EMPRESA").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_CL_CORREO_ELECTRONICO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_CL_CORREO_ELECTRONICO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_FE_NACIMIENTO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_FE_NACIMIENTO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_DS_LUGAR_NACIMIENTO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_DS_LUGAR_NACIMIENTO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_FE_ALTA":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_FE_ALTA").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_FE_BAJA":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_FE_BAJA").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_MN_SUELDO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_MN_SUELDO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_MN_SUELDO_VARIABLE":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_MN_SUELDO_VARIABLE").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_DS_SUELDO_COMPOSICION":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_DS_SUELDO_COMPOSICION").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "C_EMPRESA_CL_EMPRESA":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_C_EMPRESA_CL_EMPRESA").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "C_EMPRESA_NB_EMPRESA":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_C_EMPRESA_NB_EMPRESA").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "C_EMPRESA_NB_RAZON_SOCIAL":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_C_EMPRESA_NB_RAZON_SOCIAL").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_CL_ESTADO_EMPLEADO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_CL_ESTADO_EMPLEADO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_EMPLEADO_FG_ACTIVO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEmpleados_M_EMPLEADO_FG_ACTIVO").FirstOrDefault().DS_TEXTO;
+                                break;
+                        }
+                    }
+                    grdEmpleados.Rebind();
+                }
             }
         }
     }

@@ -21,6 +21,7 @@ namespace SIGE.Entidades
         public string FG_ESTATUS { get; set; }
         public string NB_RESPUESTA { get; set; }
         public Nullable<int> ID_EVALUADOR { get; set; }
+        public Nullable<System.Guid> FL_EVALUADOR { get; set; }
         public bool FG_CONTESTADO { get; set; }
     }
 }

@@ -29,28 +29,28 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
             return UtilRespuesta.EnvioRespuesta(operaciones.InsertaBajaManualEmpleado(pBaja, pCL_USUARIO, pNB_PROGRAMA, pTIPO_TRANSACCION));
         }
 
-        public List<SPE_OBTIENE_HISTORIAL_BAJAS_Result> ObtienePeriodosClima(int? pID_EMPLEADO = null, int? pID_CAUSA_ROTACION = null)
+        public List<SPE_OBTIENE_HISTORIAL_BAJAS_Result> ObtenerHistorialBajas(int? pID_EMPLEADO = null, int? pID_CAUSA_ROTACION = null, int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             RotacionPersonalOperaciones oPeriodo = new RotacionPersonalOperaciones();
-            return oPeriodo.ObtenerHistorialBajas(pID_EMPLEADO, pID_CAUSA_ROTACION);
+            return oPeriodo.ObtenerHistorialBajas(pID_EMPLEADO, pID_CAUSA_ROTACION, pID_EMPRESA, pID_ROL);
         }
 
-        public List<SPE_OBTIENE_EO_GRAFICA_INDICE_ROTACION_Result> ObtieneGraficaIndiceRotacion(DateTime? pFECHA_INICIO = null, DateTime? pFECHA_FINAL = null, string pTIPO_REPORTE = null, XElement pXML_FILTROS = null)
+        public List<SPE_OBTIENE_EO_GRAFICA_INDICE_ROTACION_Result> ObtieneGraficaIndiceRotacion(DateTime? pFECHA_INICIO = null, DateTime? pFECHA_FINAL = null, string pTIPO_REPORTE = null, XElement pXML_FILTROS = null, int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             RotacionPersonalOperaciones oPeriodo = new RotacionPersonalOperaciones();
-            return oPeriodo.ObtenerGraficaIndiceRotacion(pFECHA_INICIO, pFECHA_FINAL, pTIPO_REPORTE, pXML_FILTROS);
+            return oPeriodo.ObtenerGraficaIndiceRotacion(pFECHA_INICIO, pFECHA_FINAL, pTIPO_REPORTE, pXML_FILTROS, pID_EMPRESA, pID_ROL);
         }
 
-        public List<SPE_OBTIENE_EO_GRAFICA_CAUSA_ROTACION_Result> ObtieneGraficaCausaRotacion(DateTime? pFECHA_INICIO = null, DateTime? pFECHA_FINAL = null, XElement pXML_FILTROS = null)
+        public List<SPE_OBTIENE_EO_GRAFICA_CAUSA_ROTACION_Result> ObtieneGraficaCausaRotacion(DateTime? pFECHA_INICIO = null, DateTime? pFECHA_FINAL = null, XElement pXML_FILTROS = null, int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             RotacionPersonalOperaciones oPeriodo = new RotacionPersonalOperaciones();
-            return oPeriodo.ObtenerGraficaCausaRotacion(pFECHA_INICIO, pFECHA_FINAL, pXML_FILTROS);
+            return oPeriodo.ObtenerGraficaCausaRotacion(pFECHA_INICIO, pFECHA_FINAL, pXML_FILTROS, pID_EMPRESA, pID_ROL);
         }
 
-        public List<SPE_OBTIENE_CLAVE_EMPLEADO_INDICE_ROTACION_Result> ObtieneEmpleadosIndiceRotacion(DateTime? pFECHA_INICIO = null, DateTime? pFECHA_FINAL = null, string pTIPO_REPORTE = null, XElement pXML_FILTROS = null)
+        public List<SPE_OBTIENE_CLAVE_EMPLEADO_INDICE_ROTACION_Result> ObtieneEmpleadosIndiceRotacion(DateTime? pFECHA_INICIO = null, DateTime? pFECHA_FINAL = null, string pTIPO_REPORTE = null, XElement pXML_FILTROS = null, int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             RotacionPersonalOperaciones oPeriodo = new RotacionPersonalOperaciones();
-            return oPeriodo.ObtenerEmpleadosIndiceRotacion(pFECHA_INICIO, pFECHA_FINAL, pTIPO_REPORTE, pXML_FILTROS);
+            return oPeriodo.ObtenerEmpleadosIndiceRotacion(pFECHA_INICIO, pFECHA_FINAL, pTIPO_REPORTE, pXML_FILTROS, pID_EMPRESA, pID_ROL);
         }
 
         public List<SPE_OBTIENE_EO_PLAZAS_EMPLEADO_Result> ObtienePlazasEmpleado( int ID_EMPLEADO)
@@ -66,10 +66,10 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
 
              }
 
-        public List<E_BAJAS_PENDIENTES> ObtieneBajasPendientes(int? pIdBajaEmpleado = null)
+        public List<E_BAJAS_PENDIENTES> ObtieneBajasPendientes(int? pIdBajaEmpleado = null, int? pIdEmpresa = null,int? pIdRol = null)
         {
             RotacionPersonalOperaciones oRotacion = new RotacionPersonalOperaciones();
-            var vBajasPendientes = oRotacion.ObtieneBajasPendientes(pIdBajaEmpleado).ToList();
+            var vBajasPendientes = oRotacion.ObtieneBajasPendientes(pIdBajaEmpleado, pIdEmpresa, pIdRol).ToList();
             return (from x in vBajasPendientes
                     select new E_BAJAS_PENDIENTES
                     {

@@ -2,6 +2,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
     <script id="MyScript" type="text/javascript">
+
+        var vaddSelection_label = "Agregados: ";
+        var vaddSelection_alert = "Selecciona una área/departamento";
+
+        if ('<%=vClIdioma%>' != "ES") {
+            vaddSelection_label = '<%=vaddSelection_label%>';
+            vaddSelection_alert = '<%=vaddSelection_alert%>';
+        }
+
         var vAreas = [];
 
         function generateDataForParent() {
@@ -26,9 +35,11 @@
                         nbArea: masterTable.getCellByColumnUniqueName(selectedItem, "NB_DEPARTAMENTO").innerHTML,
                         clTipoCatalogo: "<%= vClCatalogo %>"
                     };
-                    vAreas.push(vArea);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vAreas.length;
+                    if (!existeElemento(vArea)) {
+                        vAreas.push(vArea);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = vaddSelection_label + vAreas.length;
+                    }
                 }
                 return true;
             }
@@ -37,12 +48,25 @@
                 var browserWnd = window;
                 if (currentWnd)
                     browserWnd = currentWnd.BrowserWindow;
-                browserWnd.radalert("Selecciona una área", 400, 150);
+<<<<<<< HEAD
+                browserWnd.radalert(vaddSelection_alert, 400, 150);
+=======
+                browserWnd.radalert("Selecciona una área/departamento", 400, 150);
+>>>>>>> DEV
 
             }
 
             return false;
 
+        }
+
+        function existeElemento(pArea) {
+            for (var i = 0; i < vAreas.length; i++) {
+                var vValue = vAreas[i];
+                if (vValue.idArea == pArea.idArea)
+                    return true;
+            }
+            return false;
         }
 
         function cancelarSeleccion() {
@@ -72,7 +96,7 @@
         <telerik:RadPane ID="rpnGridArea" runat="server">
 
             <div style="height: calc(100% - 54px);">
-                <telerik:RadGrid ID="grdArea" HeaderStyle-Font-Bold="true" runat="server" Height="100%" AllowMultiRowSelection="true" OnNeedDataSource="grdArea_NeedDataSource" AutoGenerateColumns="false" EnableHeaderContextMenu="true" ShowGroupPanel="true" AllowSorting="true" OnItemDataBound="grdArea_ItemDataBound">
+                <telerik:RadGrid ID="grdArea" HeaderStyle-Font-Bold="true" OnPreRender="grdArea_PreRender" runat="server" Height="100%" AllowMultiRowSelection="true" OnNeedDataSource="grdArea_NeedDataSource" AutoGenerateColumns="false" EnableHeaderContextMenu="true" ShowGroupPanel="true" AllowSorting="true" OnItemDataBound="grdArea_ItemDataBound">
                     <ClientSettings>
                         <Scrolling UseStaticHeaders="true" AllowScroll="true" />
                         <Selecting AllowRowSelect="true" />
@@ -83,7 +107,7 @@
                         <Columns>
                             <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="60" HeaderText="Clave" DataField="CL_DEPARTAMENTO" UniqueName="CL_DEPARTAMENTO"></telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" FilterControlWidth="60" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" FilterControlWidth="60" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO"></telerik:GridBoundColumn>
                         </Columns>
                     </MasterTableView>
                 </telerik:RadGrid>
@@ -107,11 +131,10 @@
             <telerik:RadSlidingZone ID="slzBusqueda" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
                 <telerik:RadSlidingPane ID="slpBusqueda" runat="server" Title="Búsqueda avanzada" Width="500" MinWidth="500">
                     <div style="padding: 20px;">
-                        <telerik:RadFilter runat="server" ID="ftrGrdArea" FilterContainerID="grdArea" ShowApplyButton="true" Height="100" ApplyButtonText="Filtrar">
+                        <telerik:RadFilter runat="server" ID="ftrGrdArea" FilterContainerID="grdArea" ShowApplyButton="true" Height="100" >
                             <ContextMenu Height="300" EnableAutoScroll="true">
                                 <DefaultGroupSettings Height="300" />
                             </ContextMenu>
-                            <Localization FilterFunctionBetween="Entre" FilterFunctionContains="Contiene" FilterFunctionDoesNotContain="No contiene" FilterFunctionEndsWith="Termina con" FilterFunctionEqualTo="Igual a" FilterFunctionGreaterThan="Mayor a" FilterFunctionGreaterThanOrEqualTo="Mayor o igual a" FilterFunctionIsEmpty="Es vacio" FilterFunctionIsNull="Es nulo" FilterFunctionLessThan="Menor que" FilterFunctionLessThanOrEqualTo="Menor o igual a" FilterFunctionNotBetween="No esta entre" FilterFunctionNotEqualTo="No es igual a" FilterFunctionNotIsEmpty="No es vacio" FilterFunctionNotIsNull="No esta nulo" FilterFunctionStartsWith="Inicia con" GroupOperationAnd="y" GroupOperationNotAnd="y no" GroupOperationNotOr="o no" GroupOperationOr="o" />
                         </telerik:RadFilter>
                     </div>
                 </telerik:RadSlidingPane>

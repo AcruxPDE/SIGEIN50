@@ -148,6 +148,24 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadButton btnEmpleadoFiltro;
         
         /// <summary>
+        /// rpvVista2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPageView rpvVista2;
+        
+        /// <summary>
+        /// rgAvancePrograma control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadGrid rgAvancePrograma;
+        
+        /// <summary>
         /// btnExportar control.
         /// </summary>
         /// <remarks>
@@ -155,24 +173,6 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnExportar;
-        
-        /// <summary>
-        /// rpAvance control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadPageView rpAvance;
-        
-        /// <summary>
-        /// pgridAvanceProgramaCapacitacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadPivotGrid pgridAvanceProgramaCapacitacion;
         
         /// <summary>
         /// rpnOpciones control.

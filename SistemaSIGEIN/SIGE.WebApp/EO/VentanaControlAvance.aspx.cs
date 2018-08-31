@@ -20,7 +20,11 @@ namespace SIGE.WebApp.EO
 
         #region Variables
 
+        private string vClUsuario;
+        private string vNbPrograma;
+        private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
         private string vNbFirstRadEditorTagName = "p";
+        private int? vIdRol;
 
         public int vIdPeriodo
         {
@@ -88,7 +92,7 @@ namespace SIGE.WebApp.EO
         protected void PintarGrafica()
         {
             ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            var vControlAance = nClima.ObtieneControlAvance(pID_PERIODO: vIdPeriodo).FirstOrDefault();
+            var vControlAance = nClima.ObtieneControlAvance(pID_PERIODO: vIdPeriodo, pID_ROL: vIdRol).FirstOrDefault();
             txtRespondidos.Text = vControlAance.NO_CUESTIONARIOS_RESPONDIDOS.ToString();
             txtPorResponder.Text = vControlAance.NO_CUESTIONARIOS_POR_RESPONDER.ToString();
             txtTotalCuestionarios.Text = vControlAance.NO_CUESTIONARIOS_TOTALES.ToString();
@@ -104,6 +108,10 @@ namespace SIGE.WebApp.EO
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
+            vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
+
             if (!IsPostBack)
             {
                 if (Request.Params["PeriodoID"] != null)
@@ -143,9 +151,9 @@ namespace SIGE.WebApp.EO
                     if (vPeriodoClima.CL_ORIGEN_CUESTIONARIO == "PREDEFINIDO")
                         lbCuestionario.InnerText = "Predefinido de SIGEIN";
                     if (vPeriodoClima.CL_ORIGEN_CUESTIONARIO == "COPIA")
-                        lbCuestionario.InnerText = "Copia de otro periodo";
+                        lbCuestionario.InnerText = "Copia de otro período";
                     if (vPeriodoClima.CL_ORIGEN_CUESTIONARIO == "VACIO")
-                        lbCuestionario.InnerText = "Creado desde cero";
+                        lbCuestionario.InnerText = "Creado en blanco";
 
                     //int countFiltros = nClima.ObtenerFiltrosEvaluadores(vIdPeriodo).Count;
                     //if (countFiltros > 0)
@@ -207,7 +215,7 @@ namespace SIGE.WebApp.EO
         protected void grdEvaluadorCuestionarios_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            List<E_EVALUADORES_CLIMA> vlstEvaluadores = nClima.ObtieneEvaluadoresCuestionario(pID_PERIODO: vIdPeriodo).Select(s => new E_EVALUADORES_CLIMA
+            List<E_EVALUADORES_CLIMA> vlstEvaluadores = nClima.ObtieneEvaluadoresCuestionario(pID_PERIODO: vIdPeriodo, pIdRol: vIdRol).Select(s => new E_EVALUADORES_CLIMA
             {
                 CL_CORREO_ELECTRONICO = s.CL_CORREO_ELECTRONICO,
                 CL_EMPLEADO = s.CL_EMPLEADO,
@@ -244,5 +252,23 @@ namespace SIGE.WebApp.EO
                 PageSizeCombo.FindItemByText(e.Item.OwnerTableView.PageSize.ToString()).Selected = true;
             }
         }
-    }
+
+        protected void btnEliminarRespuestas_Click(object sender, EventArgs e)
+        {
+            foreach (GridDataItem item in grdEvaluadorCuestionarios.SelectedItems)
+            {
+                int? vIdEvaluador = int.Parse(item.GetDataKeyValue("ID_EVALUADOR").ToString());
+
+                if (vIdEvaluador != null && vIdPeriodo != 0)
+                {
+                    ClimaLaboralNegocio oNegocio = new ClimaLaboralNegocio();
+                    E_RESULTADO vResultado = oNegocio.EliminaRespuestasCuestionario(pID_PERIODO: vIdPeriodo, pID_EVALUADOR: vIdEvaluador, pClUsuario:vClUsuario, pNbPrograma: vNbPrograma);
+                    string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA == vClIdioma.ToString()).FirstOrDefault().DS_MENSAJE;
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction:"");
+                }
+            }
+
+            grdEvaluadorCuestionarios.Rebind();
+        }
+    } 
 }

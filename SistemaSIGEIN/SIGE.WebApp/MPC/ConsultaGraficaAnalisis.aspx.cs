@@ -25,6 +25,7 @@ namespace SIGE.WebApp.MPC
         private string vClUsuario;
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private int? vIdRol;
 
         public int vIdTabulador
         {
@@ -164,7 +165,7 @@ namespace SIGE.WebApp.MPC
             }
 
             EmpleadoNegocio nEmpleados = new EmpleadoNegocio();
-            var vEmpleadosObtenidos = nEmpleados.ObtenerEmpleados();
+            var vEmpleadosObtenidos = nEmpleados.ObtenerEmpleados(pID_ROL: vIdRol);
             var vEmpleadosSeleccionados = vEmpleadosObtenidos.Where(w => pIdsSeleccionados.Contains(w.M_EMPLEADO_ID_EMPLEADO)).ToList();
             List<E_EMPLEADOS_GRAFICAS> vListaEmpleados = new List<E_EMPLEADOS_GRAFICAS>();
             vListaEmpleados = vCargaLista(vEmpleadosSeleccionados);
@@ -181,6 +182,7 @@ namespace SIGE.WebApp.MPC
 
         protected void PintarTabulador(bool pFgSeleccionados)
         {
+            GuardarLista();
 
             if (pFgSeleccionados)
             {
@@ -218,7 +220,7 @@ namespace SIGE.WebApp.MPC
                                 vPrimerScatterSeries.LabelsAppearance.Visible = false;
                                 vPrimerScatterSeries.Name = "Sueldos" + " " + iEmp.CL_TABULADOR.ToString();
 
-                                vPrimerScatterSeries.TooltipsAppearance.DataFormatString = "{1}";
+                                vPrimerScatterSeries.TooltipsAppearance.DataFormatString = "{1:C}";
                                 dt.Rows.Add(iEmp.NO_NIVEL, iEmp.MN_SUELDO_ORIGINAL);
                             }
                         }
@@ -298,6 +300,8 @@ namespace SIGE.WebApp.MPC
         {
             if (pIdsSeleccionados != null)
             {
+                GuardarListaTabulador(pIdsSeleccionados);
+
                 vSeleccionadosTabuladores = new List<E_SELECCIONADOS>();
                 foreach (int item in pIdsSeleccionados)
                 {
@@ -340,6 +344,10 @@ namespace SIGE.WebApp.MPC
             }
             vSeleccionadosTabuladores.Add(new E_SELECCIONADOS { ID_SELECCIONADO = vIdTabulador });
 
+            List<int> vLstTabulador = new List<int>();
+            vLstTabulador.Add(vIdTabulador);
+            GuardarListaTabulador(vLstTabulador);
+
 
             var vXelements = vSeleccionadosTabuladores.Select(s =>
                                               new XElement("FILTRO",
@@ -351,7 +359,7 @@ namespace SIGE.WebApp.MPC
             new XElement("SELECCION", vXelements);
 
             TabuladoresNegocio nTabuladores = new TabuladoresNegocio();
-            vEmpTabuladores = nTabuladores.ObtenieneEmpleadosTabulador(XML_SELECCIONADOS: vXmlIdTabuladores).Select(s =>
+            vEmpTabuladores = nTabuladores.ObtenieneEmpleadosTabulador(XML_SELECCIONADOS: vXmlIdTabuladores, pIdRol: vIdRol).Select(s =>
                                                                    new E_EMPLEADOS_GRAFICAS()
                                                                    {
                                                                        ID_TABULADOR_EMPLEADO = s.ID_TABULADOR_EMPLEADO,
@@ -369,7 +377,7 @@ namespace SIGE.WebApp.MPC
         private void ObtenerPlaneacionIncrementos()
         {
             TabuladoresNegocio nTabuladores = new TabuladoresNegocio();
-            vObtienePlaneacionIncremento = nTabuladores.ObtienePlaneacionIncrementos(ID_TABULADOR: vIdTabulador).Select(s => new E_PLANEACION_INCREMENTOS()
+            vObtienePlaneacionIncremento = nTabuladores.ObtienePlaneacionIncrementos(ID_TABULADOR: vIdTabulador, ID_ROL: vIdRol).Select(s => new E_PLANEACION_INCREMENTOS()
             {
                 NUM_ITEM = (int)s.NUM_RENGLON,
                 ID_TABULADOR_EMPLEADO = s.ID_TABULADOR_EMPLEADO,
@@ -405,12 +413,64 @@ namespace SIGE.WebApp.MPC
             }
         }
 
+        protected void GuardarLista()
+        {
+            ContextoTabuladores.oLstEmpleadoAnalisis = new List<E_REPORTE_TABULADOR_SUELDOS>();
+
+            ContextoTabuladores.oLstEmpleadoAnalisis.Add(new E_REPORTE_TABULADOR_SUELDOS
+            {
+                ID_TABULADOR = vIdTabulador
+            });
+
+
+            if (vLstEmpleadosSeleccionados.Count > 0)
+            {
+                foreach (var item in vLstEmpleadosSeleccionados)
+                {
+                    if (item.ID_EMPLEADO != null)
+                    {
+                        ContextoTabuladores.oLstEmpleadoAnalisis.Where(t => t.ID_TABULADOR == vIdTabulador).FirstOrDefault().vLstEmpleadosTabulador.Add((int)item.ID_EMPLEADO);
+                    }
+                }
+            }
+            else
+            {
+                foreach (var item in vLstEmpleados)
+                {
+                    if (item.ID_EMPLEADO != null)
+                    {
+                        ContextoTabuladores.oLstEmpleadoAnalisis.Where(t => t.ID_TABULADOR == vIdTabulador).FirstOrDefault().vLstEmpleadosTabulador.Add((int)item.ID_EMPLEADO);
+                    }
+                }
+            }
+        }
+
+        protected void GuardarListaTabulador(List<int> pIdSeleccionados)
+        {
+            ContextoTabuladores.oLstTabuladorAnalisis = new List<E_REPORTE_TABULADOR_SUELDOS>();
+
+            ContextoTabuladores.oLstTabuladorAnalisis.Add(new E_REPORTE_TABULADOR_SUELDOS
+            {
+                ID_TABULADOR = vIdTabulador
+            });
+
+            foreach (int item in pIdSeleccionados)
+                {
+                    if (item != null)
+                    {
+                        ContextoTabuladores.oLstTabuladorAnalisis.Where(t => t.ID_TABULADOR == vIdTabulador).FirstOrDefault().vLstEmpleadosTabulador.Add(item);
+                    }
+                }
+        }
+
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!IsPostBack)
             {
@@ -541,6 +601,31 @@ namespace SIGE.WebApp.MPC
                 CargarDatosTabuladores(vTabuladores);
                 CargarDatosEmpleados(vSeleccion.arrEmpleados);
             }
+
+            if (vSeleccion.clTipo == "TABULADOR")
+            {
+                if (rgdEmpleados.Items.Count > 0)
+                {
+                    List<int> vTabuladores = new List<int>();
+                    foreach (RadListBoxItem item in lstTabuladores.Items)
+                    {
+                        vTabuladores.Add(int.Parse(item.Value));
+                    }
+                    vTabuladores.Add(vIdTabulador);
+
+                    CargarDatosTabuladores(vTabuladores);
+                    List<int> vLstEmpleados = new List<int>();
+                    foreach (int vItem in vLstEmpleadosSeleccionados.Select(s => s.ID_EMPLEADO))
+                        vLstEmpleados.Add(vItem);
+
+                    CargarDatosEmpleados(vLstEmpleados);
+                }
+                else
+                {
+                    CargarDatosTabuladoresTodos();
+                    CargarDatosEmpleadosTodos();
+                }
+            }
         }
 
         //protected void btnSeleccionarTodos_Click(object sender, EventArgs e)
@@ -573,5 +658,56 @@ namespace SIGE.WebApp.MPC
 
         }
 
+        protected void cmbCuartilComparacion_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+        {
+            if (rgdEmpleados.Items.Count > 0)
+            {
+                List<int> vTabuladores = new List<int>();
+                foreach (RadListBoxItem item in lstTabuladores.Items)
+                {
+                    vTabuladores.Add(int.Parse(item.Value));
+                }
+                vTabuladores.Add(vIdTabulador);
+
+                CargarDatosTabuladores(vTabuladores);
+                List<int> vLstEmpleados = new List<int>();
+                foreach (int vItem in vLstEmpleadosSeleccionados.Select(s => s.ID_EMPLEADO))
+                    vLstEmpleados.Add(vItem);
+
+                CargarDatosEmpleados(vLstEmpleados);
+            }
+            else
+            {
+                CargarDatosTabuladoresTodos();
+                CargarDatosEmpleadosTodos();
+            }
+        }
+
+        protected void rnTermina_TextChanged(object sender, EventArgs e)
+        {
+            if (rgdEmpleados.Items.Count > 0)
+            {
+                List<int> vTabuladores = new List<int>();
+                foreach (RadListBoxItem item in lstTabuladores.Items)
+                {
+                    vTabuladores.Add(int.Parse(item.Value));
+                }
+                vTabuladores.Add(vIdTabulador);
+
+                CargarDatosTabuladores(vTabuladores);
+                List<int> vLstEmpleados = new List<int>();
+                foreach (int vItem in vLstEmpleadosSeleccionados.Select(s => s.ID_EMPLEADO))
+                    vLstEmpleados.Add(vItem);
+
+                CargarDatosEmpleados(vLstEmpleados);
+            }
+            else
+            {
+                CargarDatosTabuladoresTodos();
+                CargarDatosEmpleadosTodos();
+            }
+        }
+
+      
     }
 }

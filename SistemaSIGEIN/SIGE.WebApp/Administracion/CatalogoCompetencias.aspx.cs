@@ -27,12 +27,25 @@ namespace SIGE.WebApp.Administracion
             set { ViewState["vs_vIdCompetencia"] = value; }
             get { return (int)ViewState["vs_vIdCompetencia"]; }
         }
+
+        private void SeguridadProcesos()
+        {
+            btnGuardar.Enabled = ContextoUsuario.oUsuario.TienePermiso("E.A");
+            btnEditar.Enabled = ContextoUsuario.oUsuario.TienePermiso("E.B");
+            btnEliminar.Enabled = ContextoUsuario.oUsuario.TienePermiso("E.C");
+            buttonDock.Enabled = ContextoUsuario.oUsuario.TienePermiso("E.D");
+        }
         
         protected void Page_Load(object sender, EventArgs e)
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
             vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+
+            if (!IsPostBack)
+            {
+                SeguridadProcesos();
+            }
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)

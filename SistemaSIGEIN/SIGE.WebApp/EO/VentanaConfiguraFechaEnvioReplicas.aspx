@@ -43,7 +43,7 @@
                                 <telerik:GridBoundColumn UniqueName="NB_PERIODO" DataField="NB_PERIODO" HeaderText="Periodo" HeaderStyle-Width="250"></telerik:GridBoundColumn>
                            <telerik:GridTemplateColumn ItemStyle-HorizontalAlign="Center" UniqueName="rdtFechaEnvio">
                            <ItemTemplate>
-                           <telerik:RadDatePicker ID="rdtFeEnvio" AutoPostBack="false" runat="server" Width="150px" DateInput-DateFormat="MM/dd/yyyy" DateInput-EmptyMessage="MM/dd/yyyy"  MinDate="<%# DateTime.Today.Date %>">
+                           <telerik:RadDatePicker ID="rdtFeEnvio" AutoPostBack="false" runat="server" Width="150px" DateInput-DateFormat="dd/MM/yyyy" DateInput-EmptyMessage="dd/MM/yyyy"  MinDate="<%# DateTime.Today.Date %>">
                            </telerik:RadDatePicker>
                            </ItemTemplate>
                    </telerik:GridTemplateColumn>
@@ -61,7 +61,7 @@
                 <telerik:RadSlidingZone ID="rszAyuda" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
                     <telerik:RadSlidingPane ID="rspAyuda" runat="server" Title="Ayuda" Width="200" MinWidth="200" Height="100%">
                         <div style="padding: 10px; text-align: justify;">
-                        Este proceso asigna fechas de envío de solicitudes correspondientes a los periodos réplica y al periodo original.<br /><br />
+                        Este proceso asigna fechas de envío de solicitudes correspondientes a los períodos réplica y al periodo original.<br /><br />
                         No puedes asignar fechas previas al día de hoy.
                         </div>
                     </telerik:RadSlidingPane>

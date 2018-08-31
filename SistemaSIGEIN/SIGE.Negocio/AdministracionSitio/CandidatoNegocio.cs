@@ -168,10 +168,10 @@ namespace SIGE.Negocio.Administracion
         //    };
         //}
 
-        public List<SPE_OBTIENE_CANDIDATOS_CONTRATADOS_Result> ObtieneCandidatosContratados()
+        public List<SPE_OBTIENE_CANDIDATOS_CONTRATADOS_Result> ObtieneCandidatosContratados(int? pIdEmpresa = null, int? pIdRol = null)
         {
             CandidatoOperaciones oCandidato = new CandidatoOperaciones();
-            return oCandidato.ObtenerCandidatosContratados();
+            return oCandidato.ObtenerCandidatosContratados(pIdEmpresa, pIdRol);
         }
     }
 }

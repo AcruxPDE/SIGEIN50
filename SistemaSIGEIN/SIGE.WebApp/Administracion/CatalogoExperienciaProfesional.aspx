@@ -116,7 +116,7 @@
     <div style="height: calc(100% - 100px);">
 
         <telerik:RadGrid ID="grdCatExperProf" ShowHeader="true" runat="server" AllowPaging="true"
-            AllowSorting="true" GroupPanelPosition="Top" Width="600px" GridLines="None"
+            AllowSorting="true" GroupPanelPosition="Top" Width="1000px" GridLines="None"
             Height="100%"
             AllowFilteringByColumn="true"
             HeaderStyle-Font-Bold="true"
@@ -149,10 +149,15 @@
     </div>
     <div style="clear: both; height: 10px;"></div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowPopupAgregarAreaInteres" AutoPostBack="false" runat="server" Text="Agregar" Width="100"></telerik:RadButton>
-        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowPopupEditarAreaInteres" AutoPostBack="false" runat="server" Text="Editar" Width="100"></telerik:RadButton>
-        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" Width="100" OnClick="btnEliminar_click" OnClientClicking="ConfirmarEliminar"></telerik:RadButton>
+        <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowPopupAgregarAreaInteres" AutoPostBack="false" runat="server" Text="Agregar"></telerik:RadButton>
+        </div>
+    <div class="ctrlBasico">
+        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowPopupEditarAreaInteres" AutoPostBack="false" runat="server" Text="Editar" ></telerik:RadButton>
+        </div>
+    <div class="ctrlBasico">
+        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_click" OnClientClicking="ConfirmarEliminar"></telerik:RadButton>
     </div>
+      <div style="clear: both;"></div>
     <telerik:RadWindowManager ID="RadWindowManager1" runat="server" EnableShadow="true">
         <Windows>
             <telerik:RadWindow ID="RWPopupmodalCatalogoGenericoEditar" runat="server" Title="Catálogo Experiencia profesional" Height="280"

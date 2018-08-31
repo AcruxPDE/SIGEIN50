@@ -34,7 +34,7 @@
             if (selectedItems.length > 0) {
                 var vEvaluado = selectedItems[0];
                 var vIdEvaluador = vEvaluado.getDataKeyValue("ID_EVALUADOR");
-                OpenSelectionWindow("EvaluacionCompetencia/Cuestionarios.aspx?ID_EVALUADOR=" + vIdEvaluador + "&ESTADO_PERIODO=" + vEstadoPeriodo, "winContestarCuestionarios", "Evaluación")
+                OpenSelectionWindow("EvaluacionCompetencia/CuestionariosInterno.aspx?ID_EVALUADOR=" + vIdEvaluador + "&ESTADO_PERIODO=" + vEstadoPeriodo, "winContestarCuestionarios", "Evaluación")
             } else {
                 radalert("Selecciona un evaluado.", 400, 150);
             }
@@ -77,12 +77,68 @@
             </td>
         </tr>
     </table>--%>
-    <div style="height: calc(100% - 100px); padding-bottom: 10px;">
-        <div class="ctrlBasico">
+
+            <telerik:RadTabStrip ID="rtsEvaluacion" runat="server" SelectedIndex="0" MultiPageID="rmpContestar">
+        <Tabs>
+             <telerik:RadTab Text="Contexto" Value="0"></telerik:RadTab>
+            <telerik:RadTab Text="Contestar" Value="1"></telerik:RadTab>
+        </Tabs>
+    </telerik:RadTabStrip>
+     <div style="height: calc(100% - 90px);">
+     <telerik:RadMultiPage ID="rmpContestar" runat="server" SelectedIndex="0" Height="100%">
+            <telerik:RadPageView ID="rpvContexto" runat="server">  
+                      <div class="ctrlBasico">
+                                    <table class="ctrlTableForm" text-align: left;>
+                                        <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="lbPeriodo" name="lbTabulador" runat="server">Período:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtClPeriodo" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="lbNbPeriodo" name="lbTabulador" runat="server">Descripción:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtDsPeriodo" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                                 <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="Label1" name="lbTabulador" runat="server">Estatus:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtEstatus" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                                      <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="Label2" name="lbTabulador" runat="server">Tipo de evaluación:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtTipoEvaluacion" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                             <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="Label3" name="lbTabulador" runat="server">Notas:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtNotas" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                        </table>
+                                    </div>
+                </telerik:RadPageView>
+           <telerik:RadPageView ID="rpvContestar" runat="server">  
+    <div style="height: calc(100% - 40px);">
+<%--        <div class="ctrlBasico">
             <table class="ctrlTableForm">
                 <tr>
                     <td class="ctrlTableDataContext">
-                        <label>Periodo:</label></td>
+                        <label>Período:</label></td>
                     <td colspan="2" class="ctrlTableDataBorderContext">
                         <div id="txtNoPeriodo" runat="server" style="min-width: 100px;"></div>
                     </td>
@@ -91,7 +147,7 @@
                     </td>
                 </tr>
             </table>
-        </div>
+        </div>--%>
         <div style="clear: both; height: 10px;"></div>
         <telerik:RadGrid ID="grdCuestionarios" runat="server" Height="100%" Width="100%" AutoGenerateColumns="false" AllowSorting="true" OnNeedDataSource="grdCuestionarios_NeedDataSource" OnItemDataBound="grdCuestionarios_ItemDataBound">
             <ClientSettings>
@@ -119,11 +175,14 @@
                 </Columns>
             </MasterTableView>
         </telerik:RadGrid>
-        <div style="clear: both; height: 2px;"></div>
+        <div style="clear: both; height: 10px;"></div>
         <div class="ctrlBasico">
             <telerik:RadButton ID="btnCuestionarios" runat="server" Text="Cuestionarios" OnClientClicked="OpenCuestionariosWindow" AutoPostBack="false" OnClick="btnCuestionarios_Click"></telerik:RadButton>
         </div>
     </div>
+               </telerik:RadPageView>
+         </telerik:RadMultiPage>
+         </div>
     <telerik:RadWindowManager ID="rwmMensaje" runat="server"></telerik:RadWindowManager>
 
 </asp:Content>

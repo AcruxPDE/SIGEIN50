@@ -209,7 +209,7 @@
                     </telerik:RadDatePicker>
                 </div>
                 <div style="clear: both"></div>--%>
-                        <div class="ctrlBasico">
+     <%--                   <div class="ctrlBasico">
                             <label id="lblSemaforoVerde"
                                 name="lblSemaforoVerde"
                                 runat="server">
@@ -232,12 +232,12 @@
                                 MaxLength="800"
                                 Enabled="false">
                             </telerik:RadTextBox>
-                        </div>
+                        </div>--%>
                         <div class="ctrlBasico">
                             <label id="lblCuartilIncremento"
                                 name="lblCuartilIncremento"
                                 runat="server">
-                                Cuartil del tabulador maestro para incrementos de sueldo:
+                                Nivel de mercado:
                             </label>
                         </div>
                         <div class="ctrlBasico">
@@ -260,7 +260,7 @@
                                     <Scrolling AllowScroll="true" UseStaticHeaders="true"></Scrolling>
                                 </ClientSettings>
                                 <PagerStyle AlwaysVisible="true" />
-                                <MasterTableView DataKeyNames="ID_TABULADOR_EMPLEADO, NO_NIVEL" AutoGenerateColumns="false" EditMode="InPlace" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true">
+                                <MasterTableView DataKeyNames="ID_TABULADOR_EMPLEADO, NO_NIVEL, FG_SUELDO_VISIBLE_TABULADOR" AutoGenerateColumns="false" EditMode="InPlace" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true">
                                     <ColumnGroups>
                                         <telerik:GridColumnGroup HeaderText="Tabulador medio" Name="TABMEDIO" HeaderStyle-HorizontalAlign="Center">
                                         </telerik:GridColumnGroup>
@@ -268,7 +268,7 @@
                                     <Columns>
                                         <%--<telerik:GridEditCommandColumn ButtonType="ImageButton" HeaderStyle-Width="40"></telerik:GridEditCommandColumn>--%>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" ReadOnly="true" AllowFiltering="false" HeaderStyle-Width="60" HeaderText="No." DataField="NUM_ITEM" UniqueName="NUM_ITEM" ItemStyle-HorizontalAlign="Center"></telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" ReadOnly="true" HeaderStyle-Width="180" FilterControlWidth="90" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" ReadOnly="true" HeaderStyle-Width="180" FilterControlWidth="90" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" ReadOnly="true" HeaderStyle-Width="210" FilterControlWidth="130" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="NB_PUESTO"></telerik:GridBoundColumn>
                                         <%--<telerik:GridBoundColumn AutoPostBackOnFilter="true" ReadOnly="true" HeaderStyle-Width="210" FilterControlWidth="130" HeaderText="Nombre del ocupante" DataField="NB_EMPLEADO" UniqueName="NB_EMPLEADO"></telerik:GridBoundColumn>--%>
                                         <telerik:GridTemplateColumn AutoPostBackOnFilter="true" ReadOnly="true" HeaderStyle-Width="180" FilterControlWidth="90" HeaderText="Nombre del ocupante" DataField="NB_EMPLEADO" UniqueName="NB_EMPLEADO">
@@ -296,7 +296,7 @@
                                             <ItemTemplate>
                                                 <%#string.Format("{0:N2}",Math.Abs((decimal)Eval("DIFERENCIA")))%>%
                                        <span style="border: 1px solid gray; background: <%# Eval("COLOR_DIFERENCIA") %>; border-radius: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;
-                                        <img src='/Assets/images/Icons/25/Arrow<%# Eval("ICONO") %>.png' />
+                                                <img src='../Assets/images/Icons/25/Arrow<%# Eval("ICONO") %>.png' />
                                                 </span>
                                             </ItemTemplate>
                                         </telerik:GridTemplateColumn>
@@ -309,7 +309,7 @@
                                             <ItemTemplate>
                                                 <%#string.Format("{0:N2}",Math.Abs((decimal)Eval("DIFERENCIA_NUEVO")))%>%
                                         <span style="border: 1px solid gray; background: <%# Eval("COLOR_DIFERENCIA_NUEVO") %>; border-radius: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;
-                                        <img src='/Assets/images/Icons/25/Arrow<%# Eval("ICONO_NUEVO")%>.png' />
+                                        <img src='../Assets/images/Icons/25/Arrow<%# Eval("ICONO_NUEVO")%>.png' />
                                                 </span>
                                             </ItemTemplate>
                                         </telerik:GridTemplateColumn>
@@ -330,7 +330,7 @@
                         </div>
                     </telerik:RadPane>
                     <telerik:RadPane ID="rpAyudaDefinicionCriterios" runat="server" Scrolling="None" Width="22px">
-                        <telerik:RadSlidingZone ID="rszAyudaDefinicionCriterios" runat="server" SlideDirection="Left" ExpandedPaneId="rsDefinicionCriterios" Width="22px">
+                        <telerik:RadSlidingZone ID="rszAyudaDefinicionCriterios" runat="server" SlideDirection="Left" ClickToOpen="true" ExpandedPaneId="rsDefinicionCriterios" Width="22px">
                             <telerik:RadSlidingPane ID="rspDefinicionCriterios" runat="server" Title="Simbología" Width="450px" RenderMode="Mobile" Height="100%">
                                 <div style="padding: 10px; text-align: justify;">
                                     <telerik:RadGrid ID="grdCodigoColores"
@@ -451,9 +451,9 @@
                     </div>
                 </div>
                 <div style="clear: both; height: 5px;"></div>
-                <div class="ctrlBasico">
+    <%--            <div class="ctrlBasico">
                     <telerik:RadButton ID="btnSeleccionar" AutoPostBack="false" runat="server" OnClientClicked="OpenEmployeeSelectionWindow" Text="Seleccionar empleados" Width="170"></telerik:RadButton>
-                </div>
+                </div>--%>
                 <%--<div class="ctrlBasico">
         <telerik:RadButton ID="btnRecalcular" AutoPostBack="true" runat="server" OnClick="btnRecalcular_Click" Text="Recalcular" Width="150"></telerik:RadButton>
     </div>--%>

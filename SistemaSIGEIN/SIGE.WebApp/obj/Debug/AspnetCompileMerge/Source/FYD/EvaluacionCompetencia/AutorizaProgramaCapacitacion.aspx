@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FYD/MenuFYD.master" AutoEventWireup="true" CodeBehind="AutorizaProgramaCapacitacion.aspx.cs" Inherits="SIGE.WebApp.FYD.AutorizaProgramaCapacitacion" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FYD/ContextFYD.master" AutoEventWireup="true" CodeBehind="AutorizaProgramaCapacitacion.aspx.cs" Inherits="SIGE.WebApp.FYD.AutorizaProgramaCapacitacion" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
 
     <script id="MyScript" type="text/javascript">
         function closeWindow() {
@@ -39,7 +39,7 @@
         }
     </style>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
 
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
     <telerik:RadAjaxManager ID="ramDocumentosAutorizar" runat="server" OnAjaxRequest="ramDocumentosAutorizar_AjaxRequest">
@@ -50,7 +50,6 @@
                     <telerik:AjaxUpdatedControl ControlID="pgridDetalle" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
-
             <telerik:AjaxSetting AjaxControlID="pgridDetalle">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="pgridDetalle" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>

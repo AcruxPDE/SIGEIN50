@@ -41,7 +41,8 @@ namespace SIGE.WebApp.FYD
         private void EnviarCorreo()
         {           
             ProcesoExterno pe = new ProcesoExterno();
-            string vUrl = ContextoUsuario.nbHost + "/Logon.aspx?ClProceso=EVALUACION&FlProceso=" + oEvento.FL_EVENTO;
+            string myUrl = ResolveUrl("~/Logon.aspx?ClProceso=EVALUACION&FlProceso=");
+            string vUrl = ContextoUsuario.nbHost + myUrl + oEvento.FL_EVENTO;
             vMensajeCorreo = vMensajeCorreo.Replace("[URL]", vUrl);
             vMensajeCorreo = vMensajeCorreo.Replace("[contraseña]", oEvento.CL_TOKEN);
             

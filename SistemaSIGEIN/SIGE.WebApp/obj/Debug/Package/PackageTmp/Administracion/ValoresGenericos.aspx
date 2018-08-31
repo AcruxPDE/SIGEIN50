@@ -160,9 +160,9 @@
         </div>
          <div style="clear: both;"></div>
      
-    <div style="height:calc(100% - 140px);">
+    <div style="height:calc(100% - 145px);">
       <telerik:RadGrid ID="grvValoresGenericos" ShowHeader="true"  runat="server" AllowPaging="true" 
-          AllowSorting="true"   GroupPanelPosition="Top" GridLines="None"  Width="1200px"
+          AllowSorting="true"   GroupPanelPosition="Top" GridLines="None"  Width="100%"
           AllowAutomaticUpdates="true"  ClientSettings-EnablePostBackOnRowClick ="false" Height="100%"  AllowFilteringByColumn="true"  
           OnNeedDataSource="GridValoresGenericos_NeedDataSource" 
           HeaderStyle-Font-Bold="true" 
@@ -181,22 +181,24 @@
            <CommandItemSettings  ShowAddNewRecordButton="false" ShowExportToExcelButton="True"  ShowExportToCsvButton="false"    
                RefreshText="Actualizar"  AddNewRecordText="Insertar" />   
              <Columns>  
-                 <telerik:GridBoundColumn AutoPostBackOnFilter="true"  CurrentFilterFunction="Contains" HeaderStyle-Width="330" FilterControlWidth="250" HeaderText="Clave" DataField="CL_CATALOGO_VALOR"   UniqueName="CL_CATALOGO_VALOR"  Display="true" ReadOnly="false"  ></telerik:GridBoundColumn>  
-                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="450" FilterControlWidth="380" HeaderText="Nombre" DataField="NB_CATALOGO_VALOR"   UniqueName="NB_CATALOGO_VALOR"  Display="true" ReadOnly="false" ></telerik:GridBoundColumn>  
-                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="350" FilterControlWidth="280" HeaderText="Descripción" DataField="DS_CATALOGO_VALOR"   UniqueName="DS_CATALOGO_VALOR"  Display="true" ReadOnly="false"  ></telerik:GridBoundColumn>  
+                 <telerik:GridBoundColumn AutoPostBackOnFilter="true"  CurrentFilterFunction="Contains" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Clave" DataField="CL_CATALOGO_VALOR"   UniqueName="CL_CATALOGO_VALOR"  Display="true" ReadOnly="false"  ></telerik:GridBoundColumn>  
+                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="250" FilterControlWidth="180" HeaderText="Nombre" DataField="NB_CATALOGO_VALOR"   UniqueName="NB_CATALOGO_VALOR"  Display="true" ReadOnly="false" ></telerik:GridBoundColumn>  
+                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="300" FilterControlWidth="220" HeaderText="Descripción" DataField="DS_CATALOGO_VALOR"   UniqueName="DS_CATALOGO_VALOR"  Display="true" ReadOnly="false"  ></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Último usuario que modifica" DataField="CL_USUARIO_MODIFICA" UniqueName="CL_USUARIO_MODIFICA"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataFormatString="{0:d}"  AutoPostBackOnFilter="true" HeaderText="Última fecha de modificación" DataField="FE_MODIFICACION" UniqueName="FE_MODIFICACION" HeaderStyle-Width="150" FilterControlWidth="80" DataType="System.DateTime"></telerik:GridBoundColumn>  
              </Columns>    
        </MasterTableView> 
    </telerik:RadGrid> 
    </div>
    <div style="clear: both; height: 10px;"></div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowPopupmodalCatalogoGenericoNuevo" AutoPostBack="false" runat="server" Text="Agregar" Width="100"></telerik:RadButton>
+        <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowPopupmodalCatalogoGenericoNuevo" AutoPostBack="false" runat="server" Text="Agregar"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowPopupmodalCatalogoGenericoEditar" AutoPostBack="false" runat="server" Text="Editar" Width="100"></telerik:RadButton>
+        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowPopupmodalCatalogoGenericoEditar" AutoPostBack="false" runat="server" Text="Editar"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" Width="100" OnClientClicking="ConfirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
+        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" OnClientClicking="ConfirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
     </div>
 
        <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>

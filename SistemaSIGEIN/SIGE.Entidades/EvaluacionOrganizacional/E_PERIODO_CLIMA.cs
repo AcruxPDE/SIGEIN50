@@ -16,6 +16,7 @@ namespace SIGE.Entidades.EvaluacionOrganizacional
         public DateTime? FE_INICIO { get; set; }
         public string CL_ESTADO_PERIODO { get; set; }
         public string DS_NOTAS { get; set; }
+        public string DS_MENSAJE_ENVIO { get; set; }
         public string XML_CAMPOS_ADICIONALES { get; set; }
         public int ID_PERIODO_CLIMA { get; set; }
         public string CL_TIPO_CONFIGURACION { get; set; }

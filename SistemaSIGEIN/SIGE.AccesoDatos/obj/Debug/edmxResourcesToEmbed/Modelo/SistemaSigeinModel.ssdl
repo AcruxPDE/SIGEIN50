@@ -61,6 +61,12 @@
     <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="SPE_ACTUALIZA_ESTATUS_REQUISICION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_REQUISICON" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="SPE_ACTUALIZA_PONDERACIONES_TABLERO_CONTROL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
@@ -309,12 +315,21 @@
     <Parameter Name="PIN_CL_USUARIO_APP_CREA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA_CREA" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="SPE_ELIMINA_EMPLEADO_NOMINA_DO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_EMPLEADO_NOMINA_DO" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_EMPLEADO" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="SPE_ELIMINA_EVALUADOS_TABLERO_CONTROL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="XML_ID_SELECCIONADOS" Type="xml" Mode="In" />
     <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SPE_ELIMINA_GRUPO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_GRUPO" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_ELIMINA_K_AREA_INTERES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
@@ -397,6 +412,11 @@
     <Parameter Name="PIN_ID_PLAZA" Type="int" Mode="In" />
     <Parameter Name="PIN_CL_USUARIO_APP_CREA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA_CREA" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SPE_ELIMINA_PUESTO_NOMINA_DO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_PUESTO" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_PUESTO" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="SPE_ELIMINA_ROL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
@@ -956,6 +976,13 @@
     <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
   </Function>
+  <Function Name="SPE_INSERTA_ACTUALIZA_CAMPO_NOMINA_DO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="XML_CONFIGURACION_CAMPOS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
+  </Function>
   <Function Name="SPE_INSERTA_ACTUALIZA_CENTRO_ADMVO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
     <Parameter Name="PIN_ID_CENTRO_ADMVO" Type="uniqueidentifier" Mode="In" />
@@ -998,6 +1025,41 @@
     <Parameter Name="PIN_CL_USUARIO_APP_MODIFICA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA_CREA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA_MODIFICA" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
+  </Function>
+  <Function Name="SPE_INSERTA_ACTUALIZA_EMPLEADO_NOMINA_DO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_EMPLEADO" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_EMPLEADO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_EMPLEADO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_APELLIDO_PATERNO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_APELLIDO_MATERNO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_FG_DO" Type="bit" Mode="In" />
+    <Parameter Name="PIN_FG_NOMINA" Type="bit" Mode="In" />
+    <Parameter Name="PIN_FG_NOMINA_DO" Type="bit" Mode="In" />
+    <Parameter Name="PIN_ID_PLAZA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_PUESTO_NOMINA" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_EMPLEADO_NOMINA" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_ID_RAZON_SOCIAL" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PIN_MN_SUELDO_MENSUAL" Type="decimal" Mode="In" />
+    <Parameter Name="PIN_MN_SUELDO_DIARIO" Type="decimal" Mode="In" />
+    <Parameter Name="PIN_MN_BASE_COTIZACION" Type="decimal" Mode="In" />
+    <Parameter Name="PIN_MN_SUELDO_DO" Type="decimal" Mode="In" />
+    <Parameter Name="PIN_FG_INVENTARIO_VISIBLE" Type="bit" Mode="In" />
+    <Parameter Name="PIN_FG_TABULADOR_VISIBLE" Type="bit" Mode="In" />
+    <Parameter Name="PIN_FG_BONO_VISIBLE" Type="bit" Mode="In" />
+    <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
+  </Function>
+  <Function Name="SPE_INSERTA_ACTUALIZA_GRUPO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_GRUPO" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_GRUPO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_GRUPO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_XML_PLAZAS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
   </Function>
   <Function Name="SPE_INSERTA_ACTUALIZA_K_AREA_INTERES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
@@ -1156,15 +1218,6 @@
     <Parameter Name="PIN_NB_PROGRAMA_MODIFICA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
   </Function>
-  <Function Name="SPE_INSERTA_ACTUALIZA_M_PUESTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
-    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
-    <Parameter Name="PIN_ID_PUESTO" Type="int" Mode="In" />
-    <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
-    <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
-    <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
-    <Parameter Name="PIN_XML_PUESTO" Type="xml" Mode="In" />
-    <Parameter Name="PIN_XML_PUESTO_OCUPACION" Type="xml" Mode="In" />
-  </Function>
   <Function Name="SPE_INSERTA_ACTUALIZA_M_PUESTO_REQUISICION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
     <Parameter Name="PIN_ID_PUESTO" Type="int" Mode="In" />
@@ -1185,9 +1238,22 @@
     <Parameter Name="PIN_NB_PLAZA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_ID_EMPLEADO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_PUESTO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_DEPARTAMENTO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_PLAZA_JEFE" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
     <Parameter Name="PIN_FG_ACTIVO" Type="bit" Mode="In" />
+    <Parameter Name="PIN_XML_GRUPOS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
+  </Function>
+  <Function Name="SPE_INSERTA_ACTUALIZA_PUESTO_NOMINA_DO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_PUESTO" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_PUESTO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_PUESTO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_FG_NOMINA" Type="bit" Mode="In" />
+    <Parameter Name="PIN_FG_DO" Type="bit" Mode="In" />
     <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
@@ -1197,8 +1263,10 @@
     <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
     <Parameter Name="PIN_CL_ROL" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_ROL" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_ID_PLANTILLA" Type="int" Mode="In" />
     <Parameter Name="PIN_FG_ACTIVO" Type="bit" Mode="In" />
     <Parameter Name="PIN_XML_FUNCIONES" Type="xml" Mode="In" />
+    <Parameter Name="PIN_XML_GRUPOS" Type="xml" Mode="In" />
     <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
@@ -1452,7 +1520,9 @@
     <Parameter Name="PIN_ID_COLONIA" Type="int" Mode="In" />
     <Parameter Name="PIN_CL_PAIS" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_CL_ESTADO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_ESTADO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_CL_MUNICIPIO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_MUNICIPIO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_CL_COLONIA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_COLONIA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_CL_TIPO_ASENTAMIENTO" Type="nvarchar" Mode="In" />
@@ -1580,6 +1650,7 @@
     <Parameter Name="PIN_ID_MUNICIPIO" Type="int" Mode="In" />
     <Parameter Name="PIN_CL_PAIS" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_CL_ESTADO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_ESTADO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_CL_MUNICIPIO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_MUNICIPIO" Type="nvarchar" Mode="In" />
   </Function>
@@ -1724,7 +1795,16 @@
     <Parameter Name="PIN_XML_CANDIDATOS" Type="xml" Mode="In" />
     <Parameter Name="PIN_FG_FOTO" Type="bit" Mode="In" />
   </Function>
-  <Function Name="SPE_OBTIENE_CANDIDATOS_CONTRATADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM" />
+  <Function Name="SPE_OBTIENE_CANDIDATOS_BATERIA_MASIVA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_NB_CANDIDATO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_APELLIDO_PATERNO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_APELLIDO_MATERNO" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SPE_OBTIENE_CANDIDATOS_BATERIAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM" />
+  <Function Name="SPE_OBTIENE_CANDIDATOS_CONTRATADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
+  </Function>
   <Function Name="SPE_OBTIENE_CANDIDATOS_POR_REQUISICION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_ID_REQUISICION" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_PROCESO_SELECCION" Type="int" Mode="In" />
@@ -1732,6 +1812,10 @@
     <Parameter Name="PIN_ID_SOLICITUD" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_CAPACITACIONES_EMPLEADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM" />
+  <Function Name="SPE_OBTIENE_CENTROS_ADMINISTRATIVOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_ID_CENTRO_ADMVO" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PIN_CL_CENTRO_ADMVO" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="SPE_OBTIENE_CENTROS_ADMVOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_ID_CENTRO_ADMVO" Type="uniqueidentifier" Mode="In" />
     <Parameter Name="PIN_NB_MUNICIPIO" Type="nvarchar" Mode="In" />
@@ -1739,6 +1823,10 @@
     <Parameter Name="PIN_CL_CODIGO_POSTAL" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_CL_ZONA_ECONOMICA" Type="nchar" Mode="In" />
     <Parameter Name="PIN_CL_MUNICIPIO" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SPE_OBTIENE_CENTROS_OPERATIVOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_ID_CENTRO_OPTVO" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PIN_CL_CENTRO_OPTVO" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_CENTROS_OPTVOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_ID_CENTRO_OPTVO" Type="uniqueidentifier" Mode="In" />
@@ -1764,6 +1852,10 @@
     <Parameter Name="CL_CONFIGURACION" Type="nvarchar" Mode="In" />
     <Parameter Name="XML_CONFIGURACION" Type="xml" Mode="InOut" />
   </Function>
+  <Function Name="SPE_OBTIENE_CONFIGURACION_CAMPOS_NOMINA_DO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_ID_CAMPO" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_CAMPO" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="SPE_OBTIENE_CONFIGURACION_LICENCIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_CL_CONFIGURACION" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_CL_USUARIO_MODIFICA" Type="nvarchar" Mode="In" />
@@ -1777,7 +1869,10 @@
   <Function Name="SPE_OBTIENE_DATOS_CP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_CL_CODIGO_POSTAL" Type="nvarchar" Mode="In" />
   </Function>
-  <Function Name="SPE_OBTIENE_DATOS_EMPLEADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM" />
+  <Function Name="SPE_OBTIENE_DATOS_EMPLEADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
+  </Function>
   <Function Name="SPE_OBTIENE_DESCRIPTIVO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_ID_DESCRIPTIVO" Type="int" Mode="In" />
   </Function>
@@ -1802,6 +1897,7 @@
     <Parameter Name="PIN_FG_ACTIVO" Type="bit" Mode="In" />
     <Parameter Name="PIN_FG_FOTO" Type="bit" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EMPLEADOS_CAMPOS_EXTRA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_XML_SELECCION" Type="xml" Mode="In" />
@@ -1809,14 +1905,31 @@
     <Parameter Name="PIN_FG_ACTIVO" Type="bit" Mode="In" />
     <Parameter Name="PIN_FG_FOTO" Type="bit" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EMPLEADOS_EVALUADOS_TABLERO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_EMPLEADO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPE_OBTIENE_EMPLEADOS_GENERAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_CL_EMPLEADO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_FG_ACTIVO" Type="bit" Mode="In" />
+    <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPE_OBTIENE_EMPLEADOS_NOMINA_DO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_ID_EMPLEADO_NOMINA_DO" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_EMPLEADO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_ID_EMPLEADO_NOMINA" Type="uniqueidentifier" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EMPLEADOS_PDE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_XML_SELECCION" Type="xml" Mode="In" />
     <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SPE_OBTIENE_EMPLEADOS_PROCESOS_EVALUACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EMPLEADOS_SELECTOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_XML_SELECCION" Type="xml" Mode="In" />
@@ -1841,6 +1954,15 @@
   </Function>
   <Function Name="SPE_OBTIENE_FUNCIONES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_CL_TIPO_FUNCION" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SPE_OBTIENE_GRUPOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_ID_GRUPO" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_GRUPO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_FG_ACTIVO" Type="bit" Mode="In" />
+    <Parameter Name="PIN_ID_PLAZA" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPE_OBTIENE_JEFES_DESCRIPTIVO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_ID_DESCRIPTIVO" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_K_AREA_INTERES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_ID_CANDIDATO_AREA_INTERES" Type="int" Mode="In" />
@@ -1925,6 +2047,10 @@
   <Function Name="SPE_OBTIENE_K_REQUISICION_CANDIDATO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_ID_CANDIDATO" Type="int" Mode="In" />
   </Function>
+  <Function Name="SPE_OBTIENE_LICENCIA_VOLUMEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_FG_ACTIVO" Type="bit" Mode="In" />
+    <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+  </Function>
   <Function Name="SPE_OBTIENE_M_DEPARTAMENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_ID_DEPARTAMENTO" Type="int" Mode="In" />
     <Parameter Name="PIN_FG_ACTIVO" Type="bit" Mode="In" />
@@ -1933,6 +2059,7 @@
     <Parameter Name="PIN_NB_DEPARTAMENTO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_XML_SELECCION" Type="xml" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_M_EMPLEADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_ID_EMPLEADO" Type="int" Mode="In" />
@@ -1998,8 +2125,38 @@
     <Parameter Name="PIN_CL_DEPARTAMENTO" Type="nvarchar" Mode="In" />
     <Parameter Name="XML_PUESTOS_SELECCIONADOS" Type="xml" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_M_PUESTO_REQUISICION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_ID_PUESTO" Type="int" Mode="In" />
+    <Parameter Name="PIN_FG_ACTIVO" Type="bit" Mode="In" />
+    <Parameter Name="PIN_FE_INACTIVO" Type="datetime" Mode="In" />
+    <Parameter Name="PIN_CL_PUESTO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_PUESTO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_ID_DEPARTAMENTO" Type="int" Mode="In" />
+    <Parameter Name="PIN_XML_CAMPOS_ADICIONALES" Type="xml" Mode="In" />
+    <Parameter Name="PIN_ID_BITACORA" Type="int" Mode="In" />
+    <Parameter Name="PIN_NO_EDAD_MINIMA" Type="tinyint" Mode="In" />
+    <Parameter Name="PIN_NO_EDAD_MAXIMA" Type="tinyint" Mode="In" />
+    <Parameter Name="PIN_CL_GENERO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_CL_ESTADO_CIVIL" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_XML_REQUERIMIENTOS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_XML_OBSERVACIONES" Type="xml" Mode="In" />
+    <Parameter Name="PIN_XML_RESPONSABILIDAD" Type="xml" Mode="In" />
+    <Parameter Name="PIN_XML_AUTORIDAD" Type="xml" Mode="In" />
+    <Parameter Name="PIN_XML_CURSOS_ADICIONALES" Type="xml" Mode="In" />
+    <Parameter Name="PIN_XML_MENTOR" Type="xml" Mode="In" />
+    <Parameter Name="PIN_CL_TIPO_PUESTO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_ID_CENTRO_ADMINISTRATIVO" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PIN_ID_CENTRO_OPERATIVO" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PIN_ID_PAQUETE_PRESTACIONES" Type="int" Mode="In" />
+    <Parameter Name="PIN_XML_PUESTOS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_NB_DEPARTAMENTO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_CL_DEPARTAMENTO" Type="nvarchar" Mode="In" />
+    <Parameter Name="XML_PUESTOS_SELECCIONADOS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPE_OBTIENE_M_PUESTOS_GENERAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_ID_PUESTO" Type="int" Mode="In" />
     <Parameter Name="PIN_FG_ACTIVO" Type="bit" Mode="In" />
     <Parameter Name="PIN_FE_INACTIVO" Type="datetime" Mode="In" />
@@ -2037,6 +2194,9 @@
   <Function Name="SPE_OBTIENE_ORGANIGRAMA_PLAZA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_ID_PLAZA" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_DEPARTAMENTO" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_CAMPO_ADICIONAL" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NO_NIVELES" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_ORGANIGRAMA_PLAZAS_EMPLEADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_ID_PLAZAS" Type="xml" Mode="In" />
@@ -2053,7 +2213,10 @@
   <Function Name="SPE_OBTIENE_PDE_DESCRIPTIVO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_ID_DESCRIPTIVO" Type="nvarchar" Mode="In" />
   </Function>
-  <Function Name="SPE_OBTIENE_PERFIL_EMPLEADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM" />
+  <Function Name="SPE_OBTIENE_PERFIL_EMPLEADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
+  </Function>
   <Function Name="SPE_OBTIENE_PERIODO_TABLERO_CONTROL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_PERIODO_TABLERO" Type="int" Mode="In" />
@@ -2080,9 +2243,20 @@
     <Parameter Name="PIN_ID_PLAZA" Type="int" Mode="In" />
     <Parameter Name="PIN_XML_SELECCION" Type="xml" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_PUESTO_FACTOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_ID_PUESTO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPE_OBTIENE_PUESTOS_NOMINA_DO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_ID_PUESTO_NOMINA_DO" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_PUESTO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_FG_DO" Type="bit" Mode="In" />
+    <Parameter Name="PIN_FG_NOMINA" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="SPE_OBTIENE_RAZON_SOCIAL_NOMINA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_ID_RAZON_SOCIAL" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PIN_CL_CLIENTE" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_RESULTADOS_CLIMA_LABORAL_TABLERO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
@@ -2145,7 +2319,14 @@
     <Parameter Name="PIN_DS_TIPO_RELACION" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_SOLICITUDES_EMPLEO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM" />
-  <Function Name="SPE_OBTIENE_SUELDO_EMPLEADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM" />
+  <Function Name="SPE_OBTIENE_SOLICITUDES_PROCESOS_EVALUACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM" />
+  <Function Name="SPE_OBTIENE_SUBORDINADOS_DESCRIPTIVO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_ID_DESCRIPTIVO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPE_OBTIENE_SUELDO_EMPLEADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
+  </Function>
   <Function Name="SPE_OBTIENE_SUELDO_PROMEDIO_PUESTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_ID_PUESTO" Type="int" Mode="In" />
   </Function>
@@ -2158,6 +2339,12 @@
     <Parameter Name="PIN_ID_ENTREVISTA_TIPO" Type="int" Mode="In" />
     <Parameter Name="PIN_CL_ENTREVISTA_TIPO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_ENTREVISTA_TIPO" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SPE_OBTIENE_TRADUCCION_TEXTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="PIN_CL_TEXTO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_CL_MODULO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_CL_PROCESO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_CL_IDIOMA" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
@@ -2334,6 +2521,19 @@
     <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_CUMPLIMIENTO_TOTAL" Type="decimal" Mode="In" />
   </Function>
+  <Function Name="SPE_ACTUALIZA_RESULTADO_METAS_MASIVA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_EVALUADOR" Type="int" Mode="In" />
+    <Parameter Name="PIN_XML_RESULTADOS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_CL_USUARIO_APP" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_CUMPLIMIENTO_TOTAL" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="SPE_ACTUALIZA_VALIDEZ_CUESTIONARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
+  </Function>
   <Function Name="SPE_ELIMINA_CONFIGURACION_NOTIFICADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
     <Parameter Name="PIN_XML_EMPLEADOS" Type="xml" Mode="In" />
@@ -2366,6 +2566,10 @@
     <Parameter Name="PIN_CL_USUARIO_APP_CREA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA_CREA" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="SPE_ELIMINA_EO_METAS_INACTIVAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
+  </Function>
   <Function Name="SPE_ELIMINA_EO_PREGUNTAS_ABIERTAS_PERIODO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
@@ -2386,6 +2590,14 @@
   <Function Name="SPE_ELIMINA_PERIODO_DESEMPENO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPE_ELIMINA_RESPUESTAS_CUESTIONARIO_PERIODO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_EVALUADOR" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_CUESTIONARIO" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="SPE_EVALUADOR_POR_EVALUADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
@@ -2561,6 +2773,7 @@
     <Parameter Name="PIN_DS_PERIODO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_CL_ESTADO_PERIODO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_DS_NOTAS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_DS_MENSAJE_CORREO" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="PIN_CL_TIPO_CONFIGURACION" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_CL_ORIGEN_CUESTIONARIO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
@@ -2583,6 +2796,7 @@
     <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
+    <Parameter Name="FG_CAPTURA_MASIVA" Type="bit" Mode="In" />
   </Function>
   <Function Name="SPE_INSERTA_CONFIGURACION_NOTIFICADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
@@ -2656,11 +2870,20 @@
     <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
   </Function>
+  <Function Name="SPE_INSERTA_PERIODOS_DESEMPENO_REPLICA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="PIN_XML_REPLICAS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
+  </Function>
   <Function Name="SPE_OBTIENE_ADSCRIPCIONES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_CATALOGO_LISTA" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_BONO_EVALUADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_BONOS_EVALUADOS_DESEMPENO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_XML_PERIODOS" Type="xml" Mode="In" />
@@ -2671,6 +2894,8 @@
     <Parameter Name="PIN_FECHA_FINAL" Type="date" Mode="In" />
     <Parameter Name="TIPO_REPORTE" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_XML_FILTROS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_CONFIGURACION_EVALUACION_ORGANIZACIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_CL_TIPO_NOTIFICACION" Type="nvarchar" Mode="In" />
@@ -2680,9 +2905,11 @@
   </Function>
   <Function Name="SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO_DESEMPENO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_CONTROL_AVANCE_EO_DATOS_GRAFICA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_DATOS_EVALUADORES_CLIMA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
@@ -2696,6 +2923,8 @@
   </Function>
   <Function Name="SPE_OBTIENE_EO_BAJAS_PENDIENTES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_BAJA_EMPLEADO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_CONTEXTO_METAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
@@ -2703,6 +2932,7 @@
   </Function>
   <Function Name="SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_DESEMPENO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_GRAFICA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_XML_PERIODOS" Type="xml" Mode="In" />
@@ -2722,18 +2952,21 @@
     <Parameter Name="PIN_ID_EMPLEADO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_PUESTO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_EVALUADOR" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_EVALUADORES_CUESTIONARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIDO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_EMPLEADO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_PUESTO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_EVALUADOR" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_EVALUADORES_REPLICAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_EVALUADORES_TOKEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_EVALUADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_EVALUADOR" Type="int" Mode="In" />
@@ -2742,6 +2975,9 @@
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_EVALUADO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_EVALUADOR" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_FILTROS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
@@ -2755,42 +2991,58 @@
     <Parameter Name="PIN_FECHA_INICIO" Type="datetime" Mode="In" />
     <Parameter Name="PIN_FECHA_FINAL" Type="datetime" Mode="In" />
     <Parameter Name="PIN_XML_FILTROS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_DIMENSION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="PIN_NB_DIMENSION" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_XML_FILTROS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_PREGUNTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="PIN_NB_PREGUNTA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_XML_FILTROS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_TEMA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="PIN_NB_TEMA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_XML_FILTROS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_GRAFICA_GLOBAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_GRAFICA_INDICE_DIMENSION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="PIN_XML_FILTROS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_GRAFICA_INDICE_PREGUNTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="PIN_XML_FILTROS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_GRAFICA_INDICE_ROTACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_FECHA_INICIO" Type="date" Mode="In" />
     <Parameter Name="PIN_FECHA_FINAL" Type="date" Mode="In" />
     <Parameter Name="TIPO_REPORTE" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_XML_FILTROS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_GRAFICA_INDICE_TEMA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="PIN_XML_FILTROS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPE_OBTIENE_EO_METAS_CAPTURA_MASIVA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
+    <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_EVALUADOR" Type="int" Mode="In" />
+    <Parameter Name="PIN_FL_EVALUADOR" Type="uniqueidentifier" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_METAS_EVALUADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_EVALUADO_META" Type="int" Mode="In" />
@@ -2846,6 +3098,7 @@
   <Function Name="SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_CUESTIONARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_EVALUADOR" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="PIN_FL_EVALUADOR" Type="uniqueidentifier" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_PERIODO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
@@ -2854,6 +3107,7 @@
   <Function Name="SPE_OBTIENE_EO_PREGUNTAS_CUESTIONARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_EVALUADOR" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="PIN_FL_EVALUADOR" Type="uniqueidentifier" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_PREGUNTAS_EVALUACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_EVALUADO_EVALUADOR" Type="int" Mode="In" />
@@ -2867,6 +3121,7 @@
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_PREGUNTA" Type="int" Mode="In" />
     <Parameter Name="PIN_XML_FILTROS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EO_RESULTADO_EVALUADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
@@ -2879,6 +3134,7 @@
   </Function>
   <Function Name="SPE_OBTIENE_EVALUADOS_PERIODOS_DESEMPENO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_XML_PERIODOS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EVIDENCIAS_METAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_EVALUADO_META" Type="int" Mode="In" />
@@ -2886,6 +3142,8 @@
   <Function Name="SPE_OBTIENE_HISTORIAL_BAJAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_EMPLEADO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_CAUSA_ROTACION" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_IDICADORES_METAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
@@ -2927,6 +3185,7 @@
   <Function Name="SPE_OBTIENE_PERIODOS_DESEMPENO_REPLICA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
   </Function>
+  <Function Name="SPE_OBTIENE_PERIODOS_SOLICITUDES_ENVIAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO" />
   <Function Name="SPE_OBTIENE_PREGUNTAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PREGUNTA" Type="int" Mode="In" />
     <Parameter Name="PIN_CL_PREGUNTA" Type="nvarchar" Mode="In" />
@@ -3065,7 +3324,7 @@
   </Function>
   <Function Name="SPE_ELIMINA_FYD_PREGUNTA_ADICIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
-    <Parameter Name="PIN_ID_PREGUNTA_ADICIONAL" Type="int" Mode="In" />
+    <Parameter Name="PIN_XML_PREGUNTAS_ADICIONALS" Type="xml" Mode="In" />
   </Function>
   <Function Name="SPE_ELIMINA_FYD_PUESTO_EVALUADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
@@ -3270,11 +3529,13 @@
   <Function Name="SPE_INSERTA_FYD_PREGUNTAS_ADICIONALES_PERIODO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_PREGUNTA_ADICIONAL" Type="int" Mode="In" />
     <Parameter Name="PIN_NB_PREGUNTA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_XML_PREGUNTAS" Type="xml" Mode="In" />
     <Parameter Name="PIN_CL_CUESTIONARIO_OBJETIVO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
   </Function>
   <Function Name="SPE_INSERTA_PROGRAMA_DESDE_DNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
@@ -3293,6 +3554,7 @@
     <Parameter Name="PIN_ID_PROGRAMA" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
     <Parameter Name="PIN_XML_FILTROS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_C_AUTORIZACION_DCTO_EMPLEADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_AUTORIZACION" Type="int" Mode="In" />
@@ -3374,14 +3636,17 @@
   </Function>
   <Function Name="SPE_OBTIENE_CONTROL_AVANCE_DATOS_GRAFICA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_CONTROL_AVANCE_EVALUADOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_CONTROL_AVANCE_EVALUADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_CUESTIONARIOS_EVALUACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_CUESTIONARIO" Type="int" Mode="In" />
@@ -3418,6 +3683,7 @@
   </Function>
   <Function Name="SPE_OBTIENE_EVENTO_LISTA_ASISTENCIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_EVENTO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EVENTO_PARTICIPANTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_EVENTO_PARTICIPANTE" Type="int" Mode="In" />
@@ -3429,6 +3695,7 @@
     <Parameter Name="PIN_NB_DEPARTAMENTO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NO_TIEMPO" Type="int" Mode="In" />
     <Parameter Name="PIN_PR_CUMPLIMIENTO" Type="decimal" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EVENTO_PARTICIPANTE_COMPETENCIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_EVENTO_PARTICIPANTE_COMPETENCIA" Type="int" Mode="In" />
@@ -3438,6 +3705,7 @@
     <Parameter Name="PIN_NO_EVALUACION" Type="tinyint" Mode="In" />
     <Parameter Name="PIN_NB_COMPETENCIA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_FYD_CUESTIONARIO_EVALUADO_EVALUADOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
@@ -3447,6 +3715,7 @@
   <Function Name="SPE_OBTIENE_FYD_CUESTIONARIOS_EVALUADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_FYD_CUMPLIMIENTO_PUESTO_PERIODO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
@@ -3465,6 +3734,7 @@
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="PIN_CL_TIPO_EVALUADOR" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_FYD_EVALUADORES_AUTORIZACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_EVALUADO" Type="int" Mode="In" />
@@ -3477,9 +3747,11 @@
   <Function Name="SPE_OBTIENE_FYD_EVALUADORES_TOKEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_FYD_EVALUADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_EVALUADOR" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_FYD_EVALUADOS_AUTORIZACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
@@ -3489,10 +3761,12 @@
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="PIN_XML_PERIODOS" Type="xml" Mode="In" />
     <Parameter Name="PIN_FG_FOTO" Type="bit" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_FYD_PERIODO_EVALUACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
@@ -3512,6 +3786,7 @@
   </Function>
   <Function Name="SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_PERIODO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_PREGUNTA" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_FYD_PREGUNTAS_EVALUACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_EVALUADO_EVALUADOR" Type="int" Mode="In" />
@@ -3566,6 +3841,7 @@
     <Parameter Name="PIN_ID_EVENTO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_EMPELADO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_COMPETENCIA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_FYD_REPORTE_GENERAL_INDIVIDUAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
@@ -3595,6 +3871,7 @@
   </Function>
   <Function Name="SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_EVENTO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO_DETALLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_EVENTO" Type="int" Mode="In" />
@@ -3643,11 +3920,13 @@
     <Parameter Name="PIN_CL_PUESTO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_DEPARTAMENTO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_NECESIDADES_CAPACITACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_DEPARTAMENTO" Type="int" Mode="In" />
     <Parameter Name="PIN_DS_PRIORIDADES" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_PLAN_SUCESION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_EMPLEADO" Type="int" Mode="In" />
@@ -3668,6 +3947,7 @@
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
     <Parameter Name="PIN_ID_PROGRAMA" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_TERMINA_CUESTIONARIO_EVALUADOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
@@ -3760,6 +4040,14 @@
     <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
     <Parameter Name="PIN_NB_TIPO_PRUEBA" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="SPE_ACTUALIZA_PRUEBAS_BATERIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_BATERIA" Type="int" Mode="In" />
+    <Parameter Name="PIN_XML_PRUEBAS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
+  </Function>
   <Function Name="SPE_ACTUALIZA_PRUEBAS_CANDIDATOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
     <Parameter Name="PIN_XML_PRUEBAS" Type="xml" Mode="In" />
@@ -3829,7 +4117,7 @@
   <Function Name="SPE_ELIMINA_COMPETENCIA_FACTOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
     <Parameter Name="PIN_ID_FACTOR" Type="int" Mode="In" />
-    <Parameter Name="PIN_ID_COMPETENCIA" Type="int" Mode="In" />
+    <Parameter Name="PIN_XML_COMPETENCIAS" Type="xml" Mode="In" />
     <Parameter Name="PIN_CL_USUARIO_APP_CREA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA_CREA" Type="nvarchar" Mode="In" />
   </Function>
@@ -3869,6 +4157,13 @@
     <Parameter Name="PIN_ID_PRUEBA" Type="int" Mode="In" />
     <Parameter Name="PIN_CL_USUARIO_APP_CREA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA_CREA" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SPE_ELIMINA_PRUEBA_RESPUESTAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_XML_PRUEBAS" Type="xml" Mode="In" />
+    <Parameter Name="PIN_ID_BATERIA" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_USUARIO_APP" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="SPE_ELIMINA_RESPUESTAS_BATERIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
@@ -4327,6 +4622,7 @@
   <Function Name="SPE_INSERTA_PROCESO_SELECCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
     <Parameter Name="PIN_ID_CANDIDATO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_EMPLEADO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_REQUISICION" Type="int" Mode="In" />
     <Parameter Name="PIN_CL_USUARIO_APP" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
@@ -4527,6 +4823,12 @@
     <Parameter Name="PIN_ID_CUESTIONARIO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_PRUEBA" Type="int" Mode="In" />
     <Parameter Name="PIN_CL_USUARIO_APP" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SPE_INSERTA_SOLICITUD_EMPLEADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_EMPLEADO" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="SPE_INSERTA_VARIABLES_BAREMOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
@@ -4786,6 +5088,13 @@
     <Parameter Name="PIN_ID_PUESTO" Type="int" Mode="In" />
     <Parameter Name="PIN_VALOR_COMPETENCIA" Type="decimal" Mode="In" />
   </Function>
+<<<<<<< HEAD
+  <Function Name="SPE_OBTIENE_PRUEBAS_CONFIGURADAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP" />
+=======
+  <Function Name="SPE_OBTIENE_PRUEBAS_CONFIGURADAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
+    <Parameter Name="PIN_ID_BATERIA" Type="int" Mode="In" />
+  </Function>
+>>>>>>> DEV
   <Function Name="SPE_OBTIENE_PRUEBAS_FACTORES_COMPETENCIAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
     <Parameter Name="PIN_ID_SELECCION" Type="int" Mode="In" />
     <Parameter Name="PIN_CL_SELECCION" Type="nvarchar" Mode="In" />
@@ -4845,6 +5154,14 @@
     <Parameter Name="PIN_DS_OBSERVACIONES_TERMINO" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="PIN_CL_USUARIO_APP" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SPE_ACTUALIZA_ESTATUS_TABULADOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MC">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_TABULADOR" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_ESTADO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_CL_USUARIO_APP_MODIFICA" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_PROGRAMA_MODIFICA" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
   </Function>
   <Function Name="SPE_ACTUALIZA_MERCADO_TABULADOR_NIVEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MC">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
@@ -5046,20 +5363,25 @@
   </Function>
   <Function Name="SPE_OBTIENE_CONSULTA_SUELDOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MC">
     <Parameter Name="PIN_ID_TABULADOR" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MC">
     <Parameter Name="PIN_ID_TABULADOR" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
+    <Parameter Name="PIN_FG_PLANEACION" Type="bit" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_EMPLEADOS_TABULADOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MC">
     <Parameter Name="PIN_ID_TABULADOR" Type="int" Mode="In" />
     <Parameter Name="XML_SELECCIONADOS" Type="xml" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_FACTORES_EVALUACION_TABULADOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MC">
     <Parameter Name="PIN_ID_FACTOR_EVALUACION" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_PLANEACION_INCREMENTOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MC">
     <Parameter Name="PIN_ID_TABULADOR" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_ROL" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_TABULADOR_DESCRIPTIVO_PUESTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MC">
     <Parameter Name="PIN_ID_TABULADOR_PUESTO" Type="int" Mode="In" />
@@ -5123,6 +5445,9 @@
   <Function Name="SPE_OPTIENE_COPIA_MERCADO_SALARIAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MC">
     <Parameter Name="PIN_ID_TABULADOR" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_TABULADOR_COPIAR" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPE_VERIFICA_CONFIGURACION_TABULADOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MC">
+    <Parameter Name="PIN_ID_TABULADOR" Type="int" Mode="In" />
   </Function>
   <Function Name="proc_Modifica_estatus_informacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PDE">
     <Parameter Name="ID" Type="nvarchar" Mode="In" />

@@ -1,4 +1,8 @@
-﻿// Default code generation is disabled for model 'C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\trunk\SistemaSIGEIN\SIGE.AccesoDatos\Modelo\SistemaSigeinModel.edmx'. 
+<<<<<<< HEAD
+﻿// Default code generation is disabled for model 'C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\QA\SistemaSIGEIN\SIGE.AccesoDatos\Modelo\SistemaSigeinModel.edmx'. 
+=======
+﻿// Default code generation is disabled for model 'C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\Modelo\SistemaSigeinModel.edmx'. 
+>>>>>>> DEV
 // To enable default code generation, change the value of the 'Code Generation Strategy' designer
 // property to an alternate value. This property is available in the Properties Window when the model is
 // open in the designer.

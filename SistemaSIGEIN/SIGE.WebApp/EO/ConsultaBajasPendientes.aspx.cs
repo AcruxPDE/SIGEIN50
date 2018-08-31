@@ -19,6 +19,7 @@ namespace SIGE.WebApp.EO
         private string vNbPrograma;
         private int? vIdEmpresa;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private int? vIdRol;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,6 +29,8 @@ namespace SIGE.WebApp.EO
             }
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
         }
 
         protected void rgBajasPendientes_ItemDataBound(object sender, GridItemEventArgs e)
@@ -54,7 +57,7 @@ namespace SIGE.WebApp.EO
         protected void rgBajasPendientes_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             RotacionPersonalNegocio nRotacion = new RotacionPersonalNegocio();
-            rgBajasPendientes.DataSource = nRotacion.ObtieneBajasPendientes();
+            rgBajasPendientes.DataSource = nRotacion.ObtieneBajasPendientes(pIdEmpresa:vIdEmpresa, pIdRol: vIdRol);
         }
 
         protected void btnCancelarBaja_Click(object sender, EventArgs e)

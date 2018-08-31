@@ -58,15 +58,6 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadDatePicker FeTerminacion;
         
         /// <summary>
-        /// rbMetasCero control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton rbMetasCero;
-        
-        /// <summary>
         /// rbMetasDescriptivo control.
         /// </summary>
         /// <remarks>
@@ -74,6 +65,15 @@ namespace SIGE.WebApp.EO {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton rbMetasDescriptivo;
+        
+        /// <summary>
+        /// rbMetasCero control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton rbMetasCero;
         
         /// <summary>
         /// rbOcupantePuesto control.

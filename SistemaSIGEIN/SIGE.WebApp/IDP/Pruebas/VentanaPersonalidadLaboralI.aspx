@@ -262,9 +262,20 @@
                 //var wnd = openChildDialog(vURL, "winVistaPrevia", vTitulo, windowProperties);
             }
 
+
+            //function ConfirmarEliminarRespuestas(sender, args) {
+            //    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+            //        if (shouldSubmit) {
+            //            this.click();
+            //        }
+            //    });
+            //    radconfirm("Este proceso borrará las respuestas de la prueba, ¿Deseas continuar?", callBackFunction, 400, 150, null, "Eliminar respuestas");
+            //    args.set_cancel(true);
+            //}
+
         </script>        
     </telerik:RadCodeBlock>    
-    <label style="font-size: 21px;">Personalidad laboral 1</label>
+    <label style="font-size: 21px;">Personalidad laboral I</label>
 <%--    <div id ="divCandidato" runat="server" visible="false" class="divControlDerecha" >
          <div class="ctrlBasico" style="margin-left: 20px;">
                     <div class="divControlIzquierda" style="padding-top:8px;">
@@ -3863,19 +3874,21 @@
     <div class="DivMoveLeft" id="cronometro" runat="server">
         <div class="Cronometro">Tiempo restante <span id="time">15:00</span></div>
     </div>
-    <div class="DivBtnTerminarDerecha">
+  <div class="divControlDerecha">
         <div class="ctrlBasico">
             <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Terminar" AutoPostBack="true"></telerik:RadButton>
         </div>
         
         <div class="ctrlBasico">
-            <telerik:RadButton ID="btnCorregir" runat="server" Visible="false" OnClick="btnCorregir_Click" Text="Corregir" AutoPostBack="true"></telerik:RadButton>
+            <telerik:RadButton ID="btnCorregir" runat="server" Visible="false" OnClick="btnCorregir_Click" Text="Guardar" AutoPostBack="true"></telerik:RadButton>
         </div>
 
         <div class="ctrlBasico" >
             <telerik:RadButton ID="btnImpresionPrueba" Visible="false" runat="server" OnClientClicked="OpenReport" Text="Imprimir" AutoPostBack="false"></telerik:RadButton>
         </div>
-        
+<%--          <div class="ctrlBasico">
+                  <telerik:RadButton ID="btnEliminar" runat="server"  Text="Eliminar" AutoPostBack="true" Visible="false" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminar_Click"></telerik:RadButton>
+             </div>--%>
     </div>
 
     

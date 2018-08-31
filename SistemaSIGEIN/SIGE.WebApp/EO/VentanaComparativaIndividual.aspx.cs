@@ -221,7 +221,7 @@ namespace SIGE.WebApp.EO
                     }
                     else
                     {
-                        vDr[vCom.NB_PERIODO_ENCABEZADO.ToString()] = "0.00%";
+                        vDr[vCom.NB_PERIODO_ENCABEZADO.ToString()] = "N/A";
                     }
                 }
                 vDtPivot.Rows.Add(vDr);
@@ -247,18 +247,19 @@ namespace SIGE.WebApp.EO
                     HtmlGenericControl vControlGridEvidencias = (HtmlGenericControl)item.FindControl("DivGridEvidencias");
                     System.Web.UI.WebControls.Image img = new System.Web.UI.WebControls.Image();
                     if (vMetasEvaluado.FG_EVIDENCIA == true)
-                        img.Attributes["src"] = "/Assets/images/Aceptar.png";
+                        img.Attributes["src"] = "../Assets/images/Aceptar.png";
                     else
-                        img.Attributes["src"] = "/Assets/images/Cancelar.png";
+                        img.Attributes["src"] = "../Assets/images/Cancelar.png";
                     vControlGridEvidencias.Controls.Add(img);
                 }
                 else
                 {
-                    DivGridColor.Style.Add("background", "#F2F2F2");
+                   // DivGridColor.Style.Add("background", "#F2F2F2");
+                    DivGridColor.InnerText = "N/A";
                     DivGridColor.Attributes.Add("title", "N/A");
                     HtmlGenericControl vControlGridEvidencias = (HtmlGenericControl)item.FindControl("DivGridEvidencias");
                     System.Web.UI.WebControls.Image img = new System.Web.UI.WebControls.Image();
-                        img.Attributes["src"] = "/Assets/images/Cancelar.png";
+                        img.Attributes["src"] = "../Assets/images/Cancelar.png";
                     vControlGridEvidencias.Controls.Add(img);
                 }
 
@@ -498,7 +499,7 @@ namespace SIGE.WebApp.EO
             PeriodoDesempenoNegocio nDesempeno = new PeriodoDesempenoNegocio();
             vPeriodosComparar = nDesempeno.ObtenerDesempenoComparacion(SELECCIONPERIODOS.ToString());
             int vCuentaPeriodos = nDesempeno.ObtenerDesempenoComparacion(SELECCIONPERIODOS.ToString()).Count;
-            vWidthDiv = vCuentaPeriodos * 570;
+            vWidthDiv = vCuentaPeriodos * 580;
 
             if (vCuentaPeriodos > 2)
                 btnCancelar.Visible = false;
@@ -511,7 +512,7 @@ namespace SIGE.WebApp.EO
                 vControlGrid.Attributes.Add("class", "ctrlBasico");
                 string vRows = "<table class='ctrlTableForm' style='max-width: 460' >" +
                                  "<tr><td class='ctrlTableDataContext'><b>Puesto: </b></td><td colspan='2' class='ctrlTableDataBorderContext'>" + item.NB_PUESTO + "</td></tr>" +
-                                "<tr><td class='ctrlTableDataContext'><b>Periodo: </b></td><td colspan='2' class='ctrlTableDataBorderContext'>" + item.NB_PERIODO + "</td></tr>" +
+                                "<tr><td class='ctrlTableDataContext'><b>Período: </b></td><td colspan='2' class='ctrlTableDataBorderContext'>" + item.NB_PERIODO + "</td></tr>" +
                                 "<tr><td class='ctrlTableDataContext'><b>Fechas: </b></td><td colspan='2' class='ctrlTableDataBorderContext'>" + item.FE_INICIO.ToString("dd-MM-yyyy") + " a " + item.FE_TERMINO.ToString("dd-MM-yyyy") + "</td></tr></table>";
                 vControlGrid.InnerHtml = vRows;
                // vMetasPeriodo = nDesempeno.ObtieneMetasComparacion(idEvaluadoMeta: null, pIdPeriodo: item.ID_PERIODO, idEvaluado: vIdEvaluado);
@@ -522,11 +523,14 @@ namespace SIGE.WebApp.EO
                     vResultado = vResultado + elemen.PR_CUMPLIMIENTO_META;
                 }
 
+                if (vHeight == 1)
+                    vHeight = 2;
+
                 RadGrid vGrid = new RadGrid()
                 {
-                    ID = "rgEvaluado" + item.CL_PERIODO,
-                    Width = 550,
-                    Height = (vHeight * 120),
+                    ID = "rgEvaluado" + item.CL_PERIODO + item.ID_PERIODO.ToString(),
+                    Width = 560,
+                    CssClass = "cssGrid",
                     AutoGenerateColumns = false,
                 };
                 GridColumnGroup columnGroup = new GridColumnGroup();
@@ -598,6 +602,7 @@ namespace SIGE.WebApp.EO
                 }
                 vColumnCum.HeaderStyle.Width = 130;
                 vColumnCum.HeaderStyle.Font.Bold = true;
+                vColumnCum.FooterStyle.HorizontalAlign = HorizontalAlign.Center;
                 vGrid.Columns.Add(vColumnCum);
                 GridTemplateColumn templateColumnArchivo = new GridTemplateColumn();
                 templateColumnArchivo.HeaderText = "Evidencia";
@@ -691,6 +696,7 @@ namespace SIGE.WebApp.EO
                     List<E_META> vMetasGrafica = nDesempeno.ObtenerMetasGrafica(SELECCIONPERIODOS.ToString(), vIdEmpleado).Select(s => new E_META { NO_META = s.NO_META.ToString(), DS_META = s.DS_META, PR_CUMPLIMIENTO = s.PR_CUMPLIMIENTO_META, COLOR_NIVEL = s.COLOR_NIVEL, NB_PERIODO = s.NB_PERIODO }).ToList();
                     vMetas = new List<E_METAS_PERIODOS>();
                     rhcCumplimientoPersonal.PlotArea.Series.Clear();
+                    rhcCumplimientoPersonal.PlotArea.YAxis.LabelsAppearance.DataFormatString = "{0:N2}%";
                     vRow = 1;
 
                     foreach (E_META item in vMetasGrafica.OrderBy(o => o.DS_META))
@@ -714,7 +720,7 @@ namespace SIGE.WebApp.EO
 
                     foreach (var Metas in vMetas.OrderBy(o => o.DS_META))
                     {
-                        rhcCumplimientoPersonal.PlotArea.XAxis.Items.Add("Meta" + Metas.NO_META_EVALUA);
+                        rhcCumplimientoPersonal.PlotArea.XAxis.Items.Add("Meta " + Metas.NO_META_EVALUA);
                     }
 
                     List<E_SELECCION_PERIODOS_DESEMPENO> vListaPeriodosGraf = new List<E_SELECCION_PERIODOS_DESEMPENO>();
@@ -726,6 +732,7 @@ namespace SIGE.WebApp.EO
                         ColumnSeries vSerie = new ColumnSeries();
                         // vSerie.Name = (items.nbPeriodo);
                         vSerie.TooltipsAppearance.ClientTemplate = items.nbPeriodo;
+                   
 
                         vListaMetasEvalPeriodo = new List<E_METAS_EVALUADO_PERIODO>();
 
@@ -783,7 +790,7 @@ namespace SIGE.WebApp.EO
                         rhcCumplimientoPersonal.PlotArea.Series.Add(vSerie);
                     }
 
-                    var vEmpleado = nDesempeno.ObtieneEvaluados(null, vIdEvaluado, null).FirstOrDefault();
+                var vEmpleado = nDesempeno.ObtieneEvaluados(pIdPeriodo: null, pIdEvaluado: vIdEvaluado, pIdEvaluador: null).FirstOrDefault();
                     vIdEmpleado = vEmpleado.ID_EMPLEADO;
                     txtClEmpleado.InnerText = vEmpleado.CL_EMPLEADO;
                     txtNbEmpleado.InnerText = vEmpleado.NB_EMPLEADO_COMPLETO;

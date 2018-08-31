@@ -85,6 +85,15 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadSlidingZone slzOpciones;
         
         /// <summary>
+        /// slzAyuda control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSlidingPane slzAyuda;
+        
+        /// <summary>
         /// RSPAdvSearch control.
         /// </summary>
         /// <remarks>
@@ -130,40 +139,22 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadButton btnEliminar;
         
         /// <summary>
-        /// btnProcesoSeleccion control.
+        /// btnActualizarCartera control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnProcesoSeleccion;
+        protected global::Telerik.Web.UI.RadButton btnActualizarCartera;
         
         /// <summary>
-        /// btnPruebas control.
+        /// btnImpresion2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPruebas;
-        
-        /// <summary>
-        /// btnConsultas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnConsultas;
-        
-        /// <summary>
-        /// btnProceso control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnProceso;
+        protected global::Telerik.Web.UI.RadButton btnImpresion2;
         
         /// <summary>
         /// rnMensaje control.
@@ -173,6 +164,15 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadWindowManager rnMensaje;
+        
+        /// <summary>
+        /// winImprimir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadWindow winImprimir;
         
         /// <summary>
         /// winSolicitud control.
@@ -263,5 +263,14 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadWindow rwComentarios;
+        
+        /// <summary>
+        /// rnTemplate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadWindowManager rnTemplate;
     }
 }

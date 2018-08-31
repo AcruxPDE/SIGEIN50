@@ -496,13 +496,13 @@ namespace SIGE.WebApp.MPC
                             if ((UtilXML.ValorAtributo<string>(vXmlVaria.Attribute("COLOR")).Equals("green")))
                             {
                                 vRangoVerde = UtilXML.ValorAtributo<int>(vXmlVaria.Attribute("RANGO_SUPERIOR"));
-                                txtSemaforoVerde.Text = vRangoVerde.ToString();
+                               // txtSemaforoVerde.Text = vRangoVerde.ToString();
                             }
                         foreach (XElement vXmlVaria in vXlmVariacion.Elements("Rango"))
                             if ((UtilXML.ValorAtributo<string>(vXmlVaria.Attribute("COLOR")).Equals("yellow")))
                             {
                                 vRangoAmarillo = UtilXML.ValorAtributo<int>(vXmlVaria.Attribute("RANGO_SUPERIOR"));
-                                txtSemaforoAmarillo.Text = vRangoAmarillo.ToString();
+                               // txtSemaforoAmarillo.Text = vRangoAmarillo.ToString();
                             }
                     }
                     foreach (XElement vXmlCuartilSeleccionado in vXlmCuartil.Elements("ITEM"))

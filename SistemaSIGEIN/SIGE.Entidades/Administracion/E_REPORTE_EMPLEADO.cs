@@ -130,6 +130,7 @@ namespace SIGE.Entidades.Administracion
     [Serializable]
     public class E_ROTACION
     {
+        public DateTime FE_INGRESO { get; set; }
         public int ID_BAJA_EMPLEADO { get; set; }
         public DateTime FE_BAJA_EFECTIVA { get; set; }
         public string NB_MOTIVO { get; set; }
@@ -137,6 +138,7 @@ namespace SIGE.Entidades.Administracion
 
         public E_ROTACION()
         {
+            FE_INGRESO = DateTime.Now;
             ID_BAJA_EMPLEADO = 0;
             FE_BAJA_EFECTIVA = DateTime.Now;
             NB_MOTIVO = "";
@@ -166,8 +168,8 @@ namespace SIGE.Entidades.Administracion
         public DateTime FE_CAMBIO { get; set; }
         public string NB_PROCESO { get; set; }
         public string DS_PROCESO { get; set; }
-        public string NB_ANTERIOR { get; set; }
-        public string NB_ACTUAL { get; set; }
+        public decimal NB_ANTERIOR { get; set; }
+        public decimal NB_ACTUAL { get; set; }
 
         public E_BITACORA_SUELDO()
         {
@@ -175,8 +177,8 @@ namespace SIGE.Entidades.Administracion
             FE_CAMBIO = DateTime.Now;
             NB_PROCESO = "";
             DS_PROCESO = "";
-            NB_ANTERIOR = "";
-            NB_ACTUAL = "";
+            NB_ANTERIOR = 0;
+            NB_ACTUAL = 0;
         }
 
     }

@@ -25,6 +25,16 @@ namespace SIGE.Negocio.MetodologiaCompensacion
 
 
         #endregion
+       
+      #region VERIFICA CONFIGURACIÓN  K_TABULADOR
+       public List<SPE_VERIFICA_CONFIGURACION_TABULADOR_Result> VerificarTabulador(int? ID_TABULADOR = null)
+        {
+            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
+            return operaciones.VerificarTabulador(ID_TABULADOR);
+        }
+
+
+        #endregion
 
        #region OBTIENE DATOS  K_TABULADOR_NIVEL
        public List<SPE_OBTIENE_TABULADORES_NIVEL_Result> ObtenerTabuladoresNivel(int? ID_TABULADOR = null)
@@ -39,6 +49,15 @@ namespace SIGE.Negocio.MetodologiaCompensacion
        {
            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
            return UtilRespuesta.EnvioRespuesta(operaciones.InsertarActualizarTabulador(pClTipoOperacion, vTabulador, usuario, programa));
+       }
+       #endregion
+
+       
+       #region ACTUALIZA ESTATUS  K_TABULADOR
+       public E_RESULTADO ActualizarEstatusTabulador(int? pID_TABULADOR, string pCL_ESTATUS_TABULADOR, string usuario, string programa, string pClTipoOperacion)
+       {
+           TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
+           return UtilRespuesta.EnvioRespuesta(operaciones.ActualizarEstatusTabulador(pID_TABULADOR, pCL_ESTATUS_TABULADOR, usuario, programa, pClTipoOperacion));
        }
        #endregion
        
@@ -83,10 +102,10 @@ namespace SIGE.Negocio.MetodologiaCompensacion
        #endregion
 
        #region OBTIENE DATOS  K_TABULADOR_EMPLEADO
-       public List<SPE_OBTIENE_EMPLEADOS_TABULADOR_Result> ObtenieneEmpleadosTabulador(int? ID_TABULADOR = null, XElement XML_SELECCIONADOS = null, int? ID_EMPRESA = null)
+       public List<SPE_OBTIENE_EMPLEADOS_TABULADOR_Result> ObtenieneEmpleadosTabulador(int? ID_TABULADOR = null, XElement XML_SELECCIONADOS = null, int? ID_EMPRESA = null, int? pIdRol = null)
        {
            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
-           return operaciones.ObtenerEmpleadosTabulador(ID_TABULADOR, XML_SELECCIONADOS, ID_EMPRESA);
+           return operaciones.ObtenerEmpleadosTabulador(ID_TABULADOR, XML_SELECCIONADOS, ID_EMPRESA, pIdRol);
        }
        #endregion
 
@@ -401,26 +420,26 @@ namespace SIGE.Negocio.MetodologiaCompensacion
        #endregion
 
        #region OBTIENE PLANEACION DE INCREMENTOS
-       public List<SPE_OBTIENE_PLANEACION_INCREMENTOS_Result> ObtienePlaneacionIncrementos(int? ID_TABULADOR = null)
+       public List<SPE_OBTIENE_PLANEACION_INCREMENTOS_Result> ObtienePlaneacionIncrementos(int? ID_TABULADOR = null, int? ID_ROL = null)
        {
            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
-           return operaciones.ObtenerPlaneacionIncrementos(ID_TABULADOR);
+           return operaciones.ObtenerPlaneacionIncrementos(ID_TABULADOR, ID_ROL);
        }
        #endregion
 
        #region OBTIENE CONSULTA SUELDOS
-        public List<SPE_OBTIENE_CONSULTA_SUELDOS_Result> ObtenerConsultaSueldos(int? ID_TABULADOR = null)
+        public List<SPE_OBTIENE_CONSULTA_SUELDOS_Result> ObtenerConsultaSueldos(int? ID_TABULADOR = null, int? ID_ROL = null)
        {
            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
-           return operaciones.ObtenerConsultaSueldos(ID_TABULADOR);
+           return operaciones.ObtenerConsultaSueldos(ID_TABULADOR, ID_ROL);
        }
          #endregion
 
        #region OBTIENE EMPLEADOS PLANEACION DE INCREMENTOS
-       public List<SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS_Result> ObtieneEmpleadosPlaneacionIncrementos(int? ID_TABULADOR = null)
+       public List<SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS_Result> ObtieneEmpleadosPlaneacionIncrementos(int? ID_TABULADOR = null, int? pID_ROL = null, bool? pFG_PLANECAION = null)
        {
            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
-           return operaciones.ObtenerEmpleadosPlaneacionIncrementos(ID_TABULADOR);
+           return operaciones.ObtenerEmpleadosPlaneacionIncrementos(ID_TABULADOR, pID_ROL, pFG_PLANECAION);
        }
        #endregion
 

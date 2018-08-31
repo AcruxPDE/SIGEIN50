@@ -10,7 +10,8 @@ namespace SIGE.Entidades.EvaluacionOrganizacional
      [Serializable]
     public class E_HISTORIAL_BAJA
     {
-       
+
+        public DateTime? FECHA_INGRESO { get; set; }
         public DateTime FECHA_BAJA { get; set; }
         public int? ID_EMPLEADO { get; set; }
         public string CL_EMPLEADO { get; set; }

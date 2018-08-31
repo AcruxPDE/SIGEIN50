@@ -41,11 +41,11 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public List<SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_DESEMPENO_Result> ObtenerCumplimientoGlobal(int? pIdPeriodo = null)
+        public List<SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_DESEMPENO_Result> ObtenerCumplimientoGlobal(int? pIdPeriodo = null, int? pIdRol = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_DESEMPENO(pIdPeriodo).ToList();
+                return contexto.SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_DESEMPENO(pIdPeriodo, pIdRol).ToList();
             }
         }
 
@@ -90,6 +90,14 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
+        public List<SPE_OBTIENE_PERIODOS_SOLICITUDES_ENVIAR_Result> ObtenerPeriodosEnviar()
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.SPE_OBTIENE_PERIODOS_SOLICITUDES_ENVIAR().ToList();
+            }
+        }
+
 
         public List<SPE_OBTIENE_EO_PERIODOS_CONSECUTIVOS_Result> ObtenerPeriodoConsecutivo(int? pIdPeriodo = null)
         {
@@ -115,11 +123,11 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public List<SPE_OBTIENE_EVALUADOS_PERIODOS_DESEMPENO_Result> ObtenerEvaluadosDesempeno( string pXmlPeriodos = null)
+        public List<SPE_OBTIENE_EVALUADOS_PERIODOS_DESEMPENO_Result> ObtenerEvaluadosDesempeno( string pXmlPeriodos = null, int? pIdRol = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_EVALUADOS_PERIODOS_DESEMPENO(pXmlPeriodos).ToList();
+                return contexto.SPE_OBTIENE_EVALUADOS_PERIODOS_DESEMPENO(pXmlPeriodos, pIdRol).ToList();
             }
         }
 
@@ -147,13 +155,13 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
                 return contexto.SPE_OBTIENE_EO_CONTEXTO_METAS(pIdPeriodo, idEvaluado).FirstOrDefault();
             }
         }
-        public XElement InsertaActualiza_PERIODO_DESEMPENO(int? pIdPeriodoDesempeno, string pClPeriodoDesempeno, string pNbPeriodoDesempeno, string pDsPeriodoDesempeno, string pClEstadoPeriodoDesempeno, string pDsNotas, DateTime pFeInicio, DateTime pFeTermino, string pClTipoCapturista,string CL_TIPO_META, string pClUsuario, string pNbPrograma, string pTipoTransaccion)
+        public XElement InsertaActualiza_PERIODO_DESEMPENO(int? pIdPeriodoDesempeno, string pClPeriodoDesempeno, string pNbPeriodoDesempeno, string pDsPeriodoDesempeno, string pClEstadoPeriodoDesempeno, string pDsNotas, DateTime pFeInicio, DateTime pFeTermino, string pClTipoCapturista, string CL_TIPO_META, string pClUsuario, string pNbPrograma, string pTipoTransaccion, bool? pFgCapturaMasiva)
         {
             using (contexto = new SistemaSigeinEntities())
             {
                 // Declaramos el objeto de valor de retorno
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
-                contexto.SPE_INSERTA_ACTUALIZA_PERIODO_DESEMPENO(pout_clave_retorno, pIdPeriodoDesempeno, pClPeriodoDesempeno, pNbPeriodoDesempeno, pDsPeriodoDesempeno, pClEstadoPeriodoDesempeno, pDsNotas, pFeInicio, pFeTermino, pClTipoCapturista, CL_TIPO_META, pClUsuario, pNbPrograma, pTipoTransaccion);
+                contexto.SPE_INSERTA_ACTUALIZA_PERIODO_DESEMPENO(pout_clave_retorno, pIdPeriodoDesempeno, pClPeriodoDesempeno, pNbPeriodoDesempeno, pDsPeriodoDesempeno, pClEstadoPeriodoDesempeno, pDsNotas, pFeInicio, pFeTermino, pClTipoCapturista, CL_TIPO_META, pClUsuario, pNbPrograma, pTipoTransaccion, pFgCapturaMasiva);
                 //regresamos el valor de retorno de sql
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
 
@@ -181,11 +189,21 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public List<SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO_Result> ObtenerEvaluados(int? pIdPeriodo = null, int? pIdEvaluado = null, int? pIdEvaluador = null)
+        public XElement InsertaPeriodosReplica(int? pIdPeriodo, string pXmlPeriodos, string pClUsuario, string pNbPrograma, string ClTipoTransaccion)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO(pIdPeriodo, pIdEvaluado, pIdEvaluador).ToList();
+                ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                contexto.SPE_INSERTA_PERIODOS_DESEMPENO_REPLICA(pOutClRetorno, pIdPeriodo, pXmlPeriodos, pClUsuario, pNbPrograma, ClTipoTransaccion);
+                return XElement.Parse(pOutClRetorno.Value.ToString());
+            }
+        }
+
+        public List<SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO_Result> ObtenerEvaluados(int? pIdPeriodo = null, int? pIdEvaluado = null, int? pIdEvaluador = null, string pClUsuario = null, string pNbPrograma = null, int? pIdRol = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO(pIdPeriodo, pIdEvaluado, pIdEvaluador, pClUsuario, pNbPrograma, pIdRol).ToList();
             }
         }
 
@@ -228,11 +246,11 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
         }
 
 
-        public List<SPE_OBTIENE_BONO_EVALUADOS_Result> ObtenerBonoEvaluados(int pIdPeriodo)
+        public List<SPE_OBTIENE_BONO_EVALUADOS_Result> ObtenerBonoEvaluados(int pIdPeriodo, int? pIdRol)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_BONO_EVALUADOS(pIdPeriodo).ToList();
+                return contexto.SPE_OBTIENE_BONO_EVALUADOS(pIdPeriodo, pIdRol).ToList();
             }
         }
 
@@ -326,11 +344,11 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public List<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result> ObtenerEvaluadores(int pIdPeriodo)
+        public List<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result> ObtenerEvaluadores(int pIdPeriodo, int? pIdRol)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_EO_EVALUADORES_TOKEN(pIdPeriodo).ToList();
+                return contexto.SPE_OBTIENE_EO_EVALUADORES_TOKEN(pIdPeriodo, pIdRol).ToList();
             }
         }
 
@@ -340,6 +358,15 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             {
                 //return contexto.SPE_OBTIENE_EO_METAS_EVALUADOS(idEvaluadoMeta, pIdPeriodo, idEvaluado, no_Meta, cl_nivel).ToList();
                 return contexto.SPE_OBTIENE_EO_METAS_EVALUADOS(idEvaluadoMeta, pIdPeriodo, idEvaluado, no_Meta, cl_nivel, FgEvaluar, pIdEmpleado).ToList();
+            }
+        }
+
+
+        public List<SPE_OBTIENE_EO_METAS_CAPTURA_MASIVA_Result> ObtieneMetasCapturaMasiva(int? pIdPeriodo = null, int? idEvaluador = null, System.Guid? pFlEvaluador = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.SPE_OBTIENE_EO_METAS_CAPTURA_MASIVA(pIdPeriodo, idEvaluador, pFlEvaluador).ToList();
             }
         }
 
@@ -386,6 +413,16 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
+        public XElement ActualizarResultadosMetasMasiva(int pIdPeriodo, int pIdEvaluador, XElement xmlResultados, string pClUsuario, string pNbPrograma, decimal pSuma)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                contexto.SPE_ACTUALIZA_RESULTADO_METAS_MASIVA(pOutClRetorno, pIdPeriodo, pIdEvaluador, xmlResultados.ToString(), pClUsuario, pNbPrograma, pSuma);
+                return XElement.Parse(pOutClRetorno.Value.ToString());
+            }
+        }
+
         public SPE_OBTIENE_EVIDENCIAS_METAS_Result ObtenerEvidenciasMetasEvaluados(int? idEvaluadoMeta = null)
         {
             using (contexto = new SistemaSigeinEntities())
@@ -394,7 +431,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public XElement InsertarActualizarEvidenciasMetas(int? pIsEvaluadoMeta, List<UDTT_ARCHIVO> pLstArchivosTemporales, List<E_DOCUMENTO> pLstDocumentos, string pClUsuario, string pNbPrograma)
+        public XElement InsertarActualizarEvidenciasMetas(int? pIsEvaluadoMeta, List<UDTT_ARCHIVO> pLstArchivosTemporales, List<E_DOCUMENTO> pLstDocumentos, string pClUsuario, string pNbPrograma, int? pIdEvaluador)
         {
             using (contexto = new SistemaSigeinEntities())
             {
@@ -437,13 +474,15 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
                     " @PIN_ID_EVALUADO_META, " +
                     " @PIN_ARCHIVOS, " +
                     " @PIN_CL_USUARIO, " +
-                    " @PIN_NB_PROGRAMA"
+                    " @PIN_NB_PROGRAMA, " +
+                    " @PIN_ID_EVALUADOR"
                     , pXmlResultado
                     , new SqlParameter("@PIN_XML_DOCUMENTOS", SqlDbType.Xml) { Value = new SqlXml(vXmlDocumentos.CreateReader()) }
                     , new SqlParameter("@PIN_ID_EVALUADO_META", (int)pIsEvaluadoMeta)
                     , pArchivos
                     , new SqlParameter("@PIN_CL_USUARIO", pClUsuario)
                     , new SqlParameter("@PIN_NB_PROGRAMA", pNbPrograma)
+                    , new SqlParameter("@PIN_ID_EVALUADOR", pIdEvaluador == null ? 0 : pIdEvaluador)
                 );
 
                 return XElement.Parse(pXmlResultado.Value.ToString());
@@ -510,6 +549,16 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
+        public XElement EliminarMetasInactivas(int pIdPeriodo)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                contexto.SPE_ELIMINA_EO_METAS_INACTIVAS(pOutClRetorno, pIdPeriodo);
+                return XElement.Parse(pOutClRetorno.Value.ToString());
+            }
+        }
+
         public XElement InsertarPeriodoDesempenoCopia(E_PERIODO_DESEMPENO pPeriodo, string pCL_USUARIO, string pNB_PROGRAMA)
         {
             using (contexto = new SistemaSigeinEntities())
@@ -546,11 +595,11 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public List<SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO_Result> ObtenerControlAvanceDesempeno(int pIdPeriodoDesempeno)
+        public List<SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO_Result> ObtenerControlAvanceDesempeno(int pIdPeriodoDesempeno, int? pIdRol)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO(pIdPeriodoDesempeno).ToList();
+                return contexto.SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO(pIdPeriodoDesempeno, pIdRol).ToList();
             }
         }
 

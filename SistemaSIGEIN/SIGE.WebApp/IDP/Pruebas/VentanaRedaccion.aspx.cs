@@ -95,6 +95,7 @@ namespace SIGE.WebApp.IDP
                     }
                     else if (vTipoRevision == "EDIT")
                     {
+                        //btnEliminar.Visible = true;// Se agrega para la nueva forma de navegación 06/06/2018
                         cronometro.Visible = false;
                         vTiempoRedaccion = 0;
                         btnTerminar.Visible = false;
@@ -296,5 +297,23 @@ namespace SIGE.WebApp.IDP
                 }
             }
         }
+
+        //protected void btnEliminar_Click(object sender, EventArgs e)
+        //{
+        //    if (vIdPrueba != null)
+        //    {
+        //        PruebasNegocio nPruebas = new PruebasNegocio();
+        //        var vResultado = nPruebas.EliminaRespuestasPrueba(vIdPrueba, vClUsuario, vNbPrograma);
+        //        string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals("ES")).FirstOrDefault().DS_MENSAJE;
+        //        if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+        //        {
+        //            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+
+        //        }
+        //        else
+        //            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
+        //    }
+
+        //}
     }
 }

@@ -1,6 +1,24 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/EO/ContextEO.master" AutoEventWireup="true" CodeBehind="VentanaControlAvanceDesempeno.aspx.cs" Inherits="SIGE.WebApp.EO.VentanaControlAvanceDesempeno" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
+    <script>
+
+
+        function OpenMetasWindows() {
+            var currentWnd = GetRadWindow();
+            var browserWnd = window;
+            if (currentWnd)
+                browserWnd = currentWnd.BrowserWindow;
+
+            var windowProperties = {
+                width: browserWnd.innerWidth - 20,
+                height: browserWnd.innerHeight - 20
+            };
+
+            openChildDialog("VentanaMetasperiodo.aspx?PeriodoId=" + '<%= vIdPeriodo %>', "winSeleccion", "Metas del periodo", windowProperties);
+        }
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
     <telerik:RadAjaxLoadingPanel ID="ralpControlAvanceDesempeno" runat="server"></telerik:RadAjaxLoadingPanel>
@@ -13,17 +31,23 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <div style="height: calc(100% - 60px);">
+<<<<<<< HEAD
+    <div style="height: calc(100% - 70px);">
         <div style="clear: both; height: 10px;"></div>
+=======
+    <div style="height: calc(100% - 60px);">
+>>>>>>> DEV
         <telerik:RadTabStrip ID="rtsControlAvance" runat="server" SelectedIndex="0" MultiPageID="rmpControlAvance">
             <Tabs>
                 <telerik:RadTab Text="Contexto"></telerik:RadTab>
                 <telerik:RadTab Text="Reporte"></telerik:RadTab>
             </Tabs>
         </telerik:RadTabStrip>
+                    <div style="clear: both; height: 10px;"></div>
         <telerik:RadMultiPage ID="rmpControlAvance" runat="server" SelectedIndex="0" Height="100%">
+ 
             <telerik:RadPageView ID="rpvControlAvanceCon" runat="server">
-                <div style="height: calc(100% - 20px);">
+                <div style="height: calc(100% - 60px);">
                     <div class="ctrlBasico">
                         <table class="ctrlTableForm">
                             <tr>
@@ -64,7 +88,7 @@
                             </tr>
                             <tr>
                                 <td class="ctrlTableDataContext">
-                                    <label>Tipo de periodo:</label></td>
+                                    <label>Tipo de período:</label></td>
                                 <td class="ctrlTableDataBorderContext">
                                     <div id="txtTipoPeriodo" runat="server" width="170" maxlength="1000" enabled="false"></div>
                                 </td>
@@ -95,7 +119,6 @@
                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvControlAvanceRe" runat="server">
-                <div style="height: calc(100% - 20px);">
                     <%--  <div class="ctrlBasico">
                         <table class="ctrlTableForm">
                             <tr>
@@ -111,7 +134,7 @@
                             </tr>
                         </table>
                     </div>--%>
-                    <div style="clear: both; height: 10px;"></div>
+
                     <div style="height: calc(100% - 60px);">
                         <telerik:RadGrid ID="grdControlAvance" HeaderStyle-Font-Bold="true" ShowFooter="true" runat="server" Height="100%" Width="100%" AutoGenerateColumns="false" AllowSorting="true" OnNeedDataSource="grdControlAvance_NeedDataSource" OnItemDataBound="grdControlAvance_ItemDataBound">
                             <ClientSettings>
@@ -123,14 +146,14 @@
                             <MasterTableView DataKeyNames="ID_PERIODO,ID_EVALUADO" ClientDataKeyNames="ID_PERIODO,ID_EVALUADO" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true">
                                 <Columns>
                                     <telerik:GridBoundColumn HeaderText="No. de Empleado" AutoPostBackOnFilter="true" DataField="CL_EVALUADO" UniqueName="CL_EVALUADO" FilterControlWidth="40" HeaderStyle-Width="100" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn HeaderText="Nombre completo" AutoPostBackOnFilter="true" DataField="NB_EVALUADO" UniqueName="NB_EVALUADO" HeaderStyle-Width="200" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn HeaderText="Puesto" AutoPostBackOnFilter="true" DataField="NB_PUESTO" UniqueName="NB_PUESTO" FilterControlWidth="170" HeaderStyle-Width="250" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn HeaderText="Área" AutoPostBackOnFilter="true" FilterControlWidth="170" HeaderStyle-Width="250" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn HeaderText="Nombre completo" AutoPostBackOnFilter="true" DataField="NB_EVALUADO" UniqueName="NB_EVALUADO" FilterControlWidth="130" HeaderStyle-Width="200" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn HeaderText="Puesto" AutoPostBackOnFilter="true" DataField="NB_PUESTO" UniqueName="NB_PUESTO" FilterControlWidth="130" HeaderStyle-Width="200" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn HeaderText="Área/Departamento" AutoPostBackOnFilter="true" FilterControlWidth="170" HeaderStyle-Width="250" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                     <telerik:GridTemplateColumn HeaderText="Metas definidas" DataField="FG_METAS_DEFINIDAS" UniqueName="FG_METAS_DEFINIDAS" AllowFiltering="false" HeaderStyle-Font-Bold="true">
                                         <HeaderStyle Width="80" />
                                         <ItemTemplate>
                                             <div style="width: 80%; text-align: center;">
-                                                <img src='<%# Eval("FG_METAS_DEFINIDAS").ToString().Equals("1") ? "/Assets/images/Aceptar.png" : "/Assets/images/Cancelar.png"  %>' />
+                                                <img src='<%# Eval("FG_METAS_DEFINIDAS").ToString().Equals("1") ? "../Assets/images/Aceptar.png" : "../Assets/images/Cancelar.png"  %>' />
                                             </div>
                                         </ItemTemplate>
                                     </telerik:GridTemplateColumn>
@@ -138,7 +161,7 @@
                                         <HeaderStyle Width="80" />
                                         <ItemTemplate>
                                             <div style="width: 80%; text-align: center;">
-                                                <img src='<%# Eval("FG_METAS_CAPTURADAS").ToString().Equals("1") ? "/Assets/images/Aceptar.png" : "/Assets/images/Cancelar.png"  %>' />
+                                                <img src='<%# Eval("FG_METAS_CAPTURADAS").ToString().Equals("1") ? "../Assets/images/Aceptar.png" : "../Assets/images/Cancelar.png"  %>' />
                                             </div>
                                         </ItemTemplate>
                                     </telerik:GridTemplateColumn>
@@ -153,11 +176,13 @@
                             </MasterTableView>
                         </telerik:RadGrid>
                     </div>
-                    <div style="clear: both; height: 20px;"></div>
-                    <div class="divControlDerecha">
+                    <div style="clear: both; height: 10px;"></div>
+                    <div class="ctrlBasico">
+                         <telerik:RadButton runat="server" ID="btnVerMetas" Text="Ver metas del período" AutoPostBack="false" OnClientClicked="OpenMetasWindows"></telerik:RadButton>
+                    </div>
+                    <div class="divControlDerecha">                      
                         <telerik:RadButton runat="server" ID="btnGuardarPonderacion" Text="Guardar ponderación" AutoPostBack="true" OnClick="btnGuardarPonderacion_Click"></telerik:RadButton>
                     </div>
-                </div>
             </telerik:RadPageView>
         </telerik:RadMultiPage>
     </div>

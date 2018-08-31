@@ -280,20 +280,20 @@
                     <MasterTableView ClientDataKeyNames="NB_EMPLEADO_PUESTO, ID_EVALUADO" EnableColumnsViewState="false" OnPreRender="Unnamed_PreRender" DataKeyNames="NB_EMPLEADO_PUESTO, ID_EVALUADO" AllowPaging="false" AllowFilteringByColumn="false" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
                         <ColumnGroups  >
                              <telerik:GridColumnGroup Name="Pruebas" HeaderStyle-Height="200" HeaderStyle-Font-Bold="true"
-                                HeaderStyle-HorizontalAlign="Center" HeaderStyle-ForeColor="White" HeaderStyle-BackColor="Green" HeaderText="EVALUACIÓN DE PRUEBAS" />
+                                HeaderStyle-HorizontalAlign="Center" HeaderStyle-ForeColor="White" HeaderStyle-BackColor="Green" HeaderText="Evaluación de pruebas" />
                             <telerik:GridColumnGroup Name="Formacion" HeaderStyle-Height="200" HeaderStyle-Font-Bold="true"
-                                HeaderStyle-HorizontalAlign="Center" HeaderStyle-ForeColor="White" HeaderStyle-BackColor="DarkOrange" HeaderText="EVALUACIÓN DE COMPETENCIAS" />
+                                HeaderStyle-HorizontalAlign="Center" HeaderStyle-ForeColor="White" HeaderStyle-BackColor="DarkOrange" HeaderText="Evaluación de competencias" />
                              <telerik:GridColumnGroup Name="Desempeno" HeaderStyle-Font-Bold="true"
-                                HeaderStyle-HorizontalAlign="Center" HeaderStyle-Height="200" HeaderStyle-ForeColor="White" HeaderStyle-BackColor="DarkRed" HeaderText="EVALUACIÓN DE DESEMPEÑO"/>
+                                HeaderStyle-HorizontalAlign="Center" HeaderStyle-Height="200" HeaderStyle-ForeColor="White" HeaderStyle-BackColor="DarkRed" HeaderText="Evaluación de desempeño"/>
                              <telerik:GridColumnGroup Name="Clima" HeaderStyle-Font-Bold="true"
-                                HeaderStyle-HorizontalAlign="Center" HeaderStyle-Height="200" HeaderStyle-ForeColor="White" HeaderStyle-BackColor="DarkRed" HeaderText="CLIMA LABORAL" />
+                                HeaderStyle-HorizontalAlign="Center" HeaderStyle-Height="200" HeaderStyle-ForeColor="White" HeaderStyle-BackColor="DarkRed" HeaderText="Evaluación de clima laboral" />
                              <telerik:GridColumnGroup Name="Tabulador" HeaderStyle-Font-Bold="true"
-                                 HeaderStyle-HorizontalAlign="Center" HeaderStyle-Height="200" HeaderStyle-ForeColor="White" HeaderStyle-BackColor="#0066ff" HeaderText="EVALUACIÓN DEL SUELDO" />
+                                 HeaderStyle-HorizontalAlign="Center" HeaderStyle-Height="200" HeaderStyle-ForeColor="White" HeaderStyle-BackColor="#0066ff" HeaderText="Evaluación del sueldo" />
                             <telerik:GridColumnGroup Name="Tendencia" HeaderText="Tendencia" HeaderStyle-Font-Bold="true"
-                                HeaderStyle-HorizontalAlign="Center" HeaderStyle-Height="200" HeaderStyle-ForeColor="White" HeaderStyle-BackColor="DarkGray" />
+                                HeaderStyle-HorizontalAlign="Center" HeaderStyle-Height="200" HeaderStyle-ForeColor="Black" HeaderStyle-BackColor="LightGray" />
                         </ColumnGroups>
                         <Columns>
-                            <telerik:GridTemplateColumn UniqueName="DS_COMENTARIO" HeaderStyle-BackColor="DarkGray" HeaderStyle-ForeColor="White" DataField="DS_COMENTARIO" HeaderStyle-Width="150" HeaderText="Comentarios">
+                            <telerik:GridTemplateColumn UniqueName="DS_COMENTARIO" HeaderStyle-BackColor="LightGray" HeaderStyle-ForeColor="Black" DataField="DS_COMENTARIO" HeaderStyle-Width="150" HeaderText="Comentarios">
                                 <ItemTemplate>
                                     <telerik:RadTextBox runat="server" RenderMode="Lightweight" ID="txtComentarios" Text='<%#Eval ("DS_COMENTARIOS")%>' Width="125" Height="100" Rows="5" TextMode="MultiLine"></telerik:RadTextBox>
                                 </ItemTemplate>
@@ -314,7 +314,7 @@
             </div>--%>
             </telerik:RadPane>
             <telerik:RadPane ID="rpAyuda" runat="server" Width="22px" ShowContentDuringLoad="false">
-                <telerik:RadSlidingZone ID="rszPrograma" runat="server" SlideDirection="Left" Width="22px">
+                <telerik:RadSlidingZone ID="rszPrograma" runat="server" SlideDirection="Left" Width="22px" ClickToOpen="true">
                     <telerik:RadSlidingPane ID="rspNuevoPrograma" runat="server" Title="Configuración de tablero" Width="240px" RenderMode="Mobile" Height="200">
                         <div style="margin-left:10px;">
                         <div style="clear: both;"></div>

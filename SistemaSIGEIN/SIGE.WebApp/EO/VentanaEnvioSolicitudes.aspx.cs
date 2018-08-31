@@ -24,6 +24,7 @@ namespace SIGE.WebApp.EO
 
         private string vClUsuario;
         private string vNbPrograma;
+        private int? vIdRol;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
 
         public int vIdPeriodo
@@ -64,6 +65,13 @@ namespace SIGE.WebApp.EO
         }
 
         public string vMensaje;
+
+        public bool vFgMasiva
+        {
+            get { return (bool)ViewState["vs_vFgMasiva"]; }
+            set { ViewState["vs_vFgMasiva"] = value; }
+        }
+
         #endregion
 
         #region Funciones
@@ -118,9 +126,28 @@ namespace SIGE.WebApp.EO
                 txtFechas.InnerText = oPeriodo.FE_INICIO.ToString("d") + " a " + oPeriodo.FE_TERMINO.Value.ToShortDateString();
                 txtTipoMetas.InnerText = oPeriodo.CL_TIPO_PERIODO;
                 txtTipoCapturista.InnerText = Utileria.LetrasCapitales(oPeriodo.CL_TIPO_CAPTURISTA);
+<<<<<<< HEAD
                 txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO;
-                txtTipoPeriodo.InnerText = oPeriodo.CL_ORIGEN_CUESTIONARIO;
+=======
 
+
+
+                if (oPeriodo.FG_BONO == true && oPeriodo.FG_MONTO == true)
+                    txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO + " (monto)";
+                else if (oPeriodo.FG_BONO == true && oPeriodo.FG_PORCENTUAL == true)
+                    txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO + " (porcentual)";
+                else
+                    txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO;
+
+>>>>>>> DEV
+                txtTipoPeriodo.InnerText = oPeriodo.CL_ORIGEN_CUESTIONARIO;
+                if (oPeriodo.CL_TIPO_CAPTURISTA == "Coordinador de evaluación")
+                {
+                    btnEnviar.Enabled = false;
+                    btnEnviarTodos.Enabled = false;
+                    btnCancelar.Enabled = false;
+                    lbMensaje2.Visible = true;
+                }
                 if (oPeriodo.DS_NOTAS != null)
                 {
                     XElement vNotas = XElement.Parse(oPeriodo.DS_NOTAS);
@@ -141,9 +168,18 @@ namespace SIGE.WebApp.EO
             int vIdEvaluador;
             string vClCorreo;
             string vNbEvaluador;
-            string vUrl = ContextoUsuario.nbHost + "/Logon.aspx?ClProceso=DESEMPENO";
+            string myUrl = ResolveUrl("~/Logon.aspx?ClProceso=DESEMPENO");
+            string vUrl = ContextoUsuario.nbHost + myUrl;
             GridItemCollection oListaEvaluadores = new GridItemCollection();
             XElement vXmlEvaluados = new XElement("EVALUADORES");
+
+            if (vFgMasiva)
+            {
+                PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
+                var vPeriododDesempeno = nPeriodo.ObtienePeriodosDesempeno(pIdPeriodo: vIdPeriodo).FirstOrDefault();
+                var resultado = nPeriodo.InsertaActualiza_PERIODO(vPeriododDesempeno.ID_PERIODO_DESEMPENO, vPeriododDesempeno.CL_PERIODO, vPeriododDesempeno.NB_PERIODO, vPeriododDesempeno.DS_PERIODO, vPeriododDesempeno.CL_ESTADO_PERIODO, vPeriododDesempeno.DS_NOTAS.ToString(), vPeriododDesempeno.FE_INICIO, (DateTime)vPeriododDesempeno.FE_TERMINO, vPeriododDesempeno.CL_TIPO_CAPTURISTA, vPeriododDesempeno.CL_TIPO_METAS, vClUsuario, vNbPrograma, "A", btnCapturaMasivaYes.Checked);
+            }
+
 
             if (string.IsNullOrEmpty(vDsMensaje))
             {
@@ -202,11 +238,15 @@ namespace SIGE.WebApp.EO
                     else
                     {
                         (item.FindControl("txtCorreo") as RadTextBox).EnabledStyle.BackColor = System.Drawing.Color.Gold;
+                        UtilMensajes.MensajeResultadoDB(rwmMensaje, "Las contraseña del evaluador no han sido asignada. Por favor, asígnala para poder enviar el correo.", E_TIPO_RESPUESTA_DB.WARNING, pAlto: 200);
+                        return;
                     }
                 }
                 else
                 {
                     (item.FindControl("txtCorreo") as RadTextBox).EnabledStyle.BackColor = System.Drawing.Color.Gold;
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, "El formato del correo es incorrecto. Por favor, corríjalo para poder enviar el correo.", E_TIPO_RESPUESTA_DB.WARNING, pAlto: 200);
+                    return;
                 }
             }
 
@@ -228,7 +268,7 @@ namespace SIGE.WebApp.EO
 
             if (validacion == "NO_HAY_M_IMPORTANTE_EVALUADOR" || validacion == "NO_HAY_M_IMPORTANTE_EVALUADO")
             {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, "No hay personas para notificar el problema ocurrido, revisa la configuración del periodo", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "No hay personas para notificar el problema ocurrido, revisa la configuración del período", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
                 return;
             }
             else if (validacion == "SI_HAY_IMPORTANTE_EVALUADOR")
@@ -260,9 +300,9 @@ namespace SIGE.WebApp.EO
                 vMensaje = vMensaje.Replace("[CL_PERIODO]", vDatosPeriodo.NB_PERIODO);
 
                 //Envío de correo
-                bool vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbEvaluador, "Periodo de desempeño " + vDatosPeriodo.NB_PERIODO, vMensaje);
+                bool vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbEvaluador, "Período de desempeño " + vDatosPeriodo.NB_PERIODO, vMensaje);
                 if(vEstatusCorreo)
-                    UtilMensajes.MensajeResultadoDB(rwmMensaje, "Ha ocurrido un problema en el periodo. Se ha enviado un correo a la persona que recibe las notificaciones", E_TIPO_RESPUESTA_DB.WARNING,400,200, pCallBackFunction: "");
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, "Ha ocurrido un problema en el período. Se ha enviado un correo a la persona que recibe las notificaciones", E_TIPO_RESPUESTA_DB.WARNING,400,200, pCallBackFunction: "");
             }
         }
 
@@ -272,6 +312,7 @@ namespace SIGE.WebApp.EO
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!Page.IsPostBack)
             {
@@ -282,6 +323,18 @@ namespace SIGE.WebApp.EO
 
                 PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
                 var vDatosPeriodo = nPeriodo.ObtienePeriodosDesempeno(vIdPeriodo).FirstOrDefault();
+                var vEvaluadores = nPeriodo.ObtenerEvaluadoresPeriodo(vIdPeriodo, vIdRol).FirstOrDefault();
+
+                if (vEvaluadores != null)
+                {
+                    vFgMasiva = vEvaluadores.FG_CAPTURA_MASIVA;
+                    if (vEvaluadores.FG_CAPTURA_MASIVA)
+                    {
+                        dvCapturaMasiva.Visible = true;
+                        btnCapturaMasivaFalse.Checked = true;
+                        UtilMensajes.MensajeResultadoDB(rwmMensaje, "Este período tiene metas idénticas para todos los participantes, si se trata de una meta compartida es posible que realices la captura de todo el grupo, el resultado que captures se aplicara a cada uno de los participantes. Selecciona la opción de captura masiva antes de enviar los correos.", E_TIPO_RESPUESTA_DB.SUCCESSFUL, pAlto: 250, pCallBackFunction:"");
+                    }
+                }
 
                 if (vDatosPeriodo != null)
                 {
@@ -311,7 +364,7 @@ namespace SIGE.WebApp.EO
         {
             List<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result> vEvaluadores = new List<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result>();
             PeriodoDesempenoNegocio eoNegocio = new PeriodoDesempenoNegocio();
-            vEvaluadores = eoNegocio.ObtenerEvaluadoresPeriodo(vIdPeriodo);
+            vEvaluadores = eoNegocio.ObtenerEvaluadoresPeriodo(vIdPeriodo, vIdRol);
             rgCorreos.DataSource = vEvaluadores;
         }
 
@@ -361,6 +414,7 @@ namespace SIGE.WebApp.EO
                 //Guid vFlEvaluador = Guid.Parse(item.GetDataKeyValue("FL_EVALUADOR").ToString());
                 PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
                 var vEvaluacionEvaluado = nPeriodo.ObtenerPeriodoEvaluadorDesempeno(vIdEvaluador);
+                if (vEvaluacionEvaluado != null)
                 if (vEvaluacionEvaluado.CL_ESTATUS_CAPTURA == "TERMINADO")
                 {
                     item.Enabled = false;

@@ -1,6 +1,7 @@
 ﻿using SIGE.Entidades;
 using SIGE.Entidades.Externas;
 using SIGE.Negocio.Administracion;
+using SIGE.WebApp.Comunes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,19 +19,24 @@ namespace SIGE.WebApp.Administracion
         private string vClUsuario;
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private int? vIdEmpresa;
+        private int? vIdRol;
 
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
+            vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
         }
 
         protected void grdSueldoEmpleados_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             EmpleadoNegocio sueldoEmpleado = new EmpleadoNegocio();
             List<SPE_OBTIENE_SUELDO_EMPLEADOS_Result> listaSueldoEmpleados = new List<SPE_OBTIENE_SUELDO_EMPLEADOS_Result>();
-            listaSueldoEmpleados = sueldoEmpleado.ObtenerSueldoEmpleados();
+            listaSueldoEmpleados = sueldoEmpleado.ObtenerSueldoEmpleados(pIdEmpresa: vIdEmpresa, pIdRol: vIdRol);
             grdSueldoEmpleados.DataSource = listaSueldoEmpleados;
         }
 

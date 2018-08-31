@@ -28,11 +28,14 @@ namespace SIGE.Entidades
         public string CL_PRUEBA { get; set; }
         public string NB_PRUEBA { get; set; }
         public Nullable<short> NO_TIEMPO_PRUEBA { get; set; }
+        public Nullable<int> NO_ORDEN { get; set; }
         public string NB_CANDIDATO_COMPLETO { get; set; }
         public string NB_EMPLEADO_COMPLETO { get; set; }
         public string NO_REQUISICION { get; set; }
         public Nullable<int> ID_REQUISICION { get; set; }
         public string CL_CORREO_ELECTRONICO { get; set; }
         public Nullable<int> ID_BATERIA { get; set; }
+        public Nullable<System.DateTime> FE_MODIFICACION { get; set; }
+        public string CL_USUARIO_MODIFICA { get; set; }
     }
 }

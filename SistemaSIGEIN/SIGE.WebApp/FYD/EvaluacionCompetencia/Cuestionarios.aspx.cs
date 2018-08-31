@@ -18,6 +18,7 @@ namespace SIGE.WebApp.FYD.EvaluacionCompetencia
         public string cssModulo = String.Empty;
         private string vClUsuario;
         private string vNbPrograma;
+        private int? vIdRol;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
 
         public int pIdEvaluador
@@ -33,7 +34,9 @@ namespace SIGE.WebApp.FYD.EvaluacionCompetencia
         }
 
         PeriodoNegocio negocio = new PeriodoNegocio();
+
         CuestionarioNegocio negocioEval = new CuestionarioNegocio();
+
         string vNbFirstRadEditorTagName = "p";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -41,6 +44,7 @@ namespace SIGE.WebApp.FYD.EvaluacionCompetencia
 
             vNbPrograma = ContextoUsuario.nbPrograma;
             vClUsuario = (ContextoUsuario.oUsuario != null) ? ContextoUsuario.oUsuario.CL_USUARIO : "INVITADO";
+            vIdRol = (ContextoUsuario.oUsuario != null) ? ContextoUsuario.oUsuario.oRol.ID_ROL : null;
 
             string vClModulo = "FORMACION";
             string vModulo = Request.QueryString["m"];
@@ -71,10 +75,10 @@ namespace SIGE.WebApp.FYD.EvaluacionCompetencia
 
                         if (!String.IsNullOrEmpty(periodo.XML_MENSAJE_INICIAL))
                         {
-                            XElement vMensajeInicial = XElement.Parse(periodo.XML_MENSAJE_INICIAL);
+                            String vMensajeInicial = periodo.XML_MENSAJE_INICIAL;
                             if (vMensajeInicial != null)
                             {
-                                vMensajeInicial.Name = vNbFirstRadEditorTagName;
+                                //vMensajeInicial = vNbFirstRadEditorTagName;
                                 mensajeInicial.InnerHtml = vMensajeInicial.ToString().Replace("{PERSONA_QUE_EVALUA}", periodo.NB_EVALUADOR);
                             }
                         }
@@ -96,7 +100,7 @@ namespace SIGE.WebApp.FYD.EvaluacionCompetencia
 
         protected void grdEvaluados_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            List<SPE_OBTIENE_FYD_EVALUADOS_Result> evaluados = negocioEval.ObtieneEvaluados(pIdEvaluador);
+            List<SPE_OBTIENE_FYD_EVALUADOS_Result> evaluados = negocioEval.ObtieneEvaluados(pIdEvaluador, vIdRol);
             total.Value = evaluados.Count.ToString();
             evalu.Value = evaluados.Where(w => w.FG_EVALUADO.Equals("Sí")).Count().ToString();
             grdEvaluados.DataSource = evaluados;
@@ -127,7 +131,7 @@ namespace SIGE.WebApp.FYD.EvaluacionCompetencia
 
         protected void btnSalir_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Logout.aspx");
+            Response.Redirect("~/Logout.aspx");
         }
 
         protected void grdEvaluados_ItemDataBound(object sender, GridItemEventArgs e)

@@ -435,4 +435,19 @@
   <data name="UpdateText" xml:space="preserve">
     <value>Actualizar</value>
   </data>
+  <data name="Collapse" xml:space="preserve">
+    <value>Colapsar</value>
+  </data>
+  <data name="CollapseAllTooltip" xml:space="preserve">
+    <value>Colapsar todo</value>
+  </data>
+  <data name="ExpandAllTooltip" xml:space="preserve">
+    <value>Expandir todo</value>
+  </data>
+  <data name="HierarchyCollapseAllTooltip" xml:space="preserve">
+    <value>Colapsar todo</value>
+  </data>
+  <data name="HierarchyExpandAllTooltip" xml:space="preserve">
+    <value>Expandir todo</value>
+  </data>
 </root>

@@ -26,6 +26,32 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
                 return q.ToList();
             }
         }
+
+        public List<SPE_OBTIENE_CANDIDATOS_BATERIA_MASIVA_Result> ObtenerCandidatoFolio(string pNbCandidato = null, string pNbPaterno = null, string pNbMaterno = null)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                var q = from V_C_CANDIDATOS in context.SPE_OBTIENE_CANDIDATOS_BATERIA_MASIVA(pNbCandidato, pNbPaterno, pNbMaterno)
+                        select V_C_CANDIDATOS;
+                return q.ToList();
+            }
+        }
+
+<<<<<<< HEAD
+        public List<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result> ObtenerPruebasConfiguradas()
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                return context.SPE_OBTIENE_PRUEBAS_CONFIGURADAS().ToList();
+=======
+        public List<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result> ObtenerPruebasConfiguradas(int? pID_BATERIA = null)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                return context.SPE_OBTIENE_PRUEBAS_CONFIGURADAS(pID_BATERIA).ToList();
+>>>>>>> DEV
+            }
+        }
                
         public XElement InsertaActualiza_C_PRUEBA(string tipo_transaccion, SPE_OBTIENE_C_PRUEBA_Result V_C_PRUEBA, string usuario, string programa)
         {
@@ -127,6 +153,16 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             }
         }
 
+        public XElement InsertaActualizaPruebasBateria(int pID_BATERIA, string pXmlPruebas, string usuario, string programa, string clTipoTransaccion)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                context.SPE_ACTUALIZA_PRUEBAS_BATERIA(pout_clave_retorno, pID_BATERIA, pXmlPruebas, usuario, programa, clTipoTransaccion);
+                return XElement.Parse(pout_clave_retorno.Value.ToString());
+            }
+        }
+
         public XElement CorrigePrueba(string tipo_transaccion, int pID_PRUEBA, SPE_OBTIENE_K_PRUEBA_Result V_K_PRUEBA, string usuario, string programa)
         {
             using (context = new SistemaSigeinEntities())
@@ -163,6 +199,16 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 context.SPE_ELIMINA_RESPUESTAS_PRUEBA(pout_clave_retorno, pIdPrueba, pClUsuario, pNbPrograma);
+                return XElement.Parse(pout_clave_retorno.Value.ToString());
+            }
+        }
+
+        public XElement EliminarPruebaBateria(string pXmlPruebas = null, int? pIdBateria = null, string pClUsuario = null, string pNbPrograma = null)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                context.SPE_ELIMINA_PRUEBA_RESPUESTAS(pout_clave_retorno, pXmlPruebas, pIdBateria, pClUsuario, pNbPrograma);
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -347,12 +393,12 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             }
         }
        
-        public XElement EliminarCompetenciaFactor(int pID_FACTOR,int pID_COMPETENCIA,string usuario, string programa)
+        public XElement EliminarCompetenciaFactor(int pID_FACTOR,string pXML_COMPETENCIAS,string usuario, string programa)
         {
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter poutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
-                context.SPE_ELIMINA_COMPETENCIA_FACTOR(poutClaveRetorno,pID_FACTOR,pID_COMPETENCIA ,usuario, programa);
+                context.SPE_ELIMINA_COMPETENCIA_FACTOR(poutClaveRetorno, pID_FACTOR, pXML_COMPETENCIAS, usuario, programa);
                 return XElement.Parse(poutClaveRetorno.Value.ToString());
             }
         }

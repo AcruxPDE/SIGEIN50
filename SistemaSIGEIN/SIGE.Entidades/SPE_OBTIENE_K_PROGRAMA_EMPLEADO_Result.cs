@@ -18,6 +18,7 @@ namespace SIGE.Entidades
         public int ID_EMPLEADO { get; set; }
         public string NB_EMPLEADO { get; set; }
         public string CL_EMPLEADO { get; set; }
+        public Nullable<int> ID_PUESTO { get; set; }
         public string NB_PUESTO { get; set; }
         public string CL_PUESTO { get; set; }
         public string NB_DEPARTAMENTO { get; set; }

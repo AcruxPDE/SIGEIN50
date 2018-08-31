@@ -186,7 +186,7 @@
             GroupPanelPosition="Top" 
             GridLines="None" 
             Height="100%"
-            Width="1230"
+            Width="100%"
             HeaderStyle-Font-Bold="true"
             ClientSettings-EnablePostBackOnRowClick="false" 
             AllowFilteringByColumn="true"
@@ -221,17 +221,17 @@
 
   <div style="clear: both; height: 10px;"></div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnGuardar" OnClientClicking="ShowPopupmodalClasificacionCompetenciaNuevo" AutoPostBack="false" runat="server" Text="Agregar" Width="100"></telerik:RadButton>
+        <telerik:RadButton ID="btnGuardar" OnClientClicking="ShowPopupmodalClasificacionCompetenciaNuevo" AutoPostBack="false" runat="server" Text="Agregar"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowPopupmodalCatalogoGenericoEditar" AutoPostBack="false" runat="server" Text="Editar" Width="100"></telerik:RadButton>
+        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowPopupmodalCatalogoGenericoEditar" AutoPostBack="false" runat="server" Text="Editar"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" Width="100" OnClientClicking="ConfirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
+        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" OnClientClicking="ConfirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
     </div>
   
     <div class="ctrlBasico">
-        <telerik:RadButton ID="buttonDock" runat="server" Text="Copiar de.." Width="100" OnClientClicking="ConfirmarCopiar" AutoPostBack="false"></telerik:RadButton>
+        <telerik:RadButton ID="buttonDock" runat="server" Text="Copiar" OnClientClicking="ConfirmarCopiar" AutoPostBack="false"></telerik:RadButton>
     </div>
 
     <telerik:RadWindowManager ID="rnMensaje" runat="server"></telerik:RadWindowManager>

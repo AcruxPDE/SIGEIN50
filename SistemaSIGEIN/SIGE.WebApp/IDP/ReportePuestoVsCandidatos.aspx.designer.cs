@@ -40,42 +40,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbCandidatos;
         
         /// <summary>
-        /// rhcPuestoCandidatos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadHtmlChart rhcPuestoCandidatos;
-        
-        /// <summary>
-        /// rgdPromedios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid rgdPromedios;
-        
-        /// <summary>
-        /// divMensajeMayor130 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMensajeMayor130;
-        
-        /// <summary>
-        /// lblPuesto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPuesto;
-        
-        /// <summary>
         /// divTabla control.
         /// </summary>
         /// <remarks>

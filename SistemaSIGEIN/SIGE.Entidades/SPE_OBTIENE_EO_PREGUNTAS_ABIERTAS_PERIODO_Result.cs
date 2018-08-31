@@ -17,6 +17,7 @@ namespace SIGE.Entidades
         public int ID_PERIODO { get; set; }
         public string NB_PREGUNTA { get; set; }
         public string DS_PREGUNTA { get; set; }
+        public string NB_RESPUESTA { get; set; }
         public string FG_ESTATUS { get; set; }
     }
 }

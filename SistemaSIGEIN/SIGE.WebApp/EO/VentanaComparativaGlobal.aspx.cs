@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using Telerik.Web.UI;
@@ -23,6 +24,7 @@ namespace SIGE.WebApp.EO
 
         private string vClUsuario;
         private string vNbPrograma;
+        private int? vIdRol;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
         private XElement SELECCIONPERIODOS { get; set; }
 
@@ -265,11 +267,11 @@ namespace SIGE.WebApp.EO
             vDtPivot.Columns.Add("NB_PUESTO", typeof(string));
             vDtPivot.Columns.Add("NB_EMPLEADO", typeof(string));
 
-            foreach (var item in oLstPeriodos)
+            foreach (var item in oLstPeriodos.OrderByDescending(o => o.ID_PERIODO))
             {
-                vDtPivot.Columns.Add(item.CL_TIPO_PERIODO, typeof(string));
+                vDtPivot.Columns.Add(item.CL_TIPO_PERIODO + item.ID_PERIODO.ToString(), typeof(string));
 
-                vListaCumplimientoGlobal = oNegocio.ObtieneCumplimientoGlobal(item.ID_PERIODO);
+                vListaCumplimientoGlobal = oNegocio.ObtieneCumplimientoGlobal(item.ID_PERIODO, pIdRol: vIdRol);
 
                 foreach (E_OBTIENE_CUMPLIMIENTO_GLOBAL items in vListaCumplimientoGlobal)
                 {
@@ -305,7 +307,7 @@ namespace SIGE.WebApp.EO
                     {
                         vNbPuesto = "<p title='Clave: "+vResultado.CL_PUESTO_ACTUAL+"'>"+vResultado.NB_PUESTO_ACTUAL+"</p>";
                         //vDr[vPeriodo.CL_TIPO_PERIODO] = String.Format(vDivsCeldasPo, "<p title=\"" + vResultado.C_GENERAL.ToString() + "\">" + vResultado.C_GENERAL.ToString() + "%</p>", GeneraColor(vResultado.PR_CUMPLIMIENTO_EVALUADO), "<p title=\"" + vResultado.NB_PUESTO_PERIODO + "\">" + vResultado.CL_PUESTO_PERIODO) + "</p>";
-                        vDr[vPeriodo.CL_TIPO_PERIODO] = "<p title='" + vResultado.NB_PUESTO_PERIODO + "'>" + vResultado.C_GENERAL + "%&nbsp;&nbsp;<span style=\"border: 1px solid gray; border-radius: 5px; background:" + GeneraColor(i) + ";\">&nbsp;&nbsp;&nbsp;</span>&nbsp" + vResultado.CL_PUESTO_PERIODO + "</p>";
+                        vDr[vPeriodo.CL_TIPO_PERIODO + vPeriodo.ID_PERIODO.ToString()] = "<p title='" + vResultado.NB_PUESTO_PERIODO + "'>" + vResultado.C_GENERAL + "%&nbsp;&nbsp;<span style=\"border: 1px solid gray; border-radius: 5px; background:" + GeneraColor(i) + ";\">&nbsp;&nbsp;&nbsp;</span>&nbsp" + vResultado.CL_PUESTO_PERIODO + "</p>";
 
                     }
                     i++;
@@ -343,6 +345,18 @@ namespace SIGE.WebApp.EO
 
             pColumn.HeaderText = pEncabezado;
             pColumn.Visible = pVisible;
+            pColumn.FooterStyle.BackColor =
+            pColumn.FooterStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#A20804");
+            pColumn.FooterStyle.BorderColor = System.Drawing.ColorTranslator.FromHtml("#A20804"); 
+            
+
+            if (pEncabezado == "Nombre completo")
+            {
+                pColumn.FooterText = "Cumplimiento general:";
+                pColumn.FooterStyle.Font.Bold = true;
+                pColumn.FooterStyle.HorizontalAlign = HorizontalAlign.Right;
+                pColumn.FooterStyle.ForeColor = Color.White;
+            }
 
             if (pHorizontalLeft)
             {
@@ -374,6 +388,20 @@ namespace SIGE.WebApp.EO
             rgGlobalComparativos.MasterTableView.Columns.Add(pColumn);
         }
 
+        private Color ObtieneColorCumplimiento(decimal? pPrCumplimiento)
+        {
+            Color vColor = System.Drawing.ColorTranslator.FromHtml("#F2F2F2");
+
+            if (pPrCumplimiento > 0 && pPrCumplimiento < 60)
+                vColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+            else if (pPrCumplimiento > 59 && pPrCumplimiento < 76)
+                vColor = System.Drawing.ColorTranslator.FromHtml("#FFFF00");
+            else if (pPrCumplimiento > 75 && pPrCumplimiento < 101)
+                vColor = System.Drawing.ColorTranslator.FromHtml("#00B050");
+
+            return vColor;
+        }
+
         private void ConfiguraPeriodosColumna(string pColumna, int pWidth, string pEncabezado, bool pVisible, bool pGenerarEncabezado, bool pFiltrarColumna, bool pCentrar)
         {
             GridBoundColumn ColumnPeriodo = new GridBoundColumn();
@@ -391,9 +419,11 @@ namespace SIGE.WebApp.EO
 
             PeriodoDesempenoNegocio nDesempeno = new PeriodoDesempenoNegocio();
             List<SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_GRAFICA_Result> vGraficaTotal = nDesempeno.ObtenerCumplimientoGlobalGrafica(SELECCIONPERIODOS.ToString());
-            var vPeriodoResultado = vGraficaTotal.Where(s => s.CL_PERIODO == pColumna).FirstOrDefault();
-            ColumnPeriodo.FooterText = "Total: "+vPeriodoResultado.CUMPLIDO.ToString()+"%";
-            ColumnPeriodo.HeaderText = "<div style=\"height: 30px;font-size: 10pt;\"><a href='javascript:OpenGlobal(" + vPeriodoResultado.ID_PERIODO + ")'>" + pColumna + "</a>&nbsp;&nbsp;<span style=\"border: 1px solid gray; border-radius: 5px; background:" + GeneraColor((int)vPeriodoResultado.NUM_PERIODO) + ";\">&nbsp;&nbsp;</span></div>";
+            var vPeriodoResultado = vGraficaTotal.Where(s => s.CL_PERIODO + s.ID_PERIODO.ToString() == pColumna).FirstOrDefault();
+            ColumnPeriodo.FooterText = vPeriodoResultado.CUMPLIDO.ToString()+"%";
+            ColumnPeriodo.FooterStyle.BackColor = ObtieneColorCumplimiento(vPeriodoResultado.CUMPLIDO);
+            ColumnPeriodo.FooterStyle.HorizontalAlign = HorizontalAlign.Center;
+            ColumnPeriodo.HeaderText = "<div style=\"height: 30px;font-size: 10pt;\"><a href='javascript:OpenGlobal(" + vPeriodoResultado.ID_PERIODO + ")'>" + vPeriodoResultado.CL_PERIODO + "</a>&nbsp;&nbsp;<span style=\"border: 1px solid gray; border-radius: 5px; background:" + GeneraColor((int)vPeriodoResultado.NUM_PERIODO) + ";\">&nbsp;&nbsp;</span></div>";
 
             if (pFiltrarColumna & pVisible)
             {
@@ -423,10 +453,58 @@ namespace SIGE.WebApp.EO
             }
         }
 
+        public void GenerarContexto()
+        {
+            HtmlGenericControl vCtrlTabla = new HtmlGenericControl("table");
+            vCtrlTabla.Attributes.Add("class", "ctrlTableForm ctrlTableContext");
+
+            HtmlGenericControl vCtrlColumn = new HtmlGenericControl("tr");
+
+
+            HtmlGenericControl vCtrlTh = new HtmlGenericControl("th");
+
+            vCtrlTh.InnerText = String.Format("{0}", "Período");
+            vCtrlColumn.Controls.Add(vCtrlTh);
+
+            HtmlGenericControl vCtrlTh2 = new HtmlGenericControl("th");
+
+            vCtrlTh2.InnerText = String.Format("{0}", "Descripción");
+            vCtrlColumn.Controls.Add(vCtrlTh2);
+
+            HtmlGenericControl vCtrlTh3 = new HtmlGenericControl("th");
+
+            vCtrlTh3.InnerText = String.Format("{0}", "Fecha");
+            vCtrlColumn.Controls.Add(vCtrlTh3);
+
+            vCtrlTabla.Controls.Add(vCtrlColumn);
+
+            foreach (var item in oLstPeriodos)
+            {
+                HtmlGenericControl vCtrlRow = new HtmlGenericControl("tr");
+
+                HtmlGenericControl vCtrlColumnaClPeriodo = new HtmlGenericControl("td");
+                vCtrlColumnaClPeriodo.InnerText = String.Format("{0}", item.CL_TIPO_PERIODO);
+                vCtrlRow.Controls.Add(vCtrlColumnaClPeriodo);
+
+                HtmlGenericControl vCtrlColumnaNbPeriodo = new HtmlGenericControl("td");
+                vCtrlColumnaNbPeriodo.InnerHtml = String.Format("{0}", item.DS_PERIODO);
+                vCtrlRow.Controls.Add(vCtrlColumnaNbPeriodo);
+
+                HtmlGenericControl vCtrlColumnaFePeriodo = new HtmlGenericControl("td");
+                vCtrlColumnaFePeriodo.InnerHtml = String.Format("{0}", item.FE_INICIO_PERIODO.ToShortDateString() + " a " + item.FE_TERMINO_PERIODO.ToShortDateString());
+                vCtrlRow.Controls.Add(vCtrlColumnaFePeriodo);
+
+                vCtrlTabla.Controls.Add(vCtrlRow);
+                dvContexto.Controls.Add(vCtrlTabla);
+            }
+
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!IsPostBack)
             {
@@ -459,6 +537,7 @@ namespace SIGE.WebApp.EO
 
                 }
 
+                GenerarContexto();
                 GenerarReporte();
 
                 //GRÁFICA
@@ -480,6 +559,8 @@ namespace SIGE.WebApp.EO
                         vColor = System.Drawing.ColorTranslator.FromHtml("#00B050");
                     vSerie.SeriesItems.Add(new CategorySeriesItem(item.CUMPLIDO, vColor));
                     vSerie.LabelsAppearance.DataFormatString = "{0:N2}%";
+                    vSerie.LabelsAppearance.Visible = false;
+                    vSerie.TooltipsAppearance.DataFormatString = "{0:N2}%";
                     rhcGraficaGlobal.PlotArea.XAxis.Items.Add(item.CL_PERIODO);
                     rhcGraficaGlobal.PlotArea.XAxis.LabelsAppearance.DataFormatString = item.CL_PERIODO;
                     rhcGraficaGlobal.PlotArea.YAxis.LabelsAppearance.DataFormatString = "{0:N2}%";
@@ -500,7 +581,7 @@ namespace SIGE.WebApp.EO
 
         protected void rgContexto_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            rgContexto.DataSource = oLstPeriodos;
+           // rgContexto.DataSource = oLstPeriodos;
         }
     }
 }

@@ -52,9 +52,8 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="height: calc(100% - 50px);">
         <label class="labelTitulo">Bajas Pendientes</label>
-        <div style="height: calc(100% - 70px);">
+        <div style="height: calc(100% - 100px);">
             <telerik:RadMultiPage ID="rmpBajasPendientes" runat="server" SelectedIndex="0" Height="100%">
                 <telerik:RadPageView ID="rpvBajaPendientes" runat="server">
                     <div style="clear: both;"></div>
@@ -90,12 +89,11 @@
         </div>
         <div style="height: 10px; clear: both"></div>
         <div class="ctrlBasico">
-            <telerik:RadButton ID="btnCapturarBaja" runat="server" name="btnCapturarBaja" AutoPostBack="false" Text="Capturar baja" Width="150" OnClientClicked="OpenWindowCapturarBaja"></telerik:RadButton>
+            <telerik:RadButton ID="btnCapturarBaja" runat="server" name="btnCapturarBaja" AutoPostBack="false" Text="Capturar baja" OnClientClicked="OpenWindowCapturarBaja"></telerik:RadButton>
         </div>
         <div class="ctrlBasico">
             <telerik:RadButton ID="btnCancelarBaja" runat="server" Text="Cancelar baja" AutoPostBack="true" OnClientClicking="ConfirmarCancelar" OnClick="btnCancelarBaja_Click"></telerik:RadButton>
         </div>
-    </div>
     <telerik:RadWindowManager ID="rwmMensaje" runat="server" EnableShadow="true" OnClientClose="returnDataToParentPopup">
         <Windows>
             <telerik:RadWindow

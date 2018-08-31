@@ -26,7 +26,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
 
     <div style="clear:both; height:10px;"></div>
-
     <div class="ctrlBasico">
         <div class="divControlIzquierda">
             <label>Puesto: </label>
@@ -36,20 +35,19 @@
         </div>
     </div>
 
-    <div style="clear:both; height:10px;"></div>
+    <div style="clear:both;"></div>
 
-    <div style="height:calc(100% - 80px); overflow:auto;">
-    <telerik:RadPivotGrid runat="server" ID="rpgReporte" OnNeedDataSource="rpgReporte_NeedDataSource" TotalsSettings-GrandTotalText="Compatibilidad" OnCellDataBound="rpgReporte_CellDataBound" ShowFilterHeaderZone="false" AllowFiltering="false">
-        
+    <div style="height:calc(100% - 60px); overflow:auto;">
+    <telerik:RadPivotGrid runat="server" ID="rpgReporte" OnNeedDataSource="rpgReporte_NeedDataSource" TotalsSettings-GrandTotalText="Compatibilidad" OnCellDataBound="rpgReporte_CellDataBound" ShowFilterHeaderZone="false" AllowFiltering="false">      
         <TotalsSettings ColumnGrandTotalsPosition="Last" ColumnsSubTotalsPosition="None" RowsSubTotalsPosition="None" RowGrandTotalsPosition="None" />
         
         <Fields>
-            <telerik:PivotGridRowField UniqueName="CL_EMPLEADO" DataField="CL_EMPLEADO" Caption="Clave"></telerik:PivotGridRowField>
-            <telerik:PivotGridRowField UniqueName="NB_EMPLEADO" DataField="NB_EMPLEADO" Caption="Empleado"></telerik:PivotGridRowField>
-            <telerik:PivotGridRowField UniqueName="NB_PUESTO" DataField="NB_PUESTO" Caption="Puesto"></telerik:PivotGridRowField>
-            <telerik:PivotGridRowField UniqueName="NB_DEPARTAMENTO" DataField="NB_DEPARTAMENTO" Caption="Departamento"></telerik:PivotGridRowField>
+            <telerik:PivotGridRowField UniqueName="CL_EMPLEADO" DataField="CL_EMPLEADO"  Caption="Clave"></telerik:PivotGridRowField>
+            <telerik:PivotGridRowField UniqueName="NB_EMPLEADO" DataField="NB_EMPLEADO"  Caption="Empleado"></telerik:PivotGridRowField>
+            <telerik:PivotGridRowField UniqueName="NB_PUESTO" DataField="NB_PUESTO"  Caption="Puesto"></telerik:PivotGridRowField>
+            <telerik:PivotGridRowField UniqueName="NB_DEPARTAMENTO" DataField="NB_DEPARTAMENTO"  Caption="Departamento"></telerik:PivotGridRowField>
 
-            <telerik:PivotGridColumnField UniqueName="NB_COMPETENCIA" DataField="NB_COMPETENCIA"  Caption="Competencia"></telerik:PivotGridColumnField>
+            <telerik:PivotGridColumnField UniqueName="NB_COMPETENCIA" DataField="NB_COMPETENCIA" CellStyle-Font-Bold="true"  Caption="Competencia"></telerik:PivotGridColumnField>
             
             <telerik:PivotGridAggregateField UniqueName="PR_COMPATIBILIDAD" DataFormatString="{0:N2}%" DataField="PR_COMPATIBILIDAD" Caption="Compatibilidad" Aggregate="Average" CellStyle-CssClass="CeldaNumerica">
                 

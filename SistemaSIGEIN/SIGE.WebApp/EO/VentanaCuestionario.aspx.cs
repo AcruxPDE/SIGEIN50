@@ -75,11 +75,15 @@ namespace SIGE.WebApp.EO
                         txnSecuenciaVerificacion.Text = item.NO_SECUENCIA.ToString();
                     }
                 }
+                txtPreguntaVerificacion.Enabled = true;
+                txnSecuenciaVerificacion.Enabled = true;
             }
             else
             {
                 txtPreguntaVerificacion.Text = "";
                 txnSecuenciaVerificacion.Text = "";
+                txtPreguntaVerificacion.Enabled = false;
+                txnSecuenciaVerificacion.Enabled = false;
             }
         }
 
@@ -109,9 +113,17 @@ namespace SIGE.WebApp.EO
             {
                 vIdPeriodo = int.Parse((Request.QueryString["ID_PERIODO"]));
                 CargarCatalogos();
+                ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
+                var vClima = nClima.ObtienePeriodosClima(pIdPerido: vIdPeriodo).FirstOrDefault();
+                if (vClima.CL_ORIGEN_CUESTIONARIO == "PREDEFINIDO" && Request.QueryString["ID_PREGUNTA"] != null)
+                {
+                    btnVerificacionTrue.Enabled = false;
+                    btnVerificacionFalse.Enabled = false;
+                    //rbVerificacion.Enabled = false;
+                }
+
                 if (Request.QueryString["ID_PREGUNTA"] != null)
                 {
-                    ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
                     vIdPregunta = int.Parse((Request.QueryString["ID_PREGUNTA"]));
                     vPreguntasPeriodo = nClima.ObtienePreguntaPeriodo(pID_PREGUNTA: vIdPregunta, pID_PERIODO: vIdPeriodo).Select(s => new E_PREGUNTAS_PERIODO_CLIMA
                     {
@@ -125,6 +137,7 @@ namespace SIGE.WebApp.EO
                         ID_RELACION_PREGUNTA = s.ID_RELACION_PREGUNTA
                     }).ToList();
 
+                 
                     foreach (var item in vPreguntasPeriodo)
                     {
                         if (item.ID_PREGUNTA == vIdPregunta)
@@ -133,8 +146,17 @@ namespace SIGE.WebApp.EO
                             cmbTema.Text = item.NB_TEMA;
                             txtPregunta.Text = item.NB_PREGUNTA;
                             txnSecuencia.Text = item.NO_SECUENCIA.ToString();
-                            rbVerificacion.Checked = item.FG_HABILITA_VERIFICACION;
+                           // rbVerificacion.Checked = item.FG_HABILITA_VERIFICACION;
+                            btnVerificacionTrue.Checked = item.FG_HABILITA_VERIFICACION;
+                            btnVerificacionFalse.Checked = !item.FG_HABILITA_VERIFICACION;
                             vIdRelacionPregunta = item.ID_RELACION_PREGUNTA;
+
+                            if (item.FG_HABILITA_VERIFICACION == false)
+                            {
+                                txtPreguntaVerificacion.Enabled = false;
+                                txnSecuenciaVerificacion.Enabled = false;
+                            }
+
                         }
                         else
                         {
@@ -143,12 +165,23 @@ namespace SIGE.WebApp.EO
                             {
                                 txtPreguntaVerificacion.Text = item.NB_PREGUNTA;
                                 txnSecuenciaVerificacion.Text = item.NO_SECUENCIA.ToString();
+                                txtPreguntaVerificacion.Enabled = true;
+                                txnSecuenciaVerificacion.Enabled = true;
+                            }
+                            else
+                            {
+                                txtPreguntaVerificacion.Enabled = false;
+                                txnSecuenciaVerificacion.Enabled = false;
                             }
                         }
                     }
                 }
                 else
                 {
+                    btnVerificacionTrue.Checked = false;
+                    btnVerificacionFalse.Checked = true;
+                    txtPreguntaVerificacion.Enabled = false;
+                    txnSecuenciaVerificacion.Enabled = false;
                     vIdPregunta = 0;
                     vIdPreguntaReferencia = 0;
                     vIdRelacionPregunta = Guid.NewGuid();
@@ -172,7 +205,8 @@ namespace SIGE.WebApp.EO
             E_PREGUNTAS_PERIODO_CLIMA vPreguntas = new E_PREGUNTAS_PERIODO_CLIMA();
              vPreguntas.ID_PREGUNTA = vIdPregunta;
             vPreguntas.ID_RELACION_PREGUNTA = vIdRelacionPregunta;
-            vPreguntas.FG_HABILITA_VERIFICACION = rbVerificacion.Checked;
+            //vPreguntas.FG_HABILITA_VERIFICACION = rbVerificacion.Checked;
+            vPreguntas.FG_HABILITA_VERIFICACION = btnVerificacionTrue.Checked;
             vPreguntas.ID_PREGUNTA_VERIFICACION = vIdPreguntaReferencia;
 
             if (Request.QueryString["ID_PREGUNTA"] != null)
@@ -216,7 +250,8 @@ namespace SIGE.WebApp.EO
                 return;
             }
 
-            if (rbVerificacion.Checked == true)
+            //if (rbVerificacion.Checked == true)
+            if (btnVerificacionTrue.Checked == true)
             {
                 if (txtPreguntaVerificacion.Text != "")
                     vPreguntas.NB_PREGUNTA_VERIFICACION = txtPreguntaVerificacion.Text;
@@ -226,7 +261,15 @@ namespace SIGE.WebApp.EO
                     return;
                 }
                 if (txnSecuenciaVerificacion.Text != "")
+                {
                     vPreguntas.NO_SECUENCIA_VERIFICACION = int.Parse(txnSecuenciaVerificacion.Text);
+
+                    if (vPreguntas.NO_SECUENCIA_VERIFICACION == vPreguntas.NO_SECUENCIA)
+                    {
+                        UtilMensajes.MensajeResultadoDB(rwmMensaje, "La pregunta de verificación no puede tener el mismo número de secuencia.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+                        return;
+                    }
+                }
                 else
                 {
                     UtilMensajes.MensajeResultadoDB(rwmMensaje, "Ingrese el numero de secuencia de la pregunta de verificación.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
@@ -247,16 +290,16 @@ namespace SIGE.WebApp.EO
             }
         }
 
-        protected void rbVerificacion_CheckedChanged(object sender, EventArgs e)
-        {
-            if (vPreguntasPeriodo != null)
-            {
-                if (rbVerificacion.Checked == true)
-                    MostrarPreguntaSecundaria(true);
-                else
-                    MostrarPreguntaSecundaria(false);
-            }
-        }
+        //protected void rbVerificacion_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (vPreguntasPeriodo != null)
+        //    {
+        //        if (rbVerificacion.Checked == true)
+        //            MostrarPreguntaSecundaria(true);
+        //        else
+        //            MostrarPreguntaSecundaria(false);
+        //    }
+        //}
 
         protected void cmbDimension_SelectedIndexChanged(object sender, Telerik.Web.UI.RadComboBoxSelectedIndexChangedEventArgs e)
         {
@@ -282,6 +325,30 @@ namespace SIGE.WebApp.EO
                 txtAgTema.Enabled = false;
             else
                 txtAgTema.Enabled = true;
+        }
+
+        protected void btnVerificacionTrue_CheckedChanged(object sender, EventArgs e)
+        {
+            if (vPreguntasPeriodo != null)
+            {
+                if (btnVerificacionTrue.Checked == true)
+                    MostrarPreguntaSecundaria(true);
+                else
+                    MostrarPreguntaSecundaria(false);
+            }
+            else
+            {
+                if (btnVerificacionTrue.Checked == true)
+                {
+                    txtPreguntaVerificacion.Enabled = true;
+                    txnSecuenciaVerificacion.Enabled = true;
+                }
+                else
+                {
+                    txtPreguntaVerificacion.Enabled = false;
+                    txnSecuenciaVerificacion.Enabled = false;
+                }
+            }
         }
 
     }

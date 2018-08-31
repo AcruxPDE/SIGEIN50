@@ -18,7 +18,7 @@ using Telerik.Web.UI;
 using Telerik.Web.UI.Calendar;
 using WebApp.Comunes;
 
-namespace SIGE.WebApp.IDP
+namespace SIGE.WebApp.Administracion // SIGE.WebApp.IDP
 {
     public partial class VentanaImprimirSolicitud : System.Web.UI.Page
     {

@@ -41,7 +41,7 @@
             var idBateria = '<%= vIdBateria %>';
              var clToken = '<%= vClToken %>';
 
-             var vURL = "/IDP/ProcesoSeleccion.aspx";
+             var vURL = "ProcesoSeleccion.aspx";
              var vTitulo = "Proceso de evaluación";
 
 
@@ -73,8 +73,9 @@
             var idCandidato = '<%= vIdCandidato %>';
             var idBateria = '<%= vIdBateria %>';
             var clToken = '<%= vClToken %>';
+           
 
-            var vURL = "/IDP/ProcesoSeleccion.aspx";
+            var vURL = "ProcesoSeleccion.aspx";
             var vTitulo = "Proceso de evaluación";
 
 
@@ -114,8 +115,10 @@
             var idCandidato = '<%= vIdCandidato %>';
             var idBateria = '<%= vIdBateria %>';
             var clToken = '<%= vClToken %>';
+            var vIdRequisicion = '<%= vIdRequisicion %>';
+            var vIdEmpleado = '<%= vIdEmpleado %>';
            
-                var vURL = "/IDP/ProcesoSeleccion.aspx";
+                var vURL = "ProcesoSeleccion.aspx";
                 var vTitulo = "Proceso de evaluación";
                 vURL = vURL + "?IdCandidato=" + idCandidato;
 
@@ -126,6 +129,13 @@
                 if (clToken != "") {
                     vURL = vURL + "&ClToken=" + clToken;
                 }
+
+                if (vIdRequisicion != null && vIdRequisicion != "") {
+                    vURL = vURL + "&IdRequisicion=" + vIdRequisicion;
+                }
+
+                if (vIdEmpleado != null && vIdEmpleado != "")
+                    vURL = vURL + "&IdEmpleado=" + vIdEmpleado;
 
                 OpenSelectionWindow(vURL, "rwProcesoSeleccion", vTitulo);
         }
@@ -167,12 +177,40 @@
     </telerik:RadAjaxManager>
 
 
+<<<<<<< HEAD
     <div style="height: 10px; clear: both;"></div>
+        <div>
+=======
+        <div class="ctrlBasico">
+>>>>>>> DEV
+        <table class="ctrlTableForm">
+            <tr>
+                <td class="ctrlTableDataContext">
+                    <label>Folio de solicitud:</label>
+                </td>
+                <td class="ctrlTableDataBorderContext">
+                    <span id="txtClaveSolicitud" runat="server" style="width: 300px;"></span>
+                </td>
+                <td class="ctrlTableDataContext">
+                    <label>Candidato: </label>
+                </td>
+                <td class="ctrlTableDataBorderContext">
+                    <span id="txtCandidato" runat="server" style="width: 300px;"></span>
+                </td>             
+            </tr>
+        </table>
+    </div>
+<<<<<<< HEAD
 
-    <div style="height: calc(100% - 20px);">
+    <div style="clear: both;"></div>
+    <div style="height: calc(100% - 60px);">
+=======
+    <div style="clear: both;"></div>
+    <div style="height: calc(100% - 100px);">
+>>>>>>> DEV
         <telerik:RadGrid ID="grdProcesoSeleccion" ShowHeader="true" runat="server" AllowPaging="true"
             AllowSorting="true" GroupPanelPosition="Top" Width="100%" GridLines="None"
-            Height="85%" AllowFilteringByColumn="true" ClientSettings-EnablePostBackOnRowClick="true" OnItemDataBound="grdProcesoSeleccion_ItemDataBound"
+            Height="100%" AllowFilteringByColumn="true" ClientSettings-EnablePostBackOnRowClick="true" OnItemDataBound="grdProcesoSeleccion_ItemDataBound"
             OnNeedDataSource="grdProcesoSeleccion_NeedDataSource" HeaderStyle-Font-Bold="true" OnSelectedIndexChanged="grdProcesoSeleccion_SelectedIndexChanged">
             <GroupingSettings CaseSensitive="False" />
             <ClientSettings>
@@ -185,28 +223,45 @@
                 <CommandItemSettings ShowAddNewRecordButton="false" />
                 <Columns>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave de requisición" DataField="NO_REQUISICION" UniqueName="NO_REQUISICION" HeaderStyle-Width="100" FilterControlWidth="50"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Puesto establecido en la requisición" DataField="NB_PUESTO" UniqueName="NB_PUESTO" HeaderStyle-Width="200" FilterControlWidth="70"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Fecha de inicio" DataField="FE_INICIO_PROCESO" UniqueName="FE_INICIO_PROCESO" HeaderStyle-Width="150" FilterControlWidth="80" DataFormatString="{0:d}"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Fecha de termino" DataField="FE_TERMINO_PROCESO" UniqueName="FE_TERMINO_PROCESO" HeaderStyle-Width="150" FilterControlWidth="80" DataFormatString="{0:d}"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Estatus" DataField="CL_ESTADO" UniqueName="CL_ESTADO" HeaderStyle-Width="110" FilterControlWidth="70"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Observaciones" DataField="DS_OBSERVACIONES_TERMINO_PROCESO" UniqueName="DS_OBSERVACIONES_TERMINO_PROCESO" HeaderStyle-Width="200" FilterControlWidth="70"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Puesto establecido en la requisición" DataField="NB_PUESTO" UniqueName="NB_PUESTO" HeaderStyle-Width="200" FilterControlWidth="130"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Fecha de inicio" DataField="FE_INICIO_PROCESO" UniqueName="FE_INICIO_PROCESO" HeaderStyle-Width="120" FilterControlWidth="60" DataFormatString="{0:d}"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Fecha de término" DataField="FE_TERMINO_PROCESO" UniqueName="FE_TERMINO_PROCESO" HeaderStyle-Width="120" FilterControlWidth="60" DataFormatString="{0:d}"></telerik:GridBoundColumn>
+<<<<<<< HEAD
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Estado" DataField="CL_ESTADO" UniqueName="CL_ESTADO" HeaderStyle-Width="100" FilterControlWidth="60"></telerik:GridBoundColumn>
+=======
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Estatus" DataField="CL_ESTADO" UniqueName="CL_ESTADO" HeaderStyle-Width="100" FilterControlWidth="60"></telerik:GridBoundColumn>
+>>>>>>> DEV
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Observaciones" DataField="DS_OBSERVACIONES_TERMINO_PROCESO" UniqueName="DS_OBSERVACIONES_TERMINO_PROCESO" HeaderStyle-Width="200" FilterControlWidth="130"></telerik:GridBoundColumn>
 
                 </Columns>
             </MasterTableView>
         </telerik:RadGrid>
-         <label id="lbMensaje" runat="server" visible="false">*Este proceso ya ha sido terminado. Puedes crear uno nuevo seleccionando "Iniciar nuevo proceso de evaluación".</label>
-
+         <label id="lbMensaje" runat="server" visible="false">*Este proceso ya ha sido terminado. Puedes crear uno nuevo seleccionando "Iniciar nuevo".</label>
+                    </div>
     <div style="clear: both; height: 10px;"></div>
-    <div class="ctrlBasico">
+        <div class="divControlDerecha" style="padding-right:10px;"> 
+<<<<<<< HEAD
         <telerik:RadButton ID="btnIniciarProceso" AutoPostBack="true" runat="server" Text="Iniciar nuevo proceso de evaluación" OnClientClicking="ConfirmarNuevoProceso" OnClick="btnIniciarProceso_Click"></telerik:RadButton>
-    </div>
-    <div class="ctrlBasico">
+        </div>
+          <div class="divControlDerecha" style="padding-right:10px;">
         <telerik:RadButton ID="btnContinuarProceso" AutoPostBack="false" runat="server" Text="Continuar con el proceso de evaluación" OnClientClicked="OpenProcesoSeleccionContinuarWindow"></telerik:RadButton>
     </div>
-    <div class="ctrlBasico">
+         <div class="divControlDerecha">
         <telerik:RadButton ID="btnVerProceso" runat="server" Visible="false" Text="Ver proceso de evaluación" OnClientClicked="OpenProcesoSeleccionVerWindow"  AutoPostBack="false"></telerik:RadButton>
     </div>
+        
             </div>
+=======
+        <telerik:RadButton ID="btnIniciarProceso" AutoPostBack="true" runat="server" Text="Iniciar nuevo" OnClientClicking="ConfirmarNuevoProceso" OnClick="btnIniciarProceso_Click"></telerik:RadButton>
+        </div>
+          <div class="divControlDerecha" style="padding-right:10px;">
+        <telerik:RadButton ID="btnContinuarProceso" AutoPostBack="false" runat="server" Text="Continuar" OnClientClicked="OpenProcesoSeleccionContinuarWindow"></telerik:RadButton>
+    </div>
+         <div class="divControlDerecha">
+        <telerik:RadButton ID="btnVerProceso" runat="server" Visible="false" Text="Ver" OnClientClicked="OpenProcesoSeleccionVerWindow"  AutoPostBack="false"></telerik:RadButton>
+    </div>
+        
+>>>>>>> DEV
     <telerik:RadWindowManager ID="rnMensaje" runat="server"></telerik:RadWindowManager>
 
 </asp:Content>

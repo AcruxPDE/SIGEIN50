@@ -101,7 +101,8 @@ namespace SIGE.WebApp.FYD.EvaluacionCompetencia
             E_RESULTADO vResultado = nPeriodo.ActualizaEstatusDocumentoAutorizacion(vFlAutorizacion, autoriza, vXelementNotas.ToString(), null, vClUsuario, vNbPrograma);
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "");
-            Response.Redirect(ContextoUsuario.nbHost + "/Logout.aspx");
+            string myUrl = ResolveUrl("~/Logon.aspx");
+            Response.Redirect(ContextoUsuario.nbHost + myUrl);
         }
 
         protected void grdCuestionarios_ItemDataBound(object sender, GridItemEventArgs e)

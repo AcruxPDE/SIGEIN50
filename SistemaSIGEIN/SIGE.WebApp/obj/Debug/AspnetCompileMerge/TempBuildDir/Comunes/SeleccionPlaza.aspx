@@ -13,7 +13,6 @@
         }
 
         function addSelection() {
-            var info = null;
             var masterTable = $find("<%= grdPlazas.ClientID %>").get_masterTableView();
             var selectedItems = masterTable.get_selectedItems();
             if (selectedItems.length > 0) {
@@ -32,9 +31,11 @@
                         nbPuestoSuperior: masterTable.getCellByColumnUniqueName(selectedItem, "NB_PUESTO_JEFE").innerHTML,
                         clTipoCatalogo: "<%= vClCatalogo %>"
                     };
-                    vPlazas.push(vPlaza);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vPlazas.length;
+                    if (!existeElemento(vPlaza)) {
+                        vPlazas.push(vPlaza);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vPlazas.length;
+                    }
                 }
                 return true;
             }
@@ -49,6 +50,15 @@
             return false;
         }
 
+        function existeElemento(pPlaza) {
+            for (var i = 0; i < vPlazas.length; i++) {
+                var vValue = vPlazas[i];
+                if (vValue.idPlaza == pPlaza.idPlaza)
+                    return true;
+            }
+            return false;
+        }
+
         function cancelarSeleccion() {
             sendDataToParent(null);
         }
@@ -56,6 +66,16 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
+    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" DefaultLoadingPanelID="RadAjaxLoadingPanel1">
+        <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="grdPlazas">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="grdPlazas" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            </AjaxSettings>
+        </telerik:RadAjaxManager>
     <div style="height: calc(100% - 60px);">
         <telerik:RadGrid ID="grdPlazas" HeaderStyle-Font-Bold="true" runat="server" Height="100%" AllowMultiRowSelection="true" OnNeedDataSource="grdPlazas_NeedDataSource" AutoGenerateColumns="false" EnableHeaderContextMenu="true" AllowSorting="true" OnItemDataBound="grdPlazas_ItemDataBound">
             <ClientSettings>

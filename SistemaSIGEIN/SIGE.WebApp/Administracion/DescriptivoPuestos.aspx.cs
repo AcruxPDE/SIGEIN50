@@ -11,6 +11,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using Telerik.Web.UI;
+using SIGE.Negocio.AdministracionSitio;
 
 namespace SIGE.WebApp.Administracion
 {
@@ -31,17 +32,28 @@ namespace SIGE.WebApp.Administracion
 
         private List<SPE_OBTIENE_M_PUESTO_Result> Puestos;
 
+        public bool CopiarDe;
+        public bool VistaPrevia;
+        public bool vReporte;
+
         #endregion
 
         #region Funciones
 
         private void SeguridadProceso()
         {
-            btnAgregar.Enabled = ContextoUsuario.oUsuario.TienePermiso("C.B.A");
-            btnCopiarde.Enabled = ContextoUsuario.oUsuario.TienePermiso("C.B.D");
-            btnEditar.Enabled = ContextoUsuario.oUsuario.TienePermiso("C.B.B");
-            btnEliminar.Enabled = ContextoUsuario.oUsuario.TienePermiso("C.B.C");
-            btnVistaPrevia.Enabled = ContextoUsuario.oUsuario.TienePermiso("C.B.E");
+           // btnAgregar.Enabled = ContextoUsuario.oUsuario.TienePermiso("C.B.A");
+         
+           // btnEditar.Enabled = ContextoUsuario.oUsuario.TienePermiso("C.B.B");
+           // btnEliminar.Enabled = ContextoUsuario.oUsuario.TienePermiso("C.B.C");
+           
+
+            btnAgregarNomina.Enabled = ContextoUsuario.oUsuario.TienePermiso("C.A");
+            btnEditarNomina.Enabled = ContextoUsuario.oUsuario.TienePermiso("C.B");
+            btnEliminarNomina.Enabled = ContextoUsuario.oUsuario.TienePermiso("C.C");
+            btnCopiarde.Enabled = CopiarDe = ContextoUsuario.oUsuario.TienePermiso("C.D");
+            btnVistaPrevia.Enabled = VistaPrevia = ContextoUsuario.oUsuario.TienePermiso("C.E");
+            btnReporte.Enabled = vReporte = ContextoUsuario.oUsuario.TienePermiso("C.F");
         }
 
         #endregion
@@ -56,14 +68,43 @@ namespace SIGE.WebApp.Administracion
 
             if (!IsPostBack)
             {
-
+                //if (Request.Params["clOrigen"] != null)
+                //{
+                //    if (Request.Params["clOrigen"].ToString() == "NO")
+                //    {
+                //        btnAgregarNomina.Visible = true;
+                //        btnEditarNomina.Visible = true;
+                //        btnEliminarNomina.Visible = true;
+                //    }
+                    
+                //}
+                //else
+                //{
+                //    btnAgregar.Visible = true;
+                //    btnEditar.Visible = true;
+                //    btnEliminar.Visible = true;
+                //    btnCopiarde.Visible = true;
+                //    btnVistaPrevia.Visible = true;
+                //    btnReporte.Visible = true;
+                //}
             }
         }
       
         protected void grdDescriptivo_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
-            PuestoNegocio nPuesto = new PuestoNegocio();
-            grdDescriptivo.DataSource = nPuesto.ObtienePuestos();
+            //if (Request.Params["clOrigen"] != null)
+            //{
+            //    if (Request.Params["clOrigen"].ToString() == "NO")
+            //    {
+            //        CamposNominaNegocio oNegocio = new CamposNominaNegocio();
+            //        grdDescriptivo.DataSource = oNegocio.ObtienePuestosNominaDo();
+            //    }
+            //}
+            //else
+            //{
+                PuestoNegocio nPuesto = new PuestoNegocio();
+                grdDescriptivo.DataSource = nPuesto.ObtienePuestosGeneral();
+           // }
 
         }
 
@@ -105,6 +146,20 @@ namespace SIGE.WebApp.Administracion
                 PageSizeCombo.Items.Add(new RadComboBoxItem("1000"));
                 PageSizeCombo.FindItemByText("1000").Attributes.Add("ownerTableViewId", grdDescriptivo.MasterTableView.ClientID);
                 PageSizeCombo.FindItemByText(e.Item.OwnerTableView.PageSize.ToString()).Selected = true;
+            }
+        }
+
+        protected void btnEliminarNomina_Click(object sender, EventArgs e)
+        {
+            CamposNominaNegocio oNegocio = new CamposNominaNegocio();
+            foreach (GridDataItem item in grdDescriptivo.SelectedItems)
+            {
+                vID_PUESTO = (int.Parse(item.GetDataKeyValue("ID_PUESTO").ToString()));
+
+                E_RESULTADO vResultado = oNegocio.EliminaPuestoNominaDO(pID_PUESTO: vID_PUESTO);
+                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "RebindGrid");
+
             }
         }
     }

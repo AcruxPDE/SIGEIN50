@@ -26,6 +26,7 @@ namespace SIGE.WebApp.MPC
         private string vClUsuario;
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private int? vIdRol;
 
         private string vClTipoSeleccion
         {
@@ -159,7 +160,7 @@ namespace SIGE.WebApp.MPC
         {
             TabuladoresNegocio nTabuladores = new TabuladoresNegocio();
 
-            vObtienePlaneacionIncremento = nTabuladores.ObtenerConsultaSueldos(ID_TABULADOR: vIdTabulador).Select(s => new E_CONSULTA_SUELDOS()
+            vObtienePlaneacionIncremento = nTabuladores.ObtenerConsultaSueldos(ID_TABULADOR: vIdTabulador, ID_ROL: vIdRol).Select(s => new E_CONSULTA_SUELDOS()
             {
                 NUM_ITEM = (int?)s.NUM_RENGLON,
                 ID_TABULADOR_EMPLEADO = (int?)s.ID_TABULADOR_EMPLEADO,
@@ -188,12 +189,104 @@ namespace SIGE.WebApp.MPC
                 NO_NIVEL = s.NO_NIVEL,
                 XML_CATEGORIAS = s.XML_CATEGORIA,
                 CUARTIL_SELECCIONADO = vCuartilComparativo,
-                NO_VALUACION = s.NO_VALUACION
+                NO_VALUACION = s.NO_VALUACION,
+                FG_SUELDO_VISIBLE_TABULADOR = s.FG_SUELDO_VISIBLE_TABULADOR
             }).ToList();
             foreach (E_CONSULTA_SUELDOS item in vObtienePlaneacionIncremento)
             {
                 if (item.MN_SUELDO_ORIGINAL != 0)
                     item.PR_INCREMENTO = (item.INCREMENTO / item.MN_SUELDO_ORIGINAL) * 100;
+            }
+        }
+
+        private void RecalcularConsulta()
+        {
+            if (vLstSeleccionadosTabuladorSueldos.Count() > 0)
+            {
+                ActualizarLista(int.Parse(rcbMercadoTabuladorSueldos.SelectedValue));
+                var vLstSeleccionados = vLstSeleccionadosTabuladorSueldos;
+                vLstSeleccionadosTabuladorSueldos = new List<E_CONSULTA_SUELDOS>();
+                int vNumeroItem = 1;
+                foreach (var item in vLstSeleccionados)
+                {
+                    if (item.NO_NIVEL >= int.Parse(rntComienzaNivel.Text) & item.NO_NIVEL <= int.Parse(rntTerminaSueldo.Text))
+                    {
+                        if (vLstSeleccionadosTabuladorSueldos.Where(w => w.ID_TABULADOR_EMPLEADO == item.ID_TABULADOR_EMPLEADO).Count() == 0)
+                        {
+                            vLstSeleccionadosTabuladorSueldos.Add(new E_CONSULTA_SUELDOS
+                            {
+                                NUM_ITEM = vNumeroItem,
+                                ID_TABULADOR_EMPLEADO = item.ID_TABULADOR_EMPLEADO,
+                                NB_TABULADOR_NIVEL = item.NB_TABULADOR_NIVEL,
+                                CL_PUESTO = item.CL_PUESTO,
+                                NB_PUESTO = item.NB_PUESTO,
+                                CL_DEPARTAMENTO = item.CL_DEPARTAMENTO,
+                                NB_DEPARTAMENTO = item.NB_DEPARTAMENTO,
+                                CL_EMPLEADO = item.CL_EMPLEADO,
+                                NB_EMPLEADO = item.NB_EMPLEADO,
+                                MN_SUELDO_ORIGINAL = item.MN_SUELDO_ORIGINAL,
+                                MN_SUELDO_NUEVO = item.MN_SUELDO_NUEVO,
+                                NO_NIVEL = item.NO_NIVEL,
+                                XML_CATEGORIAS = item.XML_CATEGORIAS,
+                                DIFERENCIA = item.DIFERENCIA,
+                                PR_DIFERENCIA = item.PR_DIFERENCIA,
+                                COLOR_DIFERENCIA = item.COLOR_DIFERENCIA,
+                                ICONO = item.ICONO,
+                                NO_VALUACION = item.NO_VALUACION,
+                                lstCategorias = SeleccionCuartil(XElement.Parse(item.XML_CATEGORIAS), item.ID_TABULADOR_EMPLEADO),
+                                FG_SUELDO_VISIBLE_TABULADOR = item.FG_SUELDO_VISIBLE_TABULADOR
+
+                            });
+
+                            vNumeroItem++;
+                        }
+                    }
+                }
+                rgdComparacionInventarioPersonal.Rebind();
+
+            }
+            else
+            {
+                ActualizarLista(int.Parse(rcbMercadoTabuladorSueldos.SelectedValue));
+                var vLstEmpleados = vListaTabuladorSueldos;
+                vListaTabuladorSueldos = new List<E_CONSULTA_SUELDOS>();
+                int vNumeroItem = 1;
+                foreach (var item in vLstEmpleados)
+                {
+                    if (item.NO_NIVEL >= int.Parse(rntComienzaNivel.Text) & item.NO_NIVEL <= int.Parse(rntTerminaSueldo.Text))
+                    {
+                        if (vListaTabuladorSueldos.Where(w => w.ID_TABULADOR_EMPLEADO == item.ID_TABULADOR_EMPLEADO).Count() == 0)
+                        {
+                            vListaTabuladorSueldos.Add(new E_CONSULTA_SUELDOS
+                            {
+                                NUM_ITEM = vNumeroItem,
+                                ID_TABULADOR_EMPLEADO = item.ID_TABULADOR_EMPLEADO,
+                                NB_TABULADOR_NIVEL = item.NB_TABULADOR_NIVEL,
+                                CL_PUESTO = item.CL_PUESTO,
+                                NB_PUESTO = item.NB_PUESTO,
+                                CL_DEPARTAMENTO = item.CL_DEPARTAMENTO,
+                                NB_DEPARTAMENTO = item.NB_DEPARTAMENTO,
+                                CL_EMPLEADO = item.CL_EMPLEADO,
+                                NB_EMPLEADO = item.NB_EMPLEADO,
+                                MN_SUELDO_ORIGINAL = item.MN_SUELDO_ORIGINAL,
+                                MN_SUELDO_NUEVO = item.MN_SUELDO_NUEVO,
+                                NO_NIVEL = item.NO_NIVEL,
+                                XML_CATEGORIAS = item.XML_CATEGORIAS,
+                                DIFERENCIA = item.DIFERENCIA,
+                                PR_DIFERENCIA = item.PR_DIFERENCIA,
+                                COLOR_DIFERENCIA = item.COLOR_DIFERENCIA,
+                                ICONO = item.ICONO,
+                                NO_VALUACION = item.NO_VALUACION,
+                                lstCategorias = SeleccionCuartil(XElement.Parse(item.XML_CATEGORIAS), item.ID_TABULADOR_EMPLEADO),
+                                FG_SUELDO_VISIBLE_TABULADOR = item.FG_SUELDO_VISIBLE_TABULADOR
+
+                            });
+
+                            vNumeroItem++;
+                        }
+                    }
+                }
+                rgdComparacionInventarioPersonal.Rebind();
             }
         }
 
@@ -227,8 +320,8 @@ namespace SIGE.WebApp.MPC
                             COLOR_DIFERENCIA = item.COLOR_DIFERENCIA,
                             ICONO = item.ICONO,
                             NO_VALUACION = item.NO_VALUACION,
-                            lstCategorias = SeleccionCuartil(XElement.Parse(item.XML_CATEGORIAS), item.ID_TABULADOR_EMPLEADO)
-
+                            lstCategorias = SeleccionCuartil(XElement.Parse(item.XML_CATEGORIAS), item.ID_TABULADOR_EMPLEADO),
+                            FG_SUELDO_VISIBLE_TABULADOR = item.FG_SUELDO_VISIBLE_TABULADOR
                         });
                     }
                 }
@@ -269,7 +362,8 @@ namespace SIGE.WebApp.MPC
                             COLOR_DIFERENCIA = item.COLOR_DIFERENCIA,
                             ICONO = item.ICONO,
                             NO_VALUACION = item.NO_VALUACION,
-                            lstCategorias = SeleccionCuartil(XElement.Parse(item.XML_CATEGORIAS), item.ID_TABULADOR_EMPLEADO)
+                            lstCategorias = SeleccionCuartil(XElement.Parse(item.XML_CATEGORIAS), item.ID_TABULADOR_EMPLEADO),
+                            FG_SUELDO_VISIBLE_TABULADOR = item.FG_SUELDO_VISIBLE_TABULADOR
 
                         });
 
@@ -314,7 +408,7 @@ namespace SIGE.WebApp.MPC
             vDtPivot.Columns.Add("NB_DEPARTAMENTO", typeof(string));
             vDtPivot.Columns.Add("NB_EMPLEADO", typeof(string));
             vDtPivot.Columns.Add("MN_SUELDO_ORIGINAL", typeof(string));
-            vDtPivot.Columns.Add("DIFERENCIA", typeof(string));
+            //vDtPivot.Columns.Add("DIFERENCIA", typeof(string));
             vDtPivot.Columns.Add("PR_DIFERENCIA", typeof(string));
             vDtPivot.Columns.Add("NO_VALUACION", typeof(string));
 
@@ -328,6 +422,7 @@ namespace SIGE.WebApp.MPC
                                       a.NB_PUESTO,
                                       a.NB_DEPARTAMENTO,
                                       a.NB_EMPLEADO,
+                                      a.FG_SUELDO_VISIBLE_TABULADOR,
                                       a.MN_SUELDO_ORIGINAL,
                                       a.DIFERENCIA,
                                       a.PR_DIFERENCIA,
@@ -361,18 +456,22 @@ namespace SIGE.WebApp.MPC
                 vDr["NB_PUESTO"] = vCate.NB_PUESTO;
                 vDr["NB_DEPARTAMENTO"] = vCate.NB_DEPARTAMENTO;
                 vDr["NB_EMPLEADO"] = vCate.NB_EMPLEADO;
-                vDr["MN_SUELDO_ORIGINAL"] = String.Format("{0:C}", vCate.MN_SUELDO_ORIGINAL);
+
+                if (vCate.FG_SUELDO_VISIBLE_TABULADOR == true)
+                    vDr["MN_SUELDO_ORIGINAL"] = String.Format("{0:C}", vCate.MN_SUELDO_ORIGINAL);
+                else
+                    vDr["MN_SUELDO_ORIGINAL"] = "";
 
                 if (vCate.DIFERENCIA == null)
                 {
-                    vDr["DIFERENCIA"] = "";
+                    //vDr["DIFERENCIA"] = "";
                     vDr["PR_DIFERENCIA"] = "";
                 }
                 else
                 {
-                    vDr["DIFERENCIA"] = String.Format("{0:C}", Math.Abs((decimal)vCate.DIFERENCIA));
+                    //vDr["DIFERENCIA"] = String.Format("{0:C}", Math.Abs((decimal)vCate.DIFERENCIA));
                     vDr["PR_DIFERENCIA"] = String.Format("{0:N2}", Math.Abs(vCate.PR_DIFERENCIA == null ? 0 : (decimal)vCate.PR_DIFERENCIA) > 100 ? 100 : Math.Abs(vCate.PR_DIFERENCIA == null ? 0 : (decimal)vCate.PR_DIFERENCIA)) + "%"
-                   + "<span style=\"border: 1px solid gray; border-radius: 5px; background:" + vCate.COLOR_DIFERENCIA + ";\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;<img src='/Assets/images/Icons/25/Arrow" + vCate.ICONO + ".png' />";
+                   + "<span style=\"border: 1px solid gray; border-radius: 5px; background:" + vCate.COLOR_DIFERENCIA + ";\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;<img src='../Assets/images/Icons/25/Arrow" + vCate.ICONO + ".png' />";
                 }
                 vDr["NO_VALUACION"] = vCate.NO_VALUACION == null ? "" : vCate.NO_VALUACION.ToString();
 
@@ -401,7 +500,7 @@ namespace SIGE.WebApp.MPC
             vDtPivot.Columns.Add("NB_DEPARTAMENTO", typeof(string));
             vDtPivot.Columns.Add("NB_EMPLEADO", typeof(string));
             vDtPivot.Columns.Add("MN_SUELDO_ORIGINAL", typeof(string));
-            vDtPivot.Columns.Add("DIFERENCIA", typeof(string));
+            //vDtPivot.Columns.Add("DIFERENCIA", typeof(string));
             vDtPivot.Columns.Add("PR_DIFERENCIA", typeof(string));
             vDtPivot.Columns.Add("NO_VALUACION", typeof(string));
 
@@ -415,6 +514,7 @@ namespace SIGE.WebApp.MPC
                                       a.NB_PUESTO,
                                       a.NB_DEPARTAMENTO,
                                       a.NB_EMPLEADO,
+                                      a.FG_SUELDO_VISIBLE_TABULADOR,
                                       a.MN_SUELDO_ORIGINAL,
                                       a.DIFERENCIA,
                                       a.PR_DIFERENCIA,
@@ -448,18 +548,23 @@ namespace SIGE.WebApp.MPC
                 vDr["NB_PUESTO"] = vCate.NB_PUESTO;
                 vDr["NB_DEPARTAMENTO"] = vCate.NB_DEPARTAMENTO;
                 vDr["NB_EMPLEADO"] = vCate.NB_EMPLEADO;
-                vDr["MN_SUELDO_ORIGINAL"] = String.Format("{0:C}", vCate.MN_SUELDO_ORIGINAL);
+
+
+                if (vCate.FG_SUELDO_VISIBLE_TABULADOR == true)
+                    vDr["MN_SUELDO_ORIGINAL"] = String.Format("{0:C}", vCate.MN_SUELDO_ORIGINAL);
+                else
+                    vDr["MN_SUELDO_ORIGINAL"] = "";
 
                 if (vCate.DIFERENCIA == null)
                 {
-                    vDr["DIFERENCIA"] = "";
+                    //vDr["DIFERENCIA"] = "";
                     vDr["PR_DIFERENCIA"] = "";
                 }
                 else
                 {
-                    vDr["DIFERENCIA"] = String.Format("{0:C}", Math.Abs((decimal)vCate.DIFERENCIA));
+                    //vDr["DIFERENCIA"] = String.Format("{0:C}", Math.Abs((decimal)vCate.DIFERENCIA));
                     vDr["PR_DIFERENCIA"] = String.Format("{0:N2}", Math.Abs(vCate.PR_DIFERENCIA == null ? 0 : (decimal)vCate.PR_DIFERENCIA) > 100 ? 100 : Math.Abs(vCate.PR_DIFERENCIA == null ? 0 : (decimal)vCate.PR_DIFERENCIA)) + "%"
-                   + "<span style=\"border: 1px solid gray; border-radius: 5px; background:" + vCate.COLOR_DIFERENCIA + ";\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;<img src='/Assets/images/Icons/25/Arrow" + vCate.ICONO + ".png' />";
+                   + "<span style=\"border: 1px solid gray; border-radius: 5px; background:" + vCate.COLOR_DIFERENCIA + ";\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;<img src='../Assets/images/Icons/25/Arrow" + vCate.ICONO + ".png' />";
                 }
                 vDr["NO_VALUACION"] = vCate.NO_VALUACION == null ? "" : vCate.NO_VALUACION.ToString();
 
@@ -505,10 +610,13 @@ namespace SIGE.WebApp.MPC
                         vMnDivisor = pMnMaximo;
                     else
                         vMnDivisor = pMnSueldo;
+
+                if (vMnDivisor > 0)
                 vMnDivisor = (((pMnSueldo * 100) / vMnDivisor) - 100);
             }
             return vMnDivisor;
         }
+       
         protected decimal? CalculoDiferencia(decimal? pMnMinimo, decimal? pMnMaximo, decimal? pMnSueldo)
         {
             decimal? vMnDivisor = 0;
@@ -685,7 +793,8 @@ namespace SIGE.WebApp.MPC
                             COLOR_DIFERENCIA = item.COLOR_DIFERENCIA,
                             ICONO = item.ICONO,
                             NO_VALUACION = item.NO_VALUACION,
-                            lstCategorias = SeleccionCuartil(XElement.Parse(item.XML_CATEGORIAS == null ? "<ITEMS/>" : item.XML_CATEGORIAS), item.ID_TABULADOR_EMPLEADO)
+                            lstCategorias = SeleccionCuartil(XElement.Parse(item.XML_CATEGORIAS == null ? "<ITEMS/>" : item.XML_CATEGORIAS), item.ID_TABULADOR_EMPLEADO),
+                            FG_SUELDO_VISIBLE_TABULADOR = item.FG_SUELDO_VISIBLE_TABULADOR
 
                         });
                     }
@@ -741,6 +850,7 @@ namespace SIGE.WebApp.MPC
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!IsPostBack)
             {
@@ -907,10 +1017,10 @@ namespace SIGE.WebApp.MPC
                     ConfigurarColumna(e.Column, 100, "Sueldo", true, false, true, true);
                     break;
                 case "DIFERENCIA":
-                    ConfigurarColumna(e.Column, 100, "Diferencia", true, false, true, true);
+                    //ConfigurarColumna(e.Column, 100, "Diferencia", true, false, true, true);
                     break;
                 case "PR_DIFERENCIA":
-                    ConfigurarColumna(e.Column, 150, "Porcentaje", true, false, true, true);
+                    ConfigurarColumna(e.Column, 150, "Diferencia", true, false, true, true);
                     break;
                 case "NO_VALUACION":
                     ConfigurarColumna(e.Column, 90, "Valuación", true, false, true, true);
@@ -919,7 +1029,11 @@ namespace SIGE.WebApp.MPC
                     break;
                 case "ExpandColumn": break;
                 default:
-                    ConfigurarColumna(e.Column, 100, "", true, true, false, true);
+<<<<<<< HEAD
+                    ConfigurarColumna(e.Column, 150, "", true, true, false, true);
+=======
+                    ConfigurarColumna(e.Column, 120, "", true, true, false, true);
+>>>>>>> DEV
                     break;
             }
 
@@ -953,6 +1067,7 @@ namespace SIGE.WebApp.MPC
         {
             int strId = 0;
 
+
             if (e.Item is GridDataItem)
             {
                 GridDataItem dataItem = e.Item as GridDataItem;
@@ -985,7 +1100,39 @@ namespace SIGE.WebApp.MPC
             }
         }
 
+        protected void btnImprimir_Click(object sender, EventArgs e)
+        {
+            ContextoTabuladores.oLstEmpleadoTabulador = new List<E_REPORTE_TABULADOR_SUELDOS>();
 
+            ContextoTabuladores.oLstEmpleadoTabulador.Add(new E_REPORTE_TABULADOR_SUELDOS
+                {
+                    ID_TABULADOR = vIdTabulador
+                });
+
+            foreach (GridDataItem item in rgdComparacionInventarioPersonal.MasterTableView.Items)
+            {
+                int? vIdEmpleadoTabulador = int.Parse(item.GetDataKeyValue("ID_TABULADOR_EMPLEADO").ToString());
+                if (vIdEmpleadoTabulador != null)
+                {
+                    ContextoTabuladores.oLstEmpleadoTabulador.Where(t => t.ID_TABULADOR == vIdTabulador).FirstOrDefault().vLstEmpleadosTabulador.Add((int)vIdEmpleadoTabulador);
+                }
+            }
+
+            if (ContextoTabuladores.oLstEmpleadoTabulador.Where(t => t.ID_TABULADOR == vIdTabulador).FirstOrDefault().vLstEmpleadosTabulador.Count > 0)
+            {
+                ClientScript.RegisterStartupScript(GetType(), "script", "OpenImprimirReporte(" + vIdTabulador + "," + rcbMercadoTabuladorSueldos.SelectedValue + ");", true);
+            }
+        }
+
+        protected void rcbMercadoTabuladorSueldos_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+        {
+            RecalcularConsulta();
+        }
+
+        protected void rntComienzaNivel_TextChanged(object sender, EventArgs e)
+        {
+            RecalcularConsulta();
+        }
     }
 }
 

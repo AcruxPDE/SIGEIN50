@@ -3,6 +3,24 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <%--    <script src="Assets/js/appIndex.js"></script>
     <link href="Assets/css/estilo.css" rel="stylesheet" />--%>
+
+    <script type="text/javascript">
+
+        function AccesoNomina() {
+            var vFgNomina = '<%= vFgAccesoNomina %>';
+            if (vFgNomina == "1") {
+                var arrUrl = window.location.href.split('/');
+                var vUrl = arrUrl[0] + '//' + arrUrl[2] + '/NOMINA/Menu.aspx?clUsuario=' + '<%= vClUsuario %>';
+                window.open(vUrl, '_blank');
+                //var vAjaxManager = $find('<= ramMenu.ClientID %>');
+                //vAjaxManager.ajaxRequest(vUrl);
+            }
+            else {
+                alert(vFgNomina)
+            }
+        }
+
+    </script>
     <style>
         MenuPrincipal {
             width: 600px;
@@ -10,6 +28,9 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <%--    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
+    <telerik:RadAjaxManager ID="ramMenu" runat="server" OnAjaxRequest="ramMenu_AjaxRequest">
+    </telerik:RadAjaxManager>--%>
     <telerik:RadToolTip ID="rttIntegracionDePersonal" runat="server" ShowDelay="1000" ShowEvent="OnMouseOver" RelativeTo="Element" Animation="Resize"
         TargetControlID="imgIntegracionPersonal" IsClientID="true" HideEvent="LeaveTargetAndToolTip" Position="TopCenter" CssClass="RadToolTip_IP">
         <span style="font-weight: bold">Integración de personal
@@ -104,7 +125,7 @@
             <li>Facilita la actualización de la información de los empleados</li>
         </ul>
     </telerik:RadToolTip>
-    <div id="mnuPopUp" style="border: 1px solid white; left: 708px; top: 244px; width: 250px; height: 100px; text-align: center; color: white; visibility: hidden; position: absolute; z-index: 10; background-color: #A20804;">
+    <div id="mnuPopUp" style="border: 1px solid white; left: 708px; top: 244px; width: 220px; height: 100px; text-align: center; color: white; visibility: hidden; position: absolute; z-index: 10; background-color: #A20804;">
         <table width="100%">
             <tbody>
                 <tr style="font-weight: bold; background-color: maroon;">
@@ -112,20 +133,21 @@
                         <table width="100%">
                             <tbody>
                                 <tr>
-                                    <td style="text-align: right;"><span style="color: white; font-weight: bold;" onclick="ClosePopup();">X</span></td>
+                                    <td style="text-align: center;"><span style="color: white; font-weight: bold;">Evaluación organizacional</span></td>
+                                    <td style="text-align: right; padding-right: 2px;"><span style="color: white; font-weight: bold;" onclick="ClosePopup();">X</span></td>
                                 </tr>
                             </tbody>
                         </table>
                     </td>
                 </tr>
-                <tr>
-                    <td id="mnuPop1" onmouseover="PopupIn(this);" onmouseout="PopupOut(this);" onclick="PopupClick(this, '<%= vFgModuloCL %>');">Clima laboral</td>
+                <tr style="text-align: left;">
+                    <td style="padding-left: 15px;" id="mnuPop1" onmouseover="PopupIn(this);" onmouseout="PopupOut(this);" onclick="PopupClick(this, '<%= vFgModuloCL %>');">Clima laboral</td>
                 </tr>
-                <tr>
-                    <td id="mnuPop2" onmouseover="PopupIn(this);" onmouseout="PopupOut(this);" onclick="PopupClick(this, '<%= vFgModuloED %>');">Evaluación del desempeño</td>
+                <tr style="text-align: left; padding-left: 5px;">
+                    <td style="padding-left: 15px;" id="mnuPop2" onmouseover="PopupIn(this);" onmouseout="PopupOut(this);" onclick="PopupClick(this, '<%= vFgModuloED %>');">Evaluación del desempeño</td>
                 </tr>
-                <tr>
-                    <td id="mnuPop3" onmouseover="PopupIn(this);" onmouseout="PopupOut(this);" onclick="PopupClick(this, '<%= vFgModuloRDP %>');">Análisis de rotación</td>
+                <tr style="text-align: left; padding-left: 5px;">
+                    <td style="padding-left: 15px;" id="mnuPop3" onmouseover="PopupIn(this);" onmouseout="PopupOut(this);" onclick="PopupClick(this, '<%= vFgModuloRDP %>');">Análisis de rotación</td>
                 </tr>
             </tbody>
         </table>
@@ -136,7 +158,8 @@
                 <telerik:LayoutRow RowType="Generic">
                     <Content>
                         <div style="float: left; padding: 10px;">
-                            <img src="Assets/images/LogotipoNombre.png" alt="Logo" />
+                            <%--se agrega un width y heigth para hacer mas pequeña la imagen--%>
+                            <img src="Assets/images/LogotipoNombre.png" width="200" height="132" alt="Logo" />
                         </div>
                         <div runat="server" id="divMenu"></div>
                     </Content>
@@ -193,9 +216,10 @@
                                         </div>
                                         <div class="col-xs-12 col-lg-12 col-ms-12 col-md-12" style="margin-top: 24px">
                                             <div style="position: relative; cursor: pointer; overflow: hidden;">
-                                                <img id="imgNomina" src="Assets/images/menu/Nomina600x344.png" class="img-responsive" onclick="NavegacionMenu(5)" />
+                                                <%--                          <img id="imgNomina" src="Assets/images/menu/Nomina600x344.png" class="img-responsive" onclick="NavegacionMenu(5, '<%= vFgAccesoNomina %>', '<%= vClUsuario %>')" />--%>
+                                                <img id="imgNomina" src="Assets/images/menu/Nomina600x344.png" class="img-responsive" onclick="AccesoNomina()" />
                                             </div>
-                                            <div style="background: #79026F; width: 100%; text-align: center; color: #FFF;">AccelNom</div>
+                                            <div style="background: #79026F; width: 100%; text-align: center; color: #FFF;">Nómina</div>
                                         </div>
                                     </div>
                                 </div>
@@ -228,7 +252,7 @@
                     </Content>
                 </telerik:LayoutRow>
             </Rows>
-                      <%--Se agrega para ver la banda con el nombre de la empresa--%>
+            <%--Se agrega para ver la banda con el nombre de la empresa--%>
             <Rows>
                 <telerik:LayoutRow RowType="Generic">
                     <Content>

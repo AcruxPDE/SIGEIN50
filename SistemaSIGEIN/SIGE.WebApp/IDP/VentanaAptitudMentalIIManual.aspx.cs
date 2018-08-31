@@ -24,7 +24,6 @@ namespace SIGE.WebApp.IDP
             get { return (string)ViewState["vsvClUsuario"]; }
             set { ViewState["vsvClUsuario"] = value; }
         }
-
         private string vNbPrograma
         {
             get { return (string)ViewState["vsvNbPrograma"]; }
@@ -44,8 +43,8 @@ namespace SIGE.WebApp.IDP
             set { ViewState["vsPLaboral2seconds"] = value; }
         }
 
-        public string vEstatusPrueba;
 
+        public string vEstatusPrueba;
         private List<E_PRUEBA_RESULTADO> vRespuestas
         {
             get { return (List<E_PRUEBA_RESULTADO>)ViewState["vsRespuestas"]; }
@@ -560,7 +559,8 @@ namespace SIGE.WebApp.IDP
                    
                     E_RESULTADO vResultado = nResultado.insertaResultadosAptitud2(RESPUESTAS.ToString(), null, vIdPrueba, vClUsuario, vNbPrograma);
                     string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                    UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "CloseTest");
+                    //UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "CloseTest");
+                    UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "");
                 }
         }
 

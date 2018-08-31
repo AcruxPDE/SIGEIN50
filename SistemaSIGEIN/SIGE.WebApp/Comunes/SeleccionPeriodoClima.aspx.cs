@@ -14,7 +14,15 @@ namespace SIGE.WebApp.Comunes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                grdPeriodos.AllowMultiRowSelection = true;
+                if (!String.IsNullOrEmpty(Request.QueryString["mulSel"]))
+                {
+                    grdPeriodos.AllowMultiRowSelection = (Request.QueryString["mulSel"] == "1");
+                    btnAgregar.Visible = (Request.QueryString["mulSel"] == "1");
+                }
+            }
         }
 
         protected void grdPeriodos_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)

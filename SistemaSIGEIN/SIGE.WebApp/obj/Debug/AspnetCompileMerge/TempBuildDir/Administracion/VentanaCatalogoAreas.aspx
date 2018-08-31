@@ -11,7 +11,11 @@
                 width: 800,
                 height: 600
             };
-            openChildDialog("../Comunes/SeleccionArea.aspx", "winSeleccion", "Selección de área", windowProperties);
+<<<<<<< HEAD
+            openChildDialog("../Comunes/SeleccionArea.aspx?mulSel=0", "winSeleccion", "Selección de área/departamento", windowProperties);
+=======
+            openChildDialog("../Comunes/SeleccionArea.aspx", "winSeleccion", "Selección de área/departamento", windowProperties);
+>>>>>>> DEV
         }
 
         function useDataFromChild(pDato) {
@@ -83,7 +87,7 @@
     <div style="clear: both;"></div>
     <div class="ctrlBasico">
         <div class="divControlIzquierda">
-            <label id="lblDepartamentoJefe" name="lblDepartamentoJefe" runat="server">Área del que depende:&nbsp;</label>
+            <label id="lblDepartamentoJefe" name="lblDepartamentoJefe" runat="server">Área/Departamento del que depende:&nbsp;</label>
         </div>
         <div class="divControlDerecha">
             <telerik:RadListBox ID="lstDepartamentoJefe" Width="300" runat="server">
@@ -95,7 +99,7 @@
             <telerik:RadButton runat="server" ID="btnCleanDepartamentoDepende" Text="X" Width="35px" AutoPostBack="false" OnClientClicked="CleanAreasSelection" />
         </div>
     </div>
-<%--    <div style="clear: both;"></div>
+    <div style="clear: both;"></div>
     <div class="ctrlBasico">
         <div class="divControlIzquierda">
             <label id="lblTipoDepartamento" name="lblTipoDepartamento" runat="server">Tipo de departamento:&nbsp;</label>
@@ -108,7 +112,7 @@
                 </Items>
             </telerik:RadComboBox>
         </div>
-    </div>--%>
+    </div>
     <div style="clear: both;"></div>
     <div class="ctrlBasico">
         <div class="divControlIzquierda">

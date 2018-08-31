@@ -33,6 +33,13 @@ namespace SIGE.WebApp.Comunes
                 {
                     vIdEmpleado = int.Parse(Request.Params["IdEmpleado"].ToString());
                 }
+
+                grdPeriodos.AllowMultiRowSelection = true;
+                if (!String.IsNullOrEmpty(Request.QueryString["mulSel"]))
+                {
+                    grdPeriodos.AllowMultiRowSelection = (Request.QueryString["mulSel"] == "1");
+                    btnAgregar.Visible = (Request.QueryString["mulSel"] == "1");
+                }
             }
         }
 

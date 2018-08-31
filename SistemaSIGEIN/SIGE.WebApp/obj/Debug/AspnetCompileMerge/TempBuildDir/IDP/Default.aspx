@@ -17,21 +17,37 @@
                     <Content>
                         <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6" style="margin-top: 100px;">
                             <div style="padding-left: 20px;">
-                                <h3><b style="color: #C6DB95;">Bienvenido(a) al sistema</b> </h3>
+                                <h3><b style="color: #C6DB95;">Bienvenid@ al sistema</b> </h3>
+<<<<<<< HEAD
+                                <b><%= vNbUsuario %></b>
+                                <br />
+=======
                                <b> <%= vNbUsuario %></b>
                                     <br />
+>>>>>>> DEV
                                 <br />
-                                Bienvenido(a) a la aplicación <b>SIGEIN</b>.
+                                Bienvenid@ a la aplicación <b>SIGEIN</b>.
                                     <br />
                                 Para comenzar a utilizar el sistema, utiliza el menú de navegación en el panel superior. 
-                                <div style="padding-left:20px; padding-top:20px;">
+<<<<<<< HEAD
+                                <div id="dvLogo" runat="server" style="padding-left: 20px; padding-top: 20px;">
+                                    <telerik:RadBinaryImage ID="rbiLogoOrganizacion1" runat="server" Width="108" Height="108" ResizeMode="Fit" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6" style="margin-top: 50px;">
+                            <div style="position: relative; overflow: hidden;">
+                                <img id="imgIntegracionPersonal" src="../Assets/images/menu/IntegraciondePersonal600x344.png" class="img-responsive" />
+=======
+                                <div id="dvLogo" runat="server" style="padding-left:20px; padding-top:20px;">
                                <telerik:RadBinaryImage ID="rbiLogoOrganizacion1" runat="server" Width="108" Height="108"  ResizeMode="Fit" />
                                </div>
                             </div>
                         </div>
                         <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6" style="margin-top: 50px;">
                                 <div style="position: relative; overflow: hidden;">
-                                    <img id="imgIntegracionPersonal" src="../Assets/images/menu/IntegraciondePersonal600x344.png" class="img-responsive" />
+                                    <img id="imgIntegracionPersonal" src="../Assets/images/menu/IntegraciondePersonal600x344.png" class="img-responsive"  />
+>>>>>>> DEV
                             </div>
                         </div>
                     </Content>

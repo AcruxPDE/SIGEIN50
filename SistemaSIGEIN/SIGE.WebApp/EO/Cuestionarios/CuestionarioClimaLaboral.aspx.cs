@@ -145,6 +145,11 @@ namespace SIGE.WebApp.EO
             xmlPreguntasAbiertas = vXmlPreguntasAbiertas.ToString();
         }
 
+        protected void SeguridadProcesos()
+        {
+            btnFinalizar.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.J.A");
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -171,22 +176,26 @@ namespace SIGE.WebApp.EO
                     vIdEvaluado = int.Parse(Request.QueryString["ID_EVALUADOR"]);
                 }
 
-                if (Request.Params["FG_HABILITADO"] != null)
-                {
-                    vFgHabilitado = bool.Parse(Request.Params["FG_HABILITADO"].ToString());
-                }
-                else
-                {
+                //if (Request.Params["FG_HABILITADO"] != null)
+                //{
+                //    vFgHabilitado = bool.Parse(Request.Params["FG_HABILITADO"].ToString());
+                //}
+                //else
+                //{
                     vFgHabilitado = true;
-                }
+                //}
 
                 ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
                 var vPeriodoClima = nClima.ObtienePeriodosClima(pIdPerido: vIdPeriodo).FirstOrDefault();
-                txtNoPeriodo.InnerText = vPeriodoClima.NB_PERIODO.ToString();
+                txtNoPeriodo.InnerText = vPeriodoClima.NB_PERIODO.ToString() + " - " + vPeriodoClima.DS_PERIODO.ToString();
 
-                rgCuestionario.Enabled = vFgHabilitado;
-                rgPreguntasAbiertas.Enabled = vFgHabilitado;
-                btnFinalizar.Enabled = vFgHabilitado;
+
+                SeguridadProcesos();
+
+                //rgCuestionario.Enabled = vFgHabilitado;
+                //rgPreguntasAbiertas.Enabled = vFgHabilitado;
+                //btnFinalizar.Enabled = vFgHabilitado;
+
 
             }
         }
@@ -239,7 +248,8 @@ namespace SIGE.WebApp.EO
             if (vClUsuario.Equals("INVITADO"))
             {
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
-                Response.Redirect("~/Logon.aspx");
+                var myUrl = ResolveUrl("~/Logon.aspx");
+                Response.Redirect(myUrl);
             }
             else
             {

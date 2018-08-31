@@ -56,7 +56,7 @@
             if (currentWnd)
                 browserWnd = currentWnd.BrowserWindow;
             var wnd = {
-                width: browserWnd.innerWidth - 400,
+                width: 1000,
                 height: browserWnd.innerHeight - 20
             };
             wnd.vTitulo = "Agregar período";
@@ -88,7 +88,12 @@
             }
 
             function OpenEditPeriodoWindow() {
-                OpenPeriodoWindow(GetPeriodoId());
+                if ('<%= vEditar %>' == "True") {
+                    OpenPeriodoWindow(GetPeriodoId());
+                }
+                else {
+                    radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "");
+                }
             }
 
 
@@ -97,6 +102,7 @@
             }
 
             function confirmarEliminar(sender, args) {
+                if ('<%= vEliminar %>' == "True") {
                 var listView = $find('<%= rlvPeriodos.ClientID %>');
             var selectedIndex = listView.get_selectedIndexes();
             if (selectedIndex.length > 0) {
@@ -110,6 +116,11 @@
                 radalert("Selecciona un período.", 400, 150);
                 args.set_cancel(true);
             }
+                }
+                else {
+                    radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "");
+                    args.set_cancel(true);
+                }
         }
 
         function GetPeriodoWindowProperties(pIdPeriodo) {
@@ -175,10 +186,10 @@
             if (currentWnd)
                 browserWnd = currentWnd.BrowserWindow;
             var wnd = {
-                width: browserWnd.innerWidth - 400,
+                width: 1000,
                 height: browserWnd.innerHeight - 20
             };
-            wnd.vTitulo = "Agregar período";
+            wnd.vTitulo = "Copiar período";
             wnd.vURL = "VentanaPeriodoClimaLaboral.aspx?PeriodoId=" + pIdPeriodo + "&Tipo=COPIA";
             wnd.vRadWindowId = "WinClimaLaboral";
             return wnd;
@@ -196,7 +207,7 @@
             var wnd = GetWindowProperties();
             wnd.width = 1050;
             //wnd.height = 580;
-            wnd.vTitulo = "Envío de cuestionarios";
+            wnd.vTitulo = "Enviar cuestionarios";
             wnd.vURL = "EnvioDeSolicitudesClima.aspx?PeriodoId=" + pIdPeriodo;
             wnd.vRadWindowId = "WinClimaLaboral";
             return wnd;
@@ -255,18 +266,78 @@
             return wnd;
         }
 
+        //Reportes
+
         function OpenReportesWindow() {
             var vIdPeriodo = GetPeriodoId();
             if (vIdPeriodo != null)
-                OpenWindow(GetReportesProperties(vIdPeriodo));
+                OpenWindow(GetReportesProperties(vIdPeriodo, "INDICE"));
             else
                 radalert("Selecciona un período.", 400, 150);
         }
 
-        function GetReportesProperties(pIdPeriodo) {
+        function OpenDistribucionWindow() {
+            var vIdPeriodo = GetPeriodoId();
+            if (vIdPeriodo != null)
+                OpenWindow(GetReportesProperties(vIdPeriodo, "DISTRIBUCION"));
+<<<<<<< HEAD
+=======
+            else
+                radalert("Selecciona un período.", 400, 150);
+        }
+
+        function OpenPAbiertasWindow() {
+            var vIdPeriodo = GetPeriodoId();
+            if (vIdPeriodo != null)
+                OpenWindow(GetReportesProperties(vIdPeriodo, "PREGUNTAS"));
+>>>>>>> DEV
+            else
+                radalert("Selecciona un período.", 400, 150);
+        }
+
+<<<<<<< HEAD
+        function OpenPAbiertasWindow() {
+            var vIdPeriodo = GetPeriodoId();
+            if (vIdPeriodo != null)
+                OpenWindow(GetReportesProperties(vIdPeriodo, "PREGUNTAS"));
+            else
+                radalert("Selecciona un período.", 400, 150);
+        }
+
+=======
+>>>>>>> DEV
+        function OpenGlobalWindow() {
+            var vIdPeriodo = GetPeriodoId();
+            if (vIdPeriodo != null)
+                OpenWindow(GetReportesProperties(vIdPeriodo, "GENERAL"));
+            else
+                radalert("Selecciona un período.", 400, 150);
+        }
+
+        //
+
+        function GetReportesProperties(pIdPeriodo, pClDestino) {
             var wnd = GetWindowProperties();
-            wnd.vTitulo = "Consultas - Clima Laboral";
-            wnd.vURL = "VentanaReportes.aspx?PeriodoId=" + pIdPeriodo;
+            if (pClDestino == "INDICE")
+<<<<<<< HEAD
+                wnd.vTitulo = "Consulta índice de satisfacción - Clima laboral";
+            if (pClDestino == "DISTRIBUCION")
+                wnd.vTitulo = "Consulta distribución de resultados - Clima laboral";
+            if (pClDestino == "PREGUNTAS")
+                wnd.vTitulo = "Consulta preguntas abiertas - Clima laboral";
+            if (pClDestino == "GENERAL")
+                wnd.vTitulo = "Consulta resultado global - Clima laboral";
+=======
+                wnd.vTitulo = "Consulta Índice de satisfacción - Clima laboral";
+            if (pClDestino == "DISTRIBUCION")
+                wnd.vTitulo = "Consulta Distribución de resultados - Clima laboral";
+            if (pClDestino == "PREGUNTAS")
+                wnd.vTitulo = "Consulta Preguntas abiertas - Clima laboral";
+            if (pClDestino == "GENERAL")
+                wnd.vTitulo = "Consulta Resultado global - Clima laboral";
+>>>>>>> DEV
+
+                wnd.vURL = "VentanaReportes.aspx?PeriodoId=" + pIdPeriodo + "&ClDestino=" + pClDestino;
             wnd.vRadWindowId = "WinClimaLaboral";
             return wnd;
         }
@@ -298,7 +369,7 @@
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                 { if (shouldSubmit) { this.click(); } });
 
-                radconfirm('¿Deseas reactivar el periodo ' + vNbPeriodo + ' ?', callBackFunction, 400, 170, null, "Reactivar Período");
+                radconfirm('¿Deseas reactivar el período ' + vNbPeriodo + ' ?', callBackFunction, 400, 170, null, "Reactivar Período");
                 args.set_cancel(true);
             }
             else {
@@ -309,22 +380,65 @@
 
         function useDataFromChild(pDato) {
             if (pDato != null) {
-                var list = $find('<%= rlvPeriodos.ClientID %>');
-                list.rebind();
+                switch (pDato[0].accion) {
+                    case "ACTUALIZARLISTA":
+                        var ajaxManager = $find('<%= ramOrganigrama.ClientID%>');
+                        ajaxManager.ajaxRequest(JSON.stringify({ clTipo: "ACTUALIZARLISTA" }));
+                        break;
+                    case "ACTUALIZAR":
+<<<<<<< HEAD
+                        var ajaxManager = $find('<%= ramOrganigrama.ClientID%>');
+                        ajaxManager.ajaxRequest(JSON.stringify({ clTipo: "ACTUALIZAR" }));
+                        //var list = $find('<= rlvPeriodos.ClientID %>');
+                        //list.rebind();
+=======
+                        var list = $find('<%= rlvPeriodos.ClientID %>');
+                        list.rebind();
+>>>>>>> DEV
+                        break;
+                }
             }
         }
 
+        function CloseWindowConfig() {
+            var ajaxManager = $find('<%= ramOrganigrama.ClientID%>');
+                  ajaxManager.ajaxRequest(JSON.stringify({ clTipo: "CONFIGURACION" }));
+              }
 
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<<<<<<< HEAD
+=======
 
-    <telerik:RadAjaxLoadingPanel ID="ralpPeriodosClima" runat="server"></telerik:RadAjaxLoadingPanel>
-    <telerik:RadAjaxManager ID="ramOrganigrama" runat="server">
+>>>>>>> DEV
+    <telerik:RadAjaxLoadingPanel ID="ralpPeriodosClima" runat="server" ></telerik:RadAjaxLoadingPanel>
+    <telerik:RadAjaxManager ID="ramOrganigrama" runat="server" OnAjaxRequest="ramOrganigrama_AjaxRequest">
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="rlvPeriodos">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" LoadingPanelID="ralpPeriodosClima"></telerik:AjaxUpdatedControl>
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+             <telerik:AjaxSetting AjaxControlID="ramOrganigrama">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" LoadingPanelID="ralpPeriodosClima"></telerik:AjaxUpdatedControl>
+<<<<<<< HEAD
+                    <telerik:AjaxUpdatedControl ControlID="txtClPeriodo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="txtDsPeriodo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="txtNotas" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="txtClEstatus" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="txtTipo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="txtUsuarioMod" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="txtFechaMod" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="btnConfigurar" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnCerrar" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnEnviarSolicitudes" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnContestar" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnControlAvance" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnVistaPreviaCuestionario" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+=======
+>>>>>>> DEV
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="rbAscendente">
@@ -353,8 +467,11 @@
                     <telerik:AjaxUpdatedControl ControlID="btnCerrar" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
                     <telerik:AjaxUpdatedControl ControlID="btnEnviarSolicitudes" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
                     <telerik:AjaxUpdatedControl ControlID="btnContestar" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnControlAvance" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnVistaPreviaCuestionario" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
                      <telerik:AjaxUpdatedControl ControlID="txtClPeriodo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
                      <telerik:AjaxUpdatedControl ControlID="txtDsPeriodo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
+                     <telerik:AjaxUpdatedControl ControlID="txtNotas" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
                      <telerik:AjaxUpdatedControl ControlID="txtClEstatus" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
                      <telerik:AjaxUpdatedControl ControlID="txtTipo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
                     <telerik:AjaxUpdatedControl ControlID="txtUsuarioMod" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1" />
@@ -393,16 +510,16 @@
     </telerik:RadAjaxManager>
     <telerik:RadSplitter ID="rsClimaLaboral" BorderSize="0" Width="100%" Height="100%" runat="server">
         <telerik:RadPane ID="rpClimaLaboral" runat="server">
-            <label class="labelTitulo">Clima Laboral</label>
+            <label class="labelTitulo">Clima laboral</label>
             <div class="ctrlBasico">
-                <telerik:RadListView ID="rlvPeriodos" runat="server" DataKeyNames="ID_PERIODO,CL_ESTADO_PERIODO, CL_PERIODO" ClientDataKeyNames="ID_PERIODO,NB_PERIODO, CL_PERIODO" OnNeedDataSource="rlvPeriodos_NeedDataSource" OnItemCommand="rlvPeriodos_ItemCommand" AllowPaging="true" ItemPlaceholderID="ProductsHolder">
+            <telerik:RadListView ID="rlvPeriodos" runat="server" DataKeyNames="ID_PERIODO,CL_ESTADO_PERIODO, CL_PERIODO, FG_CUESTIONARIOS_CREADOS" ClientDataKeyNames="ID_PERIODO,NB_PERIODO, CL_PERIODO" OnNeedDataSource="rlvPeriodos_NeedDataSource" OnItemCommand="rlvPeriodos_ItemCommand" AllowPaging="true" ItemPlaceholderID="ProductsHolder">
                     <LayoutTemplate>
-                        <div style="overflow: auto; width: 650px;">
-                            <div style="overflow: auto; overflow-y: auto; max-height: 400px;">
+                        <div style="overflow: auto; width: 700px;">
+                            <div style="overflow: auto; overflow-y: auto; max-height: 450px;">
                                 <asp:Panel ID="ProductsHolder" runat="server"></asp:Panel>
                             </div>
                             <div style="clear: both;"></div>
-                            <telerik:RadDataPager ID="rdpPeriodos" runat="server" PagedControlID="rlvPeriodos" PageSize="6" Width="630">
+                            <telerik:RadDataPager ID="rdpPeriodos" runat="server" PagedControlID="rlvPeriodos" PageSize="6" Width="630" >
                                 <Fields>
                                     <telerik:RadDataPagerButtonField FieldType="FirstPrev"></telerik:RadDataPagerButtonField>
                                     <telerik:RadDataPagerButtonField FieldType="Numeric" PageButtonCount="5"></telerik:RadDataPagerButtonField>
@@ -415,7 +532,7 @@
                     <ItemTemplate>
                         <div class="RadListViewContainer">
                             <div style="padding: 10px;">
-                                <div>
+                                <div style="overflow: auto; overflow-y: auto; height: 35px;">
                                     <label>Clave:</label>
                                     <%# Eval("CL_PERIODO") %>
                                 </div>
@@ -436,7 +553,7 @@
                     <SelectedItemTemplate>
                         <div class="RadListViewContainer Selected">
                             <div style="padding: 10px;">
-                                <div>
+                                <div style="overflow: auto; overflow-y: auto; height: 35px;">
                                     <label style="color: white;">Clave:</label>
                                     <%# Eval("CL_PERIODO") %>
                                 </div>
@@ -462,12 +579,12 @@
                     </SelectedItemTemplate>
                     <EmptyDataTemplate>
                         <div class="RadListViewContainer" style="overflow: auto; text-align: center; width: 660px; height: 100px;">
-                            No hay periodos disponibles
+                            No hay períodos disponibles
                         </div>
                     </EmptyDataTemplate>
                 </telerik:RadListView>
             </div>
-            <div class="ctrlBasico" style="text-align: left">
+            <div class="ctrlBasico" style="text-align: center">
                 <%--<div>
                     <div class="divControlIzquierda">
                         <label id="lblDsDescripción">Descripción:</label>
@@ -494,7 +611,7 @@
                         <telerik:RadEditor Height="100" Width="400" ToolsWidth="400" EditModes="Design" ID="txtDsNotas" runat="server" ToolbarMode="ShowOnFocus" ToolsFile="~/Assets/AdvancedTools.xml"></telerik:RadEditor>
                     </div>
                 </div>--%>
-                 <telerik:RadTabStrip runat="server" ID="rtsPeriodos" MultiPageID="rmpPeriodos" SelectedIndex="0">
+                <telerik:RadTabStrip runat="server" ID="rtsPeriodos" MultiPageID="rmpPeriodos" SelectedIndex="0">
                     <Tabs>
                         <telerik:RadTab runat="server" Text="Gestionar"></telerik:RadTab>
                         <telerik:RadTab runat="server" Text="Detalles"></telerik:RadTab>
@@ -503,85 +620,194 @@
                 <div style="height: 10px;"></div>
                 <telerik:RadMultiPage runat="server" ID="rmpPeriodos" SelectedIndex="0" Height="100%" Width="100%">
                     <telerik:RadPageView ID="rpvPeriodos" runat="server">
+<<<<<<< HEAD
+                        <div>
+                            <label class="labelTitulo">Administrar</label>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="rdAgregar" runat="server" Text="Agregar" AutoPostBack="false" OnClientClicked="AbrirVentanaNuevo"></telerik:RadButton>
+                            </div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnConfigurar" runat="server" Text="Configurar" AutoPostBack="false" OnClientClicked="OpenConfiguracionWindow"></telerik:RadButton>
+                            </div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnCerrar" runat="server" Text="Cerrar" OnClientClicking="ConfirmarCerrar" OnClick="btnCerrar_Click"></telerik:RadButton>
+                            </div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnReactivar" runat="server" Text="Re abrir" OnClientClicking="ConfirmarReactivar" OnClick="btnReactivar_Click"></telerik:RadButton>
+                            </div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnCopiar" runat="server" Text="Copiar" AutoPostBack="false" OnClientClicked="OpenCopiaPeriodoWindow"></telerik:RadButton>
+                            </div>
+                        </div>
+                        <div style="clear: both;"></div>
+                        <div>
+                            <label class="labelTitulo">Procesos</label>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnVistaPreviaCuestionario" runat="server" Text="Vista previa" AutoPostBack="false" OnClientClicked="OpenVistaPreviaWindow"></telerik:RadButton>
+                            </div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnEnviarSolicitudes" runat="server" Text="Enviar cuestionarios" AutoPostBack="false" OnClientClicked="OpenEnvioSolicitudesWindow"></telerik:RadButton>
+                            </div>
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnContestar" runat="server" Text="Contestar" AutoPostBack="false" OnClientClicked="OpenContestarPreviaWindow"></telerik:RadButton>
+                            </div>
+                            <div style="clear: both;"></div>
+                            <telerik:RadButton ID="btnControlAvance" runat="server" Text="Control de avance" AutoPostBack="false" OnClientClicked="OpenControlAvanceWindow"></telerik:RadButton>
+                        </div>
+                        <div style="clear: both;"></div>
+                        <div>
+                            <label class="labelTitulo">Consultas</label>
+                            <telerik:RadButton ID="btnReportes" runat="server" Text="Índice de satisfacción" AutoPostBack="false" OnClientClicked="OpenReportesWindow"></telerik:RadButton>
+                            &nbsp;
+                            <telerik:RadButton ID="btnRDistribucion" runat="server" Text="Distribución de resultados" AutoPostBack="false" OnClientClicked="OpenDistribucionWindow"></telerik:RadButton>
+                            <div style="clear: both; height: 10px;"></div>
+                            <telerik:RadButton ID="btnPreguntasAbiertas" runat="server" Text="Preguntas abiertas" AutoPostBack="false" OnClientClicked="OpenPAbiertasWindow"></telerik:RadButton>
+                            &nbsp;
+                            <telerik:RadButton ID="btnGlobal" runat="server" Text="Resultado global" AutoPostBack="false" OnClientClicked="OpenGlobalWindow"></telerik:RadButton>
+                        </div>
+                    </telerik:RadPageView>
+                    <telerik:RadPageView ID="rpvInformacion" runat="server">
+                        <div class="ctrlBasico">
+                            <div class="divControlIzquierda">
+                                <label style="width: 120px;" id="lblEvento" name="lblEvento" runat="server">Período:</label>
+                            </div>
+                            <div class="divControlDerecha">
+                                <telerik:RadTextBox ID="txtClPeriodo" Enabled="false" runat="server" Width="350px" MaxLength="1000" Height="35px" TextMode="MultiLine"></telerik:RadTextBox>
+=======
                 <div style="height: 10px;"></div>
                 <div style="text-align: center">
                     <label class="labelTitulo">Administrar</label>
                     <telerik:RadButton ID="rdAgregar" runat="server" Text="Agregar" AutoPostBack="false" OnClientClicked="AbrirVentanaNuevo"></telerik:RadButton>
                     <telerik:RadButton ID="btnConfigurar" runat="server" Text="Configurar" AutoPostBack="false" OnClientClicked="OpenConfiguracionWindow"></telerik:RadButton>
-                    <telerik:RadButton ID="btnCerrar" runat="server" Text="Cerrar período" OnClientClicking="ConfirmarCerrar" OnClick="btnCerrar_Click"></telerik:RadButton>
-                    <telerik:RadButton ID="btnReactivar" runat="server" Text="Reactivar" OnClientClicking="ConfirmarReactivar" OnClick="btnReactivar_Click"></telerik:RadButton>
+                    <telerik:RadButton ID="btnCerrar" runat="server" Text="Cerrar" OnClientClicking="ConfirmarCerrar" OnClick="btnCerrar_Click"></telerik:RadButton>
+                    <telerik:RadButton ID="btnReactivar" runat="server" Text="Re abrir" OnClientClicking="ConfirmarReactivar" OnClick="btnReactivar_Click"></telerik:RadButton>
                     <telerik:RadButton ID="btnCopiar" runat="server" Text="Copiar de" AutoPostBack="false" OnClientClicked="OpenCopiaPeriodoWindow"></telerik:RadButton>
                 </div>
                 <div style="height: 10px;"></div>
                 <div style="text-align: center">
-                    <label class="labelTitulo">Cuestionarios</label>
-                    <telerik:RadButton ID="btnEnviarSolicitudes" runat="server"  Text="Enviar cuestionarios" AutoPostBack="false" OnClientClicked="OpenEnvioSolicitudesWindow"></telerik:RadButton>
-                    <telerik:RadButton ID="btnVistaPreviaCuestionario" runat="server"   Text="Vista previa impresión de cuestionario" AutoPostBack="false" OnClientClicked="OpenVistaPreviaWindow"></telerik:RadButton>
-                <div style="height: 10px;"></div>
+                    <label class="labelTitulo">Cuestionarios</label>                 
+                    <telerik:RadButton ID="btnVistaPreviaCuestionario" runat="server"   Text="Vista previa" AutoPostBack="false" OnClientClicked="OpenVistaPreviaWindow"></telerik:RadButton>
+                      <telerik:RadButton ID="btnEnviarSolicitudes" runat="server"  Text="Enviar cuestionarios" AutoPostBack="false" OnClientClicked="OpenEnvioSolicitudesWindow"></telerik:RadButton>
                     <telerik:RadButton ID="btnContestar" runat="server" Text="Contestar"  AutoPostBack="false" OnClientClicked="OpenContestarPreviaWindow"></telerik:RadButton>
+                      <telerik:RadButton ID="btnControlAvance" runat="server" Text="Control de avance" AutoPostBack="false" OnClientClicked="OpenControlAvanceWindow"></telerik:RadButton>
                 </div>
                 <div style="height: 10px;"></div>
                 <div style="text-align: center">
-                    <label class="labelTitulo">Consultas</label>
-                    <telerik:RadButton ID="btnControlAvance" runat="server" Text="Control de avance" AutoPostBack="false" OnClientClicked="OpenControlAvanceWindow"></telerik:RadButton>
-                    <telerik:RadButton ID="btnReportes" runat="server" Text="Reportes" AutoPostBack="false" OnClientClicked="OpenReportesWindow"></telerik:RadButton>
+                    <label class="labelTitulo">Consultas</label> 
+                    <telerik:RadButton ID="btnReportes" runat="server" Text="Índice de satisfacción" AutoPostBack="false" OnClientClicked="OpenReportesWindow"></telerik:RadButton>
+                     <telerik:RadButton ID="btnRDistribucion" runat="server" Text="Distribución de resultados" AutoPostBack="false" OnClientClicked="OpenDistribucionWindow"></telerik:RadButton>
+                                             <div style="height: 10px;"></div>
+                     <telerik:RadButton ID="btnPreguntasAbiertas" runat="server" Text="Preguntas abiertas" AutoPostBack="false" OnClientClicked="OpenPAbiertasWindow"></telerik:RadButton>
+                     <telerik:RadButton ID="btnGlobal" runat="server" Text="Resultado global" AutoPostBack="false" OnClientClicked="OpenGlobalWindow"></telerik:RadButton>
                 </div>
                 <div style="height: 10px;"></div>
                         </telerik:RadPageView>
 
                        <telerik:RadPageView ID="rpvInformacion" runat="server">
                         <div class="ctrlBasico">
-                            <label style="width: 120px;" id="lblEvento" name="lblEvento" runat="server">Periodo:</label>
+                            <label style="width: 120px;" id="lblEvento" name="lblEvento" runat="server">Período:</label>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtClPeriodo" Enabled="false" runat="server" Width="400px" MaxLength="1000"></telerik:RadTextBox>
+                                <telerik:RadTextBox ID="txtClPeriodo" Enabled="false" runat="server" Width="400px" MaxLength="1000" Height="35px" TextMode="MultiLine"></telerik:RadTextBox>
+>>>>>>> DEV
                             </div>
                         </div>
                         <div style="clear: both;"></div>
                         <div class="ctrlBasico">
-                            <label style="width: 120px;" id="Label1" name="lblEvento" runat="server">Descripción:</label>
+                            <div class="divControlIzquierda">
+                                <label style="width: 120px;" id="Label1" name="lblEvento" runat="server">Descripción:</label>
+                            </div>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtDsPeriodo" Enabled="false" runat="server" Width="400px" MaxLength="1000"></telerik:RadTextBox>
+<<<<<<< HEAD
+                                <telerik:RadTextBox ID="txtDsPeriodo" Enabled="false" runat="server" Width="350px" MaxLength="1000" Height="35px" TextMode="MultiLine"></telerik:RadTextBox>
+=======
+                                <telerik:RadTextBox ID="txtDsPeriodo" Enabled="false" runat="server" Width="400px" MaxLength="1000" Height="35px" TextMode="MultiLine"></telerik:RadTextBox>
+>>>>>>> DEV
+                            </div>
+                        </div>
+
+
+                        <div style="clear: both;"></div>
+                        <div class="ctrlBasico">
+                            <label style="width: 120px;" id="Label4" name="lblEvento" runat="server">Notas:</label>
+                            <div class="divControlDerecha">
+                             <div id="txtNotasContenedor"  runat="server" style="width:400px; height:100px; text-align:justify; border: 1px solid #ccc; border-radius:5px; background: #ccc; "><p id="txtNotas" runat="server" style="padding:10px;"></p></div>
+                            </div>
+                        </div>
+
+
+                        <div style="clear: both;"></div>
+                        <div class="ctrlBasico">
+                            <div class="divControlIzquierda">
+                                <label style="width: 120px;" id="Label4" name="lblEvento" runat="server">Notas:</label>
+                            </div>
+                            <div class="divControlDerecha">
+<<<<<<< HEAD
+                                <div id="txtNotasContenedor" runat="server" style="width: 350px; height: 100px; text-align: justify; border: 1px solid #ccc; border-radius: 5px; background: #ccc;">
+                                    <p id="txtNotas" runat="server" style="padding: 10px;"></p>
+                                </div>
+=======
+                                <telerik:RadTextBox ID="txtClEstatus" Enabled="false" runat="server" Width="200px" MaxLength="1000" Height="35px" TextMode="MultiLine"></telerik:RadTextBox>
+>>>>>>> DEV
                             </div>
                         </div>
                         <div style="clear: both;"></div>
                         <div class="ctrlBasico">
-                            <label style="width: 120px;" id="Label2" name="lblEvento" runat="server">Estatus:</label>
+                            <div class="divControlIzquierda">
+                                <label style="width: 120px;" id="Label2" name="lblEvento" runat="server">Estatus:</label>
+                            </div>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtClEstatus" Enabled="false" runat="server" Width="200px" MaxLength="1000"></telerik:RadTextBox>
+<<<<<<< HEAD
+                                <telerik:RadTextBox ID="txtClEstatus" Enabled="false" runat="server" Width="200px" MaxLength="1000" Height="35px" TextMode="MultiLine"></telerik:RadTextBox>
+=======
+                                <telerik:RadTextBox ID="txtTipo" Enabled="false" runat="server" Width="400px" MaxLength="1000" Height="35px" TextMode="MultiLine"></telerik:RadTextBox>
+>>>>>>> DEV
                             </div>
                         </div>
                         <div style="clear: both;"></div>
                         <div class="ctrlBasico">
-                            <label style="width: 120px;" id="Label3" name="lblEvento" runat="server">Tipo de cuestionario:</label>
+                            <div class="divControlIzquierda">
+                                <label style="width: 120px;" id="Label3" name="lblEvento" runat="server">Origen de cuestionario:</label>
+                            </div>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtTipo" Enabled="false" runat="server" Width="400px" MaxLength="1000"></telerik:RadTextBox>
+<<<<<<< HEAD
+                                <telerik:RadTextBox ID="txtTipo" Enabled="false" runat="server" Width="350px" MaxLength="1000" Height="35px" TextMode="MultiLine"></telerik:RadTextBox>
                             </div>
                         </div>
                         <div style="clear: both;"></div>
                         <div class="ctrlBasico">
-                            <label style="width: 120px;" id="Label5" name="lblCurso" runat="server">Último usuario que modifica:</label>
+                            <div class="divControlIzquierda">
+                                <label style="width: 120px;" id="Label5" name="lblCurso" runat="server">Último usuario que modifica:</label>
+                            </div>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtUsuarioMod" Enabled="false" runat="server" Width="140px" MaxLength="1000"></telerik:RadTextBox>
+                                <telerik:RadTextBox ID="txtUsuarioMod" Enabled="false" runat="server" Width="105px" MaxLength="1000" Height="35px" TextMode="MultiLine"></telerik:RadTextBox>
+=======
+                                <telerik:RadTextBox ID="txtUsuarioMod" Enabled="false" runat="server" Width="140px" MaxLength="1000" Height="35px" TextMode="MultiLine"></telerik:RadTextBox>
+>>>>>>> DEV
                             </div>
                         </div>
                         <div class="ctrlBasico">
-                            <label style="width: 120px;" id="Label6" name="lblCurso" runat="server">Última fecha de modificación:</label>
+                            <div class="divControlIzquierda">
+                                <label style="width: 120px;" id="Label6" name="lblCurso" runat="server">Última fecha de modificación:</label>
+                            </div>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtFechaMod" Enabled="false" runat="server" Width="140px" MaxLength="1000"></telerik:RadTextBox>
+<<<<<<< HEAD
+                                <telerik:RadTextBox ID="txtFechaMod" Enabled="false" runat="server" Width="105px" MaxLength="1000" Height="35px" TextMode="MultiLine"></telerik:RadTextBox>
+=======
+                                <telerik:RadTextBox ID="txtFechaMod" Enabled="false" runat="server" Width="140px" MaxLength="1000" Height="35px" TextMode="MultiLine"></telerik:RadTextBox>
+>>>>>>> DEV
                             </div>
                         </div>
                     </telerik:RadPageView>
-
-                    </telerik:RadMultiPage>
+                </telerik:RadMultiPage>
             </div>
         </telerik:RadPane>
         <telerik:RadPane ID="rpAyudaClimaLaboral" runat="server" Scrolling="None" Width="20px">
-            <telerik:RadSlidingZone ID="rszAyudaClimaLaboral" runat="server" SlideDirection="Left" ExpandedPaneId="rsClimaLaboral" Width="20px">
+            <telerik:RadSlidingZone ID="rszAyudaClimaLaboral" runat="server" ClickToOpen="true" SlideDirection="Left" ExpandedPaneId="rsClimaLaboral" Width="20px">
                 <telerik:RadSlidingPane ID="rspAyudaClimaLaboral" runat="server" Title="Ayuda" Width="240px" RenderMode="Mobile" Height="100%">
                     <div style="padding: 20px; text-align: justify;">
                         <p>
-                            Esta opción te permite dar mantenimiento a los periodos para el módulo de Clima Laboral, 
-                                   generando nuevos periodos y cerrando o re-abriendo periodos existentes.
+                            Esta opción te permite dar mantenimiento a los períodos para el módulo de Clima Laboral, 
+                                   generando nuevos períodos y cerrando o re-abriendo períodos existentes.
                         </p>
                         <p>Nota: Si se decide re-crear un período, toda la información previamente generada -como programación y cuestionarios- será eliminada.</p>
                     </div>
@@ -593,8 +819,8 @@
                             <legend>Ordenar por:</legend>
                             <telerik:RadComboBox ID="cmbOrdenamiento" runat="server">
                                 <Items>
-                                    <telerik:RadComboBoxItem Text="Clave del periodo" Value="CL_PERIODO" />
-                                    <telerik:RadComboBoxItem Text="Nombre del periodo" Value="NB_PERIODO" />
+                                    <telerik:RadComboBoxItem Text="Clave del período" Value="CL_PERIODO" />
+                                    <telerik:RadComboBoxItem Text="Nombre del período" Value="NB_PERIODO" />
                                     <telerik:RadComboBoxItem Text="Estatus" Value="CL_ESTADO_PERIODO" />
                                     <telerik:RadComboBoxItem Text="Fecha de inicio del evento" Value="FE_INICIO" />
                                 </Items>
@@ -614,12 +840,13 @@
                 </telerik:RadSlidingPane>
             </telerik:RadSlidingZone>
         </telerik:RadPane>
-    </telerik:RadSplitter>
+    </telerik:RadSplitter>   
+    <div style="clear: both;"></div>
     <telerik:RadWindowManager ID="rwmMensaje" runat="server" EnableShadow="true" OnClientClose="returnDataToParentPopup">
         <Windows>
             <telerik:RadWindow ID="WinClimaLaboral" runat="server" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" ReloadOnShow="false"></telerik:RadWindow>
             <telerik:RadWindow ID="WinCues" runat="server" Width="1050px" Height="580px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" ReloadOnShow="false"></telerik:RadWindow>
-            <telerik:RadWindow ID="WinConfigurar" runat="server" Width="1000px" Height="580px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" ReloadOnShow="true"></telerik:RadWindow>
+            <telerik:RadWindow ID="WinConfigurar" runat="server" Width="1000px" Height="580px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" ReloadOnShow="true" OnClientClose="CloseWindowConfig"></telerik:RadWindow>
             <telerik:RadWindow ID="WinCuestionario" runat="server" Width="1050px" Height="580px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" ReloadOnShow="false" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
             <telerik:RadWindow ID="WinPreguntas" runat="server" Width="450px" Height="500px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" ReloadOnShow="false" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
             <telerik:RadWindow ID="WinConsultaPersonal" runat="server" Width="1050px" Height="580px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade"> </telerik:RadWindow>

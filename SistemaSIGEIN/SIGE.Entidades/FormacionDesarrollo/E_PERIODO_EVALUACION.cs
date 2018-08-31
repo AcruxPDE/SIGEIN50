@@ -14,6 +14,7 @@ namespace SIGE.Entidades.FormacionDesarrollo
         public string CL_PERIODO { get; set; }
         public string CL_TIPO_PERIODO { get; set; }
         public DateTime FE_PERIODO { get; set; }
+        public string DS_NOTAS { get; set; }
         public string CL_ESTADO { get; set; }
         public string NB_PERIODO { get; set; }
         public string DS_PERIODO { get; set; }
