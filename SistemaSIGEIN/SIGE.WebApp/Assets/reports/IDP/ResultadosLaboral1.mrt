@@ -1,0 +1,1770 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="0" />
+    <DataSources isList="true" count="0" />
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="33">
+      <value>,MD,MD,,System.String,,False,False,False,False</value>
+      <value>,MI,MI,,System.String,,False,False,False,False</value>
+      <value>,MS,MS,,System.String,,False,False,False,False</value>
+      <value>,MC,MC,,System.String,,False,False,False,False</value>
+      <value>,LD,LD,,System.String,,False,False,False,False</value>
+      <value>,LI,LI,,System.String,,False,False,False,False</value>
+      <value>,LS,LS,,System.String,,False,False,False,False</value>
+      <value>,LC,LC,,System.String,,False,False,False,False</value>
+      <value>,TD,TD,,System.String,,False,False,False,False</value>
+      <value>,TI,TI,,System.String,,False,False,False,False</value>
+      <value>,TS,TS,,System.String,,False,False,False,False</value>
+      <value>,TC,TC,,System.String,,False,False,False,False</value>
+      <value>,CL_SOLICITUD,CL_SOLICITUD,,System.String,,False,False,False,False</value>
+      <value>,NB_CANDIDATO,NB_CANDIDATO,,System.String,,False,False,False,False</value>
+      <value>,COTIDIANO,COTIDIANO,,System.String,,False,False,False,False</value>
+      <value>,PRESIONANTE,PRESIONANTE,,System.String,,False,False,False,False</value>
+      <value>,MOTIVANTE,MOTIVANTE,,System.String,,False,False,False,False</value>
+      <value>,VALIDEZ,VALIDEZ,,System.String,,False,False,False,False</value>
+      <value>,DS_COTIDIANO,DS_COTIDIANO,,System.String,,False,False,False,False</value>
+      <value>,DS_PRESIONANTE,DS_PRESIONANTE,,System.String,,False,False,False,False</value>
+      <value>,DS_MOTIVANTE,DS_MOTIVANTE,,System.String,,False,False,False,False</value>
+      <value>,GMD,GMD,,System.String,,False,False,False,False</value>
+      <value>,GMI,GMI,,System.String,,False,False,False,False</value>
+      <value>,GMS,GMS,,System.String,,False,False,False,False</value>
+      <value>,GMC,GMC,,System.String,,False,False,False,False</value>
+      <value>,GTD,GTD,,System.String,,False,False,False,False</value>
+      <value>,GTI,GTI,,System.String,,False,False,False,False</value>
+      <value>,GTS,GTS,,System.String,,False,False,False,False</value>
+      <value>,GTC,GTC,,System.String,,False,False,False,False</value>
+      <value>,GLD,GLD,,System.String,,False,False,False,False</value>
+      <value>,GLI,GLI,,System.String,,False,False,False,False</value>
+      <value>,GLS,GLS,,System.String,,False,False,False,False</value>
+      <value>,GLC,GLC,,System.String,,False,False,False,False</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="4">
+    <Page1 Ref="2" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="2">
+        <PageHeaderBand1 Ref="3" type="PageHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,17.6,2.2</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text1 Ref="4" type="Text" isKey="true">
+              <Border>Bottom;[186:20:25];4;Solid;False;2;[186:20:25]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.2,17.6,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,20</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="2" />
+              <Parent isRef="3" />
+              <Text>Resultados personalidad labora I</Text>
+              <TextBrush>[192:0:0]</TextBrush>
+              <Type>Expression</Type>
+            </Text1>
+            <Text2 Ref="5" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1.4,5.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="2" />
+              <Parent isRef="3" />
+              <Text>Folio de solicitud:{CL_SOLICITUD}   </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text2>
+            <Text50 Ref="6" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6,1.4,11.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text50</Name>
+              <Page isRef="2" />
+              <Parent isRef="3" />
+              <Text> Candidato: {NB_CANDIDATO}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text50>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>PageHeaderBand1</Name>
+          <Page isRef="2" />
+          <Parent isRef="2" />
+        </PageHeaderBand1>
+        <DataBand1 Ref="7" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3.4,17.6,20.6</ClientRectangle>
+          <Components isList="true" count="44">
+            <Text3 Ref="8" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1,1.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>M</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text3>
+            <Text4 Ref="9" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1.8,1.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>8249cf61c6634b16b33fe33f0043865e</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>L</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text4>
+            <Text6 Ref="10" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.2,1.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>7028dbfccfcc4d548a4cfe735b71de67</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text6>
+            <Text7 Ref="11" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.2,0.2,1.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>8a20bdc5169249f4aa7e8db87fed9cef</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>D</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text7>
+            <Text8 Ref="12" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.6,0.2,1.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>c8610f84b1094c90a6d796a589e3f5b7</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>I</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text8>
+            <Text9 Ref="13" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4,0.2,1.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>f0b51049e53443c5af21afbc4a83a81e</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>S</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text9>
+            <Text11 Ref="14" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.4,0.2,1.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>e53b5f6d29a8437fb2922c023cc32307</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>C</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text11>
+            <Text10 Ref="15" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.2,1,1.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>4ed318b518534914a4ab39f13b6adfd4</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>{MD}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text10>
+            <Text12 Ref="16" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.6,1,1.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>13b3f05ddee84501bf2847bd62e4d1dd</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>{MI}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text12>
+            <Text13 Ref="17" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4,1,1.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>8d8e31ca9f8f4ce399e02d0693647948</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>{MS}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text13>
+            <Text14 Ref="18" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.4,1,1.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>1a26443b6b50431b865473d97f3eaf78</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>{MC}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text14>
+            <Text15 Ref="19" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.2,1.8,1.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>fad6b47092e84b788170c4dd41f23cf7</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>{LD}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text15>
+            <Text16 Ref="20" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.6,1.8,1.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>94fba00fd791469c9e83b019898abaed</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text16</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>{LI}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text16>
+            <Text17 Ref="21" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.4,1.8,1.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>4f16e309f91244e88a2ffb511573d766</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>{LC}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text17>
+            <Text18 Ref="22" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.4,2.6,1.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>39ddb566749d48f79777a8a76a361928</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>{TC}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text18>
+            <Text19 Ref="23" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.2,2.6,1.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>65028291d54041dc91423d53604ee5ff</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>{TD}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text19>
+            <Text20 Ref="24" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.6,2.6,1.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>5693fc170ba54bb3b4895ed66ff47de7</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text20</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>{TI}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text20>
+            <Text21 Ref="25" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4,2.6,1.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>48e08d12aedf4e53b67c9e0f38450aa2</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>{TS}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text21>
+            <Text25 Ref="26" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4,1.8,1.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>aa1dfbf43a3f46e4a2d1374304de30b5</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text25</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>{LS}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text25>
+            <Text22 Ref="27" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7,0.2,8.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>Características sobresalientes de personalidad:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text22>
+            <Text23 Ref="28" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7,1,8.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>68cf12efbd1049319593ade25a63e589</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>Situación motivante:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text23>
+            <Text24 Ref="29" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7,1.8,8.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>b1e81ae1d9e8436ba619fc678a2a2f92</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text24</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>Situación presionante:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text24>
+            <Text26 Ref="30" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,3.8,1.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text26</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>Validez:</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text26>
+            <Text27 Ref="31" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,4.6,3.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>0050d1ad77d945eeb8663b1d7a67850f</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text27</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>D = Empuje</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text27>
+            <Text28 Ref="32" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,5.4,3.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>098ba91047f8418cabaa1ce14352d531</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text28</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>I = Influencia</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text28>
+            <Text29 Ref="33" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,6.2,3.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>b0e5040a8e4241d7bdbd6db6c2a4e7ee</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text29</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>S= Constancia</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text29>
+            <Text30 Ref="34" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,7,3.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>cc0820f1cba34b539afa9dfe616a71a1</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text30</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>C = Apego a normas
+</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text30>
+            <GraCotidiano Ref="35" type="Stimulsoft.Report.Chart.StiChart" isKey="true">
+              <Area Ref="36" type="Stimulsoft.Report.Chart.StiClusteredColumnArea" isKey="true">
+                <BorderColor>171, 172, 173</BorderColor>
+                <Brush>[255:255:255]</Brush>
+                <Chart isRef="35" />
+                <GridLinesHor Ref="37" type="Stimulsoft.Report.Chart.StiGridLinesHor" isKey="true">
+                  <Area isRef="36" />
+                  <Color>100, 105, 105, 105</Color>
+                  <MinorColor>100, 105, 105, 105</MinorColor>
+                  <MinorStyle>Solid</MinorStyle>
+                  <Style>Solid</Style>
+                </GridLinesHor>
+                <GridLinesHorRight Ref="38" type="Stimulsoft.Report.Chart.StiGridLinesHor" isKey="true">
+                  <Area isRef="36" />
+                  <Color>Silver</Color>
+                  <MinorColor>Gainsboro</MinorColor>
+                  <Visible>False</Visible>
+                </GridLinesHorRight>
+                <GridLinesVert Ref="39" type="Stimulsoft.Report.Chart.StiGridLinesVert" isKey="true">
+                  <Area isRef="36" />
+                  <Color>100, 105, 105, 105</Color>
+                  <MinorColor>100, 105, 105, 105</MinorColor>
+                  <MinorStyle>Solid</MinorStyle>
+                  <Style>Solid</Style>
+                </GridLinesVert>
+                <InterlacingHor Ref="40" type="Stimulsoft.Report.Chart.StiInterlacingHor" isKey="true">
+                  <Area isRef="36" />
+                  <InterlacedBrush>[10:155:155:155]</InterlacedBrush>
+                </InterlacingHor>
+                <InterlacingVert Ref="41" type="Stimulsoft.Report.Chart.StiInterlacingVert" isKey="true">
+                  <Area isRef="36" />
+                  <InterlacedBrush>[10:155:155:155]</InterlacedBrush>
+                </InterlacingVert>
+                <XAxis Ref="42" type="Stimulsoft.Report.Chart.StiXBottomAxis" isKey="true">
+                  <Area isRef="36" />
+                  <DateTimeStep Ref="43" type="Stimulsoft.Report.Chart.StiAxisDateTimeStep" isKey="true" />
+                  <Interaction Ref="44" type="Stimulsoft.Report.Chart.StiAxisInteraction" isKey="true" />
+                  <Labels Ref="45" type="Stimulsoft.Report.Chart.StiAxisLabels" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Font>Tahoma,8</Font>
+                  </Labels>
+                  <LineColor>140, 140, 140</LineColor>
+                  <Range Ref="46" type="Stimulsoft.Report.Chart.StiAxisRange" isKey="true">
+                    <Auto>False</Auto>
+                    <Maximum>5</Maximum>
+                  </Range>
+                  <Ticks Ref="47" type="Stimulsoft.Report.Chart.StiAxisTicks" isKey="true" />
+                  <Title Ref="48" type="Stimulsoft.Report.Chart.StiAxisTitle" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Font>Tahoma,12,Bold</Font>
+                  </Title>
+                </XAxis>
+                <XTopAxis Ref="49" type="Stimulsoft.Report.Chart.StiXTopAxis" isKey="true">
+                  <Area isRef="36" />
+                  <Interaction Ref="50" type="Stimulsoft.Report.Chart.StiAxisInteraction" isKey="true" />
+                  <Labels Ref="51" type="Stimulsoft.Report.Chart.StiAxisLabels" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Font>Tahoma,8</Font>
+                  </Labels>
+                  <LineColor>140, 140, 140</LineColor>
+                  <Ticks Ref="52" type="Stimulsoft.Report.Chart.StiAxisTicks" isKey="true" />
+                  <Title Ref="53" type="Stimulsoft.Report.Chart.StiAxisTitle" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Font>Tahoma,12,Bold</Font>
+                  </Title>
+                </XTopAxis>
+                <YAxis Ref="54" type="Stimulsoft.Report.Chart.StiYLeftAxis" isKey="true">
+                  <Area isRef="36" />
+                  <Interaction Ref="55" type="Stimulsoft.Report.Chart.StiAxisInteraction" isKey="true" />
+                  <Labels Ref="56" type="Stimulsoft.Report.Chart.StiAxisLabels" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Font>Tahoma,8</Font>
+                    <Step>10</Step>
+                  </Labels>
+                  <LineColor>140, 140, 140</LineColor>
+                  <Range Ref="57" type="Stimulsoft.Report.Chart.StiAxisRange" isKey="true">
+                    <Auto>False</Auto>
+                    <Maximum>100</Maximum>
+                  </Range>
+                  <Step>10</Step>
+                  <Ticks Ref="58" type="Stimulsoft.Report.Chart.StiAxisTicks" isKey="true" />
+                  <Title Ref="59" type="Stimulsoft.Report.Chart.StiAxisTitle" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Direction>BottomToTop</Direction>
+                    <Font>Tahoma,12,Bold</Font>
+                  </Title>
+                </YAxis>
+                <YRightAxis Ref="60" type="Stimulsoft.Report.Chart.StiYRightAxis" isKey="true">
+                  <Area isRef="36" />
+                  <Interaction Ref="61" type="Stimulsoft.Report.Chart.StiAxisInteraction" isKey="true" />
+                  <Labels Ref="62" type="Stimulsoft.Report.Chart.StiAxisLabels" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Font>Tahoma,8</Font>
+                    <TextAlignment>Left</TextAlignment>
+                  </Labels>
+                  <LineColor>140, 140, 140</LineColor>
+                  <Range Ref="63" type="Stimulsoft.Report.Chart.StiAxisRange" isKey="true" />
+                  <Ticks Ref="64" type="Stimulsoft.Report.Chart.StiAxisTicks" isKey="true" />
+                  <Title Ref="65" type="Stimulsoft.Report.Chart.StiAxisTitle" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Direction>TopToBottom</Direction>
+                    <Font>Tahoma,12,Bold</Font>
+                  </Title>
+                </YRightAxis>
+              </Area>
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>0,9,5.8,10.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ConstantLines isList="true" count="3">
+                <Item35 Ref="66" type="Stimulsoft.Report.Chart.StiConstantLines" isKey="true">
+                  <Antialiasing>False</Antialiasing>
+                  <AxisValue>8</AxisValue>
+                  <Chart isRef="35" />
+                  <Font>Arial,7</Font>
+                  <LineColor>171, 172, 173</LineColor>
+                  <LineWidth>5</LineWidth>
+                  <ShowBehind>True</ShowBehind>
+                  <Text>Línea Fija 1</Text>
+                  <TitleVisible>False</TitleVisible>
+                </Item35>
+                <Item36 Ref="67" type="Stimulsoft.Report.Chart.StiConstantLines" isKey="true">
+                  <AxisValue>94</AxisValue>
+                  <Chart isRef="35" />
+                  <Font>Arial,7</Font>
+                  <LineColor>171, 172, 173</LineColor>
+                  <LineWidth>5</LineWidth>
+                  <ShowBehind>True</ShowBehind>
+                  <Text>Línea Fija 2</Text>
+                  <TitleVisible>False</TitleVisible>
+                </Item36>
+                <Item37 Ref="68" type="Stimulsoft.Report.Chart.StiConstantLines" isKey="true">
+                  <AxisValue>50</AxisValue>
+                  <Chart isRef="35" />
+                  <Font>Arial,7</Font>
+                  <LineColor>171, 172, 173</LineColor>
+                  <LineWidth>5</LineWidth>
+                  <ShowBehind>True</ShowBehind>
+                  <Text>Línea Fija 3</Text>
+                  <TitleVisible>False</TitleVisible>
+                </Item37>
+              </ConstantLines>
+              <CustomStyleName />
+              <Filters isList="true" count="0" />
+              <IsAnimation>False</IsAnimation>
+              <Legend Ref="69" type="Stimulsoft.Report.Chart.StiLegend" isKey="true">
+                <BorderColor>225, 225, 225</BorderColor>
+                <Brush>[255:255:255]</Brush>
+                <Chart isRef="35" />
+                <Font>Arial,8</Font>
+                <LabelsColor>140, 140, 140</LabelsColor>
+                <MarkerSize>10, 10</MarkerSize>
+                <ShowShadow>False</ShowShadow>
+                <TitleColor>105, 105, 105</TitleColor>
+                <TitleFont>Arial,14,Bold</TitleFont>
+              </Legend>
+              <Name>GraCotidiano</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Series isList="true" count="1">
+                <Item38 Ref="70" type="Stimulsoft.Report.Chart.StiLineSeries" isKey="true">
+                  <Chart isRef="35" />
+                  <Conditions isList="true" count="0" />
+                  <Filters isList="true" count="0" />
+                  <Lighting>False</Lighting>
+                  <LineColor>112, 173, 71</LineColor>
+                  <LineColorNegative>Firebrick</LineColorNegative>
+                  <LineMarker Ref="71" type="Stimulsoft.Report.Chart.StiLineMarker" isKey="true">
+                    <BorderColor>0, 23, 0</BorderColor>
+                    <Brush>[162:223:121]</Brush>
+                  </LineMarker>
+                  <ListOfArguments>D;I;S;C</ListOfArguments>
+                  <ListOfValues>{GTD};{GTI};{GTS};{GTC}</ListOfValues>
+                  <Marker Ref="72" type="Stimulsoft.Report.Chart.StiMarker" isKey="true">
+                    <BorderColor>12, 73, 0</BorderColor>
+                    <Brush>[212:255:171]</Brush>
+                  </Marker>
+                  <SeriesLabels Ref="73" type="Stimulsoft.Report.Chart.StiOutsideEndAxisLabels" isKey="true">
+                    <BorderColor>Transparent</BorderColor>
+                    <Brush>Transparent</Brush>
+                    <Chart isRef="35" />
+                    <Font>Arial,10</Font>
+                    <LabelColor>51, 71, 91</LabelColor>
+                    <MarkerSize>8, 6</MarkerSize>
+                    <ValueTypeSeparator>-</ValueTypeSeparator>
+                    <Width>0</Width>
+                  </SeriesLabels>
+                  <ShowInLegend>False</ShowInLegend>
+                  <ShowShadow>False</ShowShadow>
+                  <TopN Ref="74" type="Stimulsoft.Report.Chart.StiSeriesTopN" isKey="true" />
+                  <TrendLine Ref="75" type="Stimulsoft.Report.Chart.StiTrendLineNone" isKey="true">
+                    <LineColor>Black</LineColor>
+                    <ShowShadow>True</ShowShadow>
+                  </TrendLine>
+                </Item38>
+              </Series>
+              <SeriesLabels Ref="76" type="Stimulsoft.Report.Chart.StiNoneLabels" isKey="true">
+                <Chart isRef="35" />
+                <MarkerSize>8, 6</MarkerSize>
+                <ValueTypeSeparator>-</ValueTypeSeparator>
+                <Width>0</Width>
+              </SeriesLabels>
+              <SeriesLabelsConditions isList="true" count="0" />
+              <Sort isList="true" count="0" />
+              <Strips isList="true" count="0" />
+              <Style Ref="77" type="Stimulsoft.Report.Chart.StiStyle25" isKey="true" />
+              <Table Ref="78" type="Stimulsoft.Report.Chart.StiChartTable" isKey="true">
+                <Font>Tahoma,8</Font>
+                <GridLineColor>225, 225, 225</GridLineColor>
+                <Header Ref="79" type="Stimulsoft.Report.Chart.StiChartTableHeader" isKey="true">
+                  <Brush>White</Brush>
+                  <Font>Arial,8</Font>
+                  <TextColor>DarkGray</TextColor>
+                </Header>
+                <TextColor>140, 140, 140</TextColor>
+              </Table>
+              <Title Ref="80" type="Stimulsoft.Report.Chart.StiChartTitle" isKey="true">
+                <Brush>[140:140:140]</Brush>
+                <Font>Tahoma,12,Bold</Font>
+                <Text>T</Text>
+              </Title>
+            </GraCotidiano>
+            <Chart1 Ref="81" type="Stimulsoft.Report.Chart.StiChart" isKey="true">
+              <Area Ref="82" type="Stimulsoft.Report.Chart.StiClusteredColumnArea" isKey="true">
+                <BorderColor>171, 172, 173</BorderColor>
+                <Brush>[255:255:255]</Brush>
+                <Chart isRef="81" />
+                <GridLinesHor Ref="83" type="Stimulsoft.Report.Chart.StiGridLinesHor" isKey="true">
+                  <Area isRef="82" />
+                  <Color>100, 105, 105, 105</Color>
+                  <MinorColor>100, 105, 105, 105</MinorColor>
+                </GridLinesHor>
+                <GridLinesHorRight Ref="84" type="Stimulsoft.Report.Chart.StiGridLinesHor" isKey="true">
+                  <Area isRef="82" />
+                  <Color>Silver</Color>
+                  <MinorColor>Gainsboro</MinorColor>
+                  <Visible>False</Visible>
+                </GridLinesHorRight>
+                <GridLinesVert Ref="85" type="Stimulsoft.Report.Chart.StiGridLinesVert" isKey="true">
+                  <Area isRef="82" />
+                  <Color>100, 105, 105, 105</Color>
+                  <MinorColor>100, 105, 105, 105</MinorColor>
+                </GridLinesVert>
+                <InterlacingHor Ref="86" type="Stimulsoft.Report.Chart.StiInterlacingHor" isKey="true">
+                  <Area isRef="82" />
+                  <InterlacedBrush>[10:155:155:155]</InterlacedBrush>
+                </InterlacingHor>
+                <InterlacingVert Ref="87" type="Stimulsoft.Report.Chart.StiInterlacingVert" isKey="true">
+                  <Area isRef="82" />
+                  <InterlacedBrush>[10:155:155:155]</InterlacedBrush>
+                </InterlacingVert>
+                <XAxis Ref="88" type="Stimulsoft.Report.Chart.StiXBottomAxis" isKey="true">
+                  <Area isRef="82" />
+                  <DateTimeStep Ref="89" type="Stimulsoft.Report.Chart.StiAxisDateTimeStep" isKey="true" />
+                  <Interaction Ref="90" type="Stimulsoft.Report.Chart.StiAxisInteraction" isKey="true" />
+                  <Labels Ref="91" type="Stimulsoft.Report.Chart.StiAxisLabels" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Font>Tahoma,8</Font>
+                  </Labels>
+                  <LineColor>140, 140, 140</LineColor>
+                  <Range Ref="92" type="Stimulsoft.Report.Chart.StiAxisRange" isKey="true">
+                    <Auto>False</Auto>
+                    <Maximum>5</Maximum>
+                  </Range>
+                  <Ticks Ref="93" type="Stimulsoft.Report.Chart.StiAxisTicks" isKey="true" />
+                  <Title Ref="94" type="Stimulsoft.Report.Chart.StiAxisTitle" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Font>Tahoma,12,Bold</Font>
+                  </Title>
+                </XAxis>
+                <XTopAxis Ref="95" type="Stimulsoft.Report.Chart.StiXTopAxis" isKey="true">
+                  <Area isRef="82" />
+                  <Interaction Ref="96" type="Stimulsoft.Report.Chart.StiAxisInteraction" isKey="true" />
+                  <Labels Ref="97" type="Stimulsoft.Report.Chart.StiAxisLabels" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Font>Tahoma,8</Font>
+                  </Labels>
+                  <LineColor>140, 140, 140</LineColor>
+                  <Ticks Ref="98" type="Stimulsoft.Report.Chart.StiAxisTicks" isKey="true" />
+                  <Title Ref="99" type="Stimulsoft.Report.Chart.StiAxisTitle" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Font>Tahoma,12,Bold</Font>
+                  </Title>
+                </XTopAxis>
+                <YAxis Ref="100" type="Stimulsoft.Report.Chart.StiYLeftAxis" isKey="true">
+                  <Area isRef="82" />
+                  <Interaction Ref="101" type="Stimulsoft.Report.Chart.StiAxisInteraction" isKey="true" />
+                  <Labels Ref="102" type="Stimulsoft.Report.Chart.StiAxisLabels" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Font>Tahoma,8</Font>
+                    <Step>10</Step>
+                  </Labels>
+                  <LineColor>140, 140, 140</LineColor>
+                  <Range Ref="103" type="Stimulsoft.Report.Chart.StiAxisRange" isKey="true">
+                    <Auto>False</Auto>
+                    <Maximum>100</Maximum>
+                  </Range>
+                  <Step>10</Step>
+                  <Ticks Ref="104" type="Stimulsoft.Report.Chart.StiAxisTicks" isKey="true" />
+                  <Title Ref="105" type="Stimulsoft.Report.Chart.StiAxisTitle" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Direction>BottomToTop</Direction>
+                    <Font>Tahoma,12,Bold</Font>
+                  </Title>
+                </YAxis>
+                <YRightAxis Ref="106" type="Stimulsoft.Report.Chart.StiYRightAxis" isKey="true">
+                  <Area isRef="82" />
+                  <Interaction Ref="107" type="Stimulsoft.Report.Chart.StiAxisInteraction" isKey="true" />
+                  <Labels Ref="108" type="Stimulsoft.Report.Chart.StiAxisLabels" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Font>Tahoma,8</Font>
+                    <TextAlignment>Left</TextAlignment>
+                  </Labels>
+                  <LineColor>140, 140, 140</LineColor>
+                  <Range Ref="109" type="Stimulsoft.Report.Chart.StiAxisRange" isKey="true" />
+                  <Ticks Ref="110" type="Stimulsoft.Report.Chart.StiAxisTicks" isKey="true" />
+                  <Title Ref="111" type="Stimulsoft.Report.Chart.StiAxisTitle" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Direction>TopToBottom</Direction>
+                    <Font>Tahoma,12,Bold</Font>
+                  </Title>
+                </YRightAxis>
+              </Area>
+              <Border>All;Black;1;Solid;False;4;Black;True</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>6,9,5.8,10.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ConstantLines isList="true" count="3">
+                <Item40 Ref="112" type="Stimulsoft.Report.Chart.StiConstantLines" isKey="true">
+                  <AxisValue>8</AxisValue>
+                  <Chart isRef="81" />
+                  <Font>Arial,7</Font>
+                  <LineColor>171, 172, 173</LineColor>
+                  <LineWidth>5</LineWidth>
+                  <ShowBehind>True</ShowBehind>
+                  <Text>Línea Fija 1</Text>
+                  <TitleVisible>False</TitleVisible>
+                </Item40>
+                <Item41 Ref="113" type="Stimulsoft.Report.Chart.StiConstantLines" isKey="true">
+                  <AxisValue>50</AxisValue>
+                  <Chart isRef="81" />
+                  <Font>Arial,7</Font>
+                  <LineColor>171, 172, 173</LineColor>
+                  <LineWidth>5</LineWidth>
+                  <ShowBehind>True</ShowBehind>
+                  <Text>Línea Fija 2</Text>
+                  <TitleVisible>False</TitleVisible>
+                </Item41>
+                <Item42 Ref="114" type="Stimulsoft.Report.Chart.StiConstantLines" isKey="true">
+                  <AxisValue>94</AxisValue>
+                  <Chart isRef="81" />
+                  <Font>Arial,7</Font>
+                  <LineColor>171, 172, 173</LineColor>
+                  <LineWidth>5</LineWidth>
+                  <ShowBehind>True</ShowBehind>
+                  <Text>Línea Fija 3</Text>
+                  <TitleVisible>False</TitleVisible>
+                </Item42>
+              </ConstantLines>
+              <CustomStyleName />
+              <Filters isList="true" count="0" />
+              <Guid>9861ef0f982746fe899219f026b01aa3</Guid>
+              <IsAnimation>False</IsAnimation>
+              <Legend Ref="115" type="Stimulsoft.Report.Chart.StiLegend" isKey="true">
+                <BorderColor>225, 225, 225</BorderColor>
+                <Brush>[255:255:255]</Brush>
+                <Chart isRef="81" />
+                <Font>Arial,8</Font>
+                <LabelsColor>140, 140, 140</LabelsColor>
+                <MarkerSize>10, 10</MarkerSize>
+                <ShowShadow>False</ShowShadow>
+                <TitleColor>105, 105, 105</TitleColor>
+                <TitleFont>Arial,14,Bold</TitleFont>
+              </Legend>
+              <Name>Chart1</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Series isList="true" count="1">
+                <Item43 Ref="116" type="Stimulsoft.Report.Chart.StiLineSeries" isKey="true">
+                  <Chart isRef="81" />
+                  <Conditions isList="true" count="0" />
+                  <Filters isList="true" count="0" />
+                  <Lighting>False</Lighting>
+                  <LineColor>112, 173, 71</LineColor>
+                  <LineColorNegative>Firebrick</LineColorNegative>
+                  <LineMarker Ref="117" type="Stimulsoft.Report.Chart.StiLineMarker" isKey="true">
+                    <BorderColor>0, 23, 0</BorderColor>
+                    <Brush>[162:223:121]</Brush>
+                  </LineMarker>
+                  <ListOfArguments>D;I;S;C</ListOfArguments>
+                  <ListOfValues>{GMD};{GMI};{GMS};{GMC}</ListOfValues>
+                  <Marker Ref="118" type="Stimulsoft.Report.Chart.StiMarker" isKey="true">
+                    <BorderColor>12, 73, 0</BorderColor>
+                    <Brush>[212:255:171]</Brush>
+                  </Marker>
+                  <SeriesLabels Ref="119" type="Stimulsoft.Report.Chart.StiOutsideEndAxisLabels" isKey="true">
+                    <BorderColor>Transparent</BorderColor>
+                    <Brush>Transparent</Brush>
+                    <Chart isRef="81" />
+                    <Font>Arial,10</Font>
+                    <LabelColor>51, 71, 91</LabelColor>
+                    <MarkerSize>8, 6</MarkerSize>
+                    <ValueTypeSeparator>-</ValueTypeSeparator>
+                    <Width>0</Width>
+                  </SeriesLabels>
+                  <ShowInLegend>False</ShowInLegend>
+                  <ShowShadow>False</ShowShadow>
+                  <TopN Ref="120" type="Stimulsoft.Report.Chart.StiSeriesTopN" isKey="true" />
+                  <TrendLine Ref="121" type="Stimulsoft.Report.Chart.StiTrendLineNone" isKey="true">
+                    <LineColor>Black</LineColor>
+                    <ShowShadow>True</ShowShadow>
+                  </TrendLine>
+                </Item43>
+              </Series>
+              <SeriesLabels Ref="122" type="Stimulsoft.Report.Chart.StiNoneLabels" isKey="true">
+                <Chart isRef="81" />
+                <MarkerSize>8, 6</MarkerSize>
+                <ValueTypeSeparator>-</ValueTypeSeparator>
+                <Width>0</Width>
+              </SeriesLabels>
+              <SeriesLabelsConditions isList="true" count="0" />
+              <Sort isList="true" count="0" />
+              <Strips isList="true" count="0" />
+              <Style Ref="123" type="Stimulsoft.Report.Chart.StiStyle25" isKey="true" />
+              <Table Ref="124" type="Stimulsoft.Report.Chart.StiChartTable" isKey="true">
+                <Font>Tahoma,8</Font>
+                <GridLineColor>225, 225, 225</GridLineColor>
+                <Header Ref="125" type="Stimulsoft.Report.Chart.StiChartTableHeader" isKey="true">
+                  <Brush>White</Brush>
+                  <Font>Arial,8</Font>
+                  <TextColor>DarkGray</TextColor>
+                </Header>
+                <TextColor>140, 140, 140</TextColor>
+              </Table>
+              <Title Ref="126" type="Stimulsoft.Report.Chart.StiChartTitle" isKey="true">
+                <Brush>[140:140:140]</Brush>
+                <Font>Tahoma,12,Bold</Font>
+                <Text>M</Text>
+              </Title>
+            </Chart1>
+            <Chart2 Ref="127" type="Stimulsoft.Report.Chart.StiChart" isKey="true">
+              <Area Ref="128" type="Stimulsoft.Report.Chart.StiClusteredColumnArea" isKey="true">
+                <BorderColor>171, 172, 173</BorderColor>
+                <Brush>[255:255:255]</Brush>
+                <Chart isRef="127" />
+                <GridLinesHor Ref="129" type="Stimulsoft.Report.Chart.StiGridLinesHor" isKey="true">
+                  <Area isRef="128" />
+                  <Color>100, 105, 105, 105</Color>
+                  <MinorColor>100, 105, 105, 105</MinorColor>
+                </GridLinesHor>
+                <GridLinesHorRight Ref="130" type="Stimulsoft.Report.Chart.StiGridLinesHor" isKey="true">
+                  <Area isRef="128" />
+                  <Color>Silver</Color>
+                  <MinorColor>Gainsboro</MinorColor>
+                  <Visible>False</Visible>
+                </GridLinesHorRight>
+                <GridLinesVert Ref="131" type="Stimulsoft.Report.Chart.StiGridLinesVert" isKey="true">
+                  <Area isRef="128" />
+                  <Color>100, 105, 105, 105</Color>
+                  <MinorColor>100, 105, 105, 105</MinorColor>
+                </GridLinesVert>
+                <InterlacingHor Ref="132" type="Stimulsoft.Report.Chart.StiInterlacingHor" isKey="true">
+                  <Area isRef="128" />
+                  <InterlacedBrush>[10:155:155:155]</InterlacedBrush>
+                </InterlacingHor>
+                <InterlacingVert Ref="133" type="Stimulsoft.Report.Chart.StiInterlacingVert" isKey="true">
+                  <Area isRef="128" />
+                  <InterlacedBrush>[10:155:155:155]</InterlacedBrush>
+                </InterlacingVert>
+                <XAxis Ref="134" type="Stimulsoft.Report.Chart.StiXBottomAxis" isKey="true">
+                  <Area isRef="128" />
+                  <DateTimeStep Ref="135" type="Stimulsoft.Report.Chart.StiAxisDateTimeStep" isKey="true" />
+                  <Interaction Ref="136" type="Stimulsoft.Report.Chart.StiAxisInteraction" isKey="true" />
+                  <Labels Ref="137" type="Stimulsoft.Report.Chart.StiAxisLabels" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Font>Tahoma,8</Font>
+                  </Labels>
+                  <LineColor>140, 140, 140</LineColor>
+                  <Range Ref="138" type="Stimulsoft.Report.Chart.StiAxisRange" isKey="true">
+                    <Maximum>5</Maximum>
+                  </Range>
+                  <Ticks Ref="139" type="Stimulsoft.Report.Chart.StiAxisTicks" isKey="true" />
+                  <Title Ref="140" type="Stimulsoft.Report.Chart.StiAxisTitle" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Font>Tahoma,12,Bold</Font>
+                  </Title>
+                </XAxis>
+                <XTopAxis Ref="141" type="Stimulsoft.Report.Chart.StiXTopAxis" isKey="true">
+                  <Area isRef="128" />
+                  <Interaction Ref="142" type="Stimulsoft.Report.Chart.StiAxisInteraction" isKey="true" />
+                  <Labels Ref="143" type="Stimulsoft.Report.Chart.StiAxisLabels" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Font>Tahoma,8</Font>
+                  </Labels>
+                  <LineColor>140, 140, 140</LineColor>
+                  <Ticks Ref="144" type="Stimulsoft.Report.Chart.StiAxisTicks" isKey="true" />
+                  <Title Ref="145" type="Stimulsoft.Report.Chart.StiAxisTitle" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Font>Tahoma,12,Bold</Font>
+                  </Title>
+                </XTopAxis>
+                <YAxis Ref="146" type="Stimulsoft.Report.Chart.StiYLeftAxis" isKey="true">
+                  <Area isRef="128" />
+                  <Interaction Ref="147" type="Stimulsoft.Report.Chart.StiAxisInteraction" isKey="true" />
+                  <Labels Ref="148" type="Stimulsoft.Report.Chart.StiAxisLabels" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Font>Tahoma,8</Font>
+                    <Step>10</Step>
+                  </Labels>
+                  <LineColor>140, 140, 140</LineColor>
+                  <Range Ref="149" type="Stimulsoft.Report.Chart.StiAxisRange" isKey="true">
+                    <Auto>False</Auto>
+                    <Maximum>100</Maximum>
+                  </Range>
+                  <Step>10</Step>
+                  <Ticks Ref="150" type="Stimulsoft.Report.Chart.StiAxisTicks" isKey="true" />
+                  <Title Ref="151" type="Stimulsoft.Report.Chart.StiAxisTitle" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Direction>BottomToTop</Direction>
+                    <Font>Tahoma,12,Bold</Font>
+                  </Title>
+                </YAxis>
+                <YRightAxis Ref="152" type="Stimulsoft.Report.Chart.StiYRightAxis" isKey="true">
+                  <Area isRef="128" />
+                  <Interaction Ref="153" type="Stimulsoft.Report.Chart.StiAxisInteraction" isKey="true" />
+                  <Labels Ref="154" type="Stimulsoft.Report.Chart.StiAxisLabels" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Font>Tahoma,8</Font>
+                    <TextAlignment>Left</TextAlignment>
+                  </Labels>
+                  <LineColor>140, 140, 140</LineColor>
+                  <Range Ref="155" type="Stimulsoft.Report.Chart.StiAxisRange" isKey="true" />
+                  <Ticks Ref="156" type="Stimulsoft.Report.Chart.StiAxisTicks" isKey="true" />
+                  <Title Ref="157" type="Stimulsoft.Report.Chart.StiAxisTitle" isKey="true">
+                    <Color>140, 140, 140</Color>
+                    <Direction>TopToBottom</Direction>
+                    <Font>Tahoma,12,Bold</Font>
+                  </Title>
+                </YRightAxis>
+              </Area>
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>12,9,5.8,10.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ConstantLines isList="true" count="3">
+                <Item45 Ref="158" type="Stimulsoft.Report.Chart.StiConstantLines" isKey="true">
+                  <AxisValue>8</AxisValue>
+                  <Chart isRef="127" />
+                  <Font>Arial,7</Font>
+                  <LineColor>171, 172, 173</LineColor>
+                  <LineWidth>5</LineWidth>
+                  <ShowBehind>True</ShowBehind>
+                  <Text>Línea Fija 1</Text>
+                  <TitleVisible>False</TitleVisible>
+                </Item45>
+                <Item46 Ref="159" type="Stimulsoft.Report.Chart.StiConstantLines" isKey="true">
+                  <AxisValue>50</AxisValue>
+                  <Chart isRef="127" />
+                  <Font>Arial,7</Font>
+                  <LineColor>171, 172, 173</LineColor>
+                  <LineWidth>5</LineWidth>
+                  <ShowBehind>True</ShowBehind>
+                  <Text>Línea Fija 2</Text>
+                  <TitleVisible>False</TitleVisible>
+                </Item46>
+                <Item47 Ref="160" type="Stimulsoft.Report.Chart.StiConstantLines" isKey="true">
+                  <AxisValue>94</AxisValue>
+                  <Chart isRef="127" />
+                  <Font>Arial,7</Font>
+                  <LineColor>171, 172, 173</LineColor>
+                  <LineWidth>5</LineWidth>
+                  <ShowBehind>True</ShowBehind>
+                  <Text>Línea Fija 3</Text>
+                  <TitleVisible>False</TitleVisible>
+                </Item47>
+              </ConstantLines>
+              <CustomStyleName />
+              <Filters isList="true" count="0" />
+              <Guid>237fcc1be2ec4aea9a7852210a4ef96c</Guid>
+              <IsAnimation>False</IsAnimation>
+              <Legend Ref="161" type="Stimulsoft.Report.Chart.StiLegend" isKey="true">
+                <BorderColor>225, 225, 225</BorderColor>
+                <Brush>[255:255:255]</Brush>
+                <Chart isRef="127" />
+                <Font>Arial,8</Font>
+                <LabelsColor>140, 140, 140</LabelsColor>
+                <MarkerSize>10, 10</MarkerSize>
+                <ShowShadow>False</ShowShadow>
+                <TitleColor>105, 105, 105</TitleColor>
+                <TitleFont>Arial,14,Bold</TitleFont>
+              </Legend>
+              <Name>Chart2</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Series isList="true" count="1">
+                <Item48 Ref="162" type="Stimulsoft.Report.Chart.StiLineSeries" isKey="true">
+                  <Chart isRef="127" />
+                  <Conditions isList="true" count="0" />
+                  <Filters isList="true" count="0" />
+                  <Lighting>False</Lighting>
+                  <LineColor>112, 173, 71</LineColor>
+                  <LineColorNegative>Firebrick</LineColorNegative>
+                  <LineMarker Ref="163" type="Stimulsoft.Report.Chart.StiLineMarker" isKey="true">
+                    <BorderColor>0, 23, 0</BorderColor>
+                    <Brush>[162:223:121]</Brush>
+                  </LineMarker>
+                  <ListOfArguments>D;I;S;C</ListOfArguments>
+                  <ListOfValues>{GLD};{GLI};{GLS};{GLC}</ListOfValues>
+                  <Marker Ref="164" type="Stimulsoft.Report.Chart.StiMarker" isKey="true">
+                    <BorderColor>12, 73, 0</BorderColor>
+                    <Brush>[212:255:171]</Brush>
+                  </Marker>
+                  <SeriesLabels Ref="165" type="Stimulsoft.Report.Chart.StiOutsideEndAxisLabels" isKey="true">
+                    <BorderColor>Transparent</BorderColor>
+                    <Brush>Transparent</Brush>
+                    <Chart isRef="127" />
+                    <Font>Arial,10</Font>
+                    <LabelColor>51, 71, 91</LabelColor>
+                    <MarkerSize>8, 6</MarkerSize>
+                    <ValueTypeSeparator>-</ValueTypeSeparator>
+                    <Width>0</Width>
+                  </SeriesLabels>
+                  <ShowInLegend>False</ShowInLegend>
+                  <ShowShadow>False</ShowShadow>
+                  <TopN Ref="166" type="Stimulsoft.Report.Chart.StiSeriesTopN" isKey="true" />
+                  <TrendLine Ref="167" type="Stimulsoft.Report.Chart.StiTrendLineNone" isKey="true">
+                    <LineColor>Black</LineColor>
+                    <ShowShadow>True</ShowShadow>
+                  </TrendLine>
+                </Item48>
+              </Series>
+              <SeriesLabels Ref="168" type="Stimulsoft.Report.Chart.StiNoneLabels" isKey="true">
+                <Chart isRef="127" />
+                <MarkerSize>8, 6</MarkerSize>
+                <ValueTypeSeparator>-</ValueTypeSeparator>
+                <Width>0</Width>
+              </SeriesLabels>
+              <SeriesLabelsConditions isList="true" count="0" />
+              <Sort isList="true" count="0" />
+              <Strips isList="true" count="0" />
+              <Style Ref="169" type="Stimulsoft.Report.Chart.StiStyle25" isKey="true" />
+              <Table Ref="170" type="Stimulsoft.Report.Chart.StiChartTable" isKey="true">
+                <Font>Tahoma,8</Font>
+                <GridLineColor>225, 225, 225</GridLineColor>
+                <Header Ref="171" type="Stimulsoft.Report.Chart.StiChartTableHeader" isKey="true">
+                  <Brush>White</Brush>
+                  <Font>Arial,8</Font>
+                  <TextColor>DarkGray</TextColor>
+                </Header>
+                <TextColor>140, 140, 140</TextColor>
+              </Table>
+              <Title Ref="172" type="Stimulsoft.Report.Chart.StiChartTitle" isKey="true">
+                <Brush>[140:140:140]</Brush>
+                <Font>Tahoma,12,Bold</Font>
+                <Text>L</Text>
+              </Title>
+            </Chart2>
+            <Text35 Ref="173" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>15.4,0.2,2.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text35</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>{COTIDIANO}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text35>
+            <Text36 Ref="174" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>15.4,1,2.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>f6641c0bd61e4134993f601f3231aa96</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text36</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>{MOTIVANTE}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text36>
+            <Text37 Ref="175" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>15.4,1.8,2.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>c16aaa6fcd54411e8318b9d874f3c929</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text37</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>{PRESIONANTE}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text37>
+            <Text38 Ref="176" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.4,3.8,0.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>698922f0ed5143199864cd03d1985f10</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text38</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>{VALIDEZ}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text38>
+            <Text5 Ref="177" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;2;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,2.6,1.2,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>21bd6252247b4ffe88e3b8fcab5c9232</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>Total</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text5>
+            <Text44 Ref="178" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>YellowGreen</Brush>
+              <ClientRectangle>2,20,0.2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text44</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text44>
+            <Text45 Ref="179" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.4,19.8,2.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text45</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>Sit. Cotidiano</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text45>
+            <Text46 Ref="180" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>YellowGreen</Brush>
+              <ClientRectangle>8.2,20,0.2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>c7eab8f9938848ceb1397c70e04c4205</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text46</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text46>
+            <Text47 Ref="181" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>8.6,19.8,2.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>7548b3abd857442e8a03c07c35198f15</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text47</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>Sit. Motivante</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text47>
+            <Text48 Ref="182" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>YellowGreen</Brush>
+              <ClientRectangle>14.2,20,0.2,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>adc7c1e0331c415199c2d257989dabbe</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text48</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text48>
+            <Text49 Ref="183" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>14.6,19.8,2.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>e3fea725cbbe452898ff669fa687b975</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text49</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>Sit. Presión</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text49>
+            <Text51 Ref="184" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,7.8,5.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text51</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>T</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text51>
+            <Text52 Ref="185" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6,7.8,5.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>dc67abd8ba7344deb21511598bb9c697</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text52</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>M</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text52>
+            <Text53 Ref="186" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>12,7.8,5.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>70ec1189879f4367b2b80a9551b08f40</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text53</Name>
+              <Page isRef="2" />
+              <Parent isRef="7" />
+              <Text>L</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text53>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="2" />
+          <Parent isRef="2" />
+          <Sort isList="true" count="0" />
+        </DataBand1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>b1fb2b5b7fab463f9fb83acd8e00c76c</Guid>
+      <Margins>2,2,2,2</Margins>
+      <Name>Page1</Name>
+      <PageHeight>27.9</PageHeight>
+      <PageWidth>21.6</PageWidth>
+      <PaperSize>Letter</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="187" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+    <Page2 Ref="188" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="2">
+        <PageHeaderBand2 Ref="189" type="PageHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,17.6,2</ClientRectangle>
+          <Components isList="true" count="2">
+            <Text31 Ref="190" type="Text" isKey="true">
+              <Border>Bottom;[186:20:25];4;Solid;False;2;[186:20:25]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.2,17.6,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,20</Font>
+              <Guid>fde4be9f9864451e8eb01d476ff5cde5</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text31</Name>
+              <Page isRef="188" />
+              <Parent isRef="189" />
+              <Text>Resultados personalidad labora I</Text>
+              <TextBrush>[192:0:0]</TextBrush>
+              <Type>Expression</Type>
+            </Text31>
+            <Text32 Ref="191" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1.4,17.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>a46a7f40464c4e01ad7401cc6a23d843</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text32</Name>
+              <Page isRef="188" />
+              <Parent isRef="189" />
+              <Text>Folio de solicitud:{CL_SOLICITUD}    Candidato: {NB_CANDIDATO}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text32>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>02e844012364477285f6f7d11fc1cc65</Guid>
+          <Name>PageHeaderBand2</Name>
+          <Page isRef="188" />
+          <Parent isRef="188" />
+        </PageHeaderBand2>
+        <DataBand2 Ref="192" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3.2,17.6,20.6</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text33 Ref="193" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,17.6,20.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text33</Name>
+              <Page isRef="188" />
+              <Parent isRef="192" />
+              <Text>{DS_COTIDIANO}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text33>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Name>DataBand2</Name>
+          <Page isRef="188" />
+          <Parent isRef="188" />
+          <Sort isList="true" count="0" />
+        </DataBand2>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>4794ff1e7b2346b885948a48d6a7633b</Guid>
+      <Margins>2,2,2,2</Margins>
+      <Name>Page2</Name>
+      <PageHeight>27.9</PageHeight>
+      <PageWidth>21.6</PageWidth>
+      <PaperSize>Letter</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="194" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page2>
+    <Page3 Ref="195" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="2">
+        <PageHeaderBand3 Ref="196" type="PageHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,17.6,2</ClientRectangle>
+          <Components isList="true" count="2">
+            <Text39 Ref="197" type="Text" isKey="true">
+              <Border>Bottom;[186:20:25];4;Solid;False;2;[186:20:25]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.2,17.6,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,20</Font>
+              <Guid>ea61179423494b189e0009594e529ab6</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text39</Name>
+              <Page isRef="195" />
+              <Parent isRef="196" />
+              <Text>Resultados personalidad labora I</Text>
+              <TextBrush>[192:0:0]</TextBrush>
+              <Type>Expression</Type>
+            </Text39>
+            <Text40 Ref="198" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1.4,17.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>a1c819954dfa405da6021d73835fa3d6</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text40</Name>
+              <Page isRef="195" />
+              <Parent isRef="196" />
+              <Text>Folio de solicitud:{CL_SOLICITUD}    Candidato: {NB_CANDIDATO}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text40>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>4d756d7441164699ae631f29da3adaeb</Guid>
+          <Name>PageHeaderBand3</Name>
+          <Page isRef="195" />
+          <Parent isRef="195" />
+        </PageHeaderBand3>
+        <DataBand3 Ref="199" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3.2,17.6,20.6</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text42 Ref="200" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,17.6,20.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>a91afed5f12a4929adc77b90915c609a</Guid>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text42</Name>
+              <Page isRef="195" />
+              <Parent isRef="199" />
+              <Text>{DS_MOTIVANTE}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text42>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Guid>76499f3fa55d47fda286c054a65df2be</Guid>
+          <Name>DataBand3</Name>
+          <Page isRef="195" />
+          <Parent isRef="195" />
+          <Sort isList="true" count="0" />
+        </DataBand3>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>fca104ebca71433593a0c1bb4bce62f2</Guid>
+      <Margins>2,2,2,2</Margins>
+      <Name>Page3</Name>
+      <PageHeight>27.9</PageHeight>
+      <PageWidth>21.6</PageWidth>
+      <PaperSize>Letter</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="201" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page3>
+    <Page4 Ref="202" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="2">
+        <PageHeaderBand4 Ref="203" type="PageHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,17.6,2.2</ClientRectangle>
+          <Components isList="true" count="2">
+            <Text54 Ref="204" type="Text" isKey="true">
+              <Border>Bottom;[186:20:25];4;Solid;False;2;[186:20:25]</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.2,17.6,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,20</Font>
+              <Guid>2f0bd55d110149a1857348be544cd05d</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text54</Name>
+              <Page isRef="202" />
+              <Parent isRef="203" />
+              <Text>Resultados personalidad labora I</Text>
+              <TextBrush>[192:0:0]</TextBrush>
+              <Type>Expression</Type>
+            </Text54>
+            <Text55 Ref="205" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1.4,17.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>94a3b7e8fdca43d581aabd12b247dd4e</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text55</Name>
+              <Page isRef="202" />
+              <Parent isRef="203" />
+              <Text>Folio de solicitud:{CL_SOLICITUD}    Candidato: {NB_CANDIDATO}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text55>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>c0e6d2cf4a674bb18703eb8baa9b538b</Guid>
+          <Name>PageHeaderBand4</Name>
+          <Page isRef="202" />
+          <Parent isRef="202" />
+        </PageHeaderBand4>
+        <DataBand4 Ref="206" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3.4,17.6,20.4</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text56 Ref="207" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,3.2,17.6,17.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>517261e4122040038d5c047d877abc1b</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text56</Name>
+              <Page isRef="202" />
+              <Parent isRef="206" />
+              <Text>{DS_PRESIONANTE}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextQuality>Wysiwyg</TextQuality>
+              <Type>Expression</Type>
+            </Text56>
+            <Text57 Ref="208" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.6,17.6,2.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>68bd35ce090c4d5fa70c5b8b8e0ecf9b</Guid>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text57</Name>
+              <Page isRef="202" />
+              <Parent isRef="206" />
+              <Text>Debemos recordar que ninguna persona es perfecta en todas las situaciones. Las características sobresalientes de comportamiento que resultan en el éxito en un clima compatible, son las mismas características que pueden llegar a ser factores limitantes en una situación de presión o de stress. Todas las personas tenemos limitaciones. El ejecutivo debe comprender estas posibles limitaciones y estar preparado para manejarlas, puesto que tienden a surgir en las ocasiones en que pueden ser más perjudiciales.</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text57>
+            <Text58 Ref="209" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,17.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>bcc2d55b7e7e4b18a19d68b3f6d62c9f</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text58</Name>
+              <Page isRef="202" />
+              <Parent isRef="206" />
+              <Text>Posibles limitaciones</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text58>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Guid>f3182e4ae34d463abe4860ccd380fbb7</Guid>
+          <Name>DataBand4</Name>
+          <Page isRef="202" />
+          <Parent isRef="202" />
+          <Sort isList="true" count="0" />
+        </DataBand4>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>41d8f2c97d4144438460a55c12eb0d4f</Guid>
+      <Margins>2,2,2,2</Margins>
+      <Name>Page4</Name>
+      <PageHeight>27.9</PageHeight>
+      <PageWidth>21.6</PageWidth>
+      <PaperSize>Letter</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="210" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page4>
+  </Pages>
+  <PrinterSettings Ref="211" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>6/28/2018 8:58:14 AM</ReportChanged>
+  <ReportCreated>11/1/2017 9:52:38 AM</ReportCreated>
+  <ReportFile>C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosLaboral1.mrt</ReportFile>
+  <ReportGuid>ff13934e77734bd9959cb865f06053b4</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2015.3.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="1">
+    <Estilo1 Ref="212" type="Stimulsoft.Report.StiStyle" isKey="true">
+      <Brush>Transparent</Brush>
+      <Conditions isList="true" count="0" />
+      <Font>Arial,8</Font>
+      <Name>Estilo1</Name>
+      <TextBrush>Black</TextBrush>
+    </Estilo1>
+  </Styles>
+</StiSerializer>

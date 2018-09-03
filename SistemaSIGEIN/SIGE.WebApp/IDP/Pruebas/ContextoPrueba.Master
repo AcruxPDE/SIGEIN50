@@ -1,0 +1,13 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/AppSIGE.Master" AutoEventWireup="true" CodeBehind="ContextoPrueba.master.cs" Inherits="SIGE.WebApp.IDP.Pruebas.ContextoPrueba" %>
+
+<asp:content id="Content1" contentplaceholderid="head" runat="server">
+    <link href="<%# ResolveUrl("~/Assets/css/Temas/IP.css")%>" rel="stylesheet" type="text/css"/>
+    <script src="<%# ResolveUrl("~/Assets/js/appPruebas.js") %>">
+    </script>
+    <asp:ContentPlaceHolder ID="headContexto" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:content>
+<asp:content id="Content2" contentplaceholderid="ContentPlaceHolder1" runat="server">
+    <asp:ContentPlaceHolder ID="ContentPlaceHolderContexto" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:content>

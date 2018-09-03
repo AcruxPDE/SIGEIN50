@@ -1,0 +1,1575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D7A963F8-45AA-4E2A-9BD3-7E31B48922A7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SIGE.Entidades</RootNamespace>
+    <AssemblyName>SIGE.Entidades</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Demo|AnyCPU'">
+    <OutputPath>bin\Demo\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SHF|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\SHF\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administracion\COMPETENCIAS_LABORALES.cs" />
+    <Compile Include="Administracion\E_CAMPO_NOMINA_DO.cs" />
+    <Compile Include="Administracion\E_CLIENTE.cs" />
+    <Compile Include="Administracion\E_GRUPOS.cs" />
+    <Compile Include="Administracion\E_LICENCIA.cs" />
+    <Compile Include="Administracion\E_MODULO.cs" />
+    <Compile Include="Administracion\E_OBTIENE_COMPETENCIAS_LABORALES.cs" />
+    <Compile Include="Administracion\E_AREA_INTERES.cs" />
+    <Compile Include="Administracion\E_CALLE.cs" />
+    <Compile Include="Administracion\E_CAMPO_ADICIONAL.cs" />
+    <Compile Include="Administracion\E_CANDIDATO.cs" />
+    <Compile Include="Administracion\E_CANDIDATO_AREAS_INTERES.cs" />
+    <Compile Include="Administracion\E_CATALOGO_LISTA.cs" />
+    <Compile Include="Administracion\E_CENTRO_ADMVO.cs" />
+    <Compile Include="Administracion\E_CENTRO_OPTVO.cs" />
+    <Compile Include="Administracion\E_CL_TIPO_EVALUADOR.cs" />
+    <Compile Include="Administracion\E_COLONIA.cs" />
+    <Compile Include="Administracion\E_COMPETENCIA.cs" />
+    <Compile Include="Administracion\E_DEPARTAMENTO.cs" />
+    <Compile Include="Administracion\E_DEPENDIENTE_ECONOMICO.cs" />
+    <Compile Include="Administracion\E_EMPLEADO.cs" />
+    <Compile Include="Administracion\E_EMPLEADO_COMPETENCIA.cs" />
+    <Compile Include="Administracion\E_EMPLEADO_ESCOLARIDAD.cs" />
+    <Compile Include="Administracion\E_EMPLEADO_IDIOMA.cs" />
+    <Compile Include="Administracion\E_EMPLEADO_PDE.cs" />
+    <Compile Include="Administracion\E_EMPRESAS.cs" />
+    <Compile Include="Administracion\E_ESCOLARIDAD.cs" />
+    <Compile Include="Administracion\E_ESTADO.cs" />
+    <Compile Include="Administracion\E_EVALUADOR_EXTERNO.cs" />
+    <Compile Include="Administracion\E_EXPERIENCIA_LABORAL.cs" />
+    <Compile Include="Administracion\E_FUNCION.cs" />
+    <Compile Include="Administracion\E_IDIOMA.cs" />
+    <Compile Include="Administracion\E_MENSAJE.cs" />
+    <Compile Include="Administracion\E_MUNICIPIO.cs" />
+    <Compile Include="Administracion\E_NIVEL_ESCOLARIDAD.cs" />
+    <Compile Include="Administracion\E_ORGANIGRAMA.cs" />
+    <Compile Include="Administracion\E_PERIODO.cs" />
+    <Compile Include="Administracion\E_PLAZA_GRUPO.cs" />
+    <Compile Include="Administracion\E_PUESTO.cs" />
+    <Compile Include="Administracion\E_PUESTOS_CONSULTA.cs" />
+    <Compile Include="Administracion\E_PUESTOS_CONSULTA_GLOBAL.cs" />
+    <Compile Include="Administracion\E_REPORTE_EMPLEADO.cs" />
+    <Compile Include="Administracion\E_REQUISICION.cs" />
+    <Compile Include="Administracion\E_ROL.cs" />
+    <Compile Include="Administracion\E_ROL_FUNCION.cs" />
+    <Compile Include="Administracion\E_SECUENCIA.cs" />
+    <Compile Include="Administracion\E_SELECCION_PLAZA.cs" />
+    <Compile Include="Administracion\E_SELECCION_PUESTOS.cs" />
+    <Compile Include="Administracion\E_SISTEMA.cs" />
+    <Compile Include="Administracion\E_USUARIO.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_ADICIONALES_SELECCIONADOS.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_BAJAS_PENDIENTES.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_BAJA_EMPLEADO.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_CAMPOS_ADICIONALES.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_CAPTURA_RESULTADO.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_EMPLEADOS_CONTRASENIAS.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_EVALUADORES_CLIMA.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_FECHA_ENVIO_SOLICITUDES.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_GRAFICAS.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_GRAFICA_ROTACION.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_HISTORIAL_BAJA.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_INDICADORES_METAS.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_INSTRUCCIONES.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_META.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_METAS_COMPARACION_DESEMPENO.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_METAS_EVALUADO.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_METAS_EVALUADO_PERIODO.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_METAS_PERIODOS.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_METAS_PERIODO_COMPARACION.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_META_RESULTADOS.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_NOTAS.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_OBTIENE_CUMPLIMIENTO_GLOBAL.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_OBTIENE_EVALUADOS_DESEMPENO.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_OBTIENE_FUNCIONES_METAS.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_OBTIENE_PERIODO_REPLICAS.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_PERIODOS_COMPARAR.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_PERIODOS_REPLICAS.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_REPLICAS_ENVIAR.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_PERIODO_CLIMA.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_PERIODO_CLIMA_COPIA.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_PERIODO_DESEMPENO.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_PONDERACION_META.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_PORCENTAJE_EMPLEADOS.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_PREGUNTAS_CUESTIONARIO_CLIMA.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_PREGUNTAS_PERIODO_CLIMA.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_RESPUESTA_PREGUNTAS_ABIERTAS.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_RESULTADO_META.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_SELECCIONA_EMPLEADOS.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_SELECCION_PERIODOS_DESEMPENO.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_TIPO_GRAFICAR.cs" />
+    <Compile Include="Externas\E_CANDIDATO_SOLICITUD.cs" />
+    <Compile Include="Externas\E_CLASIFICACION.cs" />
+    <Compile Include="Externas\E_COMPARACION_COMPETENCIA.cs" />
+    <Compile Include="Externas\E_COMPETENCIAS_PROCESO_SELECCION.cs" />
+    <Compile Include="Externas\E_CONTROL_AVANCE.cs" />
+    <Compile Include="Externas\E_DOCUMENTO.cs" />
+    <Compile Include="Externas\E_AREAS.cs" />
+    <Compile Include="Externas\E_AREAS_INTERES.cs" />
+    <Compile Include="Externas\E_CATALOGO_CATALOGOS.cs" />
+    <Compile Include="Externas\E_CAUSA_VACANTE.cs" />
+    <Compile Include="Externas\E_CENTRO_ADMVO.cs" />
+    <Compile Include="Externas\E_CENTRO_OPTVO.cs" />
+    <Compile Include="Externas\E_CL_TIPO_ESCOLARIDAD.cs" />
+    <Compile Include="Externas\E_COMPETENCIAS.cs" />
+    <Compile Include="Externas\E_CORREO_ELECTRONICO.cs" />
+    <Compile Include="Externas\E_ENTREVISTA.cs" />
+    <Compile Include="Externas\E_ESTATUS_NOTIFICACION.cs" />
+    <Compile Include="Externas\E_ESTUDIO_SOCIOECONOMICO.cs" />
+    <Compile Include="Externas\E_ES_DATOS_ECONOMICOS.cs" />
+    <Compile Include="Externas\E_ES_DATOS_LABORALES.cs" />
+    <Compile Include="Externas\E_ES_DATOS_VIVIENDA.cs" />
+    <Compile Include="Externas\E_FORMATO_FECHA.cs" />
+    <Compile Include="Externas\E_GENERICA.cs" />
+    <Compile Include="Externas\E_OBTIENE_PUESTO_EMPLEADOS.cs" />
+    <Compile Include="Externas\E_PREGUNTAS.cs" />
+    <Compile Include="Externas\E_REFERENCIA_CANDIDATO.cs" />
+    <Compile Include="Externas\E_RESULTADO_MEDICO.cs" />
+    <Compile Include="Externas\E_SELECTOR_ADSCRIPCION.cs" />
+    <Compile Include="Externas\E_SELECTOR_AREA.cs" />
+    <Compile Include="Externas\E_SELECTOR_CANDIDATO.cs" />
+    <Compile Include="Externas\E_SELECTOR_CURSO.cs" />
+    <Compile Include="Externas\E_SELECTOR_EMPLEADO.cs" />
+    <Compile Include="Externas\E_EXPERIENCIA.cs" />
+    <Compile Include="Externas\E_FUNCION_COMPETENCIA.cs" />
+    <Compile Include="Externas\E_DESCRIPTIVO.cs" />
+    <Compile Include="Externas\E_ESCOLARIDAD.cs" />
+    <Compile Include="Externas\E_FUNCION_GENERICA.cs" />
+    <Compile Include="Externas\E_IDIOMA.cs" />
+    <Compile Include="Externas\E_FUNCION_INDICADOR.cs" />
+    <Compile Include="Externas\E_INDICADOR_DESEMPENO.cs" />
+    <Compile Include="Externas\E_MENU.cs" />
+    <Compile Include="Externas\E_PARENTESCO.cs" />
+    <Compile Include="Externas\E_PLANTILLA.cs" />
+    <Compile Include="Externas\E_PRUEBA_CANDIDATO.cs" />
+    <Compile Include="Externas\E_PRUEBA_LABORAL_I.cs" />
+    <Compile Include="Externas\E_SELECTOR_EMPLEADO_PDE.cs" />
+    <Compile Include="Externas\E_SELECTOR_EVALUADO.cs" />
+    <Compile Include="Externas\E_SELECTOR_EVALUADOR.cs" />
+    <Compile Include="Externas\E_SELECTOR_GENERICO.cs" />
+    <Compile Include="Externas\E_SELECTOR_MATRIZ.cs" />
+    <Compile Include="Externas\E_SELECTOR_PERIODO.cs" />
+    <Compile Include="Externas\E_SELECTOR_PUESTO.cs" />
+    <Compile Include="Externas\E_PUESTOS.cs" />
+    <Compile Include="Externas\E_PUESTO_RELACION.cs" />
+    <Compile Include="Externas\E_RESULTADO.cs" />
+    <Compile Include="Externas\E_SELECTOR.cs" />
+    <Compile Include="Externas\E_SELECTOR_PUESTO_PDE.cs" />
+    <Compile Include="Externas\E_SELECTOR_USUARIO.cs" />
+    <Compile Include="Externas\E_SOC_DEPENDIENTE.cs" />
+    <Compile Include="Externas\E_SOLICITUD_ESTATUS.cs" />
+    <Compile Include="Externas\E_TELEFONO.cs" />
+    <Compile Include="Externas\E_TELEFONOS.cs" />
+    <Compile Include="Externas\E_TIPO_DATO.cs" />
+    <Compile Include="Externas\E_TIPO_ESCOLARIDAD.cs" />
+    <Compile Include="Externas\E_TIPO_FORMULARIO.cs" />
+    <Compile Include="Externas\E_TIPO_FUNCION.cs" />
+    <Compile Include="Externas\E_TIPO_OPERACION_DB.cs" />
+    <Compile Include="Externas\E_TIPO_RESPUESTA_DB.cs" />
+    <Compile Include="Externas\E_TIPO_TELEFONO.cs" />
+    <Compile Include="Externas\SPE_OBTIENE_COMPETENCIAS_CONSULTA.cs" />
+    <Compile Include="Externas\SPE_OBTIENE_FACTORES_CONSULTA.cs" />
+    <Compile Include="Externas\UDTT_ARCHIVO.cs" />
+    <Compile Include="E_DESCRIPTIVO_PDE.cs" />
+    <Compile Include="E_LOGIN.cs" />
+    <Compile Include="FormacionDesarrollo\E_AVANCE_PROGRAMA_CAPACITACION.cs" />
+    <Compile Include="FormacionDesarrollo\E_OBTIENE_PLAN_SUCESION.cs" />
+    <Compile Include="FormacionDesarrollo\E_PUESTOS_EVALUADOS.cs" />
+    <Compile Include="FormacionDesarrollo\E_PUESTOS_PERIODOS.cs" />
+    <Compile Include="FormacionDesarrollo\E_REPORTE_COMPARATIVO_INDIVIDUAL.cs" />
+    <Compile Include="FormacionDesarrollo\E_RESPUESTAS_PREGUNTAS_ADICIONALES.cs" />
+    <Compile Include="FormacionDesarrollo\E_EVALUADOS_REPORTE_GLOBAL.cs" />
+    <Compile Include="IntegracionDePersonal\E_BAREMOS_PRUEBAS_RESPORTE.cs" />
+    <Compile Include="IntegracionDePersonal\E_CANDIDATOS_BATERIA.cs" />
+    <Compile Include="IntegracionDePersonal\E_CANDIDATO_IDONEO.cs" />
+    <Compile Include="IntegracionDePersonal\E_FACTORES_PRUEBAS.cs" />
+    <Compile Include="IntegracionDePersonal\E_PARAMETROS_BUSQUEDA_CANDIDATO.cs" />
+    <Compile Include="IntegracionDePersonal\E_PRUEBAS.cs" />
+    <Compile Include="IntegracionDePersonal\E_REPORTE_RESULTADO_BAREMOS.cs" />
+    <Compile Include="IntegracionDePersonal\E_RESULTADOS_PRUEBAS_REPORTE.cs" />
+    <Compile Include="MetodologiaCompensacion\E_CONSULTA_SUELDOS.cs" />
+    <Compile Include="MetodologiaCompensacion\E_REPORTE_TABULADOR_SUELDOS.cs" />
+    <Compile Include="Modulos de apoyo\E_OBTIENE_C_CONSULTA_INTELIGENTE.cs" />
+    <Compile Include="PuntoDeEncuentro\E_OBTIENE_EMPLEADOS_GENERA_CONTRASENA.cs" />
+    <Compile Include="PuntoDeEncuentro\E_USUARIO_CORREO.cs" />
+    <Compile Include="SPE_OBTIENE_ADSCRIPCIONES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_BONOS_EVALUADOS_DESEMPENO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_BUSQUEDA_CANDIDATO_REQUISICION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CANDIDATOS_BATERIAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CANDIDATOS_BATERIA_MASIVA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CANDIDATOS_BATERIA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CANDIDATOS_POR_REQUISICION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CANDIDATO_EVALUADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CANDIDATO_IDONEO_PERFIL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CENTROS_ADMINISTRATIVOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CENTROS_OPERATIVOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CLAVE_EMPLEADO_INDICE_ROTACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_COMPARACION_CANDIDATO_PUESTO_REQUISICION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_COMPATIBILIDAD_PUESTO_TABLERO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_COMPETENCIAS_CONSULTA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CONFIGURACION_CAMPOS_NOMINA_DO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CONFIGURACION_LICENCIA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CONFIGURACION_PERIODO_COMPETENCIAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CONFIGURACION_PERIODO_REPLICAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CONSULTA_SUELDOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CUESTIONARIOS_EVALUACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_CODIGO_POSTAL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_PLANTILLAS_EXTERNAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_DATOS_EMPLEADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_DATOS_EVALUADORES_CLIMA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_DESCRIPTIVO_REQUISICION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADOS_CAMPOS_EXTRA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADOS_EVALUADOS_TABLERO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADOS_GENERAL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADOS_GENERA_CONTRASENA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADOS_NOMINA_DO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADOS_PLANEACION_INCREMENTOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADOS_PROCESOS_EVALUACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_BAJAS_PENDIENTES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_DESEMPENO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_GRAFICA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_DIMENSIONES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_EVALUADORES_REPLICAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_EVALUADORES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_EVALUADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_FILTROS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_FUNCIONES_METAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_METAS_CAPTURA_MASIVA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_METAS_EVALUADOS_CONSECUENTES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_PARAMETROS_FILTROS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_PERIODOS_CONSECUTIVOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_PERIODOS_DESEMPENO_CUESTIONARIO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_PERIODOS_DESEMPENO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_PLAZAS_EMPLEADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_CUESTIONARIO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_PREGUNTAS_ABIERTAS_PERIODO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_PREGUNTAS_EVALUACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_RESPUESTAS_PREGUNTAS_ABIERTAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_RESULTADO_EVALUADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_TEMAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EVALUACION_COMPETENCIAS_PLAN_SUCESION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EVALUADOS_PERIODOS_DESEMPENO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FACTORES_COMPETENCIAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FACTORES_CONSULTA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FACTORES_EVALUACION_TABULADOR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FACTORES_PRUEBAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_CUMPLIMIENTO_PUESTO_PERIODO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_EVALUADORES_AUTORIZACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_EVALUADORES_EXTERNOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_EVALUADOS_AUTORIZACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_PUESTOS_EVALUADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_PUESTOS_PERIODO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_REPORTE_EVENTO_EVALUADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_REPORTE_INDIVIAL_EVALUADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_RESPUESTAS_ADICIONALES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_VALIDACION_AUTORIZACIONES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_GRUPOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_HISTORIAL_BAJAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_IDICADORES_METAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_JEFES_DESCRIPTIVO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_PROGRAMA_EMPLEADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_REQUISICION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_LICENCIA_VOLUMEN_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_METAS_COMPARACION_GRAFICA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_METAS_COMPARAR_DESEMPENO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_METAS_PERIODOS_COMPARACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_M_PUESTOS_GENERAL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_M_PUESTO_REQUISICION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PDE_CONFIGURACION_URL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PERFIL_EMPLEADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PERIODOS_DESEMPENO_COMPARACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PERIODOS_DESEMPENO_COMPARAR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PERIODOS_EVALUADOS_TABLERO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PERIODOS_PARA_TABLERO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PERIODOS_SOLICITUDES_ENVIAR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PERIODOS_TABLERO_CONTROL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PERIODO_REPLICAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PERIODO_TABLERO_CONTROL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PLANTILLA_FORMULARIO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PUESTOS_NOMINA_DO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PUESTO_VS_CANDIDATOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_RAZON_SOCIAL_NOMINA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_RESULTADOS_BAREMOS_PRUEBAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_RESULTADOS_CLIMA_LABORAL_TABLERO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_RESULTADOS_ED_TABLERO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_RESULTADOS_FYD_TABLERO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_RESULTADOS_PRUEBAS_REPORTE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_RESULTADOS_TABULADORES_TABLERO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_SOLICITUDES_ENVIAR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_SOLICITUDES_PROCESOS_EVALUACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_SOLICITUDES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_SUBORDINADOS_DESCRIPTIVO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_SUELDO_EMPLEADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_S_CONFIGURACION_LICENCIA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_TABLERO_CONTROL_EVALUADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_TABULADORES_NIVEL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_TABULADOR_MAESTRO_RECALCULA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_TRADUCCION_TEXTO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_USUARIOPDE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_USUARIOS_NOLIGADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_VARIABLES_BAREMOS_SUSTITUCION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OPTIENE_COPIA_MERCADO_SALARIAL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_VALIDA_PERIODO_DESEMPENO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_VERIFICA_CONFIGURACION_METAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_VERIFICA_CONFIGURACION_TABULADOR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_VERIFICA_PUESTO_FACTOR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TableroControl\E_COMENTARIOS_EVALUADOS.cs" />
+    <Compile Include="TableroControl\E_EVALUADOS_TABLERO_CONTROL.cs" />
+    <Compile Include="TableroControl\E_PERIODOS_EVALUADOS.cs" />
+    <Compile Include="TableroControl\E_TABLERO_CONTROL.cs" />
+    <Compile Include="Utilerias\E_MENU.cs" />
+    <Compile Include="FormacionDesarrollo\E_CL_CUESTIONARIO_OBJETIVO.cs" />
+    <Compile Include="FormacionDesarrollo\E_CL_TIPO_EVALUACION.cs" />
+    <Compile Include="FormacionDesarrollo\E_COMPETENCIA.cs" />
+    <Compile Include="FormacionDesarrollo\E_CUESTIONARIO.cs" />
+    <Compile Include="FormacionDesarrollo\E_DOCUMENTO_AUTORIZAR.cs" />
+    <Compile Include="FormacionDesarrollo\E_DOCUMENTO_AUTORIZA_EMPLEADO.cs" />
+    <Compile Include="FormacionDesarrollo\E_EMPLEADOS.cs" />
+    <Compile Include="FormacionDesarrollo\E_ESTADO_PROGRAMA_CAPACITACION.cs" />
+    <Compile Include="FormacionDesarrollo\E_EVALUADO.cs" />
+    <Compile Include="FormacionDesarrollo\E_EVALUADOR.cs" />
+    <Compile Include="FormacionDesarrollo\E_EVENTO.cs" />
+    <Compile Include="FormacionDesarrollo\E_EVENTO_CALENDARIO.cs" />
+    <Compile Include="FormacionDesarrollo\E_EVENTO_PARTICIPANTE.cs" />
+    <Compile Include="FormacionDesarrollo\E_EVENTO_PARTICIPANTE_COMPETENCIA.cs" />
+    <Compile Include="FormacionDesarrollo\E_INSTRUCTOR_CURSO.cs" />
+    <Compile Include="FormacionDesarrollo\E_CURSO.cs" />
+    <Compile Include="FormacionDesarrollo\E_CURSO_COMPETENCIA.cs" />
+    <Compile Include="FormacionDesarrollo\E_CURSO_INSTRUCTOR.cs" />
+    <Compile Include="FormacionDesarrollo\E_INSTRUCTOR.cs" />
+    <Compile Include="FormacionDesarrollo\E_MATERIAL.cs" />
+    <Compile Include="FormacionDesarrollo\E_NECESIDADES_CAPACITACION.cs" />
+    <Compile Include="FormacionDesarrollo\E_NOTA.cs" />
+    <Compile Include="FormacionDesarrollo\E_PERIODO_EVALUACION.cs" />
+    <Compile Include="FormacionDesarrollo\E_PLANEACION_CUESTINOARIOS.cs" />
+    <Compile Include="FormacionDesarrollo\E_PLAN_SUCESION.cs" />
+    <Compile Include="FormacionDesarrollo\E_PRIORIDAD.cs" />
+    <Compile Include="FormacionDesarrollo\E_PROGRAMA.cs" />
+    <Compile Include="FormacionDesarrollo\E_PROGRAMA_CAPACITACION.cs" />
+    <Compile Include="FormacionDesarrollo\E_PROGRAMA_COMPETENCIA.cs" />
+    <Compile Include="FormacionDesarrollo\E_PROGRAMA_EMPLEADO.cs" />
+    <Compile Include="FormacionDesarrollo\E_PROMEDIO_PLAN_VIDA_CARRERA.cs" />
+    <Compile Include="FormacionDesarrollo\E_REPORTE_360.cs" />
+    <Compile Include="FormacionDesarrollo\E_REPORTE_COMPARATIVO.cs" />
+    <Compile Include="FormacionDesarrollo\E_REPORTE_FYD.cs" />
+    <Compile Include="FormacionDesarrollo\E_REPORTE_GENERAL_INDIVIDUAL.cs" />
+    <Compile Include="FormacionDesarrollo\E_REPORTE_GLOBAL.cs" />
+    <Compile Include="FormacionDesarrollo\E_REPORTE_INDIVIDUAL.cs" />
+    <Compile Include="FormacionDesarrollo\E_REPORTE_MAXIMO_MINIMO.cs" />
+    <Compile Include="FormacionDesarrollo\E_TEMA.cs" />
+    <Compile Include="FormacionDesarrollo\E_TEMA_COMPETENCIA.cs" />
+    <Compile Include="IntegracionDePersonal\E_BATERIA_PRUEBAS.cs" />
+    <Compile Include="IntegracionDePersonal\E_CONSULTA_DETALLE.cs" />
+    <Compile Include="IntegracionDePersonal\E_CONSULTA_GLOBAL.cs" />
+    <Compile Include="IntegracionDePersonal\E_CANDIDATO_VS_PUESTOS.cs" />
+    <Compile Include="IntegracionDePersonal\E_CONSULTA_PERSONAL.cs" />
+    <Compile Include="IntegracionDePersonal\E_GRAFICA_PUESTO_CANDIDATOS.cs" />
+    <Compile Include="IntegracionDePersonal\E_NIVEL_COMPETENCIA.cs" />
+    <Compile Include="IntegracionDePersonal\E_CUESTIONARIO_PREGUNTA.cs" />
+    <Compile Include="IntegracionDePersonal\E_ESTADO_PRUEBA.cs" />
+    <Compile Include="IntegracionDePersonal\E_NOTIFICAR_REQUISICION.cs" />
+    <Compile Include="IntegracionDePersonal\E_PREGUNTA.cs" />
+    <Compile Include="IntegracionDePersonal\E_PRUEBA.cs" />
+    <Compile Include="IntegracionDePersonal\E_PRUEBA_SECCION_TIEMPO.cs" />
+    <Compile Include="IntegracionDePersonal\E_PRUEBA_TIEMPO.cs" />
+    <Compile Include="IntegracionDePersonal\E_PRUEBA_RESULTADO.cs" />
+    <Compile Include="IntegracionDePersonal\E_PUESTO_VS_CANDIDATOS.cs" />
+    <Compile Include="IntegracionDePersonal\E_RESULTADOS_BATERIA.cs" />
+    <Compile Include="IntegracionDePersonal\E_RESULTADOS_PRUEBA.cs" />
+    <Compile Include="IntegracionDePersonal\E_SELECCIONADOS.cs" />
+    <Compile Include="IntegracionDePersonal\E_SOLICITUD.cs" />
+    <Compile Include="MetodologiaCompensacion\E_CATEGORIA.cs" />
+    <Compile Include="MetodologiaCompensacion\E_CODIGO_COLORES.cs" />
+    <Compile Include="MetodologiaCompensacion\E_CUARTILES.cs" />
+    <Compile Include="MetodologiaCompensacion\E_CUARTIL_COMPARACION.cs" />
+    <Compile Include="MetodologiaCompensacion\E_EMPLEADOS_GRAFICA_ANALISIS.cs" />
+    <Compile Include="MetodologiaCompensacion\E_EMPLEADOS_SELECCIONADOS.cs" />
+    <Compile Include="MetodologiaCompensacion\E_MENSAJE_COMPETENCIA.cs" />
+    <Compile Include="MetodologiaCompensacion\E_NIVELACION.cs" />
+    <Compile Include="MetodologiaCompensacion\E_NIVELES.cs" />
+    <Compile Include="MetodologiaCompensacion\E_PLANEACION_INCREMENTOS.cs" />
+    <Compile Include="MetodologiaCompensacion\E_SELECCIONADOS.cs" />
+    <Compile Include="MetodologiaCompensacion\E_SIGNIFICADO_VALORES.cs" />
+    <Compile Include="MetodologiaCompensacion\E_TABULADOR.cs" />
+    <Compile Include="MetodologiaCompensacion\E_TABULADOR_MAESTRO.cs" />
+    <Compile Include="MetodologiaCompensacion\E_TABULADOR_PUESTO.cs" />
+    <Compile Include="MetodologiaCompensacion\E_VALUACION.cs" />
+    <Compile Include="MetodologiaCompensacion\E_VALUACION_PUESTO.cs" />
+    <Compile Include="MetodologiaCompensacion\E_VARIACION.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PuntoDeEncuentro\E_CONFIGURACION_NOTIFICACION.cs" />
+    <Compile Include="PuntoDeEncuentro\E_DESCRIPCION_NOTIFICACION.cs" />
+    <Compile Include="PuntoDeEncuentro\E_FORMATO_TRAMITE.cs" />
+    <Compile Include="PuntoDeEncuentro\E_MODIFICACIONES_PENDIENTES.cs" />
+    <Compile Include="PuntoDeEncuentro\E_MODIFICACIONES_INFORMACION.cs" />
+    <Compile Include="PuntoDeEncuentro\E_NOTIFICACIONES_PENDIENTES.cs" />
+    <Compile Include="PuntoDeEncuentro\E_NOTIFICACIONES_RRHH.cs" />
+    <Compile Include="PuntoDeEncuentro\E_OBTIENE_ADM_COMUNICADO.cs" />
+    <Compile Include="PuntoDeEncuentro\E_OBTIENE_COMENTARIOS_COMUNICADO.cs" />
+    <Compile Include="PuntoDeEncuentro\E_OBTIENE_COMUNICADO.cs" />
+    <Compile Include="PuntoDeEncuentro\E_OBTIENE_EMPLEADOS_COMUNICADO.cs" />
+    <Compile Include="PuntoDeEncuentro\E_PDE_EMPLEADO.cs" />
+    <Compile Include="SecretariaTrabajoPrevisionSocial\E_AREA_OCUPACION.cs" />
+    <Compile Include="SecretariaTrabajoPrevisionSocial\E_AREA_TEMATICA.cs" />
+    <Compile Include="SecretariaTrabajoPrevisionSocial\E_CURSO_AREA_TEMATICA.cs" />
+    <Compile Include="SecretariaTrabajoPrevisionSocial\E_MODULO_OCUPACION.cs" />
+    <Compile Include="SecretariaTrabajoPrevisionSocial\E_OCUPACION.cs" />
+    <Compile Include="SecretariaTrabajoPrevisionSocial\E_OCUPACION_PUESTO.cs" />
+    <Compile Include="SecretariaTrabajoPrevisionSocial\E_SUBAREA_OCUPACION.cs" />
+    <Compile Include="SistemaSigeinModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_EVALUADOR_POR_EVALUADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_INSERTA_ACTUALIZA_C_EMPLEADO_ESCOLARIDAD_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTENER_TIPO_ASENTAMIENTO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_ADSCRIPCION_PDE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_ANALISIS_COMPETENCIAS_CANDIDATO_IDONEO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_ARCHIVOS_PDE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_AREA_OCUPACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_AREA_TEMATICA_CURSO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_BATERIA_PRUEBAS_CANDIDATO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_BATERIA_PRUEBAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_BITACORA_SOLICITUD_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_BONO_EVALUADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CAMPOS_INVENTARIO_PERSONAL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CAMPO_FORMULARIO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CANDIDATOS_CONTRATADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CANDIDATO_IDONEO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CANDIDATO_VS_PUESTOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CAPACITACIONES_EMPLEADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CARTERA_A_ELIMINAR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CARTERA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CENTROS_ADMVOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CENTROS_OPTVOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_COMENTARIOS_ENTREVISTAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_COMENTARIOS_NOTIFICACIONES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_COMPARACION_COMPETENCIAS_PLAN_SUCESION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_COMPARACION_COMPETENCIAS_PLAN_VIDA_CARRERA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_SUCESION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_VIDA_CARRERA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_COMPETENCIAS_LABORALES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_COMPETENCIAS_PROCESO_SELECCION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_COMPETENCIAS_TABULADOR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CONFIGURACION_EVALUACION_ORGANIZACIONAL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CONFIGURACION_NOTIFICACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CONSULTA_APLICACION_PRUEBA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CONSULTA_GLOBAL_CALIFICACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CONSULTA_PERSONAL_DETALLADA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CONSULTA_PERSONAL_RESUMEN_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CONTROL_AVANCE_DATOS_GRAFICA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CONTROL_AVANCE_EO_DATOS_GRAFICA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CONTROL_AVANCE_EVALUADOR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CONTROL_AVANCE_EVALUADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CUESTIONARIO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CURSO_PUESTO_COMPETENCIA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_AREA_INTERES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_AREA_TEMATICA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_AUTORIZACION_DCTO_EMPLEADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_CALLE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_CAMPO_ADICIONAL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_CAMPO_ADICIONAL_XML_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_CANDIDATO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_CATALOGO_LISTA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_CATALOGO_VALOR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_CLASIFICACION_COMPETENCIA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_COLONIA_CP_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_COLONIA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_COMPETENCIA_NIVEL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_COMPETENCIA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_CONSULTA_INTELIGENTE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_CUESTIONARIO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_CURSO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_DEPENDIENTE_ECONOMICO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_DOCUMENTO_AUTORIZACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_DOCUMENTO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_EMPLEADO_ESCOLARIDAD_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_EMPLEADO_IDIOMA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_EMPLEADO_RELACIONADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_EMPRESA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_ESCOLARIDAD_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_ESTADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_EVALUADOR_EXTERNO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_EVENTO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_FACTOR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_GRUPO_PREGUNTA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_IDIOMA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_MUNICIPIO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_NIVEL_ESCOLARIDAD_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_NOTIFICAR_REQUISICION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_PARIENTE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_PERIODO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_PLANTILLA_FORMULARIO_PDE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_PLANTILLA_FORMULARIO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_PREGUNTA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_PROGRAMA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_PRUEBA_NIVEL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_PRUEBA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_PRUEBA_SECCION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_PUESTO_COMPETENCIA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_PUESTO_FUNCION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_PUESTO_RELACIONADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_RESPUESTA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_ROL_FUNCION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_ROL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_SECUENCIA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_C_USUARIO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_DATOS_CP_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_DESCRIPTIVOS_PUESTOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_DESCRIPTIVO_PDE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_DESCRIPTIVO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_DIMENSIONES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_DOCUMENTO_PROCESO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADOS_COMUNICADO_INFORMACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADOS_PDE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADOS_SELECTOR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADOS_TABULADOR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADO_FORMATO_TRAMITE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADO_PLANTILLA_CAMBIO_PDE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADO_PLANTILLA_PDE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADO_PLANTILLA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_ENTREVISTAS_SELECCIONADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_ENTREVISTA_PROCESO_SELECCION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_CONTEXTO_METAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_EVALUADORES_CLIMA_LAB_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_EVALUADORES_CUESTIONARIO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_GRAFICA_CAUSA_ROTACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_DIMENSION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_PREGUNTA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_GRAFICA_DISTRIBUCION_TEMA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_GRAFICA_GLOBAL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_GRAFICA_INDICE_DIMENSION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_GRAFICA_INDICE_PREGUNTA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_GRAFICA_INDICE_ROTACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_GRAFICA_INDICE_TEMA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_METAS_EVALUADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_PERIODOS_CLIMA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_PERIODO_EVALUADOR_DESEMPENO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_PERIODO_EVALUADOR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_PREGUNTAS_CUESTIONARIO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_PREGUNTAS_PERIODO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EO_PREGUNTA_PERIODO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_ESCOLARIDADES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_ESTUDIO_SOCIOECONOMICO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EST_SOC_DATO_LABORAL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EST_SOC_DATO_PROPIEDAD_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EST_SOC_DATO_VIVIENDA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EST_SOC_DEPENDIENTE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EVENTO_CALENDARIO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EVENTO_LISTA_ASISTENCIA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EVENTO_PARTICIPANTE_COMPETENCIA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EVENTO_PARTICIPANTE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_EVIDENCIAS_METAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FACTOR_POR_PRUEBA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FOLIO_SECUENCIA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FORMATOS_Y_TRAMITES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FUNCIONES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_CUESTIONARIOS_EVALUADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_CUESTIONARIO_EVALUADO_EVALUADOR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_EVALUADORES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_EVALUADORES_TOKEN_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_EVALUADOS_CONFIGURACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_EVALUADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_EVALUADO_CUESTIONARIOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_EVALUADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_PERIODOS_EVALUACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_PERIODO_EVALUACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_PERIODO_EVALUADOR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_PERIODO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_PREGUNTAS_EVALUACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_PUESTOS_EVALUADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_REPORTE_360_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_REPORTE_COMPARATIVO_DETALLE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_REPORTE_COMPARATIVO_INDIVIDUAL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_REPORTE_COMPARATIVO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_REPORTE_CURSOS_REALIZADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_REPORTE_GENERAL_INDIVIDUAL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_REPORTE_GLOBAL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_REPORTE_MATERIALES_EVENTO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_REPORTE_MAXIMOS_MINIMOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_REPORTE_PLANTILLAS_REEMPLAZO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO_DETALLE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_FYD_ROLES_EVALUADOR_PERIODO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_INSTRUCTORES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_ADM_COMUNICADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_AREA_INTERES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_AUTORIZA_REQUISICION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_COMENTARIOS_COMUNICADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_COMUNICADO_EMPLEADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_COMUNICADO_LEIDO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_COMUNICADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_CUESTIONARIO_PREGUNTA_PPRUEBA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_CUESTIONARIO_PREGUNTA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_EMPLEADOS_COMUNICADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_EMPLEADO_COMPETENCIA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_EVALUADO_EVALUADOR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_EVALUADO_PERIODO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_EXPERIENCIA_LABORAL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_PREGUNTA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_PROGRAMA_COMPETENCIA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_PROGRAMA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_PRUEBA_NIVEL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_PRUEBA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_PRUEBA_SECCION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_REQUISICION_CANDIDATO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_K_SOLICITUD_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_LISTA_EMPLEADOS_INFORMACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_METAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_MODIFICACIONES_INFORMACION_EMPLEADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_MODIFICACIONES_PENDIENTES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_MODULO_OCUPACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_M_DEPARTAMENTO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_M_EMPLEADO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_M_PUESTO_ADMINISTRACION_PDE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_M_PUESTO_PDE_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_M_PUESTO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_NECESIDADES_CAPACITACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_NOTIFICACIONES_A_RRHH_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_NOTIFICACIONES_PENDIENTES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_NOTIFICACION_REQUISICION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_OCUPACIONES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_ORGANIGRAMA_DEPARTAMENTOS_PUESTOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_ORGANIGRAMA_DEPARTAMENTO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_ORGANIGRAMA_PLAZAS_EMPLEADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_ORGANIGRAMA_PLAZA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_ORGANIGRAMA_PUESTOS_EMPLEADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_ORGANIGRAMA_PUESTO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PDE_DESCRIPTIVO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PDE_USUARIO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PERIODOS_DESEMPENO_REPLICA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PLANEACION_INCREMENTOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PLANEACION_MATRIZ_CUESTIONARIOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PLAN_SUCESION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PLAN_VIDA_CARRERA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PLAZAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PREGUNTAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PROCESO_SELECCION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PRUEBAS_FACTORES_COMPETENCIAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PRUEBA_POR_PUESTO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PUESTO_FACTOR_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_PUESTO_REQUISICION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_RESULTADO_MEDICO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_RESULTADO_PRUEBA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_ROLES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_ROL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_SOLICITUDES_EMPLEO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_SOLICITUD_PLANTILLA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_SOLICITUD_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_SUBAREA_OCUPACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_SUELDO_PROMEDIO_PUESTO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_S_CATALOGO_TIPO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_S_CONFIGURACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_S_FUNCION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_S_TIPO_COMPETENCIA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_S_TIPO_DATO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_S_TIPO_RELACION_PUESTO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_TABULADORES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_TABULADOR_DESCRIPTIVO_PUESTO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_TABULADOR_MAESTRO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_TABULADOR_NIVEL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_TABULADOR_PUESTO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_TABULADOR_VALUACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_TEMAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_TIPO_CAMPO_FORMULARIO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_TIPO_ENTREVISTA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_USUARIOS_EMPLEADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_USUARIOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_USUARIO_AUTENTICACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_USUARIO_NUEVO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_USUARIO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_VALUACION_NIVELACION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_VALUACION_PUESTO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_VARIABLES_BAREMOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_VW_CAUSAS_REQUISICION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_VW_ESTADO_REQUISICION_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_VW_OBTIENE_MESES_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_VW_OBTIENE_PORCENTAJES_IDIOMAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_VW_PAIS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_VW_PARENTEZCO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_VW_TIPO_ESCOLARIDAD_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_VW_TIPO_LICENCIA_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_PONDERACION_METAS_DESEMPENO_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_OBTIENE_ANIOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utilerias\PasswordHash.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaSigeinModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SistemaSigeinModel.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

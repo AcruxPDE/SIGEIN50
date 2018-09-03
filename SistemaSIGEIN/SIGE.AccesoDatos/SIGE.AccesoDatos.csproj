@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E1B8E2CE-85F0-46C1-A3C4-1654B46EFEE8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SIGE.AccesoDatos</RootNamespace>
+    <AssemblyName>SIGE.AccesoDatos</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Demo|AnyCPU'">
+    <OutputPath>bin\Demo\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SHF|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\SHF\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Implementaciones\Administracion\AdscripcionOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\AreaInteresOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\CampoFormularioOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\CamposNominaOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\CatalogoVistaInteligenteOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\CentroAdministrativoOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\CentroOperativoOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\CompetenciaNivelOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\GruposOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\LicenciaOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\OrganigramaOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\PlazaOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\TraduccionIdiomaTextoOperaciones.cs" />
+    <Compile Include="Implementaciones\EvaluacionOrganizacional\ClimaLaboralOperaciones.cs" />
+    <Compile Include="Implementaciones\EvaluacionOrganizacional\ConfiguracionOperaciones.cs" />
+    <Compile Include="Implementaciones\EvaluacionOrganizacional\PeriodoDesempenoOperaciones.cs" />
+    <Compile Include="Implementaciones\EvaluacionOrganizacional\RotacionPersonalOperaciones.cs" />
+    <Compile Include="Implementaciones\FormacionDesarrollo\ConsultaGeneralOperaciones.cs" />
+    <Compile Include="Implementaciones\FormacionDesarrollo\ConsultaIndividualOperaciones.cs" />
+    <Compile Include="Implementaciones\FormacionDesarrollo\ConsultasFYDOperaciones.cs" />
+    <Compile Include="Implementaciones\FormacionDesarrollo\ControlAvanceOperaciones.cs" />
+    <Compile Include="Implementaciones\FormacionDesarrollo\CuestionarioOperaciones.cs" />
+    <Compile Include="Implementaciones\FormacionDesarrollo\CursoOperaciones.cs" />
+    <Compile Include="Implementaciones\FormacionDesarrollo\DocumentoAutorizarOperaciones.cs" />
+    <Compile Include="Implementaciones\FormacionDesarrollo\EventoCapacitacionOperaciones.cs" />
+    <Compile Include="Implementaciones\FormacionDesarrollo\InstructorOperaciones.cs" />
+    <Compile Include="Implementaciones\FormacionDesarrollo\NecesidadesCapacitacionOperaciones.cs" />
+    <Compile Include="Implementaciones\FormacionDesarrollo\PeriodoOperaciones.cs" />
+    <Compile Include="Implementaciones\FormacionDesarrollo\PlanSucesionOperaciones.cs" />
+    <Compile Include="Implementaciones\FormacionDesarrollo\PlanVidaCarreraOperaciones.cs" />
+    <Compile Include="Implementaciones\FormacionDesarrollo\ProgramaOperaciones.cs" />
+    <Compile Include="Implementaciones\IntegracionDePersonal\ConsultaPersonalOperaciones.cs" />
+    <Compile Include="Implementaciones\IntegracionDePersonal\ConsultasComparativasOperaciones.cs" />
+    <Compile Include="Implementaciones\IntegracionDePersonal\DescriptivoOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\PlantillaFormularioOperaciones.cs" />
+    <Compile Include="Implementaciones\CalleOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\CampoAdicionalOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\CandidatoOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\CatalogoListaOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\CatalogoTipoOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\CatalogoValorOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\ClasificacionCompetenciaOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\ColoniaOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\CompetenciasOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\ConfiguracionOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\CuestionarioPreguntaOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\DepartamentoOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\DocumentoOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\EmpleadoOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\EmpresaOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\EscolaridadOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\EstadoOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\FuncionOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\IdiomaOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\MunicipioOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\NivelEscolaridadOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\PaisOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\PeriodoOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\PreguntaOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\PuestoOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\RequisicionesOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\RolOperaciones.cs" />
+    <Compile Include="Implementaciones\IntegracionDePersonal\CuestionarioOperaciones.cs" />
+    <Compile Include="Implementaciones\IntegracionDePersonal\NivelPruebasOperaciones.cs" />
+    <Compile Include="Implementaciones\IntegracionDePersonal\ProcesoSeleccionOperaciones.cs" />
+    <Compile Include="Implementaciones\IntegracionDePersonal\PruebasOperaciones.cs" />
+    <Compile Include="Implementaciones\IntegracionDePersonal\RequisicionNotificaOperacion.cs" />
+    <Compile Include="Implementaciones\IntegracionDePersonal\ResultadoOperaciones.cs" />
+    <Compile Include="Implementaciones\IntegracionDePersonal\ResultadosPruebasOperaciones.cs" />
+    <Compile Include="Implementaciones\IntegracionDePersonal\SolicitudOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\TipoCompetenciaOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\UsuarioOperaciones.cs" />
+    <Compile Include="Implementaciones\MetodologiaCompensacion\TabuladoresOperaciones.cs" />
+    <Compile Include="Implementaciones\PuntoDeEncuentro\ConfiguracionNotificacionOperaciones.cs" />
+    <Compile Include="Implementaciones\PuntoDeEncuentro\ContextoPDEOperaciones.cs" />
+    <Compile Include="Implementaciones\PuntoDeEncuentro\DescriptivoPuestoOperaciones.cs" />
+    <Compile Include="Implementaciones\PuntoDeEncuentro\FormatosYTramitesOperaciones.cs" />
+    <Compile Include="Implementaciones\PuntoDeEncuentro\NotificacionesOperaciones.cs" />
+    <Compile Include="Implementaciones\PuntoDeEncuentro\InventarioPersonalOperaciones.cs" />
+    <Compile Include="Implementaciones\PuntoDeEncuentro\ListaComunicadosOperaciones.cs" />
+    <Compile Include="Implementaciones\PuntoDeEncuentro\MenuOperaciones.cs" />
+    <Compile Include="Implementaciones\PuntoDeEncuentro\VisorComunicadoOperaciones.cs" />
+    <Compile Include="Implementaciones\SecretariaTrabajoPrevisionSocial\AreasTematicasOperaciones.cs" />
+    <Compile Include="Implementaciones\SecretariaTrabajoPrevisionSocial\OcupacionesOperaciones.cs" />
+    <Compile Include="Implementaciones\TableroControl\TableroControlOperaciones.cs" />
+    <Compile Include="Modelo\SistemaSigeinModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaSigeinModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SistemaSigeinModel.Context1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaSigeinModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\SistemaSigeinModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaSigeinModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Modelo\SistemaSigeinModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SistemaSigeinModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelo\SistemaSigeinModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SistemaSigeinModel.edmx</DependentUpon>
+      <CustomToolNamespace>SIGE.Entidades</CustomToolNamespace>
+      <LastGenOutput>SistemaSigeinModel.Context1.cs</LastGenOutput>
+    </None>
+    <None Include="Modelo\SistemaSigeinModel.edmx.diagram">
+      <DependentUpon>SistemaSigeinModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SIGE.Entidades\SIGE.Entidades.csproj">
+      <Project>{d7a963f8-45aa-4e2a-9bd3-7e31b48922a7}</Project>
+      <Name>SIGE.Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

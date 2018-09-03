@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="0" />
+    <DataSources isList="true" count="0" />
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="4">
+      <value>,IMG1,IMG1,,System.String,,False,False,False,False</value>
+      <value>,IMG2,IMG2,,System.String,,False,False,False,False</value>
+      <value>,IMG3,IMG3,,System.String,,False,False,False,False</value>
+      <value>,IMG4,IMG4,,System.String,,False,False,False,False</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="2" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <DataBand1 Ref="3" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,19,11.4</ClientRectangle>
+          <Components isList="true" count="4">
+            <Image1 Ref="4" type="Image" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6,0.4,5.6,5.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ImageURL>{IMG2}</ImageURL>
+              <Margins>0,0,0,0</Margins>
+              <Name>Image1</Name>
+              <Page isRef="2" />
+              <Parent isRef="3" />
+              <Stretch>True</Stretch>
+            </Image1>
+            <Image2 Ref="5" type="Image" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.4,0.4,5.6,5.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ImageURL>{IMG1}</ImageURL>
+              <Margins>0,0,0,0</Margins>
+              <Name>Image2</Name>
+              <Page isRef="2" />
+              <Parent isRef="3" />
+              <Stretch>True</Stretch>
+            </Image2>
+            <Image3 Ref="6" type="Image" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6,6,5.6,5.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Guid>c53b22f4ee6a41048d69e9c9ee812e17</Guid>
+              <ImageURL>{IMG4}</ImageURL>
+              <Margins>0,0,0,0</Margins>
+              <Name>Image3</Name>
+              <Page isRef="2" />
+              <Parent isRef="3" />
+              <Stretch>True</Stretch>
+            </Image3>
+            <Image4 Ref="7" type="Image" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.4,6,5.6,5.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Guid>f0ff204747294100928f6251a649063e</Guid>
+              <ImageURL>{IMG3}</ImageURL>
+              <Margins>0,0,0,0</Margins>
+              <Name>Image4</Name>
+              <Page isRef="2" />
+              <Parent isRef="3" />
+              <Stretch>True</Stretch>
+            </Image4>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="2" />
+          <Parent isRef="2" />
+          <Sort isList="true" count="0" />
+        </DataBand1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>523f37b794214214845a0c33a1a0fade</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="8" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="9" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>6/27/2018 2:52:51 PM</ReportChanged>
+  <ReportCreated>6/27/2018 12:42:50 PM</ReportCreated>
+  <ReportFile>C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\Prueba1.mrt</ReportFile>
+  <ReportGuid>d6f47585e8c74b019780061042f42f27</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2015.3.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+        #endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>
