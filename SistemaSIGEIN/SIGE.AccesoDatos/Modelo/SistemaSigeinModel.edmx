@@ -11165,9 +11165,6 @@
             <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
             <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_ADSCRIPCIONES" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_ADSCRIPCIONES_Result)">
-          <Parameter Name="PIN_ID_CATALOGO_LISTA" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SPE_INSERTA_ACTUALIZA_EO_CUESTIONARIO_CONFIDENCIAL">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
@@ -12029,6 +12026,9 @@
             <Parameter Name="PIN_ID_BATERIA" Mode="In" Type="Int32" />
             <Parameter Name="PIN_CL_USUARIO_APP" Mode="In" Type="String" />
             <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPE_OBTIENE_ADSCRIPCIONES" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_ADSCRIPCIONES_Result)">
+            <Parameter Name="PIN_ID_CATALOGO_LISTA" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SPE_OBTIENE_C_CALLE_Result">
@@ -16051,14 +16051,6 @@
           <Property Type="Decimal" Name="MN_COSTO_DIRECTO" Nullable="false" Precision="13" Scale="2" />
           <Property Type="Decimal" Name="MN_COSTO_INDIRECTO" Nullable="false" Precision="13" Scale="2" />
         </ComplexType>
-        <ComplexType Name="SPE_OBTIENE_ADSCRIPCIONES_Result">
-          <Property Type="Int32" Name="ID_CAMPO" Nullable="false" />
-          <Property Type="String" Name="CL_CAMPO" Nullable="false" MaxLength="32" />
-          <Property Type="String" Name="CL_CAMPO_CATALOGO" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="NB_CAMPO" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="NB_CATALOGO_VALOR" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="DS_CAMPO" Nullable="true" MaxLength="200" />
-        </ComplexType>
         <ComplexType Name="SPE_OBTIENE_DATOS_EVALUADORES_CLIMA_Result">
           <Property Type="Int32" Name="ID_EVALUADOR" Nullable="false" />
           <Property Type="Int32" Name="ID_PERIODO" Nullable="false" />
@@ -17915,6 +17907,15 @@
           <Property Type="Int16" Name="NO_TIEMPO_PRUEBA" Nullable="false" />
           <Property Type="Int32" Name="NO_ORDEN" Nullable="true" />
           <Property Type="String" Name="DS_PRUEBA_FACTOR" Nullable="false" MaxLength="297" />
+        </ComplexType>
+        <ComplexType Name="SPE_OBTIENE_ADSCRIPCIONES_Result">
+          <Property Type="Int32" Name="ID_CAMPO" Nullable="false" />
+          <Property Type="String" Name="CL_CAMPO" Nullable="false" MaxLength="32" />
+          <Property Type="String" Name="CL_CAMPO_CATALOGO" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="NB_CAMPO" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="NB_CATALOGO_VALOR" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="DS_CAMPO" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CL_TABLA_REFERENCIA" Nullable="false" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -23439,18 +23440,6 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPE_INSERTA_PERIODO_CLIMA_LAB_COPIA" FunctionName="SistemaSigeinModel.Store.SPE_INSERTA_PERIODO_CLIMA_LAB_COPIA" />
-          <FunctionImportMapping FunctionImportName="SPE_OBTIENE_ADSCRIPCIONES" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_ADSCRIPCIONES">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_ADSCRIPCIONES_Result">
-                <ScalarProperty Name="ID_CAMPO" ColumnName="ID_CAMPO" />
-                <ScalarProperty Name="CL_CAMPO" ColumnName="CL_CAMPO" />
-                <ScalarProperty Name="CL_CAMPO_CATALOGO" ColumnName="CL_CAMPO_CATALOGO" />
-                <ScalarProperty Name="NB_CAMPO" ColumnName="NB_CAMPO" />
-                <ScalarProperty Name="NB_CATALOGO_VALOR" ColumnName="NB_CATALOGO_VALOR" />
-                <ScalarProperty Name="DS_CAMPO" ColumnName="DS_CAMPO" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPE_INSERTA_ACTUALIZA_EO_CUESTIONARIO_CONFIDENCIAL" FunctionName="SistemaSigeinModel.Store.SPE_INSERTA_ACTUALIZA_EO_CUESTIONARIO_CONFIDENCIAL" />
           <FunctionImportMapping FunctionImportName="SPE_OBTIENE_DATOS_EVALUADORES_CLIMA" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_DATOS_EVALUADORES_CLIMA">
             <ResultMapping>
@@ -25747,6 +25736,19 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPE_ELIMINA_PRUEBA_RESPUESTAS" FunctionName="SistemaSigeinModel.Store.SPE_ELIMINA_PRUEBA_RESPUESTAS" />
+          <FunctionImportMapping FunctionImportName="SPE_OBTIENE_ADSCRIPCIONES" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_ADSCRIPCIONES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_ADSCRIPCIONES_Result">
+                <ScalarProperty Name="ID_CAMPO" ColumnName="ID_CAMPO" />
+                <ScalarProperty Name="CL_CAMPO" ColumnName="CL_CAMPO" />
+                <ScalarProperty Name="CL_CAMPO_CATALOGO" ColumnName="CL_CAMPO_CATALOGO" />
+                <ScalarProperty Name="NB_CAMPO" ColumnName="NB_CAMPO" />
+                <ScalarProperty Name="NB_CATALOGO_VALOR" ColumnName="NB_CATALOGO_VALOR" />
+                <ScalarProperty Name="DS_CAMPO" ColumnName="DS_CAMPO" />
+                <ScalarProperty Name="CL_TABLA_REFERENCIA" ColumnName="CL_TABLA_REFERENCIA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -131,7 +131,13 @@ namespace SIGE.WebApp.FYD
 
             XElement xmlCapacitaciones = new XElement("CAPACITACIONES");
 
-            xmlCapacitaciones.Add(new XAttribute("CL_PROGRAMA", txtClProgCapacitacion.Text), new XAttribute("NB_PROGRAMA", txtNbProgCapacitacion.Text), new XAttribute("ID_PERIODO", pIdPeriodoDNC + ""));
+            var vXelementNota = new XElement("NOTA",
+            new XAttribute("FE_NOTA", (!ptipo.Equals("Editar")) ? DateTime.Now.ToString() : (pNota != null) ? DateTime.Now.ToString() : DateTime.Now.ToString()),
+            new XAttribute("DS_NOTA", (!ptipo.Equals("Editar")) ? radEditorNotas.Content : radEditorNotas.Content));
+
+            XElement vXelementNotasDNC = new XElement("NOTAS", vXelementNota);
+
+            xmlCapacitaciones.Add(new XAttribute("CL_PROGRAMA", txtClProgCapacitacion.Text), new XAttribute("NB_PROGRAMA", txtNbProgCapacitacion.Text), new XAttribute("DS_NOTAS", vXelementNotasDNC.ToString()), new XAttribute("ID_PERIODO", pIdPeriodoDNC + ""));
 
             foreach (E_NECESIDADES_CAPACITACION item in vLstDnc){
                 xmlCapacitaciones.Add(new XElement("CAPACITACION",

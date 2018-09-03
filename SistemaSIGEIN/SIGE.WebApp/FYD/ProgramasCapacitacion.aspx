@@ -233,7 +233,7 @@
                     browserWnd = currentWnd.BrowserWindow;
 
                 var windowProperties = {
-                    width: browserWnd.innerWidth - 700,
+                    width: browserWnd.innerWidth - 600,
                     height: browserWnd.innerHeight - 50
                 };
 

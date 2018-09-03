@@ -5517,18 +5517,6 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="SPE_INSERTA_PERIODO_CLIMA_LAB_COPIA" FunctionName="SistemaSigeinModel.Store.SPE_INSERTA_PERIODO_CLIMA_LAB_COPIA" />
-    <FunctionImportMapping FunctionImportName="SPE_OBTIENE_ADSCRIPCIONES" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_ADSCRIPCIONES">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_ADSCRIPCIONES_Result">
-          <ScalarProperty Name="ID_CAMPO" ColumnName="ID_CAMPO" />
-          <ScalarProperty Name="CL_CAMPO" ColumnName="CL_CAMPO" />
-          <ScalarProperty Name="CL_CAMPO_CATALOGO" ColumnName="CL_CAMPO_CATALOGO" />
-          <ScalarProperty Name="NB_CAMPO" ColumnName="NB_CAMPO" />
-          <ScalarProperty Name="NB_CATALOGO_VALOR" ColumnName="NB_CATALOGO_VALOR" />
-          <ScalarProperty Name="DS_CAMPO" ColumnName="DS_CAMPO" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="SPE_INSERTA_ACTUALIZA_EO_CUESTIONARIO_CONFIDENCIAL" FunctionName="SistemaSigeinModel.Store.SPE_INSERTA_ACTUALIZA_EO_CUESTIONARIO_CONFIDENCIAL" />
     <FunctionImportMapping FunctionImportName="SPE_OBTIENE_DATOS_EVALUADORES_CLIMA" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_DATOS_EVALUADORES_CLIMA">
       <ResultMapping>
@@ -7825,5 +7813,18 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="SPE_ELIMINA_PRUEBA_RESPUESTAS" FunctionName="SistemaSigeinModel.Store.SPE_ELIMINA_PRUEBA_RESPUESTAS" />
+    <FunctionImportMapping FunctionImportName="SPE_OBTIENE_ADSCRIPCIONES" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_ADSCRIPCIONES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_ADSCRIPCIONES_Result">
+          <ScalarProperty Name="ID_CAMPO" ColumnName="ID_CAMPO" />
+          <ScalarProperty Name="CL_CAMPO" ColumnName="CL_CAMPO" />
+          <ScalarProperty Name="CL_CAMPO_CATALOGO" ColumnName="CL_CAMPO_CATALOGO" />
+          <ScalarProperty Name="NB_CAMPO" ColumnName="NB_CAMPO" />
+          <ScalarProperty Name="NB_CATALOGO_VALOR" ColumnName="NB_CATALOGO_VALOR" />
+          <ScalarProperty Name="DS_CAMPO" ColumnName="DS_CAMPO" />
+          <ScalarProperty Name="CL_TABLA_REFERENCIA" ColumnName="CL_TABLA_REFERENCIA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -29,6 +29,12 @@ namespace SIGE.WebApp.Comunes
             set { ViewState["vs_vClLista"] = value; }
         }
 
+        private string vclTipoSeleccion
+        {
+            get { return (string)ViewState["vs_vclTipoSeleccion"]; }
+            set { ViewState["vs_vclTipoSeleccion"] = value; }
+        }
+
         #endregion Variables
 
         protected void Page_Load(object sender, EventArgs e)
@@ -46,6 +52,10 @@ namespace SIGE.WebApp.Comunes
                     btnAgregar.Visible = false;
                 }
 
+                string  pclTipoSeleccion = Request.QueryString["CL_REFERENCIA"];
+                if (!String.IsNullOrEmpty(pclTipoSeleccion))
+                    vclTipoSeleccion = pclTipoSeleccion;
+
                 string vTipoLista = Request.QueryString["ClLista"];
                 if (!String.IsNullOrEmpty(vTipoLista))
                     vClLista = vTipoLista;
@@ -57,7 +67,10 @@ namespace SIGE.WebApp.Comunes
             List<SPE_OBTIENE_ADSCRIPCIONES_Result> ListaAdscripcion = new List<SPE_OBTIENE_ADSCRIPCIONES_Result>();
             RotacionPersonalNegocio negocio = new RotacionPersonalNegocio();
             ListaAdscripcion = negocio.ObtieneCatalogoAdscripciones();
-            grdAdscripcion.DataSource = ListaAdscripcion;
+            if(!String.IsNullOrEmpty(vclTipoSeleccion))
+                grdAdscripcion.DataSource = ListaAdscripcion.Where(w=> w.CL_TABLA_REFERENCIA == vclTipoSeleccion).ToList();
+            else
+               grdAdscripcion.DataSource = ListaAdscripcion;
         }
 
         protected void grdAdscripcion_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)

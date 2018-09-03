@@ -17162,15 +17162,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_PERIODO_CLIMA_LAB_COPIA", xML_RESULTADO, pIN_ID_PERIODOParameter, pIN_CL_PERIODOParameter, pIN_NB_PERIODOParameter, pIN_DS_PERIODOParameter, pIN_CL_ESTADO_PERIODOParameter, pIN_DS_NOTASParameter, pIN_CL_TIPO_CONFIGURACIONParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_ADSCRIPCIONES_Result> SPE_OBTIENE_ADSCRIPCIONES(Nullable<int> pIN_ID_CATALOGO_LISTA)
-        {
-            var pIN_ID_CATALOGO_LISTAParameter = pIN_ID_CATALOGO_LISTA.HasValue ?
-                new ObjectParameter("PIN_ID_CATALOGO_LISTA", pIN_ID_CATALOGO_LISTA) :
-                new ObjectParameter("PIN_ID_CATALOGO_LISTA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_ADSCRIPCIONES_Result>("SPE_OBTIENE_ADSCRIPCIONES", pIN_ID_CATALOGO_LISTAParameter);
-        }
-    
         public virtual int SPE_INSERTA_ACTUALIZA_EO_CUESTIONARIO_CONFIDENCIAL(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO, string pIN_XML_RESPUESTAS, string pIN_XML_PREGUNTAS_ABIERTAS, string pIN_XML_DATOS_EVALUADOR, string pIN_XML_DATOS_CAMPOS_EXTRA, string pIN_CL_USUARIO_APP, string pIN_NB_PROGRAMA)
         {
             var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
@@ -20131,6 +20122,15 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_PRUEBA_RESPUESTAS", xML_RESULTADO, pIN_XML_PRUEBASParameter, pIN_ID_BATERIAParameter, pIN_CL_USUARIO_APPParameter, pIN_NB_PROGRAMAParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_ADSCRIPCIONES_Result> SPE_OBTIENE_ADSCRIPCIONES(Nullable<int> pIN_ID_CATALOGO_LISTA)
+        {
+            var pIN_ID_CATALOGO_LISTAParameter = pIN_ID_CATALOGO_LISTA.HasValue ?
+                new ObjectParameter("PIN_ID_CATALOGO_LISTA", pIN_ID_CATALOGO_LISTA) :
+                new ObjectParameter("PIN_ID_CATALOGO_LISTA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_ADSCRIPCIONES_Result>("SPE_OBTIENE_ADSCRIPCIONES", pIN_ID_CATALOGO_LISTAParameter);
         }
     }
 }
