@@ -6045,32 +6045,6 @@
             <Parameter Name="PIN_CL_OCUPACION" Mode="In" Type="Boolean" />
             <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
           </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_EMPLEADO_RELACIONADO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_EMPLEADO_RELACIONADO_Result)">
-            <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EMPLEADO_RELACIONADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_TIPO_RELACION" Mode="In" Type="String" />
-            <Parameter Name="PIN_DS_EMPLEADO_RELACIONADO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_ESTADO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_ESTADO_Result)">
-            <Parameter Name="PIN_ID_ESTADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_PAIS" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_ESTADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_ESTADO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_EVALUADOR_EXTERNO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_EVALUADOR_EXTERNO_Result)">
-            <Parameter Name="PIN_ID_EVALUADOR_EXTERNO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_EVALUADOR_EXTERNO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_EVALUADOR_EXTERNO" Mode="In" Type="String" />
-            <Parameter Name="PIN_DS_EVALUARDO_EXTERNO" Mode="In" Type="String" />
-            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_XML_CAMPOS_ADICIONALES" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_GRUPO_PREGUNTA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_GRUPO_PREGUNTA_Result)">
-            <Parameter Name="PIN_ID_GRUPO_PREGUNTA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_GRUPO_PREGUNTA" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_GRUPO_PREGUNTA" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_PREGUNTA" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SPE_OBTIENE_C_PREGUNTA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_PREGUNTA_Result)">
             <Parameter Name="PIN_ID_PREGUNTA" Mode="In" Type="Int32" />
             <Parameter Name="PIN_CL_PREGUNTA" Mode="In" Type="String" />
@@ -6083,33 +6057,6 @@
             <Parameter Name="PIN_ID_COMPETENCIA" Mode="In" Type="Int32" />
             <Parameter Name="PIN_ID_BITACORA" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_PUESTO_COMPETENCIA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_PUESTO_COMPETENCIA_Result)">
-            <Parameter Name="PIN_ID_PUESTO_COMPETENCIA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PUESTO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_COMPETENCIA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_NIVEL_DESEADO" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_PUESTO_FUNCION" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_PUESTO_FUNCION_Result)">
-            <Parameter Name="PIN_ID_PUESTO_FUNCION" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_PUESTO_FUNCION" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PUESTO_FUNCION" Mode="In" Type="String" />
-            <Parameter Name="PIN_DS_PUESTO_FUNCION" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_PUESTO" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_PUESTO_RELACIONADO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_PUESTO_RELACIONADO_Result)">
-            <Parameter Name="PIN_ID_PUESTO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PUESTO_RELACIONADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_TIPO_RELACION" Mode="In" Type="String" />
-            <Parameter Name="PIN_DS_PUESTO_RELACIONADO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_RESPUESTA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_RESPUESTA_Result)">
-            <Parameter Name="PIN_ID_RESPUESTA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_RESPUESTA" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_RESPUESTA" Mode="In" Type="String" />
-            <Parameter Name="PIN_DS_RESPUESTA" Mode="In" Type="String" />
-            <Parameter Name="PIN_NO_VALOR" Mode="In" Type="Decimal" />
-            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
-          </FunctionImport>
           <FunctionImport Name="SPE_OBTIENE_C_SECUENCIA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_SECUENCIA_Result)">
             <Parameter Name="PIN_CL_SECUENCIA" Mode="In" Type="String" />
             <Parameter Name="PIN_CL_PREFIJO" Mode="In" Type="String" />
@@ -6117,150 +6064,6 @@
             <Parameter Name="PIN_NO_VALOR_MAXIMO" Mode="In" Type="Int32" />
             <Parameter Name="PIN_CL_SUFIJO" Mode="In" Type="String" />
             <Parameter Name="PIN_NO_DIGITOS" Mode="In" Type="Byte" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_USUARIO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_USUARIO_Result)">
-            <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_CORREO_ELECTRONICO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PASSWORD" Mode="In" Type="String" />
-            <Parameter Name="PIN_FG_CAMBIAR_PASSWORD" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_XML_PERSONALIZACION" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_ROL" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_FE_INACTIVO" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_FECHA" ReturnType="Collection(DateTime)" />
-          <FunctionImport Name="SPE_OBTIENE_K_AREA_INTERES" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_K_AREA_INTERES_Result)">
-            <Parameter Name="PIN_ID_CANDIDATO_AREA_INTERES" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_CANDIDATO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_AREA_INTERES" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_K_CUESTIONARIO_PREGUNTA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_K_CUESTIONARIO_PREGUNTA_Result)">
-            <Parameter Name="PIN_ID_CUESTIONARIO_PREGUNTA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_CUESTIONARIO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PREGUNTA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_NB_PREGUNTA" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_RESPUESTA" Mode="In" Type="String" />
-            <Parameter Name="PIN_NO_VALOR_RESPUESTA" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_K_EMPLEADO_COMPETENCIA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_K_EMPLEADO_COMPETENCIA_Result)">
-            <Parameter Name="PIN_ID_EMPLEADO_COMPETENCIA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_COMPETENCIA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_NO_CALIFICACION" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_K_EVALUADO_EVALUADOR" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_K_EVALUADO_EVALUADOR_Result)">
-            <Parameter Name="PIN_ID_EVALAUDO_EVALUADOR" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EVALUADOR_PERIODO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PUESTO_EVALUADOR" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_NO_VALOR" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_K_EVALUADO_PERIODO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_K_EVALUADO_PERIODO_Result)">
-            <Parameter Name="PIN_ID_EVALUADOR_PERIODO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PUESTO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_FG_PUESTO_ACTUAL" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_NO_CONSUMO_SUP" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_MN_CUOTA_BASE" Mode="In" Type="Decimal" />
-            <Parameter Name="PIN_MN_CUOTA_CONSUMO" Mode="In" Type="Decimal" />
-            <Parameter Name="PIN_MN_CUOTA_ADICIONAL" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_S_CATALOGO_TIPO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_S_CATALOGO_TIPO_Result)">
-            <Parameter Name="PIN_ID_CATALOGO_TIPO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_NB_CATALOGO_TIPO" Mode="In" Type="String" />
-            <Parameter Name="PIN_DS_CATALOGO_TIPO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_S_FUNCION" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_S_FUNCION_Result)">
-            <Parameter Name="PIN_ID_FUNCION" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_FUNCION" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_TIPO_FUNCION" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_FUNCION" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_FUNCION_PADRE" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_NB_URL" Mode="In" Type="String" />
-            <Parameter Name="PIN_XML_CONFIGURACION" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_S_TIPO_DATO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_S_TIPO_DATO_Result)">
-            <Parameter Name="PIN_CL_TIPO_DATO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_TIPO_DATO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_S_TIPO_RELACION_PUESTO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_S_TIPO_RELACION_PUESTO_Result)">
-            <Parameter Name="PIN_CL_TIPO_RELACION" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_TIPO_RELACION" Mode="In" Type="String" />
-            <Parameter Name="PIN_DS_TIPO_RELACION" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_VW_CAUSAS_REQUISICION" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_VW_CAUSAS_REQUISICION_Result)">
-          <Parameter Name="PIN_CL_CAUSA" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_VW_ESTADO_REQUISICION" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_VW_ESTADO_REQUISICION_Result)">
-          <Parameter Name="PIN_CL_ESTADO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_ROL_FUNCION" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_ROL_FUNCION_Result)">
-            <Parameter Name="PIN_ID_ROL" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_FUNCION" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_PARIENTE" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_PARIENTE_Result)">
-            <Parameter Name="PIN_ID_PARIENTE" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_NB_PARIENTE" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_PARENTEZCO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_GENERO" Mode="In" Type="String" />
-            <Parameter Name="PIN_FE_NACIMIENTO" Mode="In" Type="DateTime" />
-            <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_CANDIDATO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_BITACORA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_OCUPACION" Mode="In" Type="String" />
-            <Parameter Name="PIN_FG_DEPENDIENTE" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_VW_PARENTEZCO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_VW_PARENTEZCO_Result)">
-          <Parameter Name="PIN_NB_PARENTEZCO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_FOLIO_SECUENCIA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_FOLIO_SECUENCIA_Result)">
-          <Parameter Name="P_CL_SECUENCIA" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_VW_OBTIENE_MESES" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_VW_OBTIENE_MESES_Result)">
-            <Parameter Name="PIN_NUMERO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_MES" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_VW_TIPO_LICENCIA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_VW_TIPO_LICENCIA_Result)">
-            <Parameter Name="PIN_CL_LICENCIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_LICENCIA" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_VW_PAIS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_VW_PAIS_Result)">
-            <Parameter Name="PIN_CL_PAIS" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PAIS" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_DATOS_CP" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_DATOS_CP_Result)">
-          <Parameter Name="PIN_CL_CODIGO_POSTAL" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SP_OBTIENE_ANIOS" ReturnType="Collection(SistemaSigeinModel.SP_OBTIENE_ANIOS_Result)" />
-          <FunctionImport Name="SPE_OBTIENE_VW_OBTIENE_PORCENTAJES_IDIOMAS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_VW_OBTIENE_PORCENTAJES_IDIOMAS_Result)">
-            <Parameter Name="PIN_NB_PORCENTAJE" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_PORCENTAJE" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_EMPLEADO_IDIOMA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_EMPLEADO_IDIOMA_Result)">
-            <Parameter Name="PIN_ID_EMPLEADO_IDIOMA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_CANDIDATO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_IDIOMA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_PR_LECTURA" Mode="In" Type="Decimal" />
-            <Parameter Name="PIN_PR_ESCRITURA" Mode="In" Type="Decimal" />
-            <Parameter Name="PIN_PR_CONVERSACIONAL" Mode="In" Type="Decimal" />
-            <Parameter Name="PIN_CL_INSTITUCION" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_NO_PUNTAJE" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_EMPLEADO_ESCOLARIDAD" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_EMPLEADO_ESCOLARIDAD_Result)">
-            <Parameter Name="PIN_ID_EMPLEADO_ESCOLARIDAD" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_CANDIDATO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_ESCOLARIDAD" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_INSTITUCION" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_NB_INSTITUCION" Mode="In" Type="String" />
-            <Parameter Name="PIN_FE_PERIODO_INICIO" Mode="In" Type="DateTime" />
-            <Parameter Name="PIN_FE_PERIODO_FIN" Mode="In" Type="DateTime" />
-            <Parameter Name="PIN_CL_ESTADO_ESCOLARIDAD" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SPE_OBTIENE_CONFIGURACION">
             <Parameter Name="CL_CONFIGURACION" Mode="In" Type="String" />
@@ -6271,15 +6074,6 @@
             <Parameter Name="PIN_DS_ERROR" Mode="In" Type="String" />
             <Parameter Name="PIN_CL_USUARIO_APP_CREA" Mode="In" Type="String" />
             <Parameter Name="PIN_NB_PROGRAMA_CREA" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_FUNCIONES" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_FUNCIONES_Result)">
-          <Parameter Name="PIN_CL_TIPO_FUNCION" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_S_TIPO_COMPETENCIA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_S_TIPO_COMPETENCIA_Result)">
-            <Parameter Name="PIN_CL_TIPO_COMPETENCIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_TIPO_COMPETENCIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_DS_TIPO_COMPETENCIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="SPE_INSERTA_ACTUALIZA_C_CALLE">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
@@ -7173,24 +6967,11 @@
             <Parameter Name="PIN_NB_PROGRAMA_MODIFICA" Mode="In" Type="String" />
             <Parameter Name="PIN_TIPO_TRANSACCION" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_ESCOLARIDADES" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_ESCOLARIDADES_Result)">
-            <Parameter Name="PIN_ID_ESCOLARIDAD" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_NB_ESCOLARIDAD" Mode="In" Type="String" />
-            <Parameter Name="PIN_DS_ESCOLARIDAD" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_NIVEL_ESCOLARIDAD" Mode="In" Type="String" />
-            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_ID_NIVEL_ESCOLARIDAD" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_NB_NIVEL_ESCOLARIDAD" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="SPE_ELIMINA_USUARIO">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
             <Parameter Name="PIN_CL_USUARIO_APP_CREA" Mode="In" Type="String" />
             <Parameter Name="PIN_NB_PROGRAMA_CREA" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_NOTIFICAR_REQUISICION" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_NOTIFICAR_REQUISICION_Result)" />
-          <FunctionImport Name="SPE_OBTIENE_SUELDO_PROMEDIO_PUESTO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_SUELDO_PROMEDIO_PUESTO_Result)">
-          <Parameter Name="PIN_ID_PUESTO" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SPE_USUARIO_CAMBIAR_PASSWORD">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
@@ -7200,24 +6981,6 @@
             <Parameter Name="PIN_CL_TOKEN" Mode="In" Type="String" />
             <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
             <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_VW_TIPO_ESCOLARIDAD" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_VW_TIPO_ESCOLARIDAD_Result)">
-            <Parameter Name="PIN_ID_NIVEL_ESCOLARIDAD" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_TIPO_ESCOLARIDAD" Mode="In" Type="String" />
-            <Parameter Name="PIN_DS_NIVEL_ESCOLARIDAD" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_SOLICITUD" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_SOLICITUD_Result)">
-          <Parameter Name="PIN_ID_SOLICITUD" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_COLONIA_CP" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_COLONIA_CP_Result)">
-            <Parameter Name="PIN_ID_COLONIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_PAIS" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_ESTADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_MUNICIPIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_COLONIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_COLONIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_TIPO_ASENTAMIENTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_CODIGO_POSTAL" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SPE_INSERTA_ACTUALIZA_K_SOLICITUD">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
@@ -7379,27 +7142,6 @@
             <Parameter Name="PIN_NB_PROGRAMA_MODIFICA" Mode="In" Type="String" />
             <Parameter Name="PIN_TIPO_TRANSACCION" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_CUESTIONARIO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_CUESTIONARIO_Result)">
-            <Parameter Name="PIN_ID_CUESTIONARIO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_CUESTIONARIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_CUESTIONARIO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_PRUEBA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_PRUEBA_Result)">
-            <Parameter Name="PIN_ID_PRUEBA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_PRUEBA" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PRUEBA" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_CUESTIONARIO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_NO_TIEMPO_PRUEBA" Mode="In" Type="Int16" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_PRUEBA_NIVEL" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_PRUEBA_NIVEL_Result)">
-            <Parameter Name="PIN_ID_PRUEBA_NIVEL" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_PRUEBA_NIVEL" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PRUEBA_NIVEL" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_K_PRUEBA_NIVEL" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_K_PRUEBA_NIVEL_Result)">
-            <Parameter Name="PIN_ID_PRUEBA_NIVEL" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PRUEBA" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SPE_OBTIENE_CAMPO_ADICIONAL_XML" ReturnType="Collection(String)">
           <Parameter Name="PIN_CL_TABLA_REFERENCIA" Mode="In" Type="String" />
           </FunctionImport>
@@ -7413,21 +7155,6 @@
             <Parameter Name="PIN_CL_TOKEN_EXTERNO" Mode="In" Type="Guid" />
             <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
             <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_K_PREGUNTA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_K_PREGUNTA_Result)">
-            <Parameter Name="PIN_ID_PREGUNTA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_PREGUNTA" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PREGUNTA" Mode="In" Type="String" />
-            <Parameter Name="PIN_DS_PREGUNTA" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_TIPO_PREGUNTA" Mode="In" Type="String" />
-            <Parameter Name="PIN_NO_VALOR" Mode="In" Type="Decimal" />
-            <Parameter Name="PIN_FG_REQUERIDO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_ID_COMPETENCIA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_BITACORA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PRUEBA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_CUESTIONARIO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_TOKEN_EXTERNO" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="SPE_INSERTA_ACTUALIZA_CENTRO_ADMVO">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
@@ -7472,23 +7199,6 @@
             <Parameter Name="PIN_NB_PROGRAMA_CREA" Mode="In" Type="String" />
             <Parameter Name="PIN_NB_PROGRAMA_MODIFICA" Mode="In" Type="String" />
             <Parameter Name="PIN_TIPO_TRANSACCION" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_CENTROS_ADMVOS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_CENTROS_ADMVOS_Result)">
-            <Parameter Name="PIN_ID_CENTRO_ADMVO" Mode="In" Type="Guid" />
-            <Parameter Name="PIN_NB_MUNICIPIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_ESTADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_CODIGO_POSTAL" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_ZONA_ECONOMICA" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_MUNICIPIO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_CENTROS_OPTVOS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_CENTROS_OPTVOS_Result)">
-            <Parameter Name="PIN_ID_CENTRO_OPTVO" Mode="In" Type="Guid" />
-            <Parameter Name="PIN_CL_CENTRO_OPTVO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_CENTRO_OPTVO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_MUNICIPIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_ESTADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_MUNICIPIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_CODIGO_POSTAL" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SPE_GENERA_PRUEBAS_CANDIDATOS">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
@@ -7575,16 +7285,6 @@
             <Parameter Name="PIN_NB_PROGRAMA_CREA" Mode="In" Type="String" />
             <Parameter Name="PIN_NB_PROGRAMA_MODIFICA" Mode="In" Type="String" />
             <Parameter Name="PIN_TIPO_TRANSACCION" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_K_PRUEBA_SECCION" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_K_PRUEBA_SECCION_Result)">
-            <Parameter Name="PIN_ID_PRUEBA_SECCION" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PRUEBA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_PRUEBA_SECCION" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PRUEBA_SECCION" Mode="In" Type="String" />
-            <Parameter Name="PIN_NO_TIEMPO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_ESTADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_FE_INICIO" Mode="In" Type="DateTime" />
-            <Parameter Name="PIN_FE_TERMINO" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="SPE_INSERTA_RESULTADOS_TIVA">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
@@ -7673,10 +7373,6 @@
             <Parameter Name="PIN_NB_PROGRAMA_CREA" Mode="In" Type="String" />
             <Parameter Name="ID_BATERIA" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SPE_OBTENER_TIPO_ASENTAMIENTO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTENER_TIPO_ASENTAMIENTO_Result)" />
-          <FunctionImport Name="SPE_OBTIENE_VARIABLES_BAREMOS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_VARIABLES_BAREMOS_Result)">
-          <Parameter Name="PIN_ID_BATERIA" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SPE_GENERA_VARIABLES_BAREMOS">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="PIN_ID_BATERIA" Mode="In" Type="Int32" />
@@ -7694,14 +7390,6 @@
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="PIN_ID_BATERIA" Mode="In" Type="Int32" />
             <Parameter Name="PIN_CL_TOKEN_BATERIA" Mode="In" Type="Guid" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_FACTOR" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_FACTOR_Result)">
-            <Parameter Name="PIN_ID_FACTOR" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_FACTOR" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_FACTOR" Mode="In" Type="String" />
-            <Parameter Name="PIN_DS_FACTOR" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_VARIABLE" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_NB_ABREVIATURA" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SPE_ELIMINA_C_PLANTILLA_FORMULARIO">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
@@ -7722,7 +7410,6 @@
             <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
             <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_TIPO_CAMPO_FORMULARIO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_TIPO_CAMPO_FORMULARIO_Result)" />
           <FunctionImport Name="SPE_INSERTA_ACTUALIZA_CAMPO_FORMULARIO">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="PIN_ID_CAMPO_FORMULARIO" Mode="In" Type="Int32" />
@@ -7743,51 +7430,6 @@
             <Parameter Name="PIN_ID_TABULADOR" Mode="In" Type="Int32" />
             <Parameter Name="PIN_CL_USUARIO_APP_CREA" Mode="In" Type="String" />
             <Parameter Name="PIN_NB_PROGRAMA_CREA" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_CAMPO_ADICIONAL" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_CAMPO_ADICIONAL_Result)">
-            <Parameter Name="PIN_ID_CAMPO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_CAMPO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_CAMPO" Mode="In" Type="String" />
-            <Parameter Name="PIN_DS_CAMPO" Mode="In" Type="String" />
-            <Parameter Name="PIN_FG_REQUERIDO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_NO_VALOR_DEFECTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_TIPO_DATO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_DIMENSION" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_TABLA_REFERENCIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_ESQUEMA_REFERENCIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_FG_MOSTRAR" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_ID_CATALOGO_LIST" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_FG_ADICIONAL" Mode="In" Type="Boolean" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_CAMPO_ADICIONAL_XML" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_CAMPO_ADICIONAL_XML_Result)">
-            <Parameter Name="PIN_XML_SEARCH" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_CAMPO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_CAMPO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_CAMPO" Mode="In" Type="String" />
-            <Parameter Name="PIN_DS_CAMPO" Mode="In" Type="String" />
-            <Parameter Name="PIN_FG_REQUERIDO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_NO_VALOR_DEFECTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_TIPO_DATO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_DIMENSION" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_TABLA_REFERENCIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_ESQUEMA_REFERENCIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_FG_MOSTRAR" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_ID_CATALOGO_LIST" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_FG_ADICIONAL" Mode="In" Type="Boolean" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_DOCUMENTO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_DOCUMENTO_Result)">
-            <Parameter Name="PIN_ID_DOCUMENTO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_NB_DOCUMENTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_DOCUMENTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_CANDIDATO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_RUTA" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_TIPO_RUTA" Mode="In" Type="String" />
-            <Parameter Name="PIN_FE_RECEPCION" Mode="In" Type="DateTime" />
-            <Parameter Name="PIN_ID_INSTITUCION" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_BITACORA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_ID_ARCHIVO" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SPE_INSERTA_ACTUALIZA_TABULADOR">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
@@ -7830,42 +7472,6 @@
             <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
             <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
             <Parameter Name="PIN_TIPO_TRANSACCION" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_M_EMPLEADO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_M_EMPLEADO_Result)">
-            <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_EMPLEADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_EMPLEADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_APELLIDO_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_APELLIDO_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_ESTADO_EMPLEADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_GENERO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_ESTADO_CIVIL" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_CONYUGUE" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_RFC" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_CURP" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_NSS" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_TIPO_SANGUINEO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_NACIONALIDAD" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PAIS" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_ESTADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_MUNICIPIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_COLONIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_CALLE" Mode="In" Type="String" />
-            <Parameter Name="PIN_NO_INTERIOR" Mode="In" Type="String" />
-            <Parameter Name="PIN_NO_EXTERIOR" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_CODIGO_POSTAL" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_CORREO_ELECTRONICO" Mode="In" Type="String" />
-            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_FE_NACIMIENTO" Mode="In" Type="DateTime" />
-            <Parameter Name="PIN_DS_LUGAR_NACIMIENTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_FE_ALTA" Mode="In" Type="DateTime" />
-            <Parameter Name="PIN_FE_BAJA" Mode="In" Type="DateTime" />
-            <Parameter Name="PIN_ID_PUESTO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_MN_SUELDO" Mode="In" Type="Decimal" />
-            <Parameter Name="PIN_MN_SUELDO_VARIABLE" Mode="In" Type="Decimal" />
-            <Parameter Name="PIN_DS_SUELDO_COMPOSICION" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_CANDIDATO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EMPRESA" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SPE_ELIMINA_C_INSTRUCTOR">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
@@ -7915,9 +7521,6 @@
           </FunctionImport>
           <FunctionImport Name="SPE_OBTIENE_ORGANIGRAMA_DEPARTAMENTO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_ORGANIGRAMA_DEPARTAMENTO_Result)">
           <Parameter Name="PIN_ID_DEPARTAMENTO" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_ORGANIGRAMA_DEPARTAMENTOS_PUESTOS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_ORGANIGRAMA_DEPARTAMENTOS_PUESTOS_Result)">
-          <Parameter Name="PIN_ID_DEPARTAMENTOS" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SPE_OBTIENE_VALUACION_NIVELACION" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_VALUACION_NIVELACION_Result)">
             <Parameter Name="PIN_ID_TABULADOR" Mode="In" Type="Int32" />
@@ -8056,16 +7659,6 @@
             <Parameter Name="PIN_CL_USUARIO_APP_MODIFICA" Mode="In" Type="String" />
             <Parameter Name="PIN_NB_PROGRAMA_MODIFICA" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_C_PERIODO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_C_PERIODO_Result)">
-            <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_PERIODO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PERIODO" Mode="In" Type="String" />
-            <Parameter Name="PIN_DS_PERIODO" Mode="In" Type="String" />
-            <Parameter Name="PIN_FE_INICIO" Mode="In" Type="DateTime" />
-            <Parameter Name="PIN_FE_TERMINO" Mode="In" Type="DateTime" />
-            <Parameter Name="PIN_CL_ESTADO_PERIODO" Mode="In" Type="String" />
-            <Parameter Name="PIN_XML_CAMPOS_ADICIONALES" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="SPE_INSERTA_ACTUALIZA_C_CLASIFICACION_COMPETENCIA">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="PIN_ID_CLASIFICACION_COMPETENCIA" Mode="In" Type="Int32" />
@@ -8081,14 +7674,6 @@
             <Parameter Name="PIN_NB_PROGRAMA_CREA" Mode="In" Type="String" />
             <Parameter Name="PIN_NB_PROGRAMA_MODIFICA" Mode="In" Type="String" />
             <Parameter Name="PIN_TIPO_TRANSACCION" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_K_PROGRAMA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_K_PROGRAMA_Result)">
-            <Parameter Name="PIN_ID_PROGRAMA_EMPLEADO_COMPETENCIA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PROGRAMA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PROGRAMA_COMPETENCIA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PROGRAMA_EMPLEADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_PRIORIDAD" Mode="In" Type="String" />
-            <Parameter Name="PIN_PR_RESULTADO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SPE_INSERTA_ACTUALIZA_TABULADOR_MAESTRO">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
@@ -8330,11 +7915,6 @@
             <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
             <Parameter Name="PIN_TIPO_TRANSACCION" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_FORMATOS_Y_TRAMITES" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_FORMATOS_Y_TRAMITES_Result)">
-            <Parameter Name="PIN_ID_FORMATO_TRAMITE" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_TIPO_FORMATO_TRAMITE" Mode="In" Type="String" />
-            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
-          </FunctionImport>
           <FunctionImport Name="SPE_INSERTA_ACTUALIZA_FYD_OTROS_EVALUADORES">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
@@ -8368,9 +7948,6 @@
             <Parameter Name="PIN_CL_USUARIO_APP" Mode="In" Type="String" />
             <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
             <Parameter Name="PIN_TIPO_TRANSACCION" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_FYD_EVALUADO_CUESTIONARIOS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_FYD_EVALUADO_CUESTIONARIOS_Result)">
-          <Parameter Name="PIN_ID_EVALUADO" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SPE_OBTIENE_FYD_CUESTIONARIO_EVALUADO_EVALUADOR" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_FYD_CUESTIONARIO_EVALUADO_EVALUADOR_Result)">
             <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
@@ -8947,16 +8524,6 @@
             <Parameter Name="PIN_NB_DIMENSION" Mode="In" Type="String" />
             <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_TEMAS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_TEMAS_Result)">
-            <Parameter Name="PIN_CL_TEMA" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_TEMA" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_PREGUNTAS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_PREGUNTAS_Result)">
-            <Parameter Name="PIN_ID_PREGUNTA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_PREGUNTA" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SPE_INSERTA_ACTUALIZA_EMPLEADO_PUESTO_PDE">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="XML_PUESTOS" Mode="In" Type="String" />
@@ -9447,7 +9014,6 @@
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="PIN_ID_ENTREVISTA" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_SOLICITUDES_EMPLEO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_SOLICITUDES_EMPLEO_Result)" />
           <FunctionImport Name="SPE_INSERTA_ACTUALIZA_ENTREVISTA">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="PIN_ID_ENTREVISTA" Mode="In" Type="Int32" />
@@ -9908,15 +9474,6 @@
           <FunctionImport Name="SPE_OBTIENE_PUESTO_REQUISICION" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_PUESTO_REQUISICION_Result)">
           <Parameter Name="PIN_ID_REQUISICION" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_FACTOR_POR_PRUEBA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_FACTOR_POR_PRUEBA_Result)">
-          <Parameter Name="PIN_CL_TIPO_PRUEBA" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_K_NUMERO_REQUISICION" ReturnType="Collection(String)" />
-          <FunctionImport Name="SPE_OBTIENE_COMPARACION_COMPETENCIAS_PLAN_VIDA_CARRERA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_COMPARACION_COMPETENCIAS_PLAN_VIDA_CARRERA_Result)">
-            <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_XML_PUESTOS" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="SPE_INSERTA_PERIODO_DESEMPENO_REPLICA">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
@@ -9934,9 +9491,6 @@
             <Parameter Name="PIN_GUARDAR" Mode="In" Type="String" />
             <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
             <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_PERIODOS_DESEMPENO_REPLICA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_PERIODOS_DESEMPENO_REPLICA_Result)">
-          <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SPE_ACTUALIZA_NIVEL_PUESTO">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
@@ -9957,35 +9511,6 @@
             <Parameter Name="PIN_FG_FOTO" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="SPE_OBTIENE_DESCRIPTIVOS_PUESTOS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_DESCRIPTIVOS_PUESTOS_Result)" />
-          <FunctionImport Name="SPE_OBTIENE_M_PUESTO_REQUISICION" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_M_PUESTO_REQUISICION_Result)">
-            <Parameter Name="PIN_ID_PUESTO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_FE_INACTIVO" Mode="In" Type="DateTime" />
-            <Parameter Name="PIN_CL_PUESTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PUESTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_DEPARTAMENTO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_XML_CAMPOS_ADICIONALES" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_BITACORA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_NO_EDAD_MINIMA" Mode="In" Type="Byte" />
-            <Parameter Name="PIN_NO_EDAD_MAXIMA" Mode="In" Type="Byte" />
-            <Parameter Name="PIN_CL_GENERO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_ESTADO_CIVIL" Mode="In" Type="String" />
-            <Parameter Name="PIN_XML_REQUERIMIENTOS" Mode="In" Type="String" />
-            <Parameter Name="PIN_XML_OBSERVACIONES" Mode="In" Type="String" />
-            <Parameter Name="PIN_XML_RESPONSABILIDAD" Mode="In" Type="String" />
-            <Parameter Name="PIN_XML_AUTORIDAD" Mode="In" Type="String" />
-            <Parameter Name="PIN_XML_CURSOS_ADICIONALES" Mode="In" Type="String" />
-            <Parameter Name="PIN_XML_MENTOR" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_TIPO_PUESTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_CENTRO_ADMINISTRATIVO" Mode="In" Type="Guid" />
-            <Parameter Name="PIN_ID_CENTRO_OPERATIVO" Mode="In" Type="Guid" />
-            <Parameter Name="PIN_ID_PAQUETE_PRESTACIONES" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_XML_PUESTOS" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_DEPARTAMENTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_DEPARTAMENTO" Mode="In" Type="String" />
-            <Parameter Name="XML_PUESTOS_SELECCIONADOS" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_EMPRESA" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SPE_ELIMINA_RESPUESTAS_BATERIA">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="PIN_ID_BATERIA" Mode="In" Type="Int32" />
@@ -10020,10 +9545,6 @@
           </FunctionImport>
           <FunctionImport Name="SPE_OBTIENE_K_REQUISICION_CANDIDATO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_K_REQUISICION_CANDIDATO_Result)">
           <Parameter Name="PIN_ID_CANDIDATO" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_K_AUTORIZA_REQUISICION" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_K_AUTORIZA_REQUISICION_Result)">
-            <Parameter Name="PIN_FL_NOTIFICACION" Mode="In" Type="Guid" />
-            <Parameter Name="PIN_ID_REQUISICION" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SPE_ACTUALIZA_ESTADO_REQUISICION">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
@@ -10089,14 +9610,10 @@
             <Parameter Name="PIN_CL_USUARIO_APP" Mode="In" Type="String" />
             <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
             <Parameter Name="PIN_TIPO_TRANSACCION" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_CARTERA" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_CARTERA_Result)" />
+          </FunctionImport>    
           <FunctionImport Name="SPE_ACTUALIZA_BAJA_DEFINITIVA_EMPLEADO">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="PIN_XML_PARAMETROS" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_USUARIO_NUEVO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_USUARIO_NUEVO_Result)">
-          <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SPE_OBTIENE_USUARIOPDE" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_USUARIOPDE_Result)">
           <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
@@ -11813,12 +11330,6 @@
             <Parameter Name="PIN_ID_EVENTO" Mode="In" Type="Int32" />
             <Parameter Name="PIN_ID_EMPELADO" Mode="In" Type="Int32" />
             <Parameter Name="PIN_ID_COMPETENCIA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_ROL" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_AVANCE_PROGRAMA_CAPACITACION_Result)">
-            <Parameter Name="PIN_ID_PROGRAMA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EMPRESA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_XML_FILTROS" Mode="In" Type="String" />
             <Parameter Name="PIN_ID_ROL" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SPE_OBTIENE_EMPLEADOS_PROCESOS_EVALUACION" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_EMPLEADOS_PROCESOS_EVALUACION_Result)">
@@ -22667,8 +22178,6 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPE_OBTIENE_TABULADOR_MAESTRO_RECALCULA" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_TABULADOR_MAESTRO_RECALCULA">
-            <ResultMapping>
-            </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPE_OBTIENE_C_COLONIA" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_C_COLONIA">
             <ResultMapping>
@@ -23591,8 +23100,6 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPE_OBTIENE_CLAVE_EMPLEADO_INDICE_ROTACION" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_CLAVE_EMPLEADO_INDICE_ROTACION">
-            <ResultMapping>
-            </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPE_OBTIENE_EO_GRAFICA_CAUSA_ROTACION" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_EO_GRAFICA_CAUSA_ROTACION">
             <ResultMapping>
@@ -23607,8 +23114,6 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPE_OBTIENE_EO_GRAFICA_INDICE_ROTACION" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_EO_GRAFICA_INDICE_ROTACION">
-            <ResultMapping>
-            </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO">
             <ResultMapping>

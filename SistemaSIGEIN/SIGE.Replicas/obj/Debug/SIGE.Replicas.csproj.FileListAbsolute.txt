@@ -67,6 +67,5 @@ C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\T
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.xml
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\EntityFramework.xml
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\Telerik.Windows.Zip.xml
-C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.csprojResolveAssemblyReference.cache
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.exe
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.pdb
