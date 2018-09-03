@@ -1,4 +1,0 @@
-﻿CREATE VIEW ADM.VW_PAIS
-AS
-	
-	SELECT 'México' AS CL_PAIS, 'México' AS NB_PAIS

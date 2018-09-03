@@ -1,1 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="WebApp.ws.MetodologiaCompensacion" CodeBehind="MetodologiaCompensacion.svc.cs" %>
