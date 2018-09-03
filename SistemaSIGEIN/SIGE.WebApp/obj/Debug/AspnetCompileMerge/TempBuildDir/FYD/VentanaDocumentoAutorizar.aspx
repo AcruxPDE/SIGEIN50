@@ -28,6 +28,15 @@
         }
 
 
+        //Eliminar el tooltip del control
+        function pageLoad() {
+            var datePicker = $find("<%= rdpFechaRevision.ClientID %>");
+            datePicker.get_popupButton().title = "";
+            var datePicker2 = $find("<%=rdpFeElaboracion.ClientID %>");
+           datePicker2.get_popupButton().title = "";
+        }
+
+
         function useDataFromChild(pDato) {
             if (pDato != null) {
                 console.info(pDato);
@@ -128,7 +137,6 @@
 
     <div style="clear: both; height: 5px;"></div>
 
-    <div style="height: calc(100% - 50px);">
 
         <div class="ctrlBasico">
             <div style="width: 150px; margin-right: 15px; float: left;">
@@ -187,9 +195,8 @@
 
         <div style="clear: both;"></div>
 
-        <div class="ctrlBasico" style="width: 100%; height: calc(100% - 150px);">
-
-            <telerik:RadGrid ID="grdDocumentosAutorizar" ShowHeader="true" HeaderStyle-Font-Bold="true" runat="server" GroupPanelPosition="Top" AllowMultiRowSelection="true">
+        <div style="height: calc(100% - 190px);">
+            <telerik:RadGrid ID="grdDocumentosAutorizar" Width="100%" ShowHeader="true" HeaderStyle-Font-Bold="true" runat="server" GroupPanelPosition="Top" AllowMultiRowSelection="true">
                 <ClientSettings>
                     <Scrolling UseStaticHeaders="true" AllowScroll="true" />
                     <Selecting AllowRowSelect="true" />
@@ -212,9 +219,8 @@
                     </Columns>
                 </MasterTableView>
             </telerik:RadGrid>
-
         </div>
-
+        <div style="clear:both; height:10px;"></div>
         <div class="ctrlBasico">
             <telerik:RadButton ID="btnSeleccionar" AutoPostBack="false" runat="server" Text="Seleccionar" CssClass="ctrlBasico" OnClientClicked="OpenEmployeeSelectionWindow"></telerik:RadButton>
         </div>
@@ -225,9 +231,8 @@
             <telerik:RadButton ID="btnEnviar" runat="server" Text="Enviar" CssClass="ctrlBasico" OnClick="btnEnviar_Click" OnClientClicking="ConfirmarEnviarCorreos"></telerik:RadButton>
         </div>
 
-    </div>
 
-    <div class="divControlDerecha" style="margin-right: 10px;">
+    <div class="divControlDerecha">
         <div class="ctrlBasico">
             <telerik:RadButton ID="btnAceptar" runat="server" Text="Aceptar" CssClass="ctrlBasico" OnClick="btnAceptar_Click"></telerik:RadButton>
         </div>

@@ -4,7 +4,7 @@
     <script>
 
         function ShowInsertForm(IdEvaluadoMeta) {
-            OpenSelectionWindow("VentanaAdjuntarEvidenciaMetas.aspx?pIdEvaluadoMeta=" + IdEvaluadoMeta, "rwAdjuntarArchivos", "Adjuntar evidencias")
+            OpenSelectionWindow("VentanaAdjuntarEvidenciaMetas.aspx?pIdEvaluadoMeta=" + IdEvaluadoMeta + "&pFgConsulta=SI", "rwAdjuntarArchivos", "Adjuntar evidencias")
         }
 
         function onCloseWindow(oWnd, args) {
@@ -44,7 +44,7 @@
 
         function OpenWindowComparar() {
             var vIdEvaluado = ('<%= vIdEvaluado%>');
-            OpenSelectionWindow("VentanaComparativaIndividual.aspx?ID_EVALUADO=" + vIdEvaluado, "winBonos", "Consulta Individual comparativa - Evaluación del desempeño");
+            OpenSelectionWindow("VentanaComparativaIndividual.aspx?ID_EVALUADO=" + vIdEvaluado, "winBonos", "Consulta individual comparativa - Evaluación del desempeño");
         }
 
     </script>
@@ -74,7 +74,7 @@
                 <telerik:RadTab SelectedIndex="0" Text="Contexto"></telerik:RadTab>
                 <telerik:RadTab SelectedIndex="1" Text="Reporte"></telerik:RadTab>
                 <telerik:RadTab SelectedIndex="2" Text="Gráfica"></telerik:RadTab>
-                <telerik:RadTab SelectedIndex="3" Text="Comparar"></telerik:RadTab>
+                <telerik:RadTab SelectedIndex="3" Text="Selección de períodos a comparar"></telerik:RadTab>
             </Tabs>
         </telerik:RadTabStrip>
         <div style="height: 10px;"></div>
@@ -203,7 +203,7 @@
                     <div style="height: calc(100% - 5px);">
                         <telerik:RadGrid ID="grdCumplimiento" runat="server" Width="100%" 
                             AutoGenerateColumns="false" EnableHeaderContextMenu="true" AllowSorting="true" HeaderStyle-Font-Bold="true"
-                            AllowMultiRowSelection="false" OnNeedDataSource="grdCumplimiento_NeedDataSource" ShowFooter="True">
+                            AllowMultiRowSelection="false" OnNeedDataSource="grdCumplimiento_NeedDataSource" OnItemDataBound="grdCumplimiento_ItemDataBound" ShowFooter="True">
                             <ClientSettings>
                                 <Scrolling UseStaticHeaders="true" AllowScroll="true" SaveScrollPosition="true" />
                                 <Selecting AllowRowSelect="true" />
@@ -216,14 +216,14 @@
                                         HeaderStyle-HorizontalAlign="Center" HeaderStyle-Font-Bold="true" />
                                 </ColumnGroups>
                                 <Columns>
-                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="350" FilterControlWidth="250" HeaderText="Descripción" DataField="DS_META" UniqueName="DS_META" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="90" HeaderStyle-HorizontalAlign="Center" FilterControlWidth="35" HeaderText="Ponderación" DataField="PR_EVALUADO" UniqueName="PR_EVALUADO" DataType="System.Int32" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="80"  HeaderStyle-HorizontalAlign="Center" FilterControlWidth="30" HeaderText="Actual" DataField="NB_CUMPLIMIENTO_ACTUAL" UniqueName="NB_CUMPLIMIENTO_ACTUAL" ColumnGroupName="NivelCompetencia"  ItemStyle-HorizontalAlign="Right"  HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="80"  HeaderStyle-HorizontalAlign="Center" FilterControlWidth="30" HeaderText="Mínima" DataField="NB_CUMPLIMIENTO_MINIMO" UniqueName="NB_CUMPLIMIENTO_MINIMO" ColumnGroupName="NivelCompetencia" ItemStyle-HorizontalAlign="Right"  HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="90"  HeaderStyle-HorizontalAlign="Center" FilterControlWidth="30" HeaderText="Satisfactoria" DataField="NB_CUMPLIMIENTO_SATISFACTORIO" UniqueName="NB_CUMPLIMIENTO_SATISFACTORIO" ColumnGroupName="NivelCompetencia"  ItemStyle-HorizontalAlign="Right"  HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="95"  HeaderStyle-HorizontalAlign="Center" FilterControlWidth="30" HeaderText="Sobresaliente" DataField="NB_CUMPLIMIENTO_SOBRESALIENTE" UniqueName="NB_CUMPLIMIENTO_SOBRESALIENTE" ColumnGroupName="NivelCompetencia" ItemStyle-HorizontalAlign="Right"  HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="80" HeaderStyle-HorizontalAlign="Center" FilterControlWidth="30"  HeaderText="Resultado" DataField="NB_RESULTADO" UniqueName="NB_RESULTADO"  ItemStyle-HorizontalAlign="Center"  HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                    <telerik:GridTemplateColumn HeaderText="Nivel alcanzado" HeaderStyle-HorizontalAlign="Center" AllowFiltering="true" FilterControlWidth="50px" HeaderStyle-Font-Bold="true">
+                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="350" FilterControlWidth="250" HeaderText="Descripción" DataField="DS_META" UniqueName="DS_META" HeaderStyle-Font-Bold="true" FooterStyle-BackColor="#A20804"></telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" HeaderStyle-HorizontalAlign="Center" FilterControlWidth="35" HeaderText="Ponderación" DataField="PR_EVALUADO" UniqueName="PR_EVALUADO" DataType="System.Int32" FooterStyle-BackColor="#A20804" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%" FooterStyle-BorderColor="#A20804" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="90"  HeaderStyle-HorizontalAlign="Center" FilterControlWidth="30" HeaderText="Actual" DataField="NB_CUMPLIMIENTO_ACTUAL" UniqueName="NB_CUMPLIMIENTO_ACTUAL" FooterStyle-BackColor="#A20804" ColumnGroupName="NivelCompetencia" FooterStyle-BorderColor="#A20804"  ItemStyle-HorizontalAlign="Right"  HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="90"  HeaderStyle-HorizontalAlign="Center" FilterControlWidth="30" HeaderText="Mínima" DataField="NB_CUMPLIMIENTO_MINIMO" UniqueName="NB_CUMPLIMIENTO_MINIMO" FooterStyle-BackColor="#A20804" FooterStyle-BorderColor="#A20804" ColumnGroupName="NivelCompetencia" ItemStyle-HorizontalAlign="Right"  HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100"  HeaderStyle-HorizontalAlign="Center" FilterControlWidth="30" HeaderText="Satisfactoria" DataField="NB_CUMPLIMIENTO_SATISFACTORIO" UniqueName="NB_CUMPLIMIENTO_SATISFACTORIO" FooterStyle-BorderColor="#A20804" FooterStyle-BackColor="#A20804" ColumnGroupName="NivelCompetencia"  ItemStyle-HorizontalAlign="Right"  HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100"  HeaderStyle-HorizontalAlign="Center" FilterControlWidth="30" HeaderText="Sobresaliente" DataField="NB_CUMPLIMIENTO_SOBRESALIENTE" UniqueName="NB_CUMPLIMIENTO_SOBRESALIENTE" FooterStyle-BorderColor="#A20804" FooterStyle-BackColor="#A20804" ColumnGroupName="NivelCompetencia" ItemStyle-HorizontalAlign="Right"  HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" HeaderStyle-HorizontalAlign="Center" FilterControlWidth="30"  HeaderText="Resultado" DataField="NB_RESULTADO" UniqueName="NB_RESULTADO" FooterStyle-BorderColor="#A20804"  ItemStyle-HorizontalAlign="Center" FooterStyle-BackColor="#A20804"  HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                    <telerik:GridTemplateColumn HeaderText="Nivel alcanzado" HeaderStyle-HorizontalAlign="Center" AllowFiltering="true" HeaderStyle-Width="100" FilterControlWidth="50px" HeaderStyle-Font-Bold="true" FooterText="Total:" FooterStyle-ForeColor="White" FooterStyle-Font-Bold="true" FooterStyle-BorderColor="#A20804" FooterStyle-HorizontalAlign="Right" FooterStyle-BackColor="#A20804">
                                         <ItemStyle Width="120px" Height="30px" HorizontalAlign="Left" />
                                         <HeaderStyle Width="120px" Height="30px" />
                                         <ItemTemplate>
@@ -231,9 +231,9 @@
                                             <div class="ctrlBasico" style="height: 30px; width: 15px; float: right; background: <%#Eval("COLOR_NIVEL") %>; border-radius: 5px;"></div>
                                         </ItemTemplate>
                                     </telerik:GridTemplateColumn>
-                                    <telerik:GridBoundColumn FilterControlWidth="40px" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="95" HeaderText="Cumplimiento" DataField="PR_CUMPLIMIENTO_META" UniqueName="PR_CUMPLIMIENTO_META" Aggregate="Sum" FooterAggregateFormatString="Porcentaje de cumplimiento: {0:N2}%" FooterStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                    <telerik:GridTemplateColumn HeaderText="Evidencia"  DataField="FG_EVIDENCIA" UniqueName="FG_EVIDENCIA" AllowFiltering="false" HeaderStyle-Font-Bold="true">
-                                            <HeaderStyle Width="80" />
+                                    <telerik:GridBoundColumn FilterControlWidth="40px" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="100" HeaderText="Cumplimiento" DataField="PR_CUMPLIMIENTO_META" UniqueName="PR_CUMPLIMIENTO_META" Aggregate="Sum" FooterAggregateFormatString="{0:N2}%" FooterStyle-Font-Bold="true" FooterStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                    <telerik:GridTemplateColumn HeaderText="Evidencia"  DataField="FG_EVIDENCIA" UniqueName="FG_EVIDENCIA" AllowFiltering="false" HeaderStyle-Font-Bold="true" >
+                                            <HeaderStyle Width="70" />
                                             <ItemTemplate>
                                                 <div style="width: 90%; text-align: center; cursor: pointer;">
                                                     <img src='<%# Eval("FG_EVIDENCIA").ToString().Equals("True") ? "../Assets/images/Aceptar.png" : "../Assets/images/Cancelar.png"  %>' onclick="return ShowInsertForm(<%#Eval("ID_EVALUADO_META")%>);" title="Selecciona para ver evidencias adjuntas"/>
@@ -257,7 +257,7 @@
                         <div style="clear: both; height: 10px;"></div>
                         <div class="ctrlBasico" style="width: 60%; height: 100%">
                             <telerik:RadHtmlChart runat="server" ID="rhcCumplimientoPersonal" Width="100%" Height="100%" Transitions="true" Skin="Silk">
-                                <ChartTitle Text="Gráfica cumplimiento personal">
+                                <ChartTitle Text="Gráfica cumplimiento individual">
                                     <Appearance Align="Center" Position="Top">
                                     </Appearance>
                                 </ChartTitle>
@@ -266,6 +266,7 @@
                                     </Appearance>
                                 </Legend>
                                 <PlotArea>
+                                    <YAxis MinValue="0" MaxValue="100" Step="10"></YAxis>
                                 </PlotArea>
                             </telerik:RadHtmlChart>
                         </div>
@@ -315,7 +316,7 @@
                         </telerik:RadGrid>
                         <div style="height: 10px; clear: both;"></div>
                         <div class="divControlIzquierda">
-                            <telerik:RadButton ID="btnSeleccionar" runat="server" AutoPostBack="false" Width="200" Text="Seleccionar periodos" OnClientClicked="OpenWindowPeriodos"></telerik:RadButton>
+                            <telerik:RadButton ID="btnSeleccionar" runat="server" AutoPostBack="false" Width="200" Text="Seleccionar períodos" OnClientClicked="OpenWindowPeriodos"></telerik:RadButton>
                         </div>
                         <div class="divControlDerecha">
                             <telerik:RadButton ID="btnComparar" runat="server" AutoPostBack="false" Width="100" Text="Comparar" OnClientClicked="OpenWindowComparar"></telerik:RadButton>

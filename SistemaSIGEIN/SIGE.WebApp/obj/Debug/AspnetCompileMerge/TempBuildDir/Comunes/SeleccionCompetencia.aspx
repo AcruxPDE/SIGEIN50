@@ -26,9 +26,11 @@
                         clTipoCompetencia: selectedItem.getDataKeyValue("CL_TIPO_COMPETENCIA"),
                         clTipoCatalogo: "COMPETENCIA"
                     };
-                    vCompetencias.push(vCompetencia);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vCompetencias.length;
+                    if (!existeElemento(vCompetencia)) {
+                        vCompetencias.push(vCompetencia);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vCompetencias.length;
+                    }
                 }
                 return true;
             }
@@ -40,6 +42,15 @@
                 browserWnd.radalert("Selecciona una competencia.", 400, 150);
             }
 
+            return false;
+        }
+
+        function existeElemento(pCompetencia) {
+            for (var i = 0; i < vCompetencias.length; i++) {
+                var vValue = vCompetencias[i];
+                if (vValue.idCompetencia == pCompetencia.idCompetencia)
+                    return true;
+            }
             return false;
         }
 

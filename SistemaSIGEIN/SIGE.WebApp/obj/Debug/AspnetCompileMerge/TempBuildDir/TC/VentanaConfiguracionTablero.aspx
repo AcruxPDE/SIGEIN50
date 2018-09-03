@@ -292,7 +292,7 @@
     <div style="height: calc(100% - 100px); padding-top: 10px;">
         <telerik:RadMultiPage ID="rmpConfiguracionTablero" runat="server" SelectedIndex="0" Height="100%">
             <telerik:RadPageView ID="rpvSeleccionEvaluados" runat="server">
-                <div style="height: calc(100% - 45px); padding-bottom: 10px;">
+                <div style="height: calc(100% - 60px); padding-bottom: 10px;">
                     <telerik:RadGrid ID="grdEvaluados" runat="server" Height="100%"
                         AutoGenerateColumns="false" EnableHeaderContextMenu="true"
                         AllowSorting="true" AllowMultiRowSelection="true" HeaderStyle-Font-Bold="true"
@@ -361,7 +361,7 @@
                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvPruebas" runat="server">
-                <div style="height: calc(100% - 45px); padding-bottom: 10px;">
+                <div style="height: calc(100% - 60px); padding-bottom: 10px;">
                     <telerik:RadGrid ID="grdCandidatos" runat="server" Height="100%"
                         AutoGenerateColumns="false" EnableHeaderContextMenu="true"
                         AllowSorting="true" AllowMultiRowSelection="true" HeaderStyle-Font-Bold="true"
@@ -386,7 +386,7 @@
                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvCompetencias" runat="server">
-                <div style="height: calc(100% - 45px);">
+                <div style="height: calc(100% - 60px);">
                     <telerik:RadGrid runat="server" ID="grdCompetencia" Height="100%" AutoGenerateColumns="false" HeaderStyle-Font-Bold="true" OnNeedDataSource="grdCompetenci_NeedDataSource" AllowMultiRowSelection="true">
                         <ClientSettings AllowKeyboardNavigation="true">
                             <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -398,12 +398,13 @@
                             <Columns>
                                 <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30"></telerik:GridClientSelectColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="160" FilterControlWidth="90" HeaderText="Clave" DataField="CL_PERIODO" UniqueName="CL_PERIODO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="90%" HeaderText="Nombre" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" FilterControlWidth="80%" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="250" FilterControlWidth="180" HeaderText="Nombre" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="220" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO"></telerik:GridBoundColumn>
                             </Columns>
                         </MasterTableView>
                     </telerik:RadGrid>
                 </div>
+                <div style="height:10px; clear:both;"></div>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnAgregarPeriodoFyd" runat="server" Text="Agregar período" AutoPostBack="false" OnClientClicked="OpenPeriodoFormacionSelectionWindow"></telerik:RadButton>
                 </div>
@@ -412,7 +413,7 @@
                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvDesempeno" runat="server">
-                <div style="height: calc(100% - 45px);">
+                <div style="height: calc(100% - 60px);">
                     <telerik:RadGrid runat="server" ID="grdDesempeno" HeaderStyle-Font-Bold="true" Height="100%" AutoGenerateColumns="false" OnNeedDataSource="grdDesempeno_NeedDataSource" AllowMultiRowSelection="true">
                         <ClientSettings AllowKeyboardNavigation="true">
                             <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -424,12 +425,13 @@
                             <Columns>
                                 <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30"></telerik:GridClientSelectColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="160" FilterControlWidth="90" HeaderText="Clave" DataField="CL_PERIODO" UniqueName="CL_PERIODO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="90%" HeaderText="Nombre" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" FilterControlWidth="80%" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="250" FilterControlWidth="180" HeaderText="Nombre" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="220" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO"></telerik:GridBoundColumn>
                             </Columns>
                         </MasterTableView>
                     </telerik:RadGrid>
                 </div>
+                   <div style="height:10px; clear:both;"></div>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnAgregarPeriodoDesempeno" runat="server" Text="Agregar período" AutoPostBack="false" OnClientClicked="OpenPeriodoDesempenoSelectionWindow"></telerik:RadButton>
                 </div>
@@ -438,7 +440,7 @@
                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvClima" runat="server">
-                <div style="height: calc(100% - 45px);">
+                <div style="height: calc(100% - 60px);">
                     <telerik:RadGrid runat="server" ID="grdClima" Height="100%" AutoGenerateColumns="false" HeaderStyle-Font-Bold="true" OnNeedDataSource="grdClima_NeedDataSource" AllowMultiRowSelection="true">
                         <ClientSettings AllowKeyboardNavigation="true">
                             <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -450,12 +452,13 @@
                             <Columns>
                                 <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30"></telerik:GridClientSelectColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="160" FilterControlWidth="90" HeaderText="Clave" DataField="CL_PERIODO" UniqueName="CL_PERIODO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="90%" HeaderText="Nombre" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" FilterControlWidth="80%" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="250" FilterControlWidth="180" HeaderText="Nombre" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="220" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO"></telerik:GridBoundColumn>
                             </Columns>
                         </MasterTableView>
                     </telerik:RadGrid>
                 </div>
+                   <div style="height:10px; clear:both;"></div>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnAgregarPeriodoClima" runat="server" Text="Agregar período" AutoPostBack="false" OnClientClicked="OpenPeriodoClimaSelectionWindow"></telerik:RadButton>
                 </div>
@@ -464,7 +467,7 @@
                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvSalarial" runat="server">
-                <div style="height: calc(100% - 45px);">
+                <div style="height: calc(100% - 60px);">
                     <telerik:RadGrid runat="server" ID="grdSalarial" Height="100%" HeaderStyle-Font-Bold="true" AutoGenerateColumns="false" OnNeedDataSource="grdSalarial_NeedDataSource" AllowMultiRowSelection="true">
                         <ClientSettings AllowKeyboardNavigation="true">
                             <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -476,12 +479,13 @@
                             <Columns>
                                 <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30"></telerik:GridClientSelectColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="160" FilterControlWidth="90" HeaderText="Clave" DataField="CL_PERIODO" UniqueName="CL_PERIODO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="90%" HeaderText="Nombre" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" FilterControlWidth="80%" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="250" FilterControlWidth="180" HeaderText="Nombre" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="220" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO"></telerik:GridBoundColumn>
                             </Columns>
                         </MasterTableView>
                     </telerik:RadGrid>
                 </div>
+                   <div style="height:10px; clear:both;"></div>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnAgregarTabulador" runat="server" Text="Agregar tabulador" AutoPostBack="false" OnClientClicked="OpenTabuladorSelectionWindow"></telerik:RadButton>
                 </div>

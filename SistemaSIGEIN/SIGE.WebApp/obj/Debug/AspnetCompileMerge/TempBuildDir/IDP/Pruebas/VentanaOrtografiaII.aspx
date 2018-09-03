@@ -254,9 +254,9 @@
                 <telerik:RadSlidingZone ID="slzOpciones" runat="server" Width="30" ClickToOpen="true">
                     <telerik:RadSlidingPane ID="RSPHelp" runat="server" Title="Instrucciones" Width="100%" Height="160">
                         <p style="margin: 10px; text-align: justify;">
-                            <label runat="server">Algunas de las palabras listadas están escritas con falta de ortografía,</label>
+                            <label runat="server">Algunas de las palabras listadas están escritas con falta de ortografía, señala cuáles son y escríbelas en forma correcta en el espacio en blanco </label>
                             <br />
-                            <label id="Label26" runat="server">señala cuáles son y escríbelas en forma correcta en el espacio en blanco </label>
+                    <%--        <label id="Label26" runat="server"></label>--%>
                         </p>
                     </telerik:RadSlidingPane>
                 </telerik:RadSlidingZone>

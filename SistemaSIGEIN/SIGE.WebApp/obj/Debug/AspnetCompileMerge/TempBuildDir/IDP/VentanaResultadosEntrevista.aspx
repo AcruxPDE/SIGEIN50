@@ -104,7 +104,7 @@
 
     <label name="" id="lbltitulo" class="labelTitulo">Factores adicionales</label>
 
-    <div style="height: calc(100% - 100px);">
+    <div style="height: calc(100% - 120px);">
 
         <telerik:RadSplitter ID="splHelp" runat="server" Width="100%" Height="100%" BorderSize="0" Orientation="Horizontal">
             <telerik:RadPane ID="rpnOpciones" runat="server" Height="30" Width="100%" Scrolling="None">
@@ -135,7 +135,7 @@
                         <div style="padding: 5px">
 
                             <div style="border: 1px solid #ddd">
-                                <p>
+                                <p class="JustificarTexto">
                                     <strong>Definición del factor</strong><br />
                                     Capacidad para expresar adecuadamente de manera verbal ideas o pensamientos de una manera lógica y concisa con un adecuado manejo del lenguaje.
                                 </p>
@@ -155,7 +155,7 @@
                                 </colgroup>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona no tiene la capacidad para comunicar de manera ordenada e inteligible sus ideas. Es difícil entender el objetivo de su comunicación, ya sea por nerviosismo o porque carece de los medios necesarios para poder establecer una comunicación adecuada.
                                         </p>
                                     </td>
@@ -175,7 +175,7 @@
 
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona muestra dificultad para comunicar adecuadamente sus ideas, sin embargo cuando se trata de ideas sencillas puede lograr comunicarlas razonablemente bien. Su manejo del lenguaje es pobre y no siempre utiliza las palabras adecuadas para expresarse de manera precisa.
                                         </p>
                                     </td>
@@ -196,7 +196,7 @@
 
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona muestra una capacidad media para comunicar sus ideas, pudiendo hacerlo adecuadamente con un manejo del lenguaje adecuado aunque con ciertas limitaciones, sobre todo cuando se trata de expresar ideas complejas.
                                         </p>
                                     </td>
@@ -217,7 +217,7 @@
 
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona muestra una buena capacidad para comunicar de manera clara y fluida sus ideas, utiliza bien el lenguaje, el tono y el volumen de voz para lograr que su discurso sea adecuado y logre comunicar aquello que desea.
                                         </p>
                                     </td>
@@ -245,7 +245,7 @@
                         <div style="padding: 5px">
 
                             <div style="border: 1px solid #ddd">
-                                <p>
+                                <p class="JustificarTexto">
                                     <strong>Definición del factor</strong><br />
                                     Capacidad para comunicarse efectivamente de manera no verbal, utilizando recursos expresivos como gesticulación, postura y ademanes.
                                 </p>
@@ -265,7 +265,7 @@
                                 </colgroup>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona no tiene la capacidad para utilizar adecuadamente otros recursos expresivos, puede presentar problemas para establecer contacto visual con la persona con la que se comunica, su postura es rígida, agresiva o temerosa, carece de capacidad para usar ademanes que refuercen las ideas que esta expresando verbalmente.
                                         </p>
                                     </td>
@@ -284,7 +284,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona muestra dificultad para utilizar adecuadamente otros recursos expresivos, sin embargo trata de apoyar su expresión verbal con ademanes y expresiones gestuales, aunque lo hace de manera pobre y limitada.
                                         </p>
                                     </td>
@@ -304,7 +304,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona muestra una capacidad media para utilizar adecuadamente otros recursos expresivos, establece satisfactoriamente contacto visual y puede apoyar su discurso con expresiones gestuales y con ademanes que ayudan a fortalecer su discurso.
                                         </p>
                                     </td>
@@ -324,7 +324,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona muestra una buena capacidad para utilizar otros recursos expresivos. Se muestra cómoda y segura durante la exposición de sus argumentos, pudiendo apoyar estos de manera efectiva con gesticulación y ademanes que fortalecen su discurso. Establece contacto visual con el entrevistador, se mantiene y se muestra firme durante sus exposiciones.
                                         </p>
                                     </td>
@@ -365,7 +365,7 @@
                                 </colgroup>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona se muestra insegura, sumisa, suele callar, habla en voz baja, se muestra nerviosa, lleva la cara baja y evita el contacto ocular. Expresa poco o nulo sentido de vida, asume la opinión de los demás y oculta la suya. Antepone a los demás que a él y ve a los demás como superiores. Teme expresar sus sentimientos y deseos y no afronta el conflicto.  Se culpabiliza a sí mismo de sus errores.
                                         </p>
                                     </td>
@@ -378,7 +378,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona muestra una actitud agresiva en sus rasgos físicos, postura, movimientos al sentarse, al caminar, al saludar y en su tono de voz. Antepone siempre el yo y ve a los demás como inferiores. Impone su opinión e ignora a los demás. Oculta sus emociones o las exagera. Crítica siempre negativa. Impone sus derechos sin tomar en cuenta a los demás. Muestra exceso de confianza y nunca asume sus errores.
                                         </p>
                                     </td>
@@ -391,7 +391,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona se muestra segura en su voz, tono y modulación; en su imagen exterior, los gestos y la indumentación. Es importante él o ella pero también los demás y los ve a su igual. Expone su opinión y escucha a los demás. Expresa sentimientos autenticos. Realiza crítica  constructiva. Exige sus derechos con justicia. Muestra autoconfianza y asume sus errores. 
                                         </p>
                                     </td>
@@ -404,7 +404,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona se muestra segura, da una imagen de una persona congruente y autentica. Se comunica abierta, directa, franca y adcuadamente. Se autoevalúa objetivamente, se conoce a sí misma y se acepta y valora incondicionalmente. Expresa lo que piensa, siente y quiere. Reconoce de manera real sus fortalezas y limitaciones propias y al mismo tiempo se acepta como valiosa sin condiciones o reservas. Pone en práctica sus ideas para llevar a cabo sus objetivos, posee gran confianza en sí misma y nunca se da por vencida. Valora su trabajo como necesario e importante.
                                         </p>
                                     </td>
@@ -438,7 +438,7 @@
                                 </colgroup>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona muestra una actitud de "niño" esperando que se le diga que hacer. Intenta realizar bien o correctamente el trabajo, pero expresa frustración y si las cosas no salen se excusa, busca culpables y flojea. No tiene objetivos personales.
                                         </p>
                                     </td>
@@ -451,7 +451,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona trabaja para alcanzar los estánderes definidos por sus superiores, en los tiempos previstos y con los recursos que se les asignan. Sólo en algunas ocasiones logra actuar de manera eficiente frente a los obstaculos o imprevistos. Tiene objetivos personales pero no son claros, ni estipula tiempo para su realización.
                                         </p>
                                     </td>
@@ -464,7 +464,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona muestra un entendimiento claro de sus objetivos personales y laborales. Logra resultados y también ayuda a otros a logarlos. Entiende el valor que aporta, la necesidad de las personas que se benefician de lo que él hace y toma medidas para brindarles satisfacción y se mantiene productivo. Apoya a otros bajo la premisa que todo lo que sume es valido y necesario. 
                                         </p>
                                     </td>
@@ -477,7 +477,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona muestra una actitud "adulta" que hace que mejores resultados  sucedan en su vida y para la institución en la que trabaje. Sale de su zona comoda para ir siempre un paso más adelante en el camino de los objetivos fijados. Contribuye con otras áreas en el alineamiento de sus objetivos a los definidos por la institución. Se preocupa por el resultado  de otros. Aporta ideas novedosas y soluciones incluso frente a problemas complejos y escenarios cambiantes, aporta soluciones de alto valor agregado para su persona y la institución en la que labore.
                                         </p>
                                     </td>
@@ -494,7 +494,7 @@
                     <telerik:RadPageView ID="rpvConflicto" runat="server" Height="100%">
                         <div style="padding: 5px">
                             <div style="border: 1px solid #ddd">
-                                <p>
+                                <p class="JustificarTexto">
                                     <strong>Definición del factor</strong><br />
                                     Situación en la que dos o más partes creen que lo quiere una parte es incompatible con lo que desea la otra.
                                 </p>
@@ -511,7 +511,7 @@
                                 </colgroup>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona muestra subjetividad en la percepción de las cosas. Es pretensiosa y no acepta a otros sin juzgarlos, crea problemas en ella misma y con los demás. Depende tanto de otras personas o las hace depender de ellas, que terminan por estorbarse entre sí, derivando grandes conflictos, caos y una lucha interna. Expresa sentimientos y pensamientos en forma agresiva, deshonesta, inapropiada e inoportuna. Defiende lo suyo pero sin respetar a los demás.  Ante el conflicto muestra frustración,impotencia, enojo, hostilidad, pierde el control y explota.
                                         </p>
                                     </td>
@@ -524,7 +524,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona muestra subjetividad en la percepción de las cosas. La información que maneja es incompleta, opina y solo conoce una parte de los hechos. Su comunicación es distorsionada al descifrar el mensaje. Se muestra lenta, idealista, desordenada e intransigente. Busca dominar y forzar a la otra persona persona a perder. Ante el conflicto muestra ansiedad, opresión, preocupación, dolor de cabeza, baja la cabeza y queda inhibida y bloqueada. 
                                         </p>
                                     </td>
@@ -537,7 +537,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona muestra objetividad en la percepción de las cosas. La información que maneja es completa y opina solo cuando conoce los hechos. Su comunicación es abierta y objetiva al descifrar el mensaje. Se muestra rápida, realista, ordenada y tolerante. Ante el conflicto reconoce y defiende sus derechos, expresa sus emociones en forma directa y respetuosa, honesta, oportuna y apropiadamente. Controla sus emociones.
                                         </p>
                                     </td>
@@ -550,7 +550,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona muestra objetividad en la percepción de las cosas. Conoce y maneja sus propios sentimientos, interpreta y enfrenta los sentimientos de los demás. Muestra satisfacción y tiene hábitos mentales que favorecen su productividad. Sabe controlar su impulsividad, da y recibe respeto. Ante el conflicto deja un espacio entre ella y el conflicto; guarda silencio, no muestra reacciones ante lo que el otro dice, parafrasea a la otra persona " a ver si le entiendo, lo que usted quiere decir", busca ser proactivo y logra un entendimiento.
                                         </p>
                                     </td>
@@ -567,7 +567,7 @@
                     <telerik:RadPageView ID="rpvCarisma" runat="server" Height="100%">
                         <div style="padding: 5px">
                             <div style="border: 1px solid #ddd">
-                                <p>
+                                <p class="JustificarTexto">
                                     <strong>Definición del factor</strong><br />
                                     Habilidad para influír o atraer a otras personas. Se refiere a la cualidad de ciertas personas de motivar con facilidad la atención y la admiración de otros gracias a una cualidad "magnetica" de personalidad o de apariencia.
                                 </p>
@@ -584,7 +584,7 @@
                                 </colgroup>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona provoca sentimientos de rechazo o ánimo adverso. Muestra desinterés por la persona que tiene al frente, mira al techo, a las manos o a un objeto mientras conversa.  Frunce el seño o la boca. Da la espalda al momento de terminar con la coversación.
                                         </p>
                                     </td>
@@ -597,7 +597,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona mantiene una sonrisa tenue y permanente. Cruza los brazos y comete ciertas fallas de modales de forma liberada <b>y…… va solo a lo suyo</b>. No esta comoda, es poco accesible, suele ser tosca al expresarse, da respuestas cortantes y se muestra un tanto arrogante.
                                         </p>
                                     </td>
@@ -610,7 +610,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona muestra una imagen limpia, saludable, postura corporal abierta, manos lejos de la cara cuando esta hablando. Se mantiene derecha, relajada, manos apartadas con las palmas adelante o hacia arriba. Hace saber a la persona que tiene frente que ella importa y que disfruta estando con ella. Desarrolla una sonrisa genuina, asiente con la cabeza cuando éstas hablan. Da impresión de ser gente de confianza, amable, espiritual y alegra a los demás.
                                         </p>
                                     </td>
@@ -623,7 +623,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p class="JustificarTexto">
                                             La persona transmite <b>con su sola postura su seguridad, la fuerza interna y su actitud</b>. Sabe como vestir de forma elegante y de acuerdo a la ocasión. Va más allá del statu quo, marca la diferencia, es controvertido, novedoso, elocuente e intuitivo. Es líder, se mueve alrededor de un grupo o espacio para parecer entusiasta, se inclina levemente hacia delante y mira para todos las partes del grupo o personas que le rodean. Su mensaje es claro, fluído, enérgetico y articulado. Es optimista, todo lo que dice o hace tiene un propósito y es una persona éxitosa.
                                         </p>
                                     </td>
@@ -642,13 +642,13 @@
         </telerik:RadSplitter>
     </div>
     <div style="clear: both; height: 10px;"></div>
-    <div class="divControlDerecha">
+    <div class="divControlDerecha" style="padding-right:10px;">
         <div class="ctrlBasico">
             <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" AutoPostBack="true"></telerik:RadButton>
+        </div>
         </div>
         <%--                     <div class="ctrlBasico">
                   <telerik:RadButton ID="btnEliminar" runat="server"  Text="Eliminar" AutoPostBack="true" Visible="false" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminar_Click"></telerik:RadButton>
              </div>--%>
-    </div>
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>
 </asp:Content>

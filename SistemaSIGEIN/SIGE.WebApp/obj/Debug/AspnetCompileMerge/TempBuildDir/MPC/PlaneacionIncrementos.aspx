@@ -209,7 +209,7 @@
                     </telerik:RadDatePicker>
                 </div>
                 <div style="clear: both"></div>--%>
-                        <div class="ctrlBasico">
+    <%--                    <div class="ctrlBasico">
                             <label id="lblSemaforoVerde"
                                 name="lblSemaforoVerde"
                                 runat="server">
@@ -232,7 +232,7 @@
                                 MaxLength="800"
                                 Enabled="false">
                             </telerik:RadTextBox>
-                        </div>
+                        </div>--%>
                         <div class="ctrlBasico">
                             <label id="lblCuartilIncremento"
                                 name="lblCuartilIncremento"

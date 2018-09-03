@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <label class="labelTitulo">Datos de empleados</label>
         <div style="height: calc(100% - 60px);">
-        <telerik:RadGrid ID="grdEmpleados" runat="server" Height="100%" HeaderStyle-Font-Bold="true" AutoGenerateColumns="false" ShowGroupPanel="True" AllowPaging="true" AllowSorting="true" AllowFilteringByColumn="true"
+        <telerik:RadGrid ID="grdEmpleados" runat="server" Height="100%" Width="100%" HeaderStyle-Font-Bold="true" AutoGenerateColumns="false" ShowGroupPanel="True" AllowPaging="true" AllowSorting="true" AllowFilteringByColumn="true"
             OnNeedDataSource="grdEmpleados_NeedDataSource" OnItemCommand="grdEmpleados_ItemCommand" OnItemDataBound="grdEmpleados_ItemDataBound" >
                   <ClientSettings AllowDragToGroup="True" AllowKeyboardNavigation="true">
                 <Selecting AllowRowSelect="false" />

@@ -4,7 +4,7 @@
     <script id="MyScript" type="text/javascript">
 
         function ShowSelecEmpleado() {
-            var vURL = "../Comunes/SeleccionEmpleado.aspx";
+            var vURL = "../Comunes/SeleccionEmpleado.aspx?CLFILTRO=NINGUNO&mulSel=0";
             var vTitulo = "Selección de empleado";
             var currentWnd = GetRadWindow();
             var browserWnd = window;
@@ -76,6 +76,12 @@
             if (sender == vBtnBuscaCP) {
                 openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionCP.aspx", "winSeleccionCP", "Selección de Codigo Postal", windowProperties);
             }
+        }
+
+        //Eliminar el tooltip del control
+        function pageLoad() {
+            var datePicker = $find("<%= txtFeNacimiento.ClientID %>");
+            datePicker.get_popupButton().title = "";
         }
 
         function useDataFromChild(pData) {
@@ -178,6 +184,15 @@
         }
 
     </script>
+    <style>
+
+         .ruBrowse
+       {
+           
+           width: 150px !important;
+       }
+
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
@@ -236,7 +251,7 @@
                         <label id="lblClave" name="lblClave" runat="server">Clave:</label>
                     </div>
                     <div class="divControlDerecha">
-                        <telerik:RadTextBox ID="txtClave" runat="server" Width="180px" MaxLength="20"></telerik:RadTextBox>
+                        <telerik:RadTextBox ID="txtClave" runat="server" Width="180px" MaxLength="50"></telerik:RadTextBox>
                         <telerik:RadButton ID="radBtnBuscarclave" OnClientClicked="ShowSelecEmpleado" AutoPostBack="false" runat="server" Text="B"></telerik:RadButton>
                     </div>
                 </div>
@@ -522,9 +537,9 @@
                         </Items>
                     </telerik:RadComboBox>
                 </div>
-                <div class="ctrlBasico">
+                <div class="ctrlBasico" style="width: 420px">
                     Subir documento:<br />
-                    <telerik:RadAsyncUpload ID="rauDocumento" runat="server" MultipleFileSelection="Disabled"></telerik:RadAsyncUpload>
+                    <telerik:RadAsyncUpload ID="rauDocumento" runat="server" MultipleFileSelection="Disabled" ><Localization Select="Seleccionar" /></telerik:RadAsyncUpload>
                 </div>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnAgregarDocumento" runat="server" Text="Agregar" OnClick="btnAgregarDocumento_Click"></telerik:RadButton>
@@ -538,7 +553,7 @@
                         </ClientSettings>
                         <MasterTableView ClientDataKeyNames="ID_ARCHIVO,ID_ITEM" DataKeyNames="ID_ARCHIVO,ID_ITEM" AutoGenerateColumns="false" ShowHeadersWhenNoRecords="true" NoMasterRecordsText="No existen documentos asociados al instructor">
                             <Columns>
-                                <telerik:GridHyperLinkColumn HeaderText="Nombre del documento" DataTextField="NB_DOCUMENTO" DataNavigateUrlFields="ID_ARCHIVO,ID_DOCUMENTO,FE_CREATED_DATE,NB_DOCUMENTO,ID_ITEM" DataNavigateUrlFormatString="/Comunes/ObtenerDocumento.ashx?ArchivoId={0}&ArchivoNb={2:yyyyMMdd}{4}&ArchivoDescargaNb={3}" Target="_blank"></telerik:GridHyperLinkColumn>
+                                <telerik:GridHyperLinkColumn HeaderText="Nombre del documento" DataTextField="NB_DOCUMENTO" DataNavigateUrlFields="ID_ARCHIVO,ID_DOCUMENTO,FE_CREATED_DATE,NB_DOCUMENTO,ID_ITEM" DataNavigateUrlFormatString="~/Comunes/ObtenerDocumento.ashx?ArchivoId={0}&ArchivoNb={2:yyyyMMdd}{4}&ArchivoDescargaNb={3}" Target="_blank"></telerik:GridHyperLinkColumn>
                                 <telerik:GridBoundColumn HeaderText="Tipo de documento" HeaderStyle-Width="200" DataField="CL_TIPO_DOCUMENTO" UniqueName="CL_TIPO_DOCUMENTO"></telerik:GridBoundColumn>
                             </Columns>
                         </MasterTableView>

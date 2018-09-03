@@ -24,16 +24,16 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <div style="height: calc(100% - 20px); width: 100%;">
         <telerik:RadSplitter runat="server" ID="spHelp" Width="100%" Height="100%" BorderSize="0">
             <telerik:RadPane ID="rpDatos" runat="server">
                 <telerik:RadTabStrip ID="rtsSolicitudes" runat="server" SelectedIndex="0" MultiPageID="rmpSolicitudes">
                     <Tabs>
                         <telerik:RadTab Text="Contexto"></telerik:RadTab>
-                        <telerik:RadTab Text="Envio Solicitudes"></telerik:RadTab>
+                        <telerik:RadTab Text="Enviar cuestionarios"></telerik:RadTab>
                     </Tabs>
                 </telerik:RadTabStrip>
-                <telerik:RadMultiPage ID="rmpSolicitudes" runat="server" SelectedIndex="0" Height="82%">
+                <div style="height: calc(100% - 60px); width: 100%;">
+                <telerik:RadMultiPage ID="rmpSolicitudes" runat="server" SelectedIndex="0" Height="100%">
                     <telerik:RadPageView ID="rpvContexto" runat="server">
                    <%--    <div class="ctrlBasico">
                                 <table class="ctrlTableForm">
@@ -164,7 +164,8 @@
                                 </div>
                     </telerik:RadPageView>
                     <telerik:RadPageView ID="rpvEnvio" runat="server">
-                        <div style="height: calc(100% - 40px); width: 100%;">
+                      <div style="clear: both; height: 10px;"></div>
+                        <div style="height: calc(100% - 60px);">
                             <telerik:RadGrid runat="server" HeaderStyle-Font-Bold="true" ID="rgEvaluadores" AutoGenerateColumns="false" OnItemDataBound="rgEvaluadores_ItemDataBound" OnNeedDataSource="rgEvaluadores_NeedDataSource" Height="100%" Width="100%" AllowSorting="true" AllowMultiRowSelection="true">
                                 <ClientSettings EnablePostBackOnRowClick="false">
                                     <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -178,7 +179,7 @@
                                     </ColumnGroups>
                                     <Columns>
                                         <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30px"></telerik:GridClientSelectColumn>
-                                        <telerik:GridBoundColumn ColumnGroupName="Evaluadores" UniqueName="NB_EVALUADOR" DataField="NB_EVALUADOR" HeaderText="Nombre Completo" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn ColumnGroupName="Evaluadores" UniqueName="NB_EVALUADOR" DataField="NB_EVALUADOR" HeaderText="Nombre completo" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn ColumnGroupName="Evaluadores" UniqueName="NB_PUESTO" DataField="NB_PUESTO" HeaderText="Puesto" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                         <telerik:GridTemplateColumn ColumnGroupName="Evaluadores" UniqueName="CL_CORREO_EVALUADOR" DataField="CL_CORREO_EVALUADOR" HeaderText="Correo electónico" HeaderStyle-Font-Bold="true">
                                             <ItemTemplate>
@@ -188,24 +189,23 @@
                                     </Columns>
                                 </MasterTableView>
                             </telerik:RadGrid>
+                            </div>
+                          <div style="clear: both; height: 10px;"></div>
                             <label id="lbMensaje" runat="server" visible="false" style="color: red;">No hay cuestionarios creados que enviar o todos los cuestionarios para este período han sido enviados y contestados.</label>
-                        </div>
-                        <div style="clear: both; height: 10px;"></div>
-                        <div class="divControlDerecha">
+                            <div class="divControlDerecha">
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" ID="btnEnviar" Text="Enviar a seleccionados" OnClick="btnEnviar_Click"></telerik:RadButton>
                             </div>
-
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" ID="btnEnviarTodos" Text="Enviar a todos" OnClick="btnEnviarTodos_Click"></telerik:RadButton>
                             </div>
-
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" ID="btnCancelar" Text="Cancelar" AutoPostBack="false" OnClientClicked="closeWindow"></telerik:RadButton>
                             </div>
                         </div>
                     </telerik:RadPageView>
                 </telerik:RadMultiPage>
+             </div>
             </telerik:RadPane>
             <telerik:RadPane ID="rpAyuda" runat="server" Width="30">
                 <telerik:RadSlidingZone ID="rszAyuda" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
@@ -226,6 +226,5 @@
                 </telerik:RadSlidingZone>
             </telerik:RadPane>
         </telerik:RadSplitter>
-    </div>
     <telerik:RadWindowManager ID="rwmMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>
 </asp:Content>

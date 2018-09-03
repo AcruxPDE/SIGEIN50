@@ -23,10 +23,12 @@
                         clCentro: masterTable.getCellByColumnUniqueName(selectedItem, "CL_CENTRO_ADMVO").innerHTML,
                         nbCentro: masterTable.getCellByColumnUniqueName(selectedItem, "NB_CENTRO_ADMVO").innerHTML,
                         clTipoCatalogo: "<%= vClCatalogo %>"
-                        };
+                    };
+                    if (!existeElemento(vGrupo)) {
                         vCentros.push(vGrupo);
                         var vLabel = document.getElementsByName('lblAgregar')[0];
                         vLabel.innerText = "Agregados: " + vCentros.length;
+                    }
                     }
 
                     return true;
@@ -40,7 +42,16 @@
                 }
 
                 return false;
+        }
+
+        function existeElemento(pGrupo) {
+            for (var i = 0; i < vGrupos.length; i++) {
+                var vValue = vGrupos[i];
+                if (vValue.idCentro == pGrupo.idCentro)
+                    return true;
             }
+            return false;
+        }
 
             function cancelarSeleccion() {
                 sendDataToParent(null);

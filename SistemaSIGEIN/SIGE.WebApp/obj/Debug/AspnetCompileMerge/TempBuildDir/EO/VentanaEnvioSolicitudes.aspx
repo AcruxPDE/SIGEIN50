@@ -58,15 +58,14 @@
         <telerik:RadSplitter runat="server" ID="rsAyuda" Width="100%" Height="100%" BorderSize="0">
             <telerik:RadPane ID="rpDatos" runat="server">
 
-                <div style="clear: both; height: 10px;"></div>
-
                 <telerik:RadTabStrip ID="rtsEnvioSolicitudes" runat="server" SelectedIndex="0" MultiPageID="rmpSolicitudes">
                     <Tabs>
                         <telerik:RadTab Text="Contexto"></telerik:RadTab>
-                        <telerik:RadTab Text="Envío de solicitudes"></telerik:RadTab>
+                        <telerik:RadTab Text="Enviar evaluaciones"></telerik:RadTab>
                     </Tabs>
                 </telerik:RadTabStrip>
                 <div style="height: calc(100% - 100px); width: 100%;">
+              <div style="clear: both; height: 10px;"></div>
                     <telerik:RadMultiPage ID="rmpSolicitudes" runat="server" SelectedIndex="0" Height="100%">
 
                         <telerik:RadPageView ID="RadPageView1" runat="server" Width="100%">
@@ -153,7 +152,7 @@
                                             <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30px"></telerik:GridClientSelectColumn>
                                             <telerik:GridBoundColumn UniqueName="CL_EVALUADOR" DataField="CL_EVALUADOR" HeaderText="No. de empleado" HeaderStyle-Width="100" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="NB_EVALUADOR" DataField="NB_EVALUADOR" HeaderText="Nombre completo" HeaderStyle-Width="300" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                            <telerik:GridTemplateColumn UniqueName="CL_CORREO_ELECTRONICO" DataField="CL_CORREO_ELECTRONICO" HeaderText="Correo electónico" HeaderStyle-Width="300" HeaderStyle-Font-Bold="true">
+                                            <telerik:GridTemplateColumn UniqueName="CL_CORREO_ELECTRONICO" DataField="CL_CORREO_ELECTRONICO" HeaderText="Correo electrónico" HeaderStyle-Width="300" HeaderStyle-Font-Bold="true">
                                                 <ItemTemplate>
                                                     <telerik:RadTextBox runat="server" ID="txtCorreo" Width="100%" Text='<%# Bind("CL_CORREO_ELECTRONICO") %>' AutoPostBack="false"></telerik:RadTextBox>
                                                 </ItemTemplate>

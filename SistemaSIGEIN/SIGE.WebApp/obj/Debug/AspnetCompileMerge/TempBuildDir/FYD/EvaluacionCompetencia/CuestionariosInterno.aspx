@@ -88,7 +88,7 @@
         </AjaxSettings>
     </telerik:RadAjaxManager>
 
-    <div style="height: calc(100% - 35px);">
+    <div style="height: calc(100% - 40px);">
         <telerik:RadSplitter ID="rsPlantilla" Width="100%" Height="100%" BorderSize="0" runat="server">
 
             <telerik:RadPane ID="rpGridEvaluados" runat="server" Height="100%" ShowContentDuringLoad="false">
@@ -173,10 +173,14 @@
         </telerik:RadSplitter>
     </div>
     <div>
+        <div class="ctrlBasico">
         <telerik:RadButton ID="btnEvaluar" runat="server" Text="Evaluar" AutoPostBack="false" OnClientClicked="OpenMatrizEvaluadoresWindow"></telerik:RadButton>
         <telerik:RadButton ID="btnSalir" runat="server" Text="Salir" AutoPostBack="true" Visible="false" OnClick="btnSalir_Click"></telerik:RadButton>
-        <asp:HiddenField ID="total" runat="server"></asp:HiddenField>
+        </div>
+         <div class="divControlDerecha">
+            <asp:HiddenField ID="total" runat="server"></asp:HiddenField>
         <asp:HiddenField ID="evalu" runat="server"></asp:HiddenField>
+             </div>
     </div>
     <telerik:RadWindowManager ID="rwmMensaje" runat="server">
         <Windows>

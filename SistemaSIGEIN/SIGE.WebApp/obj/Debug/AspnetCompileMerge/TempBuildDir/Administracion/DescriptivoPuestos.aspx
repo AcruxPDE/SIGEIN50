@@ -292,35 +292,35 @@
     <div style="clear: both; height: 10px;"></div>
     <div class="ctrlBasico">
       <%--  <telerik:RadButton ID="btnAgregar"  runat="server" Text="Agregar" Width="100px" OnClientClicked="ShowInsertForm" AutoPostBack="false"></telerik:RadButton>--%>
-        <telerik:RadButton ID="btnAgregarNomina"  runat="server" Text="Agregar" Width="100px" OnClientClicked="ShowInsertNomina" AutoPostBack="false"></telerik:RadButton>
+        <telerik:RadButton ID="btnAgregarNomina"  runat="server" Text="Agregar"  OnClientClicked="ShowInsertNomina" AutoPostBack="false"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
        <%-- <telerik:RadButton ID="btnEditar"  OnClientClicked="ShowEditForm" AutoPostBack="false" runat="server" Text="Editar" Width="100px"></telerik:RadButton>--%>
-        <telerik:RadButton ID="btnEditarNomina"  OnClientClicked="ShowEditNomina" AutoPostBack="false" runat="server" Text="Editar" Width="100px"></telerik:RadButton>
+        <telerik:RadButton ID="btnEditarNomina"  OnClientClicked="ShowEditNomina" AutoPostBack="false" runat="server" Text="Editar" ></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
         <%--<telerik:RadButton ID="btnEliminar"  runat="server" Text="Eliminar" Width="100px" AutoPostBack="true" OnClick="btnEliminar_click" OnClientClicking="ConfirmarEliminar"></telerik:RadButton>--%>
-        <telerik:RadButton ID="btnEliminarNomina"  runat="server" Text="Eliminar" Width="100px" AutoPostBack="true" OnClick="btnEliminarNomina_Click" OnClientClicking="ConfirmarEliminarNomina"></telerik:RadButton>
+        <telerik:RadButton ID="btnEliminarNomina"  runat="server" Text="Eliminar"  AutoPostBack="true" OnClick="btnEliminarNomina_Click" OnClientClicking="ConfirmarEliminarNomina"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnCopiarde"  OnClientClicked="ShowCopyForm" AutoPostBack="false" runat="server" Text="Copiar de..." ToolTip="Este botón te permite copiar la información de un descriptivo de puesto seleccionado para crear uno nuevo. Sólo debes indicar una nueva clave para el nuevo descriptivo de puesto." Width="100px"></telerik:RadButton>
+        <telerik:RadButton ID="btnCopiarde"  OnClientClicked="ShowCopyForm" AutoPostBack="false" runat="server" Text="Copiar" ToolTip="Este botón te permite copiar la información de un descriptivo de puesto seleccionado para crear uno nuevo. Sólo debes indicar una nueva clave para el nuevo descriptivo de puesto." ></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnVistaPrevia"  OnClientClicked="ShowPreviewForm" AutoPostBack="false" runat="server" Text="Vista previa" Width="100px"></telerik:RadButton>
+        <telerik:RadButton ID="btnVistaPrevia"  OnClientClicked="ShowPreviewForm" AutoPostBack="false" runat="server" Text="Vista previa" ></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnReporte"  OnClientClicked="ShowReporteDescriptivoPuesto" AutoPostBack="false" runat="server" Text="Imprimir" Width="100px"></telerik:RadButton>
+        <telerik:RadButton ID="btnReporte"  OnClientClicked="ShowReporteDescriptivoPuesto" AutoPostBack="false" runat="server" Text="Imprimir"></telerik:RadButton>
     </div>
     <%--<div class="ctrlBasico">
         <telerik:RadButton ID="RadButton1" Visible="false" OnClientClicked="pruebatabla" AutoPostBack="false" runat="server" Text="Prueba tabla" Width="100px"></telerik:RadButton>
     </div>--%>
-    <telerik:RadWindowManager ID="rwmAlertas" runat="server" Animation="Fade">
+    <telerik:RadWindowManager ID="rwmAlertas" runat="server" Animation="Fade" >
         <Windows>
-            <telerik:RadWindow ID="winDescriptivo" runat="server" Title="Agregar/Editar Puestos" Height="600px" Width="500px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="onCloseWindow"></telerik:RadWindow>
+            <telerik:RadWindow ID="winDescriptivo" runat="server" Title="Agregar/Editar Puestos" Height="600px" Width="500px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="None" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
             <telerik:RadWindow ID="winVistaPrevia" runat="server" Title="Vista previa" Height="800px" Width="800px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
             <telerik:RadWindow ID="winSeleccionPuestos" runat="server" Title="Seleccionar Jefe inmediato" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
             <telerik:RadWindow ID="winOrganigrama" runat="server" Title="Organigrama Puesto" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
-            <telerik:RadWindow ID="winNuevoDescriptivo" runat="server" Behaviors="Close" Modal="true" Width="480" Height="400" VisibleStatusbar="false" OnClientClose="onCloseWindow"></telerik:RadWindow>
+            <telerik:RadWindow ID="winNuevoDescriptivo" runat="server" Behaviors="Close" Modal="true" Width="490" Height="350" VisibleStatusbar="false" OnClientClose="onCloseWindow"></telerik:RadWindow>
         </Windows>
     </telerik:RadWindowManager>
 </asp:Content>

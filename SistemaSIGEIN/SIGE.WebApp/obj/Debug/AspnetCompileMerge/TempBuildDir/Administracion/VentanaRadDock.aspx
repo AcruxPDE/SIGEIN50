@@ -71,7 +71,7 @@
                             </div>
                             <div class="divControlDerecha">
                                 <telerik:RadComboBox Filter="Contains" runat="server" ID="cmbCategoria" Width="300" MarkFirstMatch="true" EnableLoadOnDemand="true" 
-                                    AutoPostBack="true" HighlightTemplatedItems="true"  DropDownWidth="315" ValidationGroup="VGcmbCategoria">
+                                    AutoPostBack="true" HighlightTemplatedItems="true"  DropDownWidth="315" ValidationGroup="VGcmbCategoria" OnSelectedIndexChanged="cmbCategoria_SelectedIndexChanged">
                                 </telerik:RadComboBox>
                             </div>
                         </div>

@@ -1,10 +1,31 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/EO/MenuEO.master" AutoEventWireup="true" CodeBehind="ConsultasRotacionPersonal.aspx.cs" Inherits="SIGE.WebApp.EO.ConsultasRotacionPersonal" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+            <style>
+            .RadGrid1Class {
+                background-color: #FFFFFF;
+                  height:40px !important;
+                  border-width: 0 0 1px 1px;
+                  border-style: solid;
+                  border-color:black;
+                  padding-right:20px;
+            }
+
+            .RadGrid2Class {
+                background-color: #ffcccc;
+                height:40px !important;
+                         border-width: 0 0 1px 1px;
+                  border-style: solid;
+                  border-color:black;
+                  padding-right:20px;
+            }
+
+        </style>
+
     <script type="text/javascript">
 
         function OpenSelectionGeneroIndice() {
-            openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=INDICE_GENERO", "WinConsultaPersonal", "Selección de género");
+            openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=INDICE_GENERO" + "&mulSel=0", "WinConsultaPersonal", "Selección de género");
         }
 
         function OpenSelectionDepartamentoIndice() {
@@ -12,7 +33,7 @@
         }
 
         function OpenSelectionGeneroCausa() {
-            openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=CAUSA_GENERO", "WinConsultaPersonal", "Selección de género");
+            openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=CAUSA_GENERO" + "&mulSel=0", "WinConsultaPersonal", "Selección de género");
         }
 
         function OpenSelectionDepartamentoCausa() {
@@ -230,7 +251,7 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <div style="height: calc(100% - 20px);">
+    <div style="height: calc(100% - 10px);">
         <telerik:RadSplitter ID="rsReportes" runat="server" Width="100%" Height="100%" BorderSize="0">
             <telerik:RadPane ID="rpReportes" runat="server" Width="20px" Height="100%">
                 <telerik:RadSlidingZone ID="rszReportes" runat="server" SlideDirection="Right" Height="100%" ExpandedPaneId="rsReportes" Width="20px" DockedPaneId="rsbReportes">
@@ -250,7 +271,7 @@
             <telerik:RadPane ID="radGraficasReportes" runat="server" Height="100%">
                 <telerik:RadMultiPage ID="mpgReportes" runat="server" SelectedIndex="0" Height="100%">
                     <telerik:RadPageView ID="rpvParametrosAnalisis" runat="server" Height="100%">
-                        <div style="clear: both; height: 10px"></div>
+                        <div style="padding:10px;">
                         <div class="ctrlBasico">
                             <div class="divControlIzquierda">
                                 <label id="Label1"
@@ -260,7 +281,6 @@
                             </div>
                             <div class="divControlDerecha">
                                 <telerik:RadDatePicker ID="rdpFechaInicio" runat="server" Width="150px" DateInput-ToolTip="Fecha inicio" >
-                                 <Calendar ShowDayCellToolTips="false" ></Calendar>
                                 </telerik:RadDatePicker>
                             </div>
                         </div>
@@ -276,7 +296,7 @@
                                 </telerik:RadDatePicker>
                             </div>
                         </div>
-                        <div style="clear: both; height: 20px"></div>
+                        <div style="clear: both;"></div>
                         <div class="ctrlBasico">
                             <div class="divControlIzquierda">
                                 <label id="Label3" name="lblTipoReporte" runat="server">Tipo de reporte:</label>
@@ -292,7 +312,7 @@
                                 </telerik:RadComboBox>
                             </div>
                         </div>
-                        <div style="clear: both; height: 20px"></div>
+                        <div style="clear: both; height:10px;"></div>
                         <div class="ctrlBasico">
                             <label id="Label4"
                                 name="lblCriterios"
@@ -300,7 +320,7 @@
                                 Criterios de selección para empleados:
                             </label>
                         </div>
-                        <div style="clear: both; height: 20px"></div>
+                        <div style="clear: both; height: 10px"></div>
                         <div class="ctrlBasico">
                             <div class="divControlIzquierda">
                                 <label id="Label5" name="lblDepartamento" runat="server">Área/Departamento:</label>
@@ -331,7 +351,7 @@
                                 <telerik:RadButton ID="btnXAdicionales" runat="server" Text="X" AutoPostBack="false" ValidationGroup="vgAdicionales" OnClientClicked="DeleteAdicionales"></telerik:RadButton>
                             </div>
                         </div>
-                        <div style="clear: both; height: 20px"></div>
+                        <div style="clear: both;"></div>
                         <div class="ctrlBasico">
                             <div class="divControlIzquierda">
                                 <telerik:RadButton RenderMode="Lightweight" ID="rbEdadIndice" runat="server" ToggleType="CheckBox" ButtonType="ToggleButton"
@@ -364,6 +384,7 @@
                         <div class="ctrlBasico">
                             <telerik:RadButton ID="RadButton7" runat="server" name="btnGraficaIndiceRotacion" AutoPostBack="true" Text="Reporte" Width="100" OnClick="btnGraficaIndiceRotacion_Click"></telerik:RadButton>
                         </div>
+                    </div>
                     </telerik:RadPageView>
                     <%-- Fin de Parámetros de Análisis --%>
 
@@ -375,7 +396,7 @@
                                     <telerik:RadTab Text="Grafica de índice de Rotación" runat="server" SelectedIndex="2" ></telerik:RadTab>
                                 </Tabs>
                             </telerik:RadTabStrip>--%>
-                        <div style="height: calc(100% - 50px);">
+                        <div style="height: calc(100% - 50px); padding:10px;">
                             <%-- <telerik:RadMultiPage ID="mpgIndice" runat="server" SelectedIndex="0" Height="100%"  >
                                     <telerik:RadPageView ID="rpvParametrosIndiceRotacion" runat="server" Height="100%">
                                    
@@ -480,7 +501,7 @@
                                         </div>
                                     </telerik:RadPageView>
                                     <telerik:RadPageView ID="rpvGraficaIndiceRotacion" runat="server" Height="100%">--%>
-                            <div class="ctrlBasico" style="width: 60%; height: 100%">
+                            <div class="ctrlBasico" style="width: 100%; height: 100%">
                                 <telerik:RadHtmlChart runat="server" ID="rhlIndiceRotacion" Height="100%" Transitions="true">
                                     <PlotArea>
                                         <Series>
@@ -488,15 +509,17 @@
                                                 <LabelsAppearance DataFormatString="{0}"></LabelsAppearance>
                                                 <TooltipsAppearance DataFormatString="{0}"></TooltipsAppearance>
                                             </telerik:ColumnSeries>
+                                            
                                         </Series>
                                         <Appearance>
-                                            <FillStyle BackgroundColor="Transparent"></FillStyle>
-                                        </Appearance>
+                                            <FillStyle BackgroundColor="Transparent"></FillStyle>                                          
+                                        </Appearance> 
+                                        <YAxis Step="1" MinValue="0"></YAxis>                                     
                                     </PlotArea>
                                     <Appearance>
                                         <FillStyle BackgroundColor="Transparent"></FillStyle>
                                     </Appearance>
-                                    <ChartTitle Text="Índice de Rotación">
+                                    <ChartTitle Text="Índice de rotación">
                                         <Appearance Align="Center" BackgroundColor="Transparent" Position="Top">
                                         </Appearance>
                                     </ChartTitle>
@@ -506,34 +529,36 @@
                                     </Legend>
                                 </telerik:RadHtmlChart>
                             </div>
-                            <div class="ctrlBasico" style="width: 40%;">
+                            <div style="height:10px; clear:both;"></div>
+                            <div class="ctrlBasico" style="width: 50%;">
                                 <telerik:RadGrid ID="rgGraficaIndiceRotacion"
                                     runat="server"
                                     AllowSorting="false"
                                     AutoGenerateColumns="false" HeaderStyle-Font-Bold="true">
-                                    <ClientSettings AllowKeyboardNavigation="false">
+                                    <ClientSettings AllowKeyboardNavigation="false" EnableAlternatingItems="true" >
                                         <Scrolling UseStaticHeaders="false" AllowScroll="false" />
                                         <Selecting AllowRowSelect="false" />
                                     </ClientSettings>
                                     <MasterTableView AllowFilteringByColumn="false" AllowPaging="false" ShowHeadersWhenNoRecords="true">
                                         <Columns>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="120" DataField="NB_CANTIDAD" UniqueName="NB_CANTIDAD">
+                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="120" DataField="NB_CANTIDAD" ItemStyle-Font-Bold="true" UniqueName="NB_CANTIDAD">
                                                 <HeaderStyle Font-Bold="true" />
                                             </telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="30" DataField="PR_CANTIDAD" UniqueName="PR_CANTIDAD" ItemStyle-HorizontalAlign="Right">
+                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains"  HeaderStyle-Width="30" DataField="PR_CANTIDAD" UniqueName="PR_CANTIDAD" ItemStyle-HorizontalAlign="Right">
                                                 <HeaderStyle Font-Bold="true" />
                                             </telerik:GridBoundColumn>
                                         </Columns>
                                     </MasterTableView>
                                 </telerik:RadGrid>
-                                <div style="clear: both; height: 20px"></div>
-                                 
+                               </div>
+                                  <div class="ctrlBasico" style="width: 50%;">
                                     <telerik:RadGrid ID="rgEmpleadosGrafica"
                                         runat="server"
                                         AllowSorting="false" Height="350px"
                                         AutoGenerateColumns="false"
+                                        OnItemDataBound="rgEmpleadosGrafica_ItemDataBound"
                                         Width="50%" HeaderStyle-Font-Bold="true">
-                                        <ClientSettings AllowKeyboardNavigation="false">
+                                        <ClientSettings AllowKeyboardNavigation="false" EnableAlternatingItems="true"  >
                                             <Scrolling UseStaticHeaders="true" AllowScroll="true" />
                                             <Selecting AllowRowSelect="false" />
                                         </ClientSettings>
@@ -555,7 +580,7 @@
 
                     <%-- Inicio causas de rotación --%>
                     <telerik:RadPageView ID="rpvCausasRotacion" runat="server" Height="100%">
-                        <div style="height: calc(100% - 50px);">
+                        <div style="height: calc(100% - 50px); padding:10px;">
                             <%--<telerik:RadTabStrip ID="rtsCausas" runat="server" SelectedIndex="0"  MultiPageID="mpgCausas">
                                 <Tabs>
                                     <telerik:RadTab Text="Parámetros de Análisis" runat="server" SelectedIndex="1" ></telerik:RadTab>
@@ -657,7 +682,7 @@
 
                             <div class="ctrlBasico" style="width: 60%; height: 100%">
                                 <telerik:RadHtmlChart runat="server" ID="rhcGraficaCausasRotacion" Width="100%" Height="100%" Transitions="true" Skin="Silk">
-                                    <ChartTitle Text="Causas de Rotación">
+                                    <ChartTitle Text="Causas de rotación">
                                         <Appearance Align="Center" Position="Top">
                                         </Appearance>
                                     </ChartTitle>
@@ -706,13 +731,10 @@
 
                     <%-- Inicio de historial de bajas --%>
                     <telerik:RadPageView ID="rpHistorialBajas" runat="server" Height="100%">
-                        <div style="height: calc(100% - 50px);">
                             <label class="labelTitulo">Historial de baja</label>
-                            <div style="height: 10px;"></div>
-                            <div style="height: calc(100% - 20px);">
+                            <div style="height: calc(100% - 60px); padding-left:10px; padding-right:10px;">
                                 <telerik:RadMultiPage ID="rmpConfiguracion" runat="server" SelectedIndex="0" Height="100%">
                                     <telerik:RadPageView ID="rpvCapturaResultados" runat="server">
-                                        <div style="clear: both;"></div>
                                         <telerik:RadGrid ID="grdHistorialBaja" HeaderStyle-Font-Bold="true" runat="server" OnNeedDataSource="grdHistorialBaja_NeedDataSource" AutoGenerateColumns="false" Height="100%" OnItemCommand="grdHistorialBaja_ItemCommand" OnItemDataBound="grdHistorialBaja_ItemDataBound">
                                             <ClientSettings>
                                                 <Scrolling AllowScroll="true" UseStaticHeaders="true" />
@@ -751,7 +773,6 @@
                                         </telerik:RadGrid>
                                     </telerik:RadPageView>
                                 </telerik:RadMultiPage>
-                            </div>
                         </div>
                     </telerik:RadPageView>
                     <%-- fin de historial de bajas --%>

@@ -400,7 +400,6 @@
             <telerik:RadTab Text="Sustitución de baremos"></telerik:RadTab>
             <telerik:RadTab Text="Resultados prueba"></telerik:RadTab>
             <telerik:RadTab Text="Consultas de integración"></telerik:RadTab>
-
         </Tabs>
     </telerik:RadTabStrip>
     <div style="height: calc(100% - 50px);">
@@ -409,6 +408,7 @@
                 <telerik:RadSplitter ID="RadSplitter2" Width="100%" Height="100%" BorderSize="0" runat="server">
                     <telerik:RadPane ID="RadPane2" runat="server">
                         <label class="labelTitulo">Ajuste de tiempo de las pruebas</label>
+
                         <%-- <div class="ctrlBasico">
                     <div class="divControlIzquierda">
                         <label id="lbPrueba" name="Prueba" width="200px" runat="server">Prueba:</label>
@@ -876,6 +876,9 @@
                                     </td>
                                 </tr>
                             </table>
+
+
+
                             <%-- <telerik:RadGrid ID="grdAjusteTiempo" runat="server" HeaderStyle-Font-Bold="true"
                         OnNeedDataSource="grdAjusteTiempo_NeedDataSource" Width="580" Height="100%" AutoGenerateColumns="False">
                         <ClientSettings>
@@ -912,7 +915,6 @@
                         </ClientSettings>
                         <MasterTableView ClientDataKeyNames="ID_PRUEBA_SECCION" DataKeyNames="ID_PRUEBA_SECCION,NO_TIEMPO_MINIMO_ESTANDAR,NB_PRUEBA_SECCION" AutoGenerateColumns="false" AllowPaging="false" AllowFilteringByColumn="false" ShowHeadersWhenNoRecords="true">
                             <Columns>
-
                             </Columns>
                         </MasterTableView>
                     </telerik:RadGrid>--%>
@@ -932,10 +934,10 @@
                                     </div>
                                 </div>
                                 <div class="ctrlBasico">
-                                    <telerik:RadButton ID="btnReinicializar" runat="server" name="btnReinicializar" AutoPostBack="true" Text="Reinicializar" OnClick="btnReinicializar_Click" Width="100"></telerik:RadButton>
+                                    <telerik:RadButton ID="btnReinicializar" runat="server" name="btnReinicializar" AutoPostBack="true" Text="Reinicializar" OnClick="btnReinicializar_Click" ></telerik:RadButton>
                                 </div>
                                 <div class="ctrlBasico">
-                                    <telerik:RadButton ID="btnGuardar" runat="server" name="btnGuardar" AutoPostBack="true" Text="Guardar" OnClick="btnGuardarTiempo_Click" Width="100"></telerik:RadButton>
+                                    <telerik:RadButton ID="btnGuardar" runat="server" name="btnGuardar" AutoPostBack="true" Text="Guardar" OnClick="btnGuardarTiempo_Click" ></telerik:RadButton>
                                 </div>
                             </div>
                         </div>
@@ -1152,7 +1154,7 @@
                         </div>
                         <div style="clear: both; height: 5px"></div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnGuardarMensajes" runat="server" name="btnGuardarMensajes" AutoPostBack="true" Text="Guardar" OnClick="btnGuardarMensajes_Click" Width="100"></telerik:RadButton>
+                            <telerik:RadButton ID="btnGuardarMensajes" runat="server" name="btnGuardarMensajes" AutoPostBack="true" Text="Guardar" OnClick="btnGuardarMensajes_Click" ></telerik:RadButton>
                         </div>
                     </telerik:RadPane>
                 </telerik:RadSplitter>
@@ -1264,7 +1266,7 @@
                                 </div>
                             </div>
                             <div class="ctrlBasico">
-                                <telerik:RadButton ID="btnAgregarCorreo" runat="server" name="btnAgregar" AutoPostBack="true" Text="Agregar" Width="100" OnClick="btnAgregarCorreo_Click"></telerik:RadButton>
+                                <telerik:RadButton ID="btnAgregarCorreo" runat="server" name="btnAgregar" AutoPostBack="true" Text="Agregar" OnClick="btnAgregarCorreo_Click"></telerik:RadButton>
                             </div>
                             <div style="clear: both"></div>
                             <div class="ctrlBasico">
@@ -1285,13 +1287,13 @@
                                 </div>
                             </div>
                             <div class="ctrlBasico">
-                                <telerik:RadButton ID="btnEliminarCorreo" runat="server" name="btnEliminarCorreo" AutoPostBack="true" Text="Eliminar" Width="100" OnClick="btnEliminarCorreo_Click"></telerik:RadButton>
+                                <telerik:RadButton ID="btnEliminarCorreo" runat="server" name="btnEliminarCorreo" AutoPostBack="true" Text="Eliminar" OnClick="btnEliminarCorreo_Click"></telerik:RadButton>
                             </div>
                         </div>
                         <div style="clear: both"></div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnGuardarCartera" runat="server" GroupName="btnGuardarCartera" AutoPostBack="true" Text="Guardar" Width="100" OnClick="btnGuardarCartera_Click"></telerik:RadButton>
-                            <telerik:RadButton ID="btnEjecutarLimpiaCartera" runat="server" AutoPostBack="true" Text="Ejecutar Depuración" Width="200" OnClick="btnEjecutarLimpiaCartera_Click"></telerik:RadButton>
+                            <telerik:RadButton ID="btnGuardarCartera" runat="server" GroupName="btnGuardarCartera" AutoPostBack="true" Text="Guardar" OnClick="btnGuardarCartera_Click"></telerik:RadButton>
+                            <%--<telerik:RadButton ID="btnEjecutarLimpiaCartera" runat="server" AutoPostBack="true" Text="Ejecutar Depuración" OnClick="btnEjecutarLimpiaCartera_Click"></telerik:RadButton>--%>
                         </div>
                     </telerik:RadPane>
                     <telerik:RadPane ID="rpAyuda" runat="server" Scrolling="None" Width="22px">
@@ -1542,7 +1544,7 @@
                     </div>
                     <div style="clear: both; height: 50px;"></div>
                     <div class="ctrlBasico">
-                        <telerik:RadButton ID="btnGuardarIntegracion" runat="server" AutoPostBack="true" Text="Guardar" Width="100" OnClick="btnGuardarIntegracion_Click"></telerik:RadButton>
+                        <telerik:RadButton ID="btnGuardarIntegracion" runat="server" AutoPostBack="true" Text="Guardar" OnClick="btnGuardarIntegracion_Click"></telerik:RadButton>
                     </div>
                 </div>
             </telerik:RadPageView>

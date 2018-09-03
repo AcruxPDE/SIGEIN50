@@ -62,6 +62,20 @@
                 $get("<%=desdeDNC.ClientID %>").style.display = sender.get_checked() ? 'block' : 'none';
         }
 
+        function ReturnDataToParentEdit() {
+            var vAcciones = [];
+            var vAccion = { clTipoCatalogo: "ACTUALIZAR" };
+            vAcciones.push(vAccion);
+            sendDataToParent(vAcciones);
+        }
+
+        function ReturnDataToParent() {
+            var vAcciones = [];
+            var vAccion = { clTipoCatalogo: "ACTUALIZARLISTA" };
+            vAcciones.push(vAccion);
+            sendDataToParent(vAcciones);
+        }
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">

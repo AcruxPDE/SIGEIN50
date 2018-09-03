@@ -4,7 +4,7 @@
     <script type="text/javascript">
 
         function OpenSelectionGeneroIndiceWindow() {
-            openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=INDICE_GENERO", "WinCuestionario", "Selección de género");
+            openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=INDICE_GENERO" + "&mulSel=0", "WinCuestionario", "Selección de género");
         }
 
         function OpenSelectionDepartamentoIndiceWindow() {
@@ -12,7 +12,7 @@
         }
 
         function OpenSelectionGeneroDistribucionWindow() {
-            openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=DISTRIBUCION_GENERO", "WinCuestionario", "Selección de género");
+            openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=DISTRIBUCION_GENERO" + "&mulSel=0", "WinCuestionario", "Selección de género");
         }
 
         function OpenSelectionDepartamentoDistribucionWindow() {
@@ -32,7 +32,7 @@
         }
 
         function OpenSelectionGeneroPreguntasWindow() {
-            openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=PREGUNTAS_GENERO", "WinCuestionario", "Selección de género");
+            openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=PREGUNTAS_GENERO" + "&mulSel=0", "WinCuestionario", "Selección de género");
         }
 
         function OpenSelectionPreAdicionales() {
@@ -495,7 +495,7 @@
                     <telerik:RadPageView ID="rpIndiceSatisfaccion" runat="server" Height="100%">
                         <telerik:RadTabStrip ID="rtIndice" runat="server" SelectedIndex="0" OnClientTabSelected="TabSelected" MultiPageID="mpgIndice">
                             <Tabs>
-                                <telerik:RadTab Text="Parámetros de Análisis" runat="server" SelectedIndex="1"></telerik:RadTab>
+                                <telerik:RadTab Text="Parámetros de análisis" runat="server" SelectedIndex="1"></telerik:RadTab>
                                 <telerik:RadTab Text="Gráfica de índice de satisfacción" runat="server" SelectedIndex="2"></telerik:RadTab>
                             </Tabs>
                         </telerik:RadTabStrip>
@@ -663,7 +663,7 @@
                     <telerik:RadPageView ID="rpDistribucionResultados" runat="server" Height="100%">
                         <telerik:RadTabStrip ID="rtDistribucion" runat="server" SelectedIndex="0" MultiPageID="mpgDistribucion">
                             <Tabs>
-                                <telerik:RadTab Text="Parámetros de Análisis"></telerik:RadTab>
+                                <telerik:RadTab Text="Parámetros de análisis"></telerik:RadTab>
                                 <telerik:RadTab Text="Gráfica distribución de resultados"></telerik:RadTab>
                             </Tabs>
                         </telerik:RadTabStrip>
@@ -805,7 +805,7 @@
                     <telerik:RadPageView ID="rpvPreguntasAbiertas" runat="server" Height="100%">
                         <telerik:RadTabStrip ID="rtPreguntasAbiertas" runat="server" SelectedIndex="0" MultiPageID="rmpPreguntasabiertas">
                             <Tabs>
-                                <telerik:RadTab Text="Parámetros de Análisis"></telerik:RadTab>
+                                <telerik:RadTab Text="Parámetros de análisis"></telerik:RadTab>
                                 <telerik:RadTab Text="Reporte preguntas abiertas"></telerik:RadTab>
                             </Tabs>
                         </telerik:RadTabStrip>
@@ -960,7 +960,7 @@
                 </telerik:RadMultiPage>
             </telerik:RadPane>
             <telerik:RadPane ID="rpAyuda" runat="server" Width="20px" Height="100%">
-                <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" Height="100%" ExpandedPaneId="rsReportes" Width="20px" DockedPaneId="rsbReportes">
+                <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" Height="100%" ExpandedPaneId="rsReportes" Width="20px" ClickToOpen="true" DockedPaneId="rsbReportes">
                     <telerik:RadSlidingPane ID="rsbAyuda" runat="server" CollapseMode="Forward" EnableResize="false" Width="325px" Title="Ayuda" Height="100%">
                         <div id="divContexto" runat="server" style="display: block; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
                             <p>
@@ -970,37 +970,37 @@
                     En cada una de las siguientes pestañas podrás realizar las consultas de índice de satisfacción, distribución de resultados, preguntas abiertas y el resultado global.													
                             </p>
                         </div>
-                        <div id="divIndice" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
+                        <div id="divIndice" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px; text-align:justify;">
                             <p>
                                 El reporte de índice de satisfacción refleja el grado de 
                                  conformidad de la persona con respecto a su entorno de trabajo.<br />
                                 <br />
 
-                                Indica los filtros búsqueda para Empleados, así como para las 
+                                Indica los filtros búsqueda para empleados, así como para las 
                                 preguntas en los cuestionarios. 																
                             </p>
                         </div>
 
-                        <div id="divDistribucion" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
+                        <div id="divDistribucion" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px; text-align:justify;">
                             <p>
                                 El reporte de distribución de resultados muestra la partición de 
                                 resultados entre las respuestas a las preguntas realizadas dentro
                                 del período.<br />
                                 <br />
 
-                                Indica los filtros búsqueda para Empleados, así como para las 
+                                Indica los filtros búsqueda para empleados, así como para las 
                                 preguntas en los cuestionarios. 
                             </p>
                         </div>
-                        <div id="divPreguntas" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
+                        <div id="divPreguntas" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px; text-align:justify;">
                             <p>
                                 El reporte muestra las respuestas a las preguntas abiertas aplicadas dentro del período. Los renglones en blanco representan evaluadores que omitieron su respuesta.<br />
                                 <br />
 
-                                Indica los filtros búsqueda para Empleados, así como para las preguntas en los cuestionarios. 													
+                                Indica los filtros búsqueda para empleados, así como para las preguntas en los cuestionarios. 													
                             </p>
                         </div>
-                        <div id="divGlobal" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
+                        <div id="divGlobal" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px; text-align:justify;">
                             <p>
                                 El reporte presenta los resultados obtenidos en el período en base a las opciones que se indican a los evaluadores.													
                             </p>

@@ -25,9 +25,11 @@
                         NB_GRUPO: masterTable.getCellByColumnUniqueName(selectedItem, "NB_GRUPO").innerHTML,
                         clTipoCatalogo: "<%= vClCatalogo %>"
                     };
-                    vGrupos.push(vGrupo);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vGrupos.length;
+                    if (!existeElemento(vGrupo)) {
+                        vGrupos.push(vGrupo);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vGrupos.length;
+                    }
                 }
                 return true;
             }
@@ -39,6 +41,15 @@
                 browserWnd.radalert("Selecciona un evaluado.", 400, 150);
             }
 
+            return false;
+        }
+
+        function existeElemento(pGrupo) {
+            for (var i = 0; i < vGrupos.length; i++) {
+                var vValue = vGrupos[i];
+                if (vValue.ID_GRUPO == pGrupo.ID_GRUPO)
+                    return true;
+            }
             return false;
         }
 

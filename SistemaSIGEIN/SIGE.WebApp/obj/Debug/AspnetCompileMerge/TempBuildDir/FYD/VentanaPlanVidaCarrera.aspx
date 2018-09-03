@@ -398,8 +398,11 @@
 
             <telerik:RadPageView ID="pvPuestos" runat="server">
                 <div style="clear: both; height: 10px;"></div>
-                <div class="ctrlBasico" style="width: 100%;">
-                    <telerik:RadGrid runat="server" ID="grdpuestos" HeaderStyle-Font-Bold="true" OnNeedDataSource="grdpuestos_NeedDataSource" OnColumnCreated="grdpuestos_ColumnCreated" OnItemDataBound="grdpuestos_ItemDataBound">
+                <div style="height:calc(100% - 30px);">
+                    <telerik:RadGrid runat="server" ID="grdpuestos" Height="100%" Width="100%" HeaderStyle-Font-Bold="true" OnNeedDataSource="grdpuestos_NeedDataSource" OnColumnCreated="grdpuestos_ColumnCreated" OnItemDataBound="grdpuestos_ItemDataBound">
+                        <ClientSettings>
+                            <Scrolling UseStaticHeaders="true" AllowScroll="true" />
+                        </ClientSettings>
                     </telerik:RadGrid>
                 </div>
 

@@ -329,7 +329,6 @@
         </AjaxSettings>
     </telerik:RadAjaxManager>
     <div style="height: calc(100% - 100px);">
-        <div style="clear: both; height: 2px;"></div>
         <div class="ctrlBasico">
             <table class="ctrlTableForm">
                 <tr>
@@ -405,7 +404,7 @@
                 <telerik:RadTab Text="Programa capacitación" Visible="true"></telerik:RadTab>
             </Tabs>
         </telerik:RadTabStrip>
-        <telerik:RadMultiPage ID="mpgProgramaCapacitacion" runat="server" SelectedIndex="0" Height="92%">
+        <telerik:RadMultiPage ID="mpgProgramaCapacitacion" runat="server" SelectedIndex="0" Height="100%">
             <%--            <telerik:RadPageView ID="RPView1" runat="server">
                 <div style="height: 10px;"></div>
                 <div style="float: left;">
@@ -461,7 +460,8 @@
                 </div>
             </telerik:RadPageView>--%>
             <telerik:RadPageView ID="rpCompetenciasParticipantes" runat="server" Height="100%">
-                <div style="float: left; width: 50%; height: calc(100% - 30px);">
+                <div style="height:10px; clear:both;"></div>
+                <div style="float: left; width: 50%; height: calc(100% - 60px);">
                     <label id="Label2" name="lblCompetencias" runat="server">Competencias:</label>
                     <div style="height: calc(100% - 70px); margin-right: 5px;">
                         <telerik:RadGrid
@@ -491,13 +491,13 @@
                             </MasterTableView>
                         </telerik:RadGrid>
                     </div>
-                    <div style="clear: both; height: 5px;"></div>
+                    <div style="clear: both; height: 10px;"></div>
                     <div class="ctrlBasico">
                         <telerik:RadButton ID="btnAgregarCompetencia" AutoPostBack="false" runat="server" Text="Agregar" Width="100" OnClientClicked="OpenSelectionCompetencia" ToolTip="Da clic si deseas incorporar nuevas competencias a este programa de capacitación. "></telerik:RadButton>
                         <telerik:RadButton ID="btnEliminarCompetencia" runat="server" Text="Eliminar" Width="100" OnClick="btnEliminarCompetencia_Click" OnClientClicking="ConfirmarEliminarCompetencia"></telerik:RadButton>
                     </div>
                 </div>
-                <div style="float: right; width: 50%; height: calc(100% - 30px);">
+                <div style="float: right; width: 50%; height: calc(100% - 60px);">
                     <label id="Label3" name="lblParticipantes" runat="server">Participantes:</label>
                     <div style="height: calc(100% - 70px); margin-left: 5px;">
                         <telerik:RadGrid
@@ -508,6 +508,7 @@
                             Height="100%"
                             HeaderStyle-Font-Bold="true"
                             GroupPanelPosition="Top"
+                            AllowSorting="true"
                             OnNeedDataSource="grdParticipantes_NeedDataSource"
                             AllowMultiRowSelection="true">
                             <ClientSettings>
@@ -527,7 +528,7 @@
                             </MasterTableView>
                         </telerik:RadGrid>
                     </div>
-                    <div style="clear: both; height: 5px;"></div>
+                    <div style="clear: both; height: 10px;"></div>
                     <div class="ctrlBasico">
                         <telerik:RadButton ID="btnAgregarParticipantes" AutoPostBack="false" runat="server" Text="Agregar" Width="100" OnClientClicked="OpenEmployeeSelectionWindow"></telerik:RadButton>
                         <telerik:RadButton ID="btnEliminarParticipantes" runat="server" Text="Eliminar" Width="100" OnClick="btnEliminarEmpleado_Click" OnClientClicking="ConfirmarEliminarEmpleado"></telerik:RadButton>
@@ -541,6 +542,7 @@
                         </div>
                     </div>
                 </div>
+                <div style="height:10px; clear:both;"></div>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnAgregarCombinaciones" OnClick="btnAgregarCombinaciones_Click" runat="server" Text="Agregar combinaciones seleccionadas al programa de capacitación" Width="100%"></telerik:RadButton>
                     <telerik:RadButton ID="btnAgregarCombinacionesMatriz" OnClick="btnAgregarCombinaciones_Click" runat="server" Text="Agregar combinaciones seleccionadas al programa de capacitación" Width="100%"></telerik:RadButton>
@@ -651,8 +653,8 @@
                 </table>
             </telerik:RadPageView>--%>
             <telerik:RadPageView ID="RPView2" runat="server">
-                <div style="clear: both; height: 5px;"></div>
-                <div style="height: calc(100% - 50px);">
+                <div style="clear: both; height: 10px;"></div>
+                <div style="height: calc(100% - 60px);">
                     <telerik:RadGrid
                         ID="grdCategorias"
                         ShowHeader="true"
@@ -666,15 +668,15 @@
                             <Selecting AllowRowSelect="true" />
                         </ClientSettings>
                         <GroupingSettings CaseSensitive="false" />
-                        <MasterTableView ClientDataKeyNames="ID_PROGRAMA_EMPLEADO_COMPETENCIA" AllowFilteringByColumn="true" DataKeyNames="ID_PROGRAMA_EMPLEADO_COMPETENCIA" ShowHeadersWhenNoRecords="true" AutoGenerateColumns="false" PageSize="10">
+                        <MasterTableView ClientDataKeyNames="ID_PROGRAMA_EMPLEADO_COMPETENCIA" AllowSorting="true" AllowFilteringByColumn="true" DataKeyNames="ID_PROGRAMA_EMPLEADO_COMPETENCIA" ShowHeadersWhenNoRecords="true" AutoGenerateColumns="false" PageSize="10">
                             <Columns>
                                 <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Categoría" DataField="CL_TIPO_COMPETENCIA" UniqueName="CL_TIPO_COMPETENCIA" HeaderStyle-Width="100" FilterControlWidth="30"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clasificación" DataField="NB_CLASIFICACION_COMPETENCIA" UniqueName="NB_CLASIFICACION_COMPETENCIA" HeaderStyle-Width="100" FilterControlWidth="30"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Competencia" DataField="NB_COMPETENCIA" UniqueName="NB_COMPETENCIA" HeaderStyle-Width="100" FilterControlWidth="30"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="C. Empleado" DataField="CL_EVALUADO" UniqueName="CL_EVALUADO" HeaderStyle-Width="100" FilterControlWidth="30"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre" DataField="NB_EVALUADO" UniqueName="NB_EVALUADO" HeaderStyle-Width="150" FilterControlWidth="80"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="C. Puesto" DataField="CL_PUESTO" UniqueName="CL_PUESTO" HeaderStyle-Width="100" FilterControlWidth="30"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="No. de Empleado" DataField="CL_EVALUADO" UniqueName="CL_EVALUADO" HeaderStyle-Width="100" FilterControlWidth="30"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre completo" DataField="NB_EVALUADO" UniqueName="NB_EVALUADO" HeaderStyle-Width="150" FilterControlWidth="80"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave Puesto" DataField="CL_PUESTO" UniqueName="CL_PUESTO" HeaderStyle-Width="100" FilterControlWidth="30"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="NB_PUESTO" HeaderStyle-Width="100" FilterControlWidth="30"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Resultado" DataField="PR_RESULTADO" UniqueName="PR_RESULTADO" HeaderStyle-Width="100" FilterControlWidth="30" DataFormatString="{0}%">
                                     <ItemStyle HorizontalAlign="Right" />
@@ -683,16 +685,19 @@
                             </Columns>
                         </MasterTableView>
                     </telerik:RadGrid>
-                    <div style="clear: both; height: 5px;"></div>
+                     </div>
+                    <div style="clear: both; height: 10px;"></div>
                     <div class="ctrlBasico">
-                        <telerik:RadButton ID="btnQuitarSeleccionados" OnClick="btnQuitarSeleccionados_Click" OnClientClicking="ConfirmarEliminarPrograma" runat="server" Text="Quitar los seleccionados del Programa de capacitación" Width="100%"></telerik:RadButton>
-                        <telerik:RadButton ID="btnAutoriza" OnClientClicked="OpenAutorizacionProgramaWindow" AutoPostBack="false" runat="server" Text="Registro y autorización" Width="200" ToolTip="Da clic si deseas registrar este programa de capacitación y/o deseas realizar un proceso de autorización."></telerik:RadButton>
+                        <telerik:RadButton ID="btnQuitarSeleccionados" OnClick="btnQuitarSeleccionados_Click" OnClientClicking="ConfirmarEliminarPrograma" runat="server" Text="Eliminar" ></telerik:RadButton>                  
                     </div>
-                </div>
+                    <div class="ctrlBasico">
+                           <telerik:RadButton ID="btnAutoriza" OnClientClicked="OpenAutorizacionProgramaWindow" AutoPostBack="false" runat="server" Text="Registro y autorización" Width="200" ToolTip="Da clic si deseas registrar este programa de capacitación y/o deseas realizar un proceso de autorización."></telerik:RadButton>
+                    </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvMatriz" runat="server">
-                <div style="height: calc(100% - 50px);">
-                    <telerik:RadGrid ID="grdCapacitacionMatriz" runat="server" HeaderStyle-Font-Bold="true" Height="100%" AutoGenerateColumns="true"
+              <div style="clear: both; height: 10px;"></div>
+                <div style="height: calc(100% - 60px);">
+                    <telerik:RadGrid ID="grdCapacitacionMatriz" AllowSorting="true" runat="server" HeaderStyle-Font-Bold="true" Height="100%" AutoGenerateColumns="true"
                         OnNeedDataSource="grdCapacitacionMatriz_NeedDataSource" OnColumnCreated="grdCapacitacionMatriz_ColumnCreated" AllowMultiRowSelection="true" AllowPaging="false">
                         <ClientSettings EnablePostBackOnRowClick="false" Scrolling-FrozenColumnsCount="4">
                             <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -703,7 +708,7 @@
                         </MasterTableView>
                     </telerik:RadGrid>
                 </div>
-                <div style="clear: both; height: 5px;"></div>
+                <div style="clear: both; height: 10px;"></div>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnRegistroAutorizacion" OnClientClicked="OpenAutorizacionProgramaWindow" AutoPostBack="false" runat="server" Text="Registro y autorización" Width="200" ToolTip="Da clic si deseas registrar este programa de capacitación y/o deseas realizar un proceso de autorización."></telerik:RadButton>
                 </div>
@@ -711,8 +716,8 @@
         </telerik:RadMultiPage>
     </div>
     <div class="divControlDerecha">
-        <telerik:RadButton ID="btnAceptar" OnClick="btnAceptar_Click" runat="server" Text="Guardar" ToolTip="Aceptar" CssClass="ctrlBasico"></telerik:RadButton>
-        <telerik:RadButton ID="btnAceptarMatriz" runat="server" Text="Guardar" ToolTip="Aceptar" CssClass="btnAceptarMatriz" AutoPostBack="false"></telerik:RadButton>
+        <telerik:RadButton ID="btnAceptar" OnClick="btnAceptar_Click" runat="server" Text="Guardar y cerrar" ToolTip="Aceptar" CssClass="ctrlBasico"></telerik:RadButton>
+        <telerik:RadButton ID="btnAceptarMatriz" runat="server" Text="Guardar y cerrar" ToolTip="Aceptar" CssClass="btnAceptarMatriz" AutoPostBack="false"></telerik:RadButton>
     </div>
     <telerik:RadWindowManager ID="rwmMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>
 </asp:Content>

@@ -3,6 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
     <script type="text/javascript" id="5">
 
+
+
         var idEvaluadoMeta = "";
         var idE = "";
         var noMeta = "";
@@ -45,8 +47,14 @@
             }
         }
 
+        function OpenRemplazaBaja(pIdEvaluado, pIdPeriodo) {
+        }
+
         function ConfirmarEliminarInactivas(sender, args) {
-            vMensaje = "¿Las metas inactivas serán eliminadas, estas seguro que deseas continuar?, este proceso no podrá revertirse";
+            if ('<%= vClTipoMetas %>' == "DESCRIPTIVO")
+                vMensaje = "¿Los indicadores inactivos serán eliminados, estas seguro que deseas continuar?, este proceso no podrá revertirse";
+            else
+                vMensaje = "¿Las metas inactivas serán eliminadas, estas seguro que deseas continuar?, este proceso no podrá revertirse";
             var vWindowsProperties = { height: 200 };
             confirmAction(sender, args, vMensaje, vWindowsProperties);
         }
@@ -82,7 +90,7 @@
             wnd.vURL = "VentanaEnvioSolicitudes.aspx";
             if (pIdPeriodo != null) {
                 wnd.vURL += String.format("?PeriodoId={0}", pIdPeriodo);
-                wnd.vTitulo = "Envío de solicitudes";
+                wnd.vTitulo = "Enviar evaluaciones";
             }
             return wnd;
         }
@@ -106,7 +114,7 @@
         }
 
         function OpenEmpleadosSelectionWindow() {
-            OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?m=FORMACION", "winSeleccion", "Selección de evaluados");
+            OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx", "winSeleccion", "Selección de evaluados");
         }
 
         function OpenPuestoSelectionWindow() {
@@ -114,14 +122,14 @@
         }
 
         function OpenAreaSelectionWindow() {
-            OpenSelectionWindow("../Comunes/SeleccionArea.aspx?m=FORMACION", "winSeleccion", "Selección de evaluados por áreas/departamento");
+            OpenSelectionWindow("../Comunes/SeleccionArea.aspx?", "winSeleccion", "Selección de evaluados por áreas/departamento");
         }
 
         function OpenEmpleadosSelectionWindowEvaluador() {
             var masterTable = $find("<%= grdEvaluados.ClientID %>").get_masterTableView();
             var selectedItems = masterTable.get_selectedItems();
             if (selectedItems.length > 0) {
-                OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?CatalogoCl=EVALUADOR&mulSel=0", "winSeleccion", "Selección de evaluadores");
+                OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?CatalogoCl=EVALUADOR&mulSel=0&CLFILTRO=NINGUNO", "winSeleccion", "Selección de evaluadores");
             }
             else {
                 radalert("Selecciona un evaluado.", 400, 150);
@@ -130,10 +138,13 @@
 
         function OpenAgregarMetasWindow() {
             GetIdEvaluado();
-
             var vIdPeriodo = '<%= vIdPeriodo %>';
+            var vTextoVentana = "Agregar meta";
+            if ('<%= vClTipoMetas %>' == "DESCRIPTIVO")
+                vTextoVentana = "Agregar indicador";
+
             if (vIdEvaluado != null) {
-                OpenSelectionWindowC("VentanaMetasDesempeno.aspx?IdEvaluado=" + vIdEvaluado + "&IdPeriodo=" + vIdPeriodo + "&Accion=Agregar", "WinMetas", "Agregar metas");
+                OpenSelectionWindowC("VentanaMetasDesempeno.aspx?IdEvaluado=" + vIdEvaluado + "&IdPeriodo=" + vIdPeriodo + "&Accion=Agregar", "WinMetas", vTextoVentana);
             }
             else {
                 radalert("Selecciona un evaluado.", 400, 150);
@@ -189,13 +200,24 @@
             GetIdEvaluado();
             obtenerIdMeta();
             var vIdPeriodo = '<%= vIdPeriodo %>';
+            var vTextoVentana = "Editar meta";
+            if ('<%= vClTipoMetas %>' == "DESCRIPTIVO")
+                vTextoVentana = "Editar indicador";
+
             if (idE != null & idE != "") {
                 if (vFgEvaluar != "False")
-                    OpenSelectionWindowC("VentanaMetasDesempeno.aspx?IdEvaluado=" + idEvaluadoMeta + "&IdPeriodo=" + vIdPeriodo + "&NoMeta=" + idE + "&Meta=" + noMeta, "WinMetas", "Editar metas");
-                else
+                    OpenSelectionWindowC("VentanaMetasDesempeno.aspx?IdEvaluado=" + idEvaluadoMeta + "&IdPeriodo=" + vIdPeriodo + "&NoMeta=" + idE + "&Meta=" + noMeta, "WinMetas", vTextoVentana);
+                else {
+                    if ('<%= vClTipoMetas %>' == "DESCRIPTIVO")
+                        radalert("No se puede editar un indicador inactivo.", 400, 150);
+                        else
                     radalert("No se puede editar una meta inactiva.", 400, 150);
+                }
             }
             else {
+                if ('<%= vClTipoMetas %>' == "DESCRIPTIVO")
+                    radalert("Selecciona un indicador.", 400, 150);
+                else
                 radalert("Selecciona una meta.", 400, 150);
             }
         }
@@ -365,6 +387,22 @@
             tempValue = sumInput.get_value() - sender.get_value();
         }
 
+        function OnClientSelected() {
+
+            var rtsTabs = $find('<%= rtsConfiguracionPeriodoDesempeno.ClientID %>');
+                   var vSelectedTab = rtsTabs.get_selectedTab();
+
+                   var vValueTab = vSelectedTab.get_value();
+
+            if (vValueTab == 4) {
+                var ajaxManager = $find('<%= ramConfiguracionPeriodo.ClientID%>');
+                ajaxManager.ajaxRequest(JSON.stringify({ clTipo: "VERIFICACONFIGURACION"}));
+            }
+
+            if (vValueTab == 1 && '<%= vFgBajas%>' == "True")
+                radalert("Existen evaluados o evaluadores dados de baja en el período.", 400, 150);
+        }
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
@@ -377,6 +415,7 @@
                     <telerik:AjaxUpdatedControl ControlID="grdDisenoMetas" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="grdContrasenaEvaluadores" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="rgBono" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="btnEnvioSolicitudes" UpdatePanelHeight="100%" />                  
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnSeleccionPorPersona">
@@ -484,17 +523,17 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <div style="height: 10px;"></div>
-    <telerik:RadTabStrip ID="rtsConfiguracionPeriodoDesempeno" runat="server" SelectedIndex="0" MultiPageID="rmpConfiguracion">
+    <telerik:RadTabStrip ID="rtsConfiguracionPeriodoDesempeno" runat="server" SelectedIndex="0" MultiPageID="rmpConfiguracion" OnClientTabSelected="OnClientSelected">
         <Tabs>
-            <telerik:RadTab Text="Contexto"></telerik:RadTab>
-            <telerik:RadTab Text="Selección de evaluados"></telerik:RadTab>
-            <telerik:RadTab Text="Diseñar metas"></telerik:RadTab>
-            <telerik:RadTab Text="Definir bono" Selected="True"></telerik:RadTab>
-            <telerik:RadTab Text="Contraseñas"></telerik:RadTab>
+            <telerik:RadTab Text="Contexto" Value="0"></telerik:RadTab>
+            <telerik:RadTab Text="Selección de evaluados" Value="1"></telerik:RadTab>
+            <telerik:RadTab Text="Diseñar metas" Value="2"></telerik:RadTab>
+            <telerik:RadTab Text="Definir bono" Selected="True" Value="3"></telerik:RadTab>
+            <telerik:RadTab Text="Contraseñas" Value="4"></telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
     <div style="height: calc(100% - 55px); width: 100%;">
+            <div style="height: 10px;"></div>
         <telerik:RadMultiPage ID="rmpConfiguracion" runat="server" SelectedIndex="0" Height="100%">
             <telerik:RadPageView runat="server" Width="100%">
                 <div class="divControlIzquierda" style="width: 60%; text-align: left;">
@@ -577,6 +616,7 @@
                                 AllowMultiRowSelection="true"
                                 OnNeedDataSource="grdSeleccionEvaluados_NeedDataSource"
                                 HeaderStyle-Font-Bold="true"
+                                OnItemDataBound="grdEvaluados_ItemDataBound"
                                 OnDetailTableDataBind="grdEvaluados_DetailTableDataBind" ShowFooter="true">
                                 <ClientSettings>
                                     <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -584,12 +624,12 @@
                                 </ClientSettings>
                                 <PagerStyle AlwaysVisible="true" />
                                 <GroupingSettings CaseSensitive="false" />
-                                <MasterTableView DataKeyNames="ID_EMPLEADO,ID_EVALUADO,CL_EMPLEADO,NB_EMPLEADO_COMPLETO,NB_PUESTO,NB_DEPARTAMENTO,PR_EVALUADO"
+                                <MasterTableView DataKeyNames="ID_EMPLEADO,ID_EVALUADO,CL_EMPLEADO,NB_EMPLEADO_COMPLETO,NB_PUESTO,NB_DEPARTAMENTO,PR_EVALUADO, CL_ESTADO_EMPLEADO"
                                     AllowPaging="false" AllowSorting="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true"
                                     EnableHeaderContextFilterMenu="true" ClientDataKeyNames="ID_EVALUADO" EnableHierarchyExpandAll="true" HierarchyDefaultExpanded="false">
                                     <Columns>
                                         <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
-                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="60" HeaderText="No. de empleado" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="110" FilterControlWidth="50" HeaderText="No. de empleado" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="200" FilterControlWidth="130" HeaderStyle-Font-Bold="true" HeaderText="Nombre completo" DataField="NB_EMPLEADO_COMPLETO" UniqueName="NB_EMPLEADO_COMPLETO"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Nombre" DataField="NB_EMPLEADO" UniqueName="NB_EMPLEADO"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Apellido paterno" DataField="NB_APELLIDO_PATERNO" UniqueName="NB_APELLIDO_PATERNO"></telerik:GridBoundColumn>
@@ -624,7 +664,7 @@
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Clave de la empresa" DataField="CL_EMPRESA" UniqueName="CL_EMPRESA"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="200" FilterControlWidth="130" HeaderText="Nombre de la empresa" DataField="NB_EMPRESA" UniqueName="NB_EMPRESA"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Razón social" DataField="NB_RAZON_SOCIAL" UniqueName="NB_RAZON_SOCIAL"></telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="110" FilterControlWidth="40" HeaderText="Estado" DataField="CL_ESTADO_EMPLEADO" UniqueName="CL_ESTADO_EMPLEADO"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="90" FilterControlWidth="30" HeaderText="Estatus" DataField="CL_ESTADO_EMPLEADO" UniqueName="CL_ESTADO_EMPLEADO"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="95" FilterControlWidth="25" HeaderText="Activo" DataField="FG_ACTIVO" UniqueName="FG_ACTIVO"></telerik:GridBoundColumn>
                                         <telerik:GridTemplateColumn HeaderText="Ponderación" FilterControlWidth="30px" DataType="System.Decimal" HeaderStyle-Font-Bold="true" DataField="PR_EVALUADO" UniqueName="PR_EVALUADO" Aggregate="Sum" FooterAggregateFormatString="Cumplimiento general: {0:N2}%" FooterStyle-HorizontalAlign="Center">
                                             <ItemStyle Width="90px" HorizontalAlign="Left" />
@@ -648,6 +688,10 @@
                                                     <ItemStyle Width="150" />
                                                 </telerik:GridBoundColumn>
                                                 <telerik:GridBoundColumn UniqueName="CL_CORREO_ELECTRONICO" DataField="CL_CORREO_ELECTRONICO" HeaderText="Correo electrónico" HeaderStyle-Font-Bold="true">
+                                                    <HeaderStyle Width="150" />
+                                                    <ItemStyle Width="150" />
+                                                </telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn UniqueName="CL_ESTADO" DataField="CL_ESTADO" HeaderText="Estatus" HeaderStyle-Font-Bold="true">
                                                     <HeaderStyle Width="150" />
                                                     <ItemStyle Width="150" />
                                                 </telerik:GridBoundColumn>
@@ -675,7 +719,7 @@
                         </div>
                         <div class="divControlesBoton">
                             <div class="ctrlBasico">
-                                <telerik:RadButton runat="server" ID="btnReasignarPonderacion" AutoPostBack="true" Text="Reasignar ponderación" OnClick="btnReasignarPonderacion_Click"></telerik:RadButton>
+                                <telerik:RadButton runat="server" ID="btnReasignarPonderacion" AutoPostBack="true" Text="Reasignar ponderación" OnClick="btnReasignarPonderacion_Click" ToolTip="Selecciona ésta opción si lo que deseas es modificar de manera automática y equitativa el impacto de cada uno de los evaluados."></telerik:RadButton>
                             </div>
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" ID="btnGuardarEvaluado" Text="Guardar" OnClick="btnGuardarEvaluado_Click"></telerik:RadButton>
@@ -690,17 +734,11 @@
                         <telerik:RadSlidingZone ID="RadSlidingZone2" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
                             <telerik:RadSlidingPane ID="RadSlidingPane1" runat="server" Title="Ayuda" Width="300" MinWidth="500" Height="100%">
                                 <div style="padding: 10px; text-align: justify;">
-                                    <fieldset>
-                                        <legend>
-                                            <label>Selección de evaluados:</label>
-                                        </legend>
                                         Está página te permitirá seleccionar a los evaluados ya sea por persona, puesto o área/departamento. 
                                      <br />
                                         Podrás capturar la ponderación asignada a cada evaluado directamente o asignar una ponderación equitativa para todos, seleccionando el botón "Reasignar ponderación". Recuerda que la suma total debe ser 100%.
                                      <br />
                                         Una vez que hayas seleccionado a los evaluados y asignado una ponderación da clic en guardar para verificar la correcta configuración.  
-      
-                                    </fieldset>
                                 </div>
                             </telerik:RadSlidingPane>
                         </telerik:RadSlidingZone>
@@ -712,7 +750,7 @@
                     <telerik:RadPane ID="rpHelp1" runat="server">
                         <div style="height: calc(100% - 65px); width: 100%;">
                             <telerik:RadGrid ID="grdDisenoMetas" runat="server"
-                                Height="100%" AutoGenerateColumns="false" EnableHierarchyExpandAll="true" MasterTableView-HierarchyDefaultExpanded="true"
+                                Height="100%" AutoGenerateColumns="false"  EnableHierarchyExpandAll="true" MasterTableView-HierarchyDefaultExpanded="true"
                                 EnableHeaderContextMenu="true" AllowSorting="true"
                                 AllowMultiRowSelection="true"
                                 OnNeedDataSource="grdDisenoMetas_NeedDataSource"
@@ -792,19 +830,19 @@
                         </div>
                         <div style="clear: both; height: 10px;"></div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnAgregarMeta" runat="server" name="btnAgregarMeta" AutoPostBack="false" Text="Agregar metas" OnClientClicked="OpenAgregarMetasWindow" Enabled="false"></telerik:RadButton>
+                            <telerik:RadButton ID="btnAgregarMeta" runat="server" name="btnAgregarMeta" AutoPostBack="false" Text="Agregar meta" OnClientClicked="OpenAgregarMetasWindow" Enabled="false" ToolTip="Selecciona esta opción si lo que deseas es dar de alta una meta."></telerik:RadButton>
                         </div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnActivarMetas" runat="server" AutoPostBack="true" Text="Activar metas" OnClick="btnActivarMetas_Click"></telerik:RadButton>
+                            <telerik:RadButton ID="btnActivarMetas" runat="server" AutoPostBack="true" Text="Activar meta" OnClick="btnActivarMetas_Click"></telerik:RadButton>
                         </div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnDesactivarMetas" runat="server" OnClick="btnDesactivarMetas_Click" Text="Desactivar metas"></telerik:RadButton>
+                            <telerik:RadButton ID="btnDesactivarMetas" runat="server" OnClick="btnDesactivarMetas_Click" Text="Desactivar meta"></telerik:RadButton>
                         </div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnModificarMetas" runat="server" AutoPostBack="false" Text="Editar metas" OnClientClicked="OpenModificarMetasWindow" Enabled="false"></telerik:RadButton>
+                            <telerik:RadButton ID="btnModificarMetas" runat="server" AutoPostBack="false" Text="Editar meta" OnClientClicked="OpenModificarMetasWindow" Enabled="false"></telerik:RadButton>
                         </div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnCopiarMetas" runat="server" OnClick="btnCopiarMetas_Click" Text="Copiar metas"></telerik:RadButton>
+                            <telerik:RadButton ID="btnCopiarMetas" runat="server" OnClick="btnCopiarMetas_Click" Text="Copiar meta"></telerik:RadButton>
                         </div>
                         <div class="divControlesBoton">
                             <div class="ctrlBasico">
@@ -816,17 +854,13 @@
                         <telerik:RadSlidingZone ID="RadSlidingZone1" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
                             <telerik:RadSlidingPane ID="rspMensaje" runat="server" Title="Ayuda" Width="300" MinWidth="500" Height="100%">
                                 <div style="padding: 10px; text-align: justify;">
-                                    <fieldset>
-                                        <legend>
-                                            <label>Diseñar metas:</label>
-                                        </legend>
-                                        Está página te permitirá diseñar metas de evaluación facilmente. 
+                                                                            Está página te permitirá diseñar metas de evaluación fácilmente. 
                                      <br />
                                         Copiar metas:
                                 <br />
                                         Podrás copiar metas a los empleados que elijas.
-                                   Una vez que hayas diseñado una meta, sus niveles y ponderación, para copiarlos a otros evaluador deberás seleccionar aquellas metas que desees copiar, después selecciona la(s) personas a quien se le asignaran los elementos a copiar y por último da clic en el botón "Copiar metas"  para realizar el copiado.            
-                                    </fieldset>
+                                        Una vez que diseñadas las metas, sus niveles y ponderación, para copiarlas a otros evaluados deberás seleccionar aquellas metas que desees copiar, después selecciona las personas a quienes se les asignaran los elementos a copiar y por último da clic en el botón "Copiar metas"  para realizar el copiado.   
+
                                 </div>
                             </telerik:RadSlidingPane>
                         </telerik:RadSlidingZone>
@@ -993,10 +1027,10 @@
                             </div>
                 <div class="divControlesBoton">
                     <div class="ctrlBasico">
-                        <telerik:RadButton runat="server" ID="btnGuardarCerrar" Text="Guardar y cerrar" OnClick="btnGuardarCerrar_Click"></telerik:RadButton>
-                    </div>
-                    <div class="ctrlBasico">
                         <telerik:RadButton runat="server" ID="btnGuardar" Text="Guardar" OnClick="btnGuardar_Click"></telerik:RadButton>
+                    </div>
+                                        <div class="ctrlBasico">
+                        <telerik:RadButton runat="server" ID="btnGuardarCerrar" Text="Guardar y cerrar" OnClick="btnGuardarCerrar_Click"></telerik:RadButton>
                     </div>
                     <div class="ctrlBasico">
                         <telerik:RadButton runat="server" ID="btnCancelar" Text="Cancelar" OnClientClicked="closeWindow"></telerik:RadButton>
@@ -1008,13 +1042,7 @@
                         <telerik:RadSlidingZone ID="RadSlidingZone3" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
                             <telerik:RadSlidingPane ID="RadSlidingPane2" runat="server" Title="Ayuda" Width="300" MinWidth="500" Height="100%">
                                 <div style="padding: 10px; text-align: justify;">
-                                    <fieldset>
-                                        <legend>
-                                            <label>Definir bono:</label>
-                                        </legend>
                                         Define el bono que en este período se aplicará a los evaluados. Dejalo en 0 si no deseas aplicar bono. 
-                                 
-                                    </fieldset>
                                 </div>
                             </telerik:RadSlidingPane>
                         </telerik:RadSlidingZone>
@@ -1024,16 +1052,17 @@
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvContasenas" runat="server">
                 <div style="height: calc(100% - 45px); padding-bottom: 10px;">
-                    <telerik:RadGrid ID="grdContrasenaEvaluadores" runat="server" Height="100%" AutoGenerateColumns="false" AllowSorting="true"
+                    <telerik:RadGrid ID="grdContrasenaEvaluadores" runat="server" Height="100%" AllowMultiRowSelection="true" AutoGenerateColumns="false" AllowSorting="true"
                         OnNeedDataSource="grdContrasenaEvaluadores_NeedDataSource" HeaderStyle-Font-Bold="true" OnItemDataBound="grdContrasenaEvaluadores_ItemDataBound">
                         <ClientSettings EnableAlternatingItems="true">
                             <Scrolling UseStaticHeaders="true" AllowScroll="true" />
-                            <Selecting AllowRowSelect="true" />
+                            <Selecting AllowRowSelect="true" CellSelectionMode="MultiCell" />
                         </ClientSettings>
                         <PagerStyle AlwaysVisible="true" />
                         <GroupingSettings CaseSensitive="false" />
                         <MasterTableView DataKeyNames="ID_EVALUADOR" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
                             <Columns>
+                                <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="130" FilterControlWidth="60" HeaderText="Evaluador" DataField="NB_EVALUADOR" UniqueName="NB_EVALUADOR" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="200" FilterControlWidth="130" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="NB_PUESTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Contraseña" DataField="CL_TOKEN" UniqueName="CL_TOKEN" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
@@ -1044,14 +1073,14 @@
                 <div style="clear: both;"></div>
                 <label id="lbMensaje" runat="server" visible="false" style="color: red;">*El evaluador para este periodo es el Coordinador, no se pueden enviar solicitudes, el coordinador realizará la captura ingresando a través del botón capturar.</label>
                 <div style="clear: both;"></div>
-                <div class="ctrlBasico">
+              <%--  <div class="ctrlBasico">
                     <telerik:RadButton ID="btnReasignarTodasContrasenas" runat="server" Text="Reasignar contraseñas a todos" OnClick="btnReasignarTodasContrasenas_Click"></telerik:RadButton>
-                </div>
+                </div>--%>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnReasignarContrasena" runat="server" Text="Reasignar contraseña al evaluador seleccionado" OnClick="btnReasignarContrasena_Click"></telerik:RadButton>
                 </div>
                 <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnEnvioSolicitudes" runat="server" Text="Enviar solicitudes" OnClientClicking="OpenEnvioSolicitudes"></telerik:RadButton>
+                    <telerik:RadButton ID="btnEnvioSolicitudes" runat="server" Text="Enviar evaluaciones" OnClientClicking="OpenEnvioSolicitudes"></telerik:RadButton>
                 </div>
                 <div class="divControlDerecha">
                     <telerik:RadButton runat="server" ID="btnCerraryGuaradar" Text="Guardar y cerrar" OnClientClicked="CloseWindowConfig"></telerik:RadButton>

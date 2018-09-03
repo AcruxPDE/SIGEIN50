@@ -72,7 +72,7 @@
             ObtenerEvaluado();
 
             if (vIdEmpleado != 0) {
-                OpenSelectionWindow("../Comunes/SeleccionPeriodo.aspx?m=FORMACION&IdEmpleado=" + vIdEmpleado, "winSeleccion", "Selección de período")
+                OpenSelectionWindow("../Comunes/SeleccionPeriodo.aspx?IdEmpleado=" + vIdEmpleado, "winSeleccion", "Selección de período")
             }
             else {
                 radalert("No has seleccionado un empleado.", 400, 150, "");
@@ -145,7 +145,7 @@
         <Tabs>
             <telerik:RadTab runat="server" Text="Contexto"></telerik:RadTab>
             <telerik:RadTab runat="server" Text="Seleccionar evaluado"></telerik:RadTab>
-            <telerik:RadTab runat="server" Text="Seleccionar períodos"></telerik:RadTab>
+            <telerik:RadTab runat="server" Text="Selección de períodos a comparar"></telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
     <div style="height: calc(100% - 60px); overflow: auto;">
@@ -282,7 +282,7 @@
         <telerik:RadButton runat="server" ID="btnConsulta" Text="Consulta" AutoPostBack="false" OnClientClicked="OpenReporteIndividualWindow"></telerik:RadButton>
     </div>
                 <div class="ctrlBasico">
-                    <telerik:RadButton runat="server" ID="btnAgregarPeriodosComparacion" Text="Agregar períodos" AutoPostBack="false" OnClientClicked="OpenPeriodoSelectionWindow"></telerik:RadButton>
+                    <telerik:RadButton runat="server" ID="btnAgregarPeriodosComparacion" Text="Seleccionar períodos" AutoPostBack="false" OnClientClicked="OpenPeriodoSelectionWindow"></telerik:RadButton>
                 </div>
             </telerik:RadPageView>
         </telerik:RadMultiPage>

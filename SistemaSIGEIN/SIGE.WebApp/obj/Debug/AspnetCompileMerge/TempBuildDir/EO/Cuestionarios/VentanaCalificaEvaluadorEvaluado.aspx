@@ -122,13 +122,14 @@
                 <telerik:RadSlidingZone ID="rszMensajeInicial" runat="server" SlideDirection="Left" DockedPaneId="rspMensajeInicial" Width="22px">
                     <telerik:RadSlidingPane ID="rspMensajeInicial" runat="server" Title="Mensaje Inicial" Width="340px" RenderMode="Mobile" Height="200">
                         <div style="padding: 10px; text-align: justify;" id="mensajeInicial" runat="server">
-                            <p>Estimado(a): <label runat="server" id="lblEvaluador"></label></p><br />
+                            <p>Estimado(a): <label runat="server" id="lblEvaluador"></label></p>
                             <p>
                                 La lista de evaluados que se muestra, ha sido asignada para que los califiques,
                                 cada evaluado cuenta con una serie de metas a las cuales deberás asignarles un
                                 valor.<br /><br />
                                Para calificarlas solo selecciona al evaluado y a continuación da clic en el botón capturar resultados.
-                               <br /> Para salir de la ventana actual selecciona el botón terminar proceso. Recuerda que puedes volver a ingresar posteriormente para seguir capturando los resultados de los evaluados.
+                               <br /><br /> Para salir de la ventana actual selecciona el botón terminar proceso.
+                               <br /><br /> Recuerda que puedes volver a ingresar posteriormente para seguir capturando los resultados de los evaluados.
                             </p>
                         </div>
                     </telerik:RadSlidingPane>

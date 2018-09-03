@@ -37,7 +37,7 @@
 
         function OpenPeriodoSelectionWindow() {
             idEmpleado = '<%= vIdEmpleado %>';
-            OpenSelectionWindow("../Comunes/SeleccionPeriodo.aspx?m=FORMACION&IdEmpleado=" + idEmpleado, "winSeleccion", "Selección de período")
+            OpenSelectionWindow("../Comunes/SeleccionPeriodo.aspx?IdEmpleado=" + idEmpleado + "&mulSel=0", "winSeleccion", "Selección de período")
         }
 
         function OpenAnalisisWindow() {

@@ -2,6 +2,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
     <script id="MyScript" type="text/javascript">
+
+        var vaddSelection_label = "Agregados: ";
+        var vaddSelection_alert = "Selecciona un puesto.";
+
+        if ('<%=vClIdioma%>' != "ES") {
+            vaddSelection_label = '<%=vaddSelection_label%>';
+            vaddSelection_alert = '<%=vaddSelection_alert%>';
+        }
+
         var vPuestos = [];
 
         function generateDataForParent() {
@@ -28,9 +37,11 @@
                         sueldo_tabulador: selectedItem.getDataKeyValue("SUELDO_TABULADOR"),
                         clTipoCatalogo: "<%=vClCatalogo%>"
                     };
-                    vPuestos.push(vPuesto);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vPuestos.length;
+                    if (!existeElemento(vPuesto)) {
+                        vPuestos.push(vPuesto);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = vaddSelection_label + vPuestos.length;
+                    }
                 }
                 return true;
             }
@@ -39,7 +50,16 @@
                 var browserWnd = window;
                 if (currentWnd)
                     browserWnd = currentWnd.BrowserWindow;
-                browserWnd.radalert("Selecciona un puesto.", 400, 150);
+                browserWnd.radalert(vaddSelection_alert, 400, 150);
+            }
+            return false;
+        }
+
+        function existeElemento(pPuesto) {
+            for (var i = 0; i < vPuestos.length; i++) {
+                var vValue = vPuestos[i];
+                if (vValue.idPuesto == pPuesto.idPuesto)
+                    return true;
             }
             return false;
         }
@@ -70,7 +90,7 @@
     <telerik:RadSplitter ID="splPuesto" runat="server" Width="100%" Height="100%" BorderSize="0">
         <telerik:RadPane ID="rpnGridPuesto" runat="server">
             <div style="height: calc(100% - 54px);">
-                <telerik:RadGrid ID="grdPuesto" HeaderStyle-Font-Bold="true" runat="server" Height="100%" AllowMultiRowSelection="true" OnNeedDataSource="grdPuesto_NeedDataSource" AutoGenerateColumns="false" EnableHeaderContextMenu="true" OnItemDataBound="grdPuesto_ItemDataBound" ShowGroupPanel="false" AllowSorting="true">
+                <telerik:RadGrid ID="grdPuesto" HeaderStyle-Font-Bold="true" OnPreRender="grdPuesto_PreRender" runat="server" Height="100%" AllowMultiRowSelection="true" OnNeedDataSource="grdPuesto_NeedDataSource" AutoGenerateColumns="false" EnableHeaderContextMenu="true" OnItemDataBound="grdPuesto_ItemDataBound" ShowGroupPanel="false" AllowSorting="true">
                     <ClientSettings>
                         <Scrolling UseStaticHeaders="true" AllowScroll="true" />
                         <Selecting AllowRowSelect="true" />
@@ -80,10 +100,9 @@
                     <MasterTableView ClientDataKeyNames="ID_PUESTO, ID_PUESTO_PDE,SUELDO_ULTIMO,SUELDO_TABULADOR" DataKeyNames="ID_PUESTO, ID_PUESTO_PDE,SUELDO_ULTIMO,SUELDO_TABULADOR" EnableColumnsViewState="false" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
                         <Columns>
                             <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
-                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="90" HeaderText="Clave" DataField="CL_PUESTO" UniqueName="CL_PUESTO">
-                            </telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="90" HeaderText="Clave" DataField="CL_PUESTO" UniqueName="CL_PUESTO"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="90" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="NB_PUESTO"></telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="90" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="130" FilterControlWidth="90" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO"></telerik:GridBoundColumn>
                         </Columns>
                     </MasterTableView>
                 </telerik:RadGrid>

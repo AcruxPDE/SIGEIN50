@@ -1119,7 +1119,7 @@
 
                                     <tr>
                                         <td>
-                                            <label class="labelPregunta" >14. A: ____ the photographers in New York.
+                                            <label class="labelPregunta" >14. A: ____ the photographers in New York now?
                                                 <br />
                                                 B: No. They ____there yesterday. </label>
                                         </td>
@@ -5365,7 +5365,7 @@
 
                                     <tr>
                                         <td>
-                                            <label class="labelPregunta" >89. We exchange goods bought here but remmber we ___ give you your money back unless you have a receipt.</label></td>
+                                            <label class="labelPregunta" >89. We exchange goods bought here but remember we ___ give you your money back unless you have a receipt.</label></td>
                                     </tr>
 
                                     <tr>

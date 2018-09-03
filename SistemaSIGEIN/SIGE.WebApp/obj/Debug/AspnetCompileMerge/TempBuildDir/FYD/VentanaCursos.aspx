@@ -167,6 +167,13 @@
         }
 
     </script>
+    <style>
+         .ruBrowse
+       {
+           
+           width: 150px !important;
+       }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
@@ -221,7 +228,7 @@
                         <label id="lblClave" name="lblClave" runat="server">Clave:</label>
                     </div>
                     <div class="divControlDerecha">
-                        <telerik:RadTextBox ID="txtClave" runat="server" Width="180px" MaxLength="20"></telerik:RadTextBox>
+                        <telerik:RadTextBox ID="txtClave" runat="server" Width="180px" MaxLength="50"></telerik:RadTextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Display="Dynamic"
                             ControlToValidate="txtClave" ForeColor="Red" CssClass="validacion" Font-Size="Smaller" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
                     </div>
@@ -403,9 +410,9 @@ Adicionalmente no podrá agregar otras competencias específicas que no sean del
                         </Items>
                     </telerik:RadComboBox>
                 </div>
-                <div class="ctrlBasico">
+                <div class="ctrlBasico" style="width: 420px">
                     Subir documento:<br />
-                    <telerik:RadAsyncUpload ID="rauDocumento" runat="server" MultipleFileSelection="Disabled"></telerik:RadAsyncUpload>
+                    <telerik:RadAsyncUpload ID="rauDocumento" runat="server" MultipleFileSelection="Disabled"> <Localization Select="Seleccionar" /></telerik:RadAsyncUpload>
                 </div>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnAgregarDocumento" runat="server" Text="Agregar" OnClick="btnAgregarDocumento_Click"></telerik:RadButton>
@@ -419,7 +426,7 @@ Adicionalmente no podrá agregar otras competencias específicas que no sean del
                         </ClientSettings>
                         <MasterTableView ClientDataKeyNames="ID_ARCHIVO,ID_ITEM" DataKeyNames="ID_ARCHIVO,ID_ITEM" AutoGenerateColumns="false" ShowHeadersWhenNoRecords="true" NoMasterRecordsText="No existen documentos asociados al curso">
                             <Columns>
-                                <telerik:GridHyperLinkColumn HeaderText="Nombre del documento" DataTextField="NB_DOCUMENTO" DataNavigateUrlFields="ID_ARCHIVO,ID_DOCUMENTO,FE_CREATED_DATE,NB_DOCUMENTO,ID_ITEM" DataNavigateUrlFormatString="/Comunes/ObtenerDocumento.ashx?ArchivoId={0}&ArchivoNb={2:yyyyMMdd}{4}&ArchivoDescargaNb={3}" Target="_blank"></telerik:GridHyperLinkColumn>
+                                <telerik:GridHyperLinkColumn HeaderText="Nombre del documento" DataTextField="NB_DOCUMENTO" DataNavigateUrlFields="ID_ARCHIVO,ID_DOCUMENTO,FE_CREATED_DATE,NB_DOCUMENTO,ID_ITEM" DataNavigateUrlFormatString="~/Comunes/ObtenerDocumento.ashx?ArchivoId={0}&ArchivoNb={2:yyyyMMdd}{4}&ArchivoDescargaNb={3}" Target="_blank"></telerik:GridHyperLinkColumn>
                                 <telerik:GridBoundColumn HeaderText="Tipo de documento" HeaderStyle-Width="200" DataField="CL_TIPO_DOCUMENTO" UniqueName="CL_TIPO_DOCUMENTO"></telerik:GridBoundColumn>
                             </Columns>
                         </MasterTableView>

@@ -19,12 +19,18 @@
             var vSelectedItems = masterTable.get_selectedItems()[0];
             if (vSelectedItems != undefined) {
                 var vIdGrupo = vSelectedItems.getDataKeyValue("ID_GRUPO");
+                var vClGrupo = vSelectedItems.getDataKeyValue("CL_GRUPO");
                 var vURl = "VentanaGrupos.aspx?pIdGrupo=" + vIdGrupo;
                 var vTitulo = "Editar grupo";
                 var vWindowsPropierties = {
                     width: document.documentElement.clientWidth - 500,
                     height: document.documentElement.clientHeight - 20
                 };
+
+                if (vSelectedItems.getDataKeyValue("FG_SISTEMA") == "True") {
+                    radalert("Este grupo pertenece al sistema y no es posible editarlo (contiene todo el inventario de personal).", 400, 170);
+                    return;
+                }
 
                 openChildDialog(vURl, "winGrupos", vTitulo, vWindowsPropierties);
             }
@@ -36,12 +42,23 @@
         function OpenConfirmEliminar(sender, args) {
             var masterTable = $find("<%= rgGrupos.ClientID %>").get_masterTableView();
             var selectedItem = masterTable.get_selectedItems()[0];
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
+            { if (shouldSubmit) { this.click(); } });
+
             if (selectedItem != undefined) {
+                if (selectedItem.getDataKeyValue("FG_SISTEMA") == "True") {
+                    radalert("Este grupo pertenece al sistema y no es posible eliminarlo.", 400, 150);
+                    args.set_cancel(true);
+                    return;
+                }
                 var vNombre = masterTable.getCellByColumnUniqueName(selectedItem, "NB_GRUPO").innerHTML;
-                confirmAction(sender, args, "¿Deseas eliminar el grupo " + vNombre + "?, este proceso no podrá revertirse");
+                //confirmAction(sender, args, "¿Deseas eliminar el grupo " + vNombre + "?, este proceso no podrá revertirse");
+                radconfirm('¿Deseas eliminar el grupo ' + vNombre + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar grupo");
+                args.set_cancel(true);
             }
             else {
                 radalert("Selecciona un grupo.", 400, 150);
+                args.set_cancel(true);
             }
         }
 
@@ -73,8 +90,8 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <div style="clear: both;"></div>
-    <div style="height: calc(100% - 60px); width: 100%;">
+     <label class="labelTitulo">Grupos</label>
+    <div style="height: calc(100% - 100px); width: 100%;">
         <telerik:RadGrid
             ID="rgGrupos"
             runat="server"
@@ -93,7 +110,7 @@
                 <Selecting AllowRowSelect="true" />
             </ClientSettings>
             <PagerStyle AlwaysVisible="true" />
-            <MasterTableView DataKeyNames="ID_GRUPO" ClientDataKeyNames="ID_GRUPO" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
+            <MasterTableView DataKeyNames="ID_GRUPO" ClientDataKeyNames="ID_GRUPO, FG_SISTEMA" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
                 <Columns>
                     <telerik:GridBoundColumn UniqueName="CL_GRUPO" DataField="CL_GRUPO" HeaderText="Clave" AutoPostBackOnFilter="true" HeaderStyle-Width="150" FilterControlWidth="120" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn UniqueName="NB_GRUPO" DataField="NB_GRUPO" HeaderText="Grupo" AutoPostBackOnFilter="true" HeaderStyle-Width="250" FilterControlWidth="220" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
@@ -104,10 +121,17 @@
         </telerik:RadGrid>
     </div>
     <div style="height: 10px; clear: both;"></div>
-    <telerik:RadButton ID="btnAgregarGrupo" runat="server" Text="Agregar" Width="100" AutoPostBack="false" OnClientClicked="OpenGruposWindows"></telerik:RadButton>
-    <telerik:RadButton ID="btnEditar" runat="server" Text="Editar" Width="100" AutoPostBack="false" OnClientClicked="OpenEditGruposWindows"></telerik:RadButton>
-    <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" Width="100" AutoPostBack="true" OnClientClicking="OpenConfirmEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
-    <telerik:RadWindowManager ID="rwmAlertas" runat="server" EnableShadow="true">
+    <div class="ctrlBasico">
+    <telerik:RadButton ID="btnAgregarGrupo" runat="server" Text="Agregar" AutoPostBack="false" OnClientClicked="OpenGruposWindows"></telerik:RadButton>
+        </div>
+    <div class="ctrlBasico">
+    <telerik:RadButton ID="btnEditar" runat="server" Text="Editar" AutoPostBack="false" OnClientClicked="OpenEditGruposWindows"></telerik:RadButton>
+    </div>
+    <div class="ctrlBasico">
+        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" AutoPostBack="true" OnClientClicking="OpenConfirmEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
+    </div>
+    <div style="clear:both;"></div>
+        <telerik:RadWindowManager ID="rwmAlertas" runat="server" EnableShadow="true">
         <Windows>
             <telerik:RadWindow ID="winGrupos" runat="server" Behaviors="Close" Modal="true" VisibleStatusbar="false" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
             <telerik:RadWindow ID="winSeleccion" runat="server" Behaviors="Close" Modal="true" VisibleStatusbar="false" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>

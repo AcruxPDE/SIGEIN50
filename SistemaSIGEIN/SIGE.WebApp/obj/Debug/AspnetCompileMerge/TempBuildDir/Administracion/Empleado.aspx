@@ -7,6 +7,34 @@
            
            width: 150px !important;
        }
+
+    html {
+        overflow-y: hidden;
+        }
+
+       .DivFotoCss {
+           background: #fafafa; 
+           position: absolute; 
+           right: 0px; 
+           margin-right: 50px; 
+           border: 1px solid lightgray; 
+           border-radius: 10px; 
+           padding: 5px;
+        }
+
+         @media only screen and (max-width: 700px) {
+            .DivFotoCss {
+               background: #fafafa; 
+               position: relative;
+               right: 0px; 
+               margin-right: 50px; 
+               border: 1px solid lightgray; 
+               border-radius: 10px; 
+               padding: 5px;
+               width:170px;
+            }
+        }
+
    </style>
 
     <script id="MyScript" type="text/javascript">
@@ -182,7 +210,7 @@
 
             function confirmCallback(arg) {
                 if (arg) {
-                    closeWindow();
+                    OnCloseUpdate();
                 }
             }
 
@@ -257,6 +285,15 @@
         //function centrarVentana(sender, args) {
         //    sender.moveTo(1, 1);
         //}
+
+        function OnCloseUpdate() {
+            var vEmpleados = [];
+            var vEmpleado = {
+                clTipoCatalogo: "CLOSE"
+            };
+            vEmpleados.push(vEmpleado);
+            sendDataToParent(vEmpleados);
+        }
 
         function LoadValue(sender, args) {
             var items = sender.get_items();
@@ -438,7 +475,7 @@
                 <div style="height: calc(100% - 45px);">
                     <telerik:RadMultiPage ID="mpgPlantilla" runat="server" SelectedIndex="0" Height="100%" ScrollBars="Auto">
                         <telerik:RadPageView ID="pvwPersonal" runat="server">
-                            <div style="background: #fafafa; position: absolute; right: 0px; margin-right: 50px; border: 1px solid lightgray; border-radius: 10px; padding: 5px;">
+                            <div class="DivFotoCss">
                                 <table class="ctrlTableForm">
                                     <tr>
                                         <td style="text-align: center;">
@@ -499,7 +536,7 @@
                                     </ClientSettings>
                                     <MasterTableView ClientDataKeyNames="ID_ARCHIVO,ID_ITEM" DataKeyNames="ID_ARCHIVO,ID_ITEM" AutoGenerateColumns="false" ShowHeadersWhenNoRecords="true">
                                         <Columns>
-                                            <telerik:GridHyperLinkColumn HeaderText="Nombre del documento" DataTextField="NB_DOCUMENTO" DataNavigateUrlFields="ID_ARCHIVO,ID_DOCUMENTO,FE_CREATED_DATE,NB_DOCUMENTO,ID_ITEM" DataNavigateUrlFormatString="/Comunes/ObtenerDocumento.ashx?ArchivoId={0}&ArchivoNb={2:yyyyMMdd}{4}&ArchivoDescargaNb={3}" Target="_blank"></telerik:GridHyperLinkColumn>
+                                            <telerik:GridHyperLinkColumn HeaderText="Nombre del documento" DataTextField="NB_DOCUMENTO" DataNavigateUrlFields="ID_ARCHIVO,ID_DOCUMENTO,FE_CREATED_DATE,NB_DOCUMENTO,ID_ITEM" DataNavigateUrlFormatString="~/Comunes/ObtenerDocumento.ashx?ArchivoId={0}&ArchivoNb={2:yyyyMMdd}{4}&ArchivoDescargaNb={3}" Target="_blank"></telerik:GridHyperLinkColumn>
                                             <telerik:GridBoundColumn HeaderText="Tipo de documento" HeaderStyle-Width="200" DataField="CL_TIPO_DOCUMENTO" UniqueName="CL_TIPO_DOCUMENTO"></telerik:GridBoundColumn>
                                         </Columns>
                                     </MasterTableView>
@@ -674,7 +711,7 @@
                 </div>
             </telerik:RadPane>
             <telerik:RadPane ID="rpAyuda" runat="server" Scrolling="None" Width="22px">
-                <telerik:RadSlidingZone ID="rszAvisoDePrivacidad" runat="server" SlideDirection="Left" Width="22px">
+                <telerik:RadSlidingZone ID="rszAvisoDePrivacidad" runat="server" SlideDirection="Left" Width="22px" ClickToOpen="true">
                     <telerik:RadSlidingPane ID="rspAyuda" runat="server" Title="Instrucciones" Width="240px" RenderMode="Mobile" Height="200">
                         <div style="padding: 10px; text-align: justify;">
                             <p>Por favor ingresa los datos solicitados y al terminar haz clic en el botón de Guardar hasta el final de la página.</p>

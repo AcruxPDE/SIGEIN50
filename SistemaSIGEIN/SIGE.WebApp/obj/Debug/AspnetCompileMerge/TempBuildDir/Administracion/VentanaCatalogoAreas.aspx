@@ -11,7 +11,7 @@
                 width: 800,
                 height: 600
             };
-            openChildDialog("../Comunes/SeleccionArea.aspx", "winSeleccion", "Selección de área/departamento", windowProperties);
+            openChildDialog("../Comunes/SeleccionArea.aspx?mulSel=0", "winSeleccion", "Selección de área/departamento", windowProperties);
         }
 
         function useDataFromChild(pDato) {

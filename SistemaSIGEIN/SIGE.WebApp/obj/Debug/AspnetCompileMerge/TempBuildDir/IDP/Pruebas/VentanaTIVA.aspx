@@ -225,7 +225,7 @@
                             <tr>
                                 <td style="width: 10px;">&nbsp;</td>
                                 <td style="background-color: white; padding: 5px;">
-                                    <label>
+                                    <label class="JustificarTexto">
                                         Lee con atención las siguientes preguntas, elige entre las posibles respuestas aquella que 
                           más se aplica a tu forma de actuar. Cada pregunta cuenta con un tiempo límite para ser contestada, 
                           por lo que te sugerimos no detenerte demasiado y seleccionar tu respuesta con rapidez.

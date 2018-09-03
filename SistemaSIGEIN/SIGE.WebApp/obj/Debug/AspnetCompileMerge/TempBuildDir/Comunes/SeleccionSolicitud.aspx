@@ -26,9 +26,11 @@
                         nbCandidato: masterTable.getCellByColumnUniqueName(selectedItem, "C_CANDIDATO_NB_EMPLEADO_COMPLETO").innerHTML,
                         clTipoCatalogo: "SOLICITUD"
                     };
-                    vSolicitudes.push(vEmpleado);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vSolicitudes.length;
+                    if (!existeElemento(vEmpleado)) {
+                        vSolicitudes.push(vEmpleado);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vSolicitudes.length;
+                    }
                 }
                 return true;
             }
@@ -40,6 +42,15 @@
                 browserWnd.radalert("Selecciona una solicitud.", 400, 150);
             }
 
+            return false;
+        }
+
+        function existeElemento(pEmpleado) {
+            for (var i = 0; i < vSolicitudes.length; i++) {
+                var vValue = vSolicitudes[i];
+                if (vValue.idSolicitud == pEmpleado.idSolicitud)
+                    return true;
+            }
             return false;
         }
 

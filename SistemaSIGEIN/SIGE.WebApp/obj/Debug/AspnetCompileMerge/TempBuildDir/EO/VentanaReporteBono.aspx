@@ -49,7 +49,7 @@
         <Tabs>
             <telerik:RadTab SelectedIndex="0" Text="Contexto"></telerik:RadTab>
             <telerik:RadTab SelectedIndex="1" Text="Bono"></telerik:RadTab>
-            <telerik:RadTab SelectedIndex="2" Text="Comparar"></telerik:RadTab>
+            <telerik:RadTab SelectedIndex="2" Text="Selección de períodos a comparar"></telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
     <div style="height: 10px;"></div>
@@ -123,10 +123,10 @@
                         </tr>
                     </table>
             </telerik:RadPageView>
-            <telerik:RadPageView ID="RadPageView1" runat="server">
-                <div style="width: 100%;">
+            <telerik:RadPageView ID="RadPageView1" runat="server" Height="100%">
+                <div style="width: 100%; height:calc(100% - 10px);">
                     <telerik:RadGrid ID="grdEvaluados" runat="server" HeaderStyle-Font-Bold="true"
-                        AutoGenerateColumns="false" EnableHeaderContextMenu="true" AllowSorting="true"
+                        AutoGenerateColumns="false" EnableHeaderContextMenu="true" Height="100%" AllowSorting="true"
                         AllowMultiRowSelection="false" OnNeedDataSource="grdEvaluados_NeedDataSource" OnItemDataBound="grdEvaluados_ItemDataBound">
                         <ClientSettings>
                             <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -145,8 +145,8 @@
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="130" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="M_PUESTO_NB_PUESTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" ColumnGroupName="Bono" HeaderText="Sueldo mensual" DataField="MN_SUELDO" UniqueName="MN_SUELDO" DataType="System.Int32" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:C}" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" FilterControlWidth="30" ColumnGroupName="Bono" HeaderText="% de bono" DataField="CL_MONTO_BONO" UniqueName="CL_MONTO_BONO"  ItemStyle-HorizontalAlign="Right" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" FilterControlWidth="30" ColumnGroupName="Bono" HeaderText="Bono máximo" DataField="MN_TOPE_BONO" UniqueName="MN_TOPE_BONO" DataType="System.Int32" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:C}" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" FilterControlWidth="30" ColumnGroupName="Bono" HeaderText="% de bono" DataField="NO_MONTO_BONO" UniqueName="NO_MONTO_BONO" DataType="System.Double" ItemStyle-HorizontalAlign="Right" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" FilterControlWidth="30" ColumnGroupName="Bono" HeaderText="% desempeño promedio" DataField="PR_CUMPLIMIENTO_EVALUADO" UniqueName="PR_CUMPLIMIENTO_EVALUADO" DataType="System.Double" ItemStyle-HorizontalAlign="Right" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" FilterControlWidth="30" ColumnGroupName="Bono" HeaderText="Total bono" DataField="MN_BONO_TOTAL" UniqueName="MN_BONO_TOTAL" DataType="System.Double" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:C}" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                             </Columns>
