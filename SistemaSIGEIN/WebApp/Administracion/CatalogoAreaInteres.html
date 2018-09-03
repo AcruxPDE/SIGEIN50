@@ -1,0 +1,48 @@
+﻿<div data-ng-controller="C_AREA_INTERESController"> 
+    <div ng-include src="'Plantillas/BusquedaAvanzada.html'"></div>
+    <script type="text/ng-template" id="op_Area_Interes.html"> 
+ 		<form name="newForm" id="newForm">  
+ 			<div class="bootstrap-dialog size-wide {{modulo}} " >   
+ 				<div class="modal-header">  
+ 					<div class="bootstrap-dialog-header">  
+ 						<div class="bootstrap-dialog-close-button">  
+ 							<button class="close" data-ng-click="cancel()">×</button>  
+ 						</div>  
+ 						<div class="bootstrap-dialog-title" id="">{{titulo}}  
+ 						</div>  
+ 					</div>  
+ 				</div>  
+ 				<div class="col-sm-12 col-md-12 col-xs-12" style="margin-top:5px;margin-bottom:5px;">  
+ 			 
+ 			 <div class="row">  
+ 				<strong id="lblCL_AREA_INTERES" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" for="txt_CL_AREA_INTERES"  style="text-align: right;">{{lbl_CL_AREA_INTERES}}:</strong>   
+ 				<div class="col-md-7">  
+ 					<input id="txt_CL_AREA_INTERES" style="width:99%;"  name="CL_AREA_INTERES" type="text" placeholder="{{ph_CL_AREA_INTERES}}" class="form-control input-md TextoDom  k-textbox" ng-model="CL_AREA_INTERES" required>  
+ 					<span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.CL_AREA_INTERES.$error.required">{{msjRequerido}}.</span>  
+ 				</div>  
+ 			</div>  
+ 			 <div class="row">  
+ 				<strong id="lblNB_AREA_INTERES" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" for="txt_NB_AREA_INTERES"  style="text-align: right;">{{lbl_NB_AREA_INTERES}}:</strong>   
+ 				<div class="col-md-7">  
+ 					<input id="txt_NB_AREA_INTERES" style="width:99%;"  name="NB_AREA_INTERES" type="text" placeholder="{{ph_NB_AREA_INTERES}}" class="form-control input-md TextoDom  k-textbox" ng-model="NB_AREA_INTERES" required>  
+ 					<span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.NB_AREA_INTERES.$error.required">{{msjRequerido}}.</span>  
+ 				</div>  
+ 			</div> 
+           <div class="row">
+                                <label class="col-md-5 col-sm-5 control-label TextoDom" style="text-align:right;" id="lblDepartamentoActivo" for="">{{lblActivo}}:</label>
+                                <div class="col-md-7 col-sm-7">
+                                    <label class="checkbox-inline TextoDom" for="-0">
+                                        <input type="checkbox" ng-model="FG_ACTIVO" ng-checked="FG_ACTIVO" class="TextoDom" name="FG_ACTIVO" id="chkDepartamentoActivo">
+                                    </label>
+                                </div>
+                        </div> 
+ 				</div>  
+ 				<div class="modal-footer">  
+ 					<button id="btnGuardar" class="btn btn btn-default TextoDom" type="button" data-ng-click="ok()" ng-disabled="!newForm.$valid">{{btnSave}}</button>  
+ 					<button id="btnCancelar" class="btn btn btn-default TextoDom" type="button" data-ng-click="cancel()">{{btnCancel}}</button>  
+ 				</div>  
+ 			</div>  
+ 		</form>  
+        </script>
+<div ng-include src="'Administracion/GridDinamico.html'"></div> 
+  </div> 

@@ -1,0 +1,37 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/PDE/ContextPDE.master" AutoEventWireup="true" CodeBehind="MenuPDESoloLectura.master.cs" Inherits="SIGE.WebApp.PDE.MenuPDESoloLectura" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+     <script>
+     </script>
+<asp:ContentPlaceHolder ID="head" runat="server">
+</asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
+ <div id="menuPDE">
+        <div style="float: left; padding: 9px;">
+            <img src="../Assets/images/Logo.png" height="30" />
+        </div>
+        <div runat="server" id="divMenu"></div>
+    </div>
+    <div style="clear: both;" class="BordeModulo"></div>
+    <div style="height: calc(100% - 75px); border: 0px solid black; padding: 20px 20px 0px 20px">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+
+                                <telerik:RadWindowManager ID="rwmMensaje" runat="server" EnableShadow="true" >
+                               <Windows>
+                                <telerik:RadWindow
+                                    ID="rwVentanaEditarNotificaciones"
+                                    runat="server"
+                                    VisibleStatusbar="false"
+                                    ShowContentDuringLoad="true"
+                                    Behaviors="Close"
+                                    Modal="true"
+                                    ReloadOnShow="false"
+                                    AutoSize="false">
+                                </telerik:RadWindow>
+                            </Windows>
+                            </telerik:RadWindowManager>
+
+</asp:Content>

@@ -1,0 +1,277 @@
+﻿	<!-poner en nuesto html --> 
+ <script>
+     $(document).ready(function () {
+         $("#panelbar").kendoPanelBar({
+             expandMode: "single"
+         });
+     });
+            </script>
+ <div data-ng-controller="C_COMPETENCIAController"> 
+
+ 	<script type="text/ng-template" id="op_Competencia.html"> 
+
+ 		<form name="newForm" id="newForm">  
+         
+ 			<div class="bootstrap-dialog {{modulo}}">   
+ 				<div class="modal-header">  
+ 					<div class="bootstrap-dialog-header">  
+ 						<div class="bootstrap-dialog-close-button">  
+ 							<button class="close" data-ng-click="cancel()">×</button>  
+ 						</div>  
+ 						<div class="bootstrap-dialog-title" id="">{{titulo}}  
+ 						</div>  
+ 					</div>  
+ 				</div>  
+              <div style="width: 90%;">
+ 				 <div style="width: 100%; margin-right: 10px; margin-left: 30px; margin-top:5px;margin-bottom:5px;" > 
+                    <div class="row">
+                       <ul kendo-panel-bar k-options="panelBarOptions" id="panelcontenedor">
+                            <li>
+                                
+                                {{GENERALES}}
+                                <ul id="panelbar1"  >
+                                     
+                                    <div style="width:100%; margin-top:2px; margin-botton:2px; margin-left:2px; margin-right:2px;">
+                                            
+                                        <table style="width:100%;>
+                                            <tr style="width:100%;>
+                                                 <td style="width:50%; ">
+                                                     
+                                                    <strong id="lblCL_COMPETENCIA" style="width:100%;" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" for="txt_CL_COMPETENCIA"  style="text-align: right;" >{{lbl_CL_COMPETENCIA}}:</strong>       
+                                                </td>
+                                                <td style="width:50%; ">
+                                                    <input id="txt_CL_COMPETENCIA" style="width:100%;"  ng-disabled="CL_COMPETENCIA_disable"  name="CL_COMPETENCIA" type="text" placeholder="{{ph_CL_COMPETENCIA}}" class="form-control input-md TextoDom  k-textbox" ng-model="CL_COMPETENCIA" required>  
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.CL_COMPETENCIA.$error.required">{{msjRequerido}}.</span>
+                                        <br\>                                        
+                                        <table style="width:100%;>
+                                            <tr style="width:100%;>
+                                                 <td style="width:50%; ">
+                                                    <strong id="lblNB_COMPETENCIA" style="width:100%;" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" for="txt_NB_COMPETENCIA"  style="text-align: right;">{{lbl_NB_COMPETENCIA}}:</strong>   
+                                                </td>
+                                                <td style="width:50%; ">
+                                                    <input id="txt_NB_COMPETENCIA" style="width:100%;"  name="NB_COMPETENCIA" type="text" placeholder="{{ph_NB_COMPETENCIA}}" class="form-control input-md TextoDom  k-textbox" ng-model="NB_COMPETENCIA" required>  
+ 					
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.NB_COMPETENCIA.$error.required">{{msjRequerido}}.</span>                                      
+                                        <br\>                                     
+                                        <table style="width:100%;>
+                                            <tr style="width:100%;>
+                                                 <td style="width:50%; ">
+                                                   <strong id="lblDS_COMPETENCIA" style="width:100%;" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" for="txt_DS_COMPETENCIA"  style="text-align: right;">{{lbl_DS_COMPETENCIA}}:</strong>   
+                                                </td>
+                                                <td style="width:50%; ">
+                                                   <input id="txt_DS_COMPETENCIA" style="width:100%;"  name="DS_COMPETENCIA" type="text" placeholder="{{ph_DS_COMPETENCIA}}" class="form-control input-md TextoDom  k-textbox" ng-model="DS_COMPETENCIA" required>  
+ 					                                
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.DS_COMPETENCIA.$error.required">{{msjRequerido}}.</span>  
+                                        <br\>                                     
+                                        <table style="width:100%;>
+                                            <tr style="width:100%;>
+                                                 <td style="width:50%; ">
+                                                   <strong id="lblCL_TIPO_COMPETENCIA" style="width:100%;" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" for="txt_CL_TIPO_COMPETENCIA"  style="text-align: right;">{{lbl_CL_TIPO_COMPETENCIA}}:</strong>   
+                                                </td>
+                                                <td style="width:50%; ">
+                                                   <select id="txt_CL_TIPO_COMPETENCIA" kendo-drop-down-list style="width:100%;" 
+                                                       k-options="customOptions_CL_TIPO_COMPETENCIA"                       
+                                                        ng-model="CL_TIPO_COMPETENCIA" 
+                                                        
+                                                        name="CL_TIPO_COMPETENCIA" 
+                                                        k-option-label="'{{ph_CL_TIPO_COMPETENCIA}}'"
+                                                        value = "'{{CL_TIPO_COMPETENCIA}}'"
+                                                        required> 
+                                                        <option value=""></option>
+                                                     </select>
+ 					
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.CL_TIPO_COMPETENCIA.$error.required">{{msjRequerido}}.</span>  
+                                        <br\>                                     
+                                        <table style="width:100%;>
+                                            <tr style="width:100%;>
+                                                 <td style="width:50%; ">
+                                                   <strong id="lblCL_CLASIFICACION" style="width:100%;" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" for="txt_CL_CLASIFICACION"  style="text-align: right;">{{lbl_CL_CLASIFICACION}}:</strong>   
+                                                </td>
+                                                <td style="width:50%; ">
+                                                   <select id="txt_CL_CLASIFICACION" kendo-drop-down-list style="width:100%;"
+                                                        k-options="customOptions_CL_CLASIFICACION"
+                                                        ng-model="CL_CLASIFICACION" 
+                                                        name="CL_CLASIFICACION"                                                         
+                                                        k-option-label="'{{ph_CL_CLASIFICACION}}'"
+                                                        value = "'{{CL_CLASIFICACION}}'"
+                                                         required> 
+                                                        <option value=""></option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.CL_CLASIFICACION.$error.required">{{msjRequerido}}.</span> 
+                                        <br\>                                     
+                                        <table style="width:100%;>
+                                            <tr style="width:100%;>
+                                                 <td style="width:50%; ">&nbsp&nbsp&nbsp&nbsp
+                                                   <strong id="lblFG_ACTIVO"  style="width:100%;" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" for="chk_FG_ACTIVO"  style="text-align: right;">{{lbl_FG_ACTIVO}}:</strong>   
+                                                </td>
+                                                <td style="width:50%; ">
+                                                    
+                                                     <input id="chk_FG_ACTIVO" name="FG_ACTIVO" type="checkbox"  ng-model="FG_ACTIVO" data-ng-checked="FG_ACTIVO"  >
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <br\> 
+                                        <br\> 
+                                    </div>    
+                                    <br\>                                        
+                              </ul>
+                          </li>
+                          <li>
+                                    {{DEFINICION_DE_NIVELES}}
+                                  <ul id="panelbar2">
+                                    <div style="width:100%; margin-top:2px; margin-botton:2px;">
+                                        <table style="width:100%;>
+                                            <tr style="width:100%;>
+                                                 <td style="width:10%; ">
+                                                    <strong id="lbl" style="width:100%;" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" style="text-align: right;" >&nbsp</strong>       
+                                                </td>
+                                                <td style="width:45%; ">
+                                                    <strong id="lblPorPersona" style="width:100%; text-align: center;" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" style="text-align: right;" >{{lblPorPersona}}</strong>       
+                                                </td>
+                                                <td style="width:45%; ">
+                                                    <strong id="lblPorPuesto" style="width:100%; text-align: center;" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" style="text-align: right;" >{{lblPorPuesto}}</strong>       
+                                                </td>
+                                            </tr>
+                                            <tr >
+                                                 <td>
+                                                    <strong id="lblnivel0" style="width:100%;" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" style="text-align: right;" >{{lblnivel0}}</strong>       
+                                                </td>
+                                                <td >
+                                                    <textarea id="txt_ds_nivel0"  style="height:100px; width:99%;"  cols="40"  rows="5"   name="DS_NIVEL_COMPETENCIA_PERSONA_N0" type="text" placeholder="{{ph_persona_nivel0}}" class="form-control input-md TextoDom  k-textbox" ng-model="DS_NIVEL_COMPETENCIA_PERSONA_N0" required>   </textarea>
+ 					                                <span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.DS_NIVEL_COMPETENCIA_PERSONA_N0.$error.required">{{msjRequerido}}.</span>  
+                                                </td>
+                                                <td >
+                                                     <textarea id="txt_ds_nivel0p"  style="height:100px; width:99%;"  cols="40"  rows="5"   name="DS_NIVEL_COMPETENCIA_PUESTO_N0" type="text" placeholder="{{ph_puesto_nivel0}}" class="form-control input-md TextoDom  k-textbox" ng-model="DS_NIVEL_COMPETENCIA_PUESTO_N0" required>  </textarea>
+ 					                                <span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.DS_NIVEL_COMPETENCIA_PUESTO_N0.$error.required">{{msjRequerido}}.</span>  
+                                                </td>
+                                                
+                                            </tr> 
+                                            <tr >
+                                                 <td>
+                                                    <strong id="lblnivel1" style="width:100%;" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" style="text-align: right;" >{{lblnivel1}}</strong>       
+                                                </td>
+                                                
+                                                <td >
+                                                    <textarea id="txt_ds_nivel1"  style="height:100px; width:99%;"  cols="40"  rows="5"   name="DS_NIVEL_COMPETENCIA_PERSONA_N1" type="text" placeholder="{{ph_persona_nivel1}}" class="form-control input-md TextoDom  k-textbox" ng-model="DS_NIVEL_COMPETENCIA_PERSONA_N1" required>   </textarea>
+ 					                                <span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.DS_NIVEL_COMPETENCIA_PERSONA_N1.$error.required">{{msjRequerido}}.</span>  
+                                                </td>
+                                                <td >
+                                                     <textarea id="txt_ds_nivel1p"  style="height:100px; width:99%;"  cols="40"  rows="5"   name="DS_NIVEL_COMPETENCIA_PUESTO_N1" type="text" placeholder="{{ph_puesto_nivel1}}" class="form-control input-md TextoDom  k-textbox" ng-model="DS_NIVEL_COMPETENCIA_PUESTO_N1"  required>   </textarea>
+ 					                                <span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.DS_NIVEL_COMPETENCIA_PUESTO_N1.$error.required">{{msjRequerido}}.</span>  
+                                                </td>
+                                            </tr> 
+                                            <tr >
+                                                 <td>
+                                                    <strong id="lblnivel2" style="width:100%;" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" style="text-align: right;" >{{lblnivel2}}</strong>       
+                                                </td>
+                                                
+                                                <td >
+                                                    <textarea id="txt_ds_nivel2"  style="height:100px; width:99%;"  cols="40"  rows="5"   name="DS_NIVEL_COMPETENCIA_PERSONA_N2" type="text" placeholder="{{ph_persona_nivel2}}" class="form-control input-md TextoDom  k-textbox" ng-model="DS_NIVEL_COMPETENCIA_PERSONA_N2" required>   </textarea>
+ 					                                <span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.DS_NIVEL_COMPETENCIA_PERSONA_N2.$error.required">{{msjRequerido}}.</span>  
+                                                </td>
+                                                <td >
+                                                     <textarea id="txt_ds_nivel2p"  style="height:100px; width:99%;"  cols="40"  rows="5"   name="DS_NIVEL_COMPETENCIA_PUESTO_N2" type="text" placeholder="{{ph_puesto_nivel2}}" class="form-control input-md TextoDom  k-textbox" ng-model="DS_NIVEL_COMPETENCIA_PUESTO_N2" required>    </textarea>
+ 					                                <span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.DS_NIVEL_COMPETENCIA_PUESTO_N2.$error.required">{{msjRequerido}}.</span>  
+                                                </td>
+                                            </tr> 
+                                            <tr >
+                                                 <td>
+                                                    <strong id="lblnivel3" style="width:100%;" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" style="text-align: right;" >{{lblnivel3}}</strong>       
+                                                </td>
+                                                <td >
+                                                    <textarea id="txt_ds_nivel3"  style="height:100px; width:99%;"  cols="40"  rows="5"   name="DS_NIVEL_COMPETENCIA_PERSONA_N3" type="text" placeholder="{{ph_persona_nivel3}}" class="form-control input-md TextoDom  k-textbox" ng-model="DS_NIVEL_COMPETENCIA_PERSONA_N3" required>   </textarea>
+ 					                                <span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.DS_NIVEL_COMPETENCIA_PERSONA_N3.$error.required">{{msjRequerido}}.</span>  
+                                                </td>
+                                                <td >
+                                                     <textarea id="txt_ds_nivel3p"  style="height:100px; width:99%;"  cols="40"  rows="5"   name="DS_NIVEL_COMPETENCIA_PUESTO_N3" type="text" placeholder="{{ph_puesto_nivel3}}" class="form-control input-md TextoDom  k-textbox" ng-model="DS_NIVEL_COMPETENCIA_PUESTO_N3" required>   </textarea>
+ 					                                <span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.DS_NIVEL_COMPETENCIA_PUESTO_N3.$error.required">{{msjRequerido}}.</span>  
+                                                </td>
+                                                
+                                            </tr> 
+                                            <tr >
+                                                 <td>
+                                                    <strong id="lblnivel4" style="width:100%;" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" style="text-align: right;" >{{lblnivel4}}</strong>       
+                                                </td>
+                                                <td >
+                                                    <textarea id="txt_ds_nivel4"  style="height:100px; width:99%;"  cols="40"  rows="5"   name="DS_NIVEL_COMPETENCIA_PERSONA_N4" type="text" placeholder="{{ph_persona_nivel4}}" class="form-control input-md TextoDom  k-textbox" ng-model="DS_NIVEL_COMPETENCIA_PERSONA_N4" required>   </textarea>
+ 					                                <span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.DS_NIVEL_COMPETENCIA_PERSONA_N4.$error.required">{{msjRequerido}}.</span>  
+                                                </td>
+                                                <td >
+                                                     <textarea id="txt_ds_nivel4p"  style="height:100px; width:99%;"  cols="40"  rows="5"   name="DS_NIVEL_COMPETENCIA_PUESTO_N4" type="text" placeholder="{{ph_puesto_nivel4}}" class="form-control input-md TextoDom  k-textbox" ng-model="DS_NIVEL_COMPETENCIA_PUESTO_N4" required>   </textarea>
+ 					                                <span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.DS_NIVEL_COMPETENCIA_PUESTO_N4.$error.required">{{msjRequerido}}.</span>  
+                                                </td>
+                                                
+                                            </tr> 
+                                            <tr >
+                                                 <td>
+                                                    <strong id="lblnivel5" style="width:100%;" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" style="text-align: right;" >{{lblnivel5}}</strong>       
+                                                </td>
+                                                <td >
+                                                    <textarea id="txt_ds_nivel5"  style="height:100px; width:99%;"  cols="40"  rows="5"   name="DS_NIVEL_COMPETENCIA_PERSONA_N5" type="text" placeholder="{{ph_persona_nivel}}" class="form-control input-md TextoDom  k-textbox" ng-model="DS_NIVEL_COMPETENCIA_PERSONA_N5" required>   </textarea>
+ 					                                <span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.DS_NIVEL_COMPETENCIA_PERSONA_N5.$error.required">{{msjRequerido}}.</span>  
+                                                </td>
+                                                <td >
+                                                     <textarea id="txt_ds_nivel5p"  style="height:100px; width:99%;"  cols="40"  rows="5"   name="DS_NIVEL_COMPETENCIA_PUESTO_N5" type="text" placeholder="{{ph_puesto_nivel}}" class="form-control input-md TextoDom  k-textbox" ng-model="DS_NIVEL_COMPETENCIA_PUESTO_N5" required>   </textarea>
+ 					                                <span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.DS_NIVEL_COMPETENCIA_PUESTO_N5.$error.required">{{msjRequerido}}.</span>  
+                                                </td>
+                                                
+                                            </tr>  
+                                        </table>
+                                        <br\>     
+                                    </div>
+                                  </ul>
+
+                              </li>
+                        </ul>
+ 				    </div>  
+                 </div>  
+         </div>
+ 				<div class="modal-footer">  
+ 					<button id="btnGuardar" class="btn btn btn-default TextoDom" type="button" data-ng-click="ok()" ng-disabled="!newForm.$valid">{{btnSave}}</button>  
+ 					<button id="btnCancelar" class="btn btn btn-default TextoDom" type="button" data-ng-click="cancel()">{{btnCancel}}</button>  
+ 				</div>  
+                
+ 			</div>  
+ 		</form>  
+ 	</script> 
+ 	<div class="container" style="margin-top:10px">  
+ 		<div class="row">  
+             <fieldset >
+                 <legend > 
+                        {{titulo}}
+                </legend>
+ 			    <div style="clear:both;height:10px;">   
+ 			    </div>   
+ 			    <div id="Grid_Competencia">    
+ 			    </div>   
+ 			    <div style="clear:both;height:10px;">   
+ 			    </div>   
+ 			    <div class="row">  
+ 				    <div class="col-xs-12 col-md-7  col-ms-7">   
+                         <input type="button" id="btnAgregar_Grid_Competencia" data-ng-value="btnAgregar" class="k-button barraBotones longitudBoton" ng-click="Add_Grid_Competencia()"  />   
+                         <input type="button" id="btnModificar_Grid_Competencia" data-ng-value="btnModificar" class="k-button barraBotones longitudBoton" ng-click="Edit_Grid_Competencia()"  />   
+                         <input type="button" id="btnEliminar_Grid_Competencia" data-ng-value="btnEliminar" class="k-button barraBotones longitudBoton" ng-click="Del_Grid_Competencia()"  />   
+                         <input type="button" id="btnActivarDesactivar_Grid_Competencia" data-ng-value="btnActivarDesactivar" class="k-button barraBotones longitudBotonMediano" ng-click="ActivarDesactivar_Grid_Competencia()"  />   
+                         <input id="btnExportarExcel_Grid_Competencia" type="button"  ng-value="BOTONEXPORTAREXCEL" 
+	                        onclick="ExportarExcel('Grid_Competencia')" class="k-button barraBotones longitudBotonMediano" />   
+ 				    </div>   
+ 			    </div>     
+           </fieldset>           
+ 		</div>   
+ 	</div>  
+ </div>

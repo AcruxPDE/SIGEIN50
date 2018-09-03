@@ -1,0 +1,21 @@
+﻿CREATE TABLE [ADM].[C_DOCUMENTO] (
+    [ID_DOCUMENTO]            INT            IDENTITY (1, 1) NOT NULL,
+    [NB_DOCUMENTO]            NVARCHAR (50)  NOT NULL,
+    [CL_DOCUMENTO]            NVARCHAR (20)  NOT NULL,
+    [ID_CANDIDATO]            INT            NULL,
+    [ID_EMPLEADO]             INT            NULL,
+    [CL_RUTA]                 NVARCHAR (512) NOT NULL,
+    [CL_TIPO_RUTA]            NVARCHAR (10)  NOT NULL,
+    [FE_RECEPCION]            DATETIME       NULL,
+    [ID_INSTITUCION]          INT            NULL,
+    [ID_BITACORA]             INT            NULL,
+    [FG_ACTIVO]               BIT            CONSTRAINT [DF_C_DOCUMENTO_FG_ACTIVO] DEFAULT ((1)) NOT NULL,
+    [FE_CREACION]             DATETIME       NOT NULL,
+    [FE_MODIFICACION]         DATETIME       NULL,
+    [CL_USUARIO_APP_CREA]     NVARCHAR (50)  NOT NULL,
+    [CL_USUARIO_APP_MODIFICA] NVARCHAR (50)  NULL,
+    [NB_PROGRAMA_CREA]        NVARCHAR (50)  NOT NULL,
+    [NB_PROGRAMA_MODIFICA]    NVARCHAR (50)  NULL,
+    CONSTRAINT [PK_C_DOCUMENTO] PRIMARY KEY CLUSTERED ([ID_DOCUMENTO] ASC)
+);
+

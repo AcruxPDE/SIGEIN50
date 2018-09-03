@@ -1,0 +1,53 @@
+﻿ <div data-ng-controller = "M_PUESTOSController" > 
+    <div ng-include src="'Plantillas/BusquedaAvanzada.html'"></div>
+    <script type="text/ng-template" id="op_Puestos_c.html"> 
+ 		<form name="newForm" id="newForm">  
+ 			<div class="bootstrap-dialog {{modulo}}">   
+ 				<div class="modal-header">  
+ 					<div class="bootstrap-dialog-header">  
+ 						<div class="bootstrap-dialog-close-button">  
+ 							<button class="close" data-ng-click="cancel()">×</button>  
+ 						</div>  
+ 						<div class="bootstrap-dialog-title" id="">{{titulo}}  
+ 						</div>  
+ 					</div>  
+ 				</div>  
+ 				<div class="col-sm-12 col-md-12 col-xs-12" style="margin-top:5px;margin-bottom:5px;">  
+ 			 
+
+          <div class="row">  
+ 				<strong id="lblNB_PUESTO_ph" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" for="txt_NB_PUESTO_ph"  style="text-align: right;">{{lbl_NB_PUESTO_ph}}:</strong>   
+ 				<div class="col-md-7">  
+ 					<input id="txt_NB_PUESTO" style="width:99%;"  name="NB_PUESTO" type="text" placeholder="{{txt_NB_PUESTO}}" class="form-control input-md TextoDom  k-textbox" ng-model="NB_PUESTO" required>  
+ 					<span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.NB_PUESTO.$error.required">{{msjRequerido}}.</span>  
+ 				</div>  
+ 			</div>  
+
+ 			 <div class="row">  
+ 				<strong id="lblCL_PUESTO_ph" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" for="txt_CL_PUESTO"  style="text-align: right;">{{lbl_CL_PUESTO_ph}}:</strong>   
+ 				<div class="col-md-7">  
+ 					<input id="txt_CL_PUESTO" style="width:99%;"  name="CL_PUESTO" type="text" placeholder="{{txt_CL_PUESTO}}" class="form-control input-md TextoDom  k-textbox" ng-model="CL_PUESTO" required>  
+ 					<span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.CL_PUESTO.$error.required">{{msjRequerido}}.</span>  
+ 				</div>  
+ 			</div>  
+ 	
+       
+          <div class="row">
+                                <label class="col-md-5 col-sm-5 control-label TextoDom" style="text-align:right;" id="lblDepartamentoActivo" for="">{{lblActivo}}:</label>
+                                <div class="col-md-7 col-sm-7">
+                                    <label class="checkbox-inline TextoDom" for="-0">
+                                        <input type="checkbox" ng-model="FG_ACTIVO" ng-checked="FG_ACTIVO" class="TextoDom" name="FG_ACTIVO" id="chkDepartamentoActivo">
+                                    </label>
+                                </div>
+                        </div> 
+
+ 				</div>  
+ 				<div class="modal-footer">  
+ 					<button id="btnGuardar" class="btn btn btn-default TextoDom" type="button" data-ng-click="ok()" ng-disabled="!newForm.$valid">{{btnSave}}</button>  
+ 					<button id="btnCancelar" class="btn btn btn-default TextoDom" type="button" data-ng-click="cancel()">{{btnCancel}}</button>  
+ 				</div>  
+ 			</div>  
+ 		</form>  
+ 	</script> 
+<div ng-include src="'Administracion/GridDinamico.html'"></div> 
+  </div> 

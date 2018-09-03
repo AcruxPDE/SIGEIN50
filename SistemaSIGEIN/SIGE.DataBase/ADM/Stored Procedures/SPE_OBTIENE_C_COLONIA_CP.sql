@@ -1,0 +1,43 @@
+﻿-- =============================================
+-- Proyecto: Sigein 5.0
+-- Copyright (c) - Acrux - 2015
+-- Author: Margarita Salcedo
+-- CREATE date: 14/09/2015
+-- Description: Obtiene los C_COLONIA 
+-- =============================================
+--ALTER: JVP 02/10/2015  Se le agrego el campo de codigo postal
+-- =============================================
+CREATE PROCEDURE [ADM].[SPE_OBTIENE_C_COLONIA_CP] 
+	    @PIN_ID_COLONIA AS nvarchar(10) = NULL,
+        @PIN_CL_PAIS AS nvarchar(10) = NULL,
+        @PIN_CL_ESTADO AS nvarchar(10) = NULL,
+        @PIN_CL_MUNICIPIO AS nvarchar(10) = NULL,
+        @PIN_CL_COLONIA AS nvarchar(30) = NULL,
+        @PIN_NB_COLONIA AS nvarchar(100) = NULL,
+        @PIN_CL_TIPO_ASENTAMIENTO AS nvarchar(20) = NULL,
+		@PIN_CL_CODIGO_POSTAL AS nvarchar(10) = NULL
+
+AS   
+	SELECT 
+		[ID_COLONIA],
+		[CL_PAIS],
+		[CL_ESTADO],
+		[CL_MUNICIPIO],
+		[CL_COLONIA],
+		[NB_COLONIA],
+		[CL_TIPO_ASENTAMIENTO],
+		CL_CODIGO_POSTAL
+		,'' as DS_FILTRO
+	FROM ADM.C_COLONIA
+	WHERE (@PIN_ID_COLONIA IS NULL OR (@PIN_ID_COLONIA IS NOT NULL AND [ID_COLONIA] LIKE '%'+@PIN_ID_COLONIA+'%')) AND 
+			(@PIN_CL_PAIS IS NULL OR (@PIN_CL_PAIS IS NOT NULL AND [CL_PAIS] LIKE '%'+@PIN_CL_PAIS+'%' )) AND 
+			(@PIN_CL_ESTADO IS NULL OR (@PIN_CL_ESTADO IS NOT NULL AND [CL_ESTADO] LIKE '%'+@PIN_CL_ESTADO+'%')) AND 
+			(@PIN_CL_MUNICIPIO IS NULL OR (@PIN_CL_MUNICIPIO IS NOT NULL AND [CL_MUNICIPIO] LIKE '%'+@PIN_CL_MUNICIPIO+'%' )) AND 
+			(@PIN_CL_COLONIA IS NULL OR (@PIN_CL_COLONIA IS NOT NULL AND [CL_COLONIA] LIKE '%'+@PIN_CL_COLONIA+'%' )) AND 
+			(@PIN_NB_COLONIA IS NULL OR (@PIN_NB_COLONIA IS NOT NULL AND [NB_COLONIA] LIKE '%'+@PIN_NB_COLONIA+'%' )) AND 
+			(@PIN_CL_TIPO_ASENTAMIENTO IS NULL OR (@PIN_CL_TIPO_ASENTAMIENTO IS NOT NULL AND [CL_TIPO_ASENTAMIENTO] LIKE '%' + @PIN_CL_TIPO_ASENTAMIENTO + '%' ))   AND
+			(@PIN_CL_CODIGO_POSTAL IS NULL OR (@PIN_CL_CODIGO_POSTAL IS NOT NULL AND CL_CODIGO_POSTAL LIKE  @PIN_CL_CODIGO_POSTAL + '%' )) 
+  ORDER BY [NB_COLONIA] ASC
+
+
+			--EXECUTE [ADM].[SPE_OBTIENE_C_COLONIA_CP]   null,null,null,null,null,null,null,'544'

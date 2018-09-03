@@ -1,0 +1,26 @@
+<root>
+    <tools name="Formatting" enabled="true" dockable="true">
+        <tool name="FontName" />
+        <tool name="FontSize" />
+        <tool name="Bold" />
+        <tool name="Italic" />
+        <tool name="Underline" />
+        <tool name="Strikethrough"/>
+        <tool name="JustifyLeft" />
+        <tool name="JustifyCenter"/>
+        <tool name="JustifyRight"/>
+        <tool name="JustifyFull"/>
+        <tool name="InsertUnorderedList"/>
+        <tool name="InsertOrderedList"/>
+        <tool name="Indent"/>
+        <tool name="Outdent"/>
+        <tool name="Subscript" />
+        <tool name="Superscript" />        
+        <tool name="BackColor" />
+        <tool name="ForeColor" />
+        <!--<tool name="Print" />-->
+        <!--<tool name="InsertLink" />-->
+      <tool name="InsertSpecialLink" />  
+    </tools>
+ 
+</root>

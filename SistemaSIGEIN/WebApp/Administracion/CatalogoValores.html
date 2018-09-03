@@ -1,0 +1,80 @@
+﻿ <div data-ng-controller="C_CATALOGO_VALORController"> 
+ 	<script type="text/ng-template" id="op_CatalogoValor.html"> 
+ 		<form name="newForm" id="newForm">  
+ 			<div class="bootstrap-dialog {{modulo}}">   
+ 				<div class="modal-header">  
+ 					<div class="bootstrap-dialog-header">  
+ 						<div class="bootstrap-dialog-close-button">  
+ 							<button class="close" data-ng-click="cancel()">×</button>  
+ 						</div>  
+ 						<div class="bootstrap-dialog-title" id="">{{titulo}}  
+ 						</div>  
+ 					</div>  
+ 				</div>  
+ 				<div class="col-sm-12 col-md-12 col-xs-12" style="margin-top:5px;margin-bottom:5px;">  
+ 			 <div class="row">  
+ 				<strong id="lblCL_CATALOGO_VALOR" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" for="txt_CL_CATALOGO_VALOR"  style="text-align: right;">{{lbl_CL_CATALOGO_VALOR}}:</strong>   
+ 				<div class="col-md-7">  
+ 					<input id="txt_CL_CATALOGO_VALOR" style="width:99%;" maxlength="20" name="CL_CATALOGO_VALOR" type="text" placeholder="{{ph_CL_CATALOGO_VALOR}}" class="form-control input-md TextoDom  k-textbox" ng-model="CL_CATALOGO_VALOR" required>  
+ 					<span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.CL_CATALOGO_VALOR.$error.required">{{msjRequerido}}.</span>  
+ 				</div>  
+ 			</div>  
+ 			 <div class="row">  
+ 				<strong id="lblNB_CATALOGO_VALOR" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" for="txt_NB_CATALOGO_VALOR"  style="text-align: right;">{{lbl_NB_CATALOGO_VALOR}}:</strong>   
+ 				<div class="col-md-7">  
+ 					<input id="txt_NB_CATALOGO_VALOR" style="width:99%;" maxlength="100" name="NB_CATALOGO_VALOR" type="text" placeholder="{{ph_NB_CATALOGO_VALOR}}" class="form-control input-md TextoDom  k-textbox" ng-model="NB_CATALOGO_VALOR" required>  
+ 					<span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.NB_CATALOGO_VALOR.$error.required">{{msjRequerido}}.</span>  
+ 				</div>  
+ 			</div>  
+ 			 <div class="row">  
+ 				<strong id="lblDS_CATALOGO_VALOR" data-trigger="hover" data-toggle="popover" class="col-md-5 control-label TextoDom" for="txt_DS_CATALOGO_VALOR"  style="text-align: right;">{{lbl_DS_CATALOGO_VALOR}}:</strong>   
+ 				<div class="col-md-7">  
+ 					<input id="txt_DS_CATALOGO_VALOR" style="width:99%;" maxlength="100" name="DS_CATALOGO_VALOR" type="text" placeholder="{{ph_DS_CATALOGO_VALOR}}" class="form-control input-md TextoDom  k-textbox" ng-model="DS_CATALOGO_VALOR" required>  
+ 					<span class="col-md-12 col-sm-12 col-xs-12 validacion" data-ng-show="newForm.$dirty && newForm.DS_CATALOGO_VALOR.$error.required">{{msjRequerido}}.</span>  
+ 				</div>  
+ 			</div>  
+ 				</div>  
+ 				<div class="modal-footer">  
+ 					<button id="btnGuardar" class="btn btn btn-default TextoDom" type="button" data-ng-click="ok()" ng-disabled="!newForm.$valid">{{btnSave}}</button>  
+ 					<button id="btnCancelar" class="btn btn btn-default TextoDom" type="button" data-ng-click="cancel()">{{btnCancel}}</button>  
+ 				</div>  
+ 			</div>  
+ 		</form>  
+ 	</script> 
+ 	<div class="container" style="margin-top:10px">  
+         <fieldset>
+         <legend>
+                {{titulo}}
+         </legend>
+        <div class="row">
+            <div class="col-xs-12 col-md-7  col-ms-7">  
+                <select id="ID_CATALOGO_LISTA" 
+                                    kendo-drop-down-list style="width: 30%"                                      
+                                    k-options="customOptions"
+                                    k-option-label="'{{seleccionar}}'"
+                                    value="'{{ID_CATALOGO_LISTA}}'"           
+                                    ng-model="ID_CATALOGO_LISTA"                   
+                                    ng-change="UpdateGrid()"
+                                    name="ID_CATALOGO_LISTA"> </select> 
+            </div>
+        </div>
+ 		<div class="row">  
+ 			<div style="clear:both;height:10px;">   
+ 			</div>   
+ 			<div id="Grid_CatalogoValor">    
+ 			</div>   
+ 			<div style="clear:both;height:10px;">   
+ 			</div>   
+ 			<div class="row">  
+ 				<div class="col-xs-12 col-md-7  col-ms-7">   
+                     <input type="button" id="btnAgregar_Grid_CatalogoValor" data-ng-value="btnAgregar" class="k-button barraBotones longitudBoton" ng-click="Add_Grid_CatalogoValor()"  />   
+                     <input type="button" id="btnModificar_Grid_CatalogoValor" data-ng-value="btnModificar" class="k-button barraBotones longitudBoton" ng-click="Edit_Grid_CatalogoValor()"  />   
+                     <input type="button" id="btnEliminar_Grid_CatalogoValor" data-ng-value="btnEliminar" class="k-button barraBotones longitudBoton" ng-click="Del_Grid_CatalogoValor()"  />   
+                     <input id="btnExportarExcel_Grid_CatalogoValor" type="button"  ng-value="BOTONEXPORTAREXCEL" 
+	                    onclick="ExportarExcel('Grid_CatalogoValor')" class="k-button barraBotones longitudBotonMediano" />   
+ 				</div>   
+ 			</div>   
+ 		</div>   
+        </fieldset>
+ 	</div>  
+ </div>

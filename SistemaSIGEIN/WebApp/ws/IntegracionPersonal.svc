@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WebApp.ws.IntegracionPersonal" CodeBehind="IntegracionPersonal.svc.cs" %>

@@ -1,0 +1,622 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\DEPLOYMENT\SIGEIN\5.0\QA</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Acceso.html">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoAreaInteres.html">
+      <publishTime>11/13/2015 12:54:48</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoCarrPosgrado.html">
+      <publishTime>11/13/2015 12:54:49</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoCarrProfesional.html">
+      <publishTime>11/13/2015 12:54:49</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoCarrTecnica.html">
+      <publishTime>11/13/2015 12:54:49</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoClasificacionCompetencia.html">
+      <publishTime>11/13/2015 12:54:49</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoCompetencias.html">
+      <publishTime>11/13/2015 12:54:48</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoDepartamento.html">
+      <publishTime>11/13/2015 12:54:49</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoDependienteEco.html">
+      <publishTime>11/13/2015 12:54:48</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoEmpleados.html">
+      <publishTime>11/16/2015 11:32:24</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoEmpresa.html">
+      <publishTime>11/13/2015 12:54:49</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoEscolaridad.html">
+      <publishTime>11/13/2015 12:54:48</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoEstadoCivil.html">
+      <publishTime>11/13/2015 12:54:48</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoEvaluadorExt.html">
+      <publishTime>11/13/2015 12:54:48</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoFunciones.html">
+      <publishTime>11/13/2015 12:54:49</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoLista.html">
+      <publishTime>11/13/2015 12:54:48</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoLocalizacion.html">
+      <publishTime>11/13/2015 12:54:48</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoMunicipio.html">
+      <publishTime>11/13/2015 12:54:49</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoNivelEsc.html">
+      <publishTime>11/13/2015 12:54:48</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoPuestos.html">
+      <publishTime>11/13/2015 12:54:48</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoRol.html">
+      <publishTime>11/13/2015 12:54:49</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoTipoCompetencia.html">
+      <publishTime>11/13/2015 12:54:49</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoUsuarios.html">
+      <publishTime>11/13/2015 12:54:48</publishTime>
+    </File>
+    <File Include="Administracion/CatalogoValores.html">
+      <publishTime>11/13/2015 12:54:48</publishTime>
+    </File>
+    <File Include="Administracion/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>11/13/2015 12:54:48</publishTime>
+    </File>
+    <File Include="Administracion/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>11/13/2015 12:54:48</publishTime>
+    </File>
+    <File Include="Administracion/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>11/13/2015 12:54:48</publishTime>
+    </File>
+    <File Include="Administracion/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>11/13/2015 12:54:48</publishTime>
+    </File>
+    <File Include="Administracion/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>11/13/2015 12:54:48</publishTime>
+    </File>
+    <File Include="Administracion/GridDinamico.html">
+      <publishTime>11/16/2015 11:32:24</publishTime>
+    </File>
+    <File Include="Administracion/NuevaSolicitudEmp.html">
+      <publishTime>11/16/2015 11:32:24</publishTime>
+    </File>
+    <File Include="Administracion/Requisiciones.html">
+      <publishTime>11/13/2015 12:54:48</publishTime>
+    </File>
+    <File Include="Administracion/SeleccionPersonal.html">
+      <publishTime>11/13/2015 12:54:49</publishTime>
+    </File>
+    <File Include="Assets/css/animate.css">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/css/boostrap-dialog.css">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/css/bootstrap-dialog.min.css">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/css/bootstrap-dialogo-modificado.css">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/css/bootstrap.min.css">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/css/estilo.css">
+      <publishTime>11/16/2015 11:32:24</publishTime>
+    </File>
+    <File Include="Assets/css/images/kendoui.ttf">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/css/images/kendoui.woff">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/css/introjs.css">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/css/kendo.bootstrap.min.css">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/css/kendo.common-bootstrap.min.css">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/css/kendo.common.min.css">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/css/kendo.default.min.css">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/css/nprogress.css">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/css/Temas/EvaluacionOrganizacional.css">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/css/Temas/FormacionDesarrollo.css">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/css/Temas/IntegracionPersonal.css">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/css/Temas/MetodologiaCompensacion.css">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/css/Temas/Nomina.css">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/css/Temas/PuntoEncuentro.css">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/images/Acrux.png">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/images/alto.png">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/images/EstadosUnidos.png">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/images/Icono.png">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/images/icon_cancel.png">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/images/icon_delete.png">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/images/icon_edit.png">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/images/icon_save.png">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/images/LoginUsuario.png">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/images/Logo.png">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/images/LogotipoNombre.png">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/images/menu/Menu.jpg">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/images/menu/Menu.png">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/images/Mexico.png">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/images/no-image.png">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/images/TituloBannerSigein.png">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/images/TituloBannerSuperior.png">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoAreaInteres.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoCarrPosgrado.js">
+      <publishTime>11/16/2015 11:32:24</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoCarrProfesional.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoCarrTecnica.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoClasificacionCompetencia.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoCompetencias.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoDepartamento.js">
+      <publishTime>11/16/2015 11:32:24</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoDependienteEco.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoEmpleados.js">
+      <publishTime>11/16/2015 11:32:24</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoEmpresa.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoEscolaridad.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoEvaluadorExt.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoFunciones.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoLista.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoLocalizacion.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoNivelEsc.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoRol.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoTipoCompetencia.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/CatalogoValores.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/GridDinamico.js">
+      <publishTime>11/16/2015 11:32:24</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/NuevaSolicitudEmp.js">
+      <publishTime>11/16/2015 11:32:24</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/Requisiciones.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/Administracion/SeleccionPersonal.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/angular-route.min.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/angular.min.js">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/js/appCache.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/appConfiguracion.js">
+      <publishTime>11/16/2015 11:32:24</publishTime>
+    </File>
+    <File Include="Assets/js/appEvaluacion.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/appFormacion.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/appIntegracion.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/appMetodologia.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/appPrincipal.js">
+      <publishTime>11/16/2015 11:32:24</publishTime>
+    </File>
+    <File Include="Assets/js/bootstrap-dialog.min.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/bootstrap-filestyle.min.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/bootstrap.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/BusquedaAvanzada.js">
+      <publishTime>11/16/2015 11:32:24</publishTime>
+    </File>
+    <File Include="Assets/js/dataModulos.js">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/js/intro.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/jquery.linq.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/jquery.min.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/json2xml.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/jszip.min.js">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/js/kendo.all.min.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/linq.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/nprogress.js">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/js/pako_deflate.min.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/parseXml.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/ui-bootstrap-tpls-0.13.4.js">
+      <publishTime>11/13/2015 12:54:46</publishTime>
+    </File>
+    <File Include="Assets/js/ui-bootstrap-tpls-0.13.4.min.js">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Assets/js/utf8.js">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/js/xml2json.js">
+      <publishTime>11/13/2015 12:54:45</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/css/font-awesome.css">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/css/font-awesome.min.css">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/fonts/fontawesome-webfont.eot">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/fonts/fontawesome-webfont.svg">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/fonts/fontawesome-webfont.ttf">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/fonts/fontawesome-webfont.woff">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/fonts/fontawesome-webfont.woff2">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/fonts/FontAwesome.otf">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/HELP-US-OUT.txt">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/less/animated.less">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/less/bordered-pulled.less">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/less/core.less">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/less/fixed-width.less">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/less/font-awesome.less">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/less/icons.less">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/less/larger.less">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/less/list.less">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/less/mixins.less">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/less/path.less">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/less/rotated-flipped.less">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/less/stacked.less">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/less/variables.less">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/scss/font-awesome.scss">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/scss/_animated.scss">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/scss/_bordered-pulled.scss">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/scss/_core.scss">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/scss/_fixed-width.scss">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/scss/_icons.scss">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/scss/_larger.scss">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/scss/_list.scss">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/scss/_mixins.scss">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/scss/_path.scss">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/scss/_rotated-flipped.scss">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/scss/_stacked.scss">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/library/font-awesome/scss/_variables.scss">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Assets/skin/bootstrap/kendo.custom.css">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/skin/bootstrap/kendo.custom.js">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/skin/bootstrap/kendo.custom.less">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/skin/material/kendo.custom.css">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/skin/material/kendo.custom.js">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/skin/material/kendo.custom.less">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/skin/metro/kendo.custom.css">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/skin/metro/kendo.custom.js">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/skin/metro/kendo.custom.less">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/skin/shilver/kendo.custom.css">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/skin/shilver/kendo.custom.js">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="Assets/skin/shilver/kendo.custom.less">
+      <publishTime>11/13/2015 12:54:44</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>11/13/2015 12:54:50</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.QualityTools.Testing.Fakes.resources.dll">
+      <publishTime>03/15/2013 03:14:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.QualityTools.Testing.Fakes.dll">
+      <publishTime>03/14/2013 23:05:56</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>11/13/2015 12:54:53</publishTime>
+    </File>
+    <File Include="bin/SIGE.AccesoDatos.dll">
+      <publishTime>11/16/2015 12:24:41</publishTime>
+    </File>
+    <File Include="bin/SIGE.AccesoDatos.pdb">
+      <publishTime>11/16/2015 12:24:41</publishTime>
+    </File>
+    <File Include="bin/SIGE.Entidades.dll">
+      <publishTime>11/16/2015 12:24:40</publishTime>
+    </File>
+    <File Include="bin/SIGE.Entidades.pdb">
+      <publishTime>11/16/2015 12:24:40</publishTime>
+    </File>
+    <File Include="bin/SIGE.Negocio.dll">
+      <publishTime>11/16/2015 12:24:42</publishTime>
+    </File>
+    <File Include="bin/SIGE.Negocio.pdb">
+      <publishTime>11/16/2015 12:24:42</publishTime>
+    </File>
+    <File Include="bin/WebApp.dll">
+      <publishTime>11/16/2015 12:26:00</publishTime>
+    </File>
+    <File Include="bin/WebApp.pdb">
+      <publishTime>11/16/2015 12:25:59</publishTime>
+    </File>
+    <File Include="data/Elementos.json">
+      <publishTime>11/13/2015 12:54:50</publishTime>
+    </File>
+    <File Include="data/Informacion.json">
+      <publishTime>11/13/2015 12:54:50</publishTime>
+    </File>
+    <File Include="data/Menu.json">
+      <publishTime>11/16/2015 11:32:24</publishTime>
+    </File>
+    <File Include="index.html">
+      <publishTime>11/16/2015 11:32:25</publishTime>
+    </File>
+    <File Include="login.html">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="menu.html">
+      <publishTime>11/13/2015 12:54:49</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Plantillas/Encabezado.html">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Plantillas/Inicio.html">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="Plantillas/PiedePagina.html">
+      <publishTime>11/13/2015 12:54:47</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>11/16/2015 12:26:03</publishTime>
+    </File>
+    <File Include="Salir.html">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>11/16/2015 12:26:02</publishTime>
+    </File>
+    <File Include="ws/EvaluacionOrganizacional.svc">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="ws/FormacionDesarrollo.svc">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="ws/IntegracionPersonal.svc">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="ws/MetodologiaCompensacion.svc">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+    <File Include="ws/OperacionesGral.svc">
+      <publishTime>11/13/2015 12:54:43</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

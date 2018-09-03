@@ -1,0 +1,281 @@
+[
+        {
+		    "Menu":"Link",
+			"Icono":"",
+			"Tipo":"Izquierda",
+			"Clave": "clavelink",
+			"modulo":"2",
+			"Atributos":
+			 {
+			   "attr":[
+				    {
+					   "href":"javascript:void(0)",
+					   "nombre":"Link",
+					   "tieneSubmenu":"0",
+					   "class":"",
+					   "role":"",
+					   "ariaHaspopup":"",
+					   "ariaExpanded":"",
+					   "dataToggle":""
+					}
+				  ]
+			   },
+			   "SubMenu":
+			    {
+				    "smenu": [  
+					]
+				}
+        },
+        {
+		    "Menu":"Link",
+			"Icono":"",
+			"Tipo":"Izquierda",
+			"Clave": "clavelink",
+			"modulo":"1",
+			"Atributos":
+			 {
+			   "attr":[
+				    {
+					   "href":"javascript:void(0)",
+					   "nombre":"Link",
+					   "tieneSubmenu":"0",
+					   "class":"",
+					   "role":"",
+					   "ariaHaspopup":"",
+					   "ariaExpanded":"",
+					   "dataToggle":""
+					}
+				  ]
+			   },
+			   "SubMenu":
+			    {
+				    "smenu": [  
+					]
+				}
+        },
+        {
+		    "Menu":"Catálogos",
+			"Icono":"",
+			"Tipo":"Izquierda",
+			"Clave": "ClaveCatalogos",
+			"modulo":"1",
+			"Atributos":
+			 {
+			   "attr":[
+				    {
+					   "href":"javascript:void(0)",
+					   "nombre":"Catálogos",
+					   "tieneSubmenu":"1",
+					   "class":"dropdown-toggle",
+					   "role":"button",
+					   "ariaHaspopup":"true",
+					   "ariaExpanded":"false",
+					   "dataToggle":"dropdown"
+					   
+					}
+				  ]
+			   },
+			   "SubMenu":
+			    {
+				    "smenu": [
+					   {
+					      "nombre":"Áreas",
+						  "href":"#/CatDepto",
+						  "clave":"AAA",
+						  "ngclick":""
+					   },
+					   {
+					      "nombre":"Nivel Escolar",
+						  "href":"#/CatNivEsc",
+						  "clave":"AAA",
+						  "ngclick":""
+					   },
+					   {
+					      "nombre":"Evaluador Externo",
+						  "href":"#/CatEvExt",
+						  "ngclick":""
+					   },
+					   {
+					      "nombre":"Rol",
+						  "href":"#/CatRol",
+						  "clave":"AAA",
+						  "ngclick":""
+					   },
+					   {
+					      "nombre":"Localización",
+						  "href":"#/CatLocaliza",
+						  "clave":"AAA",
+						  "ngclick":""
+					   },
+					   {
+					      "nombre":"Escolaridad",
+						  "href":"#/CatEsc",
+						  "clave":"AAA",
+						  "ngclick":""
+					   },
+					   {
+					      "nombre":"Tipo Competencia",
+						  "href":"#/CatTipoCom",
+						  "clave":"AAA",
+						  "ngclick":""
+					   },
+					   {
+					      "nombre":"Competencias",
+						  "href":"#/CatCom",
+						  "clave":"AAA",
+						  "ngclick":""
+					   },
+					   {
+					      "nombre":"Nueva Solicitud",
+						  "href":"#/NvaSol",
+						  "clave":"AAA",
+						  "ngclick":""
+					   },
+					   {
+					      "nombre":"Clasificación de Competencias",
+						  "href":"#/CatClaCom",
+						  "clave":"AAA",
+						  "ngclick":""
+					   },
+					   {
+					      "nombre":"Lista de Catálogos",
+						  "href":"#/CatLista",
+						  "clave":"AAA",
+						  "ngclick":""
+					   },
+					   {
+					      "nombre":"Requisiciones",
+						  "href":"#/Requisiciones",
+						  "clave":"AAA",
+						  "ngclick":""
+					   }
+
+					   ,{
+					      "nombre":"Empresas",
+						  "href":"#/CatEmp",
+						  "clave":"AAA",
+						  "ngclick":""
+					   }
+					   ,{
+					      "nombre":"Carreras de posgrados",
+						  "href":"#/CatPosg",
+						  "clave":"AAA",
+						  "ngclick":""
+					   }
+					   ,{
+					      "nombre":"Carreras profesionales",
+						  "href":"#/CatProf",
+						  "clave":"AAA",
+						  "ngclick":""
+					   }
+					   ,{
+					      "nombre":"Escolaridad",
+						  "href":"#/CatEsc",
+						  "clave":"AAA",
+						  "ngclick":""
+					   }
+					   ,{
+					      "nombre":"Evaluador externo",
+						  "href":"#/EvaExt",
+						  "clave":"AAA",
+						  "ngclick":""
+					   }
+					   ,{
+					      "nombre":"Funciones",
+						  "href":"#/CatFun",
+						  "clave":"AAA",
+						  "ngclick":""
+					   }
+					   ,{
+					      "nombre":"Puestos",
+						  "href":"#/CatPuestos",
+						  "clave":"AAA",
+						  "ngclick":""
+					   }
+
+					   ,{
+					      "nombre":"Selección de personal",
+						  "href":"#/SelPer",
+						  "clave":"AAA",
+						  "ngclick":""
+					   }
+					   ,{
+					      "nombre":"Valores de Catálogos",
+						  "href":"#/CatVal",
+						  "clave":"AAA",
+						  "ngclick":""
+					   }
+					   ,{
+						  "nombre":"Posgrados",
+						  "href":"#/CatPos",
+						  "clave":"AAA",
+						  "ngclick":""
+					   }
+					   ,{
+						  "nombre":"Carreras Profesionales",
+						  "href":"#/CatProf",
+						  "clave":"AAA",
+						  "ngclick":""
+					   }
+					   ,{
+						  "nombre":"Carreras Técnicas",
+						  "href":"#/CatTec",
+						  "clave":"AAA",
+						  "ngclick":""
+					   },{
+						  "nombre":"Experiencia profesional",
+						  "href":"#/CatAreaIn",
+						  "clave":"AAA",
+						  "ngclick":""
+					   }
+					]
+				}
+        },
+		{
+		    "Menu":"menuDerecha",
+			"Icono":"fa fa-user",
+			"Tipo":"Derecha",
+			"Clave": "ClaveUsuario",
+			"modulo":"*",
+			"Atributos":
+			   {
+			     "attr": [
+				    {
+					   "href":"javascript:void(0)",
+					   "nombre":"{{}}",
+					   "tieneSubmenu":"1",
+					   "class":"dropdown-toggle",
+					   "dataToggle":"dropdown",
+					   "role":"button",
+					   "ariaHaspopup":"true",
+					   "ariaExpanded":"false" 
+					}
+				  ]
+			   },
+			   "SubMenu":
+			   {
+				   "smenu":  [
+					  {
+					      "nombre":"Preferencias",
+						  "href":"javascript:void(0)",
+						  "clave":"AAA",
+						  "ngclick":""
+					  },
+					  {
+					      "nombre":"-",
+						  "href":"-",
+						  "clave":"-",
+						  "ngclick":"-"
+						  
+
+					  },
+					  {
+					      "nombre":"Salir",
+						  "href":"#/Salir",
+						  "clave":"AAA",
+						  "ngclick":""
+					  }
+					]
+				} 
+		    }   
+]

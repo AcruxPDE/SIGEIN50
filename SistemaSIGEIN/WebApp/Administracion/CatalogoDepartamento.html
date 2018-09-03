@@ -1,0 +1,69 @@
+﻿<div data-ng-controller="M_DEPARTAMENTOController"> 
+    <script type="text/ng-template" id="opDepartamento.html">
+    <form name="newForm" id="newForm">
+    <div class="bootstrap-dialog {{modulo}}"> 
+         <div class="modal-header">
+            <div class="bootstrap-dialog-header">
+                <div class="bootstrap-dialog-close-button">
+                     <button class="close" ng-click="cancel()">×</button>
+                </div>
+                <div class="bootstrap-dialog-title" id="">{{titulo}}</div>
+            </div>
+        </div>
+                    <div class="col-sm-12 col-md-12 col-xs-12" style="margin-top:5px;margin-bottom:5px;">
+                        <div class="row">
+                                <strong id="lblClaveDepartamento" data-trigger="hover" style="text-align:right;" data-toggle="popover" class="col-md-5 control-label TextoDom" for="txtClaveDepartamento">{{lblClave}}:</strong>  
+                                <div class="col-md-7">
+                                    <input id="txtClaveDepartamento" style="width:99%;" maxlength="30" ng-disabled="CL_DEPARTAMENTO_disable" name="CL_DEPARTAMENTO" type="text" placeholder="{{plClave}}" class="form-control input-md TextoDom  k-textbox" ng-model="CL_DEPARTAMENTO" required>
+                                    <span class="col-md-12 col-sm-12 col-xs-12 validacion" ng-show="newForm.$dirty && newForm.CL_DEPARTAMENTO.$error.required">La clave es requerida.</span>
+                                </div>
+                         </div>
+                        <div class="row">
+                            <label id="lblNombreDepartamento" style="text-align:right;" class="col-md-5 control-label TextoDom" for="txtNombreDepartamento">{{lblName}}:</label>  
+                                <div class="col-md-7">
+                                    <input id="txtNombreDepartamento" style="width:99%;" maxlength="100" name="NB_DEPARTAMENTO" type="text" placeholder="{{plName}}" class="form-control input-md TextoDom k-textbox" ng-model="NB_DEPARTAMENTO" required>
+                                    <span class="col-md-12 col-sm-12 col-xs-12 validacion" ng-show="newForm.$dirty && newForm.NB_DEPARTAMENTO.$error.required">El nombre es requerido.</span>
+                                </div>
+                        </div>
+                        <div class="row">
+                                <label class="col-md-5 col-sm-5 control-label TextoDom" style="text-align:right;" id="lblDepartamentoActivo" for="">{{lblActivo}}:</label>
+                                <div class="col-md-7 col-sm-7">
+                                    <label class="checkbox-inline TextoDom" for="-0">
+                                        <input type="checkbox" ng-model="FG_ACTIVO" ng-checked="FG_ACTIVO" class="TextoDom" name="FG_ACTIVO" id="chkDepartamentoActivo">
+                                    </label>
+                                </div>
+                        </div>
+                    </div>
+                <div class="modal-footer">
+                    <button id="btnGuardar" class="btn btn btn-default TextoDom" type="button" ng-click="ok()" ng-disabled="!newForm.$valid">{{btnSave}}</button>
+                    <button id="btnCancelar" class="btn btn btn-default TextoDom" type="button" ng-click="cancel()">{{btnCancel}}</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        </form>
+    </script>
+
+    <div class="container" style="margin-top:10px">  
+        <fieldset >
+        <legend>
+                {{titulo}}
+        </legend>
+             <div ng-include src="'Plantillas/BusquedaAvanzada.html'"></div> 
+ 	    <div class="row">  
+ 	        <div style="clear:both;height:10px;"></div>   
+ 	        <div id="Grid_Departamento"></div>    
+             <div style="clear:both;height:10px;"></div>
+             <div  class="row">  
+                 <div class="col-xs-12 col-md-7  col-ms-7">   
+                      <input type="button" id="btnAgregar_Grid_Departamento" data-modulo="OperacionesCrud"  data-ng-value="btnAgregar" class="k-button barraBotones longitudBoton" ng-click="Add_Grid_Departamento()"  />  
+                      <input type="button" id="btnModificar_Grid_Departamento" data-ng-value="btnModificar" class="k-button barraBotones longitudBoton" ng-click="Edit_Grid_Departamento()" />  
+                      <input type="button" id="btnEliminar_Grid_Departamento" data-ng-value="btnEliminar" class="k-button barraBotones longitudBoton" ng-click="Del_Grid_Departamento()" /> 
+                     <input id="btnExportarExcel_Grid_Departamento" type="button"  ng-value="BOTONEXPORTAREXCEL" 
+	                    onclick="ExportarExcel('Grid_Departamento')" class="k-button barraBotones longitudBotonMediano" />  
+ 		         </div>   
+ 	        </div>   
+ 	    </div>   
+       </fieldset>
+    </div>  
+ </div>

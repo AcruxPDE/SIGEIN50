@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html ng-app="MiAplicacion">
+<head>
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <meta http-equiv='cache-control' content='no-cache'>
+     <meta http-equiv='expires' content='0'>
+     <meta http-equiv='pragma' content='no-cache' />
+
+     <title>Sistema SIGEIN</title>
+     <link href='Assets/images/Icono.png' rel='shortcut icon' />
+
+     <script src="Assets/js/jquery.min.js" class="librerias" data-tipo="js"></script>
+     <script src="Assets/js/appCache.js" class="librerias" data-tipo="js"></script>
+
+     <script src="Assets/js/angular.min.js" class="librerias" data-tipo="js"></script>
+     <script src="Assets/js/kendo.all.min.js" class="librerias" data-tipo="js"></script>
+
+    <script src="Assets/js/utf8.js"></script>
+
+    <!-- LIBRERIA JS -->    
+    
+    <script src="Assets/js/angular-route.min.js" class="librerias" data-tipo="js"></script>
+    <script src="Assets/js/ui-bootstrap-tpls-0.13.4.js" class="librerias" data-tipo="js"></script>
+    <script src="Assets/js/bootstrap.js" class="librerias" data-tipo="js"></script>
+    <script src="Assets/js/bootstrap-filestyle.min.js" class="librerias" data-tipo="js"></script>
+    <script src="Assets/skin/material/kendo.custom.js" id="jsSkin" class="librerias" data-tipo="js"></script>
+    <script src="Assets/js/nprogress.js" class="librerias" data-tipo="js"></script>
+    <script src="Assets/js/intro.js" class="librerias" data-tipo="js"></script>
+
+    <script src="Assets/js/jszip.min.js" class="librerias" data-tipo="js"></script>
+    <script src="Assets/js/pako_deflate.min.js" class="librerias" data-tipo="js"></script>
+
+
+      <!-- LIBRERIAS XML TO JSON-->
+    <script src="Assets/js/parseXml.js" class="librerias" data-tipo="js"></script>
+    <script src="Assets/js/xml2json.js" class="librerias" data-tipo="js"></script>
+    <script src="Assets/js/json2xml.js" class="librerias" data-tipo="js"></script>
+
+
+
+    <!-- LIBRERIA CSS -->
+    <!--<link href="Assets/css/kendo.common.min.css" rel="stylesheet" /> NO AGREGAR DAÑAN EL DISEÑO DE LAS PAGINAS-->
+    <!--<link href="Assets/css/kendo.default.min.css" rel="stylesheet" />  NO AGREGAR DAÑAN EL DISEÑO DE LAS PAGINAS-->
+    <link href="Assets/css/bootstrap.min.css" rel="stylesheet" class="librerias" data-tipo="css"  />
+    <link href="Assets/css/kendo.common-bootstrap.min.css" rel="stylesheet" class="librerias" data-tipo="css" />
+    <link href="Assets/css/kendo.bootstrap.min.css" rel="stylesheet"  class="librerias" data-tipo="css" />
+    <link href="Assets/skin/material/kendo.custom.css" rel="stylesheet" id="cssSkin" class="librerias" data-tipo="css" />
+    <link href="Assets/library/font-awesome/css/font-awesome.css" rel="stylesheet" class="librerias" data-tipo="css" />
+    <link href="Assets/css/nprogress.css" rel="stylesheet" class="librerias" data-tipo="css" />
+    <link href="Assets/css/animate.css" rel="stylesheet" class="librerias" data-tipo="css" />
+    <link href="Assets/css/introjs.css" rel="stylesheet" class="librerias" data-tipo="css" />
+    <link href="Assets/css/estilo.css" rel="stylesheet" class="librerias" data-tipo="css" />
+
+ 
+    <!-- LIBRERIA LINQ -->
+    <script src="Assets/js/jquery.linq.js" class="librerias" data-tipo="js"></script>
+    <script src="Assets/js/linq.js" class="librerias" data-tipo="js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-sanitize.js"></script>
+    <script src="Assets/js/dataModulos.js"></script>
+
+    <!-- DESARROLLO JS -->
+    <script src="Assets/js/appConfiguracion.js?v=201511061012" class="librerias" data-tipo="js"></script>
+    <script src="Assets/js/appPrincipal.js?v=201511061012" class="librerias" data-tipo="js"></script>
+    <script src="Assets/js/BusquedaAvanzada.js" class="librerias" data-tipo="js"></script>
+
+    <script src="Assets/js/appEvaluacion.js" class="librerias" data-tipo="js"></script>
+    <script src="Assets/js/appFormacion.js" class="librerias" data-tipo="js"></script>
+    <script src="Assets/js/appIntegracion.js" class="librerias" data-tipo="js"></script>
+    <script src="Assets/js/appMetodologia.js" class="librerias" data-tipo="js"></script>
+
+     <!-- LIBRERIA DE LOS MENSAJES DIALOG DE BOOTSTRAP -->
+    
+    <link href="Assets/css/boostrap-dialog.css" rel="stylesheet" class="librerias" data-tipo="css" />
+    <script src="Assets/js/bootstrap-dialog.min.js" class="librerias" data-tipo="js"></script>
+    <link href="Assets/css/bootstrap-dialogo-modificado.css" rel="stylesheet" class="librerias" data-tipo="css" />
+    
+    <!-- JS DEL SISTEMA -->
+
+    <script src="../Assets/js/Administracion/CatalogoLocalizacion.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/CatalogoNivelEsc.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/CatalogoRol.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/CatalogoDepartamento.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/CatalogoFunciones.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/CatalogoTipoCompetencia.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/CatalogoCompetencias.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/CatalogoEvaluadorExt.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/CatalogoEscolaridad.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/NuevaSolicitudEmp.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/CatalogoClasificacionCompetencia.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/CatalogoLista.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/CatalogoAreaInteres.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/CatalogoCarrPosgrado.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/CatalogoCarrProfesional.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/CatalogoCarrTecnica.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/Requisiciones.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/CatalogoValores.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/CatalogoEmpresa.js" class="librerias" data-tipo="js"></script>
+    <script src="Assets/js/Administracion/SeleccionPersonal.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/GridDinamico.js" class="librerias" data-tipo="js"></script>
+   <script src="../Assets/js/Administracion/CatalogoEmpleados.js" class="librerias" data-tipo="js"></script>
+    <script src="../Assets/js/Administracion/CatalogoPuestos.js" class="librerias" data-tipo="js"></script>
+     <script src="../Assets/js/Administracion/DescriptivoPuestos.js" class="librerias" data-tipo="js"></script>
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    <div>
+        <div ng-include src="'Plantillas/Encabezado.html'"></div>
+        <div style="clear:both"></div>
+        <div class="container" id="vistaPrincipal" ng-view>
+            <!-- CONTENIDOS DINAMICOS DE LA APLICACION -->
+        </div>
+        <div style="clear:both"></div>
+       <!-- <div ng-include src="'Plantillas/PiedePagina.html'"></div>-->
+    </div>
+</body>
+</html>
