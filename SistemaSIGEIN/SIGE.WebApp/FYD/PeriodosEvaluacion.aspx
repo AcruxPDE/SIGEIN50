@@ -267,7 +267,7 @@
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                 { if (shouldSubmit) { this.click(); } });
 
-                radconfirm('¿Deseas cerrar el período ' + vNbPeriodo + ' ?', callBackFunction, 400, 170, null, "Cerrar período");
+                radconfirm('¿Deseas cerrar el período ' + vNbPeriodo + '?', callBackFunction, 400, 170, null, "Cerrar período");
                 args.set_cancel(true);
             }
             else {

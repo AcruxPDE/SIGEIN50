@@ -507,7 +507,8 @@ namespace SIGE.WebApp.FYD
                 }
                 else
                 {
-                    rbCero.Checked = true;
+                    rbDnc.Checked = true;
+                    desdeDNC.Style.Add("display", "block");
                     txtEstadoProgCapacitacion.Text = new string(CharsToTitleCase(E_ESTADO_PROGRAMA_CAPACITACION.ELABORANDO.ToString()).ToArray());
                     lstPeriodo.Items.Add(vNoSeleccionado);
                   //  txtTipoProgCapacitacion.Text = "A partir de 0";

@@ -94,15 +94,6 @@ namespace SIGE.WebApp.FYD {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label4;
         
         /// <summary>
-        /// rbCero control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton rbCero;
-        
-        /// <summary>
         /// rbDnc control.
         /// </summary>
         /// <remarks>
@@ -110,6 +101,15 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton rbDnc;
+        
+        /// <summary>
+        /// rbCero control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton rbCero;
         
         /// <summary>
         /// desdeDNC control.

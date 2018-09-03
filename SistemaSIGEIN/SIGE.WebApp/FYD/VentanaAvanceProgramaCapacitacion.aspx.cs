@@ -853,6 +853,9 @@ namespace SIGE.WebApp.FYD
                 columnGroupPer.HeaderText = item;
                 columnGroupPer.HeaderStyle.BackColor = ObtenerColor(pLstCompetencias.Where(w => w.NB_CLASIFICACION == item).FirstOrDefault().CL_COLOR);
                 columnGroupPer.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+
+                if (item == "Específicas")
+                    columnGroupPer.HeaderStyle.ForeColor = Color.White;
             }
         }
 
