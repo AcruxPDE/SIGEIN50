@@ -49,8 +49,8 @@
                         <telerik:RadTab runat="server" Text="Ortografía III" Enabled="false"></telerik:RadTab>
                         <telerik:RadTab runat="server" Text="Técnica PC" Enabled="false"></telerik:RadTab>
                         <telerik:RadTab runat="server" Text="Redacción" Enabled="false"></telerik:RadTab>
-                        <telerik:RadTab runat="server" Text="Prueba de inglés" Enabled="false"></telerik:RadTab>
                         <telerik:RadTab runat="server" Text="Factores adicionales" Enabled="false"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="Prueba de inglés" Enabled="false"></telerik:RadTab>
                     </Tabs>
                 </telerik:RadTabStrip>
             </telerik:RadPane>

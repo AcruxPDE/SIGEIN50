@@ -94,8 +94,13 @@
                      selectedItem = selectedRows[i];
 
                      if ((selectedItem.getDataKeyValue("ESTATUS")) == "NO CREADA") {
-                         var vCandidato = {
-                             ID_CANDIDATO: selectedItem.getDataKeyValue("ID_CANDIDATO"),
+                         var vIdCandidato = selectedItem.getDataKeyValue("ID_CANDIDATO")
+                         if (vIdCandidato == null)
+                             vIdCandidato =0;
+
+                         var vCandidato = {                            
+                             ID_EMPLEADO: selectedItem.getDataKeyValue("M_EMPLEADO_ID_EMPLEADO"),
+                             ID_CANDIDATO: vIdCandidato,
                          }
 
                          vCandidatos.push(vCandidato);
@@ -109,7 +114,7 @@
                  vCandidatosJson = JSON.stringify(vCandidatos);
 
                 // var pIdCandidatosPruebas = '<= vIdGeneraBaterias%>';
-                 openChildDialog("AgregarPruebas.aspx?candidatos=" + vCandidatosJson, "winPruebasEmp", "Asignar pruebas", GetWindowProperties());
+                 openChildDialog("AgregarPruebas.aspx?candidatos=" + vCandidatosJson +"&CL_ORIGEN=EMPLEADO", "winPruebasEmp", "Asignar pruebas", GetWindowProperties());
              }
              else {
                  radalert("Selecciona una solicitud.", 400, 150, "Error");

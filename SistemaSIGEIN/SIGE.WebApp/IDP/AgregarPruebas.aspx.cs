@@ -266,6 +266,35 @@ namespace SIGE.WebApp.IDP
             }
         }
 
+        private int GenerarIdCandidato(int pIdEmpleado)
+        {
+            int vIdCandidato = 0;
+
+            SolicitudNegocio nSolicitud = new SolicitudNegocio();
+            E_RESULTADO vResultado = nSolicitud.InsertaCandidatoEmpleado(pIdEmpleado, vClUsuario, vNbPrograma);
+            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+
+            var idCandidato = 0;
+            bool esNumero;
+
+            if (vResultado.MENSAJE.Where(x => x.CL_IDIOMA == "ID_CANDIDATO").FirstOrDefault() != null)
+            {
+                esNumero = int.TryParse(vResultado.MENSAJE.Where(x => x.CL_IDIOMA == "ID_CANDIDATO").FirstOrDefault().DS_MENSAJE, out idCandidato);
+                vIdCandidato = idCandidato;
+            }
+
+            if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+            {
+                return vIdCandidato;
+            }
+            else
+            {
+                UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                return 0;
+            }
+        }
+
+
         protected void cambiaColor(System.Web.UI.HtmlControls.HtmlGenericControl prueba)
         {
             /* if (prueba.Attributes["class"] == classActivado)
@@ -1410,7 +1439,23 @@ namespace SIGE.WebApp.IDP
                  //     CargarDesdeContexto(ContextoCandidatosBateria.oCandidatosBateria.Where(w => w.vIdGeneraBaterias == vIdCandidatosPruebas ).FirstOrDefault().vListaCandidatos);
                 //}
 
-                if (Request.Params["candidatos"] != null)
+                if (Request.Params["CL_ORIGEN"] != null)
+                {
+                    if (Request.Params["CL_ORIGEN"].ToString() == "EMPLEADO")
+                    {
+                        List<E_CANDIDATO> ListaCandidatos = new List<E_CANDIDATO>();
+                        ListaCandidatos = JsonConvert.DeserializeObject<List<E_CANDIDATO>>(Request.Params["candidatos"].ToString());
+
+                        foreach (var item in ListaCandidatos)
+                        {
+                            if (item.ID_CANDIDATO == 0)
+                             item.ID_CANDIDATO =  GenerarIdCandidato(item.ID_EMPLEADO);
+                        }
+
+                        CargarDesdeContexto(ListaCandidatos);
+                    }
+                }
+                else if (Request.Params["candidatos"] != null)
                 {
                     List<E_CANDIDATO> ListaCandidatos = new List<E_CANDIDATO>();
                     ListaCandidatos = JsonConvert.DeserializeObject<List<E_CANDIDATO>>(Request.Params["candidatos"].ToString());

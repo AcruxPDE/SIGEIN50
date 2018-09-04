@@ -53,5 +53,6 @@ namespace SIGE.Entidades.Administracion
         public int ID_BATERIA { get; set; }
         public string FL_BATERIA { get; set; }
         public Nullable<System.Guid> CL_TOKEN { get; set; }
+        public int ID_EMPLEADO { get; set; }
     }
 }
