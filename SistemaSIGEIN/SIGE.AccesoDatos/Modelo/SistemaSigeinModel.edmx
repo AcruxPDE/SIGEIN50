@@ -11568,14 +11568,6 @@
             <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
             <Parameter Name="PIN_ID_PLAZA" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_EMPLEADOS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_EMPLEADOS_Result)">
-            <Parameter Name="PIN_XML_SELECCION" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_FG_FOTO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_ID_EMPRESA" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_ROL" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SPE_OBTIENE_USUARIO_AUTENTICACION" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_USUARIO_AUTENTICACION_Result)">
             <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
             <Parameter Name="PIN_CL_PASSWORD" Mode="In" Type="String" />
@@ -12028,7 +12020,15 @@
             <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SPE_OBTIENE_ADSCRIPCIONES" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_ADSCRIPCIONES_Result)">
-            <Parameter Name="PIN_ID_CATALOGO_LISTA" Mode="In" Type="Int32" />
+          <Parameter Name="PIN_ID_CATALOGO_LISTA" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPE_OBTIENE_EMPLEADOS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_EMPLEADOS_Result)">
+            <Parameter Name="PIN_XML_SELECCION" Mode="In" Type="String" />
+            <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
+            <Parameter Name="PIN_FG_FOTO" Mode="In" Type="Boolean" />
+            <Parameter Name="PIN_ID_EMPRESA" Mode="In" Type="Int32" />
+            <Parameter Name="PIN_ID_ROL" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SPE_OBTIENE_C_CALLE_Result">
@@ -16634,61 +16634,6 @@
           <Property Type="DateTime" Name="FE_MODIFICACION" Nullable="true" Precision="23" />
           <Property Type="String" Name="CL_USUARIO_MODIFICA" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <ComplexType Name="SPE_OBTIENE_EMPLEADOS_Result">
-          <Property Type="Int32" Name="M_EMPLEADO_ID_EMPLEADO" Nullable="false" />
-          <Property Type="String" Name="M_EMPLEADO_ID_EMPLEADO_PDE" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="M_EMPLEADO_CL_EMPLEADO" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="M_EMPLEADO_NB_EMPLEADO_COMPLETO" Nullable="false" MaxLength="302" />
-          <Property Type="String" Name="M_EMPLEADO_NB_EMPLEADO" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="M_EMPLEADO_NB_APELLIDO_PATERNO" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="M_EMPLEADO_NB_APELLIDO_MATERNO" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="M_EMPLEADO_CL_ESTADO_EMPLEADO" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="M_EMPLEADO_CL_GENERO" Nullable="true" MaxLength="1" />
-          <Property Type="String" Name="M_EMPLEADO_CL_ESTADO_CIVIL" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="M_EMPLEADO_NB_CONYUGUE" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="M_EMPLEADO_CL_RFC" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="M_EMPLEADO_CL_CURP" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="M_EMPLEADO_CL_NSS" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="M_EMPLEADO_CL_TIPO_SANGUINEO" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="M_EMPLEADO_CL_NACIONALIDAD" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="M_EMPLEADO_NB_PAIS" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="M_EMPLEADO_NB_ESTADO" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="M_EMPLEADO_NB_MUNICIPIO" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="M_EMPLEADO_NB_COLONIA" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="M_EMPLEADO_NB_CALLE" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="M_EMPLEADO_NO_INTERIOR" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="M_EMPLEADO_NO_EXTERIOR" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="M_EMPLEADO_CL_CODIGO_POSTAL" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="M_EMPLEADO_XML_TELEFONOS" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="M_EMPLEADO_CL_CORREO_ELECTRONICO" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="M_EMPLEADO_ACTIVO" Nullable="false" MaxLength="2" />
-          <Property Type="DateTime" Name="M_EMPLEADO_FE_NACIMIENTO" Nullable="true" />
-          <Property Type="String" Name="M_EMPLEADO_DS_LUGAR_NACIMIENTO" Nullable="true" MaxLength="200" />
-          <Property Type="DateTime" Name="M_EMPLEADO_FE_ALTA" Nullable="false" />
-          <Property Type="DateTime" Name="M_EMPLEADO_FE_BAJA" Nullable="true" />
-          <Property Type="Decimal" Name="M_EMPLEADO_MN_SUELDO" Nullable="true" Precision="13" Scale="2" />
-          <Property Type="Decimal" Name="M_EMPLEADO_MN_SUELDO_VARIABLE" Nullable="true" Precision="13" Scale="2" />
-          <Property Type="String" Name="M_EMPLEADO_DS_SUELDO_COMPOSICION" Nullable="true" MaxLength="512" />
-          <Property Type="Int32" Name="M_EMPLEADO_ID_CANDIDATO" Nullable="true" />
-          <Property Type="String" Name="M_EMPLEADO_XML_CAMPOS_ADICIONALES" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="M_EMPLEADO_CL_USUARIO_APP_MODIFICA" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="M_FE_MODIFICA" Nullable="true" />
-          <Property Type="Int32" Name="M_PUESTO_ID_PUESTO" Nullable="true" />
-          <Property Type="String" Name="M_PUESTO_ID_PUESTO_PDE" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="M_PUESTO_CL_PUESTO" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="M_PUESTO_NB_PUESTO" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="M_PUESTO_XML_CAMPOS_ADICIONALES" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="C_EMPRESA_CL_EMPRESA" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="C_EMPRESA_NB_EMPRESA" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="C_EMPRESA_NB_RAZON_SOCIAL" Nullable="true" MaxLength="200" />
-          <Property Type="Int32" Name="C_EMPRESA_ID_EMPRESA" Nullable="true" />
-          <Property Type="Int32" Name="M_DEPARTAMENTO_ID_DEPARTAMENTO" Nullable="true" />
-          <Property Type="String" Name="M_DEPARTAMENTO_ID_DEPARTAMENTO_PDE" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="M_DEPARTAMENTO_CL_DEPARTAMENTO" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="M_DEPARTAMENTO_NB_DEPARTAMENTO" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="M_DEPARTAMENTO_XML_CAMPOS_ADICIONALES" Nullable="true" MaxLength="Max" />
-          <Property Type="Binary" Name="FI_FOTOGRAFIA" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="SPE_OBTIENE_USUARIO_AUTENTICACION_Result">
           <Property Type="String" Name="CL_AUTENTICACION" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="XML_AUTORIZACION" Nullable="true" MaxLength="Max" />
@@ -17916,6 +17861,62 @@
           <Property Type="String" Name="NB_CATALOGO_VALOR" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="DS_CAMPO" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="CL_TABLA_REFERENCIA" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SPE_OBTIENE_EMPLEADOS_Result">
+          <Property Type="Int32" Name="M_EMPLEADO_ID_EMPLEADO" Nullable="false" />
+          <Property Type="String" Name="M_EMPLEADO_ID_EMPLEADO_PDE" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="M_EMPLEADO_CL_EMPLEADO" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="M_EMPLEADO_NB_EMPLEADO_COMPLETO" Nullable="false" MaxLength="302" />
+          <Property Type="String" Name="M_EMPLEADO_NB_EMPLEADO" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="M_EMPLEADO_NB_APELLIDO_PATERNO" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="M_EMPLEADO_NB_APELLIDO_MATERNO" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="M_EMPLEADO_CL_ESTADO_EMPLEADO" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="M_EMPLEADO_CL_GENERO" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="M_EMPLEADO_CL_ESTADO_CIVIL" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="M_EMPLEADO_NB_CONYUGUE" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="M_EMPLEADO_CL_RFC" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="M_EMPLEADO_CL_CURP" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="M_EMPLEADO_CL_NSS" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="M_EMPLEADO_CL_TIPO_SANGUINEO" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="M_EMPLEADO_CL_NACIONALIDAD" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="M_EMPLEADO_NB_PAIS" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="M_EMPLEADO_NB_ESTADO" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="M_EMPLEADO_NB_MUNICIPIO" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="M_EMPLEADO_NB_COLONIA" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="M_EMPLEADO_NB_CALLE" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="M_EMPLEADO_NO_INTERIOR" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="M_EMPLEADO_NO_EXTERIOR" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="M_EMPLEADO_CL_CODIGO_POSTAL" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="M_EMPLEADO_XML_TELEFONOS" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="M_EMPLEADO_CL_CORREO_ELECTRONICO" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="M_EMPLEADO_ACTIVO" Nullable="false" MaxLength="2" />
+          <Property Type="DateTime" Name="M_EMPLEADO_FE_NACIMIENTO" Nullable="true" />
+          <Property Type="String" Name="M_EMPLEADO_DS_LUGAR_NACIMIENTO" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="M_EMPLEADO_FE_ALTA" Nullable="false" />
+          <Property Type="DateTime" Name="M_EMPLEADO_FE_BAJA" Nullable="true" />
+          <Property Type="Decimal" Name="M_EMPLEADO_MN_SUELDO" Nullable="true" Precision="13" Scale="2" />
+          <Property Type="Decimal" Name="M_EMPLEADO_MN_SUELDO_VARIABLE" Nullable="true" Precision="13" Scale="2" />
+          <Property Type="String" Name="M_EMPLEADO_DS_SUELDO_COMPOSICION" Nullable="true" MaxLength="512" />
+          <Property Type="Int32" Name="M_EMPLEADO_ID_CANDIDATO" Nullable="true" />
+          <Property Type="String" Name="M_EMPLEADO_XML_CAMPOS_ADICIONALES" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="M_EMPLEADO_CL_USUARIO_APP_MODIFICA" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="M_FE_MODIFICA" Nullable="true" />
+          <Property Type="Int32" Name="M_PUESTO_ID_PUESTO" Nullable="true" />
+          <Property Type="String" Name="M_PUESTO_ID_PUESTO_PDE" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="M_PUESTO_CL_PUESTO" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="M_PUESTO_NB_PUESTO" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="M_PUESTO_XML_CAMPOS_ADICIONALES" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="C_EMPRESA_CL_EMPRESA" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="C_EMPRESA_NB_EMPRESA" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="C_EMPRESA_NB_RAZON_SOCIAL" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="C_EMPRESA_ID_EMPRESA" Nullable="true" />
+          <Property Type="Int32" Name="M_DEPARTAMENTO_ID_DEPARTAMENTO" Nullable="true" />
+          <Property Type="String" Name="M_DEPARTAMENTO_ID_DEPARTAMENTO_PDE" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="M_DEPARTAMENTO_CL_DEPARTAMENTO" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="M_DEPARTAMENTO_NB_DEPARTAMENTO" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="M_DEPARTAMENTO_XML_CAMPOS_ADICIONALES" Nullable="true" MaxLength="Max" />
+          <Property Type="Binary" Name="FI_FOTOGRAFIA" Nullable="true" />
+          <Property Type="Int32" Name="ID_PLAZA" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -24186,65 +24187,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SPE_OBTIENE_EMPLEADOS" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_EMPLEADOS">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_EMPLEADOS_Result">
-                <ScalarProperty Name="M_EMPLEADO_ID_EMPLEADO" ColumnName="M_EMPLEADO_ID_EMPLEADO" />
-                <ScalarProperty Name="M_EMPLEADO_ID_EMPLEADO_PDE" ColumnName="M_EMPLEADO_ID_EMPLEADO_PDE" />
-                <ScalarProperty Name="M_EMPLEADO_CL_EMPLEADO" ColumnName="M_EMPLEADO_CL_EMPLEADO" />
-                <ScalarProperty Name="M_EMPLEADO_NB_EMPLEADO_COMPLETO" ColumnName="M_EMPLEADO_NB_EMPLEADO_COMPLETO" />
-                <ScalarProperty Name="M_EMPLEADO_NB_EMPLEADO" ColumnName="M_EMPLEADO_NB_EMPLEADO" />
-                <ScalarProperty Name="M_EMPLEADO_NB_APELLIDO_PATERNO" ColumnName="M_EMPLEADO_NB_APELLIDO_PATERNO" />
-                <ScalarProperty Name="M_EMPLEADO_NB_APELLIDO_MATERNO" ColumnName="M_EMPLEADO_NB_APELLIDO_MATERNO" />
-                <ScalarProperty Name="M_EMPLEADO_CL_ESTADO_EMPLEADO" ColumnName="M_EMPLEADO_CL_ESTADO_EMPLEADO" />
-                <ScalarProperty Name="M_EMPLEADO_CL_GENERO" ColumnName="M_EMPLEADO_CL_GENERO" />
-                <ScalarProperty Name="M_EMPLEADO_CL_ESTADO_CIVIL" ColumnName="M_EMPLEADO_CL_ESTADO_CIVIL" />
-                <ScalarProperty Name="M_EMPLEADO_NB_CONYUGUE" ColumnName="M_EMPLEADO_NB_CONYUGUE" />
-                <ScalarProperty Name="M_EMPLEADO_CL_RFC" ColumnName="M_EMPLEADO_CL_RFC" />
-                <ScalarProperty Name="M_EMPLEADO_CL_CURP" ColumnName="M_EMPLEADO_CL_CURP" />
-                <ScalarProperty Name="M_EMPLEADO_CL_NSS" ColumnName="M_EMPLEADO_CL_NSS" />
-                <ScalarProperty Name="M_EMPLEADO_CL_TIPO_SANGUINEO" ColumnName="M_EMPLEADO_CL_TIPO_SANGUINEO" />
-                <ScalarProperty Name="M_EMPLEADO_CL_NACIONALIDAD" ColumnName="M_EMPLEADO_CL_NACIONALIDAD" />
-                <ScalarProperty Name="M_EMPLEADO_NB_PAIS" ColumnName="M_EMPLEADO_NB_PAIS" />
-                <ScalarProperty Name="M_EMPLEADO_NB_ESTADO" ColumnName="M_EMPLEADO_NB_ESTADO" />
-                <ScalarProperty Name="M_EMPLEADO_NB_MUNICIPIO" ColumnName="M_EMPLEADO_NB_MUNICIPIO" />
-                <ScalarProperty Name="M_EMPLEADO_NB_COLONIA" ColumnName="M_EMPLEADO_NB_COLONIA" />
-                <ScalarProperty Name="M_EMPLEADO_NB_CALLE" ColumnName="M_EMPLEADO_NB_CALLE" />
-                <ScalarProperty Name="M_EMPLEADO_NO_INTERIOR" ColumnName="M_EMPLEADO_NO_INTERIOR" />
-                <ScalarProperty Name="M_EMPLEADO_NO_EXTERIOR" ColumnName="M_EMPLEADO_NO_EXTERIOR" />
-                <ScalarProperty Name="M_EMPLEADO_CL_CODIGO_POSTAL" ColumnName="M_EMPLEADO_CL_CODIGO_POSTAL" />
-                <ScalarProperty Name="M_EMPLEADO_XML_TELEFONOS" ColumnName="M_EMPLEADO_XML_TELEFONOS" />
-                <ScalarProperty Name="M_EMPLEADO_CL_CORREO_ELECTRONICO" ColumnName="M_EMPLEADO_CL_CORREO_ELECTRONICO" />
-                <ScalarProperty Name="M_EMPLEADO_ACTIVO" ColumnName="M_EMPLEADO_ACTIVO" />
-                <ScalarProperty Name="M_EMPLEADO_FE_NACIMIENTO" ColumnName="M_EMPLEADO_FE_NACIMIENTO" />
-                <ScalarProperty Name="M_EMPLEADO_DS_LUGAR_NACIMIENTO" ColumnName="M_EMPLEADO_DS_LUGAR_NACIMIENTO" />
-                <ScalarProperty Name="M_EMPLEADO_FE_ALTA" ColumnName="M_EMPLEADO_FE_ALTA" />
-                <ScalarProperty Name="M_EMPLEADO_FE_BAJA" ColumnName="M_EMPLEADO_FE_BAJA" />
-                <ScalarProperty Name="M_EMPLEADO_MN_SUELDO" ColumnName="M_EMPLEADO_MN_SUELDO" />
-                <ScalarProperty Name="M_EMPLEADO_MN_SUELDO_VARIABLE" ColumnName="M_EMPLEADO_MN_SUELDO_VARIABLE" />
-                <ScalarProperty Name="M_EMPLEADO_DS_SUELDO_COMPOSICION" ColumnName="M_EMPLEADO_DS_SUELDO_COMPOSICION" />
-                <ScalarProperty Name="M_EMPLEADO_ID_CANDIDATO" ColumnName="M_EMPLEADO_ID_CANDIDATO" />
-                <ScalarProperty Name="M_EMPLEADO_XML_CAMPOS_ADICIONALES" ColumnName="M_EMPLEADO_XML_CAMPOS_ADICIONALES" />
-                <ScalarProperty Name="M_EMPLEADO_CL_USUARIO_APP_MODIFICA" ColumnName="M_EMPLEADO_CL_USUARIO_APP_MODIFICA" />
-                <ScalarProperty Name="M_FE_MODIFICA" ColumnName="M_FE_MODIFICA" />
-                <ScalarProperty Name="M_PUESTO_ID_PUESTO" ColumnName="M_PUESTO_ID_PUESTO" />
-                <ScalarProperty Name="M_PUESTO_ID_PUESTO_PDE" ColumnName="M_PUESTO_ID_PUESTO_PDE" />
-                <ScalarProperty Name="M_PUESTO_CL_PUESTO" ColumnName="M_PUESTO_CL_PUESTO" />
-                <ScalarProperty Name="M_PUESTO_NB_PUESTO" ColumnName="M_PUESTO_NB_PUESTO" />
-                <ScalarProperty Name="M_PUESTO_XML_CAMPOS_ADICIONALES" ColumnName="M_PUESTO_XML_CAMPOS_ADICIONALES" />
-                <ScalarProperty Name="C_EMPRESA_CL_EMPRESA" ColumnName="C_EMPRESA_CL_EMPRESA" />
-                <ScalarProperty Name="C_EMPRESA_NB_EMPRESA" ColumnName="C_EMPRESA_NB_EMPRESA" />
-                <ScalarProperty Name="C_EMPRESA_NB_RAZON_SOCIAL" ColumnName="C_EMPRESA_NB_RAZON_SOCIAL" />
-                <ScalarProperty Name="C_EMPRESA_ID_EMPRESA" ColumnName="C_EMPRESA_ID_EMPRESA" />
-                <ScalarProperty Name="M_DEPARTAMENTO_ID_DEPARTAMENTO" ColumnName="M_DEPARTAMENTO_ID_DEPARTAMENTO" />
-                <ScalarProperty Name="M_DEPARTAMENTO_ID_DEPARTAMENTO_PDE" ColumnName="M_DEPARTAMENTO_ID_DEPARTAMENTO_PDE" />
-                <ScalarProperty Name="M_DEPARTAMENTO_CL_DEPARTAMENTO" ColumnName="M_DEPARTAMENTO_CL_DEPARTAMENTO" />
-                <ScalarProperty Name="M_DEPARTAMENTO_NB_DEPARTAMENTO" ColumnName="M_DEPARTAMENTO_NB_DEPARTAMENTO" />
-                <ScalarProperty Name="M_DEPARTAMENTO_XML_CAMPOS_ADICIONALES" ColumnName="M_DEPARTAMENTO_XML_CAMPOS_ADICIONALES" />
-                <ScalarProperty Name="FI_FOTOGRAFIA" ColumnName="FI_FOTOGRAFIA" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPE_OBTIENE_USUARIO_AUTENTICACION" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_USUARIO_AUTENTICACION">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_USUARIO_AUTENTICACION_Result">
@@ -25746,6 +25688,66 @@
                 <ScalarProperty Name="NB_CATALOGO_VALOR" ColumnName="NB_CATALOGO_VALOR" />
                 <ScalarProperty Name="DS_CAMPO" ColumnName="DS_CAMPO" />
                 <ScalarProperty Name="CL_TABLA_REFERENCIA" ColumnName="CL_TABLA_REFERENCIA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPE_OBTIENE_EMPLEADOS" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_EMPLEADOS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_EMPLEADOS_Result">
+                <ScalarProperty Name="M_EMPLEADO_ID_EMPLEADO" ColumnName="M_EMPLEADO_ID_EMPLEADO" />
+                <ScalarProperty Name="M_EMPLEADO_ID_EMPLEADO_PDE" ColumnName="M_EMPLEADO_ID_EMPLEADO_PDE" />
+                <ScalarProperty Name="M_EMPLEADO_CL_EMPLEADO" ColumnName="M_EMPLEADO_CL_EMPLEADO" />
+                <ScalarProperty Name="M_EMPLEADO_NB_EMPLEADO_COMPLETO" ColumnName="M_EMPLEADO_NB_EMPLEADO_COMPLETO" />
+                <ScalarProperty Name="M_EMPLEADO_NB_EMPLEADO" ColumnName="M_EMPLEADO_NB_EMPLEADO" />
+                <ScalarProperty Name="M_EMPLEADO_NB_APELLIDO_PATERNO" ColumnName="M_EMPLEADO_NB_APELLIDO_PATERNO" />
+                <ScalarProperty Name="M_EMPLEADO_NB_APELLIDO_MATERNO" ColumnName="M_EMPLEADO_NB_APELLIDO_MATERNO" />
+                <ScalarProperty Name="M_EMPLEADO_CL_ESTADO_EMPLEADO" ColumnName="M_EMPLEADO_CL_ESTADO_EMPLEADO" />
+                <ScalarProperty Name="M_EMPLEADO_CL_GENERO" ColumnName="M_EMPLEADO_CL_GENERO" />
+                <ScalarProperty Name="M_EMPLEADO_CL_ESTADO_CIVIL" ColumnName="M_EMPLEADO_CL_ESTADO_CIVIL" />
+                <ScalarProperty Name="M_EMPLEADO_NB_CONYUGUE" ColumnName="M_EMPLEADO_NB_CONYUGUE" />
+                <ScalarProperty Name="M_EMPLEADO_CL_RFC" ColumnName="M_EMPLEADO_CL_RFC" />
+                <ScalarProperty Name="M_EMPLEADO_CL_CURP" ColumnName="M_EMPLEADO_CL_CURP" />
+                <ScalarProperty Name="M_EMPLEADO_CL_NSS" ColumnName="M_EMPLEADO_CL_NSS" />
+                <ScalarProperty Name="M_EMPLEADO_CL_TIPO_SANGUINEO" ColumnName="M_EMPLEADO_CL_TIPO_SANGUINEO" />
+                <ScalarProperty Name="M_EMPLEADO_CL_NACIONALIDAD" ColumnName="M_EMPLEADO_CL_NACIONALIDAD" />
+                <ScalarProperty Name="M_EMPLEADO_NB_PAIS" ColumnName="M_EMPLEADO_NB_PAIS" />
+                <ScalarProperty Name="M_EMPLEADO_NB_ESTADO" ColumnName="M_EMPLEADO_NB_ESTADO" />
+                <ScalarProperty Name="M_EMPLEADO_NB_MUNICIPIO" ColumnName="M_EMPLEADO_NB_MUNICIPIO" />
+                <ScalarProperty Name="M_EMPLEADO_NB_COLONIA" ColumnName="M_EMPLEADO_NB_COLONIA" />
+                <ScalarProperty Name="M_EMPLEADO_NB_CALLE" ColumnName="M_EMPLEADO_NB_CALLE" />
+                <ScalarProperty Name="M_EMPLEADO_NO_INTERIOR" ColumnName="M_EMPLEADO_NO_INTERIOR" />
+                <ScalarProperty Name="M_EMPLEADO_NO_EXTERIOR" ColumnName="M_EMPLEADO_NO_EXTERIOR" />
+                <ScalarProperty Name="M_EMPLEADO_CL_CODIGO_POSTAL" ColumnName="M_EMPLEADO_CL_CODIGO_POSTAL" />
+                <ScalarProperty Name="M_EMPLEADO_XML_TELEFONOS" ColumnName="M_EMPLEADO_XML_TELEFONOS" />
+                <ScalarProperty Name="M_EMPLEADO_CL_CORREO_ELECTRONICO" ColumnName="M_EMPLEADO_CL_CORREO_ELECTRONICO" />
+                <ScalarProperty Name="M_EMPLEADO_ACTIVO" ColumnName="M_EMPLEADO_ACTIVO" />
+                <ScalarProperty Name="M_EMPLEADO_FE_NACIMIENTO" ColumnName="M_EMPLEADO_FE_NACIMIENTO" />
+                <ScalarProperty Name="M_EMPLEADO_DS_LUGAR_NACIMIENTO" ColumnName="M_EMPLEADO_DS_LUGAR_NACIMIENTO" />
+                <ScalarProperty Name="M_EMPLEADO_FE_ALTA" ColumnName="M_EMPLEADO_FE_ALTA" />
+                <ScalarProperty Name="M_EMPLEADO_FE_BAJA" ColumnName="M_EMPLEADO_FE_BAJA" />
+                <ScalarProperty Name="M_EMPLEADO_MN_SUELDO" ColumnName="M_EMPLEADO_MN_SUELDO" />
+                <ScalarProperty Name="M_EMPLEADO_MN_SUELDO_VARIABLE" ColumnName="M_EMPLEADO_MN_SUELDO_VARIABLE" />
+                <ScalarProperty Name="M_EMPLEADO_DS_SUELDO_COMPOSICION" ColumnName="M_EMPLEADO_DS_SUELDO_COMPOSICION" />
+                <ScalarProperty Name="M_EMPLEADO_ID_CANDIDATO" ColumnName="M_EMPLEADO_ID_CANDIDATO" />
+                <ScalarProperty Name="M_EMPLEADO_XML_CAMPOS_ADICIONALES" ColumnName="M_EMPLEADO_XML_CAMPOS_ADICIONALES" />
+                <ScalarProperty Name="M_EMPLEADO_CL_USUARIO_APP_MODIFICA" ColumnName="M_EMPLEADO_CL_USUARIO_APP_MODIFICA" />
+                <ScalarProperty Name="M_FE_MODIFICA" ColumnName="M_FE_MODIFICA" />
+                <ScalarProperty Name="M_PUESTO_ID_PUESTO" ColumnName="M_PUESTO_ID_PUESTO" />
+                <ScalarProperty Name="M_PUESTO_ID_PUESTO_PDE" ColumnName="M_PUESTO_ID_PUESTO_PDE" />
+                <ScalarProperty Name="M_PUESTO_CL_PUESTO" ColumnName="M_PUESTO_CL_PUESTO" />
+                <ScalarProperty Name="M_PUESTO_NB_PUESTO" ColumnName="M_PUESTO_NB_PUESTO" />
+                <ScalarProperty Name="M_PUESTO_XML_CAMPOS_ADICIONALES" ColumnName="M_PUESTO_XML_CAMPOS_ADICIONALES" />
+                <ScalarProperty Name="C_EMPRESA_CL_EMPRESA" ColumnName="C_EMPRESA_CL_EMPRESA" />
+                <ScalarProperty Name="C_EMPRESA_NB_EMPRESA" ColumnName="C_EMPRESA_NB_EMPRESA" />
+                <ScalarProperty Name="C_EMPRESA_NB_RAZON_SOCIAL" ColumnName="C_EMPRESA_NB_RAZON_SOCIAL" />
+                <ScalarProperty Name="C_EMPRESA_ID_EMPRESA" ColumnName="C_EMPRESA_ID_EMPRESA" />
+                <ScalarProperty Name="M_DEPARTAMENTO_ID_DEPARTAMENTO" ColumnName="M_DEPARTAMENTO_ID_DEPARTAMENTO" />
+                <ScalarProperty Name="M_DEPARTAMENTO_ID_DEPARTAMENTO_PDE" ColumnName="M_DEPARTAMENTO_ID_DEPARTAMENTO_PDE" />
+                <ScalarProperty Name="M_DEPARTAMENTO_CL_DEPARTAMENTO" ColumnName="M_DEPARTAMENTO_CL_DEPARTAMENTO" />
+                <ScalarProperty Name="M_DEPARTAMENTO_NB_DEPARTAMENTO" ColumnName="M_DEPARTAMENTO_NB_DEPARTAMENTO" />
+                <ScalarProperty Name="M_DEPARTAMENTO_XML_CAMPOS_ADICIONALES" ColumnName="M_DEPARTAMENTO_XML_CAMPOS_ADICIONALES" />
+                <ScalarProperty Name="FI_FOTOGRAFIA" ColumnName="FI_FOTOGRAFIA" />
+                <ScalarProperty Name="ID_PLAZA" ColumnName="ID_PLAZA" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

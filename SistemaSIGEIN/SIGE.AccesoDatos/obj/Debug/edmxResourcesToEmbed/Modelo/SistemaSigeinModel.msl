@@ -6263,65 +6263,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="SPE_OBTIENE_EMPLEADOS" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_EMPLEADOS">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_EMPLEADOS_Result">
-          <ScalarProperty Name="M_EMPLEADO_ID_EMPLEADO" ColumnName="M_EMPLEADO_ID_EMPLEADO" />
-          <ScalarProperty Name="M_EMPLEADO_ID_EMPLEADO_PDE" ColumnName="M_EMPLEADO_ID_EMPLEADO_PDE" />
-          <ScalarProperty Name="M_EMPLEADO_CL_EMPLEADO" ColumnName="M_EMPLEADO_CL_EMPLEADO" />
-          <ScalarProperty Name="M_EMPLEADO_NB_EMPLEADO_COMPLETO" ColumnName="M_EMPLEADO_NB_EMPLEADO_COMPLETO" />
-          <ScalarProperty Name="M_EMPLEADO_NB_EMPLEADO" ColumnName="M_EMPLEADO_NB_EMPLEADO" />
-          <ScalarProperty Name="M_EMPLEADO_NB_APELLIDO_PATERNO" ColumnName="M_EMPLEADO_NB_APELLIDO_PATERNO" />
-          <ScalarProperty Name="M_EMPLEADO_NB_APELLIDO_MATERNO" ColumnName="M_EMPLEADO_NB_APELLIDO_MATERNO" />
-          <ScalarProperty Name="M_EMPLEADO_CL_ESTADO_EMPLEADO" ColumnName="M_EMPLEADO_CL_ESTADO_EMPLEADO" />
-          <ScalarProperty Name="M_EMPLEADO_CL_GENERO" ColumnName="M_EMPLEADO_CL_GENERO" />
-          <ScalarProperty Name="M_EMPLEADO_CL_ESTADO_CIVIL" ColumnName="M_EMPLEADO_CL_ESTADO_CIVIL" />
-          <ScalarProperty Name="M_EMPLEADO_NB_CONYUGUE" ColumnName="M_EMPLEADO_NB_CONYUGUE" />
-          <ScalarProperty Name="M_EMPLEADO_CL_RFC" ColumnName="M_EMPLEADO_CL_RFC" />
-          <ScalarProperty Name="M_EMPLEADO_CL_CURP" ColumnName="M_EMPLEADO_CL_CURP" />
-          <ScalarProperty Name="M_EMPLEADO_CL_NSS" ColumnName="M_EMPLEADO_CL_NSS" />
-          <ScalarProperty Name="M_EMPLEADO_CL_TIPO_SANGUINEO" ColumnName="M_EMPLEADO_CL_TIPO_SANGUINEO" />
-          <ScalarProperty Name="M_EMPLEADO_CL_NACIONALIDAD" ColumnName="M_EMPLEADO_CL_NACIONALIDAD" />
-          <ScalarProperty Name="M_EMPLEADO_NB_PAIS" ColumnName="M_EMPLEADO_NB_PAIS" />
-          <ScalarProperty Name="M_EMPLEADO_NB_ESTADO" ColumnName="M_EMPLEADO_NB_ESTADO" />
-          <ScalarProperty Name="M_EMPLEADO_NB_MUNICIPIO" ColumnName="M_EMPLEADO_NB_MUNICIPIO" />
-          <ScalarProperty Name="M_EMPLEADO_NB_COLONIA" ColumnName="M_EMPLEADO_NB_COLONIA" />
-          <ScalarProperty Name="M_EMPLEADO_NB_CALLE" ColumnName="M_EMPLEADO_NB_CALLE" />
-          <ScalarProperty Name="M_EMPLEADO_NO_INTERIOR" ColumnName="M_EMPLEADO_NO_INTERIOR" />
-          <ScalarProperty Name="M_EMPLEADO_NO_EXTERIOR" ColumnName="M_EMPLEADO_NO_EXTERIOR" />
-          <ScalarProperty Name="M_EMPLEADO_CL_CODIGO_POSTAL" ColumnName="M_EMPLEADO_CL_CODIGO_POSTAL" />
-          <ScalarProperty Name="M_EMPLEADO_XML_TELEFONOS" ColumnName="M_EMPLEADO_XML_TELEFONOS" />
-          <ScalarProperty Name="M_EMPLEADO_CL_CORREO_ELECTRONICO" ColumnName="M_EMPLEADO_CL_CORREO_ELECTRONICO" />
-          <ScalarProperty Name="M_EMPLEADO_ACTIVO" ColumnName="M_EMPLEADO_ACTIVO" />
-          <ScalarProperty Name="M_EMPLEADO_FE_NACIMIENTO" ColumnName="M_EMPLEADO_FE_NACIMIENTO" />
-          <ScalarProperty Name="M_EMPLEADO_DS_LUGAR_NACIMIENTO" ColumnName="M_EMPLEADO_DS_LUGAR_NACIMIENTO" />
-          <ScalarProperty Name="M_EMPLEADO_FE_ALTA" ColumnName="M_EMPLEADO_FE_ALTA" />
-          <ScalarProperty Name="M_EMPLEADO_FE_BAJA" ColumnName="M_EMPLEADO_FE_BAJA" />
-          <ScalarProperty Name="M_EMPLEADO_MN_SUELDO" ColumnName="M_EMPLEADO_MN_SUELDO" />
-          <ScalarProperty Name="M_EMPLEADO_MN_SUELDO_VARIABLE" ColumnName="M_EMPLEADO_MN_SUELDO_VARIABLE" />
-          <ScalarProperty Name="M_EMPLEADO_DS_SUELDO_COMPOSICION" ColumnName="M_EMPLEADO_DS_SUELDO_COMPOSICION" />
-          <ScalarProperty Name="M_EMPLEADO_ID_CANDIDATO" ColumnName="M_EMPLEADO_ID_CANDIDATO" />
-          <ScalarProperty Name="M_EMPLEADO_XML_CAMPOS_ADICIONALES" ColumnName="M_EMPLEADO_XML_CAMPOS_ADICIONALES" />
-          <ScalarProperty Name="M_EMPLEADO_CL_USUARIO_APP_MODIFICA" ColumnName="M_EMPLEADO_CL_USUARIO_APP_MODIFICA" />
-          <ScalarProperty Name="M_FE_MODIFICA" ColumnName="M_FE_MODIFICA" />
-          <ScalarProperty Name="M_PUESTO_ID_PUESTO" ColumnName="M_PUESTO_ID_PUESTO" />
-          <ScalarProperty Name="M_PUESTO_ID_PUESTO_PDE" ColumnName="M_PUESTO_ID_PUESTO_PDE" />
-          <ScalarProperty Name="M_PUESTO_CL_PUESTO" ColumnName="M_PUESTO_CL_PUESTO" />
-          <ScalarProperty Name="M_PUESTO_NB_PUESTO" ColumnName="M_PUESTO_NB_PUESTO" />
-          <ScalarProperty Name="M_PUESTO_XML_CAMPOS_ADICIONALES" ColumnName="M_PUESTO_XML_CAMPOS_ADICIONALES" />
-          <ScalarProperty Name="C_EMPRESA_CL_EMPRESA" ColumnName="C_EMPRESA_CL_EMPRESA" />
-          <ScalarProperty Name="C_EMPRESA_NB_EMPRESA" ColumnName="C_EMPRESA_NB_EMPRESA" />
-          <ScalarProperty Name="C_EMPRESA_NB_RAZON_SOCIAL" ColumnName="C_EMPRESA_NB_RAZON_SOCIAL" />
-          <ScalarProperty Name="C_EMPRESA_ID_EMPRESA" ColumnName="C_EMPRESA_ID_EMPRESA" />
-          <ScalarProperty Name="M_DEPARTAMENTO_ID_DEPARTAMENTO" ColumnName="M_DEPARTAMENTO_ID_DEPARTAMENTO" />
-          <ScalarProperty Name="M_DEPARTAMENTO_ID_DEPARTAMENTO_PDE" ColumnName="M_DEPARTAMENTO_ID_DEPARTAMENTO_PDE" />
-          <ScalarProperty Name="M_DEPARTAMENTO_CL_DEPARTAMENTO" ColumnName="M_DEPARTAMENTO_CL_DEPARTAMENTO" />
-          <ScalarProperty Name="M_DEPARTAMENTO_NB_DEPARTAMENTO" ColumnName="M_DEPARTAMENTO_NB_DEPARTAMENTO" />
-          <ScalarProperty Name="M_DEPARTAMENTO_XML_CAMPOS_ADICIONALES" ColumnName="M_DEPARTAMENTO_XML_CAMPOS_ADICIONALES" />
-          <ScalarProperty Name="FI_FOTOGRAFIA" ColumnName="FI_FOTOGRAFIA" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="SPE_OBTIENE_USUARIO_AUTENTICACION" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_USUARIO_AUTENTICACION">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_USUARIO_AUTENTICACION_Result">
@@ -7823,6 +7764,66 @@
           <ScalarProperty Name="NB_CATALOGO_VALOR" ColumnName="NB_CATALOGO_VALOR" />
           <ScalarProperty Name="DS_CAMPO" ColumnName="DS_CAMPO" />
           <ScalarProperty Name="CL_TABLA_REFERENCIA" ColumnName="CL_TABLA_REFERENCIA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPE_OBTIENE_EMPLEADOS" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_EMPLEADOS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_EMPLEADOS_Result">
+          <ScalarProperty Name="M_EMPLEADO_ID_EMPLEADO" ColumnName="M_EMPLEADO_ID_EMPLEADO" />
+          <ScalarProperty Name="M_EMPLEADO_ID_EMPLEADO_PDE" ColumnName="M_EMPLEADO_ID_EMPLEADO_PDE" />
+          <ScalarProperty Name="M_EMPLEADO_CL_EMPLEADO" ColumnName="M_EMPLEADO_CL_EMPLEADO" />
+          <ScalarProperty Name="M_EMPLEADO_NB_EMPLEADO_COMPLETO" ColumnName="M_EMPLEADO_NB_EMPLEADO_COMPLETO" />
+          <ScalarProperty Name="M_EMPLEADO_NB_EMPLEADO" ColumnName="M_EMPLEADO_NB_EMPLEADO" />
+          <ScalarProperty Name="M_EMPLEADO_NB_APELLIDO_PATERNO" ColumnName="M_EMPLEADO_NB_APELLIDO_PATERNO" />
+          <ScalarProperty Name="M_EMPLEADO_NB_APELLIDO_MATERNO" ColumnName="M_EMPLEADO_NB_APELLIDO_MATERNO" />
+          <ScalarProperty Name="M_EMPLEADO_CL_ESTADO_EMPLEADO" ColumnName="M_EMPLEADO_CL_ESTADO_EMPLEADO" />
+          <ScalarProperty Name="M_EMPLEADO_CL_GENERO" ColumnName="M_EMPLEADO_CL_GENERO" />
+          <ScalarProperty Name="M_EMPLEADO_CL_ESTADO_CIVIL" ColumnName="M_EMPLEADO_CL_ESTADO_CIVIL" />
+          <ScalarProperty Name="M_EMPLEADO_NB_CONYUGUE" ColumnName="M_EMPLEADO_NB_CONYUGUE" />
+          <ScalarProperty Name="M_EMPLEADO_CL_RFC" ColumnName="M_EMPLEADO_CL_RFC" />
+          <ScalarProperty Name="M_EMPLEADO_CL_CURP" ColumnName="M_EMPLEADO_CL_CURP" />
+          <ScalarProperty Name="M_EMPLEADO_CL_NSS" ColumnName="M_EMPLEADO_CL_NSS" />
+          <ScalarProperty Name="M_EMPLEADO_CL_TIPO_SANGUINEO" ColumnName="M_EMPLEADO_CL_TIPO_SANGUINEO" />
+          <ScalarProperty Name="M_EMPLEADO_CL_NACIONALIDAD" ColumnName="M_EMPLEADO_CL_NACIONALIDAD" />
+          <ScalarProperty Name="M_EMPLEADO_NB_PAIS" ColumnName="M_EMPLEADO_NB_PAIS" />
+          <ScalarProperty Name="M_EMPLEADO_NB_ESTADO" ColumnName="M_EMPLEADO_NB_ESTADO" />
+          <ScalarProperty Name="M_EMPLEADO_NB_MUNICIPIO" ColumnName="M_EMPLEADO_NB_MUNICIPIO" />
+          <ScalarProperty Name="M_EMPLEADO_NB_COLONIA" ColumnName="M_EMPLEADO_NB_COLONIA" />
+          <ScalarProperty Name="M_EMPLEADO_NB_CALLE" ColumnName="M_EMPLEADO_NB_CALLE" />
+          <ScalarProperty Name="M_EMPLEADO_NO_INTERIOR" ColumnName="M_EMPLEADO_NO_INTERIOR" />
+          <ScalarProperty Name="M_EMPLEADO_NO_EXTERIOR" ColumnName="M_EMPLEADO_NO_EXTERIOR" />
+          <ScalarProperty Name="M_EMPLEADO_CL_CODIGO_POSTAL" ColumnName="M_EMPLEADO_CL_CODIGO_POSTAL" />
+          <ScalarProperty Name="M_EMPLEADO_XML_TELEFONOS" ColumnName="M_EMPLEADO_XML_TELEFONOS" />
+          <ScalarProperty Name="M_EMPLEADO_CL_CORREO_ELECTRONICO" ColumnName="M_EMPLEADO_CL_CORREO_ELECTRONICO" />
+          <ScalarProperty Name="M_EMPLEADO_ACTIVO" ColumnName="M_EMPLEADO_ACTIVO" />
+          <ScalarProperty Name="M_EMPLEADO_FE_NACIMIENTO" ColumnName="M_EMPLEADO_FE_NACIMIENTO" />
+          <ScalarProperty Name="M_EMPLEADO_DS_LUGAR_NACIMIENTO" ColumnName="M_EMPLEADO_DS_LUGAR_NACIMIENTO" />
+          <ScalarProperty Name="M_EMPLEADO_FE_ALTA" ColumnName="M_EMPLEADO_FE_ALTA" />
+          <ScalarProperty Name="M_EMPLEADO_FE_BAJA" ColumnName="M_EMPLEADO_FE_BAJA" />
+          <ScalarProperty Name="M_EMPLEADO_MN_SUELDO" ColumnName="M_EMPLEADO_MN_SUELDO" />
+          <ScalarProperty Name="M_EMPLEADO_MN_SUELDO_VARIABLE" ColumnName="M_EMPLEADO_MN_SUELDO_VARIABLE" />
+          <ScalarProperty Name="M_EMPLEADO_DS_SUELDO_COMPOSICION" ColumnName="M_EMPLEADO_DS_SUELDO_COMPOSICION" />
+          <ScalarProperty Name="M_EMPLEADO_ID_CANDIDATO" ColumnName="M_EMPLEADO_ID_CANDIDATO" />
+          <ScalarProperty Name="M_EMPLEADO_XML_CAMPOS_ADICIONALES" ColumnName="M_EMPLEADO_XML_CAMPOS_ADICIONALES" />
+          <ScalarProperty Name="M_EMPLEADO_CL_USUARIO_APP_MODIFICA" ColumnName="M_EMPLEADO_CL_USUARIO_APP_MODIFICA" />
+          <ScalarProperty Name="M_FE_MODIFICA" ColumnName="M_FE_MODIFICA" />
+          <ScalarProperty Name="M_PUESTO_ID_PUESTO" ColumnName="M_PUESTO_ID_PUESTO" />
+          <ScalarProperty Name="M_PUESTO_ID_PUESTO_PDE" ColumnName="M_PUESTO_ID_PUESTO_PDE" />
+          <ScalarProperty Name="M_PUESTO_CL_PUESTO" ColumnName="M_PUESTO_CL_PUESTO" />
+          <ScalarProperty Name="M_PUESTO_NB_PUESTO" ColumnName="M_PUESTO_NB_PUESTO" />
+          <ScalarProperty Name="M_PUESTO_XML_CAMPOS_ADICIONALES" ColumnName="M_PUESTO_XML_CAMPOS_ADICIONALES" />
+          <ScalarProperty Name="C_EMPRESA_CL_EMPRESA" ColumnName="C_EMPRESA_CL_EMPRESA" />
+          <ScalarProperty Name="C_EMPRESA_NB_EMPRESA" ColumnName="C_EMPRESA_NB_EMPRESA" />
+          <ScalarProperty Name="C_EMPRESA_NB_RAZON_SOCIAL" ColumnName="C_EMPRESA_NB_RAZON_SOCIAL" />
+          <ScalarProperty Name="C_EMPRESA_ID_EMPRESA" ColumnName="C_EMPRESA_ID_EMPRESA" />
+          <ScalarProperty Name="M_DEPARTAMENTO_ID_DEPARTAMENTO" ColumnName="M_DEPARTAMENTO_ID_DEPARTAMENTO" />
+          <ScalarProperty Name="M_DEPARTAMENTO_ID_DEPARTAMENTO_PDE" ColumnName="M_DEPARTAMENTO_ID_DEPARTAMENTO_PDE" />
+          <ScalarProperty Name="M_DEPARTAMENTO_CL_DEPARTAMENTO" ColumnName="M_DEPARTAMENTO_CL_DEPARTAMENTO" />
+          <ScalarProperty Name="M_DEPARTAMENTO_NB_DEPARTAMENTO" ColumnName="M_DEPARTAMENTO_NB_DEPARTAMENTO" />
+          <ScalarProperty Name="M_DEPARTAMENTO_XML_CAMPOS_ADICIONALES" ColumnName="M_DEPARTAMENTO_XML_CAMPOS_ADICIONALES" />
+          <ScalarProperty Name="FI_FOTOGRAFIA" ColumnName="FI_FOTOGRAFIA" />
+          <ScalarProperty Name="ID_PLAZA" ColumnName="ID_PLAZA" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

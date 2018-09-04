@@ -18520,35 +18520,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_GRUPOS_Result>("SPE_OBTIENE_GRUPOS", pIN_ID_GRUPOParameter, pIN_CL_GRUPOParameter, pIN_FG_ACTIVOParameter, pIN_ID_PLAZAParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_EMPLEADOS_Result> SPE_OBTIENE_EMPLEADOS(string pIN_XML_SELECCION, string pIN_CL_USUARIO, Nullable<bool> pIN_FG_ACTIVO, Nullable<bool> pIN_FG_FOTO, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
-        {
-            var pIN_XML_SELECCIONParameter = pIN_XML_SELECCION != null ?
-                new ObjectParameter("PIN_XML_SELECCION", pIN_XML_SELECCION) :
-                new ObjectParameter("PIN_XML_SELECCION", typeof(string));
-    
-            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
-                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
-                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
-    
-            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
-                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
-                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
-    
-            var pIN_FG_FOTOParameter = pIN_FG_FOTO.HasValue ?
-                new ObjectParameter("PIN_FG_FOTO", pIN_FG_FOTO) :
-                new ObjectParameter("PIN_FG_FOTO", typeof(bool));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
-                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
-                new ObjectParameter("PIN_ID_ROL", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EMPLEADOS_Result>("SPE_OBTIENE_EMPLEADOS", pIN_XML_SELECCIONParameter, pIN_CL_USUARIOParameter, pIN_FG_ACTIVOParameter, pIN_FG_FOTOParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
-        }
-    
         public virtual ObjectResult<SPE_OBTIENE_USUARIO_AUTENTICACION_Result> SPE_OBTIENE_USUARIO_AUTENTICACION(string pIN_CL_USUARIO, string pIN_CL_PASSWORD, string pIN_CL_AUTENTICACION)
         {
             var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
@@ -20131,6 +20102,35 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_CATALOGO_LISTA", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_ADSCRIPCIONES_Result>("SPE_OBTIENE_ADSCRIPCIONES", pIN_ID_CATALOGO_LISTAParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_EMPLEADOS_Result> SPE_OBTIENE_EMPLEADOS(string pIN_XML_SELECCION, string pIN_CL_USUARIO, Nullable<bool> pIN_FG_ACTIVO, Nullable<bool> pIN_FG_FOTO, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)
+        {
+            var pIN_XML_SELECCIONParameter = pIN_XML_SELECCION != null ?
+                new ObjectParameter("PIN_XML_SELECCION", pIN_XML_SELECCION) :
+                new ObjectParameter("PIN_XML_SELECCION", typeof(string));
+    
+            var pIN_CL_USUARIOParameter = pIN_CL_USUARIO != null ?
+                new ObjectParameter("PIN_CL_USUARIO", pIN_CL_USUARIO) :
+                new ObjectParameter("PIN_CL_USUARIO", typeof(string));
+    
+            var pIN_FG_ACTIVOParameter = pIN_FG_ACTIVO.HasValue ?
+                new ObjectParameter("PIN_FG_ACTIVO", pIN_FG_ACTIVO) :
+                new ObjectParameter("PIN_FG_ACTIVO", typeof(bool));
+    
+            var pIN_FG_FOTOParameter = pIN_FG_FOTO.HasValue ?
+                new ObjectParameter("PIN_FG_FOTO", pIN_FG_FOTO) :
+                new ObjectParameter("PIN_FG_FOTO", typeof(bool));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_ROLParameter = pIN_ID_ROL.HasValue ?
+                new ObjectParameter("PIN_ID_ROL", pIN_ID_ROL) :
+                new ObjectParameter("PIN_ID_ROL", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EMPLEADOS_Result>("SPE_OBTIENE_EMPLEADOS", pIN_XML_SELECCIONParameter, pIN_CL_USUARIOParameter, pIN_FG_ACTIVOParameter, pIN_FG_FOTOParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
         }
     }
 }
