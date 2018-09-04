@@ -427,6 +427,15 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadWindow rwComentarios;
         
         /// <summary>
+        /// winPruebasSolicitud control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadWindow winPruebasSolicitud;
+        
+        /// <summary>
         /// rnMensaje control.
         /// </summary>
         /// <remarks>

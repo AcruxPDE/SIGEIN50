@@ -46,7 +46,32 @@
                     width: document.documentElement.clientWidth - 300,
                     height: document.documentElement.clientHeight - 20
                 };
-                openChildDialog("EnvioCorreosPruebas.aspx?pIdCandidatosPruebas=" + '<%= vIdCandidatosPruebas %>', "winSeleccionCandidato", "Envío de pruebas", windowProperties);
+
+
+                var vCandidatos = [];
+                var vCandidatosJson = "";
+                var grid = $find("<%=grdCandidatos.ClientID %>");
+            var MasterTable = grid.get_masterTableView();
+            var selectedRows = MasterTable.get_selectedItems();
+            if (selectedRows.length > 0) {
+                for (i = 0; i < selectedRows.length; i++) {
+                    selectedItem = selectedRows[i];
+
+                        var vCandidato = {
+                            ID_CANDIDATO: selectedItem.getDataKeyValue("ID_CANDIDATO"),
+                        }
+
+                        vCandidatos.push(vCandidato);
+                }
+
+                vCandidatosJson = JSON.stringify(vCandidatos);
+
+                openChildDialog("EnvioCorreosPruebas.aspx?candidatos=" + vCandidatosJson, "winSeleccionCandidato", "Envío de pruebas", windowProperties);
+            }
+            else {
+                radalert("Selecciona un empleado.", 400, 150, "Error");
+            }
+            
             }
 
             function OpenAplicarPruebasInterna() {
@@ -100,7 +125,7 @@
         <telerik:RadButton runat="server" Text="Aplicación interna" ToolTip="Selecciona esta opción si deseas que la aplicación sea administrada y monitoreada por el personal de selección." ID="btnAplicacionInterna" AutoPostBack="false" OnClientClicked="OpenAplicarPruebasInterna" />
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton runat="server" Text="Aplicación externa" ToolTip="Selecciona esta opción si deseas enviar una liga de aplicación por correo electrónico." ID="btnAplicacionExterna" AutoPostBack="true" OnClick="btnAplicacionExterna_Click" />
+        <telerik:RadButton runat="server" Text="Aplicación externa" ToolTip="Selecciona esta opción si deseas enviar una liga de aplicación por correo electrónico." ID="btnAplicacionExterna" AutoPostBack="false" OnClientClicked="OpenEnviarCorreos" />
     </div>
     <div class="ctrlBasico">
         <telerik:RadButton runat="server" Text="Aplicación masiva" ToolTip="Da clic en esta opción si deseas generar a 2 o más candidatos una liga para la aplicación de pruebas psicométricas." ID="btnAplicacionMasiva" AutoPostBack="false" OnClientClicked="OpenMensaje" />

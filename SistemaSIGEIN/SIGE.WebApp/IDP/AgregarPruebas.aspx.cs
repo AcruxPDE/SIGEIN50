@@ -30,11 +30,11 @@ namespace SIGE.WebApp.IDP
             get { return (List<E_CANDIDATO>)ViewState["lstCandidatoS"]; }
         }
 
-        public Guid vIdCandidatosPruebas
-        {
-            get { return (Guid)ViewState["vs_vIdCandidatosPruebas"]; }
-            set { ViewState["vs_vIdCandidatosPruebas"] = value; }
-        }
+        //public Guid vIdCandidatosPruebas
+        //{
+        //    get { return (Guid)ViewState["vs_vIdCandidatosPruebas"]; }
+        //    set { ViewState["vs_vIdCandidatosPruebas"] = value; }
+        //}
 
         private int? vIdBateria
         {
@@ -1106,14 +1106,14 @@ namespace SIGE.WebApp.IDP
             return lstPruebas;
         }
 
-        protected void CargarDesdeContexto(List<int> pIdCandidatos)
+        protected void CargarDesdeContexto(List<E_CANDIDATO> pIdCandidatos)
         {
 
-            foreach (int item in pIdCandidatos)
+            foreach (var item in pIdCandidatos)
             {
                 E_CANDIDATO f = new E_CANDIDATO
                 {
-                    ID_CANDIDATO = item
+                    ID_CANDIDATO = item.ID_CANDIDATO
                 };
 
                 lstCandidatoS.Add(f);
@@ -1403,11 +1403,19 @@ namespace SIGE.WebApp.IDP
 
                 radSliderNivel.SelectedValue = radSliderNivel.Items[1].Value;
 
-                if (Request.Params["pIdCandidatosPruebas"] != null)
+                //if (Request.Params["pIdCandidatosPruebas"] != null)
+                //{
+                //    vIdCandidatosPruebas = Guid.Parse(Request.Params["pIdCandidatosPruebas"].ToString());
+                //    if (ContextoCandidatosBateria.oCandidatosBateria.Where(w => w.vIdGeneraBaterias == vIdCandidatosPruebas).FirstOrDefault().vListaCandidatos.Count > 0)
+                 //     CargarDesdeContexto(ContextoCandidatosBateria.oCandidatosBateria.Where(w => w.vIdGeneraBaterias == vIdCandidatosPruebas ).FirstOrDefault().vListaCandidatos);
+                //}
+
+                if (Request.Params["candidatos"] != null)
                 {
-                    vIdCandidatosPruebas = Guid.Parse(Request.Params["pIdCandidatosPruebas"].ToString());
-                    if (ContextoCandidatosBateria.oCandidatosBateria.Where(w => w.vIdGeneraBaterias == vIdCandidatosPruebas).FirstOrDefault().vListaCandidatos.Count > 0)
-                        CargarDesdeContexto(ContextoCandidatosBateria.oCandidatosBateria.Where(w => w.vIdGeneraBaterias == vIdCandidatosPruebas ).FirstOrDefault().vListaCandidatos);
+                    List<E_CANDIDATO> ListaCandidatos = new List<E_CANDIDATO>();
+                    ListaCandidatos = JsonConvert.DeserializeObject<List<E_CANDIDATO>>(Request.Params["candidatos"].ToString());
+
+                    CargarDesdeContexto(ListaCandidatos);
                 }
 
                 if (Request.Params["pIdBateria"] != null)

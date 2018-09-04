@@ -284,7 +284,7 @@
                     width: document.documentElement.clientWidth - 300,
                     height: document.documentElement.clientHeight - 20
                 };
-                openChildDialog("EnvioCorreosPruebas.aspx?pIdCandidatosPruebas=" + '<%= vIdCandidatosPruebas %>', "winSeleccionCandidato", "Envío correos", windowProperties);
+                openChildDialog("EnvioCorreosPruebas.aspx", "winSeleccionCandidato", "Envío correos", windowProperties);
             }
 
             //function OpenAplicarPruebasInterna() {
