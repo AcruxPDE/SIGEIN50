@@ -21,11 +21,11 @@ namespace SIGE.WebApp.IDP
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
 
-        public Guid? vIdPuestoVsCandidatos
-        {
-            get { return (Guid?)ViewState["vs_vIdPuestoVsCandidatos"]; }
-            set { ViewState["vs_vIdPuestoVsCandidatos"] = value; }
-        }
+        //public Guid? vIdPuestoVsCandidatos
+        //{
+        //    get { return (Guid?)ViewState["vs_vIdPuestoVsCandidatos"]; }
+        //    set { ViewState["vs_vIdPuestoVsCandidatos"] = value; }
+        //}
 
         #endregion
 
@@ -86,25 +86,25 @@ namespace SIGE.WebApp.IDP
             }
         }
 
-        protected void btnPuestoPersonas_Click(object sender, EventArgs e)
-        {
-            if (grdCandidatos.SelectedItems.Count > 0)
-            {
-                vIdPuestoVsCandidatos = Guid.NewGuid();
-                ContextoConsultasComparativas.oPuestoVsCandidatos = new List<E_PUESTO_VS_CANDIDATOS>();
+        //protected void btnPuestoPersonas_Click(object sender, EventArgs e)
+        //{
+        //    if (grdCandidatos.SelectedItems.Count > 0)
+        //    {
+        //        vIdPuestoVsCandidatos = Guid.NewGuid();
+        //        ContextoConsultasComparativas.oPuestoVsCandidatos = new List<E_PUESTO_VS_CANDIDATOS>();
 
-                ContextoConsultasComparativas.oPuestoVsCandidatos.Add(new E_PUESTO_VS_CANDIDATOS { vIdPuestoVsCandidatos = (Guid)vIdPuestoVsCandidatos });
+        //        ContextoConsultasComparativas.oPuestoVsCandidatos.Add(new E_PUESTO_VS_CANDIDATOS { vIdPuestoVsCandidatos = (Guid)vIdPuestoVsCandidatos });
 
-                foreach (GridDataItem item in grdCandidatos.SelectedItems)
-                {
-                    ContextoConsultasComparativas.oPuestoVsCandidatos.Where(t => t.vIdPuestoVsCandidatos == (Guid)vIdPuestoVsCandidatos).FirstOrDefault().vListaCandidatos.Add(int.Parse(item.GetDataKeyValue("ID_CANDIDATO").ToString()));
-                }
+        //        foreach (GridDataItem item in grdCandidatos.SelectedItems)
+        //        {
+        //            ContextoConsultasComparativas.oPuestoVsCandidatos.Where(t => t.vIdPuestoVsCandidatos == (Guid)vIdPuestoVsCandidatos).FirstOrDefault().vListaCandidatos.Add(int.Parse(item.GetDataKeyValue("ID_CANDIDATO").ToString()));
+        //        }
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "", "OpenConsultaPuestoPersonas();", true);
-            }
-            else
-                UtilMensajes.MensajeResultadoDB(rwMensaje, "Selecciona un candidato.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
-        }
+        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "", "OpenConsultaPuestoPersonas();", true);
+        //    }
+        //    else
+        //        UtilMensajes.MensajeResultadoDB(rwMensaje, "Selecciona un candidato.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
+        //}
 
     }
 }

@@ -508,7 +508,7 @@ namespace SIGE.WebApp.IDP
                 Details = g.GroupBy(t => t.NB_PUESTO).Select(s => new
                 {
                     Puesto = s.Key,
-                    Avg = s.Average(c => c.PR_TRUNCADO)
+                    Avg = s.Average(c => c.PR_CANDIDATO_PUESTO)
                 }).ToList()
             });
 

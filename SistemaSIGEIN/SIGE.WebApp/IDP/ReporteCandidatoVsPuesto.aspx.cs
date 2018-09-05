@@ -162,17 +162,17 @@ namespace SIGE.WebApp.IDP
                 CL_SOLICITUD = s.CL_SOLICITUD
             }).OrderBy(s => s.CL_COMPETENCIA).ToList();
 
-            if (vCandidatoPuestos.Count > 0)
-            {
-                vs_NB_CANDIDATO = vCandidatoPuestos.FirstOrDefault().NB_CANDIDATO;
-            }
+            //if (vCandidatoPuestos.Count > 0)
+            //{
+            //    vs_NB_CANDIDATO = vCandidatoPuestos.FirstOrDefault().NB_CANDIDATO;
+            //}
 
-            dvPuestos.Controls.Add(GenerarTablaPuestos(vCandidatoPuestos));
+           // dvPuestos.Controls.Add(GenerarTablaPuestos(vCandidatoPuestos));
 
-            var vPuestoCompetencia = vCandidatoPuestos.Select(s => new { s.NO_VALOR_CANDIDATO, s.NB_CANDIDATO, s.NB_COMPETENCIA, s.CL_SOLICITUD }).Distinct().ToList();
+           // var vPuestoCompetencia = vCandidatoPuestos.Select(s => new { s.NO_VALOR_CANDIDATO, s.NB_CANDIDATO, s.NB_COMPETENCIA, s.CL_SOLICITUD }).Distinct().ToList();
             //ColumnSeries vCandidato = new ColumnSeries();
-            if (vPuestoCompetencia.Count > 0)
-            lbCandidatosCom.InnerText = "(" + vPuestoCompetencia.FirstOrDefault().CL_SOLICITUD + ") " + vPuestoCompetencia.FirstOrDefault().NB_CANDIDATO;
+          //  if (vPuestoCompetencia.Count > 0)
+           // lbCandidatosCom.InnerText = "(" + vPuestoCompetencia.FirstOrDefault().CL_SOLICITUD + ") " + vPuestoCompetencia.FirstOrDefault().NB_CANDIDATO;
 
            // GraficaCandidatoPuestos(vCandidatoPuestos);
 

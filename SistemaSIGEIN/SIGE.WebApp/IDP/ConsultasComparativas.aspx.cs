@@ -81,23 +81,31 @@ namespace SIGE.WebApp.IDP
                     {
                         rpvPuestoPersonas.Selected = true;
 
-                        if (Request.Params["pIdPuestoVsCandidatos"].ToString() != null)
-                            vIdPuestoVsCandidatos = Guid.Parse(Request.Params["pIdPuestoVsCandidatos"].ToString());
+                        //if (Request.Params["pIdPuestoVsCandidatos"].ToString() != null)
+                        //    vIdPuestoVsCandidatos = Guid.Parse(Request.Params["pIdPuestoVsCandidatos"].ToString());
 
-                        vIdCandidatoVsPuestos = Guid.NewGuid();
+                        //vIdCandidatoVsPuestos = Guid.NewGuid();
+                        List<E_CANDIDATO> ListaCandidatos = new List<E_CANDIDATO>();
 
-             CandidatoNegocio nCandidato = new CandidatoNegocio();
-             var vCandidatos = nCandidato.ObtieneCandidato();
-             var vCandidatosSeleccionados = vCandidatos.Where(w => ContextoConsultasComparativas.oPuestoVsCandidatos.Where(t => t.vIdPuestoVsCandidatos == vIdPuestoVsCandidatos).FirstOrDefault().vListaCandidatos.Contains(w.ID_CANDIDATO)).ToList();
+                        if (Request.Params["candidatos"] != null)
+                        {
+                            ListaCandidatos = JsonConvert.DeserializeObject<List<E_CANDIDATO>>(Request.Params["candidatos"].ToString());
+                        }
 
-             foreach (var item in vCandidatosSeleccionados)
-             {
-                 if (vlstCandidato.Where(w => w.ID_CANDIDATO == item.ID_CANDIDATO).Count() == 0)
-                 {
-                     vlstCandidato.Add(new E_CANDIDATO { NB_CANDIDATO = item.NB_CANDIDATO + " " + item.NB_APELLIDO_PATERNO + " " + item.NB_APELLIDO_MATERNO, CL_SOLICITUD = item.CL_SOLICITUD, CL_CORREO_ELECTRONICO = item.CL_CORREO_ELECTRONICO, ID_CANDIDATO = item.ID_CANDIDATO });
-                 }
-             }
-             ScriptManager.RegisterStartupScript(this, this.GetType(), "", "setValueVariable2('" + vCandidatosSeleccionados.FirstOrDefault().ID_CANDIDATO.ToString() + "');", true);
+                         CandidatoNegocio nCandidato = new CandidatoNegocio();
+                         var vCandidatos = nCandidato.ObtieneCandidato();
+                        // var vCandidatosSeleccionados = vCandidatos.Where(w => ContextoConsultasComparativas.oPuestoVsCandidatos.Where(t => t.vIdPuestoVsCandidatos == vIdPuestoVsCandidatos).FirstOrDefault().vListaCandidatos.Contains(w.ID_CANDIDATO)).ToList();
+                         var vCandidatosSeleccionados = vCandidatos.Where(w => ListaCandidatos.Select(s=>s.ID_CANDIDATO).Contains(w.ID_CANDIDATO)).ToList();
+
+
+                         foreach (var item in vCandidatosSeleccionados)
+                         {
+                             if (vlstCandidato.Where(w => w.ID_CANDIDATO == item.ID_CANDIDATO).Count() == 0)
+                             {
+                                 vlstCandidato.Add(new E_CANDIDATO { NB_CANDIDATO = item.NB_CANDIDATO + " " + item.NB_APELLIDO_PATERNO + " " + item.NB_APELLIDO_MATERNO, CL_SOLICITUD = item.CL_SOLICITUD, CL_CORREO_ELECTRONICO = item.CL_CORREO_ELECTRONICO, ID_CANDIDATO = item.ID_CANDIDATO });
+                             }
+                         }
+                         ScriptManager.RegisterStartupScript(this, this.GetType(), "", "setValueVariable2('" + vCandidatosSeleccionados.FirstOrDefault().ID_CANDIDATO.ToString() + "');", true);
                     }
                     else if (Request.Params["pClTipoConsulta"] == "PVPS")
                     {
@@ -175,7 +183,7 @@ namespace SIGE.WebApp.IDP
                     if (vlstCandidato.Where(w => w.ID_CANDIDATO == item.ID_CANDIDATO).Count() == 0)
                         {
                             vlstCandidato.Add(new E_CANDIDATO { NB_CANDIDATO = item.NB_CANDIDATO +" " + item.NB_APELLIDO_PATERNO + " "+ item.NB_APELLIDO_MATERNO, CL_SOLICITUD = item.CL_SOLICITUD, CL_CORREO_ELECTRONICO = item.CL_CORREO_ELECTRONICO, ID_CANDIDATO = item.ID_CANDIDATO });
-                            ContextoConsultasComparativas.oPuestoVsCandidatos.Where(t => t.vIdPuestoVsCandidatos == vIdPuestoVsCandidatos).FirstOrDefault().vListaCandidatos.Add(item.ID_CANDIDATO);
+                          //  ContextoConsultasComparativas.oPuestoVsCandidatos.Where(t => t.vIdPuestoVsCandidatos == vIdPuestoVsCandidatos).FirstOrDefault().vListaCandidatos.Add(item.ID_CANDIDATO);
                         }
                }
             rgdCandidatos.Rebind();
@@ -236,7 +244,7 @@ namespace SIGE.WebApp.IDP
         }
 
         protected void EliminarCandidato( int pIdCandidato) {
-            ContextoConsultasComparativas.oPuestoVsCandidatos.Where(w => w.vIdPuestoVsCandidatos == vIdPuestoVsCandidatos).FirstOrDefault().vListaCandidatos.Remove(pIdCandidato);
+            //ContextoConsultasComparativas.oPuestoVsCandidatos.Where(w => w.vIdPuestoVsCandidatos == vIdPuestoVsCandidatos).FirstOrDefault().vListaCandidatos.Remove(pIdCandidato);
             E_CANDIDATO vCandidato = vlstCandidato.Where(w => w.ID_CANDIDATO == pIdCandidato).FirstOrDefault();
 
             if (vCandidato != null)
