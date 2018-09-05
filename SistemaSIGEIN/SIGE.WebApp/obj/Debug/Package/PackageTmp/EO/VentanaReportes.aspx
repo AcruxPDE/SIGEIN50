@@ -250,6 +250,7 @@
             switch (vtabStrip) {
 
                 case 0:
+
                     divContexto.style.display = 'block';
                     divIndice.style.display = 'none';
                     divDistribucion.style.display = 'none';

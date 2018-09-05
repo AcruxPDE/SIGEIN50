@@ -2,16 +2,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+   <label class="labelTitulo">Perfil de empleados</label>
     <div style="height: calc(100% - 60px);">
-        <div style="clear: both; height: 10px;"></div>
-        <label class="labelTitulo">Perfil de empleados</label>
         <telerik:RadGrid
             ID="grdPerfilEmpleados"
             runat="server"
             AutoGenerateColumns="false"
             ShowGroupPanel="True"
             AllowPaging="true"
-            Height="99%"
+            Height="100%"
+            Width="100%"
             AllowSorting="true"
             HeaderStyle-Font-Bold="true"
             AllowFilteringByColumn="true"

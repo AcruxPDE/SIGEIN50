@@ -139,7 +139,7 @@ namespace SIGE.WebApp.Administracion
 
 
             vClEstadoEmpleado = vEmpleado.M_EMPLEADO_CL_ESTADO_EMPLEADO;
-            if (vClEstadoEmpleado != "ALTA")
+            if (vClEstadoEmpleado != null && vClEstadoEmpleado != "ALTA")
             {
                 btnGuardar.Enabled = false;
             }
@@ -388,6 +388,14 @@ namespace SIGE.WebApp.Administracion
                // int? vIdPuestoNomina = null;
                 if(lstPuestoNomina.SelectedValue != "")
                 vEmpleadoNominaDo.ID_PUESTO_NOMINA = int.Parse(lstPuestoNomina.SelectedValue);
+
+                if (vEmpleadoNominaDo.FG_NOMINA == true && vEmpleadoNominaDo.ID_PUESTO_NOMINA == null)
+                {
+                    UtilMensajes.MensajeResultadoDB(rwMensaje, "Ingrese el puesto del empleado.", E_TIPO_RESPUESTA_DB.WARNING, 400, 150, pCallBackFunction: "");
+                    ClientScript.RegisterStartupScript(GetType(), "script", "MostrarDiv();", true);
+                    return;
+
+                }
 
                 vEmpleadoNominaDo.CL_EMPLEADO_NOMINA = txtClEmpleadoNomina.Text;
 
