@@ -3937,6 +3937,7 @@
   <Function Name="SPE_OBTIENE_PLAN_VIDA_CARRERA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_PUESTO" Type="int" Mode="In" />
     <Parameter Name="PIN_ID_EMPRESA" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_PLAZA" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_PLANEACION_MATRIZ_CUESTIONARIOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="FYD">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />

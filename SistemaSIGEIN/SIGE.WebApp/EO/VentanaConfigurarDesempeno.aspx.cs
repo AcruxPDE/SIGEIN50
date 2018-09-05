@@ -236,8 +236,11 @@ namespace SIGE.WebApp.EO
                 rgBono.Rebind();
                // grdContrasenaEvaluadores.Rebind();
 
-              //  if(vFgCordinador != false)
+              if(vFgCordinador)
                 GenerarContrasena();
+              else
+                  grdContrasenaEvaluadores.Rebind();
+
             }
             else
             {

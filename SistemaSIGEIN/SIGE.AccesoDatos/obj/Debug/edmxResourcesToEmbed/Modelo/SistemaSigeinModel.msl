@@ -1040,23 +1040,6 @@
     <FunctionImportMapping FunctionImportName="SPE_ACTUALIZA_MERCADO_TABULADOR_NIVEL" FunctionName="SistemaSigeinModel.Store.SPE_ACTUALIZA_MERCADO_TABULADOR_NIVEL" />
     <FunctionImportMapping FunctionImportName="SPE_ACTUALIZA_TABULADOR_MAESTRO" FunctionName="SistemaSigeinModel.Store.SPE_ACTUALIZA_TABULADOR_MAESTRO" />
     <FunctionImportMapping FunctionImportName="SPE_INSERTA_ACTUALIZA_EVALUADOS" FunctionName="SistemaSigeinModel.Store.SPE_INSERTA_ACTUALIZA_EVALUADOS" />
-    <FunctionImportMapping FunctionImportName="SPE_OBTIENE_PLAN_VIDA_CARRERA" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_PLAN_VIDA_CARRERA">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_PLAN_VIDA_CARRERA_Result">
-          <ScalarProperty Name="ID_PUESTO" ColumnName="ID_PUESTO" />
-          <ScalarProperty Name="FG_ACTIVO" ColumnName="FG_ACTIVO" />
-          <ScalarProperty Name="CL_ACTIVO" ColumnName="CL_ACTIVO" />
-          <ScalarProperty Name="FE_INACTIVO" ColumnName="FE_INACTIVO" />
-          <ScalarProperty Name="CL_PUESTO" ColumnName="CL_PUESTO" />
-          <ScalarProperty Name="NB_PUESTO" ColumnName="NB_PUESTO" />
-          <ScalarProperty Name="CL_TIPO_PUESTO" ColumnName="CL_TIPO_PUESTO" />
-          <ScalarProperty Name="CL_POSICION_ORGANIGRAMA" ColumnName="CL_POSICION_ORGANIGRAMA" />
-          <ScalarProperty Name="ID_PUESTO_JEFE" ColumnName="ID_PUESTO_JEFE" />
-          <ScalarProperty Name="NO_NIVEL" ColumnName="NO_NIVEL" />
-          <ScalarProperty Name="CL_TIPO_GENEALOGIA" ColumnName="CL_TIPO_GENEALOGIA" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="SPE_ELIMINA_FYD_EVALUADOS" FunctionName="SistemaSigeinModel.Store.SPE_ELIMINA_FYD_EVALUADOS" />
     <FunctionImportMapping FunctionImportName="SPE_OBTIENE_C_DOCUMENTO_AUTORIZACION" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_C_DOCUMENTO_AUTORIZACION">
       <ResultMapping>
@@ -7824,6 +7807,23 @@
           <ScalarProperty Name="M_DEPARTAMENTO_XML_CAMPOS_ADICIONALES" ColumnName="M_DEPARTAMENTO_XML_CAMPOS_ADICIONALES" />
           <ScalarProperty Name="FI_FOTOGRAFIA" ColumnName="FI_FOTOGRAFIA" />
           <ScalarProperty Name="ID_PLAZA" ColumnName="ID_PLAZA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPE_OBTIENE_PLAN_VIDA_CARRERA" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_PLAN_VIDA_CARRERA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_PLAN_VIDA_CARRERA_Result">
+          <ScalarProperty Name="ID_PUESTO" ColumnName="ID_PUESTO" />
+          <ScalarProperty Name="FG_ACTIVO" ColumnName="FG_ACTIVO" />
+          <ScalarProperty Name="CL_ACTIVO" ColumnName="CL_ACTIVO" />
+          <ScalarProperty Name="FE_INACTIVO" ColumnName="FE_INACTIVO" />
+          <ScalarProperty Name="CL_PUESTO" ColumnName="CL_PUESTO" />
+          <ScalarProperty Name="NB_PUESTO" ColumnName="NB_PUESTO" />
+          <ScalarProperty Name="CL_TIPO_PUESTO" ColumnName="CL_TIPO_PUESTO" />
+          <ScalarProperty Name="CL_POSICION_ORGANIGRAMA" ColumnName="CL_POSICION_ORGANIGRAMA" />
+          <ScalarProperty Name="ID_PUESTO_JEFE" ColumnName="ID_PUESTO_JEFE" />
+          <ScalarProperty Name="NO_NIVEL" ColumnName="NO_NIVEL" />
+          <ScalarProperty Name="CL_TIPO_GENEALOGIA" ColumnName="CL_TIPO_GENEALOGIA" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

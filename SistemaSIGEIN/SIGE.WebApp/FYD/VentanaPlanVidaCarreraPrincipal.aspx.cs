@@ -28,6 +28,12 @@ namespace SIGE.WebApp.FYD
             set { ViewState["vs_pvc_id_empleado"] = value; }
         }
 
+        public int vIdPlaza
+        {
+            get { return (int)ViewState["vs_vIdPlaza"]; }
+            set { ViewState["vs_vIdPlaza"] = value; }
+        }
+
         private int vIdPuesto
         {
             get { return (int)ViewState["vs_pvc_id_puesto"]; }
@@ -47,7 +53,7 @@ namespace SIGE.WebApp.FYD
 
             PlanVidaCarreraNegocio neg = new PlanVidaCarreraNegocio();
 
-            rutas = neg.obtieneDatosPlanVidaCarrera(vIdPuesto, null);
+            rutas = neg.obtieneDatosPlanVidaCarrera(vIdPuesto, null, vIdPlaza);
 
             rutaNatural = rutas.Where(n => n.CL_TIPO_GENEALOGIA == "NATURAL").ToList();
             generarOrganigrama(rocNatural, rutaNatural, true, "NATURAL");
@@ -184,6 +190,11 @@ namespace SIGE.WebApp.FYD
             if (!Page.IsPostBack)
             {
                 vIdEmpleado = 0;
+
+                if (Request.Params["idPlaza"] != null)
+                {
+                    vIdPlaza = int.Parse(Request.Params["idPlaza"].ToString());
+                }
 
                 if (Request.Params["idEmpleado"] != null)
                 {

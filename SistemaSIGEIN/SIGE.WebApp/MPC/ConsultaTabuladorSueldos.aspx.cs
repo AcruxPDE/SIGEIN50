@@ -1122,11 +1122,13 @@ namespace SIGE.WebApp.MPC
 
         protected void rcbMercadoTabuladorSueldos_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
+            GenerarHeaderGroup();
             RecalcularConsulta();
         }
 
         protected void rntComienzaNivel_TextChanged(object sender, EventArgs e)
         {
+            GenerarHeaderGroup();
             RecalcularConsulta();
         }
     }

@@ -4,6 +4,7 @@
 
     <script type="text/javascript">
         var idEmpleado = "";
+        var idPlaza = "";
         var arr = [1, 2, 3];
 
         function obtenerIdFila() {
@@ -13,6 +14,7 @@
             if (selectedRows.length != 0) {
                 var row = selectedRows[0];
                 idEmpleado = row.getDataKeyValue("M_EMPLEADO_ID_EMPLEADO");
+                idPlaza = row.getDataKeyValue("ID_PLAZA");
             }
         }
 
@@ -33,7 +35,7 @@
         function abrirPlan() {
             obtenerIdFila();
             if ((idEmpleado != "")) {
-                OpenSelectionWindow("VentanaPlanVidaCarreraPrincipal.aspx?idEmpleado=" + idEmpleado, 'rwReporte', "Plan de vida y carrera");
+                OpenSelectionWindow("VentanaPlanVidaCarreraPrincipal.aspx?idEmpleado=" + idEmpleado + "&idPlaza=" + idPlaza, 'rwReporte', "Plan de vida y carrera");
                // win.focus();
             }
             else { radalert("No has seleccionado un empleado.", 400, 150, ""); }
@@ -99,7 +101,7 @@
                     </ClientSettings>
                     <PagerStyle AlwaysVisible="true" />
                     <GroupingSettings CaseSensitive="false" />
-                    <MasterTableView ClientDataKeyNames="M_EMPLEADO_ID_EMPLEADO" EnableColumnsViewState="false" DataKeyNames="M_EMPLEADO_ID_EMPLEADO, ID_PLAZA" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
+                    <MasterTableView ClientDataKeyNames="M_EMPLEADO_ID_EMPLEADO, ID_PLAZA" EnableColumnsViewState="false" DataKeyNames="M_EMPLEADO_ID_EMPLEADO, ID_PLAZA" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
                         <Columns>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="60" HeaderText="No. de empleado" DataField="M_EMPLEADO_CL_EMPLEADO" UniqueName="M_EMPLEADO_CL_EMPLEADO"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="200" FilterControlWidth="130" HeaderText="Nombre completo" DataField="M_EMPLEADO_NB_EMPLEADO_COMPLETO" UniqueName="M_EMPLEADO_NB_EMPLEADO_COMPLETO"></telerik:GridBoundColumn>

@@ -6597,19 +6597,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_EVALUADOS", xML_RESULTADO, pIN_ID_PERIODOParameter, xML_ID_SELECCIONADOSParameter, pIN_CL_USUARIOParameter, pIN_NB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter);
         }
     
-        public virtual ObjectResult<SPE_OBTIENE_PLAN_VIDA_CARRERA_Result> SPE_OBTIENE_PLAN_VIDA_CARRERA(Nullable<int> pIN_ID_PUESTO, Nullable<int> pIN_ID_EMPRESA)
-        {
-            var pIN_ID_PUESTOParameter = pIN_ID_PUESTO.HasValue ?
-                new ObjectParameter("PIN_ID_PUESTO", pIN_ID_PUESTO) :
-                new ObjectParameter("PIN_ID_PUESTO", typeof(int));
-    
-            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
-                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
-                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_PLAN_VIDA_CARRERA_Result>("SPE_OBTIENE_PLAN_VIDA_CARRERA", pIN_ID_PUESTOParameter, pIN_ID_EMPRESAParameter);
-        }
-    
         public virtual int SPE_ELIMINA_FYD_EVALUADOS(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO, string xML_ID_SELECCIONADOS, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
         {
             var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
@@ -20131,6 +20118,23 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_ID_ROL", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EMPLEADOS_Result>("SPE_OBTIENE_EMPLEADOS", pIN_XML_SELECCIONParameter, pIN_CL_USUARIOParameter, pIN_FG_ACTIVOParameter, pIN_FG_FOTOParameter, pIN_ID_EMPRESAParameter, pIN_ID_ROLParameter);
+        }
+    
+        public virtual ObjectResult<SPE_OBTIENE_PLAN_VIDA_CARRERA_Result> SPE_OBTIENE_PLAN_VIDA_CARRERA(Nullable<int> pIN_ID_PUESTO, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_PLAZA)
+        {
+            var pIN_ID_PUESTOParameter = pIN_ID_PUESTO.HasValue ?
+                new ObjectParameter("PIN_ID_PUESTO", pIN_ID_PUESTO) :
+                new ObjectParameter("PIN_ID_PUESTO", typeof(int));
+    
+            var pIN_ID_EMPRESAParameter = pIN_ID_EMPRESA.HasValue ?
+                new ObjectParameter("PIN_ID_EMPRESA", pIN_ID_EMPRESA) :
+                new ObjectParameter("PIN_ID_EMPRESA", typeof(int));
+    
+            var pIN_ID_PLAZAParameter = pIN_ID_PLAZA.HasValue ?
+                new ObjectParameter("PIN_ID_PLAZA", pIN_ID_PLAZA) :
+                new ObjectParameter("PIN_ID_PLAZA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_PLAN_VIDA_CARRERA_Result>("SPE_OBTIENE_PLAN_VIDA_CARRERA", pIN_ID_PUESTOParameter, pIN_ID_EMPRESAParameter, pIN_ID_PLAZAParameter);
         }
     }
 }
