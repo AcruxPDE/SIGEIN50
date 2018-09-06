@@ -739,7 +739,7 @@ namespace SIGE.WebApp.IDP {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadNumericTextBox txtEsTiempoResidencia;
+        protected global::Telerik.Web.UI.RadTextBox txtEsTiempoResidencia;
         
         /// <summary>
         /// Label51 control.
@@ -2117,24 +2117,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadNumericTextBox txtEMedad;
-        
-        /// <summary>
-        /// Label15 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label15;
-        
-        /// <summary>
-        /// txtEMtalla control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtEMtalla;
         
         /// <summary>
         /// Label16 control.

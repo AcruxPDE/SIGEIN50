@@ -33,6 +33,10 @@
             vMasterTable.rebind();
         }
 
+
+        function ConfirmEliminar(sender, args) {
+
+        }
         
 
         function OpenProcesoSeleccionVerWindow() {
@@ -224,14 +228,17 @@
          <label id="lbMensaje" runat="server" visible="false">*Este proceso ya ha sido terminado. Puedes crear uno nuevo seleccionando "Iniciar nuevo".</label>
                     </div>
     <div style="clear: both; height: 10px;"></div>
-        <div class="divControlDerecha" style="padding-right:10px;"> 
-        <telerik:RadButton ID="btnIniciarProceso" AutoPostBack="true" runat="server" Text="Iniciar nuevo" OnClientClicking="ConfirmarNuevoProceso" OnClick="btnIniciarProceso_Click"></telerik:RadButton>
-        </div>
           <div class="divControlDerecha" style="padding-right:10px;">
         <telerik:RadButton ID="btnContinuarProceso" AutoPostBack="false" runat="server" Text="Continuar" OnClientClicked="OpenProcesoSeleccionContinuarWindow"></telerik:RadButton>
     </div>
+            <div class="divControlDerecha" style="padding-right:10px;"> 
+        <telerik:RadButton ID="btnIniciarProceso" AutoPostBack="true" runat="server" Text="Iniciar nuevo" OnClientClicking="ConfirmarNuevoProceso" OnClick="btnIniciarProceso_Click"></telerik:RadButton>
+        </div>
+            <div class="divControlDerecha" style="padding-right:10px;"> 
+        <telerik:RadButton ID="btnEliminar" AutoPostBack="true" runat="server" Text="Eliminar" OnClientClicking="ConfirmEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
+        </div>
          <div class="divControlDerecha">
-        <telerik:RadButton ID="btnVerProceso" runat="server" Visible="false" Text="Ver" OnClientClicked="OpenProcesoSeleccionVerWindow"  AutoPostBack="false"></telerik:RadButton>
+        <telerik:RadButton ID="btnVerProceso" runat="server" Visible="false" Text="Consultar" OnClientClicked="OpenProcesoSeleccionVerWindow"  AutoPostBack="false"></telerik:RadButton>
     </div>
         
     <telerik:RadWindowManager ID="rnMensaje" runat="server"></telerik:RadWindowManager>

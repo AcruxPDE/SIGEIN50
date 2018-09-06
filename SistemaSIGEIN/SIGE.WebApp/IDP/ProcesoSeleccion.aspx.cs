@@ -404,7 +404,7 @@ namespace SIGE.WebApp.IDP
         private void AsignarDatosExamenMedico()
         {
             txtEMedad.Text = vResultadoMedico.NO_EDAD.ToString() == "0" ? "" : vResultadoMedico.NO_EDAD.ToString();
-            txtEMtalla.Text = vResultadoMedico.NO_TALLA.ToString();
+           // txtEMtalla.Text = vResultadoMedico.NO_TALLA.ToString();
             txtEMPeso.Text = vResultadoMedico.NO_PESO.ToString();
             txtEMMasaCorporal.Text = vResultadoMedico.NO_INDICE_MASA_CORPORAL.ToString();
             txtEMPulso.Text = vResultadoMedico.NO_PULSO.ToString();
@@ -489,7 +489,7 @@ namespace SIGE.WebApp.IDP
                 }
 
                 vResultadoMedico.NO_EDAD = txtEMedad.Text != "" ? int.Parse(txtEMedad.Text) : 0;
-                vResultadoMedico.NO_TALLA = txtEMtalla.Text;
+              //  vResultadoMedico.NO_TALLA = txtEMtalla.Text;
                 vResultadoMedico.NO_PESO = txtEMPeso.Text != "" ? decimal.Parse(txtEMPeso.Text) : 0;
                 vResultadoMedico.NO_INDICE_MASA_CORPORAL = txtEMMasaCorporal.Text != "" ? decimal.Parse(txtEMMasaCorporal.Text) : 0;
                 vResultadoMedico.NO_PULSO = txtEMPulso.Text != "" ? int.Parse(txtEMPulso.Text) : 0;
@@ -727,7 +727,7 @@ namespace SIGE.WebApp.IDP
             txtESNoExt.Text = vEstudioSocioEconomico.NO_EXTERIOR;
             txtESNoInt.Text = vEstudioSocioEconomico.NO_INTERIOR;
             txtESCodigoPostal.Text = vEstudioSocioEconomico.CL_CODIGO_POSTAL;
-            txtEsTiempoResidencia.Text = vEstudioSocioEconomico.NO_TIEMPO_RESIDENCIA.HasValue ? vEstudioSocioEconomico.NO_TIEMPO_RESIDENCIA.Value.ToString() : "";
+            txtEsTiempoResidencia.Text = vEstudioSocioEconomico.NO_TIEMPO_RESIDENCIA;
             txtESTipoSanguineo.Text = vEstudioSocioEconomico.CL_TIPO_SANGUINEO;
             txtESIdentificacion.Text = vEstudioSocioEconomico.DS_IDENTIFICACION_OFICIAL;
             txtESIdentificacionFolio.Text = vEstudioSocioEconomico.CL_IDENTIFICACION_OFICIAL;
@@ -832,7 +832,7 @@ namespace SIGE.WebApp.IDP
                             new XAttribute("CL_TIPO", "MOVIL"))
                       );
             if (!string.IsNullOrEmpty(txtEsTiempoResidencia.Text))
-                vEstudioSocioEconomico.NO_TIEMPO_RESIDENCIA = byte.Parse(txtEsTiempoResidencia.Text);
+                vEstudioSocioEconomico.NO_TIEMPO_RESIDENCIA = txtEsTiempoResidencia.Text;
 
 
             vEstudioSocioEconomico.CL_SERVICIOS_MEDICOS = cmbESServiciosMedicos.SelectedValue;

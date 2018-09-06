@@ -167,7 +167,6 @@
                                         <br />
                                     Se recomienda que esta valuación se realice a través de un comité de expertos y de un moderador que actúe como un juez imparcial en caso de algún debate.
                                         <br />
-                                    <br />
                                     Recuerda que los valores que otorgues en este proceso serán los que definan los niveles de sueldo en tu organización.
                                 </p>
                             </div>

@@ -4419,7 +4419,7 @@
     <Parameter Name="PIN_NO_EXTERIOR" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NO_INTERIOR" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_CL_CODIGO_POSTAL" Type="nvarchar" Mode="In" />
-    <Parameter Name="PIN_NO_TIEMPO_RESIDENCIA" Type="tinyint" Mode="In" />
+    <Parameter Name="PIN_NO_TIEMPO_RESIDENCIA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_CL_TIPO_SANGUINEO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_XML_TELEFONOS" Type="xml" Mode="In" />
     <Parameter Name="PIN_CL_IDENTIFICACION_OFICIAL" Type="nvarchar" Mode="In" />
