@@ -415,7 +415,9 @@
                     <telerik:AjaxUpdatedControl ControlID="grdDisenoMetas" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="grdContrasenaEvaluadores" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="rgBono" UpdatePanelHeight="100%" />
-                    <telerik:AjaxUpdatedControl ControlID="btnEnvioSolicitudes" UpdatePanelHeight="100%" />                  
+                    <telerik:AjaxUpdatedControl ControlID="btnEnvioSolicitudes" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline" />    
+                    <telerik:AjaxUpdatedControl ControlID="btnReasignarContrasena" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline"/>    
+                    <telerik:AjaxUpdatedControl ControlID="lbMensaje" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline" />                  
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnSeleccionPorPersona">

@@ -82,10 +82,10 @@
             OpenWindow(GetSelectionCandidatos())
         }
 
-        function GetVentanaPuestoVsCandidatos() {
+        function GetVentanaPuestoVsCandidatos(pListaCandidatos) {
             var wnd = GetWindowPropertiesConsultas();
             wnd.vTitulo = "Consulta Puesto vs. N Personas";
-            wnd.vURL = "VentanaPuestoVsCandidatos.aspx?vIdPuestoVsCandidatos=" + '<%= vIdPuestoVsCandidatos%>' + "&IdPuesto=" + vIdPuesto;
+            wnd.vURL = "VentanaPuestoVsCandidatos.aspx?candidatos=" + pListaCandidatos + "&IdPuesto=" + vIdPuesto;
             wnd.vRadWindowId = "rwConsulta";
             return wnd;
         }
@@ -99,7 +99,30 @@
                 radalert("Selecciona por lo menos un candidato.", 400, 150);
                 return;
             }
-            OpenWindow(GetVentanaPuestoVsCandidatos());
+
+                        
+            var vCandidatos = [];
+            var vCandidatosJson = "";
+            var grid = $find("<%=rgdCandidatos.ClientID %>");
+            var MasterTable = grid.get_masterTableView();
+            var selectedRows = MasterTable.get_dataItems();
+            if (selectedRows.length > 0) {
+                for (i = 0; i < selectedRows.length; i++) {
+                    selectedItem = selectedRows[i];
+                    var vCandidato = {
+                        ID_CANDIDATO: selectedItem.getDataKeyValue("ID_CANDIDATO"),
+                    }
+
+                    vCandidatos.push(vCandidato);
+                }
+
+                vCandidatosJson = JSON.stringify(vCandidatos);
+
+
+
+                OpenWindow(GetVentanaPuestoVsCandidatos(vCandidatosJson));
+            }
+        else { radalert("Selecciona un candidato.", 400, 150, ""); }
         }
 
         function GetVentanaCandidatoVsPuestos() {
@@ -176,22 +199,26 @@
 
         function DeletePuesto() {
             var vListBox = $find("<%=lstPuesto.ClientID %>");
-             Delete(vListBox);
+            Delete(vListBox);
+            vIdPuesto = 0;
          }
 
          function DeletePuestoGlobal() {
              var vListBox = $find("<%=rlbPuestoGlobal.ClientID %>");
              Delete(vListBox);
+             vIdPuestoGlobal = 0;
          }
 
          function DeleteCandidatoGlobal() {
              var vListBox = $find("<%=rlbCandidatoGlobal.ClientID %>");
-            Delete(vListBox);
+             Delete(vListBox);
+             vIdCandidatoGlobal = 0;
          }
 
         function DeleteCandidato() {
             var vListBox = $find("<%=lstCandidato.ClientID %>");
-             Delete(vListBox);
+            Delete(vListBox);
+            vIdCandidato = 0;
          }
 
         function Delete(vListBox) {

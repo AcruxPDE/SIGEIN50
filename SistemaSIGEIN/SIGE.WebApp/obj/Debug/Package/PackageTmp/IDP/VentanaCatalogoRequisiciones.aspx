@@ -452,7 +452,7 @@
 
             if (vIdPuesto != 0) {
 
-                OpenSelectionWindowVistaPrevia("/Administracion/VentanaDescriptivoPuesto.aspx?PuestoId=" + vIdPuesto, "winPerfil", "Revisar descriptivo de puesto")
+                OpenSelectionWindowVistaPrevia("../Administracion/VentanaDescriptivoPuesto.aspx?PuestoId=" + vIdPuesto, "winPerfil", "Revisar descriptivo de puesto")
             }
             else {
                 radalert("Selecciona un puesto para revisar el descriptivo", 450, 150, "Revisar descriptivo");

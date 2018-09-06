@@ -118,16 +118,16 @@
                 <telerik:RadTextBox ID="txtTipoProgCapacitacion" runat="server" Width="200px" MaxLength="1000" Enabled="false"></telerik:RadTextBox>
             </div>--%>
             <div class="divControlDerecha">
-             <telerik:RadButton ID="rbCero" runat="server" ToggleType="Radio"
-                GroupName="grbConfiguracion" AutoPostBack="false" Text="A partir de 0">
+                            <telerik:RadButton ID="rbDnc" runat="server" ToggleType="Radio"
+                GroupName="grbConfiguracion" AutoPostBack="false" Text="A partir de DNC" OnClientCheckedChanged="enableDesdeDNC">
                 <ToggleStates>
                     <telerik:RadButtonToggleState PrimaryIconCssClass="rbToggleRadioChecked"></telerik:RadButtonToggleState>
                     <telerik:RadButtonToggleState CssClass="unchecked" PrimaryIconCssClass="rbToggleRadio"></telerik:RadButtonToggleState>
                 </ToggleStates>
             </telerik:RadButton>
             <div style="clear:both; height:10px;"></div>
-            <telerik:RadButton ID="rbDnc" runat="server" ToggleType="Radio"
-                GroupName="grbConfiguracion" AutoPostBack="false" Text="A partir de DNC" OnClientCheckedChanged="enableDesdeDNC">
+             <telerik:RadButton ID="rbCero" runat="server" ToggleType="Radio"
+                GroupName="grbConfiguracion" AutoPostBack="false" Text="A partir de 0">
                 <ToggleStates>
                     <telerik:RadButtonToggleState PrimaryIconCssClass="rbToggleRadioChecked"></telerik:RadButtonToggleState>
                     <telerik:RadButtonToggleState CssClass="unchecked" PrimaryIconCssClass="rbToggleRadio"></telerik:RadButtonToggleState>

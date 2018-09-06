@@ -80,8 +80,27 @@
                 width: document.documentElement.clientWidth - 20,
                 height: document.documentElement.clientHeight - 20
             };
-            if ('<%= vIdPuestoVsCandidatos %>' != null)
-                openChildDialog("ConsultasComparativas.aspx?pIdPuestoVsCandidatos=" + '<%= vIdPuestoVsCandidatos %>' + "&pClTipoConsulta=PSVP", "winConsultas", "Consulta comparativa Puesto vs N. Personas", windowProperties);
+            //if ('<= vIdPuestoVsCandidatos >' != null)
+            var vCandidatos = [];
+            var vCandidatosJson = "";
+            var grid = $find("<%=grdCandidatos.ClientID %>");
+            var MasterTable = grid.get_masterTableView();
+            var selectedRows = MasterTable.get_selectedItems();
+            if (selectedRows.length > 0) {
+                for (i = 0; i < selectedRows.length; i++) {
+                    selectedItem = selectedRows[i];
+                        var vCandidato = {
+                            ID_CANDIDATO: selectedItem.getDataKeyValue("ID_CANDIDATO"),
+                        }
+
+                        vCandidatos.push(vCandidato);                  
+                }
+
+                vCandidatosJson = JSON.stringify(vCandidatos);
+
+
+                openChildDialog("ConsultasComparativas.aspx?pClTipoConsulta=PSVP&candidatos=" + vCandidatosJson, "winConsultas", "Consulta comparativa Puesto vs N. Personas", windowProperties);
+            }
             else { radalert("Selecciona un candidato.", 400, 150, ""); }
         }
 
@@ -254,7 +273,7 @@
         <telerik:RadButton runat="server" Text="Personal detallada" ID="btnPersonalDetallada" AutoPostBack="false" OnClientClicked="OpenConsultaDetallada" />
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton runat="server" Text="Puesto vs N. personas" ID="btnPuestoPersonas" AutoPostBack="true" OnClick="btnPuestoPersonas_Click" />
+        <telerik:RadButton runat="server" Text="Puesto vs N. personas" ID="btnPuestoPersonas" AutoPostBack="false" OnClientClicked="OpenConsultaPuestoPersonas" />
     </div>
     <div class="ctrlBasico">
         <telerik:RadButton runat="server" Text="Persona vs N. puestos" ID="btnPersonaPuestos" AutoPostBack="false" OnClientClicked="OpenConsultaPersonaPuestos" />

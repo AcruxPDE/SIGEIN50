@@ -98,7 +98,7 @@
     <div style="clear: both;"></div>
     <div class="ctrlBasico">
         <div class="divControlIzquierda">
-            <label id="lblTipoDepartamento" name="lblTipoDepartamento" runat="server">Tipo de departamento:&nbsp;</label>
+            <label id="lblTipoDepartamento" name="lblTipoDepartamento" runat="server">Tipo:&nbsp;</label>
         </div>
         <div class="divControlDerecha">
             <telerik:RadComboBox ID="cmbTipoDepartamento" runat="server">

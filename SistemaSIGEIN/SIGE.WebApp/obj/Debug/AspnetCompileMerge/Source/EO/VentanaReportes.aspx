@@ -20,11 +20,11 @@
         }
 
         function OpenSelectionAdicionales() {
-            openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1" + "&ClLista=IS", "WinConsultaPersonal", "Selección de campos adicionales");
+            openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1&CL_REFERENCIA=M_EMPLEADO" + "&ClLista=IS", "WinConsultaPersonal", "Selección de campos adicionales");
         }
 
         function OpenSelectionAdicionalesResultados() {
-            openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1" + "&ClLista=RD", "WinConsultaPersonal", "Selección de campos adicionales");
+            openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1&CL_REFERENCIA=M_EMPLEADO" + "&ClLista=RD", "WinConsultaPersonal", "Selección de campos adicionales");
         }
 
         function OpenSelectionDepartamentoPreguntasWindow() {
@@ -36,7 +36,7 @@
         }
 
         function OpenSelectionPreAdicionales() {
-            openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1" + "&ClLista=PREGUNTAS", "WinConsultaPersonal", "Selección de campos adicionales");
+            openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1&CL_REFERENCIA=M_EMPLEADO" + "&ClLista=PREGUNTAS", "WinConsultaPersonal", "Selección de campos adicionales");
         }
 
         

@@ -41,7 +41,7 @@
         }
 
         function OpenSelectionAdicionales() {
-            openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1", "WinConsultaPersonal", "Selección de campos adicionales");
+            openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1&CL_REFERENCIA=M_EMPLEADO", "WinConsultaPersonal", "Selección de campos adicionales");
         }
 
 
