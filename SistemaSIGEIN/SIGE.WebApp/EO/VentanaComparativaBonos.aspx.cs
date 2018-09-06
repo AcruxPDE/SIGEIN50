@@ -140,7 +140,7 @@ namespace SIGE.WebApp.EO
                  vDr["NB_PUESTO"] = item.NB_PUESTO;
                  vDr["NB_DEPARTAMENTO"] = item.NB_DEPARTAMENTO;
                  if (item.FG_VISIBLE_BONO == true)
-                     vDr["MN_SUELDO"] = "$" + item.MN_SUELDO.ToString();
+                     vDr["MN_SUELDO"] = String.Format("{0:C2}", item.MN_SUELDO);
                  else
                      vDr["MN_SUELDO"] = "";
 
@@ -153,13 +153,13 @@ namespace SIGE.WebApp.EO
                              if (vResultado.PR_CUMPLIMIENTO_EVALUADO != null)
                              {
                                  if (vResultado.MN_BONO_TOTAL != null)
-                                     vDr[vPeriodo.CL_TIPO_PERIODO.ToString()] = vResultado.PR_CUMPLIMIENTO_EVALUADO.ToString() + "%  " + "<br>" + "  $" + vResultado.MN_BONO_TOTAL.ToString();
+                                     vDr[vPeriodo.CL_TIPO_PERIODO.ToString()] = vResultado.PR_CUMPLIMIENTO_EVALUADO.ToString() + "%  " + "<br>" + String.Format("{0:C2}", vResultado.MN_BONO_TOTAL);
                                  else
                                      vDr[vPeriodo.CL_TIPO_PERIODO.ToString()] = vResultado.PR_CUMPLIMIENTO_EVALUADO.ToString() + "%";
                              }
                              else if (vResultado.MN_BONO_TOTAL != null)
                              {
-                                 vDr[vPeriodo.CL_TIPO_PERIODO.ToString()] = "\n" + "$" + vResultado.MN_BONO_TOTAL.ToString();
+                                 vDr[vPeriodo.CL_TIPO_PERIODO.ToString()] = "\n" + String.Format("{0:C2}", vResultado.MN_BONO_TOTAL);
                              }
 
                              vCumplimientoEvaluado = vCumplimientoEvaluado + vResultado.PR_CUMPLIMIENTO_EVALUADO;
@@ -186,11 +186,11 @@ namespace SIGE.WebApp.EO
                         
                  }
 
-                 vDr["MN_TOPE_BONO"] = "$" + String.Format("{0:0.00}", vTopeBono);
+                 vDr["MN_TOPE_BONO"] = String.Format("{0:C2}", vTopeBono);
                  if (vCumplimientoEvaluado != null)
                  vDr["PR_CUMPLIMIENTO_EVALUADO"] = String.Format("{0:0.00}", ((vCumplimientoEvaluado * 100) / (vPeriodos * 100))) + "%";
                  if (vMnBonoTotal != null)
-                 vDr["MN_BONO_TOTAL"] = "$" + vMnBonoTotal.ToString();
+                 vDr["MN_BONO_TOTAL"] = String.Format("{0:C2}", vMnBonoTotal);
 
                 vDtPivot.Rows.Add(vDr);
             }

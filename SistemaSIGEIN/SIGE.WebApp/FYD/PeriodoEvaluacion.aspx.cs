@@ -110,7 +110,7 @@ namespace SIGE.WebApp.FYD
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string vClEstadoPeriodo = "Abierto";
+            string vClEstadoPeriodo = "ABIERTO";
             if (!IsPostBack)
             {
                 bool vFgHabilitarEdicion = true;
@@ -163,6 +163,8 @@ namespace SIGE.WebApp.FYD
                 if (Request.Params["TipoTarea"] != null)
                 {
                     vTipoTarea = Request.Params["TipoTarea"].ToString();
+                    if (vTipoTarea == "COPIA")
+                        vClEstadoPeriodo = "ABIERTO";
                 }
 
                 btnAutoevaluacionTrue.Enabled = vFgHabilitarEdicion;

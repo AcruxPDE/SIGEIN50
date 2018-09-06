@@ -235,7 +235,12 @@ namespace SIGE.WebApp.EO
                 grdDisenoMetas.Rebind();
                 rgBono.Rebind();
                // grdContrasenaEvaluadores.Rebind();
+
+              if(vFgCordinador)
                 GenerarContrasena();
+              else
+                  grdContrasenaEvaluadores.Rebind();
+
             }
             else
             {

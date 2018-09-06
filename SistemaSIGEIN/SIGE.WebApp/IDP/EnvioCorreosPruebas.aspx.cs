@@ -1,4 +1,6 @@
-﻿using SIGE.Entidades;
+﻿using Newtonsoft.Json;
+using SIGE.Entidades;
+using SIGE.Entidades.Administracion;
 using SIGE.Entidades.Externas;
 using SIGE.Entidades.IntegracionDePersonal;
 using SIGE.Negocio.Administracion;
@@ -22,11 +24,11 @@ namespace SIGE.WebApp.IDP
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
 
-        public Guid vIdCandidatosPruebas
-        {
-            get { return (Guid)ViewState["vs_vIdCandidatosPruebas"]; }
-            set { ViewState["vs_vIdCandidatosPruebas"] = value; }
-        }
+        //public Guid vIdCandidatosPruebas
+        //{
+        //    get { return (Guid)ViewState["vs_vIdCandidatosPruebas"]; }
+        //    set { ViewState["vs_vIdCandidatosPruebas"] = value; }
+        //}
 
         public List<E_BATERIA_PRUEBAS> Lstbaterias
         {
@@ -34,14 +36,14 @@ namespace SIGE.WebApp.IDP
             set { ViewState["vs_Lstbaterias"] = value; }
         }
 
-        protected void CargarDesdeContexto(List<int> LstCandidatos)
+        protected void CargarDesdeContexto(List<E_CANDIDATO> LstCandidatos)
         {
              Lstbaterias = new List<E_BATERIA_PRUEBAS>();
              PruebasNegocio pruebas = new PruebasNegocio();
 
-             foreach (int idCandidato in LstCandidatos)
+             foreach (var item in LstCandidatos)
              {
-                 var vCandidatosPruebas = pruebas.ObtieneBateria(pIdCandidato: idCandidato.ToString()).ToList().OrderByDescending(o => o.ID_BATERIA);
+                 var vCandidatosPruebas = pruebas.ObtieneBateria(pIdCandidato: item.ID_CANDIDATO.ToString()).ToList().OrderByDescending(o => o.ID_BATERIA);
                  if (vCandidatosPruebas != null)
                  {
                      Lstbaterias.Add(new E_BATERIA_PRUEBAS
@@ -63,11 +65,19 @@ namespace SIGE.WebApp.IDP
             vNbPrograma = ContextoUsuario.nbPrograma;
             if (!IsPostBack)
             {
-                if (Request.Params["pIdCandidatosPruebas"] != null)
+                //if (Request.Params["pIdCandidatosPruebas"] != null)
+                //{
+                //    vIdCandidatosPruebas = Guid.Parse(Request.Params["pIdCandidatosPruebas"].ToString());
+                //    if (ContextoCandidatosBateria.oCandidatosBateria.Where(w => w.vIdGeneraBaterias == vIdCandidatosPruebas).FirstOrDefault().vListaCandidatos.Count > 0)
+                //        CargarDesdeContexto(ContextoCandidatosBateria.oCandidatosBateria.Where(w => w.vIdGeneraBaterias == vIdCandidatosPruebas).FirstOrDefault().vListaCandidatos);
+                //}
+
+                if (Request.Params["candidatos"] != null)
                 {
-                    vIdCandidatosPruebas = Guid.Parse(Request.Params["pIdCandidatosPruebas"].ToString());
-                    if (ContextoCandidatosBateria.oCandidatosBateria.Where(w => w.vIdGeneraBaterias == vIdCandidatosPruebas).FirstOrDefault().vListaCandidatos.Count > 0)
-                        CargarDesdeContexto(ContextoCandidatosBateria.oCandidatosBateria.Where(w => w.vIdGeneraBaterias == vIdCandidatosPruebas).FirstOrDefault().vListaCandidatos);
+                    List<E_CANDIDATO> ListaCandidatos = new List<E_CANDIDATO>();
+                    ListaCandidatos = JsonConvert.DeserializeObject<List<E_CANDIDATO>>(Request.Params["candidatos"].ToString());
+
+                    CargarDesdeContexto(ListaCandidatos);
                 }
 
             }

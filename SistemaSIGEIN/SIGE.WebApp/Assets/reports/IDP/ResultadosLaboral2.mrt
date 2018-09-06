@@ -677,7 +677,7 @@
               <Name>Text23</Name>
               <Page isRef="43" />
               <Parent isRef="44" />
-              <Text>Resultados aptitud laboral II</Text>
+              <Text>Resultados personalidad laboral II</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text23>
@@ -903,7 +903,7 @@
               <Name>Text27</Name>
               <Page isRef="58" />
               <Parent isRef="59" />
-              <Text>Resultados aptitud laboral II</Text>
+              <Text>Resultados personalidad laboral II</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text27>
@@ -1125,10 +1125,10 @@
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>6/28/2018 8:47:56 AM</ReportChanged>
+  <ReportChanged>9/4/2018 6:39:41 PM</ReportChanged>
   <ReportCreated>11/3/2017 12:37:10 PM</ReportCreated>
-  <ReportFile>C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosLaboral2.mrt</ReportFile>
-  <ReportGuid>9295d9ec39374dbaaad6effcaf11ed69</ReportGuid>
+  <ReportFile>C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosLaboral2.mrt</ReportFile>
+  <ReportGuid>a5c4f0b668124fb3bc9fd25ace352ce1</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2015.3.0</ReportVersion>

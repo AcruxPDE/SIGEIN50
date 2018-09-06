@@ -160,16 +160,16 @@ namespace SIGE.WebApp.IDP
 
             }).OrderBy(s => s.CL_COMPETENCIA).ToList();
 
-            if (vPuestoCandidatos.Count > 0)
-            {
-                vs_NB_PUESTO = vPuestoCandidatos.FirstOrDefault().NB_PUESTO;
-            }
+            //if (vPuestoCandidatos.Count > 0)
+            //{
+            //    vs_NB_PUESTO = vPuestoCandidatos.FirstOrDefault().NB_PUESTO;
+            //}
 
-            lbCandidatos.Controls.Add(GenerarTablaCandidatos(vPuestoCandidatos));
+            //lbCandidatos.Controls.Add(GenerarTablaCandidatos(vPuestoCandidatos));
 
-            var vPuestoCompetencia = vPuestoCandidatos.Select(s => new { s.NO_VALOR_NIVEL, s.NB_PUESTO, s.NB_COMPETENCIA, s.CL_PUESTO }).Distinct().ToList();
-            if (vPuestoCompetencia.Count > 0)
-            lbPuestoCom.InnerText = "- (" + vPuestoCompetencia.FirstOrDefault().CL_PUESTO + ") " + vPuestoCompetencia.FirstOrDefault().NB_PUESTO;
+            //var vPuestoCompetencia = vPuestoCandidatos.Select(s => new { s.NO_VALOR_NIVEL, s.NB_PUESTO, s.NB_COMPETENCIA, s.CL_PUESTO }).Distinct().ToList();
+            //if (vPuestoCompetencia.Count > 0)
+            //lbPuestoCom.InnerText = "- (" + vPuestoCompetencia.FirstOrDefault().CL_PUESTO + ") " + vPuestoCompetencia.FirstOrDefault().NB_PUESTO;
 
             //GraficaPuestoCandidatos(vPuestoCandidatos);
 
