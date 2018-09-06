@@ -53,6 +53,7 @@ namespace SIGE.WebApp.Administracion
 
         protected void HabilitarControles(bool? pFgNomina, bool? pFgDO)
         {
+
             if (pFgNomina == false)
             {
                 btnNODOTrue.Enabled = false;
@@ -73,6 +74,7 @@ namespace SIGE.WebApp.Administracion
                 btnTabuladorTrue.Enabled = false;
                 btnInventarioFalse.Enabled = false;
                 btnInventarioTrue.Enabled = false;
+                btnCapturarAlcance.Enabled = false;
             }
         }
 
@@ -304,20 +306,20 @@ namespace SIGE.WebApp.Administracion
                 btnNODOTrue.Checked = false;
                 btnNODOFalse.Checked = true;
             }
-            else if (ContextoApp.IDP.LicenciaIntegracion.MsgActivo != "1" && ContextoApp.FYD.LicenciaFormacion.MsgActivo != "1" && ContextoApp.EO.LicenciaCL.MsgActivo != "1" && ContextoApp.EO.LicenciaED.MsgActivo != "1"
-                 && ContextoApp.EO.LicenciaRDP.MsgActivo != "1" && ContextoApp.MPC.LicenciaMetodologia.MsgActivo != "1" && ContextoApp.RP.LicenciaReportes.MsgActivo != "1" && ContextoApp.CI.LicenciaConsultasInteligentes.MsgActivo != "1"
-                   && ContextoApp.PDE.LicenciaPuntoEncuentro.MsgActivo != "1")
-            {
-                dvPuestoNoDo.Visible = false;
-                dvPuestoDO.Visible = false;
-                dvSueldosDo.Visible = false;
-                btnDOFalse.Checked = true;
-                btnDOTrue.Checked = false;
-                btnNODOTrue.Checked = false;
-                btnNODOFalse.Checked = true;
-                btnCapturarAlcance.Enabled = false;
-                ClientScript.RegisterStartupScript(GetType(), "script", "MostrarDiv();", true);
-            }
+            //else if (ContextoApp.IDP.LicenciaIntegracion.MsgActivo != "1" && ContextoApp.FYD.LicenciaFormacion.MsgActivo != "1" && ContextoApp.EO.LicenciaCL.MsgActivo != "1" && ContextoApp.EO.LicenciaED.MsgActivo != "1"
+            //     && ContextoApp.EO.LicenciaRDP.MsgActivo != "1" && ContextoApp.MPC.LicenciaMetodologia.MsgActivo != "1" && ContextoApp.RP.LicenciaReportes.MsgActivo != "1" && ContextoApp.CI.LicenciaConsultasInteligentes.MsgActivo != "1"
+            //       && ContextoApp.PDE.LicenciaPuntoEncuentro.MsgActivo != "1")
+            //{
+            //    dvPuestoNoDo.Visible = false;
+            //    dvPuestoDO.Visible = false;
+            //    dvSueldosDo.Visible = false;
+            //    btnDOFalse.Checked = true;
+            //    btnDOTrue.Checked = false;
+            //    btnNODOTrue.Checked = false;
+            //    btnNODOFalse.Checked = true;
+            //    btnCapturarAlcance.Enabled = false;
+            //    ClientScript.RegisterStartupScript(GetType(), "script", "MostrarDiv();", true);
+            //}
 
         }
 
