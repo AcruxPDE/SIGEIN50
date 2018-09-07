@@ -25,6 +25,14 @@ namespace SIGE.Negocio.IntegracionDePersonal
             return oProcesoSeleccion.ObtenerProcesoSeleccion(pIdProcesoSeleccion, pIdCandidato, pIdRequisicion, pIdProcesoSeleccionActual);
         }
 
+
+        public E_RESULTADO EliminaProcesoSeleccion(int? pIdProcesoSeleccion = null, int? pIdRequisicion = null)
+        {
+            ProcesoSeleccionOperaciones oProcesoSeleccion = new ProcesoSeleccionOperaciones();
+            return UtilRespuesta.EnvioRespuesta(oProcesoSeleccion.EliminaProcesoSeleccion(pIdProcesoSeleccion, pIdRequisicion));
+        }
+
+
         public List<SPE_OBTIENE_ENTREVISTA_PROCESO_SELECCION_Result> ObtieneEntrevistaProcesoSeleccion(int? pIdProcesoSeleccion = null, int? pIdEntrevista = null, Guid? pFlEntrevista = null)
         {
             ProcesoSeleccionOperaciones oProcesoSeleccion = new ProcesoSeleccionOperaciones();

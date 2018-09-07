@@ -225,10 +225,13 @@ namespace SIGE.WebApp.IDP
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
+            ProcesoSeleccionNegocio nProcesoSeleccion = new ProcesoSeleccionNegocio();
             foreach (GridDataItem item in grdProcesoSeleccion.SelectedItems)
             {
                 int vIdProcesoSeleccion = int.Parse(item.GetDataKeyValue("ID_PROCESO_SELECCION").ToString());
-
+                E_RESULTADO vResultado = nProcesoSeleccion.EliminaProcesoSeleccion(pIdProcesoSeleccion: vIdProcesoSeleccion);
+                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
             }
         }
     }

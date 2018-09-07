@@ -20137,15 +20137,15 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_ESTUDIO_SOCIOECONOMICO_Result>("SPE_OBTIENE_ESTUDIO_SOCIOECONOMICO", pIN_ID_ESTUDIO_SOCIOECONOMICOParameter, pIN_ID_PROCESO_SELECCIONParameter, pIN_ID_EMPLEADOParameter, pIN_ID_CANDIDATOParameter);
         }
     
-        public virtual int SPE_ELIMINA_K_PROCESO_SELECCION(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PROCESO_SELECCION, string pIN_ID_REQUISICION)
+        public virtual int SPE_ELIMINA_K_PROCESO_SELECCION(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PROCESO_SELECCION, Nullable<int> pIN_ID_REQUISICION)
         {
             var pIN_ID_PROCESO_SELECCIONParameter = pIN_ID_PROCESO_SELECCION.HasValue ?
                 new ObjectParameter("PIN_ID_PROCESO_SELECCION", pIN_ID_PROCESO_SELECCION) :
                 new ObjectParameter("PIN_ID_PROCESO_SELECCION", typeof(int));
     
-            var pIN_ID_REQUISICIONParameter = pIN_ID_REQUISICION != null ?
+            var pIN_ID_REQUISICIONParameter = pIN_ID_REQUISICION.HasValue ?
                 new ObjectParameter("PIN_ID_REQUISICION", pIN_ID_REQUISICION) :
-                new ObjectParameter("PIN_ID_REQUISICION", typeof(string));
+                new ObjectParameter("PIN_ID_REQUISICION", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_K_PROCESO_SELECCION", xML_RESULTADO, pIN_ID_PROCESO_SELECCIONParameter, pIN_ID_REQUISICIONParameter);
         }
