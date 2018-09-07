@@ -378,7 +378,9 @@ namespace SIGE.WebApp.IDP
                        var vResultadosORTOGRAFIAII = vResultados.Exists(ex => ex.CL_PRUEBA.Equals("ORTOGRAFIA-2")) ? vResultados.Where(r => r.CL_PRUEBA.Equals("ORTOGRAFIA-2")).ToList(): null;
                        var vResultadosORTOGRAFIAIII = vResultados.Exists(ex => ex.CL_PRUEBA.Equals("ORTOGRAFIA-3")) ? vResultados.Where(r => r.CL_PRUEBA.Equals("ORTOGRAFIA-3")).ToList(): null;
                        List<GRD_ORT_TEC_ING> vlstOrtografias = new List<GRD_ORT_TEC_ING>();
-                       if (vResultadosORTOGRAFIAI.Count > 0)
+                        if (vResultadosORTOGRAFIAI != null)
+
+                            if (vResultadosORTOGRAFIAI.Count > 0)
                        {
                            ORTOGRAFIA1_TOTAL = vResultadosORTOGRAFIAI.Exists(ex => ex.CL_VARIABLE.Equals("ORTOGRAFIA1-REP-TOTAL")) ? vResultadosORTOGRAFIAI.Where(x => x.CL_VARIABLE.Equals("ORTOGRAFIA1-REP-TOTAL")).FirstOrDefault().NO_VALOR : null;
                            ORTOGRAFIA1_ACIERTOS = vResultadosORTOGRAFIAI.Exists(ex => ex.CL_VARIABLE.Equals("ORTOGRAFIA1-REP-#A"))? vResultadosORTOGRAFIAI.Where(x => x.CL_VARIABLE.Equals("ORTOGRAFIA1-REP-#A")).FirstOrDefault().NO_VALOR : null;
@@ -390,8 +392,9 @@ namespace SIGE.WebApp.IDP
                            vlstOrtografias.Add(new GRD_ORT_TEC_ING { NB_TITULO = "Ortografía I", ACIERTOS = "0", VALORES_MAXIMOS = "40", PORCENTAJE = "0" });
                            AgregarColumasSeries(0);
                        }
+                        if (vResultadosORTOGRAFIAII != null)
 
-                       if (vResultadosORTOGRAFIAII.Count > 0)
+                            if (vResultadosORTOGRAFIAII.Count > 0)
                        {
                            ORTOGRAFIA2_TOTAL = vResultadosORTOGRAFIAII.Exists(ex => ex.CL_VARIABLE.Equals("ORTOGRAFIA2-REP-TOTAL")) ? vResultadosORTOGRAFIAII.Where(x => x.CL_VARIABLE.Equals("ORTOGRAFIA2-REP-TOTAL")).FirstOrDefault().NO_VALOR : null;
                            ORTOGRAFIA2_ACIERTOS = vResultadosORTOGRAFIAII.Exists(ex => ex.CL_VARIABLE.Equals("ORTOGRAFIA2-REP-#A")) ? vResultadosORTOGRAFIAII.Where(x => x.CL_VARIABLE.Equals("ORTOGRAFIA2-REP-#A")).FirstOrDefault().NO_VALOR : null;
@@ -403,8 +406,9 @@ namespace SIGE.WebApp.IDP
                            vlstOrtografias.Add(new GRD_ORT_TEC_ING { NB_TITULO = "Ortografía II", ACIERTOS = "0", VALORES_MAXIMOS = "25", PORCENTAJE = "0" });
                            AgregarColumasSeries(0);
                        }
+                        if (vResultadosORTOGRAFIAIII != null)
 
-                       if (vResultadosORTOGRAFIAIII.Count > 0)
+                            if (vResultadosORTOGRAFIAIII.Count > 0)
                        {
                            ORTOGRAFIA3_TOTAL = vResultadosORTOGRAFIAIII.Exists(ex => ex.CL_VARIABLE.Equals("ORTOGRAFIA3-REP-TOTAL"))?  vResultadosORTOGRAFIAIII.Where(x => x.CL_VARIABLE.Equals("ORTOGRAFIA3-REP-TOTAL")).FirstOrDefault().NO_VALOR : null;
                            ORTOGRAFIA3_ACIERTOS = vResultadosORTOGRAFIAIII.Exists(ex => ex.CL_VARIABLE.Equals("ORTOGRAFIA3-REP-#A")) ? vResultadosORTOGRAFIAIII.Where(x => x.CL_VARIABLE.Equals("ORTOGRAFIA3-REP-#A")).FirstOrDefault().NO_VALOR : null;
