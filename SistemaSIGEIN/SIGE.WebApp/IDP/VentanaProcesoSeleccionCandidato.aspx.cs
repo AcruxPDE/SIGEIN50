@@ -225,7 +225,11 @@ namespace SIGE.WebApp.IDP
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
+            foreach (GridDataItem item in grdProcesoSeleccion.SelectedItems)
+            {
+                int vIdProcesoSeleccion = int.Parse(item.GetDataKeyValue("ID_PROCESO_SELECCION").ToString());
 
+            }
         }
     }
 }

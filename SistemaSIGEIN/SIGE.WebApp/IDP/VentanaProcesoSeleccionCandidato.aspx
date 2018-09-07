@@ -35,7 +35,18 @@
 
 
         function ConfirmEliminar(sender, args) {
+            obtenerIdFila();
+            if (idProcesoSeleccion != "") {
+                var callBackFunction = Function.createDelegate(function (shouldSubmit)
+                { if (shouldSubmit) { this.click(); } });
 
+                radconfirm('¿Deseas eliminar este proceso de evaluación?, este proceso no podrá revertirse.', callBackFunction, 400, 150, null, "Eliminar proceso de evaluación");
+                args.set_cancel(true);
+            }
+            else {
+                radalert("Selecciona un proceso de evaluación", 400, 150, "");
+                args.set_cancel(true);
+            }
         }
         
 
@@ -212,7 +223,7 @@
             </ClientSettings>
             <PagerStyle AlwaysVisible="true" />
             <MasterTableView  AutoGenerateColumns="false" PageSize="10" 
-                ClientDataKeyNames="ID_REQUISICION, ID_PROCESO_SELECCION, CL_ESTADO">
+                ClientDataKeyNames="ID_REQUISICION, ID_PROCESO_SELECCION, CL_ESTADO" DataKeyNames="ID_PROCESO_SELECCION">
                 <CommandItemSettings ShowAddNewRecordButton="false" />
                 <Columns>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave de requisición" DataField="NO_REQUISICION" UniqueName="NO_REQUISICION" HeaderStyle-Width="100" FilterControlWidth="50"></telerik:GridBoundColumn>
@@ -234,12 +245,12 @@
             <div class="divControlDerecha" style="padding-right:10px;"> 
         <telerik:RadButton ID="btnIniciarProceso" AutoPostBack="true" runat="server" Text="Iniciar nuevo" OnClientClicking="ConfirmarNuevoProceso" OnClick="btnIniciarProceso_Click"></telerik:RadButton>
         </div>
+             <div class="divControlDerecha" style="padding-right:10px;">
+        <telerik:RadButton ID="btnVerProceso" runat="server" Visible="false" Text="Consultar" OnClientClicked="OpenProcesoSeleccionVerWindow"  AutoPostBack="false"></telerik:RadButton>
+    </div>
             <div class="divControlDerecha" style="padding-right:10px;"> 
         <telerik:RadButton ID="btnEliminar" AutoPostBack="true" runat="server" Text="Eliminar" OnClientClicking="ConfirmEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
         </div>
-         <div class="divControlDerecha">
-        <telerik:RadButton ID="btnVerProceso" runat="server" Visible="false" Text="Consultar" OnClientClicked="OpenProcesoSeleccionVerWindow"  AutoPostBack="false"></telerik:RadButton>
-    </div>
         
     <telerik:RadWindowManager ID="rnMensaje" runat="server"></telerik:RadWindowManager>
 

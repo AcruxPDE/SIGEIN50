@@ -372,6 +372,11 @@
           <Parameter Name="PIN_CL_USUARIO_APP_CREA" Type="nvarchar" Mode="In" />
           <Parameter Name="PIN_NB_PROGRAMA_CREA" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="SPE_ELIMINA_K_PROCESO_SELECCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+          <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+          <Parameter Name="PIN_ID_PROCESO_SELECCION" Type="int" Mode="In" />
+          <Parameter Name="PIN_ID_REQUISICION" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="SPE_ELIMINA_K_REQUISICION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
           <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
           <Parameter Name="PIN_ID_REQUISICION" Type="int" Mode="In" />
@@ -12031,6 +12036,11 @@
             <Parameter Name="PIN_ID_PROCESO_SELECCION" Mode="In" Type="Int32" />
             <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
             <Parameter Name="PIN_ID_CANDIDATO" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPE_ELIMINA_K_PROCESO_SELECCION">
+            <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
+            <Parameter Name="PIN_ID_PROCESO_SELECCION" Mode="In" Type="Int32" />
+            <Parameter Name="PIN_ID_REQUISICION" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SPE_OBTIENE_C_CALLE_Result">
@@ -25759,6 +25769,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPE_ELIMINA_K_PROCESO_SELECCION" FunctionName="SistemaSigeinModel.Store.SPE_ELIMINA_K_PROCESO_SELECCION" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
