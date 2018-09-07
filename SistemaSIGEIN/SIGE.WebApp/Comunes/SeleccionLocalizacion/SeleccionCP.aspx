@@ -136,7 +136,7 @@ span.RadButton.rbSkinnedButton, span.RadButton.rbLinkButton, span.RadButton.rbVe
         <div style="clear: both; height: 20px;"></div>
         <div class="ctrlBasico">
             <label>Código postal:</label>
-            <telerik:RadNumericTextBox runat="server" NumberFormat-DecimalDigits="0" MinValue="0" NumberFormat-GroupSeparator="" ID="txtCP" Width="60px" MaxLength="5"></telerik:RadNumericTextBox>
+            <telerik:RadTextBox runat="server"  ID="txtCP" Width="60px" MaxLength="5"></telerik:RadTextBox>
             <telerik:RadButton ID="btnBuscarCp" runat="server" AutoPostBack="true" Text="Buscar" Width="65" OnClick="btnBuscarCp_Click"></telerik:RadButton>
         </div>
         <div style="clear: both; height: 10px;"></div>
