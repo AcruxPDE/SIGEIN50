@@ -367,6 +367,11 @@
     <Parameter Name="PIN_CL_USUARIO_APP_CREA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA_CREA" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="SPE_ELIMINA_K_PROCESO_SELECCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_PROCESO_SELECCION" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_REQUISICION" Type="int" Mode="In" />
+  </Function>
   <Function Name="SPE_ELIMINA_K_REQUISICION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
     <Parameter Name="PIN_ID_REQUISICION" Type="int" Mode="In" />

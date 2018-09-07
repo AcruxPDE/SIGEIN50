@@ -16,9 +16,7 @@
             $find("<%=rgPruebasEmpleados.ClientID%>").get_masterTableView().rebind();
         }
 
-        function returnDataToParentPopup(pDato) {
-            $find("<%=grdSolicitudes.ClientID%>").get_masterTableView().rebind();
-        }
+  
 
 
         function obtenerIdFilaEmpleados() {
@@ -209,7 +207,7 @@
                     vURL = vURL + "&SolicitudId=" + idSolicitudEmp;
 
                 var windowProperties = {};
-                windowProperties.width = document.documentElement.clientHeight - 20;
+                windowProperties.width = 1000;
                 windowProperties.height = document.documentElement.clientHeight - 20;
 
                 openChildDialog(vURL, "rwListaProcesoSeleccionEmp", vTitulo, windowProperties);
@@ -861,8 +859,7 @@
             <telerik:RadWindow ID="winPruebasEmp" runat="server" ReloadOnShow="true" ShowContentDuringLoad="false" VisibleStatusbar="false" VisibleTitlebar="true" Behaviors="Close" Modal="true" OnClientClose="returnDataToParentPopupEmp"></telerik:RadWindow>
             <telerik:RadWindow ID="rwListaProcesoSeleccionEmp" runat="server" Behaviors="Close" Modal="true" VisibleStatusbar="false" ReloadOnShow="true" OnClientClose="returnDataToParentPopupEmp"></telerik:RadWindow>
             <telerik:RadWindow ID="rwComentarios" runat="server" Behaviors="Close" Modal="true" VisibleStatusbar="false" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
-            <telerik:RadWindow ID="winPruebasSolicitud" runat="server" ReloadOnShow="true" ShowContentDuringLoad="false" VisibleStatusbar="false" VisibleTitlebar="true" Behaviors="Close" Modal="true" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
-             
+            <telerik:RadWindow ID="winPruebasSolicitud" runat="server" ReloadOnShow="true" ShowContentDuringLoad="false" VisibleStatusbar="false" VisibleTitlebar="true" Behaviors="Close" Modal="true" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>           
              </Windows>
     </telerik:RadWindowManager>
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true" Height="100%">

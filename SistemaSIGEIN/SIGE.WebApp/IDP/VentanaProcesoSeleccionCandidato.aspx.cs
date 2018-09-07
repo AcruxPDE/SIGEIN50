@@ -232,6 +232,7 @@ namespace SIGE.WebApp.IDP
                 E_RESULTADO vResultado = nProcesoSeleccion.EliminaProcesoSeleccion(pIdProcesoSeleccion: vIdProcesoSeleccion);
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
                 UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
+                grdProcesoSeleccion.Rebind();
             }
         }
     }

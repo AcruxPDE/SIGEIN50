@@ -7830,5 +7830,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPE_ELIMINA_K_PROCESO_SELECCION" FunctionName="SistemaSigeinModel.Store.SPE_ELIMINA_K_PROCESO_SELECCION" />
   </EntityContainerMapping>
 </Mapping>
