@@ -33,7 +33,7 @@
             var selectedItem = $find("<%=grdEvaluados.ClientID %>").get_masterTableView().get_selectedItems()[0];
             if (selectedItem != undefined) {
                 var vClEstado = selectedItem.getDataKeyValue("CL_ESTADO_EMPLEADO");
-                if (vClEstado == "ALTA") {
+                if (vClEstado.toUpperCase() == "ALTA") {
                     var pIdPeriodo = '<%=vIdPeriodo%>';
                     var pIdEvaluado = selectedItem.getDataKeyValue("ID_EVALUADO");
                     OpenSelectionWindow("VentanaManualCapturaResultados.aspx?idPeriodo=" + pIdPeriodo + "&idEvaluado=" + pIdEvaluado, "rwCaptura", "Captura de resultados")

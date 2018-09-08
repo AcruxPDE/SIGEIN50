@@ -163,11 +163,10 @@
                         <telerik:RadSlidingPane ID="RadSlidingPane1" runat="server" Title="Ayuda" Width="240px" RenderMode="Mobile" Height="100%">
                             <div style="padding: 10px; text-align: justify;">
                                 <p>
-                                    Valúa conforme a la siguiente escala los puestos que deseas Tabular.
+                                    Valúa conforme a la siguiente escala los puestos que deseas tabular.
                                         <br />
                                     Se recomienda que esta valuación se realice a través de un comité de expertos y de un moderador que actúe como un juez imparcial en caso de algún debate.
                                         <br />
-                                    <br />
                                     Recuerda que los valores que otorgues en este proceso serán los que definan los niveles de sueldo en tu organización.
                                 </p>
                             </div>

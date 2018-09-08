@@ -222,11 +222,9 @@
                                     <p style="text-align: justify; padding: 10px 10px 10px 10px;">
                                         El reporte muestra por defecto a todos los empleados y el nivel del mercado configurados en el tabulador anteriormente. 
                                         <br />
-                                        <br />
-                                        La pestaña "Definición de criterios" permite definir tu búsqueda para el reporte solicitado.<br />
+                                        La pestaña "Definición de criterios" permite definir tu búsqueda para el reporte solicitado.
                                         <br />
                                         En caso de elegir "Seleccionar mediante filtros", se abrirá una ventana en la cual puedes seleccionar los empleados mediante los filtros deseados
-                                        <br />
                                         <br />
                                         Nota: En algunos casos las opciones pueden ser mutualmente exclusivas.
                                     </p>
@@ -273,11 +271,8 @@
                                         <p style="text-align: justify; padding: 10px 10px 10px 10px;">
                                             El reporte muestra por defecto a todos los empleados y el nivel del mercado configurados en el tabulador anteriormente. 
                                             <br />
-                                            <br />
                                             La pestaña "Definición de criterios" permite definir tu búsqueda para el reporte solicitado.<br />
-                                            <br />
                                             En caso de elegir "Seleccionar mediante filtros", se abrirá una ventana en la cual puedes seleccionar los empleados mediante los filtros deseados
-                                            <br />
                                             <br />
                                             Nota: En algunos casos las opciones pueden ser mutualmente exclusivas.
                                         </p>

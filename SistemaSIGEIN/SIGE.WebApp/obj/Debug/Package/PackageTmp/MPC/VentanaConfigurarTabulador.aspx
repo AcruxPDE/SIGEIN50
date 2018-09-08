@@ -572,10 +572,12 @@
                         Width="80px" MinValue="0" ShowSpinButtons="true" Value="20">
                     </telerik:RadNumericTextBox>
                 </div>
-                <div style="height: 15px; clear: both"></div>
+                <div style="height: 10px; clear: both"></div>
+                          <div class="divControlDerecha">
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnGuardarConfiguracion" runat="server" name="btnGuardarConfiguracion" AutoPostBack="true" Text="Guardar" OnClick="btnGuardarConfiguracion_Click"></telerik:RadButton>
                 </div>
+                              </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvNiveles" runat="server">
                 <div style="height: calc(100% - 50px);">
@@ -622,8 +624,10 @@
                     </telerik:RadGrid>
                 </div>
                 <div style="clear: both; height: 10px;"></div>
+                <div class="divControlDerecha">
                 <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnGuardar" AutoPostBack="true" OnClick="btnGuardar_Click" runat="server" Text="Guardar" Width="100"></telerik:RadButton>
+                    <telerik:RadButton ID="btnGuardar" AutoPostBack="true" OnClick="btnGuardar_Click" runat="server" Text="Guardar y cerrar" ></telerik:RadButton>
+                </div>
                 </div>
             </telerik:RadPageView>
         </telerik:RadMultiPage>

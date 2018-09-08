@@ -1635,7 +1635,7 @@
                     </div>
 
                     <div class="ctrlBasico">
-                        <telerik:RadButton runat="server" ID="btnCancelar" Text="Cancelar" AutoPostBack="false" OnClientClicked="OnCloseUpdate" />
+                        <telerik:RadButton runat="server" ID="btnCancelar" Text="Cancelar" ToolTip="Cancela el proceso" AutoPostBack="false" OnClientClicked="OnCloseUpdate" />
                     </div>
 
                 </div>
