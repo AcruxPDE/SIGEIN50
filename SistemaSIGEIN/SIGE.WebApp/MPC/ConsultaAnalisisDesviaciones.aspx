@@ -391,7 +391,6 @@
                                     <div id="div2" runat="server" style="padding: 15px; text-align: justify;">
                                         <p>
                                             Utiliza la pestaña "Definición de criterios" para definir tu búsqueda para el reporte solicitado.
-                            <br />
                                             <br />
                                             Con excepción de los parámetros de períodos que son mandatorios,																	
                                 no seleccionando mediante filtros indicas que dichos criterios																	

@@ -1941,7 +1941,7 @@
                                                                 <div class="ctrlBasico">
                                                                     <label id="Label50" name="lblNbIdioma" runat="server">Tiempo de residencia en domicilio:</label>
                                                                     <br />
-                                                                    <telerik:RadNumericTextBox ID="txtEsTiempoResidencia" runat="server" Width="100" MaxLength="1000"></telerik:RadNumericTextBox>
+                                                                    <telerik:RadTextBox ID="txtEsTiempoResidencia" runat="server" Width="100" MaxLength="1000"></telerik:RadTextBox>
                                                                 </div>
                                                             </td>
                                                             <td></td>
@@ -2926,27 +2926,27 @@
                                                 <label id="Label14" name="lblNbIdioma" runat="server">Edad:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadNumericTextBox ID="txtEMedad" runat="server" Width="85" NumberFormat-DecimalDigits="0" ReadOnly="true"></telerik:RadNumericTextBox>
+                                                <telerik:RadNumericTextBox ID="txtEMedad" runat="server" Width="60" NumberFormat-DecimalDigits="0" ReadOnly="true"></telerik:RadNumericTextBox>
                                             </div>
 
 
                                         </td>
-                                        <td>
+                                      <%--  <td>
                                             <div class="divControlIzquierda">
                                                 <label id="Label15" name="lblNbIdioma" runat="server">Talla:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadTextBox ID="txtEMtalla" runat="server" Width="100" MaxLength="1000"></telerik:RadTextBox>
+                                                <telerik:RadTextBox ID="txtEMtalla" runat="server" Width="60" MaxLength="1000"></telerik:RadTextBox>
                                             </div>
 
-                                        </td>
+                                        </td>--%>
                                         <td>
                                             <div style="clear: both;" />
                                             <div class="divControlIzquierda">
                                                 <label id="Label16" name="lblNbIdioma" runat="server">Peso:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadNumericTextBox ID="txtEMPeso" runat="server" Width="100" NumberFormat-DecimalDigits="2" MaxLength="1000"></telerik:RadNumericTextBox>
+                                                <telerik:RadNumericTextBox ID="txtEMPeso" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxLength="1000"></telerik:RadNumericTextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2956,26 +2956,27 @@
                                                 <label id="Label17" name="lblNbIdioma" runat="server">Índice de masa corporal:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadNumericTextBox ID="txtEMMasaCorporal" runat="server" Width="100" NumberFormat-DecimalDigits="2" MaxLength="1000"></telerik:RadNumericTextBox>
+                                                <telerik:RadNumericTextBox ID="txtEMMasaCorporal" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxLength="1000"></telerik:RadNumericTextBox>
+                                            </div>
+                                        </td>
+                                           <td>
+                                            <div class="divControlIzquierda">
+                                                <label id="Label19" name="lblNbIdioma" runat="server">Pulso:</label>
+                                            </div>
+                                            <div class="ctrlBasico">
+                                                <telerik:RadNumericTextBox ID="txtEMPulso" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxLength="1000"></telerik:RadNumericTextBox>
                                             </div>
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td>
-                                            <div class="divControlIzquierda">
-                                                <label id="Label19" name="lblNbIdioma" runat="server">Pulso:</label>
-                                            </div>
-                                            <div class="ctrlBasico">
-                                                <telerik:RadNumericTextBox ID="txtEMPulso" runat="server" Width="85px" NumberFormat-DecimalDigits="2" MaxLength="1000"></telerik:RadNumericTextBox>
-                                            </div>
-                                        </td>
+                                     
                                         <td>
                                             <div class="divControlIzquierda">
                                                 <label id="Label20" name="lblNbIdioma" runat="server">Presión arterial:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadTextBox ID="txtEMPresionArterial" runat="server" Width="100px" MaxLength="1000"></telerik:RadTextBox>
+                                                <telerik:RadTextBox ID="txtEMPresionArterial" runat="server" Width="60" MaxLength="1000"></telerik:RadTextBox>
                                             </div>
 
                                         </td>
@@ -2984,7 +2985,7 @@
                                                 <label id="Label21" name="lblNbIdioma" runat="server">Embarazos:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadNumericTextBox ID="txtEMEmbarazos" runat="server" NumberFormat-DecimalDigits="0" Width="100px" MaxLength="1000"></telerik:RadNumericTextBox>
+                                                <telerik:RadNumericTextBox ID="txtEMEmbarazos" runat="server" NumberFormat-DecimalDigits="0" Width="60" MaxLength="1000"></telerik:RadNumericTextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2992,7 +2993,7 @@
                                                 <label id="Label22" name="lblNbIdioma" runat="server">Hijos:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadNumericTextBox ID="txtEMHijos" runat="server" Width="100px" NumberFormat-DecimalDigits="0" MaxLength="1000"></telerik:RadNumericTextBox>
+                                                <telerik:RadNumericTextBox ID="txtEMHijos" runat="server" Width="60" NumberFormat-DecimalDigits="0" MaxLength="1000"></telerik:RadNumericTextBox>
                                             </div>
                                         </td>
                                     </tr>
@@ -3033,7 +3034,7 @@
                                                 <label id="Label24" name="lblNbIdioma" runat="server">Especificar:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadTextBox ID="txtEmEnfermedadComentario" runat="server" Width="760" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
+                                                <telerik:RadTextBox ID="txtEmEnfermedadComentario" runat="server" Width="700" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
                                             </div>
                                         </td>
 
@@ -3075,7 +3076,7 @@
                                                 <label id="Label26" name="lblNbIdioma" runat="server">Especificar:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadTextBox ID="txtEMMedicamentosComentarios" runat="server" Width="760" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
+                                                <telerik:RadTextBox ID="txtEMMedicamentosComentarios" runat="server" Width="700" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
                                             </div>
                                         </td>
 
@@ -3117,7 +3118,7 @@
                                                 <label id="Label28" name="lblNbIdioma" runat="server">Especificar:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadTextBox ID="txtEMAlergiasComentarios" runat="server" Width="760" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
+                                                <telerik:RadTextBox ID="txtEMAlergiasComentarios" runat="server" Width="700" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
                                             </div>
                                         </td>
 
@@ -3159,7 +3160,7 @@
                                                 <label id="Label30" name="lblNbIdioma" runat="server">Especificar:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadTextBox ID="txtEMAntecedentesComentarios" runat="server" Width="760" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
+                                                <telerik:RadTextBox ID="txtEMAntecedentesComentarios" runat="server" Width="700" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
                                             </div>
                                         </td>
 
@@ -3201,7 +3202,7 @@
                                                 <label id="Label32" name="lblNbIdioma" runat="server">Especificar:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadTextBox ID="txtEMCirujiasComentarios" runat="server" Width="760" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
+                                                <telerik:RadTextBox ID="txtEMCirujiasComentarios" runat="server" Width="700" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
                                             </div>
                                         </td>
 
@@ -3209,12 +3210,12 @@
 
                                     <tr>
                                         <td style="height: 200px;">
-                                            <div class="ctrlBasico">
+                                            <div class="divControlDerecha">
                                                 <label id="Label33" name="lblFolio">Observaciones:</label>
                                             </div>
                                         </td>
                                         <td colspan="3">
-                                            <telerik:RadEditor Height="200px" Width="100%" ToolsWidth="310px" EditModes="Design" ID="reObservaciones" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/BasicTools.xml"></telerik:RadEditor>
+                                            <telerik:RadEditor Height="200px" Width="700" ToolsWidth="310px" EditModes="Design" ID="reObservaciones" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/BasicTools.xml"></telerik:RadEditor>
                                         </td>
                                     </tr>
 

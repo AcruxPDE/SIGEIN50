@@ -367,6 +367,11 @@
     <Parameter Name="PIN_CL_USUARIO_APP_CREA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA_CREA" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="SPE_ELIMINA_K_PROCESO_SELECCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_PROCESO_SELECCION" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_REQUISICION" Type="int" Mode="In" />
+  </Function>
   <Function Name="SPE_ELIMINA_K_REQUISICION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADM">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
     <Parameter Name="PIN_ID_REQUISICION" Type="int" Mode="In" />
@@ -4419,7 +4424,7 @@
     <Parameter Name="PIN_NO_EXTERIOR" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NO_INTERIOR" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_CL_CODIGO_POSTAL" Type="nvarchar" Mode="In" />
-    <Parameter Name="PIN_NO_TIEMPO_RESIDENCIA" Type="tinyint" Mode="In" />
+    <Parameter Name="PIN_NO_TIEMPO_RESIDENCIA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_CL_TIPO_SANGUINEO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_XML_TELEFONOS" Type="xml" Mode="In" />
     <Parameter Name="PIN_CL_IDENTIFICACION_OFICIAL" Type="nvarchar" Mode="In" />
