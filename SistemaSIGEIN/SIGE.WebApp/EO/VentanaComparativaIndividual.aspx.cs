@@ -208,10 +208,10 @@ namespace SIGE.WebApp.EO
                 vDr["NO_META_EVALUA"] = vPues.NO_META_EVALUA;
                 vDr["DS_META"] = vPues.DS_META;
 
-                foreach (var vCom in vListaPeriodosGrafica.OrderByDescending(o => o.ID_PERIODO))
+                foreach (var vCom in vListaPeriodosGrafica.OrderBy(o => o.ID_PERIODO))
                 {
                     
-                    var vResultado = vListaMetasGraficaFinal.OrderByDescending(o => o.ID_PERIODO).Where(t => t.ID_PERIODO == vCom.ID_PERIODO && t.DS_META == vPues.DS_META).FirstOrDefault();
+                    var vResultado = vListaMetasGraficaFinal.OrderBy(o => o.ID_PERIODO).Where(t => t.ID_PERIODO == vCom.ID_PERIODO && t.DS_META == vPues.DS_META).FirstOrDefault();
                     if (vResultado != null)
                     {
                         if (vResultado.PR_CUMPLIMIENTO_META != null)
@@ -651,7 +651,7 @@ namespace SIGE.WebApp.EO
                             if (ContextoPeriodos.oLstPeriodos != null)
                             {
                                 int i = 1;
-                                foreach (E_SELECCION_PERIODOS_DESEMPENO item in ContextoPeriodos.oLstPeriodos.OrderByDescending(s => s.idPeriodo))
+                                foreach (E_SELECCION_PERIODOS_DESEMPENO item in ContextoPeriodos.oLstPeriodos.OrderBy(s => s.idPeriodo))
                                 {
 
                                     vListaPeriodos.Add(new E_SELECCION_PERIODOS_DESEMPENO
@@ -672,7 +672,7 @@ namespace SIGE.WebApp.EO
                         if (ContextoPeriodos.oLstPeriodosPersonal != null)
                         {
                             int i = 1;
-                            foreach (E_SELECCION_PERIODOS_DESEMPENO item in ContextoPeriodos.oLstPeriodosPersonal.OrderByDescending(s => s.idPeriodo))
+                            foreach (E_SELECCION_PERIODOS_DESEMPENO item in ContextoPeriodos.oLstPeriodosPersonal.OrderBy(s => s.idPeriodo))
                             {
                                 vListaPeriodos.Add(new E_SELECCION_PERIODOS_DESEMPENO
                                 {
@@ -724,9 +724,9 @@ namespace SIGE.WebApp.EO
                     }
 
                     List<E_SELECCION_PERIODOS_DESEMPENO> vListaPeriodosGraf = new List<E_SELECCION_PERIODOS_DESEMPENO>();
-                    vListaPeriodosGraf = vListaPeriodos.OrderByDescending(o => o.idPeriodo).ToList();
+                    vListaPeriodosGraf = vListaPeriodos.OrderBy(o => o.idPeriodo).ToList();
 
-                    foreach (var items in vListaPeriodosGraf.OrderByDescending(o => o.idPeriodo).ToList())
+                    foreach (var items in vListaPeriodosGraf.OrderBy(o => o.idPeriodo).ToList())
                     {
                         List<E_META> vGraficaTemas = nDesempeno.ObtieneMetasEvaluados(pIdPeriodo: items.idPeriodo, idEvaluado: items.idEvaluado, FgEvaluar: true, idEmpleado: vIdEmpleado).Select(s => new E_META { NO_META = s.NO_META.ToString(), DS_META = s.DS_META, PR_CUMPLIMIENTO = s.PR_CUMPLIMIENTO_META, COLOR_NIVEL = s.COLOR_NIVEL }).ToList();
                         ColumnSeries vSerie = new ColumnSeries();
@@ -736,7 +736,7 @@ namespace SIGE.WebApp.EO
 
                         vListaMetasEvalPeriodo = new List<E_METAS_EVALUADO_PERIODO>();
 
-                        foreach (var item in vGraficaTemas.OrderByDescending(o => o.ID_PERIODO).ToList())
+                        foreach (var item in vGraficaTemas.OrderBy(o => o.ID_PERIODO).ToList())
                         {
                             foreach (var Metas in vMetas)
                             {

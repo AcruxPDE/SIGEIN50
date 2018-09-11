@@ -267,7 +267,7 @@ namespace SIGE.WebApp.FYD
                 vCtrlTabla.Controls.Add(vCtrlColumnO);
             }
 
-            foreach (int item in pListaPeriodos)
+            foreach (int item in pListaPeriodos.OrderBy(o => o))
             {
                 HtmlGenericControl vCtrlRow = new HtmlGenericControl("tr");
                 var oPeriodo = neg.ObtenerPeriodoEvaluacion(item);
@@ -506,9 +506,12 @@ namespace SIGE.WebApp.FYD
             ConsultaGeneralNegocio negGen = new ConsultaGeneralNegocio();
             int? vMaxPuestos = 1;
 
-            foreach (int item in listPeriodos)
+            foreach (int item in listPeriodos.OrderBy(o => o))
             {
-                vMaxPuestos = negGen.ObtenerDatosReporteGlobal(item, null, false).FirstOrDefault().NUM_PERIODOS;
+                var vDatosReporteGlobal = negGen.ObtenerDatosReporteGlobal(item, null, false).ToList();
+                if (vDatosReporteGlobal.Count > 0)
+                    vMaxPuestos = vDatosReporteGlobal.FirstOrDefault().NUM_PERIODOS;
+
                 SPE_OBTIENE_FYD_PERIODO_EVALUACION_Result oPeriodos = negGen.ObtenerPeriodoEvaluacion(item);
                 GridTemplateColumn vBoundColumn = new GridTemplateColumn();
                 vBoundColumn.DataField = oPeriodos.ID_PERIODO.ToString();

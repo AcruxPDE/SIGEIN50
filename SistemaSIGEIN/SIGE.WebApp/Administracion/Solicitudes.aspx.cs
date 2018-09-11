@@ -163,20 +163,43 @@ namespace SIGE.WebApp.Administracion // Se cambia el namespace de SIGE.WebApp.ID
         {
             SolicitudNegocio nSolicitud = new SolicitudNegocio();
             List<E_CANDIDATO_SOLICITUD> listaCandidatos = new List<E_CANDIDATO_SOLICITUD>();
+            string vListaCandidatosEmpledos = "Las siguientes solicitudes están referenciados al inventario de personal, no han sido eliminadas: </br>";
+            int vNumeroCandidatosEmpleados = 0;
 
             foreach (GridDataItem item in grdSolicitudes.SelectedItems)
             {
-                E_CANDIDATO_SOLICITUD candidatos = new E_CANDIDATO_SOLICITUD();
-                candidatos.ID_SOLICITUD = int.Parse(item.GetDataKeyValue("ID_SOLICITUD").ToString());
-                candidatos.C_CANDIDATO_NB_EMPLEADO_COMPLETO = item["C_CANDIDATO_NB_EMPLEADO_COMPLETO"].Text.ToString();
-                candidatos.C_CANDIDATO_CL_CORREO_ELECTRONICO = item["C_CANDIDATO_CL_CORREO_ELECTRONICO"].Text.ToString();
-                listaCandidatos.Add(candidatos);       
+                 string vClEmpleado = item["M_EMPLEADO_CL_EMPLEADO"].Text.ToString();
+                 if (vClEmpleado != null && vClEmpleado != "" && vClEmpleado != "&nbsp;")
+                 {
+                     vListaCandidatosEmpledos = vListaCandidatosEmpledos + item["K_SOLICITUD_CL_SOLICITUD"].Text.ToString() + "</br>";
+                     vNumeroCandidatosEmpleados++;
+                 }
+                 else
+                 {
+                     E_CANDIDATO_SOLICITUD candidatos = new E_CANDIDATO_SOLICITUD();
+                     candidatos.ID_SOLICITUD = int.Parse(item.GetDataKeyValue("ID_SOLICITUD").ToString());
+                     candidatos.C_CANDIDATO_NB_EMPLEADO_COMPLETO = item["C_CANDIDATO_NB_EMPLEADO_COMPLETO"].Text.ToString();
+                     candidatos.C_CANDIDATO_CL_CORREO_ELECTRONICO = item["C_CANDIDATO_CL_CORREO_ELECTRONICO"].Text.ToString();
+                     listaCandidatos.Add(candidatos);
+                 }
             }
 
-
-            var vResultado = eliminarSolicitud(listaCandidatos);
-            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "onCloseWindow");
+            if (listaCandidatos.Count > 0)
+            {
+                var vResultado = eliminarSolicitud(listaCandidatos);
+                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+                {
+                    if (vNumeroCandidatosEmpleados > 0)
+                        UtilMensajes.MensajeResultadoDB(rnMensaje, vListaCandidatosEmpledos, E_TIPO_RESPUESTA_DB.SUCCESSFUL, 400, 150, "onCloseWindow");
+                    else
+                        UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.SUCCESSFUL, 400, 150, "onCloseWindow");
+                }
+                else
+                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "onCloseWindow");
+            }
+            else
+                UtilMensajes.MensajeResultadoDB(rnMensaje, vListaCandidatosEmpledos, E_TIPO_RESPUESTA_DB.ERROR, 400, 250, "onCloseWindow");
 
         }
 
@@ -184,28 +207,51 @@ namespace SIGE.WebApp.Administracion // Se cambia el namespace de SIGE.WebApp.ID
         {
             SolicitudNegocio nSolicitud = new SolicitudNegocio();
             List<E_CANDIDATO_SOLICITUD> listaCandidatos = new List<E_CANDIDATO_SOLICITUD>();
+            string vListaCandidatosEmpledos = "Las siguientes solicitudes están referenciados al inventario de personal, no han sido eliminadas: </br>";
+            int vNumeroCandidatosEmpleados = 0;
 
             foreach (GridDataItem item in grdSolicitudes.SelectedItems)
             {
-                E_CANDIDATO_SOLICITUD candidatos = new E_CANDIDATO_SOLICITUD();
-                candidatos.ID_SOLICITUD = int.Parse(item.GetDataKeyValue("ID_SOLICITUD").ToString());
-                candidatos.C_CANDIDATO_NB_EMPLEADO_COMPLETO = item["C_CANDIDATO_NB_EMPLEADO_COMPLETO"].Text.ToString();
-                candidatos.C_CANDIDATO_CL_CORREO_ELECTRONICO = item["C_CANDIDATO_CL_CORREO_ELECTRONICO"].Text.ToString();
-                listaCandidatos.Add(candidatos);
+                 string vClEmpleado = item["M_EMPLEADO_CL_EMPLEADO"].Text.ToString();
+                 if (vClEmpleado != null && vClEmpleado != "" && vClEmpleado != "&nbsp;")
+                 {
+                     vListaCandidatosEmpledos = vListaCandidatosEmpledos + item["K_SOLICITUD_CL_SOLICITUD"].Text.ToString() + "</br>";
+                     vNumeroCandidatosEmpleados++;
+                 }
+                 else
+                 {
+                     E_CANDIDATO_SOLICITUD candidatos = new E_CANDIDATO_SOLICITUD();
+                     candidatos.ID_SOLICITUD = int.Parse(item.GetDataKeyValue("ID_SOLICITUD").ToString());
+                     candidatos.C_CANDIDATO_NB_EMPLEADO_COMPLETO = item["C_CANDIDATO_NB_EMPLEADO_COMPLETO"].Text.ToString();
+                     candidatos.C_CANDIDATO_CL_CORREO_ELECTRONICO = item["C_CANDIDATO_CL_CORREO_ELECTRONICO"].Text.ToString();
+                     listaCandidatos.Add(candidatos);
+                 }
             }
 
-
-            var respuesta = EnvioCorreoSolicitudes(listaCandidatos);
-            if (respuesta == "0")
+            if (listaCandidatos.Count > 0)
             {
-                var vResultado = eliminarSolicitud(listaCandidatos);
-                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "onCloseWindow");
+                var respuesta = EnvioCorreoSolicitudes(listaCandidatos);
+                if (respuesta == "0")
+                {
+                    var vResultado = eliminarSolicitud(listaCandidatos);
+                    string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                    if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+                    {
+                        if (vNumeroCandidatosEmpleados > 0)
+                            UtilMensajes.MensajeResultadoDB(rnMensaje, vListaCandidatosEmpledos, E_TIPO_RESPUESTA_DB.SUCCESSFUL, 400, 150, "onCloseWindow");
+                        else
+                            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.SUCCESSFUL, 400, 150, "onCloseWindow");
+                    }
+                    else
+                    UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "onCloseWindow");
+                }
+                else
+                {
+                    UtilMensajes.MensajeResultadoDB(rnMensaje, "Error al enviar correo: " + respuesta + ". No se eliminaron las solicitudes.", E_TIPO_RESPUESTA_DB.ERROR, 400, 250, "onCloseWindow");
+                }
             }
             else
-            {
-                UtilMensajes.MensajeResultadoDB(rnMensaje, "Error al enviar correo: " + respuesta + ". No se eliminaron las solicitudes.", E_TIPO_RESPUESTA_DB.ERROR, 400, 250, "onCloseWindow");
-            }
+                UtilMensajes.MensajeResultadoDB(rnMensaje, vListaCandidatosEmpledos, E_TIPO_RESPUESTA_DB.ERROR, 400, 250, "onCloseWindow");
 
         }
 
@@ -296,25 +342,45 @@ namespace SIGE.WebApp.Administracion // Se cambia el namespace de SIGE.WebApp.ID
         protected void btnActualizarCartera_Click(object sender, EventArgs e)
         {
             List<E_CANDIDATO_SOLICITUD> listaCandidatos = new List<E_CANDIDATO_SOLICITUD>();
+            string vListaCandidatosEmpledos = "Las siguientes solicitudes están referenciados al inventario de personal, no se envío solicitud para actualización: </br>";
+            int vNumeroCandidatosEmpleados = 0;
 
             foreach (GridDataItem item in grdSolicitudes.SelectedItems)
             {
+                string vClEmpleado = item["M_EMPLEADO_CL_EMPLEADO"].Text.ToString();
+                if (vClEmpleado != null && vClEmpleado != "" && vClEmpleado != "&nbsp;")
+                {
+                    vListaCandidatosEmpledos = vListaCandidatosEmpledos + item["K_SOLICITUD_CL_SOLICITUD"].Text.ToString() + "</br>";
+                    vNumeroCandidatosEmpleados++;
+                }
+                else
+                {
                 E_CANDIDATO_SOLICITUD candidatos = new E_CANDIDATO_SOLICITUD();
                 candidatos.ID_SOLICITUD = int.Parse(item.GetDataKeyValue("ID_SOLICITUD").ToString());
                 candidatos.C_CANDIDATO_NB_EMPLEADO_COMPLETO = item["C_CANDIDATO_NB_EMPLEADO_COMPLETO"].Text.ToString();
                 candidatos.C_CANDIDATO_CL_CORREO_ELECTRONICO = item["C_CANDIDATO_CL_CORREO_ELECTRONICO"].Text.ToString();
                 listaCandidatos.Add(candidatos);
+                }
             }
 
-            var respuesta = EnvioCorreoSolicitudesConContrasena(listaCandidatos);
-            if (respuesta == "0")
+            if (listaCandidatos.Count > 0)
             {
-                UtilMensajes.MensajeResultadoDB(rnMensaje, "Proceso exitoso.", E_TIPO_RESPUESTA_DB.SUCCESSFUL, 400, 150, "onCloseWindow");
+                var respuesta = EnvioCorreoSolicitudesConContrasena(listaCandidatos);
+                if (respuesta == "0")
+                {
+                    if (vNumeroCandidatosEmpleados > 0)
+                     UtilMensajes.MensajeResultadoDB(rnMensaje, vListaCandidatosEmpledos, E_TIPO_RESPUESTA_DB.SUCCESSFUL, 400, 150, "onCloseWindow");
+                    else
+                    UtilMensajes.MensajeResultadoDB(rnMensaje, "Proceso exitoso.", E_TIPO_RESPUESTA_DB.SUCCESSFUL, 400, 150, "onCloseWindow");
+                }
+                else
+                {
+                    UtilMensajes.MensajeResultadoDB(rnMensaje, "Error al enviar correo: " + respuesta + ". ", E_TIPO_RESPUESTA_DB.ERROR, 400, 250, "onCloseWindow");
+                }
             }
             else
-            {
-                UtilMensajes.MensajeResultadoDB(rnMensaje, "Error al enviar correo: " + respuesta + ". ", E_TIPO_RESPUESTA_DB.ERROR, 400, 250, "onCloseWindow");
-            }
+                UtilMensajes.MensajeResultadoDB(rnMensaje, vListaCandidatosEmpledos, E_TIPO_RESPUESTA_DB.ERROR, 400, 250, "onCloseWindow");
+
         }
     }
 }

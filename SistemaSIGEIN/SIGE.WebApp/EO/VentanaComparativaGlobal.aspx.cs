@@ -267,7 +267,7 @@ namespace SIGE.WebApp.EO
             vDtPivot.Columns.Add("NB_PUESTO", typeof(string));
             vDtPivot.Columns.Add("NB_EMPLEADO", typeof(string));
 
-            foreach (var item in oLstPeriodos.OrderByDescending(o => o.ID_PERIODO))
+            foreach (var item in oLstPeriodos.OrderBy(o => o.ID_PERIODO))
             {
                 vDtPivot.Columns.Add(item.CL_TIPO_PERIODO + item.ID_PERIODO.ToString(), typeof(string));
 
@@ -298,7 +298,7 @@ namespace SIGE.WebApp.EO
                 DataRow vDr = vDtPivot.NewRow();
                 vDr["NB_EMPLEADO"] = "<p title='Clave: " + item.CL_EMPLEADO + "'><a href='javascript:OpenIndividualComparativo("+item.ID_EVALUADO+","+item.ID_EMPLEADO+")'>" + item.NB_EVALUADO + "</a></p>";
                 int i = 1;
-                foreach (var vPeriodo in oLstPeriodos.OrderByDescending(v => v.ID_PERIODO))
+                foreach (var vPeriodo in oLstPeriodos.OrderBy(v => v.ID_PERIODO))
                 {
                     vListaCumplimientoGlobal = oNegocio.ObtieneCumplimientoGlobal(vPeriodo.ID_PERIODO);
                     
@@ -547,7 +547,7 @@ namespace SIGE.WebApp.EO
                 ColumnSeries vSerie = new ColumnSeries();
                 Color vColor = System.Drawing.ColorTranslator.FromHtml("#F2F2F2");
 
-                foreach (var item in vGraficaTotal.OrderByDescending(o => o.ID_PERIODO))
+                foreach (var item in vGraficaTotal.OrderBy(o => o.ID_PERIODO))
                 {
                     if (item.CUMPLIDO > 0 && item.CUMPLIDO < 60)
                         vColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
