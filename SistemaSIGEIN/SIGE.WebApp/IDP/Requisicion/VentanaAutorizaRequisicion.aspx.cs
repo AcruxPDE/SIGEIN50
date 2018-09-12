@@ -109,13 +109,15 @@ namespace SIGE.WebApp.IDP
                 {
                     //lblSuplir.Visible = true;
                     //txtEmpleadoSuplir.Visible = true;
-                    rowSuplente.Style.Add("dispay", "block");
+                  //  rowSuplente.Style.Add("dispay", "block");
                     txtEmpleadoSuplir.InnerText = vAutorizaRequisicion.NB_EMPLEADO_SUPLENTE;
+                 
 
                 }
                 else
                 {
                     rowSuplente.Style.Add("dispay", "none");
+                    txtEmpleadoSuplir.InnerText = "NA";
                 }
             }
 
@@ -152,12 +154,15 @@ namespace SIGE.WebApp.IDP
             string Asunto = "Actualización de puesto de requisición";
 
             var vRequisicion = nRequisicion.ObtieneRequisicion(pIdRequisicion: pIdRequisicion).FirstOrDefault();
-            var vSolicitante = nEmpleado.ObtenerEmpleado(ID_EMPLEADO: vRequisicion.ID_SOLICITANTE).FirstOrDefault();
+          //  var vSolicitante = nEmpleado.ObtenerEmpleado(ID_EMPLEADO: vRequisicion.ID_SOLICITANTE).FirstOrDefault();
 
-            if (vSolicitante != null)
+           // if (vSolicitante != null)
+            if (vRequisicion != null)
             {
-                nbCreaRequisicion = vSolicitante.NB_EMPLEADO_COMPLETO;
-                vNbCorreo = vSolicitante.CL_CORREO_ELECTRONICO;
+                //nbCreaRequisicion = vSolicitante.NB_EMPLEADO_COMPLETO;
+                //vNbCorreo = vSolicitante.CL_CORREO_ELECTRONICO;
+                nbCreaRequisicion = vRequisicion.NB_EMPLEADO_SOLICITANTE;
+                vNbCorreo = vRequisicion.NB_CORREO_SOLICITANTE;
             }
 
             if (vClEstatusPuesto.Equals("RECHAZADO"))
@@ -201,12 +206,13 @@ namespace SIGE.WebApp.IDP
             string Asunto = "Actualización de requisición";
 
             var vRequisicion = nRequisicion.ObtieneRequisicion(pIdRequisicion: pIdRequisicion).FirstOrDefault();
-            var vSolicitante = nEmpleado.ObtenerEmpleado(ID_EMPLEADO: vRequisicion.ID_SOLICITANTE).FirstOrDefault();
+           // var vSolicitante = nEmpleado.ObtenerEmpleado(ID_EMPLEADO: vRequisicion.ID_SOLICITANTE).FirstOrDefault();
 
-            if (vSolicitante != null)
+            //if (vSolicitante != null)
+            if (vRequisicion != null)
             {
-                nbCreaRequisicion = vSolicitante.NB_EMPLEADO_COMPLETO;
-                vNbCorreo = vSolicitante.CL_CORREO_ELECTRONICO;
+                nbCreaRequisicion = vRequisicion.NB_EMPLEADO_SOLICITANTE;
+                vNbCorreo = vRequisicion.NB_CORREO_SOLICITANTE;
             }
 
             if (vClEstatusRequisicion.Equals("RECHAZADO"))
@@ -253,12 +259,15 @@ namespace SIGE.WebApp.IDP
             string Asunto = "Actualización de requisición y puesto";
 
             var vRequisicion = nRequisicion.ObtieneRequisicion(pIdRequisicion: pIdRequisicion).FirstOrDefault();
-            var vSolicitante = nEmpleado.ObtenerEmpleado(ID_EMPLEADO: vRequisicion.ID_SOLICITANTE).FirstOrDefault();
+           // var vSolicitante = nEmpleado.ObtenerEmpleado(ID_EMPLEADO: vRequisicion.ID_SOLICITANTE).FirstOrDefault();
 
-            if (vSolicitante != null)
+           // if (vSolicitante != null)
+            if (vRequisicion != null)
             {
-                nbCreaRequisicion = vSolicitante.NB_EMPLEADO_COMPLETO;
-                vNbCorreo = vSolicitante.CL_CORREO_ELECTRONICO;
+                //nbCreaRequisicion = vSolicitante.NB_EMPLEADO_COMPLETO;
+                //vNbCorreo = vSolicitante.CL_CORREO_ELECTRONICO;
+                nbCreaRequisicion = vRequisicion.NB_EMPLEADO_SOLICITANTE;
+                vNbCorreo = vRequisicion.NB_CORREO_SOLICITANTE;
             }
 
             vMensajeCorreo = ContextoApp.IDP.NotificacionRrhh.dsEstatusReqPuesto.dsMensaje;
