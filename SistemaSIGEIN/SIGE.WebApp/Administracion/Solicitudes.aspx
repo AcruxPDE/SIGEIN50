@@ -438,7 +438,7 @@
         <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_click" OnClientClicking="ConfirmarEliminar" AutoPostBack="true"></telerik:RadButton>
     </div>
      <div class="ctrlBasico">
-         <telerik:RadButton ID="btnActualizarCartera" runat="server" Text="Actualizar cartera" OnClientClicking="ConfirmarActualizar" OnClick="btnActualizarCartera_Click" AutoPostBack="true"></telerik:RadButton>
+         <telerik:RadButton ID="btnActualizarCartera" runat="server" Text="Actualizar solicitud" OnClientClicking="ConfirmarActualizar" OnClick="btnActualizarCartera_Click" AutoPostBack="true"></telerik:RadButton>
     </div>
    <div class="ctrlBasico">
          <telerik:RadButton ID="btnImpresion2" runat="server" Text="Imprimir" OnClientClicked="OpenImpresion" AutoPostBack="false"></telerik:RadButton>

@@ -45,9 +45,17 @@
         function validacionRevisarPuesto(sender, args) {
             if (vFgPuestoNuevoCreado != true) {
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
-                { if (!shouldSubmit) { this.click(); } });
+                {
+                    if (!shouldSubmit) {
+                        this.click();
+                    }
+                    else {
+                        openComparacionperfilPuestosWindow();
+                    }
+                });
                 radconfirm('El descriptivo de puesto es la base de la requisición, ¿Deseas revisar el descriptivo antes de guardar la requisición?', callBackFunction, 400, 200, null, "Salir");
                 args.set_cancel(true);
+
             }
 
         }
