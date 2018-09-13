@@ -219,7 +219,7 @@
                                                 <%--                          <img id="imgNomina" src="Assets/images/menu/Nomina600x344.png" class="img-responsive" onclick="NavegacionMenu(5, '<%= vFgAccesoNomina %>', '<%= vClUsuario %>')" />--%>
                                                 <img id="imgNomina" src="Assets/images/menu/Nomina600x344.png" class="img-responsive" onclick="AccesoNomina()" />
                                             </div>
-                                            <div style="background: #79026F; width: 100%; text-align: center; color: #FFF;">AccelNom</div>
+                                            <div style="background: #79026F; width: 100%; text-align: center; color: #FFF;">Nómina</div>
                                         </div>
                                     </div>
                                 </div>

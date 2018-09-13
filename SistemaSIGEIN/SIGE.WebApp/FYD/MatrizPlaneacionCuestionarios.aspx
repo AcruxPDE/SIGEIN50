@@ -83,6 +83,17 @@
         var vOpenNuevoCuestionarioWindow_title = "Agregar evaluadores";
         var vconfirmarCrearCuestionarios_confirm = "¿Deseas continuar? Una vez hecho esto no podrás solicitar autorizaciones ni volver a la matriz.";
 
+        if ('<%=vClIdioma%>' != "ES") {
+            vOnClientBeforeClose_confirm = '<%=vOnClientBeforeClose_confirm%>';
+            vOnClientBeforeClose_title = '<%=vOnClientBeforeClose_title%>';
+            vOpenWindowAutorizarDocumento_title = '<%=vOpenWindowAutorizarDocumento_title%>';
+            vOpenNuevoCuestionarioWindow_title = '<%=vOpenNuevoCuestionarioWindow_title%>';
+            vconfirmarCrearCuestionarios_confirm = '<%=vconfirmarCrearCuestionarios_confirm%>';
+
+        }
+
+
+
         function closeWindow() {
             GetRadWindow().close();
         }
@@ -96,7 +107,7 @@
                 }
             }
 
-            radconfirm(OnClientBeforeClose_confirm, confirmCallback, 400, 170, null, vOnClientBeforeClose_title);
+            radconfirm(vOnClientBeforeClose_confirm, confirmCallback, 400, 170, null, vOnClientBeforeClose_title);
         }
 
 
@@ -310,14 +321,15 @@
         <telerik:RadCheckBox runat="server" ID="chkOtro" Text="Otros" AutoPostBack="false" OnClientCheckedChanged="Otros"></telerik:RadCheckBox>
     </div>
 
-    <div style="clear: both; height: 10px;"></div>
+    <div style="clear: both;"></div>
 
     <div style="height: calc(100% - 100px);">
         <telerik:RadGrid ID="grdCuestionarios" runat="server" Height="100%" HeaderStyle-Font-Bold="true" AutoGenerateColumns="false" EnableHeaderContextMenu="true" AllowSorting="true" MasterTableView-TableLayout ="Fixed"
             OnNeedDataSource="grdCuestionarios_NeedDataSource"
             OnItemDataBound="grdCuestionarios_ItemDataBound"
             OnDeleteCommand="grdCuestionarios_DeleteCommand"
-            OnDetailTableDataBind="grdCuestionarios_DetailTableDataBind">
+            OnDetailTableDataBind="grdCuestionarios_DetailTableDataBind"
+            OnPreRender="grdCuestionarios_PreRender">
             <ClientSettings>
                 <Scrolling UseStaticHeaders="false" AllowScroll="true"  />
                 <Selecting AllowRowSelect="true" />
@@ -332,19 +344,19 @@
                 <DetailTables>
                     <telerik:GridTableView DataKeyNames="ID_EVALUADO" Name="gtvEvaluadores">
                         <Columns>
-                            <telerik:GridBoundColumn HeaderText="Autoevaluación" DataField="AUTOEVALUACION">
+                            <telerik:GridBoundColumn HeaderText="Autoevaluación" DataField="AUTOEVALUACION" UniqueName="AUTOEVALUACION">
                                 <HeaderStyle Width="310px" />
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn HeaderText="Superior" DataField="SUPERIOR">
+                            <telerik:GridBoundColumn HeaderText="Superior" DataField="SUPERIOR" UniqueName="SUPERIOR">
                                 <HeaderStyle Width="310px" />
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn HeaderText="Subordinado" DataField="SUBORDINADO">
+                            <telerik:GridBoundColumn HeaderText="Subordinado" DataField="SUBORDINADO" UniqueName="SUBORDINADO">
                                 <HeaderStyle Width="310px" />
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn HeaderText="Interrelacionados" DataField="INTERRELACIONADO">
+                            <telerik:GridBoundColumn HeaderText="Interrelacionados" DataField="INTERRELACIONADO" UniqueName="INTERRELACIONADO">
                                 <HeaderStyle Width="310px" />
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn HeaderText="Otros" DataField="OTROS">
+                            <telerik:GridBoundColumn HeaderText="Otros" DataField="OTROS" UniqueName="OTROS">
                                 <HeaderStyle Width="310px" />
                             </telerik:GridBoundColumn>
                         </Columns>
@@ -353,6 +365,7 @@
             </MasterTableView>
         </telerik:RadGrid>
     </div>
+    <div style="clear:both; height:10px;"></div>
     <div class="ctrlBasico">
         <telerik:RadButton runat="server" ID="btnAgregarEmpleado" Text="Agregar evaluadores" AutoPostBack="false" OnClientClicked="OpenNuevoCuestionarioWindow" OnClick="btnAgregarEmpleado_Click"></telerik:RadButton>
     </div>
@@ -360,8 +373,8 @@
         <telerik:RadButton runat="server" ID="btnGuardar" Text="Guardar" OnClick="btnGuardar_Click" ></telerik:RadButton>
     </div>
       <div class="ctrlBasico">
-                        <telerik:RadButton ID="btnRegistroAutorizacion" AutoPostBack="false" Enabled="true" OnClientClicked="ShowAutorizarForm" runat="server" Text="Registro y autorización" Width="200" ToolTip="Da clic si deseas registrar este programa de capacitación y/o deseas realizar un proceso de autorización."></telerik:RadButton>
-                    </div>
+       <telerik:RadButton ID="btnRegistroAutorizacion" AutoPostBack="false" Enabled="true" OnClientClicked="ShowAutorizarForm" runat="server" Text="Registro y autorización" Width="200" ToolTip="Da clic si deseas registrar este programa de capacitación y/o deseas realizar un proceso de autorización."></telerik:RadButton>
+     </div>
     <div class="ctrlBasico">
         <%--<telerik:RadButton runat="server" ID="btnCrearCuestionarios" Text="Crear cuestionarios" OnClick="btnCrearCuestionarios_Click"></telerik:RadButton>--%>
         <telerik:RadButton runat="server" ID="btnCrearCuestionarios" Text="Crear cuestionarios" OnClientClicking="confirmarCrearCuestionarios" Enabled="true" OnClick="btnCrearCuestionarios_Click"></telerik:RadButton>

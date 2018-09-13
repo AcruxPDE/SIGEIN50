@@ -25,9 +25,11 @@
                         clTipoCatalogo: "<%= vClCatalogo %>",
                         clLista: "<%= vClLista %>"
                     };
-                    vAdscripciones.push(vAdscripcion);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vAdscripciones.length;
+                    if (!existeElemento(vAdscripcion)) {
+                        vAdscripciones.push(vAdscripcion);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vAdscripciones.length;
+                    }
                 }
                 return true;
             }
@@ -37,6 +39,15 @@
                 if (currentWnd)
                     browserWnd = currentWnd.BrowserWindow;
                 browserWnd.radalert("Selecciona una adscripción.", 400, 150);
+            }
+            return false;
+        }
+
+        function existeElemento(pAdscripcion) {
+            for (var i = 0; i < vAdscripciones.length; i++) {
+                var vValue = vAdscripciones[i];
+                if (vValue.idCampo == pAdscripcion.idCampo)
+                    return true;
             }
             return false;
         }

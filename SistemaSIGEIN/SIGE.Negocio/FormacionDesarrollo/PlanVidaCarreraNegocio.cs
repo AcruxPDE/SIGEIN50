@@ -13,10 +13,10 @@ namespace SIGE.Negocio.FormacionDesarrollo
 {
     public class PlanVidaCarreraNegocio
     {
-        public List<SPE_OBTIENE_PLAN_VIDA_CARRERA_Result> obtieneDatosPlanVidaCarrera(int ID_PUESTO, int? ID_EMPRESA)
+        public List<SPE_OBTIENE_PLAN_VIDA_CARRERA_Result> obtieneDatosPlanVidaCarrera(int ID_PUESTO, int? ID_EMPRESA, int? ID_PLAZA)
         {
             PlanVidaCarreraOperaciones op = new PlanVidaCarreraOperaciones();
-            return op.obtenerDatosPlanVidaCarrera(ID_PUESTO, ID_EMPRESA);
+            return op.obtenerDatosPlanVidaCarrera(ID_PUESTO, ID_EMPRESA, ID_PLAZA);
         }
 
         //public List<E_COMPARACION_COMPETENCIA> obtieneComparacionCompetenciasPlanVidaCarrera(int ID_EMPLEADO, int ID_PERIODO, string XML_PUESTOS)

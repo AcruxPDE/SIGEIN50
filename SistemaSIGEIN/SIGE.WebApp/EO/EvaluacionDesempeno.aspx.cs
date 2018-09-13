@@ -79,13 +79,53 @@ namespace SIGE.WebApp.EO
 
         #region Funciones
 
-        private void EstatusBotonesPeriodos(bool pFgEstatus)
+        private void EstatusBotonesPeriodos(bool pFgEstatus, bool? pFgConfiguracion)
         {
+            bool vFgConfigurado = false;
+            if (pFgConfiguracion == true)
+                vFgConfigurado = true;
+
             btnConfiguracion.Enabled = pFgEstatus && vConfigurar;
             btnCerrar.Enabled = pFgEstatus && vCerrar;
-            btnEnviarSolicitudes.Enabled = pFgEstatus && vEnviarSolicitudes;
-            btnCapturaEvaluaciones.Enabled = pFgEstatus && vCapturaEvaluaciones;
-            btnReplicar.Enabled = pFgEstatus && vReplicar;
+            btnEnviarSolicitudes.Enabled = pFgEstatus && vEnviarSolicitudes && vFgConfigurado;
+            btnCapturaEvaluaciones.Enabled = pFgEstatus && vCapturaEvaluaciones && vFgConfigurado;
+            btnControlAvance.Enabled = vFgConfigurado;
+            btnReplicar.Enabled = vReplicar;
+        }
+
+        private void CargarDatosDetalle(int? pIdPeriodo)
+        {
+            PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
+            SPE_OBTIENE_EO_PERIODOS_DESEMPENO_Result vPeriodo = nPeriodo.ObtienePeriodosDesempeno(pIdPeriodo: pIdPeriodo).FirstOrDefault();
+            if (vPeriodo != null)
+            {
+                txtClPeriodo.Text = vPeriodo.CL_PERIODO;
+                txtDsPeriodo.Text = vPeriodo.DS_PERIODO;
+                txtClEstatus.Text = vPeriodo.CL_ESTADO_PERIODO;
+
+                if(vPeriodo.CL_TIPO_METAS == "DESCRIPTIVO")
+                txtTipo.Text = "A partir del descriptivo";
+                else if(vPeriodo.CL_TIPO_METAS == "CERO")
+                    txtTipo.Text = "A partir de cero";
+
+
+                txtUsuarioMod.Text = vPeriodo.CL_USUARIO_APP_MODIFICA;
+                txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPeriodo.FE_MODIFICA);
+
+
+                if (vPeriodo.DS_NOTAS != null)
+                {
+                    XElement vNotas = XElement.Parse(vPeriodo.DS_NOTAS);
+
+                    if (vNotas != null)
+                    {
+                        string vNotasTexto = validarDsNotas(vNotas.ToString());
+                        txtNotas.InnerHtml = vNotasTexto;
+                    }
+                }
+
+                rlvPeriodos.Rebind();
+            }
         }
 
         private void seleccionarPeriodo()
@@ -95,9 +135,19 @@ namespace SIGE.WebApp.EO
             rlvPeriodos.CurrentPageIndex = 0;
             if (rlvPeriodos.Items.Count > 0)
             {
-                rlvPeriodos.Items[0].Selected = true;
+               rlvPeriodos.Items[0].Selected = true;
             }
             rlvPeriodos.Rebind();
+
+            string vIdPeriodoSeleccionado = rlvPeriodos.Items[0].GetDataKeyValue("ID_PERIODO").ToString();
+            if (vIdPeriodoSeleccionado != null)
+            {
+                PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
+                var vFgConfigurado = nPeriodo.VerificaConfiguracion(int.Parse(vIdPeriodoSeleccionado)).FirstOrDefault();
+                EstatusBotonesPeriodos(true, vFgConfigurado.FG_ESTATUS);
+
+                CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+            }
         }
 
         public string validarDsNotas(string vdsNotas)
@@ -190,33 +240,38 @@ namespace SIGE.WebApp.EO
                 if (int.TryParse(item.GetDataKeyValue("ID_PERIODO").ToString(), out vIdPeriodoLista))
                     vIdPeriodo = vIdPeriodoLista;
 
+                CargarDatosDetalle(vIdPeriodo);
+
                 PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
-                SPE_OBTIENE_EO_PERIODOS_DESEMPENO_Result  vPeriodo = nPeriodo.ObtienePeriodosDesempeno(pIdPeriodo: vIdPeriodo).FirstOrDefault();
+                var vFgConfigurado = nPeriodo.VerificaConfiguracion(vIdPeriodo).FirstOrDefault();
 
-                txtClPeriodo.Text = vPeriodo.CL_PERIODO;
-                txtDsPeriodo.Text = vPeriodo.DS_PERIODO;
-                txtClEstatus.Text = vPeriodo.CL_ESTADO_PERIODO;
-                txtTipo.Text = vPeriodo.CL_ORIGEN_CUESTIONARIO;
-                txtUsuarioMod.Text = vPeriodo.CL_USUARIO_APP_MODIFICA;
-                txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPeriodo.FE_MODIFICA);
+                //PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
+                //SPE_OBTIENE_EO_PERIODOS_DESEMPENO_Result  vPeriodo = nPeriodo.ObtienePeriodosDesempeno(pIdPeriodo: vIdPeriodo).FirstOrDefault();
+
+                //txtClPeriodo.Text = vPeriodo.CL_PERIODO;
+                //txtDsPeriodo.Text = vPeriodo.DS_PERIODO;
+                //txtClEstatus.Text = vPeriodo.CL_ESTADO_PERIODO;
+                //txtTipo.Text = vPeriodo.CL_ORIGEN_CUESTIONARIO;
+                //txtUsuarioMod.Text = vPeriodo.CL_USUARIO_APP_MODIFICA;
+                //txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPeriodo.FE_MODIFICA);
 
 
-                if (vPeriodo.DS_NOTAS != null)
-                {
-                    XElement vNotas = XElement.Parse(vPeriodo.DS_NOTAS);
+                //if (vPeriodo.DS_NOTAS != null)
+                //{
+                //    XElement vNotas = XElement.Parse(vPeriodo.DS_NOTAS);
                   
-                    if (vNotas != null)
-                    {
-                       string vNotasTexto = validarDsNotas(vNotas.ToString());
-                       txtNotas.InnerHtml = vNotasTexto;
-                    }
-                }
+                //    if (vNotas != null)
+                //    {
+                //       string vNotasTexto = validarDsNotas(vNotas.ToString());
+                //       txtNotas.InnerHtml = vNotasTexto;
+                //    }
+                //}
 
                 //if (e.CommandName == "Select")
                 //{
                     vIdPeriodo = int.Parse(item.GetDataKeyValue("ID_PERIODO").ToString());
                     string vClEstado = (item.GetDataKeyValue("CL_ESTADO_PERIODO").ToString());
-                    EstatusBotonesPeriodos((vClEstado.ToUpper() == "CERRADO") ? false : true);
+                    EstatusBotonesPeriodos((vClEstado.ToUpper() == "CERRADO") ? false : true, vFgConfigurado.FG_ESTATUS);
 
                 //}
             }
@@ -232,15 +287,21 @@ namespace SIGE.WebApp.EO
                 E_RESULTADO vResultado = nPeriodo.EliminaPeriodoDesempeno(int.Parse(item.GetDataKeyValue("ID_PERIODO").ToString()));
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "");
-                txtClPeriodo.Text = "";
-                txtDsPeriodo.Text = "";
-                txtClEstatus.Text = "";
-                txtTipo.Text = "";
-                txtUsuarioMod.Text = "";
-                txtNotas.InnerHtml = "";
-                txtFechaMod.Text = "";
-                vIdPeriodo = null;
                 rlvPeriodos.Rebind();
+
+                if (rlvPeriodos.SelectedItems.Count > 0)
+                {
+                    string vIdPeriodoSeleccionado = rlvPeriodos.SelectedItems[0].GetDataKeyValue("ID_PERIODO").ToString();
+                    string vFgEstado = rlvPeriodos.SelectedItems[0].GetDataKeyValue("CL_ESTADO_PERIODO").ToString();
+                    if (vIdPeriodoSeleccionado != null)
+                    {
+                        PeriodoDesempenoNegocio nConfiguracion = new PeriodoDesempenoNegocio();
+                        var vFgConfigurado = nPeriodo.VerificaConfiguracion(int.Parse(vIdPeriodoSeleccionado)).FirstOrDefault();
+                        EstatusBotonesPeriodos((vFgEstado.ToUpper() == "CERRADO") ? false : true, vFgConfigurado.FG_ESTATUS);
+
+                        CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+                    }
+                }
             }
         }
 
@@ -249,7 +310,13 @@ namespace SIGE.WebApp.EO
             PeriodoNegocio nPeriodo = new PeriodoNegocio();
             var vMensaje = nPeriodo.ActualizaEstatusPeriodo((int)vIdPeriodo, "Cerrado", vClUsuario, vNbPrograma);
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje.MENSAJE[0].DS_MENSAJE.ToString(), vMensaje.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "onCloseWindow");
-            EstatusBotonesPeriodos(false);
+
+            if (vMensaje.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+            {
+                PeriodoDesempenoNegocio nDesempeno = new PeriodoDesempenoNegocio();
+                var vFgConfigurado = nDesempeno.VerificaConfiguracion(vIdPeriodo).FirstOrDefault();
+                EstatusBotonesPeriodos(false, vFgConfigurado.FG_ESTATUS);
+            }
 
         }
 
@@ -258,7 +325,13 @@ namespace SIGE.WebApp.EO
             PeriodoNegocio nPeriodo = new PeriodoNegocio();
             var vMensaje = nPeriodo.ActualizaEstatusPeriodo((int)vIdPeriodo, "Abierto", vClUsuario, vNbPrograma);
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje.MENSAJE[0].DS_MENSAJE.ToString(), vMensaje.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "onCloseWindow");
-            EstatusBotonesPeriodos(true);
+
+            if (vMensaje.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+            {
+                PeriodoDesempenoNegocio nDesempeno = new PeriodoDesempenoNegocio();
+                var vFgConfigurado = nDesempeno.VerificaConfiguracion(vIdPeriodo).FirstOrDefault();
+                EstatusBotonesPeriodos(true, vFgConfigurado.FG_ESTATUS);
+            }
         }
 
         protected void btnReplicar_Click(object sender, EventArgs e)
@@ -336,6 +409,29 @@ namespace SIGE.WebApp.EO
             if (vSeleccion.clTipo == "ACTUALIZARLISTA")
             {
                 seleccionarPeriodo();
+            }
+            else if (vSeleccion.clTipo == "CONFIGURACION")
+            {
+                PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
+                var vFgConfigurado = nPeriodo.VerificaConfiguracion(vIdPeriodo).FirstOrDefault();
+                EstatusBotonesPeriodos( true, vFgConfigurado.FG_ESTATUS);
+            }
+            else
+            {
+                rlvPeriodos.Rebind();
+                if (rlvPeriodos.SelectedItems.Count > 0)
+                {
+                    string vIdPeriodoSeleccionado = rlvPeriodos.SelectedItems[0].GetDataKeyValue("ID_PERIODO").ToString();
+                    string vFgEstado = rlvPeriodos.SelectedItems[0].GetDataKeyValue("CL_ESTADO_PERIODO").ToString();
+                    if (vIdPeriodoSeleccionado != null)
+                    {
+                        PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
+                        var vFgConfigurado = nPeriodo.VerificaConfiguracion(int.Parse(vIdPeriodoSeleccionado)).FirstOrDefault();
+                        EstatusBotonesPeriodos((vFgEstado.ToUpper() == "CERRADO") ? false : true, vFgConfigurado.FG_ESTATUS);
+
+                        CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+                    }
+                }
             }
         }
     }

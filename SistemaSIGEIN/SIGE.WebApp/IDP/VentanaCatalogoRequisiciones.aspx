@@ -431,7 +431,17 @@
         }
 
 
+        //Eliminar el tooltip del control
+        function pageLoad() {
+            var datePicker = $find("<%=rdpAutorizacion.ClientID %>");
+            if (datePicker != null)
+                datePicker.get_popupButton().title = "";
 
+            var datePicker2 = $find("<%=Fe_Requerimiento.ClientID %>");
+            datePicker2.get_popupButton().title = "";
+            var datePicker3 = $find("<%=Fe_solicitud.ClientID %>");
+            datePicker3.get_popupButton().title = "";
+        }
 
 
 
@@ -442,7 +452,7 @@
 
             if (vIdPuesto != 0) {
 
-                OpenSelectionWindowVistaPrevia("/Administracion/VentanaDescriptivoPuesto.aspx?PuestoId=" + vIdPuesto, "winPerfil", "Revisar descriptivo de puesto")
+                OpenSelectionWindowVistaPrevia("../Administracion/VentanaDescriptivoPuesto.aspx?PuestoId=" + vIdPuesto, "winPerfil", "Revisar descriptivo de puesto")
             }
             else {
                 radalert("Selecciona un puesto para revisar el descriptivo", 450, 150, "Revisar descriptivo");
@@ -833,7 +843,7 @@
                 <telerik:RadSlidingZone ID="slzOpcionesBusqueda" runat="server" Width="18" ClickToOpen="true" SlideDirection="Left">
                     <telerik:RadSlidingPane ID="RSPAdvSearchInstructores" runat="server" Title="Ayuda" Width="300" MinWidth="300" Height="100%">
                         <div style="padding: 20px; text-align: justify">
-                            Te informamos que si el puesto a cubrir no está en el catálogo de puestos, deberás seleccionar como Causa "Nuevo puesto" y antes de guardar dar clic en el botón Notificar a RRHH, para que el área de Recursos Humanos cree el nuevo puesto con las características necesarias.
+                            Te informamos que si el puesto a cubrir no está en el catálogo de puestos, deberás seleccionar como causa "Nuevo puesto" y crearlo para su autorización.
                         </div>
                     </telerik:RadSlidingPane>
                 </telerik:RadSlidingZone>

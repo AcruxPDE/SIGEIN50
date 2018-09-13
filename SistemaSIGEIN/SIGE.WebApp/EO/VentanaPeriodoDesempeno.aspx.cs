@@ -274,7 +274,8 @@ namespace SIGE.WebApp.EO
                     var vPeriododDesempeno = nPeriodo.ObtienePeriodosDesempeno(pIdPeriodo: vIdPeriodo).FirstOrDefault();
                     vIdPeriodoDesempeno = vPeriododDesempeno.ID_PERIODO_DESEMPENO;
                     var resultado = nPeriodo.InsertaActualiza_PERIODO(vIdPeriodoDesempeno, txtDsPeriodo.Text, txtDsPeriodo.Text, txtDsDescripcion.Text, vEstadoPeriodo, nodoPrincipal.ToString(), vFechaInicio.Value, vFechaTermino.Value, vCapturistaResultado, vTipoMetas, vClUsuario, vNbPrograma, vAccion, null);
-                    UtilMensajes.MensajeResultadoDB(rwmMensaje, resultado.MENSAJE[0].DS_MENSAJE.ToString(), resultado.CL_TIPO_ERROR, 400, 150, "sendDataToParent(" + vIdPeriodo + ")");
+                    //UtilMensajes.MensajeResultadoDB(rwmMensaje, resultado.MENSAJE[0].DS_MENSAJE.ToString(), resultado.CL_TIPO_ERROR, 400, 150, "sendDataToParent(" + vIdPeriodo + ")");// Se cambia sendatatoparent, en realidad se usaba esto??
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, resultado.MENSAJE[0].DS_MENSAJE.ToString(), resultado.CL_TIPO_ERROR, 400, 150, "cerrarVentanaActualiza");
                 }
             }
         }

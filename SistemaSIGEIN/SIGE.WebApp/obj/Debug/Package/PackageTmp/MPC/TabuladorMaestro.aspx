@@ -335,7 +335,7 @@
                 <telerik:RadPane ID="rpAyudaTabuladorMaestro" runat="server" Scrolling="None" Width="20px">
                     <telerik:RadSlidingZone ID="rszAyudaTabuladorMaestro" runat="server" SlideDirection="Left" ExpandedPaneId="rsTabuladorMaestro" Width="20px" ClickToOpen="true">
                         <telerik:RadSlidingPane ID="rspAyudaTabuladorMaestro" runat="server" Title="Ayuda" Width="240px" RenderMode="Mobile" Height="100%">
-                            <div style="padding: 20px; text-align: justify;">
+                            <div style="padding: 10px; text-align: justify;">
                                 <p>Utilice esta tabla para definir el esquema de niveles del tabulador.</p>
                             </div>
                         </telerik:RadSlidingPane>

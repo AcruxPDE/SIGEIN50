@@ -178,7 +178,6 @@
     <!-- fin: Controles para uso del grid -->
     <label class="labelTitulo" name="lbllocalizacion" id="lbllocalizacion">Localización</label>
     <div style="clear: both;"></div>
-
     <div id="ContenedorEstado" class="ctrlBasico">
         <div>
             <label id="lblEstado" name="lblEstado">Estado</label>
@@ -219,10 +218,10 @@
         <%--<asp:Button Text="Filtrar" runat="server" ID="btnFiltrar" name="btnFiltrar" OnClick="btnFiltrar_Click" />--%>
     </div>
 
-    <div style="clear: both; height: 10px"></div>
+    <div style="clear: both;"></div>
 
     <!-- creación del  grid de colonias -->
-    <div id="ContenidoGrid" style="height: calc(100% - 175px)">
+    <div id="ContenidoGrid" style="height: calc(100% - 165px)">
 
         <telerik:RadGrid ID="GridCatalogoLista"
             ShowHeader="true"
@@ -296,13 +295,13 @@
     <div style="clear: both; height: 10px"></div>
     <div id="controles">
         <div class="ctrlBasico">
-            <telerik:RadButton ID="btnGuardar" OnClientClicked="nuevoLocalizacion" AutoPostBack="false" runat="server" Text="Agregar" Width="100"></telerik:RadButton>
+            <telerik:RadButton ID="btnGuardar" OnClientClicked="nuevoLocalizacion" AutoPostBack="false" runat="server" Text="Agregar"></telerik:RadButton>
         </div>
         <div class="ctrlBasico">
-            <telerik:RadButton ID="btnEditar" OnClientClicked="editarLocalizacion" AutoPostBack="false" runat="server" Text="Editar" Width="100"></telerik:RadButton>
+            <telerik:RadButton ID="btnEditar" OnClientClicked="editarLocalizacion" AutoPostBack="false" runat="server" Text="Editar" ></telerik:RadButton>
         </div>
         <div class="ctrlBasico">
-            <telerik:RadButton ID="RadBtnEliminar" runat="server" Text="Eliminar" Width="100" OnClientClicking="ConfirmarEliminar" OnClick="RadBtnEliminar_Click"></telerik:RadButton>
+            <telerik:RadButton ID="RadBtnEliminar" runat="server" Text="Eliminar"  OnClientClicking="ConfirmarEliminar" OnClick="RadBtnEliminar_Click"></telerik:RadButton>
         </div>
     </div>
 

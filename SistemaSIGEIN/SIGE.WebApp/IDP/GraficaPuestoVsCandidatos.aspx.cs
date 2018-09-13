@@ -161,11 +161,11 @@ namespace SIGE.WebApp.IDP
                 vs_NB_PUESTO = vPuestoCandidatos.FirstOrDefault().NB_PUESTO;
             }
 
-            lbCandidatos.Controls.Add(GenerarTablaCandidatos(vPuestoCandidatos));
+            //lbCandidatos.Controls.Add(GenerarTablaCandidatos(vPuestoCandidatos));
 
-            var vPuestoCompetencia = vPuestoCandidatos.Select(s => new { s.NO_VALOR_NIVEL, s.NB_PUESTO, s.NB_COMPETENCIA, s.CL_PUESTO }).Distinct().ToList();
-            if (vPuestoCompetencia.Count > 0)
-                lbPuestoCom.InnerText = "- (" + vPuestoCompetencia.FirstOrDefault().CL_PUESTO + ") " + vPuestoCompetencia.FirstOrDefault().NB_PUESTO;
+            //var vPuestoCompetencia = vPuestoCandidatos.Select(s => new { s.NO_VALOR_NIVEL, s.NB_PUESTO, s.NB_COMPETENCIA, s.CL_PUESTO }).Distinct().ToList();
+            //if (vPuestoCompetencia.Count > 0)
+            //    lbPuestoCom.InnerText = "- (" + vPuestoCompetencia.FirstOrDefault().CL_PUESTO + ") " + vPuestoCompetencia.FirstOrDefault().NB_PUESTO;
 
             GraficaPuestoCandidatos(vPuestoCandidatos);
 
@@ -280,11 +280,11 @@ namespace SIGE.WebApp.IDP
                 }
 
             }
-            lbCandidatos.InnerHtml = vCandidatosComp;
+           // lbCandidatos.InnerHtml = vCandidatosComp;
 
             var vPuestoCompetencia = plstPuestoCandidatos.Select(s => new { s.NO_VALOR_NIVEL, s.NB_PUESTO, s.NB_COMPETENCIA, s.CL_PUESTO }).Distinct().ToList();
             ColumnSeries vPuesto = new ColumnSeries();
-            lbPuestoCom.InnerText = "- (" + vPuestoCompetencia.FirstOrDefault().CL_PUESTO + ") " + vPuestoCompetencia.FirstOrDefault().NB_PUESTO;
+           // lbPuestoCom.InnerText = "- (" + vPuestoCompetencia.FirstOrDefault().CL_PUESTO + ") " + vPuestoCompetencia.FirstOrDefault().NB_PUESTO;
 
 
             foreach (var item in vPuestoCompetencia)
@@ -294,7 +294,7 @@ namespace SIGE.WebApp.IDP
                 vPuesto.Name = "(" + item.CL_PUESTO + ") " + item.NB_PUESTO;
                 rhcPuestoCandidatos.PlotArea.XAxis.Items.Add(item.NB_COMPETENCIA);
                 rhcPuestoCandidatos.PlotArea.XAxis.LabelsAppearance.RotationAngle = 270;
-                rhcPuestoCandidatos.PlotArea.YAxis.MaxValue = 6;
+                rhcPuestoCandidatos.PlotArea.YAxis.MaxValue = 5;
             }
             rhcPuestoCandidatos.PlotArea.Series.Add(vPuesto);
 

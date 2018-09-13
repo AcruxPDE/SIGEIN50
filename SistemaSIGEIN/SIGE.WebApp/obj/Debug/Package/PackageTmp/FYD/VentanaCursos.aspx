@@ -167,6 +167,13 @@
         }
 
     </script>
+    <style>
+         .ruBrowse
+       {
+           
+           width: 150px !important;
+       }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
@@ -403,9 +410,9 @@ Adicionalmente no podrá agregar otras competencias específicas que no sean del
                         </Items>
                     </telerik:RadComboBox>
                 </div>
-                <div class="ctrlBasico">
+                <div class="ctrlBasico" style="width: 420px">
                     Subir documento:<br />
-                    <telerik:RadAsyncUpload ID="rauDocumento" runat="server" MultipleFileSelection="Disabled"></telerik:RadAsyncUpload>
+                    <telerik:RadAsyncUpload ID="rauDocumento" runat="server" MultipleFileSelection="Disabled"> <Localization Select="Seleccionar" /></telerik:RadAsyncUpload>
                 </div>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnAgregarDocumento" runat="server" Text="Agregar" OnClick="btnAgregarDocumento_Click"></telerik:RadButton>

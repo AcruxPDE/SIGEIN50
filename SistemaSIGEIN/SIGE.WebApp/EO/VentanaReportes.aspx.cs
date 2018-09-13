@@ -600,11 +600,13 @@ namespace SIGE.WebApp.EO
 
             if (rbEdadIndice.Checked == true)
             {
+
                 vXlmEdad = new XElement("EDAD", new XAttribute("EDAD_INICIAL", rnEdadInicial.Text), new XAttribute("EDAD_FINAL", rnEdadFinal.Text));
                 vXlmFiltros.Add(vXlmEdad);
             }
             if (rbAntiguedadIndice.Checked == true)
             {
+
                 vXlmAntiguedad = new XElement("ANTIGUEDAD", new XAttribute("ANTIGUEDAD_INICIAL", rnAntiguedadInicial.Text), new XAttribute("ANTIGUEDAD_FINAL", rnAtiguedadFinal.Text));
                 vXlmFiltros.Add(vXlmAntiguedad);
             }

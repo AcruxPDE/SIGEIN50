@@ -20,6 +20,14 @@
             cerrarVentana(pDatos);
         }
 
+        function cerrarVentanaActualiza() {
+            var pDatos = [{
+                accion: "ACTUALIZA"
+
+            }];
+            cerrarVentana(pDatos);
+        }
+
         function cerrarVentana(recargarList) {
             sendDataToParent(recargarList);
         }

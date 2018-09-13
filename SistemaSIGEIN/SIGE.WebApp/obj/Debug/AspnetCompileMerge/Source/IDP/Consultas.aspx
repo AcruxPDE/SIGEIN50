@@ -14,7 +14,6 @@
             var selectedRows = MasterTable.get_selectedItems();
             if (selectedRows.length != 0) {
                 var row = selectedRows[0];
-
                 idBateria = row.getDataKeyValue("ID_BATERIA");
                 idCandidato = row.getDataKeyValue("ID_CANDIDATO");
                 clToken = row.getDataKeyValue("CL_TOKEN");
@@ -81,8 +80,27 @@
                 width: document.documentElement.clientWidth - 20,
                 height: document.documentElement.clientHeight - 20
             };
-            if ('<%= vIdPuestoVsCandidatos %>' != null)
-                openChildDialog("ConsultasComparativas.aspx?pIdPuestoVsCandidatos=" + '<%= vIdPuestoVsCandidatos %>' + "&pClTipoConsulta=PSVP", "winConsultas", "Consulta comparativa Puesto vs N. Personas", windowProperties);
+            //if ('<= vIdPuestoVsCandidatos >' != null)
+            var vCandidatos = [];
+            var vCandidatosJson = "";
+            var grid = $find("<%=grdCandidatos.ClientID %>");
+            var MasterTable = grid.get_masterTableView();
+            var selectedRows = MasterTable.get_selectedItems();
+            if (selectedRows.length > 0) {
+                for (i = 0; i < selectedRows.length; i++) {
+                    selectedItem = selectedRows[i];
+                        var vCandidato = {
+                            ID_CANDIDATO: selectedItem.getDataKeyValue("ID_CANDIDATO"),
+                        }
+
+                        vCandidatos.push(vCandidato);                  
+                }
+
+                vCandidatosJson = JSON.stringify(vCandidatos);
+
+
+                openChildDialog("ConsultasComparativas.aspx?pClTipoConsulta=PSVP&candidatos=" + vCandidatosJson, "winConsultas", "Consulta comparativa Puesto vs N. Personas", windowProperties);
+            }
             else { radalert("Selecciona un candidato.", 400, 150, ""); }
         }
 
@@ -234,7 +252,7 @@
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="120" FilterControlWidth="50" HeaderText="Folio de solicitud" DataField="CL_SOLICITUD" UniqueName="CL_SOLICITUD"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="200" FilterControlWidth="120" HeaderText="Nombre completo" DataField="NB_CANDIDATO" UniqueName="NB_CANDIDATO"></telerik:GridBoundColumn>
                     <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="90" HeaderText="Fecha de solicitud" DataField="FE_SOLICITUD" UniqueName="FE_SOLICITUD" DataFormatString="{0:d}"></telerik:GridDateTimeColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Etapa del proceso" DataField="CL_SOLICITUD_ESTATUS" UniqueName="CL_SOLICITUD_ESTATUS"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Estatus del proceso" DataField="CL_SOLICITUD_ESTATUS" UniqueName="CL_SOLICITUD_ESTATUS"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="No. de empleado" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="80" FilterControlWidth="20" HeaderText="Pruebas terminadas" DataField="FG_PRUEBAS_TERMINADAS" UniqueName="FG_PRUEBAS_TERMINADAS"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="80" FilterControlWidth="20" HeaderText="Entrevista" DataField="FG_ENTREVISTA" UniqueName="FG_ENTREVISTA"></telerik:GridBoundColumn>
@@ -255,7 +273,7 @@
         <telerik:RadButton runat="server" Text="Personal detallada" ID="btnPersonalDetallada" AutoPostBack="false" OnClientClicked="OpenConsultaDetallada" />
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton runat="server" Text="Puesto vs N. personas" ID="btnPuestoPersonas" AutoPostBack="true" OnClick="btnPuestoPersonas_Click" />
+        <telerik:RadButton runat="server" Text="Puesto vs N. personas" ID="btnPuestoPersonas" AutoPostBack="false" OnClientClicked="OpenConsultaPuestoPersonas" />
     </div>
     <div class="ctrlBasico">
         <telerik:RadButton runat="server" Text="Persona vs N. puestos" ID="btnPersonaPuestos" AutoPostBack="false" OnClientClicked="OpenConsultaPersonaPuestos" />

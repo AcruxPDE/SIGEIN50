@@ -57,7 +57,6 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <div style="height: calc(100% - 10px);">
         <%--        <telerik:RadSplitter ID="RadSplitter2" Width="100%" Height="100%" BorderSize="0" runat="server">
             <telerik:RadPane ID="RadPane2" runat="server">
                 <div class="ctrlBasico">
@@ -102,8 +101,7 @@
         <div style="clear: both; height: 10px;"></div>
         <div class="divControlDerecha">
             <telerik:RadButton ID="btnExportar" runat="server" OnClientClicked="exportRadOrgChart" Text="Exportar a pdf" AutoPostBack="false" UseSubmitBehavior="false"></telerik:RadButton>
-            <telerik:RadClientExportManager runat="server" ID="RadClientExportManager1">
-            </telerik:RadClientExportManager>
+            <telerik:RadClientExportManager runat="server" ID="RadClientExportManager1"></telerik:RadClientExportManager>
         </div>
         <div class="divControlDerecha" style="padding-right: 10px;">
             <telerik:RadCheckBox ID="chkMostrarEmpleados" runat="server" Text="Mostrar empleados" OnClick="chkMostrarEmpleados_Click"></telerik:RadCheckBox>
@@ -126,7 +124,7 @@
                 </telerik:RadSlidingZone>
             </telerik:RadPane>
        </telerik:RadSplitter>--%>
-    </div>
+
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true" OnClientClose="returnDataToParentPopup" OnClientShow="centerPopUp">
         <Windows>
             <telerik:RadWindow ID="winEmpleado" runat="server" VisibleStatusbar="false" AutoSize="false" Modal="true" Behaviors="Close" NavigateUrl="~/Administracion/Empleado.aspx"></telerik:RadWindow>

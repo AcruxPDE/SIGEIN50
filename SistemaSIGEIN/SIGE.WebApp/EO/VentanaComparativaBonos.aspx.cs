@@ -140,7 +140,7 @@ namespace SIGE.WebApp.EO
                  vDr["NB_PUESTO"] = item.NB_PUESTO;
                  vDr["NB_DEPARTAMENTO"] = item.NB_DEPARTAMENTO;
                  if (item.FG_VISIBLE_BONO == true)
-                     vDr["MN_SUELDO"] = "$" + item.MN_SUELDO.ToString();
+                     vDr["MN_SUELDO"] = String.Format("{0:C2}", item.MN_SUELDO);
                  else
                      vDr["MN_SUELDO"] = "";
 
@@ -153,13 +153,13 @@ namespace SIGE.WebApp.EO
                              if (vResultado.PR_CUMPLIMIENTO_EVALUADO != null)
                              {
                                  if (vResultado.MN_BONO_TOTAL != null)
-                                     vDr[vPeriodo.CL_TIPO_PERIODO.ToString()] = vResultado.PR_CUMPLIMIENTO_EVALUADO.ToString() + "%  " + "<br>" + "  $" + vResultado.MN_BONO_TOTAL.ToString();
+                                     vDr[vPeriodo.CL_TIPO_PERIODO.ToString()] = vResultado.PR_CUMPLIMIENTO_EVALUADO.ToString() + "%  " + "<br>" + String.Format("{0:C2}", vResultado.MN_BONO_TOTAL);
                                  else
                                      vDr[vPeriodo.CL_TIPO_PERIODO.ToString()] = vResultado.PR_CUMPLIMIENTO_EVALUADO.ToString() + "%";
                              }
                              else if (vResultado.MN_BONO_TOTAL != null)
                              {
-                                 vDr[vPeriodo.CL_TIPO_PERIODO.ToString()] = "\n" + "$" + vResultado.MN_BONO_TOTAL.ToString();
+                                 vDr[vPeriodo.CL_TIPO_PERIODO.ToString()] = "\n" + String.Format("{0:C2}", vResultado.MN_BONO_TOTAL);
                              }
 
                              vCumplimientoEvaluado = vCumplimientoEvaluado + vResultado.PR_CUMPLIMIENTO_EVALUADO;
@@ -169,26 +169,28 @@ namespace SIGE.WebApp.EO
                              else
                                  vMnBonoTotal = vMnBonoTotal + 0;
                              vPeriodos = vPeriodos + 1;
-                             if (vResultado.MN_BONO != 0)
-                             {
-                                 vTopeBono = vTopeBono + vResultado.MN_BONO;
-                             }
-                             else if (vResultado.PR_BONO != 0)
-                             {
-                                 decimal vDiasPeriodo = (decimal)((vResultado.FE_TERMINO - vResultado.FE_INICIO).TotalDays);
-                                 decimal vSueldoDia = ((decimal)item.MN_SUELDO / ((decimal)30.4));
-                                 vTopeBono = vTopeBono + ((vDiasPeriodo + 1) * vSueldoDia * (vResultado.PR_BONO / 100));
-                             }
+
+                             vTopeBono = vTopeBono + vResultado.MN_TOPE_BONO;
+                             //if (vResultado.MN_BONO != 0)
+                             //{
+                             //    vTopeBono = vTopeBono + vResultado.MN_BONO;
+                             //}
+                             //else if (vResultado.PR_BONO != 0)
+                             //{
+                             //    decimal vDiasPeriodo = (decimal)((vResultado.FE_TERMINO - vResultado.FE_INICIO).TotalDays);
+                             //    decimal vSueldoDia = ((decimal)item.MN_SUELDO / ((decimal)30.4));
+                             //    vTopeBono = vTopeBono + ((vDiasPeriodo + 1) * vSueldoDia * (vResultado.PR_BONO / 100));
+                             //}
                          }
 
                         
                  }
 
-                 vDr["MN_TOPE_BONO"] = "$" + String.Format("{0:0.00}", vTopeBono);
+                 vDr["MN_TOPE_BONO"] = String.Format("{0:C2}", vTopeBono);
                  if (vCumplimientoEvaluado != null)
                  vDr["PR_CUMPLIMIENTO_EVALUADO"] = String.Format("{0:0.00}", ((vCumplimientoEvaluado * 100) / (vPeriodos * 100))) + "%";
                  if (vMnBonoTotal != null)
-                 vDr["MN_BONO_TOTAL"] = "$" + vMnBonoTotal.ToString();
+                 vDr["MN_BONO_TOTAL"] = String.Format("{0:C2}", vMnBonoTotal);
 
                 vDtPivot.Rows.Add(vDr);
             }
@@ -310,6 +312,54 @@ namespace SIGE.WebApp.EO
             rgBonosComparativos.MasterTableView.Columns.Add(ColumnPeriodo);
         }
 
+        public void GenerarContexto()
+        {
+            HtmlGenericControl vCtrlTabla = new HtmlGenericControl("table");
+            vCtrlTabla.Attributes.Add("class", "ctrlTableForm ctrlTableContext");
+
+            HtmlGenericControl vCtrlColumn = new HtmlGenericControl("tr");
+
+
+            HtmlGenericControl vCtrlTh = new HtmlGenericControl("th");
+
+            vCtrlTh.InnerText = String.Format("{0}", "Período");
+            vCtrlColumn.Controls.Add(vCtrlTh);
+
+            HtmlGenericControl vCtrlTh2 = new HtmlGenericControl("th");
+
+            vCtrlTh2.InnerText = String.Format("{0}", "Descripción");
+            vCtrlColumn.Controls.Add(vCtrlTh2);
+
+            HtmlGenericControl vCtrlTh3 = new HtmlGenericControl("th");
+
+            vCtrlTh3.InnerText = String.Format("{0}", "Fecha");
+            vCtrlColumn.Controls.Add(vCtrlTh3);
+
+            vCtrlTabla.Controls.Add(vCtrlColumn);
+
+            foreach (var item in oLstPeriodos)
+            {
+                HtmlGenericControl vCtrlRow = new HtmlGenericControl("tr");
+
+                HtmlGenericControl vCtrlColumnaClPeriodo = new HtmlGenericControl("td");
+                vCtrlColumnaClPeriodo.InnerText = String.Format("{0}", item.CL_TIPO_PERIODO);
+                vCtrlRow.Controls.Add(vCtrlColumnaClPeriodo);
+
+                HtmlGenericControl vCtrlColumnaNbPeriodo = new HtmlGenericControl("td");
+                vCtrlColumnaNbPeriodo.InnerHtml = String.Format("{0}", item.DS_PERIODO);
+                vCtrlRow.Controls.Add(vCtrlColumnaNbPeriodo);
+
+                HtmlGenericControl vCtrlColumnaFePeriodo = new HtmlGenericControl("td");
+                vCtrlColumnaFePeriodo.InnerHtml = String.Format("{0}", item.FE_INICIO_PERIODO.ToShortDateString() + " a " + item.FE_TERMINO_PERIODO.ToShortDateString());
+                vCtrlRow.Controls.Add(vCtrlColumnaFePeriodo);
+
+                vCtrlTabla.Controls.Add(vCtrlRow);
+                dvContexto.Controls.Add(vCtrlTabla);
+            }
+
+        }
+
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -344,6 +394,7 @@ namespace SIGE.WebApp.EO
 
                 }
 
+                GenerarContexto();
                 generarReporte();
             }
 
@@ -370,7 +421,7 @@ namespace SIGE.WebApp.EO
 
         protected void rgContexto_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            rgContexto.DataSource = oLstPeriodos;
+          //  rgContexto.DataSource = oLstPeriodos;
         }
     }
 }

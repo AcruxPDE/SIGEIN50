@@ -23,23 +23,23 @@
         }
 
         function OpenSelectionCapturistaWindow(sender, args) {
-            OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?CatalogoCl=CAPTURISTA", "winSeleccion", "Selección de capturistas");
+            OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?CatalogoCl=CAPTURISTA" + "&mulSel=0", "winSeleccion", "Selección de capturistas");
         }
 
         function OpenSelectionMensajesImportantesWindow(sender, args) {
-            OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?CatalogoCl=IMPORTANTE", "winSeleccion", "Selección de empleado para recepción de mensajes importantes");
+            OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?CatalogoCl=IMPORTANTE" + "&mulSel=0", "winSeleccion", "Selección de empleado para recepción de mensajes importantes");
         }
 
         function OpenSelectionMensajesBajaCapturistaWindow(sender, args) {
-            OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?CatalogoCl=BAJACAPTURISTA", "winSeleccion", "Selección de empleado para recepción de mensajes de baja de capturista");
+            OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?CatalogoCl=BAJACAPTURISTA" + "&mulSel=0", "winSeleccion", "Selección de empleado para recepción de mensajes de baja de capturista");
         }
 
         function OpenSelectionEmpleadosBajaNotificadoWindow(sender, args) {
-            OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?CatalogoCl=BAJANOTIFICADO", "winSeleccion", "Selección de empleado para recepción de mensajes de baja de notificador");
+            OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?CatalogoCl=BAJANOTIFICADO" + "&mulSel=0", "winSeleccion", "Selección de empleado para recepción de mensajes de baja de notificador");
         }
 
         function OpenSelectionEmpleadosBajaReplicaWindow(sender, args) {
-            OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?CatalogoCl=BAJAREPLICA", "winSeleccion", "Selección de empleado para recepción de mensajes de baja de capturista en réplica");
+            OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?CatalogoCl=BAJAREPLICA" + "&mulSel=0", "winSeleccion", "Selección de empleado para recepción de mensajes de baja de capturista en réplica");
         }
 
         function OpenSelectionCampoAdicionalWindow(sender, args) {
@@ -264,7 +264,7 @@
                     <telerik:RadSplitter ID="rsRecepcionMensajes" runat="server" Width="100%" Height="100%" BorderSize="0">
                         <telerik:RadPane ID="rpMensajeImportantes" runat="server">
                             <div style="height: calc(100% - 100px);">
-                                <label id="Label2">Definie al empleado que recibirá mensajes importantes (si hay evaluados o capturistas dados de baja):</label>
+                                <label id="Label2">Define al empleado que recibirá mensajes importantes (si hay evaluados o capturistas dados de baja):</label>
                                 <div style="height: 10px;"></div>
                                 <div class="ctrlBasico" style="width: 50%">
                                     <telerik:RadGrid ID="grdRecepcionMensajes"

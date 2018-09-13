@@ -106,7 +106,7 @@
         </asp:ContentPlaceHolder>
     </div>
      <%--Se agrega para ver la banda con el nombre de la empresa--%>
-     <div class="PiedePaginaEo">
+     <div class="<%= cssPiePagina %>">
                             <div class="container">
                                 <div class="col-md-4 col-xs-12">
                                 </div>

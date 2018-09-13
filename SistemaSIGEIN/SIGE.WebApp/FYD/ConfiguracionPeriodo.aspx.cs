@@ -24,9 +24,17 @@ namespace SIGE.WebApp.FYD
         private string vClUsuario;
         private string vNbPrograma;
         private int? vIdRol;
-        private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        //private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
         private string vNbFirstRadEditorTagName = "p";
-        public string vClCultureIdioma;
+        //Variable para determinar el idioma
+        public string vClIdioma = ContextoApp.clCultureIdioma;
+        public bool vFgInterrelacionado
+        {
+            get { return (bool)ViewState["vs_vFgInterrelacionado"]; }
+            set { ViewState["vs_vFgInterrelacionado"] = value; }
+        }
+
+       // public string vClCultureIdioma;
 
 
         //Variables con los texto de configuración idioma
@@ -275,6 +283,11 @@ namespace SIGE.WebApp.FYD
                 grdContrasenaEvaluadores.Rebind();
         }
 
+        private void SeguridadProcesos(bool vFgCuestionariosCreados)
+        {
+           btnEnviarCuestionarios.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.A.H") && vFgCuestionariosCreados;
+        }
+
         //Metodo de traducción
         protected void TraducirTextos()
         {
@@ -315,74 +328,40 @@ namespace SIGE.WebApp.FYD
                 vChangeControlState = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vChangeControlState").FirstOrDefault().DS_TEXTO;
                 vOpenWindowAutorizarDocumento = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vOpenWindowAutorizarDocumento").FirstOrDefault().DS_TEXTO;
 
+                //Asignar texto a RadSlidingZone
                 rspAyudaCuestionario.Title = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vrspAyudaCuestionario_title").FirstOrDefault().DS_TEXTO;
-                txtAyuda.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vtxtAyuda").FirstOrDefault().DS_TEXTO;
+                txtAyuda.InnerHtml = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vtxtAyuda").FirstOrDefault().DS_TEXTO;
 
-
-
-                //rtsConfiguracionPeriodo_0
+                //Asignar texto a los RadTab del RadTabStrip
                 rtsConfiguracionPeriodo.Tabs[0].Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vrtsConfiguracionPeriodo_0").FirstOrDefault().DS_TEXTO;
-                //rtsConfiguracionPeriodo_1
                 rtsConfiguracionPeriodo.Tabs[1].Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vrtsConfiguracionPeriodo_1").FirstOrDefault().DS_TEXTO;
-                //rtsConfiguracionPeriodo_2
                 rtsConfiguracionPeriodo.Tabs[2].Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vrtsConfiguracionPeriodo_2").FirstOrDefault().DS_TEXTO;
-                //rtsConfiguracionPeriodo_3
                 rtsConfiguracionPeriodo.Tabs[3].Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vrtsConfiguracionPeriodo_3").FirstOrDefault().DS_TEXTO;
-                //rtsConfiguracionPeriodo_4
                 rtsConfiguracionPeriodo.Tabs[4].Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vrtsConfiguracionPeriodo_4").FirstOrDefault().DS_TEXTO;
-                //rtsConfiguracionPeriodo_5
                 rtsConfiguracionPeriodo.Tabs[5].Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vrtsConfiguracionPeriodo_5").FirstOrDefault().DS_TEXTO;
-                //rtsConfiguracionPeriodo_6
                 rtsConfiguracionPeriodo.Tabs[6].Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vrtsConfiguracionPeriodo_6").FirstOrDefault().DS_TEXTO;
-                //rtsConfiguracionPeriodo_7
                 rtsConfiguracionPeriodo.Tabs[7].Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vrtsConfiguracionPeriodo_7").FirstOrDefault().DS_TEXTO;
 
+                //Asignar texto a las label
                 lbPeriodo.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlbPeriodo").FirstOrDefault().DS_TEXTO;
                 lbNbPeriodo.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlbNbPeriodo").FirstOrDefault().DS_TEXTO;
                 lbEstatus.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlbEstatus").FirstOrDefault().DS_TEXTO;
                 lbClTipoEval.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlbClTipoEval").FirstOrDefault().DS_TEXTO;
                 lblDsNotas.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblDsNotas").FirstOrDefault().DS_TEXTO;
-                btnEvaluacionPorPuesto.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEvaluacionPorPuesto").FirstOrDefault().DS_TEXTO;
-                lblPorPuesto.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblPorPuesto").FirstOrDefault().DS_TEXTO;
-                chkFgPuestoActual.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgPuestoActual").FirstOrDefault().DS_TEXTO;
+               // lblPorPuesto.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblPorPuesto").FirstOrDefault().DS_TEXTO;
                 lblFgPuestoActual.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblFgPuestoActual").FirstOrDefault().DS_TEXTO;
-                chkFgOtrosPuestos.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgOtrosPuestos").FirstOrDefault().DS_TEXTO;
                 lblFgOtrosPuestos.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblFgOtrosPuestos").FirstOrDefault().DS_TEXTO;
-                lblPlanVidaCarrera.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblPlanVidaCarrera").FirstOrDefault().DS_TEXTO;
-                chkFgRutaVertical.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgRutaVertical").FirstOrDefault().DS_TEXTO;
+               // lblPlanVidaCarrera.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblPlanVidaCarrera").FirstOrDefault().DS_TEXTO;
                 lblFgRutaVertical.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblFgRutaVertical").FirstOrDefault().DS_TEXTO;
-                chkFgRutaVerticalAlternativa.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgRutaVerticalAlternativa").FirstOrDefault().DS_TEXTO;
                 lblFgRutaVerticalAlternativa.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblFgRutaVerticalAlternativa").FirstOrDefault().DS_TEXTO;
-                chkFgRutaHorizontalAlternativa.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgRutaHorizontalAlternativa").FirstOrDefault().DS_TEXTO;
                 lblFgRutaHorizontalAlternativa.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblFgRutaHorizontalAlternativa").FirstOrDefault().DS_TEXTO;
-                btnEvaluacionPorEstandar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEvaluacionPorEstandar").FirstOrDefault().DS_TEXTO;
-                chkFgCompetenciasGenericas.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgCompetenciasGenericas").FirstOrDefault().DS_TEXTO;
-                lblFgGenericas.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblFgGenericas").FirstOrDefault().DS_TEXTO;
-                chkFgCompetenciasEspecificas.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgCompetenciasEspecificas").FirstOrDefault().DS_TEXTO;
                 lblEspecificas.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblEspecificas").FirstOrDefault().DS_TEXTO;
-                chkFgCompetenciasInstitucionales.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgCompetenciasInstitucionales").FirstOrDefault().DS_TEXTO;
+                lblFgGenericas.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblFgGenericas").FirstOrDefault().DS_TEXTO;
                 lblFgInstitucionales.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblFgInstitucionales").FirstOrDefault().DS_TEXTO;
-                btnEvaluacionPorOtras.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEvaluacionPorOtras").FirstOrDefault().DS_TEXTO;
-                btnEvaluacionPorOtras.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEvaluacionPorOtras_tooltip").FirstOrDefault().DS_TEXTO;
-                lstCompetenciasEspecificas.Items[0].Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlstCompetenciasEspecificas").FirstOrDefault().DS_TEXTO;
-                lgInterrelacionado.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlgInterrelacionado").FirstOrDefault().DS_TEXTO;
                 lblLstCamposInterrelacionados.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblLstCamposInterrelacionados").FirstOrDefault().DS_TEXTO;
-                lstCamposInterrelacionados.Items[0].Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlstCamposInterrelacionados").FirstOrDefault().DS_TEXTO;
-                btnGuardarConfiguracion.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardarConfiguracion").FirstOrDefault().DS_TEXTO;
-                btnGuardarConfiguracionCerrar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardarConfiguracionCerrar").FirstOrDefault().DS_TEXTO;
                 lblNbMensajeInicial.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblNbMensajeInicial").FirstOrDefault().DS_TEXTO;
                 lblDsMensajeInicial.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblDsMensajeInicial").FirstOrDefault().DS_TEXTO;
-
-
-                btnAgregarCampoAdicional.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnAgregarCampoAdicional").FirstOrDefault().DS_TEXTO;
-                btnEditar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEditar").FirstOrDefault().DS_TEXTO;
-                btnEliminar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEliminar").FirstOrDefault().DS_TEXTO;
-                btnGuardar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardar").FirstOrDefault().DS_TEXTO;
-                btnGuardarCerrar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardarCerrar").FirstOrDefault().DS_TEXTO;
                 lblNbMensajeEval.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblNbMensajeEval").FirstOrDefault().DS_TEXTO;
-                lgPorEval.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlgPorEval").FirstOrDefault().DS_TEXTO;
-                chkFgPonderarEvaluadoresAuto.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgPonderarEvaluadoresAuto").FirstOrDefault().DS_TEXTO;
-                chkFgPonderarEvaluadores.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgPonderarEvaluadores").FirstOrDefault().DS_TEXTO;
                 lblNoAutoevaluacion.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblNoAutoevaluacion").FirstOrDefault().DS_TEXTO;
                 lblNoSuperior.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblNoSuperior").FirstOrDefault().DS_TEXTO;
                 lblNoSubordinados.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblNoSubordinados").FirstOrDefault().DS_TEXTO;
@@ -390,44 +369,73 @@ namespace SIGE.WebApp.FYD
                 lblNoOtros.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblNoOtros").FirstOrDefault().DS_TEXTO;
                 lblNoTotal.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblNoTotal").FirstOrDefault().DS_TEXTO;
                 lblNbMensajeComp.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblNbMensajeComp").FirstOrDefault().DS_TEXTO;
-                lgPorCompetencia.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlgPorCompetencia").FirstOrDefault().DS_TEXTO;
-                chkFgPonderarCompetenciasAuto.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgPonderarCompetenciasAuto").FirstOrDefault().DS_TEXTO;
-                chkFgPonderacionCompetencia.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgPonderacionCompetencia").FirstOrDefault().DS_TEXTO;
                 lblPrGenericas.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblPrGenericas").FirstOrDefault().DS_TEXTO;
                 lblPrEspecificas.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblPrEspecificas").FirstOrDefault().DS_TEXTO;
                 lblPrInstitucionales.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblPrInstitucionales").FirstOrDefault().DS_TEXTO;
                 lblPrTotalCom.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblPrTotalCom").FirstOrDefault().DS_TEXTO;
+                lblNbEvaluadorExterno.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblNbEvaluadorExterno").FirstOrDefault().DS_TEXTO;
+                lblPuestoEvaluadorExterno.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblPuestoEvaluadorExterno").FirstOrDefault().DS_TEXTO;
+                lblClCorreoElectronico.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblClCorreoElectronico").FirstOrDefault().DS_TEXTO;
+                lblFgGenericas.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblFgGenericas").FirstOrDefault().DS_TEXTO;
+                lblFgGenericas.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblFgGenericas").FirstOrDefault().DS_TEXTO;
+                lblEvalExt.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblEvalExt").FirstOrDefault().DS_TEXTO;
+                lblEvalInt.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblEvalInt").FirstOrDefault().DS_TEXTO;
+
+                //Asignar texto a RadButton
+                btnEvaluacionPorPuesto.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEvaluacionPorPuesto").FirstOrDefault().DS_TEXTO;
+                btnEvaluacionPorEstandar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEvaluacionPorEstandar").FirstOrDefault().DS_TEXTO;
+                btnEvaluacionPorOtras.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEvaluacionPorOtras").FirstOrDefault().DS_TEXTO;
+                btnGuardarConfiguracion.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardarConfiguracion").FirstOrDefault().DS_TEXTO;
+                btnGuardarConfiguracionCerrar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardarConfiguracionCerrar").FirstOrDefault().DS_TEXTO;
+                btnAgregarCampoAdicional.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnAgregarCampoAdicional").FirstOrDefault().DS_TEXTO;
+                btnEditar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEditar").FirstOrDefault().DS_TEXTO;
+                btnEliminar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEliminar").FirstOrDefault().DS_TEXTO;
+                btnGuardar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardar").FirstOrDefault().DS_TEXTO;
+                btnGuardarCerrar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardarCerrar").FirstOrDefault().DS_TEXTO;
+                chkFgPonderarEvaluadoresAuto.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgPonderarEvaluadoresAuto").FirstOrDefault().DS_TEXTO;
+                chkFgPonderarEvaluadores.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgPonderarEvaluadores").FirstOrDefault().DS_TEXTO;
+                chkFgPonderarCompetenciasAuto.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgPonderarCompetenciasAuto").FirstOrDefault().DS_TEXTO;
+                chkFgPonderacionCompetencia.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgPonderacionCompetencia").FirstOrDefault().DS_TEXTO;
                 btnGuardarPonderacion.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardarPonderacion").FirstOrDefault().DS_TEXTO;
                 btnGuardarPonderacionCerrar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardarPonderacionCerrar").FirstOrDefault().DS_TEXTO;
-
                 btnSeleccionPorPersona.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnSeleccionPorPersona").FirstOrDefault().DS_TEXTO;
                 btnSeleccionPorPuesto.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnSeleccionPorPuesto").FirstOrDefault().DS_TEXTO;
                 btnSeleccionPorArea.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnSeleccionPorArea").FirstOrDefault().DS_TEXTO;
                 btnEliminarEvaluado.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEliminarEvaluado").FirstOrDefault().DS_TEXTO;
                 btnAgregarPuestos.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnAgregarPuestos").FirstOrDefault().DS_TEXTO;
-
-                rspOtroEvaluadorManual.Title = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vrspOtroEvaluadorManual").FirstOrDefault().DS_TEXTO;
-                lblNbEvaluadorExterno.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblNbEvaluadorExterno").FirstOrDefault().DS_TEXTO;
-                lblPuestoEvaluadorExterno.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblPuestoEvaluadorExterno").FirstOrDefault().DS_TEXTO;
-                lblClCorreoElectronico.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblClCorreoElectronico").FirstOrDefault().DS_TEXTO;
-                lblFgGenericas.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblFgGenericas").FirstOrDefault().DS_TEXTO;
                 btnAgregarOtroEvaluador.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnAgregarOtroEvaluador").FirstOrDefault().DS_TEXTO;
-                rspOtroEvaluadorInventario.Title = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vrspOtroEvaluadorInventario").FirstOrDefault().DS_TEXTO;
-                lblFgGenericas.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblFgGenericas").FirstOrDefault().DS_TEXTO;
                 btnAgregarOtrosEvaluadoresInventario.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnAgregarOtrosEvaluadoresInventario").FirstOrDefault().DS_TEXTO;
-
                 btnPlaneacionMatriz.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnPlaneacionMatriz").FirstOrDefault().DS_TEXTO;
                 btnMostrarMatriz.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnMostrarMatriz").FirstOrDefault().DS_TEXTO;
                 btnRegistroAutorizacion.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnRegistroAutorizacion").FirstOrDefault().DS_TEXTO;
-                btnRegistroAutorizacion.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnRegistroAutorizacion_tooltip").FirstOrDefault().DS_TEXTO;
                 btnAgregarCuestionario.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnAgregarCuestionario").FirstOrDefault().DS_TEXTO;
                 btnCrearCuestionarios.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnCrearCuestionarios").FirstOrDefault().DS_TEXTO;
-
                 btnReasignarContrasena.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnReasignarContrasena").FirstOrDefault().DS_TEXTO;
                 btnEnviarCuestionarios.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEnviarCuestionarios").FirstOrDefault().DS_TEXTO;
                 btnCerrarPantalla.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnCerrarPantalla").FirstOrDefault().DS_TEXTO;
-                winSeleccion.Title = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vwinSeleccion").FirstOrDefault().DS_TEXTO;
 
+                //Asignar tooltip a RadButton
+                chkFgPuestoActual.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgPuestoActual").FirstOrDefault().DS_TEXTO;             
+                chkFgOtrosPuestos.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgOtrosPuestos").FirstOrDefault().DS_TEXTO;                
+                chkFgRutaVertical.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgRutaVertical").FirstOrDefault().DS_TEXTO;             
+                chkFgRutaVerticalAlternativa.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgRutaVerticalAlternativa").FirstOrDefault().DS_TEXTO;               
+                chkFgRutaHorizontalAlternativa.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgRutaHorizontalAlternativa").FirstOrDefault().DS_TEXTO;                    
+                chkFgCompetenciasGenericas.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgCompetenciasGenericas").FirstOrDefault().DS_TEXTO;               
+                chkFgCompetenciasEspecificas.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgCompetenciasEspecificas").FirstOrDefault().DS_TEXTO;              
+                chkFgCompetenciasInstitucionales.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgCompetenciasInstitucionales").FirstOrDefault().DS_TEXTO;                              
+                btnEvaluacionPorOtras.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEvaluacionPorOtras_tooltip").FirstOrDefault().DS_TEXTO;
+                btnRegistroAutorizacion.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnRegistroAutorizacion_tooltip").FirstOrDefault().DS_TEXTO;
+
+                //Asignar texto a legend
+                lgInterrelacionado.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlgInterrelacionado").FirstOrDefault().DS_TEXTO;           
+                lgPorEval.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlgPorEval").FirstOrDefault().DS_TEXTO;                                               
+                lgPorCompetencia.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlgPorCompetencia").FirstOrDefault().DS_TEXTO;
+
+                //Asignat titulo a RadSlidingPane     
+                rspOtroEvaluadorManual.Title = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vrspOtroEvaluadorManual").FirstOrDefault().DS_TEXTO;                         
+                rspOtroEvaluadorInventario.Title = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vrspOtroEvaluadorInventario").FirstOrDefault().DS_TEXTO;
+                             
+                winSeleccion.Title = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vwinSeleccion").FirstOrDefault().DS_TEXTO;
             }
         }
 
@@ -436,7 +444,7 @@ namespace SIGE.WebApp.FYD
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
             vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
-            vClCultureIdioma = "ES";
+          //  vClCultureIdioma = ContextoApp.clCultureIdioma;
 
             if (!Page.IsPostBack)
             {
@@ -454,10 +462,10 @@ namespace SIGE.WebApp.FYD
 
 
                 //Traducir textos
-                //if (vClCultureIdioma != "ES")
-                //{
-                //    TraducirTextos();
-                //}
+                if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+                {
+                    TraducirTextos();
+                }
 
             }
 
@@ -501,19 +509,19 @@ namespace SIGE.WebApp.FYD
                 if (vPeriodo.FG_OTROS_PUESTOS)
                 {
                     //Valida idioma 
-                    //if (vClCultureIdioma != "PORT")
-                    //{
-                    //    TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
-                    //    SPE_OBTIENE_TRADUCCION_TEXTO_Result vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_TEXTO: "CB_MS_EXITO", pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT").FirstOrDefault();
-                    //    if (vLstTextosTraduccion != null)
-                    //    {
-                    //        UtilMensajes.MensajeResultadoDB(rwmMensaje, vLstTextosTraduccion.DS_TEXTO, E_TIPO_RESPUESTA_DB.SUCCESSFUL, 400, 200, pCallBackFunction: null);
-                    //    }
-                    //}
-                    //else
-                    //{
+                    if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+                    {
+                        TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+                        SPE_OBTIENE_TRADUCCION_TEXTO_Result vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_TEXTO: "CB_MS_EXITO", pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT").FirstOrDefault();
+                        if (vLstTextosTraduccion != null)
+                        {
+                            UtilMensajes.MensajeResultadoDB(rwmMensaje, vLstTextosTraduccion.DS_TEXTO, E_TIPO_RESPUESTA_DB.SUCCESSFUL, 400, 200, pCallBackFunction: null);
+                        }
+                    }
+                    else
+                    {
                         UtilMensajes.MensajeResultadoDB(rwmMensaje, "Proceso exitoso. <br />Los evaluados no tienen puesto a evaluar por default. Por favor, selecciona los puestos por cada evaluado.", E_TIPO_RESPUESTA_DB.SUCCESSFUL, 400, 200, pCallBackFunction: null);
-                  //  }
+                    }
                 }
                 else
                 {
@@ -654,45 +662,45 @@ namespace SIGE.WebApp.FYD
             txtClPeriodo.InnerText = vPeriodo.NB_PERIODO;
             txtDsPeriodo.InnerText = vPeriodo.DS_PERIODO;
             txtEstatus.InnerText = vPeriodo.CL_ESTADO;
+            vFgInterrelacionado = vPeriodo.FG_INTERRELACIONADOS;
 
+            if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+            {
 
-            //if (vClCultureIdioma != "PORT")
-            //{
+                TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+                List<SPE_OBTIENE_TRADUCCION_TEXTO_Result> vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT");
+                if (vLstTextosTraduccion != null)
+                {
+                    if (vPeriodo.FG_AUTOEVALUACION)
+                    {
+                        vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_AUTOEVAL").FirstOrDefault().DS_TEXTO : String.Join(", ", vTiposEvaluacion, vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_AUTOEVAL").FirstOrDefault().DS_TEXTO);
+                    }
 
-            //    TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
-            //    List<SPE_OBTIENE_TRADUCCION_TEXTO_Result> vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT");
-            //    if (vLstTextosTraduccion != null)
-            //    {
-            //        if (vPeriodo.FG_AUTOEVALUACION)
-            //        {
-            //            vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_AUTOEVAL").FirstOrDefault().DS_TEXTO : String.Join(", ", vTiposEvaluacion, vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_AUTOEVAL").FirstOrDefault().DS_TEXTO);
-            //        }
+                    if (vPeriodo.FG_SUPERIOR)
+                    {
+                        vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_SUPERIOR").FirstOrDefault().DS_TEXTO : String.Join(", ", vTiposEvaluacion, vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_SUPERIOR").FirstOrDefault().DS_TEXTO);
+                    }
 
-            //        if (vPeriodo.FG_SUPERIOR)
-            //        {
-            //            vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_SUPERIOR").FirstOrDefault().DS_TEXTO : String.Join(", ", vTiposEvaluacion, vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_SUPERIOR").FirstOrDefault().DS_TEXTO);
-            //        }
+                    if (vPeriodo.FG_SUBORDINADOS)
+                    {
+                        vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_SUBORDINADO").FirstOrDefault().DS_TEXTO : String.Join(", ", vTiposEvaluacion, vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_SUBORDINADO").FirstOrDefault().DS_TEXTO);
+                    }
 
-            //        if (vPeriodo.FG_SUBORDINADOS)
-            //        {
-            //            vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_SUBORDINADO").FirstOrDefault().DS_TEXTO : String.Join(", ", vTiposEvaluacion, vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_SUBORDINADO").FirstOrDefault().DS_TEXTO);
-            //        }
+                    if (vPeriodo.FG_INTERRELACIONADOS)
+                    {
+                        vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_INTERRELACIONADO").FirstOrDefault().DS_TEXTO : String.Join(", ", vTiposEvaluacion, vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_INTERRELACIONADO").FirstOrDefault().DS_TEXTO);
+                    }
 
-            //        if (vPeriodo.FG_INTERRELACIONADOS)
-            //        {
-            //            vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_INTERRELACIONADO").FirstOrDefault().DS_TEXTO : String.Join(", ", vTiposEvaluacion, vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_INTERRELACIONADO").FirstOrDefault().DS_TEXTO);
-            //        }
+                    if (vPeriodo.FG_OTROS_EVALUADORES)
+                    {
+                        vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_OTROS").FirstOrDefault().DS_TEXTO : String.Join(", ", vTiposEvaluacion, vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_OTROS").FirstOrDefault().DS_TEXTO);
+                    }
 
-            //        if (vPeriodo.FG_OTROS_EVALUADORES)
-            //        {
-            //            vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_OTROS").FirstOrDefault().DS_TEXTO : String.Join(", ", vTiposEvaluacion, vLstTextosTraduccion.Where(w => w.CL_TEXTO == "CB_OTROS").FirstOrDefault().DS_TEXTO);
-            //        }
-
-            //        txtTipoEvaluacion.InnerText = vTiposEvaluacion;
-            //    }
-            //}
-            //else
-            //{
+                    txtTipoEvaluacion.InnerText = vTiposEvaluacion;
+                }
+            }
+            else
+            {
 
                 if (vPeriodo.FG_AUTOEVALUACION)
                 {
@@ -720,7 +728,7 @@ namespace SIGE.WebApp.FYD
                 }
 
                 txtTipoEvaluacion.InnerText = vTiposEvaluacion;
-          //  }
+            }
 
 
             if (vPeriodo.DS_NOTAS != null)
@@ -786,6 +794,7 @@ namespace SIGE.WebApp.FYD
             }
 
             divConfiguracionInterrelacionados.Style.Value = String.Format("display: {0}", vPeriodo.FG_INTERRELACIONADOS ? "block" : "none");
+            rspFiltroInter.Visible = vPeriodo.FG_INTERRELACIONADOS;
 
             bool vFgAutoevaluacion = vPeriodo.FG_AUTOEVALUACION;
             bool vFgOtros = vPeriodo.FG_SUBORDINADOS || vPeriodo.FG_SUPERIOR || vPeriodo.FG_INTERRELACIONADOS || vPeriodo.FG_OTROS_EVALUADORES;
@@ -799,11 +808,11 @@ namespace SIGE.WebApp.FYD
             //btnCuestionarioAutoevaluacion.Checked = vFgAutoevaluacion && !vFgAmbos;
             //btnCuestionarioOtros.Checked = vFgOtros && !vFgAmbos;
 
-            txtPrAutoevaluacion.Enabled = vPeriodo.FG_AUTOEVALUACION;
-            txtPrSubordinados.Enabled = vPeriodo.FG_SUBORDINADOS;
-            txtPrSuperior.Enabled = vPeriodo.FG_SUPERIOR;
-            txtPrInterrelacionados.Enabled = vPeriodo.FG_INTERRELACIONADOS;
-            txtPrOtros.Enabled = vPeriodo.FG_OTROS_EVALUADORES;
+            txtPrAutoevaluacion.Enabled = vPeriodo.FG_AUTOEVALUACION && fgHabilitaPonderacion;
+            txtPrSubordinados.Enabled = vPeriodo.FG_SUBORDINADOS && fgHabilitaPonderacion;
+            txtPrSuperior.Enabled = vPeriodo.FG_SUPERIOR && fgHabilitaPonderacion;
+            txtPrInterrelacionados.Enabled = vPeriodo.FG_INTERRELACIONADOS && fgHabilitaPonderacion;
+            txtPrOtros.Enabled = vPeriodo.FG_OTROS_EVALUADORES && fgHabilitaPonderacion;
 
             decimal vPrAutoevaluacion = vPeriodo.FG_AUTOEVALUACION ? vPeriodo.PR_AUTOEVALUACION : 0;
             decimal vPrSuperior = vPeriodo.FG_SUPERIOR ? vPeriodo.PR_SUPERIOR : 0;
@@ -860,15 +869,37 @@ namespace SIGE.WebApp.FYD
 
             chkFgPuestoActual.Enabled = vFgEvaluacionPorPuesto && pFgHabilitarTipoEvaluacion;
             chkFgOtrosPuestos.Enabled = vFgEvaluacionPorPuesto && pFgHabilitarTipoEvaluacion;
-            chkFgRutaVertical.Enabled = vFgEvaluacionPorPuesto && pFgHabilitarTipoEvaluacion;
-            chkFgRutaVerticalAlternativa.Enabled = vFgEvaluacionPorPuesto && pFgHabilitarTipoEvaluacion;
-            chkFgRutaHorizontalAlternativa.Enabled = vFgEvaluacionPorPuesto && pFgHabilitarTipoEvaluacion;
 
             chkFgPuestoActual.Checked = vPeriodo.FG_PUESTO_ACTUAL && vFgEvaluacionPorPuesto;
             btnAgregarPuestos.Visible = chkFgOtrosPuestos.Checked = vPeriodo.FG_OTROS_PUESTOS && vFgEvaluacionPorPuesto;
-            chkFgRutaVertical.Checked = vPeriodo.FG_RUTA_VERTICAL && vFgEvaluacionPorPuesto;
-            chkFgRutaVerticalAlternativa.Checked = vPeriodo.FG_RUTA_VERTICAL_ALTERNATIVA && vFgEvaluacionPorPuesto;
-            chkFgRutaHorizontalAlternativa.Checked = vPeriodo.FG_RUTA_HORIZONTAL && vFgEvaluacionPorPuesto;
+
+
+            if (vPeriodo.FG_RUTA_VERTICAL || vPeriodo.FG_RUTA_VERTICAL_ALTERNATIVA || vPeriodo.FG_RUTA_HORIZONTAL)
+            {
+                btnPlanVidaCarrera.Checked = true;
+
+                btnPlanVidaCarrera.Enabled = pFgHabilitarTipoEvaluacion;
+                chkFgRutaVertical.Enabled = pFgHabilitarTipoEvaluacion;
+                chkFgRutaVerticalAlternativa.Enabled = pFgHabilitarTipoEvaluacion;
+                chkFgRutaHorizontalAlternativa.Enabled = pFgHabilitarTipoEvaluacion;
+
+            }
+            else
+            {
+                btnPlanVidaCarrera.Enabled = pFgHabilitarTipoEvaluacion;
+                chkFgRutaVertical.Enabled = !pFgHabilitarTipoEvaluacion;
+                chkFgRutaVerticalAlternativa.Enabled = !pFgHabilitarTipoEvaluacion;
+                chkFgRutaHorizontalAlternativa.Enabled = !pFgHabilitarTipoEvaluacion;
+            }
+
+       
+            chkFgRutaVertical.Checked = vPeriodo.FG_RUTA_VERTICAL;
+            chkFgRutaVerticalAlternativa.Checked = vPeriodo.FG_RUTA_VERTICAL_ALTERNATIVA;
+            chkFgRutaHorizontalAlternativa.Checked = vPeriodo.FG_RUTA_HORIZONTAL;
+
+
+
+
 
             bool vFgEvaluacionCompetenciasEstandar = vPeriodo.CL_TIPO_EVALUACION.Equals(E_CL_TIPO_EVALUACION.COMPETENCIA_ESTANDAR.ToString());
             btnEvaluacionPorEstandar.Checked = vFgEvaluacionCompetenciasEstandar;
@@ -897,13 +928,31 @@ namespace SIGE.WebApp.FYD
             if (vPeriodo.LS_OTRAS_COMPETENCIAS.Count > 0)
                 vPeriodo.LS_OTRAS_COMPETENCIAS.OrderBy(o => o.NB_COMPETENCIA).ToList().ForEach(f => lstCompetenciasEspecificas.Items.Add(new RadListBoxItem(f.NB_COMPETENCIA, f.ID_COMPETENCIA.ToString())));
             else
+            {
+                if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+                {
+                    TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+                    SPE_OBTIENE_TRADUCCION_TEXTO_Result vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_TEXTO: "vlstCompetenciasEspecificas", pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT").FirstOrDefault();
+                    lstCompetenciasEspecificas.Items.Add(new RadListBoxItem(vLstTextosTraduccion.DS_TEXTO, "0"));
+                }
+                else
                 lstCompetenciasEspecificas.Items.Add(new RadListBoxItem("No seleccionado", "0"));
+            }
 
             lstCamposInterrelacionados.Items.Clear();
             if (vPeriodo.LS_CAMPOS_COMUNES.Count > 0)
                 vPeriodo.LS_CAMPOS_COMUNES.OrderBy(o => o.NB_CAMPO).ToList().ForEach(f => lstCamposInterrelacionados.Items.Add(new RadListBoxItem(f.NB_CAMPO, f.ID_CAMPO.ToString())));
             else
+            {
+                if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+                {
+                    TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+                    SPE_OBTIENE_TRADUCCION_TEXTO_Result vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_TEXTO: "vlstCamposInterrelacionados", pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT").FirstOrDefault();
+                    lstCamposInterrelacionados.Items.Add(new RadListBoxItem(vLstTextosTraduccion.DS_TEXTO, "0"));
+                }
+                else
                 lstCamposInterrelacionados.Items.Add(new RadListBoxItem("No seleccionado", "0"));
+            }
 
             btnGuardarConfiguracion.Enabled = vFgPermitirEdicion;
             btnGuardarConfiguracionCerrar.Enabled = vFgPermitirEdicion;
@@ -954,7 +1003,7 @@ namespace SIGE.WebApp.FYD
             btnMostrarMatriz.Enabled = vFgPermitirEdicion;
             btnPlaneacionMatriz.Enabled = vFgPermitirEdicion && vFgCuestinoariosCreados;
             //btnRegistroAutorizacion.Enabled = vFgPermitirEdicion;
-
+            SeguridadProcesos(!vFgCuestinoariosCreados);
 
             PeriodoNegocio oPeriodo = new PeriodoNegocio();
             var vLstValidacion = oPeriodo.ObtenerValidacionAutorizacion(vIdPeriodoV);
@@ -1028,6 +1077,8 @@ namespace SIGE.WebApp.FYD
             if (vSeleccion.clTipo == "REBIND")
                 grdCuestionarios.Rebind();
 
+            if (vSeleccion.clTipo == "INSERTARCAMPOINTERRRELACIONADO")
+                GuardarConfiguracion(false, false);
 
         }
 
@@ -1234,20 +1285,20 @@ namespace SIGE.WebApp.FYD
                 else
                 {
                     vValidacion.CL_TIPO_ERROR = E_TIPO_RESPUESTA_DB.ERROR;
-                    //if (vClCultureIdioma != "ES")
-                    //{
-                    //    TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
-                    //    SPE_OBTIENE_TRADUCCION_TEXTO_Result vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_TEXTO: "CB_TOTAL_EVAL", pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT").FirstOrDefault();
-                    //    if (vLstTextosTraduccion != null)
-                    //    {
-                    //        vValidacion.MENSAJE.Add(new E_MENSAJE() { DS_MENSAJE = vLstTextosTraduccion.DS_TEXTO });
-                    //    }
+                    if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+                    {
+                        TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+                        SPE_OBTIENE_TRADUCCION_TEXTO_Result vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_TEXTO: "CB_TOTAL_EVAL", pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT").FirstOrDefault();
+                        if (vLstTextosTraduccion != null)
+                        {
+                            vValidacion.MENSAJE.Add(new E_MENSAJE() { DS_MENSAJE = vLstTextosTraduccion.DS_TEXTO });
+                        }
 
-                    //}
-                    //else
-                    //{
+                    }
+                    else
+                    {
                         vValidacion.MENSAJE.Add(new E_MENSAJE() { DS_MENSAJE = "La suma de las ponderaciones de los evaluadores debe sumar 100%" });
-                    //}
+                    }
                     txtPrTotal.DisabledStyle.CssClass = "errBackground";
                 }
             }
@@ -1269,20 +1320,20 @@ namespace SIGE.WebApp.FYD
                 else
                 {
                     vValidacion.CL_TIPO_ERROR = E_TIPO_RESPUESTA_DB.ERROR;
-                    //if (vClCultureIdioma != "ES")
-                    //{
-                    //    TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
-                    //    SPE_OBTIENE_TRADUCCION_TEXTO_Result vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_TEXTO: "CB_TOTAL_COMPETENCIAS", pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT").FirstOrDefault();
-                    //    if (vLstTextosTraduccion != null)
-                    //    {
-                    //        vValidacion.MENSAJE.Add(new E_MENSAJE() { DS_MENSAJE = vLstTextosTraduccion.DS_TEXTO });
-                    //    }
+                    if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+                    {
+                        TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+                        SPE_OBTIENE_TRADUCCION_TEXTO_Result vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_TEXTO: "CB_TOTAL_COMPETENCIAS", pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT").FirstOrDefault();
+                        if (vLstTextosTraduccion != null)
+                        {
+                            vValidacion.MENSAJE.Add(new E_MENSAJE() { DS_MENSAJE = vLstTextosTraduccion.DS_TEXTO });
+                        }
 
-                    //}
-                    //else
-                    //{
+                    }
+                    else
+                    {
                         vValidacion.MENSAJE.Add(new E_MENSAJE() { DS_MENSAJE = "La suma de las ponderaciones de las competencias debe sumar 100%" });
-                  // }
+                    }
                     txtPrTotalCompetencias.DisabledStyle.CssClass = "errBackground";
                 }
             }
@@ -1358,16 +1409,16 @@ namespace SIGE.WebApp.FYD
             //SI EL PERIODO ES DE PVC NO ELIMINAR ITEM
             if (vPeriodo.FG_CREADO_POR_PVC)
             {
-                //if (vClCultureIdioma != "ES")
-                //{
-                //    TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
-                //    SPE_OBTIENE_TRADUCCION_TEXTO_Result vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_TEXTO: "CB_ELIMINA_PERIODO", pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT").FirstOrDefault();
-                //    if (vLstTextosTraduccion != null)
-                //    {
-                //        UtilMensajes.MensajeResultadoDB(rwmMensaje, vLstTextosTraduccion.DS_TEXTO, E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: null);
-                //    }
-                //}
-                //else
+                if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+                {
+                    TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+                    SPE_OBTIENE_TRADUCCION_TEXTO_Result vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_TEXTO: "CB_ELIMINA_PERIODO", pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT").FirstOrDefault();
+                    if (vLstTextosTraduccion != null)
+                    {
+                        UtilMensajes.MensajeResultadoDB(rwmMensaje, vLstTextosTraduccion.DS_TEXTO, E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: null);
+                    }
+                }
+                else
                     UtilMensajes.MensajeResultadoDB(rwmMensaje, "No se puede eliminar de un período creado desde plan de vida y carrera.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: null);
 
 
@@ -1468,7 +1519,6 @@ namespace SIGE.WebApp.FYD
         //    if (vResultado.CL_TIPO_ERROR.Equals(E_TIPO_RESPUESTA_DB.SUCCESSFUL))
         //        grdCamposAdicionales.Rebind();
         //}
-
 
         protected void grdCuestionarios_DeleteCommand(object sender, GridCommandEventArgs e)
         {
@@ -1606,6 +1656,23 @@ namespace SIGE.WebApp.FYD
                 PageSizeCombo.FindItemByText("1000").Attributes.Add("ownerTableViewId", grdEvaluadoresExternos.MasterTableView.ClientID);
                 PageSizeCombo.FindItemByText(e.Item.OwnerTableView.PageSize.ToString()).Selected = true;
             }
+
+
+            if(vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+            {
+            if (e.Item is GridEditableItem && e.Item.IsInEditMode)
+            {
+                RadButton pEdit= (RadButton)e.Item.FindControl("chkFormFgEvaluaTodos");
+                if (pEdit != null)
+                {
+                    TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+                    var vEstado1 = oNegocio.ObtieneTraduccion(pCL_TEXTO: "vchkFormFgEvaluaTodos_Si", pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT").FirstOrDefault();
+                    var vEstado2 = oNegocio.ObtieneTraduccion(pCL_TEXTO: "vchkFormFgEvaluaTodos_No", pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT").FirstOrDefault();
+                    pEdit.ToggleStates[0].Text = vEstado1.DS_TEXTO;
+                    pEdit.ToggleStates[1].Text = vEstado2.DS_TEXTO;
+                }
+            }
+            }
         }
 
         protected void grdCuestionarios_ItemDataBound(object sender, GridItemEventArgs e)
@@ -1671,7 +1738,7 @@ namespace SIGE.WebApp.FYD
         protected void grdCamposAdicionales_PreRender(object sender, EventArgs e)
         {
 
-            if (vClCultureIdioma != "ES")
+            if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
             {
                 //Asignar texto variables vista
                 TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
@@ -1693,267 +1760,267 @@ namespace SIGE.WebApp.FYD
 
         protected void grdEvaluados_PreRender(object sender, EventArgs e)
         {
-            //if (vClCultureIdioma != "ES")
-            //{
-            //    //Asignar texto variables vista
-            //    TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
-            //    List<SPE_OBTIENE_TRADUCCION_TEXTO_Result> vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT");
-            //    if (vLstTextosTraduccion.Count > 0)
-            //    {
-            //        foreach (GridColumn col in grdEvaluados.MasterTableView.Columns)
-            //        {
-            //            switch (col.UniqueName)
-            //            {
-            //                case "CL_EMPLEADO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_EMPLEADO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NB_EMPLEADO_COMPLETO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_EMPLEADO_COMPLETO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NB_EMPLEADO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_EMPLEADO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NB_APELLIDO_PATERNO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_APELLIDO_PATERNO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NB_APELLIDO_MATERNO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_APELLIDO_MATERNO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "M_PUESTO_NB_PUESTO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_M_PUESTO_NB_PUESTO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "M_DEPARTAMENTO_CL_DEPARTAMENTO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_M_DEPARTAMENTO_CL_DEPARTAMENTO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "M_DEPARTAMENTO_NB_DEPARTAMENTO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_M_DEPARTAMENTO_NB_DEPARTAMENTO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "CL_GENERO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_GENERO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "CL_ESTADO_CIVIL":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_ESTADO_CIVIL").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NB_CONYUGUE":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_CONYUGUE").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "CL_RFC":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_RFC").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "CL_CURP":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_CURP").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "CL_NSS":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_NSS").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "CL_TIPO_SANGUINEO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_TIPO_SANGUINEO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "CL_NACIONALIDAD":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_NACIONALIDAD").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NB_PAIS":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_PAIS").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NB_ESTADO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_ESTADO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NB_MUNICIPIO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_MUNICIPIO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NB_COLONIA":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_COLONIA").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NB_CALLE":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_CALLE").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NO_EXTERIOR":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NO_EXTERIOR").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NO_INTERIOR":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NO_INTERIOR").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "CL_CODIGO_POSTAL":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_CODIGO_POSTAL").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "CL_CORREO_ELECTRONICO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_CORREO_ELECTRONICO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "FE_NACIMIENTO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_FE_NACIMIENTO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "DS_LUGAR_NACIMIENTO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_DS_LUGAR_NACIMIENTO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "FE_ALTA":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_FE_ALTA").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "FE_BAJA":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_FE_BAJA").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "MN_SUELDO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_MN_SUELDO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "MN_SUELDO_VARIABLE":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_MN_SUELDO_VARIABLE").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "DS_SUELDO_COMPOSICION":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_DS_SUELDO_COMPOSICION").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "CL_EMPRESA":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_EMPRESA").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NB_EMPRESA":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_EMPRESA").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NB_RAZON_SOCIAL":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_RAZON_SOCIAL").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "CL_ESTADO_EMPLEADO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_ESTADO_EMPLEADO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "FG_ACTIVO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_FG_ACTIVO").FirstOrDefault().DS_TEXTO;
-            //                    break;
+            if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+            {
+                //Asignar texto variables vista
+                TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+                List<SPE_OBTIENE_TRADUCCION_TEXTO_Result> vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT");
+                if (vLstTextosTraduccion.Count > 0)
+                {
+                    foreach (GridColumn col in grdEvaluados.MasterTableView.Columns)
+                    {
+                        switch (col.UniqueName)
+                        {
+                            case "CL_EMPLEADO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_EMPLEADO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_EMPLEADO_COMPLETO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_EMPLEADO_COMPLETO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_EMPLEADO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_EMPLEADO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_APELLIDO_PATERNO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_APELLIDO_PATERNO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_APELLIDO_MATERNO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_APELLIDO_MATERNO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_PUESTO_NB_PUESTO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_M_PUESTO_NB_PUESTO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_DEPARTAMENTO_CL_DEPARTAMENTO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_M_DEPARTAMENTO_CL_DEPARTAMENTO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "M_DEPARTAMENTO_NB_DEPARTAMENTO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_M_DEPARTAMENTO_NB_DEPARTAMENTO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "CL_GENERO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_GENERO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "CL_ESTADO_CIVIL":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_ESTADO_CIVIL").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_CONYUGUE":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_CONYUGUE").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "CL_RFC":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_RFC").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "CL_CURP":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_CURP").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "CL_NSS":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_NSS").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "CL_TIPO_SANGUINEO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_TIPO_SANGUINEO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "CL_NACIONALIDAD":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_NACIONALIDAD").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_PAIS":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_PAIS").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_ESTADO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_ESTADO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_MUNICIPIO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_MUNICIPIO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_COLONIA":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_COLONIA").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_CALLE":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_CALLE").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NO_EXTERIOR":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NO_EXTERIOR").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NO_INTERIOR":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NO_INTERIOR").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "CL_CODIGO_POSTAL":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_CODIGO_POSTAL").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "CL_CORREO_ELECTRONICO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_CORREO_ELECTRONICO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "FE_NACIMIENTO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_FE_NACIMIENTO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "DS_LUGAR_NACIMIENTO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_DS_LUGAR_NACIMIENTO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "FE_ALTA":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_FE_ALTA").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "FE_BAJA":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_FE_BAJA").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "MN_SUELDO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_MN_SUELDO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "MN_SUELDO_VARIABLE":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_MN_SUELDO_VARIABLE").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "DS_SUELDO_COMPOSICION":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_DS_SUELDO_COMPOSICION").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "CL_EMPRESA":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_EMPRESA").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_EMPRESA":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_EMPRESA").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_RAZON_SOCIAL":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_NB_RAZON_SOCIAL").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "CL_ESTADO_EMPLEADO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_CL_ESTADO_EMPLEADO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "FG_ACTIVO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluados_FG_ACTIVO").FirstOrDefault().DS_TEXTO;
+                                break;
+                        }
 
-                             
-            //                //gtvPuestosEvaluacion_DeleteColumn
-            //                //gtvPuestosEvaluacion_DeleteColumn_Confirm
-            //            }
-                      
-            //        }
-            //        grdEvaluados.MasterTableView.DetailTables[0].GetColumn("NB_PUESTO").HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvPuestosEvaluacion_NB_PUESTO").FirstOrDefault().DS_TEXTO;
-                    
-            //        grdEvaluados.Rebind();
-            //    }
-            //}
+                    }
+                    grdEvaluados.MasterTableView.DetailTables[0].GetColumn("NB_PUESTO").HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvPuestosEvaluacion_NB_PUESTO").FirstOrDefault().DS_TEXTO;
+                    (grdEvaluados.MasterTableView.DetailTables[0].GetColumn("DeleteColumn") as GridButtonColumn).ConfirmTextFormatString = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvPuestosEvaluacion_DeleteColumn_Confirm").FirstOrDefault().DS_TEXTO;
+                    (grdEvaluados.MasterTableView.DetailTables[0].GetColumn("DeleteColumn") as GridButtonColumn).Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvPuestosEvaluacion_DeleteColumn").FirstOrDefault().DS_TEXTO;
+
+                    grdEvaluados.Rebind();
+                }
+            }
         }
 
         protected void grdEvaluadoresExternos_PreRender(object sender, EventArgs e)
         {
 
-            //grdEvaluadoresExternos_DeleteColumn
-            //grdEvaluadoresExternos_DeleteColumn_Confirm
-            //if (vClCultureIdioma != "ES")
-            //{
-            //    //Asignar texto variables vista
-            //    TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
-            //    List<SPE_OBTIENE_TRADUCCION_TEXTO_Result> vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT");
-            //    if (vLstTextosTraduccion.Count > 0)
-            //    {
-            //        foreach (GridColumn col in grdEvaluadoresExternos.MasterTableView.Columns)
-            //        {
-            //            switch (col.UniqueName)
-            //            {
-            //                case "EditColumn":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluadoresExternos_EditColumn").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "CL_TIPO_EVALUADOR":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluadoresExternos_CL_TIPO_EVALUADOR").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NB_EVALUADOR":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluadoresExternos_NB_EVALUADOR").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NB_PUESTO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluadoresExternos_NB_PUESTO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "CL_CORREO_EVALUADOR":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluadoresExternos_CL_CORREO_EVALUADOR").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "CL_EVALUA_TODOS":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluadoresExternos_CL_EVALUA_TODOS").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //            }
-            //        }
+            if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+            {
+                //Asignar texto variables vista
+                TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+                List<SPE_OBTIENE_TRADUCCION_TEXTO_Result> vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT");
+                if (vLstTextosTraduccion.Count > 0)
+                {
+                    foreach (GridColumn col in grdEvaluadoresExternos.MasterTableView.Columns)
+                    {
+                        switch (col.UniqueName)
+                        {
+                            case "EditColumn":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluadoresExternos_EditColumn").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "CL_TIPO_EVALUADOR":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluadoresExternos_CL_TIPO_EVALUADOR").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_EVALUADOR":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluadoresExternos_NB_EVALUADOR").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_PUESTO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluadoresExternos_NB_PUESTO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "CL_CORREO_EVALUADOR":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluadoresExternos_CL_CORREO_EVALUADOR").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "CL_EVALUA_TODOS":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluadoresExternos_CL_EVALUA_TODOS").FirstOrDefault().DS_TEXTO;
+                                break;
+                        }
+                    }
+                    (grdEvaluadoresExternos.Columns[0] as GridEditCommandColumn).EditText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluadoresExternos_EditColumn").FirstOrDefault().DS_TEXTO;
+                    (grdEvaluadoresExternos.Columns[0] as GridEditCommandColumn).InsertText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluadoresExternos_Insert").FirstOrDefault().DS_TEXTO;
+                    (grdEvaluadoresExternos.Columns[0] as GridEditCommandColumn).UpdateText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluadoresExternos_Update").FirstOrDefault().DS_TEXTO;
+                    (grdEvaluadoresExternos.MasterTableView.GetColumn("DeleteColumn") as GridButtonColumn).ConfirmTextFormatString = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluadoresExternos_DeleteColumn_Confirm").FirstOrDefault().DS_TEXTO;
+                    (grdEvaluadoresExternos.Columns[6] as GridButtonColumn).Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdEvaluadoresExternos_DeleteColumn").FirstOrDefault().DS_TEXTO;
 
-            //        grdEvaluadoresExternos.Rebind();
-            //    }
-            //}
+
+                    grdEvaluadoresExternos.Rebind();
+                }
+            }
         }
 
         protected void grdCuestionarios_PreRender(object sender, EventArgs e)
         {
 
-            //gtvEvaluadores_DeleteColumn
-           // gtvEvaluadores_DeleteColumn_Confirm
-            //if (vClCultureIdioma != "ES")
-            //{
-            //    //Asignar texto variables vista
-            //    TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
-            //    List<SPE_OBTIENE_TRADUCCION_TEXTO_Result> vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT");
-            //    if (vLstTextosTraduccion.Count > 0)
-            //    {
-            //        foreach (GridColumn col in grdCuestionarios.MasterTableView.Columns)
-            //        {
-            //            switch (col.UniqueName)
-            //            {
-            //                case "NB_EVALUADO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdCuestionarios_NB_EVALUADO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NB_PUESTO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdCuestionarios_NB_PUESTO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NB_DEPARTAMENTO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdCuestionarios_NB_DEPARTAMENTO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NO_CUESTIONARIOS":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdCuestionarios_NO_CUESTIONARIOS").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                    //detalle
-            //                case "EVALUADOR":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_EVALUADOR").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "EVALUADOR_CL_EVAL":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_EVALUADOR_CL_EVAL").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "EVALUADORCL_PUESTO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_EVALUADORCL_PUESTO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "CL_ROL":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_CL_ROL").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //            }
-            //        }
+            if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+            {
+                //Asignar texto variables vista
+                TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+                List<SPE_OBTIENE_TRADUCCION_TEXTO_Result> vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT");
+                if (vLstTextosTraduccion.Count > 0)
+                {
+                    foreach (GridColumn col in grdCuestionarios.MasterTableView.Columns)
+                    {
+                        switch (col.UniqueName)
+                        {
+                            case "NB_EVALUADO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdCuestionarios_NB_EVALUADO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_PUESTO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdCuestionarios_NB_PUESTO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_DEPARTAMENTO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdCuestionarios_NB_DEPARTAMENTO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NO_CUESTIONARIOS":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdCuestionarios_NO_CUESTIONARIOS").FirstOrDefault().DS_TEXTO;
+                                break;
+                            //detalle
+                            case "EVALUADOR":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_EVALUADOR").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "EVALUADOR_CL_EVAL":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_EVALUADOR_CL_EVAL").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "EVALUADORCL_PUESTO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_EVALUADORCL_PUESTO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "CL_ROL":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_CL_ROL").FirstOrDefault().DS_TEXTO;
+                                break;
+                        }
+                    }
 
-            //        grdCuestionarios.MasterTableView.DetailTables[0].GetColumn("NB_EVALUADOR").HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_EVALUADOR").FirstOrDefault().DS_TEXTO;
-            //        grdCuestionarios.MasterTableView.DetailTables[0].GetColumn("NB_PUESTO").HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_NB_PUESTO").FirstOrDefault().DS_TEXTO;
-            //        grdCuestionarios.MasterTableView.DetailTables[0].GetColumn("NB_ROL_EVALUADOR").HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_CL_ROL").FirstOrDefault().DS_TEXTO;
+                    grdCuestionarios.MasterTableView.DetailTables[0].GetColumn("NB_EVALUADOR").HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_EVALUADOR").FirstOrDefault().DS_TEXTO;
+                    grdCuestionarios.MasterTableView.DetailTables[0].GetColumn("NB_PUESTO").HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_NB_PUESTO").FirstOrDefault().DS_TEXTO;
+                    grdCuestionarios.MasterTableView.DetailTables[0].GetColumn("NB_ROL_EVALUADOR").HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_CL_ROL").FirstOrDefault().DS_TEXTO;
 
-
-
-            //        grdCuestionarios.Rebind();
-            //    }
-            //}
+                    (grdCuestionarios.MasterTableView.DetailTables[0].GetColumn("DeleteColumn") as GridButtonColumn).ConfirmTextFormatString = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_DeleteColumn_Confirm").FirstOrDefault().DS_TEXTO;
+                    (grdCuestionarios.MasterTableView.DetailTables[0].GetColumn("DeleteColumn") as GridButtonColumn).Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_DeleteColumn").FirstOrDefault().DS_TEXTO;
+                    grdCuestionarios.Rebind();
+                }
+            }
         }
 
         protected void grdContrasenaEvaluadores_PreRender(object sender, EventArgs e)
         {
-            //if (vClCultureIdioma != "ES")
-            //{
-            //    //Asignar texto variables vista
-            //    TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
-            //    List<SPE_OBTIENE_TRADUCCION_TEXTO_Result> vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT");
-            //    if (vLstTextosTraduccion.Count > 0)
-            //    {
-            //        foreach (GridColumn col in grdContrasenaEvaluadores.MasterTableView.Columns)
-            //        {
-            //            switch (col.UniqueName)
-            //            {
-            //                case "NB_EVALUADOR":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdContrasenaEvaluadores_NB_EVALUADOR").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "NB_PUESTO":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdContrasenaEvaluadores_NB_PUESTO").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //                case "CL_TOKEN":
-            //                    col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdContrasenaEvaluadores_CL_TOKEN").FirstOrDefault().DS_TEXTO;
-            //                    break;
-            //            }
-            //        }
+            if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+            {
+                //Asignar texto variables vista
+                TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+                List<SPE_OBTIENE_TRADUCCION_TEXTO_Result> vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_MODULO: "FYD", pCL_PROCESO: "EC_CONFIGURACION", pCL_IDIOMA: "PORT");
+                if (vLstTextosTraduccion.Count > 0)
+                {
+                    foreach (GridColumn col in grdContrasenaEvaluadores.MasterTableView.Columns)
+                    {
+                        switch (col.UniqueName)
+                        {
+                            case "NB_EVALUADOR":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdContrasenaEvaluadores_NB_EVALUADOR").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_PUESTO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdContrasenaEvaluadores_NB_PUESTO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "CL_TOKEN":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdContrasenaEvaluadores_CL_TOKEN").FirstOrDefault().DS_TEXTO;
+                                break;
+                        }
+                    }
 
-            //        grdContrasenaEvaluadores.Rebind();
-            //    }
-            //}
+                    grdContrasenaEvaluadores.Rebind();
+                }
+            }
         }
     }
 }

@@ -71,7 +71,7 @@ namespace SIGE.WebApp.TC
             if (vTableroControl != null)
             {
                 txtIdPeriodo.InnerText = vTableroControl.CL_PERIODO;
-                txtNbPeriodo.InnerText = vTableroControl.NB_PERIODO;
+                txtNbPeriodo.InnerText = vTableroControl.DS_PERIODO;
 
                 vFgEvaluacionIdp = vTableroControl.FG_EVALUACION_IDP == true;
                 vFgEvalucionFyd = vTableroControl.FG_EVALUACION_FYD == true;

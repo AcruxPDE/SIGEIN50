@@ -64,7 +64,7 @@
 
         function HabilitarControl() {
             var btnMasDatos = $find("<%= btnMasDatos.ClientID %>");
-                    btnMasDatos.set_enabled(true);
+            btnMasDatos.set_enabled(true);
         }
 
 
@@ -86,8 +86,8 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
-    <div style="height: calc(100% - 20px)">
-        <div style="height: 15px; clear: both;"></div>
+    <div style="height: calc(100% - 60px)">
+        <div style="height: 10px; clear: both;"></div>
         <div class="ctrlBasico">
             <div class="divControlIzquierda">
                 <label name="lblClave">*Clave:</label>
@@ -96,7 +96,7 @@
                 <telerik:RadTextBox ID="txtClave" runat="server" Width="250" MaxLength="20"></telerik:RadTextBox>
             </div>
         </div>
-        <div style="height: 15px; clear: both;"></div>
+        <div style="clear: both;"></div>
         <div class="ctrlBasico">
             <div class="divControlIzquierda">
                 <label name="lblNombre">*Nombre:</label>
@@ -105,7 +105,7 @@
                 <telerik:RadTextBox ID="txtNombre" runat="server" Width="250" MaxLength="100"></telerik:RadTextBox>
             </div>
         </div>
-        <div style="height: 15px; clear: both;"></div>
+        <div style="clear: both;"></div>
         <div class="ctrlBasico">
             <div class="divControlIzquierda">
                 <label name="lblDisponibleDO">Disponible para DO:</label>
@@ -127,7 +127,7 @@
                 </div>
             </div>
         </div>
-        <div style="height: 15px; clear: both;"></div>
+        <div style="clear: both;"></div>
         <div class="ctrlBasico">
             <div class="divControlIzquierda">
                 <label name="lblDisponibleNomina">Disponible para Nómina:</label>
@@ -149,12 +149,12 @@
                 </div>
             </div>
         </div>
-        <div style="height: 15px; clear: both;"></div>
-        <div class="divControlDerecha">
-            <telerik:RadButton ID="btnMasDatos" runat="server" Text="Más datos" Width="100" AutoPostBack="true" OnClick="btnMasDatos_Click"></telerik:RadButton>
-            <telerik:RadButton ID="btnAceptar" runat="server" Text="Guardar y cerrar"  AutoPostBack="true" OnClick="btnAceptar_Click"></telerik:RadButton>
-            <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" Width="100" OnClientClicked="OnCloseWindows"></telerik:RadButton>
-        </div>
+    </div>
+    <div style="height: 10px; clear: both;"></div>
+    <div class="divControlDerecha">
+        <telerik:RadButton ID="btnMasDatos" runat="server" Text="Más datos" Width="100" AutoPostBack="true" OnClick="btnMasDatos_Click"></telerik:RadButton>
+        <telerik:RadButton ID="btnAceptar" runat="server" Text="Guardar y cerrar" AutoPostBack="true" OnClick="btnAceptar_Click"></telerik:RadButton>
+        <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" Width="100" OnClientClicked="OnCloseWindows"></telerik:RadButton>
     </div>
     <telerik:RadWindowManager ID="rwmAlertas" runat="server" EnableShadow="true"></telerik:RadWindowManager>
 </asp:Content>

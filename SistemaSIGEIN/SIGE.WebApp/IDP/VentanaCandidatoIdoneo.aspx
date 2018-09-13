@@ -85,6 +85,14 @@
         }
 
 
+        //Eliminar el tooltip del control
+        function pageLoad() {
+            var datePicker = $find("<%=dtpInicial.ClientID %>");
+            datePicker.get_popupButton().title = "";
+            var datePicker2 = $find("<%=dtpFinal.ClientID %>");
+            datePicker2.get_popupButton().title = "";
+        }
+
  //       function obtenerIdFilaProceso() {
  //           var grid = $find("<=rgProcesos.ClientID %>");
  //    var MasterTable = grid.get_masterTableView();
@@ -476,12 +484,12 @@
                   <%--  <telerik:RadTab SelectedIndex="2" Text="Procesos de evaluación"></telerik:RadTab>--%>
                 </Tabs>
             </telerik:RadTabStrip>
-            <div style="height: calc(100% - 130px);">
+            <div style="height: calc(100% - 100px);">
                 <telerik:RadMultiPage ID="rmpBuscarCandidato" runat="server" SelectedIndex="0">
                     <telerik:RadPageView ID="rpvCriteriosBusqueda" runat="server">
-                        <div style="height: 5px; clear: both;"></div>
+                        <div style="height: 10px; clear: both;"></div>
                         <label>Buscar por:</label>
-                        <div style="height: 5px; clear: both;"></div>
+                        <div style="height: 10px; clear: both;"></div>
                         <div class="ctrlBasico" style="width: 60%; ">
                             <fieldset  title="Los filtros de búsqueda por fecha de creación de solicitud permiten indicar un rango de fecha dentro del cual tienen que estar creadas las solicitudes para poder ser consideradas como compatibles. Si estos campos se dejan en blanco se consideran todos los candidatos sin importar la fecha de su solicitud.">
                                 <legend>
@@ -528,7 +536,7 @@
                         </div>
                         <div style="height: 10px; clear: both;"></div>
                         <div class="ctrlBasico" style="width: 50%;">
-                            <fieldset style="height: 270px;">
+                            <fieldset style="height: 260px;">
                                 <legend>
                                     <telerik:RadButton Style="margin-left: 10px;" ID="chkPerfil" runat="server" ToggleType="CheckBox" ButtonType="ToggleButton" AutoPostBack="true" OnCheckedChanged="chkPerfil_CheckedChanged">
                                         <ToggleStates>
@@ -565,7 +573,7 @@
                             </fieldset>
                         </div>
                         <div class="ctrlBasico" style="width: 50%;">
-                            <fieldset style="height: 270px;">
+                            <fieldset style="height: 260px;">
                                 <legend>
                                     <telerik:RadButton ID="chkCompetencias" runat="server" ButtonType="ToggleButton" ToggleType="CheckBox" AutoPostBack="true" OnCheckedChanged="chkCompetencias_CheckedChanged" BorderWidth="0" GroupName="RbtnFiltro">
                                         <ToggleStates>
@@ -581,9 +589,9 @@
                                 </telerik:RadNumericTextBox>
                             </fieldset>
                         </div>
-                        <div style="clear: both; height: 10px;"></div>
+                        <div style="clear: both;"></div>
                         <div class="divControlDerecha">
-                            <telerik:RadButton Style="margin-left: 10px;" ID="btnBuscar" runat="server" Text="Buscar" AutoPostBack="true" OnClick="btnBuscar_Click"></telerik:RadButton>
+                            <telerik:RadButton Style="margin-right: 10px;" ID="btnBuscar" runat="server" Text="Buscar" AutoPostBack="true" OnClick="btnBuscar_Click"></telerik:RadButton>
                         </div>
                     </telerik:RadPageView>
                     <telerik:RadPageView ID="rpvCandidatoSeleccionado" runat="server">
@@ -626,7 +634,7 @@
                             </telerik:RadGrid>
                             <label id="lbMensaje" runat="server" visible="false">*El candidato ya cuenta con un proceso de evaluación terminado. Puedes crear uno nuevo seleccionando "Iniciar otro proceso de evalución".</label>
                         </div>
-                        <div style="height: 5px; clear: both;"></div>
+                        <div style="height: 10px; clear: both;"></div>
                         <div class="ctrlBasico">
                             <telerik:RadButton ID="btnAnalisis" AutoPostBack="false" runat="server" OnClientClicked="ShowPopupAnalisisCompetencias" Text="Análisis de compatibilidad"></telerik:RadButton>
                         </div>
@@ -669,10 +677,10 @@
         <telerik:RadPane ID="rpnAyuda" runat="server" Scrolling="None" Width="22px">
             <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" Width="22px" ClickToOpen="true">
                 <telerik:RadSlidingPane ID="rspAyuda" runat="server" Title="Ayuda" Width="300px">
-                    <div style="padding-top: 10px; text-align: justify;">
+                    <div style="padding: 10px; text-align: justify;">
                         Esta página te permite identificar a los candidatos que cumplen con las características deseadas para el puesto solicitado en la requisición y aquellos que ya cuentan con un proceso de evaluación para dicha requisición. Selecciona los criterios de
                         busqueda y da clic en el botón buscar para que el sistema te muestre los candidato. Cuando tengas el candidato, seleccionalo y da clic en el boton "Iniciar proceso de evaluación" para comenzar
-                        el proceso de evaluación para la contratación o "Continuar con el proceso de evaluación" si es que ya cuenta con un proceso.
+                        el proceso de evaluación para la contratación.
                         <br />
                         <br />
                         Los filtros de búsqueda por fecha de creación de solicitud permiten indicar un rango de fecha dentro del cual tienen que estar creadas las solicitudes para poder ser consideradas como compatibles. Si estos campos se dejan en blanco se consideran todos los candidatos sin importar la fecha de su solicitud.
@@ -682,10 +690,7 @@
                 </telerik:RadSlidingPane>
                 <telerik:RadSlidingPane ID="rspBusquedaAvanzada" runat="server" Title="Búsqueda avanzada" Width="300" MinWidth="500">
                     <div style="padding: 20px;">
-                        <telerik:RadFilter runat="server" ID="ftGrdCandidatos" ApplyButtonText="Filtrar" OnApplyExpressions="ftGrdCandidatos_ApplyExpressions" ShowApplyButton="true" Height="100" OnExpressionItemCreated="ftGrdCandidatos_ExpressionItemCreated">
-                            <Localization FilterFunctionContains="Contiene" FilterFunctionDoesNotContain="No contiene" FilterFunctionEqualTo="Igual a" FilterFunctionGreaterThan="Mayor que" FilterFunctionGreaterThanOrEqualTo="Mayor o igual que"
-                                FilterFunctionNotEqualTo="No es igual a" FilterFunctionBetween="Entre" FilterFunctionEndsWith="Termina con" FilterFunctionIsEmpty="Es vacio" FilterFunctionIsNull="Es nulo" FilterFunctionLessThan="Menor que" FilterFunctionLessThanOrEqualTo="Menor o igual que"
-                                FilterFunctionNotBetween="No esta entre" FilterFunctionNotIsEmpty="No es vacio" FilterFunctionNotIsNull="No es nulo" FilterFunctionStartsWith="Comienza con" />
+                        <telerik:RadFilter runat="server" ID="ftGrdCandidatos" OnApplyExpressions="ftGrdCandidatos_ApplyExpressions" ShowApplyButton="true" Height="100" OnExpressionItemCreated="ftGrdCandidatos_ExpressionItemCreated">
                             <FieldEditors>
                                 <telerik:RadFilterTextFieldEditor DataType="System.String" DisplayName="No. Solicitud" FieldName="CL_SOLICITUD" DefaultFilterFunction="Contains" ToolTip="Numero de la solicitud" />
                                 <telerik:RadFilterTextFieldEditor DataType="System.String" DisplayName="Candidato" FieldName="NB_CANDIDATO" DefaultFilterFunction="Contains" ToolTip="Nombre del candidato" />

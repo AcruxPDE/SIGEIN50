@@ -90,8 +90,8 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <div style="clear: both;"></div>
-    <div style="height: calc(100% - 60px); width: 100%;">
+     <label class="labelTitulo">Grupos</label>
+    <div style="height: calc(100% - 100px); width: 100%;">
         <telerik:RadGrid
             ID="rgGrupos"
             runat="server"
@@ -121,10 +121,17 @@
         </telerik:RadGrid>
     </div>
     <div style="height: 10px; clear: both;"></div>
-    <telerik:RadButton ID="btnAgregarGrupo" runat="server" Text="Agregar" Width="100" AutoPostBack="false" OnClientClicked="OpenGruposWindows"></telerik:RadButton>
-    <telerik:RadButton ID="btnEditar" runat="server" Text="Editar" Width="100" AutoPostBack="false" OnClientClicked="OpenEditGruposWindows"></telerik:RadButton>
-    <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" Width="100" AutoPostBack="true" OnClientClicking="OpenConfirmEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
-    <telerik:RadWindowManager ID="rwmAlertas" runat="server" EnableShadow="true">
+    <div class="ctrlBasico">
+    <telerik:RadButton ID="btnAgregarGrupo" runat="server" Text="Agregar" AutoPostBack="false" OnClientClicked="OpenGruposWindows"></telerik:RadButton>
+        </div>
+    <div class="ctrlBasico">
+    <telerik:RadButton ID="btnEditar" runat="server" Text="Editar" AutoPostBack="false" OnClientClicked="OpenEditGruposWindows"></telerik:RadButton>
+    </div>
+    <div class="ctrlBasico">
+        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" AutoPostBack="true" OnClientClicking="OpenConfirmEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
+    </div>
+    <div style="clear:both;"></div>
+        <telerik:RadWindowManager ID="rwmAlertas" runat="server" EnableShadow="true">
         <Windows>
             <telerik:RadWindow ID="winGrupos" runat="server" Behaviors="Close" Modal="true" VisibleStatusbar="false" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
             <telerik:RadWindow ID="winSeleccion" runat="server" Behaviors="Close" Modal="true" VisibleStatusbar="false" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>

@@ -167,16 +167,16 @@
 
     <div style="clear: both; height: 10px;"></div>
         <div class="ctrlBasico">
-            <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowPopupmodalCatalogoGenericoNuevo" AutoPostBack="false" runat="server" Text="Agregar" Width="100"></telerik:RadButton>
+            <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowPopupmodalCatalogoGenericoNuevo" AutoPostBack="false" runat="server" Text="Agregar" ></telerik:RadButton>
         </div>
         <div class="ctrlBasico">
-            <telerik:RadButton ID="btnEditar" OnClientClicked="ShowPopupmodalCatalogoGenericoEditar" AutoPostBack="false" runat="server" Text="Editar" Width="100"></telerik:RadButton>
+            <telerik:RadButton ID="btnEditar" OnClientClicked="ShowPopupmodalCatalogoGenericoEditar" AutoPostBack="false" runat="server" Text="Editar" ></telerik:RadButton>
         </div>
         <div class="ctrlBasico">
-            <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" Width="100" OnClientClicking="ConfirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
+            <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar"  OnClientClicking="ConfirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
         </div>
         <div class="ctrlBasico">
-            <telerik:RadButton ID="btnElemento" runat="server" Text="Ver elementos" Width="200" OnClick="btnElemento_Click"></telerik:RadButton>
+            <telerik:RadButton ID="btnElemento" runat="server" Text="Ver elementos"  OnClick="btnElemento_Click"></telerik:RadButton>
         </div>
       
         

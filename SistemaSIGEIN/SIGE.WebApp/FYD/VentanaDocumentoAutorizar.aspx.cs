@@ -527,14 +527,14 @@ namespace SIGE.WebApp.FYD
                     //contador++;
                     string myUrl = ResolveUrl("~/Logon.aspx?AUTORIZA=PROGRAMACAPACITACION&TOKEN=");
                     string vUrl = ContextoUsuario.nbHost + myUrl + vDocumento.FL_AUTORIZACION.ToString();
-
+                    string vResultadoEnvio = "";
 
                     try
                     {
                         switch (vClEstadoMail)
                         {
                             case "SendMail":
-                                mail.Send(vTitulo, String.Format(" <html>" +
+                                vResultadoEnvio = mail.Send(vTitulo, String.Format(" <html>" +
                                         " <head>" +
                                         " <title>Solicitud</title>" +
                                         " <meta charset=\"utf-8\"> " +
@@ -552,15 +552,22 @@ namespace SIGE.WebApp.FYD
                                        ));
                                 break;
                         }
-                        DocumentoAutorizarNegocio nDocumento = new DocumentoAutorizarNegocio();
-                        E_RESULTADO vResultadoActualiza = nDocumento.ActualizaEstadoAutorizaDoc(idAutorizacion, vClUsuario, vNbPrograma);
-                        if (vResultadoActualiza.CL_TIPO_ERROR.ToString().Equals(E_TIPO_RESPUESTA_DB.SUCCESSFUL.ToString()))
+                        if (vResultadoEnvio == "0")
                         {
-                            UtilMensajes.MensajeResultadoDB(rwmMensaje, "Se mandó el correo exitosamente", E_TIPO_RESPUESTA_DB.SUCCESSFUL);
+                            DocumentoAutorizarNegocio nDocumento = new DocumentoAutorizarNegocio();
+                            E_RESULTADO vResultadoActualiza = nDocumento.ActualizaEstadoAutorizaDoc(idAutorizacion, vClUsuario, vNbPrograma);
+                            if (vResultadoActualiza.CL_TIPO_ERROR.ToString().Equals(E_TIPO_RESPUESTA_DB.SUCCESSFUL.ToString()))
+                            {
+                                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Se mandó el correo exitosamente", E_TIPO_RESPUESTA_DB.SUCCESSFUL, pCallBackFunction:"");
+                            }
+                            else
+                            {
+                                UtilMensajes.MensajeResultadoDB(rwmMensaje, vResultadoActualiza.ToString(), E_TIPO_RESPUESTA_DB.ERROR);
+                            }
                         }
                         else
                         {
-                            UtilMensajes.MensajeResultadoDB(rwmMensaje, vResultadoActualiza.ToString(), E_TIPO_RESPUESTA_DB.ERROR);
+                            UtilMensajes.MensajeResultadoDB(rwmMensaje, vResultadoEnvio, E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
                         }
                     }
                     catch (Exception)

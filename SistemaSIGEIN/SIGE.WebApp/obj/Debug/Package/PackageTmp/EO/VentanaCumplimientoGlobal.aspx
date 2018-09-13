@@ -40,7 +40,7 @@
         }
 
         function OpenWindowComparar() {
-            OpenSelectionWindow("VentanaComparativaGlobal.aspx?", "winBonos", "Consulta General comparativa - Evaluación de competencias");
+            OpenSelectionWindow("VentanaComparativaGlobal.aspx?", "winBonos", "Consulta general comparativa - Evaluación de competencias");
         }
 
     </script>
@@ -56,8 +56,6 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <div style="height: calc(100% - 30px);">
-        <div style="clear: both; height: 10px;"></div>
         <telerik:RadTabStrip ID="rtsConfiguracion" runat="server" SelectedIndex="0" MultiPageID="rmpConfiguracion">
             <Tabs>
                 <telerik:RadTab Text="Contexto"></telerik:RadTab>
@@ -66,10 +64,10 @@
                 <telerik:RadTab Text="Selección de períodos a comparar"></telerik:RadTab>
             </Tabs>
         </telerik:RadTabStrip>
-        <div style="height: calc(100% - 50px);">
+        <div style="height: calc(100% - 60px);">
+                      <div style="clear: both; height: 10px;"></div>
             <telerik:RadMultiPage ID="rmpConfiguracion" runat="server" SelectedIndex="0" Height="100%">
-                <telerik:RadPageView ID="rpvContexto" runat="server">
-                    <div style="clear: both; height: 20px;"></div>
+                <telerik:RadPageView ID="rpvContexto" runat="server">         
                     <div style="height: calc(100% - 50px);">
                         <div class="ctrlBasico">
                             <table class="ctrlTableForm">
@@ -143,8 +141,7 @@
                     </div>
                 </telerik:RadPageView>
                 <telerik:RadPageView ID="rpvReporte" runat="server">
-                    <div style="clear: both; height: 40px;"></div>
-                    <div style="height: calc(100% - 30px);">
+                    <div style="height: calc(100% - 10px);">
                         <telerik:RadGrid ID="rgEvaluados"
                             runat="server"
                             Height="100%"
@@ -153,7 +150,8 @@
                             ShowFooter="true"
                             HeaderStyle-Font-Bold="true"
                             AllowMultiRowSelection="true"
-                            OnNeedDataSource="rgEvaluados_NeedDataSource">
+                            OnNeedDataSource="rgEvaluados_NeedDataSource"
+                            OnItemDataBound="rgEvaluados_ItemDataBound">
                             <ClientSettings EnablePostBackOnRowClick="false">
                                 <Selecting AllowRowSelect="true" />
                                 <Scrolling AllowScroll="true" UseStaticHeaders="true" SaveScrollPosition="true"></Scrolling>
@@ -161,19 +159,18 @@
                             <PagerStyle AlwaysVisible="true" />
                             <MasterTableView DataKeyNames="ID_EVALUADO, ID_PERIODO" ClientDataKeyNames="ID_EVALUADO, ID_PERIODO" AutoGenerateColumns="false" ShowHeadersWhenNoRecords="true" AllowPaging="false" AllowFilteringByColumn="true">
                                 <Columns>
-                                    <telerik:GridBoundColumn HeaderStyle-Width="300" HeaderText="Puesto" DataField="NB_PUESTO_PERIODO" UniqueName="NB_PUESTO_PERIODO" CurrentFilterFunction="Contains" FilterControlWidth="220" AutoPostBackOnFilter="true" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                    <telerik:GridHyperLinkColumn HeaderStyle-Width="300" UniqueName="NB_EVALUADO" HeaderText="Nombre completo" DataTextField="NB_EVALUADO" DataNavigateUrlFields="ID_EVALUADO, ID_PERIODO" DataNavigateUrlFormatString="javascript:OpenCumPersonal({0},{1})" CurrentFilterFunction="Contains" FilterControlWidth="220" AutoPostBackOnFilter="true" HeaderStyle-Font-Bold="true"></telerik:GridHyperLinkColumn>
-                                    <telerik:GridBoundColumn HeaderStyle-Width="90" HeaderText="Valor cumplido" DataField="PR_CUMPLIMIENTO_EVALUADO" UniqueName="PR_CUMPLIMIENTO_EVALUADO" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%" CurrentFilterFunction="Contains" FilterControlWidth="50" AutoPostBackOnFilter="true" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn HeaderStyle-Width="90" HeaderText="Valor ponderado" DataField="PR_EVALUADO" UniqueName="PR_EVALUADO" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%" CurrentFilterFunction="Contains" FilterControlWidth="50" AutoPostBackOnFilter="true" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn CurrentFilterFunction="Contains" HeaderStyle-Width="100" HeaderText="Aporte a cumplimiento general" DataField="C_GENERAL" UniqueName="C_GENERAL" Aggregate="Sum" FooterAggregateFormatString="Cumplimiento general: {0:N2}%" FooterStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%" FilterControlWidth="60" AutoPostBackOnFilter="true" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-
+                                    <telerik:GridBoundColumn HeaderStyle-Width="300" HeaderText="Puesto" DataField="NB_PUESTO_PERIODO" UniqueName="NB_PUESTO_PERIODO" FooterStyle-BackColor="#A20804" FooterStyle-BorderColor="#A20804" CurrentFilterFunction="Contains" FilterControlWidth="220" AutoPostBackOnFilter="true" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                    <telerik:GridHyperLinkColumn HeaderStyle-Width="300" UniqueName="NB_EVALUADO" HeaderText="Nombre completo" DataTextField="NB_EVALUADO" FooterStyle-BackColor="#A20804" FooterStyle-BorderColor="#A20804" DataNavigateUrlFields="ID_EVALUADO, ID_PERIODO" DataNavigateUrlFormatString="javascript:OpenCumPersonal({0},{1})" CurrentFilterFunction="Contains" FilterControlWidth="220" AutoPostBackOnFilter="true" HeaderStyle-Font-Bold="true"></telerik:GridHyperLinkColumn>
+                                    <telerik:GridBoundColumn HeaderStyle-Width="100" HeaderText="Valor cumplido" DataField="PR_CUMPLIMIENTO_EVALUADO" UniqueName="PR_CUMPLIMIENTO_EVALUADO" FooterStyle-BackColor="#A20804" FooterStyle-BorderColor="#A20804" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%" CurrentFilterFunction="Contains" FilterControlWidth="50" AutoPostBackOnFilter="true" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn HeaderStyle-Width="120" HeaderText="Valor ponderado" FooterStyle-Font-Bold="true" DataField="PR_EVALUADO" UniqueName="PR_EVALUADO" ItemStyle-HorizontalAlign="Right" FooterStyle-BackColor="#A20804" FooterStyle-BorderColor="#A20804" DataFormatString="{0:N2}%" FooterText="Cumplimiento general:" FooterStyle-HorizontalAlign="Right" FooterStyle-ForeColor="White" CurrentFilterFunction="Contains" FilterControlWidth="60" AutoPostBackOnFilter="true" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn CurrentFilterFunction="Contains" HeaderStyle-Width="100" FooterStyle-Font-Bold="true" HeaderText="Aporte a cumplimiento general" DataField="C_GENERAL" UniqueName="C_GENERAL" Aggregate="Sum" FooterAggregateFormatString="{0:N2}%" FooterStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%" FilterControlWidth="60" AutoPostBackOnFilter="true" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 </Columns>
                             </MasterTableView>
                         </telerik:RadGrid>
                     </div>
                 </telerik:RadPageView>
                 <telerik:RadPageView ID="rpvGrafica" runat="server" Height="100%">
-                    <div style="height: calc(100% - 50px);">
+                    <div style="height: calc(100% - 10px);">
                         <telerik:RadHtmlChart
                             runat="server"
                             ID="rhcGraficaGlobal"
@@ -181,7 +178,7 @@
                             Height="100%"
                             Transitions="true"
                             Skin="Silk">
-                            <ChartTitle Text="Cumplimiento global del período">
+                            <ChartTitle Text="Cumplimiento general del período">
                                 <Appearance Align="Center" Position="Top">
                                 </Appearance>
                             </ChartTitle>
@@ -196,7 +193,6 @@
                 </telerik:RadPageView>
                 <telerik:RadPageView ID="rpvComparar" runat="server" Height="100%">
                     <div style="height: calc(100% - 50px);">
-                        <div style="height: 10px; clear: both;"></div>
                         <telerik:RadGrid
                             ID="rgComparativos"
                             runat="server"
@@ -236,5 +232,4 @@
                 </telerik:RadPageView>
             </telerik:RadMultiPage>
         </div>
-    </div>
 </asp:Content>

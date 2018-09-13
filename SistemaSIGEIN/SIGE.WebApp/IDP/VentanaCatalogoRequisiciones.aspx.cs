@@ -394,11 +394,7 @@ namespace SIGE.WebApp.Administracion
                 }
 
                 divAutorizaPuestoReq.Style.Add("display", "none");
-            }
 
-            if (pClEstatus.Equals("NUEVO PUESTO") )
-            {
-                radBtnBuscarPuesto.Enabled = false;
             }
 
             //if (pClEstatus.Equals("NUEVO PUESTO"))
@@ -415,10 +411,12 @@ namespace SIGE.WebApp.Administracion
             EmpleadoNegocio nEmpleado = new EmpleadoNegocio();
             string vNbPuesto;
             string vNbSolicitante;
+            string vNbPuestoSolicitante;
 
             vIdAutoriza = vRequisicion.ID_AUTORIZA.Value;
             vNbPuesto = vRequisicion.NB_PUESTO;
             vNbSolicitante = vRequisicion.NB_EMPLEADO_SOLICITANTE;
+            vNbPuestoSolicitante = vRequisicion.NB_PUESTO_SOLICITANTE;
 
             //var vUsuarioInfo = nEmpleado.Obtener_M_EMPLEADO(ID_EMPLEADO: vIdAutoriza).FirstOrDefault();
             //if (vUsuarioInfo != null)
@@ -444,6 +442,7 @@ namespace SIGE.WebApp.Administracion
                 string vMensajeCorreo = ContextoApp.IDP.NotificacionRrhh.dsAutorizadorRequisicion.dsMensaje;
                 vMensajeCorreo = vMensajeCorreo.Replace("[NB_NOTIFICAR]", vRequisicion.NB_EMPLEADO_AUTORIZA);
                 vMensajeCorreo = vMensajeCorreo.Replace("[NB_CREA_REQUISICION]", vNbSolicitante);
+                vMensajeCorreo = vMensajeCorreo.Replace("[NB_PUESTO_CREA_REQUISICION]", vNbPuestoSolicitante);
                 vMensajeCorreo = vMensajeCorreo.Replace("[NB_PUESTO]", vNbPuesto);
                 vMensajeCorreo = vMensajeCorreo.Replace("[URL]", vUrl);
                 vMensajeCorreo = vMensajeCorreo.Replace("[CONTRASENA]", clTokenRequisicion);
@@ -489,6 +488,7 @@ namespace SIGE.WebApp.Administracion
                     }
                     vMensajeCorreo = vMensajeCorreo.Replace("[NB_NOTIFICAR]", autoriza);
                     vMensajeCorreo = vMensajeCorreo.Replace("[NB_CREA_REQUISICION]", vRequisicion.NB_EMPLEADO_SOLICITANTE);
+                    vMensajeCorreo = vMensajeCorreo.Replace("[NB_PUESTO_CREA_REQUISICION]", vRequisicion.NB_PUESTO_SOLICITANTE);
                     vMensajeCorreo = vMensajeCorreo.Replace("[NB_PUESTO]", vRequisicion.NB_PUESTO);
                     vMensajeCorreo = vMensajeCorreo.Replace("[URL]", vUrl);
                     vMensajeCorreo = vMensajeCorreo.Replace("[CONTRASENA]", clTokenPuesto);
@@ -541,6 +541,7 @@ namespace SIGE.WebApp.Administracion
 
                     vMensajeCorreo = vMensajeCorreo.Replace("[NB_NOTIFICAR]", autoriza);
                     vMensajeCorreo = vMensajeCorreo.Replace("[NB_CREA_REQUISICION]", vRequisicion.NB_EMPLEADO_SOLICITANTE);
+                    vMensajeCorreo = vMensajeCorreo.Replace("[NB_PUESTO_CREA_REQUISICION]", vRequisicion.NB_PUESTO_SOLICITANTE);
                     vMensajeCorreo = vMensajeCorreo.Replace("[NB_PUESTO]", vRequisicion.NB_PUESTO);
                     vMensajeCorreo = vMensajeCorreo.Replace("[URL]", vUrl);
                     vMensajeCorreo = vMensajeCorreo.Replace("[CONTRASENA]", vRequisicion.CL_TOKEN);

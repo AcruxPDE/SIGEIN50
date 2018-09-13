@@ -136,7 +136,7 @@ span.RadButton.rbSkinnedButton, span.RadButton.rbLinkButton, span.RadButton.rbVe
         <div style="clear: both; height: 20px;"></div>
         <div class="ctrlBasico">
             <label>Código postal:</label>
-            <telerik:RadNumericTextBox runat="server" NumberFormat-DecimalDigits="0" MinValue="0" NumberFormat-GroupSeparator="" ID="txtCP" Width="60px" MaxLength="5"></telerik:RadNumericTextBox>
+            <telerik:RadTextBox runat="server" NumberFormat-GroupSeparator="" ID="txtCP" Width="60px" MaxLength="5"></telerik:RadTextBox>
             <telerik:RadButton ID="btnBuscarCp" runat="server" AutoPostBack="true" Text="Buscar" Width="65" OnClick="btnBuscarCp_Click"></telerik:RadButton>
         </div>
         <div style="clear: both; height: 10px;"></div>
@@ -167,8 +167,8 @@ span.RadButton.rbSkinnedButton, span.RadButton.rbLinkButton, span.RadButton.rbVe
         </telerik:RadGrid>
         <div style="clear: both; height: 10px;"></div>
         <div class="divControlDerecha">
-            <telerik:RadButton ID="btnAceptar" Text="Aceptar" runat="server" AutoPostBack="false" Width="100" OnClientClicked="GenerateDataForParent"></telerik:RadButton>
-            <telerik:RadButton ID="btnCancelar" Text="Cancelar" runat="server" AutoPostBack="false" Width="100" OnClientClicked="OnCloseWindow"></telerik:RadButton>
+            <telerik:RadButton ID="btnAceptar" Text="Seleccionar" runat="server" AutoPostBack="false"  OnClientClicked="GenerateDataForParent"></telerik:RadButton>
+            <telerik:RadButton ID="btnCancelar" Text="Cancelar" runat="server" AutoPostBack="false"  OnClientClicked="OnCloseWindow"></telerik:RadButton>
         </div>
     </div>
 </asp:Content>

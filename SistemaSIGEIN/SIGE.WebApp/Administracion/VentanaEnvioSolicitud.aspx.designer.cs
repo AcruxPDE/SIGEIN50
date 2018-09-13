@@ -85,15 +85,6 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadGrid grdCorreos;
         
         /// <summary>
-        /// btnCancelar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnCancelar;
-        
-        /// <summary>
         /// btnEnviar control.
         /// </summary>
         /// <remarks>
@@ -101,6 +92,15 @@ namespace SIGE.WebApp.Administracion {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnEnviar;
+        
+        /// <summary>
+        /// btnCancelar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnCancelar;
         
         /// <summary>
         /// rpAyuda control.

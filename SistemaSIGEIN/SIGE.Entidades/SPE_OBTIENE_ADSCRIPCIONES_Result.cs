@@ -19,5 +19,6 @@ namespace SIGE.Entidades
         public string NB_CAMPO { get; set; }
         public string NB_CATALOGO_VALOR { get; set; }
         public string DS_CAMPO { get; set; }
+        public string CL_TABLA_REFERENCIA { get; set; }
     }
 }

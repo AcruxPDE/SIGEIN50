@@ -113,11 +113,13 @@ namespace SIGE.WebApp.EO
 
             if (rbEdadIndice.Checked == true)
             {
+
                 vXlmEdad = new XElement("EDAD", new XAttribute("EDAD_INICIAL", rnEdadInicial.Text), new XAttribute("EDAD_FINAL", rnEdadFinal.Text));
                 vXlmFiltros.Add(vXlmEdad);
             }
             if (rbAntiguedadIndice.Checked == true)
             {
+         
                 vXlmAntiguedad = new XElement("ANTIGUEDAD", new XAttribute("ANTIGUEDAD_INICIAL", rnAntiguedadInicial.Text), new XAttribute("ANTIGUEDAD_FINAL", rnAtiguedadFinal.Text));
                 vXlmFiltros.Add(vXlmAntiguedad);
             }
@@ -167,13 +169,42 @@ namespace SIGE.WebApp.EO
 
             vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Bajas en el período", PR_CANTIDAD = vPorcentajes.NO_EMPLEADOS_BAJA.ToString() });
             vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Personal en inventario", PR_CANTIDAD = vPorcentajes.NO_EMPLEADOS_ALTA.ToString() });
-            vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Indice de rotación", PR_CANTIDAD = vPorcentajes.PR_TOTAL_BAJA + "%" });
+            vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Índice de rotación", PR_CANTIDAD = vPorcentajes.PR_TOTAL_BAJA + "%" });
 
             rgGraficaIndiceRotacion.DataSource = vlstPorcentanjes;
             rgGraficaIndiceRotacion.DataBind();
+            GenararItemDataBound();
 
             //rtIndice.SelectedIndex = 2;
             //rpvGraficaIndiceRotacion.Selected = true;
+        }
+
+        protected void GenararItemDataBound()
+        {
+            int strId = 0;
+
+            foreach (GridDataItem dataItem in rgGraficaIndiceRotacion.Items)
+           {
+                strId = int.Parse(dataItem.ItemIndex.ToString());
+
+                if (strId % 2 == 0)
+                    dataItem.CssClass = "RadGrid2Class";
+                else dataItem.CssClass = "RadGrid1Class";
+            }
+        }
+
+        protected void GenararItemDataBoundCausas()
+        {
+            int strId = 0;
+
+            foreach (GridDataItem dataItem in rgGraficaCausaRotacion.Items)
+            {
+                strId = int.Parse(dataItem.ItemIndex.ToString());
+
+                if (strId % 2 == 0)
+                    dataItem.CssClass = "RadGrid2Class";
+                else dataItem.CssClass = "RadGrid1Class";
+            }
         }
 
         protected void btnGraficaIndiceRotacion_Click(object sender, EventArgs e)
@@ -247,12 +278,13 @@ namespace SIGE.WebApp.EO
             //0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
             vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Bajas en el período", PR_CANTIDAD = vPorcentajes != null ? vPorcentajes.NO_EMPLEADOS_BAJA.ToString() : "0" });
             vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Personal en inventario", PR_CANTIDAD = vPorcentajes != null ? vPorcentajes.NO_EMPLEADOS_ALTA.ToString() : "0" });
-            vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Indice de rotación", PR_CANTIDAD = vPorcentajes != null ? vPorcentajes.PR_TOTAL_BAJA.ToString() + "%" : "0%" });
+            vlstPorcentanjes.Add(new E_PORCENTAJE_EMPLEADOS { NB_CANTIDAD = "Indice de rotación", PR_CANTIDAD = vPorcentajes != null ? vPorcentajes.PR_TOTAL_BAJA.ToString() + "%" : "0.00%" });
 
             if (vlstPorcentanjes != null)
             {
                 rgGraficaCausaRotacion.DataSource = vlstPorcentanjes;
                 rgGraficaCausaRotacion.DataBind();
+                GenararItemDataBoundCausas();
             }
 
         }
@@ -336,5 +368,23 @@ namespace SIGE.WebApp.EO
                 PageSizeCombo.FindItemByText(e.Item.OwnerTableView.PageSize.ToString()).Selected = true;
             }
         }
+
+        protected void rgEmpleadosGrafica_ItemDataBound(object sender, GridItemEventArgs e)
+        {
+            int strId = 0;
+
+
+            if (e.Item is GridDataItem)
+            {
+                GridDataItem dataItem = e.Item as GridDataItem;
+                strId = int.Parse(dataItem.ItemIndex.ToString());
+
+                if (strId % 2 == 0)
+                    dataItem.CssClass = "RadGrid2Class";
+                else dataItem.CssClass = "RadGrid1Class";
+            }
+        }
+
+       
     }
 }

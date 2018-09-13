@@ -282,7 +282,7 @@ namespace SIGE.WebApp.IDP
 
                 txtRangoEdadMin.Value = vDescriptivo.NO_EDAD_MINIMA;
                 txtRangoEdadMax.Value = vDescriptivo.NO_EDAD_MAXIMA;
-                txtCompetenciasRequeridas.Text = vDescriptivo.DS_COMPETENCIAS_REQUERIDAS;
+               // txtCompetenciasRequeridas.Text = vDescriptivo.DS_COMPETENCIAS_REQUERIDAS;
 
                 foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTO_ESCOLARIDAD).Elements("PUESTO_ESCOLARIDAD"))
                 {
@@ -624,7 +624,7 @@ namespace SIGE.WebApp.IDP
             }
             else
             {
-                    btnDirecto.Checked = true;
+                btnDirecto.Checked = true;
             }
 
         }
@@ -782,7 +782,7 @@ namespace SIGE.WebApp.IDP
                 new XAttribute("CL_TIPO_PUESTO", btnDirecto.Checked ? "DIRECTO" : "INDIRECTO"),
                 //new XAttribute("ID_CENTRO_ADMINISTRATIVO", cmbAdministrativo.SelectedValue),
                 //new XAttribute("ID_CENTRO_OPERATIVO", cmbOperativo.SelectedValue),
-               // new XAttribute("ID_DEPARTAMENTO", cmbAreas.SelectedValue),
+                // new XAttribute("ID_DEPARTAMENTO", cmbAreas.SelectedValue),
                 new XAttribute("CL_POSICION_ORGANIGRAMA", btnStaff.Checked ? "STAFF" : "LINEA"),
                 new XAttribute("CL_DOCUMENTO", ContextoApp.FgControlDocumentos ? txtClaveDocumento.Text : ""),
                 new XAttribute("CL_VERSION", ContextoApp.FgControlDocumentos ? txtVersionDocumento.Text : ""),
@@ -795,7 +795,7 @@ namespace SIGE.WebApp.IDP
                 new XAttribute("DS_CONTROL_CAMBIOS", ContextoApp.FgControlDocumentos ? txtControlCambios.Text : ""),
                 new XAttribute("CL_TIPO_PRESTACIONES", cmbTipoPrestaciones.SelectedValue),
                 new XAttribute("NO_PLAZAS", vNoPlazas),
-                new XAttribute("DS_COMPETENCIAS_REQUERIDAS", txtCompetenciasRequeridas.Text),
+                new XAttribute("DS_COMPETENCIAS_REQUERIDAS",""),
 
                Utileria.GuardarNotas(radEditorPrestaciones.Content, "NOTAS_PRESTACIONES"), // EditorContentToXml("XML_PRESTACIONES", radEditorPrestaciones.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
                Utileria.GuardarNotas(radEditorRequerimientos.Content, "NOTAS_REQUERIMIENTOS"),// EditorContentToXml("XML_REQUERIMIENTOS", radEditorRequerimientos.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
@@ -1507,7 +1507,7 @@ namespace SIGE.WebApp.IDP
         {
             if (!Page.IsPostBack)
             {
-             
+
                 traerAreas();
 
 
@@ -1565,7 +1565,7 @@ namespace SIGE.WebApp.IDP
                 //ObtenerCentroAdmvo();
                 //ObtenerCentroOptvo();
 
-                
+
 
                 lstExperiencia.DataSource = vListaExperiencia;
                 lstExperiencia.DataValueField = "ID_AREA_INTERES";
@@ -1580,11 +1580,11 @@ namespace SIGE.WebApp.IDP
                     btnCancelarAutoriza.Visible = true;
                     btnGuardar.Visible = false;
                     btnCancelar.Visible = false;
-                    tbdescriptivospuestos.Tabs[7].Visible = true;
+                    tbdescriptivospuestos.Tabs[6].Visible = true;
                 }
                 else
                 {
-                    tbdescriptivospuestos.Tabs[7].Visible = false;
+                    tbdescriptivospuestos.Tabs[6].Visible = false;
                     pvwAutorizar.Visible = false;
                     btnAutorizar.Visible = false;
                     btnCancelarAutoriza.Visible = false;
@@ -1667,7 +1667,7 @@ namespace SIGE.WebApp.IDP
 
         protected void radBtnAgregarPuestoSubordinado_Click(object sender, EventArgs e)
         {
-           // agregarItemLista(lstPuestosSubordinado, cmbPuestosSubordinado);
+            // agregarItemLista(lstPuestosSubordinado, cmbPuestosSubordinado);
         }
 
         protected void btnInter_Click(object sender, EventArgs e)
@@ -2077,7 +2077,6 @@ namespace SIGE.WebApp.IDP
             cmbOcupaciones.DataBind();
         }
 
-
         protected void cmbAreaO_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
             cmbSubarea.DataSource = new string[] { };
@@ -2144,7 +2143,6 @@ namespace SIGE.WebApp.IDP
                 UtilMensajes.MensajeResultadoDB(rwmAlertas, "No hay ocupación en el puesto", E_TIPO_RESPUESTA_DB.WARNING, 400, 150, null);
             }
         }
-
 
         public void EnvioCorreo(string Email, string Mensaje, string Asunto)
         {
@@ -2271,8 +2269,6 @@ namespace SIGE.WebApp.IDP
                 vListaExperiencia.Remove(ItemElim);
             }
         }
-
-
 
         protected void rgJefesInmediatos_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {

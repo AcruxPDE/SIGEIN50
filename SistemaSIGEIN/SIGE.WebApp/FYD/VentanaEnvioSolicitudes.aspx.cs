@@ -54,8 +54,8 @@ namespace SIGE.WebApp.FYD
             {
                 //txtNoPeriodo.InnerText = oPeriodo.CL_PERIODO;
                 //txtNbPeriodo.InnerText = oPeriodo.DS_PERIODO;
-                txtClPeriodo.InnerText = oPeriodo.CL_PERIODO;
-                txtDsPeriodo.InnerText = oPeriodo.NB_PERIODO;
+                txtClPeriodo.InnerText = oPeriodo.NB_PERIODO;
+                txtDsPeriodo.InnerText = oPeriodo.DS_PERIODO;
                 txtEstatus.InnerText = oPeriodo.CL_ESTADO_PERIODO;
                 string vTiposEvaluacion = "";
 

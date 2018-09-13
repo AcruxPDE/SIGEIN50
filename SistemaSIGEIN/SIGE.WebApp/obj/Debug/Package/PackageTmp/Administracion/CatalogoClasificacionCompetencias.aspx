@@ -129,7 +129,7 @@
         </AjaxSettings>
     </telerik:RadAjaxManager>
 
-    <label class="labelTitulo">Clasificación de Competencias laborales</label>
+    <label class="labelTitulo">Clasificación de competencias laborales</label>
     <div style="height: calc(100% - 100px)">
         <telerik:RadGrid ID="grvClasificacionCompetencia"
             ShowHeader="true"
@@ -171,15 +171,15 @@
     </div>
     <div style="clear: both; height: 10px;"></div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnGuardar" OnClientClicking="ShowPopupmodalClasificacionCompetenciaNuevo" AutoPostBack="false" runat="server" Text="Agregar" Width="100"></telerik:RadButton>
+        <telerik:RadButton ID="btnGuardar" OnClientClicking="ShowPopupmodalClasificacionCompetenciaNuevo" AutoPostBack="false" runat="server" Text="Agregar"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowPopupmodalClasificacionCompetenciaEditar" AutoPostBack="false" runat="server" Text="Editar" Width="100"></telerik:RadButton>
+        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowPopupmodalClasificacionCompetenciaEditar" AutoPostBack="false" runat="server" Text="Editar"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" Width="100" OnClientClicking="ConfirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
+        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" OnClientClicking="ConfirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
     </div>
-
+    <div style="clear:both;"></div>
     <telerik:RadWindowManager ID="RadWindowManager1" runat="server" EnableShadow="true">
         <Windows>
             <telerik:RadWindow ID="modalClasCompetenciaEditar" runat="server" Title="Tipo de competencia" Height="600"

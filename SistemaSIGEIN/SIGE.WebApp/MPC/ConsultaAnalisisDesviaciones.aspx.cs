@@ -711,7 +711,6 @@ namespace SIGE.WebApp.MPC
 
         }
 
-
         protected decimal? CalculaMinimo(int pMnSeleccionado, decimal? pMnMinimo, decimal? pMnPrimerCuartil, decimal? pMnMedio, decimal? pMnSegundoCuartil, decimal? pMnMaximo)
         {
             decimal? vMinimo = 0;
@@ -900,6 +899,7 @@ namespace SIGE.WebApp.MPC
             vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "yellow", DESCRIPCION = "Sueldo superior o inferior al nivel establecido por el tabulador entre el " + vRangoVerde.ToString() + "% y " + vRangoAmarillo.ToString() + "%." });
             vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "red", DESCRIPCION = "Sueldo superior o inferior al nivel establecido por el tabulador en más del " + vRangoAmarillo.ToString() + "%." });
             grdCodigoColores.DataSource = vCodigoColores;
+            RadGrid1.DataSource = vCodigoColores;
         }
 
         private void agregaTooltipDesciaciones()

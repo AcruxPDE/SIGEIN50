@@ -238,15 +238,6 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadGrid grdEvaluadorCuestionarios;
         
         /// <summary>
-        /// btnEliminarRespuestas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnEliminarRespuestas;
-        
-        /// <summary>
         /// btnVerCuestionario control.
         /// </summary>
         /// <remarks>
@@ -263,6 +254,15 @@ namespace SIGE.WebApp.EO {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnVerCuestionarioConfidencial;
+        
+        /// <summary>
+        /// btnEliminarRespuestas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnEliminarRespuestas;
         
         /// <summary>
         /// rwmMensaje control.

@@ -22,24 +22,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvImprimir;
         
         /// <summary>
-        /// lbCandidatosCom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbCandidatosCom;
-        
-        /// <summary>
-        /// dvPuestos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvPuestos;
-        
-        /// <summary>
         /// rhcCandidatoPuestos control.
         /// </summary>
         /// <remarks>

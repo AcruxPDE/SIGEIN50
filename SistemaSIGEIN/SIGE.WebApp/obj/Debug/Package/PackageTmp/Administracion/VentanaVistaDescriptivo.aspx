@@ -275,7 +275,7 @@
         </div>
     </div>
 
-    <div class="ctrlBasico">
+<%--    <div class="ctrlBasico">
         <div class="BorderRadioComponenteHTML" style="width: 520px; float: left;">
             <div class="divBarraTitulo">
                 <label style="float: left">Competencias requeridas</label>
@@ -286,7 +286,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--%>
     <div style="clear: both;"></div>
 
     <div>
@@ -311,9 +311,9 @@
                                     <col style="width: 30%">
                                 </colgroup>
                                 <tr style="text-align: center">
-                                    <td>Experiencia</td>
-                                    <td>Tiempo/años</td>
-                                    <td>Tipo</td>
+                                    <td><b>Experiencia</b></td>
+                                    <td><b>Tiempo/años</b></td>
+                                    <td><b>Tipo</b></td>
                                 </tr>
                             </table>
                         </HeaderTemplate>
@@ -395,7 +395,7 @@
               <%--  <td class="ctrlTableDataBorderContext">
                     <span id="txtArea" runat="server"></span>
                 </td>--%>
-                <td class="ctrlTableDataContext">
+               <%-- <td class="ctrlTableDataContext">
                     <label id="lblcentroadministrativo" name="lblcentroadministrativo">Centro administrativo: </label>
                 </td>
                 <td class="ctrlTableDataBorderContext">
@@ -406,7 +406,7 @@
                 </td>
                 <td class="ctrlTableDataBorderContext">
                     <span id="txtCentroOptvo" runat="server"></span>
-                </td>
+                </td>--%>
               <%--  <td class="ctrlTableDataContext">
                     <label id="lblpuestoJefeInmediato" name="lblpuestoJefeInmediato">
                         <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
@@ -520,7 +520,7 @@
                 <td class="ctrlTableDataContext">
                     <label class="labelTitulo" id="lblResponsable" name="lblResponsable">
                         <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
-                        <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>&nbsp;* Es responsable de:</label>
+                        <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>&nbsp;Es responsable de:</label>
                 </td>
             </tr>
             <tr>
@@ -531,7 +531,7 @@
             <tr>
                 <td class="ctrlTableDataContext">
                     <label class="labelTitulo" id="lblAutoridad" name="lblAutoridad">
-                        <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;* Autoridad
+                        <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;Autoridad
                     </label>
                 </td>
             </tr>

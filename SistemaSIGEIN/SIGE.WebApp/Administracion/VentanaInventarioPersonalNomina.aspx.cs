@@ -53,7 +53,6 @@ namespace SIGE.WebApp.Administracion
 
         protected void HabilitarControles(bool? pFgNomina, bool? pFgDO)
         {
-
             if (pFgNomina == false)
             {
                 btnNODOTrue.Enabled = false;
@@ -141,7 +140,7 @@ namespace SIGE.WebApp.Administracion
 
 
             vClEstadoEmpleado = vEmpleado.M_EMPLEADO_CL_ESTADO_EMPLEADO;
-            if (vClEstadoEmpleado != null && vClEstadoEmpleado != "ALTA")
+            if (vEmpleado.FG_DO == true && vClEstadoEmpleado != "ALTA")
             {
                 btnGuardar.Enabled = false;
             }
@@ -380,7 +379,7 @@ namespace SIGE.WebApp.Administracion
 
                 if (btnDOTrue.Checked && lstPuesto.SelectedValue == "" )
                 {
-                        UtilMensajes.MensajeResultadoDB(rwMensaje, "El campo Puesto DO es requerido si el empleado esta disponible en DO.", E_TIPO_RESPUESTA_DB.WARNING, 400, 150, pCallBackFunction: "");
+                        UtilMensajes.MensajeResultadoDB(rwMensaje, "El campo puesto DO es requerido si el empleado esta disponible en DO.", E_TIPO_RESPUESTA_DB.WARNING, 400, 150, pCallBackFunction: "");
                         return;
                 }
 
@@ -390,14 +389,6 @@ namespace SIGE.WebApp.Administracion
                // int? vIdPuestoNomina = null;
                 if(lstPuestoNomina.SelectedValue != "")
                 vEmpleadoNominaDo.ID_PUESTO_NOMINA = int.Parse(lstPuestoNomina.SelectedValue);
-
-                if (vEmpleadoNominaDo.FG_NOMINA == true && vEmpleadoNominaDo.ID_PUESTO_NOMINA == null)
-                {
-                    UtilMensajes.MensajeResultadoDB(rwMensaje, "Ingrese el puesto del empleado.", E_TIPO_RESPUESTA_DB.WARNING, 400, 150, pCallBackFunction: "");
-                    ClientScript.RegisterStartupScript(GetType(), "script", "MostrarDiv();", true);
-                    return;
-
-                }
 
                 vEmpleadoNominaDo.CL_EMPLEADO_NOMINA = txtClEmpleadoNomina.Text;
 
@@ -430,7 +421,7 @@ namespace SIGE.WebApp.Administracion
                     {
                         if (vEmpleados.NO_TOTAL_ALTA >= ContextoApp.InfoEmpresa.Volumen)
                         {
-                            UtilMensajes.MensajeResultadoDB(rwMensaje, "Se ha alcanzado el máximo número de empleados para la licencia y no es posible agregar más.", E_TIPO_RESPUESTA_DB.WARNING, 400, 150, "");
+                            UtilMensajes.MensajeResultadoDB(rwMensaje, "Se ha alcanzado el máximo número de empleados para la licencia y no es posible agregar más.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
                             return;
                         }
                     }
@@ -444,7 +435,7 @@ namespace SIGE.WebApp.Administracion
             }
             else
             {
-                UtilMensajes.MensajeResultadoDB(rwMensaje, "Los campos No. de empleado, nombre, apellido paterno y materno son requeridos.", E_TIPO_RESPUESTA_DB.WARNING, 400, 150, pCallBackFunction: "");
+                UtilMensajes.MensajeResultadoDB(rwMensaje, "Los campos No. de empleado, nombre y apellido paterno son requeridos.", E_TIPO_RESPUESTA_DB.WARNING, 400, 150, pCallBackFunction: "");
             }
         }
 
@@ -470,7 +461,7 @@ namespace SIGE.WebApp.Administracion
                     vEmpleadoNominaDo.FG_NOMINA_DO = btnNODOTrue.Checked ? true : false;
                     if (btnDOTrue.Checked && lstPuesto.SelectedValue == "")
                     {
-                        UtilMensajes.MensajeResultadoDB(rwMensaje, "El campo Puesto DO es requerido si el empleado esta disponible en DO.", E_TIPO_RESPUESTA_DB.WARNING, 400, 150, pCallBackFunction: "");
+                        UtilMensajes.MensajeResultadoDB(rwMensaje, "El campo puesto DO es requerido si el empleado esta disponible en DO.", E_TIPO_RESPUESTA_DB.WARNING, 400, 150, pCallBackFunction: "");
                         return;
                     }
 
@@ -503,7 +494,7 @@ namespace SIGE.WebApp.Administracion
                         {
                             if (vEmpleados.NO_TOTAL_ALTA >= ContextoApp.InfoEmpresa.Volumen)
                             {
-                                UtilMensajes.MensajeResultadoDB(rwMensaje, "Se ha alcanzado el máximo número de empleados para la licencia y no es posible agregar más.", E_TIPO_RESPUESTA_DB.WARNING, 400, 150, "");
+                                UtilMensajes.MensajeResultadoDB(rwMensaje, "Se ha alcanzado el máximo número de empleados para la licencia y no es posible agregar más.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
                                 return;
                             }
                         }
@@ -528,7 +519,7 @@ namespace SIGE.WebApp.Administracion
                 }
                 else
                 {
-                    UtilMensajes.MensajeResultadoDB(rwMensaje, "Los campos No. de empleado, Nombre, Apellido paterno y materno son requeridos.", E_TIPO_RESPUESTA_DB.WARNING, 400, 150, pCallBackFunction: "");
+                    UtilMensajes.MensajeResultadoDB(rwMensaje, "Los campos No. de empleado, nombre y apellido paterno son requeridos.", E_TIPO_RESPUESTA_DB.WARNING, 400, 150, pCallBackFunction: "");
                 }
             }
         }

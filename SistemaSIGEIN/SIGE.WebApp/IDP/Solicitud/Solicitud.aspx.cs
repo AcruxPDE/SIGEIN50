@@ -368,6 +368,7 @@ namespace SIGE.WebApp.IDP.Solicitud
             if (vModulo != null)
                 vClModulo = vModulo;
             vFgAceptaTermino = true;
+            
 
             cssModulo = Utileria.ObtenerCssModulo(vClModulo);
 

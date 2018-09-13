@@ -40,78 +40,6 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadCodeBlock RadCodeBlock2;
         
         /// <summary>
-        /// radCmbNiveles control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox radCmbNiveles;
-        
-        /// <summary>
-        /// lblEjecutivo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadLabel lblEjecutivo;
-        
-        /// <summary>
-        /// lblOperativo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadLabel lblOperativo;
-        
-        /// <summary>
-        /// lblConformePuesto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadLabel lblConformePuesto;
-        
-        /// <summary>
-        /// lblPersonalizado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadLabel lblPersonalizado;
-        
-        /// <summary>
-        /// rtsConfiguracionClima control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTabStrip rtsConfiguracionClima;
-        
-        /// <summary>
-        /// rmpCapturaResultados control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadMultiPage rmpCapturaResultados;
-        
-        /// <summary>
-        /// rpvCandidatos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadPageView rpvCandidatos;
-        
-        /// <summary>
         /// grdCandidatos control.
         /// </summary>
         /// <remarks>
@@ -128,60 +56,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnDelCandidato;
-        
-        /// <summary>
-        /// rpPruebas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadPageView rpPruebas;
-        
-        /// <summary>
-        /// dvPuesto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvPuesto;
-        
-        /// <summary>
-        /// lstPuesto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadListBox lstPuesto;
-        
-        /// <summary>
-        /// btnBuscarPuesto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnBuscarPuesto;
-        
-        /// <summary>
-        /// radSliderNivel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadSlider radSliderNivel;
-        
-        /// <summary>
-        /// grdPruebas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid grdPruebas;
         
         /// <summary>
         /// btnAplicacionInterna control.

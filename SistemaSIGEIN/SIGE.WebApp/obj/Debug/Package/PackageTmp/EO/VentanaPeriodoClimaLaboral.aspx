@@ -81,7 +81,7 @@
             <label id="lblDsPeriodo">Clave de período:</label>
         </div>
         <div class="divControlDerecha">
-            <telerik:RadTextBox ID="txtDsPeriodo" InputType="Text" Width="200" Height="30" runat="server"></telerik:RadTextBox>
+            <telerik:RadTextBox ID="txtDsPeriodo" InputType="Text" Width="200" Height="30" runat="server" MaxLength="32"></telerik:RadTextBox>
             <asp:RequiredFieldValidator Display="Dynamic" CssClass="validacion" ID="RequiredFieldValidator2" runat="server" Font-Names="Arial" Font-Size="Small" ControlToValidate="txtDsPeriodo" ErrorMessage="El campo es obligatorio"></asp:RequiredFieldValidator>
         </div>
     </div>

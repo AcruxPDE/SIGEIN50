@@ -2,6 +2,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
     <script id="MyScript" type="text/javascript">
+
+        var vaddSelection_label = "Agregados: ";
+        var vaddSelection_alert = "Selecciona un empleado.";
+
+        if ('<%= vClIdioma%>' != "ES") {
+            vaddSelection_label = '<%=vaddSelection_label%>';
+            vaddSelection_alert = '<%=vaddSelection_alert%>';
+        }
+
         var vEmpleados = [];
 
         function generateDataForParent() {
@@ -32,14 +41,18 @@
                         clTipoCatalogo: "<%= vClCatalogo %>"
                     };
                     if (clTipoCatalogo == "EVALUADOR") {
-                        vEmpleados.push(vEmpleado);
-                        var vLabel = document.getElementsByName('lblAgregar')[0];
-                        vLabel.innerText = "Agregados: " + vEmpleados.length;
+                        if (!existeElemento(vEmpleado)) {
+                            vEmpleados.push(vEmpleado);
+                            var vLabel = document.getElementsByName('lblAgregar')[0];
+                            vLabel.innerText = vaddSelection_label + vEmpleados.length;
+                        }
                         break;
                     } else {
-                        vEmpleados.push(vEmpleado);
-                        var vLabel = document.getElementsByName('lblAgregar')[0];
-                        vLabel.innerText = "Agregados: " + vEmpleados.length;
+                        if (!existeElemento(vEmpleado)) {
+                            vEmpleados.push(vEmpleado);
+                            var vLabel = document.getElementsByName('lblAgregar')[0];
+                            vLabel.innerText = vaddSelection_label + vEmpleados.length;
+                        }
                     }
                 }
 
@@ -50,9 +63,19 @@
                 var browserWnd = window;
                 if (currentWnd)
                     browserWnd = currentWnd.BrowserWindow;
-                browserWnd.radalert("Selecciona un empleado.", 400, 150);
+                browserWnd.radalert(vaddSelection_alert, 400, 150);
             }
 
+            return false;
+        }
+
+        function existeElemento(pEmpleado) {
+            for(var i = 0; i < vEmpleados.length; i++)
+            {
+                var vValue = vEmpleados[i];
+                if (vValue.idEmpleado == pEmpleado.idEmpleado)
+                    return true;
+            }
             return false;
         }
 
@@ -83,7 +106,7 @@
         <telerik:RadSplitter ID="splEmpleados" runat="server" Width="100%" Height="100%" BorderSize="0">
             <telerik:RadPane ID="rpnGridEmpleados" runat="server" Height="100%">
                 <div style="height: calc(100% - 54px);">
-                    <telerik:RadGrid ID="grdEmpleados" HeaderStyle-Font-Bold="true" runat="server" Height="100%" AllowMultiRowSelection="true" EnableHeaderContextMenu="true" AllowSorting="true" AutoGenerateColumns="false" OnItemDataBound="grdEmpleados_ItemDataBound">
+                    <telerik:RadGrid ID="grdEmpleados" HeaderStyle-Font-Bold="true" OnPreRender="grdEmpleados_PreRender" runat="server" Height="100%" AllowMultiRowSelection="true" EnableHeaderContextMenu="true" AllowSorting="true" AutoGenerateColumns="false" OnItemDataBound="grdEmpleados_ItemDataBound">
                         <ClientSettings>
                             <Scrolling UseStaticHeaders="true" AllowScroll="true" />
                             <Selecting AllowRowSelect="true" />

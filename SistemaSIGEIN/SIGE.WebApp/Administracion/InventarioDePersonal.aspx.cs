@@ -1,4 +1,5 @@
-﻿using SIGE.Entidades;
+﻿using Newtonsoft.Json;
+using SIGE.Entidades;
 using SIGE.Entidades.Externas;
 using SIGE.Negocio.Administracion;
 using SIGE.Negocio.AdministracionSitio;
@@ -74,10 +75,13 @@ namespace SIGE.WebApp.Administracion
 
                 LicenciaNegocio oNegocio = new LicenciaNegocio();
                 var vEmpleados = oNegocio.ObtenerLicenciaVolumen(pFG_ACTIVO: true).FirstOrDefault();
-                if (vEmpleados.NO_TOTAL_ALTA >= ContextoApp.InfoEmpresa.Volumen)
+                if (vEmpleados != null)
                 {
-                    UtilMensajes.MensajeResultadoDB(rnMensaje, "Se ha alcanzado el máximo número de empleados para la licencia y no es posible agregar más.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
-                    return;
+                    if (vEmpleados.NO_TOTAL_ALTA >= ContextoApp.InfoEmpresa.Volumen)
+                    {
+                        UtilMensajes.MensajeResultadoDB(rnMensaje, "Se ha alcanzado el máximo número de empleados para la licencia y no es posible agregar más.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
+                        return;
+                    }
                 }
             
 
@@ -122,10 +126,10 @@ namespace SIGE.WebApp.Administracion
                 //}
             }
 
-            if (Convert.ToString(Request.Form["__EVENTARGUMENT"]) == "cancelarBaja")
-            {
-                CancelarBaja();
-            }
+            //if (Convert.ToString(Request.Form["__EVENTARGUMENT"]) == "cancelarBaja")
+            //{
+            //    CancelarBaja();
+            //}
         }
 
         protected void grdEmpleados_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
@@ -231,6 +235,22 @@ namespace SIGE.WebApp.Administracion
         protected void btnDarAlta_Click(object sender, EventArgs e)
         {
             rnTemplate.RadAlert("", 420, 180, "Dar de alta","");
+        }
+
+        protected void ramInventario_AjaxRequest(object sender, AjaxRequestEventArgs e)
+        {
+            E_SELECTOR vLstDatos = new E_SELECTOR();
+            string pParameter = e.Argument;
+
+            if (pParameter != null)
+            {
+                vLstDatos = JsonConvert.DeserializeObject<E_SELECTOR>(pParameter);
+
+                if (vLstDatos.clTipo == "CANCELARBAJA")
+                {
+                    CancelarBaja();
+                }
+            }
         }
 
         //protected void btnEliminarInventario_Click(object sender, EventArgs e)

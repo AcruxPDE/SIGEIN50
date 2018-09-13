@@ -24,7 +24,7 @@
     <div style="height: calc(100% - 20px)">
         <telerik:RadSplitter ID="rsEnvioCorreo" Width="100%" Height="100%" BorderSize="0" runat="server">
             <telerik:RadPane ID="rpCampos" runat="server">
-                <div style="height: calc(100% - 60px);">
+                <div style="height: calc(100% - 80px);">
                     <div class="ctrlBasico" style="width: 55%;">
                         <label >Mensaje:</label>
                         <telerik:RadEditor
@@ -71,19 +71,21 @@
                         </div>
                     </div>
                 </div>
-                            <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" OnClientClicked="CloseWindow"></telerik:RadButton>
-                </div>
+                <div class="divControlDerecha">
+
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnEnviar" runat="server" Text="Enviar" OnClick="btnEnviar_Click"></telerik:RadButton>
                 </div>
+                                                <div class="ctrlBasico">
+                    <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" OnClientClicked="CloseWindow"></telerik:RadButton>
+                </div>
+                    </div>
             </telerik:RadPane>
             <telerik:RadPane ID="rpAyuda" runat="server" Scrolling="None" Width="22px">
                 <telerik:RadSlidingZone ID="rszAuxiliares" runat="server" SlideDirection="Left" Width="25px">
                     <telerik:RadSlidingPane ID="rspAyuda" runat="server" Title="Ayuda" Width="200px" RenderMode="Mobile" Height="100%">
                         <div style="padding: 10px; text-align: justify;">
                             <p>Envío Correos</p>
-                            <br /><br />
                             <p>En esta página te permite enviar por correo electrónico la liga al acceso de una solicitud utilizando la plantilla seleccionada.
                                 <br />
                                 Puedes configurar el mensaje que recibirán los candidatos y agregar los correos a quienes se les enviara el acceso a la solicitud.

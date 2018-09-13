@@ -80,6 +80,23 @@ namespace SIGE.WebApp.EO
             set { ViewState["vs_vNoReplica"] = value; }
         }
 
+        public string vClTipoMetas
+        {
+            get { return (string)ViewState["vs_vClTipoMetas"]; }
+            set { ViewState["vs_vClTipoMetas"] = value; }
+        }
+
+        private bool vFgCordinador
+        {
+            get { return (bool)ViewState["vs_vFgCordinador"]; }
+            set { ViewState["vs_vFgCordinador"] = value; }
+        }
+
+        public bool vFgBajas
+        {
+            get { return (bool)ViewState["vs_vFgBajas"]; }
+            set { ViewState["vs_vFgBajas"] = value; }
+        }
 
         #endregion
 
@@ -218,7 +235,12 @@ namespace SIGE.WebApp.EO
                 grdDisenoMetas.Rebind();
                 rgBono.Rebind();
                // grdContrasenaEvaluadores.Rebind();
+
+              if(vFgCordinador)
                 GenerarContrasena();
+              else
+                  grdContrasenaEvaluadores.Rebind();
+
             }
             else
             {
@@ -251,7 +273,14 @@ namespace SIGE.WebApp.EO
                 txtFechas.InnerText = oPeriodo.FE_INICIO.ToString("d") + " a " + oPeriodo.FE_TERMINO.Value.ToShortDateString();
                 txtTipoMetas.InnerText = oPeriodo.CL_TIPO_PERIODO;
                 txtTipoCapturista.InnerText = Utileria.LetrasCapitales(oPeriodo.CL_TIPO_CAPTURISTA);
-                txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO;
+
+                if (oPeriodo.FG_BONO == true && oPeriodo.FG_MONTO == true)
+                    txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO + " (monto)";
+                else if (oPeriodo.FG_BONO == true && oPeriodo.FG_PORCENTUAL == true)
+                    txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO + " (porcentual)";
+                else
+                    txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO;
+
                 txtTipoPeriodo.InnerText = oPeriodo.CL_ORIGEN_CUESTIONARIO;
 
                 if (oPeriodo.DS_NOTAS != null)
@@ -269,20 +298,30 @@ namespace SIGE.WebApp.EO
         {
             PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
 
+            E_RESULTADO vResultado = nPeriodo.InsertaPeriodoDesempenoReplica(pIdPeriodo: vIdPeriodo, pCL_USUARIO: vClUsuario, pNB_PROGRAMA: vNbPrograma, pTipoTransaccion: "V");
+            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+
+            if (vMensaje == "No hay empleados dados de baja")
+                vFgBajas = false;
+            else
+                vFgBajas = true;
+
+
             var vPeriodoDesempeno = nPeriodo.ObtienePeriodosDesempeno(pIdPeriodo: vIdPeriodo).FirstOrDefault();
 
             vClOrigenPeriodo = vPeriodoDesempeno.CL_ORIGEN_CUESTIONARIO;
+            vClTipoMetas = vPeriodoDesempeno.CL_TIPO_METAS;
             vNoReplica = vPeriodoDesempeno.NO_REPLICA;
 
             if (vPeriodoDesempeno.CL_TIPO_CAPTURISTA == "OTRO")
                 btnAgregarEvaluador.Visible = true;
-            if (vPeriodoDesempeno.CL_TIPO_CAPTURISTA == "COORDINADOR_EVAL")
-            {
-                btnEnvioSolicitudes.Enabled = false;
-               // btnReasignarTodasContrasenas.Enabled = false;
-                btnReasignarContrasena.Enabled = false;
-                lbMensaje.Visible = true;
-            }
+            if (vPeriodoDesempeno.CL_TIPO_CAPTURISTA == "COORDINADOR_EVAL")           
+                vFgCordinador = false;
+            else
+                vFgCordinador = true;
+
+               
+            
             txtRangoPeriodo.Text = vPeriodoDesempeno.FE_INICIO.ToString("d") + " a " + vPeriodoDesempeno.FE_TERMINO.Value.ToShortDateString();
             vIdPeriodoDesempeno = vPeriodoDesempeno.ID_PERIODO_DESEMPENO;
             CargarDatosContexto();
@@ -291,6 +330,13 @@ namespace SIGE.WebApp.EO
             {
                 btnAgregarMeta.Enabled = true;
                 btnModificarMetas.Enabled = true;
+
+                btnAgregarMeta.Text = "Agregar indicador";
+                btnActivarMetas.Text = "Activar indicador";
+                btnDesactivarMetas.Text = "Desactivar indicador";
+                btnModificarMetas.Text = "Editar indicador";
+                btnCopiarMetas.Text = "Copiar indicador";
+                btnGuardarMetas.Text= "Guardar indicadores";
 
                 grdDisenoMetas.MasterTableView.DetailTables[0].Columns[0].Visible = true;
             }
@@ -307,7 +353,7 @@ namespace SIGE.WebApp.EO
             }
 
 
-            if (vPeriodoDesempeno.FG_BONO)
+            if (vPeriodoDesempeno.FG_BONO == true)
             {
                 rbSi.Checked = true;
                 rbIndividualDependiente.Enabled = true;
@@ -333,7 +379,9 @@ namespace SIGE.WebApp.EO
             }
             else
             {
+                if(vPeriodoDesempeno.FG_BONO == false)
                 rbNo.Checked = true;
+
                 rbIndividualDependiente.Enabled = false;
                 rbIndividualIndependiente.Enabled = false;
                 rbGrupal.Enabled = false;
@@ -422,7 +470,18 @@ namespace SIGE.WebApp.EO
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
             }
         }
-    
+
+        protected void SeguridadProcesos(bool? pFgConfiguracionCompleta)
+        {
+            bool vFgConfiguracionCompleta = false;
+            if (pFgConfiguracionCompleta == true)
+                vFgConfiguracionCompleta = true;
+
+            btnEnvioSolicitudes.Enabled = ContextoUsuario.oUsuario.TienePermiso("M.A.A.I") && vFgCordinador && vFgConfiguracionCompleta;
+            btnReasignarContrasena.Enabled = vFgCordinador;
+            lbMensaje.Visible = !vFgCordinador;
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -470,6 +529,14 @@ namespace SIGE.WebApp.EO
 
             if (vSeleccion.clTipo == "EVALUADOR")
                 AgregarEvaluadores(vSeleccion.oSeleccion.ToString());
+
+            if (vSeleccion.clTipo == "VERIFICACONFIGURACION")
+            {
+                PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
+                var vFgConfigurado = nPeriodo.VerificaConfiguracion(vIdPeriodo).FirstOrDefault();
+                if (vFgConfigurado != null)
+                    SeguridadProcesos(vFgConfigurado.FG_ESTATUS);
+            }
         }
 
         protected void rgBono_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
@@ -933,6 +1000,7 @@ namespace SIGE.WebApp.EO
 
         protected void btnReasignarContrasena_Click(object sender, EventArgs e)
         {
+
             string vMensaje = "";
             if (grdContrasenaEvaluadores.SelectedItems.Count > 0)
             {
@@ -958,6 +1026,7 @@ namespace SIGE.WebApp.EO
             {
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, "Selecciona por lo menos un evaluador para reasignar contraseña.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: null);
             }
+
         }
 
         protected void grdEvaluados_DetailTableDataBind(object sender, GridDetailTableDataBindEventArgs e)
@@ -1028,7 +1097,11 @@ namespace SIGE.WebApp.EO
             }
             else
             {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione una meta.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+                string vTstoIndicadorMeta = " una meta.";
+                if (vClTipoMetas == "DESCRIPTIVO")
+                    vTstoIndicadorMeta = " un indicador.";
+
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione" + vTstoIndicadorMeta, E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
             }
         }
 
@@ -1067,7 +1140,11 @@ namespace SIGE.WebApp.EO
             }
             else
             {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione una meta.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+                string vTstoIndicadorMeta = " una meta.";
+                if (vClTipoMetas == "DESCRIPTIVO")
+                    vTstoIndicadorMeta = " un indicador.";
+
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione" + vTstoIndicadorMeta, E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
             }
 
         }
@@ -1115,13 +1192,26 @@ namespace SIGE.WebApp.EO
             }
             else
             {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione por lo menos un evaluado y una meta.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+                string vTstoIndicadorMeta = " una meta.";
+                if(vClTipoMetas=="DESCRIPTIVO")
+                    vTstoIndicadorMeta = " un indicador.";
+
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione por lo menos un evaluado y" + vTstoIndicadorMeta, E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
             }
         }
 
         protected void txtPonderacion_TextChanged(object sender, EventArgs e)
         {
-
+        //    decimal vTotal = 0;
+        //    foreach (GridDataItem item in grdEvaluados.Items)
+        //    {
+        //        RadNumericTextBox radNumericTxtBox = (RadNumericTextBox)item["PR_EVALUADO"].FindControl("txtPonderacion");
+        //        if (radNumericTxtBox != null)
+        //        {
+        //            if (radNumericTxtBox.Text != "")
+        //                vTotal = vTotal + decimal.Parse(radNumericTxtBox.Text);
+        //        }
+        //    }    
         }
 
         protected void rgBono_ItemDataBound(object sender, GridItemEventArgs e)
@@ -1163,6 +1253,22 @@ namespace SIGE.WebApp.EO
                 PageSizeCombo.Items.Add(new RadComboBoxItem("1000"));
                 PageSizeCombo.FindItemByText("1000").Attributes.Add("ownerTableViewId", grdContrasenaEvaluadores.MasterTableView.ClientID);
                 PageSizeCombo.FindItemByText(e.Item.OwnerTableView.PageSize.ToString()).Selected = true;
+            }
+        }
+
+        protected void grdEvaluados_ItemDataBound(object sender, GridItemEventArgs e)
+        {
+            if (e.Item is GridDataItem && e.Item.OwnerTableView.Name != "gtvEvaluadores")
+            {
+                GridDataItem item = (GridDataItem)e.Item;
+          
+                string vClEstadoEmpleado = item.GetDataKeyValue("CL_ESTADO_EMPLEADO").ToString();
+                int vIdEvaluado = int.Parse(item.GetDataKeyValue("ID_EVALUADO").ToString());
+                if (vClEstadoEmpleado != null && vClEstadoEmpleado != "Alta")
+                {
+                    item["CL_ESTADO_EMPLEADO"].Text = "<a href='javascript:OpenRemplazaBaja(" + vIdEvaluado + "," + vIdPeriodo + ")'>" + vClEstadoEmpleado + "</a>";
+                }
+
             }
         }
     }

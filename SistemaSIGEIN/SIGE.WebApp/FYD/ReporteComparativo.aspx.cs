@@ -201,7 +201,7 @@ namespace SIGE.WebApp.FYD
 
             HtmlGenericControl vCtrlTh = new HtmlGenericControl("th");
 
-            vCtrlTh.InnerText = String.Format("{0}", "Periodo");
+            vCtrlTh.InnerText = String.Format("{0}", "Período");
             vCtrlColumn.Controls.Add(vCtrlTh);
 
             HtmlGenericControl vCtrlTh2 = new HtmlGenericControl("th");

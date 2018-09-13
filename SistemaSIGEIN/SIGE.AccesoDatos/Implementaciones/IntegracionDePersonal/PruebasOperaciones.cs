@@ -37,11 +37,11 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             }
         }
 
-        public List<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result> ObtenerPruebasConfiguradas()
+        public List<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result> ObtenerPruebasConfiguradas(int? pID_BATERIA = null)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_PRUEBAS_CONFIGURADAS().ToList();
+                return context.SPE_OBTIENE_PRUEBAS_CONFIGURADAS(pID_BATERIA).ToList();
             }
         }
                
@@ -191,6 +191,16 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 context.SPE_ELIMINA_RESPUESTAS_PRUEBA(pout_clave_retorno, pIdPrueba, pClUsuario, pNbPrograma);
+                return XElement.Parse(pout_clave_retorno.Value.ToString());
+            }
+        }
+
+        public XElement EliminarPruebaBateria(string pXmlPruebas = null, int? pIdBateria = null, string pClUsuario = null, string pNbPrograma = null)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                context.SPE_ELIMINA_PRUEBA_RESPUESTAS(pout_clave_retorno, pXmlPruebas, pIdBateria, pClUsuario, pNbPrograma);
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }

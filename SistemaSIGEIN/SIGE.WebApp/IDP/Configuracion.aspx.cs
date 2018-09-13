@@ -828,5 +828,15 @@ namespace SIGE.WebApp.IDP
             GuardarDatosIntegracion();
         }
 
+        protected void rgPruebas_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+
+        }
+
+        protected void rgPruebas_DetailTableDataBind(object sender, GridDetailTableDataBindEventArgs e)
+        {
+
+        }
+
     }
 }

@@ -8,7 +8,11 @@
            width: 150px !important;
        }
 
-               .DivFotoCss {
+    html {
+        overflow-y: hidden;
+        }
+
+       .DivFotoCss {
            background: #fafafa; 
            position: absolute; 
            right: 0px; 
@@ -41,7 +45,7 @@
             var vClToken = '<%= ObtenerDatosDeReportes("CL_TOKEN") %>';
 
             if ((vIdBateria != "0")) {
-                var win = window.open("/IDP/ResultadosPruebas.aspx?ID=" + vIdBateria + "&&T=" + vClToken, '_blank');
+                var win = window.open("../IDP/ResultadosPruebas.aspx?ID=" + vIdBateria + "&&T=" + vClToken, '_blank');
                 win.focus();
             }
             else { radalert("La persona no tiene una batería de pruebas asociada", 400, 150, ""); }
@@ -54,7 +58,7 @@
 
             if (vIdBateria != "0") {
 
-                var vURL = "/IDP/ConsultasPersonales.aspx";
+                var vURL = "../IDP/ConsultasPersonales.aspx";
                 var vTitulo = "Consultas personales";
 
                 vURL = vURL + "?pIdBateria=" + vIdBateria;
@@ -79,7 +83,7 @@
         function OpenSolicitud() {
             var vIdSolicitud = '<%= vIdSolicitud%>';
             if (vIdSolicitud != null && vIdSolicitud != "0") {
-                var vURL = "/IDP/Solicitud/Solicitud.aspx";
+                var vURL = "../IDP/Solicitud/Solicitud.aspx";
                 var vTitulo = "Ver solicitud";
                 vURL = vURL + "?SolicitudId=" + vIdSolicitud +"&FG_HABILITADO=False";
                 var currentWnd = GetRadWindow();
@@ -95,9 +99,6 @@
             }
         }
 
-
-        
-
         function OpenProceso() {
             var vIdBateria = '<%= ObtenerDatosDeReportes("ID_BATERIA") %>';
             var vClToken = '<%= ObtenerDatosDeReportes("CL_TOKEN") %>';
@@ -105,7 +106,7 @@
             var vIdCandidato = '<%= vIdCandidato%>';
             if (vIdSolicitud != null && vIdSolicitud != "0") {
 
-                var vURL = "/IDP/VentanaProcesoSeleccionCandidato.aspx";
+                var vURL = "../IDP/VentanaProcesoSeleccionCandidato.aspx";
                 var vTitulo = "Proceso de evaluación";
                 vURL = vURL + "?IdCandidato=" + vIdCandidato
 
@@ -138,7 +139,7 @@
 
             if (vIdEvaluador != "0" & vIdPeriodo != "0") {
 
-                var vURL = "/EO/Cuestionarios/CuestionarioClimaLaboral.aspx?ID_EVALUADOR=" + vIdEvaluador + "&ID_PERIODO=" + vIdPeriodo + "&FG_HABILITADO=False";
+                var vURL = "../EO/Cuestionarios/CuestionarioClimaLaboral.aspx?ID_EVALUADOR=" + vIdEvaluador + "&ID_PERIODO=" + vIdPeriodo + "&FG_HABILITADO=False";
                 var vTitulo = "Cuestionario";
 
                 var currentWnd = GetRadWindow();
@@ -162,7 +163,7 @@
 
         function openAvanceProgramaCapacitacion(pIdPrograma) {
 
-            var vURL = "/FYD/VentanaAvanceProgramaCapacitacion.aspx?IdPrograma=";
+            var vURL = "../FYD/VentanaAvanceProgramaCapacitacion.aspx?IdPrograma=";
             var vTitulo = "Avance programa de capacitación";
 
             vURL = vURL + pIdPrograma;
@@ -184,7 +185,7 @@
 
         function openReporteCumplimientoPersonalDesempeno(pIdEvaluado, pIdPeriodo) {
 
-            var vURL = "/EO/VentanaReporteCumplimientoPersonal.aspx?idPeriodo=" + pIdPeriodo + "&idEvaluado=" + pIdEvaluado;
+            var vURL = "../EO/VentanaReporteCumplimientoPersonal.aspx?idPeriodo=" + pIdPeriodo + "&idEvaluado=" + pIdEvaluado;
             var vTitulo = "Reporte cumplimiento personal";
 
             var currentWnd = GetRadWindow();
@@ -478,7 +479,7 @@
                                 <table class="ctrlTableForm">
                                     <tr>
                                         <td style="text-align: center;">
-                                            <telerik:RadBinaryImage ID="rbiFotoEmpleado" runat="server" Width="128" Height="128"  ResizeMode="Fit" ImageUrl="~/Assets/images/LoginUsuario.png"  />
+                                            <telerik:RadBinaryImage ID="rbiFotoEmpleado" runat="server" Width="128" Height="128" ResizeMode="Fit" ImageUrl="~/Assets/images/LoginUsuario.png" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -535,13 +536,13 @@
                                     </ClientSettings>
                                     <MasterTableView ClientDataKeyNames="ID_ARCHIVO,ID_ITEM" DataKeyNames="ID_ARCHIVO,ID_ITEM" AutoGenerateColumns="false" ShowHeadersWhenNoRecords="true">
                                         <Columns>
-                                            <telerik:GridHyperLinkColumn HeaderText="Nombre del documento" DataTextField="NB_DOCUMENTO" DataNavigateUrlFields="ID_ARCHIVO,ID_DOCUMENTO,FE_CREATED_DATE,NB_DOCUMENTO,ID_ITEM" DataNavigateUrlFormatString="/Comunes/ObtenerDocumento.ashx?ArchivoId={0}&ArchivoNb={2:yyyyMMdd}{4}&ArchivoDescargaNb={3}" Target="_blank"></telerik:GridHyperLinkColumn>
+                                            <telerik:GridHyperLinkColumn HeaderText="Nombre del documento" DataTextField="NB_DOCUMENTO" DataNavigateUrlFields="ID_ARCHIVO,ID_DOCUMENTO,FE_CREATED_DATE,NB_DOCUMENTO,ID_ITEM" DataNavigateUrlFormatString="~/Comunes/ObtenerDocumento.ashx?ArchivoId={0}&ArchivoNb={2:yyyyMMdd}{4}&ArchivoDescargaNb={3}" Target="_blank"></telerik:GridHyperLinkColumn>
                                             <telerik:GridBoundColumn HeaderText="Tipo de documento" HeaderStyle-Width="200" DataField="CL_TIPO_DOCUMENTO" UniqueName="CL_TIPO_DOCUMENTO"></telerik:GridBoundColumn>
                                         </Columns>
                                     </MasterTableView>
                                 </telerik:RadGrid>
                             </div>
-                            <div class="ctrlBasico">
+                            <div class="ctrlBasico" style="padding-left:20px;">
                                 <telerik:RadButton ID="btnDelDocumentos" runat="server" Text="Eliminar" OnClick="btnDelDocumentos_Click"></telerik:RadButton>
                             </div>
                         </telerik:RadPageView>
@@ -671,7 +672,8 @@
                                 <MasterTableView ClientDataKeyNames="ID_BAJA_EMPLEADO" EnableColumnsViewState="false" DataKeyNames="ID_BAJA_EMPLEADO" AllowPaging="false" AllowFilteringByColumn="false" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true" NoMasterRecordsText="No existen bajas asociadas al empleado">
                                     <CommandItemSettings ShowExportToExcelButton="true" ShowAddNewRecordButton="false" />
                                     <Columns>
-                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" HeaderText="Fecha" DataField="FE_BAJA_EFECTIVA" UniqueName="FE_BAJA_EFECTIVA" DataFormatString="{0:d}"></telerik:GridBoundColumn>
+                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" HeaderText="Fecha ingreso" DataField="FE_INGRESO" UniqueName="FE_INGRESO" DataFormatString="{0:d}"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" HeaderText="Fecha baja" DataField="FE_BAJA_EFECTIVA" UniqueName="FE_BAJA_EFECTIVA" DataFormatString="{0:d}"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" HeaderText="Causa" DataField="NB_MOTIVO" UniqueName="NB_MOTIVO"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="300" FilterControlWidth="25" HeaderText="Comentario" DataField="DS_MOTIVO" UniqueName="DS_MOTIVO"></telerik:GridBoundColumn>
                                     </Columns>
@@ -692,10 +694,10 @@
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" HeaderText="Fecha" DataField="FE_CAMBIO" UniqueName="FE_CAMBIO" DataFormatString="{0:d}"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" HeaderText="Proceso" DataField="NB_PROCESO" UniqueName="NB_PROCESO"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="200" FilterControlWidth="25" HeaderText="Descripción" DataField="DS_PROCESO" UniqueName="DS_PROCESO"></telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" FilterControlWidth="25" HeaderText="Anterior" DataField="NB_ANTERIOR" UniqueName="NB_ANTERIOR" DataFormatString="${0:N2}">
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" FilterControlWidth="25" HeaderText="Anterior" DataField="NB_ANTERIOR" UniqueName="NB_ANTERIOR" DataFormatString="{0:C2}">
                                             <ItemStyle HorizontalAlign="Right" />
                                         </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" FilterControlWidth="25" HeaderText="Actual" DataField="NB_ACTUAL" UniqueName="NB_ACTUAL" DataFormatString="${0:N2}">
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" FilterControlWidth="25" HeaderText="Actual" DataField="NB_ACTUAL" UniqueName="NB_ACTUAL" DataFormatString="{0:C2}">
                                             <ItemStyle HorizontalAlign="Right" />
                                         </telerik:GridBoundColumn>
                                     </Columns>
@@ -709,7 +711,7 @@
                 </div>
             </telerik:RadPane>
             <telerik:RadPane ID="rpAyuda" runat="server" Scrolling="None" Width="22px">
-                <telerik:RadSlidingZone ID="rszAvisoDePrivacidad" runat="server" SlideDirection="Left" Width="22px">
+                <telerik:RadSlidingZone ID="rszAvisoDePrivacidad" runat="server" SlideDirection="Left" Width="22px" ClickToOpen="true">
                     <telerik:RadSlidingPane ID="rspAyuda" runat="server" Title="Instrucciones" Width="240px" RenderMode="Mobile" Height="200">
                         <div style="padding: 10px; text-align: justify;">
                             <p>Por favor ingresa los datos solicitados y al terminar haz clic en el botón de Guardar hasta el final de la página.</p>

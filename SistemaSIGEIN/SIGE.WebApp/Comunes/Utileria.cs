@@ -72,7 +72,7 @@ namespace WebApp.Comunes
         {
             List<E_MENU> lstMenu = new List<E_MENU>();
             List<E_FUNCION> lstFuncionRaiz = new List<E_FUNCION>();
-            foreach (E_FUNCION funcion in pFunciones.OrderBy(o => o.ID_FUNCION).ToList())
+            foreach (E_FUNCION funcion in pFunciones)
             {
                 
                 E_FUNCION f = new E_FUNCION()
@@ -83,6 +83,7 @@ namespace WebApp.Comunes
                     ID_FUNCION = funcion.ID_FUNCION,
                     ID_FUNCION_PADRE = funcion.ID_FUNCION_PADRE,
                     NB_FUNCION = funcion.NB_FUNCION,
+                    DS_FUNCION = funcion.DS_FUNCION,
                     NB_IMAGEN = funcion.NB_IMAGEN,
                     NB_URL = funcion.NB_URL,
                     XML_CONFIGURACION = funcion.XML_CONFIGURACION
@@ -91,7 +92,8 @@ namespace WebApp.Comunes
                 bool vFgCrearItem = false;
                 string vIconoURL = f.NB_IMAGEN;
                 string vNbFuncion = f.NB_FUNCION;
-                string vNbTooltip = f.NB_FUNCION;
+               // string vNbTooltip = f.NB_FUNCION;
+                string vNbTooltip = f.DS_FUNCION;
 
                 XElement root = XElement.Parse(f.XML_CONFIGURACION).Element("ROOT");
                 if (root != null)

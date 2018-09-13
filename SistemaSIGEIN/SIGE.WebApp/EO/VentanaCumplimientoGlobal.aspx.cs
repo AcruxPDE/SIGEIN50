@@ -53,7 +53,7 @@ namespace SIGE.WebApp.EO
             {
                 decimal? vNoCumplido = 100 - vPrDesempenoGlobal.CUMPLIDO;
                 
-                vSerie.SeriesItems.Add(vNoCumplido, System.Drawing.Color.Red, "No Cumplido");
+                vSerie.SeriesItems.Add(vNoCumplido, System.Drawing.Color.Red, "No cumplido");
                 vSerie.SeriesItems.Add(vPrDesempenoGlobal.CUMPLIDO, System.Drawing.Color.Green, "Cumplido");
                 vSerie.LabelsAppearance.DataFormatString = "{0:N2}%";
                 vSerie.LabelsAppearance.TextStyle.FontSize = 14;
@@ -113,6 +113,10 @@ namespace SIGE.WebApp.EO
             {
                 if (item.clOrigen == "COPIA")
                     vOrigen = item.clOrigen + " " + item.clTipoCopia;
+                if (item.clOrigen == "PREDEFINIDO")
+                    vOrigen = "Original";
+                else if (item.clOrigen == "REPLICA")
+                    vOrigen = "réplica";
                 else
                     vOrigen = item.clOrigen;
 
@@ -143,6 +147,20 @@ namespace SIGE.WebApp.EO
             rgComparativos.Rebind();
         }
 
+        private Color ObtieneColorCumplimiento(decimal? pPrCumplimiento)
+        {
+            Color vColor = System.Drawing.ColorTranslator.FromHtml("#F2F2F2");
+
+            if (pPrCumplimiento > 0 && pPrCumplimiento < 60)
+                vColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+            else if (pPrCumplimiento > 59 && pPrCumplimiento < 76)
+                vColor = System.Drawing.ColorTranslator.FromHtml("#FFFF00");
+            else if (pPrCumplimiento > 75 && pPrCumplimiento < 101)
+                vColor = System.Drawing.ColorTranslator.FromHtml("#00B050");
+
+            return vColor;
+        }
+
 
         #endregion
 
@@ -166,7 +184,14 @@ namespace SIGE.WebApp.EO
                         txtFechas.InnerText = oPeriodo.FE_INICIO.ToString("d") + " a " + oPeriodo.FE_TERMINO.Value.ToShortDateString();
                         txtTipoMetas.InnerText = oPeriodo.CL_TIPO_PERIODO;
                         txtTipoCapturista.InnerText = Utileria.LetrasCapitales(oPeriodo.CL_TIPO_CAPTURISTA);
-                        txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO;
+
+                        if (oPeriodo.FG_BONO == true && oPeriodo.FG_MONTO == true)
+                            txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO + " (monto)";
+                        else if (oPeriodo.FG_BONO == true && oPeriodo.FG_PORCENTUAL == true)
+                            txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO + " (porcentual)";
+                        else
+                            txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO;
+
                         txtTipoPeriodo.InnerText = oPeriodo.CL_ORIGEN_CUESTIONARIO;
 
                         if (oPeriodo.DS_NOTAS != null)
@@ -196,6 +221,10 @@ namespace SIGE.WebApp.EO
                     string vOrigenPeriodo;
                     if (oPeriodo.CL_ORIGEN_CUESTIONARIO == "Copia")
                         vOrigenPeriodo = oPeriodo.CL_ORIGEN_CUESTIONARIO + " "+ oPeriodo.CL_TIPO_COPIA;
+                    if (oPeriodo.CL_ORIGEN_CUESTIONARIO == "PREDEFINIDO")
+                        vOrigenPeriodo = "Original";
+                    else if (oPeriodo.CL_ORIGEN_CUESTIONARIO == "REPLICA")
+                        vOrigenPeriodo = "Réplica";
                     else
                         vOrigenPeriodo = oPeriodo.CL_ORIGEN_CUESTIONARIO;
 
@@ -271,6 +300,20 @@ namespace SIGE.WebApp.EO
                 rgComparativos.Rebind();
 
             }
+        }
+
+        protected void rgEvaluados_ItemDataBound(object sender, GridItemEventArgs e)
+        {
+            if (e.Item is GridFooterItem)
+            {
+                
+                GridFooterItem footerItem = (GridFooterItem)e.Item;
+                PeriodoDesempenoNegocio nDesempenoGlobal = new PeriodoDesempenoNegocio();
+                var vDesempenoGlobal = nDesempenoGlobal.ObtieneCumplimientoGlobal(vIdPeriodo, vIdRol).Sum(s => s.C_GENERAL);
+                footerItem["C_GENERAL"].BackColor = ObtieneColorCumplimiento(decimal.Parse(vDesempenoGlobal.ToString()));
+                         
+            }
+
         }
 
     }

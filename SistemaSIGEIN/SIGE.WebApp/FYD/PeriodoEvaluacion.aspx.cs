@@ -110,7 +110,7 @@ namespace SIGE.WebApp.FYD
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string vClEstadoPeriodo = "Abierto";
+            string vClEstadoPeriodo = "ABIERTO";
             if (!IsPostBack)
             {
                 bool vFgHabilitarEdicion = true;
@@ -163,6 +163,8 @@ namespace SIGE.WebApp.FYD
                 if (Request.Params["TipoTarea"] != null)
                 {
                     vTipoTarea = Request.Params["TipoTarea"].ToString();
+                    if (vTipoTarea == "COPIA")
+                        vClEstadoPeriodo = "ABIERTO";
                 }
 
                 btnAutoevaluacionTrue.Enabled = vFgHabilitarEdicion;
@@ -247,7 +249,11 @@ namespace SIGE.WebApp.FYD
                     GenerarConfiguracionPS();
 
 
-                UtilMensajes.MensajeResultadoDB(rwmAlertas, resultado.MENSAJE[0].DS_MENSAJE.ToString(), resultado.CL_TIPO_ERROR, 400, 150, "sendDataToParent(" + vIdPeriodo + ")");
+                //UtilMensajes.MensajeResultadoDB(rwmAlertas, resultado.MENSAJE[0].DS_MENSAJE.ToString(), resultado.CL_TIPO_ERROR, 400, 150, "sendDataToParent(" + vIdPeriodo + ")");
+                if(vAccion == "I")
+                UtilMensajes.MensajeResultadoDB(rwmAlertas, resultado.MENSAJE[0].DS_MENSAJE.ToString(), resultado.CL_TIPO_ERROR, 400, 150, "closeWindow");
+                else
+                    UtilMensajes.MensajeResultadoDB(rwmAlertas, resultado.MENSAJE[0].DS_MENSAJE.ToString(), resultado.CL_TIPO_ERROR, 400, 150, "closeWindowEdit");
             }
             else
             {
@@ -258,7 +264,8 @@ namespace SIGE.WebApp.FYD
                 var idCreado = 0;
                 var esNumero = int.TryParse(resultado.MENSAJE.Where(x => x.CL_IDIOMA == "ID_PERIODO").FirstOrDefault().DS_MENSAJE, out idCreado);
                 vIdPeriodo = idCreado;
-                UtilMensajes.MensajeResultadoDB(rwmAlertas, resultado.MENSAJE[0].DS_MENSAJE.ToString(), resultado.CL_TIPO_ERROR, 400, 150, "sendDataToParent(" + vIdPeriodo + ")");
+                //UtilMensajes.MensajeResultadoDB(rwmAlertas, resultado.MENSAJE[0].DS_MENSAJE.ToString(), resultado.CL_TIPO_ERROR, 400, 150, "sendDataToParent(" + vIdPeriodo + ")");
+                UtilMensajes.MensajeResultadoDB(rwmAlertas, resultado.MENSAJE[0].DS_MENSAJE.ToString(), resultado.CL_TIPO_ERROR, 400, 150, "closeWindow");
             }
         }
 

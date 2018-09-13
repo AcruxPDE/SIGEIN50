@@ -55,6 +55,10 @@ namespace SIGE.WebApp.EO
 
                 if (item.clOrigen == "COPIA")
                     vOrigen = item.clOrigen + " " + item.clTipoCopia;
+                else if (item.clOrigen == "PREDEFINIDO")
+                    vOrigen = "Original";
+                else if (item.clOrigen == "REPLICA")
+                    vOrigen = "Réplica";
                 else
                     vOrigen = item.clOrigen;
 
@@ -134,7 +138,15 @@ namespace SIGE.WebApp.EO
                 txtFechas.InnerText = oPeriodo.FE_INICIO.ToString("d") + " a " + oPeriodo.FE_TERMINO.Value.ToShortDateString();
                 txtTipoMetas.InnerText = oPeriodo.CL_TIPO_PERIODO;
                 txtTipoCapturista.InnerText = Utileria.LetrasCapitales(oPeriodo.CL_TIPO_CAPTURISTA);
-                txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO;
+
+
+                if (oPeriodo.FG_BONO == true && oPeriodo.FG_MONTO == true)
+                    txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO + " (monto)";
+                else if (oPeriodo.FG_BONO == true && oPeriodo.FG_PORCENTUAL == true)
+                    txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO + " (porcentual)";
+                else
+                    txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO;
+
                 txtTipoPeriodo.InnerText = oPeriodo.CL_ORIGEN_CUESTIONARIO;
 
                 if (oPeriodo.DS_NOTAS != null)
@@ -215,6 +227,10 @@ namespace SIGE.WebApp.EO
                     string vOrigenPeriodo;
                     if (vPeriodo.CL_ORIGEN_CUESTIONARIO == "COPIA")
                         vOrigenPeriodo = vPeriodo.CL_ORIGEN_CUESTIONARIO + " " + vPeriodo.CL_TIPO_COPIA;
+                    else if (vPeriodo.CL_ORIGEN_CUESTIONARIO == "PREDEFINIDO")
+                        vOrigenPeriodo = "Original";
+                    else if (vPeriodo.CL_ORIGEN_CUESTIONARIO == "REPLICA")
+                        vOrigenPeriodo = "Réplica";
                     else
                         vOrigenPeriodo = vPeriodo.CL_ORIGEN_CUESTIONARIO;
 

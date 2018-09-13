@@ -9,7 +9,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
-    <div style="height: calc(100% - 40px); width: 100%;">
+    <div style="height: calc(100% - 60px); width: 100%;">
                                 <telerik:RadGrid runat="server" 
                                     ID="rgCandidatosBateria" 
                                     HeaderStyle-Font-Bold="true" 
@@ -38,9 +38,14 @@
                                     </MasterTableView>
                                 </telerik:RadGrid>                            
                             </div>
+    <div style="height:10px; clear:both;"></div>
            <div class="divControlDerecha">
+               <div class="ctrlBasico">
             <telerik:RadButton runat="server" Text="Enviar" ID="btnEnviar" OnClick="btnEnviar_Click" AutoPostBack="true" />
+                   </div>
+               <div class="ctrlBasico">
             <telerik:RadButton runat="server" Text="Cancelar" ID="btnCancelar" AutoPostBack="false" OnClientClicked="closeWindow" />
+                   </div>
         </div>
     <telerik:RadWindowManager ID="rwmAlertas"  runat="server" OnClientClose="returnDataToParentPopup"></telerik:RadWindowManager>
 </asp:Content>

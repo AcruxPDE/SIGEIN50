@@ -2,17 +2,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+   <label class="labelTitulo">Capacitación</label>
     <div style="height: calc(100% - 60px);">
-        <div style="clear: both; height: 10px;"></div>
-        <label class="labelTitulo">Capacitación</label>
         <telerik:RadGrid
             ID="grdCapacitacion"
             runat="server"
             AutoGenerateColumns="false"
             ShowGroupPanel="True"
             AllowPaging="true"
-            Height="99%"
+            Height="100%"
             HeaderStyle-Font-Bold="true"
             AllowSorting="true"
             OnItemDataBound="grdCapacitacion_ItemDataBound"

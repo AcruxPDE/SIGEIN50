@@ -58,8 +58,6 @@
         <telerik:RadSplitter runat="server" ID="rsAyuda" Width="100%" Height="100%" BorderSize="0">
             <telerik:RadPane ID="rpDatos" runat="server">
 
-                <div style="clear: both; height: 10px;"></div>
-
                 <telerik:RadTabStrip ID="rtsEnvioSolicitudes" runat="server" SelectedIndex="0" MultiPageID="rmpSolicitudes">
                     <Tabs>
                         <telerik:RadTab Text="Contexto"></telerik:RadTab>
@@ -67,6 +65,7 @@
                     </Tabs>
                 </telerik:RadTabStrip>
                 <div style="height: calc(100% - 100px); width: 100%;">
+              <div style="clear: both; height: 10px;"></div>
                     <telerik:RadMultiPage ID="rmpSolicitudes" runat="server" SelectedIndex="0" Height="100%">
 
                         <telerik:RadPageView ID="RadPageView1" runat="server" Width="100%">

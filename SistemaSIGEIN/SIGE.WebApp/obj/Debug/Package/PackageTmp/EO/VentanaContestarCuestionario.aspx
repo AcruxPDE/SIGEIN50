@@ -101,13 +101,13 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <div style="clear: both; height: 10px;"></div>
     <telerik:RadTabStrip ID="rtsControlAvance" runat="server" SelectedIndex="0" MultiPageID="rmpControlAvance">
         <Tabs>
             <telerik:RadTab Text="Contexto"></telerik:RadTab>
             <telerik:RadTab Text="Cuestionarios"></telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
+<div style="height: 10px; clear: both;"></div>
     <div style="height: calc(100% - 60px); padding-bottom: 10px;">
         <telerik:RadMultiPage ID="rmpControlAvance" runat="server" SelectedIndex="0" Height="100%">
             <telerik:RadPageView ID="rpvContexto" runat="server">
@@ -145,7 +145,6 @@
                                         </tr>
                                 </table>
                             </div>--%>
-                <div style="clear: both; height: 10px;"></div>
                                 <div class="ctrlBasico">
                                     <table class="ctrlTableForm" text-align: left;>
                                         <tr>
@@ -241,56 +240,58 @@
                                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvCuestionarios" runat="server">
-
-                   <telerik:RadSplitter runat="server" ID="rsAyuda" Width="100%" Height="100%" BorderSize="0">
-                              <telerik:RadPane ID="rpGeneral" runat="server">
-                                        <div style="height: calc(100% - 50px);">
-                <telerik:RadGrid ID="grdEvaluadorCuestionarios" runat="server" Height="100%" Width="100%" AutoGenerateColumns="false" HeaderStyle-Font-Bold="true" AllowSorting="true" OnNeedDataSource="grdEvaluadorCuestionarios_NeedDataSource" OnItemDataBound="grdEvaluadorCuestionarios_ItemDataBound">
-                    <ClientSettings>
-                        <Scrolling UseStaticHeaders="true" AllowScroll="true" />
-                        <Selecting AllowRowSelect="true" />
-                    </ClientSettings>
-                    <PagerStyle AlwaysVisible="true" />
-                    <GroupingSettings CaseSensitive="false" />
-                    <MasterTableView DataKeyNames="ID_EVALUADOR" ClientDataKeyNames="ID_EVALUADOR,FG_CONTESTADO" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true">
-                        <ColumnGroups>
-                            <telerik:GridColumnGroup Name="Evaluadores" HeaderText="Evaluadores"
-                                HeaderStyle-HorizontalAlign="Center" HeaderStyle-Font-Bold="true" HeaderStyle-Font-Size="Larger" />
-                        </ColumnGroups>
-                        <Columns>
-                            <telerik:GridBoundColumn ColumnGroupName="Evaluadores" HeaderText="No. de Empleado" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO" FilterControlWidth="100" HeaderStyle-Width="150" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn ColumnGroupName="Evaluadores" HeaderText="Nombre completo" DataField="NB_EVALUADOR" UniqueName="NB_EVALUADOR" FilterControlWidth="170" HeaderStyle-Width="250" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn ColumnGroupName="Evaluadores" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="NB_PUESTO" FilterControlWidth="170" HeaderStyle-Width="250" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn ColumnGroupName="Evaluadores" HeaderText="Contestado" FilterControlWidth="70" HeaderStyle-Width="120" DataField="NB_CONTESTADO" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Center"></telerik:GridBoundColumn>
-                        </Columns>
-                    </MasterTableView>
-                </telerik:RadGrid>
-                                            </div>
+                <div style="height: calc(100% - 40px);">
+                    <telerik:RadSplitter runat="server" ID="rsAyuda" Width="100%" Height="100%" BorderSize="0">
+                        <telerik:RadPane ID="rpGeneral" runat="server">
+                            <telerik:RadGrid ID="grdEvaluadorCuestionarios" runat="server" Height="100%" Width="100%" AutoGenerateColumns="false" HeaderStyle-Font-Bold="true" AllowSorting="true" OnNeedDataSource="grdEvaluadorCuestionarios_NeedDataSource" OnItemDataBound="grdEvaluadorCuestionarios_ItemDataBound">
+                                <ClientSettings>
+                                    <Scrolling UseStaticHeaders="true" AllowScroll="true" />
+                                    <Selecting AllowRowSelect="true" />
+                                </ClientSettings>
+                                <PagerStyle AlwaysVisible="true" />
+                                <GroupingSettings CaseSensitive="false" />
+                                <MasterTableView DataKeyNames="ID_EVALUADOR" ClientDataKeyNames="ID_EVALUADOR,FG_CONTESTADO" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true">
+                                    <ColumnGroups>
+                                        <telerik:GridColumnGroup Name="Evaluadores" HeaderText="Evaluadores"
+                                            HeaderStyle-HorizontalAlign="Center" HeaderStyle-Font-Bold="true" HeaderStyle-Font-Size="Larger" />
+                                    </ColumnGroups>
+                                    <Columns>
+                                        <telerik:GridBoundColumn ColumnGroupName="Evaluadores" HeaderText="No. de Empleado" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO" FilterControlWidth="100" HeaderStyle-Width="150" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn ColumnGroupName="Evaluadores" HeaderText="Nombre completo" DataField="NB_EVALUADOR" UniqueName="NB_EVALUADOR" FilterControlWidth="170" HeaderStyle-Width="250" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn ColumnGroupName="Evaluadores" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="NB_PUESTO" FilterControlWidth="170" HeaderStyle-Width="250" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn ColumnGroupName="Evaluadores" HeaderText="Contestado" FilterControlWidth="70" HeaderStyle-Width="120" DataField="NB_CONTESTADO" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Center"></telerik:GridBoundColumn>
+                                    </Columns>
+                                </MasterTableView>
+                            </telerik:RadGrid>
+                        </telerik:RadPane>
+                        <telerik:RadPane ID="RadPane2" runat="server" Width="30">
+                            <telerik:RadSlidingZone ID="RadSlidingZone3" Visible="false" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
+                                <telerik:RadSlidingPane ID="RadSlidingPane2" runat="server" Title="Ayuda" Width="300" MinWidth="500" Height="100%">
+                                    <div style="padding: 10px; text-align: justify;">
+                                        <fieldset>
+                                            <legend>
+                                                <label>Capturar cuestionarios:</label>
+                                            </legend>
+                                            Este período esta configurado como tipo "Sin asignación de evaluadores". 
+                                <br />
+                                            <br />
+                                            Para poder capturar los resultados de los cuestionarios impresos, solo selecciona el botón "Cuestionario". 
+                                Te abrirá una nueva ventana en la cual podrás ingresar la información del evaluador y las respuestas para cada una de las preguntas. 
+                                <br />
+                                            <br />
+                                            Cada que selecciones el botón de cuestionario, te permitirá capturar uno nuevo. Puedes capturar un número indefinido de cuestionarios.
+                                        </fieldset>
+                                    </div>
+                                </telerik:RadSlidingPane>
+                            </telerik:RadSlidingZone>
+                        </telerik:RadPane>
+                    </telerik:RadSplitter>
+                </div>
+                <div style="height: 10px; clear: both;"></div>
                 <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnContestarCuestionarios" runat="server" Text="Cuestionario" OnClientClicking="OpenCuestionario"></telerik:RadButton>
+                    <telerik:RadButton ID="btnContestarCuestionarios" runat="server" Text="Contestar" OnClientClicking="OpenCuestionario"></telerik:RadButton>
                     <telerik:RadButton ID="btnContestarConfidencial" Visible="false" runat="server" Text="Cuestionario" OnClientClicked="OpenCuestionarioConfidencial"></telerik:RadButton>
                 </div>
-                 </telerik:RadPane>
-                 <telerik:RadPane ID="RadPane2" runat="server" Width="30">
-                <telerik:RadSlidingZone ID="RadSlidingZone3" Visible="false" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
-                    <telerik:RadSlidingPane ID="RadSlidingPane2" runat="server" Title="Ayuda" Width="300" MinWidth="500" Height="100%">
-                        <div style="padding: 10px; text-align: justify;">
-                            <fieldset>
-                                <legend>
-                                    <label>Capturar cuestionarios:</label>
-                                </legend>
-                               Este período esta configurado como tipo "Sin asignación de evaluadores". 
-                                <br /><br />
-                               Para poder capturar los resultados de los cuestionarios impresos, solo selecciona el botón "Cuestionario". 
-                                Te abrirá una nueva ventana en la cual podrás ingresar la información del evaluador y las respuestas para cada una de las preguntas. 
-                                <br /><br />
-                               Cada que selecciones el botón de cuestionario, te permitirá capturar uno nuevo. Puedes capturar un número indefinido de cuestionarios.
-                            </fieldset>
-                        </div>
-                    </telerik:RadSlidingPane>
-                </telerik:RadSlidingZone>
-            </telerik:RadPane>
-        </telerik:RadSplitter>            
             </telerik:RadPageView>
         </telerik:RadMultiPage>
     </div>

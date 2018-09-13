@@ -25,6 +25,16 @@ namespace SIGE.Negocio.MetodologiaCompensacion
 
 
         #endregion
+       
+      #region VERIFICA CONFIGURACIÓN  K_TABULADOR
+       public List<SPE_VERIFICA_CONFIGURACION_TABULADOR_Result> VerificarTabulador(int? ID_TABULADOR = null)
+        {
+            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
+            return operaciones.VerificarTabulador(ID_TABULADOR);
+        }
+
+
+        #endregion
 
        #region OBTIENE DATOS  K_TABULADOR_NIVEL
        public List<SPE_OBTIENE_TABULADORES_NIVEL_Result> ObtenerTabuladoresNivel(int? ID_TABULADOR = null)
@@ -39,6 +49,15 @@ namespace SIGE.Negocio.MetodologiaCompensacion
        {
            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
            return UtilRespuesta.EnvioRespuesta(operaciones.InsertarActualizarTabulador(pClTipoOperacion, vTabulador, usuario, programa));
+       }
+       #endregion
+
+       
+       #region ACTUALIZA ESTATUS  K_TABULADOR
+       public E_RESULTADO ActualizarEstatusTabulador(int? pID_TABULADOR, string pCL_ESTATUS_TABULADOR, string usuario, string programa, string pClTipoOperacion)
+       {
+           TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
+           return UtilRespuesta.EnvioRespuesta(operaciones.ActualizarEstatusTabulador(pID_TABULADOR, pCL_ESTATUS_TABULADOR, usuario, programa, pClTipoOperacion));
        }
        #endregion
        

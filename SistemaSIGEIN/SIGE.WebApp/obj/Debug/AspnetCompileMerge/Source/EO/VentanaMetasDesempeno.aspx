@@ -368,17 +368,13 @@
                     <telerik:RadSlidingZone ID="RadSlidingZone1" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
                         <telerik:RadSlidingPane ID="rspMensaje" runat="server" Title="Ayuda" Width="300" MinWidth="300" Height="100%">
                             <div style="padding: 10px; text-align: justify;">
-                                <fieldset>
-                                    <legend>
-                                        <label>Agregar metas:</label>
-                                    </legend>
+
                                     Una vez diseñada la meta, puedes usar el botón "Guardar" para crear nuevas metas.
                                     <br />
                                     Este botón te permitirá continuar en la misma ventana para seguir con el proceso de diseño de metas.
                                     <br />
                                     <br />
                                     Por el contrario, si no requieres dar de alta más, selecciona el botón "Guardar y cerrar", guardará tu meta y te sacará de la ventana actual.
-                                </fieldset>
                             </div>
                         </telerik:RadSlidingPane>
                     </telerik:RadSlidingZone>

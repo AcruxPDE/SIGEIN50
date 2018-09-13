@@ -85,7 +85,6 @@ namespace SIGE.WebApp
         protected void Page_Load(object sender, EventArgs e)
         {
             if (ContextoUsuario.oUsuario != null)
-            
             {
                 vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
                 List<E_FUNCION> lstFunciones = ContextoUsuario.oUsuario.oFunciones.Where(w => w.CL_TIPO_FUNCION.Equals(E_TIPO_FUNCION.MENUGRAL.ToString())).ToList();

@@ -61,6 +61,7 @@ namespace SIGE.Entidades.EvaluacionOrganizacional
         public Nullable<System.DateTime> FE_CAPTURA_METAS { get; set; }
         public Nullable<decimal> MN_TOPE_BONO { get; set; }
         public Nullable<decimal> NO_MONTO_BONO { get; set; }
+        public string CL_MONTO_BONO { get; set; }
         public Nullable<decimal> PR_CUMPLIMIENTO_EVALUADO { get; set; }
         public Nullable<decimal> MN_BONO_TOTAL { get; set; }
         public bool FG_VISIBLE_BONO { get; set; }

@@ -123,6 +123,7 @@ namespace SIGE.Negocio.Administracion
                         ID_FUNCION = (int)UtilXML.ValorAtributo(f.Attribute("ID_FUNCION"), E_TIPO_DATO.INT),
                         ID_FUNCION_PADRE = (int?)UtilXML.ValorAtributo(f.Attribute("ID_FUNCION_PADRE"), E_TIPO_DATO.INT),
                         NB_FUNCION = f.Attribute("NB_FUNCION").Value,
+                        DS_FUNCION = f.Attribute("DS_FUNCION").Value,
                         NB_URL = f.Attribute("NB_URL").Value,
                         XML_CONFIGURACION = f.Element("XML_CONFIGURACION").ToString()
                     }).OrderBy(o => o.NO_ORDEN).ToList();

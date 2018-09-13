@@ -18,10 +18,10 @@
 
             function OpenWindow(pClUsuario) {
                 var vURL = "VentanaUsuarios.aspx";
-                var vTitulo = "Agregar Usuario";
+                var vTitulo = "Agregar usuario";
                 if (pClUsuario != null) {
                     vURL = vURL + "?UsuarioId=" + pClUsuario;
-                    vTitulo = "Editar Usuario";
+                    vTitulo = "Editar usuario";
                 }
                 openChildDialog(vURL, "winUsuarios", vTitulo);
             }
@@ -103,14 +103,15 @@
     </div>
     <div style="clear: both; height: 10px;"></div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnAgregar" runat="server" name="btnAgregar" AutoPostBack="false" Text="Agregar" OnClientClicked="ShowInsertForm" Width="100"></telerik:RadButton>
+        <telerik:RadButton ID="btnAgregar" runat="server" name="btnAgregar" AutoPostBack="false" Text="Agregar" OnClientClicked="ShowInsertForm" ></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEditar" runat="server" name="btnEditar" AutoPostBack="false" Text="Editar" OnClientClicked="ShowEditForm" Width="100"></telerik:RadButton>
+        <telerik:RadButton ID="btnEditar" runat="server" name="btnEditar" AutoPostBack="false" Text="Editar" OnClientClicked="ShowEditForm"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEliminar" runat="server" name="btnEliminar" AutoPostBack="true" Text="Eliminar" OnClientClicking="confirmarEliminar" Width="100" OnClick="btnEliminar_Click"></telerik:RadButton>
+        <telerik:RadButton ID="btnEliminar" runat="server" name="btnEliminar" AutoPostBack="true" Text="Eliminar" OnClientClicking="confirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
     </div>
+    <div style="clear:both;"></div>
     <telerik:RadWindowManager ID="rwmAlertas" runat="server" OnClientClose="returnDataToParentPopup">
         <Windows>
             <telerik:RadWindow ID="winSeleccionEmpleados" runat="server" Title="Seleccionar empleado" Height="600px" Width="1100px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>

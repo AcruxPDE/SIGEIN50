@@ -13,6 +13,7 @@ using Telerik.Web.UI;
 using System.Xml.Linq;
 using SIGE.Negocio.Utilerias;
 using SIGE.Entidades.EvaluacionOrganizacional;
+using Newtonsoft.Json;
 
 namespace SIGE.WebApp.FYD
 {
@@ -95,6 +96,55 @@ namespace SIGE.WebApp.FYD
             btnAvance.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.B.G");
         }
 
+
+        private void CargarDatosDetalle(int? pIdPeriodo)
+        {
+            ProgramaNegocio nPrograma = new ProgramaNegocio();
+            SPE_OBTIENE_C_PROGRAMA_Result vPrograma = nPrograma.ObtieneProgramasCapacitacion(pIdPrograma: pIdPeriodo).FirstOrDefault();
+
+            if (vPrograma != null)
+            {
+
+                txtClPeriodo.Text = vPrograma.CL_PROGRAMA;
+                txtDsPeriodo.Text = vPrograma.NB_PROGRAMA;
+                txtClEstatus.Text = vPrograma.CL_ESTADO;
+                txtTipo.Text = vPrograma.CL_TIPO_PROGRAMA;
+                txtUsuarioMod.Text = vPrograma.CL_USUARIO_APP_MODIFICA;
+                txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPrograma.FE_MODIFICA);
+
+                if (vPrograma.DS_NOTAS != null)
+                {
+                    XElement vNotas = XElement.Parse(vPrograma.DS_NOTAS);
+
+                    if (vNotas != null)
+                    {
+                        string vNotasTexto = validarDsNotas(vNotas.ToString());
+                        txtNotas.InnerHtml = vNotasTexto;
+                    }
+                }
+            }
+        }
+
+
+        private void seleccionarPeriodo()
+        {
+            rlvProgramas.SelectedItems.Clear();
+            rlvProgramas.SelectedIndexes.Clear();
+            rlvProgramas.CurrentPageIndex = 0;
+            if (rlvProgramas.Items.Count > 0)
+            {
+                rlvProgramas.Items[0].Selected = true;
+            }
+            rlvProgramas.Rebind();
+
+            string vIdPeriodoSeleccionado = rlvProgramas.Items[0].GetDataKeyValue("ID_PROGRAMA").ToString();
+            if (vIdPeriodoSeleccionado != null)
+            {
+                CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+            }
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
@@ -153,15 +203,20 @@ namespace SIGE.WebApp.FYD
                 E_RESULTADO vResultado = nPrograma.EliminaProgramaCapacitacion(idPrograma);
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
                 UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150);
-                txtClPeriodo.Text = "";
-                txtDsPeriodo.Text = "";
-                txtClEstatus.Text = "";
-                txtTipo.Text = "";
-                txtUsuarioMod.Text = "";
-                txtFechaMod.Text = "";
-                txtNotas.InnerHtml = "";
-
+                //txtClPeriodo.Text = "";
+                //txtDsPeriodo.Text = "";
+                //txtClEstatus.Text = "";
+                //txtTipo.Text = "";
+                //txtUsuarioMod.Text = "";
+                //txtFechaMod.Text = "";
+                //txtNotas.InnerHtml = "";
                 rlvProgramas.Rebind();
+
+                string vIdPeriodoSeleccionado = rlvProgramas.SelectedItems[0].GetDataKeyValue("ID_PROGRAMA").ToString();
+                if (vIdPeriodoSeleccionado != null)
+                {
+                    CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+                }
             }
         }
 
@@ -254,30 +309,55 @@ namespace SIGE.WebApp.FYD
             int vIdPeriodoLista = 0;
             if (int.TryParse(item.GetDataKeyValue("ID_PROGRAMA").ToString(), out vIdPeriodoLista))
             {
-                ProgramaNegocio nPrograma = new ProgramaNegocio();
-                SPE_OBTIENE_C_PROGRAMA_Result vPrograma = nPrograma.ObtieneProgramasCapacitacion(pIdPrograma: vIdPeriodoLista).FirstOrDefault();
+                CargarDatosDetalle(vIdPeriodoLista);
 
-                txtClPeriodo.Text = vPrograma.CL_PROGRAMA;
-                txtDsPeriodo.Text = vPrograma.NB_PROGRAMA;
-                txtClEstatus.Text = vPrograma.CL_ESTADO;
-                txtTipo.Text = vPrograma.CL_TIPO_PROGRAMA;
-                txtUsuarioMod.Text = vPrograma.CL_USUARIO_APP_MODIFICA;
-                txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPrograma.FE_MODIFICA);
+                //ProgramaNegocio nPrograma = new ProgramaNegocio();
+                //SPE_OBTIENE_C_PROGRAMA_Result vPrograma = nPrograma.ObtieneProgramasCapacitacion(pIdPrograma: vIdPeriodoLista).FirstOrDefault();
 
-                if (vPrograma.DS_NOTAS != null)
-                {
-                    XElement vNotas = XElement.Parse(vPrograma.DS_NOTAS);
+                //txtClPeriodo.Text = vPrograma.CL_PROGRAMA;
+                //txtDsPeriodo.Text = vPrograma.NB_PROGRAMA;
+                //txtClEstatus.Text = vPrograma.CL_ESTADO;
+                //txtTipo.Text = vPrograma.CL_TIPO_PROGRAMA;
+                //txtUsuarioMod.Text = vPrograma.CL_USUARIO_APP_MODIFICA;
+                //txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPrograma.FE_MODIFICA);
 
-                    if (vNotas != null)
-                    {
-                        string vNotasTexto = validarDsNotas(vNotas.ToString());
-                        txtNotas.InnerHtml = vNotasTexto;
-                    }
-                }
+                //if (vPrograma.DS_NOTAS != null)
+                //{
+                //    XElement vNotas = XElement.Parse(vPrograma.DS_NOTAS);
+
+                //    if (vNotas != null)
+                //    {
+                //        string vNotasTexto = validarDsNotas(vNotas.ToString());
+                //        txtNotas.InnerHtml = vNotasTexto;
+                //    }
+                //}
 
 
             }
 
+        }
+
+        protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
+        {
+            E_SELECTOR vSeleccion = new E_SELECTOR();
+            string pParameter = e.Argument;
+
+            if (pParameter != null)
+                vSeleccion = JsonConvert.DeserializeObject<E_SELECTOR>(pParameter);
+
+            if (vSeleccion.clTipo == "ACTUALIZARLISTA")
+            {
+                seleccionarPeriodo();
+            }
+            else if (vSeleccion.clTipo == "ACTUALIZAR")
+            {
+                rlvProgramas.Rebind();
+                string vIdPeriodoSeleccionado = rlvProgramas.SelectedItems[0].GetDataKeyValue("ID_PROGRAMA").ToString();
+                if (vIdPeriodoSeleccionado != null)
+                {
+                    CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+                }
+            }
         }
 
     }

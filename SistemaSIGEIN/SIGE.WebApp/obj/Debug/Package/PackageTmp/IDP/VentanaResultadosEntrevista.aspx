@@ -104,7 +104,7 @@
 
     <label name="" id="lbltitulo" class="labelTitulo">Factores adicionales</label>
 
-    <div style="height: calc(100% - 100px);">
+    <div style="height: calc(100% - 120px);">
 
         <telerik:RadSplitter ID="splHelp" runat="server" Width="100%" Height="100%" BorderSize="0" Orientation="Horizontal">
             <telerik:RadPane ID="rpnOpciones" runat="server" Height="30" Width="100%" Scrolling="None">
@@ -642,13 +642,13 @@
         </telerik:RadSplitter>
     </div>
     <div style="clear: both; height: 10px;"></div>
-    <div class="divControlDerecha">
+    <div class="divControlDerecha" style="padding-right:10px;">
         <div class="ctrlBasico">
             <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" AutoPostBack="true"></telerik:RadButton>
+        </div>
         </div>
         <%--                     <div class="ctrlBasico">
                   <telerik:RadButton ID="btnEliminar" runat="server"  Text="Eliminar" AutoPostBack="true" Visible="false" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminar_Click"></telerik:RadButton>
              </div>--%>
-    </div>
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>
 </asp:Content>

@@ -26,32 +26,48 @@
 
 
             function OpenPuestosSelectionWindow() {
-                openChildDialog("../Comunes/SeleccionPuesto.aspx?&vClTipoPuesto=<%=vClTipoPuesto%>" + "&vClTipoSeleccion=MC_PUESTO&mulSel=1", "winSeleccion", "Selección de puestos")
+                var vPropierties = GetWindowProperties();
+                openChildDialog("../Comunes/SeleccionPuesto.aspx?&vClTipoPuesto=<%=vClTipoPuesto%>" + "&vClTipoSeleccion=MC_PUESTO&mulSel=1", "winSeleccion", "Selección de puestos", vPropierties)
             }
 
             function OpenSelectionDepartamento() {
-                openChildDialog("../Comunes/SeleccionArea.aspx?vClTipoPuesto=<%=vClTipoPuesto%>" + "&vClTipoSeleccion=MC_PUESTO", "winSeleccion", "Selección de áreas/departamentos")
+                var vPropierties = GetWindowProperties();
+                openChildDialog("../Comunes/SeleccionArea.aspx?vClTipoPuesto=<%=vClTipoPuesto%>" + "&vClTipoSeleccion=MC_PUESTO", "winSeleccion", "Selección de áreas/departamentos", vPropierties)
             }
 
             function OpenEmployeeSelectionWindow() {
-
-                openChildDialog("../Comunes/SeleccionEmpleado.aspx?&vClTipoPuesto=<%=vClTipoPuesto%>" + "&vClTipoSeleccion=MC_PUESTO", "winSeleccion", "Selección de empleados")
+                var vPropierties = GetWindowProperties();
+                openChildDialog("../Comunes/SeleccionEmpleado.aspx?&vClTipoPuesto=<%=vClTipoPuesto%>" + "&vClTipoSeleccion=MC_PUESTO", "winSeleccion", "Selección de empleados", vPropierties)
             }
 
             function OpenSelectionCompetencia() {
-                openChildDialog("../Comunes/SeleccionCompetencia.aspx?vClTipoCompetencia=GEN", "winSeleccion", "Selección de competencias genéricas")
+                var vPropierties = GetWindowProperties();
+                openChildDialog("../Comunes/SeleccionCompetencia.aspx?vClTipoCompetencia=GEN", "winSeleccion", "Selección de competencias genéricas", vPropierties)
             }
 
             function OpenSelectionCompetenciaEspecificas() {
-                openChildDialog("../Comunes/SeleccionCompetencia.aspx?vClTipoCompetencia=ESP", "winSeleccion", "Selección de competencias específicas")
+                var vPropierties = GetWindowProperties();
+                openChildDialog("../Comunes/SeleccionCompetencia.aspx?vClTipoCompetencia=ESP", "winSeleccion", "Selección de competencias específicas", vPropierties)
             }
 
             function OpenSelectionFactores() {
-                openChildDialog("../Comunes/SelectorFactoresEval.aspx", "winSeleccion", "Selección de factores de evaluación")
+                var vPropierties = GetWindowProperties();
+                openChildDialog("../Comunes/SelectorFactoresEval.aspx", "winSeleccion", "Selección de factores de evaluación", vPropierties)
+            }
+
+            function GetWindowProperties() {
+                var currentWnd = GetRadWindow();
+                var browserWnd = window;
+                if (currentWnd)
+                    browserWnd = currentWnd.BrowserWindow;
+                return {
+                    width: browserWnd.innerWidth - 30,
+                    height: browserWnd.innerHeight - 20
+                };
             }
 
             function AbrirVentana() {
-
+                var vPropierties = GetWindowProperties();
                 openChildDialog("VentanaTabuladorCompetencia.aspx?&IDtabulador=" + <%=vIdTabulador%> + "", "winEditarCompetencia", "Nuevo/Editar Factor valuación")
             }
 
@@ -556,10 +572,12 @@
                         Width="80px" MinValue="0" ShowSpinButtons="true" Value="20">
                     </telerik:RadNumericTextBox>
                 </div>
-                <div style="height: 15px; clear: both"></div>
+                <div style="height: 10px; clear: both"></div>
+                          <div class="divControlDerecha">
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnGuardarConfiguracion" runat="server" name="btnGuardarConfiguracion" AutoPostBack="true" Text="Guardar" OnClick="btnGuardarConfiguracion_Click"></telerik:RadButton>
                 </div>
+                              </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvNiveles" runat="server">
                 <div style="height: calc(100% - 50px);">
@@ -606,8 +624,10 @@
                     </telerik:RadGrid>
                 </div>
                 <div style="clear: both; height: 10px;"></div>
+                <div class="divControlDerecha">
                 <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnGuardar" AutoPostBack="true" OnClick="btnGuardar_Click" runat="server" Text="Guardar" Width="100"></telerik:RadButton>
+                    <telerik:RadButton ID="btnGuardar" AutoPostBack="true" OnClick="btnGuardar_Click" runat="server" Text="Guardar y cerrar" ></telerik:RadButton>
+                </div>
                 </div>
             </telerik:RadPageView>
         </telerik:RadMultiPage>

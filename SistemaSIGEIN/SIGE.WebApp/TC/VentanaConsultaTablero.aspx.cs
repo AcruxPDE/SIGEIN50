@@ -440,8 +440,8 @@ namespace SIGE.WebApp.TC
             pColumn.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
             pColumn.HeaderStyle.VerticalAlign = VerticalAlign.Middle;
             pColumn.ItemStyle.HorizontalAlign = HorizontalAlign.Center;
-            pColumn.HeaderStyle.BackColor = Color.DarkGray;
-            pColumn.HeaderStyle.ForeColor = Color.White;
+            pColumn.HeaderStyle.BackColor = Color.LightGray;
+            pColumn.HeaderStyle.ForeColor = Color.Black;
             if (pColumn.UniqueName == "TENDENCIA_FYD" || pColumn.UniqueName == "TENDENCIA_ED")
                 pColumn.ColumnGroupName = "Tendencia";
             if (pColumn.UniqueName == "COMPATIVILIDAD_VS_PUESTO")
@@ -456,6 +456,11 @@ namespace SIGE.WebApp.TC
                 pColumn.HeaderStyle.BackColor = Color.DarkOrange;
             }
             if (pColumn.UniqueName == "TENDENCIA_ED")
+            {
+                pColumn.HeaderStyle.ForeColor = Color.White;
+                pColumn.HeaderStyle.BackColor = Color.DarkRed;
+            }
+            if (pColumn.UniqueName == "BONO")
             {
                 pColumn.HeaderStyle.ForeColor = Color.White;
                 pColumn.HeaderStyle.BackColor = Color.DarkRed;

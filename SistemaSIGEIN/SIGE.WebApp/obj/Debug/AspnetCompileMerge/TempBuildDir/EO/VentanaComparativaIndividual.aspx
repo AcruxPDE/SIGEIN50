@@ -160,6 +160,8 @@
                                 <Appearance>
                                     <FillStyle BackgroundColor="Transparent"></FillStyle>
                                 </Appearance>
+                                <YAxis MinValue="0" MaxValue="100" Step="10"></YAxis>
+                               
                             </PlotArea>
                             <Appearance>
                                 <FillStyle BackgroundColor="Transparent"></FillStyle>

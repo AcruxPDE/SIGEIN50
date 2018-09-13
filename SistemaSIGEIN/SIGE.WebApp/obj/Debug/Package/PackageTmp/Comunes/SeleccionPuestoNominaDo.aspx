@@ -24,10 +24,12 @@
                          clPuesto: masterTable.getCellByColumnUniqueName(selectedItem, "CL_PUESTO").innerHTML,
                          nbPuesto: masterTable.getCellByColumnUniqueName(selectedItem, "NB_PUESTO").innerHTML,
                          clTipoCatalogo: "<%= vClCatalogo %>"
-                    };
-                    vPuestos.push(vPuesto);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vPuestos.length;
+                     };
+                     if (!existeElemento(vPuesto)) {
+                         vPuestos.push(vPuesto);
+                         var vLabel = document.getElementsByName('lblAgregar')[0];
+                         vLabel.innerText = "Agregados: " + vPuestos.length;
+                     }
                 }
                 return true;
             }
@@ -39,6 +41,15 @@
                 browserWnd.radalert("Selecciona un evaluado.", 400, 150);
             }
 
+            return false;
+        }
+
+        function existeElemento(pPuesto) {
+            for (var i = 0; i < vPuestos.length; i++) {
+                var vValue = vPuestos[i];
+                if (vValue.idPuesto == pPuesto.idPuesto)
+                    return true;
+            }
             return false;
         }
 

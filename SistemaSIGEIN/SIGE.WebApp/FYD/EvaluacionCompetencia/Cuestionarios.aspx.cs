@@ -34,9 +34,7 @@ namespace SIGE.WebApp.FYD.EvaluacionCompetencia
         }
 
         PeriodoNegocio negocio = new PeriodoNegocio();
-
         CuestionarioNegocio negocioEval = new CuestionarioNegocio();
-
         string vNbFirstRadEditorTagName = "p";
 
         protected void Page_Load(object sender, EventArgs e)

@@ -33,7 +33,7 @@
             var selectedItem = $find("<%=grdEvaluados.ClientID %>").get_masterTableView().get_selectedItems()[0];
             if (selectedItem != undefined) {
                 var vClEstado = selectedItem.getDataKeyValue("CL_ESTADO_EMPLEADO");
-                if (vClEstado == "ALTA") {
+                if (vClEstado.toUpperCase() == "ALTA") {
                     var pIdPeriodo = '<%=vIdPeriodo%>';
                     var pIdEvaluado = selectedItem.getDataKeyValue("ID_EVALUADO");
                     OpenSelectionWindow("VentanaManualCapturaResultados.aspx?idPeriodo=" + pIdPeriodo + "&idEvaluado=" + pIdEvaluado, "rwCaptura", "Captura de resultados")
@@ -48,8 +48,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
 
-    <div style="clear: both; height: 10px;"></div>
-
     <telerik:RadTabStrip ID="rtsCapturaResultados" runat="server" SelectedIndex="0" MultiPageID="rmpCapturaResultados">
         <Tabs>
             <telerik:RadTab Text="Contexto"></telerik:RadTab>
@@ -57,8 +55,8 @@
         </Tabs>
     </telerik:RadTabStrip>
     <div style="height: calc(100% - 100px); width: 100%;">
+            <div style="clear: both; height: 10px;"></div>
         <telerik:RadMultiPage ID="rmpCapturaResultados" runat="server" SelectedIndex="0" Height="100%">
-
             <telerik:RadPageView ID="RadPageView1" runat="server" Width="100%">
                 <div class="divControlIzquierda" style="width: 60%; text-align: left;">
                     <table class="ctrlTableForm">
@@ -156,11 +154,10 @@
 
                 <div style="clear: both; height: 10px;"></div>
 
-                <div class="divControlDerecha">
+    
                     <div class="ctrlBasico">
                         <telerik:RadButton ID="btnCapturar" runat="server" Text="Capturar resultados" AutoPostBack="false" OnClientClicking="OpenCapturaResultado"></telerik:RadButton>
                     </div>
-                </div>
 
             </telerik:RadPageView>
         </telerik:RadMultiPage>

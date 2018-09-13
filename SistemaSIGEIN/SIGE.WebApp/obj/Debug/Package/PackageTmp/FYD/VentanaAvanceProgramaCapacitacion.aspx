@@ -218,27 +218,34 @@
                     <telerik:RadPageView ID="rpContexto" runat="server" Height="100%">
                         <div style="clear: both; height: 10px;"></div>
                         <div class="ctrlBasico">
-                            <table class="ctrlTableForm ctrlTableContext">
+                            <table class="ctrlTableForm">
                                 <tr>
-                                    <td>
-                                        <label>Período:</label></td>
-                                    <td colspan="2">
+                                    <td class="ctrlTableDataContext">
+                                        <label>Programa:</label></td>
+                                    <td colspan="2" class="ctrlTableDataBorderContext">
                                         <div id="txtPeriodo" runat="server" style="min-width: 100px;"></div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label id="Label1" name="lblTipoEvaluacion" runat="server">Tipo de evaluación:</label>
+                                        <label class="ctrlTableDataContext">Descripción:</label></td>
+                                    <td colspan="2" class="ctrlTableDataBorderContext">
+                                        <div id="txtDesPeriodo" runat="server" style="min-width: 100px;"></div>
                                     </td>
-                                    <td>
+                                </tr>
+                                <tr>
+                                    <td class="ctrlTableDataContext">
+                                        <label id="Label1" name="lblTipoEvaluacion" runat="server">Tipo:</label>
+                                    </td>
+                                    <td class="ctrlTableDataBorderContext">
                                         <div id="txtTipoEvaluacion" runat="server" width="170" maxlength="1000" enabled="false"></div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="ctrlTableDataContext">
                                         <label id="lblNotas" name="lblNotas" runat="server">Notas:</label>
                                     </td>
-                                    <td colspan="2">
+                                    <td colspan="2" class="ctrlTableDataBorderContext">
                                         <div id="radEditorNotas" runat="server" style="min-width: 100px;"></div>
                                     </td>
                                 </tr>

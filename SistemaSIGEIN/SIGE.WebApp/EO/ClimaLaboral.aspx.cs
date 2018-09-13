@@ -70,10 +70,28 @@ namespace SIGE.WebApp.EO
             set { ViewState["vs_vEditar"] = value; }
         }
 
+        public bool vControlAvance
+        {
+            get { return (bool)ViewState["vs_vControlAvance"]; }
+            set { ViewState["vs_vControlAvance"] = value; }
+        }
+
         public bool vEliminar
         {
             get { return (bool)ViewState["vs_vEliminar"]; }
             set { ViewState["vs_vEliminar"] = value; }
+        }
+
+        public bool vVistaPrevia
+        {
+            get { return (bool)ViewState["vs_vVistaPrevia"]; }
+            set { ViewState["vs_vVistaPrevia"] = value; }
+        }
+
+        private bool vFgCuestionariosCreados
+        {
+            get { return (bool)ViewState["vs_vFgCuestionariosCreados"]; }
+            set { ViewState["vs_vFgCuestionariosCreados"] = value; }
         }
 
         #endregion
@@ -100,18 +118,64 @@ namespace SIGE.WebApp.EO
 
         }
 
-        private void EstatusBotonesPeriodos(bool pFgEstatus)
+        private void EstatusBotonesPeriodos(bool pFgEstatus, bool pFgCuestionariosCreados)
         {
             btnConfigurar.Enabled = pFgEstatus && vConfigurar;
             btnCerrar.Enabled = pFgEstatus && vCerrar;
-            btnEnviarSolicitudes.Enabled = pFgEstatus && vEnviarSolicitudes;
-            btnContestar.Enabled = pFgEstatus && vContestar;
+
+            btnEnviarSolicitudes.Enabled = pFgEstatus && vEnviarSolicitudes && pFgCuestionariosCreados;
+            btnContestar.Enabled = pFgEstatus && vContestar && pFgCuestionariosCreados;
+            btnControlAvance.Enabled = vControlAvance && pFgCuestionariosCreados;
+            btnVistaPreviaCuestionario.Enabled = vVistaPrevia && pFgCuestionariosCreados;
         }
 
         private void ordenarListView(string ordenamiento)
         {
             var campo = cmbOrdenamiento.SelectedValue;
             rlvPeriodos.Items[0].FireCommandEvent(RadListView.SortCommandName, campo + ordenamiento);
+        }
+
+        private void CargarDatosDetalle(int? pIdPeriodo)
+        {
+            ClimaLaboralNegocio nPeriodo = new ClimaLaboralNegocio();
+            SPE_OBTIENE_EO_PERIODOS_CLIMA_Result vPeriodo = nPeriodo.ObtienePeriodosClima(pIdPerido: pIdPeriodo).FirstOrDefault();
+
+            if (vPeriodo != null)
+            {
+                txtClPeriodo.Text = vPeriodo.CL_PERIODO;
+                txtDsPeriodo.Text = vPeriodo.DS_PERIODO;
+                txtClEstatus.Text = vPeriodo.CL_ESTADO_PERIODO;
+
+                if (vPeriodo.CL_ORIGEN_CUESTIONARIO == "PREDEFINIDO")
+                    txtTipo.Text = "Predefinido de SIGEIN";    
+                else if (vPeriodo.CL_ORIGEN_CUESTIONARIO == "COPIA")
+                    txtTipo.Text = "Copia de otro período";
+                else if (vPeriodo.CL_ORIGEN_CUESTIONARIO == "VACIO")
+                    txtTipo.Text = "Creado en blanco";
+   
+                txtUsuarioMod.Text = vPeriodo.CL_USUARIO_APP_MODIFICA;
+                txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPeriodo.FE_MODIFICA);
+
+                if (vPeriodo.DS_NOTAS != null)
+                {
+                    if (vPeriodo.DS_NOTAS.Contains("DS_NOTA"))
+                    {
+                        txtNotas.InnerHtml = Utileria.MostrarNotas(vPeriodo.DS_NOTAS);
+                    }
+                    else
+                    {
+                        XElement vRequerimientos = XElement.Parse(vPeriodo.DS_NOTAS);
+                        if (vRequerimientos != null)
+                        {
+                            vRequerimientos.Name = vNbFirstRadEditorTagName;
+                            txtNotas.InnerHtml = vRequerimientos.ToString();
+                        }
+                    }
+                }
+
+                rlvPeriodos.Rebind();
+            }
+
         }
 
         private void seleccionarPeriodo()
@@ -124,6 +188,16 @@ namespace SIGE.WebApp.EO
                 rlvPeriodos.Items[0].Selected = true;
             }
             rlvPeriodos.Rebind();
+
+                string vIdPeriodoSeleccionado = rlvPeriodos.Items[0].GetDataKeyValue("ID_PERIODO").ToString();
+                vFgCuestionariosCreados = bool.Parse(rlvPeriodos.Items[0].GetDataKeyValue("FG_CUESTIONARIOS_CREADOS").ToString());
+                string vClEstadoPeriodo = rlvPeriodos.Items[0].GetDataKeyValue("CL_ESTADO_PERIODO").ToString();
+                if (vIdPeriodoSeleccionado != null)
+                {
+                    CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+
+                    EstatusBotonesPeriodos((vClEstadoPeriodo.ToUpper() == "CERRADO") ? false : true, vFgCuestionariosCreados);
+                }
         }
 
         private void SeguridadProcesos()
@@ -135,10 +209,10 @@ namespace SIGE.WebApp.EO
             btnCerrar.Enabled = vCerrar = ContextoUsuario.oUsuario.TienePermiso("L.A.A.E");
             btnReactivar.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.F");
             btnCopiar.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.G");
-            btnVistaPreviaCuestionario.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.H");
+            btnVistaPreviaCuestionario.Enabled = vVistaPrevia = ContextoUsuario.oUsuario.TienePermiso("L.A.A.H");
             btnEnviarSolicitudes.Enabled = vEnviarSolicitudes = ContextoUsuario.oUsuario.TienePermiso("L.A.A.I");
             btnContestar.Enabled = vContestar = ContextoUsuario.oUsuario.TienePermiso("L.A.A.J");
-            btnControlAvance.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.K");
+            btnControlAvance.Enabled = vControlAvance = ContextoUsuario.oUsuario.TienePermiso("L.A.A.K");
             btnReportes.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.L");
             btnRDistribucion.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.M");
             btnPreguntasAbiertas.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.N");
@@ -190,33 +264,37 @@ namespace SIGE.WebApp.EO
                 RadListViewDataItem item = e.ListViewItem as RadListViewDataItem;
                 vIdPeriodo = int.Parse(item.GetDataKeyValue("ID_PERIODO").ToString());
 
-                ClimaLaboralNegocio nPeriodo = new ClimaLaboralNegocio();
-                SPE_OBTIENE_EO_PERIODOS_CLIMA_Result vPeriodo = nPeriodo.ObtienePeriodosClima(pIdPerido: vIdPeriodo).FirstOrDefault();
+                vFgCuestionariosCreados = bool.Parse(item.GetDataKeyValue("FG_CUESTIONARIOS_CREADOS").ToString());
+
+                CargarDatosDetalle(vIdPeriodo);
+
+                //ClimaLaboralNegocio nPeriodo = new ClimaLaboralNegocio();
+                //SPE_OBTIENE_EO_PERIODOS_CLIMA_Result vPeriodo = nPeriodo.ObtienePeriodosClima(pIdPerido: vIdPeriodo).FirstOrDefault();
 
 
-                txtClPeriodo.Text = vPeriodo.CL_PERIODO;
-                txtDsPeriodo.Text = vPeriodo.DS_PERIODO;
-                txtClEstatus.Text = vPeriodo.CL_ESTADO_PERIODO;
-                txtTipo.Text = vPeriodo.CL_ORIGEN_CUESTIONARIO;
-                txtUsuarioMod.Text = vPeriodo.CL_USUARIO_APP_MODIFICA;
-                txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPeriodo.FE_MODIFICA);
+                //txtClPeriodo.Text = vPeriodo.CL_PERIODO;
+                //txtDsPeriodo.Text = vPeriodo.DS_PERIODO;
+                //txtClEstatus.Text = vPeriodo.CL_ESTADO_PERIODO;
+                //txtTipo.Text = vPeriodo.CL_ORIGEN_CUESTIONARIO;
+                //txtUsuarioMod.Text = vPeriodo.CL_USUARIO_APP_MODIFICA;
+                //txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPeriodo.FE_MODIFICA);
 
-                if (vPeriodo.DS_NOTAS != null)
-                {
-                    if (vPeriodo.DS_NOTAS.Contains("DS_NOTA"))
-                    {
-                        txtNotas.InnerHtml = Utileria.MostrarNotas(vPeriodo.DS_NOTAS);
-                    }
-                    else
-                    {
-                        XElement vRequerimientos = XElement.Parse(vPeriodo.DS_NOTAS);
-                        if (vRequerimientos != null)
-                        {
-                            vRequerimientos.Name = vNbFirstRadEditorTagName;
-                            txtNotas.InnerHtml = vRequerimientos.ToString();
-                        }
-                    }
-                }
+                //if (vPeriodo.DS_NOTAS != null)
+                //{
+                //    if (vPeriodo.DS_NOTAS.Contains("DS_NOTA"))
+                //    {
+                //        txtNotas.InnerHtml = Utileria.MostrarNotas(vPeriodo.DS_NOTAS);
+                //    }
+                //    else
+                //    {
+                //        XElement vRequerimientos = XElement.Parse(vPeriodo.DS_NOTAS);
+                //        if (vRequerimientos != null)
+                //        {
+                //            vRequerimientos.Name = vNbFirstRadEditorTagName;
+                //            txtNotas.InnerHtml = vRequerimientos.ToString();
+                //        }
+                //    }
+                //}
 
                 //var vPeriodo = vListaPeriodo.Where(w => w.ID_PERIODO == vIdPeriodo).FirstOrDefault();
 
@@ -242,7 +320,7 @@ namespace SIGE.WebApp.EO
 
                 //DESACTIVAR BOTONES
                 string vClEstado = (item.GetDataKeyValue("CL_ESTADO_PERIODO").ToString());
-                EstatusBotonesPeriodos((vClEstado.ToUpper() == "CERRADO") ? false : true);
+                EstatusBotonesPeriodos((vClEstado.ToUpper() == "CERRADO") ? false : true, vFgCuestionariosCreados);
 
             }
         }
@@ -255,13 +333,27 @@ namespace SIGE.WebApp.EO
             {
                 E_RESULTADO vResultado = nPeriodo.EliminaPeriodoClimaLaboral(int.Parse(item.GetDataKeyValue("ID_PERIODO").ToString()));
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                txtClPeriodo.Text = "";
-                txtDsPeriodo.Text = "";
-                txtClEstatus.Text = "";
-                txtTipo.Text = "";
-                txtUsuarioMod.Text = "";
-                txtFechaMod.Text = "";
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "onCloseWindow");
+                //txtClPeriodo.Text = "";
+                //txtDsPeriodo.Text = "";
+                //txtClEstatus.Text = "";
+                //txtTipo.Text = "";
+                //txtUsuarioMod.Text = "";
+                //txtFechaMod.Text = "";
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "");
+                rlvPeriodos.Rebind();
+
+                if (rlvPeriodos.SelectedItems.Count > 0)
+                {
+                    string vIdPeriodoSeleccionado = rlvPeriodos.SelectedItems[0].GetDataKeyValue("ID_PERIODO").ToString();
+                    vFgCuestionariosCreados = bool.Parse(rlvPeriodos.SelectedItems[0].GetDataKeyValue("FG_CUESTIONARIOS_CREADOS").ToString());
+                    string vClEstadoPeriodo = rlvPeriodos.SelectedItems[0].GetDataKeyValue("CL_ESTADO_PERIODO").ToString();
+                    if (vIdPeriodoSeleccionado != null)
+                    {
+                        CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+
+                        EstatusBotonesPeriodos((vClEstadoPeriodo.ToUpper() == "CERRADO") ? false : true, vFgCuestionariosCreados);
+                    }
+                }
             }
         }
 
@@ -271,7 +363,7 @@ namespace SIGE.WebApp.EO
             var vMensaje = nPeriodo.ActualizaEstatusPeriodo((int)vIdPeriodo, "Cerrado", vClUsuario, vNbPrograma);
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje.MENSAJE[0].DS_MENSAJE.ToString(), vMensaje.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "onCloseWindow");
             //rlvPeriodos.Rebind();
-            EstatusBotonesPeriodos(false);
+            EstatusBotonesPeriodos(false, vFgCuestionariosCreados);
             //txtDsEstado.Text = "CERRADO";
 
         }
@@ -282,7 +374,7 @@ namespace SIGE.WebApp.EO
             var vMensaje = nPeriodo.ActualizaEstatusPeriodo((int)vIdPeriodo, "Abierto", vClUsuario, vNbPrograma);
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje.MENSAJE[0].DS_MENSAJE.ToString(), vMensaje.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "onCloseWindow");
             //  rlvPeriodos.Rebind();
-            EstatusBotonesPeriodos(true);
+            EstatusBotonesPeriodos(true, vFgCuestionariosCreados);
             //txtDsEstado.Text = "ABIERTO";
         }
 
@@ -297,6 +389,38 @@ namespace SIGE.WebApp.EO
             if (vSeleccion.clTipo == "ACTUALIZARLISTA")
             {
                 seleccionarPeriodo();
+            }
+            else if (vSeleccion.clTipo == "CONFIGURACION")
+            {
+                rlvPeriodos.Rebind();
+                if (rlvPeriodos.SelectedItems.Count > 0)
+                {
+                    string vIdPeriodoSeleccionado = rlvPeriodos.SelectedItems[0].GetDataKeyValue("ID_PERIODO").ToString();
+                    vFgCuestionariosCreados = bool.Parse(rlvPeriodos.SelectedItems[0].GetDataKeyValue("FG_CUESTIONARIOS_CREADOS").ToString());
+                    string vClEstadoPeriodo = rlvPeriodos.SelectedItems[0].GetDataKeyValue("CL_ESTADO_PERIODO").ToString();
+                    if (vIdPeriodoSeleccionado != null)
+                    {
+                        CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+
+                        EstatusBotonesPeriodos((vClEstadoPeriodo.ToUpper() == "CERRADO") ? false : true, vFgCuestionariosCreados);
+                    }
+                }
+            }
+            else if(vSeleccion.clTipo == "ACTUALIZAR")
+            {
+                rlvPeriodos.Rebind();
+                if (rlvPeriodos.SelectedItems.Count > 0)
+                {
+                    string vIdPeriodoSeleccionado = rlvPeriodos.SelectedItems[0].GetDataKeyValue("ID_PERIODO").ToString();
+                    vFgCuestionariosCreados = bool.Parse(rlvPeriodos.SelectedItems[0].GetDataKeyValue("FG_CUESTIONARIOS_CREADOS").ToString());
+                    string vClEstadoPeriodo = rlvPeriodos.SelectedItems[0].GetDataKeyValue("CL_ESTADO_PERIODO").ToString();
+                    if (vIdPeriodoSeleccionado != null)
+                    {
+                        CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+
+                        EstatusBotonesPeriodos((vClEstadoPeriodo.ToUpper() == "CERRADO") ? false : true, vFgCuestionariosCreados);
+                    }
+                }
             }
         }
 

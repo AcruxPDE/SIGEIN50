@@ -67,7 +67,7 @@
                         <Columns>
                             <telerik:GridBoundColumn HeaderText="#" HeaderStyle-Width="30" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" DataField="NO_SECUENCIA" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                               <telerik:GridBoundColumn HeaderText="Pregunta" HeaderStyle-Width="400" DataField="NB_PREGUNTA" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                            <telerik:GridTemplateColumn HeaderStyle-Width="70" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" ReadOnly="true" HeaderText="Totalmente de acuerdo">
+                            <telerik:GridTemplateColumn HeaderStyle-Width="90" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" ReadOnly="true" HeaderText="Totalmente de acuerdo">
                                 <ItemTemplate>
                                     <telerik:RadButton runat="server" ID="rbTotalmenteAcuerdo" ButtonType="ToggleButton"  ToggleType="Radio" AutoPostBack="false" GroupName="respuestas" Checked='<%# Eval("FG_VALOR1") %>'>
                                        <%-- <ToggleStates>
@@ -77,7 +77,7 @@
                                     </telerik:RadButton>
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
-                            <telerik:GridTemplateColumn HeaderStyle-Width="70" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" ReadOnly="true" HeaderText="Casi siempre de acuerdo">
+                            <telerik:GridTemplateColumn HeaderStyle-Width="90" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" ReadOnly="true" HeaderText="Casi siempre de acuerdo">
                                 <ItemTemplate>
                                     <telerik:RadButton runat="server" ID="rbCasiAcuerdo" ButtonType="ToggleButton"  ToggleType="Radio" AutoPostBack="false" GroupName="respuestas" Checked='<%# Eval("FG_VALOR2") %>'>
                                        <%-- <ToggleStates>
@@ -87,7 +87,7 @@
                                     </telerik:RadButton>
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
-                            <telerik:GridTemplateColumn HeaderStyle-Width="70" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" ReadOnly="true" HeaderText="Casi siempre en desacuerdo">
+                            <telerik:GridTemplateColumn HeaderStyle-Width="90" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" ReadOnly="true" HeaderText="Casi siempre en desacuerdo">
                                 <ItemTemplate>
                                     <telerik:RadButton runat="server" ID="rbCasiDesacuerdo" ButtonType="ToggleButton" ToggleType="Radio" AutoPostBack="false" GroupName="respuestas" Checked='<%# Eval("FG_VALOR3") %>'>
                                       <%--  <ToggleStates>
@@ -97,7 +97,7 @@
                                     </telerik:RadButton>
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
-                            <telerik:GridTemplateColumn HeaderStyle-Width="70" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" ReadOnly="true" HeaderText="Totalmente en desacuerdo">
+                            <telerik:GridTemplateColumn HeaderStyle-Width="90" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" ReadOnly="true" HeaderText="Totalmente en desacuerdo">
                                 <ItemTemplate>
                                     <telerik:RadButton runat="server" ID="rbTotalmenteDesacuerdo" ButtonType="ToggleButton" ToggleType="Radio" AutoPostBack="false" GroupName="respuestas" Checked='<%# Eval("FG_VALOR4") %>'>
                                       <%--  <ToggleStates>

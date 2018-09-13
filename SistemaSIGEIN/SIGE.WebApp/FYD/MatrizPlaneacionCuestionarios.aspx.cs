@@ -2,7 +2,9 @@
 using SIGE.Entidades;
 using SIGE.Entidades.Externas;
 using SIGE.Entidades.FormacionDesarrollo;
+using SIGE.Negocio.AdministracionSitio;
 using SIGE.Negocio.FormacionDesarrollo;
+using SIGE.Negocio.Utilerias;
 using SIGE.WebApp.Comunes;
 using System;
 using System.Collections.Generic;
@@ -23,7 +25,8 @@ namespace SIGE.WebApp.FYD
         #region Variables
         private string vClUsuario;
         private string vNbPrograma;
-        private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+       // private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        public string vClIdioma = ContextoApp.clCultureIdioma;
 
         public int vIdPeriodo
         {
@@ -37,6 +40,37 @@ namespace SIGE.WebApp.FYD
             set { ViewState["vs_lst_planeacion"] = value; }
         }
 
+
+        //Variables javascript traducción
+        public string vOnClientBeforeClose_confirm
+        {
+            get { return (string)ViewState["vs_vOnClientBeforeClose_confirm"]; }
+            set { ViewState["vs_vOnClientBeforeClose_confirm"] = value; }
+        }
+
+        public string vOnClientBeforeClose_title
+        {
+            get { return (string)ViewState["vs_vOnClientBeforeClose_title"]; }
+            set { ViewState["vs_vOnClientBeforeClose_title"] = value; }
+        }
+
+        public string vOpenWindowAutorizarDocumento_title
+        {
+            get { return (string)ViewState["vs_vOpenWindowAutorizarDocumento_title"]; }
+            set { ViewState["vs_vOpenWindowAutorizarDocumento_title"] = value; }
+        }
+
+        public string vOpenNuevoCuestionarioWindow_title
+        {
+            get { return (string)ViewState["vs_vOpenNuevoCuestionarioWindow_title"]; }
+            set { ViewState["vs_vOpenNuevoCuestionarioWindow_title"] = value; }
+        }
+
+        public string vconfirmarCrearCuestionarios_confirm
+        {
+            get { return (string)ViewState["vs_vconfirmarCrearCuestionarios_confirm"]; }
+            set { ViewState["vs_vconfirmarCrearCuestionarios_confirm"] = value; }
+        }
 
         #endregion
 
@@ -131,6 +165,20 @@ namespace SIGE.WebApp.FYD
 
             string vNameCheck = "";
             string vIsChecked = "";
+            string vTextoClEmpleado = "Clave empledo:";
+            string vTextoClPuesto = "Clave puesto:";
+
+            if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+            {
+                //Asignar texto variables vista
+                TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+                SPE_OBTIENE_TRADUCCION_TEXTO_Result vTxtClEmpleado = oNegocio.ObtieneTraduccion(pCL_TEXTO:"CB_ClaveEmpleado", pCL_MODULO: "FYD", pCL_PROCESO: "EC_MATRIZCUESTIONARIO", pCL_IDIOMA: "PORT").FirstOrDefault();
+                if (vTxtClEmpleado != null)
+                    vTextoClEmpleado = vTxtClEmpleado.DS_TEXTO;
+                SPE_OBTIENE_TRADUCCION_TEXTO_Result vTxtPuesto = oNegocio.ObtieneTraduccion(pCL_TEXTO: "CB_ClavePuesto", pCL_MODULO: "FYD", pCL_PROCESO: "EC_MATRIZCUESTIONARIO", pCL_IDIOMA: "PORT").FirstOrDefault();
+                if (vTxtPuesto != null)
+                    vTextoClPuesto = vTxtPuesto.DS_TEXTO;
+            }
 
             string vPlantillaDivs = " <table border=\"0\" style=\"width:100%; padding:3px;\"> " +
                                         "<tr>" +
@@ -152,6 +200,8 @@ namespace SIGE.WebApp.FYD
 
             var vListaEvaluado = vLstPlaneacion.Where(t => t.ID_EMPLEADO_EVALUADO == vIdEmpleado).ToList();
 
+
+
             foreach (var item in vListaEvaluado)
             {
                 switch (item.CL_ROL_EVALUADOR)
@@ -161,34 +211,34 @@ namespace SIGE.WebApp.FYD
                         vNameCheck = item.ID_EVALUADO.ToString() + "," + item.ID_EMPLEADO_EVALUADOR.ToString() + ",AE";
                         vIsChecked = item.FG_CUESTIONARIO ? "checked" : "";
 
-                        vSbAuto.Append(string.Format(vPlantillaDivs, "Clave empledo: " + item.CL_EMPLEADO + ", Clave puesto: " + item.CL_PUESTO, item.NB_EMPLEADO_COMPLETO, item.NB_PUESTO, item.CL_ROL_EVALUADOR, vNameCheck, vIsChecked, "AE"));
+                        vSbAuto.Append(string.Format(vPlantillaDivs, vTextoClEmpleado + " " + item.CL_EMPLEADO + ", " + vTextoClPuesto + " " + item.CL_PUESTO, item.NB_EMPLEADO_COMPLETO, item.NB_PUESTO, item.CL_ROL_EVALUADOR, vNameCheck, vIsChecked, "AE"));
                         break;
 
                     case "SUPERIOR":
                         vNameCheck = item.ID_EVALUADO.ToString() + "," + item.ID_EMPLEADO_EVALUADOR.ToString() + ",SP";
                         vIsChecked = item.FG_CUESTIONARIO ? "checked" : "";
 
-                        vSbSup.Append(string.Format(vPlantillaDivs, "Clave empledo: " + item.CL_EMPLEADO + ", Clave puesto: " + item.CL_PUESTO, item.NB_EMPLEADO_COMPLETO, item.NB_PUESTO, item.CL_ROL_EVALUADOR, vNameCheck, vIsChecked, "SP"));
+                        vSbSup.Append(string.Format(vPlantillaDivs, vTextoClEmpleado + " " + item.CL_EMPLEADO + ", " + vTextoClPuesto + " " + item.CL_PUESTO, item.NB_EMPLEADO_COMPLETO, item.NB_PUESTO, item.CL_ROL_EVALUADOR, vNameCheck, vIsChecked, "SP"));
                         break;
 
                     case "SUBORDINADO":
                         vNameCheck = item.ID_EVALUADO.ToString() + "," + item.ID_EMPLEADO_EVALUADOR.ToString() + ",SB";
                         vIsChecked = item.FG_CUESTIONARIO ? "checked" : "";
 
-                        vSbSub.Append(string.Format(vPlantillaDivs, "Clave empledo: " + item.CL_EMPLEADO + ", Clave puesto: " + item.CL_PUESTO, item.NB_EMPLEADO_COMPLETO, item.NB_PUESTO, item.CL_ROL_EVALUADOR, vNameCheck, vIsChecked, "SB"));
+                        vSbSub.Append(string.Format(vPlantillaDivs, vTextoClEmpleado + " " + item.CL_EMPLEADO + ", " + vTextoClPuesto + " " + item.CL_PUESTO, item.NB_EMPLEADO_COMPLETO, item.NB_PUESTO, item.CL_ROL_EVALUADOR, vNameCheck, vIsChecked, "SB"));
                         break;
 
                     case "INTERRELACIONADO":
                         vNameCheck = item.ID_EVALUADO.ToString() + "," + item.ID_EMPLEADO_EVALUADOR.ToString() + ",IN";
                         vIsChecked = item.FG_CUESTIONARIO ? "checked" : "";
 
-                        vSbInter.Append(string.Format(vPlantillaDivs, "Clave empledo: " + item.CL_EMPLEADO + ", Clave puesto: " + item.CL_PUESTO, item.NB_EMPLEADO_COMPLETO, item.NB_PUESTO, item.CL_ROL_EVALUADOR, vNameCheck, vIsChecked, "IN"));
+                        vSbInter.Append(string.Format(vPlantillaDivs, vTextoClEmpleado + " " + item.CL_EMPLEADO + ", " + vTextoClPuesto + " " + item.CL_PUESTO, item.NB_EMPLEADO_COMPLETO, item.NB_PUESTO, item.CL_ROL_EVALUADOR, vNameCheck, vIsChecked, "IN"));
                         break;
 
                     case "OTRO":
                         vNameCheck = item.ID_EVALUADO.ToString() + "," + item.ID_EMPLEADO_EVALUADOR.ToString() + ",OT";
                         vIsChecked = item.FG_CUESTIONARIO ? "checked" : "";
-                        vSbOtros.Append(string.Format(vPlantillaDivs,"Clave empledo: " + item.CL_EMPLEADO +", Clave puesto: "+item.CL_PUESTO, item.NB_EMPLEADO_COMPLETO, item.NB_PUESTO, item.CL_ROL_EVALUADOR, vNameCheck, vIsChecked, "OT"));
+                        vSbOtros.Append(string.Format(vPlantillaDivs, vTextoClEmpleado + " " + item.CL_EMPLEADO + ", " + vTextoClPuesto + " " + item.CL_PUESTO, item.NB_EMPLEADO_COMPLETO, item.NB_PUESTO, item.CL_ROL_EVALUADOR, vNameCheck, vIsChecked, "OT"));
                         break;
 
                 }
@@ -334,6 +384,39 @@ namespace SIGE.WebApp.FYD
             //grdCuestionarios.MasterTableView.DetailTables[0].Rebind();
         }
 
+        //Método de traduccion
+        private void TraducirTextos()
+        {
+             //Asignar texto variables vista
+            TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+            List<SPE_OBTIENE_TRADUCCION_TEXTO_Result> vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_MODULO: "FYD", pCL_PROCESO: "EC_MATRIZCUESTIONARIO", pCL_IDIOMA: "PORT");
+            if (vLstTextosTraduccion.Count > 0)
+            {
+
+                //Asignar texto variables javascript
+                vOnClientBeforeClose_confirm = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vOnClientBeforeClose_confirm").FirstOrDefault().DS_TEXTO;
+                vOnClientBeforeClose_title = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vOnClientBeforeClose_title").FirstOrDefault().DS_TEXTO;
+                vOpenWindowAutorizarDocumento_title = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vOpenWindowAutorizarDocumento_title").FirstOrDefault().DS_TEXTO;
+                vOpenNuevoCuestionarioWindow_title = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vOpenNuevoCuestionarioWindow_title").FirstOrDefault().DS_TEXTO;
+                vconfirmarCrearCuestionarios_confirm = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vconfirmarCrearCuestionarios_confirm").FirstOrDefault().DS_TEXTO;
+
+                //Asignar texto a RadCheckBox
+                chkAutoevaluacion.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkAutoevaluacion").FirstOrDefault().DS_TEXTO;
+                chkSuperior.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkSuperior").FirstOrDefault().DS_TEXTO;
+                chkSubordinado.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkSubordinado").FirstOrDefault().DS_TEXTO;
+                chkInter.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkInter").FirstOrDefault().DS_TEXTO;
+                chkOtro.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkOtro").FirstOrDefault().DS_TEXTO;
+
+                //Asignar texto a RadButton
+                btnAgregarEmpleado.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnAgregarEmpleado").FirstOrDefault().DS_TEXTO;
+                btnGuardar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardar").FirstOrDefault().DS_TEXTO;
+                btnRegistroAutorizacion.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnRegistroAutorizacion").FirstOrDefault().DS_TEXTO;
+                btnRegistroAutorizacion.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnRegistroAutorizacion_tooltip").FirstOrDefault().DS_TEXTO;
+                btnCrearCuestionarios.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnCrearCuestionarios").FirstOrDefault().DS_TEXTO;
+                btnCerrar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnCrearCuestionarios").FirstOrDefault().DS_TEXTO;
+            }
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -350,6 +433,9 @@ namespace SIGE.WebApp.FYD
                     vIdPeriodo = int.Parse(Request.Params["IdPeriodo"].ToString());
                     CrearCuestionarios();
                 }
+
+                if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+                    TraducirTextos();
             }
         }
 
@@ -456,6 +542,41 @@ namespace SIGE.WebApp.FYD
         {
             ObtenerDatosCheckbox();
             Guardar(true);
+        }
+
+        protected void grdCuestionarios_PreRender(object sender, EventArgs e)
+        {
+            if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+            {
+                //Asignar texto variables vista
+                TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+                List<SPE_OBTIENE_TRADUCCION_TEXTO_Result> vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_MODULO: "FYD", pCL_PROCESO: "EC_MATRIZCUESTIONARIO", pCL_IDIOMA: "PORT");
+                if (vLstTextosTraduccion.Count > 0)
+                {
+                    foreach (GridColumn col in grdCuestionarios.MasterTableView.Columns)
+                    {
+                        switch (col.UniqueName)
+                        {
+                            case "NB_EMPLEADO_COMPLETO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdCuestionarios_NB_EMPLEADO_COMPLETO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_PUESTO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdCuestionarios_NB_PUESTO").FirstOrDefault().DS_TEXTO;
+                                break;
+                            case "NB_DEPARTAMENTO":
+                                col.HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgrdCuestionarios_NB_DEPARTAMENTO").FirstOrDefault().DS_TEXTO;
+                                break;
+                        }
+                    }
+
+                    grdCuestionarios.MasterTableView.DetailTables[0].GetColumn("AUTOEVALUACION").HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_AUTOEVALUACION").FirstOrDefault().DS_TEXTO;
+                    grdCuestionarios.MasterTableView.DetailTables[0].GetColumn("SUPERIOR").HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_SUPERIOR").FirstOrDefault().DS_TEXTO;
+                    grdCuestionarios.MasterTableView.DetailTables[0].GetColumn("SUBORDINADO").HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_SUBORDINADO").FirstOrDefault().DS_TEXTO;
+                    grdCuestionarios.MasterTableView.DetailTables[0].GetColumn("INTERRELACIONADO").HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_INTERRELACIONADO").FirstOrDefault().DS_TEXTO;
+                    grdCuestionarios.MasterTableView.DetailTables[0].GetColumn("OTROS").HeaderText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vgtvEvaluadores_OTROS").FirstOrDefault().DS_TEXTO;
+                    grdCuestionarios.Rebind();
+                }
+            }
         }
     }
 }

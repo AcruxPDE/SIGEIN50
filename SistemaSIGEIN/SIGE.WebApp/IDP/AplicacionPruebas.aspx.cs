@@ -275,147 +275,147 @@ namespace SIGE.WebApp.IDP
             }
         }
 
-        protected void btnAplicarPruebas_Click(object sender, EventArgs e)
-        {
-            if (grdSolicitudes.SelectedItems.Count > 0)
-            {
-                vIdGeneraBaterias = Guid.NewGuid();
-                ContextoCandidatosBateria.oCandidatosBateria = new List<E_CANDIDATOS_BATERIA>();
+        //protected void btnAplicarPruebas_Click(object sender, EventArgs e)
+        //{
+        //    if (grdSolicitudes.SelectedItems.Count > 0)
+        //    {
+        //        vIdGeneraBaterias = Guid.NewGuid();
+        //        ContextoCandidatosBateria.oCandidatosBateria = new List<E_CANDIDATOS_BATERIA>();
 
-                ContextoCandidatosBateria.oCandidatosBateria.Add(new E_CANDIDATOS_BATERIA
-                {
-                    vIdGeneraBaterias = (Guid)vIdGeneraBaterias
-                });
+        //        ContextoCandidatosBateria.oCandidatosBateria.Add(new E_CANDIDATOS_BATERIA
+        //        {
+        //            vIdGeneraBaterias = (Guid)vIdGeneraBaterias
+        //        });
 
-                foreach (GridDataItem item in grdSolicitudes.SelectedItems)
-                {
-                    if (item.GetDataKeyValue("ESTATUS").ToString() != "NO CREADA")
-                        ContextoCandidatosBateria.oCandidatosBateria.Where(t => t.vIdGeneraBaterias == vIdGeneraBaterias).FirstOrDefault().vListaCandidatos.Add(int.Parse(item.GetDataKeyValue("ID_CANDIDATO").ToString()));
-                    else
-                    {
-                        if (item.GetDataKeyValue("CL_SOLICITUD") != null)
-                            UtilMensajes.MensajeResultadoDB(rnMensaje, "La solicitud " + item.GetDataKeyValue("CL_SOLICITUD").ToString() + " no cuenta con una batería creada. Crea la batería o deselecciónala para este proceso.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
-                        else
-                            UtilMensajes.MensajeResultadoDB(rnMensaje, "Una de las solicitudes seleccionada no cuenta con una batería creada. Crea la batería o deselecciónala para este proceso.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
-                        return;
-                    }
-                }
+        //        foreach (GridDataItem item in grdSolicitudes.SelectedItems)
+        //        {
+        //            if (item.GetDataKeyValue("ESTATUS").ToString() != "NO CREADA")
+        //                ContextoCandidatosBateria.oCandidatosBateria.Where(t => t.vIdGeneraBaterias == vIdGeneraBaterias).FirstOrDefault().vListaCandidatos.Add(int.Parse(item.GetDataKeyValue("ID_CANDIDATO").ToString()));
+        //            else
+        //            {
+        //                if (item.GetDataKeyValue("CL_SOLICITUD") != null)
+        //                    UtilMensajes.MensajeResultadoDB(rnMensaje, "La solicitud " + item.GetDataKeyValue("CL_SOLICITUD").ToString() + " no cuenta con una batería creada. Crea la batería o deselecciónala para este proceso.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
+        //                else
+        //                    UtilMensajes.MensajeResultadoDB(rnMensaje, "Una de las solicitudes seleccionada no cuenta con una batería creada. Crea la batería o deselecciónala para este proceso.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
+        //                return;
+        //            }
+        //        }
 
-                ClientScript.RegisterStartupScript(GetType(), "script", "OpenAplicarPruebas();", true);
-            }
-            else
-                UtilMensajes.MensajeResultadoDB(rnMensaje, "Selecciona una solicitud.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
+        //        ClientScript.RegisterStartupScript(GetType(), "script", "OpenAplicarPruebas();", true);
+        //    }
+        //    else
+        //        UtilMensajes.MensajeResultadoDB(rnMensaje, "Selecciona una solicitud.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
 
-        }
+        //}
 
-        protected void btnCrearBateria_Click(object sender, EventArgs e)
-        {
-            if (grdSolicitudes.SelectedItems.Count > 0)
-            {
-                vIdGeneraBaterias = Guid.NewGuid();
-                ContextoCandidatosBateria.oCandidatosBateria = new List<E_CANDIDATOS_BATERIA>();
+        //protected void btnCrearBateria_Click(object sender, EventArgs e)
+        //{
+        //    if (grdSolicitudes.SelectedItems.Count > 0)
+        //    {
+        //        vIdGeneraBaterias = Guid.NewGuid();
+        //        ContextoCandidatosBateria.oCandidatosBateria = new List<E_CANDIDATOS_BATERIA>();
 
-                ContextoCandidatosBateria.oCandidatosBateria.Add(new E_CANDIDATOS_BATERIA
-                {
-                    vIdGeneraBaterias = (Guid)vIdGeneraBaterias
-                });
+        //        ContextoCandidatosBateria.oCandidatosBateria.Add(new E_CANDIDATOS_BATERIA
+        //        {
+        //            vIdGeneraBaterias = (Guid)vIdGeneraBaterias
+        //        });
 
-                foreach (GridDataItem item in grdSolicitudes.SelectedItems)
-                {
-                    if (item.GetDataKeyValue("ESTATUS").ToString() == "NO CREADA")
-                        ContextoCandidatosBateria.oCandidatosBateria.Where(t => t.vIdGeneraBaterias == vIdGeneraBaterias).FirstOrDefault().vListaCandidatos.Add(int.Parse(item.GetDataKeyValue("ID_CANDIDATO").ToString()));
-                    else
-                    {
-                        if (item.GetDataKeyValue("CL_SOLICITUD") != null)
-                            UtilMensajes.MensajeResultadoDB(rnMensaje, "La solicitud " + item.GetDataKeyValue("CL_SOLICITUD").ToString() + " ya cuenta con una batería creada. Elimina sus respuestas para volverla a aplicar.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
-                        else
-                            UtilMensajes.MensajeResultadoDB(rnMensaje, "Una de las solicitudes seleccionada ya cuenta con una batería creada. Elimina sus respuestas para volverla a aplicar.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
-                        return;
-                    }
-                }
+        //        foreach (GridDataItem item in grdSolicitudes.SelectedItems)
+        //        {
+        //            if (item.GetDataKeyValue("ESTATUS").ToString() == "NO CREADA")
+        //                ContextoCandidatosBateria.oCandidatosBateria.Where(t => t.vIdGeneraBaterias == vIdGeneraBaterias).FirstOrDefault().vListaCandidatos.Add(int.Parse(item.GetDataKeyValue("ID_CANDIDATO").ToString()));
+        //            else
+        //            {
+        //                if (item.GetDataKeyValue("CL_SOLICITUD") != null)
+        //                    UtilMensajes.MensajeResultadoDB(rnMensaje, "La solicitud " + item.GetDataKeyValue("CL_SOLICITUD").ToString() + " ya cuenta con una batería creada. Elimina sus respuestas para asignar una nueva.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
+        //                else
+        //                    UtilMensajes.MensajeResultadoDB(rnMensaje, "Una de las solicitudes seleccionada ya cuenta con una batería creada. Elimina sus respuestas para asignar una nueva.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
+        //                return;
+        //            }
+        //        }
 
-                ClientScript.RegisterStartupScript(GetType(), "script", "OpenCrearBaterias();", true);
-            }
-            else
-                UtilMensajes.MensajeResultadoDB(rnMensaje, "Selecciona una solicitud.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
-        }
+        //        ClientScript.RegisterStartupScript(GetType(), "script", "OpenCrearBaterias();", true);
+        //    }
+        //    else
+        //        UtilMensajes.MensajeResultadoDB(rnMensaje, "Selecciona una solicitud.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
+        //}
 
-        protected void btnAplicarPruebaEmp_Click(object sender, EventArgs e)
-        {
-            if (rgPruebasEmpleados.SelectedItems.Count > 0)
-            {
-                vIdGeneraBaterias = Guid.NewGuid();
-                ContextoCandidatosBateria.oCandidatosBateria = new List<E_CANDIDATOS_BATERIA>();
+        //protected void btnAplicarPruebaEmp_Click(object sender, EventArgs e)
+        //{
+        //    if (rgPruebasEmpleados.SelectedItems.Count > 0)
+        //    {
+        //        vIdGeneraBaterias = Guid.NewGuid();
+        //        ContextoCandidatosBateria.oCandidatosBateria = new List<E_CANDIDATOS_BATERIA>();
 
-                ContextoCandidatosBateria.oCandidatosBateria.Add(new E_CANDIDATOS_BATERIA
-                {
-                    vIdGeneraBaterias = (Guid)vIdGeneraBaterias
-                });
+        //        ContextoCandidatosBateria.oCandidatosBateria.Add(new E_CANDIDATOS_BATERIA
+        //        {
+        //            vIdGeneraBaterias = (Guid)vIdGeneraBaterias
+        //        });
 
-                foreach (GridDataItem item in rgPruebasEmpleados.SelectedItems)
-                {
-                    if (item.GetDataKeyValue("ESTATUS").ToString() != "NO CREADA")
-                        ContextoCandidatosBateria.oCandidatosBateria.Where(t => t.vIdGeneraBaterias == vIdGeneraBaterias).FirstOrDefault().vListaCandidatos.Add(int.Parse(item.GetDataKeyValue("ID_CANDIDATO").ToString()));
-                    else
-                    {
-                        if (item.GetDataKeyValue("M_EMPLEADO_CL_EMPLEADO") != null)
-                            UtilMensajes.MensajeResultadoDB(rnMensaje, "El empleado " + item.GetDataKeyValue("M_EMPLEADO_CL_EMPLEADO").ToString() + " no cuenta con una batería creada. Crea la batería o deselecciónalo para este proceso.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
-                        else
-                            UtilMensajes.MensajeResultadoDB(rnMensaje, "Un de los empleados seleccionados no cuenta con una batería creada. Crea la batería o deselecciónalo para este proceso.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
-                        return;
-                    }
-                }
+        //        foreach (GridDataItem item in rgPruebasEmpleados.SelectedItems)
+        //        {
+        //            if (item.GetDataKeyValue("ESTATUS").ToString() != "NO CREADA")
+        //                ContextoCandidatosBateria.oCandidatosBateria.Where(t => t.vIdGeneraBaterias == vIdGeneraBaterias).FirstOrDefault().vListaCandidatos.Add(int.Parse(item.GetDataKeyValue("ID_CANDIDATO").ToString()));
+        //            else
+        //            {
+        //                if (item.GetDataKeyValue("M_EMPLEADO_CL_EMPLEADO") != null)
+        //                    UtilMensajes.MensajeResultadoDB(rnMensaje, "El empleado " + item.GetDataKeyValue("M_EMPLEADO_CL_EMPLEADO").ToString() + " no cuenta con una batería creada. Crea la batería o deselecciónalo para este proceso.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
+        //                else
+        //                    UtilMensajes.MensajeResultadoDB(rnMensaje, "Un de los empleados seleccionados no cuenta con una batería creada. Crea la batería o deselecciónalo para este proceso.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
+        //                return;
+        //            }
+        //        }
 
-                ClientScript.RegisterStartupScript(GetType(), "script", "OpenAplicarPruebasEmp();", true);
-            }
-            else
-                UtilMensajes.MensajeResultadoDB(rnMensaje, "Selecciona un empleado.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
+        //        ClientScript.RegisterStartupScript(GetType(), "script", "OpenAplicarPruebasEmp();", true);
+        //    }
+        //    else
+        //        UtilMensajes.MensajeResultadoDB(rnMensaje, "Selecciona un empleado.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
 
-        }
+        //}
 
-        protected void btnCrearBateriaEmp_Click(object sender, EventArgs e)
-        {
-            if (rgPruebasEmpleados.SelectedItems.Count > 0)
-            {
-                vIdGeneraBaterias = Guid.NewGuid();
-                ContextoCandidatosBateria.oCandidatosBateria = new List<E_CANDIDATOS_BATERIA>();
+        //protected void btnCrearBateriaEmp_Click(object sender, EventArgs e)
+        //{
+        //    if (rgPruebasEmpleados.SelectedItems.Count > 0)
+        //    {
+        //        vIdGeneraBaterias = Guid.NewGuid();
+        //        ContextoCandidatosBateria.oCandidatosBateria = new List<E_CANDIDATOS_BATERIA>();
                 
 
-                ContextoCandidatosBateria.oCandidatosBateria.Add(new E_CANDIDATOS_BATERIA
-                {
-                    vIdGeneraBaterias = (Guid)vIdGeneraBaterias
-                });
+        //        ContextoCandidatosBateria.oCandidatosBateria.Add(new E_CANDIDATOS_BATERIA
+        //        {
+        //            vIdGeneraBaterias = (Guid)vIdGeneraBaterias
+        //        });
 
-                foreach (GridDataItem item in rgPruebasEmpleados.SelectedItems)
-                {
-                    if (item.GetDataKeyValue("ESTATUS").ToString() == "NO CREADA")
-                    {
-                        if (item.GetDataKeyValue("ID_CANDIDATO") == null)
-                        {
-                            int vIdCandidato = GenerarIdCandidato(int.Parse(item.GetDataKeyValue("M_EMPLEADO_ID_EMPLEADO").ToString()));
-                            if (vIdCandidato != 0)
-                            ContextoCandidatosBateria.oCandidatosBateria.Where(t => t.vIdGeneraBaterias == vIdGeneraBaterias).FirstOrDefault().vListaCandidatos.Add(vIdCandidato);
-                            else
-                                UtilMensajes.MensajeResultadoDB(rnMensaje, "Ocurrio un error.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
-                        }
-                        else
-                            ContextoCandidatosBateria.oCandidatosBateria.Where(t => t.vIdGeneraBaterias == vIdGeneraBaterias).FirstOrDefault().vListaCandidatos.Add(int.Parse(item.GetDataKeyValue("ID_CANDIDATO").ToString()));
-                    }
-                    else
-                    {
-                        if (item.GetDataKeyValue("M_EMPLEADO_CL_EMPLEADO") != null)
-                            UtilMensajes.MensajeResultadoDB(rnMensaje, "El empleado " + item.GetDataKeyValue("M_EMPLEADO_CL_EMPLEADO").ToString() + " ya cuenta con una batería creada. Elimina sus respuestas para volverla a aplicar.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
-                        else
-                            UtilMensajes.MensajeResultadoDB(rnMensaje, "Uno de los empleados seleccionados ya cuenta con una batería creada. Elimina sus respuestas para volverla a aplicar.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
-                        return;
-                    }
-                }
+        //        foreach (GridDataItem item in rgPruebasEmpleados.SelectedItems)
+        //        {
+        //            if (item.GetDataKeyValue("ESTATUS").ToString() == "NO CREADA")
+        //            {
+        //                if (item.GetDataKeyValue("ID_CANDIDATO") == null)
+        //                {
+        //                    int vIdCandidato = GenerarIdCandidato(int.Parse(item.GetDataKeyValue("M_EMPLEADO_ID_EMPLEADO").ToString()));
+        //                    if (vIdCandidato != 0)
+        //                    ContextoCandidatosBateria.oCandidatosBateria.Where(t => t.vIdGeneraBaterias == vIdGeneraBaterias).FirstOrDefault().vListaCandidatos.Add(vIdCandidato);
+        //                    else
+        //                        UtilMensajes.MensajeResultadoDB(rnMensaje, "Ocurrio un error.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
+        //                }
+        //                else
+        //                    ContextoCandidatosBateria.oCandidatosBateria.Where(t => t.vIdGeneraBaterias == vIdGeneraBaterias).FirstOrDefault().vListaCandidatos.Add(int.Parse(item.GetDataKeyValue("ID_CANDIDATO").ToString()));
+        //            }
+        //            else
+        //            {
+        //                if (item.GetDataKeyValue("M_EMPLEADO_CL_EMPLEADO") != null)
+        //                    UtilMensajes.MensajeResultadoDB(rnMensaje, "El empleado " + item.GetDataKeyValue("M_EMPLEADO_CL_EMPLEADO").ToString() + " ya cuenta con una batería creada. Elimina sus respuestas para asignar una nueva.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
+        //                else
+        //                    UtilMensajes.MensajeResultadoDB(rnMensaje, "Uno de los empleados seleccionados ya cuenta con una batería creada. Elimina sus respuestas para asignar una nueva.", E_TIPO_RESPUESTA_DB.ERROR, 450, 200, pCallBackFunction: "");
+        //                return;
+        //            }
+        //        }
 
-                ClientScript.RegisterStartupScript(GetType(), "script", "OpenCrearBateriasEmpleado();", true);
-            }
-            else
-                UtilMensajes.MensajeResultadoDB(rnMensaje, "Selecciona un empleado.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
-        }
+        //        ClientScript.RegisterStartupScript(GetType(), "script", "OpenCrearBateriasEmpleado();", true);
+        //    }
+        //    else
+        //        UtilMensajes.MensajeResultadoDB(rnMensaje, "Selecciona un empleado.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
+        //}
 
     }
 }

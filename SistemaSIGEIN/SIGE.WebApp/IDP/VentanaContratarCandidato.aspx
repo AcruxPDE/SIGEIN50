@@ -20,17 +20,17 @@
             };
 
             if (sender == vBtnPlaza) {
-                openChildDialog("../Comunes/SeleccionPlaza.aspx?TipoSeleccionCl=VACANTES", "winSeleccion", "Selección de la plaza a ocupar", windowProperties);
+                openChildDialog("../Comunes/SeleccionPlaza.aspx?TipoSeleccionCl=VACANTES&mulSel=0", "winSeleccion", "Selección de la plaza a ocupar", windowProperties);
             }
 
             if (sender == vBtnPlazaJefe) {
                 var list = $find("<%=rlbPuesto.ClientID %>");
-                openChildDialog("../Comunes/SeleccionPlaza.aspx?CatalogoCl=PLAZAJEFE&TipoSeleccionCl=JEFE", "winSeleccion", "Selección del jefe inmediato", windowProperties);
+                openChildDialog("../Comunes/SeleccionPlaza.aspx?CatalogoCl=PLAZAJEFE&TipoSeleccionCl=JEFE&mulSel=0", "winSeleccion", "Selección del jefe inmediato", windowProperties);
             }
 
             if (sender == vbtnRequisicion) {
                 windowProperties.width = 1100;
-                openChildDialog("../Comunes/SelectorRequisiciones.aspx", "winSeleccion", "Selección de la requisición", windowProperties);
+                openChildDialog("../Comunes/SelectorRequisiciones.aspx?mulSel=0", "winSeleccion", "Selección de la requisición", windowProperties);
             }
 
         }

@@ -655,6 +655,10 @@ namespace SIGE.WebApp.EO.Cuestionarios
 
                 SeguridadProcesos();
 
+                if (vIdEvaluado != 0)
+                {
+                    btnFinalizar.Visible = false;
+                }
                 //rgCuestionario.Enabled = vFgHabilitado;
                 //rgPreguntasAbiertas.Enabled = vFgHabilitado;
                 //btnFinalizar.Enabled = vFgHabilitado;

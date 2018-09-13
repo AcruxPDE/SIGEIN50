@@ -24,9 +24,9 @@
                                 Bienvenid@ a la aplicación <b>SIGEIN</b>.
                                     <br />
                                 Para comenzar a utilizar el sistema, utiliza el menú de navegación en el panel superior. 
-                                        <div id="dvLogo" runat="server" style="padding-left:20px; padding-top:20px;">
-                               <telerik:RadBinaryImage ID="rbiLogoOrganizacion1" runat="server" Width="108" Height="108"  ResizeMode="Fit" />
-                               </div>
+                                        <div id="dvLogo" runat="server" style="padding-left: 20px; padding-top: 20px;">
+                                            <telerik:RadBinaryImage ID="rbiLogoOrganizacion1" runat="server" Width="108" Height="108" ResizeMode="Fit" />
+                                        </div>
                             </div>
                         </div>
                         <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6" style="margin-top: 50px;">

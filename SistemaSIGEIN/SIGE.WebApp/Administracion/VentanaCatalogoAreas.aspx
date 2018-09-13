@@ -11,7 +11,7 @@
                 width: 800,
                 height: 600
             };
-            openChildDialog("../Comunes/SeleccionArea.aspx", "winSeleccion", "Selección de área/departamento", windowProperties);
+            openChildDialog("../Comunes/SeleccionArea.aspx?mulSel=0", "winSeleccion", "Selección de área/departamento", windowProperties);
         }
 
         function useDataFromChild(pDato) {
@@ -98,7 +98,7 @@
     <div style="clear: both;"></div>
     <div class="ctrlBasico">
         <div class="divControlIzquierda">
-            <label id="lblTipoDepartamento" name="lblTipoDepartamento" runat="server">Tipo de departamento:&nbsp;</label>
+            <label id="lblTipoDepartamento" name="lblTipoDepartamento" runat="server">Tipo:&nbsp;</label>
         </div>
         <div class="divControlDerecha">
             <telerik:RadComboBox ID="cmbTipoDepartamento" runat="server">

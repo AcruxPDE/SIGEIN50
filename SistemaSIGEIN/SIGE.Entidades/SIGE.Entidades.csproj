@@ -340,6 +340,9 @@
     <Compile Include="SPE_OBTIENE_EMPLEADOS_PROCESOS_EVALUACION_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SPE_OBTIENE_EMPLEADOS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SPE_OBTIENE_EO_BAJAS_PENDIENTES_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
@@ -404,9 +407,6 @@
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_EO_RESULTADO_EVALUADOS_Result.cs">
-      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SPE_OBTIENE_EO_RESULTADO_JERARQUICO_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_EO_TEMAS_Result.cs">
@@ -611,6 +611,9 @@
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_VERIFICA_CONFIGURACION_METAS_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_VERIFICA_CONFIGURACION_TABULADOR_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_VERIFICA_PUESTO_FACTOR_Result.cs">
@@ -1031,9 +1034,6 @@
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_EMPLEADOS_PDE_Result.cs">
-      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SPE_OBTIENE_EMPLEADOS_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_EMPLEADOS_SELECTOR_Result.cs">

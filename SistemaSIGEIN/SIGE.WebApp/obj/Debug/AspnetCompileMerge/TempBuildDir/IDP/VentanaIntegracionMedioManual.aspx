@@ -235,7 +235,7 @@
     </div>
 
     <div style="clear: both; height: 10px;"></div>
-    <div class="divControlDerecha">
+    <div class="DivBtnTerminarDerecha">
        
         <telerik:RadButton ID="btnTerminar" runat="server" Text="Guardar" AutoPostBack="true" OnClick="btnTerminar_Click" UseSubmitBehavior="false"></telerik:RadButton>
         <%-- <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" AutoPostBack="true" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminar_Click" Visible="true"></telerik:RadButton>--%>

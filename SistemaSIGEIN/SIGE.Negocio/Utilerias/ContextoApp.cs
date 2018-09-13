@@ -63,7 +63,7 @@ namespace SIGE.Negocio.Utilerias
         public static List<E_CAMPO_NOMINA_DO> vLstCamposNominaDO { get; set; }
 
         //Idioma del sistema
-       // public static string clCultureIdioma { get; set; }
+        public static string clCultureIdioma { get; set; }
 
         static ContextoApp()
         {
@@ -131,7 +131,9 @@ namespace SIGE.Negocio.Utilerias
             ClRutaArchivosTemporales = @"~/App_Data";
 
             //Idioma del sistema 
-           // clCultureIdioma = UtilXML.ValorAtributo<string>(vXmlConfiguracion.Element("IDIOMA").Attribute("CULTURE"));
+          //  clCultureIdioma = UtilXML.ValorAtributo<string>(vXmlConfiguracion.Element("IDIOMA").Attribute("CULTURE"));
+            clCultureIdioma = "ES";
+
 
             IDP = new IntegracionDePersonal();
             foreach (XElement vXmlMensaje in vXmlConfiguracionIDP.Element("MENSAJES").Elements("MENSAJE"))

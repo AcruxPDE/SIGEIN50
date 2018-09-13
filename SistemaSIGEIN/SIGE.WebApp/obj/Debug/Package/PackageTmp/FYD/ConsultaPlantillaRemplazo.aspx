@@ -83,12 +83,11 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <label class="labelTitulo">Plantillas de Reemplazo</label>
-    <div style="height: 10px; clear: both;"></div>
-    <div style="height: calc(100% - 100px); width: 100%;">
+    <label class="labelTitulo">Plantillas de reemplazo</label>
+    <div style="height: calc(100% - 60px); width: 100%;">
         <telerik:RadSplitter ID="rsReportes" Width="100%" Height="100%" BorderSize="0" runat="server">
             <telerik:RadPane ID="rpReportes" runat="server">
-                <div style="clear: both; height: 15px;"></div>
+                <div style="clear: both; height: 10px;"></div>
                 <div style="height: calc(100% - 600px);">
                     <div class="ctrlBasico">
                         <div class="divControlIzquierda" style="width: 250px;">
@@ -106,7 +105,9 @@
                         AutoPostBack="false" OnClientClicked="OpenPuestoSelectionReportePlantillaWindow">
                     </telerik:RadButton>
                     <div style="clear: both; height: 10px;"></div>
+                    <div class="ctrlBasico">
                     <telerik:RadButton runat="server" ID="btnPlantillas" Text="Emitir" AutoPostBack="false" OnClientClicked="OpenPlantillasWindow"></telerik:RadButton>
+                    </div>
                 </div>
             </telerik:RadPane>
             <telerik:RadPane ID="rpAyuda" runat="server" Scrolling="None" Width="22px" Height="50px">

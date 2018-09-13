@@ -157,8 +157,9 @@ namespace SIGE.WebApp.FYD
 
             if (oPrograma != null)
             {
-                txtPeriodo.InnerText = oPrograma.CL_PROGRAMA + " " + oPrograma.NB_PROGRAMA;
-                txtTipoEvaluacion.InnerText = oPrograma.TIPO_EVALUACION;
+                txtPeriodo.InnerText = oPrograma.CL_PROGRAMA;
+                txtDesPeriodo.InnerText = oPrograma.NB_PROGRAMA;
+                txtTipoEvaluacion.InnerText = oPrograma.CL_TIPO_PROGRAMA;
                 radEditorNotas.InnerHtml = validarDsNotas(oPrograma.DS_NOTAS);
 
                 //ProgramaNegocio neg = new ProgramaNegocio();
@@ -853,6 +854,9 @@ namespace SIGE.WebApp.FYD
                 columnGroupPer.HeaderText = item;
                 columnGroupPer.HeaderStyle.BackColor = ObtenerColor(pLstCompetencias.Where(w => w.NB_CLASIFICACION == item).FirstOrDefault().CL_COLOR);
                 columnGroupPer.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+
+                if (item == "Específicas")
+                    columnGroupPer.HeaderStyle.ForeColor = Color.White;
             }
         }
 

@@ -263,8 +263,8 @@ namespace SIGE.WebApp.FYD
         {
             List<string> prioridades = new List<string>();
             prioridades.Add(E_PRIORIDAD.ALTA.ToString());
-            prioridades.Add(E_PRIORIDAD.BAJA.ToString());
             prioridades.Add(E_PRIORIDAD.INTERMEDIA.ToString());
+            prioridades.Add(E_PRIORIDAD.BAJA.ToString());
             cmbPrioridades.DataSource = prioridades;
             cmbPrioridades.DataBind();
         }
@@ -365,7 +365,8 @@ namespace SIGE.WebApp.FYD
                         NB_CLASIFICACION = item.NB_CLASIFICACION,
                         NB_CATEGORIA = item.NB_CATEGORIA,
                         CL_PROGRAMA = item.CL_PROGRAMA,
-                        NB_PROGRAMA = item.NB_PROGRAMA
+                        NB_PROGRAMA = item.NB_PROGRAMA, 
+                        NO_ORDEN = 0
                     });
                 }
             }
@@ -854,12 +855,18 @@ namespace SIGE.WebApp.FYD
 
         protected void grdCompetencias_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
-            grdCompetencias.DataSource = RevisarCompetenciasSeleccionadas(vlstCompetencias);
+            if (vlstCompetencias != null)
+                grdCompetencias.DataSource = RevisarCompetenciasSeleccionadas(vlstCompetencias);
+            else
+                grdCompetencias.DataSource = vCompetencias;
         }
 
         protected void grdParticipantes_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
-            grdParticipantes.DataSource = RevisarEmpleadosSeleccionados(vlstParticipantes);
+            if (vlstParticipantes != null)
+                grdParticipantes.DataSource = RevisarEmpleadosSeleccionados(vlstParticipantes);
+            else
+                grdParticipantes.DataSource = vEmpleados;
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)

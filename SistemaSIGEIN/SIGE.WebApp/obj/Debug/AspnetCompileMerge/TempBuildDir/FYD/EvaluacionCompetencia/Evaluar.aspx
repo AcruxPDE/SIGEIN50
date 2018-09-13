@@ -218,12 +218,13 @@
                         <td runat="server" id="tdSignificado" class="MostrarCelda">
                             <div id="txtDsSignificado" runat="server" style="max-height: 50px; overflow: auto;"></div>
                         </td>
+              
                         <td style="width: 90px;">
                             <telerik:RadButton ID="btnNext" runat="server" Text="Siguiente" Width="90px" OnClick="btnNext_Click"></telerik:RadButton>
                         </td>
                     </tr>
                 </table>
-                <div style="clear: both;"></div>
+                <div style="clear: both; height:10px;"></div>
                 <div id="divCompetencias" runat="server" style="height: 500px; display: block;">
                     <telerik:RadGrid ID="dgvCompetencias" HeaderStyle-Font-Bold="true" runat="server" AutoGenerateColumns="False" Width="100%" Height="100%" OnNeedDataSource="dgvCompetencias_NeedDataSource" OnDataBound="dgvCompetencias_DataBound">
                         <ClientSettings>

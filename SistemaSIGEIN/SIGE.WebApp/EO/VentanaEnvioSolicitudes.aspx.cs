@@ -126,7 +126,16 @@ namespace SIGE.WebApp.EO
                 txtFechas.InnerText = oPeriodo.FE_INICIO.ToString("d") + " a " + oPeriodo.FE_TERMINO.Value.ToShortDateString();
                 txtTipoMetas.InnerText = oPeriodo.CL_TIPO_PERIODO;
                 txtTipoCapturista.InnerText = Utileria.LetrasCapitales(oPeriodo.CL_TIPO_CAPTURISTA);
-                txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO;
+
+
+
+                if (oPeriodo.FG_BONO == true && oPeriodo.FG_MONTO == true)
+                    txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO + " (monto)";
+                else if (oPeriodo.FG_BONO == true && oPeriodo.FG_PORCENTUAL == true)
+                    txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO + " (porcentual)";
+                else
+                    txtTipoBono.InnerText = oPeriodo.CL_TIPO_BONO;
+
                 txtTipoPeriodo.InnerText = oPeriodo.CL_ORIGEN_CUESTIONARIO;
                 if (oPeriodo.CL_TIPO_CAPTURISTA == "Coordinador de evaluación")
                 {
@@ -319,7 +328,7 @@ namespace SIGE.WebApp.EO
                     {
                         dvCapturaMasiva.Visible = true;
                         btnCapturaMasivaFalse.Checked = true;
-                        UtilMensajes.MensajeResultadoDB(rwmMensaje,"Este período tiene metas idénticas para todos los participantes, si se trata de una meta compartida es posible que realices la captura de todo el grupo, el resultado que captures se aplicará a cada uno de los participantes. Selecciona la opción de captura masiva antes de enviar los correos.", E_TIPO_RESPUESTA_DB.SUCCESSFUL, pAlto: 250, pCallBackFunction:"");
+                        UtilMensajes.MensajeResultadoDB(rwmMensaje, "Este período tiene metas idénticas para todos los participantes, si se trata de una meta compartida es posible que realices la captura de todo el grupo, el resultado que captures se aplicara a cada uno de los participantes. Selecciona la opción de captura masiva antes de enviar los correos.", E_TIPO_RESPUESTA_DB.SUCCESSFUL, pAlto: 250, pCallBackFunction:"");
                     }
                 }
 

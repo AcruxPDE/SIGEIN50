@@ -6,9 +6,21 @@
         function OpenSelectionEmployeeWindow() {
             prueba();
             if (arrIdTabuladores != "") {
+                var vPropierties = GetWindowProperties();
                 var myUrl = '<%= ResolveClientUrl("../Comunes/SeleccionEmpleado.aspx") %>';
-                openChildDialog(myUrl + "?&IdTabuladores=" + arrIdTabuladores + "&vClTipoSeleccion=MC_TABULADORES", "winSeleccion", "Selección de  empleados");
+                openChildDialog(myUrl + "?&IdTabuladores=" + arrIdTabuladores + "&vClTipoSeleccion=MC_TABULADORES", "winSeleccion", "Selección de  empleados", vPropierties);
             }
+        }
+
+        function GetWindowProperties() {
+            var currentWnd = GetRadWindow();
+            var browserWnd = window;
+            if (currentWnd)
+                browserWnd = currentWnd.BrowserWindow;
+            return {
+                width: browserWnd.innerWidth - 30,
+                height: browserWnd.innerHeight - 20
+            };
         }
 
         function DeleteTabulador() {
@@ -22,8 +34,9 @@
         }
 
         function OpenSelectionWindow() {
+            var vPropierties = GetWindowProperties();
             var myUrl = '<%= ResolveClientUrl("SeleccionTabulador.aspx") %>';
-            openChildDialog(myUrl, "winSeleccion", "Selección de tabuladores");
+            openChildDialog(myUrl, "winSeleccion", "Selección de tabuladores", vPropierties);
         }
 
         function useDataFromChild(pDato) {
@@ -80,13 +93,15 @@
 
 
         function OpenSelectionTabuladorEmployee() {
+            var vPropierties = GetWindowProperties();
             var myUrl = '<%= ResolveClientUrl("SeleccionTabuladorEmpleado.aspx") %>';
-            openChildDialog(myUrl + "?&IdTabulador=" + <%=vIdTabulador%> + "&vClTipoSeleccion=CONSULTAS", "winSeleccion", "Selección de empleados");
+            openChildDialog(myUrl + "?&IdTabulador=" + <%=vIdTabulador%> + "&vClTipoSeleccion=CONSULTAS", "winSeleccion", "Selección de empleados", vPropierties);
             }
 
         function OpenTabuladorEmpleadoSueldo() {
+            var vPropierties = GetWindowProperties();
             var myUrl = '<%= ResolveClientUrl("SeleccionTabuladorEmpleado.aspx") %>';
-            openChildDialog(myUrl+"?&IdTabulador=" + <%=vIdTabulador%> + "&vClTipoSeleccion=CONSULTAS" + "&CatalogoCl=TABULADOR_SUELDOS", "winSeleccion", "Selección de empleados");
+            openChildDialog(myUrl + "?&IdTabulador=" + <%=vIdTabulador%> + "&vClTipoSeleccion=CONSULTAS" + "&CatalogoCl=TABULADOR_SUELDOS", "winSeleccion", "Selección de empleados", vPropierties);
             }
 
 
@@ -146,8 +161,9 @@
                 }
 
         function OpenSelectionWindow() {
+            var vPropierties = GetWindowProperties();
             var myUrl = '<%= ResolveClientUrl("SeleccionTabulador.aspx") %>';
-            openChildDialog(myUrl, "winSeleccion", "Selección de tabuladores");
+            openChildDialog(myUrl, "winSeleccion", "Selección de tabuladores", vPropierties);
                 }
 
                 function OpenSelectionWindows(pURL, pVentana, pTitle) {
@@ -163,11 +179,13 @@
                 }
 
                 function OpenWindowPeriodos() {
-                    OpenSelectionWindows("/Comunes/SeleccionPeriodosDesempeno.aspx?CL_TIPO=Bono", "winSeleccion", "Seleccion de períodos a comparar");
+                    var vPropierties = GetWindowProperties();
+                    OpenSelectionWindows("/Comunes/SeleccionPeriodosDesempeno.aspx?CL_TIPO=Bono", "winSeleccion", "Seleccion de períodos a comparar", vPropierties);
                 }
 
                 function OpenWindowComparar() {
-                    OpenSelectionWindows("VentanaConsultaBono.aspx", "winBonos", "Comparación de bonos");
+                    var vPropierties = GetWindowProperties();
+                    OpenSelectionWindows("VentanaConsultaBono.aspx", "winBonos", "Comparación de bonos", vPropierties);
                 }
 
                 //function OpenImprimir() {
@@ -183,9 +201,11 @@
                 //}
 
                 function OpenImprimirReporte() {
+                    var vPropierties = GetWindowProperties();
+                    vPropierties.width = 1100;
                     var pIdTabulador = '<%= vIdTabulador %>';
                     var pNivelMercado = '<%= vCuartilComparativo %>';
-                openChildDialog("ReporteGraficaAnalisis.aspx?ID=" + pIdTabulador + "&pNivelMercado=" + pNivelMercado, "winImprimir", "Imprimir consulta");
+                    openChildDialog("ReporteGraficaAnalisis.aspx?ID=" + pIdTabulador + "&pNivelMercado=" + pNivelMercado, "winImprimir", "Imprimir consulta", vPropierties);
             }
 
     </script>
@@ -373,7 +393,7 @@
             <telerik:RadPane ID="rpAyuda" runat="server" Width="20px" Height="90%">
                 <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" Height="100%" ExpandedPaneId="rsConsultas" Width="20px" DockedPaneId="rsbConsultas" ClickToOpen="true">
                     <telerik:RadSlidingPane ID="rsbAyuda" runat="server" CollapseMode="Forward" EnableResize="false" Width="325px" Title="Ayuda" Height="100%">
-                        <div id="divTabuladorMaestro" runat="server" style="text-align:justify;">
+                        <div id="divTabuladorMaestro" runat="server" style="text-align:justify; padding:10px;">
                             <p>
                                 Esta consulta te dará resultados gráficos según los datos que elijas a 																			
                              continuación.																			

@@ -644,6 +644,7 @@
     <Content Include="FYD\ReporteGlobalImpresion.aspx" />
     <Content Include="FYD\VentanaAgregarPrograma.aspx" />
     <Content Include="FYD\VentanaEvaluacionCompetenciasPS.aspx" />
+    <Content Include="FYD\VentanaNuevoEvento.aspx" />
     <Content Include="FYD\VentanaPlanSucesionPrincipal.aspx" />
     <Content Include="FYD\VentanaPlanVidaCarreraPrincipal.aspx" />
     <Content Include="FYD\VentanaVerCuestionario.aspx" />
@@ -1246,6 +1247,11 @@
     <Compile Include="Administracion\VentanaVerOrganigrama.aspx.designer.cs">
       <DependentUpon>VentanaVerOrganigrama.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\RadFilter.Main.es.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RadFilter.Main.es.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\RadGrid.Main.pt-BR.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1594,6 +1600,13 @@
     </Compile>
     <Compile Include="FYD\VentanaEvaluacionCompetenciasPS.aspx.designer.cs">
       <DependentUpon>VentanaEvaluacionCompetenciasPS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FYD\VentanaNuevoEvento.aspx.cs">
+      <DependentUpon>VentanaNuevoEvento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FYD\VentanaNuevoEvento.aspx.designer.cs">
+      <DependentUpon>VentanaNuevoEvento.aspx</DependentUpon>
     </Compile>
     <Compile Include="FYD\VentanaPlanSucesionPrincipal.aspx.cs">
       <DependentUpon>VentanaPlanSucesionPrincipal.aspx</DependentUpon>
@@ -4205,6 +4218,11 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>RadGrid.Main.pt-BR.designer.cs</LastGenOutput>
     </Content>
+    <Content Include="App_GlobalResources\RadFilter.Main.es.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>RadFilter.Main.es.designer.cs</LastGenOutput>
+    </Content>
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -158,41 +158,40 @@
             </AjaxSettings>
         </telerik:RadAjaxManager>
      <label class="labelTitulo">Reporte de eventos</label>
-      <div style="height: calc(100% - 70px); width: 100%;">
+      <div style="height: calc(100% - 60px); width: 100%;">
             <telerik:RadSplitter ID="rsReportes" Width="100%" Height="100%" BorderSize="0" runat="server">
             <telerik:RadPane ID="rpReportes" runat="server">
-
-
-
-                                <div style="float: left; width: 50%; height: 100%;" id="divDerecha">
-
-                    <div style="clear: both; height: 10px;"></div>
-
+               <div style="float: left; width: 50%; height: 100%;" id="divDerecha">
                     <div class="ctrlBasico">
+                        <div class="divControlIzquierda">
                         <label>Fecha de inicio:</label>
+                            </div>
+                        <div class="divControlDerecha">
                         <telerik:RadDatePicker runat="server" ID="dtpInicial" Width="180px"></telerik:RadDatePicker>
+                            </div>
                     </div>
-
                     <div class="ctrlBasico">
+                           <div class="divControlIzquierda">
                         <label>Fecha de término:</label>
+                               </div>
+                          <div class="divControlDerecha">
                         <telerik:RadDatePicker runat="server" ID="dtpTermino" Width="180px"></telerik:RadDatePicker>
+                              </div>
                     </div>
-
-                    <div style="clear: both; height: 10px;"></div>
-
+                    <div style="clear: both;"></div>
                     <div class="ctrlBasico">
+                          <div class="divControlIzquierda">
                         <label>Tipo de curso:</label>
                     </div>
-
-                    <div class="ctrlBasico">
+                         <div class="divControlDerecha">
                         <telerik:RadButton runat="server" ID="btnInterno" ToggleType="Radio" GroupName="TipoCurso" Text="Interno" AutoPostBack="false">
                             <ToggleStates>
                                 <telerik:RadButtonToggleState />
                                 <telerik:RadButtonToggleState CssClass="unchecked" />
                             </ToggleStates>
                         </telerik:RadButton>
+                             </div>
                     </div>
-
                     <div class="ctrlBasico">
                         <telerik:RadButton runat="server" ID="btnExterno" ToggleType="Radio" GroupName="TipoCurso" Text="Externo" AutoPostBack="false">
                             <ToggleStates>
@@ -201,7 +200,6 @@
                             </ToggleStates>
                         </telerik:RadButton>
                     </div>
-
                     <div class="ctrlBasico">
                         <telerik:RadButton runat="server" ID="btnAmbos" ToggleType="Radio" GroupName="TipoCurso" Text="Ambos" AutoPostBack="false" Checked="true">
                             <ToggleStates>
@@ -210,9 +208,7 @@
                             </ToggleStates>
                         </telerik:RadButton>
                     </div>
-
-                    <div style="clear: both; height: 10px;"></div>
-
+                    <div style="clear: both;"></div>
                     <div class="ctrlBasico">
                         <div class="divControlIzquierda">
                             <label>Cursos:</label>
@@ -232,9 +228,7 @@
                             </telerik:RadButton>
                         </div>
                     </div>
-
-                    <div style="clear: both; height: 10px;"></div>
-
+                    <div style="clear: both;"></div>
                     <div class="ctrlBasico">
                         <div class="divControlIzquierda">
                             <label>Instructores:</label>
@@ -254,9 +248,7 @@
                             </telerik:RadButton>
                         </div>
                     </div>
-
-                    <div style="clear: both; height: 10px;"></div>
-
+                    <div style="clear: both;"></div>
                     <div class="ctrlBasico">
                         <div class="divControlIzquierda">
                             <label>Competencias:</label>
@@ -275,11 +267,8 @@
                                 </ToggleStates>
                             </telerik:RadButton>
                         </div>
-
                     </div>
-
-                    <div style="clear: both; height: 10px;"></div>
-
+                    <div style="clear: both;"></div>
                     <div class="ctrlBasico">
                         <div class="divControlIzquierda">
                             <label>Participantes</label>
@@ -298,9 +287,7 @@
                                 </ToggleStates>
                             </telerik:RadButton>
                         </div>
-
                     </div>
-
 <%--                    <div style="clear: both; height: 10px;"></div>
 
                     <div class="ctrlBasico">

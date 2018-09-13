@@ -66,5 +66,6 @@ namespace SIGE.Entidades
         public string M_DEPARTAMENTO_NB_DEPARTAMENTO { get; set; }
         public string M_DEPARTAMENTO_XML_CAMPOS_ADICIONALES { get; set; }
         public byte[] FI_FOTOGRAFIA { get; set; }
+        public Nullable<int> ID_PLAZA { get; set; }
     }
 }

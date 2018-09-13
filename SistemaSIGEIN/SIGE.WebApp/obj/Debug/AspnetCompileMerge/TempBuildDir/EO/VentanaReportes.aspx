@@ -4,7 +4,7 @@
     <script type="text/javascript">
 
         function OpenSelectionGeneroIndiceWindow() {
-            openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=INDICE_GENERO", "WinCuestionario", "Selección de género");
+            openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=INDICE_GENERO" + "&mulSel=0", "WinCuestionario", "Selección de género");
         }
 
         function OpenSelectionDepartamentoIndiceWindow() {
@@ -12,7 +12,7 @@
         }
 
         function OpenSelectionGeneroDistribucionWindow() {
-            openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=DISTRIBUCION_GENERO", "WinCuestionario", "Selección de género");
+            openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=DISTRIBUCION_GENERO" + "&mulSel=0", "WinCuestionario", "Selección de género");
         }
 
         function OpenSelectionDepartamentoDistribucionWindow() {
@@ -20,11 +20,11 @@
         }
 
         function OpenSelectionAdicionales() {
-            openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1" + "&ClLista=IS", "WinConsultaPersonal", "Selección de campos adicionales");
+            openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1&CL_REFERENCIA=M_EMPLEADO" + "&ClLista=IS", "WinConsultaPersonal", "Selección de campos adicionales");
         }
 
         function OpenSelectionAdicionalesResultados() {
-            openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1" + "&ClLista=RD", "WinConsultaPersonal", "Selección de campos adicionales");
+            openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1&CL_REFERENCIA=M_EMPLEADO" + "&ClLista=RD", "WinConsultaPersonal", "Selección de campos adicionales");
         }
 
         function OpenSelectionDepartamentoPreguntasWindow() {
@@ -32,11 +32,11 @@
         }
 
         function OpenSelectionGeneroPreguntasWindow() {
-            openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=PREGUNTAS_GENERO", "WinCuestionario", "Selección de género");
+            openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=PREGUNTAS_GENERO" + "&mulSel=0", "WinCuestionario", "Selección de género");
         }
 
         function OpenSelectionPreAdicionales() {
-            openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1" + "&ClLista=PREGUNTAS", "WinConsultaPersonal", "Selección de campos adicionales");
+            openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1&CL_REFERENCIA=M_EMPLEADO" + "&ClLista=PREGUNTAS", "WinConsultaPersonal", "Selección de campos adicionales");
         }
 
         
@@ -250,7 +250,6 @@
             switch (vtabStrip) {
 
                 case 0:
-
                     divContexto.style.display = 'block';
                     divIndice.style.display = 'none';
                     divDistribucion.style.display = 'none';
@@ -496,7 +495,7 @@
                     <telerik:RadPageView ID="rpIndiceSatisfaccion" runat="server" Height="100%">
                         <telerik:RadTabStrip ID="rtIndice" runat="server" SelectedIndex="0" OnClientTabSelected="TabSelected" MultiPageID="mpgIndice">
                             <Tabs>
-                                <telerik:RadTab Text="Parámetros de Análisis" runat="server" SelectedIndex="1"></telerik:RadTab>
+                                <telerik:RadTab Text="Parámetros de análisis" runat="server" SelectedIndex="1"></telerik:RadTab>
                                 <telerik:RadTab Text="Gráfica de índice de satisfacción" runat="server" SelectedIndex="2"></telerik:RadTab>
                             </Tabs>
                         </telerik:RadTabStrip>
@@ -664,7 +663,7 @@
                     <telerik:RadPageView ID="rpDistribucionResultados" runat="server" Height="100%">
                         <telerik:RadTabStrip ID="rtDistribucion" runat="server" SelectedIndex="0" MultiPageID="mpgDistribucion">
                             <Tabs>
-                                <telerik:RadTab Text="Parámetros de Análisis"></telerik:RadTab>
+                                <telerik:RadTab Text="Parámetros de análisis"></telerik:RadTab>
                                 <telerik:RadTab Text="Gráfica distribución de resultados"></telerik:RadTab>
                             </Tabs>
                         </telerik:RadTabStrip>
@@ -806,7 +805,7 @@
                     <telerik:RadPageView ID="rpvPreguntasAbiertas" runat="server" Height="100%">
                         <telerik:RadTabStrip ID="rtPreguntasAbiertas" runat="server" SelectedIndex="0" MultiPageID="rmpPreguntasabiertas">
                             <Tabs>
-                                <telerik:RadTab Text="Parámetros de Análisis"></telerik:RadTab>
+                                <telerik:RadTab Text="Parámetros de análisis"></telerik:RadTab>
                                 <telerik:RadTab Text="Reporte preguntas abiertas"></telerik:RadTab>
                             </Tabs>
                         </telerik:RadTabStrip>
@@ -977,7 +976,7 @@
                                  conformidad de la persona con respecto a su entorno de trabajo.<br />
                                 <br />
 
-                                Indica los filtros búsqueda para Empleados, así como para las 
+                                Indica los filtros búsqueda para empleados, así como para las 
                                 preguntas en los cuestionarios. 																
                             </p>
                         </div>
@@ -989,7 +988,7 @@
                                 del período.<br />
                                 <br />
 
-                                Indica los filtros búsqueda para Empleados, así como para las 
+                                Indica los filtros búsqueda para empleados, así como para las 
                                 preguntas en los cuestionarios. 
                             </p>
                         </div>
@@ -998,7 +997,7 @@
                                 El reporte muestra las respuestas a las preguntas abiertas aplicadas dentro del período. Los renglones en blanco representan evaluadores que omitieron su respuesta.<br />
                                 <br />
 
-                                Indica los filtros búsqueda para Empleados, así como para las preguntas en los cuestionarios. 													
+                                Indica los filtros búsqueda para empleados, así como para las preguntas en los cuestionarios. 													
                             </p>
                         </div>
                         <div id="divGlobal" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px; text-align:justify;">

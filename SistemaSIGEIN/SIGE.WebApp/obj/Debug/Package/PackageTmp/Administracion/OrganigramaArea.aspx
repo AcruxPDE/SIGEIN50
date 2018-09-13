@@ -132,7 +132,7 @@
     </div>
     <div style="height: calc(100% - 50px); overflow: auto;">
         <div style="position: relative;">
-            <span style="position: absolute; display:none;">
+            <span style="position: absolute; display:none;" >
                 <label name="lblNbAscendencia">Ascendencia:</label><br />
                 <label name="lblMensaje" runat="server" id="lblMensaje" style="">Selecciona un elemento de la lista para mostrar el organigrama.</label>
                 <telerik:RadListBox ID="lstAscendencia" runat="server" OnClientItemDoubleClicked="SelectAreaOrigen"></telerik:RadListBox>

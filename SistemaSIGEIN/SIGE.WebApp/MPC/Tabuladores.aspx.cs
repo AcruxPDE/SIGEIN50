@@ -19,7 +19,6 @@ namespace SIGE.WebApp.MPC
         private string vClUsuario;
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
-
         TabuladoresNegocio nTabulador = new TabuladoresNegocio();
 
         E_TABULADOR vTabulador
@@ -40,7 +39,6 @@ namespace SIGE.WebApp.MPC
             set { ViewState["vs_vFgEditar"] = value; }
         }
 
-
         public bool vFgEliminar
         {
             get { return (bool)ViewState["vs_vFgEliminar"]; }
@@ -53,13 +51,11 @@ namespace SIGE.WebApp.MPC
             set { ViewState["vs_vCambiarEstado"] = value; }
         }
 
-
         public bool vConfigurar
         {
             get { return (bool)ViewState["vs_vConfigurar"]; }
             set { ViewState["vs_vConfigurar"] = value; }
         }
-
 
         public bool vValuar
         {
@@ -67,13 +63,11 @@ namespace SIGE.WebApp.MPC
             set { ViewState["vs_vValuar"] = value; }
         }
 
-
         public bool vIncrementos
         {
             get { return (bool)ViewState["vs_vIncrementos"]; }
             set { ViewState["vs_vIncrementos"] = value; }
         }
-
 
         public bool vCapturar
         {
@@ -81,11 +75,34 @@ namespace SIGE.WebApp.MPC
             set { ViewState["vs_vCapturar"] = value; }
         }
 
-
         public bool vCrear
         {
             get { return (bool)ViewState["vs_vCrear"]; }
             set { ViewState["vs_vCrear"] = value; }
+        }
+
+        public bool vFgTabuladorConfigurado
+        {
+            get { return (bool)ViewState["vs_vFgTabuladorConfigurado"]; }
+            set { ViewState["vs_vFgTabuladorConfigurado"] = value; }
+        }
+
+        private void CargarDatosDetalle(int? pIdPeriodo)
+        {
+            SPE_OBTIENE_TABULADORES_Result vPeriodo = nTabulador.ObtenerTabuladores(ID_TABULADOR: pIdPeriodo).FirstOrDefault();
+
+            if (vPeriodo != null)
+            {
+                txtClPeriodo.Text = vPeriodo.CL_TABULADOR;
+                txtDsPeriodo.Text = vPeriodo.NB_TABULADOR;
+                txtClEstatus.Text = vPeriodo.CL_ESTADO;
+                txtTipo.Text = vPeriodo.CL_TIPO_PUESTO;
+                txtUsuarioMod.Text = vPeriodo.CL_USUARIO_APP_MODIFICA;
+                txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPeriodo.FE_ULTIMA_MODIFICACION);
+                txtNotas.Text = vPeriodo.DS_TABULADOR;
+
+                rlvConsultas.Rebind();
+            }
         }
 
         private void seleccionarPeriodo()
@@ -99,6 +116,17 @@ namespace SIGE.WebApp.MPC
             }
 
             rlvConsultas.Rebind();
+
+            string vIdPeriodoSeleccionado = rlvConsultas.Items[0].GetDataKeyValue("ID_TABULADOR").ToString();
+            if (vIdPeriodoSeleccionado != null)
+            {
+                CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+
+                var vVerificaConfiguracion = nTabulador.VerificarTabulador(int.Parse(vIdPeriodoSeleccionado)).FirstOrDefault();
+                string vClEstado = (rlvConsultas.Items[0].GetDataKeyValue("CL_ESTADO").ToString());
+                EstatusBotonesPeriodos((vClEstado.ToUpper() == "CERRADO") ? false : true, (bool)vVerificaConfiguracion.FG_CONFIGURACION);
+
+            }
         }
 
         private void SeguridadProcesos()
@@ -141,36 +169,47 @@ namespace SIGE.WebApp.MPC
             rlvConsultas.Items[0].FireCommandEvent(RadListView.SortCommandName, campo + ordenamiento);
         }
 
-        private void EstatusBotonesPeriodos(bool pFgEstatus)
+        private void EstatusBotonesPeriodos(bool pFgEstatus, bool pFgConfigurado)
         {
             //btnConfigurar.Enabled = pFgEstatus;
             btnCambiarEstado.Enabled = pFgEstatus && vCambiarEstado;
             btnConfigurar.Enabled = pFgEstatus && vConfigurar;
-            btnValuar.Enabled = pFgEstatus && vValuar;
-            btnIncrementos.Enabled = pFgEstatus && vIncrementos;
-            btnCapturar.Enabled = pFgEstatus && vCapturar;
-            btnCrear.Enabled = pFgEstatus && vCrear;
+            btnValuar.Enabled = pFgEstatus && vValuar && pFgConfigurado;
+            btnIncrementos.Enabled = pFgEstatus && vIncrementos && pFgConfigurado;
+            btnCapturar.Enabled = pFgEstatus && vCapturar && pFgConfigurado;
+            btnCrear.Enabled = pFgEstatus && vCrear && pFgConfigurado;
             
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (vIdConsulta != null)
+            foreach (RadListViewDataItem item in rlvConsultas.SelectedItems)
             {
-                var vMensaje = nTabulador.EliminaTabulador(vIdConsulta.Value, vClUsuario, vNbPrograma);
+                var vMensaje = nTabulador.EliminaTabulador(int.Parse(item.GetDataKeyValue("ID_TABULADOR").ToString()), vClUsuario, vNbPrograma);
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje.MENSAJE[0].DS_MENSAJE.ToString(), vMensaje.CL_TIPO_ERROR, 400, 150, "");
-                vIdConsulta = null;
+                //vIdConsulta = null;
                 rlvConsultas.Rebind();
                 //rlvConsultas.SelectedValues.Clear();
                 //rlvConsultas.SelectedItems.Clear();
+                if (rlvConsultas.SelectedItems.Count > 0)
+                {
+                    string vIdPeriodoSeleccionado = rlvConsultas.SelectedItems[0].GetDataKeyValue("ID_TABULADOR").ToString();
+                    if (vIdPeriodoSeleccionado != null)
+                    {
+                        CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
 
-                txtClPeriodo.Text = "";
-                txtDsPeriodo.Text = "";
-                txtClEstatus.Text = "";
-                txtNotas.Text = "";
-                txtTipo.Text = "";
-                txtUsuarioMod.Text = "";
-                txtFechaMod.Text = "";
+                        var vVerificaConfiguracion = nTabulador.VerificarTabulador(int.Parse(vIdPeriodoSeleccionado)).FirstOrDefault();
+                        string vClEstado = (rlvConsultas.SelectedItems[0].GetDataKeyValue("CL_ESTADO").ToString());
+                        EstatusBotonesPeriodos((vClEstado.ToUpper() == "CERRADO") ? false : true, (bool)vVerificaConfiguracion.FG_CONFIGURACION);
+                    }
+                }
+                //txtClPeriodo.Text = "";
+                //txtDsPeriodo.Text = "";
+                //txtClEstatus.Text = "";
+                //txtNotas.Text = "";
+                //txtTipo.Text = "";
+                //txtUsuarioMod.Text = "";
+                //txtFechaMod.Text = "";
             }
             //foreach (GridDataItem item in grdTabuladores.SelectedItems)
             //{
@@ -183,40 +222,40 @@ namespace SIGE.WebApp.MPC
         protected void btnCambiarEstado_Click(object sender, EventArgs e)
         {
            TabuladoresNegocio nTabulador = new TabuladoresNegocio();
-            var vpTabulador = nTabulador.ObtenerTabuladores(ID_TABULADOR: vIdConsulta).FirstOrDefault();
+           // var vpTabulador = nTabulador.ObtenerTabuladores(ID_TABULADOR: vIdConsulta).FirstOrDefault();
 
-            if (vpTabulador.CL_ESTADO == "ABIERTO")
-            {
-                vpTabulador.CL_ESTADO = "CERRADO";
-            }
-            else
-            {
-                vpTabulador.CL_ESTADO = "ABIERTO";
-            }
-            vTabulador = new E_TABULADOR
-            {
-                CL_TABULADOR = vpTabulador.CL_TABULADOR,
-                ID_TABULADOR = vpTabulador.ID_TABULADOR,
-                NB_TABULADOR = vpTabulador.NB_TABULADOR,
-                DS_TABULADOR = vpTabulador.DS_TABULADOR,
-                NO_NIVELES = vpTabulador.NO_NIVELES,
-                NO_CATEGORIAS = vpTabulador.NO_CATEGORIAS,
-                PR_INFLACION = vpTabulador.PR_INFLACION,
-                PR_PROGRESION = vpTabulador.PR_PROGRESION,
-                XML_VARIACION = vpTabulador.XML_VARIACION,
-                ID_CUARTIL_INCREMENTO = vpTabulador.ID_CUARTIL_INCREMENTO,
-                ID_CUARTIL_INFLACIONAL = vpTabulador.ID_CUARTIL_INFLACIONAL,
-                FE_CREACION = vpTabulador.FE_CREACION,
-                FE_VIGENCIA = vpTabulador.FE_VIGENCIA,
-                CL_ESTADO = vpTabulador.CL_ESTADO,
-                CL_SUELDO_COMPARACION = vpTabulador.CL_SUELDO_COMPARACION,
-                CL_TIPO_PUESTO = vpTabulador.CL_TIPO_PUESTO
-            };
+            //if (vpTabulador.CL_ESTADO == "ABIERTO")
+            //{
+            //    vpTabulador.CL_ESTADO = "CERRADO";
+            //}
+            //else
+            //{
+            //    vpTabulador.CL_ESTADO = "ABIERTO";
+            //}
+            //vTabulador = new E_TABULADOR
+            //{
+            //    CL_TABULADOR = vpTabulador.CL_TABULADOR,
+            //    ID_TABULADOR = vpTabulador.ID_TABULADOR,
+            //    NB_TABULADOR = vpTabulador.NB_TABULADOR,
+            //    DS_TABULADOR = vpTabulador.DS_TABULADOR,
+            //    NO_NIVELES = vpTabulador.NO_NIVELES,
+            //    NO_CATEGORIAS = vpTabulador.NO_CATEGORIAS,
+            //    PR_INFLACION = vpTabulador.PR_INFLACION,
+            //    PR_PROGRESION = vpTabulador.PR_PROGRESION,
+            //    XML_VARIACION = vpTabulador.XML_VARIACION,
+            //    ID_CUARTIL_INCREMENTO = vpTabulador.ID_CUARTIL_INCREMENTO,
+            //    ID_CUARTIL_INFLACIONAL = vpTabulador.ID_CUARTIL_INFLACIONAL,
+            //    FE_CREACION = vpTabulador.FE_CREACION,
+            //    FE_VIGENCIA = vpTabulador.FE_VIGENCIA,
+            //    CL_ESTADO = vpTabulador.CL_ESTADO,
+            //    CL_SUELDO_COMPARACION = vpTabulador.CL_SUELDO_COMPARACION,
+            //    CL_TIPO_PUESTO = vpTabulador.CL_TIPO_PUESTO
+            //};
 
-            E_RESULTADO vResultado = nTabulador.InsertaActualizaTabulador(usuario: vClUsuario, programa: vNbPrograma, pClTipoOperacion: E_TIPO_OPERACION_DB.A.ToString(), vTabulador: vTabulador);
+            E_RESULTADO vResultado = nTabulador.ActualizarEstatusTabulador(pID_TABULADOR: vIdConsulta, pCL_ESTATUS_TABULADOR: "CERRADO", usuario: vClUsuario, programa: vNbPrograma, pClTipoOperacion: E_TIPO_OPERACION_DB.A.ToString());
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
             rlvConsultas.Rebind();
-            EstatusBotonesPeriodos(false);
+            EstatusBotonesPeriodos(false, vFgTabuladorConfigurado);
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "");
 
         }
@@ -264,15 +303,19 @@ namespace SIGE.WebApp.MPC
                 if (int.TryParse(item.GetDataKeyValue("ID_TABULADOR").ToString(), out vIdConsultaLista))
                     vIdConsulta = vIdConsultaLista;
 
-                SPE_OBTIENE_TABULADORES_Result vPeriodo =  nTabulador.ObtenerTabuladores(ID_TABULADOR: vIdConsulta).FirstOrDefault();
+                CargarDatosDetalle(vIdConsulta);
+                //SPE_OBTIENE_TABULADORES_Result vPeriodo =  nTabulador.ObtenerTabuladores(ID_TABULADOR: vIdConsulta).FirstOrDefault();
 
-                txtClPeriodo.Text = vPeriodo.CL_TABULADOR;
-                txtDsPeriodo.Text = vPeriodo.NB_TABULADOR;
-                txtClEstatus.Text = vPeriodo.CL_ESTADO;
-                txtTipo.Text = vPeriodo.CL_TIPO_PUESTO;
-                txtUsuarioMod.Text = vPeriodo.CL_USUARIO_APP_MODIFICA;
-                txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPeriodo.FE_ULTIMA_MODIFICACION);
-                txtNotas.Text = vPeriodo.DS_TABULADOR;
+                //txtClPeriodo.Text = vPeriodo.CL_TABULADOR;
+                //txtDsPeriodo.Text = vPeriodo.NB_TABULADOR;
+                //txtClEstatus.Text = vPeriodo.CL_ESTADO;
+                //txtTipo.Text = vPeriodo.CL_TIPO_PUESTO;
+                //txtUsuarioMod.Text = vPeriodo.CL_USUARIO_APP_MODIFICA;
+                //txtFechaMod.Text = String.Format("{0:dd/MM/yyyy}", vPeriodo.FE_ULTIMA_MODIFICACION);
+                //txtNotas.Text = vPeriodo.DS_TABULADOR;
+                var vVerificaConfiguracion = nTabulador.VerificarTabulador(vIdConsulta).FirstOrDefault();
+                if (vVerificaConfiguracion != null)
+                    vFgTabuladorConfigurado = (bool)vVerificaConfiguracion.FG_CONFIGURACION;
 
 
                 //DESACTIVAR BOTONES
@@ -282,7 +325,7 @@ namespace SIGE.WebApp.MPC
                 //    (item.FindControl("btnEliminar") as RadButton).Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.A.C");
                 
                     string vClEstado = (item.GetDataKeyValue("CL_ESTADO").ToString());
-                    EstatusBotonesPeriodos((vClEstado.ToUpper() == "CERRADO") ? false : true);
+                    EstatusBotonesPeriodos((vClEstado.ToUpper() == "CERRADO") ? false : true, vFgTabuladorConfigurado);
                 }
             }
         }
@@ -324,40 +367,40 @@ namespace SIGE.WebApp.MPC
         protected void btnReabrir_Click(object sender, EventArgs e)
         {
             TabuladoresNegocio nTabulador = new TabuladoresNegocio();
-            var vpTabulador = nTabulador.ObtenerTabuladores(ID_TABULADOR: vIdConsulta).FirstOrDefault();
+            //var vpTabulador = nTabulador.ObtenerTabuladores(ID_TABULADOR: vIdConsulta).FirstOrDefault();
 
-            if (vpTabulador.CL_ESTADO == "ABIERTO")
-            {
-                vpTabulador.CL_ESTADO = "CERRADO";
-            }
-            else
-            {
-                vpTabulador.CL_ESTADO = "ABIERTO";
-            }
-            vTabulador = new E_TABULADOR
-            {
-                CL_TABULADOR = vpTabulador.CL_TABULADOR,
-                ID_TABULADOR = vpTabulador.ID_TABULADOR,
-                NB_TABULADOR = vpTabulador.NB_TABULADOR,
-                DS_TABULADOR = vpTabulador.DS_TABULADOR,
-                NO_NIVELES = vpTabulador.NO_NIVELES,
-                NO_CATEGORIAS = vpTabulador.NO_CATEGORIAS,
-                PR_INFLACION = vpTabulador.PR_INFLACION,
-                PR_PROGRESION = vpTabulador.PR_PROGRESION,
-                XML_VARIACION = vpTabulador.XML_VARIACION,
-                ID_CUARTIL_INCREMENTO = vpTabulador.ID_CUARTIL_INCREMENTO,
-                ID_CUARTIL_INFLACIONAL = vpTabulador.ID_CUARTIL_INFLACIONAL,
-                FE_CREACION = vpTabulador.FE_CREACION,
-                FE_VIGENCIA = vpTabulador.FE_VIGENCIA,
-                CL_ESTADO = vpTabulador.CL_ESTADO,
-                CL_SUELDO_COMPARACION = vpTabulador.CL_SUELDO_COMPARACION,
-                CL_TIPO_PUESTO = vpTabulador.CL_TIPO_PUESTO
-            };
+            //if (vpTabulador.CL_ESTADO == "ABIERTO")
+            //{
+            //    vpTabulador.CL_ESTADO = "CERRADO";
+            //}
+            //else
+            //{
+            //    vpTabulador.CL_ESTADO = "ABIERTO";
+            //}
+            //vTabulador = new E_TABULADOR
+            //{
+            //    CL_TABULADOR = vpTabulador.CL_TABULADOR,
+            //    ID_TABULADOR = vpTabulador.ID_TABULADOR,
+            //    NB_TABULADOR = vpTabulador.NB_TABULADOR,
+            //    DS_TABULADOR = vpTabulador.DS_TABULADOR,
+            //    NO_NIVELES = vpTabulador.NO_NIVELES,
+            //    NO_CATEGORIAS = vpTabulador.NO_CATEGORIAS,
+            //    PR_INFLACION = vpTabulador.PR_INFLACION,
+            //    PR_PROGRESION = vpTabulador.PR_PROGRESION,
+            //    XML_VARIACION = vpTabulador.XML_VARIACION,
+            //    ID_CUARTIL_INCREMENTO = vpTabulador.ID_CUARTIL_INCREMENTO,
+            //    ID_CUARTIL_INFLACIONAL = vpTabulador.ID_CUARTIL_INFLACIONAL,
+            //    FE_CREACION = vpTabulador.FE_CREACION,
+            //    FE_VIGENCIA = vpTabulador.FE_VIGENCIA,
+            //    CL_ESTADO = vpTabulador.CL_ESTADO,
+            //    CL_SUELDO_COMPARACION = vpTabulador.CL_SUELDO_COMPARACION,
+            //    CL_TIPO_PUESTO = vpTabulador.CL_TIPO_PUESTO
+            //};
 
-            E_RESULTADO vResultado = nTabulador.InsertaActualizaTabulador(usuario: vClUsuario, programa: vNbPrograma, pClTipoOperacion: E_TIPO_OPERACION_DB.A.ToString(), vTabulador: vTabulador);
+            E_RESULTADO vResultado = nTabulador.ActualizarEstatusTabulador(pID_TABULADOR: vIdConsulta, pCL_ESTATUS_TABULADOR: "ABIERTO", usuario: vClUsuario, programa: vNbPrograma, pClTipoOperacion: E_TIPO_OPERACION_DB.A.ToString());
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
             rlvConsultas.Rebind();
-            EstatusBotonesPeriodos(true);
+            EstatusBotonesPeriodos(true, vFgTabuladorConfigurado);
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "");
         }
 
@@ -372,6 +415,31 @@ namespace SIGE.WebApp.MPC
             if (vSeleccion.clTipo == "ACTUALIZARLISTA")
             {
                 seleccionarPeriodo();
+            }
+            else if (vSeleccion.clTipo == "CONFIGURACION")
+            {
+                rlvConsultas.Rebind();
+                string vIdPeriodoSeleccionado = rlvConsultas.SelectedItems[0].GetDataKeyValue("ID_TABULADOR").ToString();
+                if (vIdPeriodoSeleccionado != null)
+                {
+                    CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+                    var vVerificaConfiguracion = nTabulador.VerificarTabulador(int.Parse(vIdPeriodoSeleccionado)).FirstOrDefault();
+                    string vClEstado = (rlvConsultas.SelectedItems[0].GetDataKeyValue("CL_ESTADO").ToString());
+                    EstatusBotonesPeriodos((vClEstado.ToUpper() == "CERRADO") ? false : true, (bool)vVerificaConfiguracion.FG_CONFIGURACION);
+                }
+            }
+            else if (vSeleccion.clTipo == "ACTUALIZAR")
+            {
+                rlvConsultas.Rebind();
+                string vIdPeriodoSeleccionado = rlvConsultas.SelectedItems[0].GetDataKeyValue("ID_TABULADOR").ToString();
+                if (vIdPeriodoSeleccionado != null)
+                {
+                    CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+
+                    var vVerificaConfiguracion = nTabulador.VerificarTabulador(int.Parse(vIdPeriodoSeleccionado)).FirstOrDefault();
+                    string vClEstado = (rlvConsultas.SelectedItems[0].GetDataKeyValue("CL_ESTADO").ToString());
+                    EstatusBotonesPeriodos((vClEstado.ToUpper() == "CERRADO") ? false : true, (bool)vVerificaConfiguracion.FG_CONFIGURACION);
+                }
             }
         }
 

@@ -36,7 +36,7 @@ namespace SIGE.Entidades
         public string NO_EXTERIOR { get; set; }
         public string NO_INTERIOR { get; set; }
         public string CL_CODIGO_POSTAL { get; set; }
-        public Nullable<byte> NO_TIEMPO_RESIDENCIA { get; set; }
+        public string NO_TIEMPO_RESIDENCIA { get; set; }
         public string CL_TIPO_SANGUINEO { get; set; }
         public string XML_TELEFONOS { get; set; }
         public string CL_IDENTIFICACION_OFICIAL { get; set; }

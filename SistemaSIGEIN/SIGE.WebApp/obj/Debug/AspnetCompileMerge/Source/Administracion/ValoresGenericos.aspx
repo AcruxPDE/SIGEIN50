@@ -160,7 +160,7 @@
         </div>
          <div style="clear: both;"></div>
      
-    <div style="height:calc(100% - 140px);">
+    <div style="height:calc(100% - 145px);">
       <telerik:RadGrid ID="grvValoresGenericos" ShowHeader="true"  runat="server" AllowPaging="true" 
           AllowSorting="true"   GroupPanelPosition="Top" GridLines="None"  Width="100%"
           AllowAutomaticUpdates="true"  ClientSettings-EnablePostBackOnRowClick ="false" Height="100%"  AllowFilteringByColumn="true"  
@@ -192,13 +192,13 @@
    </div>
    <div style="clear: both; height: 10px;"></div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowPopupmodalCatalogoGenericoNuevo" AutoPostBack="false" runat="server" Text="Agregar" Width="100"></telerik:RadButton>
+        <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowPopupmodalCatalogoGenericoNuevo" AutoPostBack="false" runat="server" Text="Agregar"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowPopupmodalCatalogoGenericoEditar" AutoPostBack="false" runat="server" Text="Editar" Width="100"></telerik:RadButton>
+        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowPopupmodalCatalogoGenericoEditar" AutoPostBack="false" runat="server" Text="Editar"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" Width="100" OnClientClicking="ConfirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
+        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" OnClientClicking="ConfirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
     </div>
 
        <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>

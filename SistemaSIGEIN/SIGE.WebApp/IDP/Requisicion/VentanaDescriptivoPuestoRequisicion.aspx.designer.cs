@@ -256,15 +256,6 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadListBox lstCompetenciasEspecificas;
         
         /// <summary>
-        /// txtCompetenciasRequeridas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtCompetenciasRequeridas;
-        
-        /// <summary>
         /// radBtnAgregarMostrar control.
         /// </summary>
         /// <remarks>
@@ -298,7 +289,7 @@ namespace SIGE.WebApp.IDP {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtTiempo;
+        protected global::Telerik.Web.UI.RadNumericTextBox txtTiempo;
         
         /// <summary>
         /// btnRequerida control.
@@ -508,13 +499,13 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadButton btnEliminarLateral;
         
         /// <summary>
-        /// pvwResponsaFuncionalidadesGener control.
+        /// pvwFuncionesGenericas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadPageView pvwResponsaFuncionalidadesGener;
+        protected global::Telerik.Web.UI.RadPageView pvwFuncionesGenericas;
         
         /// <summary>
         /// radEditorResponsable control.
@@ -533,15 +524,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadEditor radEditorAutoridad;
-        
-        /// <summary>
-        /// pvwFuncionesGenericas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadPageView pvwFuncionesGenericas;
         
         /// <summary>
         /// grdFuncionesGenericas control.

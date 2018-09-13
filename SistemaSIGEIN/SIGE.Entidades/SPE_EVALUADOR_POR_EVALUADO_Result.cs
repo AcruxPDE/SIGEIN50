@@ -20,5 +20,6 @@ namespace SIGE.Entidades
         public string CL_CORREO_ELECTRONICO { get; set; }
         public string CL_PUESTO { get; set; }
         public string NB_PUESTO { get; set; }
+        public string CL_ESTADO { get; set; }
     }
 }

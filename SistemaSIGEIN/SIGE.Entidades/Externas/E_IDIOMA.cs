@@ -9,6 +9,7 @@ namespace SIGE.Entidades.Externas
     public enum E_IDIOMA_ENUM
     {
         ES,
-        EN
+        EN,
+        PORT
     }
 }

@@ -40,7 +40,7 @@
         }
 
         function CleanEmployeeSelection(sender, args) {
-            ChangeListItem("", "Todos", $find("<%=lstEmpleado.ClientID %>"));
+            ChangeListItem("", "No Seleccionado", $find("<%=lstEmpleado.ClientID %>"));
         }
 
         function useDataFromChild(pDato) {

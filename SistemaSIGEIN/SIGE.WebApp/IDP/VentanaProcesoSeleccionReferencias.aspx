@@ -223,7 +223,7 @@
         <div style="clear: both;"></div>
     <div class="ctrlBasico">
         <div class="divControlIzquierdaPS">
-            <label>Comentarios adicionales: </label>
+            <label>Comentarios: </label>
         </div>
     </div>
     <div style="clear: both;"></div>

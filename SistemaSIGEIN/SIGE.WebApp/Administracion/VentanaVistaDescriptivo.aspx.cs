@@ -169,6 +169,8 @@ namespace SIGE.WebApp.Administracion
 
         #region Metodos
 
+
+
         public void CargarDatos(int? pIdDescriptivo)
         {
             DescriptivoNegocio nDescriptivo = new DescriptivoNegocio();
@@ -211,7 +213,7 @@ namespace SIGE.WebApp.Administracion
                 txtRangoEdadMin.InnerText = vDescriptivo.NO_EDAD_MINIMA.ToString();
                 txtRangoEdadMax.InnerText = vDescriptivo.NO_EDAD_MAXIMA.ToString();
 
-                txtCompetenciasRequeridas.InnerHtml = vDescriptivo.DS_COMPETENCIAS_REQUERIDAS;
+               // txtCompetenciasRequeridas.InnerHtml = vDescriptivo.DS_COMPETENCIAS_REQUERIDAS;
                 foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTO_ESCOLARIDAD).Elements("PUESTO_ESCOLARIDAD"))
                 {
                     if (item.Attribute("CL_TIPO_ESCOLARIDAD").Value == E_CL_TIPO_ESCOLARIDAD.POSTGRADO.ToString())
@@ -470,8 +472,7 @@ namespace SIGE.WebApp.Administracion
                     XElement vPrestaciones = XElement.Parse(vDescriptivo.XML_PRESTACIONES);
                     if (vPrestaciones != null)
                     {
-                        vPrestaciones.Name = vNbFirstRadEditorTagName;
-                        txtPrestaciones.InnerHtml = vPrestaciones.ToString();
+                        txtPrestaciones.InnerHtml = validarDsNotas(vPrestaciones.ToString());
                     }
                 }
 
@@ -631,42 +632,42 @@ namespace SIGE.WebApp.Administracion
         //  //  txtArea.InnerText = vNbArea;
         //}
 
-        public void ObtenerCentroAdmvo()
-        {
-            string vNbCentroAdmvo;
+        //public void ObtenerCentroAdmvo()
+        //{
+        //    string vNbCentroAdmvo;
 
-            var vCentroAdmvo = vListaCentroAdmvo.Where(t => t.FG_SELECCIONADO).FirstOrDefault();
+        //    var vCentroAdmvo = vListaCentroAdmvo.Where(t => t.FG_SELECCIONADO).FirstOrDefault();
 
-            if (vCentroAdmvo != null)
-            {
-                vNbCentroAdmvo = vCentroAdmvo.NB_CENTRO_ADMVO;
-            }
-            else
-            {
-                vNbCentroAdmvo = "No Seleccionado";
-            }
+        //    if (vCentroAdmvo != null)
+        //    {
+        //        vNbCentroAdmvo = vCentroAdmvo.NB_CENTRO_ADMVO;
+        //    }
+        //    else
+        //    {
+        //        vNbCentroAdmvo = "No Seleccionado";
+        //    }
 
-            txtCentroAdmin.InnerText = vNbCentroAdmvo;
-        }
+        //    txtCentroAdmin.InnerText = vNbCentroAdmvo;
+        //}
 
-        public void ObtenerCentroOptvo()
-        {
-            string vNbCentroOptvo;
+        //public void ObtenerCentroOptvo()
+        //{
+        //    string vNbCentroOptvo;
 
-            var vCentroOptvo = vListaCentroOptvo.Where(t => t.FG_SELECCIONADO).FirstOrDefault();
+        //    var vCentroOptvo = vListaCentroOptvo.Where(t => t.FG_SELECCIONADO).FirstOrDefault();
 
-            if (vCentroOptvo != null)
-            {
-                vNbCentroOptvo = vCentroOptvo.NB_CENTRO_OPTVO;
-            }
-            else
-            {
-                vNbCentroOptvo = "No Seleccionado";
-            }
+        //    if (vCentroOptvo != null)
+        //    {
+        //        vNbCentroOptvo = vCentroOptvo.NB_CENTRO_OPTVO;
+        //    }
+        //    else
+        //    {
+        //        vNbCentroOptvo = "No Seleccionado";
+        //    }
 
-            txtCentroOptvo.InnerText = vNbCentroOptvo;
+        //    txtCentroOptvo.InnerText = vNbCentroOptvo;
 
-        }
+        //}
 
         public void ObtenerPuestos(string pPuesto, RadComboBox radCmb)
         {
@@ -1332,8 +1333,8 @@ namespace SIGE.WebApp.Administracion
 
                 //ObtenerAreas();
 
-                ObtenerCentroAdmvo();
-                ObtenerCentroOptvo();
+                //ObtenerCentroAdmvo();
+                //ObtenerCentroOptvo();
 
                 //ObtenerPuestos(E_PUESTO_RELACION.SUBORDINADO.ToString(), cmbPuestosSubordinado);
                 //ObtenerPuestos(E_PUESTO_RELACION.INTERRELACIONADO.ToString(), cmbPuestosInterrelacionados);

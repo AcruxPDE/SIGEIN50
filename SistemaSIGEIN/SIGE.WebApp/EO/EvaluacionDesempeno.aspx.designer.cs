@@ -31,6 +31,24 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadAjaxManager ramOrganigrama;
         
         /// <summary>
+        /// rsEvaluacionDesempeno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSplitter rsEvaluacionDesempeno;
+        
+        /// <summary>
+        /// rpEvaluacionDesempeno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPane rpEvaluacionDesempeno;
+        
+        /// <summary>
         /// rlvPeriodos control.
         /// </summary>
         /// <remarks>

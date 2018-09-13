@@ -30,49 +30,49 @@
             <telerik:RadPane ID="rpCapturaManual" runat="server">
                 <telerik:RadMultiPage ID="mpgCapturaManual" runat="server" SelectedIndex="0" Height="100%">
                     <telerik:RadPageView ID="rpvLaboralI" runat="server">
-                        <iframe id="ifLaboralI" runat="server" frameborder="1"></iframe>
+                        <iframe id="ifLaboralI" runat="server" frameborder="1" style="padding:10px;"></iframe>
                     </telerik:RadPageView>
                      <telerik:RadPageView ID="rpvInteresesPersonales" runat="server">
-                        <iframe id="ifInteresesPersonales" runat="server" frameborder="1"></iframe>
+                        <iframe id="ifInteresesPersonales" runat="server" frameborder="1" style="padding:10px;"></iframe>
                     </telerik:RadPageView>
                      <telerik:RadPageView ID="rpvEstilo" runat="server">
-                        <iframe id="ifEstilo" runat="server" frameborder="1"></iframe>
+                        <iframe id="ifEstilo" runat="server" frameborder="1" style="padding:10px;"></iframe>
                     </telerik:RadPageView>
                      <telerik:RadPageView ID="rpvMentalI" runat="server">
-                        <iframe id="ifMentalI" runat="server" frameborder="1"></iframe>
+                        <iframe id="ifMentalI" runat="server" frameborder="1" style="padding:10px;"></iframe>
                     </telerik:RadPageView>
                      <telerik:RadPageView ID="rpvMentalII" runat="server">
-                        <iframe id="ifMentalII" runat="server" frameborder="1"></iframe>
+                        <iframe id="ifMentalII" runat="server" frameborder="1" style="padding:10px;"></iframe>
                     </telerik:RadPageView>
                      <telerik:RadPageView ID="rpvLaboralII" runat="server">
-                        <iframe id="ifLaboralII" runat="server" frameborder="1"></iframe>
+                        <iframe id="ifLaboralII" runat="server" frameborder="1" style="padding:10px;"></iframe>
                     </telerik:RadPageView>
                      <telerik:RadPageView ID="rpvAdáptacion" runat="server">
-                        <iframe id="ifAdaptacion" runat="server" frameborder="1"></iframe>
+                        <iframe id="ifAdaptacion" runat="server" frameborder="1" style="padding:10px;"></iframe>
                     </telerik:RadPageView>
                      <telerik:RadPageView ID="rpvTiva" runat="server">
-                        <iframe id="ifTiva" runat="server" frameborder="1"></iframe>
+                        <iframe id="ifTiva" runat="server" frameborder="1" style="padding:10px;"></iframe>
                     </telerik:RadPageView>
                      <telerik:RadPageView ID="rpvOrtografiaI" runat="server">
-                        <iframe id="ifOrtografiaI" runat="server" frameborder="1"></iframe>
+                        <iframe id="ifOrtografiaI" runat="server" frameborder="1" style="padding:10px;"></iframe>
                     </telerik:RadPageView>
                      <telerik:RadPageView ID="rpvOrtgrafiaII" runat="server">
-                        <iframe id="ifOrtografiaII" runat="server" frameborder="1"></iframe>
+                        <iframe id="ifOrtografiaII" runat="server" frameborder="1" style="padding:10px;"></iframe>
                     </telerik:RadPageView>
                      <telerik:RadPageView ID="rpvOrtografiaIII" runat="server">
-                        <iframe id="ifOrtografiaIII" runat="server" frameborder="1"></iframe>
+                        <iframe id="ifOrtografiaIII" runat="server" frameborder="1" style="padding:10px;"></iframe>
                     </telerik:RadPageView>
                      <telerik:RadPageView ID="rpvTecnica" runat="server">
-                        <iframe id="ifTecnica" runat="server" frameborder="1"></iframe>
+                        <iframe id="ifTecnica" runat="server" frameborder="1" style="padding:10px;"></iframe>
                     </telerik:RadPageView>
                      <telerik:RadPageView ID="rpvRedaccion" runat="server">
                         <iframe id="ifRedaccion" runat="server" frameborder="1"></iframe>
                     </telerik:RadPageView>
                      <telerik:RadPageView ID="rpvIngles" runat="server">
-                        <iframe id="ifIngles" runat="server" frameborder="1"></iframe>
+                        <iframe id="ifIngles" runat="server" frameborder="1" style="padding:10px;"></iframe>
                     </telerik:RadPageView>
                      <telerik:RadPageView ID="rpvFactoresAdicionales" runat="server">
-                        <iframe id="ifFactoresAdicionales" runat="server" frameborder="1"></iframe>
+                        <iframe id="ifFactoresAdicionales" runat="server" frameborder="1" style="padding:10px;"></iframe>
                     </telerik:RadPageView>
                 </telerik:RadMultiPage>
             </telerik:RadPane>

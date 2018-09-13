@@ -13,11 +13,11 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
 
         SistemaSigeinEntities contexto;
 
-        public List<SPE_OBTIENE_PLAN_VIDA_CARRERA_Result> obtenerDatosPlanVidaCarrera(int ID_PUESTO, int? ID_EMPRESA)
+        public List<SPE_OBTIENE_PLAN_VIDA_CARRERA_Result> obtenerDatosPlanVidaCarrera(int ID_PUESTO, int? ID_EMPRESA, int? ID_PLAZA)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_PLAN_VIDA_CARRERA(ID_PUESTO, ID_EMPRESA).ToList();
+                return contexto.SPE_OBTIENE_PLAN_VIDA_CARRERA(ID_PUESTO, ID_EMPRESA, ID_PLAZA).ToList();
             }
         }
 

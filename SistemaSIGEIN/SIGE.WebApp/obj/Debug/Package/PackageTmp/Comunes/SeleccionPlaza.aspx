@@ -31,9 +31,11 @@
                         nbPuestoSuperior: masterTable.getCellByColumnUniqueName(selectedItem, "NB_PUESTO_JEFE").innerHTML,
                         clTipoCatalogo: "<%= vClCatalogo %>"
                     };
-                    vPlazas.push(vPlaza);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vPlazas.length;
+                    if (!existeElemento(vPlaza)) {
+                        vPlazas.push(vPlaza);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vPlazas.length;
+                    }
                 }
                 return true;
             }
@@ -45,6 +47,15 @@
                 browserWnd.radalert("Selecciona una plaza.", 400, 150);
             }
 
+            return false;
+        }
+
+        function existeElemento(pPlaza) {
+            for (var i = 0; i < vPlazas.length; i++) {
+                var vValue = vPlazas[i];
+                if (vValue.idPlaza == pPlaza.idPlaza)
+                    return true;
+            }
             return false;
         }
 

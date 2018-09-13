@@ -30,11 +30,11 @@ namespace SIGE.WebApp.IDP
             get { return (List<E_CANDIDATO>)ViewState["lstCandidatoS"]; }
         }
 
-        public Guid vIdCandidatosPruebas
-        {
-            get { return (Guid)ViewState["vs_vIdCandidatosPruebas"]; }
-            set { ViewState["vs_vIdCandidatosPruebas"] = value; }
-        }
+        //public Guid vIdCandidatosPruebas
+        //{
+        //    get { return (Guid)ViewState["vs_vIdCandidatosPruebas"]; }
+        //    set { ViewState["vs_vIdCandidatosPruebas"] = value; }
+        //}
 
         private int? vIdBateria
         {
@@ -265,6 +265,35 @@ namespace SIGE.WebApp.IDP
             //    }
             }
         }
+
+        private int GenerarIdCandidato(int pIdEmpleado)
+        {
+            int vIdCandidato = 0;
+
+            SolicitudNegocio nSolicitud = new SolicitudNegocio();
+            E_RESULTADO vResultado = nSolicitud.InsertaCandidatoEmpleado(pIdEmpleado, vClUsuario, vNbPrograma);
+            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+
+            var idCandidato = 0;
+            bool esNumero;
+
+            if (vResultado.MENSAJE.Where(x => x.CL_IDIOMA == "ID_CANDIDATO").FirstOrDefault() != null)
+            {
+                esNumero = int.TryParse(vResultado.MENSAJE.Where(x => x.CL_IDIOMA == "ID_CANDIDATO").FirstOrDefault().DS_MENSAJE, out idCandidato);
+                vIdCandidato = idCandidato;
+            }
+
+            if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+            {
+                return vIdCandidato;
+            }
+            else
+            {
+                UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                return 0;
+            }
+        }
+
 
         protected void cambiaColor(System.Web.UI.HtmlControls.HtmlGenericControl prueba)
         {
@@ -1106,14 +1135,14 @@ namespace SIGE.WebApp.IDP
             return lstPruebas;
         }
 
-        protected void CargarDesdeContexto(List<int> pIdCandidatos)
+        protected void CargarDesdeContexto(List<E_CANDIDATO> pIdCandidatos)
         {
 
-            foreach (int item in pIdCandidatos)
+            foreach (var item in pIdCandidatos)
             {
                 E_CANDIDATO f = new E_CANDIDATO
                 {
-                    ID_CANDIDATO = item
+                    ID_CANDIDATO = item.ID_CANDIDATO
                 };
 
                 lstCandidatoS.Add(f);
@@ -1403,11 +1432,35 @@ namespace SIGE.WebApp.IDP
 
                 radSliderNivel.SelectedValue = radSliderNivel.Items[1].Value;
 
-                if (Request.Params["pIdCandidatosPruebas"] != null)
+                //if (Request.Params["pIdCandidatosPruebas"] != null)
+                //{
+                //    vIdCandidatosPruebas = Guid.Parse(Request.Params["pIdCandidatosPruebas"].ToString());
+                //    if (ContextoCandidatosBateria.oCandidatosBateria.Where(w => w.vIdGeneraBaterias == vIdCandidatosPruebas).FirstOrDefault().vListaCandidatos.Count > 0)
+                 //     CargarDesdeContexto(ContextoCandidatosBateria.oCandidatosBateria.Where(w => w.vIdGeneraBaterias == vIdCandidatosPruebas ).FirstOrDefault().vListaCandidatos);
+                //}
+
+                if (Request.Params["CL_ORIGEN"] != null)
                 {
-                    vIdCandidatosPruebas = Guid.Parse(Request.Params["pIdCandidatosPruebas"].ToString());
-                    if (ContextoCandidatosBateria.oCandidatosBateria.Where(w => w.vIdGeneraBaterias == vIdCandidatosPruebas).FirstOrDefault().vListaCandidatos.Count > 0)
-                        CargarDesdeContexto(ContextoCandidatosBateria.oCandidatosBateria.Where(w => w.vIdGeneraBaterias == vIdCandidatosPruebas ).FirstOrDefault().vListaCandidatos);
+                    if (Request.Params["CL_ORIGEN"].ToString() == "EMPLEADO")
+                    {
+                        List<E_CANDIDATO> ListaCandidatos = new List<E_CANDIDATO>();
+                        ListaCandidatos = JsonConvert.DeserializeObject<List<E_CANDIDATO>>(Request.Params["candidatos"].ToString());
+
+                        foreach (var item in ListaCandidatos)
+                        {
+                            if (item.ID_CANDIDATO == 0)
+                             item.ID_CANDIDATO =  GenerarIdCandidato(item.ID_EMPLEADO);
+                        }
+
+                        CargarDesdeContexto(ListaCandidatos);
+                    }
+                }
+                else if (Request.Params["candidatos"] != null)
+                {
+                    List<E_CANDIDATO> ListaCandidatos = new List<E_CANDIDATO>();
+                    ListaCandidatos = JsonConvert.DeserializeObject<List<E_CANDIDATO>>(Request.Params["candidatos"].ToString());
+
+                    CargarDesdeContexto(ListaCandidatos);
                 }
 
                 if (Request.Params["pIdBateria"] != null)
@@ -1417,7 +1470,7 @@ namespace SIGE.WebApp.IDP
                     {
                         //PruebasNegocio nPruebas = new PruebasNegocio();
                         //var vBateria = nPruebas.ObtieneBateria(pIdBateria: vIdBateria).FirstOrDefault();
-                        rtsConfiguracionClima.Tabs.ElementAt(0).Visible = false;
+                        rtsConfiguracion.Tabs.ElementAt(0).Visible = false;
                         rmpCapturaResultados.SelectedIndex = 1;
                         radCmbNiveles.SelectedValue = "PER";
                         radCmbNiveles.Enabled = false;
@@ -1649,7 +1702,7 @@ namespace SIGE.WebApp.IDP
                         string vMensaje = resultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
                         if (resultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
                         {
-                            UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, resultado.CL_TIPO_ERROR, pCallBackFunction: "closeWindow");
+                            UtilMensajes.MensajeResultadoDB(rwmAlertas, "Pruebas asignadas con éxito.", resultado.CL_TIPO_ERROR, pCallBackFunction: "closeWindow");
 
                         }
                         else

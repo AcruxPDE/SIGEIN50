@@ -18,6 +18,7 @@ namespace SIGE.WebApp.Administracion
         private string vNbPrograma;
         private int? vIdEmpresa;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+
         private void ExportarExcel()
         {
             grdPuestos.ExportSettings.OpenInNewWindow = true;

@@ -591,13 +591,14 @@ namespace SIGE.WebApp.FYD.EvaluacionCompetencia
                         pIdIndex++;
                     }
 
-                    txtNbClasificacion.InnerHtml = String.Empty;
-                    txtDsSignificado.InnerHtml = String.Empty;
+                    //txtNbClasificacion.InnerHtml = String.Empty;
+                    //txtDsSignificado.InnerHtml = String.Empty;
+                    txtNbClasificacion.InnerHtml = "Preguntas abiertas";
                     divColorClas.Style.Add("background", "White");
                     divCamposExtras.Style["display"] = "block";
                     divCompetencias.Style["display"] = "none";
 
-                    tdClasificacion.Attributes["class"] = "OcultarCelda";
+                   // tdClasificacion.Attributes["class"] = "OcultarCelda";
                     tdSignificado.Attributes["class"] = "OcultarCelda";
 
                 }
@@ -723,13 +724,15 @@ namespace SIGE.WebApp.FYD.EvaluacionCompetencia
                             pIdIndex++;
                         }
 
-                        txtNbClasificacion.InnerHtml = String.Empty;
+                        //txtNbClasificacion.InnerHtml = String.Empty;
+                        //txtDsSignificado.InnerHtml = String.Empty;
+                        txtNbClasificacion.InnerHtml = "Preguntas abiertas";
                         txtDsSignificado.InnerHtml = String.Empty;
                         divColorClas.Style.Add("background", "White");
                         divCamposExtras.Style["display"] = "block";
-                        divCompetencias.Style["display"] = "none";
+                         divCompetencias.Style["display"] = "none";
 
-                        tdClasificacion.Attributes["class"] = "OcultarCelda";
+                       // tdClasificacion.Attributes["class"] = "OcultarCelda";
                         tdSignificado.Attributes["class"] = "OcultarCelda";
 
                         //txtDsSignificado.Style["display"] = "none";

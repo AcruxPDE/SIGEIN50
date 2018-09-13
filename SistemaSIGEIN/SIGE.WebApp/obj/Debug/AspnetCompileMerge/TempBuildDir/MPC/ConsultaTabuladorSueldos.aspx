@@ -12,8 +12,20 @@
     </style>
     <script type="text/javascript">
 
+        function GetWindowProperties() {
+            var currentWnd = GetRadWindow();
+            var browserWnd = window;
+            if (currentWnd)
+                browserWnd = currentWnd.BrowserWindow;
+            return {
+                width: browserWnd.innerWidth - 30,
+                height: browserWnd.innerHeight - 20
+            };
+        }
+
         function OpenTabuladorEmpleadoSueldo() {
-            openChildDialog("SeleccionTabuladorEmpleado.aspx?&IdTabulador=" + <%=vIdTabulador%> + "&vClTipoSeleccion=CONSULTAS" + "&CatalogoCl=TABULADOR_SUELDOS", "winSeleccion", "Selección de empleados");
+            var vPropierties = GetWindowProperties();
+            openChildDialog("SeleccionTabuladorEmpleado.aspx?&IdTabulador=" + <%=vIdTabulador%> + "&vClTipoSeleccion=CONSULTAS" + "&CatalogoCl=TABULADOR_SUELDOS", "winSeleccion", "Selección de empleados", vPropierties);
         }
 
         function useDataFromChild(pDato) {
@@ -38,7 +50,9 @@
         }
 
         function OpenImprimirReporte(pIdTabulador, pNivelMercado) {
-            openChildDialog("ReporteTabuladorSueldos.aspx?ID=" + pIdTabulador + "&pNivelMercado=" + pNivelMercado, "winImprimir", "Imprimir consulta");
+            var vPropierties = GetWindowProperties();
+            vPropierties.width = 1100;
+            openChildDialog("ReporteTabuladorSueldos.aspx?ID=" + pIdTabulador + "&pNivelMercado=" + pNivelMercado, "winImprimir", "Imprimir consulta", vPropierties);
         }
 
     </script>
@@ -92,61 +106,62 @@
             <telerik:RadTab Text="Tabulador de sueldos"></telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
-    <div style="height: calc(100% - 50px); overflow: auto;">
-        <telerik:RadSplitter ID="rsConsultas" runat="server" Width="100%" Height="100%" BorderSize="0">
-            <telerik:RadPane ID="rpConsultas" runat="server" Width="100%" Height="100%">
-                <%--   <div style="height: calc(100% - 20px); overflow: auto;">--%>
-                <telerik:RadMultiPage ID="rmpTabuladorSueldos" runat="server" SelectedIndex="0" Height="100%">
-                    <telerik:RadPageView ID="rpvContexto" runat="server">
-                        <div style="height: 10px;"></div>
-                        <div class="ctrlBasico">
-                            <table class="ctrlTableForm">
-                                <tr>
-                                    <td class="ctrlTableDataContext">
-                                        <label>Versión:</label></td>
-                                    <td colspan="2" class="ctrlTableDataBorderContext">
-                                        <div id="txtClaveTabulador" runat="server" style="min-width: 100px;"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="ctrlTableDataContext">
-                                        <label>Descipción:</label></td>
-                                    <td colspan="2" class="ctrlTableDataBorderContext">
-                                        <div id="txtNbTabulador" runat="server" style="min-width: 100px;"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="ctrlTableDataContext">
-                                        <label>Notas:</label></td>
-                                    <td colspan="2" class="ctrlTableDataBorderContext">
-                                        <div id="txtDescripción" runat="server" style="min-width: 100px;"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="ctrlTableDataContext">
-                                        <label>Fecha:</label></td>
-                                    <td colspan="2" class="ctrlTableDataBorderContext">
-                                        <div id="txtFecha" runat="server" style="min-width: 100px;"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="ctrlTableDataContext">
-                                        <label>Vigencia:</label></td>
-                                    <td colspan="2" class="ctrlTableDataBorderContext">
-                                        <div id="txtVigencia" runat="server" style="min-width: 100px;"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="ctrlTableDataContext">
-                                        <label>Tipo de puestos:</label></td>
-                                    <td colspan="2" class="ctrlTableDataBorderContext">
-                                        <div id="txtPuestos" runat="server" style="min-width: 100px;"></div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </telerik:RadPageView>
-                    <telerik:RadPageView ID="rpvCriteriosTabuladorSueldos" runat="server">
+    <div style="height: calc(100% - 50px);">
+<%--        <telerik:RadSplitter ID="rsConsultas" runat="server" Width="100%" Height="100%" BorderSize="0">
+            <telerik:RadPane ID="rpConsultas" runat="server" Width="100%" Height="100%">--%>
+        <telerik:RadMultiPage ID="rmpTabuladorSueldos" runat="server" SelectedIndex="0" Height="100%">
+            <telerik:RadPageView ID="rpvContexto" runat="server" Height="100%">
+                <div style="height: 10px;"></div>
+                <div class="ctrlBasico">
+                    <table class="ctrlTableForm">
+                        <tr>
+                            <td class="ctrlTableDataContext">
+                                <label>Versión:</label></td>
+                            <td colspan="2" class="ctrlTableDataBorderContext">
+                                <div id="txtClaveTabulador" runat="server" style="min-width: 100px;"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ctrlTableDataContext">
+                                <label>Descipción:</label></td>
+                            <td colspan="2" class="ctrlTableDataBorderContext">
+                                <div id="txtNbTabulador" runat="server" style="min-width: 100px;"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ctrlTableDataContext">
+                                <label>Notas:</label></td>
+                            <td colspan="2" class="ctrlTableDataBorderContext">
+                                <div id="txtDescripción" runat="server" style="min-width: 100px;"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ctrlTableDataContext">
+                                <label>Fecha:</label></td>
+                            <td colspan="2" class="ctrlTableDataBorderContext">
+                                <div id="txtFecha" runat="server" style="min-width: 100px;"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ctrlTableDataContext">
+                                <label>Vigencia:</label></td>
+                            <td colspan="2" class="ctrlTableDataBorderContext">
+                                <div id="txtVigencia" runat="server" style="min-width: 100px;"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ctrlTableDataContext">
+                                <label>Tipo de puestos:</label></td>
+                            <td colspan="2" class="ctrlTableDataBorderContext">
+                                <div id="txtPuestos" runat="server" style="min-width: 100px;"></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </telerik:RadPageView>
+            <telerik:RadPageView ID="rpvCriteriosTabuladorSueldos" runat="server" Height="100%">
+                <telerik:RadSplitter ID="rsConsultas" runat="server" Width="100%" Height="100%" BorderSize="0">
+                    <telerik:RadPane ID="rpConsultas" runat="server" Width="100%" Height="100%">
                         <div style="height: 10px; clear: both;"></div>
                         <div class="ctrlBasico">
                             <label id="Label4" name="lbRangoNivel" runat="server">Rango de nivel:</label>
@@ -199,9 +214,31 @@
                         <div class="ctrlBasico">
                             <telerik:RadButton ID="btnEmpleadoCriterio" runat="server" name="btnSeleccionarEmpleado" OnClientClicked="OpenTabuladorEmpleadoSueldo" AutoPostBack="false" Text="Seleccionar mediante filtros"></telerik:RadButton>
                         </div>
-                    </telerik:RadPageView>
-                    <telerik:RadPageView ID="rpvTabuladorSueldos" runat="server">
-                        <div style="height: calc(100% - 60px);">
+                    </telerik:RadPane>
+                    <telerik:RadPane ID="rpAyuda" runat="server" Width="20px" Height="100%">
+                        <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" Height="100%" ExpandedPaneId="rsConsultas" Width="20px" DockedPaneId="rsbConsultas" ClickToOpen="true">
+                            <telerik:RadSlidingPane ID="rsbAyuda" runat="server" CollapseMode="Forward" EnableResize="false" Width="325px" Title="Ayuda" Height="100%">
+                                <div id="divTabuladorMaestro" runat="server">
+                                    <p style="text-align: justify; padding: 10px 10px 10px 10px;">
+                                        El reporte muestra por defecto a todos los empleados y el nivel del mercado configurados en el tabulador anteriormente. 
+                                        <br />
+                                        La pestaña "Definición de criterios" permite definir tu búsqueda para el reporte solicitado.
+                                        <br />
+                                        En caso de elegir "Seleccionar mediante filtros", se abrirá una ventana en la cual puedes seleccionar los empleados mediante los filtros deseados
+                                        <br />
+                                        Nota: En algunos casos las opciones pueden ser mutualmente exclusivas.
+                                    </p>
+                                </div>
+                            </telerik:RadSlidingPane>
+                        </telerik:RadSlidingZone>
+                    </telerik:RadPane>
+                </telerik:RadSplitter>
+            </telerik:RadPageView>
+            <telerik:RadPageView ID="rpvTabuladorSueldos" runat="server" Height="100%">
+                <div style="height: 10px;"></div>
+                <div style="height: calc(100% - 60px);">
+                    <telerik:RadSplitter ID="RadSplitter1" runat="server" Width="100%" Height="100%" BorderSize="0">
+                        <telerik:RadPane ID="RadPane1" runat="server" Width="100%" Height="100%">
                             <telerik:RadGrid ID="rgdComparacionInventarioPersonal"
                                 runat="server" Height="100%"
                                 AutoGenerateColumns="true"
@@ -226,16 +263,66 @@
                                     </Columns>
                                 </MasterTableView>
                             </telerik:RadGrid>
-                        </div>
-                        <div style="height: 10px;"></div>
-                        <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnImprimir" runat="server" AutoPostBack="true" Text="Imprimir" OnClick="btnImprimir_Click"></telerik:RadButton>
-                        </div>
-                    </telerik:RadPageView>
-                </telerik:RadMultiPage>
-                <%--    </div>--%>
-            </telerik:RadPane>
-            <telerik:RadPane ID="rpAyuda" runat="server" Width="20px" Height="90%">
+                        </telerik:RadPane>
+                        <telerik:RadPane ID="RadPane2" runat="server" Width="20px" Height="100%">
+                            <telerik:RadSlidingZone ID="RadSlidingZone1" runat="server" SlideDirection="Left" Height="100%" ExpandedPaneId="rsConsultas" Width="20px" DockedPaneId="rsbConsultas" ClickToOpen="true">
+                                <telerik:RadSlidingPane ID="RadSlidingPane1" runat="server" CollapseMode="Forward" EnableResize="false" Width="325px" Title="Ayuda" Height="100%">
+                                    <div id="div1" runat="server">
+                                        <p style="text-align: justify; padding: 10px 10px 10px 10px;">
+                                            El reporte muestra por defecto a todos los empleados y el nivel del mercado configurados en el tabulador anteriormente. 
+                                            <br />
+                                            La pestaña "Definición de criterios" permite definir tu búsqueda para el reporte solicitado.<br />
+                                            En caso de elegir "Seleccionar mediante filtros", se abrirá una ventana en la cual puedes seleccionar los empleados mediante los filtros deseados
+                                            <br />
+                                            Nota: En algunos casos las opciones pueden ser mutualmente exclusivas.
+                                        </p>
+                                    </div>
+                                </telerik:RadSlidingPane>
+                                <telerik:RadSlidingPane ID="rspSemaforo" runat="server" CollapseMode="Forward" EnableResize="false" Width="450px" Title="Semáforo" Height="100%">
+                                    <div style="padding: 10px; text-align: justify;">
+                                        <telerik:RadGrid ID="grdCodigoColores"
+                                            runat="server"
+                                            Height="215"
+                                            Width="400"
+                                            AllowSorting="true"
+                                            AllowFilteringByColumn="true"
+                                            HeaderStyle-Font-Bold="true"
+                                            ShowHeader="true"
+                                            OnNeedDataSource="grdCodigoColores_NeedDataSource">
+                                            <ClientSettings>
+                                                <Scrolling AllowScroll="true" UseStaticHeaders="false"></Scrolling>
+                                            </ClientSettings>
+                                            <PagerStyle AlwaysVisible="true" />
+                                            <GroupingSettings CaseSensitive="false" />
+                                            <MasterTableView AutoGenerateColumns="false" AllowPaging="false" AllowFilteringByColumn="false" ShowHeadersWhenNoRecords="true">
+                                                <CommandItemSettings ShowAddNewRecordButton="false" ShowExportToExcelButton="True" ShowExportToCsvButton="false" ShowRefreshButton="false"
+                                                    AddNewRecordText="Insertar" />
+                                                <Columns>
+                                                    <telerik:GridTemplateColumn HeaderText="Color" HeaderStyle-Width="60" AllowFiltering="false">
+                                                        <ItemTemplate>
+                                                            <div style="margin: auto; width: 25px; border: 1px solid gray; background: <%# Eval("COLOR")%>; border-radius: 5px;">&nbsp;&nbsp;</div>
+                                                            &nbsp;
+                                                        </div>
+                                                        </ItemTemplate>
+                                                    </telerik:GridTemplateColumn>
+                                                    <telerik:GridBoundColumn AutoPostBackOnFilter="false" CurrentFilterFunction="Contains" HeaderStyle-Width="260" HeaderText="Descripción" DataField="DESCRIPCION"></telerik:GridBoundColumn>
+                                                </Columns>
+                                            </MasterTableView>
+                                        </telerik:RadGrid>
+                                    </div>
+                                </telerik:RadSlidingPane>
+                            </telerik:RadSlidingZone>
+                        </telerik:RadPane>
+                    </telerik:RadSplitter>
+                </div>
+                <div style="height: 10px;"></div>
+                <div class="ctrlBasico">
+                    <telerik:RadButton ID="btnImprimir" runat="server" AutoPostBack="true" Text="Imprimir" OnClick="btnImprimir_Click"></telerik:RadButton>
+                </div>
+            </telerik:RadPageView>
+        </telerik:RadMultiPage>
+<%--            </telerik:RadPane>
+            <telerik:RadPane ID="rpAyuda" runat="server" Width="20px" Height="100%">
                 <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" Height="100%" ExpandedPaneId="rsConsultas" Width="20px" DockedPaneId="rsbConsultas" ClickToOpen="true">
                     <telerik:RadSlidingPane ID="rsbAyuda" runat="server" CollapseMode="Forward" EnableResize="false" Width="325px" Title="Ayuda" Height="100%">
                         <div id="divTabuladorMaestro" runat="server">
@@ -287,6 +374,6 @@
                     </telerik:RadSlidingPane>
                 </telerik:RadSlidingZone>
             </telerik:RadPane>
-        </telerik:RadSplitter>
+        </telerik:RadSplitter>--%>
     </div>
 </asp:Content>

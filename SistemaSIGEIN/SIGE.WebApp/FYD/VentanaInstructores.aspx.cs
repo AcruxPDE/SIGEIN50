@@ -291,29 +291,12 @@ namespace SIGE.WebApp.FYD
             txtRFC.Enabled = vFgHabilitarCampoInterno;
             txtCURP.Enabled = vFgHabilitarCampoInterno;
 
-            
-            
-            //txtCalle.Enabled = vFgHabilitarCampoInterno;
-            //txtCP.Enabled = vFgHabilitarCampoInterno;
-            //radBtnBuscaCP.Enabled = vFgHabilitarCampoInterno;
-            //txtNoexterior.Enabled = vFgHabilitarCampoInterno;
-            //txtNointerior.Enabled = vFgHabilitarCampoInterno;
-
-            //txtPais.Enabled = vFgHabilitarCampoInterno;
-            txtCP.Enabled = vFgHabilitarCampoInterno;
-            txtCalle.Enabled = vFgHabilitarCampoInterno;
-            txtCP.Enabled = vFgHabilitarCampoInterno;
-            txtNoexterior.Enabled = vFgHabilitarCampoInterno;
-            txtNointerior.Enabled = vFgHabilitarCampoInterno;
-
-
 
             //txtCalle.Enabled = vFgHabilitarCampoInterno;
             //txtCP.Enabled = vFgHabilitarCampoInterno;
             //radBtnBuscaCP.Enabled = vFgHabilitarCampoInterno;
             //txtNoexterior.Enabled = vFgHabilitarCampoInterno;
             //txtNointerior.Enabled = vFgHabilitarCampoInterno;
-
             txtFeNacimiento.Enabled = vFgHabilitarCampoInterno;
             //txtEmail.Enabled = vFgHabilitarCampoInterno;
             //radBtnBuscarestado.Enabled = vFgHabilitarCampoInterno;

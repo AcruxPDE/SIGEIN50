@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
+using Telerik.Web.UI;
 
 namespace SIGE.WebApp.IDP
 {
@@ -23,7 +24,7 @@ namespace SIGE.WebApp.IDP
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
 
-        private int vIdBateria
+        public int vIdBateria
         {
             get { return (int)ViewState["vs_vIdBateria"];}
             set { ViewState["vs_vIdBateria"]=value;}
@@ -57,6 +58,21 @@ namespace SIGE.WebApp.IDP
             }
         }
 
+        protected string ObtenerPruebasEliminar()
+        {
+            string vXmlPruebas = "";
+
+            if (grdPruebas.SelectedItems.Count > 0)
+            {
+                XElement XmlPruebas = new XElement("PRUEBAS");
+                foreach (GridDataItem item in grdPruebas.SelectedItems)
+                    XmlPruebas.Add(new XElement("PRUEBA",
+                                      new XAttribute("ID_PRUEBA", item.GetDataKeyValue("ID_PRUEBA").ToString())));
+
+                vXmlPruebas = XmlPruebas.ToString();
+            }
+            return vXmlPruebas;
+        }
 
         #endregion
 
@@ -90,6 +106,23 @@ namespace SIGE.WebApp.IDP
 
             if (vSeleccion.clTipo == "PRUEBAS")
                 AgregarPruebas(vSeleccion.oSeleccion.ToString());
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            string vXmlPruebas = ObtenerPruebasEliminar();
+            if (vXmlPruebas != "")
+            {
+                PruebasNegocio pruebas = new PruebasNegocio();
+                var vResultado = pruebas.EliminarPruebaBateria(vXmlPruebas, vIdBateria, vClUsuario, vNbPrograma);
+                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                UtilMensajes.MensajeResultadoDB(rwMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+                    grdPruebas.Rebind();
+            }
+            else
+                UtilMensajes.MensajeResultadoDB(rwMensaje, "Selecciona las pruebas a eliminar", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
+           
         }
 
 

@@ -404,8 +404,8 @@ namespace SIGE.WebApp.MPC
             vDtPivot.Columns.Add("ID_TABULADOR_EMPLEADO", typeof(int));
             vDtPivot.Columns.Add("NO_NIVEL", typeof(int));
             vDtPivot.Columns.Add("NO", typeof(string));
-            vDtPivot.Columns.Add("NB_PUESTO", typeof(string));
             vDtPivot.Columns.Add("NB_DEPARTAMENTO", typeof(string));
+            vDtPivot.Columns.Add("NB_PUESTO", typeof(string));
             vDtPivot.Columns.Add("NB_EMPLEADO", typeof(string));
             vDtPivot.Columns.Add("MN_SUELDO_ORIGINAL", typeof(string));
             //vDtPivot.Columns.Add("DIFERENCIA", typeof(string));
@@ -496,8 +496,8 @@ namespace SIGE.WebApp.MPC
             vDtPivot.Columns.Add("ID_TABULADOR_EMPLEADO", typeof(int));
             vDtPivot.Columns.Add("NO_NIVEL", typeof(int));
             vDtPivot.Columns.Add("NO", typeof(string));
-            vDtPivot.Columns.Add("NB_PUESTO", typeof(string));
             vDtPivot.Columns.Add("NB_DEPARTAMENTO", typeof(string));
+            vDtPivot.Columns.Add("NB_PUESTO", typeof(string));
             vDtPivot.Columns.Add("NB_EMPLEADO", typeof(string));
             vDtPivot.Columns.Add("MN_SUELDO_ORIGINAL", typeof(string));
             //vDtPivot.Columns.Add("DIFERENCIA", typeof(string));
@@ -1008,7 +1008,7 @@ namespace SIGE.WebApp.MPC
                     ConfigurarColumna(e.Column, 190, "Puesto", true, false, true, false);
                     break;
                 case "NB_DEPARTAMENTO":
-                    ConfigurarColumna(e.Column, 200, "Área", true, false, true, false);
+                    ConfigurarColumna(e.Column, 200, "Área/Departamento", true, false, true, false);
                     break;
                 case "NB_EMPLEADO":
                     ConfigurarColumna(e.Column, 250, "Nombre completo", true, false, true, false);
@@ -1029,7 +1029,7 @@ namespace SIGE.WebApp.MPC
                     break;
                 case "ExpandColumn": break;
                 default:
-                    ConfigurarColumna(e.Column, 150, "", true, true, false, true);
+                    ConfigurarColumna(e.Column, 120, "", true, true, false, true);
                     break;
             }
 
@@ -1122,11 +1122,13 @@ namespace SIGE.WebApp.MPC
 
         protected void rcbMercadoTabuladorSueldos_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
+            GenerarHeaderGroup();
             RecalcularConsulta();
         }
 
         protected void rntComienzaNivel_TextChanged(object sender, EventArgs e)
         {
+            GenerarHeaderGroup();
             RecalcularConsulta();
         }
     }

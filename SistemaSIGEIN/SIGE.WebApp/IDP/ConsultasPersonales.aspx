@@ -186,7 +186,7 @@
                             <%--<CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" ShowExportToExcelButton="true" ExportToExcelText="Exportar a Excel" />--%>
 
                             <Columns>
-                                <telerik:GridTemplateColumn DataField="CL_COLOR" UniqueName="CL_COLOR" ItemStyle-HorizontalAlign="Center" HeaderText="Color">
+                                <telerik:GridTemplateColumn DataField="CL_COLOR" UniqueName="CL_COLOR" ItemStyle-HorizontalAlign="Center" HeaderText="">
                                     <ItemStyle Width="10px" Height="15px" HorizontalAlign="Center" />
                                     <HeaderStyle Width="25px" Height="20px" />
                                     <ItemTemplate>

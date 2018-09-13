@@ -25,9 +25,11 @@
                         nbEvaluado: masterTable.getCellByColumnUniqueName(selectedItem, "NB_EMPLEADO_COMPLETO").innerHTML,
                         clTipoCatalogo: "<%= vClCatalogo %>"
                     };
-                    vEvaluados.push(vEvaluado);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vEvaluados.length;
+                    if (!existeElemento(vEvaluado)) {
+                        vEvaluados.push(vEvaluado);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vEvaluados.length;
+                    }
                 }
                 return true;
             }
@@ -39,6 +41,15 @@
                 browserWnd.radalert("Selecciona un evaluado.", 400, 150);
             }
 
+            return false;
+        }
+
+        function existeElemento(pEvaluado) {
+            for (var i = 0; i < vEvaluados.length; i++) {
+                var vValue = vEvaluados[i];
+                if (vValue.idEvaluado == pEvaluado.idEvaluado)
+                    return true;
+            }
             return false;
         }
 

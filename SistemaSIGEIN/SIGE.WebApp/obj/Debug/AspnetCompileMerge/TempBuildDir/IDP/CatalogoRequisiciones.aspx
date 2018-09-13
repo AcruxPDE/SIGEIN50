@@ -252,7 +252,7 @@
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Causa" DataField="NB_CAUSA" UniqueName="NB_CAUSA" HeaderStyle-Width="150" FilterControlWidth="80" DataFormatString="{0:d}"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="NB_PUESTO" HeaderStyle-Width="300" FilterControlWidth="130"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave puesto" DataField="CL_PUESTO" UniqueName="CL_PUESTO" HeaderStyle-Width="120" FilterControlWidth="50"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Estado del proceso" DataField="CL_ESTATUS_REQUISICION" UniqueName="CL_ESTATUS_REQUISICION" HeaderStyle-Width="130" FilterControlWidth="60"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Estatus del proceso" DataField="CL_ESTATUS_REQUISICION" UniqueName="CL_ESTATUS_REQUISICION" HeaderStyle-Width="130" FilterControlWidth="60"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Fecha de Autorización" DataField="FE_AUTORIZA_REQUISICION" UniqueName="FE_AUTORIZA_REQUISICION" HeaderStyle-Width="150" FilterControlWidth="90" DataFormatString="{0:dd/MM/yyyy}"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Empresa" DataField="NB_EMPRESA" UniqueName="NB_EMPRESA" HeaderStyle-Width="200" FilterControlWidth="130"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Empleado a suplir" DataField="NB_EMPLEADO_SUPLENTE" UniqueName="NB_EMPLEADO_SUPLENTE" HeaderStyle-Width="250" FilterControlWidth="130"></telerik:GridBoundColumn>
@@ -278,6 +278,7 @@
     <div class="ctrlBasico">
         <telerik:RadButton ID="btnBuscarCandidato" runat="server" Text="Buscar candidato" AutoPostBack="false" OnClientClicking="OpenCandidatoIdoneoWindow"></telerik:RadButton>
     </div>
+      <div style="clear: both;"></div>
     <telerik:RadWindowManager ID="rwmAlertas" runat="server" OnClientClose="returnDataToParentPopup">
         <Windows>
             <telerik:RadWindow ID="winNotificarRequisicion" runat="server" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
@@ -289,14 +290,15 @@
             <telerik:RadWindow ID="winSolicitud" runat="server" Title="Solicitud" Behaviors="Close" Modal="true" VisibleStatusbar="false"></telerik:RadWindow>
             <telerik:RadWindow ID="winSeleccionCandidato" runat="server" Behaviors="Close" Modal="true" VisibleStatusbar="false"></telerik:RadWindow>
             <%-- Ventanas de proceso de selección --%>
-<%--             <telerik:RadWindow ID="winSeleccion" runat="server" Title="Seleccionar"  ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
-            <telerik:RadWindow ID="winAnalisisCompetenicas" runat="server" Title="Analisis de competencias"  ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
+            <%--<telerik:RadWindow ID="winSeleccion" runat="server" Title="Seleccionar"  ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
+         
             <telerik:RadWindow ID="winProcesoSeleccion" runat="server" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
             <telerik:RadWindow ID="winEntrevista" runat="server" Behaviors="Close, Reload" Modal="true" VisibleStatusbar="false" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
-            <telerik:RadWindow ID="winPerfil" runat="server" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
-            <telerik:RadWindow ID="winDescriptivo" runat="server" Title="Agregar/Editar Puestos"  ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="onCloseWindow"></telerik:RadWindow>--%>
-            <telerik:RadWindow ID="winVistaPrevia" runat="server" Title="Vista previa"  ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
+           
+            <telerik:RadWindow ID="winDescriptivo" runat="server" Title="Agregar/Editar Puestos"  ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="onCloseWindow"></telerik:RadWindow>--%>  
+             <telerik:RadWindow ID="winAnalisisCompetenicas" runat="server" Title="Analisis de competencias"  ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
              <telerik:RadWindow ID="winPerfil" runat="server" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
+            <telerik:RadWindow ID="winVistaPrevia" runat="server" Title="Vista previa"  ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
            <telerik:RadWindow ID="winSeleccionPuestos" runat="server" Title="Seleccionar Jefe inmediato" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
         </Windows>
     </telerik:RadWindowManager>

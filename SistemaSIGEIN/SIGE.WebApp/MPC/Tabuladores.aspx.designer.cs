@@ -427,6 +427,15 @@ namespace SIGE.WebApp.MPC {
         protected global::Telerik.Web.UI.RadWindow WinTabuladores;
         
         /// <summary>
+        /// WinTabuladoresConfig control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadWindow WinTabuladoresConfig;
+        
+        /// <summary>
         /// winSeleccion control.
         /// </summary>
         /// <remarks>

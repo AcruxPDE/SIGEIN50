@@ -27,10 +27,11 @@
                         dsPeriodo: masterTable.getCellByColumnUniqueName(selectedItem, "DS_PERIODO").innerHTML,
                         clTipoCatalogo: tipoPeriodo
                     };
-
-                    vPeriodos.push(vPeriodo);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vPeriodos.length;
+                    if (!existeElemento(vPeriodo)) {
+                        vPeriodos.push(vPeriodo);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vPeriodos.length;
+                    }
                 }
 
                 return true;
@@ -43,6 +44,15 @@
                 browserWnd.radalert("Selecciona un período.", 400, 150);
             }
 
+            return false;
+        }
+
+        function existeElemento(pPeriodo) {
+            for (var i = 0; i < vPeriodos.length; i++) {
+                var vValue = vPeriodos[i];
+                if (vValue.idPeriodo == pPeriodo.idPeriodo)
+                    return true;
+            }
             return false;
         }
 

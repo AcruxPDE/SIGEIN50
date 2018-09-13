@@ -602,6 +602,7 @@ namespace SIGE.WebApp.EO
                 }
                 vColumnCum.HeaderStyle.Width = 130;
                 vColumnCum.HeaderStyle.Font.Bold = true;
+                vColumnCum.FooterStyle.HorizontalAlign = HorizontalAlign.Center;
                 vGrid.Columns.Add(vColumnCum);
                 GridTemplateColumn templateColumnArchivo = new GridTemplateColumn();
                 templateColumnArchivo.HeaderText = "Evidencia";
@@ -695,6 +696,7 @@ namespace SIGE.WebApp.EO
                     List<E_META> vMetasGrafica = nDesempeno.ObtenerMetasGrafica(SELECCIONPERIODOS.ToString(), vIdEmpleado).Select(s => new E_META { NO_META = s.NO_META.ToString(), DS_META = s.DS_META, PR_CUMPLIMIENTO = s.PR_CUMPLIMIENTO_META, COLOR_NIVEL = s.COLOR_NIVEL, NB_PERIODO = s.NB_PERIODO }).ToList();
                     vMetas = new List<E_METAS_PERIODOS>();
                     rhcCumplimientoPersonal.PlotArea.Series.Clear();
+                    rhcCumplimientoPersonal.PlotArea.YAxis.LabelsAppearance.DataFormatString = "{0:N2}%";
                     vRow = 1;
 
                     foreach (E_META item in vMetasGrafica.OrderBy(o => o.DS_META))
@@ -718,7 +720,7 @@ namespace SIGE.WebApp.EO
 
                     foreach (var Metas in vMetas.OrderBy(o => o.DS_META))
                     {
-                        rhcCumplimientoPersonal.PlotArea.XAxis.Items.Add("Meta" + Metas.NO_META_EVALUA);
+                        rhcCumplimientoPersonal.PlotArea.XAxis.Items.Add("Meta " + Metas.NO_META_EVALUA);
                     }
 
                     List<E_SELECCION_PERIODOS_DESEMPENO> vListaPeriodosGraf = new List<E_SELECCION_PERIODOS_DESEMPENO>();
@@ -730,6 +732,7 @@ namespace SIGE.WebApp.EO
                         ColumnSeries vSerie = new ColumnSeries();
                         // vSerie.Name = (items.nbPeriodo);
                         vSerie.TooltipsAppearance.ClientTemplate = items.nbPeriodo;
+                   
 
                         vListaMetasEvalPeriodo = new List<E_METAS_EVALUADO_PERIODO>();
 

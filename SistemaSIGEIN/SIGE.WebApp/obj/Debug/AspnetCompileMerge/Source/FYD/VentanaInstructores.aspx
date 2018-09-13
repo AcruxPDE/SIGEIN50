@@ -4,7 +4,7 @@
     <script id="MyScript" type="text/javascript">
 
         function ShowSelecEmpleado() {
-            var vURL = "../Comunes/SeleccionEmpleado.aspx?CLFILTRO=NINGUNO";
+            var vURL = "../Comunes/SeleccionEmpleado.aspx?CLFILTRO=NINGUNO&mulSel=0";
             var vTitulo = "Selección de empleado";
             var currentWnd = GetRadWindow();
             var browserWnd = window;
@@ -76,6 +76,12 @@
             if (sender == vBtnBuscaCP) {
                 openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionCP.aspx", "winSeleccionCP", "Selección de Codigo Postal", windowProperties);
             }
+        }
+
+        //Eliminar el tooltip del control
+        function pageLoad() {
+            var datePicker = $find("<%= txtFeNacimiento.ClientID %>");
+            datePicker.get_popupButton().title = "";
         }
 
         function useDataFromChild(pData) {
@@ -178,6 +184,15 @@
         }
 
     </script>
+    <style>
+
+         .ruBrowse
+       {
+           
+           width: 150px !important;
+       }
+
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
@@ -522,9 +537,9 @@
                         </Items>
                     </telerik:RadComboBox>
                 </div>
-                <div class="ctrlBasico">
+                <div class="ctrlBasico" style="width: 420px">
                     Subir documento:<br />
-                    <telerik:RadAsyncUpload ID="rauDocumento" runat="server" MultipleFileSelection="Disabled"></telerik:RadAsyncUpload>
+                    <telerik:RadAsyncUpload ID="rauDocumento" runat="server" MultipleFileSelection="Disabled" ><Localization Select="Seleccionar" /></telerik:RadAsyncUpload>
                 </div>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnAgregarDocumento" runat="server" Text="Agregar" OnClick="btnAgregarDocumento_Click"></telerik:RadButton>

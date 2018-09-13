@@ -57,7 +57,7 @@ namespace SIGE.WebApp.Administracion
         private void CargarCatalogos()
         {
             ClasificacionCompetenciaNegocio nCompetenciaClasificacion = new ClasificacionCompetenciaNegocio();
-            var vClasificaciones = nCompetenciaClasificacion.ObtieneClasificacionCompetencia();
+            var vClasificaciones = nCompetenciaClasificacion.ObtieneClasificacionCompetencia(4);
             var vEspecificas = nCompetenciaClasificacion.ObtieneClasificacionCompetencia(4).FirstOrDefault(); ;
             if (vClasificaciones != null)
             {
@@ -471,6 +471,26 @@ namespace SIGE.WebApp.Administracion
                 }
             }
 
+        }
+
+        protected void cmbCategoria_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+        {
+            ClasificacionCompetenciaNegocio nCompetenciaClasificacion = new ClasificacionCompetenciaNegocio();
+
+            if (e.Value != "")
+            {
+                var vClasificaciones = nCompetenciaClasificacion.ObtieneClasificacionCompetencia(pClTipoCompetecia: e.Value);
+                var vValorSelect = nCompetenciaClasificacion.ObtieneClasificacionCompetencia(pClTipoCompetecia: e.Value).FirstOrDefault();
+                if (vClasificaciones != null)
+                {
+                    cmbClasificaciones.DataSource = vClasificaciones;
+                    cmbClasificaciones.DataTextField = "NB_CLASIFICACION_COMPETENCIA";
+                    cmbClasificaciones.DataValueField = "CL_CLASIFICACION";
+                    cmbClasificaciones.DataBind();
+                    cmbClasificaciones.SelectedValue = vValorSelect.CL_CLASIFICACION;
+                    cmbClasificaciones.Text = vValorSelect.NB_CLASIFICACION_COMPETENCIA;
+                }
+            }
         }
     }
 }

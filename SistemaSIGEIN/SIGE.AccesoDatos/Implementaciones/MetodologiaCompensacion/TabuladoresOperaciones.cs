@@ -32,6 +32,22 @@ namespace SIGE.AccesoDatos.Implementaciones.MetodologiaCompensacion
 
        #endregion
 
+
+       #region VERIFICA CONFIGURACIÓN  K_TABULADOR
+
+       public List<SPE_VERIFICA_CONFIGURACION_TABULADOR_Result> VerificarTabulador(int? ID_TABULADOR = null)
+       {
+           using (context = new SistemaSigeinEntities())
+           {
+               var q = from vTabuladores in context.SPE_VERIFICA_CONFIGURACION_TABULADOR(ID_TABULADOR)
+                       select vTabuladores;
+               return q.ToList();
+           }
+       }
+
+
+       #endregion
+
        #region OBTIENE DATOS  K_TABULADOR_NIVEL
 
        public List<SPE_OBTIENE_TABULADORES_NIVEL_Result> ObtenerTabuladoresNivel(int? ID_TABULADOR = null)
@@ -58,6 +74,21 @@ namespace SIGE.AccesoDatos.Implementaciones.MetodologiaCompensacion
        }
        
         #endregion
+
+
+       #region   ACTUALIZA ESTATUS  K_TABULADOR
+
+       public XElement ActualizarEstatusTabulador( int? pID_TABULADOR, string pCL_ESTATUS_TABULADOR, string usuario, string programa, string pClTipoOperacion)
+       {
+           using (context = new SistemaSigeinEntities())
+           {
+               ObjectParameter poutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+               context.SPE_ACTUALIZA_ESTATUS_TABULADOR(poutClaveRetorno, pID_TABULADOR, pCL_ESTATUS_TABULADOR, usuario, programa, pClTipoOperacion);
+               return XElement.Parse(poutClaveRetorno.Value.ToString());
+           }
+       }
+
+       #endregion
 
        #region  INSERTA  DATOS COPIA  K_TABULADOR
        public XElement InsertarTabuladorCopia(string pClTipoOperacion, E_TABULADOR vTabuladores, string usuario, string programa)

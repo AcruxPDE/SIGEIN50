@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -297,7 +298,7 @@ namespace SIGE.WebApp.Administracion
 
                 txtRangoEdadMin.Value = vDescriptivo.NO_EDAD_MINIMA;
                 txtRangoEdadMax.Value = vDescriptivo.NO_EDAD_MAXIMA;
-                txtCompetenciasRequeridas.Text = vDescriptivo.DS_COMPETENCIAS_REQUERIDAS;
+               // txtCompetenciasRequeridas.Text = vDescriptivo.DS_COMPETENCIAS_REQUERIDAS;
 
                 foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTO_ESCOLARIDAD).Elements("PUESTO_ESCOLARIDAD"))
                 {
@@ -542,9 +543,9 @@ namespace SIGE.WebApp.Administracion
                 foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTO_FUNCION).Elements("PUESTO_FUNCION"))
                 {
                     E_FUNCION_GENERICA fg = new E_FUNCION_GENERICA();
-
                     if (item.Element("XML_DETALLE") != null)
                     {
+
                         XElement dsDetalle = item.Element("XML_DETALLE").Element("DS_DETALLE");
                         dsDetalle.Name = vNbFirstRadEditorTagName;
 
@@ -832,14 +833,27 @@ namespace SIGE.WebApp.Administracion
                     E_COMPETENCIAS c = (E_COMPETENCIAS)item.DataItem;
                     RadSlider vRsFila = (RadSlider)item.FindControl("rsNivel1");
 
-                    vRsFila.Items[0].ToolTip = c.DS_COMENTARIOS_NIVEL0;
-                    vRsFila.Items[1].ToolTip = c.DS_COMENTARIOS_NIVEL1;
-                    vRsFila.Items[2].ToolTip = c.DS_COMENTARIOS_NIVEL2;
-                    vRsFila.Items[3].ToolTip = c.DS_COMENTARIOS_NIVEL3;
-                    vRsFila.Items[4].ToolTip = c.DS_COMENTARIOS_NIVEL4;
-                    vRsFila.Items[5].ToolTip = c.DS_COMENTARIOS_NIVEL5;
+                    vRsFila.Items[0].ToolTip = StripHtml(c.DS_COMENTARIOS_NIVEL0);
+                    vRsFila.Items[1].ToolTip = StripHtml(c.DS_COMENTARIOS_NIVEL1);
+                    vRsFila.Items[2].ToolTip = StripHtml(c.DS_COMENTARIOS_NIVEL2);
+                    vRsFila.Items[3].ToolTip = StripHtml(c.DS_COMENTARIOS_NIVEL3);
+                    vRsFila.Items[4].ToolTip = StripHtml(c.DS_COMENTARIOS_NIVEL4);
+                    vRsFila.Items[5].ToolTip = StripHtml(c.DS_COMENTARIOS_NIVEL5);
                 }
             }
+        }
+
+        private string StripHtml(string source)
+        {
+            string output;
+
+            //get rid of HTML tags
+            output = Regex.Replace(source, "<[^>]*>", string.Empty);
+
+            //get rid of multiple blank lines
+            output = Regex.Replace(output, @"^\s*$\n", string.Empty, RegexOptions.Multiline);
+
+            return output;
         }
 
         public string ocupaciones(string clOcupacion)
@@ -930,7 +944,8 @@ namespace SIGE.WebApp.Administracion
                 new XAttribute("DS_CONTROL_CAMBIOS", ContextoApp.FgControlDocumentos ? txtControlCambios.Text : ""),
                 new XAttribute("CL_TIPO_PRESTACIONES", cmbTipoPrestaciones.SelectedValue),
                 new XAttribute("NO_PLAZAS", vNoPlazas),
-                new XAttribute("DS_COMPETENCIAS_REQUERIDAS", txtCompetenciasRequeridas.Text),
+               // new XAttribute("DS_COMPETENCIAS_REQUERIDAS", txtCompetenciasRequeridas.Text),
+                new XAttribute("DS_COMPETENCIAS_REQUERIDAS", ""),
 
                Utileria.GuardarNotas(radEditorPrestaciones.Content, "NOTAS_PRESTACIONES"), // EditorContentToXml("XML_PRESTACIONES", radEditorPrestaciones.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
                Utileria.GuardarNotas(radEditorRequerimientos.Content, "NOTAS_REQUERIMIENTOS"),// EditorContentToXml("XML_REQUERIMIENTOS", radEditorRequerimientos.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
@@ -1262,27 +1277,30 @@ namespace SIGE.WebApp.Administracion
         private void agregarItemLista(RadListBox lista, RadComboBox combo)
         {
             RadListBoxItem item = new RadListBoxItem();
-            item.Value = combo.SelectedValue;
-            item.Text = combo.Text;
-            int vRepetido = 0;
-            if (lista.Items.Count > 0)
+            if (combo.SelectedValue != "")
             {
-                foreach (RadListBoxItem items in lista.Items)
+                item.Value = combo.SelectedValue;
+                item.Text = combo.Text;
+                int vRepetido = 0;
+                if (lista.Items.Count > 0)
                 {
-                    if (items.Value == item.Value)
+                    foreach (RadListBoxItem items in lista.Items)
                     {
-                        vRepetido = 1;
-                    }
+                        if (items.Value == item.Value)
+                        {
+                            vRepetido = 1;
+                        }
 
+                    }
+                    if (vRepetido != 1)
+                    {
+                        lista.Items.Add(item);
+                    }
                 }
-                if (vRepetido != 1)
+                else
                 {
                     lista.Items.Add(item);
                 }
-            }
-            else
-            {
-                lista.Items.Add(item);
             }
         }
 
@@ -1699,6 +1717,7 @@ namespace SIGE.WebApp.Administracion
         protected void radBtnAgregarExperiencia_Click(object sender, EventArgs e)
         {
             E_EXPERIENCIA ex = new E_EXPERIENCIA();
+           
             ex.ID_AREA_INTERES = int.Parse(cmbExperiencias.SelectedValue);
             ex.NB_AREA_INTERES = cmbExperiencias.Text;
             ex.NO_TIEMPO = int.Parse(txtTiempo.Text);
@@ -1826,13 +1845,20 @@ namespace SIGE.WebApp.Administracion
 
         protected void btnEditarFuncionGenerica_Click(object sender, EventArgs e)
         {
-            foreach (GridDataItem item in grdFuncionesGenericas.SelectedItems)
+            if (grdFuncionesGenericas.SelectedItems.Count > 0)
             {
-                Guid vIdItemFuncionGenerica = new Guid(item.GetDataKeyValue("ID_ITEM").ToString());
-                vFuncionGenericaABC = vFuncionesGenericas.FirstOrDefault(f => f.ID_ITEM.Equals(vIdItemFuncionGenerica));
-                vLstFuncionCompetenciaABC = vLstFuncionCompetencia.Where(w => w.ID_PARENT_ITEM.Equals(vIdItemFuncionGenerica)).ToList();
-                vLstFuncionCompetenciaIndicadorABC = vLstFuncionCompetenciaIndicador.Where(w => vLstFuncionCompetenciaABC.Any(a => a.ID_ITEM.Equals(w.ID_PARENT_ITEM))).ToList();
-                CargarFormularioFuncionesGenericas();
+                foreach (GridDataItem item in grdFuncionesGenericas.SelectedItems)
+                {
+                    Guid vIdItemFuncionGenerica = new Guid(item.GetDataKeyValue("ID_ITEM").ToString());
+                    vFuncionGenericaABC = vFuncionesGenericas.FirstOrDefault(f => f.ID_ITEM.Equals(vIdItemFuncionGenerica));
+                    vLstFuncionCompetenciaABC = vLstFuncionCompetencia.Where(w => w.ID_PARENT_ITEM.Equals(vIdItemFuncionGenerica)).ToList();
+                    vLstFuncionCompetenciaIndicadorABC = vLstFuncionCompetenciaIndicador.Where(w => vLstFuncionCompetenciaABC.Any(a => a.ID_ITEM.Equals(w.ID_PARENT_ITEM))).ToList();
+                    CargarFormularioFuncionesGenericas();
+                }
+            }
+            else
+            {
+                UtilMensajes.MensajeResultadoDB(rwmAlertas, "Selecciona una función genérica.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
             }
         }
 
@@ -1908,15 +1934,20 @@ namespace SIGE.WebApp.Administracion
         protected void btnEliminarCompetencia_Click(object sender, EventArgs e)
         {
             bool vFgRebindGrid = false;
-            foreach (GridDataItem item in grdFuncionCompetencias.SelectedItems)
+            if (grdFuncionCompetencias.SelectedItems.Count > 0)
             {
-                vLstFuncionCompetenciaIndicadorABC.RemoveAll(r => r.ID_PARENT_ITEM.Equals(new Guid(item.GetDataKeyValue("ID_ITEM").ToString())));
-                vLstFuncionCompetenciaABC.RemoveAll(r => r.ID_ITEM.Equals(new Guid(item.GetDataKeyValue("ID_ITEM").ToString())));
-                vFgRebindGrid = true | vFgRebindGrid;
-            }
+                foreach (GridDataItem item in grdFuncionCompetencias.SelectedItems)
+                {
+                    vLstFuncionCompetenciaIndicadorABC.RemoveAll(r => r.ID_PARENT_ITEM.Equals(new Guid(item.GetDataKeyValue("ID_ITEM").ToString())));
+                    vLstFuncionCompetenciaABC.RemoveAll(r => r.ID_ITEM.Equals(new Guid(item.GetDataKeyValue("ID_ITEM").ToString())));
+                    vFgRebindGrid = true | vFgRebindGrid;
+                }
 
-            if (vFgRebindGrid)
-                grdFuncionCompetencias.Rebind();
+                if (vFgRebindGrid)
+                    grdFuncionCompetencias.Rebind();
+            }
+            else
+                UtilMensajes.MensajeResultadoDB(rwmAlertas, "Selecciona una competencia.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
         }
 
         protected void btnAgregarCompetenciaEspecifica_Click(object sender, EventArgs e)
@@ -1989,17 +2020,22 @@ namespace SIGE.WebApp.Administracion
         protected void btnEliminarIndicador_Click(object sender, EventArgs e)
         {
             bool vFgRebindGrid = false;
-            foreach (GridDataItem item in grdFuncionCompetencias.SelectedItems)
+            if (grdFuncionCompetencias.SelectedItems.Count > 0)
             {
-                Guid vIdIndicador = new Guid(item.GetDataKeyValue("ID_ITEM").ToString());
-                Guid vIdCompetencia = (vLstFuncionCompetenciaIndicadorABC.FirstOrDefault(f => f.ID_ITEM.Equals(vIdIndicador)) ?? new E_FUNCION_INDICADOR()).ID_PARENT_ITEM;
-                vLstFuncionCompetenciaIndicadorABC.RemoveAll(r => r.ID_ITEM.Equals(vIdIndicador));
-                CrearDsIndicadores(vLstFuncionCompetenciaABC.FirstOrDefault(f => f.ID_ITEM.Equals(vIdCompetencia)), vLstFuncionCompetenciaIndicadorABC);
-                vFgRebindGrid = true | vFgRebindGrid;
-            }
+                foreach (GridDataItem item in grdFuncionCompetencias.SelectedItems)
+                {
+                    Guid vIdIndicador = new Guid(item.GetDataKeyValue("ID_ITEM").ToString());
+                    Guid vIdCompetencia = (vLstFuncionCompetenciaIndicadorABC.FirstOrDefault(f => f.ID_ITEM.Equals(vIdIndicador)) ?? new E_FUNCION_INDICADOR()).ID_PARENT_ITEM;
+                    vLstFuncionCompetenciaIndicadorABC.RemoveAll(r => r.ID_ITEM.Equals(vIdIndicador));
+                    CrearDsIndicadores(vLstFuncionCompetenciaABC.FirstOrDefault(f => f.ID_ITEM.Equals(vIdCompetencia)), vLstFuncionCompetenciaIndicadorABC);
+                    vFgRebindGrid = true | vFgRebindGrid;
+                }
 
-            if (vFgRebindGrid)
-                grdFuncionCompetencias.Rebind();
+                if (vFgRebindGrid)
+                    grdFuncionCompetencias.Rebind();
+            }
+            else
+                UtilMensajes.MensajeResultadoDB(rwmAlertas, "Selecciona un indicador.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
         }
 
         protected void CrearDsIndicadores(E_FUNCION_COMPETENCIA pFuncionCompetencia, List<E_FUNCION_INDICADOR> pLstIndicadores)

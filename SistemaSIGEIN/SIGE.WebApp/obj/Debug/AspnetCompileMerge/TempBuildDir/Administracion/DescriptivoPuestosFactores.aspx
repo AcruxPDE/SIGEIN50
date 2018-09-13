@@ -94,7 +94,7 @@
         </telerik:RadGrid>
     </div>
     <div style="clear: both; height: 10px;"></div>
-    <div>
+    <div class="ctrlBasico">
         <telerik:RadButton ID="btnFactores" OnClick="btnFactores_Click" AutoPostBack="true" runat="server" Text="Definición de factores" ></telerik:RadButton>
     </div>
 

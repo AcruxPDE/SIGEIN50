@@ -9,7 +9,7 @@
                     this.click();
                 }
             });
-            radconfirm("Este proceso borrará las respuestas de todas las pruebas de la batería ¿Desea continuar?", callBackFunction, 400, 180, null, "Eliminar respuestas batería");
+            radconfirm("Este proceso borrará las respuestas de todas las pruebas de la batería ¿Deseas continuar?", callBackFunction, 400, 180, null, "Eliminar respuestas batería");
             args.set_cancel(true);
         }
 
@@ -19,7 +19,7 @@
                     this.click();
                 }
             });
-            radconfirm("Este proceso borrará las respuestas de la prueba seleccionada ¿Desea continuar?", callBackFunction, 400, 180, null, "Eliminar respuestas prueba");
+            radconfirm("Este proceso borrará las respuestas de la prueba seleccionada ¿Deseas continuar?", callBackFunction, 400, 180, null, "Eliminar respuestas prueba");
             args.set_cancel(true);
         }
 
@@ -49,8 +49,8 @@
                         <telerik:RadTab runat="server" Text="Ortografía III" Enabled="false"></telerik:RadTab>
                         <telerik:RadTab runat="server" Text="Técnica PC" Enabled="false"></telerik:RadTab>
                         <telerik:RadTab runat="server" Text="Redacción" Enabled="false"></telerik:RadTab>
-                        <telerik:RadTab runat="server" Text="Prueba de inglés" Enabled="false"></telerik:RadTab>
                         <telerik:RadTab runat="server" Text="Factores adicionales" Enabled="false"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="Prueba de inglés" Enabled="false"></telerik:RadTab>
                     </Tabs>
                 </telerik:RadTabStrip>
             </telerik:RadPane>

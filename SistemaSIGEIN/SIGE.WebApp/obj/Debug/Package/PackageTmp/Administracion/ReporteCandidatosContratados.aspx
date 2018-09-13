@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <label class="labelTitulo">Candidatos contratados</label>
     <div style="height: calc(100% - 60px);">
-        <telerik:RadGrid ID="grdCandidatos" runat="server" Height="100%" AutoGenerateColumns="false" ShowGroupPanel="True" AllowPaging="true" AllowSorting="true" AllowFilteringByColumn="true"
+        <telerik:RadGrid ID="grdCandidatos" runat="server" Width="100%" Height="100%" AutoGenerateColumns="false" ShowGroupPanel="True" AllowPaging="true" AllowSorting="true" AllowFilteringByColumn="true"
             OnNeedDataSource="grdCandidatos_NeedDataSource" HeaderStyle-Font-Bold="true" OnItemCommand="grdCandidatos_ItemCommand" OnItemDataBound="grdCandidatos_ItemDataBound">
             <ClientSettings AllowDragToGroup="True" AllowKeyboardNavigation="true">
                 <Selecting AllowRowSelect="false" />
@@ -32,8 +32,8 @@
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Departamento" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO" HeaderStyle-Width="200" FilterControlWidth="100"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Empresa" DataField="NB_EMPRESA" UniqueName="NB_EMPRESA" HeaderStyle-Width="200" FilterControlWidth="150"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nivel académico" DataField="NIVEL_ESCOLARIDAD" UniqueName="NIVEL_ESCOLARIDAD" HeaderStyle-Width="120" FilterControlWidth="50"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Preparatoria" DataField="PREPARATORIA" UniqueName="PREPARATORIA" HeaderStyle-Width="120" FilterControlWidth="70"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Carrera Técnica" DataField="CARRERA_TECNICA" UniqueName="CARRERA_TECNICA" HeaderStyle-Width="120" FilterControlWidth="70"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Preparatoria" DataField="PREPARATORIA" UniqueName="PREPARATORIA" HeaderStyle-Width="350" FilterControlWidth="180"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Carrera Técnica" DataField="CARRERA_TECNICA" UniqueName="CARRERA_TECNICA" HeaderStyle-Width="350" FilterControlWidth="180"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Carrera Profesional" DataField="CARRERA_PROFESIONAL" UniqueName="CARRERA_PROFESIONAL" HeaderStyle-Width="350" FilterControlWidth="180"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Postgrado" DataField="POSTGRADOS" UniqueName="POSTGRADOS" HeaderStyle-Width="400" FilterControlWidth="200"></telerik:GridBoundColumn>
                 </Columns>

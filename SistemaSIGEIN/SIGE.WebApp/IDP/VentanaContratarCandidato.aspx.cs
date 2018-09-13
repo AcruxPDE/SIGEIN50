@@ -83,10 +83,13 @@ namespace SIGE.WebApp.IDP
 
                     LicenciaNegocio oNegocio = new LicenciaNegocio();
                     var vEmpleados = oNegocio.ObtenerLicenciaVolumen(pFG_ACTIVO: true).FirstOrDefault();
-                    if (vEmpleados.NO_TOTAL_ALTA >= ContextoApp.InfoEmpresa.Volumen)
+                    if (vEmpleados != null)
                     {
-                        UtilMensajes.MensajeResultadoDB(rwmAlertas, "Se ha alcanzado el máximo número de empleados para la licencia y no es posible agregar más.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
-                        return;
+                        if (vEmpleados.NO_TOTAL_ALTA >= ContextoApp.InfoEmpresa.Volumen)
+                        {
+                            UtilMensajes.MensajeResultadoDB(rwmAlertas, "Se ha alcanzado el máximo número de empleados para la licencia y no es posible agregar más.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
+                            return;
+                        }
                     }
                
                 E_RESULTADO vResultado = nSolicitud.InsertaCandidatoContratado(vXmlDatos.ToString(), vClUsuario, vNbPrograma);

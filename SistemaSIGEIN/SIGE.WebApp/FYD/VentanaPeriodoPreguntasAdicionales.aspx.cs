@@ -2,6 +2,7 @@
 using SIGE.Entidades.Externas;
 using SIGE.Entidades.FormacionDesarrollo;
 using SIGE.Negocio.Administracion;
+using SIGE.Negocio.AdministracionSitio;
 using SIGE.Negocio.FormacionDesarrollo;
 using SIGE.Negocio.Utilerias;
 using SIGE.WebApp.Comunes;
@@ -21,7 +22,8 @@ namespace SIGE.WebApp.FYD
 
         string vClUsuario;
         string vNbPrograma;
-        private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        //private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        public string vClIdioma = ContextoApp.clCultureIdioma;
 
         public int vIdPeriodo
         {
@@ -99,7 +101,7 @@ namespace SIGE.WebApp.FYD
             SIGE.Negocio.FormacionDesarrollo.PeriodoNegocio nPeriodos = new SIGE.Negocio.FormacionDesarrollo.PeriodoNegocio();
             List<SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_PERIODO_Result> vLstPreguntas = nPeriodos.ObtienePreguntasAdicionales(pIdPeriodo: vIdPeriodo);
 
-            foreach ( var item in vLstPreguntas)
+            foreach (var item in vLstPreguntas)
             {
                 XElement vXmlPregunta = XElement.Parse(item.XML_PREGUNTA);
                 string vClPregunta = (vXmlPregunta.Attribute("ID_CAMPO").Value.ToString());
@@ -113,7 +115,7 @@ namespace SIGE.WebApp.FYD
                 }
                 else
                 {
-                    if (vClPregunta == txtClave.Text && item.ID_PREGUNTA_ADICIONAL != vIdPregunta )
+                    if (vClPregunta == txtClave.Text && item.ID_PREGUNTA_ADICIONAL != vIdPregunta)
                     {
                         return false;
                     }
@@ -126,11 +128,12 @@ namespace SIGE.WebApp.FYD
 
         protected void MostrarDiv(string pClTipoCampo, XElement vXmlPregunta)
         {
-                switch (pClTipoCampo) {
+            switch (pClTipoCampo)
+            {
                 case "TEXTBOX":
-                        txtTextboxLongitud.Text = vXmlPregunta.Attribute("NO_LONGITUD").Value.ToString();
-                        txtTextboxDefault.Text = vXmlPregunta.Attribute("NO_VALOR_DEFECTO").Value.ToString();
-                        rmpAdicionales.PageViews[1].Selected = true;
+                    txtTextboxLongitud.Text = vXmlPregunta.Attribute("NO_LONGITUD").Value.ToString();
+                    txtTextboxDefault.Text = vXmlPregunta.Attribute("NO_VALOR_DEFECTO").Value.ToString();
+                    rmpAdicionales.PageViews[1].Selected = true;
                     break;
                 case "DATEPICKER":
                     if (vXmlPregunta.Attribute("NO_VALOR_DEFECTO") != null)
@@ -139,7 +142,7 @@ namespace SIGE.WebApp.FYD
                     break;
                 case "DATEAGE":
                     if (vXmlPregunta.Attribute("NO_VALOR_DEFECTO") != null)
-                    txtDateDefault.SelectedDate = DateTime.Parse(vXmlPregunta.Attribute("NO_VALOR_DEFECTO").Value.ToString());
+                        txtDateDefault.SelectedDate = DateTime.Parse(vXmlPregunta.Attribute("NO_VALOR_DEFECTO").Value.ToString());
                     rmpAdicionales.PageViews[2].Selected = true;
                     break;
                 case "COMBOBOX":
@@ -159,11 +162,11 @@ namespace SIGE.WebApp.FYD
                     rmpAdicionales.PageViews[5].Selected = true;
                     break;
                 case "CHECKBOX":
-                    chkCheckboxDefault.Checked = vXmlPregunta.Attribute("NO_VALOR_DEFECTO").Value.ToString() == "1"? true:false;
+                    chkCheckboxDefault.Checked = vXmlPregunta.Attribute("NO_VALOR_DEFECTO").Value.ToString() == "1" ? true : false;
                     rmpAdicionales.PageViews[6].Selected = true;
                     break;
                 default:
-              
+
                     break;
             }
         }
@@ -172,7 +175,8 @@ namespace SIGE.WebApp.FYD
         {
             SIGE.Negocio.FormacionDesarrollo.PeriodoNegocio nPeriodos = new SIGE.Negocio.FormacionDesarrollo.PeriodoNegocio();
             SPE_OBTIENE_FYD_PREGUNTAS_ADICIONALES_PERIODO_Result vLstPreguntas = nPeriodos.ObtienePreguntasAdicionales(vIdPeriodo, vIdPregunta).FirstOrDefault();
-            if (vLstPreguntas != null){
+            if (vLstPreguntas != null)
+            {
 
                 if (vLstPreguntas.XML_PREGUNTA != null)
                 {
@@ -193,9 +197,48 @@ namespace SIGE.WebApp.FYD
                     else
                         btnCuestionarioAmbos.Checked = true;
 
-             
+
                 }
-           }
+            }
+        }
+
+        //Metodo de traducción
+        protected void TraducirTextos()
+        {
+            //Asignar texto variables vista
+            TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+            List<SPE_OBTIENE_TRADUCCION_TEXTO_Result> vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_MODULO: "FYD", pCL_PROCESO: "EC_PREGUNTASADICIONALES", pCL_IDIOMA: "PORT");
+            if (vLstTextosTraduccion.Count > 0)
+            {
+
+                //Asignar texto label
+                lblClave.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblClave").FirstOrDefault().DS_TEXTO;
+                lblNombre.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblNombre").FirstOrDefault().DS_TEXTO;
+                lblTooltip.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblTooltip").FirstOrDefault().DS_TEXTO;
+                lblTipoControl.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblTipoControl").FirstOrDefault().DS_TEXTO;
+                lblTextboxLongitud.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblTextboxLongitud").FirstOrDefault().DS_TEXTO;
+                lblTextboxDefault.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblTextboxDefault").FirstOrDefault().DS_TEXTO;
+                lblDateDefault.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblDateDefault").FirstOrDefault().DS_TEXTO;
+                lblComboboxCatalogo.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblComboboxCatalogo").FirstOrDefault().DS_TEXTO;
+                lblComboboxDefault.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblComboboxDefault").FirstOrDefault().DS_TEXTO;
+                lblMaskboxMascara.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblMaskboxMascara").FirstOrDefault().DS_TEXTO;
+                lblNumericboxEnteros.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblNumericboxEnteros").FirstOrDefault().DS_TEXTO;
+                lblNumericboxDecimales.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblNumericboxDecimales").FirstOrDefault().DS_TEXTO;
+                lblNumericboxDefault.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblNumericboxDefault").FirstOrDefault().DS_TEXTO;
+                lblCheckboxDefault.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblCheckboxDefault").FirstOrDefault().DS_TEXTO;
+                lblGrupoCuestionario.InnerText = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vlblGrupoCuestionario").FirstOrDefault().DS_TEXTO;
+               
+                //Asignar texto RadButton
+                btnCuestionarioAutoevaluacion.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnCuestionarioAutoevaluacion").FirstOrDefault().DS_TEXTO;
+                btnCuestionarioOtros.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnCuestionarioOtros").FirstOrDefault().DS_TEXTO;
+                btnCuestionarioAmbos.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnCuestionarioAmbos").FirstOrDefault().DS_TEXTO;
+                btnGuardar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardar").FirstOrDefault().DS_TEXTO;
+                btnGuardar.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardar_tooltip").FirstOrDefault().DS_TEXTO;
+                
+
+                rspAyudaCuestionario.Title = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vrspAyudaCuestionario").FirstOrDefault().DS_TEXTO;
+                pTextoAyuda.InnerHtml = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vpTextoAyuda").FirstOrDefault().DS_TEXTO;
+            }
         }
 
         #endregion
@@ -204,6 +247,7 @@ namespace SIGE.WebApp.FYD
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+
 
             if (!Page.IsPostBack)
             {
@@ -218,6 +262,10 @@ namespace SIGE.WebApp.FYD
                     vIdPregunta = int.Parse(Request.Params["IdPregunta"].ToString());
                     CargarDatosPregunta();
                 }
+
+                //Se verifica si el idioma y si es necesaio traducir
+                if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+                    TraducirTextos();
             }
 
         }
@@ -313,13 +361,29 @@ namespace SIGE.WebApp.FYD
                 }
                 else
                 {
-                    UtilMensajes.MensajeResultadoDB(rwmAlertas, "Ya existe un registro con esta clave.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
+                    if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+                    {
+                        TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+                        SPE_OBTIENE_TRADUCCION_TEXTO_Result vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_TEXTO: "vCB_ValidaClaveNombre", pCL_MODULO: "FYD", pCL_PROCESO: "EC_PREGUNTASADICIONALES", pCL_IDIOMA: "PORT").FirstOrDefault();
+                        if (vLstTextosTraduccion != null)
+                            UtilMensajes.MensajeResultadoDB(rwmAlertas, vLstTextosTraduccion.DS_TEXTO, E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
+                    }
+                    else
+                        UtilMensajes.MensajeResultadoDB(rwmAlertas, "Ya existe un registro con esta clave.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
                 }
             }
 
             else
             {
-                UtilMensajes.MensajeResultadoDB(rwmAlertas, "La clave y el título del campo son requeridos.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
+                if (vClIdioma != E_IDIOMA_ENUM.ES.ToString())
+                {
+                    TraduccionIdiomaTextoNegocio oNegocio = new TraduccionIdiomaTextoNegocio();
+                    SPE_OBTIENE_TRADUCCION_TEXTO_Result vLstTextosTraduccion = oNegocio.ObtieneTraduccion(pCL_TEXTO: "vCB_ValidaPregunta", pCL_MODULO: "FYD", pCL_PROCESO: "EC_PREGUNTASADICIONALES", pCL_IDIOMA: "PORT").FirstOrDefault();
+                    if (vLstTextosTraduccion != null)
+                        UtilMensajes.MensajeResultadoDB(rwmAlertas, vLstTextosTraduccion.DS_TEXTO, E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
+                }
+                else
+                    UtilMensajes.MensajeResultadoDB(rwmAlertas, "La clave y el título del campo son requeridos.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
             }
         }
     }

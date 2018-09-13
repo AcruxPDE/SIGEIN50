@@ -34,10 +34,29 @@
     </style>
 
     <script type="text/javascript">
+        //function closeWindow() {
+        //    GetRadWindow().close();
+        //}
+
         function closeWindow() {
-            GetRadWindow().close();
+            var pDatos = [{
+                accion: "ACTUALIZARLISTA"
+
+            }];
+            cerrarVentana(pDatos);
         }
 
+        function closeWindowEdit() {
+            var pDatos = [{
+                accion: "ACTUALIZAR"
+
+            }];
+            cerrarVentana(pDatos);
+        }
+
+        function cerrarVentana(recargarList) {
+            sendDataToParent(recargarList);
+        }
 
         //function closeWindow() {
         //    var pDatos = [{
