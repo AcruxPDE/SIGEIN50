@@ -424,13 +424,17 @@ namespace SIGE.Negocio.Administracion
             int vResBaremos = 0;
             decimal vTvTotal = 0;
 
+            //Se agregan los dos lineas siguientes para obtener las variables baremos sin relacionar con competencias
+            PruebasNegocio pruebas = new PruebasNegocio();
+            var vBaremos = pruebas.obtenerVariableBaremos(pIdBateria);
+
             if (vListaDetallada.Count > 0)
             {
                 if(vListaDetallada.Exists(e=> e.CL_VARIABLE == "TV-TOTAL"))
                 vTvTotal = Math.Round(vListaDetallada.Where(w => w.CL_VARIABLE == "TV-TOTAL").Select(s => s.NO_VALOR).FirstOrDefault(), 0);
             }
 
-            foreach (var item in vListaDetallada)
+            foreach (var item in vBaremos)
             {
              if(item.CL_VARIABLE == "L1-CONSTANCIA" || item.CL_VARIABLE == "L1-CUMPLIMIENTO" || item.CL_VARIABLE == "L2-MANTIENE Y CONSERVA" || item.CL_VARIABLE == "IN-REGULATORIO")
                                {
@@ -486,9 +490,15 @@ namespace SIGE.Negocio.Administracion
                         }
                         else
                         {
-
                             int vNum = (int)vResultado.NO_VALOR;
-                            vDr[vFac.ID_FACTOR.ToString() + "E"] = vNum;
+                            if (vNum == 0)
+                            {
+                                vDr[vFac.ID_FACTOR.ToString() + "E"] = "-1";
+                            }
+                            else
+                            {
+                                vDr[vFac.ID_FACTOR.ToString() + "E"] = vNum;
+                            }
                         }
 
 
@@ -654,6 +664,7 @@ namespace SIGE.Negocio.Administracion
                 conditionalFormattingRule03.Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Medium;
                 conditionalFormattingRule03.Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Medium;
 
+
                 var conditionalFormattingRule04 = ws.ConditionalFormatting.AddEqual(ws.Cells[3, 3, (vNoFilas + 3), (vNoColumnas + 3)]);
                 conditionalFormattingRule04.Formula = "-1";
                 conditionalFormattingRule04.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
@@ -663,6 +674,7 @@ namespace SIGE.Negocio.Administracion
                 conditionalFormattingRule04.Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Medium;
                 conditionalFormattingRule04.Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Medium;
                 conditionalFormattingRule04.Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Medium;
+
   
                 ws.Column(1).Hidden = true;
 
