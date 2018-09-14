@@ -3128,7 +3128,7 @@
                                         <td>
 
                                             <div class="divControlIzquierda">
-                                                <label id="Label29" name="lblNbIdioma" runat="server">Antecedentes familiares (cáncer, hipertensión, diabetes, etc.):</label>
+                                                <label id="Label29" name="lblNbIdioma" runat="server">Antecedentes familiares:</label>
                                             </div>
                                             <div class="ctrlBasico">
                                                  <div class="checkContainer">
@@ -3160,7 +3160,7 @@
                                                 <label id="Label30" name="lblNbIdioma" runat="server">Especificar:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadTextBox ID="txtEMAntecedentesComentarios" runat="server" Width="700" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
+                                                <telerik:RadTextBox ID="txtEMAntecedentesComentarios" runat="server" EmptyMessage="Ejemplo: cáncer, hipertensión, diabetes, etc." Width="700" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
                                             </div>
                                         </td>
 
