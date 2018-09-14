@@ -12,7 +12,7 @@ NavegacionMenu = function (modulo, fgActivo) {
     switch (modulo) {
         case 1:
             if (fgActivo == "1")
-                navigateURL = '/IDP/Default.aspx';
+                navigateURL = '../IDP/Default.aspx';
             else {
                 alert(fgActivo)
                 navigateURL = '';
@@ -20,7 +20,7 @@ NavegacionMenu = function (modulo, fgActivo) {
             break;
         case 2:
             if (fgActivo == "1")
-                navigateURL = '/FYD/Default.aspx';
+                navigateURL = '../FYD/Default.aspx';
             else {
                 alert(fgActivo)
                 navigateURL = '';
@@ -28,7 +28,7 @@ NavegacionMenu = function (modulo, fgActivo) {
             break;
         case 3:
             if (fgActivo == "1")
-                navigateURL = '/MPC/Default.aspx';
+                navigateURL = '../MPC/Default.aspx';
             else {
                 alert(fgActivo)
                 navigateURL = '';
@@ -50,7 +50,7 @@ NavegacionMenu = function (modulo, fgActivo) {
             navigateURL = '';
         case 6:
             if (fgActivo == "1")
-                navigateURL = '/PDE/VentanaInicioPDE.aspx';
+                navigateURL = '../PDE/VentanaInicioPDE.aspx';
             else {
                 alert(fgActivo)
                 navigateURL = '';
@@ -58,7 +58,7 @@ NavegacionMenu = function (modulo, fgActivo) {
             break;
         case 7:
             if (fgActivo == "1")
-                navigateURL = '/Administracion/CatalogoConsultaInteligente.aspx';
+                navigateURL = '../Administracion/CatalogoConsultaInteligente.aspx';
             else {
                 alert(fgActivo)
                 navigateURL = '';
@@ -66,7 +66,7 @@ NavegacionMenu = function (modulo, fgActivo) {
             break;
         case 8:
             if (fgActivo == "1")
-                navigateURL = '/ModulosApoyo/ReportesPersonalizados.aspx';
+                navigateURL = '../ModulosApoyo/ReportesPersonalizados.aspx';
             else {
                 alert(fgActivo)
                 navigateURL = '';
