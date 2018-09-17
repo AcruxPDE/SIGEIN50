@@ -240,12 +240,17 @@
             var divDistribucion;
             var divPreguntas;
             var divGlobal;
+            var simbologia;
 
             divContexto = document.getElementById('<%= divContexto.ClientID%>');
             divIndice = document.getElementById('<%= divIndice.ClientID%>');
             divDistribucion = document.getElementById('<%= divDistribucion.ClientID%>');
             divPreguntas = document.getElementById('<%= divPreguntas.ClientID%>');
             divGlobal = document.getElementById('<%= divGlobal.ClientID%>');
+
+            var splitter = $find("<%= rspDefinicionCriterios.ClientID %>");
+            
+
 
             switch (vtabStrip) {
 
@@ -255,6 +260,7 @@
                     divDistribucion.style.display = 'none';
                     divPreguntas.style.display = 'none';
                     divGlobal.style.display = 'none';
+                    pane.hideTab();
                     break;
                 case 1:
                     divContexto.style.display = 'none';
@@ -262,6 +268,7 @@
                     divDistribucion.style.display = 'none';
                     divPreguntas.style.display = 'none';
                     divGlobal.style.display = 'none';
+                    pane.showTab();
                     break;
                 case 2:
                     divContexto.style.display = 'none';
@@ -269,6 +276,7 @@
                     divDistribucion.style.display = 'block';
                     divPreguntas.style.display = 'none';
                     divGlobal.style.display = 'none';
+                    pane.hideTab();
                     break;
                 case 3:
                     divContexto.style.display = 'none';
@@ -276,6 +284,7 @@
                     divDistribucion.style.display = 'none';
                     divPreguntas.style.display = 'block';
                     divGlobal.style.display = 'none';
+                    pane.hideTab();
                     break;
                 case 4:
                     divContexto.style.display = 'none';
@@ -283,6 +292,7 @@
                     divDistribucion.style.display = 'none';
                     divPreguntas.style.display = 'none';
                     divGlobal.style.display = 'block';
+                    pane.hideTab();
                     break;
             }
         }
@@ -353,7 +363,6 @@
                                 <telerik:RadTab Text="Distribución de los resultados" runat="server" SelectedIndex="2"></telerik:RadTab>
                                 <telerik:RadTab Text="Preguntas abiertas" runat="server" SelectedIndex="3"></telerik:RadTab>
                                 <telerik:RadTab Text="Resultado global" runat="server" SelectedIndex="4"></telerik:RadTab>
-
                             </Tabs>
                         </telerik:RadTabStrip>
                     </telerik:RadSlidingPane>
@@ -1006,7 +1015,7 @@
                             </p>
                         </div>
                     </telerik:RadSlidingPane>
-                    <telerik:RadSlidingPane ID="rspDefinicionCriterios" runat="server" Title="Simbología" Width="380px" RenderMode="Mobile" Height="100%">
+                    <telerik:RadSlidingPane ID="rspDefinicionCriterios" runat="server" Title="Simbología" Width="380px" RenderMode="Mobile"  Height="100%">
                         <div style="padding: 10px; text-align: justify;">
                             <telerik:RadGrid ID="grdCodigoColores"
                                 runat="server"
