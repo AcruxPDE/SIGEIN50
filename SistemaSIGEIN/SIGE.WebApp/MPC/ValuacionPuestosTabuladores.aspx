@@ -306,9 +306,9 @@
                 </telerik:RadSplitter>
                 <label runat="server" id="lblAdvertencia" visible="false" style="color: red;"></label>
                 <div style="height: 5px;"></div>
-                                 <div class="ctrlBasico">
-        <telerik:RadButton ID="btnExcel" AutoPostBack="true" OnClick="btnExcel_Click" runat="server" Text="Exportar a excel" ></telerik:RadButton>
-    </div>
+                 <div class="ctrlBasico">
+                 <telerik:RadButton ID="btnExcel" AutoPostBack="true" OnClick="btnExcel_Click" runat="server" Text="Exportar a excel" ></telerik:RadButton>
+                </div>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnGuardar" AutoPostBack="true" OnClick="btnGuardar_Click" OnClientClicking="confirmarGuaradar" runat="server" Text="Guardar" Width="100"></telerik:RadButton>
                 </div>

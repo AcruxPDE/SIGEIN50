@@ -247,8 +247,7 @@
             divDistribucion = document.getElementById('<%= divDistribucion.ClientID%>');
             divPreguntas = document.getElementById('<%= divPreguntas.ClientID%>');
             divGlobal = document.getElementById('<%= divGlobal.ClientID%>');
-
-            var splitter = $find("<%= rspDefinicionCriterios.ClientID %>");
+ 
             
 
 
@@ -260,7 +259,6 @@
                     divDistribucion.style.display = 'none';
                     divPreguntas.style.display = 'none';
                     divGlobal.style.display = 'none';
-                    pane.hideTab();
                     break;
                 case 1:
                     divContexto.style.display = 'none';
@@ -268,7 +266,7 @@
                     divDistribucion.style.display = 'none';
                     divPreguntas.style.display = 'none';
                     divGlobal.style.display = 'none';
-                    pane.showTab();
+
                     break;
                 case 2:
                     divContexto.style.display = 'none';
@@ -276,7 +274,6 @@
                     divDistribucion.style.display = 'block';
                     divPreguntas.style.display = 'none';
                     divGlobal.style.display = 'none';
-                    pane.hideTab();
                     break;
                 case 3:
                     divContexto.style.display = 'none';
@@ -284,7 +281,6 @@
                     divDistribucion.style.display = 'none';
                     divPreguntas.style.display = 'block';
                     divGlobal.style.display = 'none';
-                    pane.hideTab();
                     break;
                 case 4:
                     divContexto.style.display = 'none';
@@ -292,7 +288,6 @@
                     divDistribucion.style.display = 'none';
                     divPreguntas.style.display = 'none';
                     divGlobal.style.display = 'block';
-                    pane.hideTab();
                     break;
             }
         }
@@ -659,6 +654,10 @@
                                             </MasterTableView>
                                         </telerik:RadGrid>
                                     </div>
+
+
+                                    
+
 
                                 </telerik:RadPageView>
                             </telerik:RadMultiPage>
