@@ -960,7 +960,7 @@ namespace SIGE.WebApp.FYD
             return vPorcentaje;
         }
 
-              private void ConfigurarColumna(GridColumn pColumna, int pWidth, string pEncabezado, bool pVisible, bool pGenerarEncabezado, bool pFiltrarColumna, bool pAlinear)
+        private void ConfigurarColumna(GridColumn pColumna, int pWidth, string pEncabezado, bool pVisible, bool pGenerarEncabezado, bool pFiltrarColumna, bool pAlinear)
         {
             if (pGenerarEncabezado)
             {

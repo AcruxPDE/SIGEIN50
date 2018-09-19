@@ -326,7 +326,7 @@
             <telerik:RadPageView ID="pvCompetencias" runat="server">
 
                 <telerik:RadPivotGrid runat="server" ID="pgCompetencias" OnNeedDataSource="pgCompetencias_NeedDataSource" RowTableLayout="Tabular" TotalsSettings-GrandTotalText="Promedio" OnCellDataBound="pgCompetencias_CellDataBound" CssClass="PivotCompetencias"
-                    ShowDataHeaderZone="false" ShowRowHeaderZone="false" ShowFilterHeaderZone="false" AllowFiltering="false" AllowSorting="true" ShowColumnHeaderZone="false" Height="100%" Width="100%">
+                    ShowDataHeaderZone="false" ShowRowHeaderZone="true"  RowHeaderCellStyle-BackColor="White"  ShowFilterHeaderZone="false" AllowFiltering="false" AllowSorting="false" ShowColumnHeaderZone="false" Height="100%" Width="100%">
                     <ColumnHeaderCellStyle Width="50px" />
                     <RowHeaderCellStyle Height="50px" Width="800px" />
                     <ClientSettings>
@@ -338,8 +338,8 @@
                     </SortExpressions>
                     <TotalsSettings ColumnsSubTotalsPosition="None" RowGrandTotalsPosition="Last" RowsSubTotalsPosition="None" ColumnGrandTotalsPosition="None" />
                     <Fields>
-                        <telerik:PivotGridRowField Caption="Factor" DataField="ID_COMPETENCIA" CellStyle-Width="0" CellStyle-Font-Size="0"></telerik:PivotGridRowField>
-                        <telerik:PivotGridRowField Caption="" DataField="CL_COLOR">
+                        <telerik:PivotGridRowField Caption=" " DataField="ID_COMPETENCIA" CellStyle-Width="0" CellStyle-Font-Size="0"></telerik:PivotGridRowField>
+                        <telerik:PivotGridRowField Caption=" "  CellStyle-Font-Size="0"  DataField="CL_COLOR" >
                             <CellStyle Width="30px"/>
                             <CellTemplate>
                                 <div style="height:100%; border-radius: 5px; background: <%# Container.DataItem.ToString() %>;">
@@ -348,10 +348,10 @@
                                 </div>
                             </CellTemplate>
                         </telerik:PivotGridRowField>
-                        <telerik:PivotGridRowField Caption="Factor" DataField="NB_COMPETENCIA">
+                        <telerik:PivotGridRowField Caption="Factor"  DataField="NB_COMPETENCIA">
                             <CellStyle Width="230px" />
                         </telerik:PivotGridRowField>
-                        <telerik:PivotGridRowField Caption="Descripción" DataField="DS_COMPETENCIA" CellStyle-Width="470"></telerik:PivotGridRowField>
+                        <telerik:PivotGridRowField Caption="Descripción"  DataField="DS_COMPETENCIA" CellStyle-Width="470"></telerik:PivotGridRowField>
 
                         <telerik:PivotGridColumnField Caption="Empleado" DataField="CL_EMPLEADO" CellStyle-Width="100">
                             <CellTemplate>

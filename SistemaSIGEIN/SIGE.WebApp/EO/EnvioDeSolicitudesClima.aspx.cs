@@ -291,9 +291,11 @@ namespace SIGE.WebApp.EO
                     //        }
                     //    }
                     //}
+                    vDsMensaje = vPeriodoClima.DS_MENSAJE_CORREO;
+                    lMensaje.InnerHtml = vDsMensaje;
                 }
-                vDsMensaje = ContextoApp.EO.MensajeCorreoEvaluador.dsMensaje;
-                lMensaje.InnerHtml = vDsMensaje;
+                //vDsMensaje = ContextoApp.EO.MensajeCorreoEvaluador.dsMensaje;
+                //lMensaje.InnerHtml = vDsMensaje;
 
                 vCuentaCuestionarios = nClima.ObtieneEvaluadoresCuestionario(pID_PERIODO: vIdPeriodo, pIdRol: vIdRol).Count;
                 vCuentaContestados = 0;

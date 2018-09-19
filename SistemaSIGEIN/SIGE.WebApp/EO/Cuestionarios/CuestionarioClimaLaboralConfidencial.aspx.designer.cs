@@ -67,6 +67,15 @@ namespace SIGE.WebApp.EO.Cuestionarios {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtNoPeriodo;
         
         /// <summary>
+        /// dvEdad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvEdad;
+        
+        /// <summary>
         /// lbEdad control.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,15 @@ namespace SIGE.WebApp.EO.Cuestionarios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadNumericTextBox rntEdad;
+        
+        /// <summary>
+        /// dvGenero control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvGenero;
         
         /// <summary>
         /// lbGenero control.
@@ -103,6 +121,15 @@ namespace SIGE.WebApp.EO.Cuestionarios {
         protected global::Telerik.Web.UI.RadComboBox cmbGenero;
         
         /// <summary>
+        /// dvArea control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvArea;
+        
+        /// <summary>
         /// lbArea control.
         /// </summary>
         /// <remarks>
@@ -119,6 +146,15 @@ namespace SIGE.WebApp.EO.Cuestionarios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadComboBox rcbArea;
+        
+        /// <summary>
+        /// dvFechaIngreso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvFechaIngreso;
         
         /// <summary>
         /// Label1 control.

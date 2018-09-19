@@ -15,6 +15,14 @@
             width: 30%;
         }
 
+         .DivMoveLeft {
+            text-align: right;
+            float: left;
+            margin-right: 15px;
+            margin-left: 15px;
+            width: 142px;
+        }
+
 
         .divContenido {
             text-align: left;
@@ -225,7 +233,7 @@
         </script>
     </telerik:RadCodeBlock>
     <label style="font-size: 21px;">Intereses personales</label>
-    <div style="height: calc(100% - 120px); overflow: auto;">
+    <div style="height: calc(100% - 100px); overflow: auto;">
         <telerik:RadSplitter ID="splHelp" runat="server" Width="100%" Height="100%" BorderSize="0" Orientation="Horizontal">
             <telerik:RadPane ID="rpnOpciones" runat="server" Height="30" Width="100%" Scrolling="None">
                 <telerik:RadSlidingZone ID="slzOpciones" runat="server" Width="30" ClickToOpen="true">
@@ -593,7 +601,7 @@
         </telerik:RadSplitter>
     </div>
     <div style="clear: both; height: 10px;"></div>
-    <div class="ctrlBasico" id="cronometro" runat="server">
+    <div class="DivMoveLeft" id="cronometro" runat="server">
         <div class="Cronometro">Tiempo restante <span id="time">05:00</span></div>
     </div>
         <div class="divControlDerecha">

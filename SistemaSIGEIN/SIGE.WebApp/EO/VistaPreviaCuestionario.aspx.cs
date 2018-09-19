@@ -9,6 +9,7 @@ using SIGE.Negocio.EvaluacionOrganizacional;
 using System.Xml;
 using SIGE.Entidades;
 using System.Web.UI.HtmlControls;
+using SIGE.WebApp.EO.Cuestionarios;
 
 namespace SIGE.WebApp.EO
 {
@@ -32,6 +33,12 @@ namespace SIGE.WebApp.EO
         {
             get { return (List<E_DEPARTAMENTOS>)ViewState["vs_vLstDepartamentos"]; }
             set { ViewState["vs_vLstDepartamentos"] = value; }
+        }
+
+        private List<E_GENERO> vLstGeneros
+        {
+            get { return (List<E_GENERO>)ViewState["vs_vLstGeneros"]; }
+            set { ViewState["vs_vLstGeneros"] = value; }
         }
 
         #endregion
@@ -87,6 +94,34 @@ namespace SIGE.WebApp.EO
 
 
             return vDepartamentos;
+        }
+
+
+        protected string ObtieneGeneros(string pXmlGenros)
+        {
+            string vGeneros = "";
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(pXmlGenros);
+            XmlNodeList generos = xml.GetElementsByTagName("ITEMS");
+            vLstGeneros = new List<E_GENERO>();
+
+            XmlNodeList lista =
+            ((XmlElement)generos[0]).GetElementsByTagName("ITEM");
+
+            foreach (XmlElement nodo in lista)
+            {
+
+                vGeneros = vGeneros + nodo.GetAttribute("NB_GENERO") + ".\n";
+                E_GENERO f = new E_GENERO
+                {
+                    CL_GENERO = nodo.GetAttribute("CL_GENERO"),
+                    NB_GENERO = nodo.GetAttribute("NB_GENERO")
+                };
+                vLstGeneros.Add(f);
+            }
+
+
+            return vGeneros;
         }
 
         protected HtmlGenericControl GenerarCuestionario()
@@ -283,14 +318,25 @@ namespace SIGE.WebApp.EO
                             if (vFiltros.CL_GENERO != null)
                             {                             
                                     lbGenero.Visible = true;
-                                    CheckBox vCheckM = new CheckBox();
-                                    vCheckM.Text = "Masculino";
-                                    CheckBox vCheckF = new CheckBox();
-                                    vCheckF.Text = "Femenino";
-                                    if (vFiltros.CL_GENERO == "Femenino")
-                                    dvGeneros.Controls.Add(vCheckF);
-                                    if (vFiltros.CL_GENERO == "Masculino")
-                                    dvGeneros.Controls.Add(vCheckM);
+
+                                    ObtieneGeneros(vFiltros.CL_GENERO);
+                                    foreach (E_GENERO item in vLstGeneros)
+                                    {
+                                        HtmlGenericControl vDiv = new HtmlGenericControl("div");
+                                        vDiv.Attributes.Add("class", "ctrlBasico");
+                                        var checkbox = new CheckBox();
+                                        checkbox.Text = item.NB_GENERO;
+                                        vDiv.Controls.Add(checkbox);
+                                        dvGeneros.Controls.Add(vDiv);
+                                    }
+                                    //CheckBox vCheckM = new CheckBox();
+                                    //vCheckM.Text = "Masculino";
+                                    //CheckBox vCheckF = new CheckBox();
+                                    //vCheckF.Text = "Femenino";
+                                    //if (vFiltros.CL_GENERO == "Femenino")
+                                    //dvGeneros.Controls.Add(vCheckF);
+                                    //if (vFiltros.CL_GENERO == "Masculino")
+                                    //dvGeneros.Controls.Add(vCheckM);
                             }
 
                             if (vFiltros.XML_DEPARTAMENTOS != null)

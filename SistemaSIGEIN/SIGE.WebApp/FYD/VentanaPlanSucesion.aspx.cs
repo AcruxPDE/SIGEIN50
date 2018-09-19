@@ -196,6 +196,8 @@ namespace SIGE.WebApp.FYD
                 if (e.Cell.Controls.Count > 1)
                 {
                     (e.Cell.Controls[0] as Button).Visible = false;
+
+   
                 }
             }
             else if (e.Cell is PivotGridDataCell)
