@@ -67,16 +67,16 @@
                 if (selectedItem != undefined)
                     OpenWindow(selectedItem.getDataKeyValue("ID_DEPARTAMENTO"));
                 else
-                    radalert("Selecciona una área.", 400, 150);
+                    radalert("Selecciona una área/departamento.", 400, 150);
             }
 
             function OpenWindow(pIdArea) {
                 var vURL = "VentanaCatalogoAreas.aspx";
-                var vTitulo = "Agregar Área";
+                var vTitulo = "Agregar área/departamento";
                 var vTipoOperacion = "?TIPO=Agregar";
                 if (pIdArea != null) {
                     vURL = vURL + "?ID=" + pIdArea;
-                    vTitulo = "Editar área";
+                    vTitulo = "Editar área/departamento";
                     vTipoOperacion = "&TIPO=Editar";
                 }
                 var oWin = window.radopen(vURL + vTipoOperacion, "winArea");
@@ -113,21 +113,20 @@
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas eliminar el área ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                        radconfirm('¿Deseas eliminar el área/departamento ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Seleccione una área.", 400, 150, "");
+                    radalert("Seleccione una área/departamento.", 400, 150, "");
                     args.set_cancel(true);
                 }
             }
 
         </script>
     </telerik:RadCodeBlock>
-
-    <label class="labelTitulo">Áreas</label>
+    <label class="labelTitulo">Áreas/Departamentos</label>
     <div style="height: calc(100% - 100px);">
-        <telerik:RadGrid ID="grdDepartamentos" ShowHeader="true" runat="server" AllowPaging="true" AllowSorting="true" GroupPanelPosition="Top" Width="950px" Height="100%" AllowFilteringByColumn="true"
+        <telerik:RadGrid ID="grdDepartamentos" ShowHeader="true" runat="server" AllowPaging="true" AllowSorting="true" GroupPanelPosition="Top" Width="1000px" Height="100%" AllowFilteringByColumn="true"
             OnNeedDataSource="grdDepartamentos_NeedDataSource" HeaderStyle-Font-Bold="true" OnItemDataBound="grdDepartamentos_ItemDataBound">
              <GroupingSettings CaseSensitive="false" />
             <ExportSettings FileName="CatalogoAreas" ExportOnlyData="true" IgnorePaging="true">
@@ -145,7 +144,7 @@
                 <Columns>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave" DataField="CL_DEPARTAMENTO" UniqueName="CL_DEPARTAMENTO" HeaderStyle-Width="150" FilterControlWidth="30"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO" HeaderStyle-Width="370" FilterControlWidth="300"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Tipo departamento" DataField="NB_TIPO_DEPARTAMENTO" UniqueName="NB_TIPO_DEPARTAMENTO" HeaderStyle-Width="120" FilterControlWidth="70"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Tipo" DataField="NB_TIPO_DEPARTAMENTO" UniqueName="NB_TIPO_DEPARTAMENTO" HeaderStyle-Width="120" FilterControlWidth="70"></telerik:GridBoundColumn>
                      <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Último usuario que modifica" DataField="CL_USUARIO_MODIFICA" UniqueName="CL_USUARIO_MODIFICA"></telerik:GridBoundColumn>
                      <telerik:GridBoundColumn DataFormatString="{0:d}"  AutoPostBackOnFilter="true" HeaderText="Última fecha de modificación" DataField="FE_MODIFICACION" UniqueName="FE_MODIFICACION" HeaderStyle-Width="150" FilterControlWidth="80" DataType="System.DateTime"></telerik:GridBoundColumn>
                 </Columns>
@@ -154,9 +153,13 @@
     </div>
     <div style="clear: both; height: 10px;"></div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowInsertForm" AutoPostBack="false" runat="server" Text="Agregar" Width="100"></telerik:RadButton>
-        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowEditForm" AutoPostBack="false" runat="server" Text="Editar" Width="100"></telerik:RadButton>
-        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" Width="100" OnClick="btnEliminar_click" OnClientClicking="ConfirmarEliminar"></telerik:RadButton>
+        <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowInsertForm" AutoPostBack="false" runat="server" Text="Agregar" ></telerik:RadButton>
+        </div>
+     <div class="ctrlBasico">
+        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowEditForm" AutoPostBack="false" runat="server" Text="Editar" ></telerik:RadButton>
+         </div>
+     <div class="ctrlBasico">
+        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar"  OnClick="btnEliminar_click" OnClientClicking="ConfirmarEliminar"></telerik:RadButton>
     </div>
 <%--    <telerik:RadWindowManager ID="RadWindowManager1" runat="server" EnableShadow="true">
         <Windows>
@@ -166,11 +169,11 @@
             </telerik:RadWindow>
         </Windows>
     </telerik:RadWindowManager>--%>
-
+    <div style="clear:both;"></div>
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true">
         <Windows>
-            <telerik:RadWindow ID="winSeleccion" runat="server" Title="Seleccionar área" Width="800" Height="600" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
-            <telerik:RadWindow ID="winArea" runat="server" Title="Agregar/Editar Área" Height="400" Width="600" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="onCloseWindow"></telerik:RadWindow>
+            <telerik:RadWindow ID="winSeleccion" runat="server" Title="Seleccionar área/departamento" Width="800" Height="600" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
+            <telerik:RadWindow ID="winArea" runat="server" Title="Agregar/Editar Área/Departamento" Height="400" Width="600" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="onCloseWindow"></telerik:RadWindow>
         </Windows>
     </telerik:RadWindowManager>
 </asp:Content>

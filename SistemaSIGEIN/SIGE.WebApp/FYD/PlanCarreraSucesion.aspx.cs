@@ -14,15 +14,17 @@ namespace SIGE.WebApp.FYD
 
     public partial class PlanCarreraSucesion : System.Web.UI.Page
     {
+        private int? vIdRol;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
         }
 
         protected void grdEmpleados_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             EmpleadoNegocio nEmpleados = new EmpleadoNegocio();
-            grdEmpleados.DataSource = nEmpleados.ObtenerEmpleados(pID_EMPRESA: ContextoUsuario.oUsuario.ID_EMPRESA, pFgActivo:true);
+            grdEmpleados.DataSource = nEmpleados.ObtenerEmpleados(pID_EMPRESA: ContextoUsuario.oUsuario.ID_EMPRESA, pFgActivo:true, pID_ROL: vIdRol);
         }
 
         protected void grdEmpleados_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)

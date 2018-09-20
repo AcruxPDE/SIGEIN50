@@ -107,16 +107,16 @@
 
 
             window.onload = function (sender, args) {
-                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
-                    if (shouldSubmit) {
+                //var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+                //    if (shouldSubmit) {
                         GoFase();
-                    }
-                    else {
-                        GetRadWindow().close();
-                    }
-                });
-                var text = "Observa detenidamente estas ocho cartas y elije una a una la que por su color te llame más la atención, sin asociar los colores con otras cosas, tales como autos, ropa, etc. <br> Concéntrece en elegir la que más le atraiga visualmente, repitiendo la operación hasta agotar las cartas.";
-                radconfirm(JustificarTexto(text), callBackFunction, 500, 250, null, "Adaptación al medio");
+                //    }
+                //    else {
+                //        GetRadWindow().close();
+                //    }
+                //});
+                //var text = "Observa detenidamente estas ocho cartas y elije una a una la que por su color te llame más la atención, sin asociar los colores con otras cosas, tales como autos, ropa, etc. <br> Concéntrece en elegir la que más le atraiga visualmente, repitiendo la operación hasta agotar las cartas.";
+                //radconfirm(JustificarTexto(text), callBackFunction, 250, 500, null, "Adaptación al medio");
             };
 
 
@@ -149,7 +149,7 @@
             }
 
             function CloseTest() {
-                GetRadWindow().close();
+              //  GetRadWindow().close();
 
             }
 
@@ -459,10 +459,8 @@
     </div>
 
                         <div style="clear: both; height: 10px;"></div>
-    <div class="divControlDerecha">
-        <div class="ctrlBasico">
-            <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Terminar" AutoPostBack="true"></telerik:RadButton>
-        </div>
+    <div class="DivBtnTerminarDerecha">
+            <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Guardar" AutoPostBack="true"></telerik:RadButton>
     </div>
 
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>

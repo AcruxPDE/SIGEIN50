@@ -64,7 +64,7 @@ namespace SIGE.WebApp.IDP.Solicitud
             if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
             {
                 UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
-                Response.Redirect("/Logout.aspx");
+                Response.Redirect("~/Logout.aspx");
             }
             else
             {
@@ -104,7 +104,7 @@ namespace SIGE.WebApp.IDP.Solicitud
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Logout.aspx");
+            Response.Redirect("~/Logout.aspx");
         }
     }
 }

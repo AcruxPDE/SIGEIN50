@@ -1,4 +1,6 @@
-﻿using SIGE.Entidades.Externas;
+﻿using SIGE.Entidades;
+using SIGE.Entidades.Externas;
+using SIGE.Entidades.FormacionDesarrollo;
 using SIGE.Entidades.IntegracionDePersonal;
 using SIGE.Negocio.Administracion;
 using SIGE.Negocio.Utilerias;
@@ -209,7 +211,7 @@ namespace SIGE.WebApp.IDP.Solicitud
                 txtRangoEdadMin.InnerText = vDescriptivo.NO_EDAD_MINIMA.ToString();
                 txtRangoEdadMax.InnerText = vDescriptivo.NO_EDAD_MAXIMA.ToString();
 
-                txtCompetenciasRequeridas.InnerHtml = vDescriptivo.DS_COMPETENCIAS_REQUERIDAS;
+                //txtCompetenciasRequeridas.InnerHtml = vDescriptivo.DS_COMPETENCIAS_REQUERIDAS;
                 foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTO_ESCOLARIDAD).Elements("PUESTO_ESCOLARIDAD"))
                 {
                     if (item.Attribute("CL_TIPO_ESCOLARIDAD").Value == E_CL_TIPO_ESCOLARIDAD.POSTGRADO.ToString())
@@ -275,8 +277,8 @@ namespace SIGE.WebApp.IDP.Solicitud
                     XElement vRequerimientos = XElement.Parse(vDescriptivo.XML_REQUERIMIENTOS);
                     if (vRequerimientos != null)
                     {
-                        vRequerimientos.Name = vNbFirstRadEditorTagName;
-                        txtRequerimientos.InnerHtml = vRequerimientos.ToString();
+                       // vRequerimientos.Name = vNbFirstRadEditorTagName;
+                        txtRequerimientos.InnerHtml = validarDsNotas(vRequerimientos.ToString());
                     }
                 }
 
@@ -285,8 +287,8 @@ namespace SIGE.WebApp.IDP.Solicitud
                     XElement vObservaciones = XElement.Parse(vDescriptivo.XML_OBSERVACIONES);
                     if (vObservaciones != null)
                     {
-                        vObservaciones.Name = vNbFirstRadEditorTagName;
-                        txtObservaciones.InnerHtml = vObservaciones.ToString();
+                       // vObservaciones.Name = vNbFirstRadEditorTagName;
+                        txtObservaciones.InnerHtml = validarDsNotas(vObservaciones.ToString());
                     }
                 }
 
@@ -294,24 +296,43 @@ namespace SIGE.WebApp.IDP.Solicitud
                 //btnDirecto.Checked = vDescriptivo.CL_TIPO_PUESTO == "DIRECTO";
                 //btnIndirecto.Checked = vDescriptivo.CL_TIPO_PUESTO == "INDIRECTO";
 
-                foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
+                //foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
+                //{
+                //    if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.JEFE.ToString())
+                //    {
+                //        txtPuestoJefe.InnerText = item.Attribute("NB_PUESTO").Value;
+                //    }
+                //}
+
+                DescriptivoNegocio vNeg = new DescriptivoNegocio();
+                List<SPE_OBTIENE_JEFES_DESCRIPTIVO_Result> vLstJefes = vNeg.ObtenerJefesDescriptivo(vIdDescriptivo).ToList();
+                foreach (SPE_OBTIENE_JEFES_DESCRIPTIVO_Result item in vLstJefes)
                 {
-                    if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.JEFE.ToString())
-                    {
-                        txtPuestoJefe.InnerText = item.Attribute("NB_PUESTO").Value;
-                    }
+                    RadListBoxItem i = new RadListBoxItem();
+                    i.Text = item.CL_PUESTO + " - " + item.NB_PUESTO;
+                    i.Value = item.ID_PUESTO.ToString();
+                    lstJefesInmediatos.Items.Add(i);
                 }
 
-                foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
-                {
-                    if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.SUBORDINADO.ToString())
-                    {
-                        RadListBoxItem i = new RadListBoxItem();
+                //foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
+                //{
+                //    if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.SUBORDINADO.ToString())
+                //    {
+                //        RadListBoxItem i = new RadListBoxItem();
 
-                        i.Text = item.Attribute("NB_PUESTO").Value;
-                        i.Value = item.Attribute("ID_PUESTO_RELACIONADO").Value;
-                        lstPuestosSubordinado.Items.Add(i);
-                    }
+                //        i.Text = item.Attribute("NB_PUESTO").Value;
+                //        i.Value = item.Attribute("ID_PUESTO_RELACIONADO").Value;
+                //        lstPuestosSubordinado.Items.Add(i);
+                //    }
+                //}
+
+                List<SPE_OBTIENE_SUBORDINADOS_DESCRIPTIVO_Result> vLstSubordinados = vNeg.ObtenerSubordinadosDescriptivo(vIdDescriptivo).ToList();
+                foreach (SPE_OBTIENE_SUBORDINADOS_DESCRIPTIVO_Result item in vLstSubordinados)
+                {
+                    RadListBoxItem i = new RadListBoxItem();
+                    i.Text = item.CL_PUESTO + " - " + item.NB_PUESTO;
+                    i.Value = item.ID_PUESTO.ToString();
+                    lstPuestosSubordinado.Items.Add(i);
                 }
 
                 foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
@@ -360,8 +381,8 @@ namespace SIGE.WebApp.IDP.Solicitud
                     XElement vResponsabilidad = XElement.Parse(vDescriptivo.XML_RESPONSABILIDAD);
                     if (vResponsabilidad != null)
                     {
-                        vResponsabilidad.Name = vNbFirstRadEditorTagName;
-                        txtResponsable.InnerHtml = vResponsabilidad.ToString();
+                        //vResponsabilidad.Name = vNbFirstRadEditorTagName;
+                        txtResponsable.InnerHtml = validarDsNotas(vResponsabilidad.ToString());
                     }
                 }
 
@@ -370,8 +391,8 @@ namespace SIGE.WebApp.IDP.Solicitud
                     XElement vAutoridad = XElement.Parse(vDescriptivo.XML_AUTORIDAD);
                     if (vAutoridad != null)
                     {
-                        vAutoridad.Name = vNbFirstRadEditorTagName;
-                        txtAutoridad.InnerHtml = vAutoridad.ToString();
+                      //  vAutoridad.Name = vNbFirstRadEditorTagName;
+                        txtAutoridad.InnerHtml = validarDsNotas(vAutoridad.ToString());
                     }
                 }
 
@@ -385,7 +406,7 @@ namespace SIGE.WebApp.IDP.Solicitud
                     if (item.Element("XML_NOTAS") != null)
                     {
                         XElement dsNotas = item.Element("XML_NOTAS").Element("DS_NOTAS");
-                        dsNotas.Name = vNbFirstRadEditorTagName;
+                       dsNotas.Name = vNbFirstRadEditorTagName;
                         fg.DS_NOTAS = dsNotas.ToString();
                     }
 
@@ -443,8 +464,8 @@ namespace SIGE.WebApp.IDP.Solicitud
                     XElement vPrestaciones = XElement.Parse(vDescriptivo.XML_PRESTACIONES);
                     if (vPrestaciones != null)
                     {
-                        vPrestaciones.Name = vNbFirstRadEditorTagName;
-                        txtPrestaciones.InnerHtml = vPrestaciones.ToString();
+                      //  vPrestaciones.Name = vNbFirstRadEditorTagName;
+                        txtPrestaciones.InnerHtml = validarDsNotas(vPrestaciones.ToString());
                     }
                 }
 
@@ -474,6 +495,51 @@ namespace SIGE.WebApp.IDP.Solicitud
                     vIdDescriptivo = null;
             }
         }
+
+        public string validarDsNotas(string vdsNotas)
+        {
+            E_NOTA pNota = null;
+            if (vdsNotas != null)
+            {
+                XElement vNotas = XElement.Parse(vdsNotas.ToString());
+                if (ValidarRamaXml(vNotas, "NOTA"))
+                {
+
+                    pNota = vNotas.Elements("NOTA").Select(el => new E_NOTA
+                    {
+                        DS_NOTA = UtilXML.ValorAtributo<string>(el.Attribute("DS_NOTA")),
+                        FE_NOTA = (DateTime?)UtilXML.ValorAtributo(el.Attribute("FE_NOTA"), E_TIPO_DATO.DATETIME),
+                    }).FirstOrDefault();
+
+                }
+                if (pNota != null)
+                {
+                    if (pNota.DS_NOTA != null)
+                    {
+                        return pNota.DS_NOTA.ToString();
+                    }
+                    else return "";
+                }
+                else return "";
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public Boolean ValidarRamaXml(XElement parentEl, string elementsName)
+        {
+            var foundEl = parentEl.Element(elementsName);
+
+            if (foundEl != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
 
         public void ObtenerAreaInteres()
         {
@@ -539,60 +605,60 @@ namespace SIGE.WebApp.IDP.Solicitud
             radCmb.DataBind();
         }
 
-        public void ObtenerAreas()
-        {
-            string vNbArea;
+        //public void ObtenerAreas()
+        //{
+        //    string vNbArea;
 
-            var vArea = vListaAreas.Where(t => t.FG_SELECCIONADO).FirstOrDefault();
+        //    var vArea = vListaAreas.Where(t => t.FG_SELECCIONADO).FirstOrDefault();
 
-            if (vArea != null)
-            {
-                vNbArea = vArea.NB_DEPARTAMENTO;
-            }
-            else
-            {
-                vNbArea = "No seleccionado";
-            }
+        //    if (vArea != null)
+        //    {
+        //        vNbArea = vArea.NB_DEPARTAMENTO;
+        //    }
+        //    else
+        //    {
+        //        vNbArea = "No seleccionado";
+        //    }
 
-            txtArea.InnerText = vNbArea;
-        }
+        //    txtArea.InnerText = vNbArea;
+        //}
 
-        public void ObtenerCentroAdmvo()
-        {
-            string vNbCentroAdmvo;
+        //public void ObtenerCentroAdmvo()
+        //{
+        //    string vNbCentroAdmvo;
 
-            var vCentroAdmvo = vListaCentroAdmvo.Where(t => t.FG_SELECCIONADO).FirstOrDefault();
+        //    var vCentroAdmvo = vListaCentroAdmvo.Where(t => t.FG_SELECCIONADO).FirstOrDefault();
 
-            if (vCentroAdmvo != null)
-            {
-                vNbCentroAdmvo = vCentroAdmvo.NB_CENTRO_ADMVO;
-            }
-            else
-            {
-                vNbCentroAdmvo = "No Seleccionado";
-            }
+        //    if (vCentroAdmvo != null)
+        //    {
+        //        vNbCentroAdmvo = vCentroAdmvo.NB_CENTRO_ADMVO;
+        //    }
+        //    else
+        //    {
+        //        vNbCentroAdmvo = "No Seleccionado";
+        //    }
 
-            txtCentroAdmin.InnerText = vNbCentroAdmvo;
-        }
+        //    txtCentroAdmin.InnerText = vNbCentroAdmvo;
+        //}
 
-        public void ObtenerCentroOptvo()
-        {
-            string vNbCentroOptvo;
+        //public void ObtenerCentroOptvo()
+        //{
+        //    string vNbCentroOptvo;
 
-            var vCentroOptvo = vListaCentroOptvo.Where(t => t.FG_SELECCIONADO).FirstOrDefault();
+        //    var vCentroOptvo = vListaCentroOptvo.Where(t => t.FG_SELECCIONADO).FirstOrDefault();
 
-            if (vCentroOptvo != null)
-            {
-                vNbCentroOptvo = vCentroOptvo.NB_CENTRO_OPTVO;
-            }
-            else
-            {
-                vNbCentroOptvo = "No Seleccionado";
-            }
+        //    if (vCentroOptvo != null)
+        //    {
+        //        vNbCentroOptvo = vCentroOptvo.NB_CENTRO_OPTVO;
+        //    }
+        //    else
+        //    {
+        //        vNbCentroOptvo = "No Seleccionado";
+        //    }
 
-            txtCentroOptvo.InnerText = vNbCentroOptvo;
+        //    txtCentroOptvo.InnerText = vNbCentroOptvo;
 
-        }
+        //}
 
         public void ObtenerPuestos(string pPuesto, RadComboBox radCmb)
         {
@@ -1256,10 +1322,10 @@ namespace SIGE.WebApp.IDP.Solicitud
                 ObtenerCompetenciasEspecificas();
                 ObtenerAreaInteres();
 
-                ObtenerAreas();
+                //ObtenerAreas();
 
-                ObtenerCentroAdmvo();
-                ObtenerCentroOptvo();
+                //ObtenerCentroAdmvo();
+                //ObtenerCentroOptvo();
 
                 //ObtenerPuestos(E_PUESTO_RELACION.SUBORDINADO.ToString(), cmbPuestosSubordinado);
                 //ObtenerPuestos(E_PUESTO_RELACION.INTERRELACIONADO.ToString(), cmbPuestosInterrelacionados);

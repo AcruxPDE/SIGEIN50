@@ -17,8 +17,10 @@ namespace SIGE.Entidades
         public string CL_ROL { get; set; }
         public string NB_ROL { get; set; }
         public string XML_AUTORIZACION { get; set; }
+        public Nullable<int> ID_PLANTILLA { get; set; }
         public bool FG_ACTIVO { get; set; }
         public Nullable<System.DateTime> FE_INACTIVO { get; set; }
         public string DS_FILTRO { get; set; }
+        public string XML_GRUPOS { get; set; }
     }
 }

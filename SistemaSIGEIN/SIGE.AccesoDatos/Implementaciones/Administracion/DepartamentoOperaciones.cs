@@ -23,14 +23,14 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
         private SistemaSigeinEntities context;
 
         #region OBTIENE DATOS  M_DEPARTAMENTO
-        public List<SPE_OBTIENE_M_DEPARTAMENTO_Result> ObtenerDepartamentos(int? pIdDepartamento = null, bool? pFgActivo = null, DateTime? pFeInactivo = null, string pClDepartamento = null, string pNbDepartamento = null, XElement XML_SELECCIONADOS = null, int? pIdEmpresa= null)
+        public List<SPE_OBTIENE_M_DEPARTAMENTO_Result> ObtenerDepartamentos(int? pIdDepartamento = null, bool? pFgActivo = null, DateTime? pFeInactivo = null, string pClDepartamento = null, string pNbDepartamento = null, XElement XML_SELECCIONADOS = null, int? pIdEmpresa= null, int? pID_ROL = null)
         {
             using (context = new SistemaSigeinEntities())
             {
                 string vXmlFiltro = null;
                 if (XML_SELECCIONADOS != null)
                     vXmlFiltro = XML_SELECCIONADOS.ToString();
-                return context.SPE_OBTIENE_M_DEPARTAMENTO(pIdDepartamento, pFgActivo, pFeInactivo, pClDepartamento, pNbDepartamento, vXmlFiltro,pIdEmpresa).ToList();
+                return context.SPE_OBTIENE_M_DEPARTAMENTO(pIdDepartamento, pFgActivo, pFeInactivo, pClDepartamento, pNbDepartamento, vXmlFiltro, pIdEmpresa, pID_ROL).ToList();
             }
         }
 

@@ -17,16 +17,16 @@
                     <Content>
                         <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6" style="margin-top: 100px;">
                             <div style="padding-left: 20px;">
-                                <h3><b style="color: #0087CF;">Bienvenido(a) al sistema</b> </h3>
+                                <h3><b style="color: #0087CF;">Bienvenid@ al sistema</b> </h3>
                                 <b><%= vNbUsuario %></b>
                                 <br />
                                 <br />
-                                Bienvenido(a) a la aplicación <b>SIGEIN</b>.
+                                Bienvenid@ a la aplicación <b>SIGEIN</b>.
                                     <br />
                                 Para comenzar a utilizar el sistema, utiliza el menú de navegación en el panel superior. 
-                                        <div style="padding-left:20px; padding-top:20px;">
-                               <telerik:RadBinaryImage ID="rbiLogoOrganizacion1" runat="server" Width="108" Height="108"  ResizeMode="Fit" />
-                               </div>
+                                        <div id="dvLogo" runat="server" style="padding-left: 20px; padding-top: 20px;">
+                                            <telerik:RadBinaryImage ID="rbiLogoOrganizacion1" runat="server" Width="108" Height="108" ResizeMode="Fit" />
+                                        </div>
                             </div>
                         </div>
                         <div class="col-xs-12 col-lg-6 col-md-6 col-sm-6" style="margin-top: 50px;">

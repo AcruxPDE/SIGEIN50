@@ -21,10 +21,20 @@ namespace SIGE.WebApp.FYD
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
 
+        protected void SeguridadProcesos()
+        {
+            btnGuardar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.C.A");
+            btnEditar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.C.B");
+            btnEliminar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.C.C");
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+
+            if (!IsPostBack)
+                SeguridadProcesos();
         }
 
         protected void grdCursos_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)

@@ -1,6 +1,7 @@
 ﻿using SIGE.Entidades;
 using SIGE.Entidades.FormacionDesarrollo;
 using SIGE.Negocio.FormacionDesarrollo;
+using SIGE.WebApp.Comunes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,8 @@ namespace SIGE.WebApp.FYD
     public partial class ReporteGlobalComparativoImpresion : System.Web.UI.Page
     {
         #region Variables
+
+        private int? vIdRol;
 
         public int vIdPeriodo
         {
@@ -239,7 +242,7 @@ namespace SIGE.WebApp.FYD
 
 
             ConsultaGeneralNegocio neg = new ConsultaGeneralNegocio();
-            List<SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO_Result> vLstEvaluadores = neg.ObtenerEvaluadosComparativo(vIdPeriodo, vXmlPeriodos, vFgFoto);
+            List<SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO_Result> vLstEvaluadores = neg.ObtenerEvaluadosComparativo(vIdPeriodo, vXmlPeriodos, vFgFoto, vIdRol);
             List<int> lista = ContextoReportes.oReporteComparativo.Where(t => t.vIdReporteComparativo == vIdReporteComparativo).FirstOrDefault().vListaPeriodos;
             bool exists = lista.Exists(element => element == vIdPeriodo);
             int? vMaxPuestosPeriodo = 1;
@@ -405,6 +408,7 @@ namespace SIGE.WebApp.FYD
 
         protected void Page_Init(object sender, System.EventArgs e)
         {
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
             if (Request.Params["FgFoto"] != null)
             {
                 vFgFoto = bool.Parse(Request.Params["FgFoto"].ToString());

@@ -29,6 +29,15 @@ namespace SIGE.WebApp.Comunes
         {
             if (!Page.IsPostBack)
             {
+
+                grdPrograma.AllowMultiRowSelection = true;
+                if (!String.IsNullOrEmpty(Request.QueryString["mulSel"]))
+                {
+                    grdPrograma.AllowMultiRowSelection = (Request.QueryString["mulSel"] == "1");
+                    btnAgregar.Visible = (Request.QueryString["mulSel"] == "1");
+                }
+
+
                 vClTipoSeleccion = Request.QueryString["vClTipoSeleccion"];
                 if (string.IsNullOrEmpty(vClTipoSeleccion))
                     vClTipoSeleccion = "TODOS";

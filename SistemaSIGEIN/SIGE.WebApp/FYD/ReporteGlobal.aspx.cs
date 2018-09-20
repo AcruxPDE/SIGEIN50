@@ -27,6 +27,8 @@ namespace SIGE.WebApp.FYD
 
         private int? vIdEmpresa;
 
+        private int? vIdRol;
+
         public int vIdPeriodo
         {
             get { return (int)ViewState["vs_rg_id_periodo"]; }
@@ -708,7 +710,7 @@ namespace SIGE.WebApp.FYD
 
             if (!Page.IsPostBack)
             {
-
+                vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
                 if (Request.Params["IdReporteGlobal"] != null)
                 {
                     vIdReporteGlobal = Guid.Parse(Request.Params["IdReporteGlobal"].ToString());
@@ -734,7 +736,7 @@ namespace SIGE.WebApp.FYD
         protected void rdgGlobal_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             ConsultaIndividualNegocio neg = new ConsultaIndividualNegocio();
-            rdgGlobal.DataSource = neg.ObtenerEvaluados(vIdPeriodo, vIdEmpresa);
+            rdgGlobal.DataSource = neg.ObtenerEvaluados(vIdPeriodo, vIdEmpresa, vIdRol);
             //ConsultaGeneralNegocio neg  = new ConsultaGeneralNegocio();
             //vReporteGlobal = ObtieneEvaluadoReporte();
             //rdgGlobal.DataSource = vReporteGlobal;

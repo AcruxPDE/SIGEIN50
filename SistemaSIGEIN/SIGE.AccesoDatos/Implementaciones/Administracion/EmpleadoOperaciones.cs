@@ -25,14 +25,14 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar
         List<SPE_OBTIENE_M_EMPLEADO_Result> x = new List<SPE_OBTIENE_M_EMPLEADO_Result>();
 
 
-        public List<SPE_OBTIENE_EMPLEADOS_CAMPOS_EXTRA_Result> ObtenerEmpleadosCamposExtra(XElement pXmlSeleccion = null, bool? pFgFoto = false, string pClUsuario = null, bool? pFgActivo = null, int? pIdEmpresa = null)
+        public List<SPE_OBTIENE_EMPLEADOS_CAMPOS_EXTRA_Result> ObtenerEmpleadosCamposExtra(XElement pXmlSeleccion = null, bool? pFgFoto = false, string pClUsuario = null, bool? pFgActivo = null, int? pIdEmpresa = null, int? pIdRol = null)
         {
             using (context = new SistemaSigeinEntities())
             {
                 string vXmlFiltro = null;
                 if (pXmlSeleccion != null)
                     vXmlFiltro = pXmlSeleccion.ToString();
-                return context.SPE_OBTIENE_EMPLEADOS_CAMPOS_EXTRA(vXmlFiltro,pClUsuario,pFgActivo, pFgFoto, pIdEmpresa).ToList();
+                return context.SPE_OBTIENE_EMPLEADOS_CAMPOS_EXTRA(vXmlFiltro, pClUsuario, pFgActivo, pFgFoto, pIdEmpresa, pIdRol).ToList();
             }
         }
 
@@ -44,16 +44,17 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar
             }
         }
 
-        public List<SPE_OBTIENE_EMPLEADOS_Result> ObtenerEmpleados(XElement pXmlSeleccion = null, bool? pFgFoto = false, string pClUsuario = null, bool? pFgActivo = null, int? pIdEmpresa = null)
+        public List<SPE_OBTIENE_EMPLEADOS_Result> ObtenerEmpleados(XElement pXmlSeleccion = null, bool? pFgFoto = false, string pClUsuario = null, bool? pFgActivo = null, int? pIdEmpresa = null, int? pID_ROL = null)
         {
             using (context = new SistemaSigeinEntities())
             {
                 string vXmlFiltro = null;
                 if (pXmlSeleccion != null)
                     vXmlFiltro = pXmlSeleccion.ToString();
-                return context.SPE_OBTIENE_EMPLEADOS(vXmlFiltro, pClUsuario, pFgActivo, pFgFoto, pIdEmpresa).ToList();
+                return context.SPE_OBTIENE_EMPLEADOS(vXmlFiltro, pClUsuario, pFgActivo, pFgFoto, pIdEmpresa, pID_ROL).ToList();
             }
         }
+
 
         public List<SPE_OBTIENE_EVALUACION_COMPETENCIAS_PLAN_SUCESION_Result> ObtieneEvalCompetenciasSucesion(int? vIdEmpleadoSuceder = null, int? vIdEmpleadoSucesor = null, int? vIdPuestoSuceder = null, int? vIdPuestoSucesor = null)
         {
@@ -231,20 +232,20 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar
 
             }
         }
- 
-        public List<SPE_OBTIENE_SUELDO_EMPLEADOS_Result> ObtenerSueldoEmpleados()
+
+        public List<SPE_OBTIENE_SUELDO_EMPLEADOS_Result> ObtenerSueldoEmpleados(int? pIdEmpresa = null, int? pIdRol = null)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_SUELDO_EMPLEADOS().ToList();
+                return context.SPE_OBTIENE_SUELDO_EMPLEADOS(pIdEmpresa, pIdRol).ToList();
             }
         }
-     
-        public List<SPE_OBTIENE_PERFIL_EMPLEADOS_Result> ObtenerPerfilEmpleados()
+
+        public List<SPE_OBTIENE_PERFIL_EMPLEADOS_Result> ObtenerPerfilEmpleados(int? pIdEmpresa = null, int? pIdRol = null)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_PERFIL_EMPLEADOS().ToList();
+                return context.SPE_OBTIENE_PERFIL_EMPLEADOS(pIdEmpresa, pIdRol).ToList();
             }
         }
      

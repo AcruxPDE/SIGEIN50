@@ -92,7 +92,7 @@
 
         </script>
     </telerik:RadCodeBlock>
-    <label name="" id="lbltitulo" class="labelTitulo">Prueba TIVA</label>
+    <label name="" id="lbltitulo" class="labelTitulo">TIVA</label>
 
     <div style="height: calc(100% - 100px);">
         <telerik:RadSplitter ID="splHelp" runat="server" Width="100%" Height="100%" BorderSize="0" Orientation="Horizontal">
@@ -283,7 +283,7 @@
     <div style="clear: both; height: 10px;"></div>
 
     <div class="DivBtnTerminarDerecha">
-        <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Terminar" AutoPostBack="true"></telerik:RadButton>
+        <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Guardar" AutoPostBack="true"></telerik:RadButton>
     </div>
 
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>

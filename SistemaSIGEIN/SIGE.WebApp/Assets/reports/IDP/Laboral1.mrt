@@ -81,7 +81,7 @@
               <Name>Text172</Name>
               <Page isRef="2" />
               <Parent isRef="3" />
-              <Text>Personalidad laboral 1</Text>
+              <Text>Personalidad laboral I</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text172>
@@ -5328,10 +5328,10 @@ Las palabras descriptivas siguientes se encuentran agrupadas en series de cuatro
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Personalidad laboral 1</ReportAlias>
-  <ReportChanged>9/30/2017 1:03:37 PM</ReportChanged>
+  <ReportChanged>5/30/2018 1:44:50 PM</ReportChanged>
   <ReportCreated>9/29/2017 11:07:10 AM</ReportCreated>
-  <ReportFile>C:\Users\usuario\Documents\Visual Studio 2012\Projects\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\Laboral1.mrt</ReportFile>
-  <ReportGuid>118b631c571e4dd584d520fa9bfba707</ReportGuid>
+  <ReportFile>C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\Laboral1.mrt</ReportFile>
+  <ReportGuid>9cd75385f6d54590be4942d350ff2ab2</ReportGuid>
   <ReportName>Personalidad laboral 1</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2015.3.0</ReportVersion>

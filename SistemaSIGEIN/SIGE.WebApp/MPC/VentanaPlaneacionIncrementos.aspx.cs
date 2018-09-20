@@ -27,6 +27,7 @@ namespace SIGE.WebApp.MPC
 
         private string vClUsuario;
         private string vNbPrograma;
+        private int? vIdRol;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
 
         public int vIdTabulador
@@ -51,15 +52,21 @@ namespace SIGE.WebApp.MPC
             set { ViewState["vs_vPlaneacionIncrementos"] = value; }
         }
 
-        private int vRangoVerde
+        private int? vRangoVerde
         {
-            get { return (int)ViewState["vs_vRangoVerde"]; }
+            get { return (int?)ViewState["vs_vRangoVerde"]; }
             set { ViewState["vs_vRangoVerde"] = value; }
         }
 
-        private int vRangoAmarillo
+        public bool? vFgPlaneacion
         {
-            get { return (int)ViewState["vs_vRangoAmarillo"]; }
+            get { return (bool?)ViewState["vs_vFgPlaneacion"]; }
+            set { ViewState["vs_vFgPlaneacion"] = value; }
+        }
+
+        private int? vRangoAmarillo
+        {
+            get { return (int?)ViewState["vs_vRangoAmarillo"]; }
             set { ViewState["vs_vRangoAmarillo"] = value; }
         }
 
@@ -378,6 +385,7 @@ namespace SIGE.WebApp.MPC
                 bool vCerrarVentana = pFgCerrarVentana;
                 string vCallBackFunction = vCerrarVentana ? "onCloseWindow" : null;
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: vCallBackFunction);
+                grdPlaneacionIncrementos.Rebind();
             }
         }
 
@@ -414,9 +422,15 @@ namespace SIGE.WebApp.MPC
 
         protected void Actualizar()
         {
-
             TabuladoresNegocio nTabulador = new TabuladoresNegocio();
-            vObtienePlaneacionIncrementos = nTabulador.ObtieneEmpleadosPlaneacionIncrementos(ID_TABULADOR: vIdTabulador).Select(s => new E_PLANEACION_INCREMENTOS()
+            //var vEmpleados = nTabulador.ObtieneEmpleadosPlaneacionIncrementos(ID_TABULADOR: vIdTabulador, pID_ROL: vIdRol).ToList();
+
+            //if (vEmpleados.Count > 0)
+            //    if (vEmpleados.Where(w => w.FG_PLANEACION_INCREMENTO == true).Count() > 0)
+            //        vFgPlaneacion = true;
+
+           
+            vObtienePlaneacionIncrementos = nTabulador.ObtieneEmpleadosPlaneacionIncrementos(ID_TABULADOR: vIdTabulador, pID_ROL: vIdRol, pFG_PLANECAION: null).Select(s => new E_PLANEACION_INCREMENTOS()
             {
                 NUM_ITEM = (int)s.NUM_RENGLON,
                 NB_TABULADOR_NIVEL = s.NB_TABULADOR_NIVEL,
@@ -436,6 +450,7 @@ namespace SIGE.WebApp.MPC
                 MN_MAXIMO_SEGUNDO_CUARTIL = s.MN_MAXIMO_SEGUNDO_CUARTIL,
                 MN_MAXIMO_MAXIMO = s.MN_MAXIMO_MAXIMO,
                 MN_MINIMO_MAXIMO = s.MN_MINIMO_MAXIMO,
+                FG_SUELDO_VISIBLE_TABULADOR = s.FG_SUELDO_VISIBLE_TABULADOR,
                 MN_SUELDO_ORIGINAL = s.MN_SUELDO_ORIGINAL,
                 MN_SUELDO_NUEVO = s.MN_SUELDO_NUEVO,
                 //MN_SUELDO_NUEVO_INICIAL = s.MN_SUELDO_NUEVO,
@@ -492,11 +507,11 @@ namespace SIGE.WebApp.MPC
 
         private void SeguridadProcesos()
         {
-            btnGuardarCerrar.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.K.A");
-            btnGuardar.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.K.A");
-            btnAplicarIncremento.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.K.A");
-            btnInventario.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.K.A");
-            btnSeleccionar.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.K.A");
+            btnGuardarCerrar.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.K.A");
+            btnGuardar.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.K.A");
+            btnAplicarIncremento.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.K.A");
+            btnInventario.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.K.A");
+           // btnSeleccionar.Enabled = ContextoUsuario.oUsuario.TienePermiso("O.A.A.K.A");
             // btnRecalcular.Enabled = !ContextoUsuario.oUsuario.TienePermiso("K.A.A.K.A");
         }
 
@@ -551,6 +566,7 @@ namespace SIGE.WebApp.MPC
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!IsPostBack)
             {
@@ -591,7 +607,7 @@ namespace SIGE.WebApp.MPC
                         btnGuardar.Enabled = false;
                         btnAplicarIncremento.Enabled = false;
                         btnInventario.Enabled = false;
-                        btnSeleccionar.Enabled = false;
+                        //btnSeleccionar.Enabled = false;
                         //  btnRecalcular.Enabled = false;
                     }
                     if (vTabulador.XML_VARIACION != null)
@@ -601,13 +617,13 @@ namespace SIGE.WebApp.MPC
                             if ((UtilXML.ValorAtributo<string>(vXmlVaria.Attribute("COLOR")).Equals("green")))
                             {
                                 vRangoVerde = UtilXML.ValorAtributo<int>(vXmlVaria.Attribute("RANGO_SUPERIOR"));
-                                txtSemaforoVerde.Text = vRangoVerde.ToString();
+                               // txtSemaforoVerde.Text = vRangoVerde.ToString();
                             }
                         foreach (XElement vXmlVaria in vXlmVariacion.Elements("Rango"))
                             if ((UtilXML.ValorAtributo<string>(vXmlVaria.Attribute("COLOR")).Equals("yellow")))
                             {
                                 vRangoAmarillo = UtilXML.ValorAtributo<int>(vXmlVaria.Attribute("RANGO_SUPERIOR"));
-                                txtSemaforoAmarillo.Text = vRangoAmarillo.ToString();
+                              //  txtSemaforoAmarillo.Text = vRangoAmarillo.ToString();
                             }
                     }
                     foreach (XElement vXmlCuartilSeleccionado in vXlmCuartil.Elements("ITEM"))
@@ -616,6 +632,7 @@ namespace SIGE.WebApp.MPC
                             cmbCuartilIncremento.SelectedValue = UtilXML.ValorAtributo<string>(vXmlCuartilSeleccionado.Attribute("ID_CUARTIL"));
                         }
 
+                    vFgPlaneacion = false;
                     Actualizar();
 
                     //var masterTableView = grdPlaneacionIncrementos.MasterTableView;
@@ -705,6 +722,13 @@ namespace SIGE.WebApp.MPC
 
         protected void grdPlaneacionIncrementos_ItemDataBound(object sender, GridItemEventArgs e)
         {
+            if (e.Item is GridDataItem)
+            {
+                GridDataItem item = (GridDataItem)e.Item;
+                bool vFgVisibleSueldo = bool.Parse(item.GetDataKeyValue("FG_SUELDO_VISIBLE_TABULADOR").ToString());
+                if (!vFgVisibleSueldo)
+                    item["MN_SUELDO_ORIGINAL"].Text = "";
+            }
             //if (e.Item.ItemType == GridItemType.Item || e.Item.ItemType == GridItemType.AlternatingItem)
             //{
             //    Control target = e.Item.FindControl("gbcMinimo");

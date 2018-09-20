@@ -25,9 +25,11 @@
                         nbDato: masterTable.getCellByColumnUniqueName(selectedItem, "NB_CAMPO_FORMULARIO").innerHTML,
                         clTipoCatalogo: "<%= vClCatalogo %>"
                     };
-                    vDatos.push(vDato);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vDatos.length;
+                    if (!existeElemento(vDato)) {
+                        vDatos.push(vDato);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vDatos.length;
+                    }
                 }
                 return true;
             }
@@ -39,6 +41,15 @@
                 browserWnd.radalert("Selecciona un campo.", 400, 150);
             }
 
+            return false;
+        }
+
+        function existeElemento(pDato) {
+            for (var i = 0; i < vDatos.length; i++) {
+                var vValue = vDatos[i];
+                if (vValue.idDato == pDato.idDato)
+                    return true;
+            }
             return false;
         }
 

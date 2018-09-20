@@ -9,12 +9,17 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using SIGE.WebApp.Comunes;
 using Telerik.Web.UI;
+using System.Xml.Linq;
+using WebApp.Comunes;
 
 namespace SIGE.WebApp.FYD
 {
     public partial class ControlAvance : System.Web.UI.Page
     {
         #region Variables
+
+        private int? vIdRol;
+        private string vNbFirstRadEditorTagName = "p";
 
         public int vIdPeriodo {
             get { return (int)ViewState["vs_ca_id_periodo"]; }
@@ -30,15 +35,64 @@ namespace SIGE.WebApp.FYD
             ControlAvanceNegocio neg = new ControlAvanceNegocio();
             var periodo = neg.ObtenerPeriodoEvaluacion(vIdPeriodo);
 
-            txtNoPeriodo.InnerText = periodo.CL_PERIODO;
-            txtNbPeriodo.InnerText = periodo.DS_PERIODO;
+            //txtNoPeriodo.InnerText = periodo.CL_PERIODO;
+            //txtNbPeriodo.InnerText = periodo.DS_PERIODO;
             btnEnvioCuestionarios.Enabled = (periodo.CL_ESTADO_PERIODO.ToUpper() == "CERRADO") ? false : true;
+
+            txtClPeriodo.InnerText = periodo.NB_PERIODO;
+            txtDsPeriodo.InnerText = periodo.DS_PERIODO;
+            txtEstatus.InnerText = periodo.CL_ESTADO_PERIODO;
+            string vTiposEvaluacion = "";
+
+            if (periodo.FG_AUTOEVALUACION)
+            {
+                vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? "Autoevaluación" : String.Join(", ", vTiposEvaluacion, "Autoevaluacion");
+            }
+
+            if (periodo.FG_SUPERVISOR)
+            {
+                vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? "Superior" : String.Join(", ", vTiposEvaluacion, "Superior");
+            }
+
+            if (periodo.FG_SUBORDINADOS)
+            {
+                vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? "Subordinado" : String.Join(", ", vTiposEvaluacion, "Subordinado");
+            }
+
+            if (periodo.FG_INTERRELACIONADOS)
+            {
+                vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? "Interrelacionado" : String.Join(", ", vTiposEvaluacion, "Interrelacionado");
+            }
+
+            if (periodo.FG_OTROS_EVALUADORES)
+            {
+                vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? "Otros" : String.Join(", ", vTiposEvaluacion, "Otros");
+            }
+
+            txtTipoEvaluacion.InnerText = vTiposEvaluacion;
+
+            if (periodo.DS_NOTAS != null)
+            {
+                if (periodo.DS_NOTAS.Contains("DS_NOTA"))
+                {
+                    txtNotas.InnerHtml = Utileria.MostrarNotas(periodo.DS_NOTAS);
+                }
+                else
+                {
+                    XElement vNotas = XElement.Parse(periodo.DS_NOTAS);
+                    if (vNotas != null)
+                    {
+                        vNotas.Name = vNbFirstRadEditorTagName;
+                        txtNotas.InnerHtml = vNotas.ToString();
+                    }
+                }
+            }
         }
 
         private void cargarDatosGrafica()
         {
             ControlAvanceNegocio neg = new ControlAvanceNegocio();
-            var datos = neg.obtenerDatosControlAvance(vIdPeriodo);
+            var datos = neg.obtenerDatosControlAvance(vIdPeriodo, vIdRol);
 
             txtPorEvaluar.Text = datos.NO_PERSONAS_POR_EVALUAR.Value.ToString();
             txtEvaluadas.Text = datos.NO_PERSONAS_EVALUADAS.Value.ToString();
@@ -66,6 +120,7 @@ namespace SIGE.WebApp.FYD
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!Page.IsPostBack)
             {
@@ -86,13 +141,13 @@ namespace SIGE.WebApp.FYD
         protected void GridPorEvaluado_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {            
             ControlAvanceNegocio neg = new ControlAvanceNegocio();
-            GridPorEvaluado.DataSource = neg.obtieneEmpleadosEvaluados(vIdPeriodo, ContextoUsuario.oUsuario.ID_EMPRESA);
+            GridPorEvaluado.DataSource = neg.obtieneEmpleadosEvaluados(vIdPeriodo, ContextoUsuario.oUsuario.ID_EMPRESA, vIdRol);
         }
 
         protected void GridPorEvaluador_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {            
             ControlAvanceNegocio neg = new ControlAvanceNegocio();
-            GridPorEvaluador.DataSource = neg.obtieneEmpleadosEvaluadores(vIdPeriodo, ContextoUsuario.oUsuario.ID_EMPRESA);
+            GridPorEvaluador.DataSource = neg.obtieneEmpleadosEvaluadores(vIdPeriodo, ContextoUsuario.oUsuario.ID_EMPRESA, vIdRol);
         }
 
         protected void GridPorEvaluado_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)

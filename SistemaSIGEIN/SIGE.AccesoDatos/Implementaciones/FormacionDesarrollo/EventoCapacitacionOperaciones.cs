@@ -52,7 +52,7 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
                                  MN_COSTO_DIRECTO = a.MN_COSTO_DIRECTO,
                                  MN_COSTO_INDIRECTO = a.MN_COSTO_INDIRECTO,
                                  FG_INCLUIR_EN_PLANTILLA = a.FG_INCLUIR_EN_PLANTILLA,
-                                 NO_DURACION_CURSO = a.NO_DURACION_CURSO,
+                                 NO_DURACION_CURSO = a.NO_DURACION_CURSO == null ? 0 : (decimal)a.NO_DURACION_CURSO,
                                  XML_PARTICIPANTES = a.XML_PARTICIPANTES,
                                  FL_EVENTO = a.FL_EVENTO,
                                  CL_TOKEN = a.CL_TOKEN,
@@ -65,7 +65,7 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
             }
         }
 
-        public List<SPE_OBTIENE_EMPLEADOS_Result> ObtenerEmpleados(XElement pXmlSeleccion = null, bool? pFgFoto = null, string pClUsuario =null, bool? pFgActivo = null, int? pIdEmpresa = null)
+        public List<SPE_OBTIENE_EMPLEADOS_Result> ObtenerEmpleados(XElement pXmlSeleccion = null, bool? pFgFoto = null, string pClUsuario =null, bool? pFgActivo = null, int? pIdEmpresa = null, int? pIdRol = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
@@ -80,7 +80,7 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
                     sXmlSeleccion = (new XElement("SELECCION", new XElement("FILTRO", new XAttribute("CL_TIPO", "TODAS")))).ToString();
                 }
 
-                return contexto.SPE_OBTIENE_EMPLEADOS(sXmlSeleccion, pClUsuario, pFgActivo, pFgFoto, pIdEmpresa).ToList();
+                return contexto.SPE_OBTIENE_EMPLEADOS(sXmlSeleccion, pClUsuario, pFgActivo, pFgFoto, pIdEmpresa, pIdRol).ToList();
             }
         }
 
@@ -122,11 +122,11 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
             }
         }
 
-        public List<E_EVENTO_PARTICIPANTE> ObtenerParticipanteEvento( int? ID_EVENTO_PARTICIPANTE = null, int? ID_EVENTO = null, int? ID_EMPLEADO = null, string CL_PARTICIPANTE = null, string NB_PARTICIPANTE = null, string NB_PUESTO = null, string NB_DEPARTAMENTO = null, int? NO_TIEMPO = null, decimal? PR_CUMPLIMIENTO = null)
+        public List<E_EVENTO_PARTICIPANTE> ObtenerParticipanteEvento( int? ID_EVENTO_PARTICIPANTE = null, int? ID_EVENTO = null, int? ID_EMPLEADO = null, string CL_PARTICIPANTE = null, string NB_PARTICIPANTE = null, string NB_PUESTO = null, string NB_DEPARTAMENTO = null, int? NO_TIEMPO = null, decimal? PR_CUMPLIMIENTO = null, int? ID_ROL = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                var lista = contexto.SPE_OBTIENE_EVENTO_PARTICIPANTE(ID_EVENTO_PARTICIPANTE, ID_EVENTO, ID_EMPLEADO, CL_PARTICIPANTE, NB_PARTICIPANTE, NB_PUESTO, NB_DEPARTAMENTO, NO_TIEMPO, PR_CUMPLIMIENTO).ToList();
+                var lista = contexto.SPE_OBTIENE_EVENTO_PARTICIPANTE(ID_EVENTO_PARTICIPANTE, ID_EVENTO, ID_EMPLEADO, CL_PARTICIPANTE, NB_PARTICIPANTE, NB_PUESTO, NB_DEPARTAMENTO, NO_TIEMPO, PR_CUMPLIMIENTO, ID_ROL).ToList();
 
                 var source = (from a in lista select new E_EVENTO_PARTICIPANTE {
                     ID_EVENTO_PARTICIPANTE = a.ID_EVENTO_PARTICIPANTE,
@@ -180,11 +180,11 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
             }
         }
 
-        public List<SPE_OBTIENE_EVENTO_PARTICIPANTE_COMPETENCIA_Result> ObtenerEventoParticipanteCompetencia(int? ID_EVENTO_PARTICIPANTE_COMPETENCIA = null, int? ID_EVENTO = null, int? ID_PARTICIPANTE = null, int? ID_COMPETENCIA = null, byte? NO_EVALUACION = null, string NB_COMPETENCIA = null, int? ID_EMPRESA = null)
+        public List<SPE_OBTIENE_EVENTO_PARTICIPANTE_COMPETENCIA_Result> ObtenerEventoParticipanteCompetencia(int? ID_EVENTO_PARTICIPANTE_COMPETENCIA = null, int? ID_EVENTO = null, int? ID_PARTICIPANTE = null, int? ID_COMPETENCIA = null, byte? NO_EVALUACION = null, string NB_COMPETENCIA = null, int? ID_EMPRESA = null, int? ID_ROL = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_EVENTO_PARTICIPANTE_COMPETENCIA(ID_EVENTO_PARTICIPANTE_COMPETENCIA, ID_EVENTO, ID_PARTICIPANTE, ID_COMPETENCIA, NO_EVALUACION, NB_COMPETENCIA,ID_EMPRESA).ToList();
+                return contexto.SPE_OBTIENE_EVENTO_PARTICIPANTE_COMPETENCIA(ID_EVENTO_PARTICIPANTE_COMPETENCIA, ID_EVENTO, ID_PARTICIPANTE, ID_COMPETENCIA, NO_EVALUACION, NB_COMPETENCIA, ID_EMPRESA, ID_ROL).ToList();
             }
         }
 
@@ -224,19 +224,19 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
             }
         }
 
-        public SPE_OBTIENE_EVENTO_LISTA_ASISTENCIA_Result ObtenerDatosListaAsistencia(int pIdEvento)
+        public SPE_OBTIENE_EVENTO_LISTA_ASISTENCIA_Result ObtenerDatosListaAsistencia(int pIdEvento, int? vIdRol)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_EVENTO_LISTA_ASISTENCIA(pIdEvento).FirstOrDefault();
+                return contexto.SPE_OBTIENE_EVENTO_LISTA_ASISTENCIA(pIdEvento, vIdRol).FirstOrDefault();
             }
         }
 
-        public List<SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO_Result> ObtenerReporteResultadosEvento(int pIdEvento)
+        public List<SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO_Result> ObtenerReporteResultadosEvento(int pIdEvento, int? vIdRol)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO(pIdEvento).ToList();
+                return contexto.SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO(pIdEvento, vIdRol).ToList();
             }
         }
 

@@ -19,7 +19,7 @@ namespace SIGE.Entidades
         public string ESTATUS { get; set; }
         public string NB_PUESTO { get; set; }
         public string NB_DEPARTAMENTO { get; set; }
-        public decimal MN_SUELDO { get; set; }
+        public Nullable<decimal> MN_SUELDO { get; set; }
         public string NB_EMPRESA { get; set; }
     }
 }

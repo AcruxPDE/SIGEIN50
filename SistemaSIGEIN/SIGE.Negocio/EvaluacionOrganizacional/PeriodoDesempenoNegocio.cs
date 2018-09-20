@@ -67,10 +67,10 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
                     }).ToList();
         }
 
-        public List<E_OBTIENE_CUMPLIMIENTO_GLOBAL> ObtieneCumplimientoGlobal(int? pIdPeriodo = null)
+        public List<E_OBTIENE_CUMPLIMIENTO_GLOBAL> ObtieneCumplimientoGlobal(int? pIdPeriodo = null, int? pIdRol = null)
         {
             PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
-            var vDesempeno = oPeriodo.ObtenerCumplimientoGlobal(pIdPeriodo).ToList();
+            var vDesempeno = oPeriodo.ObtenerCumplimientoGlobal(pIdPeriodo, pIdRol).ToList();
             return (from x in vDesempeno
                     select new E_OBTIENE_CUMPLIMIENTO_GLOBAL
                         {
@@ -145,16 +145,22 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
             return oPeriodo.ObtenerSolicitudesEnviar();
         }
 
+        public List<SPE_OBTIENE_PERIODOS_SOLICITUDES_ENVIAR_Result> ObtenerPeriodosEnviar()
+        {
+            PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
+            return oPeriodo.ObtenerPeriodosEnviar();
+        }
+
         public SPE_OBTIENE_EO_CONTEXTO_METAS_Result ObtienePeriodoDesempenoContexto(int pIdPeriodo, int? idEvaluado)
         {
             PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
             return oPeriodo.ObtenerPeriodoDesempenoContexto(pIdPeriodo, idEvaluado);
         }
 
-        public E_RESULTADO InsertaActualiza_PERIODO(int? pIdPeriodoDesempeno, string pClPeriodoDesempeno, string pNbPeriodoDesempeno, string pDsPeriodoDesempeno, string pClEstadoPeriodoDesempeno, string pDsNotas, DateTime pFeInicio, DateTime pFeTermino, string pClTipoCapturista, string CL_TIPO_META, string pClUsuario, string pNbPrograma, string pTipoTransaccion)
+        public E_RESULTADO InsertaActualiza_PERIODO(int? pIdPeriodoDesempeno, string pClPeriodoDesempeno, string pNbPeriodoDesempeno, string pDsPeriodoDesempeno, string pClEstadoPeriodoDesempeno, string pDsNotas, DateTime pFeInicio, DateTime pFeTermino, string pClTipoCapturista, string CL_TIPO_META, string pClUsuario, string pNbPrograma, string pTipoTransaccion, bool? pFgCapturaMasiva)
         {
             PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
-            return UtilRespuesta.EnvioRespuesta(oPeriodo.InsertaActualiza_PERIODO_DESEMPENO(pIdPeriodoDesempeno, pClPeriodoDesempeno, pNbPeriodoDesempeno, pDsPeriodoDesempeno, pClEstadoPeriodoDesempeno, pDsNotas, pFeInicio, pFeTermino, pClTipoCapturista, CL_TIPO_META, pClUsuario, pNbPrograma, pTipoTransaccion));
+            return UtilRespuesta.EnvioRespuesta(oPeriodo.InsertaActualiza_PERIODO_DESEMPENO(pIdPeriodoDesempeno, pClPeriodoDesempeno, pNbPeriodoDesempeno, pDsPeriodoDesempeno, pClEstadoPeriodoDesempeno, pDsNotas, pFeInicio, pFeTermino, pClTipoCapturista, CL_TIPO_META, pClUsuario, pNbPrograma, pTipoTransaccion, pFgCapturaMasiva));
         }
 
         public E_RESULTADO EliminaPeriodoDesempeno(int pIdPeriodo)
@@ -163,16 +169,22 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
             return UtilRespuesta.EnvioRespuesta(oPeriodo.EliminarPeriodosDesempeno(pIdPeriodo));
         }
 
+        public E_RESULTADO InsertaPeriodosReplica(int? pIdPeriodo, string pXmlPeriodos, string pClUsuario, string pNbPrograma, string ClTipoTransaccion)
+        {
+            PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
+            return UtilRespuesta.EnvioRespuesta(oPeriodo.InsertaPeriodosReplica(pIdPeriodo, pXmlPeriodos, pClUsuario, pNbPrograma, ClTipoTransaccion));
+        }
+
         //public List<SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO_Result> ObtieneEvaluados(int? pIdPeriodo = null, int? pIdEvaluado = null, int? pIdEvaluador = null)
         //{
         //    PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
         //    return oPeriodo.ObtenerEvaluados(pIdPeriodo, pIdEvaluado,pIdEvaluador);
         //}
 
-        public List<E_OBTIENE_EVALUADOS_DESEMPENO> ObtieneEvaluados(int? pIdPeriodo = null, int? pIdEvaluado = null, int? pIdEvaluador = null)
+        public List<E_OBTIENE_EVALUADOS_DESEMPENO> ObtieneEvaluados(int? pIdPeriodo = null, int? pIdEvaluado = null, int? pIdEvaluador = null, string pClUsuario = null, string pNbPrograma = null, int? pIdRol = null)
         {
             PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
-            var vEvaluadosDesempeno = oPeriodo.ObtenerEvaluados(pIdPeriodo, pIdEvaluado, pIdEvaluador).ToList();
+            var vEvaluadosDesempeno = oPeriodo.ObtenerEvaluados(pIdPeriodo, pIdEvaluado, pIdEvaluador, pClUsuario, pNbPrograma, pIdRol).ToList();
             return (from x in vEvaluadosDesempeno
                     select new E_OBTIENE_EVALUADOS_DESEMPENO
                     {
@@ -224,6 +236,7 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
                         FE_CAPTURA_METAS = x.FE_CAPTURA_METAS,
                         MN_TOPE_BONO = x.MN_TOPE_BONO,
                         NO_MONTO_BONO = x.NO_MONTO_BONO,
+                        CL_MONTO_BONO = x.CL_MONTO_BONO,
                         PR_CUMPLIMIENTO_EVALUADO = x.PR_CUMPLIMIENTO_EVALUADO,
                         MN_BONO_TOTAL = x.MN_BONO_TOTAL,
                         ESTATUS = x.ESTATUS
@@ -231,10 +244,10 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
         }
 
 
-        public List<E_OBTIENE_EVALUADOS_DESEMPENO> ObtenerEvaluadosDesempeno(string pXmlPeriodos = null)
+        public List<E_OBTIENE_EVALUADOS_DESEMPENO> ObtenerEvaluadosDesempeno(string pXmlPeriodos = null, int? pIdRol = null)
         {
             PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
-            var vEvaluadosDesempeno = oPeriodo.ObtenerEvaluadosDesempeno(pXmlPeriodos).ToList();
+            var vEvaluadosDesempeno = oPeriodo.ObtenerEvaluadosDesempeno(pXmlPeriodos, pIdRol).ToList();
             return (from x in vEvaluadosDesempeno
                     select new E_OBTIENE_EVALUADOS_DESEMPENO
                     {
@@ -243,7 +256,8 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
                         NB_EMPLEADO = x.NB_EMPLEADO,
                         MN_SUELDO = x.MN_SUELDO,
                         NB_PUESTO = x.NB_PUESTO,
-                        NB_DEPARTAMENTO = x.NB_DEPARTAMENTO
+                        NB_DEPARTAMENTO = x.NB_DEPARTAMENTO,
+                        FG_VISIBLE_BONO = x.FG_SUELDO_VISIBLE_BONO
                     }).ToList();
         }
 
@@ -288,10 +302,10 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
             return UtilRespuesta.EnvioRespuesta(oPeriodo.ActualizarConfiguracionDesempeno(pIdPeriodoDesempeno, pFgBono, pPrBono, pMnBono, pClTipoBono, pClUsuario, pNbPrograma));
         }
 
-        public List<SPE_OBTIENE_BONO_EVALUADOS_Result> ObtieneBonoEvaluados(int pIdPeriodo)
+        public List<SPE_OBTIENE_BONO_EVALUADOS_Result> ObtieneBonoEvaluados(int pIdPeriodo, int? pIdRol)
         {
             PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
-            return oPeriodo.ObtenerBonoEvaluados(pIdPeriodo);
+            return oPeriodo.ObtenerBonoEvaluados(pIdPeriodo, pIdRol);
         }
 
         public E_RESULTADO ActualizaEvaluadoTopeBono(int pIdPeriodo, decimal pPrBono, string pClTipoBono, string pXmlEvaluado, string pNbPrograma, string pClUsuario)
@@ -372,6 +386,12 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
             return oPeriodo.ObtenerMetasEvaluados(idEvaluadoMeta, pIdPeriodo, idEvaluado, no_Meta, cl_nivel, FgEvaluar, idEmpleado);
         }
 
+        public List<SPE_OBTIENE_EO_METAS_CAPTURA_MASIVA_Result> ObtieneMetasCapturaMasiva(int? pIdPeriodo = null, int? idEvaluador = null, System.Guid? pFlEvaluador = null)
+        {
+            PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
+            return oPeriodo.ObtieneMetasCapturaMasiva(pIdPeriodo, idEvaluador, pFlEvaluador);
+        }
+
         public List<E_METAS_PERIODO_COMPARACION> ObtieneMetasComparacion(int? idEvaluadoMeta = null, int? pIdPeriodo = null, int? idEvaluado = null)
         {
             PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
@@ -440,10 +460,10 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
                     }).ToList();
         }
 
-        public List<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result> ObtenerEvaluadoresPeriodo(int pID_PERIODO)
+        public List<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result> ObtenerEvaluadoresPeriodo(int pID_PERIODO, int? pID_ROL)
         {
             PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
-            return oPeriodo.ObtenerEvaluadores(pID_PERIODO);
+            return oPeriodo.ObtenerEvaluadores(pID_PERIODO, pID_ROL);
         }
 
         public SPE_OBTIENE_EO_PERIODO_EVALUADOR_DESEMPENO_Result ObtenerPeriodoEvaluadorDesempeno(int? pID_EVALUADOR = null, Guid? pFL_EVALUADOR = null)
@@ -456,6 +476,12 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
         {
             PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
             return UtilRespuesta.EnvioRespuesta(oPeriodo.ActualizarResultadosMetas(pIdPeriodo, pIdEvaluado, xmlResultados, pClUsuario, pNbPrograma, pSuma));
+        }
+
+        public E_RESULTADO ActualizaResultadosMetasMasiva(int pIdPeriodo, int pIdEvaluador, XElement xmlResultados, string pClUsuario, string pNbPrograma, decimal pSuma)
+        {
+            PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
+            return UtilRespuesta.EnvioRespuesta(oPeriodo.ActualizarResultadosMetasMasiva(pIdPeriodo, pIdEvaluador, xmlResultados, pClUsuario, pNbPrograma, pSuma));
         }
 
         public SPE_OBTIENE_EVIDENCIAS_METAS_Result ObtieneEvidenciasMetasEvaluados(int? idEvaluadoMeta = null)
@@ -476,10 +502,10 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
 
         }
 
-        public E_RESULTADO InsertaActualizaEvidenciasMetas(int? pIsEvaluadoMeta, List<UDTT_ARCHIVO> pLstArchivosTemporales, List<E_DOCUMENTO> pLstDocumentos, string pClUsuario, string pNbPrograma)
+        public E_RESULTADO InsertaActualizaEvidenciasMetas(int? pIsEvaluadoMeta, List<UDTT_ARCHIVO> pLstArchivosTemporales, List<E_DOCUMENTO> pLstDocumentos, string pClUsuario, string pNbPrograma, int? pIdEvaluador)
         {
             PeriodoDesempenoOperaciones oSolicitud = new PeriodoDesempenoOperaciones();
-            return UtilRespuesta.EnvioRespuesta(oSolicitud.InsertarActualizarEvidenciasMetas(pIsEvaluadoMeta, pLstArchivosTemporales, pLstDocumentos, pClUsuario, pNbPrograma));
+            return UtilRespuesta.EnvioRespuesta(oSolicitud.InsertarActualizarEvidenciasMetas(pIsEvaluadoMeta, pLstArchivosTemporales, pLstDocumentos, pClUsuario, pNbPrograma, pIdEvaluador));
         }
 
         public E_RESULTADO ActualizaPonderacionEvaluados(int? pIdPeriodoDesempeno, string pXmlEvaluados, string pTipoActualizacion, string pClUsuario, string pNbPrograma)
@@ -518,6 +544,12 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
             return UtilRespuesta.EnvioRespuesta(oPeriodo.EliminarMetaEvaluado(pIdPeriodo, pIdMetaEvaluado, pIdEvaluado, pClUsuario, pNbPrograma));
         }
 
+        public E_RESULTADO EliminaMetaInactivas(int pIdPeriodo)
+        {
+            PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
+            return UtilRespuesta.EnvioRespuesta(oPeriodo.EliminarMetasInactivas(pIdPeriodo));
+        }
+
         public E_RESULTADO InsertaPeriodoDesempenoCopia(E_PERIODO_DESEMPENO pPeriodo, string pCL_USUARIO, string pNB_PROGRAMA)
         {
             PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
@@ -542,10 +574,10 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
             return oPeriodo.ValidarPeriodoDesempeno(pIdPeriodo);
         }
 
-        public List<SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO_Result> ObtieneControlAvanceDesempeno(int pIdPeriodoDesempeno)
+        public List<SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO_Result> ObtieneControlAvanceDesempeno(int pIdPeriodoDesempeno, int? pIdRol)
         {
             PeriodoDesempenoOperaciones oDesempeno = new PeriodoDesempenoOperaciones();
-            return oDesempeno.ObtenerControlAvanceDesempeno(pIdPeriodoDesempeno);
+            return oDesempeno.ObtenerControlAvanceDesempeno(pIdPeriodoDesempeno, pIdRol);
         }
 
         public E_RESULTADO InsertaActualizaBono(int? pIdPeriodo = null, string pCL_USUARIO = null, string pNB_PROGRAMA = null)

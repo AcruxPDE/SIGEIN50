@@ -126,7 +126,7 @@ namespace SIGE.Entidades
         public string M_DEPARTAMENTO_DS_CAUSA { get; set; }
         public Nullable<int> ID_SOLICITANTE { get; set; }
         public Nullable<int> ID_AUTORIZA { get; set; }
-        public Nullable<int> ID_EMPRESA { get; set; }
+        public Nullable<int> ID_EMPRESA_REQUISICION { get; set; }
         public string C_EMPRESA_CL_EMPRESA { get; set; }
         public string C_EMPRESA_NB_EMPRESA { get; set; }
         public string C_EMPRESA_NB_RAZON_SOCIAL { get; set; }
@@ -138,5 +138,8 @@ namespace SIGE.Entidades
         public string M_DEPARTAMENTO_XML_CAMPOS_ADICIONALES { get; set; }
         public Nullable<int> ID_BATERIA { get; set; }
         public Nullable<System.Guid> CL_TOKEN { get; set; }
+        public Nullable<int> ID_EMPRESA { get; set; }
+        public string CL_EMPRESA { get; set; }
+        public string NB_EMPRESA { get; set; }
     }
 }

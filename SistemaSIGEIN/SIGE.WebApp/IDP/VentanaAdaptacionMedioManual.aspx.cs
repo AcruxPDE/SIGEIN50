@@ -127,7 +127,7 @@ namespace SIGE.WebApp.IDP.Pruebas
             {
                 E_RESULTADO vResultado = negRes.insertaResultadosAdaptacionMedio(RESPUESTAS.ToString(), null, vIdPrueba, vClUsuario, vNbPrograma);
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "CloseTest");
+                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "");
             }
         }
 

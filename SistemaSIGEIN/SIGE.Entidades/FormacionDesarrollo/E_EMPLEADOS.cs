@@ -35,11 +35,11 @@ namespace SIGE.Entidades.FormacionDesarrollo
         public string M_EMPLEADO_XML_TELEFONOS { get; set; }
         public string M_EMPLEADO_CL_CORREO_ELECTRONICO { get; set; }
         public string M_EMPLEADO_ACTIVO { get; set; }
-        public System.DateTime M_EMPLEADO_FE_NACIMIENTO { get; set; }
+        public Nullable<System.DateTime> M_EMPLEADO_FE_NACIMIENTO { get; set; }
         public string M_EMPLEADO_DS_LUGAR_NACIMIENTO { get; set; }
         public System.DateTime M_EMPLEADO_FE_ALTA { get; set; }
         public Nullable<System.DateTime> M_EMPLEADO_FE_BAJA { get; set; }
-        public decimal M_EMPLEADO_MN_SUELDO { get; set; }
+        public Nullable<decimal> M_EMPLEADO_MN_SUELDO { get; set; }
         public Nullable<decimal> M_EMPLEADO_MN_SUELDO_VARIABLE { get; set; }
         public string M_EMPLEADO_DS_SUELDO_COMPOSICION { get; set; }
         public Nullable<int> M_EMPLEADO_ID_CANDIDATO { get; set; }

@@ -40,6 +40,15 @@ namespace SIGE.WebApp.EO {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtClPeriodo;
         
         /// <summary>
+        /// dvMostrar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMostrar;
+        
+        /// <summary>
         /// lbedad control.
         /// </summary>
         /// <remarks>
@@ -130,22 +139,22 @@ namespace SIGE.WebApp.EO {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbInstrucciones;
         
         /// <summary>
-        /// rgCuestionario control.
+        /// dvCuestionario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid rgCuestionario;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvCuestionario;
         
         /// <summary>
-        /// rgPreguntasAbiertas control.
+        /// dvPreguntasAbiertas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid rgPreguntasAbiertas;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvPreguntasAbiertas;
         
         /// <summary>
         /// btnImpresion2 control.

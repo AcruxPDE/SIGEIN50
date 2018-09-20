@@ -39,20 +39,17 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
-
-    <div style="clear: both; height: 10px;"></div>
-
     <telerik:RadTabStrip ID="rtsCumplimientoPersonal" runat="server" SelectedIndex="0" MultiPageID="rmpCumplimientoPersonal">
         <Tabs>
             <telerik:RadTab Text="Contexto"></telerik:RadTab>
             <telerik:RadTab Text="Evaluados"></telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
-    <div style="height: calc(100% - 100px); width: 100%;">
+    <div style="height: calc(100% - 80px); width: 100%;">
+            <div style="clear: both; height: 10px;"></div>
         <telerik:RadMultiPage ID="rmpCumplimientoPersonal" runat="server" SelectedIndex="0" Height="100%">
-
             <telerik:RadPageView ID="RadPageView1" runat="server" Width="100%">
-                <div class="divControlIzquierda" style="width: 60%; text-align: left;">
+                <div class="ctrlBasico">
                     <table class="ctrlTableForm">
                         <tr>
                             <td class="ctrlTableDataContext">
@@ -92,7 +89,7 @@
                         </tr>
                         <tr>
                             <td class="ctrlTableDataContext">
-                                <label>Tipo de periodo:</label></td>
+                                <label>Tipo de período:</label></td>
                             <td class="ctrlTableDataBorderContext">
                                 <div id="txtTipoPeriodo" runat="server" width="170" maxlength="1000" enabled="false"></div>
                             </td>
@@ -122,10 +119,8 @@
 
                 </div>
             </telerik:RadPageView>
-
             <telerik:RadPageView ID="rpvCumplimientoPersonal" runat="server">
-
-                <div style="height: calc(100% - 40px); width: 100%;">
+                <div style="height: calc(100% - 30px); width: 100%;">
                     <telerik:RadGrid ID="grdEvaluados" runat="server" Height="100%"
                         AutoGenerateColumns="false" EnableHeaderContextMenu="true" HeaderStyle-Font-Bold="true" AllowSorting="true"
                         AllowMultiRowSelection="false" OnNeedDataSource="grdEvaluados_NeedDataSource" OnItemDataBound="grdEvaluados_ItemDataBound">
@@ -140,14 +135,12 @@
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="80" FilterControlWidth="30" HeaderText="No. de empleado" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="130" HeaderText="Nombre completo" DataField="NB_EMPLEADO_COMPLETO" UniqueName="NB_EMPLEADO_COMPLETO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="130" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="M_PUESTO_NB_PUESTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="120" FilterControlWidth="80" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="120" FilterControlWidth="80" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                             </Columns>
                         </MasterTableView>
                     </telerik:RadGrid>
                 </div>
-
                 <div style="clear: both; height: 10px;"></div>
-
                 <div class="divControlDerecha">
                     <div class="ctrlBasico">
                         <telerik:RadButton ID="btnReporte" runat="server" Text="Reporte" AutoPostBack="false" OnClientClicking="OpenReporteCumplimientoPersonal"></telerik:RadButton>

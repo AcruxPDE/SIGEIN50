@@ -24,9 +24,11 @@
                         nbUsuario: masterTable.getCellByColumnUniqueName(selectedItem, "NB_USUARIO").innerHTML,
                         clTipoCatalogo: "<%= vClCatalogo %>"
                     };
-                    vUsuarios.push(vUsuario);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vUsuarios.length;
+                    if (!existeElemento(vUsuario)) {
+                        vUsuarios.push(vUsuario);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vUsuarios.length;
+                    }
                 }
                 return true;
             }
@@ -38,6 +40,15 @@
                 browserWnd.radalert("Selecciona un usuario.", 400, 150);
             }
 
+            return false;
+        }
+
+        function existeElemento(pUsuario) {
+            for (var i = 0; i < vUsuarios.length; i++) {
+                var vValue = vUsuarios[i];
+                if (vValue.idUsuario == pUsuario.idUsuario)
+                    return true;
+            }
             return false;
         }
 

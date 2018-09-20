@@ -22,6 +22,7 @@ namespace SIGE.WebApp.Administracion
         private string vClUsuario;
         private string vNbPrograma;
         private int? vIdEmpresa;
+        private int? vIdRol;
 
         #endregion
 
@@ -43,7 +44,7 @@ namespace SIGE.WebApp.Administracion
             XElement vXmlSeleccion = vTipoDeSeleccion("TODAS");
             EmpleadoNegocio nEmpleado = new EmpleadoNegocio();
             List<SPE_OBTIENE_EMPLEADOS_CAMPOS_EXTRA_Result> eEmpleados;
-            eEmpleados = nEmpleado.ObtenerEmpleadosCamposExtra(pXmlSeleccion: vXmlSeleccion, pClUsuario: vClUsuario, pFgActivo: true, pID_EMPRESA: ContextoUsuario.oUsuario.ID_EMPRESA);
+            eEmpleados = nEmpleado.ObtenerEmpleadosCamposExtra(pXmlSeleccion: vXmlSeleccion, pClUsuario: vClUsuario, pFgActivo: true, pID_EMPRESA: ContextoUsuario.oUsuario.ID_EMPRESA, pIdRol: vIdRol);
             CamposAdicionales cad = new CamposAdicionales();
             DataTable tEmpleados = cad.camposAdicionales(eEmpleados, "M_EMPLEADO_XML_CAMPOS_ADICIONALES", grdCamposExtra, "M_EMPLEADO");
             grdCamposExtra.DataSource = tEmpleados;
@@ -67,6 +68,7 @@ namespace SIGE.WebApp.Administracion
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
             vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
             DefineGrid();
         }
 

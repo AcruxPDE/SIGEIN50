@@ -55,18 +55,14 @@
             }
 
                   function OpenImpresion() {
-                      //var myPageView = $find('<= rmpCandidatoPuestos.ClientID %>');
-                      // var myIframe = document.getElementById('ifrmPrint');
-                      // var pvContent = myPageView.get_selectedPageView().get_element().innerHTML;
-                      // var myDoc = (myIframe.contentWindow || myIframe.contentDocument);
-                      // if (myDoc.document) myDoc = myDoc.document;
-                      // myDoc.write("<html><head><title>Consulta candidato vs puestos</title>");
-                      // myDoc.write("</head><body onload='this.focus(); this.print();'>");
-                      // myDoc.write(pvContent + "</body></html>");
-                      // myDoc.close(); (pvContent + "</body></html>");
-                      // myDoc.close();
-                      var myWindow = window.open("ReporteCandidatoVsPuesto.aspx?vIdCandidatoVsPuestos=" + '<%= vIdCandidatoVsPuesto%>' + "&IdCandidato=" + '<%= vIdCandidato%>', "MsgWindow", "width=650,height=650");
-                   }
+                      openChildDialog("GraficaCandidatoVsPuesto.aspx?vIdCandidatoVsPuestos=" + '<%= vIdCandidatoVsPuesto%>' + "&IdCandidato=" + '<%= vIdCandidato%>', "winImprimir", "Imprimir consulta");
+                      //var myWindow = window.open("ReporteCandidatoVsPuesto.aspx?vIdCandidatoVsPuestos=" + '<= vIdCandidatoVsPuesto%>' + "&IdCandidato=" + '<= vIdCandidato%>', "MsgWindow", "width=650,height=650");
+                  }
+                     
+                  function OpenImpresionReporte() {
+                      openChildDialog("ReporteCandidatoVsPuesto.aspx?vIdCandidatoVsPuestos=" + '<%= vIdCandidatoVsPuesto%>' + "&IdCandidato=" + '<%= vIdCandidato%>', "winImprimir", "Imprimir consulta");
+                  }
+                  
 
 
 
@@ -87,7 +83,7 @@
         </Tabs>
     </telerik:RadTabStrip>
      <div style="height: 10px;"></div>
-    <div style="height: calc(100% - 55px);">
+    <div style="height: calc(100% - 80px);">
         <telerik:RadMultiPage ID="rmpCandidatoPuestos" runat="server" SelectedIndex="0" Height="100%">
 
             <telerik:RadPageView ID="rpvGrafica" runat="server">
@@ -152,7 +148,7 @@
 
 
           <telerik:RadPageView ID="rpvDetalle" runat="server">
-              <div style="height: 100%;">
+              <div style="height: calc(100% - 40px);">
                         <telerik:RadPivotGrid runat="server" ID="pgDetalleCompetencia" OnNeedDataSource="pgDetalleCompetencia_NeedDataSource" RowTableLayout="Tabular" OnCellDataBound="pgDetalleCompetencia_CellDataBound" 
                             ShowDataHeaderZone="false" ShowRowHeaderZone="false" ShowColumnHeaderZone="false" ShowFilterHeaderZone="false" AllowFiltering="false" AllowSorting="true" Height="100%"  AllowNaturalSort="true">
                             <ClientSettings>
@@ -197,11 +193,11 @@
                                 </telerik:PivotGridAggregateField>
                             </Fields>
                         </telerik:RadPivotGrid>
-                  <%--  <div class="divControlDerecha"> 
-              <telerik:RadButton ID="btnImpresion2" runat="server" Text="Imprimir" OnClientClicked="OpenImpresion" AutoPostBack="false"></telerik:RadButton>
-                    </div>--%>
                     </div>
-             
+                      <div style="height:10px; clear:both;"></div>
+              <div class="divControlDerecha"> 
+              <telerik:RadButton ID="btnImpresion2" runat="server" Text="Imprimir" OnClientClicked="OpenImpresionReporte" AutoPostBack="false"></telerik:RadButton>
+                    </div>
          </telerik:RadPageView>
 
          </telerik:RadMultiPage>

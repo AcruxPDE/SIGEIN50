@@ -38,11 +38,11 @@ namespace SIGE.Entidades
         public string CL_CODIGO_POSTAL { get; set; }
         public string M_EMPLEADO_CL_CORREO_ELECTRONICO { get; set; }
         public string M_EMPLEADO_ACTIVO { get; set; }
-        public System.DateTime FE_NACIMIENTO { get; set; }
+        public Nullable<System.DateTime> FE_NACIMIENTO { get; set; }
         public string DS_LUGAR_NACIMIENTO { get; set; }
         public System.DateTime FE_ALTA { get; set; }
         public Nullable<System.DateTime> FE_BAJA { get; set; }
-        public decimal MN_SUELDO { get; set; }
+        public Nullable<decimal> MN_SUELDO { get; set; }
         public Nullable<decimal> MN_SUELDO_VARIABLE { get; set; }
         public string DS_SUELDO_COMPOSICION { get; set; }
         public string CL_PUESTO { get; set; }
@@ -61,6 +61,7 @@ namespace SIGE.Entidades
         public Nullable<System.DateTime> FE_CAPTURA_METAS { get; set; }
         public Nullable<decimal> MN_TOPE_BONO { get; set; }
         public Nullable<decimal> NO_MONTO_BONO { get; set; }
+        public string CL_MONTO_BONO { get; set; }
         public Nullable<decimal> PR_CUMPLIMIENTO_EVALUADO { get; set; }
         public Nullable<decimal> MN_BONO_TOTAL { get; set; }
         public string ESTATUS { get; set; }

@@ -31,6 +31,24 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadAjaxManager ramOrganigrama;
         
         /// <summary>
+        /// rsEvaluacionDesempeno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSplitter rsEvaluacionDesempeno;
+        
+        /// <summary>
+        /// rpEvaluacionDesempeno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPane rpEvaluacionDesempeno;
+        
+        /// <summary>
         /// rlvPeriodos control.
         /// </summary>
         /// <remarks>
@@ -85,15 +103,6 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadButton btnConfiguracion;
         
         /// <summary>
-        /// btnReabrir control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnReabrir;
-        
-        /// <summary>
         /// btnCerrar control.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,15 @@ namespace SIGE.WebApp.EO {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnCerrar;
+        
+        /// <summary>
+        /// btnReabrir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnReabrir;
         
         /// <summary>
         /// btnCopiar control.
@@ -130,15 +148,6 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadButton btnEnviarSolicitudes;
         
         /// <summary>
-        /// btnControlAvance control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnControlAvance;
-        
-        /// <summary>
         /// btnCapturaEvaluaciones control.
         /// </summary>
         /// <remarks>
@@ -146,6 +155,15 @@ namespace SIGE.WebApp.EO {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnCapturaEvaluaciones;
+        
+        /// <summary>
+        /// btnControlAvance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnControlAvance;
         
         /// <summary>
         /// btnCumplimientoPersonal control.
@@ -218,6 +236,33 @@ namespace SIGE.WebApp.EO {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadTextBox txtDsPeriodo;
+        
+        /// <summary>
+        /// Label4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label4;
+        
+        /// <summary>
+        /// txtNotasContenedor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtNotasContenedor;
+        
+        /// <summary>
+        /// txtNotas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtNotas;
         
         /// <summary>
         /// Label2 control.

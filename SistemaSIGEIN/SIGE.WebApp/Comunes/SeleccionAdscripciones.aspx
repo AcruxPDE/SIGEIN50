@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/EO/ContextEO.master" AutoEventWireup="true" CodeBehind="SeleccionAdscripciones.aspx.cs" Inherits="SIGE.WebApp.Comunes.SeleccionAdscripciones" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ContextHTML.master" AutoEventWireup="true" CodeBehind="SeleccionAdscripciones.aspx.cs" Inherits="SIGE.WebApp.Comunes.SeleccionAdscripciones" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
     <script id="MyScript" type="text/javascript">
@@ -25,9 +25,11 @@
                         clTipoCatalogo: "<%= vClCatalogo %>",
                         clLista: "<%= vClLista %>"
                     };
-                    vAdscripciones.push(vAdscripcion);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vAdscripciones.length;
+                    if (!existeElemento(vAdscripcion)) {
+                        vAdscripciones.push(vAdscripcion);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vAdscripciones.length;
+                    }
                 }
                 return true;
             }
@@ -41,6 +43,15 @@
             return false;
         }
 
+        function existeElemento(pAdscripcion) {
+            for (var i = 0; i < vAdscripciones.length; i++) {
+                var vValue = vAdscripciones[i];
+                if (vValue.idCampo == pAdscripcion.idCampo)
+                    return true;
+            }
+            return false;
+        }
+
         function cancelarSeleccion() {
             sendDataToParent(null);
         }
@@ -49,14 +60,14 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
     <div style="height: calc(100% - 60px);">
-        <telerik:RadGrid ID="grdAdscripcion" HeaderStyle-Font-Bold="true" runat="server" AllowMultiRowSelection="true" OnNeedDataSource="grdAdscripcion_NeedDataSource" AutoGenerateColumns="false" EnableHeaderContextMenu="true" ShowGroupPanel="true" AllowSorting="true" OnItemDataBound="grdAdscripcion_ItemDataBound">
+        <telerik:RadGrid ID="grdAdscripcion" Height="100%" Width="100%" HeaderStyle-Font-Bold="true" runat="server" AllowMultiRowSelection="true" OnNeedDataSource="grdAdscripcion_NeedDataSource" AutoGenerateColumns="false" EnableHeaderContextMenu="true"  ShowGroupPanel="true" AllowSorting="true" OnItemDataBound="grdAdscripcion_ItemDataBound">
             <ClientSettings>
                 <Scrolling UseStaticHeaders="true" AllowScroll="true" />
                 <Selecting AllowRowSelect="true" />
             </ClientSettings>
             <PagerStyle AlwaysVisible="true" />
             <GroupingSettings CaseSensitive="false" />
-            <MasterTableView ClientDataKeyNames="CL_CAMPO_CATALOGO" DataKeyNames="CL_CAMPO_CATALOGO" EnableColumnsViewState="false" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true" PageSize="50">
+            <MasterTableView ClientDataKeyNames="CL_CAMPO_CATALOGO, ID_CAMPO" DataKeyNames="CL_CAMPO_CATALOGO" EnableColumnsViewState="false" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true" PageSize="50">
                 <Columns>
                     <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="120" FilterControlWidth="80" HeaderText="Clave" DataField="CL_CAMPO_CATALOGO" UniqueName="CL_CAMPO_CATALOGO">

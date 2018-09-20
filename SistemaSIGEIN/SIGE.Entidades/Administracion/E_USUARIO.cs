@@ -28,6 +28,7 @@ namespace SIGE.Entidades.Administracion
         public bool FG_CAMBIAR_PASSWORD { get; set; }
         public string CL_CAMBIAR_PASSWORD { get; set; }
         public int ID_ROL { get; set; }
+        public int? ID_PLANTILLA { get; set; }
         public Nullable<int> ID_EMPLEADO { get; set; }
         public Nullable<int> ID_PUESTO { get; set; }
         public string ID_EMPLEADO_PDE { get; set; }    

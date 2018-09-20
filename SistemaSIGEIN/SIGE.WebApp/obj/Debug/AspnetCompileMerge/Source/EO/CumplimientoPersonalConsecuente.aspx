@@ -29,7 +29,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
     <div style="height: calc(100% - 10px);">
-
         <div style="clear: both; height: 10px;"></div>
         <telerik:RadTabStrip ID="rtsReporteCumplimiento" runat="server" SelectedIndex="0" MultiPageID="rmpReporteCumplimiento">
             <Tabs>
@@ -57,13 +56,13 @@
                                     <label></label>
                                 </td>
                                 <td colspan="2" class="ctrlTableDataContext">
-                                    <label>Periodo original</label></td>
+                                    <label>Período original</label></td>
                                 <td colspan="2" class="ctrlTableDataContext">
-                                    <label>Periodo consecuente</label></td>
+                                    <label>Período consecuente</label></td>
                             </tr>
                             <tr>
                                 <td class="ctrlTableDataContext">
-                                    <label>Clave del periodo:</label></td>
+                                    <label>Clave del período:</label></td>
                                 <td colspan="2" class="ctrlTableDataBorderContext">
                                     <div id="txtClPeriodoOriginal" runat="server"></div>
                                 </td>
@@ -73,7 +72,7 @@
                             </tr>
                             <tr>
                                 <td class="ctrlTableDataContext">
-                                    <label>Nombre del periodo:</label></td>
+                                    <label>Nombre del período:</label></td>
                                 <td colspan="2" class="ctrlTableDataBorderContext">
                                     <div id="txtNbPeriodo" runat="server"></div>
                                 </td>
@@ -93,7 +92,7 @@
                             </tr>
                             <tr>
                                 <td class="ctrlTableDataContext">
-                                    <label>Periodo(s):</label></td>
+                                    <label>Período(s):</label></td>
                                 <td colspan="2" class="ctrlTableDataBorderContext">
                                     <div id="txtPeriodosOriginal" runat="server"></div>
                                 </td>
@@ -195,8 +194,8 @@
                                 </ColumnGroups>
                                 <Columns>
                                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="200" FilterControlWidth="60" HeaderText="META" DataField="DS_META_ORIGINAL" UniqueName="DS_META_ORIGINAL"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn ColumnGroupName="CumplimientoValor" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="40" FilterControlWidth="25" HeaderText="Periodo original" DataField="PR_EVALUADO_ORIGINAL" UniqueName="PR_EVALUADO_ORIGINAL" DataType="System.Int32" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn ColumnGroupName="CumplimientoValor" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="40" FilterControlWidth="25" HeaderText="Periodo consecuente" DataField="PR_EVALUADO_CONSECUENTE" UniqueName="PR_EVALUADO_CONSECUENTE" DataType="System.Int32" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%"></telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn ColumnGroupName="CumplimientoValor" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="40" FilterControlWidth="25" HeaderText="Período original" DataField="PR_EVALUADO_ORIGINAL" UniqueName="PR_EVALUADO_ORIGINAL" DataType="System.Int32" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%"></telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn ColumnGroupName="CumplimientoValor" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="40" FilterControlWidth="25" HeaderText="Período consecuente" DataField="PR_EVALUADO_CONSECUENTE" UniqueName="PR_EVALUADO_CONSECUENTE" DataType="System.Int32" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%"></telerik:GridBoundColumn>
                                     <telerik:GridTemplateColumn ColumnGroupName="CumplimientoAlcanzado" HeaderText="Periodo original" AllowFiltering="true" FilterControlWidth="50px">
                                         <ItemStyle Width="60px" Height="50px" HorizontalAlign="Left" />
                                         <HeaderStyle Width="60px" Height="50px" />
@@ -205,7 +204,7 @@
                                             <div class="ctrlBasico" style="height: 50px; width: 15px; float: right; background: <%#Eval("COLOR_NIVEL_ORIGINAL") %>; border-radius: 5px;"></div>
                                         </ItemTemplate>
                                     </telerik:GridTemplateColumn>
-                                    <telerik:GridTemplateColumn ColumnGroupName="CumplimientoAlcanzado" HeaderText="Periodo consecuente" AllowFiltering="true" FilterControlWidth="50px">
+                                    <telerik:GridTemplateColumn ColumnGroupName="CumplimientoAlcanzado" HeaderText="Período consecuente" AllowFiltering="true" FilterControlWidth="50px">
                                         <ItemStyle Width="60px" Height="50px" HorizontalAlign="Left" />
                                         <HeaderStyle Width="60px" Height="50px" />
                                         <ItemTemplate>
@@ -213,16 +212,16 @@
                                             <div class="ctrlBasico" style="height: 50px; width: 15px; float: right; background: <%#Eval("COLOR_NIVEL_CONSECUENTE") %>; border-radius: 5px;"></div>
                                         </ItemTemplate>
                                     </telerik:GridTemplateColumn>
-                                    <telerik:GridBoundColumn ColumnGroupName="Cumplimiento" FilterControlWidth="30px" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="40" HeaderText="Periodo original" DataField="PR_CUMPLIMIENTO_META_ORIGINAL" UniqueName="PR_CUMPLIMIENTO_META_ORIGINAL" Aggregate="Sum" FooterAggregateFormatString="Porcentaje de cumplimiento: {0:N2}%" FooterStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn ColumnGroupName="Cumplimiento" FilterControlWidth="30px" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="40" HeaderText="Periodo consecuente" DataField="PR_CUMPLIMIENTO_META_CONSECUENTE" UniqueName="PR_CUMPLIMIENTO_META_CONSECUENTE" Aggregate="Sum" FooterAggregateFormatString="Porcentaje de cumplimiento: {0:N2}%" FooterStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%"></telerik:GridBoundColumn>
-                                    <telerik:GridTemplateColumn ColumnGroupName="AdjuntarEvidecias" HeaderText="Periodo original" AllowFiltering="false">
+                                    <telerik:GridBoundColumn ColumnGroupName="Cumplimiento" FilterControlWidth="30px" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="40" HeaderText="Período original" DataField="PR_CUMPLIMIENTO_META_ORIGINAL" UniqueName="PR_CUMPLIMIENTO_META_ORIGINAL" Aggregate="Sum" FooterAggregateFormatString="Porcentaje de cumplimiento: {0:N2}%" FooterStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%"></telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn ColumnGroupName="Cumplimiento" FilterControlWidth="30px" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="40" HeaderText="Período consecuente" DataField="PR_CUMPLIMIENTO_META_CONSECUENTE" UniqueName="PR_CUMPLIMIENTO_META_CONSECUENTE" Aggregate="Sum" FooterAggregateFormatString="Porcentaje de cumplimiento: {0:N2}%" FooterStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%"></telerik:GridBoundColumn>
+                                    <telerik:GridTemplateColumn ColumnGroupName="AdjuntarEvidecias" HeaderText="Período original" AllowFiltering="false">
                                         <ItemStyle Width="30px" HorizontalAlign="Center" />
                                         <HeaderStyle Width="30px" />
                                         <ItemTemplate>
                                             <a href="#" onclick="return ShowInsertForm(<%#Eval("ID_EVALUADO_META_ORIGINAL")%>);">Examinar</a>
                                         </ItemTemplate>
                                     </telerik:GridTemplateColumn>
-                                    <telerik:GridTemplateColumn ColumnGroupName="AdjuntarEvidecias" HeaderText="Periodo consecuente" AllowFiltering="false">
+                                    <telerik:GridTemplateColumn ColumnGroupName="AdjuntarEvidecias" HeaderText="Período consecuente" AllowFiltering="false">
                                         <ItemStyle Width="30px" HorizontalAlign="Center" />
                                         <HeaderStyle Width="30px" />
                                         <ItemTemplate>
@@ -239,7 +238,7 @@
                         <div style="clear: both; height: 10px;"></div>
                         <div class="ctrlBasico" style="width: 60%; height: 100%">
                             <telerik:RadHtmlChart runat="server" ID="rhcCumplimientoPersonal" Width="100%" Height="100%" Transitions="true" Skin="Silk">
-                                <ChartTitle Text="Gráfica cumplimiento personal periodos consecuentes">
+                                <ChartTitle Text="Gráfica cumplimiento personal períodos consecuentes">
                                     <Appearance Align="Center" Position="Top">
                                     </Appearance>
                                 </ChartTitle>
@@ -262,8 +261,8 @@
                                     <Columns>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="80" FilterControlWidth="60" HeaderText="No. meta" DataField="NO_META_ORIGINAL" UniqueName="NO_META_ORIGINAL"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="240" FilterControlWidth="60" HeaderText="Descripción" DataField="DS_META_ORIGINAL" UniqueName="DS_META_ORIGINAL"></telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn ColumnGroupName="CumplimientoMetas" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="60" FilterControlWidth="20" HeaderText="Periodo original" DataField="PR_CUMPLIMIENTO_META_ORIGINAL" UniqueName="PR_CUMPLIMIENTO_META_ORIGINAL" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%"></telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn ColumnGroupName="CumplimientoMetas" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="60" FilterControlWidth="20" HeaderText="Periodo consecuente" DataField="PR_CUMPLIMIENTO_META_CONSECUENTE" UniqueName="PR_CUMPLIMIENTO_META_CONSECUENTE" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn ColumnGroupName="CumplimientoMetas" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="60" FilterControlWidth="20" HeaderText="Período original" DataField="PR_CUMPLIMIENTO_META_ORIGINAL" UniqueName="PR_CUMPLIMIENTO_META_ORIGINAL" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn ColumnGroupName="CumplimientoMetas" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="60" FilterControlWidth="20" HeaderText="Período consecuente" DataField="PR_CUMPLIMIENTO_META_CONSECUENTE" UniqueName="PR_CUMPLIMIENTO_META_CONSECUENTE" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%"></telerik:GridBoundColumn>
                                     </Columns>
                                 </MasterTableView>
                             </telerik:RadGrid>

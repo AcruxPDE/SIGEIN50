@@ -363,7 +363,7 @@
                                         <Selecting AllowRowSelect="true" />
                                     </ClientSettings>
                                     <GroupingSettings CaseSensitive="false" />
-                                    <MasterTableView DataKeyNames="M_CL_USUARIO,ID_EMPLEADO" ClientDataKeyNames="M_CL_USUARIO,ID_EMPLEADO" AutoGenerateColumns="false" AllowPaging="false" AllowFilteringByColumn="false" ShowHeadersWhenNoRecords="true">
+                                    <MasterTableView DataKeyNames="M_CL_USUARIO,ID_EMPLEADO" ClientDataKeyNames="M_CL_USUARIO,ID_EMPLEADO" AutoGenerateColumns="false" AllowPaging="true" AllowFilteringByColumn="false" ShowHeadersWhenNoRecords="true">
                                         <Columns>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="350" HeaderText="NOMBRE" DataField="NB_EMPLEADO" UniqueName="NB_EMPLEADO"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="280" HeaderText="PUESTO" DataField="NB_PUESTO" UniqueName="NB_PUESTO"></telerik:GridBoundColumn>

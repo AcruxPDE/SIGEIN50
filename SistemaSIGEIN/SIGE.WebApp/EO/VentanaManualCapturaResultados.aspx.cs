@@ -444,7 +444,7 @@ namespace SIGE.WebApp.EO
             {
                 E_RESULTADO vResultado = neg.ActualizaResultadosMetas(vIdPeriodo, vsIdEvaluado, RESULTADOS, vClUsuario, vNbPrograma, sumaCumplimiento);
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "CloseWindow");
             }
             else
             {

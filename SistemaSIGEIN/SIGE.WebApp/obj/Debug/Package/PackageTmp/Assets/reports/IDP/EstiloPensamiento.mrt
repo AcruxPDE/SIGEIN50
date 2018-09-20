@@ -12,7 +12,6 @@
     <DataSources isList="true" count="0" />
     <Relations isList="true" count="0" />
     <Report isRef="0" />
-    <Resources isList="true" count="0" />
     <Variables isList="true" count="61">
       <value>,S1R1,S1R1,,System.String,,False,False,False,False</value>
       <value>,S1R2,S1R2,,System.String,,False,False,False,False</value>
@@ -135,7 +134,7 @@
               <Name>Text1</Name>
               <Page isRef="3" />
               <Parent isRef="4" />
-              <Text>Estilo del pensamiento</Text>
+              <Text>Estilo de pensamiento</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text1>
@@ -2231,7 +2230,7 @@ regular) no podrá ser utilizada más de una vez en el segmento 2. </Text>
               <Name>Text134</Name>
               <Page isRef="3" />
               <Parent isRef="8" />
-              <Text>Estilo del pensamiento</Text>
+              <Text>Estilo de pensamiento</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text134>
@@ -2283,14 +2282,13 @@ regular) no podrá ser utilizada más de una vez en el segmento 2. </Text>
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>10/13/2017 11:20:54 AM</ReportChanged>
+  <ReportChanged>5/30/2018 1:39:40 PM</ReportChanged>
   <ReportCreated>10/7/2017 9:43:03 AM</ReportCreated>
-  <ReportFile>C:\Users\Margarita Salcedo\Documents\Proyectos\SIGEIN\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\EstiloPensamiento.mrt</ReportFile>
-  <ReportGuid>dfa8839d95a744d58f0f6b5d68a78942</ReportGuid>
-  <ReportImage isNull="true" />
+  <ReportFile>C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\EstiloPensamiento.mrt</ReportFile>
+  <ReportGuid>8e74b383ba4e47879e2f87e03d9ec71b</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
-  <ReportVersion>2016.3.0</ReportVersion>
+  <ReportVersion>2015.3.0</ReportVersion>
   <Script>using System;
 using System.Drawing;
 using System.Windows.Forms;

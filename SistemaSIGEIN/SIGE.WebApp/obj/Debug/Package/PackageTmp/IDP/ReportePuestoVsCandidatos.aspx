@@ -3,20 +3,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
-    <div id="dvImprimir" runat="server">
-        <div style="height:850px;">
-            <label style="display: block !important; width: 100% !important; padding: 0 !important; margin-bottom: 20px !important; font-size: 21px !important; line-height: inherit !important; color: darkred !important; border: 0 !important; border-bottom: 1px solid #e5e5e5 !important;">
-                Consulta puesto vs candidatos</label>
+  <div id="dvImprimir" runat="server" style="width: 790px; padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px;">
+        <div style="height: 10px;"></div>
+        <label style="display: block !important; width: 100% !important; padding: 0 !important; margin-bottom: 20px !important; font-size: 21px !important; line-height: inherit !important; border: 0 !important; border-bottom: 1px solid #C6DB95 !important;">
+            Consulta puesto vs candidatos</label>
+          <%--  <div style="clear: both; height: 10px"></div>
+            <label>Comparativo de puesto:</label>
             <div style="clear: both; height: 10px"></div>
-            <label style="color: darkred;">Comparativo de puesto:</label>
+            <div id="lbPuestoCom" runat="server"></div>
             <div style="clear: both; height: 10px"></div>
-            <label id="lbPuestoCom" runat="server"></label>
+            <label>Contra las siguientes personas:</label>
             <div style="clear: both; height: 10px"></div>
-            <label style="color: darkred;">Contra las siguientes personas:</label>
-            <div style="clear: both; height: 10px"></div>
-            <label id="lbCandidatos" runat="server"></label>
-        </div>
-        <div style="clear: both; height: 10px"></div>
+            <div id="lbCandidatos" runat="server"></div>--%>
+       <%-- <div style="clear: both; height: 10px"></div>
         <div style="height:1000px;">
             <telerik:RadHtmlChart runat="server" ID="rhcPuestoCandidatos" Height="650" Transitions="true" Skin="Silk">
                 <PlotArea>
@@ -42,8 +41,8 @@
                 </Legend>
             </telerik:RadHtmlChart>
         </div>
-        <br /><br />
-        <div style="clear: both; height: 10px"></div>
+        <br /><br />--%>
+      <%--  <div style="clear: both; height: 20px"></div>
         <div style="width: 60%; ">
             <telerik:RadGrid ID="rgdPromedios"
                 runat="server"
@@ -63,12 +62,12 @@
                     </Columns>
                 </MasterTableView>
             </telerik:RadGrid>
-        </div>
-        <div style="clear: both; height: 10px"></div>
-        <div runat="server" id="divMensajeMayor130" visible="false">
+        </div>--%>
+        <div style="clear: both; height: 20px"></div>
+       <%-- <div runat="server" id="divMensajeMayor130" visible="false">
             <label id="lblPuesto" name="lblPuesto" runat="server">(*) La persona tiene la capacidad para desempeñar el puesto, sin embargo supera en 30% o más los requerimientos de competencias del mismo. Esto es un factor que debe ser considerado para la toma de decisiones</label>
         </div>
-        <div style="clear: both; height: 10px"></div>
+        <div style="clear: both; height: 10px"></div>--%>
         <%--  <telerik:RadPivotGrid runat="server" ID="pgDetalleCompetencia" OnNeedDataSource="pgDetalleCompetencia_NeedDataSource" RowTableLayout="Tabular" OnCellDataBound="pgDetalleCompetencia_CellDataBound" 
                             ShowDataHeaderZone="false" ShowRowHeaderZone="false" ShowColumnHeaderZone="false" ShowFilterHeaderZone="false" AllowFiltering="false" AllowSorting="true" Height="100%" AllowNaturalSort="true" >
                             <ClientSettings>
@@ -131,7 +130,7 @@
                 myDoc.write(pvContent + "</body></html>");
                 myDoc.close(); (pvContent + "</body></html>");
                 myDoc.close();
-            }, 3000);
+            }, 2000);
         </script>
     </telerik:RadCodeBlock>
 </asp:Content>

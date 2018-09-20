@@ -9,13 +9,13 @@
     </style>
     <script type="text/javascript">
         function OpenEvaluadoSelectionWindow() {
-            OpenSelectionWindow("/Comunes/SeleccionEvaluados.aspx?PeriodoId=<%= vIdPeriodo %>", "winSeleccion", "Selección de evaluado");
+            OpenSelectionWindow("../Comunes/SeleccionEvaluados.aspx?PeriodoId=<%= vIdPeriodo %>", "winSeleccion", "Selección de evaluado");
         }
 
         function OpenEvaluadorSelectionWindow() {
             var vClRolEvaluador = $find('<%=rcbRolEvaluador.ClientID %>').get_selectedItem().get_value();
 
-            var vUrl = vClRolEvaluador == "OTRO"  ? "/Comunes/SeleccionEvaluadores.aspx?PeriodoId=<%= vIdPeriodo %>" : "/Comunes/SeleccionEmpleado.aspx";
+            var vUrl = vClRolEvaluador == "OTRO"  ? "../Comunes/SeleccionEvaluadores.aspx?PeriodoId=<%= vIdPeriodo %>" : "../Comunes/SeleccionEmpleado.aspx";
 
             OpenSelectionWindow(vUrl, "winSeleccion", "Selección de evaluador");
         }

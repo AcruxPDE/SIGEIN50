@@ -22,7 +22,8 @@ namespace SIGE.WebApp.FYD
         private string vNbPrograma;
         private int? vIdEmpresa;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
-
+        private string vNbFirstRadEditorTagName = "p";
+        private int? vIdRol;
 
         public int vIdPeriodo {
             get { return (int)ViewState["vs_ves_id_periodo"]; }
@@ -51,8 +52,56 @@ namespace SIGE.WebApp.FYD
 
             if (oPeriodo != null)
             {
-                txtNoPeriodo.InnerText = oPeriodo.CL_PERIODO;
-                txtNbPeriodo.InnerText = oPeriodo.DS_PERIODO;
+                //txtNoPeriodo.InnerText = oPeriodo.CL_PERIODO;
+                //txtNbPeriodo.InnerText = oPeriodo.DS_PERIODO;
+                txtClPeriodo.InnerText = oPeriodo.NB_PERIODO;
+                txtDsPeriodo.InnerText = oPeriodo.DS_PERIODO;
+                txtEstatus.InnerText = oPeriodo.CL_ESTADO_PERIODO;
+                string vTiposEvaluacion = "";
+
+                if (oPeriodo.FG_AUTOEVALUACION)
+                {
+                    vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? "Autoevaluación" : String.Join(", ", vTiposEvaluacion, "Autoevaluacion");
+                }
+
+                if (oPeriodo.FG_SUPERVISOR)
+                {
+                    vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? "Superior" : String.Join(", ", vTiposEvaluacion, "Superior");
+                }
+
+                if (oPeriodo.FG_SUBORDINADOS)
+                {
+                    vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? "Subordinado" : String.Join(", ", vTiposEvaluacion, "Subordinado");
+                }
+
+                if (oPeriodo.FG_INTERRELACIONADOS)
+                {
+                    vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? "Interrelacionado" : String.Join(", ", vTiposEvaluacion, "Interrelacionado");
+                }
+
+                if (oPeriodo.FG_OTROS_EVALUADORES)
+                {
+                    vTiposEvaluacion = string.IsNullOrEmpty(vTiposEvaluacion) ? "Otros" : String.Join(", ", vTiposEvaluacion, "Otros");
+                }
+
+                txtTipoEvaluacion.InnerText = vTiposEvaluacion;
+
+                if (oPeriodo.DS_NOTAS != null)
+                {
+                    if (oPeriodo.DS_NOTAS.Contains("DS_NOTA"))
+                    {
+                        txtNotas.InnerHtml = Utileria.MostrarNotas(oPeriodo.DS_NOTAS);
+                    }
+                    else
+                    {
+                        XElement vNotas = XElement.Parse(oPeriodo.DS_NOTAS);
+                        if (vNotas != null)
+                        {
+                            vNotas.Name = vNbFirstRadEditorTagName;
+                            txtNotas.InnerHtml = vNotas.ToString();
+                        }
+                    }
+                }
             }
         }
 
@@ -78,7 +127,8 @@ namespace SIGE.WebApp.FYD
             int vIdEvaluador;
             string vClCorreo;
             string vNbEvaluador;
-            string vUrl = ContextoUsuario.nbHost + "/Logon.aspx?ClProceso=CUESTIONARIOS";
+            string myUrl = ResolveUrl("~/Logon.aspx?ClProceso=CUESTIONARIOS");
+            string vUrl = ContextoUsuario.nbHost + myUrl;
             GridItemCollection oListaEvaluadores = new GridItemCollection();
             XElement vXmlEvaluados = new XElement("EVALUADORES");
 
@@ -155,6 +205,7 @@ namespace SIGE.WebApp.FYD
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
             vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!Page.IsPostBack)
             {
@@ -221,7 +272,7 @@ namespace SIGE.WebApp.FYD
         protected void rgEvaluadores_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             CuestionarioNegocio oCuestionario = new CuestionarioNegocio();
-            rgEvaluadores.DataSource = oCuestionario.ObtieneEvaluadores(pIdPeriodo: vIdPeriodo, pID_EMPRESA: vIdEmpresa);
+            rgEvaluadores.DataSource = oCuestionario.ObtieneEvaluadores(pIdPeriodo: vIdPeriodo, pID_EMPRESA: vIdEmpresa, pID_ROL: vIdRol);
         }
 
         protected void btnEnviarTodos_Click(object sender, EventArgs e)

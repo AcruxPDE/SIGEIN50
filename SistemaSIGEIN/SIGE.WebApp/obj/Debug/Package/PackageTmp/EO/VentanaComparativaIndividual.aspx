@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/EO/ContextEO.master" AutoEventWireup="true" CodeBehind="VentanaComparativaIndividual.aspx.cs" Inherits="SIGE.WebApp.EO.VentanaComparativaIndividual" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
+    <style>
+        .cssGrid {
+            height: 100%;
+        }
+
+    </style>
     <script type="text/javascript">
 
         function CloseWindow() {
@@ -154,6 +160,8 @@
                                 <Appearance>
                                     <FillStyle BackgroundColor="Transparent"></FillStyle>
                                 </Appearance>
+                                <YAxis MinValue="0" MaxValue="100" Step="10"></YAxis>
+                               
                             </PlotArea>
                             <Appearance>
                                 <FillStyle BackgroundColor="Transparent"></FillStyle>

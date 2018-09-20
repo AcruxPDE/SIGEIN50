@@ -624,6 +624,11 @@ namespace SIGE.WebApp.FYD
             }
         }
 
+        private void SeguridadProcesos()
+        {
+            radBtnGuardar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.C.D");
+        }
+
         #endregion
 
 
@@ -672,6 +677,8 @@ namespace SIGE.WebApp.FYD
                     vIdListaCurso = Guid.NewGuid();
                     ContextoCurso.oCursos.Add(new E_CURSO { ID_ITEM = vIdListaCurso });
                 }
+
+                SeguridadProcesos();
             }
             LlenaComboAreas();
             DespacharEventos(Request.Params.Get("__EVENTTARGET"), Request.Params.Get("__EVENTARGUMENT"));

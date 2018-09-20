@@ -47,10 +47,16 @@ namespace SIGE.WebApp.IDP
             set { ViewState["vs_fgCopiaProceso"] = value; }
         }
 
-        public int vIdCandidato
+        public int? vIdCandidato
         {
-            get { return (int)ViewState["vs_ps_id_candidato"]; }
+            get { return (int?)ViewState["vs_ps_id_candidato"]; }
             set { ViewState["vs_ps_id_candidato"] = value; }
+        }
+
+        public int? vIdEmpleado
+        {
+            get { return (int?)ViewState["vs_vIdEmpleado"]; }
+            set { ViewState["vs_vIdEmpleado"] = value; }
         }
 
         public int? vIdPuesto
@@ -174,7 +180,7 @@ namespace SIGE.WebApp.IDP
 
             if (vIdProcesoSeleccion == 0)
             {
-                E_RESULTADO vResultado = nProcesoSeleccion.InsertaProcesoSeleccion(vIdCandidato, vIdRequisicion, vClUsuario, vNbPrograma);
+                E_RESULTADO vResultado = nProcesoSeleccion.InsertaProcesoSeleccion(vIdCandidato,null, vIdRequisicion, vClUsuario, vNbPrograma);
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
 
                 if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.ERROR)
@@ -239,7 +245,9 @@ namespace SIGE.WebApp.IDP
             string vClCorreo;
             string vNbEntrevistador;
 
-            string vUrl = ContextoUsuario.nbHost + "/Logon.aspx?ClProceso=ENTREVISTA_SELECCION";
+
+            string myUrl = ResolveUrl("~/Logon.aspx?ClProceso=ENTREVISTA_SELECCION");
+            string vUrl = ContextoUsuario.nbHost + myUrl;
             GridItemCollection oListaEvaluadores = new GridItemCollection();
 
             if (pFgEnviarTodos)
@@ -396,7 +404,7 @@ namespace SIGE.WebApp.IDP
         private void AsignarDatosExamenMedico()
         {
             txtEMedad.Text = vResultadoMedico.NO_EDAD.ToString() == "0" ? "" : vResultadoMedico.NO_EDAD.ToString();
-            txtEMtalla.Text = vResultadoMedico.NO_TALLA.ToString();
+           // txtEMtalla.Text = vResultadoMedico.NO_TALLA.ToString();
             txtEMPeso.Text = vResultadoMedico.NO_PESO.ToString();
             txtEMMasaCorporal.Text = vResultadoMedico.NO_INDICE_MASA_CORPORAL.ToString();
             txtEMPulso.Text = vResultadoMedico.NO_PULSO.ToString();
@@ -481,7 +489,7 @@ namespace SIGE.WebApp.IDP
                 }
 
                 vResultadoMedico.NO_EDAD = txtEMedad.Text != "" ? int.Parse(txtEMedad.Text) : 0;
-                vResultadoMedico.NO_TALLA = txtEMtalla.Text;
+              //  vResultadoMedico.NO_TALLA = txtEMtalla.Text;
                 vResultadoMedico.NO_PESO = txtEMPeso.Text != "" ? decimal.Parse(txtEMPeso.Text) : 0;
                 vResultadoMedico.NO_INDICE_MASA_CORPORAL = txtEMMasaCorporal.Text != "" ? decimal.Parse(txtEMMasaCorporal.Text) : 0;
                 vResultadoMedico.NO_PULSO = txtEMPulso.Text != "" ? int.Parse(txtEMPulso.Text) : 0;
@@ -719,7 +727,7 @@ namespace SIGE.WebApp.IDP
             txtESNoExt.Text = vEstudioSocioEconomico.NO_EXTERIOR;
             txtESNoInt.Text = vEstudioSocioEconomico.NO_INTERIOR;
             txtESCodigoPostal.Text = vEstudioSocioEconomico.CL_CODIGO_POSTAL;
-            txtEsTiempoResidencia.Text = vEstudioSocioEconomico.NO_TIEMPO_RESIDENCIA.HasValue ? vEstudioSocioEconomico.NO_TIEMPO_RESIDENCIA.Value.ToString() : "";
+            txtEsTiempoResidencia.Text = vEstudioSocioEconomico.NO_TIEMPO_RESIDENCIA;
             txtESTipoSanguineo.Text = vEstudioSocioEconomico.CL_TIPO_SANGUINEO;
             txtESIdentificacion.Text = vEstudioSocioEconomico.DS_IDENTIFICACION_OFICIAL;
             txtESIdentificacionFolio.Text = vEstudioSocioEconomico.CL_IDENTIFICACION_OFICIAL;
@@ -824,7 +832,7 @@ namespace SIGE.WebApp.IDP
                             new XAttribute("CL_TIPO", "MOVIL"))
                       );
             if (!string.IsNullOrEmpty(txtEsTiempoResidencia.Text))
-                vEstudioSocioEconomico.NO_TIEMPO_RESIDENCIA = byte.Parse(txtEsTiempoResidencia.Text);
+                vEstudioSocioEconomico.NO_TIEMPO_RESIDENCIA = txtEsTiempoResidencia.Text;
 
 
             vEstudioSocioEconomico.CL_SERVICIOS_MEDICOS = cmbESServiciosMedicos.SelectedValue;
@@ -1424,6 +1432,11 @@ namespace SIGE.WebApp.IDP
                     vIdCandidato = int.Parse(Request.Params["IdCandidato"].ToString());
                 }
 
+                if (Request.Params["IdEmpleado"] != null)
+                {
+                    vIdEmpleado = int.Parse(Request.Params["IdEmpleado"].ToString());
+                }
+
                 if (Request.Params["IdBateria"] != null)
                 {
                     vIdBateria = int.Parse(Request.Params["IdBateria"].ToString());
@@ -1467,6 +1480,8 @@ namespace SIGE.WebApp.IDP
                         btnGuardarDoc.Enabled = false;
                         btnAgregarDependiente.Enabled = false;
                         btnAgregar.Enabled = false;
+                        btnCopiarDatos.Enabled = false;
+                        btnTerminarProceso.Enabled = false;
                        
                     }
                 }
@@ -1558,7 +1573,7 @@ namespace SIGE.WebApp.IDP
 
             ProcesoSeleccionNegocio nProcesoSeleccion = new ProcesoSeleccionNegocio();
 
-            vLstCompetencias = nProcesoSeleccion.ObtieneCompetenciasProcesoSeleccion(vIdCandidato, vIdPuesto);
+            vLstCompetencias = nProcesoSeleccion.ObtieneCompetenciasProcesoSeleccion((int)vIdCandidato, vIdPuesto);
             //if (vLstCompetencias.Count > 0)
             //{
                 dgvCompetencias.DataSource = vLstCompetencias;
@@ -1608,7 +1623,7 @@ namespace SIGE.WebApp.IDP
             }
 
             ProcesoSeleccionNegocio nProceso = new ProcesoSeleccionNegocio();
-            E_RESULTADO vResultado = nProceso.InsertaActualizaDocumentos(vIdCandidato, vLstArchivos, vLstDocumentos, vClUsuario, vNbPrograma);
+            E_RESULTADO vResultado = nProceso.InsertaActualizaDocumentos((int)vIdCandidato, vLstArchivos, vLstDocumentos, vClUsuario, vNbPrograma);
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
             UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR,pCallBackFunction:"");
 

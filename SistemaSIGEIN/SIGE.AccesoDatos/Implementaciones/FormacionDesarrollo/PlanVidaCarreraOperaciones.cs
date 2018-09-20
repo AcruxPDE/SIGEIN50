@@ -13,11 +13,11 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
 
         SistemaSigeinEntities contexto;
 
-        public List<SPE_OBTIENE_PLAN_VIDA_CARRERA_Result> obtenerDatosPlanVidaCarrera(int ID_PUESTO, int? ID_EMPRESA)
+        public List<SPE_OBTIENE_PLAN_VIDA_CARRERA_Result> obtenerDatosPlanVidaCarrera(int ID_PUESTO, int? ID_EMPRESA, int? ID_PLAZA)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_PLAN_VIDA_CARRERA(ID_PUESTO, ID_EMPRESA).ToList();
+                return contexto.SPE_OBTIENE_PLAN_VIDA_CARRERA(ID_PUESTO, ID_EMPRESA, ID_PLAZA).ToList();
             }
         }
 
@@ -61,11 +61,11 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
             }
         }
 
-        public List<SPE_OBTIENE_M_PUESTO_Result> ObtenerPuestos(int? pIdPuesto = null, bool? pFgActivo = null, DateTime? pFeInactivo = null, string pClPuesto = null, string pNbPuesto = null, int? pIdDepartamento = null, string pXmlCamposAdicionales = null, int? pIdBitacora = null, byte? pNoEdadMinima = null, byte? pNoEdadMaxima = null, string pClGenero = null, string pClEstadoCivil = null, string pXmlRequerimientos = null, string pXmlObservaciones = null, string pXmlResponsabilidades = null, string pXmlAutoridad = null, string pXmlCursosAdicionales = null, string pXmlMentor = null, string pClTipoPuesto = null, Guid? pIdCentroAdministrativo = null, Guid? pIdCentroOperativo = null, int? pIdPaquetePrestaciones = null, string pNbDepartamento = null, string pClDepartamento = null, string xml_puestos = null, string XML_PUESTOS_SELECCIONADOS = null, int? pIdEmpresa= null)
+        public List<SPE_OBTIENE_M_PUESTO_Result> ObtenerPuestos(int? pIdPuesto = null, bool? pFgActivo = null, DateTime? pFeInactivo = null, string pClPuesto = null, string pNbPuesto = null, int? pIdDepartamento = null, string pXmlCamposAdicionales = null, int? pIdBitacora = null, byte? pNoEdadMinima = null, byte? pNoEdadMaxima = null, string pClGenero = null, string pClEstadoCivil = null, string pXmlRequerimientos = null, string pXmlObservaciones = null, string pXmlResponsabilidades = null, string pXmlAutoridad = null, string pXmlCursosAdicionales = null, string pXmlMentor = null, string pClTipoPuesto = null, Guid? pIdCentroAdministrativo = null, Guid? pIdCentroOperativo = null, int? pIdPaquetePrestaciones = null, string pNbDepartamento = null, string pClDepartamento = null, string xml_puestos = null, string XML_PUESTOS_SELECCIONADOS = null, int? pIdEmpresa= null, int? pID_ROL = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_M_PUESTO(pIdPuesto, pFgActivo, pFeInactivo, pClPuesto, pNbPuesto, pIdDepartamento, pXmlCamposAdicionales, pIdBitacora, pNoEdadMinima, pNoEdadMaxima, pClGenero, pClEstadoCivil, pXmlRequerimientos, pXmlObservaciones, pXmlResponsabilidades, pXmlAutoridad, pXmlCursosAdicionales, pXmlMentor, pClTipoPuesto, pIdCentroAdministrativo, pIdCentroOperativo, pIdPaquetePrestaciones, xml_puestos, pNbDepartamento, pClDepartamento,XML_PUESTOS_SELECCIONADOS,pIdEmpresa).ToList();
+                return contexto.SPE_OBTIENE_M_PUESTO(pIdPuesto, pFgActivo, pFeInactivo, pClPuesto, pNbPuesto, pIdDepartamento, pXmlCamposAdicionales, pIdBitacora, pNoEdadMinima, pNoEdadMaxima, pClGenero, pClEstadoCivil, pXmlRequerimientos, pXmlObservaciones, pXmlResponsabilidades, pXmlAutoridad, pXmlCursosAdicionales, pXmlMentor, pClTipoPuesto, pIdCentroAdministrativo, pIdCentroOperativo, pIdPaquetePrestaciones, xml_puestos, pNbDepartamento, pClDepartamento, XML_PUESTOS_SELECCIONADOS, pIdEmpresa, pID_ROL).ToList();
             }
         }
     }

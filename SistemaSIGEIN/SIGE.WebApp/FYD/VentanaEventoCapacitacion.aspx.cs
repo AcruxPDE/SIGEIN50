@@ -29,7 +29,7 @@ namespace SIGE.WebApp.FYD
         private string vClUsuario;
         private string vNbPrograma;
         private int? vIdEmpresa;
-
+        private int? vIdRol;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
 
         private E_TIPO_OPERACION_DB vClOperacion
@@ -105,6 +105,9 @@ namespace SIGE.WebApp.FYD
             txtClave.Text = evento.CL_EVENTO;
             txtNombre.Text = evento.NB_EVENTO;
 
+            txtEvento.InnerText = evento.CL_EVENTO;
+            txtDescripcionEvento.InnerText = evento.NB_EVENTO;
+
             if (evento.ID_PROGRAMA.HasValue)
             {
                 rbVinculado.Checked = true;
@@ -156,10 +159,13 @@ namespace SIGE.WebApp.FYD
             FechasEventos = neg.ObtieneEventoCalendario(ID_EVENTO: vIdEvento);
 
             oCurso = new E_SELECTOR_CURSO();
+
+            if (evento.ID_CURSO != null)
             oCurso.idCurso = evento.ID_CURSO.Value;
+
             oCurso.noDuracion = Convert.ToInt32(evento.NO_DURACION_CURSO);
             oCurso.nbCurso = evento.NB_CURSO;
-            ListaEmpleados = neg.ObtieneParticipanteEvento(ID_EVENTO: vIdEvento);
+            ListaEmpleados = neg.ObtieneParticipanteEvento(ID_EVENTO: vIdEvento, pID_ROL: vIdRol);
 
             txtHorasCurso.Text = oCurso.noDuracion.ToString();
 
@@ -440,10 +446,11 @@ namespace SIGE.WebApp.FYD
             {
                 XElement vXmlCA = GeneralXmlAdicionales();
 
-                evento.CL_ESTADO = cmbEstado.SelectedValue;
-                evento.CL_EVENTO = txtClave.Text;
+                    evento.CL_EVENTO = txtClave.Text;
+                    evento.DS_EVENTO = txtNombre.Text;
+
+                evento.CL_ESTADO = cmbEstado.SelectedValue;        
                 evento.CL_TIPO_CURSO = cmbTipo.SelectedValue;
-                evento.DS_EVENTO = txtNombre.Text;
                 evento.DS_LUGAR = txtLugarEvento.Text;
                 evento.DS_REFRIGERIO = txtRefrigerio.Text;
                 evento.XML_CAMPOS_ADICIONALES = vXmlCA.ToString();
@@ -468,7 +475,7 @@ namespace SIGE.WebApp.FYD
                     evento.ID_EMPLEADO_EVALUADOR = int.Parse(rlbEvaluador.Items[0].Value);
                 }
 
-                if (rlbInstructor.Items[0].Value != "")
+                if (rlbInstructor.Items[0].Value != "" && rlbInstructor.Items[0].Text != "No Seleccionado")
                 {
                     evento.ID_INSTRUCTOR = int.Parse(rlbInstructor.Items[0].Value);
                     evento.NB_INSTRUCTOR = rlbInstructor.Items[0].Text;
@@ -497,8 +504,11 @@ namespace SIGE.WebApp.FYD
 
                 E_RESULTADO msj = neg.InsertaActualizaEvento(vClOperacion.ToString(), evento, vClUsuario, vNbPrograma);
                 string vMensaje = msj.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                UtilMensajes.MensajeResultadoDB(rwmEvento, vMensaje, msj.CL_TIPO_ERROR);
 
+                if(vClOperacion == E_TIPO_OPERACION_DB.A)
+                    UtilMensajes.MensajeResultadoDB(rwmEvento, vMensaje, msj.CL_TIPO_ERROR, pCallBackFunction: "ReturnDataToParentEdit");
+                else
+                    UtilMensajes.MensajeResultadoDB(rwmEvento, vMensaje, msj.CL_TIPO_ERROR, pCallBackFunction: "ReturnDataToParent");               
             }
         }
 
@@ -744,6 +754,11 @@ namespace SIGE.WebApp.FYD
             }
         }
 
+        private void SeguridadProcesos()
+        {
+            btnGuardarEvento.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.A.B.A.A");
+        }
+
         #endregion
 
         protected void Page_Init(object sender, EventArgs e)
@@ -757,6 +772,7 @@ namespace SIGE.WebApp.FYD
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
             vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
             vIdCurso = 0;
             vIdPrograma = 0;
             if (!Page.IsPostBack)
@@ -784,9 +800,13 @@ namespace SIGE.WebApp.FYD
 
                 if (Request.Params["EventoIdCopia"] != null)
                 {
+                    dvContextoEvento.Visible = false;
+                    dvDatosEvento.Visible = true;
                     vIdEvento = int.Parse(Request.Params["EventoIdCopia"].ToString());
                     cargarEvento();
                 }
+
+                SeguridadProcesos();
 
                 if (Request.Params["clOrigen"] != null)
                 {

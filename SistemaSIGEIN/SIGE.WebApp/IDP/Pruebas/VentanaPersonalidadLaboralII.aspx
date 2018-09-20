@@ -107,7 +107,7 @@
                                     contenedor.style.display = 'none';
                                 }
 
-                               c = Cronometro(segundos, display);
+                                c = Cronometro(segundos, display);
                             }
                         }
                         else {
@@ -160,15 +160,15 @@
 
 
 
-                           var windowProperties = {
-                               width: document.documentElement.clientWidth - 20,
-                               height: document.documentElement.clientHeight - 20
-                           };
+                var windowProperties = {
+                    width: document.documentElement.clientWidth - 20,
+                    height: document.documentElement.clientHeight - 20
+                };
 
-                           vURL = vURL + "?IdPrueba=" + IdPrueba + "&ClToken=" + ClToken + "&ClPrueba=LABORAL2";
-                           var win = window.open(vURL, '_blank');
-                           win.focus();
-                       }
+                vURL = vURL + "?IdPrueba=" + IdPrueba + "&ClToken=" + ClToken + "&ClPrueba=LABORAL2";
+                var win = window.open(vURL, '_blank');
+                win.focus();
+            }
 
             function WinClose(sender, args) {
                 vPruebaEstatus = "Terminado";
@@ -236,6 +236,16 @@
                 return flag;
             }
 
+            //function ConfirmarEliminarRespuestas(sender, args) {
+            //    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+            //        if (shouldSubmit) {
+            //            this.click();
+            //        }
+            //    });
+            //    radconfirm("Este proceso borrará las respuestas de la prueba, ¿Deseas continuar?", callBackFunction, 400, 150, null, "Eliminar respuestas");
+            //    args.set_cancel(true);
+            //}
+
         </script>
     </telerik:RadCodeBlock>
 
@@ -251,7 +261,9 @@
                         <table>
                             <tr>
                                 <td style="width: 10px;">&nbsp;</td>
-                                <td style="background-color: white; padding: 5px;"><label>Este no es un test con respuestas correctas o incorrectas. Es un cuestionario 
+                                <td style="background-color: white; padding: 5px;">
+                                    <label>
+                                        Este no es un test con respuestas correctas o incorrectas. Es un cuestionario 
                     que te permite describir tu estilo de vida principal y secundario, con 
                     el fin de identificar los modos productivos y antiproductivos, en que  
                     utilizas tus fuerzas. Encontraras en el cuestionario enunciados descriptivos 
@@ -260,39 +272,39 @@
                     es la terminación que <span style="text-decoration: underline; font-weight: bold;">más se te asemeja</span> (4) y cuál es la que sientes que 
                     <span style="text-decoration: underline; font-weight: bold;">se te asemeja 
                     menos</span> (1).<br />
-                                    <br />
-                                    Por favor observa este ejemplo:<br />
-                                    <br />
-                                    Casi siempre soy:<br />
-                                    <br />
+                                        <br />
+                                        Por favor observa este ejemplo:<br />
+                                        <br />
+                                        Casi siempre soy:<br />
+                                        <br />
 
-                                    <table>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                            <td>Benévolo, afable y util</td>
-                                            <td>(4)</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                            <td>Productivo y lleno de planes</td>
-                                            <td>(2)</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                            <td>Económico y cuidadoso</td>
-                                            <td>(1)</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                            <td>Encantador y popular</td>
-                                            <td>(3)</td>
-                                        </tr>
-                                    </table>
+                                        <table>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>Benévolo, afable y util</td>
+                                                <td>(4)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>Productivo y lleno de planes</td>
+                                                <td>(2)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>Económico y cuidadoso</td>
+                                                <td>(1)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>Encantador y popular</td>
+                                                <td>(3)</td>
+                                            </tr>
+                                        </table>
 
-                                    <br />
-                                    No uses 4, 3, 2 y 1 más de una vez.<br />
-                                    <br />
-                                    Si encuentras que algunos enunciados del cuestionario tienen 2 o más 
+                                        <br />
+                                        No uses 4, 3, 2 y 1 más de una vez.<br />
+                                        <br />
+                                        Si encuentras que algunos enunciados del cuestionario tienen 2 o más 
                     terminaciones que se te asemejen de igual manera o que son igualmente distintas 
                     a como tú sientes que es, colócalas en orden, aunque le 
                     resulte difícil. Cada terminación <span style="text-decoration: underline; font-weight: bold;">deberás</span> clasificarla como 4, 3, 2 ó 1.</label></td>
@@ -1229,10 +1241,20 @@
         <div class="Cronometro">Tiempo restante <span id="time">15:00</span></div>
     </div>
 
-    <div  class="divControlesBoton">
-        <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Terminar" AutoPostBack="true"></telerik:RadButton>
-           <telerik:RadButton ID="btnCorregir" runat="server" Visible="false" OnClick="btnCorregir_Click" Text="Corregir" AutoPostBack="true"></telerik:RadButton>
-         <telerik:RadButton ID="btnImpresionPrueba" runat="server" OnClientClicked="OpenReport" Text="Imprimir" AutoPostBack="false" Visible="false"></telerik:RadButton>
+    <div class="divControlDerecha">
+        <div class="ctrlBasico">
+            <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Terminar" AutoPostBack="true"></telerik:RadButton>
+        </div>
+        <div class="ctrlBasico">
+            <telerik:RadButton ID="btnCorregir" runat="server" Visible="false" OnClick="btnCorregir_Click" Text="Guardar" AutoPostBack="true"></telerik:RadButton>
+        </div>
+        <div class="ctrlBasico">
+            <telerik:RadButton ID="btnImpresionPrueba" runat="server" OnClientClicked="OpenReport" Text="Imprimir" AutoPostBack="false" Visible="false"></telerik:RadButton>
+        </div>
+
+<%--         <div class="ctrlBasico">
+                  <telerik:RadButton ID="btnEliminar" runat="server"  Text="Eliminar" AutoPostBack="true" Visible="false" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminar_Click"></telerik:RadButton>
+             </div>--%>
     </div>
 
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>

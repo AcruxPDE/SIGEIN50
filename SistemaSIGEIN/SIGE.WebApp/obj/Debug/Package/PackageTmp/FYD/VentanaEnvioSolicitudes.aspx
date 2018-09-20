@@ -26,41 +26,69 @@
         </AjaxSettings>
     </telerik:RadAjaxManager>
 
+        <telerik:RadTabStrip ID="rtsConfiguracionPeriodo" runat="server" SelectedIndex="0" MultiPageID="rmpEnvioCuestionario">
+        <Tabs>
+             <telerik:RadTab Text="Contexto" Value="0"></telerik:RadTab>
+            <telerik:RadTab Text="Enviar evaluaciones" Value="1"></telerik:RadTab>
+        </Tabs>
+    </telerik:RadTabStrip>
 
+        <div style="height: calc(100% - 50px);">
+        <telerik:RadMultiPage ID="rmpEnvioCuestionario" runat="server" SelectedIndex="0" Height="100%">
+            <telerik:RadPageView ID="rpvContexto" runat="server">    
+                 <div style="height: calc(100% - 30px);">         
+            <div style="clear: both; height: 10px;"></div>
+      <div class="ctrlBasico">
+                                    <table class="ctrlTableForm" text-align: left;>
+                                        <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="lbPeriodo" name="lbTabulador" runat="server">Período:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtClPeriodo" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="lbNbPeriodo" name="lbTabulador" runat="server">Descripción:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtDsPeriodo" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                                 <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="Label1" name="lbTabulador" runat="server">Estatus:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtEstatus" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                                      <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="Label2" name="lbTabulador" runat="server">Tipo de evaluación:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtTipoEvaluacion" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                             <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="Label3" name="lbTabulador" runat="server">Notas:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtNotas" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                        </table>
+                                    </div>
+                     </div>
+                </telerik:RadPageView>
+      <telerik:RadPageView ID="rpvEnvio" runat="server">
     <telerik:RadSplitter runat="server" ID="spHelp" Width="100%" Height="100%" BorderSize="0">
-
         <telerik:RadPane ID="rpDatos" runat="server">
-
             <div style="clear: both; height: 10px;"></div>
-
-           <%-- <div class="ctrlBasico">
-                <label>Periodo: </label>
-            </div>
-
-            <div class="ctrlBasico">
-                <telerik:RadTextBox runat="server" ID="txtNoPeriodo" Width="50px" Enabled="false"></telerik:RadTextBox>
-            </div>
-
-            <div class="ctrlBasico">
-                <telerik:RadTextBox runat="server" ID="txtNbPeriodo" Width="300px" Enabled="false"></telerik:RadTextBox>
-            </div>--%>
-            <div class="ctrlBasico">
-                 <table class="ctrlTableForm">
-                        <tr>
-                            <td class="ctrlTableDataContext">
-                                <label>Periodo:</label></td>
-                            <td colspan="2" class="ctrlTableDataBorderContext">
-                                <div id="txtNoPeriodo" runat="server" style="min-width: 100px;"></div>
-                            </td>
-                            <td class="ctrlTableDataBorderContext">
-                                <div id="txtNbPeriodo" runat="server" width="170" maxlength="1000" enabled="false"></div>
-                            </td>
-                        </tr>
-                </table>
-          </div>
-            <div style="clear: both; height: 10px;"></div>
-
-            <div style="height: calc(100% - 120px); width: 100%;">
+            <div style="height: calc(100% - 70px); width: 100%;">
                 <telerik:RadGrid runat="server" ID="rgEvaluadores" HeaderStyle-Font-Bold="true" AutoGenerateColumns="false" OnNeedDataSource="rgEvaluadores_NeedDataSource" Height="100%" Width="100%" AllowSorting="true" AllowMultiRowSelection="true" OnItemDataBound="rgEvaluadores_ItemDataBound">
                     <ClientSettings EnablePostBackOnRowClick="false">
                         <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -123,6 +151,8 @@
             </telerik:RadSlidingZone>
         </telerik:RadPane>
     </telerik:RadSplitter>
-
+          </telerik:RadPageView>
+            </telerik:RadMultiPage>
+            </div>
     <telerik:RadWindowManager ID="rwmMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>
 </asp:Content>

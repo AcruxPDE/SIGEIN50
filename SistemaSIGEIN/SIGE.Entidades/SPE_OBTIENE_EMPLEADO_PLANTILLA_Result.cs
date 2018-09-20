@@ -14,6 +14,7 @@ namespace SIGE.Entidades
     public partial class SPE_OBTIENE_EMPLEADO_PLANTILLA_Result
     {
         public string CL_EMPLEADO { get; set; }
+        public string CL_ESTADO_EMPLEADO { get; set; }
         public string XML_SOLICITUD_PLANTILLA { get; set; }
         public string XML_VALORES { get; set; }
         public byte[] FI_FOTOGRAFIA { get; set; }

@@ -58,6 +58,11 @@ namespace SIGE.WebApp.EO
             }
         }
 
+        private void SeguridadProcesos()
+        {
+            btnAceptar.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.B");
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -83,6 +88,8 @@ namespace SIGE.WebApp.EO
                         rbParametros.Checked = true;
                     else
                         rbSeleccion.Checked = true;
+
+                    SeguridadProcesos();
 
                     if (vPeriodo.CL_ESTADO_PERIODO == "CERRADO")
                         btnAceptar.Enabled = false;
@@ -141,7 +148,7 @@ namespace SIGE.WebApp.EO
                 else
                 {
                     lstPeriodo.Items.Add(vNoSeleccionado);
-                    rbParametros.Checked = true;
+                    rbSeleccion.Checked = true;
                 }
 
             }
@@ -163,14 +170,22 @@ namespace SIGE.WebApp.EO
                 vPeriodo.CL_TIPO_CONFIGURACION = rbParametros.Checked? "PARAMETROS":"EVALUADORES";
 
                 ClimaLaboralNegocio nPeriodo = new ClimaLaboralNegocio();
+
                 E_RESULTADO vResultado = nPeriodo.InsertaPeriodoClimaCopia(pPeriodo: vPeriodo, pCL_USUARIO: vClUsuario, pNB_PROGRAMA: vNbPrograma);
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "closeWindow");
             }
             else
             {
+                E_PERIODO_CLIMA vPeriodo = new E_PERIODO_CLIMA();
+ 
                 if (Request.QueryString["PeriodoId"] != null && Request.QueryString["clAccion"] == null)
                 {
+                    ClimaLaboralNegocio nPeriodo = new ClimaLaboralNegocio();
+                    var vDsPeriodo = nPeriodo.ObtienePeriodosClima(pIdPerido: vIdPeriodo).FirstOrDefault();
+                    if (vDsPeriodo != null)
+                    vPeriodo.DS_MENSAJE_ENVIO = vDsPeriodo.DS_MENSAJE_CORREO;
+
                     vTipoTransaccion = E_TIPO_OPERACION_DB.A.ToString();
                 }
                 else
@@ -178,8 +193,7 @@ namespace SIGE.WebApp.EO
                     vTipoTransaccion = E_TIPO_OPERACION_DB.I.ToString();
                 }
 
-                E_PERIODO_CLIMA vPeriodo = new E_PERIODO_CLIMA();
-
+              
                 if (vIdPeriodo == null)
                     vIdPeriodo = 0;
 
@@ -216,7 +230,10 @@ namespace SIGE.WebApp.EO
                     ClimaLaboralNegocio nPeriodo = new ClimaLaboralNegocio();
                     E_RESULTADO vResultado = nPeriodo.InsertaActualizaPeriodoClima(pPeriodo: vPeriodo, pCL_USUARIO: vClUsuario, pNB_PROGRAMA: vNbPrograma, pTIPO_TRANSACCION: vTipoTransaccion.ToString());
                     string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                    if (vTipoTransaccion.ToString() == E_TIPO_OPERACION_DB.I.ToString())
                     UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "closeWindow");
+                    else
+                       UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "closeWindowEdit");
                 }
                 else
                 {
@@ -229,7 +246,7 @@ namespace SIGE.WebApp.EO
                     }
                     else
                     {
-                        UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione el periodo para copiar cuestionario", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+                        UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione el período para copiar cuestionario", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
                     }
                 }
             }

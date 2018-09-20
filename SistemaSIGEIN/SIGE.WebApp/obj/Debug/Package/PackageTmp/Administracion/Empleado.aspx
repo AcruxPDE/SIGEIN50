@@ -7,6 +7,34 @@
            
            width: 150px !important;
        }
+
+    html {
+        overflow-y: hidden;
+        }
+
+       .DivFotoCss {
+           background: #fafafa; 
+           position: absolute; 
+           right: 0px; 
+           margin-right: 50px; 
+           border: 1px solid lightgray; 
+           border-radius: 10px; 
+           padding: 5px;
+        }
+
+         @media only screen and (max-width: 700px) {
+            .DivFotoCss {
+               background: #fafafa; 
+               position: relative;
+               right: 0px; 
+               margin-right: 50px; 
+               border: 1px solid lightgray; 
+               border-radius: 10px; 
+               padding: 5px;
+               width:170px;
+            }
+        }
+
    </style>
 
     <script id="MyScript" type="text/javascript">
@@ -17,7 +45,7 @@
             var vClToken = '<%= ObtenerDatosDeReportes("CL_TOKEN") %>';
 
             if ((vIdBateria != "0")) {
-                var win = window.open("/IDP/ResultadosPruebas.aspx?ID=" + vIdBateria + "&&T=" + vClToken, '_blank');
+                var win = window.open("../IDP/ResultadosPruebas.aspx?ID=" + vIdBateria + "&&T=" + vClToken, '_blank');
                 win.focus();
             }
             else { radalert("La persona no tiene una batería de pruebas asociada", 400, 150, ""); }
@@ -30,7 +58,7 @@
 
             if (vIdBateria != "0") {
 
-                var vURL = "/IDP/ConsultasPersonales.aspx";
+                var vURL = "../IDP/ConsultasPersonales.aspx";
                 var vTitulo = "Consultas personales";
 
                 vURL = vURL + "?pIdBateria=" + vIdBateria;
@@ -55,7 +83,7 @@
         function OpenSolicitud() {
             var vIdSolicitud = '<%= vIdSolicitud%>';
             if (vIdSolicitud != null && vIdSolicitud != "0") {
-                var vURL = "/IDP/Solicitud/Solicitud.aspx";
+                var vURL = "../IDP/Solicitud/Solicitud.aspx";
                 var vTitulo = "Ver solicitud";
                 vURL = vURL + "?SolicitudId=" + vIdSolicitud +"&FG_HABILITADO=False";
                 var currentWnd = GetRadWindow();
@@ -78,7 +106,7 @@
             var vIdCandidato = '<%= vIdCandidato%>';
             if (vIdSolicitud != null && vIdSolicitud != "0") {
 
-                var vURL = "/IDP/VentanaProcesoSeleccionCandidato.aspx";
+                var vURL = "../IDP/VentanaProcesoSeleccionCandidato.aspx";
                 var vTitulo = "Proceso de evaluación";
                 vURL = vURL + "?IdCandidato=" + vIdCandidato
 
@@ -111,7 +139,7 @@
 
             if (vIdEvaluador != "0" & vIdPeriodo != "0") {
 
-                var vURL = "/EO/Cuestionarios/CuestionarioClimaLaboral.aspx?ID_EVALUADOR=" + vIdEvaluador + "&ID_PERIODO=" + vIdPeriodo + "&FG_HABILITADO=False";
+                var vURL = "../EO/Cuestionarios/CuestionarioClimaLaboral.aspx?ID_EVALUADOR=" + vIdEvaluador + "&ID_PERIODO=" + vIdPeriodo + "&FG_HABILITADO=False";
                 var vTitulo = "Cuestionario";
 
                 var currentWnd = GetRadWindow();
@@ -131,10 +159,11 @@
             }
         }
 
+       
 
         function openAvanceProgramaCapacitacion(pIdPrograma) {
 
-            var vURL = "/FYD/VentanaAvanceProgramaCapacitacion.aspx?IdPrograma=";
+            var vURL = "../FYD/VentanaAvanceProgramaCapacitacion.aspx?IdPrograma=";
             var vTitulo = "Avance programa de capacitación";
 
             vURL = vURL + pIdPrograma;
@@ -156,7 +185,7 @@
 
         function openReporteCumplimientoPersonalDesempeno(pIdEvaluado, pIdPeriodo) {
 
-            var vURL = "/EO/VentanaReporteCumplimientoPersonal.aspx?idPeriodo=" + pIdPeriodo + "&idEvaluado=" + pIdEvaluado;
+            var vURL = "../EO/VentanaReporteCumplimientoPersonal.aspx?idPeriodo=" + pIdPeriodo + "&idEvaluado=" + pIdEvaluado;
             var vTitulo = "Reporte cumplimiento personal";
 
             var currentWnd = GetRadWindow();
@@ -181,7 +210,7 @@
 
             function confirmCallback(arg) {
                 if (arg) {
-                    closeWindow();
+                    OnCloseUpdate();
                 }
             }
 
@@ -202,6 +231,12 @@
             var vLstPlazaJefe = $find("<%= ObtenerClientId(mpgPlantilla, "ID_PLAZA_JEFE") %>");
             var vBtnPlazaJefe = $find("<%= ObtenerClientId(mpgPlantilla, "btnID_PLAZA_JEFE") %>");
             var vBtnCP = $find("<%= ObtenerClientId(mpgPlantilla, "btnCL_CODIGO_POSTAL")%>");
+            var vLstCentroOperativo = $find("<%= ObtenerClientId(mpgPlantilla, "CL_CENTRO_OPERATIVO") %>");
+            var vBtnCentroOperativo = $find("<%= ObtenerClientId(mpgPlantilla, "btnCL_CENTRO_OPERATIVO") %>");
+            var vLstCentroAdministrativo = $find("<%= ObtenerClientId(mpgPlantilla, "CL_CENTRO_ADMINISTRATIVO") %>");
+            var vBtnCentroAdministrativo = $find("<%= ObtenerClientId(mpgPlantilla, "btnCL_CENTRO_ADMINISTRATIVO") %>");
+            var vLstEstadosNacimiento = $find("<%= ObtenerClientId(mpgPlantilla, "NB_ESTADO_NACIMIENTO") %>");
+            var vBtnEstadosNacimiento = $find("<%= ObtenerClientId(mpgPlantilla, "btnNB_ESTADO_NACIMIENTO") %>");
 
             var windowProperties = {
                 width: 600,
@@ -209,37 +244,56 @@
             };
 
             if (sender == vBtnEstados) {
-                openChildDialog("/Comunes/SeleccionLocalizacion/SeleccionEstado.aspx", "winSeleccion", "Selección de estado", windowProperties);
+                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionEstado.aspx", "winSeleccion", "Selección de estado", windowProperties);
             } else if (sender == vBtnMunicipios) {
-                var clEstado = vLstEstados.get_selectedItem().get_value();
-                openChildDialog("/Comunes/SeleccionLocalizacion/SeleccionMunicipio.aspx?ClEstado=" + clEstado, "winSeleccion", "Selección de municipio", windowProperties);
+                var nbEstado = vLstEstados.get_selectedItem().get_value();
+                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionMunicipio.aspx?NbEstado=" + nbEstado, "winSeleccion", "Selección de municipio", windowProperties);
             } else if (sender == vBtnColonia) {
-                var clEstado = vLstEstados.get_selectedItem().get_value();
-                var clMunicipio = vLstMunicipios.get_selectedItem().get_value();
-                openChildDialog("/Comunes/SeleccionLocalizacion/SeleccionColonia.aspx?ClEstado=" + clEstado + "&ClMunicipio=" + clMunicipio, "winSeleccion", "Selección de colonia", windowProperties);
+                var nbEstado = vLstEstados.get_selectedItem().get_value();
+                var nbMunicipio = vLstMunicipios.get_selectedItem().get_value();
+                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionColonia.aspx?NbEstado=" + nbEstado + "&NbMunicipio=" + nbMunicipio, "winSeleccion", "Selección de colonia", windowProperties);
             } else if (sender == vBtnCandidato) {
                 windowProperties.width = document.documentElement.clientWidth - 20;
                 windowProperties.height = document.documentElement.clientHeight - 20;
-                openChildDialog("/Comunes/SeleccionCandidato.aspx?vClTipoSeleccion=SIN_RELACION", "winSeleccion", "Selección de solicitud", windowProperties);
+                openChildDialog("../Comunes/SeleccionCandidato.aspx?vClTipoSeleccion=SIN_RELACION", "winSeleccion", "Selección de solicitud", windowProperties);
             } else if (sender == vBtnPlaza) {
                 windowProperties.width = document.documentElement.clientWidth - 20;
                 windowProperties.height = document.documentElement.clientHeight - 20;
-                openChildDialog("/Comunes/SeleccionPlaza.aspx?TipoSeleccionCl=VACANTES", "winSeleccion", "Selección de la plaza a ocupar", windowProperties);
-            } else if (sender == vBtnPlazaJefe) {
-                var idPlaza = vLstPlaza.get_selectedItem().get_value();
-                windowProperties.width = document.documentElement.clientWidth - 20;
-                windowProperties.height = document.documentElement.clientHeight - 20;
-                openChildDialog("/Comunes/SeleccionPlaza.aspx?CatalogoCl=PLAZAJEFE&TipoSeleccionCl=JEFE&PlazaId=" + idPlaza, "winSeleccion", "Selección del jefe inmediato", windowProperties);
+                openChildDialog("../Comunes/SeleccionPlaza.aspx?TipoSeleccionCl=VACANTES", "winSeleccion", "Selección de la plaza a ocupar", windowProperties);        
+                //} else if (sender == vBtnPlazaJefe) {
+            //    var idPlaza = vLstPlaza.get_selectedItem().get_value();
+            //    windowProperties.width = document.documentElement.clientWidth - 20;
+            //    windowProperties.height = document.documentElement.clientHeight - 20;
+            //    openChildDialog("../Comunes/SeleccionPlaza.aspx?CatalogoCl=PLAZAJEFE&TipoSeleccionCl=JEFE&PlazaId=" + idPlaza, "winSeleccion", "Selección del jefe inmediato", windowProperties);
             } else if (sender == vBtnCP) {
                 windowProperties.width = document.documentElement.clientWidth - 100;
                 windowProperties.height = document.documentElement.clientHeight - 20;
-                openChildDialog("/Comunes/SeleccionLocalizacion/SeleccionCP.aspx?CatalogoCl=CODIGOPOSTAL", "winSeleccion", "Selección de código postal", windowProperties);
+                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionCP.aspx?CatalogoCl=CODIGOPOSTAL", "winSeleccion", "Selección de código postal", windowProperties);
+            } else if (sender == vBtnCentroOperativo) {
+                windowProperties.width = document.documentElement.clientWidth - 100;
+                windowProperties.height = document.documentElement.clientHeight - 20;
+                openChildDialog("../Comunes/SeleccionCentroOptvo.aspx?CatalogoCl=CENTROOPERATIVO&mulSel=0", "winSeleccion", "Selección de centro operativo", windowProperties);
+            } else if (sender == vBtnCentroAdministrativo) {
+                windowProperties.width = document.documentElement.clientWidth - 100;
+                windowProperties.height = document.documentElement.clientHeight - 20;
+                openChildDialog("../Comunes/SeleccionCentroAdmvo.aspx?CatalogoCl=CENTROADMINISTRATIVO&mulSel=0", "winSeleccion", "Selección de centro administrativo", windowProperties);
+            } else if (sender == vBtnEstadosNacimiento) {
+                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionEstado.aspx?CatalogoCl=ESTADONACIMIENTO", "winSeleccion", "Selección de estado", windowProperties);
             }
         }
 
         //function centrarVentana(sender, args) {
         //    sender.moveTo(1, 1);
         //}
+
+        function OnCloseUpdate() {
+            var vEmpleados = [];
+            var vEmpleado = {
+                clTipoCatalogo: "CLOSE"
+            };
+            vEmpleados.push(vEmpleado);
+            sendDataToParent(vEmpleados);
+        }
 
         function LoadValue(sender, args) {
             var items = sender.get_items();
@@ -285,12 +339,18 @@
                 switch (vSelectedData.clTipoCatalogo) {
                     case "ESTADO":
                         list = $find("<%= ObtenerClientId(mpgPlantilla, "NB_ESTADO") %>");
+                        oData.clDato = vSelectedData.nbDato;
+                        oData.nbDato = vSelectedData.nbDato;
                         break;
                     case "MUNICIPIO":
                         list = $find("<%= ObtenerClientId(mpgPlantilla, "NB_MUNICIPIO") %>");
+                        oData.clDato = vSelectedData.nbDato;
+                        oData.nbDato = vSelectedData.nbDato;
                         break;
                     case "COLONIA":
                         list = $find("<%= ObtenerClientId(mpgPlantilla, "NB_COLONIA") %>");
+                        oData.clDato = vSelectedData.nbDato;
+                        oData.nbDato = vSelectedData.nbDato;
                         break;
                     case "CANDIDATO":
                         list = $find("<%= ObtenerClientId(mpgPlantilla, "ID_CANDIDATO") %>");
@@ -301,16 +361,16 @@
                         list = $find("<%= ObtenerClientId(mpgPlantilla, "ID_PUESTO") %>");
                         oData.clDato = vSelectedData.idPlaza;
                         oData.nbDato = vSelectedData.nbPuesto + " (" + vSelectedData.clPlaza + ")";
-                        SetListBoxItem(list, oData.nbDato, oData.clDato);
-                        list = $find("<%= ObtenerClientId(mpgPlantilla, "ID_PLAZA_JEFE") %>");
-                        oData.clDato = vSelectedData.idPlazaSuperior;
-                        oData.nbDato = vSelectedData.nbEmpleadoSuperior + " - " + vSelectedData.nbPuestoSuperior;
+                        //SetListBoxItem(list, oData.nbDato, oData.clDato);
+                        //list = $find("<= ObtenerClientId(mpgPlantilla, "ID_PLAZA_JEFE") %>");
+                        //oData.clDato = vSelectedData.idPlazaSuperior;
+                        //oData.nbDato = vSelectedData.nbEmpleadoSuperior + " - " + vSelectedData.nbPuestoSuperior;
                         break;
-                    case "PLAZAJEFE":
-                        list = $find("<%= ObtenerClientId(mpgPlantilla, "ID_PLAZA_JEFE") %>");
-                        oData.clDato = vSelectedData.idPlaza;
-                        oData.nbDato = vSelectedData.nbEmpleado + " - " + vSelectedData.nbPuesto;
-                        break;
+                    //case "PLAZAJEFE":
+                    //    list = $find("<= ObtenerClientId(mpgPlantilla, "ID_PLAZA_JEFE") %>");
+                    //    oData.clDato = vSelectedData.idPlaza;
+                    //    oData.nbDato = vSelectedData.nbEmpleado + " - " + vSelectedData.nbPuesto;
+                    //    break;
                     case "CODIGOPOSTAL":
                         boxt = $find("<%= ObtenerClientId(mpgPlantilla, "CL_CODIGO_POSTAL") %>");
                         boxt.set_value(vSelectedData.nbCP);
@@ -323,6 +383,19 @@
                         list = $find("<%= ObtenerClientId(mpgPlantilla, "NB_COLONIA") %>");
                         oData.nbDato = vSelectedData.nbColonia;
                         break;
+                    case "CENTROOPERATIVO":
+                        list = $find("<%= ObtenerClientId(mpgPlantilla, "CL_CENTRO_OPERATIVO") %>");
+                        oData.clDato = vSelectedData.idCentro;
+                        oData.nbDato = vSelectedData.clCentro;
+                        break;
+                    case "CENTROADMINISTRATIVO":
+                        list = $find("<%= ObtenerClientId(mpgPlantilla, "CL_CENTRO_ADMINISTRATIVO") %>");
+                        oData.clDato = vSelectedData.idCentro;
+                        oData.nbDato = vSelectedData.clCentro;
+                        break;
+                    case "ESTADONACIMIENTO":
+                        list = $find("<%= ObtenerClientId(mpgPlantilla, "NB_ESTADO_NACIMIENTO") %>");
+                         break;
                 }
 
                 SetListBoxItem(list, oData.nbDato, oData.clDato);
@@ -357,6 +430,7 @@
             .RadButton.rbSkinnedButton.uncheckedNo > .rbDecorated {
                 color: #000 !important;
             }
+
     </style>
 
 </asp:Content>
@@ -395,12 +469,13 @@
                         <telerik:RadTab Text="Adicional"></telerik:RadTab>
                         <telerik:RadTab Text="Documentación"></telerik:RadTab>
                         <telerik:RadTab Text="Reportes"></telerik:RadTab>
+                        <telerik:RadTab Text="Nómina" Visible="false"></telerik:RadTab>
                     </Tabs>
                 </telerik:RadTabStrip>
                 <div style="height: calc(100% - 45px);">
                     <telerik:RadMultiPage ID="mpgPlantilla" runat="server" SelectedIndex="0" Height="100%" ScrollBars="Auto">
                         <telerik:RadPageView ID="pvwPersonal" runat="server">
-                            <div style="background: #fafafa; position: absolute; right: 0px; margin-right: 50px; border: 1px solid lightgray; border-radius: 10px; padding: 5px;">
+                            <div class="DivFotoCss">
                                 <table class="ctrlTableForm">
                                     <tr>
                                         <td style="text-align: center;">
@@ -467,7 +542,7 @@
                                     </MasterTableView>
                                 </telerik:RadGrid>
                             </div>
-                            <div class="ctrlBasico">
+                            <div class="ctrlBasico" style="padding-left:20px;">
                                 <telerik:RadButton ID="btnDelDocumentos" runat="server" Text="Eliminar" OnClick="btnDelDocumentos_Click"></telerik:RadButton>
                             </div>
                         </telerik:RadPageView>
@@ -513,21 +588,15 @@
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" ID="btnConsultaPersonales" Width="220" Text="Ver consultas personales" AutoPostBack="false" OnClientClicked="openConsultasPersonales"></telerik:RadButton>
                             </div>
-
-
                             <div style="clear: both; height: 10px;"></div>
-
                             <label class="labelTitulo">Formación y desarollo</label>
-
                             <label>Programas de capacitación</label>
-
                             <telerik:RadGrid ID="grdProgramas" runat="server" Height="300px" Width="800px" AutoGenerateColumns="false" EnableHeaderContextMenu="true" ShowGroupPanel="false"
                                 AllowSorting="true" OnNeedDataSource="grdProgramas_NeedDataSource" OnDeleteCommand="grdProgramas_DeleteCommand" HeaderStyle-Font-Bold="true">
                                 <ClientSettings>
                                     <Scrolling UseStaticHeaders="true" AllowScroll="true" />
                                     <Selecting AllowRowSelect="false" />
                                 </ClientSettings>
-
                                 <MasterTableView ClientDataKeyNames="ID_PROGRAMA" EnableColumnsViewState="false" DataKeyNames="ID_PROGRAMA" AllowPaging="false" AllowFilteringByColumn="false" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
                                     <CommandItemSettings ShowExportToExcelButton="true" ShowAddNewRecordButton="false" />
                                     <Columns>
@@ -539,11 +608,8 @@
                                     </Columns>
                                 </MasterTableView>
                             </telerik:RadGrid>
-
                             <div style="clear: both; height: 20px;"></div>
-
                             <label>Eventos de capacitación</label>
-
                             <telerik:RadGrid ID="grdEventos" runat="server" Height="300px" Width="1150px" AutoGenerateColumns="false" EnableHeaderContextMenu="true" ShowGroupPanel="false"
                                 AllowSorting="true" OnNeedDataSource="grdEventos_NeedDataSource" HeaderStyle-Font-Bold="true">
                                 <ClientSettings>
@@ -568,15 +634,10 @@
                                     </Columns>
                                 </MasterTableView>
                             </telerik:RadGrid>
-
                             <div style="clear: both; height: 10px;"></div>
-
                             <label class="labelTitulo">Evaluación organizacional</label>
-
                             <div style="clear: both; height: 10px;"></div>
-
                             <label>Evaluación del desempeño</label>
-
                             <telerik:RadGrid ID="grdDesempeno" runat="server" Height="300px" Width="700px" AutoGenerateColumns="false" EnableHeaderContextMenu="true" ShowGroupPanel="false"
                                 AllowSorting="true" OnNeedDataSource="grdDesempeno_NeedDataSource" HeaderStyle-Font-Bold="true">
                                 <ClientSettings>
@@ -584,28 +645,24 @@
                                     <Selecting AllowRowSelect="false" />
                                 </ClientSettings>
                                 <MasterTableView ClientDataKeyNames="ID_PERIODO,ID_EVALUADO" EnableColumnsViewState="false" DataKeyNames="ID_PERIODO,ID_EVALUADO" AllowPaging="false" AllowFilteringByColumn="false" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true"
-                                    NoMasterRecordsText="Este empleado no ha participado en ningún periodo de desempeño">
+                                    NoMasterRecordsText="Este empleado no ha participado en ningún período de desempeño">
                                     <CommandItemSettings ShowExportToExcelButton="true" ShowAddNewRecordButton="false" />
                                     <Columns>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="150" HeaderText="Clave" DataField="CL_PERIODO" UniqueName="CL_PERIODO"></telerik:GridBoundColumn>
                                         <%--<telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="200" HeaderText="Evento" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>--%>
-                                        <telerik:GridHyperLinkColumn AutoPostBackOnFilter="true" HeaderText="Periodo" DataTextField="NB_PERIODO" UniqueName="NB_PERIODO" DataNavigateUrlFields="ID_EVALUADO,ID_PERIODO" DataNavigateUrlFormatString="javascript:openReporteCumplimientoPersonalDesempeno({0},{1})"></telerik:GridHyperLinkColumn>
+                                        <telerik:GridHyperLinkColumn AutoPostBackOnFilter="true" HeaderText="Período" DataTextField="NB_PERIODO" UniqueName="NB_PERIODO" DataNavigateUrlFields="ID_EVALUADO,ID_PERIODO" DataNavigateUrlFormatString="javascript:openReporteCumplimientoPersonalDesempeno({0},{1})"></telerik:GridHyperLinkColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" FilterControlWidth="25" HeaderText="Cumplimiento" DataField="PR_CUMPLIMIENTO_EVALUADO" UniqueName="PR_CUMPLIMIENTO_EVALUADO" DataFormatString="{0}%">
                                             <ItemStyle HorizontalAlign="Right" />
                                         </telerik:GridBoundColumn>
                                     </Columns>
                                 </MasterTableView>
                             </telerik:RadGrid>
-
                             <div style="clear: both; height: 10px;"></div>
-
                             <label>Clima laboral</label>
                             <div style="clear: both; height: 10px;"></div>
                             <telerik:RadButton runat="server" ID="btnCuestionarioClima" Text="Ver ultimo cuestionario" AutoPostBack="false" OnClientClicked="openCuestionarioClima"></telerik:RadButton>
-
                             <div style="clear: both; height: 10px;"></div>
                             <label>Rotación</label>
-
                             <telerik:RadGrid ID="grdRotacion" runat="server" Height="300px" Width="800px" AutoGenerateColumns="false" EnableHeaderContextMenu="true" ShowGroupPanel="false"
                                 AllowSorting="true" OnNeedDataSource="grdRotacion_NeedDataSource" HeaderStyle-Font-Bold="true">
                                 <ClientSettings>
@@ -615,17 +672,15 @@
                                 <MasterTableView ClientDataKeyNames="ID_BAJA_EMPLEADO" EnableColumnsViewState="false" DataKeyNames="ID_BAJA_EMPLEADO" AllowPaging="false" AllowFilteringByColumn="false" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true" NoMasterRecordsText="No existen bajas asociadas al empleado">
                                     <CommandItemSettings ShowExportToExcelButton="true" ShowAddNewRecordButton="false" />
                                     <Columns>
-                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" HeaderText="Fecha" DataField="FE_BAJA_EFECTIVA" UniqueName="FE_BAJA_EFECTIVA" DataFormatString="{0:d}"></telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" HeaderText="Motivo" DataField="NB_MOTIVO" UniqueName="NB_MOTIVO"></telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="300" FilterControlWidth="25" HeaderText="Cumplimiento" DataField="DS_MOTIVO" UniqueName="DS_MOTIVO"></telerik:GridBoundColumn>
+                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" HeaderText="Fecha ingreso" DataField="FE_INGRESO" UniqueName="FE_INGRESO" DataFormatString="{0:d}"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" HeaderText="Fecha baja" DataField="FE_BAJA_EFECTIVA" UniqueName="FE_BAJA_EFECTIVA" DataFormatString="{0:d}"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" HeaderText="Causa" DataField="NB_MOTIVO" UniqueName="NB_MOTIVO"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="300" FilterControlWidth="25" HeaderText="Comentario" DataField="DS_MOTIVO" UniqueName="DS_MOTIVO"></telerik:GridBoundColumn>
                                     </Columns>
                                 </MasterTableView>
                             </telerik:RadGrid>
-
                             <label class="labelTitulo">Compensación</label>
-
                             <div style="clear: both; height: 10px;"></div>
-
                             <telerik:RadGrid ID="grdCompensacion" runat="server" Height="300px" Width="1000px" AutoGenerateColumns="false" EnableHeaderContextMenu="true" ShowGroupPanel="false"
                                 AllowSorting="true" OnNeedDataSource="grdCompensacion_NeedDataSource" HeaderStyle-Font-Bold="true">
                                 <ClientSettings>
@@ -639,22 +694,24 @@
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" HeaderText="Fecha" DataField="FE_CAMBIO" UniqueName="FE_CAMBIO" DataFormatString="{0:d}"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" HeaderText="Proceso" DataField="NB_PROCESO" UniqueName="NB_PROCESO"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="200" FilterControlWidth="25" HeaderText="Descripción" DataField="DS_PROCESO" UniqueName="DS_PROCESO"></telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" FilterControlWidth="25" HeaderText="Anterior" DataField="NB_ANTERIOR" UniqueName="NB_ANTERIOR" DataFormatString="${0:N2}">
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" FilterControlWidth="25" HeaderText="Anterior" DataField="NB_ANTERIOR" UniqueName="NB_ANTERIOR" DataFormatString="{0:C2}">
                                             <ItemStyle HorizontalAlign="Right" />
                                         </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" FilterControlWidth="25" HeaderText="Actual" DataField="NB_ACTUAL" UniqueName="NB_ACTUAL" DataFormatString="${0:N2}">
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" FilterControlWidth="25" HeaderText="Actual" DataField="NB_ACTUAL" UniqueName="NB_ACTUAL" DataFormatString="{0:C2}">
                                             <ItemStyle HorizontalAlign="Right" />
                                         </telerik:GridBoundColumn>
                                     </Columns>
                                 </MasterTableView>
                             </telerik:RadGrid>
-
+                        </telerik:RadPageView>
+                        <telerik:RadPageView ID="pvwNomina" runat="server">
+                            <iframe id="ifNomina" runat="server" frameborder="1"></iframe>
                         </telerik:RadPageView>
                     </telerik:RadMultiPage>
                 </div>
             </telerik:RadPane>
             <telerik:RadPane ID="rpAyuda" runat="server" Scrolling="None" Width="22px">
-                <telerik:RadSlidingZone ID="rszAvisoDePrivacidad" runat="server" SlideDirection="Left" Width="22px">
+                <telerik:RadSlidingZone ID="rszAvisoDePrivacidad" runat="server" SlideDirection="Left" Width="22px" ClickToOpen="true">
                     <telerik:RadSlidingPane ID="rspAyuda" runat="server" Title="Instrucciones" Width="240px" RenderMode="Mobile" Height="200">
                         <div style="padding: 10px; text-align: justify;">
                             <p>Por favor ingresa los datos solicitados y al terminar haz clic en el botón de Guardar hasta el final de la página.</p>
@@ -679,13 +736,9 @@
         </telerik:RadSplitter>
     </div>
     <div style="clear: both; height: 5px;"></div>
-    <div class="ctrlBasico">
-        <telerik:RadButton ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click"></telerik:RadButton>
-    </div>
-    <div class="ctrlBasico">
-        <telerik:RadButton ID="btnGuardarSalir" runat="server" Text="Guardar y salir" OnClick="btnGuardarSalir_Click"></telerik:RadButton>
-    </div>
-    <div>
+    <div class="divControlDerecha">
+        <telerik:RadButton ID="btnGuardar" runat="server" Text="Guardar"  OnClick="btnGuardar_Click"></telerik:RadButton>
+        <telerik:RadButton ID="btnGuardarSalir" runat="server" Text="Guardar y cerrar"  OnClick="btnGuardarSalir_Click"></telerik:RadButton>
         <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" OnClientClicked="OnClientBeforeClose" AutoPostBack="false"></telerik:RadButton>
     </div>
     <telerik:RadWindowManager ID="rwmAlertas" runat="server">

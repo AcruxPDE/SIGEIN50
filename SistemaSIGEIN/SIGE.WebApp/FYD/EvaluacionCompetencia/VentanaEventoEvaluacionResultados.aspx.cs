@@ -24,7 +24,7 @@ namespace SIGE.WebApp.FYD.EvaluacionCompetencia
         public string vClUsuario;
         private string vNbPrograma;
         private int? vIdEmpresa;
-
+        private int? vIdRol;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
 
         private int vIdEvento {
@@ -93,7 +93,8 @@ namespace SIGE.WebApp.FYD.EvaluacionCompetencia
             else
             {
                 UtilMensajes.MensajeResultadoDB(rwmResultados, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
-                Response.Redirect(ContextoUsuario.nbHost + "/Logon.aspx");
+                string myUrl = ResolveUrl("~/Logon.aspx");
+                Response.Redirect(ContextoUsuario.nbHost + myUrl);
             }
 
             
@@ -134,6 +135,7 @@ namespace SIGE.WebApp.FYD.EvaluacionCompetencia
             vNbPrograma = ContextoUsuario.nbPrograma;
             vClUsuario = (ContextoUsuario.oUsuario != null) ? ContextoUsuario.oUsuario.CL_USUARIO : "INVITADO";
             vIdEmpresa = (ContextoUsuario.oUsuario != null) ? ContextoUsuario.oUsuario.ID_EMPRESA : null;
+            vIdRol = (ContextoUsuario.oUsuario != null) ? ContextoUsuario.oUsuario.oRol.ID_ROL : null;
             //vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
 
             if (vClUsuario == "INVITADO")
@@ -161,7 +163,7 @@ namespace SIGE.WebApp.FYD.EvaluacionCompetencia
         protected void rgResultados_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             EventoCapacitacionNegocio neg = new EventoCapacitacionNegocio();
-            rgResultados.DataSource = neg.ObtieneEventoParticipanteCompetencia(ID_EVENTO: vIdEvento, ID_EMPRESA:vIdEmpresa);
+            rgResultados.DataSource = neg.ObtieneEventoParticipanteCompetencia(ID_EVENTO: vIdEvento, ID_EMPRESA:vIdEmpresa, pID_ROL:vIdRol);
 
 
               GridGroupByField field = new GridGroupByField();
@@ -206,7 +208,8 @@ namespace SIGE.WebApp.FYD.EvaluacionCompetencia
 
         protected void RadButton1_Click(object sender, EventArgs e)
         {
-            Response.Redirect(ContextoUsuario.nbHost + "/Logon.aspx");
+            string myUrl = ResolveUrl("~/Logon.aspx");
+            Response.Redirect(ContextoUsuario.nbHost + myUrl);
         }
     }
 }

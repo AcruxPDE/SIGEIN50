@@ -146,7 +146,7 @@
                         <table class="ctrlTableForm ctrlTableContext">
                             <tr>
                                 <td>
-                                    <label>Periodo:</label>
+                                    <label>Período:</label>
                                 </td>
                                 <td>
                                     <span id="txtNoPeriodo" runat="server" style="width: 300px;"></span>
@@ -490,7 +490,7 @@
                             </ClientSettings>
                             <PagerStyle AlwaysVisible="true" />
                             <GroupingSettings CaseSensitive="false" />
-                            <MasterTableView DataKeyNames="ID_CAMPO_PREGUNTA" HierarchyDefaultExpanded="true" EnableHierarchyExpandAll="true" ClientDataKeyNames="ID_CAMPO_PREGUNTA" AllowPaging="false" AllowFilteringByColumn="false" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="false">
+                            <MasterTableView DataKeyNames="ID_CAMPO_PREGUNTA" HierarchyDefaultExpanded="true" EnableHierarchyExpandAll="false"  ClientDataKeyNames="ID_CAMPO_PREGUNTA" AllowPaging="false" AllowFilteringByColumn="false" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="false">
                                 <DetailTables>
                                     <telerik:GridTableView DataKeyNames="ID_CAMPO"
                                         ClientDataKeyNames="ID_CAMPO" Name="PruebaDetails" Width="100%">

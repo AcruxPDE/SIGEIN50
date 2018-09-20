@@ -23,9 +23,24 @@
                     vURL = vURL + "?RolId=" + pIdRol;
                     vTitulo = "Editar Rol";
                 }
-                var oWin = window.radopen(vURL, "winRoles");
-                oWin.set_title(vTitulo);
+
+                OpenSelectionWindow(vURL, "winRoles", vTitulo);
+
             }
+
+            function OpenSelectionWindow(pURL, pIdWindow, pTitle) {
+                var currentWnd = GetRadWindow();
+                var browserWnd = window;
+                if (currentWnd)
+                    browserWnd = currentWnd.BrowserWindow;
+
+                var windowProperties = {
+                    width: browserWnd.innerWidth - 200,
+                    height: browserWnd.innerHeight - 20
+                };
+                openChildDialog(pURL, pIdWindow, pTitle, windowProperties)
+            }
+
 
             function onCloseWindow(oWnd, args) {
                 $find("<%= grdRoles.ClientID%>").get_masterTableView().rebind();
@@ -110,17 +125,19 @@
     </div>
     <div style="clear: both; height: 10px;"></div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnAgregar" runat="server" name="btnAgregar" AutoPostBack="false" Text="Agregar" OnClientClicked="ShowInsertForm" Width="100"></telerik:RadButton>
+        <telerik:RadButton ID="btnAgregar" runat="server" name="btnAgregar" AutoPostBack="false" Text="Agregar" OnClientClicked="ShowInsertForm"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEditar" runat="server" name="btnEditar" AutoPostBack="false" Text="Editar" OnClientClicked="ShowEditForm" Width="100"></telerik:RadButton>
+        <telerik:RadButton ID="btnEditar" runat="server" name="btnEditar" AutoPostBack="false" Text="Editar" OnClientClicked="ShowEditForm"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEliminar" runat="server" name="btnEliminar" AutoPostBack="true" Text="Eliminar" OnClientClicking="confirmarEliminar" Width="100" OnClick="btnEliminar_Click"></telerik:RadButton>
+        <telerik:RadButton ID="btnEliminar" runat="server" name="btnEliminar" AutoPostBack="true" Text="Eliminar" OnClientClicking="confirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
     </div>
+     <div style="clear: both;"></div>
     <telerik:RadWindowManager ID="rwmAlertas" runat="server">
         <Windows>
-            <telerik:RadWindow ID="winRoles" runat="server" Title="Agregar/Editar Rol" Height="500px" Width="900px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="onCloseWindow"></telerik:RadWindow>
+             <telerik:RadWindow ID="winSeleccion" runat="server" Title="Seleccionar empleado" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
+            <telerik:RadWindow ID="winRoles" runat="server" Title="Agregar/Editar Rol" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="onCloseWindow"></telerik:RadWindow>
         </Windows>
     </telerik:RadWindowManager>
 </asp:Content>

@@ -65,13 +65,16 @@
     <Compile Include="Implementaciones\Administracion\AdscripcionOperaciones.cs" />
     <Compile Include="Implementaciones\Administracion\AreaInteresOperaciones.cs" />
     <Compile Include="Implementaciones\Administracion\CampoFormularioOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\CamposNominaOperaciones.cs" />
     <Compile Include="Implementaciones\Administracion\CatalogoVistaInteligenteOperaciones.cs" />
     <Compile Include="Implementaciones\Administracion\CentroAdministrativoOperaciones.cs" />
     <Compile Include="Implementaciones\Administracion\CentroOperativoOperaciones.cs" />
     <Compile Include="Implementaciones\Administracion\CompetenciaNivelOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\GruposOperaciones.cs" />
     <Compile Include="Implementaciones\Administracion\LicenciaOperaciones.cs" />
     <Compile Include="Implementaciones\Administracion\OrganigramaOperaciones.cs" />
     <Compile Include="Implementaciones\Administracion\PlazaOperaciones.cs" />
+    <Compile Include="Implementaciones\Administracion\TraduccionIdiomaTextoOperaciones.cs" />
     <Compile Include="Implementaciones\EvaluacionOrganizacional\ClimaLaboralOperaciones.cs" />
     <Compile Include="Implementaciones\EvaluacionOrganizacional\ConfiguracionOperaciones.cs" />
     <Compile Include="Implementaciones\EvaluacionOrganizacional\PeriodoDesempenoOperaciones.cs" />

@@ -10,6 +10,7 @@ namespace SIGE.Entidades.IntegracionDePersonal
     public class E_SELECCIONADOS
     {
         public int? ID_SELECCION { get; set; }
+        public string CL_SELECCION { get; set; }
         public string  NB_SELECCION { get; set; }
         public string  DS_SELECCION { get; set; }
     }

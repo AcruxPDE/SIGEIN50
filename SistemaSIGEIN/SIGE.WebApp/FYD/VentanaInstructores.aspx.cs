@@ -291,29 +291,12 @@ namespace SIGE.WebApp.FYD
             txtRFC.Enabled = vFgHabilitarCampoInterno;
             txtCURP.Enabled = vFgHabilitarCampoInterno;
 
-            
-            
-            //txtCalle.Enabled = vFgHabilitarCampoInterno;
-            //txtCP.Enabled = vFgHabilitarCampoInterno;
-            //radBtnBuscaCP.Enabled = vFgHabilitarCampoInterno;
-            //txtNoexterior.Enabled = vFgHabilitarCampoInterno;
-            //txtNointerior.Enabled = vFgHabilitarCampoInterno;
-
-            //txtPais.Enabled = vFgHabilitarCampoInterno;
-            txtCP.Enabled = vFgHabilitarCampoInterno;
-            txtCalle.Enabled = vFgHabilitarCampoInterno;
-            txtCP.Enabled = vFgHabilitarCampoInterno;
-            txtNoexterior.Enabled = vFgHabilitarCampoInterno;
-            txtNointerior.Enabled = vFgHabilitarCampoInterno;
-
-
 
             //txtCalle.Enabled = vFgHabilitarCampoInterno;
             //txtCP.Enabled = vFgHabilitarCampoInterno;
             //radBtnBuscaCP.Enabled = vFgHabilitarCampoInterno;
             //txtNoexterior.Enabled = vFgHabilitarCampoInterno;
             //txtNointerior.Enabled = vFgHabilitarCampoInterno;
-
             txtFeNacimiento.Enabled = vFgHabilitarCampoInterno;
             //txtEmail.Enabled = vFgHabilitarCampoInterno;
             //radBtnBuscarestado.Enabled = vFgHabilitarCampoInterno;
@@ -606,6 +589,11 @@ namespace SIGE.WebApp.FYD
 
         #endregion
 
+        protected void SeguridadProcesos()
+        {
+            radBtnGuardar.Enabled = ContextoUsuario.oUsuario.TienePermiso("K.B.D");
+        }
+
         protected void Page_Init(object sender, EventArgs e)
         {
             InstructorNegocio neg = new InstructorNegocio();
@@ -646,6 +634,8 @@ namespace SIGE.WebApp.FYD
 
                     CargarDatos(vInstructorId);
                     CargarDocumentos();
+
+                    
                 }
                 else
                 {
@@ -681,6 +671,8 @@ namespace SIGE.WebApp.FYD
                     cmbIdTipoTelefono.DataValueField = "NB_VALOR";
                     cmbIdTipoTelefono.DataBind();
                 }
+
+                SeguridadProcesos();
             }
 
             DespacharEventos(Request.Params.Get("__EVENTTARGET"), Request.Params.Get("__EVENTARGUMENT"));

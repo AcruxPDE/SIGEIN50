@@ -57,14 +57,14 @@
         }
 
         function OpenCumPersonal(pIdEvaluado, pIdPeriodo) {
-            var vURL = "../EO/VentanaReporteCumplimientoPersonal.aspx";
-            var vTitulo = "Reporte Cumplimiento Personal";
+            var vURL = "VentanaReporteCumplimientoPersonal.aspx";
+            var vTitulo = "Reporte cumplimiento Personal";
             vURL = vURL + "?idEvaluado=" + pIdEvaluado + "&idPeriodo=" + pIdPeriodo;
             OpenSelectionWindow(vURL, "winEvaluado", "Reporte cumplimiento personal")
         }
 
         function OpenIndividualComparativo(pIdEvaluado,pIdEmpleado) {
-            OpenSelectionWindow("/EO/VentanaComparativaIndividual.aspx?ID_EVALUADO=" + pIdEvaluado + "&ID_EMPLEADO=" + pIdEmpleado + "&CL_ORIGEN=GLOBAL", "winEvaluado", "Comparación desempeño personal");
+            OpenSelectionWindow("VentanaComparativaIndividual.aspx?ID_EVALUADO=" + pIdEvaluado + "&ID_EMPLEADO=" + pIdEmpleado + "&CL_ORIGEN=GLOBAL", "winEvaluado", "Comparación desempeño personal");
         }
 
     </script>
@@ -81,7 +81,7 @@
     <div style="height: calc(100% - 120px);">
         <telerik:RadMultiPage ID="rmpReporteGlobal" runat="server" SelectedIndex="0" Height="100%">
             <telerik:RadPageView ID="rpvContexto" runat="server">
-                <div style="clear: both; height: 10px;"></div>
+               <%-- <div style="clear: both; height: 10px;"></div>--%>
                    <%-- <div class="divControlDerecha" style="width: 15%; text-align: left; margin-right:3%;">
                         <fieldset>
                             <legend>
@@ -138,7 +138,8 @@
                             </table>
                         </fieldset>
                     </div>--%>
-                <telerik:RadGrid
+                  <div id="dvContexto" runat="server"></div>
+                <%--<telerik:RadGrid
                     ID="rgContexto"
                     runat="server"
                     Height="90%"
@@ -168,7 +169,7 @@
                             <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" Visible="true" Display="true" HeaderStyle-Width="120" FilterControlWidth="90" ColumnGroupName="Fechas" HeaderText="a" DataField="FE_TERMINO_PERIODO" UniqueName="FE_TERMINO_PERIODO" DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Right"></telerik:GridDateTimeColumn>
                         </Columns>
                     </MasterTableView>
-                </telerik:RadGrid>
+                </telerik:RadGrid>--%>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvReporte" runat="server">
                 <div style="clear: both; height: 10px;"></div>
@@ -210,7 +211,7 @@
                         Height="100%"
                         Transitions="true"
                         Skin="Silk">
-                        <ChartTitle Text="Cumplimiento global de periodos">
+                        <ChartTitle Text="Cumplimiento general de periodos">
                             <Appearance Align="Center" Position="Top">
                             </Appearance>
                         </ChartTitle>
@@ -219,6 +220,7 @@
                             </Appearance>
                         </Legend>
                         <PlotArea>
+                            <YAxis MinValue="0" MaxValue="100" Step="10" ></YAxis>
                         </PlotArea>
                     </telerik:RadHtmlChart>
                 </div>

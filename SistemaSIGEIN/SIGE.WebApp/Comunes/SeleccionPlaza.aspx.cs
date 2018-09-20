@@ -12,6 +12,9 @@ namespace SIGE.WebApp.Comunes
 {
     public partial class SeleccionPlaza : System.Web.UI.Page
     {
+        private int? vIdEmpresa;
+        private int? vIdRol;
+
         public string vClCatalogo
         {
             get { return (string)ViewState["vs_vClCatalogo"]; }
@@ -44,6 +47,9 @@ namespace SIGE.WebApp.Comunes
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
+
             if (!Page.IsPostBack)
             {
 
@@ -105,7 +111,7 @@ namespace SIGE.WebApp.Comunes
         protected void grdPlazas_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             PlazaNegocio nPlaza = new PlazaNegocio();
-            grdPlazas.DataSource = nPlaza.ObtienePlazas(pXmlSeleccion: vXmlTipoSeleccion);
+            grdPlazas.DataSource = nPlaza.ObtienePlazas(pXmlSeleccion: vXmlTipoSeleccion, pID_EMPRESA: vIdEmpresa, pID_ROL: vIdRol);
         }
 
         protected void grdPlazas_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)

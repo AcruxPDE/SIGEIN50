@@ -81,6 +81,7 @@ namespace SIGE.WebApp.IDP
             oLstClavesPruebas.Add(new KeyValuePair<string,string>("Colores","COLORES"));
             oLstClavesPruebas.Add(new KeyValuePair<string, string>("Técnico", "TECNICO"));
             oLstClavesPruebas.Add(new KeyValuePair<string, string>("TIVA", "TIVA"));
+            oLstClavesPruebas.Add(new KeyValuePair<string, string>("Entrevista", "Entrevista"));
         }
 
         public string ObtenerClave(string pClave)
@@ -148,6 +149,12 @@ namespace SIGE.WebApp.IDP
                 if (Request.Params["pIdBateria"] != null && Request.Params["pIdBateria"] != "null")
                 {
                     vIdBateria = int.Parse(Request.Params["pIdBateria"].ToString());
+
+                    if (Request.Params["pClTipoConsulta"] != null)
+                        if (Request.Params["pClTipoConsulta"] == "RESUMIDA")
+                            pvResumen.Selected = true;
+                        else if (Request.Params["pClTipoConsulta"] == "DETALLADA")
+                            pvDetallada.Selected = true;
 
                     vFgConsultaparcial = ContextoApp.IDP.ConfiguracionIntegracion.FgIgnorarCompetencias;
                     Grupos();
@@ -403,6 +410,12 @@ namespace SIGE.WebApp.IDP
             columnGroupTiva.Name = "TIVA";
             columnGroupTiva.HeaderText = "Tiva";
             columnGroupTiva.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
+
+            GridColumnGroup columnGroupEntrevista = new GridColumnGroup();
+            grdDetallada.MasterTableView.ColumnGroups.Add(columnGroupEntrevista);
+            columnGroupEntrevista.Name = "Entrevista";
+            columnGroupEntrevista.HeaderText = "Entrevista";
+            columnGroupEntrevista.HeaderStyle.HorizontalAlign = System.Web.UI.WebControls.HorizontalAlign.Center;
 
         }
 

@@ -16,14 +16,23 @@ namespace SIGE.WebApp.EO
 {
     public partial class HistorialBaja : System.Web.UI.Page
     {
+        private string vClUsuario;
+        private string vNbPrograma;
+        private int? vIdEmpresa;
+        private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private int? vIdRol;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
+            vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
         }
         protected void grdHistorialBaja_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             RotacionPersonalNegocio nRotacion = new RotacionPersonalNegocio();
-            var vRotacion = nRotacion.ObtienePeriodosClima().Select(s => new E_HISTORIAL_BAJA
+            var vRotacion = nRotacion.ObtenerHistorialBajas(pID_EMPRESA: vIdEmpresa, pID_ROL: vIdRol).Select(s => new E_HISTORIAL_BAJA
             {
                 CL_EMPLEADO = s.CL_EMPLEADO,
                 CL_ESTADO = s.CL_ACTIVO,

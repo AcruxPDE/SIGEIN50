@@ -17,6 +17,7 @@ using Telerik.Web.UI;
 using SIGE.Negocio.FormacionDesarrollo;
 using WebApp.Comunes;
 using System.Xml;
+using SIGE.Entidades.Administracion;
 
 namespace SIGE.WebApp.EO
 {
@@ -27,6 +28,7 @@ namespace SIGE.WebApp.EO
 
         private string vClUsuario;
         private string vNbPrograma;
+        private int? vIdRol;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
         private string vNbFirstRadEditorTagName = "p";
 
@@ -46,6 +48,12 @@ namespace SIGE.WebApp.EO
         {
             get { return (int)ViewState["vs_vIdPeriodo"]; }
             set { ViewState["vs_vIdPeriodo"] = value; }
+        }
+
+        public string vClTipoPeriodo
+        {
+            get { return (string)ViewState["vs_vClTipoPeriodo"]; }
+            set { ViewState["vs_vClTipoPeriodo"] = value; }
         }
 
         private List<E_EVALUADORES_CLIMA> vlstEvaluavores
@@ -90,8 +98,8 @@ namespace SIGE.WebApp.EO
             XElement vXlmCamposAdicional = new XElement("CAMPOS_ADICIONALES");
             vFgFiltroSeleccionado = false;
 
-            if (chkarea.Checked == true)
-            {
+            //if (chkarea.Checked == true)
+            //{
                 foreach (RadListBoxItem item in rlbDepartamento.Items)
                 {
                     int vIdDepartamento = int.Parse(item.Value);
@@ -101,10 +109,10 @@ namespace SIGE.WebApp.EO
                 var vXelements = vDepartamentos.Select(x => new XElement("DEPARTAMENTO", new XAttribute("ID_DEPARTAMENTO", x.ID_SELECCIONADO)));
                 vXlmDepartamentos = new XElement("DEPARTAMENTOS", vXelements);
                 vXlmFiltros.Add(vXlmDepartamentos);
-            }
+           // }
 
-            if (chkadicionales.Checked == true)
-            {
+            //if (chkadicionales.Checked == true)
+            //{
                 foreach (RadListBoxItem item in rlbAdicionales.Items)
                 {
                     string vClAdicional = item.Value;
@@ -114,26 +122,29 @@ namespace SIGE.WebApp.EO
                 var vXelementsAdicionales = vAdicionales.Select(x => new XElement("ADICIONAL", new XAttribute("CL_CAMPO", x.CL_CAMPO)));
                 vXlmCamposAdicional = new XElement("ADICIONALES", vXelementsAdicionales);
                 vXlmFiltros.Add(vXlmCamposAdicional);
-            }
+            //}
 
-            if (chkgenero.Checked == true)
-            {
+            //if (chkgenero.Checked == true)
+            //{
                 foreach (RadListBoxItem item in rlbGenero.Items)
                 {
                     vXlmGeneros = new XElement("GENERO", new XAttribute("NB_GENERO", item.Value));
                     vFgFiltroSeleccionado = true;
                 }
                 vXlmFiltros.Add(vXlmGeneros);
-            }
+           // }
 
-            if (rbEdad.Checked == true)
-            {
+                if (rbEdad.Checked == true)
+                {
+
                 vXlmEdad = new XElement("EDAD", new XAttribute("EDAD_INICIAL", rntEdadInicial.Text), new XAttribute("EDAD_FINAL", rntEdadFinal.Text));
                 vXlmFiltros.Add(vXlmEdad);
                 vFgFiltroSeleccionado = true;
             }
+
             if (rbAntiguedad.Checked == true)
             {
+
                 vXlmAntiguedad = new XElement("ANTIGUEDAD", new XAttribute("ANTIGUEDAD_INICIAL", rntAntiguedadInicial.Text), new XAttribute("ANTIGUEDAD_FINAL", rntAntiguedadFinal.Text));
                 vXlmFiltros.Add(vXlmAntiguedad);
                 vFgFiltroSeleccionado = true;
@@ -169,13 +180,25 @@ namespace SIGE.WebApp.EO
             E_RESULTADO vResultado = nClima.InsertaActualizaEvaluadorClima(vIdPeriodo, pXmlElementos.ToString(), vClUsuario, vNbPrograma, E_TIPO_OPERACION_DB.I.ToString());
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindowE");
+            GenerarContraseñas();
+            grdEmpleadosContrasenias.Rebind();
+        }
+
+        protected bool ValidaEvaluados()
+        {
+            bool vFgEvaluadores = true;
+            if (vClTipoPeriodo == "EVALUADORES")
+                if (grdEmpleadosSeleccionados.Items.Count < 1)
+                    vFgEvaluadores = false;
+
+            return vFgEvaluadores;
         }
 
         protected void CargarDatosEvaluador()
         {
 
             ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            vlstEvaluavores = nClima.ObtieneEvaluadoresClima(pID_PERIODO: vIdPeriodo).Select(s => new E_EVALUADORES_CLIMA
+            vlstEvaluavores = nClima.ObtieneEvaluadoresClima(pID_PERIODO: vIdPeriodo, pID_ROL: vIdRol).Select(s => new E_EVALUADORES_CLIMA
             {
                 NB_EVALUADOR = s.NB_EVALUADOR,
                 NB_PUESTO = s.NB_PUESTO,
@@ -304,10 +327,7 @@ namespace SIGE.WebApp.EO
                             };
                             vLstGenero.Add(g);
 
-                            rlbGenero.DataSource = vLstGenero;
-                            rlbGenero.DataTextField = "NB_GENERO";
-                            rlbGenero.DataValueField = "CL_GENERO";
-                            rlbGenero.DataBind();
+                           
                         }
                         else
                         {
@@ -319,7 +339,12 @@ namespace SIGE.WebApp.EO
                             };
                             vLstGenero.Add(g);
                         }
-                        chkgenero.Checked = true;
+                        rlbGenero.DataSource = vLstGenero;
+                        rlbGenero.DataTextField = "NB_GENERO";
+                        rlbGenero.DataValueField = "CL_GENERO";
+                        rlbGenero.DataBind();
+
+                      //  chkgenero.Checked = true;
                     }
 
                     if (vFiltros.XML_DEPARTAMENTOS != null)
@@ -329,7 +354,7 @@ namespace SIGE.WebApp.EO
                         //rlDepartamento.Attributes.Add("class", "ctrlTableDataBorderContext");
                         //rlDepartamento.Text = ObtieneDepartamentos(vFiltros.XML_DEPARTAMENTOS);
                         ObtieneDepartamentos(vFiltros.XML_DEPARTAMENTOS);
-                        chkarea.Checked = true;
+                      //  chkarea.Checked = true;
                         rlbDepartamento.DataSource = vLstDepartamentos;
                         rlbDepartamento.DataTextField = "NB_DEPARTAMENTO";
                         rlbDepartamento.DataValueField = "ID_DEPARTAMENTO";
@@ -343,7 +368,7 @@ namespace SIGE.WebApp.EO
                         //rlAdicionales.Attributes.Add("class", "ctrlTableDataBorderContext");
                         //rlAdicionales.Text = ObtieneAdicionales(vFiltros.XML_CAMPOS_ADICIONALES);
                         ObtieneAdicionales(vFiltros.XML_CAMPOS_ADICIONALES);
-                        chkadicionales.Checked = true;
+                       // chkadicionales.Checked = true;
                         rlbAdicionales.DataSource = vLstAdicionales;
                         rlbAdicionales.DataTextField = "NB_CAMPO";
                         rlbAdicionales.DataValueField = "CL_CAMPO";
@@ -354,12 +379,28 @@ namespace SIGE.WebApp.EO
             }
         }
 
+        protected void GenerarContraseñas()
+        {
+            ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
+            E_RESULTADO vResultado = nClima.InsertarActualizarTokenEvaluadoresClima(vIdPeriodo, null, vClUsuario, vNbPrograma);
+            //string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+            //UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
+            if (vResultado.CL_TIPO_ERROR.Equals(E_TIPO_RESPUESTA_DB.SUCCESSFUL))
+                grdEmpleadosContrasenias.Rebind();
+        }
+
+        private void SeguridadProcesos( bool pFgCuestionariosCreados)
+        {
+          btnEnvioCuestionarios.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.I") && pFgCuestionariosCreados;
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!Page.IsPostBack)
             {
@@ -372,11 +413,13 @@ namespace SIGE.WebApp.EO
                     txtDsPeriodo.InnerText = vClima.DS_PERIODO;
                     txtEstatus.InnerText = vClima.CL_ESTADO_PERIODO;
                     reInstrucciones.Content = vClima.DS_INSTRUCCIONES;
+                    lMensaje.Content = vClima.DS_MENSAJE_CORREO;
+                    vClTipoPeriodo = vClima.CL_TIPO_CONFIGURACION;
 
                     if (vClima.CL_TIPO_CONFIGURACION == "PARAMETROS")
-                    txtTipo.InnerText = "Sin asignación de evaluadores";
+                        txtTipo.InnerText = "Sin asignación de evaluadores";
                     else
-                    txtTipo.InnerText = "Evaluadores asignados";
+                        txtTipo.InnerText = "Evaluadores asignados";
 
                     if (vClima.DS_NOTAS != null)
                     {
@@ -395,11 +438,20 @@ namespace SIGE.WebApp.EO
                         }
                     }
                     if (vClima.CL_ORIGEN_CUESTIONARIO == "PREDEFINIDO")
+                    {
+                        btnValidez.Enabled = false;
                         lbCuestionario.InnerText = "Predefinido de SIGEIN";
+                    }
                     if (vClima.CL_ORIGEN_CUESTIONARIO == "COPIA")
-                        lbCuestionario.InnerText = "Copia de otro periodo";
+                    {
+                        btnValidez.Enabled = true;
+                        lbCuestionario.InnerText = "Copia de otro período";
+                    }
                     if (vClima.CL_ORIGEN_CUESTIONARIO == "VACIO")
-                        lbCuestionario.InnerText = "Creado desde cero";
+                    {
+                        btnValidez.Enabled = true;
+                        lbCuestionario.InnerText = "Creado en blanco";
+                    }
 
 
                     if (vClima.FG_CUESTIONARIOS_CREADOS.Value)
@@ -408,25 +460,38 @@ namespace SIGE.WebApp.EO
                         btnEliminar.Enabled = false;
                         btnAgregarPregunta.Enabled = false;
                         divMensajeCuestionarios.Visible = true;
+                        btnValidez.Enabled = false;
+                        btnCrearCuestionarios.Enabled = false;
+
+                        btnAgregarAbierta.Enabled = false;
+                        btnEditarAbierta.Enabled = false;
+                        btnEliminarAbierta.Enabled = false;
+                        dvPreguntasAbiertas.Visible = true;
+
+                        btnSeleccionar.Enabled = false;
+                        btnSeleccionarPuesto.Enabled = false;
+                        btmSleccionarArea.Enabled = false;
+                        btnEliminarEvaluador.Enabled = false;
+                        btnAplicar.Enabled = false;
                     }
                     else
                     {
                         divMensajeCuestionarios.Visible = false;
                     }
 
-                    var vPreguntasAbiertas = nClima.ObtenerPreguntasAbiertas(vIdPeriodo).FirstOrDefault();
-                    if (vPreguntasAbiertas != null && vPreguntasAbiertas.FG_ESTATUS == "ASIGNADA")
-                    {
-                        btnAgregarAbierta.Enabled = false;
-                        btnEditarAbierta.Enabled = false;
-                        btnEliminarAbierta.Enabled = false;
-                        dvPreguntasAbiertas.Visible = true;
-                    }
+                    //var vPreguntasAbiertas = nClima.ObtenerPreguntasAbiertas(vIdPeriodo).FirstOrDefault();
+                    //if (vPreguntasAbiertas != null && vPreguntasAbiertas.FG_ESTATUS == "ASIGNADA")
+                    //{
+                    //    btnAgregarAbierta.Enabled = false;
+                    //    btnEditarAbierta.Enabled = false;
+                    //    btnEliminarAbierta.Enabled = false;
+                    //    dvPreguntasAbiertas.Visible = true;
+                    //}
 
                     CargarCamposExtra();
 
 
-                    lMensaje.Content = ContextoApp.EO.MensajeCorreoEvaluador.dsMensaje;
+                    //lMensaje.Content = ContextoApp.EO.MensajeCorreoEvaluador.dsMensaje;
 
                     if (vClima.CL_TIPO_CONFIGURACION == "EVALUADORES")
                     {
@@ -435,9 +500,13 @@ namespace SIGE.WebApp.EO
                     else
                     {
                         rtsConfiguracionClima.Tabs[1].Visible = false;
-                        rtsConfiguracionClima.Tabs[5].Visible = false;
-                        btnGuardar.Enabled = false;
+                        rtsConfiguracionClima.Tabs[6].Visible = false;
+                        //btnGuardar.Enabled = false;
                     }
+
+
+                    SeguridadProcesos((bool)vClima.FG_CUESTIONARIOS_CREADOS);
+
                 }
             }
         }
@@ -458,6 +527,7 @@ namespace SIGE.WebApp.EO
 
             if (vSeleccion.clTipo == "AREA")
                 AgregarEvaluadosPorArea(vSeleccion.oSeleccion.ToString());
+             
         }
 
         protected void grdEmpleadosSeleccionados_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
@@ -480,17 +550,52 @@ namespace SIGE.WebApp.EO
 
         protected void btnCrearCuestionarios_Click(object sender, EventArgs e)
         {
-            ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            E_RESULTADO vResultado = nClima.InsertaActualizaCuestionariosPeriodo(vIdPeriodo, vClUsuario, vNbPrograma);
-            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
-
-            if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+            if (ValidaEvaluados())
             {
-                btnEditar.Enabled = false;
-                btnEliminar.Enabled = false;
-                btnAgregarPregunta.Enabled = false;
+                ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
+                E_RESULTADO vResultado = nClima.InsertaActualizaCuestionariosPeriodo(vIdPeriodo, vClUsuario, vNbPrograma);
+                if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+                {
+                    E_RESULTADO vResultadoPreguntas = nClima.InsertaCuestionarioPreguntasAbiertas(vIdPeriodo, vClUsuario, vNbPrograma);
+                    string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+
+                    if (vResultadoPreguntas.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+                    {
+                        btnEditar.Enabled = false;
+                        btnEliminar.Enabled = false;
+                        btnAgregarPregunta.Enabled = false;
+                        btnAgregarAbierta.Enabled = false;
+                        btnEliminarAbierta.Enabled = false;
+                        btnEditarAbierta.Enabled = false;
+                        btnValidez.Enabled = false;
+                        btnCrearCuestionarios.Enabled = false;
+
+                        btnSeleccionar.Enabled = false;
+                        btnSeleccionarPuesto.Enabled = false;
+                        btmSleccionarArea.Enabled = false;
+                        btnEliminarEvaluador.Enabled = false;
+                        btnAplicar.Enabled = false;
+
+                        btnSeleccionar.Enabled = false;
+                        btnSeleccionarPuesto.Enabled = false;
+                        btnEliminarEvaluador.Enabled = false;
+                        btmSleccionarArea.Enabled = false;
+
+                        SeguridadProcesos(true);
+                    }
+                }
+                else
+                {
+                    string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                }
             }
+            else
+            {
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Debes seleccionar evaluadores para crear los cuestionarios.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
+            }
+
         }
 
         protected void grdPreguntasCuestionario_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
@@ -535,6 +640,8 @@ namespace SIGE.WebApp.EO
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindowE");
 
+            grdEmpleadosContrasenias.Rebind();
+
         }
 
         protected void btnReasignarTodasContrasenas_Click(object sender, EventArgs e)
@@ -550,15 +657,24 @@ namespace SIGE.WebApp.EO
 
         protected void btnReasignarContrasena_Click(object sender, EventArgs e)
         {
+            string vMensaje = "";
             foreach (GridDataItem item in grdEmpleadosContrasenias.SelectedItems)
             {
                 ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
                 E_RESULTADO vResultado = nClima.InsertarActualizarTokenEvaluadoresClima(vIdPeriodo, int.Parse(item.GetDataKeyValue("ID_EVALUADOR").ToString()), vClUsuario, vNbPrograma);
-                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindowC");
-                if (vResultado.CL_TIPO_ERROR.Equals(E_TIPO_RESPUESTA_DB.SUCCESSFUL))
-                    grdEmpleadosContrasenias.Rebind();
+                vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                
+               // UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindowC");
+                if (!vResultado.CL_TIPO_ERROR.Equals(E_TIPO_RESPUESTA_DB.SUCCESSFUL))
+                {
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindowC");
+                    return;
+                }
+                   
             }
+
+            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, E_TIPO_RESPUESTA_DB.SUCCESSFUL, pCallBackFunction: "onCloseWindowC");
+            grdEmpleadosContrasenias.Rebind();
         }
 
         protected void grdEmpleadosContrasenias_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
@@ -588,20 +704,20 @@ namespace SIGE.WebApp.EO
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindowPA");
         }
 
-        protected void btnGuardarAbierta_Click(object sender, EventArgs e)
-        {
-            ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            E_RESULTADO vResultado = nClima.InsertaCuestionarioPreguntasAbiertas(vIdPeriodo, vClUsuario, vNbPrograma);
-            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+        //protected void btnGuardarAbierta_Click(object sender, EventArgs e)
+        //{
+        //    ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
+        //    E_RESULTADO vResultado = nClima.InsertaCuestionarioPreguntasAbiertas(vIdPeriodo, vClUsuario, vNbPrograma);
+        //    string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+        //    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
 
-            if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
-            {
-                btnAgregarAbierta.Enabled = false;
-                btnEliminarAbierta.Enabled = false;
-                btnEditarAbierta.Enabled = false;
-            }
-        }
+        //    if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+        //    {
+        //        btnAgregarAbierta.Enabled = false;
+        //        btnEliminarAbierta.Enabled = false;
+        //        btnEditarAbierta.Enabled = false;
+        //    }
+        //}
 
         protected void btnAplicar_Click(object sender, EventArgs e)
         {
@@ -622,20 +738,51 @@ namespace SIGE.WebApp.EO
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            ContextoApp.EO.MensajeCorreoEvaluador.dsMensaje = lMensaje.Content;
-            E_RESULTADO vResultado = ContextoApp.SaveConfiguration(vClUsuario, vNbPrograma);
-            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
-        }
+            //ContextoApp.EO.MensajeCorreoEvaluador.dsMensaje = lMensaje.Content;
+            ClimaLaboralNegocio nPeriodo = new ClimaLaboralNegocio();
+            E_PERIODO_CLIMA vDsPeriodo = nPeriodo.ObtienePeriodosClima(pIdPerido: vIdPeriodo).Select(s => new E_PERIODO_CLIMA
+                {
+                ID_PERIODO = s.ID_PERIODO,
+                CL_PERIODO = s.CL_PERIODO,
+                NB_PERIODO= s.NB_PERIODO,
+                DS_PERIODO = s.DS_PERIODO,
+                FE_INICIO= s.FE_INICIO,
+                CL_ESTADO_PERIODO= s.CL_ESTADO_PERIODO,
+                DS_NOTAS = s.DS_NOTAS,
+                ID_PERIODO_CLIMA = s.ID_PERIODO_CLIMA,
+                CL_TIPO_CONFIGURACION = s.CL_TIPO_CONFIGURACION,
+                CL_ORIGEN_CUESTIONARIO = s.CL_ORIGEN_CUESTIONARIO,
+                ID_PERIODO_ORIGEN = s.ID_PERIODO_ORIGEN
+                }
+                ).FirstOrDefault();
 
-        protected void btnInstrucciones_Click(object sender, EventArgs e)
-        {
+            vDsPeriodo.DS_MENSAJE_ENVIO = lMensaje.Content;
+
             string vInstrucciones = reInstrucciones.Content;
             ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            E_RESULTADO vResultado = nClima.InsertaInstruccionesCuestionario(vInstrucciones, vIdPeriodo, vClUsuario, vNbPrograma);
-            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
+            E_RESULTADO vResultadoInstrucciones = nClima.InsertaInstruccionesCuestionario(vInstrucciones, vIdPeriodo, vClUsuario, vNbPrograma);
+            string vMensajeInstrucciones = vResultadoInstrucciones.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+            if (vResultadoInstrucciones.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+            {
+                E_RESULTADO vResultado = nPeriodo.InsertaActualizaPeriodoClima(pPeriodo: vDsPeriodo, pCL_USUARIO: vClUsuario, pNB_PROGRAMA: vNbPrograma, pTIPO_TRANSACCION: "A");
+                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
+            }
+            else
+            {
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensajeInstrucciones, vResultadoInstrucciones.CL_TIPO_ERROR, pCallBackFunction: null);
+
+            }
         }
+
+        //protected void btnInstrucciones_Click(object sender, EventArgs e)
+        //{
+        //    string vInstrucciones = reInstrucciones.Content;
+        //    ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
+        //    E_RESULTADO vResultado = nClima.InsertaInstruccionesCuestionario(vInstrucciones, vIdPeriodo, vClUsuario, vNbPrograma);
+        //    string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+        //    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
+        //}
 
         #region Clases
 
@@ -738,6 +885,14 @@ namespace SIGE.WebApp.EO
                 PageSizeCombo.FindItemByText("1000").Attributes.Add("ownerTableViewId", grdEmpleadosContrasenias.MasterTableView.ClientID);
                 PageSizeCombo.FindItemByText(e.Item.OwnerTableView.PageSize.ToString()).Selected = true;
             }
+        }
+
+        protected void btnValidez_Click(object sender, EventArgs e)
+        {
+            ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
+            E_RESULTADO vResultado = nClima.ActualizaValidezCuestionario(vIdPeriodo);
+            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
         }
 
     }

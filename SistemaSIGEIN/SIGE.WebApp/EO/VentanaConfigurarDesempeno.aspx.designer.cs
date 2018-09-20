@@ -130,6 +130,24 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadPageView rpvSeleccionEvaluados;
         
         /// <summary>
+        /// RadSplitter1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSplitter RadSplitter1;
+        
+        /// <summary>
+        /// RadPane1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPane RadPane1;
+        
+        /// <summary>
         /// grdEvaluados control.
         /// </summary>
         /// <remarks>
@@ -202,6 +220,33 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadButton btnEliminarEvaluado;
         
         /// <summary>
+        /// RadPane2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPane RadPane2;
+        
+        /// <summary>
+        /// RadSlidingZone2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSlidingZone RadSlidingZone2;
+        
+        /// <summary>
+        /// RadSlidingPane1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSlidingPane RadSlidingPane1;
+        
+        /// <summary>
         /// rpvDisenoMetas control.
         /// </summary>
         /// <remarks>
@@ -209,6 +254,24 @@ namespace SIGE.WebApp.EO {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadPageView rpvDisenoMetas;
+        
+        /// <summary>
+        /// spHelp1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSplitter spHelp1;
+        
+        /// <summary>
+        /// rpHelp1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPane rpHelp1;
         
         /// <summary>
         /// grdDisenoMetas control.
@@ -274,6 +337,33 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadButton btnGuardarMetas;
         
         /// <summary>
+        /// rpHelpAyuda1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPane rpHelpAyuda1;
+        
+        /// <summary>
+        /// RadSlidingZone1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSlidingZone RadSlidingZone1;
+        
+        /// <summary>
+        /// rspMensaje control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSlidingPane rspMensaje;
+        
+        /// <summary>
         /// rpvDefinirBono control.
         /// </summary>
         /// <remarks>
@@ -281,6 +371,24 @@ namespace SIGE.WebApp.EO {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadPageView rpvDefinirBono;
+        
+        /// <summary>
+        /// RadSplitter2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSplitter RadSplitter2;
+        
+        /// <summary>
+        /// RadPane3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPane RadPane3;
         
         /// <summary>
         /// lblDsAsignarBono control.
@@ -427,15 +535,6 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadGrid rgBono;
         
         /// <summary>
-        /// btnGuardarCerrar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnGuardarCerrar;
-        
-        /// <summary>
         /// btnGuardar control.
         /// </summary>
         /// <remarks>
@@ -445,6 +544,15 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadButton btnGuardar;
         
         /// <summary>
+        /// btnGuardarCerrar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnGuardarCerrar;
+        
+        /// <summary>
         /// btnCancelar control.
         /// </summary>
         /// <remarks>
@@ -452,6 +560,33 @@ namespace SIGE.WebApp.EO {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnCancelar;
+        
+        /// <summary>
+        /// RadPane4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPane RadPane4;
+        
+        /// <summary>
+        /// RadSlidingZone3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSlidingZone RadSlidingZone3;
+        
+        /// <summary>
+        /// RadSlidingPane2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSlidingPane RadSlidingPane2;
         
         /// <summary>
         /// rpvContasenas control.
@@ -472,13 +607,13 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadGrid grdContrasenaEvaluadores;
         
         /// <summary>
-        /// btnReasignarTodasContrasenas control.
+        /// lbMensaje control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnReasignarTodasContrasenas;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbMensaje;
         
         /// <summary>
         /// btnReasignarContrasena control.

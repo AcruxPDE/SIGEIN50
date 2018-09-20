@@ -52,10 +52,10 @@ namespace SIGE.Negocio.FormacionDesarrollo
             return oConsulta.ObtenerDatosReporteComparativo(ID_PERIODO, FG_FOTO);
         }
 
-        public List<SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO_Result> ObtenerEvaluadosComparativo(int ID_PERIODO, string XML_PERIODOS, bool FG_FOTO)
+        public List<SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO_Result> ObtenerEvaluadosComparativo(int ID_PERIODO, string XML_PERIODOS, bool FG_FOTO, int? vIdRol)
         {
             ConsultaGeneralOperaciones oConsulta = new ConsultaGeneralOperaciones();
-            return oConsulta.ObtenerEvaluadosComparativo(ID_PERIODO,XML_PERIODOS, FG_FOTO);
+            return oConsulta.ObtenerEvaluadosComparativo(ID_PERIODO, XML_PERIODOS, FG_FOTO, vIdRol);
         }
 
         public List<SPE_OBTIENE_FYD_REPORTE_COMPARATIVO_DETALLE_Result> ObtenerDetalleReporteComparativo(int pIdPeriodo, int pIdPuestoEvaluadoPeriodo, string pXmlPeriodos, int pIdEmpleado, decimal pPrCumplimientoComparacion)
@@ -64,10 +64,10 @@ namespace SIGE.Negocio.FormacionDesarrollo
             return oConsulta.ObtenerDetalleReporteComparativo(pIdPeriodo, pIdPuestoEvaluadoPeriodo, pXmlPeriodos, pIdEmpleado, pPrCumplimientoComparacion);
         }
 
-        public List<E_EVALUADO> ObtieneEvaluados(int pIdPeriodo, int? pID_EMPRESA = null)
+        public List<E_EVALUADO> ObtieneEvaluados(int pIdPeriodo, int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             ConsultaGeneralOperaciones oConsulta = new ConsultaGeneralOperaciones();
-            return oConsulta.ObtenerEvaluados(pIdPeriodo, pID_EMPRESA);
+            return oConsulta.ObtenerEvaluados(pIdPeriodo, pID_EMPRESA, pID_ROL);
         }
     }
 }

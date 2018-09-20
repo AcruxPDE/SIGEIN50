@@ -292,15 +292,6 @@ namespace SIGE.WebApp.IDP.Solicitud {
         protected global::Telerik.Web.UI.RadButton btnGuardarSalir;
         
         /// <summary>
-        /// btnImpresion2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnImpresion2;
-        
-        /// <summary>
         /// btnCancelar control.
         /// </summary>
         /// <remarks>

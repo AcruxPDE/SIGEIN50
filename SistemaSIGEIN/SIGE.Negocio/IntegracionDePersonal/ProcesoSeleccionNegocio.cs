@@ -13,10 +13,10 @@ namespace SIGE.Negocio.IntegracionDePersonal
 {
     public class ProcesoSeleccionNegocio
     {
-        public E_RESULTADO InsertaProcesoSeleccion(int? pIdCandidato = null, int? pIdRequisicion = null, string pClUsuario = null, string pNbPrograma = null)
+        public E_RESULTADO InsertaProcesoSeleccion(int? pIdCandidato = null,int? pIdEmpleado = null, int? pIdRequisicion = null, string pClUsuario = null, string pNbPrograma = null)
         {
             ProcesoSeleccionOperaciones oProcesoSeleccion = new ProcesoSeleccionOperaciones();
-            return UtilRespuesta.EnvioRespuesta(oProcesoSeleccion.InsertarProcesoSeleccion(pIdCandidato, pIdRequisicion, pClUsuario, pNbPrograma));
+            return UtilRespuesta.EnvioRespuesta(oProcesoSeleccion.InsertarProcesoSeleccion(pIdCandidato,pIdEmpleado, pIdRequisicion, pClUsuario, pNbPrograma));
         }
 
         public List<SPE_OBTIENE_PROCESO_SELECCION_Result> ObtieneProcesoSeleccion(int? pIdProcesoSeleccion = null, int? pIdCandidato = null, int? pIdRequisicion = null, int? pIdProcesoSeleccionActual = null)
@@ -24,6 +24,14 @@ namespace SIGE.Negocio.IntegracionDePersonal
             ProcesoSeleccionOperaciones oProcesoSeleccion = new ProcesoSeleccionOperaciones();
             return oProcesoSeleccion.ObtenerProcesoSeleccion(pIdProcesoSeleccion, pIdCandidato, pIdRequisicion, pIdProcesoSeleccionActual);
         }
+
+
+        public E_RESULTADO EliminaProcesoSeleccion(int? pIdProcesoSeleccion = null, int? pIdRequisicion = null)
+        {
+            ProcesoSeleccionOperaciones oProcesoSeleccion = new ProcesoSeleccionOperaciones();
+            return UtilRespuesta.EnvioRespuesta(oProcesoSeleccion.EliminaProcesoSeleccion(pIdProcesoSeleccion, pIdRequisicion));
+        }
+
 
         public List<SPE_OBTIENE_ENTREVISTA_PROCESO_SELECCION_Result> ObtieneEntrevistaProcesoSeleccion(int? pIdProcesoSeleccion = null, int? pIdEntrevista = null, Guid? pFlEntrevista = null)
         {
@@ -174,7 +182,7 @@ namespace SIGE.Negocio.IntegracionDePersonal
             ProcesoSeleccionOperaciones oProcesoSeleccion = new ProcesoSeleccionOperaciones();
             return UtilRespuesta.EnvioRespuesta(oProcesoSeleccion.InsertarActualizarESDatosVivienda(pDatosVivienda, pClUsuario, pNbPrograma, pTipoTransaccion, pIdDatoVivienda));
         }
-        public E_RESULTADO InsertaActualizaCopiaSocioEconomico(int idCandidato, int idProceso, string pClUsuario, string pNbPrograma)
+        public E_RESULTADO InsertaActualizaCopiaSocioEconomico(int? idCandidato, int idProceso, string pClUsuario, string pNbPrograma)
         {
             ProcesoSeleccionOperaciones oProcesoSeleccion = new ProcesoSeleccionOperaciones();
             return UtilRespuesta.EnvioRespuesta(oProcesoSeleccion.InsertarActualizaCopiaSocioEconomico(idCandidato, idProceso, pClUsuario, pNbPrograma));

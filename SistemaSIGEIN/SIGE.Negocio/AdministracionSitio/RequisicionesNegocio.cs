@@ -21,7 +21,7 @@ namespace SIGE.Negocio.Administracion
 		{
 			RequisicionOperaciones operaciones = new RequisicionOperaciones();
             return operaciones.ObtenerRequisicion(pIdRequisicion, pNoRequisicion, pFeSolicitud, pFeRequisicion, pIdPuesto, pClEstado, pClCausa, pDsCausa, pIdNotificacion, pIdSolicitante, pIdAutoriza, pIdVistoBueno, pIdEmpresa,flRequisicion, flNotificacion, pIdCandidato);
-		}
+		}     
 
         public List<SPE_OBTIENE_K_AUTORIZA_REQUISICION_Result> ObtenerAutorizarRequisicion(int? ID_REQUISICION = null, string NO_REQUISICION = null, DateTime? FE_SOLICITUD = null, DateTime? FE_REQUERIMIENTO = null, int? ID_PUESTO = null, string CL_ESTADO = null, string CL_CAUSA = null, string DS_CAUSA = null, int? ID_NOTIFICACION = null, int? ID_SOLICITANTE = null, int? ID_AUTORIZA = null, int? ID_VISTO_BUENO = null, int? ID_EMPRESA = null, string NB_EMPRESA = null, string NB_PUESTO = null, string SOLICITANTE = null, Guid? FL_REQUISICION = null, string CL_TOKEN = null)
         {
@@ -46,6 +46,14 @@ namespace SIGE.Negocio.Administracion
 			RequisicionOperaciones operaciones = new RequisicionOperaciones();
 			return UtilRespuesta.EnvioRespuesta(operaciones.Elimina_K_REQUISICION(ID_REQUISICION, usuario, programa));
 		}
+
+        public E_RESULTADO ActualizaEstatusRequisicion(int? ID_REQUISICION = null, string usuario = null, string programa = null)
+		{
+			RequisicionOperaciones operaciones = new RequisicionOperaciones();
+            return UtilRespuesta.EnvioRespuesta(operaciones.ActualizaEstatusRequisicion(ID_REQUISICION, usuario, programa));
+		}
+
+        
 
         public List<SPE_OBTIENE_CANDIDATOS_POR_REQUISICION_Result> ObtenerCandidatosPorRequisicion(int? pIdRequisicion = null, int? pIdProcesoSeleccion = null, int? pIdCandidato = null, int? pIdSolicitud = null)
         {

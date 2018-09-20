@@ -20,7 +20,7 @@
 
         function OpenWindowCopiarFormato(pIdFormato) {
             var vURL = "VentanaCopiarFormatoTramite.aspx?Indice=" + pIdFormato;
-            var vTitulo = "Copiar de";
+            var vTitulo = "Copiar";
             var oWin = window.radopen(vURL, "rwFormatos", document.documentElement.clientWidth - 550, document.documentElement.clientHeight - 180);
             oWin.set_title(vTitulo);
 

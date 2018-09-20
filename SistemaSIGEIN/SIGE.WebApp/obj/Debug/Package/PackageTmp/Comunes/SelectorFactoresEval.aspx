@@ -25,9 +25,11 @@
 
                         clTipoCatalogo: "FACTOR"
                     };
-                    vFactores.push(vFactor);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vFactores.length;
+                    if (!existeElemento(vFactor)) {
+                        vFactores.push(vFactor);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vFactores.length;
+                    }
                 }
                 return true;
             }
@@ -39,6 +41,15 @@
                 browserWnd.radalert("Selecciona un factor.", 400, 150);
             }
 
+            return false;
+        }
+
+        function existeElemento(pFactor) {
+            for (var i = 0; i < vFactores.length; i++) {
+                var vValue = vFactores[i];
+                if (vValue.idFactor == pFactor.idFactor)
+                    return true;
+            }
             return false;
         }
 

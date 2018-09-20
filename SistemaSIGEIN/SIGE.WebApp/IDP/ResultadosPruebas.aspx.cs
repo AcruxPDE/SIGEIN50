@@ -215,13 +215,19 @@ namespace SIGE.WebApp.IDP
                        var vResultadosIngles = vResultados.Where(r => r.CL_PRUEBA.Equals("INGLES")).ToList();
                        if (vResultadosIngles.Count > 0)
                        {
-                           decimal? INGLES_REP_TOTAL = vResultadosIngles.Exists(ex => ex.CL_VARIABLE.Equals("INGLES_REP_TOTAL"))?  vResultadosIngles.Where(x => x.CL_VARIABLE.Equals("INGLES_REP_TOTAL")).FirstOrDefault().NO_VALOR : null;
-                           decimal? INGLES_NIVEL = vResultadosIngles.Exists(ex => ex.CL_VARIABLE.Equals("INGLES_REP_NIVEL"))? vResultadosIngles.Where(x => x.CL_VARIABLE.Equals("INGLES_REP_NIVEL")).FirstOrDefault().NO_VALOR: null;
-                           decimal? INGLES_TOTAL =  vResultadosIngles.Exists(ex => ex.CL_VARIABLE.Equals("INGLES_TOTAL"))? vResultadosIngles.Where(x => x.CL_VARIABLE.Equals("INGLES_TOTAL")).FirstOrDefault().NO_VALOR: null;
+                           decimal? INGLES_REP_TOTAL = vResultadosIngles.Exists(ex => ex.CL_VARIABLE.Equals("INGLES_REP_TOTAL")) ? vResultadosIngles.Where(x => x.CL_VARIABLE.Equals("INGLES_REP_TOTAL")).FirstOrDefault().NO_VALOR : null;
+                           decimal? INGLES_NIVEL = vResultadosIngles.Exists(ex => ex.CL_VARIABLE.Equals("INGLES_REP_NIVEL")) ? vResultadosIngles.Where(x => x.CL_VARIABLE.Equals("INGLES_REP_NIVEL")).FirstOrDefault().NO_VALOR : null;
+                           decimal? INGLES_TOTAL = vResultadosIngles.Exists(ex => ex.CL_VARIABLE.Equals("INGLES_TOTAL")) ? vResultadosIngles.Where(x => x.CL_VARIABLE.Equals("INGLES_TOTAL")).FirstOrDefault().NO_VALOR : null;
                            lblNivel.InnerHtml = NivelIngles((int)(IsNull(INGLES_NIVEL)));
                            lblInformacion.InnerHtml = DescripcionNivelIngles((int)(IsNull(INGLES_NIVEL))); //INGLES_NIVEL
                            List<GRD_ORT_TEC_ING> vlstInglex = new List<GRD_ORT_TEC_ING>();
                            vlstInglex.Add(new GRD_ORT_TEC_ING { NB_TITULO = "Inglés", ACIERTOS = ((int)(IsNull(INGLES_TOTAL))).ToString(), VALORES_MAXIMOS = "120", PORCENTAJE = ((decimal)(IsNull(INGLES_REP_TOTAL))).ToString() + "%" });
+                           grdIngles.DataSource = vlstInglex;
+                       }
+                       else
+                       {
+                           List<GRD_ORT_TEC_ING> vlstInglex = new List<GRD_ORT_TEC_ING>();
+                           vlstInglex.Add(new GRD_ORT_TEC_ING { NB_TITULO = "Inglés", VALORES_MAXIMOS = "120"});
                            grdIngles.DataSource = vlstInglex;
                        }
                        #endregion
@@ -378,9 +384,8 @@ namespace SIGE.WebApp.IDP
                        var vResultadosORTOGRAFIAII = vResultados.Exists(ex => ex.CL_PRUEBA.Equals("ORTOGRAFIA-2")) ? vResultados.Where(r => r.CL_PRUEBA.Equals("ORTOGRAFIA-2")).ToList(): null;
                        var vResultadosORTOGRAFIAIII = vResultados.Exists(ex => ex.CL_PRUEBA.Equals("ORTOGRAFIA-3")) ? vResultados.Where(r => r.CL_PRUEBA.Equals("ORTOGRAFIA-3")).ToList(): null;
                        List<GRD_ORT_TEC_ING> vlstOrtografias = new List<GRD_ORT_TEC_ING>();
-                        if (vResultadosORTOGRAFIAI != null)
-
-                            if (vResultadosORTOGRAFIAI.Count > 0)
+                       if (vResultadosORTOGRAFIAI != null)
+                       if (vResultadosORTOGRAFIAI.Count > 0)
                        {
                            ORTOGRAFIA1_TOTAL = vResultadosORTOGRAFIAI.Exists(ex => ex.CL_VARIABLE.Equals("ORTOGRAFIA1-REP-TOTAL")) ? vResultadosORTOGRAFIAI.Where(x => x.CL_VARIABLE.Equals("ORTOGRAFIA1-REP-TOTAL")).FirstOrDefault().NO_VALOR : null;
                            ORTOGRAFIA1_ACIERTOS = vResultadosORTOGRAFIAI.Exists(ex => ex.CL_VARIABLE.Equals("ORTOGRAFIA1-REP-#A"))? vResultadosORTOGRAFIAI.Where(x => x.CL_VARIABLE.Equals("ORTOGRAFIA1-REP-#A")).FirstOrDefault().NO_VALOR : null;
@@ -392,9 +397,9 @@ namespace SIGE.WebApp.IDP
                            vlstOrtografias.Add(new GRD_ORT_TEC_ING { NB_TITULO = "Ortografía I", ACIERTOS = "0", VALORES_MAXIMOS = "40", PORCENTAJE = "0" });
                            AgregarColumasSeries(0);
                        }
-                        if (vResultadosORTOGRAFIAII != null)
 
-                            if (vResultadosORTOGRAFIAII.Count > 0)
+                       if (vResultadosORTOGRAFIAII != null)
+                       if (vResultadosORTOGRAFIAII.Count > 0)
                        {
                            ORTOGRAFIA2_TOTAL = vResultadosORTOGRAFIAII.Exists(ex => ex.CL_VARIABLE.Equals("ORTOGRAFIA2-REP-TOTAL")) ? vResultadosORTOGRAFIAII.Where(x => x.CL_VARIABLE.Equals("ORTOGRAFIA2-REP-TOTAL")).FirstOrDefault().NO_VALOR : null;
                            ORTOGRAFIA2_ACIERTOS = vResultadosORTOGRAFIAII.Exists(ex => ex.CL_VARIABLE.Equals("ORTOGRAFIA2-REP-#A")) ? vResultadosORTOGRAFIAII.Where(x => x.CL_VARIABLE.Equals("ORTOGRAFIA2-REP-#A")).FirstOrDefault().NO_VALOR : null;
@@ -406,9 +411,9 @@ namespace SIGE.WebApp.IDP
                            vlstOrtografias.Add(new GRD_ORT_TEC_ING { NB_TITULO = "Ortografía II", ACIERTOS = "0", VALORES_MAXIMOS = "25", PORCENTAJE = "0" });
                            AgregarColumasSeries(0);
                        }
-                        if (vResultadosORTOGRAFIAIII != null)
 
-                            if (vResultadosORTOGRAFIAIII.Count > 0)
+                       if (vResultadosORTOGRAFIAIII != null)
+                       if (vResultadosORTOGRAFIAIII.Count > 0)
                        {
                            ORTOGRAFIA3_TOTAL = vResultadosORTOGRAFIAIII.Exists(ex => ex.CL_VARIABLE.Equals("ORTOGRAFIA3-REP-TOTAL"))?  vResultadosORTOGRAFIAIII.Where(x => x.CL_VARIABLE.Equals("ORTOGRAFIA3-REP-TOTAL")).FirstOrDefault().NO_VALOR : null;
                            ORTOGRAFIA3_ACIERTOS = vResultadosORTOGRAFIAIII.Exists(ex => ex.CL_VARIABLE.Equals("ORTOGRAFIA3-REP-#A")) ? vResultadosORTOGRAFIAIII.Where(x => x.CL_VARIABLE.Equals("ORTOGRAFIA3-REP-#A")).FirstOrDefault().NO_VALOR : null;
@@ -514,67 +519,75 @@ namespace SIGE.WebApp.IDP
                        if (vResultadosAptitud2.Count > 0)
                        {
                            decimal? APTITUD2_REP_CI = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_CI")) ? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_CI")).FirstOrDefault().NO_VALOR : null;
-                           decimal? APTITUD2_REP_ACIERTOS = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_ACIERTOS"))? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_ACIERTOS")).FirstOrDefault().NO_VALOR : null;
-                           decimal? APTITUD2_REP_DESC_CI = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_DESC_CI"))? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_DESC_CI")).FirstOrDefault().NO_VALOR : null;
-                            
-                           decimal? APTITUD2_REP_CONOCIMIENTO = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_CONOCIMIENTO"))? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_CONOCIMIENTO")).FirstOrDefault().NO_VALOR : null;
-                            decimal? APTITUD2_REP_COMPRENSION = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_COMPRENSION"))? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_COMPRENSION")).FirstOrDefault().NO_VALOR: null;
-                            decimal? APTITUD2_REP_SIGNIFICADO = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_SIGNIFICADO"))? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_SIGNIFICADO")).FirstOrDefault().NO_VALOR: null;
-                            decimal? APTITUD2_REP_LOGICA = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_LOGICA"))? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_LOGICA")).FirstOrDefault().NO_VALOR: null;
-                            decimal? APTITUD2_REP_ARITMETICA = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_ARITMETICA"))? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_ARITMETICA")).FirstOrDefault().NO_VALOR: null;
-                            decimal? APTITUD2_REP_JUICIO = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_JUICIO"))? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_JUICIO")).FirstOrDefault().NO_VALOR: null;
-                            decimal? APTITUD2_REP_ANALOGIAS = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_ANALOGIAS"))? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_ANALOGIAS")).FirstOrDefault().NO_VALOR: null;
-                            decimal? APTITUD2_REP_ORDENAMIENTO = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_ORDENAMIENTO"))? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_ORDENAMIENTO")).FirstOrDefault().NO_VALOR: null;
-                            decimal? APTITUD2_REP_CLASIFICACION = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_CLASIFICACION"))? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_CLASIFICACION")).FirstOrDefault().NO_VALOR: null;
-                            decimal? APTITUD2_REP_SERIACION = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_SERIACION"))? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_SERIACION")).FirstOrDefault().NO_VALOR: null;
+                           decimal? APTITUD2_REP_ACIERTOS = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_ACIERTOS")) ? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_ACIERTOS")).FirstOrDefault().NO_VALOR : null;
+                           decimal? APTITUD2_REP_DESC_CI = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_DESC_CI")) ? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_DESC_CI")).FirstOrDefault().NO_VALOR : null;
 
-                            List<decimal?> lstValores = new List<decimal?>();
-                            lstValores.Add(APTITUD2_REP_CONOCIMIENTO );
-                            lstValores.Add(APTITUD2_REP_COMPRENSION);
-                            lstValores.Add(APTITUD2_REP_SIGNIFICADO);
-                            lstValores.Add(APTITUD2_REP_LOGICA);
-                            lstValores.Add(APTITUD2_REP_ARITMETICA);
-                            lstValores.Add(APTITUD2_REP_JUICIO);
-                            lstValores.Add(APTITUD2_REP_ANALOGIAS);
-                            lstValores.Add(APTITUD2_REP_ORDENAMIENTO);
-                            lstValores.Add(APTITUD2_REP_CLASIFICACION);
-                            lstValores.Add(APTITUD2_REP_SERIACION);
+                           decimal? APTITUD2_REP_CONOCIMIENTO = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_CONOCIMIENTO")) ? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_CONOCIMIENTO")).FirstOrDefault().NO_VALOR : null;
+                           decimal? APTITUD2_REP_COMPRENSION = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_COMPRENSION")) ? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_COMPRENSION")).FirstOrDefault().NO_VALOR : null;
+                           decimal? APTITUD2_REP_SIGNIFICADO = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_SIGNIFICADO")) ? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_SIGNIFICADO")).FirstOrDefault().NO_VALOR : null;
+                           decimal? APTITUD2_REP_LOGICA = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_LOGICA")) ? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_LOGICA")).FirstOrDefault().NO_VALOR : null;
+                           decimal? APTITUD2_REP_ARITMETICA = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_ARITMETICA")) ? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_ARITMETICA")).FirstOrDefault().NO_VALOR : null;
+                           decimal? APTITUD2_REP_JUICIO = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_JUICIO")) ? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_JUICIO")).FirstOrDefault().NO_VALOR : null;
+                           decimal? APTITUD2_REP_ANALOGIAS = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_ANALOGIAS")) ? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_ANALOGIAS")).FirstOrDefault().NO_VALOR : null;
+                           decimal? APTITUD2_REP_ORDENAMIENTO = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_ORDENAMIENTO")) ? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_ORDENAMIENTO")).FirstOrDefault().NO_VALOR : null;
+                           decimal? APTITUD2_REP_CLASIFICACION = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_CLASIFICACION")) ? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_CLASIFICACION")).FirstOrDefault().NO_VALOR : null;
+                           decimal? APTITUD2_REP_SERIACION = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_SERIACION")) ? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_SERIACION")).FirstOrDefault().NO_VALOR : null;
 
-                            decimal? valorMaximo = CalcularValorMaximo(lstValores);
+                           List<decimal?> lstValores = new List<decimal?>();
+                           lstValores.Add(APTITUD2_REP_CONOCIMIENTO);
+                           lstValores.Add(APTITUD2_REP_COMPRENSION);
+                           lstValores.Add(APTITUD2_REP_SIGNIFICADO);
+                           lstValores.Add(APTITUD2_REP_LOGICA);
+                           lstValores.Add(APTITUD2_REP_ARITMETICA);
+                           lstValores.Add(APTITUD2_REP_JUICIO);
+                           lstValores.Add(APTITUD2_REP_ANALOGIAS);
+                           lstValores.Add(APTITUD2_REP_ORDENAMIENTO);
+                           lstValores.Add(APTITUD2_REP_CLASIFICACION);
+                           lstValores.Add(APTITUD2_REP_SERIACION);
 
-                            List<E_RESULTADOS_GENERICA> vlstMentalII = new List<E_RESULTADOS_GENERICA>();
-                            vlstMentalII.Add(new E_RESULTADOS_GENERICA { NB_TITULO = "Puntuación directa:", VALOR = IsNull(APTITUD2_REP_ACIERTOS).Value.ToString("N0") });
-                            vlstMentalII.Add(new E_RESULTADOS_GENERICA { NB_TITULO = "Coeficiente intelectual (CI):", VALOR = IsNull(APTITUD2_REP_CI).Value.ToString("N0") });
-                            vlstMentalII.Add(new E_RESULTADOS_GENERICA { NB_TITULO = "Inteligencia:", VALOR = coeficienteIntelectual(int.Parse(IsNull(APTITUD2_REP_DESC_CI).Value.ToString("N0"))) });
-                            grdMentalII.DataSource = vlstMentalII;
-                            
-                            ColumnSeries csValuesAptitud2 = new ColumnSeries();
-                            csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_CONOCIMIENTO == -100 ? 0 : APTITUD2_REP_CONOCIMIENTO)));
-                            csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_COMPRENSION == -100 ? 0 : APTITUD2_REP_COMPRENSION)));
-                            csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_SIGNIFICADO == -100 ? 0 : APTITUD2_REP_SIGNIFICADO)));
-                            csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_LOGICA == -100 ? 0 : APTITUD2_REP_LOGICA)));
-                            csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_ARITMETICA == -100 ? 0 : APTITUD2_REP_ARITMETICA)));
-                            csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_JUICIO == -100 ? 0 : APTITUD2_REP_JUICIO)));
-                            csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_ANALOGIAS == -100 ? 0 : APTITUD2_REP_ANALOGIAS)));
-                            csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_ORDENAMIENTO == -100 ? 0 : APTITUD2_REP_ORDENAMIENTO)));
-                            csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_CLASIFICACION == -100 ? 0 : APTITUD2_REP_CLASIFICACION)));
-                            csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_SERIACION == -100 ? 0 : APTITUD2_REP_SERIACION)));
-                            csValuesAptitud2.LabelsAppearance.DataFormatString = "{0:N2}" + "%";
-                            csValuesAptitud2.LabelsAppearance.RotationAngle = 0;
-                            csValuesAptitud2.TooltipsAppearance.DataFormatString = "{0:N2}" + "%";
-                            rhcAptitud2.PlotArea.Series.Add(csValuesAptitud2);
-                            rhcAptitud2.PlotArea.YAxis.MaxValue = valorMaximo + 10 ;
-                            
-                            
-                           decimal? APTITUD2_REP_C1 = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_C1"))? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_C1")).FirstOrDefault().NO_VALOR : null;
-                            decimal? APTITUD2_REP_C2 = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_C2"))? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_C2")).FirstOrDefault().NO_VALOR: null;
-                            decimal? APTITUD2_REP_C3 = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_C3"))? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_C3")).FirstOrDefault().NO_VALOR: null;
-                            decimal? APTITUD2_REP_C4 = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_C4"))? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_C4")).FirstOrDefault().NO_VALOR: null;
-                            
-                            configurarComparacion1(int.Parse(IsNull(APTITUD2_REP_C1).Value.ToString("N0")));
-                            configurarComparacion2(int.Parse(IsNull(APTITUD2_REP_C2).Value.ToString("N0")));
-                            configurarComparacion3(int.Parse(IsNull(APTITUD2_REP_C3).Value.ToString("N0")));
-                            configurarComparacion4(int.Parse(IsNull(APTITUD2_REP_C4).Value.ToString("N0")));
+                           decimal? valorMaximo = CalcularValorMaximo(lstValores);
+
+                           List<E_RESULTADOS_GENERICA> vlstMentalII = new List<E_RESULTADOS_GENERICA>();
+                           vlstMentalII.Add(new E_RESULTADOS_GENERICA { NB_TITULO = "Puntuación directa:", VALOR = IsNull(APTITUD2_REP_ACIERTOS).Value.ToString("N0") });
+                           vlstMentalII.Add(new E_RESULTADOS_GENERICA { NB_TITULO = "Coeficiente intelectual (CI):", VALOR = IsNull(APTITUD2_REP_CI).Value.ToString("N0") });
+                           vlstMentalII.Add(new E_RESULTADOS_GENERICA { NB_TITULO = "Inteligencia:", VALOR = coeficienteIntelectual(int.Parse(IsNull(APTITUD2_REP_DESC_CI).Value.ToString("N0"))) });
+                           grdMentalII.DataSource = vlstMentalII;
+
+                           ColumnSeries csValuesAptitud2 = new ColumnSeries();
+                           csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_CONOCIMIENTO == -100 ? 0 : APTITUD2_REP_CONOCIMIENTO)));
+                           csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_COMPRENSION == -100 ? 0 : APTITUD2_REP_COMPRENSION)));
+                           csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_SIGNIFICADO == -100 ? 0 : APTITUD2_REP_SIGNIFICADO)));
+                           csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_LOGICA == -100 ? 0 : APTITUD2_REP_LOGICA)));
+                           csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_ARITMETICA == -100 ? 0 : APTITUD2_REP_ARITMETICA)));
+                           csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_JUICIO == -100 ? 0 : APTITUD2_REP_JUICIO)));
+                           csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_ANALOGIAS == -100 ? 0 : APTITUD2_REP_ANALOGIAS)));
+                           csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_ORDENAMIENTO == -100 ? 0 : APTITUD2_REP_ORDENAMIENTO)));
+                           csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_CLASIFICACION == -100 ? 0 : APTITUD2_REP_CLASIFICACION)));
+                           csValuesAptitud2.SeriesItems.Add(new CategorySeriesItem(IsNull(APTITUD2_REP_SERIACION == -100 ? 0 : APTITUD2_REP_SERIACION)));
+                           csValuesAptitud2.LabelsAppearance.DataFormatString = "{0:N2}" + "%";
+                           csValuesAptitud2.LabelsAppearance.RotationAngle = 0;
+                           csValuesAptitud2.TooltipsAppearance.DataFormatString = "{0:N2}" + "%";
+                           rhcAptitud2.PlotArea.Series.Add(csValuesAptitud2);
+                           rhcAptitud2.PlotArea.YAxis.MaxValue = valorMaximo + 10;
+
+
+                           decimal? APTITUD2_REP_C1 = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_C1")) ? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_C1")).FirstOrDefault().NO_VALOR : null;
+                           decimal? APTITUD2_REP_C2 = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_C2")) ? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_C2")).FirstOrDefault().NO_VALOR : null;
+                           decimal? APTITUD2_REP_C3 = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_C3")) ? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_C3")).FirstOrDefault().NO_VALOR : null;
+                           decimal? APTITUD2_REP_C4 = vResultadosAptitud2.Exists(ex => ex.CL_VARIABLE.Equals("APTITUD2_REP_C4")) ? vResultadosAptitud2.Where(x => x.CL_VARIABLE.Equals("APTITUD2_REP_C4")).FirstOrDefault().NO_VALOR : null;
+
+                           configurarComparacion1(int.Parse(IsNull(APTITUD2_REP_C1).Value.ToString("N0")));
+                           configurarComparacion2(int.Parse(IsNull(APTITUD2_REP_C2).Value.ToString("N0")));
+                           configurarComparacion3(int.Parse(IsNull(APTITUD2_REP_C3).Value.ToString("N0")));
+                           configurarComparacion4(int.Parse(IsNull(APTITUD2_REP_C4).Value.ToString("N0")));
+                       }
+                       else
+                       {
+                           List<E_RESULTADOS_GENERICA> vlstMentalII = new List<E_RESULTADOS_GENERICA>();
+                           vlstMentalII.Add(new E_RESULTADOS_GENERICA { NB_TITULO = "Puntuación directa:" });
+                           vlstMentalII.Add(new E_RESULTADOS_GENERICA { NB_TITULO = "Coeficiente intelectual (CI):"});
+                           vlstMentalII.Add(new E_RESULTADOS_GENERICA { NB_TITULO = "Inteligencia:" });
+                           grdMentalII.DataSource = vlstMentalII;
                        }
                        #endregion
 

@@ -6,20 +6,25 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using SIGE.Negocio.Administracion;
 using Telerik.Web.UI;
+using SIGE.WebApp.Comunes;
 
 namespace SIGE.WebApp.EO
 {
     public partial class DarBajaEmpleado : System.Web.UI.Page
     {
+        private int? vIdEmpresa;
+        private int? vIdRol;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
         }
 
         protected void rgEmpleadosBaja_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             EmpleadoNegocio nEmpleado = new EmpleadoNegocio();
-            var vEmpleado = nEmpleado.ObtenerEmpleados(pFgActivo:true);
+            var vEmpleado = nEmpleado.ObtenerEmpleados(pFgActivo: true, pID_EMPRESA: vIdEmpresa, pID_ROL: vIdRol);
             rgEmpleadosBaja.DataSource = vEmpleado;
         }
 

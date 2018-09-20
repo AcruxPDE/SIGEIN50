@@ -46,24 +46,27 @@ namespace SIGE.Negocio.Administracion
 
                 ws.Column(1).Width = 50;
                 ws.Column(2).Width = 50;
-                ws.Column(4).Width = 50;
+                ws.Column(3).Width = 50;
 
                 ws.Cells["A3"].Value = "Consulta personal resumida";
                 ws.Cells["A3"].Style.Font.Size = 18;
                 ws.Cells["A3"].Style.Font.Color.SetColor(System.Drawing.Color.IndianRed);
 
-                ws.Cells["A5"].Value = "Solicitud: " + pClFolio + "     Aplicante: " + pNbCandidato;
+                ws.Cells["A5"].Value = "Folio de solicitud: " + pClFolio + "     Candidato: " + pNbCandidato;
                 ws.Cells["A5"].Style.Font.Bold = true;
                 asignarEstiloCelda(ws.Cells["A5:B5"], "PowderBlue", false);
 
                 ws.Cells["A7"].Value = "Competencia";
                 asignarEstiloCelda(ws.Cells["A7"], "PowderBlue");
 
-                ws.Cells["B7"].Value = "Descripción";
+                ws.Cells["B7"].Value = "Descripción competencia";
                 asignarEstiloCelda(ws.Cells["B7"], "PowderBlue");
 
-                ws.Cells["C7"].Value = "%";
+                ws.Cells["C7"].Value = "Descripción del nivel";
                 asignarEstiloCelda(ws.Cells["C7"], "PowderBlue");
+
+                ws.Cells["D7"].Value = "Porcentaje";
+                asignarEstiloCelda(ws.Cells["D7"], "PowderBlue");
 
                 foreach (SPE_OBTIENE_CONSULTA_PERSONAL_RESUMEN_Result item in oLista)
                 {
@@ -111,12 +114,13 @@ namespace SIGE.Negocio.Administracion
                     asignarEstiloCelda(ws.Cells[vClCelda], item.CL_COLOR);
 
                     vClCelda = "C" + vFila.ToString();
-                    ws.Cells[vClCelda].Value = item.NO_BAREMO_PORCENTAJE.Value.ToString("N2") + "%";
-                    asignarEstiloCelda(ws.Cells[vClCelda], alineacion: OfficeOpenXml.Style.ExcelHorizontalAlignment.Right);
-
-                    vClCelda = "D" + vFila.ToString();
                     ws.Cells[vClCelda].Value = item.DS_NIVEL_COMPETENCIA_PERSONA;
                     asignarEstiloCelda(ws.Cells[vClCelda]);
+
+
+                    vClCelda = "D" + vFila.ToString();
+                    ws.Cells[vClCelda].Value = item.NO_BAREMO_PORCENTAJE.Value.ToString("N2") + "%";
+                    asignarEstiloCelda(ws.Cells[vClCelda], alineacion: OfficeOpenXml.Style.ExcelHorizontalAlignment.Right);
 
                     vFila++;
                 }
@@ -124,7 +128,7 @@ namespace SIGE.Negocio.Administracion
                 vFila++;
 
                 vClCelda = "A" + vFila.ToString();
-                ws.Cells[vClCelda].Value = "Total de compatibilidad de competencias: " + vPromedioBaremos.Value.ToString("N2") + "%";
+                ws.Cells[vClCelda].Value = "Compatibilidad: " + vPromedioBaremos.Value.ToString("N2") + "%";
                 ws.Cells[vClCelda].Style.Font.Bold = true;
 
                 pck.Save();
@@ -163,7 +167,11 @@ namespace SIGE.Negocio.Administracion
             List<SPE_OBTIENE_FACTORES_CONSULTA_Result> vListaFactores = new List<SPE_OBTIENE_FACTORES_CONSULTA_Result>();
             List<SPE_OBTIENE_COMPETENCIAS_CONSULTA_Result> vListaCompetencias = new List<SPE_OBTIENE_COMPETENCIAS_CONSULTA_Result>();
             List<SPE_OBTIENE_FACTORES_COMPETENCIAS_Result> vListaFactoresCompetencias = new List<SPE_OBTIENE_FACTORES_COMPETENCIAS_Result>();
-
+            
+            //Se agregan los dos lineas siguientes para obtener las variables baremos sin relacionar con competencias
+            PruebasNegocio pruebas = new PruebasNegocio();
+            var vBaremos = pruebas.obtenerVariableBaremos(ID_BATERIA);
+            //-------------------------------------------------------------------------------------------------------
 
             DataTable vDtPivot = new DataTable();
             string vClaseColor = "";
@@ -240,7 +248,8 @@ namespace SIGE.Negocio.Administracion
                             decimal vCivica = Math.Round(vListaDetallada.Where(w => w.CL_VARIABLE == "TV-CÍVICA").Select(s => s.NO_VALOR).FirstOrDefault(), 0);
                             decimal vResBaremos = 0;
                             decimal vErrores = 0;
-                            foreach (var item in vListaDetallada)
+                            //foreach (var item in vListaDetallada)
+                            foreach (var item in vBaremos) // Se cambia la lista por vBaremos 21/06/2018
                             {
                                 if (item.CL_VARIABLE == "L1-CONSTANCIA" || item.CL_VARIABLE == "L1-CUMPLIMIENTO" || item.CL_VARIABLE == "L2-MANTIENE Y CONSERVA" || item.CL_VARIABLE == "IN-REGULATORIO")
                                 {
@@ -258,7 +267,7 @@ namespace SIGE.Negocio.Administracion
                             vErrores = 4 - vResBaremos;
                             if (vErrores >= 2)
                             {
-                                vDr[vFac.ID_FACTOR.ToString() + "E"] = "<span><img title='" + vFac.NB_FACTOR + "(" + vFac.NB_PRUEBA + ")' src='/Assets/images/Baremos" + "Invalido" + ".png' /></span>";
+                                vDr[vFac.ID_FACTOR.ToString() + "E"] = "<span><img title='" + vFac.NB_FACTOR + "(" + vFac.NB_PRUEBA + ")' src='../Assets/images/Baremos" + "Invalido" + ".png' /></span>";
                             }
                             else
                             {
@@ -283,7 +292,7 @@ namespace SIGE.Negocio.Administracion
                                             break;
                                     }
 
-                                    vDr[vFac.ID_FACTOR.ToString() + "E"] = "<span><img title='" + vFac.NB_FACTOR + "(" + vFac.NB_PRUEBA + ")' src='/Assets/images/Baremos" + vImagen + ".png' /></span>";
+                                    vDr[vFac.ID_FACTOR.ToString() + "E"] = "<span><img title='" + vFac.NB_FACTOR + "(" + vFac.NB_PRUEBA + ")' src='../Assets/images/Baremos" + vImagen + ".png' /></span>";
                                 }
                             }
                         }
@@ -308,7 +317,7 @@ namespace SIGE.Negocio.Administracion
                                     break;
                             }
 
-                            vDr[vFac.ID_FACTOR.ToString() + "E"] = "<span><img title='" + vFac.NB_FACTOR + "(" + vFac.NB_PRUEBA + ")' src='/Assets/images/Baremos" + vImagen + ".png' /></span>";
+                            vDr[vFac.ID_FACTOR.ToString() + "E"] = "<span><img title='" + vFac.NB_FACTOR + "(" + vFac.NB_PRUEBA + ")' src='../Assets/images/Baremos" + vImagen + ".png' /></span>";
                         }
                     }
                     else
@@ -317,7 +326,7 @@ namespace SIGE.Negocio.Administracion
                         if (vBuscarResultado != null)
                         {
                             vImagen = "Gris";
-                            vDr[vFac.ID_FACTOR.ToString() + "E"] = "<span><img title='" + vFac.NB_FACTOR + "(" + vFac.NB_PRUEBA + ")'  src='/Assets/images/Baremos" + vImagen + ".png' /></span>";
+                            vDr[vFac.ID_FACTOR.ToString() + "E"] = "<span><img title='" + vFac.NB_FACTOR + "(" + vFac.NB_PRUEBA + ")'  src='../Assets/images/Baremos" + vImagen + ".png' /></span>";
                         }
                     }
                 }
@@ -411,7 +420,37 @@ namespace SIGE.Negocio.Administracion
             vListaFactoresCompetencias = op.obtieneFactoresCompetencias();
             vDtFactoresPruebas = ObtieneDataTableCompetencias();
             vListaDetallada = op.obtieneConsultaPersonalDetallada(pIdBateria);
+            bool vFgValidaTiva = true;
+            int vResBaremos = 0;
+            decimal vTvTotal = 0;
 
+            //Se agregan los dos lineas siguientes para obtener las variables baremos sin relacionar con competencias
+            PruebasNegocio pruebas = new PruebasNegocio();
+            var vBaremos = pruebas.obtenerVariableBaremos(pIdBateria);
+
+            if (vListaDetallada.Count > 0)
+            {
+                if(vListaDetallada.Exists(e=> e.CL_VARIABLE == "TV-TOTAL"))
+                vTvTotal = Math.Round(vListaDetallada.Where(w => w.CL_VARIABLE == "TV-TOTAL").Select(s => s.NO_VALOR).FirstOrDefault(), 0);
+            }
+
+            foreach (var item in vBaremos)
+            {
+             if(item.CL_VARIABLE == "L1-CONSTANCIA" || item.CL_VARIABLE == "L1-CUMPLIMIENTO" || item.CL_VARIABLE == "L2-MANTIENE Y CONSERVA" || item.CL_VARIABLE == "IN-REGULATORIO")
+                               {
+                          if (vTvTotal == 1)
+                                       vResBaremos += (item.NO_VALOR == 1 || item.NO_VALOR == 2) ? 1 : 0;
+                                   
+                                   if (vTvTotal == 2)
+                                       vResBaremos += (item.NO_VALOR == 3 || item.NO_VALOR == 2) ? 1 : 0;
+                                   
+                                   if (vTvTotal == 3)
+                                       vResBaremos += (item.NO_VALOR == 3 || item.NO_VALOR == 2) ? 1 : 0;
+                               }
+            }
+
+            if ((4 - vResBaremos) >= 2)
+                vFgValidaTiva = false;
 
             vDtPivot.Columns.Add("CL_COLOR", typeof(string));
             vDtPivot.Columns.Add("NB_COMPETENCIA", typeof(string));
@@ -445,9 +484,24 @@ namespace SIGE.Negocio.Administracion
                     var vResultado = vListaDetallada.Where(t => t.ID_COMPETENCIA == vCom.ID_COMPETENCIA & t.ID_FACTOR == vFac.ID_FACTOR).FirstOrDefault();
                     if (vResultado != null)
                     {
-                        int vNum = (int)vResultado.NO_VALOR;
+                        if (vResultado.NB_PRUEBA == "TIVA" && vFgValidaTiva == false)
+                        {
+                            vDr[vFac.ID_FACTOR.ToString() + "E"] = "-1";
+                        }
+                        else
+                        {
+                            int vNum = (int)vResultado.NO_VALOR;
+                            if (vNum == 0)
+                            {
+                                vDr[vFac.ID_FACTOR.ToString() + "E"] = "-1";
+                            }
+                            else
+                            {
+                                vDr[vFac.ID_FACTOR.ToString() + "E"] = vNum;
+                            }
+                        }
 
-                        vDr[vFac.ID_FACTOR.ToString() + "E"] = vNum;
+
                     }
                     else
                     {
@@ -476,7 +530,7 @@ namespace SIGE.Negocio.Administracion
                 ws.Cells["B1"].Style.Font.Size = 18;
                 ws.Cells["B1"].Style.Font.Color.SetColor(System.Drawing.Color.IndianRed);
 
-                ws.Cells["B3"].Value = "Solicitud: " + pClFolio + "     Aplicante: " + pNbCandidato;
+                ws.Cells["B3"].Value = "Folio de solicitud: " + pClFolio + "     Candidato: " + pNbCandidato;
                 ws.Cells["B3"].Style.Font.Bold = true;
                 asignarEstiloCelda(ws.Cells["B3:C3"], "PowderBlue", false);
 
@@ -610,6 +664,7 @@ namespace SIGE.Negocio.Administracion
                 conditionalFormattingRule03.Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Medium;
                 conditionalFormattingRule03.Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Medium;
 
+
                 var conditionalFormattingRule04 = ws.ConditionalFormatting.AddEqual(ws.Cells[3, 3, (vNoFilas + 3), (vNoColumnas + 3)]);
                 conditionalFormattingRule04.Formula = "-1";
                 conditionalFormattingRule04.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
@@ -619,6 +674,7 @@ namespace SIGE.Negocio.Administracion
                 conditionalFormattingRule04.Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Medium;
                 conditionalFormattingRule04.Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Medium;
                 conditionalFormattingRule04.Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Medium;
+
   
                 ws.Column(1).Hidden = true;
 

@@ -26,9 +26,11 @@
                         clTipoPrograma: masterTable.getCellByColumnUniqueName(selectedItem, "CL_TIPO_PROGRAMA").innerHTML,
                         clTipoCatalogo: "PROGRAMA"
                     };
-                    vProgramas.push(vPrograma);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vProgramas.length;
+                    if (!existeElemento(vPrograma)) {
+                        vProgramas.push(vPrograma);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vProgramas.length;
+                    }
                 }
                 return true;
             }
@@ -40,6 +42,15 @@
                 browserWnd.radalert("Selecciona un programa.", 400, 150);
             }
 
+            return false;
+        }
+
+        function existeElemento(pPrograma) {
+            for (var i = 0; i < vProgramas.length; i++) {
+                var vValue = vProgramas[i];
+                if (vValue.idPrograma == pPrograma.idPrograma)
+                    return true;
+            }
             return false;
         }
 

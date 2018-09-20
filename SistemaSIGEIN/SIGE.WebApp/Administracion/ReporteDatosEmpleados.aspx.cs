@@ -16,8 +16,9 @@ namespace SIGE.WebApp.Administracion
     {
         private string vClUsuario;
         private string vNbPrograma;
-        private int? vIdEmpresa;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private int? vIdEmpresa;
+        private int? vIdRol;
 
         private void ExportarExcel()
         {
@@ -36,13 +37,14 @@ namespace SIGE.WebApp.Administracion
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
             vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
         }
 
         protected void grdEmpleados_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             SolicitudNegocio empleados = new SolicitudNegocio();
             List<SPE_OBTIENE_DATOS_EMPLEADOS_Result> listaEmpleados = new List<SPE_OBTIENE_DATOS_EMPLEADOS_Result>();
-            listaEmpleados = empleados.ObtieneDatosEmpleados();
+            listaEmpleados = empleados.ObtieneDatosEmpleados(pIdEmpresa: vIdEmpresa, pIdRol: vIdRol);
             grdEmpleados.DataSource = listaEmpleados;
         }
 

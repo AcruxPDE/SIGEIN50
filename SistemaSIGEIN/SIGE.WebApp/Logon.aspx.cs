@@ -400,6 +400,7 @@ namespace SIGE.WebApp
                     ContextoApp.RP.LicenciaReportes.MsgActivo = (nLicencia.validaLicencia(vConfiguracionLicencia.CL_CLIENTE, "SIGEIN", vConfiguracionLicencia.CL_EMPRESA, "RP", "5.00", "Sistema", "Web Service", XmlConfiguracionLicencia, XmlConfiguracionCliente).MENSAJE.FirstOrDefault().DS_MENSAJE);
                     ContextoApp.CI.LicenciaConsultasInteligentes.MsgActivo = (nLicencia.validaLicencia(vConfiguracionLicencia.CL_CLIENTE, "SIGEIN", vConfiguracionLicencia.CL_EMPRESA, "CI", "5.00", "Sistema", "Web Service", XmlConfiguracionLicencia, XmlConfiguracionCliente).MENSAJE.FirstOrDefault().DS_MENSAJE);
                     ContextoApp.PDE.LicenciaPuntoEncuentro.MsgActivo = (nLicencia.validaLicencia(vConfiguracionLicencia.CL_CLIENTE, "SIGEIN", vConfiguracionLicencia.CL_EMPRESA, "PDE", "5.00", "Sistema", "Web Service", XmlConfiguracionLicencia, XmlConfiguracionCliente).MENSAJE.FirstOrDefault().DS_MENSAJE);
+                    ContextoApp.ANOM.LicenciaAccesoModulo.MsgActivo = (nLicencia.validaLicencia(vConfiguracionLicencia.CL_CLIENTE, "SIGEIN", vConfiguracionLicencia.CL_EMPRESA, "NOMINA", "5.00", "Sistema", "Web Service", XmlConfiguracionLicencia, XmlConfiguracionCliente).MENSAJE.FirstOrDefault().DS_MENSAJE);
 
                     if (lstLicencia.Count > 0)
                     {
@@ -407,7 +408,7 @@ namespace SIGE.WebApp
 
                         if (ContextoApp.IDP.LicenciaIntegracion.MsgActivo == "1" || ContextoApp.FYD.LicenciaFormacion.MsgActivo == "1" || ContextoApp.EO.LicenciaCL.MsgActivo == "1" || ContextoApp.EO.LicenciaED.MsgActivo == "1"
                  || ContextoApp.EO.LicenciaRDP.MsgActivo == "1" || ContextoApp.MPC.LicenciaMetodologia.MsgActivo == "1" || ContextoApp.RP.LicenciaReportes.MsgActivo == "1" || ContextoApp.CI.LicenciaConsultasInteligentes.MsgActivo == "1"
-                   || ContextoApp.PDE.LicenciaPuntoEncuentro.MsgActivo == "1")
+                   || ContextoApp.PDE.LicenciaPuntoEncuentro.MsgActivo == "1" || ContextoApp.ANOM.LicenciaAccesoModulo.MsgActivo == "1")
                         {
                             ContextoApp.InfoEmpresa.MsgSistema = "1";
                         }
@@ -565,7 +566,8 @@ namespace SIGE.WebApp
                 {
                     if (vUsuario.oFunciones != null)
                     {
-                        FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(TICKET_VERSION, FormsAuthentication.FormsCookieName, DateTime.Now, DateTime.Now.AddMinutes(FormsAuthentication.Timeout.TotalMinutes), false, string.Empty, FormsAuthentication.FormsCookiePath);//FormsAuthentication.Timeout.TotalMinutes
+                        //Se agrega la clave del usuario al FormsAuthenticationTicket como user data, este dato se usara en nómina en el global.asax
+                        FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(TICKET_VERSION, FormsAuthentication.FormsCookieName, DateTime.Now, DateTime.Now.AddMinutes(FormsAuthentication.Timeout.TotalMinutes), false, vUsuario.CL_USUARIO, FormsAuthentication.FormsCookiePath);//FormsAuthentication.Timeout.TotalMinutes
                         string cookie = FormsAuthentication.Encrypt(ticket);
                         Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, cookie));
                         Session["UniqueUserId"] = Guid.NewGuid();
@@ -740,7 +742,7 @@ namespace SIGE.WebApp
                                 {
                                     if (vDocumento.CL_ESTADO.ToUpper().Equals("POR AUTORIZAR"))
                                     {
-                                        Response.Redirect("/FYD/EvaluacionCompetencia/AutorizaProgramaCapacitacion.aspx?ID=" + vIdPrograma + "&TOKEN=" + pFolioAutorizacion);
+                                        Response.Redirect("~/FYD/EvaluacionCompetencia/AutorizaProgramaCapacitacion.aspx?ID=" + vIdPrograma + "&TOKEN=" + pFolioAutorizacion);
                                     }
                                     else
                                     {
@@ -773,7 +775,7 @@ namespace SIGE.WebApp
                                 if (DocumentoAutorizar.CL_ESTADO == "Autorizado")
                                     UtilMensajes.MensajeResultadoDB(RadWindowManager1, "Ya se ha capturado una respuesta a esta autorización.", E_TIPO_RESPUESTA_DB.ERROR);
                                 else
-                                    Response.Redirect("/FYD/EvaluacionCompetencia/AutorizarPeriodoEvaluacion.aspx?IdPeriodo=" + vIdPeriodo + "&TOKEN=" + pFolioAutorizacion);
+                                    Response.Redirect("~/FYD/EvaluacionCompetencia/AutorizarPeriodoEvaluacion.aspx?IdPeriodo=" + vIdPeriodo + "&TOKEN=" + pFolioAutorizacion);
                             }
                         }
                         else

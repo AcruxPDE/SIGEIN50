@@ -3,7 +3,7 @@
     <script type="text/javascript">
 
         function OpenWindowPeriodos() {
-            OpenSelectionWindows("/Comunes/SeleccionPeriodosDesempeno.aspx?CL_TIPO=Bono", "winSeleccion", "Seleccion de periodos a comparar");
+            OpenSelectionWindows("/Comunes/SeleccionPeriodosDesempeno.aspx?CL_TIPO=Bono", "winSeleccion", "Seleccion de períodos a comparar");
         }
 
         function OpenWindowComparar() {
@@ -135,7 +135,7 @@
                     <MasterTableView DataKeyNames="idPeriodo" ClientDataKeyNames="idPeriodo" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
                         <Columns>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" FilterControlWidth="40" HeaderText="Clave" DataField="clPeriodo" UniqueName="clPeriodo" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="230" HeaderText="Periodo" DataField="nbPeriodo" UniqueName="nbPeriodo" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="230" HeaderText="Período" DataField="nbPeriodo" UniqueName="nbPeriodo" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="230" HeaderText="Descripción" DataField="dsPeriodo" UniqueName="dsPeriodo" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                             <telerik:GridButtonColumn CommandName="Delete" Text="Eliminar" UniqueName="DeleteColumn" ButtonType="ImageButton" HeaderStyle-Width="30" />
                             
@@ -144,7 +144,7 @@
                 </telerik:RadGrid>
                 <div style="height: 10px; clear: both;"></div>
                 <div class="divControlIzquierda">
-                    <telerik:RadButton ID="btnSeleccionar" runat="server" AutoPostBack="false" Width="200" Text="Seleccionar periodos" OnClientClicked="OpenWindowPeriodos"></telerik:RadButton>
+                    <telerik:RadButton ID="btnSeleccionar" runat="server" AutoPostBack="false" Width="200" Text="Seleccionar períodos" OnClientClicked="OpenWindowPeriodos"></telerik:RadButton>
                 </div>
                 <div class="divControlDerecha">
                     <telerik:RadButton ID="btnComparar" runat="server" AutoPostBack="false" Width="100" Text="Comparar" OnClientClicked="OpenWindowComparar"></telerik:RadButton>

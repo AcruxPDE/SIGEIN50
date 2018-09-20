@@ -41,5 +41,6 @@ namespace SIGE.Entidades
         public string XML_CATEGORIA { get; set; }
         public Nullable<int> NO_VALUACION { get; set; }
         public Nullable<int> ID_TABULADOR_NIVEL { get; set; }
+        public Nullable<bool> FG_SUELDO_VISIBLE_TABULADOR { get; set; }
     }
 }

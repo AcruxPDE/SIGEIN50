@@ -19,7 +19,7 @@ namespace SIGE.Entidades
         public string NB_EMPLEADO { get; set; }
         public string APELLIDOS { get; set; }
         public string CL_ESTADO_EMPLEADO { get; set; }
-        public System.DateTime FE_NACIMIENTO { get; set; }
+        public Nullable<System.DateTime> FE_NACIMIENTO { get; set; }
         public string EDAD { get; set; }
         public string CL_RFC { get; set; }
         public string CL_CURP { get; set; }

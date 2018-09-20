@@ -2,17 +2,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+   <label class="labelTitulo">Capacitación</label>
     <div style="height: calc(100% - 60px);">
-        <div style="clear: both; height: 10px;"></div>
-        <label class="labelTitulo">Capacitación</label>
         <telerik:RadGrid
             ID="grdCapacitacion"
             runat="server"
             AutoGenerateColumns="false"
             ShowGroupPanel="True"
             AllowPaging="true"
-            Height="99%"
+            Height="100%"
             HeaderStyle-Font-Bold="true"
             AllowSorting="true"
             OnItemDataBound="grdCapacitacion_ItemDataBound"
@@ -40,7 +38,7 @@
                 </GroupByExpressions>
                 <CommandItemSettings ShowExportToExcelButton="true" ShowAddNewRecordButton="false" />
                 <Columns>
-                    <telerik:GridBoundColumn AllowFiltering="false" CurrentFilterFunction="Contains" HeaderText="Renglón" DataField="RENGLON" UniqueName="RENGLON" HeaderStyle-Width="90"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AllowFiltering="false" CurrentFilterFunction="Contains" HeaderText="#" HeaderStyle-HorizontalAlign="Center" DataField="RENGLON" UniqueName="RENGLON" HeaderStyle-Width="50"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave evento" DataField="CL_EVENTO" UniqueName="CL_EVENTO" HeaderStyle-Width="180" FilterControlWidth="100"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Evento" DataField="NB_EVENTO" UniqueName="NB_EVENTO" HeaderStyle-Width="320" FilterControlWidth="240"></telerik:GridBoundColumn>
                     <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" DataType="System.DateTime" DataFormatString="{0:d}" HeaderText="Fecha inicio" DataField="FE_INICIO" UniqueName="FE_INICIO" HeaderStyle-Width="160" FilterControlWidth="80"></telerik:GridDateTimeColumn>

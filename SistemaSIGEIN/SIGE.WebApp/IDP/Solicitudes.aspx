@@ -131,8 +131,18 @@
                 OpenWindow(null);
             }
 
+            function OpenImpresion() {
+                idSolicitud = "";
+                obtenerIdFila();
+                if (idSolicitud != null && idSolicitud != "") {
+                    openChildDialog("VentanaImprimirSolicitud.aspx?SolicitudId=" + idSolicitud , "winImprimir", "Imprimir solicitud candidato");
+                }
+                else radalert("Selecciona una solicitud.", 400, 150);
+                //var myWindow = window.open("../VentanaImprimirSolicitud.aspx?SolicitudId=" + '<= vIdSolicitudVS >', "MsgWindow", "width=650,height=650");
+             }
+
             function OpenWindow(pIdSolicitud) {
-                var vURL = "/IDP/Solicitud/Solicitud.aspx";
+                var vURL = "Solicitud/Solicitud.aspx";
                 var vTitulo = "Agregar solicitud";
                 if (pIdSolicitud != null) {
                     vURL = vURL + "?SolicitudId=" + pIdSolicitud;
@@ -148,11 +158,12 @@
                 var masterTable = $find("<%=grdSolicitudes.ClientID %>").get_masterTableView();
                 var selectedItem = masterTable.get_selectedItems()[0];
                 if (selectedItem != undefined) {
-                    var vClSolicitud = masterTable.getCellByColumnUniqueName(selectedItem, "K_SOLICITUD_CL_SOLICITUD").innerHTML;
-                    vClSolicitud = ((vClSolicitud == "&nbsp;") ? "" : " " + vClSolicitud);
-                    confirmAction(sender, args, '¿Deseas eliminar la solicitud' + vClSolicitud + '?, este proceso no podrá revertirse.');
+                    //var vClSolicitud = masterTable.getCellByColumnUniqueName(selectedItem, "K_SOLICITUD_CL_SOLICITUD").innerHTML;
+                    //vClSolicitud = ((vClSolicitud == "&nbsp;") ? "" : " " + vClSolicitud);
+                    //confirmAction(sender, args, '¿Deseas eliminar la solicitud' + vClSolicitud + '?, este proceso no podrá revertirse.');
+                    confirmAction(sender, args, '¿Deseas eliminar las solicitudes seleccionadas?, este proceso no podrá revertirse.');
                 } else {
-                    radalert("Seleccione una solicitud.", 400, 150, "");
+                    radalert("Seleccione una solicitud.", 400, 200);
                     args.set_cancel(true);
                 }
             }
@@ -192,6 +203,17 @@
                 sendDataToParent(null);
             }
 
+            function ConfirmarActualizar(sender, args) {
+                var masterTable = $find("<%=grdSolicitudes.ClientID %>").get_masterTableView();
+                var selectedItem = masterTable.get_selectedItems()[0];
+                if (selectedItem != undefined) {
+                    confirmAction(sender, args, '¿Deseas actualizar las solicitudes seleccionadas?');
+                } else {
+                    radalert("Seleccione una solicitud.", 400, 200);
+                    args.set_cancel(true);
+                }
+            }
+
             function OpenActualizacionCartera() {
                 var win = window.open("ActualizacionCartera.aspx", '_self', true);
                 win.focus();
@@ -215,7 +237,7 @@
             }
 
             function OpenContratarWindow(pIdSolicitud) {
-                var vURL = "/IDP/VentanaContratarCandidato.aspx";
+                var vURL = "VentanaContratarCandidato.aspx";
                 var vTitulo = "Contratar candidato";
                 vURL = vURL + "?SolicitudId=" + pIdSolicitud;
 
@@ -236,7 +258,9 @@
 
                 if (clToken != null) {
                     vURL = vURL + "&ClToken=" + clToken;
-                }                     
+                }
+
+                vURL = vURL + "&SolicitudId=" + idSolicitud;
 
                 var windowProperties = {};
                 windowProperties.width = 1000;
@@ -246,7 +270,7 @@
 
             function OpenProcesoSeleccionWindowRespaldo() {
 
-                var vURL = "/IDP/ProcesoSeleccion.aspx";
+                var vURL = "ProcesoSeleccion.aspx";
                 var vTitulo = "Proceso de evaluación";
                 vURL = vURL + "?IdCandidato=" + idCandidato + "&IdRequisicion=" + idRequisicion + "&IdBateria=" + idBateria + "&ClToken=" + clToken;
 
@@ -322,6 +346,7 @@
                     EnableHeaderContextMenu="true"
                     AllowSorting="true"
                     HeaderStyle-Font-Bold="true"
+                    AllowMultiRowSelection="true"
                     OnItemDataBound="grdSolicitudes_ItemDataBound">
                     <ClientSettings>
                         <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -336,7 +361,7 @@
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="250" FilterControlWidth="180" HeaderText="Nombre completo" DataField="C_CANDIDATO_NB_EMPLEADO_COMPLETO" UniqueName="C_CANDIDATO_NB_EMPLEADO_COMPLETO"></telerik:GridBoundColumn>
                             <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="120" FilterControlWidth="90" HeaderText="Fecha de solicitud" DataField="K_SOLICITUD_FE_SOLICITUD" UniqueName="K_SOLICITUD_FE_SOLICITUD" DataFormatString="{0:d}"></telerik:GridDateTimeColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" ItemStyle-HorizontalAlign="Center" HeaderText="Estado de solicitud" DataField="K_SOLICITUD_CL_SOLICITUD_ESTATUS" UniqueName="K_SOLICITUD_CL_SOLICITUD_ESTATUS"></telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" FilterControlWidth="60" HeaderText="No. de empleado" DataField="M_EMPLEADO_CL_EMPLEADO" UniqueName="M_EMPLEADO_CL_EMPLEADO"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="90" HeaderText="No. de empleado" DataField="M_EMPLEADO_CL_EMPLEADO" UniqueName="M_EMPLEADO_CL_EMPLEADO"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="100" FilterControlWidth="40" HeaderText="No. Requisición" DataField="M_DEPARTAMENTO_NO_REQUISICION" UniqueName="M_DEPARTAMENTO_NO_REQUISICION"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="350" FilterControlWidth="280" HeaderText="Descripción de competencias adicionales" DataField="K_SOLICITUD_DS_COMPETENCIAS_ADICIONALES" UniqueName="K_SOLICITUD_DS_COMPETENCIAS_ADICIONALES"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Nombre" DataField="C_CANDIDATO_NB_CANDIDATO" UniqueName="C_CANDIDATO_NB_CANDIDATO"></telerik:GridBoundColumn>
@@ -375,6 +400,15 @@
             </telerik:RadPane>
             <telerik:RadPane ID="rpnOpciones" runat="server" Width="30">
                 <telerik:RadSlidingZone ID="slzOpciones" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
+                     <telerik:RadSlidingPane ID="slzAyuda" runat="server" Title="Ayuda" Width="500" MinWidth="500" Height="100%">
+                        <div style="padding: 20px;">
+                            <p style="text-align:justify">
+                                Esta opción te permitirá actualizar la cartera electrónica, invitando al candidato para que actualice sus datos o notificándole que su solicitud ha sido eliminada y si es de su interés pueda entrar a la página de la organización para integrar nuevamente su solicitud. <br/><br/>
+                                Para especificar la búsqueda selecciona de los campos disponibles el campo que sea de tu interés (por ejemplo “estado civil”), después selecciona el criterio de búsqueda (por ejemplo “igual a”), y en seguida ingresa la cadena con la que quieres efectuar dicha comparación (por ejemplo “soltero”), a continuación da click en “agregar", y al hacer click el sistema te enviará todos aquellos solicitantes que su estado civil sea soltero.<br/><br/>
+                                Puedes afinar la selección combinando varios campos, (por ejemplo, “sexo igual a femenino” , “municipio igual a Salamanca”, y “fecha de solicitud entre 01/01/2013 al 01/01/2014”), cada campo añadido limita el espectro posible de resultados, ya que la solicitud debe cumplir con la información indicada (estado civil soltero; sexo femenino; municipio Salamanca; con fecha de solicitud entre el 01/01/2013 al 01/01/2014). Si no cumple con alguna de estas variables no es incluido dentro de los resultados (por ejemplo: si es mujer, vive en Salamanca y su estado civil es casado, no es tomado en cuenta). 
+                            </p>
+                        </div>
+                    </telerik:RadSlidingPane>
                     <telerik:RadSlidingPane ID="RSPAdvSearch" runat="server" Title="Búsqueda avanzada" Width="500" MinWidth="500" Height="100%">
                         <div style="padding: 20px;">
                             <telerik:RadFilter runat="server" ID="ftGrdSolicitudes" FilterContainerID="grdSolicitudes" ShowApplyButton="true" Height="100">
@@ -398,7 +432,13 @@
     <div class="ctrlBasico">
         <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_click" OnClientClicking="ConfirmarEliminar" AutoPostBack="true"></telerik:RadButton>
     </div>
-    <div class="ctrlBasico">
+     <div class="ctrlBasico">
+         <telerik:RadButton ID="btnActualizarCartera" runat="server" Text="Actualizar cartera" OnClientClicking="ConfirmarActualizar" OnClick="btnActualizarCartera_Click" AutoPostBack="true"></telerik:RadButton>
+    </div>
+   <div class="ctrlBasico">
+         <telerik:RadButton ID="btnImpresion2" runat="server" Text="Imprimir" OnClientClicked="OpenImpresion" AutoPostBack="false"></telerik:RadButton>
+    </div>
+<%--    <div class="ctrlBasico">
         <telerik:RadButton runat="server" ID="btnProcesoSeleccion" Text="Proceso de evaluación" AutoPostBack="false" OnClientClicked="ShowProcesoSeleccionForm"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
@@ -409,7 +449,7 @@
     </div>
     <div class="ctrlBasico">
         <telerik:RadButton ID="btnProceso" runat="server" Text="Contratar" OnClientClicked="ShowContratarForm" AutoPostBack="false"></telerik:RadButton>
-    </div>
+    </div>--%>
    
     <%--<div class="ctrlBasico">
         <telerik:RadButton ID="btnBusquedaAvanzada" AutoPostBack="false" runat="server" Text="Búsqueda avanzada" Width="200" OnClientClicked=""></telerik:RadButton>
@@ -419,6 +459,18 @@
     </div>--%>
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true" OnClientClose="returnDataToParentPopup" OnClientShow="centerPopUp">
         <Windows>
+               <telerik:RadWindow ID="winImprimir"
+                runat="server"
+                Title="Imprimir"
+                Height="630px"
+                Width="1100px"
+                ReloadOnShow="true"
+                VisibleStatusbar="false"
+                ShowContentDuringLoad="false"
+                Modal="true"
+                Behaviors="Close"
+                Animation="Fade">
+            </telerik:RadWindow>
             <telerik:RadWindow ID="winSolicitud" runat="server" Title="Solicitud" Behaviors="None" Modal="true" VisibleStatusbar="false"></telerik:RadWindow>
             <telerik:RadWindow ID="winContratar" runat="server" Behaviors="Close" Modal="true" VisibleStatusbar="false"></telerik:RadWindow>
             <telerik:RadWindow ID="winEntrevista" runat="server" Behaviors="Close" Modal="true" VisibleStatusbar="false" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
@@ -430,5 +482,16 @@
             <telerik:RadWindow ID="rwProcesoSeleccion" runat="server" Behaviors="Close" Modal="true" VisibleStatusbar="false" ReloadOnShow="true" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
             <telerik:RadWindow ID="rwComentarios" runat="server" Title="Comentarios de entrevistas" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
         </Windows>
+    </telerik:RadWindowManager>
+        <telerik:RadWindowManager ID="rnTemplate" runat="server">
+          <AlertTemplate>    
+             <div style="height:10px;"></div>
+            <div class="rwDialogButtons" style="text-align:center;">
+                ¿Deseas notificar por correo electrónico a los candidatos?
+                 <div style="height:20px;"></div>
+                <input type="button" value="Si" style="width: 80px;" class="rwOkBtn" onclick="__doPostBack('btnEnviar', 'BorrarEnviar');" />
+                <input type="button" value="No" style="width: 80px" class="rwCancelBtn" onclick="__doPostBack('btnBorrar', 'Borrar');"  />
+            </div>
+        </AlertTemplate>
     </telerik:RadWindowManager>
 </asp:Content>

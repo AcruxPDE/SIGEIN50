@@ -16,12 +16,12 @@
                     <table class="ctrlTableForm">
                         <tr>
                             <td class="ctrlTableDataContext">
-                                <label>Periodo:</label></td>
+                                <label>Período:</label></td>
                             <td colspan="2" class="ctrlTableDataBorderContext">
                                 <div id="txtNbPeriodo" runat="server"></div>
                             </td>
                             <td class="ctrlTableDataContext">
-                                <label>Tipo de periodo:</label></td>
+                                <label>Tipo de período:</label></td>
                             <td class="ctrlTableDataBorderContext">
                                 <div id="txtTipoPeriodo" runat="server" width="170" maxlength="1000" enabled="false"></div>
                             </td>
@@ -63,7 +63,7 @@
                         <div style="padding: 10px; text-align: justify;">
                             Este proceso envía una solicitud para evaluación de cuestionarios a cada uno de los correos electrónicos de los evaluadores. 
                         Un ejemplo del cuerpo del mensaje se muestra en la pantalla, si deseas modificarlo deberás hacerlo en el menú de configuración del sistema. 
-                        Por favor indica el número de periodo a evaluar.
+                        Por favor indica el número de período a evaluar.
                         </div>
                     </telerik:RadSlidingPane>
                     <telerik:RadSlidingPane ID="rspMensaje" runat="server" Title="Mensaje" Width="500" MinWidth="500" Height="100%">

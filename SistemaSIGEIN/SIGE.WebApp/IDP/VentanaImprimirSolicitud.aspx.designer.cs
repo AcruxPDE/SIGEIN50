@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SIGE.WebApp.IDP {
+namespace SIGE.WebApp.Administracion {
     
     
     public partial class VentanaImprimirSolicitud {

@@ -85,6 +85,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadPageView rpvGestionar;
         
         /// <summary>
+        /// btnCrear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnCrear;
+        
+        /// <summary>
         /// btnAgregarEvento control.
         /// </summary>
         /// <remarks>
@@ -220,13 +229,49 @@ namespace SIGE.WebApp.FYD {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEstado;
         
         /// <summary>
-        /// txtEstado control.
+        /// txtTipo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtEstado;
+        protected global::Telerik.Web.UI.RadTextBox txtTipo;
+        
+        /// <summary>
+        /// Label3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label3;
+        
+        /// <summary>
+        /// rtbInicio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox rtbInicio;
+        
+        /// <summary>
+        /// Label4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label4;
+        
+        /// <summary>
+        /// rtbTermino control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox rtbTermino;
         
         /// <summary>
         /// lblCurso control.

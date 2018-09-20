@@ -21,10 +21,10 @@
                         </GroupByExpressions>
                 <CommandItemSettings ShowExportToExcelButton="true" ShowAddNewRecordButton="false" />                                           
                 <Columns>
-                    <telerik:GridBoundColumn  AllowFiltering="false"  HeaderText="Renglón" DataField="RENGLON" UniqueName="RENGLON" HeaderStyle-Width="70" ></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn  AllowFiltering="false"  HeaderText="#" HeaderStyle-HorizontalAlign="Center" DataField="RENGLON" UniqueName="RENGLON" HeaderStyle-Width="50" ></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Folio" DataField="CL_SOLICITUD" UniqueName="CL_SOLICITUD" HeaderStyle-Width="120" FilterControlWidth="50"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre Completo" DataField="NB_CANDIDATO" UniqueName="NB_CANDIDATO" HeaderStyle-Width="350" FilterControlWidth="80"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Estado actual" DataField="ESTADO_ACTUAL" UniqueName="ESTADO_ACTUAL" HeaderStyle-Width="120" FilterControlWidth="50"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Estatus actual" DataField="ESTADO_ACTUAL" UniqueName="ESTADO_ACTUAL" HeaderStyle-Width="120" FilterControlWidth="50"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="No. de Empleado" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO" HeaderStyle-Width="120" FilterControlWidth="50"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Estatus" DataField="ESTADO" UniqueName="ESTADO" HeaderStyle-Width="100" FilterControlWidth="50"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Lugar de nacimiento" DataField="DS_LUGAR_NACIMIENTO" UniqueName="DS_LUGAR_NACIMIENTO" HeaderStyle-Width="300" FilterControlWidth="50"></telerik:GridBoundColumn>

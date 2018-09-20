@@ -15,12 +15,12 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar
 
         private SistemaSigeinEntities context;
 
-        
-        public List<SPE_OBTIENE_C_MUNICIPIO_Result> ObtenerMunicipios(int? pIdMunicipio = null, String pClPais = null, String pClEstado = null, String pClMunicipio = null, String pNbMunicipio = null)
+
+        public List<SPE_OBTIENE_C_MUNICIPIO_Result> ObtenerMunicipios(int? pIdMunicipio = null, String pClPais = null, String pClEstado = null, String pNbEstado = null, String pClMunicipio = null, String pNbMunicipio = null)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_C_MUNICIPIO(pIdMunicipio, pClPais, pClEstado, pClMunicipio, pNbMunicipio).ToList();
+                return context.SPE_OBTIENE_C_MUNICIPIO(pIdMunicipio, pClPais, pClEstado,pNbEstado, pClMunicipio, pNbMunicipio).ToList();
             }
         }
                 

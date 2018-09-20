@@ -247,7 +247,7 @@ namespace SIGE.WebApp.EO.Cuestionarios
                     {
                         if (rcbArea.SelectedValue == "")
                         {
-                            UtilMensajes.MensajeResultadoDB(rwmMensaje, "Ingrese el área.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
+                            UtilMensajes.MensajeResultadoDB(rwmMensaje, "Ingrese el área/departamento.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
                             vValidacion = false;
                             return vValidacion;
                         }
@@ -587,6 +587,11 @@ namespace SIGE.WebApp.EO.Cuestionarios
             }
         }
 
+        protected void SeguridadProcesos()
+        {
+            btnFinalizar.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.J.A");
+        }
+
         #endregion
 
         protected void Page_Init(object sender, EventArgs e)
@@ -646,11 +651,17 @@ namespace SIGE.WebApp.EO.Cuestionarios
 
                 ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
                 var vPeriodoClima = nClima.ObtienePeriodosClima(pIdPerido: vIdPeriodo).FirstOrDefault();
-                txtNoPeriodo.InnerText = vPeriodoClima.NB_PERIODO.ToString();
+                txtNoPeriodo.InnerText = vPeriodoClima.NB_PERIODO.ToString() +" - "+ vPeriodoClima.DS_PERIODO.ToString();
 
-                rgCuestionario.Enabled = vFgHabilitado;
-                rgPreguntasAbiertas.Enabled = vFgHabilitado;
-                btnFinalizar.Enabled = vFgHabilitado;
+                SeguridadProcesos();
+
+                if (vIdEvaluado != 0)
+                {
+                    btnFinalizar.Visible = false;
+                }
+                //rgCuestionario.Enabled = vFgHabilitado;
+                //rgPreguntasAbiertas.Enabled = vFgHabilitado;
+                //btnFinalizar.Enabled = vFgHabilitado;
                 //CargarCombos();
             }
         }

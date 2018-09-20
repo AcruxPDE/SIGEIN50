@@ -75,7 +75,7 @@ namespace SIGE.WebApp.Administracion
                         txtClCatalogo.Text = vArea.CL_DEPARTAMENTO;
                         txtClCatalogo.ReadOnly = true;
                         chkActivo.Checked = vArea.FG_ACTIVO;
-                       // cmbTipoDepartamento.SelectedValue = vArea.CL_TIPO_DEPARTAMENTO;
+                       cmbTipoDepartamento.SelectedValue = vArea.CL_TIPO_DEPARTAMENTO;
 
                         RadListBoxItem vItem;
                         if (vArea.ID_DEPARTAMENTO_PADRE != null)
@@ -109,8 +109,8 @@ namespace SIGE.WebApp.Administracion
                 vArea.CL_DEPARTAMENTO = txtClCatalogo.Text;
                 vArea.NB_DEPARTAMENTO = txtNbCatalogo.Text;
                 vArea.FG_ACTIVO = chkActivo.Checked;
-                //vArea.CL_TIPO_DEPARTAMENTO = cmbTipoDepartamento.SelectedValue;
-                vArea.CL_TIPO_DEPARTAMENTO = "AREA";
+                vArea.CL_TIPO_DEPARTAMENTO = cmbTipoDepartamento.SelectedValue;
+               // vArea.CL_TIPO_DEPARTAMENTO = "AREA";
 
                 int vIdDepartamentoPadre = 0;
                 if (int.TryParse(lstDepartamentoJefe.SelectedValue, out vIdDepartamentoPadre))
@@ -129,8 +129,8 @@ namespace SIGE.WebApp.Administracion
                 vAreaAgregar.NB_DEPARTAMENTO = txtNbCatalogo.Text;
                 vAreaAgregar.CL_DEPARTAMENTO = txtClCatalogo.Text;
                 vAreaAgregar.FG_ACTIVO = chkActivo.Checked;
-                //vAreaAgregar.CL_TIPO_DEPARTAMENTO = cmbTipoDepartamento.SelectedValue;
-                vAreaAgregar.CL_TIPO_DEPARTAMENTO = "AREA";
+                vAreaAgregar.CL_TIPO_DEPARTAMENTO = cmbTipoDepartamento.SelectedValue;
+               // vAreaAgregar.CL_TIPO_DEPARTAMENTO = "AREA";
                 int vIdDepartamentoPadre = 0;
                 if (int.TryParse(lstDepartamentoJefe.SelectedValue, out vIdDepartamentoPadre))
                     vAreaAgregar.ID_DEPARTAMENTO_PADRE = vIdDepartamentoPadre;

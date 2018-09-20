@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <label class="labelTitulo">Datos de empleados</label>
         <div style="height: calc(100% - 60px);">
-        <telerik:RadGrid ID="grdEmpleados" runat="server" Height="100%" HeaderStyle-Font-Bold="true" AutoGenerateColumns="false" ShowGroupPanel="True" AllowPaging="true" AllowSorting="true" AllowFilteringByColumn="true"
+        <telerik:RadGrid ID="grdEmpleados" runat="server" Height="100%" Width="100%" HeaderStyle-Font-Bold="true" AutoGenerateColumns="false" ShowGroupPanel="True" AllowPaging="true" AllowSorting="true" AllowFilteringByColumn="true"
             OnNeedDataSource="grdEmpleados_NeedDataSource" OnItemCommand="grdEmpleados_ItemCommand" OnItemDataBound="grdEmpleados_ItemDataBound" >
                   <ClientSettings AllowDragToGroup="True" AllowKeyboardNavigation="true">
                 <Selecting AllowRowSelect="false" />
@@ -21,7 +21,7 @@
                         </GroupByExpressions>
                 <CommandItemSettings ShowExportToExcelButton="true" ShowAddNewRecordButton="false" />                                           
                 <Columns>
-                    <telerik:GridBoundColumn  AllowFiltering="false"  HeaderText="Renglón" DataField="RENGLON" UniqueName="RENGLON" HeaderStyle-Width="70" ></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn  AllowFiltering="false"  HeaderText="#" HeaderStyle-HorizontalAlign="Center" DataField="RENGLON" UniqueName="RENGLON" HeaderStyle-Width="50" ></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="No. de Empleado" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO" HeaderStyle-Width="120" FilterControlWidth="50" ></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre" DataField="NB_EMPLEADO" UniqueName="NB_EMPLEADO" HeaderStyle-Width="180" FilterControlWidth="110"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Apellidos" DataField="APELLIDOS" UniqueName="APELLIDOS" HeaderStyle-Width="250" FilterControlWidth="180"></telerik:GridBoundColumn>
@@ -32,7 +32,7 @@
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="CURP" DataField="CL_CURP" UniqueName="CL_CURP" HeaderStyle-Width="180" FilterControlWidth="100"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave del puesto" DataField="CL_PUESTO" UniqueName="CL_PUESTO" HeaderStyle-Width="120" FilterControlWidth="60"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="NB_PUESTO" HeaderStyle-Width="350" FilterControlWidth="260"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Departamento" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO" HeaderStyle-Width="180" FilterControlWidth="110"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO" HeaderStyle-Width="180" FilterControlWidth="110"></telerik:GridBoundColumn>
                     <telerik:GridDateTimeColumn DataFormatString="{0:d}" AutoPostBackOnFilter="true"  HeaderText="Fecha de ingreso" DataField="FE_ALTA" UniqueName="FE_ALTA" HeaderStyle-Width="120" FilterControlWidth="70" DataType="System.DateTime"  ></telerik:GridDateTimeColumn>                
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Folio de solicitud" DataField="CL_SOLICITUD" UniqueName="CL_SOLICITUD" HeaderStyle-Width="120" FilterControlWidth="50"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Número de seguro social" DataField="CL_NSS" UniqueName="CL_NSS" HeaderStyle-Width="130" FilterControlWidth="50"></telerik:GridBoundColumn>

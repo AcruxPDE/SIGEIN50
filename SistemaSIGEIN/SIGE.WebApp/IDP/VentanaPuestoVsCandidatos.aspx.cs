@@ -18,6 +18,7 @@ using OfficeOpenXml;
 using System.Reflection;
 using OfficeOpenXml.Drawing.Chart;
 using OfficeOpenXml.Style;
+using SIGE.Entidades.Administracion;
 
 namespace SIGE.WebApp.IDP
 {
@@ -116,6 +117,23 @@ namespace SIGE.WebApp.IDP
                 {
                     vIdPuesto = int.Parse(Request.Params["IdPuesto"]);
                 }
+
+                if (Request.Params["candidatos"] != null)
+                {
+                    List<E_CANDIDATO> ListaCandidatos = new List<E_CANDIDATO>();
+                    ListaCandidatos = JsonConvert.DeserializeObject<List<E_CANDIDATO>>(Request.Params["candidatos"].ToString());
+
+                    ContextoConsultasComparativas.oPuestoVsCandidatos.Add(new E_PUESTO_VS_CANDIDATOS { vIdPuestoVsCandidatos = (Guid)vIdPuestoVsCandidatos });
+
+                    foreach (var item in ListaCandidatos)
+                    {
+                        ContextoConsultasComparativas.oPuestoVsCandidatos.Where(t => t.vIdPuestoVsCandidatos == (Guid)vIdPuestoVsCandidatos).FirstOrDefault().vListaCandidatos.Add(int.Parse(item.ID_CANDIDATO.ToString()));
+                    }
+
+
+                }
+
+
                 CargarPuestoCandidatos();
             }
         }
@@ -259,7 +277,7 @@ namespace SIGE.WebApp.IDP
                 vPuesto.Name = "(" + item.CL_PUESTO + ") " + item.NB_PUESTO;
                 rhcPuestoCandidatos.PlotArea.XAxis.Items.Add(item.NB_COMPETENCIA);
                 rhcPuestoCandidatos.PlotArea.XAxis.LabelsAppearance.RotationAngle = 270;
-                rhcPuestoCandidatos.PlotArea.YAxis.MaxValue = 6;
+                rhcPuestoCandidatos.PlotArea.YAxis.MaxValue = 5;
             }
             rhcPuestoCandidatos.PlotArea.Series.Add(vPuesto);
 

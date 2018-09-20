@@ -28,9 +28,11 @@
                         nbPuesto: masterTable.getCellByColumnUniqueName(selectedItem, "M_PUESTO_NB_PUESTO").innerHTML,
                         clTipoCatalogo: "<%= vClCatalogo %>"
                     };
-                    vEmpleados.push(vEmpleado);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vEmpleados.length;
+                    if (!existeElemento(vEmpleado)) {
+                        vEmpleados.push(vEmpleado);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vEmpleados.length;
+                    }
                 }
                 return true;
             }
@@ -42,6 +44,15 @@
                 browserWnd.radalert("Selecciona un empleado.", 400, 150);
             }
 
+            return false;
+        }
+
+        function existeElemento(pEmpleado) {
+            for (var i = 0; i < vEmpleados.length; i++) {
+                var vValue = vEmpleados[i];
+                if (vValue.idEmpleado == pEmpleado.idEmpleado)
+                    return true;
+            }
             return false;
         }
 

@@ -4,7 +4,7 @@
     <script src="../Assets/js/jquery.min.js"></script>
     <script type="text/javascript">
         function OpenAreaSelectionWindow() {
-            OpenSelectionWindow("../Comunes/SeleccionArea.aspx", "winSeleccion", "Selección de área")
+            OpenSelectionWindow("../Comunes/SeleccionArea.aspx", "winSeleccion", "Selección de área/departamento")
         }
 
         function OpenProgramaSelectionWindow() {
@@ -364,7 +364,7 @@
             <div style="clear: both; height: 10px;"></div>
 
             <div class="ctrlBasico">
-                <label style="margin-left: 10px;">Periodo:</label>
+                <label style="margin-left: 10px;">Período:</label>
             </div>
 
             <div class="ctrlBasico">
@@ -479,7 +479,7 @@
                     </div>
                     <div style="clear: both; height: 5px;"></div>
                     <div class="ctrlBasico">
-                        <telerik:RadButton runat="server" ID="btnGuardarPrograma" Text="Guardar" OnClientClicking="ValidarNuevoProgramaCapacitacion" OnClick="btnGuardarPrograma_Click" ToolTip="Esta opción te permite crear un programa de capacitación a partir de los resultados obtenidos en un periodo de Detección de Necesidades de Capacitación (DNC). Selecciona el periodo deseado:"></telerik:RadButton>
+                        <telerik:RadButton runat="server" ID="btnGuardarPrograma" Text="Guardar" OnClientClicking="ValidarNuevoProgramaCapacitacion" OnClick="btnGuardarPrograma_Click" ToolTip="Esta opción te permite crear un programa de capacitación a partir de los resultados obtenidos en un período de Detección de Necesidades de Capacitación (DNC). Selecciona el periodo deseado:"></telerik:RadButton>
                     </div>
                 </telerik:RadSlidingPane>
 

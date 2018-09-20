@@ -18,9 +18,27 @@
             openChildDialog(pURL, pVentana, pTitle, WindowsProperties);
         }
 
+        function OpenSelectionWindowsFinal(pURL, pVentana, pTitle) {
+            var currentWnd = GetRadWindow();
+            var browserWnd = window;
+            if (currentWnd)
+                browserWnd = currentWnd.BrowserWindow;
+            var WindowsProperties = {
+                width: browserWnd.innerWidth - 20,
+                height: browserWnd.innerHeight - 20
+            };
+            openChildDialog(pURL, pVentana, pTitle, WindowsProperties);
+        }
+
         function OpenSendMessage(pIdPeriodo) {
             if (pIdPeriodo != null) {
                 OpenSelectionWindows("../EO/VentanaConfiguraFechaEnvioReplicas.aspx?PeriodoId=" + pIdPeriodo, "WinPeriodoDesempeno", "Asigna fechas de envio solicitudes");
+            }
+        }
+
+        function OpenSendMessageFinal(pIdPeriodo) {
+            if (pIdPeriodo != null) {
+                OpenSelectionWindowsFinal("../EO/VentanaSolicitudesReplicas.aspx?PeriodoId=" + pIdPeriodo, "WinPeriodoDesempeno", "Envío de solicitudes");
             }
         }
 

@@ -21,15 +21,15 @@
         }
 
         function OpenEmpleadosSelectionWindow() {
-            OpenSelectionWindow("/Comunes/SeleccionEmpleado.aspx", "winSeleccion", "Selección de evaluados");
+            OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx", "winSeleccion", "Selección de evaluados");
         }
 
         function OpenPuestoSelectionWindow() {
-            OpenSelectionWindow("/Comunes/SeleccionPuesto.aspx", "winSeleccion", "Selección de puestos");
+            OpenSelectionWindow("../Comunes/SeleccionPuesto.aspx", "winSeleccion", "Selección de puestos");
         }
 
         function OpenAreaSelectionWindow() {
-            OpenSelectionWindow("/Comunes/SeleccionArea.aspx", "winSeleccion", "Selección de áreas");
+            OpenSelectionWindow("../Comunes/SeleccionArea.aspx", "winSeleccion", "Selección de áreas/departamentos");
         }
 
         function confirmarEliminarEvaluados(sender, args) {
@@ -66,18 +66,18 @@
                 var vMensaje = "";
                 if (selectedItems.length == 1) {
                     vNombre = masterTable.getCellByColumnUniqueName(selectedItems[0], "NB_PERIODO").innerHTML;
-                    vMensaje = "¿Deseas eliminar el periodo " + vNombre + " de la lista?, este proceso no podrá revertirse";
+                    vMensaje = "¿Deseas eliminar el período " + vNombre + " de la lista?, este proceso no podrá revertirse";
                 }
                 else {
                     vNombre = selectedItems.length;
-                    vMensaje = "¿Deseas eliminar los " + vNombre + " periodos seleccionados?, este proceso no podrá revertirse";
+                    vMensaje = "¿Deseas eliminar los " + vNombre + " períodos seleccionados?, este proceso no podrá revertirse";
                 }
                 var vWindowsProperties = { height: 200 };
 
                 confirmAction(sender, args, vMensaje, vWindowsProperties);
             }
             else {
-                radalert("Selecciona un periodo de evaluación.", 400, 150);
+                radalert("Selecciona un período de evaluación.", 400, 150);
                 args.set_cancel(true);
             }
         }
@@ -127,21 +127,21 @@
             var vIdPeriodo = '<%= vIdPeriodo %>';
             var vClTipo = "FD_EVALUACION";
 
-            OpenSelectionWindow("../Comunes/SeleccionPeriodoParaTablero.aspx?IdPeriodoTablero=" + vIdPeriodo + "&ClTipoPeriodo=" + vClTipo, "winSeleccion", "Selección de periodo")
+            OpenSelectionWindow("../Comunes/SeleccionPeriodoParaTablero.aspx?IdPeriodoTablero=" + vIdPeriodo + "&ClTipoPeriodo=" + vClTipo, "winSeleccion", "Selección de período")
         }
 
         function OpenPeriodoDesempenoSelectionWindow() {
             var vIdPeriodo = '<%= vIdPeriodo %>';
             var vClTipo = "EO_DESEMPENO";
 
-            OpenSelectionWindow("../Comunes/SeleccionPeriodoParaTablero.aspx?IdPeriodoTablero=" + vIdPeriodo + "&ClTipoPeriodo=" + vClTipo, "winSeleccion", "Selección de periodo")
+            OpenSelectionWindow("../Comunes/SeleccionPeriodoParaTablero.aspx?IdPeriodoTablero=" + vIdPeriodo + "&ClTipoPeriodo=" + vClTipo, "winSeleccion", "Selección de período")
         }
 
         function OpenPeriodoClimaSelectionWindow() {
             var vIdPeriodo = '<%= vIdPeriodo %>';
             var vClTipo = "EO_CLIMA";
 
-            OpenSelectionWindow("../Comunes/SeleccionPeriodoParaTablero.aspx?IdPeriodoTablero=" + vIdPeriodo + "&ClTipoPeriodo=" + vClTipo, "winSeleccion", "Selección de periodo")
+            OpenSelectionWindow("../Comunes/SeleccionPeriodoParaTablero.aspx?IdPeriodoTablero=" + vIdPeriodo + "&ClTipoPeriodo=" + vClTipo, "winSeleccion", "Selección de período")
         }
 
         function OpenTabuladorSelectionWindow() {
@@ -159,11 +159,11 @@
                 var vMensaje = "";
                 if (selectedItems.length == 1) {
                     vNombre = masterTable.getCellByColumnUniqueName(selectedItems[0], "NB_PERIODO").innerHTML;
-                    vMensaje = "¿Deseas eliminar el periodo " + vNombre + " de la lista?, este proceso no podrá revertirse";
+                    vMensaje = "¿Deseas eliminar el período " + vNombre + " de la lista?, este proceso no podrá revertirse";
                 }
                 else {
                     vNombre = selectedItems.length;
-                    vMensaje = "¿Deseas eliminar los " + vNombre + " periodos seleccionados?, este proceso no podrá revertirse";
+                    vMensaje = "¿Deseas eliminar los " + vNombre + " períodos seleccionados?, este proceso no podrá revertirse";
                 }
                 var vWindowsProperties = { height: 200 };
 
@@ -183,11 +183,11 @@
                 var vMensaje = "";
                 if (selectedItems.length == 1) {
                     vNombre = masterTable.getCellByColumnUniqueName(selectedItems[0], "NB_PERIODO").innerHTML;
-                    vMensaje = "¿Deseas eliminar el periodo " + vNombre + " de la lista?, este proceso no podrá revertirse";
+                    vMensaje = "¿Deseas eliminar el período " + vNombre + " de la lista?, este proceso no podrá revertirse";
                 }
                 else {
                     vNombre = selectedItems.length;
-                    vMensaje = "¿Deseas eliminar los " + vNombre + " periodos seleccionados?, este proceso no podrá revertirse";
+                    vMensaje = "¿Deseas eliminar los " + vNombre + " períodos seleccionados?, este proceso no podrá revertirse";
                 }
                 var vWindowsProperties = { height: 200 };
 
@@ -292,7 +292,7 @@
     <div style="height: calc(100% - 100px); padding-top: 10px;">
         <telerik:RadMultiPage ID="rmpConfiguracionTablero" runat="server" SelectedIndex="0" Height="100%">
             <telerik:RadPageView ID="rpvSeleccionEvaluados" runat="server">
-                <div style="height: calc(100% - 45px); padding-bottom: 10px;">
+                <div style="height: calc(100% - 60px); padding-bottom: 10px;">
                     <telerik:RadGrid ID="grdEvaluados" runat="server" Height="100%"
                         AutoGenerateColumns="false" EnableHeaderContextMenu="true"
                         AllowSorting="true" AllowMultiRowSelection="true" HeaderStyle-Font-Bold="true"
@@ -312,8 +312,8 @@
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Apellido paterno" DataField="NB_APELLIDO_PATERNO" UniqueName="NB_APELLIDO_PATERNO"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Apellido materno" DataField="NB_APELLIDO_MATERNO" UniqueName="NB_APELLIDO_MATERNO"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="M_PUESTO_NB_PUESTO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Clave del área" DataField="CL_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_CL_DEPARTAMENTO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Clave del área/departamento" DataField="CL_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_CL_DEPARTAMENTO"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Género" DataField="CL_GENERO" UniqueName="CL_GENERO"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Estado civil" DataField="CL_ESTADO_CIVIL" UniqueName="CL_ESTADO_CIVIL"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Nombre del cónyuge" DataField="NB_CONYUGUE" UniqueName="NB_CONYUGUE"></telerik:GridBoundColumn>
@@ -354,14 +354,14 @@
                     <telerik:RadButton ID="btnSeleccionPorPuesto" runat="server" Text="Agregar desde descriptivos de puesto" AutoPostBack="false" OnClientClicked="OpenPuestoSelectionWindow"></telerik:RadButton>
                 </div>
                 <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnSeleccionPorArea" runat="server" Text="Agregar desde áreas" AutoPostBack="false" OnClientClicked="OpenAreaSelectionWindow"></telerik:RadButton>
+                    <telerik:RadButton ID="btnSeleccionPorArea" runat="server" Text="Agregar desde áreas/departamentos" AutoPostBack="false" OnClientClicked="OpenAreaSelectionWindow"></telerik:RadButton>
                 </div>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnEliminarEvaluado" runat="server" Text="Eliminar" OnClientClicking="confirmarEliminarEvaluados" OnClick="btnEliminarEvaluado_Click"></telerik:RadButton>
                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvPruebas" runat="server">
-                <div style="height: calc(100% - 45px); padding-bottom: 10px;">
+                <div style="height: calc(100% - 60px); padding-bottom: 10px;">
                     <telerik:RadGrid ID="grdCandidatos" runat="server" Height="100%"
                         AutoGenerateColumns="false" EnableHeaderContextMenu="true"
                         AllowSorting="true" AllowMultiRowSelection="true" HeaderStyle-Font-Bold="true"
@@ -386,7 +386,7 @@
                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvCompetencias" runat="server">
-                <div style="height: calc(100% - 45px);">
+                <div style="height: calc(100% - 60px);">
                     <telerik:RadGrid runat="server" ID="grdCompetencia" Height="100%" AutoGenerateColumns="false" HeaderStyle-Font-Bold="true" OnNeedDataSource="grdCompetenci_NeedDataSource" AllowMultiRowSelection="true">
                         <ClientSettings AllowKeyboardNavigation="true">
                             <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -398,21 +398,22 @@
                             <Columns>
                                 <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30"></telerik:GridClientSelectColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="160" FilterControlWidth="90" HeaderText="Clave" DataField="CL_PERIODO" UniqueName="CL_PERIODO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="90%" HeaderText="Nombre" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" FilterControlWidth="80%" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="250" FilterControlWidth="180" HeaderText="Nombre" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="220" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO"></telerik:GridBoundColumn>
                             </Columns>
                         </MasterTableView>
                     </telerik:RadGrid>
                 </div>
+                <div style="height:10px; clear:both;"></div>
                 <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnAgregarPeriodoFyd" runat="server" Text="Agregar periodo" AutoPostBack="false" OnClientClicked="OpenPeriodoFormacionSelectionWindow"></telerik:RadButton>
+                    <telerik:RadButton ID="btnAgregarPeriodoFyd" runat="server" Text="Agregar período" AutoPostBack="false" OnClientClicked="OpenPeriodoFormacionSelectionWindow"></telerik:RadButton>
                 </div>
                 <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnEliminarPeriodoFyd" runat="server" Text="Eliminar periodo" OnClientClicking="confirmarEliminarPeriodosEvaluacion" OnClick="btnEliminarPeriodoFyd_Click"></telerik:RadButton>
+                    <telerik:RadButton ID="btnEliminarPeriodoFyd" runat="server" Text="Eliminar período" OnClientClicking="confirmarEliminarPeriodosEvaluacion" OnClick="btnEliminarPeriodoFyd_Click"></telerik:RadButton>
                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvDesempeno" runat="server">
-                <div style="height: calc(100% - 45px);">
+                <div style="height: calc(100% - 60px);">
                     <telerik:RadGrid runat="server" ID="grdDesempeno" HeaderStyle-Font-Bold="true" Height="100%" AutoGenerateColumns="false" OnNeedDataSource="grdDesempeno_NeedDataSource" AllowMultiRowSelection="true">
                         <ClientSettings AllowKeyboardNavigation="true">
                             <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -424,21 +425,22 @@
                             <Columns>
                                 <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30"></telerik:GridClientSelectColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="160" FilterControlWidth="90" HeaderText="Clave" DataField="CL_PERIODO" UniqueName="CL_PERIODO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="90%" HeaderText="Nombre" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" FilterControlWidth="80%" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="250" FilterControlWidth="180" HeaderText="Nombre" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="220" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO"></telerik:GridBoundColumn>
                             </Columns>
                         </MasterTableView>
                     </telerik:RadGrid>
                 </div>
+                   <div style="height:10px; clear:both;"></div>
                 <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnAgregarPeriodoDesempeno" runat="server" Text="Agregar periodo" AutoPostBack="false" OnClientClicked="OpenPeriodoDesempenoSelectionWindow"></telerik:RadButton>
+                    <telerik:RadButton ID="btnAgregarPeriodoDesempeno" runat="server" Text="Agregar período" AutoPostBack="false" OnClientClicked="OpenPeriodoDesempenoSelectionWindow"></telerik:RadButton>
                 </div>
                 <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnEliminarPeriodoDesempeno" runat="server" Text="Eliminar periodo" OnClientClicking="confirmarEliminarPeriodosDesempeno" OnClick="btnEliminarPeriodoDesempeno_Click"></telerik:RadButton>
+                    <telerik:RadButton ID="btnEliminarPeriodoDesempeno" runat="server" Text="Eliminar período" OnClientClicking="confirmarEliminarPeriodosDesempeno" OnClick="btnEliminarPeriodoDesempeno_Click"></telerik:RadButton>
                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvClima" runat="server">
-                <div style="height: calc(100% - 45px);">
+                <div style="height: calc(100% - 60px);">
                     <telerik:RadGrid runat="server" ID="grdClima" Height="100%" AutoGenerateColumns="false" HeaderStyle-Font-Bold="true" OnNeedDataSource="grdClima_NeedDataSource" AllowMultiRowSelection="true">
                         <ClientSettings AllowKeyboardNavigation="true">
                             <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -450,21 +452,22 @@
                             <Columns>
                                 <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30"></telerik:GridClientSelectColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="160" FilterControlWidth="90" HeaderText="Clave" DataField="CL_PERIODO" UniqueName="CL_PERIODO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="90%" HeaderText="Nombre" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" FilterControlWidth="80%" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="250" FilterControlWidth="180" HeaderText="Nombre" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="220" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO"></telerik:GridBoundColumn>
                             </Columns>
                         </MasterTableView>
                     </telerik:RadGrid>
                 </div>
+                   <div style="height:10px; clear:both;"></div>
                 <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnAgregarPeriodoClima" runat="server" Text="Agregar periodo" AutoPostBack="false" OnClientClicked="OpenPeriodoClimaSelectionWindow"></telerik:RadButton>
+                    <telerik:RadButton ID="btnAgregarPeriodoClima" runat="server" Text="Agregar período" AutoPostBack="false" OnClientClicked="OpenPeriodoClimaSelectionWindow"></telerik:RadButton>
                 </div>
                 <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnEliminarPeriodoClima" runat="server" Text="Eliminar periodo" OnClientClicking="confirmarEliminarPeriodosClima" OnClick="btnEliminarPeriodoClima_Click"></telerik:RadButton>
+                    <telerik:RadButton ID="btnEliminarPeriodoClima" runat="server" Text="Eliminar período" OnClientClicking="confirmarEliminarPeriodosClima" OnClick="btnEliminarPeriodoClima_Click"></telerik:RadButton>
                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvSalarial" runat="server">
-                <div style="height: calc(100% - 45px);">
+                <div style="height: calc(100% - 60px);">
                     <telerik:RadGrid runat="server" ID="grdSalarial" Height="100%" HeaderStyle-Font-Bold="true" AutoGenerateColumns="false" OnNeedDataSource="grdSalarial_NeedDataSource" AllowMultiRowSelection="true">
                         <ClientSettings AllowKeyboardNavigation="true">
                             <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -476,12 +479,13 @@
                             <Columns>
                                 <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30"></telerik:GridClientSelectColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="160" FilterControlWidth="90" HeaderText="Clave" DataField="CL_PERIODO" UniqueName="CL_PERIODO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="90%" HeaderText="Nombre" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" FilterControlWidth="80%" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="250" FilterControlWidth="180" HeaderText="Nombre" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="300" FilterControlWidth="220" HeaderText="Descripción" DataField="DS_PERIODO" UniqueName="DS_PERIODO"></telerik:GridBoundColumn>
                             </Columns>
                         </MasterTableView>
                     </telerik:RadGrid>
                 </div>
+                   <div style="height:10px; clear:both;"></div>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnAgregarTabulador" runat="server" Text="Agregar tabulador" AutoPostBack="false" OnClientClicked="OpenTabuladorSelectionWindow"></telerik:RadButton>
                 </div>

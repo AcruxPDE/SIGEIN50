@@ -64,7 +64,11 @@
             function HabilitaBotones() {
                 var btnModificar = $find("<%=btnEditar.ClientID%>");
                 var btnEliminar = $find("<%=btnEliminar.ClientID%>");
-                btnModificar.set_enabled(true);
+
+                if('<%= vEditar%>' == "True")
+                    btnModificar.set_enabled(true);
+
+                if ('<%= vEliminar%>' == "True")
                 btnEliminar.set_enabled(true);
             }
             function Eliminar() {

@@ -49,10 +49,10 @@ namespace SIGE.Negocio.FormacionDesarrollo
             return UtilRespuesta.EnvioRespuesta(oEventoCapacitacion.EliminaEmpleadoPrograma(pIdPrograma, pIdEmpleado));
         }
 
-        public List<E_EVENTO_PARTICIPANTE> ObtieneParticipanteEvento(int? ID_EVENTO_PARTICIPANTE = null, int? ID_EVENTO = null, int? ID_EMPLEADO = null, string CL_PARTICIPANTE = null, string NB_PARTICIPANTE = null, string NB_PUESTO = null, string NB_DEPARTAMENTO = null, int? NO_TIEMPO = null, decimal? PR_CUMPLIMIENTO = null)
+        public List<E_EVENTO_PARTICIPANTE> ObtieneParticipanteEvento(int? ID_EVENTO_PARTICIPANTE = null, int? ID_EVENTO = null, int? ID_EMPLEADO = null, string CL_PARTICIPANTE = null, string NB_PARTICIPANTE = null, string NB_PUESTO = null, string NB_DEPARTAMENTO = null, int? NO_TIEMPO = null, decimal? PR_CUMPLIMIENTO = null, int? pID_ROL = null)
         {
             EventoCapacitacionOperaciones op = new EventoCapacitacionOperaciones();
-            return op.ObtenerParticipanteEvento(ID_EVENTO_PARTICIPANTE, ID_EVENTO, ID_EMPLEADO, CL_PARTICIPANTE, NB_PARTICIPANTE, NB_PUESTO, NB_DEPARTAMENTO, NO_TIEMPO, PR_CUMPLIMIENTO);
+            return op.ObtenerParticipanteEvento(ID_EVENTO_PARTICIPANTE, ID_EVENTO, ID_EMPLEADO, CL_PARTICIPANTE, NB_PARTICIPANTE, NB_PUESTO, NB_DEPARTAMENTO, NO_TIEMPO, PR_CUMPLIMIENTO, pID_ROL);
         }
 
         public List<E_EVENTO_CALENDARIO> ObtieneEventoCalendario(int? ID_EVENTO_CALENDARIO = null, int? ID_EVENTO = null, DateTime? FE_INICIAL = null, DateTime? FE_FINAL = null, int? NO_HORAS = null)
@@ -67,10 +67,10 @@ namespace SIGE.Negocio.FormacionDesarrollo
             return UtilRespuesta.EnvioRespuesta(op.ActualizarEventoCalendario(XML_PARTICIPANTES, CL_USUARIO, NB_PROGRAMA));
         }
 
-        public List<SPE_OBTIENE_EVENTO_PARTICIPANTE_COMPETENCIA_Result> ObtieneEventoParticipanteCompetencia(int? ID_EVENTO_PARTICIPANTE_COMPETENCIA = null, int? ID_EVENTO = null, int? ID_PARTICIPANTE = null, int? ID_COMPETENCIA = null, byte? NO_EVALUACION = null, string NB_COMPETENCIA = null, int? ID_EMPRESA = null)
+        public List<SPE_OBTIENE_EVENTO_PARTICIPANTE_COMPETENCIA_Result> ObtieneEventoParticipanteCompetencia(int? ID_EVENTO_PARTICIPANTE_COMPETENCIA = null, int? ID_EVENTO = null, int? ID_PARTICIPANTE = null, int? ID_COMPETENCIA = null, byte? NO_EVALUACION = null, string NB_COMPETENCIA = null, int? ID_EMPRESA = null, int? pID_ROL = null)
         {
             EventoCapacitacionOperaciones oEvento = new EventoCapacitacionOperaciones();
-            return oEvento.ObtenerEventoParticipanteCompetencia(ID_EVENTO_PARTICIPANTE_COMPETENCIA, ID_EVENTO, ID_PARTICIPANTE, ID_COMPETENCIA, NO_EVALUACION, NB_COMPETENCIA, ID_EMPRESA);
+            return oEvento.ObtenerEventoParticipanteCompetencia(ID_EVENTO_PARTICIPANTE_COMPETENCIA, ID_EVENTO, ID_PARTICIPANTE, ID_COMPETENCIA, NO_EVALUACION, NB_COMPETENCIA, ID_EMPRESA, pID_ROL);
         }
 
         public E_RESULTADO ActualizaEvaluacionCompetencias(string pXmlEvaluacion, string pClUsuario, string pNbPrograma)
@@ -91,11 +91,11 @@ namespace SIGE.Negocio.FormacionDesarrollo
             return UtilRespuesta.EnvioRespuesta(op.EliminarEventoCalendario(pIdEventoCalendario));
         }
 
-        public UDTT_ARCHIVO ListaAsistencia(int pIdEvento)
+        public UDTT_ARCHIVO ListaAsistencia(int pIdEvento, int? pIdRol)
         {
             EventoCapacitacionOperaciones op = new EventoCapacitacionOperaciones();
             UDTT_ARCHIVO excelListaAsistencia = new UDTT_ARCHIVO();
-            SPE_OBTIENE_EVENTO_LISTA_ASISTENCIA_Result oDatos = op.ObtenerDatosListaAsistencia(pIdEvento);
+            SPE_OBTIENE_EVENTO_LISTA_ASISTENCIA_Result oDatos = op.ObtenerDatosListaAsistencia(pIdEvento, pIdRol);
 
             Stream newStream = new MemoryStream();
 
@@ -156,77 +156,83 @@ namespace SIGE.Negocio.FormacionDesarrollo
                         ws.Column(4).AutoFit();
                         ws.Column(5).BestFit = true;
 
-
+                         XElement xmlCalendario = null ;
                         //Agregamos los datos del calendario del evento
-                        XElement xmlCalendario = XElement.Parse(oDatos.XML_EVENTO_CALENDARIO);
+                        if(oDatos.XML_EVENTO_CALENDARIO != null)
+                        xmlCalendario = XElement.Parse(oDatos.XML_EVENTO_CALENDARIO);
 
                         vRow = 11;
                         vCol = 4;
 
                         //OfficeOpenXml.Style.ExcelStyle oEstilo = new OfficeOpenXml.Style.ExcelStyle();
-
-                        foreach (XElement item in xmlCalendario.Elements("FECHA"))
+                        if (xmlCalendario != null)
                         {
-                            DateTime vFeInicial, vFeFinal;
+                            foreach (XElement item in xmlCalendario.Elements("FECHA"))
+                            {
+                                DateTime vFeInicial, vFeFinal;
 
-                            vFeInicial = UtilXML.ValorAtributo<DateTime>(item.Attribute("FE_INICIAL"));
-                            vFeFinal = UtilXML.ValorAtributo<DateTime>(item.Attribute("FE_FINAL"));
+                                vFeInicial = UtilXML.ValorAtributo<DateTime>(item.Attribute("FE_INICIAL"));
+                                vFeFinal = UtilXML.ValorAtributo<DateTime>(item.Attribute("FE_FINAL"));
 
-                            ws.Cells[vRow, vCol].Value = vFeInicial.ToString("dd/MM/yyyy");
-                            asignarEstiloCelda(ws.Cells[vRow, vCol]);
-                            vRow++;
-                            ws.Cells[vRow, vCol].Value = "De " + vFeInicial.ToString("hh:mm") + " a " + vFeFinal.ToString("hh:mm");
-                            asignarEstiloCelda(ws.Cells[vRow, vCol]);
+                                ws.Cells[vRow, vCol].Value = vFeInicial.ToString("dd/MM/yyyy");
+                                asignarEstiloCelda(ws.Cells[vRow, vCol]);
+                                vRow++;
+                                ws.Cells[vRow, vCol].Value = "De " + vFeInicial.ToString("hh:mm") + " a " + vFeFinal.ToString("hh:mm");
+                                asignarEstiloCelda(ws.Cells[vRow, vCol]);
 
 
-                            ws.Column(vCol).BestFit = true;
-                            ws.Column(vCol).AutoFit();
+                                ws.Column(vCol).BestFit = true;
+                                ws.Column(vCol).AutoFit();
 
-                            vRow = 11;
-                            vCol++;
+                                vRow = 11;
+                                vCol++;
+                            }
                         }
 
-                        //Agregamos los encabezados de la tabla
-                        asignarEstiloCelda(ws.Cells["A11:A12"]);
-                        ws.Cells["A11:A12"].Merge = true;
-                        ws.Cells["A11"].Value = "Clave Empleado";
+                            //Agregamos los encabezados de la tabla
+                            asignarEstiloCelda(ws.Cells["A11:A12"]);
+                            ws.Cells["A11:A12"].Merge = true;
+                            ws.Cells["A11"].Value = "Clave Empleado";
 
-                        asignarEstiloCelda(ws.Cells["B11:B12"]);
-                        ws.Cells["B11:B12"].Merge = true;
-                        ws.Cells["B11"].Value = "Nombre de participante";
+                            asignarEstiloCelda(ws.Cells["B11:B12"]);
+                            ws.Cells["B11:B12"].Merge = true;
+                            ws.Cells["B11"].Value = "Nombre de participante";
 
-                        asignarEstiloCelda(ws.Cells["C11:C12"]);
-                        ws.Cells["C11:C12"].Merge = true;
-                        ws.Cells["C11"].Value = "Puesto";
+                            asignarEstiloCelda(ws.Cells["C11:C12"]);
+                            ws.Cells["C11:C12"].Merge = true;
+                            ws.Cells["C11"].Value = "Puesto";
 
-                        //asignarEstiloCelda(ws.Cells["D11:D12"]);
-                        //ws.Cells["D11:D12"].Merge = true;
-                        //ws.Cells["D11"].Value = "Departamento";
+                            //asignarEstiloCelda(ws.Cells["D11:D12"]);
+                            //ws.Cells["D11:D12"].Merge = true;
+                            //ws.Cells["D11"].Value = "Departamento";
 
-                        vCol--;
+                            vCol--;
+                            if (xmlCalendario != null)
+                            {
+                                asignarEstiloCelda(ws.Cells[10, 4, 10, vCol]);
+                                ws.Cells[10, 4, 10, vCol].Merge = true;
+                                ws.Cells[10, 4].Value = "Fechas/Firmas";
 
-                        asignarEstiloCelda(ws.Cells[10, 4, 10, vCol]);
-                        ws.Cells[10, 4, 10, vCol].Merge = true;
-                        ws.Cells[10, 4].Value = "Fechas/Firmas";
+                                vRow = 13;
+                                vCol = 4;
 
-                        vRow = 13;
-                        vCol = 4;
+                                int noTotalFechas = xmlCalendario.Elements("FECHA").Count() - 1;
+                                int noTotalParticipantes = xmlParticipantes.Elements("PARTICIPANTE").Count() - 1;
+                                noTotalParticipantes = vRow + noTotalParticipantes;
 
-                        int noTotalFechas = xmlCalendario.Elements("FECHA").Count() - 1;
-                        int noTotalParticipantes = xmlParticipantes.Elements("PARTICIPANTE").Count() - 1;
-                        noTotalParticipantes = vRow + noTotalParticipantes;
+                                for (vRow = 13; vRow <= noTotalParticipantes; vRow++)
+                                {
+                                    ws.Cells[vRow, vCol, vRow, (vCol + noTotalFechas)].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                                    ws.Cells[vRow, vCol, vRow, (vCol + noTotalFechas)].Style.Border.Bottom.Color.SetColor(System.Drawing.Color.Black);
 
-                        for (vRow = 13; vRow <= noTotalParticipantes; vRow++)
-                        {
-                            ws.Cells[vRow, vCol, vRow, (vCol + noTotalFechas)].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                            ws.Cells[vRow, vCol, vRow, (vCol + noTotalFechas)].Style.Border.Bottom.Color.SetColor(System.Drawing.Color.Black);
+                                    ws.Cells[vRow, vCol, vRow, (vCol + noTotalFechas)].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                                    ws.Cells[vRow, vCol, vRow, (vCol + noTotalFechas)].Style.Border.Left.Color.SetColor(System.Drawing.Color.Black);
 
-                            ws.Cells[vRow, vCol, vRow, (vCol + noTotalFechas)].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                            ws.Cells[vRow, vCol, vRow, (vCol + noTotalFechas)].Style.Border.Left.Color.SetColor(System.Drawing.Color.Black);
-
-                            ws.Cells[vRow, vCol, vRow, (vCol + noTotalFechas)].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                            ws.Cells[vRow, vCol, vRow, (vCol + noTotalFechas)].Style.Border.Right.Color.SetColor(System.Drawing.Color.Black);
-                        }
+                                    ws.Cells[vRow, vCol, vRow, (vCol + noTotalFechas)].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                                    ws.Cells[vRow, vCol, vRow, (vCol + noTotalFechas)].Style.Border.Right.Color.SetColor(System.Drawing.Color.Black);
+                                }
+                            }
+      
 
                         pck.Save();
                         newStream = pck.Stream;
@@ -248,10 +254,10 @@ namespace SIGE.Negocio.FormacionDesarrollo
             celda.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender);
         }
 
-        public List<SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO_Result> ObtieneReporteResultadosEvento(int pIdEvento)
+        public List<SPE_OBTIENE_FYD_REPORTE_RESULTADOS_EVENTO_Result> ObtieneReporteResultadosEvento(int pIdEvento, int? vIdRol)
         {
             EventoCapacitacionOperaciones oEventoCapacitacion = new EventoCapacitacionOperaciones();
-            return oEventoCapacitacion.ObtenerReporteResultadosEvento(pIdEvento);
+            return oEventoCapacitacion.ObtenerReporteResultadosEvento(pIdEvento, vIdRol);
         }
 
         public List<E_EVENTO_PARTICIPANTE_COMPETENCIA> ObtieneReporteResultadosEventoDetalle(int pIdEvento)

@@ -10,7 +10,7 @@ namespace SIGE.Entidades.IntegracionDePersonal
     public class E_CANDIDATO_IDONEO
     {
         public Nullable<int> ID_CANDIDATO { get; set; }
-        public int ID_SOLICITUD { get; set; }
+        public Nullable<int> ID_SOLICITUD { get; set; }
         public string CL_SOLICITUD { get; set; }
         public string NB_CANDIDATO { get; set; }
         public Nullable<int> NO_EDAD { get; set; }
@@ -25,6 +25,12 @@ namespace SIGE.Entidades.IntegracionDePersonal
         public byte[] FI_FOTOGRAFIA { get; set; }
         public string vOrigen { get; set; }
         public string CL_ESTADO_PROCESO { get; set; }
+
+        public Nullable<int> ID_EMPLEADO { get; set; }
+	    public string CL_EMPLEADO { get; set; }
+	    public string NB_PUESTO { get; set; }
+	    public string CL_ORIGEN { get; set; }
+
 
         public Nullable<int> ID_REQUISICION { get; set; }
         public Nullable<int> ID_PROCESO_SELECCION { get; set; }

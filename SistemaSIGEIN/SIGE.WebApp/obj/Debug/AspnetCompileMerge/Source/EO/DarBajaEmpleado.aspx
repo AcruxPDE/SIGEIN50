@@ -39,14 +39,28 @@
           function GetDarBajaWindowProperties(pIdEmpleado) {
               var wnd = GetWindowProperties();
               wnd.vTitulo = "Dar de baja a un empleado";
-              wnd.vURL = "/EO/VentanaDarBajaEmpleado.aspx?ID=" + pIdEmpleado;
+              wnd.vURL = "VentanaDarBajaEmpleado.aspx?ID=" + pIdEmpleado;
               wnd.vRadWindowId = "WinDarBaja";
               return wnd;
+          }
+
+          function CloseWindow() {
+              $find("<%= rgEmpleadosBaja.ClientID %>").get_masterTableView().rebind();
           }
           
       </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+        <telerik:RadAjaxLoadingPanel ID="ralpBajas" runat="server"></telerik:RadAjaxLoadingPanel>
+    <telerik:RadAjaxManager ID="ramBajas" runat="server" DefaultLoadingPanelID="ralpBajas">
+        <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="rgEmpleadosBaja">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="rgEmpleadosBaja" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+        </AjaxSettings>
+        </telerik:RadAjaxManager>
      <label class="labelTitulo">Dar de baja un empleado</label>
     <div style="height: calc(100% - 100px);">
      <telerik:RadGrid ID="rgEmpleadosBaja" runat="server" HeaderStyle-Font-Bold="true" OnNeedDataSource="rgEmpleadosBaja_NeedDataSource" AutoGenerateColumns="false" Height="100%" OnItemDataBound="rgEmpleadosBaja_ItemDataBound">
@@ -70,7 +84,7 @@
                                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="150" FilterControlWidth="120" HeaderText="Puesto" DataField="M_PUESTO_NB_PUESTO" UniqueName="M_PUESTO_NB_PUESTO">
                                         <HeaderStyle Font-Bold="true" />
                                     </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="80" FilterControlWidth="80" HeaderText="Área" DataField="M_DEPARTAMENTO_NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO">
+                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="80" FilterControlWidth="80" HeaderText="Área/Departamento" DataField="M_DEPARTAMENTO_NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO">
                                         <HeaderStyle Font-Bold="true" />
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="80" FilterControlWidth="80" HeaderText="Empresa" DataField="C_EMPRESA_NB_EMPRESA" UniqueName="C_EMPRESA_NB_EMPRESA">
@@ -86,7 +100,7 @@
          </div>
      <telerik:RadWindowManager ID="rwmMensaje" runat="server" EnableShadow="true" OnClientClose="returnDataToParentPopup" >
          <Windows>
-              <telerik:RadWindow ID="WinDarBaja" runat="server" Width="1050px" Height="580px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade"> </telerik:RadWindow>
+              <telerik:RadWindow ID="WinDarBaja" runat="server" Width="1050px" Height="580px" VisibleStatusbar="false" ShowContentDuringLoad="false" OnClientClose="CloseWindow" Behaviors="Close" Modal="true" Animation="Fade"> </telerik:RadWindow>
          </Windows>
          <Windows>
               <telerik:RadWindow ID="WinSeleccionCausa" runat="server" Width="1050px" Height="580px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade">

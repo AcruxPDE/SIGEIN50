@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/IDP/MenuIDP.master" AutoEventWireup="true" CodeBehind="ConsultasComparativas.aspx.cs" Inherits="SIGE.WebApp.IDP.ConsultasComparativas" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ContextHTML.master" AutoEventWireup="true" CodeBehind="ConsultasComparativas.aspx.cs" Inherits="SIGE.WebApp.IDP.ConsultasComparativas" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
     <script type="text/javascript">
 
         var vIdPuesto = 0;
@@ -82,10 +82,10 @@
             OpenWindow(GetSelectionCandidatos())
         }
 
-        function GetVentanaPuestoVsCandidatos() {
+        function GetVentanaPuestoVsCandidatos(pListaCandidatos) {
             var wnd = GetWindowPropertiesConsultas();
             wnd.vTitulo = "Consulta Puesto vs. N Personas";
-            wnd.vURL = "VentanaPuestoVsCandidatos.aspx?vIdPuestoVsCandidatos=" + '<%= vIdPuestoVsCandidatos%>' + "&IdPuesto=" + vIdPuesto;
+            wnd.vURL = "VentanaPuestoVsCandidatos.aspx?candidatos=" + pListaCandidatos + "&IdPuesto=" + vIdPuesto;
             wnd.vRadWindowId = "rwConsulta";
             return wnd;
         }
@@ -99,7 +99,30 @@
                 radalert("Selecciona por lo menos un candidato.", 400, 150);
                 return;
             }
-            OpenWindow(GetVentanaPuestoVsCandidatos());
+
+                        
+            var vCandidatos = [];
+            var vCandidatosJson = "";
+            var grid = $find("<%=rgdCandidatos.ClientID %>");
+            var MasterTable = grid.get_masterTableView();
+            var selectedRows = MasterTable.get_dataItems();
+            if (selectedRows.length > 0) {
+                for (i = 0; i < selectedRows.length; i++) {
+                    selectedItem = selectedRows[i];
+                    var vCandidato = {
+                        ID_CANDIDATO: selectedItem.getDataKeyValue("ID_CANDIDATO"),
+                    }
+
+                    vCandidatos.push(vCandidato);
+                }
+
+                vCandidatosJson = JSON.stringify(vCandidatos);
+
+
+
+                OpenWindow(GetVentanaPuestoVsCandidatos(vCandidatosJson));
+            }
+        else { radalert("Selecciona un candidato.", 400, 150, ""); }
         }
 
         function GetVentanaCandidatoVsPuestos() {
@@ -132,16 +155,26 @@
         }
 
         function GetWindowPropertiesConsultas() {
+            var currentWnd = GetRadWindow();
+            var browserWnd = window;
+            if (currentWnd)
+                browserWnd = currentWnd.BrowserWindow;
+
             return {
-                width: document.documentElement.clientWidth - 100,
-                height: document.documentElement.clientHeight - 10
+                width: browserWnd.innerWidth - 100,
+                height: browserWnd.innerHeight - 20
             };
         }
 
         function GetWindowProperties() {
+            var currentWnd = GetRadWindow();
+            var browserWnd = window;
+            if (currentWnd)
+                browserWnd = currentWnd.BrowserWindow;
+
             return {
-                width: document.documentElement.clientWidth - 350,
-                height: document.documentElement.clientHeight - 10
+                width: browserWnd.innerWidth - 350,
+                height: browserWnd.innerHeight - 20
             };
         }
 
@@ -166,22 +199,26 @@
 
         function DeletePuesto() {
             var vListBox = $find("<%=lstPuesto.ClientID %>");
-             Delete(vListBox);
+            Delete(vListBox);
+            vIdPuesto = 0;
          }
 
          function DeletePuestoGlobal() {
              var vListBox = $find("<%=rlbPuestoGlobal.ClientID %>");
              Delete(vListBox);
+             vIdPuestoGlobal = 0;
          }
 
          function DeleteCandidatoGlobal() {
              var vListBox = $find("<%=rlbCandidatoGlobal.ClientID %>");
-            Delete(vListBox);
+             Delete(vListBox);
+             vIdCandidatoGlobal = 0;
          }
 
         function DeleteCandidato() {
             var vListBox = $find("<%=lstCandidato.ClientID %>");
-             Delete(vListBox);
+            Delete(vListBox);
+            vIdCandidato = 0;
          }
 
         function Delete(vListBox) {
@@ -261,11 +298,23 @@
              }
          }
 
+         function setValueVariable(urParam1) {
+             vIdCandidatoGlobal = urParam1;
+         }
+
+         function setValueVariable2(urParam1) {
+             datos = urParam1;
+         }
+
+         function setValueVariable3(urParam1) {
+             vIdCandidato = urParam1;
+         }
+
 
     </script>
 
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
     <telerik:RadAjaxManager ID="ramConsultas" runat="server" OnAjaxRequest="ramConsultas_AjaxRequest">
         <AjaxSettings>
@@ -278,13 +327,13 @@
         </AjaxSettings>
     </telerik:RadAjaxManager>
 
-    <telerik:RadTabStrip ID="rtsConsultas" runat="server" MultiPageID="rmpConsultas">
+<%--    <telerik:RadTabStrip ID="rtsConsultas" runat="server" MultiPageID="rmpConsultas">
         <Tabs>
             <telerik:RadTab Text="Consulta Puesto vs. N Personas" SelectedIndex="0"></telerik:RadTab>
             <telerik:RadTab Text="Consulta Persona vs. N Puestos" SelectedIndex="1"></telerik:RadTab>
             <telerik:RadTab Text="Consulta Global" SelectedIndex="2"></telerik:RadTab>
         </Tabs>
-    </telerik:RadTabStrip>
+    </telerik:RadTabStrip>--%>
     <div style="height: calc(100% - 90px);">
         <telerik:RadMultiPage ID="rmpConsultas" runat="server" SelectedIndex="0" Height="100%">
 
@@ -415,6 +464,7 @@
             <%-- fin de consulta Persona vs. N Puestos --%>
             <%-- inicio de consulta Global --%>
             <telerik:RadPageView ID="rpvConsultaGlobal" runat="server">
+                <div style="height: calc(100% - 40px);">
                 <div style="clear: both; height: 10px;"></div>
                 <div class="ctrlBasico">
                     <div class="divControlIzquierda">
@@ -437,14 +487,15 @@
                         <telerik:RadButton ID="btnQuitarCandidatoGlobal" runat="server" Text="X" AutoPostBack="false" ValidationGroup="vgGlobal" OnClientClicked="DeleteCandidatoGlobal"></telerik:RadButton>
                     </div>
                 </div>
+                    </div>
                 <div style="height: 10px; clear: both;"></div>
-                <div class="ctrlBasico">
-                    <div class="divControlIzquierda">
+<%--                <div class="ctrlBasico">
+                    <div class="divControlIzquierda">--%>
                         <div class="divControlDerecha">
                             <telerik:RadButton runat="server" ID="btnConsultaglobal" Text="Reporte" AutoPostBack="false" OnClientClicked="OpenConsultaGlobalWindow"></telerik:RadButton>
                         </div>
-                    </div>
-                </div>
+<%--                    </div>
+                </div>--%>
             </telerik:RadPageView>
             <%-- fin de consulta Global --%>
         </telerik:RadMultiPage>
@@ -452,7 +503,7 @@
 
     <telerik:RadWindowManager ID="rwmMensaje" runat="server" EnableShadow="true" OnClientClose="returnDataToParentPopup">
         <Windows>
-            <telerik:RadWindow
+           <%-- <telerik:RadWindow
                 ID="winSeleccion"
                 runat="server"
                 VisibleStatusbar="false"
@@ -461,7 +512,7 @@
                 Modal="true"
                 ReloadOnShow="true"
                 Behaviors="Close">
-            </telerik:RadWindow>
+            </telerik:RadWindow>--%>
 
             <telerik:RadWindow
                 ID="rwConsulta"
@@ -472,9 +523,7 @@
                 Modal="true"
                 ReloadOnShow="true"
                 Behaviors="Close">
-            </telerik:RadWindow>
-
-          
+            </telerik:RadWindow>        
             <telerik:RadWindow 
                 ID="winReportes" 
                 runat="server" 
@@ -485,6 +534,18 @@
                 ReloadOnShow="true" 
                 Behaviors="Close"
                 ></telerik:RadWindow>
+              <telerik:RadWindow ID="winImprimir"
+                runat="server"
+                Title="Imprimir"
+                Height="630px"
+                Width="1100px"
+                ReloadOnShow="true"
+                VisibleStatusbar="false"
+                ShowContentDuringLoad="false"
+                Modal="true"
+                Behaviors="Close"
+                Animation="Fade">
+            </telerik:RadWindow>
         </Windows>
     </telerik:RadWindowManager>
 

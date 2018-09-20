@@ -26,9 +26,11 @@
                          dsCatalogoValor: masterTable.getCellByColumnUniqueName(selectedItem, "DS_CATALOGO_VALOR").innerHTML,
                          clTipoCatalogo: "<%= vClCatalogo %>"
                      };
-                     vCatalogos.push(vCatalogo);
-                     var vLabel = document.getElementsByName('lblAgregar')[0];
-                     vLabel.innerText = "Agregados: " + vCatalogos.length;
+                     if (!existeElemento(vCatalogo)) {
+                         vCatalogos.push(vCatalogo);
+                         var vLabel = document.getElementsByName('lblAgregar')[0];
+                         vLabel.innerText = "Agregados: " + vCatalogos.length;
+                     }
                  }
                  return true;
              }
@@ -41,7 +43,16 @@
              }
 
              return false;
-         }
+        }
+
+        function existeElemento(pCatalogo) {
+            for (var i = 0; i < vCatalogos.length; i++) {
+                var vValue = vCatalogos[i];
+                if (vValue.idCatalogo == pCatalogo.idCatalogo)
+                    return true;
+            }
+            return false;
+        }
 
          function cancelarSeleccion() {
              sendDataToParent(null);

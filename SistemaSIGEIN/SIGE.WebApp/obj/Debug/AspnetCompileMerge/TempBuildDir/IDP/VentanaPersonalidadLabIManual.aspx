@@ -158,9 +158,9 @@
 
         </script>
     </telerik:RadCodeBlock>
-    <label name="" id="lbltitulo" class="labelTitulo">Personalidad Laboral I</label>
+    <label name="" id="lbltitulo" class="labelTitulo">Personalidad laboral I</label>
 
-    <div style="height: calc(100% - 100px);">
+    <div style="height: calc(100% - 120px);">
         <telerik:RadSplitter ID="splHelp" runat="server" Width="100%" Height="100%" BorderSize="0" Orientation="Horizontal">
 
 <%--            <telerik:RadPane ID="rpnOpciones" runat="server" Height="30" Width="100%" Scrolling="None">
@@ -661,10 +661,8 @@
     </div>
 
     <div style="clear: both; height: 10px;"></div>
-    <div class="divControlDerecha">
-        <div class="ctrlBasico">
-            <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Terminar" AutoPostBack="true"></telerik:RadButton>
-        </div>
+    <div class="DivBtnTerminarDerecha">
+            <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Guardar" AutoPostBack="true"></telerik:RadButton>
     </div>
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>
 </asp:Content>

@@ -20,7 +20,7 @@
                 <Columns>
                     <telerik:GridBoundColumn HeaderText="Evaluador" DataField="NB_EVALUADOR" UniqueName="NB_EVALUADOR" CurrentFilterFunction="Contains" AutoPostBackOnFilter="true" HeaderStyle-Width="250" FilterControlWidth="170" ></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn HeaderText="Evaluado" DataField="NB_EVALUADO" UniqueName="NB_EVALUADO" FilterControlWidth="170" CurrentFilterFunction="Contains" HeaderStyle-Width="250" AutoPostBackOnFilter="true"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn HeaderText="Área del evaluador" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO" AllowFiltering="true" ItemStyle-HorizontalAlign="Left" FilterControlWidth="200"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn HeaderText="Área/Departamento del evaluador" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO" AllowFiltering="true" ItemStyle-HorizontalAlign="Left" FilterControlWidth="200"></telerik:GridBoundColumn>
                     <telerik:GridDateTimeColumn DataFormatString="{0:d}" HeaderText="Fecha" DataField="FE_MODIFICACION" UniqueName="FE_MODIFICACION" AllowFiltering="true" HeaderStyle-Width="130" ItemStyle-HorizontalAlign="Right" FilterControlWidth="90"></telerik:GridDateTimeColumn>
                     <telerik:GridNumericColumn HeaderText="Puntaje" DataFormatString="{0:#0.00}" DataField="NO_PUNTAJE" UniqueName="NO_PUNTAJE" AllowFiltering="true" HeaderStyle-Width="90" ItemStyle-HorizontalAlign="Right"  NumericType="Number" FilterControlWidth="50" AutoPostBackOnFilter="true"></telerik:GridNumericColumn>
                 </Columns>

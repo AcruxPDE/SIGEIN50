@@ -14,6 +14,7 @@ namespace SIGE.Entidades.Administracion
         public string CL_FUNCION { get; set; }
         public string CL_TIPO_FUNCION { get; set; }
         public string NB_FUNCION { get; set; }
+        public string DS_FUNCION { get; set; }
         public string NB_URL { get; set; }
         public string XML_CONFIGURACION { get; set; }
         public int? ID_FUNCION_PADRE { get; set; }

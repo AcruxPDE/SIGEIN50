@@ -103,6 +103,24 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadButton btnCleanDepartamentoDepende;
         
         /// <summary>
+        /// lblTipoDepartamento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTipoDepartamento;
+        
+        /// <summary>
+        /// cmbTipoDepartamento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox cmbTipoDepartamento;
+        
+        /// <summary>
         /// Label2 control.
         /// </summary>
         /// <remarks>

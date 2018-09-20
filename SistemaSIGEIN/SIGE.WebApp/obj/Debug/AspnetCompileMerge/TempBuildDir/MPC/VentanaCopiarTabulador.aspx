@@ -3,8 +3,21 @@
     <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
         <script type="text/javascript">
 
+            //function closeWindow() {
+            //    GetRadWindow().close();
+            //}
+
+
             function closeWindow() {
-                GetRadWindow().close();
+                var pDatos = [{
+                    accion: "ACTUALIZARLISTA"
+
+                }];
+                cerrarVentana(pDatos);
+            }
+
+            function cerrarVentana(recargarList) {
+                sendDataToParent(recargarList);
             }
 
             </script>

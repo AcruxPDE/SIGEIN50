@@ -44,6 +44,8 @@ namespace SIGE.WebApp.FYD
             set { ViewState["vs_veec_mensaje_correo"] = value; }
         }
 
+        private int? vIdRol;
+
         #endregion
 
         #region Funciones
@@ -60,7 +62,7 @@ namespace SIGE.WebApp.FYD
                 txtFechaInicial.InnerText = oEvento.FE_INICIO.ToString("dd/MM/yyyy");
                 txtFechaTermino.InnerText = oEvento.FE_TERMINO.ToString("dd/MM/yyyy");
 
-                oListaParticipante = neg.ObtieneParticipanteEvento(ID_EVENTO: vIdEvento);
+                oListaParticipante = neg.ObtieneParticipanteEvento(ID_EVENTO: vIdEvento, pID_ROL: vIdRol);
                 oCalendario = neg.ObtieneEventoCalendario(ID_EVENTO: vIdEvento);
 
                 vMensajeCorreo = ContextoApp.FYD.MensajeCorreoParticipantes.dsMensaje;
@@ -164,6 +166,8 @@ namespace SIGE.WebApp.FYD
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
+
             if (!Page.IsPostBack)
             {
                 if (Request.Params["IdEvento"] != null)

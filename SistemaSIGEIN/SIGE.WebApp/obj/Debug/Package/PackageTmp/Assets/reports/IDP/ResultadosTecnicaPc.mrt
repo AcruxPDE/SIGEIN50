@@ -52,7 +52,7 @@
               <Name>Text1</Name>
               <Page isRef="2" />
               <Parent isRef="3" />
-              <Text>Resultados Técnica PC </Text>
+              <Text>Resultados técnica PC </Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text1>
@@ -911,10 +911,10 @@ de aciertos</Text>
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>11/8/2017 1:49:04 PM</ReportChanged>
+  <ReportChanged>5/30/2018 3:12:42 PM</ReportChanged>
   <ReportCreated>11/2/2017 12:28:45 PM</ReportCreated>
-  <ReportFile>C:\Users\usuario\Documents\SIGEIN 50\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosTecnicaPc.mrt</ReportFile>
-  <ReportGuid>9aa665d3672c4ed6adf19df4bbe1a03b</ReportGuid>
+  <ReportFile>C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosTecnicaPc.mrt</ReportFile>
+  <ReportGuid>de77859e2cc2494190de793bde6be9c4</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2015.3.0</ReportVersion>

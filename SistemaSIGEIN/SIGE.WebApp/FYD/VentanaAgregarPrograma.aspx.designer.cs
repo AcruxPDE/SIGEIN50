@@ -94,13 +94,67 @@ namespace SIGE.WebApp.FYD {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label4;
         
         /// <summary>
-        /// txtTipoProgCapacitacion control.
+        /// rbDnc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtTipoProgCapacitacion;
+        protected global::Telerik.Web.UI.RadButton rbDnc;
+        
+        /// <summary>
+        /// rbCero control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton rbCero;
+        
+        /// <summary>
+        /// desdeDNC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl desdeDNC;
+        
+        /// <summary>
+        /// lstPeriodo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadListBox lstPeriodo;
+        
+        /// <summary>
+        /// btnBuscarPeriodo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnBuscarPeriodo;
+        
+        /// <summary>
+        /// btnEliminarPeriodo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnEliminarPeriodo;
+        
+        /// <summary>
+        /// rbCopia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton rbCopia;
         
         /// <summary>
         /// Label1 control.

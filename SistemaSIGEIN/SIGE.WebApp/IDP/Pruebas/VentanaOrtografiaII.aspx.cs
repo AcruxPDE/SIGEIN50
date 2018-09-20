@@ -107,10 +107,16 @@ namespace SIGE.WebApp.IDP
                         cronometro.Visible = false;
                         vTiempoPrueba = 0;
                         btnTerminar.Visible = false;
+                        //btnEliminar.Visible = true;// Se agrega para la nueva forma de navegación 06/06/2018
+                        btnImpresionPrueba.Visible = true; // Se agrega para imprimir en la nueva navegación IDP 06/06/2018
                         btnCorregir.Visible = true;
                         //obtener respuestas
                         var respuestas = nKprueba.Obtener_RESULTADO_PRUEBA(vIdPrueba, vClToken);
                         asignarValores(respuestas);
+
+                        var vPrueba = nKprueba.Obtener_K_PRUEBA(pIdPrueba: vIdPrueba, pClTokenExterno: vClToken).FirstOrDefault();
+                        if (vPrueba.NB_TIPO_PRUEBA == "MANUAL")
+                            btnCorregir.Enabled = false;
                     }
                     else
                     {
@@ -556,5 +562,23 @@ namespace SIGE.WebApp.IDP
             else
                 EditTest();
         }
+
+        //protected void btnEliminar_Click(object sender, EventArgs e)
+        //{
+        //    if (vIdPrueba != null)
+        //    {
+        //        PruebasNegocio nPruebas = new PruebasNegocio();
+        //        var vResultado = nPruebas.EliminaRespuestasPrueba(vIdPrueba, vClUsuario, vNbPrograma);
+        //        string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+        //        if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+        //        {
+        //            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+
+        //        }
+        //        else
+        //            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
+        //    }
+
+        //}
     }
 }

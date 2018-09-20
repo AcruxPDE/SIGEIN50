@@ -21,10 +21,16 @@ namespace SIGE.Negocio.Administracion
             return operaciones.ObtieneEmpleado(ID_EMPLEADO, CL_EMPLEADO, NB_EMPLEADO, NB_APELLIDO_PATERNO, NB_APELLIDO_MATERNO, CL_ESTADO_EMPLEADO, CL_GENERO, CL_ESTADO_CIVIL, NB_CONYUGUE, CL_RFC, CL_CURP, CL_NSS, CL_TIPO_SANGUINEO, CL_NACIONALIDAD, NB_PAIS, NB_ESTADO, NB_MUNICIPIO, NB_COLONIA, NB_CALLE, NO_INTERIOR, NO_EXTERIOR, CL_CODIGO_POSTAL, CL_CORREO_ELECTRONICO, FG_ACTIVO, FE_NACIMIENTO, DS_LUGAR_NACIMIENTO, FE_ALTA, FE_BAJA, ID_PUESTO, MN_SUELDO, MN_SUELDO_VARIABLE, DS_SUELDO_COMPOSICION, ID_CANDIDATO, ID_EMPRESA);
         }
 
-        public List<SPE_OBTIENE_EMPLEADOS_Result> ObtenerEmpleados(XElement pXmlSeleccion = null, bool? pFgFoto = null, string pClUsuario = null, bool? pFgActivo = null, int? pID_EMPRESA = null)
+        public List<SPE_OBTIENE_EMPLEADOS_Result> ObtenerEmpleados(XElement pXmlSeleccion = null, bool? pFgFoto = null, string pClUsuario = null, bool? pFgActivo = null, int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             EmpleadoOperaciones oEmpleados = new EmpleadoOperaciones();
-            return oEmpleados.ObtenerEmpleados(pXmlSeleccion, pFgFoto, pClUsuario, pFgActivo, pID_EMPRESA);
+            return oEmpleados.ObtenerEmpleados(pXmlSeleccion, pFgFoto, pClUsuario, pFgActivo, pID_EMPRESA, pID_ROL);
+        }
+
+        public List<SPE_OBTIENE_EMPLEADOS_CAMPOS_EXTRA_Result> ObtenerEmpleadosCamposExtra(XElement pXmlSeleccion = null, bool? pFgFoto = null, string pClUsuario = null, bool? pFgActivo = null, int? pID_EMPRESA = null, int? pIdRol = null)
+        {
+            EmpleadoOperaciones oEmpleados = new EmpleadoOperaciones();
+            return oEmpleados.ObtenerEmpleadosCamposExtra(pXmlSeleccion, pFgFoto, pClUsuario, pFgActivo, pID_EMPRESA, pIdRol);
         }
 
         public List<SPE_OBTIENE_EMPLEADOS_SELECTOR_Result> ObtenerEmpleadosSelector(XElement pXmlSeleccion = null, bool? pFgFoto = null, string pClUsuario = null, bool? pFgActivo = null, int? pID_EMPRESA = null)
@@ -102,16 +108,16 @@ namespace SIGE.Negocio.Administracion
             return UtilRespuesta.EnvioRespuesta(operaciones.Elimina_M_EMPLEADO(ID_EMPLEADO, CL_EMPLEADO, usuario, programa));
         }
 
-        public List<SPE_OBTIENE_SUELDO_EMPLEADOS_Result> ObtenerSueldoEmpleados()
+        public List<SPE_OBTIENE_SUELDO_EMPLEADOS_Result> ObtenerSueldoEmpleados(int? pIdEmpresa = null, int? pIdRol = null)
         {
             EmpleadoOperaciones EmpleadoOp = new EmpleadoOperaciones();
-            return EmpleadoOp.ObtenerSueldoEmpleados();
+            return EmpleadoOp.ObtenerSueldoEmpleados(pIdEmpresa, pIdRol);
         }
 
-        public List<SPE_OBTIENE_PERFIL_EMPLEADOS_Result> ObtenerPerfilEmpleados()
+        public List<SPE_OBTIENE_PERFIL_EMPLEADOS_Result> ObtenerPerfilEmpleados(int? pIdEmpresa = null, int? pIdRol = null)
         {
             EmpleadoOperaciones EmpleadoOp = new EmpleadoOperaciones();
-            return EmpleadoOp.ObtenerPerfilEmpleados();
+            return EmpleadoOp.ObtenerPerfilEmpleados(pIdEmpresa, pIdRol);
         }
 
         public List<SPE_OBTIENE_CAPACITACIONES_EMPLEADO_Result> ObtenerCapacitacionEmpleados()
@@ -126,11 +132,6 @@ namespace SIGE.Negocio.Administracion
             return UtilRespuesta.EnvioRespuesta(oEmpleado.ActualizarBajaEmpleados());
         }
 
-        public List<SPE_OBTIENE_EMPLEADOS_CAMPOS_EXTRA_Result> ObtenerEmpleadosCamposExtra(XElement pXmlSeleccion = null, bool? pFgFoto = null, string pClUsuario = null, bool? pFgActivo = null, int? pID_EMPRESA = null)
-        {
-            EmpleadoOperaciones oEmpleados = new EmpleadoOperaciones();
-            return oEmpleados.ObtenerEmpleadosCamposExtra(pXmlSeleccion, pFgFoto, pClUsuario, pFgActivo, pID_EMPRESA);
-        }
 
         public E_RESULTADO CancelaBajaEmpleado(int ID_EMPLEADO, string CL_USUARIO, string NB_PROGRAMA)
         {
@@ -266,6 +267,7 @@ namespace SIGE.Negocio.Administracion
                     {
                         vReporteEmpleado.DatosEo.vLstRotacion.Add(new E_ROTACION
                         {
+                            FE_INGRESO = UtilXML.ValorAtributo<DateTime>(item.Attribute("FE_INGRESO")),
                             ID_BAJA_EMPLEADO = UtilXML.ValorAtributo<int>(item.Attribute("ID_CAUSA_BAJA")),
                             FE_BAJA_EFECTIVA = UtilXML.ValorAtributo<DateTime>(item.Attribute("FE_BAJA_EFECTIVA")),
                             NB_MOTIVO = UtilXML.ValorAtributo<string>(item.Attribute("NB_MOTIVO")),
@@ -289,8 +291,8 @@ namespace SIGE.Negocio.Administracion
                             FE_CAMBIO = UtilXML.ValorAtributo<DateTime>(item.Attribute("FE_CAMBIO")),
                             NB_PROCESO = UtilXML.ValorAtributo<string>(item.Attribute("NB_PROCESO")),
                             DS_PROCESO = UtilXML.ValorAtributo<string>(item.Attribute("DS_PROCESO")),
-                            NB_ANTERIOR = UtilXML.ValorAtributo<string>(item.Attribute("NB_ANTERIOR")),
-                            NB_ACTUAL = UtilXML.ValorAtributo<string>(item.Attribute("NB_ACTUAL"))
+                            NB_ANTERIOR = UtilXML.ValorAtributo<decimal>(item.Attribute("NB_ANTERIOR")),
+                            NB_ACTUAL = UtilXML.ValorAtributo<decimal>(item.Attribute("NB_ACTUAL"))
                         });
                     }
                 }

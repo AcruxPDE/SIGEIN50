@@ -1,4 +1,5 @@
-﻿using SIGE.Entidades;
+﻿using Newtonsoft.Json;
+using SIGE.Entidades;
 using SIGE.Entidades.Administracion;
 using SIGE.Entidades.Externas;
 using SIGE.Entidades.IntegracionDePersonal;
@@ -9,7 +10,9 @@ using SIGE.Negocio.Utilerias;
 using SIGE.WebApp.Comunes;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -27,6 +30,22 @@ namespace SIGE.WebApp.Administracion
         private string vNbPrograma = string.Empty;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
         private string vNbFirstRadEditorTagName = "p";
+
+        List<E_DOCUMENTO> vLstDocumentos
+        {
+            get { return (List<E_DOCUMENTO>)ViewState["vs_LstDocumentos"]; }
+            set { ViewState["vs_LstDocumentos"] = value; }
+        }
+
+        string vXmlDocumentos;
+
+        Guid? vIdItemFotografia
+        {
+            get { return (Guid?)ViewState["vs_vIdItemFotografia"]; }
+            set { ViewState["vs_vIdItemFotografia"] = value; }
+        }
+
+        string vClRutaArchivosTemporales;
 
         private List<E_ESCOLARIDADES> vListaEscoloridad
         {
@@ -160,6 +179,24 @@ namespace SIGE.WebApp.Administracion
             set { ViewState["vs_vLstFuncionCompetenciaIndicador"] = value; }
         }
 
+        private List<E_PUESTOS> vLstInterrelacionados
+        {
+            get { return (List<E_PUESTOS>)ViewState["vs_vLstInterrelacionados"]; }
+            set { ViewState["vs_vLstInterrelacionados"] = value; }
+        }
+
+        private List<E_PUESTOS> vLstLaterales
+        {
+            get { return (List<E_PUESTOS>)ViewState["vs_vLstLaterales"]; }
+            set { ViewState["vs_vLstLaterales"] = value; }
+        }
+
+        private List<E_PUESTOS> vLstAlternativa
+        {
+            get { return (List<E_PUESTOS>)ViewState["vs_vLstAlternativa"]; }
+            set { ViewState["vs_vLstAlternativa"] = value; }
+        }
+
         private Guid? vIdEditingItem
         {
             get { return (Guid?)ViewState["vs_vIdEditingItem"]; }
@@ -168,11 +205,11 @@ namespace SIGE.WebApp.Administracion
 
 
         //Se agrega al viewState
-     //   private bool vIsCopy = false;
+        //   private bool vIsCopy = false;
         private bool vIsCopy
         {
-            get { return(bool)ViewState["vs_vIsCopy"];}
-            set { ViewState["vs_vIsCopy"] = value;}
+            get { return (bool)ViewState["vs_vIsCopy"]; }
+            set { ViewState["vs_vIsCopy"] = value; }
         }
 
         OcupacionesNegocio negocio = new OcupacionesNegocio();
@@ -205,11 +242,16 @@ namespace SIGE.WebApp.Administracion
             vNoPlazas = vDescriptivo.NO_PLAZAS;
             vNoMinimoPlazas = vDescriptivo.NO_MINIMO_PLAZAS;
 
+            vXmlDocumentos = vDescriptivo.XML_DOCUMENTOS;
+
             txtNoPlazas.MinValue = (double)vNoMinimoPlazas;
 
             vFuncionesGenericas = new List<E_FUNCION_GENERICA>();
             vLstFuncionCompetencia = new List<E_FUNCION_COMPETENCIA>();
             vLstFuncionCompetenciaIndicador = new List<E_FUNCION_INDICADOR>();
+
+            if (vDescriptivo.NO_NIVEL_ORGANIGRAMA != null)
+                txtNivelOrg.Text = vDescriptivo.NO_NIVEL_ORGANIGRAMA.ToString();
 
             asignarValoresAdicionales(vDescriptivo.XML_CAMPOS_ADICIONALES);
 
@@ -256,7 +298,7 @@ namespace SIGE.WebApp.Administracion
 
                 txtRangoEdadMin.Value = vDescriptivo.NO_EDAD_MINIMA;
                 txtRangoEdadMax.Value = vDescriptivo.NO_EDAD_MAXIMA;
-                txtCompetenciasRequeridas.Text = vDescriptivo.DS_COMPETENCIAS_REQUERIDAS;
+               // txtCompetenciasRequeridas.Text = vDescriptivo.DS_COMPETENCIAS_REQUERIDAS;
 
                 foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTO_ESCOLARIDAD).Elements("PUESTO_ESCOLARIDAD"))
                 {
@@ -356,68 +398,111 @@ namespace SIGE.WebApp.Administracion
                 btnDirecto.Checked = vDescriptivo.CL_TIPO_PUESTO == "DIRECTO";
                 btnIndirecto.Checked = vDescriptivo.CL_TIPO_PUESTO == "INDIRECTO";
 
-                foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
-                {
-                    if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.JEFE.ToString())
-                    {
-                        lstJefeInmediato.Items.Clear();
+                //foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
+                //{
+                //    if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.JEFE.ToString())
+                //    {
+                //        lstJefeInmediato.Items.Clear();
 
-                        RadListBoxItem i = new RadListBoxItem();
+                //        RadListBoxItem i = new RadListBoxItem();
 
-                        i.Text = item.Attribute("NB_PUESTO").Value;
-                        i.Value = item.Attribute("ID_PUESTO_RELACIONADO").Value;
-                        lstJefeInmediato.Items.Add(i);
-                    }
-                }
+                //        i.Text = item.Attribute("NB_PUESTO").Value;
+                //        i.Value = item.Attribute("ID_PUESTO_RELACIONADO").Value;
+                //        lstJefeInmediato.Items.Add(i);
+                //    }
+                //}
 
-                foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
-                {
-                    if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.SUBORDINADO.ToString())
-                    {
-                        RadListBoxItem i = new RadListBoxItem();
+                //foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
+                //{
+                //    if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.SUBORDINADO.ToString())
+                //    {
+                //        RadListBoxItem i = new RadListBoxItem();
 
-                        i.Text = item.Attribute("NB_PUESTO").Value;
-                        i.Value = item.Attribute("ID_PUESTO_RELACIONADO").Value;
-                        lstPuestosSubordinado.Items.Add(i);
-                    }
-                }
+                //        i.Text = item.Attribute("NB_PUESTO").Value;
+                //        i.Value = item.Attribute("ID_PUESTO_RELACIONADO").Value;
+                //        lstPuestosSubordinado.Items.Add(i);
+                //    }
+                //}
 
+                //foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
+                //{
+                //    if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.INTERRELACIONADO.ToString())
+                //    {
+                //        RadListBoxItem i = new RadListBoxItem();
+
+                //        i.Text = item.Attribute("NB_PUESTO").Value;
+                //        i.Value = item.Attribute("ID_PUESTO_RELACIONADO").Value;
+                //        lstPuestosInterrelacionados.Items.Add(i);
+                //    }
+                //}
                 foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
                 {
                     if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.INTERRELACIONADO.ToString())
                     {
-                        RadListBoxItem i = new RadListBoxItem();
-
-                        i.Text = item.Attribute("NB_PUESTO").Value;
-                        i.Value = item.Attribute("ID_PUESTO_RELACIONADO").Value;
-                        lstPuestosInterrelacionados.Items.Add(i);
+                        vLstInterrelacionados.Add(new E_PUESTOS
+                        {
+                            ID_PUESTO = int.Parse(item.Attribute("ID_PUESTO").Value),
+                            ID_PUESTO_RELACION = int.Parse(item.Attribute("ID_PUESTO_RELACIONADO").Value),
+                            CL_PUESTO = item.Attribute("CL_PUESTO").Value,
+                            NB_PUESTO = item.Attribute("NB_PUESTO").Value,
+                            CL_TIPO_RELACION = item.Attribute("CL_TIPO_RELACION").Value
+                        });
                     }
                 }
+
 
                 btnLinea.Checked = vDescriptivo.CL_POSICION_ORGANIGRAMA == "LINEA";
                 btnStaff.Checked = vDescriptivo.CL_POSICION_ORGANIGRAMA == "STAFF";
 
+                //foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
+                //{
+                //    if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.RUTAALTERNATIVA.ToString())
+                //    {
+                //        RadListBoxItem i = new RadListBoxItem();
+
+                //        i.Text = item.Attribute("NB_PUESTO").Value;
+                //        i.Value = item.Attribute("ID_PUESTO_RELACIONADO").Value;
+                //        lstAlternativa.Items.Add(i);
+                //    }
+                //}
                 foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
                 {
                     if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.RUTAALTERNATIVA.ToString())
                     {
-                        RadListBoxItem i = new RadListBoxItem();
-
-                        i.Text = item.Attribute("NB_PUESTO").Value;
-                        i.Value = item.Attribute("ID_PUESTO_RELACIONADO").Value;
-                        lstAlternativa.Items.Add(i);
+                        vLstAlternativa.Add(new E_PUESTOS
+                        {
+                            ID_PUESTO = int.Parse(item.Attribute("ID_PUESTO").Value),
+                            ID_PUESTO_RELACION = int.Parse(item.Attribute("ID_PUESTO_RELACIONADO").Value),
+                            CL_PUESTO = item.Attribute("CL_PUESTO").Value,
+                            NB_PUESTO = item.Attribute("NB_PUESTO").Value,
+                            CL_TIPO_RELACION = item.Attribute("CL_TIPO_RELACION").Value
+                        });
                     }
                 }
 
+                //foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
+                //{
+                //    if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.RUTALATERAL.ToString())
+                //    {
+                //        RadListBoxItem i = new RadListBoxItem();
+
+                //        i.Text = item.Attribute("NB_PUESTO").Value;
+                //        i.Value = item.Attribute("ID_PUESTO_RELACIONADO").Value;
+                //        lstLateral.Items.Add(i);
+                //    }
+                //}
                 foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
                 {
                     if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.RUTALATERAL.ToString())
                     {
-                        RadListBoxItem i = new RadListBoxItem();
-
-                        i.Text = item.Attribute("NB_PUESTO").Value;
-                        i.Value = item.Attribute("ID_PUESTO_RELACIONADO").Value;
-                        lstLateral.Items.Add(i);
+                        vLstLaterales.Add(new E_PUESTOS
+                        {
+                            ID_PUESTO = int.Parse(item.Attribute("ID_PUESTO").Value),
+                            ID_PUESTO_RELACION = int.Parse(item.Attribute("ID_PUESTO_RELACIONADO").Value),
+                            CL_PUESTO = item.Attribute("CL_PUESTO").Value,
+                            NB_PUESTO = item.Attribute("NB_PUESTO").Value,
+                            CL_TIPO_RELACION = item.Attribute("CL_TIPO_RELACION").Value
+                        });
                     }
                 }
 
@@ -458,23 +543,26 @@ namespace SIGE.WebApp.Administracion
                 foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTO_FUNCION).Elements("PUESTO_FUNCION"))
                 {
                     E_FUNCION_GENERICA fg = new E_FUNCION_GENERICA();
-
-                    XElement dsDetalle = item.Element("XML_DETALLE").Element("DS_DETALLE");
-                    dsDetalle.Name = vNbFirstRadEditorTagName;
-
-                    if (item.Element("XML_NOTAS") != null)
+                    if (item.Element("XML_DETALLE") != null)
                     {
-                        XElement dsNotas = item.Element("XML_NOTAS").Element("DS_NOTAS");
-                        dsNotas.Name = vNbFirstRadEditorTagName;
-                        fg.DS_NOTAS = dsNotas.ToString();
+
+                        XElement dsDetalle = item.Element("XML_DETALLE").Element("DS_DETALLE");
+                        dsDetalle.Name = vNbFirstRadEditorTagName;
+
+                        if (item.Element("XML_NOTAS") != null)
+                        {
+                            XElement dsNotas = item.Element("XML_NOTAS").Element("DS_NOTAS");
+                            dsNotas.Name = vNbFirstRadEditorTagName;
+                            fg.DS_NOTAS = dsNotas.ToString();
+                        }
+
+                        fg.ID_FUNCION_GENERICA = int.Parse(item.Attribute("ID_PUESTO_FUNCION").Value);
+                        fg.NB_FUNCION_GENERICA = item.Attribute("NB_PUESTO_FUNCION").Value;
+                        fg.DS_DETALLE = dsDetalle.ToString();
+
+
+                        vFuncionesGenericas.Add(fg);
                     }
-
-                    fg.ID_FUNCION_GENERICA = int.Parse(item.Attribute("ID_PUESTO_FUNCION").Value);
-                    fg.NB_FUNCION_GENERICA = item.Attribute("NB_PUESTO_FUNCION").Value;
-                    fg.DS_DETALLE = dsDetalle.ToString();
-
-
-                    vFuncionesGenericas.Add(fg);
                 }
 
                 foreach (E_COMPETENCIAS item in vListaCompetencias.Where(n => n.ID_PUESTO_FUNCION != 0))
@@ -489,7 +577,8 @@ namespace SIGE.WebApp.Administracion
                     fc.NO_NIVEL = item.NO_VALOR_NIVEL;
                     fc.NB_NIVEL = CrearNivelCompetencia(null).FirstOrDefault(f => f.NO_VALOR.Equals(item.NO_VALOR_NIVEL)).NB_NIVEL;
                     if (vFuncionesGenericas.Count > 0)
-                    fc.ID_PARENT_ITEM = vFuncionesGenericas.FirstOrDefault(f => item.ID_PUESTO_FUNCION.Equals(f.ID_FUNCION_GENERICA)).ID_ITEM;
+                        if (vFuncionesGenericas.Exists(x => x.ID_FUNCION_GENERICA.Equals(item.ID_PUESTO_FUNCION)))
+                        fc.ID_PARENT_ITEM = vFuncionesGenericas.FirstOrDefault(f => item.ID_PUESTO_FUNCION.Equals(f.ID_FUNCION_GENERICA)).ID_ITEM;
 
                     vLstFuncionCompetencia.Add(fc);
                 }
@@ -634,41 +723,97 @@ namespace SIGE.WebApp.Administracion
             radCmb.DataBind();
         }
 
-        public void ObtenerAreas()
+        protected void AddDocumento(string pClTipoDocumento, RadAsyncUpload pFiDocumentos)
         {
-            cmbAreas.Items.AddRange(vListaAreas.Select(s => new RadComboBoxItem(s.NB_DEPARTAMENTO, s.ID_DEPARTAMENTO.Value.ToString())
+            foreach (UploadedFile f in pFiDocumentos.UploadedFiles)
             {
-                Selected = s.FG_SELECCIONADO
-            }));
-        }
+                E_DOCUMENTO vDocumento = new E_DOCUMENTO()
+                {
+                    ID_ITEM = Guid.NewGuid(),
+                    CL_TIPO_DOCUMENTO = pClTipoDocumento,
+                    NB_DOCUMENTO = f.FileName,
+                    FE_CREATED_DATE = DateTime.Now
+                };
 
-        public void ObtenerCentroAdmvo()
-        {
-            cmbAdministrativo.Items.AddRange(vListaCentroAdmvo.Select(s => new RadComboBoxItem(s.NB_CENTRO_ADMVO, s.ID_CENTRO_ADMVO)
-            {
-                Selected = s.FG_SELECCIONADO
-            }));
+                vLstDocumentos.Add(vDocumento);
 
-            if (cmbAdministrativo.Items.Count == 0)
-            {
-                cmbAdministrativo.Enabled = false;
+                vIdItemFotografia = vDocumento.ID_ITEM;
+                f.InputStream.Close();
+                f.SaveAs(String.Format(@"{0}\{1}", vClRutaArchivosTemporales, vDocumento.GetDocumentFileName()), true);
             }
 
+            if (vLstDocumentos == null)
+                vLstDocumentos = new List<E_DOCUMENTO>();
         }
 
-        public void ObtenerCentroOptvo()
+        protected void EliminarDocumento(string pIdItemDocumento)
         {
-            cmbOperativo.Items.AddRange(vListaCentroOptvo.Select(s => new RadComboBoxItem(s.NB_CENTRO_OPTVO, s.ID_CENTRO_OPTVO)
-            {
-                Selected = s.FG_SELECCIONADO
-            }));
+            E_DOCUMENTO d = vLstDocumentos.FirstOrDefault(f => f.ID_ITEM.ToString().Equals(pIdItemDocumento));
 
-            if (cmbOperativo.Items.Count == 0)
+            if (d != null)
             {
-                cmbOperativo.Enabled = false;
+                string vClRutaArchivo = Path.Combine(vClRutaArchivosTemporales, d.GetDocumentFileName());
+                if (File.Exists(vClRutaArchivo))
+                    File.Delete(vClRutaArchivo);
             }
 
+            vLstDocumentos.Remove(d);
+            grdDocumentos.Rebind();
         }
+
+        protected void CargarDocumentos()
+        {
+            XElement x = XElement.Parse(vXmlDocumentos);
+
+            if (vLstDocumentos == null)
+                vLstDocumentos = new List<E_DOCUMENTO>();
+
+            foreach (XElement item in (x.Elements("ITEM")))
+                vLstDocumentos.Add(new E_DOCUMENTO()
+                {
+                    ID_ITEM = new Guid(UtilXML.ValorAtributo<string>(item.Attribute("ID_ITEM"))),
+                    NB_DOCUMENTO = UtilXML.ValorAtributo<string>(item.Attribute("NB_DOCUMENTO")),
+                    ID_DOCUMENTO = UtilXML.ValorAtributo<int>(item.Attribute("ID_DOCUMENTO")),
+                    ID_ARCHIVO = UtilXML.ValorAtributo<int>(item.Attribute("ID_ARCHIVO")),
+                    CL_TIPO_DOCUMENTO = UtilXML.ValorAtributo<string>(item.Attribute("CL_TIPO_DOCUMENTO"))
+                });
+        }
+
+        //public void ObtenerAreas()
+        //{
+        //    cmbAreas.Items.AddRange(vListaAreas.Select(s => new RadComboBoxItem(s.NB_DEPARTAMENTO, s.ID_DEPARTAMENTO.Value.ToString())
+        //    {
+        //        Selected = s.FG_SELECCIONADO
+        //    }));
+        //}
+
+        //public void ObtenerCentroAdmvo()
+        //{
+        //    cmbAdministrativo.Items.AddRange(vListaCentroAdmvo.Select(s => new RadComboBoxItem(s.NB_CENTRO_ADMVO, s.ID_CENTRO_ADMVO)
+        //    {
+        //        Selected = s.FG_SELECCIONADO
+        //    }));
+
+        //    if (cmbAdministrativo.Items.Count == 0)
+        //    {
+        //        cmbAdministrativo.Enabled = false;
+        //    }
+
+        //}
+
+        //public void ObtenerCentroOptvo()
+        //{
+        //    cmbOperativo.Items.AddRange(vListaCentroOptvo.Select(s => new RadComboBoxItem(s.NB_CENTRO_OPTVO, s.ID_CENTRO_OPTVO)
+        //    {
+        //        Selected = s.FG_SELECCIONADO
+        //    }));
+
+        //    if (cmbOperativo.Items.Count == 0)
+        //    {
+        //        cmbOperativo.Enabled = false;
+        //    }
+
+        //}
 
         public void ObtenerPuestos(string pPuesto, RadComboBox radCmb)
         {
@@ -688,14 +833,27 @@ namespace SIGE.WebApp.Administracion
                     E_COMPETENCIAS c = (E_COMPETENCIAS)item.DataItem;
                     RadSlider vRsFila = (RadSlider)item.FindControl("rsNivel1");
 
-                    vRsFila.Items[0].ToolTip = c.DS_COMENTARIOS_NIVEL0;
-                    vRsFila.Items[1].ToolTip = c.DS_COMENTARIOS_NIVEL1;
-                    vRsFila.Items[2].ToolTip = c.DS_COMENTARIOS_NIVEL2;
-                    vRsFila.Items[3].ToolTip = c.DS_COMENTARIOS_NIVEL3;
-                    vRsFila.Items[4].ToolTip = c.DS_COMENTARIOS_NIVEL4;
-                    vRsFila.Items[5].ToolTip = c.DS_COMENTARIOS_NIVEL5;
+                    vRsFila.Items[0].ToolTip = StripHtml(c.DS_COMENTARIOS_NIVEL0);
+                    vRsFila.Items[1].ToolTip = StripHtml(c.DS_COMENTARIOS_NIVEL1);
+                    vRsFila.Items[2].ToolTip = StripHtml(c.DS_COMENTARIOS_NIVEL2);
+                    vRsFila.Items[3].ToolTip = StripHtml(c.DS_COMENTARIOS_NIVEL3);
+                    vRsFila.Items[4].ToolTip = StripHtml(c.DS_COMENTARIOS_NIVEL4);
+                    vRsFila.Items[5].ToolTip = StripHtml(c.DS_COMENTARIOS_NIVEL5);
                 }
             }
+        }
+
+        private string StripHtml(string source)
+        {
+            string output;
+
+            //get rid of HTML tags
+            output = Regex.Replace(source, "<[^>]*>", string.Empty);
+
+            //get rid of multiple blank lines
+            output = Regex.Replace(output, @"^\s*$\n", string.Empty, RegexOptions.Multiline);
+
+            return output;
         }
 
         public string ocupaciones(string clOcupacion)
@@ -743,7 +901,7 @@ namespace SIGE.WebApp.Administracion
             {
                 vFechaElabora = rdtFeElabDocumento.SelectedDate.Value.ToString("yyyy/MM/dd");
             }
-         
+
             if (rdtFeRevDocumento.SelectedDate != null)
             {
                 vFechaRevisa = rdtFeRevDocumento.SelectedDate.Value.ToString("yyyy/MM/dd");
@@ -770,10 +928,11 @@ namespace SIGE.WebApp.Administracion
                 new XAttribute("CL_GENERO", cmbGenero.SelectedValue),
                 new XAttribute("CL_ESTADO_CIVIL", cmbEdoCivil.SelectedValue),
                 new XAttribute("CL_TIPO_PUESTO", btnDirecto.Checked ? "DIRECTO" : "INDIRECTO"),
-                new XAttribute("ID_CENTRO_ADMINISTRATIVO", cmbAdministrativo.SelectedValue),
-                new XAttribute("ID_CENTRO_OPERATIVO", cmbOperativo.SelectedValue),
-                new XAttribute("ID_DEPARTAMENTO", cmbAreas.SelectedValue),
+                //new XAttribute("ID_CENTRO_ADMINISTRATIVO", cmbAdministrativo.SelectedValue),
+                //new XAttribute("ID_CENTRO_OPERATIVO", cmbOperativo.SelectedValue),
+              //  new XAttribute("ID_DEPARTAMENTO", cmbAreas.SelectedValue),
                 new XAttribute("CL_POSICION_ORGANIGRAMA", btnStaff.Checked ? "STAFF" : "LINEA"),
+                new XAttribute("NO_NIVEL_ORGANIGRAMA", txtNivelOrg.Text),
                 new XAttribute("CL_DOCUMENTO", ContextoApp.FgControlDocumentos ? txtClaveDocumento.Text : ""),
                 new XAttribute("CL_VERSION", ContextoApp.FgControlDocumentos ? txtVersionDocumento.Text : ""),
                 new XAttribute("FE_ELABORACION", ContextoApp.FgControlDocumentos ? vFechaElabora : ""),
@@ -785,7 +944,8 @@ namespace SIGE.WebApp.Administracion
                 new XAttribute("DS_CONTROL_CAMBIOS", ContextoApp.FgControlDocumentos ? txtControlCambios.Text : ""),
                 new XAttribute("CL_TIPO_PRESTACIONES", cmbTipoPrestaciones.SelectedValue),
                 new XAttribute("NO_PLAZAS", vNoPlazas),
-                new XAttribute("DS_COMPETENCIAS_REQUERIDAS", txtCompetenciasRequeridas.Text),
+               // new XAttribute("DS_COMPETENCIAS_REQUERIDAS", txtCompetenciasRequeridas.Text),
+                new XAttribute("DS_COMPETENCIAS_REQUERIDAS", ""),
 
                Utileria.GuardarNotas(radEditorPrestaciones.Content, "NOTAS_PRESTACIONES"), // EditorContentToXml("XML_PRESTACIONES", radEditorPrestaciones.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
                Utileria.GuardarNotas(radEditorRequerimientos.Content, "NOTAS_REQUERIMIENTOS"),// EditorContentToXml("XML_REQUERIMIENTOS", radEditorRequerimientos.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
@@ -826,45 +986,45 @@ namespace SIGE.WebApp.Administracion
             XElement pPuestosRel = new XElement("PUESTOS_REL");
 
             //SUBORDINADOS
-            foreach (RadListBoxItem item in lstPuestosSubordinado.Items)
-            {
-                pPuestosRel.Add(new XElement("PUESTO_REL",
-                    new XAttribute("ID_PUESTO_REL", item.Value),
-                    new XAttribute("CL_TIPO_RELACION", E_PUESTO_RELACION.SUBORDINADO.ToString())));
-            }
+            //foreach (RadListBoxItem item in lstPuestosSubordinado.Items)
+            //{
+            //    pPuestosRel.Add(new XElement("PUESTO_REL",
+            //        new XAttribute("ID_PUESTO_REL", item.Value),
+            //        new XAttribute("CL_TIPO_RELACION", E_PUESTO_RELACION.SUBORDINADO.ToString())));
+            //}
 
             //INTERRELACIONADOS
-            foreach (RadListBoxItem item in lstPuestosInterrelacionados.Items)
+            foreach (GridDataItem item in rgInterrelacionados.MasterTableView.Items)
             {
                 pPuestosRel.Add(new XElement("PUESTO_REL",
-                    new XAttribute("ID_PUESTO_REL", item.Value),
+                    new XAttribute("ID_PUESTO_REL", item.GetDataKeyValue("ID_PUESTO_RELACION").ToString()),
                     new XAttribute("CL_TIPO_RELACION", E_PUESTO_RELACION.INTERRELACIONADO.ToString())));
             }
 
             //RUTA ALTERNATIVA
-            foreach (RadListBoxItem item in lstAlternativa.Items)
+            foreach (GridDataItem item in rgAlternativa.MasterTableView.Items)
             {
                 pPuestosRel.Add(new XElement("PUESTO_REL",
-                    new XAttribute("ID_PUESTO_REL", item.Value),
+                    new XAttribute("ID_PUESTO_REL", item.GetDataKeyValue("ID_PUESTO_RELACION").ToString()),
                     new XAttribute("CL_TIPO_RELACION", E_PUESTO_RELACION.RUTAALTERNATIVA.ToString())));
             }
 
             //RUTA LATERAL
-            foreach (RadListBoxItem item in lstLateral.Items)
+            foreach (GridDataItem item in rgLateral.MasterTableView.Items)
             {
                 pPuestosRel.Add(new XElement("PUESTO_REL",
-                    new XAttribute("ID_PUESTO_REL", item.Value),
+                    new XAttribute("ID_PUESTO_REL", item.GetDataKeyValue("ID_PUESTO_RELACION").ToString()),
                     new XAttribute("CL_TIPO_RELACION", E_PUESTO_RELACION.RUTALATERAL.ToString())));
             }
 
 
             //JEFE INMEDIATO
-            RadListBoxItem vItem = lstJefeInmediato.Items[0];
+            //RadListBoxItem vItem = lstJefeInmediato.Items[0];
 
-            if (!String.IsNullOrWhiteSpace(vItem.Value))
-                pPuestosRel.Add(new XElement("PUESTO_REL",
-                    new XAttribute("ID_PUESTO_REL", vItem.Value),
-                    new XAttribute("CL_TIPO_RELACION", E_PUESTO_RELACION.JEFE.ToString())));
+            //if (!String.IsNullOrWhiteSpace(vItem.Value))
+            //    pPuestosRel.Add(new XElement("PUESTO_REL",
+            //        new XAttribute("ID_PUESTO_REL", vItem.Value),
+            //        new XAttribute("CL_TIPO_RELACION", E_PUESTO_RELACION.JEFE.ToString())));
 
 
             //COMPETENCIAS ESPECIFICAS
@@ -1045,6 +1205,24 @@ namespace SIGE.WebApp.Administracion
 
                     vPuesto.XML_PUESTO = xml;
 
+
+                    List<UDTT_ARCHIVO> vLstArchivos = new List<UDTT_ARCHIVO>();
+                    foreach (E_DOCUMENTO d in vLstDocumentos)
+                    {
+                        string vFilePath = Server.MapPath(Path.Combine(ContextoApp.ClRutaArchivosTemporales, d.GetDocumentFileName()));
+                        if (File.Exists(vFilePath))
+                        {
+                            vLstArchivos.Add(new UDTT_ARCHIVO()
+                            {
+                                ID_ITEM = d.ID_ITEM,
+                                ID_ARCHIVO = d.ID_ARCHIVO,
+                                NB_ARCHIVO = d.NB_DOCUMENTO,
+                                FI_ARCHIVO = File.ReadAllBytes(vFilePath)
+                            });
+                        }
+                    }
+
+
                     if (vIdDescriptivo == 0)
                     {
                         tran = "I";
@@ -1056,7 +1234,7 @@ namespace SIGE.WebApp.Administracion
                         vPuesto.ID_PUESTO = vIdDescriptivo;
                     }
 
-                    E_RESULTADO vResultado = neg.InsertaActualizaPuesto(tran, vPuesto, vClUsuario, "Descriptivo", xmlOcupacion);
+                    E_RESULTADO vResultado = neg.InsertaActualizaPuesto(tran, vPuesto, vLstArchivos, vLstDocumentos, vClUsuario, "Descriptivo", xmlOcupacion);
                     string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
 
                     if (vResultado.CL_TIPO_ERROR.Equals(E_TIPO_RESPUESTA_DB.SUCCESSFUL) && tran.Equals("I"))
@@ -1068,7 +1246,7 @@ namespace SIGE.WebApp.Administracion
 
                     // Se cierra la ventana únicamente cuando el mensaje sea exitoso y se haya dado la instrucción por parámetro de cerrar la venana
                     bool vCerrarVentana = (vResultado.CL_TIPO_ERROR.Equals(E_TIPO_RESPUESTA_DB.SUCCESSFUL)) && pFgCerrarVentana;
-                    string vCallBackFunction = vCerrarVentana ? "closeWindow" : null;
+                    string vCallBackFunction = vCerrarVentana ? "OnCloseUpdate" : null;
 
                     UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: vCallBackFunction);
                 }
@@ -1099,27 +1277,30 @@ namespace SIGE.WebApp.Administracion
         private void agregarItemLista(RadListBox lista, RadComboBox combo)
         {
             RadListBoxItem item = new RadListBoxItem();
-            item.Value = combo.SelectedValue;
-            item.Text = combo.Text;
-            int vRepetido = 0;
-            if (lista.Items.Count > 0)
+            if (combo.SelectedValue != "")
             {
-                foreach (RadListBoxItem items in lista.Items)
+                item.Value = combo.SelectedValue;
+                item.Text = combo.Text;
+                int vRepetido = 0;
+                if (lista.Items.Count > 0)
                 {
-                    if (items.Value == item.Value)
+                    foreach (RadListBoxItem items in lista.Items)
                     {
-                        vRepetido = 1;
+                        if (items.Value == item.Value)
+                        {
+                            vRepetido = 1;
+                        }
+
                     }
-                   
+                    if (vRepetido != 1)
+                    {
+                        lista.Items.Add(item);
+                    }
                 }
-                if ( vRepetido != 1)
+                else
                 {
                     lista.Items.Add(item);
                 }
-            }
-            else
-            {
-                lista.Items.Add(item);
             }
         }
 
@@ -1426,6 +1607,12 @@ namespace SIGE.WebApp.Administracion
             }
         }
 
+        private void SeguridadProcesos()
+        {
+            btnGuardar.Enabled = ContextoUsuario.oUsuario.TienePermiso("C.G");
+            btnGuardarCerrar.Enabled = ContextoUsuario.oUsuario.TienePermiso("C.G");
+        }
+
         #endregion
 
         protected void Page_Init(object sender, EventArgs e)
@@ -1439,6 +1626,7 @@ namespace SIGE.WebApp.Administracion
             if (!Page.IsPostBack)
             {
                 traerAreas();
+          
                 vListaExperiencia = new List<E_EXPERIENCIA>();
                 rdtFeElabDocumento.SelectedDate = DateTime.Now.Date;
                 if (!ContextoApp.FgControlDocumentos)
@@ -1457,6 +1645,14 @@ namespace SIGE.WebApp.Administracion
 
                 vIsCopy = (Request.QueryString["pIsCopy"] != null);
 
+                //ObtenerPuestos(E_PUESTO_RELACION.SUBORDINADO.ToString(), cmbPuestosSubordinado);
+                //ObtenerPuestos(E_PUESTO_RELACION.INTERRELACIONADO.ToString(), cmbPuestosInterrelacionados);
+                vLstInterrelacionados = new List<E_PUESTOS>();
+                //ObtenerPuestos(E_PUESTO_RELACION.RUTAALTERNATIVA.ToString(), cmbAlternativa);
+                vLstAlternativa = new List<E_PUESTOS>();
+                //ObtenerPuestos(E_PUESTO_RELACION.RUTALATERAL.ToString(), cmbLateral);
+                vLstLaterales = new List<E_PUESTOS>();
+
                 CargarDatos(vIdDescriptivo);
 
                 ObtenerEstadosCiviles();
@@ -1469,23 +1665,20 @@ namespace SIGE.WebApp.Administracion
 
                 ObtenerCompetenciasEspecificas();
                 ObtenerAreaInteres();
+                CargarDocumentos();
+                //ObtenerAreas();
 
-                ObtenerAreas();
-
-                ObtenerCentroAdmvo();
-                ObtenerCentroOptvo();
-
-                ObtenerPuestos(E_PUESTO_RELACION.SUBORDINADO.ToString(), cmbPuestosSubordinado);
-                ObtenerPuestos(E_PUESTO_RELACION.INTERRELACIONADO.ToString(), cmbPuestosInterrelacionados);
-                ObtenerPuestos(E_PUESTO_RELACION.RUTAALTERNATIVA.ToString(), cmbAlternativa);
-                ObtenerPuestos(E_PUESTO_RELACION.RUTALATERAL.ToString(), cmbLateral);
+                //ObtenerCentroAdmvo();
+                //ObtenerCentroOptvo();
 
                 lstExperiencia.DataSource = vListaExperiencia;
                 lstExperiencia.DataValueField = "ID_AREA_INTERES";
                 lstExperiencia.DataTextField = "NB_AREA_INTERES";
                 lstExperiencia.DataBind();
-            }
 
+                SeguridadProcesos();
+            }
+            vClRutaArchivosTemporales = Server.MapPath(ContextoApp.ClRutaArchivosTemporales);
             winFuncionesGenericas.VisibleOnPageLoad = false;
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
@@ -1524,6 +1717,7 @@ namespace SIGE.WebApp.Administracion
         protected void radBtnAgregarExperiencia_Click(object sender, EventArgs e)
         {
             E_EXPERIENCIA ex = new E_EXPERIENCIA();
+           
             ex.ID_AREA_INTERES = int.Parse(cmbExperiencias.SelectedValue);
             ex.NB_AREA_INTERES = cmbExperiencias.Text;
             ex.NO_TIEMPO = int.Parse(txtTiempo.Text);
@@ -1557,22 +1751,83 @@ namespace SIGE.WebApp.Administracion
 
         protected void radBtnAgregarPuestoSubordinado_Click(object sender, EventArgs e)
         {
-            agregarItemLista(lstPuestosSubordinado, cmbPuestosSubordinado);
+            //agregarItemLista(lstPuestosSubordinado, cmbPuestosSubordinado);
         }
 
-        protected void btnInter_Click(object sender, EventArgs e)
+        protected void AgregarInterrelacionado(string pInterrelacionados)
         {
-            agregarItemLista(lstPuestosInterrelacionados, cmbPuestosInterrelacionados);
+            List<E_PUESTOS> vPuestosSeleccionados = JsonConvert.DeserializeObject<List<E_SELECCION_PUESTOS>>(pInterrelacionados).Select(s => new E_PUESTOS { ID_PUESTO = s.idPuesto, CL_PUESTO = s.clPuesto, NB_PUESTO = s.nbPuesto, ID_PUESTO_RELACION = s.idPuesto }).ToList();
+            foreach (E_PUESTOS item in vPuestosSeleccionados)
+            {
+                if (!vLstInterrelacionados.Exists(e => e.ID_PUESTO == item.ID_PUESTO))
+                {
+                    vLstInterrelacionados.Add(new E_PUESTOS
+                    {
+                        ID_PUESTO = item.ID_PUESTO,
+                        ID_PUESTO_RELACION = item.ID_PUESTO_RELACION,
+                        CL_PUESTO = item.CL_PUESTO,
+                        NB_PUESTO = item.NB_PUESTO
+                    });
+                }
+            }
+
+            rgInterrelacionados.Rebind();
         }
+
+        protected void AgregarLateral(string pLateral)
+        {
+            List<E_PUESTOS> vPuestosSeleccionados = JsonConvert.DeserializeObject<List<E_SELECCION_PUESTOS>>(pLateral).Select(s => new E_PUESTOS { ID_PUESTO = s.idPuesto, CL_PUESTO = s.clPuesto, NB_PUESTO = s.nbPuesto, ID_PUESTO_RELACION = s.idPuesto }).ToList();
+
+            foreach (E_PUESTOS item in vPuestosSeleccionados)
+            {
+                if (!vLstLaterales.Exists(e => e.ID_PUESTO == item.ID_PUESTO))
+                {
+                    vLstLaterales.Add(new E_PUESTOS
+                    {
+                        ID_PUESTO = item.ID_PUESTO,
+                        ID_PUESTO_RELACION = item.ID_PUESTO_RELACION,
+                        CL_PUESTO = item.CL_PUESTO,
+                        NB_PUESTO = item.NB_PUESTO
+                    });
+                }
+            }
+
+            rgLateral.Rebind();
+        }
+
+        protected void AgregarAlternativa(string pAlternativa)
+        {
+            List<E_PUESTOS> vPuestosSeleccionados = JsonConvert.DeserializeObject<List<E_SELECCION_PUESTOS>>(pAlternativa).Select(s => new E_PUESTOS { ID_PUESTO = s.idPuesto, CL_PUESTO = s.clPuesto, NB_PUESTO = s.nbPuesto, ID_PUESTO_RELACION = s.idPuesto }).ToList();
+            foreach (E_PUESTOS item in vPuestosSeleccionados)
+            {
+                if (!vLstAlternativa.Exists(e => e.ID_PUESTO == item.ID_PUESTO))
+                {
+                    vLstAlternativa.Add(new E_PUESTOS
+                    {
+                        ID_PUESTO = item.ID_PUESTO,
+                        ID_PUESTO_RELACION = item.ID_PUESTO_RELACION,
+                        CL_PUESTO = item.CL_PUESTO,
+                        NB_PUESTO = item.NB_PUESTO
+                    });
+                }
+            }
+
+            rgAlternativa.Rebind();
+        }
+
+        // protected void btnInter_Click(object sender, EventArgs e)
+        // {
+        // agregarItemLista(lstPuestosInterrelacionados, cmbPuestosInterrelacionados);
+        // }
 
         protected void btnRutaAlter_Click(object sender, EventArgs e)
         {
-            agregarItemLista(lstAlternativa, cmbAlternativa);
+            //agregarItemLista(lstAlternativa, cmbAlternativa);
         }
 
         protected void btnLateral_Click(object sender, EventArgs e)
         {
-            agregarItemLista(lstLateral, cmbLateral);
+            //  agregarItemLista(lstLateral, cmbLateral);
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
@@ -1590,13 +1845,20 @@ namespace SIGE.WebApp.Administracion
 
         protected void btnEditarFuncionGenerica_Click(object sender, EventArgs e)
         {
-            foreach (GridDataItem item in grdFuncionesGenericas.SelectedItems)
+            if (grdFuncionesGenericas.SelectedItems.Count > 0)
             {
-                Guid vIdItemFuncionGenerica = new Guid(item.GetDataKeyValue("ID_ITEM").ToString());
-                vFuncionGenericaABC = vFuncionesGenericas.FirstOrDefault(f => f.ID_ITEM.Equals(vIdItemFuncionGenerica));
-                vLstFuncionCompetenciaABC = vLstFuncionCompetencia.Where(w => w.ID_PARENT_ITEM.Equals(vIdItemFuncionGenerica)).ToList();
-                vLstFuncionCompetenciaIndicadorABC = vLstFuncionCompetenciaIndicador.Where(w => vLstFuncionCompetenciaABC.Any(a => a.ID_ITEM.Equals(w.ID_PARENT_ITEM))).ToList();
-                CargarFormularioFuncionesGenericas();
+                foreach (GridDataItem item in grdFuncionesGenericas.SelectedItems)
+                {
+                    Guid vIdItemFuncionGenerica = new Guid(item.GetDataKeyValue("ID_ITEM").ToString());
+                    vFuncionGenericaABC = vFuncionesGenericas.FirstOrDefault(f => f.ID_ITEM.Equals(vIdItemFuncionGenerica));
+                    vLstFuncionCompetenciaABC = vLstFuncionCompetencia.Where(w => w.ID_PARENT_ITEM.Equals(vIdItemFuncionGenerica)).ToList();
+                    vLstFuncionCompetenciaIndicadorABC = vLstFuncionCompetenciaIndicador.Where(w => vLstFuncionCompetenciaABC.Any(a => a.ID_ITEM.Equals(w.ID_PARENT_ITEM))).ToList();
+                    CargarFormularioFuncionesGenericas();
+                }
+            }
+            else
+            {
+                UtilMensajes.MensajeResultadoDB(rwmAlertas, "Selecciona una función genérica.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
             }
         }
 
@@ -1672,15 +1934,20 @@ namespace SIGE.WebApp.Administracion
         protected void btnEliminarCompetencia_Click(object sender, EventArgs e)
         {
             bool vFgRebindGrid = false;
-            foreach (GridDataItem item in grdFuncionCompetencias.SelectedItems)
+            if (grdFuncionCompetencias.SelectedItems.Count > 0)
             {
-                vLstFuncionCompetenciaIndicadorABC.RemoveAll(r => r.ID_PARENT_ITEM.Equals(new Guid(item.GetDataKeyValue("ID_ITEM").ToString())));
-                vLstFuncionCompetenciaABC.RemoveAll(r => r.ID_ITEM.Equals(new Guid(item.GetDataKeyValue("ID_ITEM").ToString())));
-                vFgRebindGrid = true | vFgRebindGrid;
-            }
+                foreach (GridDataItem item in grdFuncionCompetencias.SelectedItems)
+                {
+                    vLstFuncionCompetenciaIndicadorABC.RemoveAll(r => r.ID_PARENT_ITEM.Equals(new Guid(item.GetDataKeyValue("ID_ITEM").ToString())));
+                    vLstFuncionCompetenciaABC.RemoveAll(r => r.ID_ITEM.Equals(new Guid(item.GetDataKeyValue("ID_ITEM").ToString())));
+                    vFgRebindGrid = true | vFgRebindGrid;
+                }
 
-            if (vFgRebindGrid)
-                grdFuncionCompetencias.Rebind();
+                if (vFgRebindGrid)
+                    grdFuncionCompetencias.Rebind();
+            }
+            else
+                UtilMensajes.MensajeResultadoDB(rwmAlertas, "Selecciona una competencia.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
         }
 
         protected void btnAgregarCompetenciaEspecifica_Click(object sender, EventArgs e)
@@ -1753,17 +2020,22 @@ namespace SIGE.WebApp.Administracion
         protected void btnEliminarIndicador_Click(object sender, EventArgs e)
         {
             bool vFgRebindGrid = false;
-            foreach (GridDataItem item in grdFuncionCompetencias.SelectedItems)
+            if (grdFuncionCompetencias.SelectedItems.Count > 0)
             {
-                Guid vIdIndicador = new Guid(item.GetDataKeyValue("ID_ITEM").ToString());
-                Guid vIdCompetencia = (vLstFuncionCompetenciaIndicadorABC.FirstOrDefault(f => f.ID_ITEM.Equals(vIdIndicador)) ?? new E_FUNCION_INDICADOR()).ID_PARENT_ITEM;
-                vLstFuncionCompetenciaIndicadorABC.RemoveAll(r => r.ID_ITEM.Equals(vIdIndicador));
-                CrearDsIndicadores(vLstFuncionCompetenciaABC.FirstOrDefault(f => f.ID_ITEM.Equals(vIdCompetencia)), vLstFuncionCompetenciaIndicadorABC);
-                vFgRebindGrid = true | vFgRebindGrid;
-            }
+                foreach (GridDataItem item in grdFuncionCompetencias.SelectedItems)
+                {
+                    Guid vIdIndicador = new Guid(item.GetDataKeyValue("ID_ITEM").ToString());
+                    Guid vIdCompetencia = (vLstFuncionCompetenciaIndicadorABC.FirstOrDefault(f => f.ID_ITEM.Equals(vIdIndicador)) ?? new E_FUNCION_INDICADOR()).ID_PARENT_ITEM;
+                    vLstFuncionCompetenciaIndicadorABC.RemoveAll(r => r.ID_ITEM.Equals(vIdIndicador));
+                    CrearDsIndicadores(vLstFuncionCompetenciaABC.FirstOrDefault(f => f.ID_ITEM.Equals(vIdCompetencia)), vLstFuncionCompetenciaIndicadorABC);
+                    vFgRebindGrid = true | vFgRebindGrid;
+                }
 
-            if (vFgRebindGrid)
-                grdFuncionCompetencias.Rebind();
+                if (vFgRebindGrid)
+                    grdFuncionCompetencias.Rebind();
+            }
+            else
+                UtilMensajes.MensajeResultadoDB(rwmAlertas, "Selecciona un indicador.", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
         }
 
         protected void CrearDsIndicadores(E_FUNCION_COMPETENCIA pFuncionCompetencia, List<E_FUNCION_INDICADOR> pLstIndicadores)
@@ -1967,7 +2239,6 @@ namespace SIGE.WebApp.Administracion
             cmbOcupaciones.DataBind();
         }
 
-
         protected void cmbAreaO_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
             cmbSubarea.DataSource = new string[] { };
@@ -2047,8 +2318,9 @@ namespace SIGE.WebApp.Administracion
                     ItemElim = item;
                 }
             }
-            if (ItemElim != null){
-            vListaExperiencia.Remove(ItemElim);
+            if (ItemElim != null)
+            {
+                vListaExperiencia.Remove(ItemElim);
             }
         }
 
@@ -2065,6 +2337,129 @@ namespace SIGE.WebApp.Administracion
                 gridItem["NB_COMPETENCIA"].ToolTip = vDsCompetencia;
                 //gridItem["CL_COLOR"].ToolTip = vClasificacion;
             }
+        }
+
+        protected void rgJefesInmediatos_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            DescriptivoNegocio vNeg = new DescriptivoNegocio();
+            rgJefesInmediatos.DataSource = vNeg.ObtenerJefesDescriptivo(vIdDescriptivo).ToList();
+        }
+
+        protected void rgSubordinados_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            DescriptivoNegocio vNeg = new DescriptivoNegocio();
+            rgSubordinados.DataSource = vNeg.ObtenerSubordinadosDescriptivo(vIdDescriptivo).ToList();
+        }
+
+        protected void rgInterrelacionados_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            rgInterrelacionados.DataSource = vLstInterrelacionados;
+        }
+
+        protected void rgLateral_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            //List<E_JEFE_DIRECTO> vLstLateral = new List<E_JEFE_DIRECTO>();
+            //vLstLateral.Add(new E_JEFE_DIRECTO() { ID_PUESTO = 1, CL_PUESTO = "CH000", NB_PUESTO = "Jefe de capital humano", NUM_PLAZAS = 4 });
+            //vLstLateral.Add(new E_JEFE_DIRECTO() { ID_PUESTO = 2, CL_PUESTO = "D0000", NB_PUESTO = "Gerente de capital humano", NUM_PLAZAS = 2 });
+            //vLstLateral.Add(new E_JEFE_DIRECTO() { ID_PUESTO = 3, CL_PUESTO = "DO001", NB_PUESTO = "Director de capital humano", NUM_PLAZAS = 1 });
+
+            rgLateral.DataSource = vLstLaterales;
+        }
+
+        protected void rgAlternativa_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            rgAlternativa.DataSource = vLstAlternativa;
+        }
+
+        protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
+        {
+            E_SELECTOR vLstDatos = new E_SELECTOR();
+            string pParameter = e.Argument;
+
+            if (pParameter != null)
+            {
+                vLstDatos = JsonConvert.DeserializeObject<E_SELECTOR>(pParameter);
+
+                if (vLstDatos.clTipo == "INTERRELACIONADO")
+                {
+                    AgregarInterrelacionado(vLstDatos.oSeleccion.ToString());
+                }
+
+                if (vLstDatos.clTipo == "LATERAL")
+                {
+                    AgregarLateral(vLstDatos.oSeleccion.ToString());
+                }
+
+                if (vLstDatos.clTipo == "ALTERNATIVO")
+                {
+                    AgregarAlternativa(vLstDatos.oSeleccion.ToString());
+                }
+            }
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            foreach (GridDataItem item in rgInterrelacionados.SelectedItems)
+            {
+                int vIdPuesto = int.Parse(item.GetDataKeyValue("ID_PUESTO").ToString());
+                E_PUESTOS vItem = vLstInterrelacionados.Where(w => w.ID_PUESTO == vIdPuesto).FirstOrDefault();
+
+                if (vItem != null)
+                {
+                    vLstInterrelacionados.Remove(vItem);
+                    rgInterrelacionados.Rebind();
+                }
+
+            }
+        }
+
+        protected void btnEliminarLateral_Click(object sender, EventArgs e)
+        {
+            foreach (GridDataItem item in rgLateral.SelectedItems)
+            {
+                int vIdPuesto = int.Parse(item.GetDataKeyValue("ID_PUESTO").ToString());
+                E_PUESTOS vItem = vLstLaterales.Where(w => w.ID_PUESTO == vIdPuesto).FirstOrDefault();
+
+                if (vItem != null)
+                {
+                    vLstLaterales.Remove(vItem);
+                    rgLateral.Rebind();
+                }
+
+            }
+        }
+
+        protected void btnEliminarAlternativa_OnClick(object sender, EventArgs e)
+        {
+            foreach (GridDataItem item in rgAlternativa.SelectedItems)
+            {
+                int vIdPuesto = int.Parse(item.GetDataKeyValue("ID_PUESTO").ToString());
+                E_PUESTOS vItem = vLstAlternativa.Where(w => w.ID_PUESTO == vIdPuesto).FirstOrDefault();
+
+                if (vItem != null)
+                {
+                    vLstAlternativa.Remove(vItem);
+                    rgAlternativa.Rebind();
+                }
+
+            }
+        }
+
+        protected void btnAgregarDocumento_Click(object sender, EventArgs e)
+        {
+            AddDocumento(cmbTipoDocumento.SelectedValue, rauDocumento);
+            grdDocumentos.Rebind();
+        }
+
+        protected void grdDocumentos_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            grdDocumentos.DataSource = vLstDocumentos;
+        }
+
+        protected void btnDelDocumentos_Click(object sender, EventArgs e)
+        {
+            foreach (GridDataItem i in grdDocumentos.SelectedItems)
+                EliminarDocumento(i.GetDataKeyValue("ID_ITEM").ToString());
         }
 
     }

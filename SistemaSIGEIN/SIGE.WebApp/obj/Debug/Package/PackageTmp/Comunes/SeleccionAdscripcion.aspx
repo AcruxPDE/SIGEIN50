@@ -24,9 +24,11 @@
                         nbAdscripcion: masterTable.getCellByColumnUniqueName(selectedItem, "Descripcion").innerHTML,
                         clTipoCatalogo: "<%= vClCatalogo %>"
                     };
-                    vAdscripciones.push(vAdscripcion);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vAdscripciones.length;
+                    if (!existeElemento(vAdscripcion)) {
+                        vAdscripciones.push(vAdscripcion);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vAdscripciones.length;
+                    }
                 }
                 return true;
             }
@@ -38,6 +40,15 @@
                 browserWnd.radalert("Selecciona una adscripción.", 400, 150);
             }
 
+            return false;
+        }
+
+        function existeElemento(pAdscripcion) {
+            for (var i = 0; i < vAdscripciones.length; i++) {
+                var vValue = vAdscripciones[i];
+                if (vValue.idAdscripcion == pAdscripcion.idAdscripcion)
+                    return true;
+            }
             return false;
         }
 

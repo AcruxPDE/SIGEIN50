@@ -49,6 +49,24 @@ namespace SIGE.WebApp.EO.Cuestionarios {
         protected global::Telerik.Web.UI.RadPane rpDatos;
         
         /// <summary>
+        /// lbPeriodo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbPeriodo;
+        
+        /// <summary>
+        /// txtNoPeriodo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtNoPeriodo;
+        
+        /// <summary>
         /// rgCuestionario control.
         /// </summary>
         /// <remarks>

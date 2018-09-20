@@ -72,10 +72,13 @@ namespace SIGE.WebApp.FYD
                     vProgramasCapacitacion = cargarParseProgramasCapacitacion(programas);
                     pgridDetalle.DataSource = vProgramasCapacitacion;
 
-                    txtNbDepartamento.Text = vProgramasCapacitacion.ElementAt(0).NB_DEPARTAMENTO.ToString();
-                    txtPeriodo.Text = vProgramasCapacitacion.ElementAt(0).CL_PROGRAMA.ToString();
-                    txtTipoEvaluacion.Text = vProgramasCapacitacion.ElementAt(0).TIPO_EVALUACION.ToString();
-                    radEditorNotas.Content = vProgramasCapacitacion.ElementAt(0).DS_NOTAS.ToString();
+                    if (vProgramasCapacitacion.Count > 0)
+                    {
+                        txtNbDepartamento.Text = vProgramasCapacitacion.ElementAt(0).NB_DEPARTAMENTO.ToString();
+                        txtPeriodo.Text = vProgramasCapacitacion.ElementAt(0).CL_PROGRAMA.ToString();
+                        txtTipoEvaluacion.Text = vProgramasCapacitacion.ElementAt(0).TIPO_EVALUACION.ToString();
+                        radEditorNotas.Content = vProgramasCapacitacion.ElementAt(0).DS_NOTAS.ToString();
+                    }
                 }
             }
         }
@@ -321,7 +324,8 @@ namespace SIGE.WebApp.FYD
             E_RESULTADO vResultado = nDocumentoAutorizar.ActualizaEstatusDocumentoAutorizacion(vFlAutorizacion, autoriza, vXelementNotas.ToString(), null, vClUsuario, vNbPrograma);
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "");
-            Response.Redirect(ContextoUsuario.nbHost + "/Logon.aspx");
+            string myUrl = ResolveUrl("~/Logon.aspx");
+            Response.Redirect(ContextoUsuario.nbHost + myUrl);
         }
     }
 }

@@ -27,6 +27,7 @@ namespace SIGE.Entidades
         public Nullable<int> ID_PERIODO_ORIGEN { get; set; }
         public Nullable<bool> FG_CUESTIONARIOS_CREADOS { get; set; }
         public string DS_INSTRUCCIONES { get; set; }
+        public string DS_MENSAJE_CORREO { get; set; }
         public string CL_USUARIO_APP_MODIFICA { get; set; }
         public Nullable<System.DateTime> FE_MODIFICA { get; set; }
         public string NB_PERIODO_ORIGEN { get; set; }

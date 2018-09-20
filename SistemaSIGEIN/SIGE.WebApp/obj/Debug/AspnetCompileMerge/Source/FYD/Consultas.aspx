@@ -369,7 +369,7 @@
                                     <telerik:RadButtonToggleState CssClass="unchecked" />
                                 </ToggleStates>
                             </telerik:RadButton>
-                            <telerik:RadButton runat="server" ID="rbCursosSeleccion" ToggleType="Radio" GroupName="ca" Text="Seleccionados" OnClientClicked="ShowGridCursos" AutoPostBack="false" ToolTip="Haga clic para seleccionar/quitar de la lista deje, la lista en blanco para seleccionar todos.">
+                            <telerik:RadButton runat="server" ID="rbCursosSeleccion" ToggleType="Radio" GroupName="ca" Text="Seleccionados" OnClientClicked="ShowGridCursos" AutoPostBack="false" ToolTip="Haz clic para seleccionar/quitar de la lista, deja la lista en blanco para seleccionar todos.">
                                 <ToggleStates>
                                     <telerik:RadButtonToggleState />
                                     <telerik:RadButtonToggleState CssClass="unchecked" />
@@ -391,7 +391,7 @@
                                     <telerik:RadButtonToggleState CssClass="unchecked" />
                                 </ToggleStates>
                             </telerik:RadButton>
-                            <telerik:RadButton runat="server" ID="rbInsSeleccion" ToggleType="Radio" GroupName="rp" Text="Seleccionados" OnClientClicked="ShowGridInstructores" AutoPostBack="false" ToolTip="Haga clic para seleccionar/quitar de la lista deje, la lista en blanco para seleccionar todos.">
+                            <telerik:RadButton runat="server" ID="rbInsSeleccion" ToggleType="Radio" GroupName="rp" Text="Seleccionados" OnClientClicked="ShowGridInstructores" AutoPostBack="false" ToolTip="Haz clic para seleccionar/quitar de la lista, deja la lista en blanco para seleccionar todos.">
                                 <ToggleStates>
                                     <telerik:RadButtonToggleState />
                                     <telerik:RadButtonToggleState CssClass="unchecked" />
@@ -413,7 +413,7 @@
                                     <telerik:RadButtonToggleState CssClass="unchecked" />
                                 </ToggleStates>
                             </telerik:RadButton>
-                            <telerik:RadButton runat="server" ID="rbComSeleccion" ToggleType="Radio" GroupName="co" Text="Seleccionados" AutoPostBack="false" OnClientClicked="ShowGridCompetencias" ToolTip="Haga clic para seleccionar/quitar de la lista deje, la lista en blanco para seleccionar todos.">
+                            <telerik:RadButton runat="server" ID="rbComSeleccion" ToggleType="Radio" GroupName="co" Text="Seleccionados" AutoPostBack="false" OnClientClicked="ShowGridCompetencias" ToolTip="Haz clic para seleccionar/quitar de la lista, deja la lista en blanco para seleccionar todos.">
                                 <ToggleStates>
                                     <telerik:RadButtonToggleState />
                                     <telerik:RadButtonToggleState CssClass="unchecked" />
@@ -436,7 +436,7 @@
                                     <telerik:RadButtonToggleState CssClass="unchecked" />
                                 </ToggleStates>
                             </telerik:RadButton>
-                            <telerik:RadButton runat="server" ID="rbParSeleccion" ToggleType="Radio" GroupName="de" Text="Seleccionados" OnClientClicked="ShowGridParticipantes" AutoPostBack="false" ToolTip="Haga clic para seleccionar/quitar de la lista deje, la lista en blanco para seleccionar todos.">
+                            <telerik:RadButton runat="server" ID="rbParSeleccion" ToggleType="Radio" GroupName="de" Text="Seleccionados" OnClientClicked="ShowGridParticipantes" AutoPostBack="false" ToolTip="Haz clic para seleccionar/quitar de la lista, deja la lista en blanco para seleccionar todos.">
                                 <ToggleStates>
                                     <telerik:RadButtonToggleState />
                                     <telerik:RadButtonToggleState CssClass="unchecked" />
@@ -459,7 +459,7 @@
                                     <telerik:RadButtonToggleState CssClass="unchecked" />
                                 </ToggleStates>
                             </telerik:RadButton>
-                            <telerik:RadButton runat="server" ID="rbEventoSeleccion" ToggleType="Radio" GroupName="pu" Text="Seleccionados" OnClientClicked="ShowGridEventos" AutoPostBack="false" ToolTip="Haga clic para seleccionar/quitar de la lista deje, la lista en blanco para seleccionar todos.">
+                            <telerik:RadButton runat="server" ID="rbEventoSeleccion" ToggleType="Radio" GroupName="pu" Text="Seleccionados" OnClientClicked="ShowGridEventos" AutoPostBack="false" ToolTip="Haz clic para seleccionar/quitar de la lista, deja la lista en blanco para seleccionar todos.">
                                 <ToggleStates>
                                     <telerik:RadButtonToggleState />
                                     <telerik:RadButtonToggleState CssClass="unchecked" />

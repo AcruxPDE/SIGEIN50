@@ -85,13 +85,13 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadLabel lblPersonalizado;
         
         /// <summary>
-        /// rtsConfiguracionClima control.
+        /// rtsConfiguracion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTabStrip rtsConfiguracionClima;
+        protected global::Telerik.Web.UI.RadTabStrip rtsConfiguracion;
         
         /// <summary>
         /// rmpCapturaResultados control.
@@ -121,24 +121,6 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadGrid grdCandidatos;
         
         /// <summary>
-        /// btnAddCandidato control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnAddCandidato;
-        
-        /// <summary>
-        /// btnDelCandidato control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnDelCandidato;
-        
-        /// <summary>
         /// rpPruebas control.
         /// </summary>
         /// <remarks>
@@ -148,13 +130,13 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadPageView rpPruebas;
         
         /// <summary>
-        /// divPuesto control.
+        /// dvPuesto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPuesto;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvPuesto;
         
         /// <summary>
         /// lstPuesto control.
@@ -184,148 +166,13 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadSlider radSliderNivel;
         
         /// <summary>
-        /// contenidoPruebas control.
+        /// grdPruebas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl contenidoPruebas;
-        
-        /// <summary>
-        /// PersonalidadLab1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton PersonalidadLab1;
-        
-        /// <summary>
-        /// InteresesPersonales control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton InteresesPersonales;
-        
-        /// <summary>
-        /// EstiloPensamiento control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton EstiloPensamiento;
-        
-        /// <summary>
-        /// AptitupMental control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton AptitupMental;
-        
-        /// <summary>
-        /// AptitupMentalII control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton AptitupMentalII;
-        
-        /// <summary>
-        /// PersonalidadLaboralII control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton PersonalidadLaboralII;
-        
-        /// <summary>
-        /// AdaptacionMiedo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton AdaptacionMiedo;
-        
-        /// <summary>
-        /// Tiva control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton Tiva;
-        
-        /// <summary>
-        /// OrtografiaI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton OrtografiaI;
-        
-        /// <summary>
-        /// OrtografiaII control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton OrtografiaII;
-        
-        /// <summary>
-        /// OrtografiaIII control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton OrtografiaIII;
-        
-        /// <summary>
-        /// TecnicaPC control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton TecnicaPC;
-        
-        /// <summary>
-        /// Redaccion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton Redaccion;
-        
-        /// <summary>
-        /// PruebaIngles control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton PruebaIngles;
-        
-        /// <summary>
-        /// PruebaEntrevista control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton PruebaEntrevista;
+        protected global::Telerik.Web.UI.RadGrid grdPruebas;
         
         /// <summary>
         /// btnGenerar control.

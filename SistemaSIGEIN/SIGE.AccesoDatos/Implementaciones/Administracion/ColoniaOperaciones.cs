@@ -16,12 +16,12 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal // reemplazar 
 
         private SistemaSigeinEntities context;
 
-        
-        public List<SPE_OBTIENE_C_COLONIA_Result> ObtenerColonias(int? pIdColonia = null, String pClPais = null, String pClEstado = null, String pClMunicipio = null, String pClColonia = null, String pNbColonia = null, String pClTipoAsentamiento = null, String pClCodigoPostal = null)
+
+        public List<SPE_OBTIENE_C_COLONIA_Result> ObtenerColonias(int? pIdColonia = null, String pClPais = null, String pClEstado = null, String pNbEstado = null, String pClMunicipio = null, String pNbMunicipio = null, String pClColonia = null, String pNbColonia = null, String pClTipoAsentamiento = null, String pClCodigoPostal = null)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_C_COLONIA(pIdColonia, pClPais, pClEstado, pClMunicipio, pClColonia, pNbColonia, pClTipoAsentamiento, pClCodigoPostal).ToList();
+                return context.SPE_OBTIENE_C_COLONIA(pIdColonia, pClPais, pClEstado,pNbEstado,  pClMunicipio,pNbMunicipio, pClColonia, pNbColonia, pClTipoAsentamiento, pClCodigoPostal).ToList();
             }
         }
                 

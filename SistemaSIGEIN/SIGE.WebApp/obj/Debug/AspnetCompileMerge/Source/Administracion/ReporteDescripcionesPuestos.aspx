@@ -21,10 +21,10 @@
                         </GroupByExpressions>
                 <CommandItemSettings ShowExportToExcelButton="true" ShowAddNewRecordButton="false" />                                           
                 <Columns>
-                    <telerik:GridBoundColumn  AllowFiltering="false"  HeaderText="Renglón" DataField="RENGLON" UniqueName="RENGLON" HeaderStyle-Width="70" ></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn  AllowFiltering="false"  HeaderText="#" HeaderStyle-HorizontalAlign="Center" DataField="RENGLON" UniqueName="RENGLON" HeaderStyle-Width="50" ></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave" DataField="CL_PUESTO" UniqueName="CL_PUESTO" HeaderStyle-Width="60" FilterControlWidth="40"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Descripción" DataField="NB_PUESTO" UniqueName="NB_PUESTO" HeaderStyle-Width="120" FilterControlWidth="50"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Departamento" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO" HeaderStyle-Width="120" FilterControlWidth="50"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Área/Departamento" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO" HeaderStyle-Width="120" FilterControlWidth="50"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Reporta a" DataField="REPORTA_A" UniqueName="REPORTA_A" HeaderStyle-Width="120" FilterControlWidth="50"></telerik:GridBoundColumn>
                     </Columns>
             </MasterTableView>

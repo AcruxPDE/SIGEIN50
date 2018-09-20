@@ -25,12 +25,22 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             }
         }
 
-        public XElement InsertarProcesoSeleccion(int? pIdCandidato = null, int? pIdRequisicion = null, string pClUsuario = null, string pNbPrograma = null)
+        public XElement InsertarProcesoSeleccion(int? pIdCandidato = null, int? pIdEmpleado = null, int? pIdRequisicion = null, string pClUsuario = null, string pNbPrograma = null)
         {
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
-                context.SPE_INSERTA_PROCESO_SELECCION(pOutClaveRetorno, pIdCandidato, pIdRequisicion, pClUsuario, pNbPrograma);
+                context.SPE_INSERTA_PROCESO_SELECCION(pOutClaveRetorno, pIdCandidato, pIdEmpleado, pIdRequisicion, pClUsuario, pNbPrograma);
+                return XElement.Parse(pOutClaveRetorno.Value.ToString());
+            }
+        }
+
+        public XElement EliminaProcesoSeleccion(int? pIdProcesoSeleccion = null, int? pIdRequisicion = null)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                ObjectParameter pOutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                context.SPE_ELIMINA_K_PROCESO_SELECCION(pOutClaveRetorno, pIdProcesoSeleccion, pIdRequisicion);
                 return XElement.Parse(pOutClaveRetorno.Value.ToString());
             }
         }
@@ -133,7 +143,6 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             }
         }
 
-
         public XElement InsertarActualizarDocumentos(int pID_CANDIDATO, List<UDTT_ARCHIVO> pLstArchivosTemporales, List<E_DOCUMENTO> pLstDocumentos, string pClUsuario, string pNbPrograma)
         {
             using (context = new SistemaSigeinEntities())
@@ -195,7 +204,6 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
                 return context.SPE_OBTIENE_DOCUMENTO_PROCESO(pIdCandidato).FirstOrDefault();
             }
         }
-
 
         public E_RESULTADO_MEDICO ObtenerResultadoMedico(int? pIdResultadoMedico = null, int? pIdCandidato = null, int? pIdEmpleado = null, int? pIdProcesoSeleccion = null)
         {
@@ -271,7 +279,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             }
         }
 
-        public XElement InsertarActualizaCopiaSocioEconomico(int idCandidato, int idProceso, string pClUsuario, string pNbPrograma)
+        public XElement InsertarActualizaCopiaSocioEconomico(int? idCandidato, int idProceso, string pClUsuario, string pNbPrograma)
         {
             using (context = new SistemaSigeinEntities())
             {
@@ -301,6 +309,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
                 return XElement.Parse(pOutClaveRetorno.Value.ToString());
             }
         }
+
         public List<SPE_OBTIENE_EST_SOC_DEPENDIENTE_Result> ObtenerDependientes(int? pIdEstudioSocioEconomico = null)
         {
             using (context = new SistemaSigeinEntities())
@@ -309,7 +318,6 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             }
         }
 
-  
         public E_ESTUDIO_SOCIOECONOMICO ObtenerEstudioSocioeconomico(int? pIdEstudioSocioeconomico = null, int? pIdProcesoSeleccion = null, int? pIdEmpleado = null, int? pIdCandidato = null)
         {
             using (context = new SistemaSigeinEntities())

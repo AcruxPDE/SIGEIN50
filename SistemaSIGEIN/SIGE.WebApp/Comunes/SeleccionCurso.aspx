@@ -26,9 +26,11 @@
                         noDuracion: masterTable.getCellByColumnUniqueName(selectedItem, "NO_DURACION").innerHTML,
                         clTipoCatalogo: "CURSO"
                     };
-                    vDatos.push(vDato);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vDatos.length;
+                    if (!existeElemento(vDato)) {
+                        vDatos.push(vDato);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vDatos.length;
+                    }
                 }
                 return true;
             }
@@ -40,6 +42,15 @@
                 browserWnd.radalert("Selecciona un curso.", 400, 150);
             }
 
+            return false;
+        }
+
+        function existeElemento(pDato) {
+            for (var i = 0; i < vDatos.length; i++) {
+                var vValue = vDatos[i];
+                if (vValue.idCurso == pDato.idCurso)
+                    return true;
+            }
             return false;
         }
 

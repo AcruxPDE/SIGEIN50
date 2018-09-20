@@ -170,7 +170,7 @@
             AutoPostBack="false" 
             Text="Nuevo" 
             OnClientClicked="AbrirVentana"
-             Width="100" ></telerik:RadButton>
+            ></telerik:RadButton>
     </div>
     
     <div class="ctrlBasico">
@@ -180,7 +180,7 @@
             name="btnEditar" 
             AutoPostBack="false" 
             Text="Editar"  
-            Width="100"
+            
              OnClientClicked="EditarCentroAdmvo"></telerik:RadButton>
     </div>
     
@@ -191,7 +191,7 @@
             name="btnEliminar" 
             AutoPostBack="true" 
             Text="Eliminar" 
-            Width="100"
+          
             OnClientClicking="confirmarEliminar" 
             OnClick="btnEliminar_Click">
         </telerik:RadButton>

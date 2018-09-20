@@ -25,9 +25,11 @@
                         clsolicitud: selectedItem.getDataKeyValue("CL_SOLICITUD"),
                         clTipoCatalogo: "<%= vClCatalogo %>"
                     };
-                    vCandidatos.push(vCandidato);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vCandidatos.length;
+                    if (!existeElemento(vCandidato)) {
+                        vCandidatos.push(vCandidato);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vCandidatos.length;
+                    }
                 }
                 return true;
             }
@@ -39,6 +41,15 @@
                 browserWnd.radalert("Selecciona un candidato.", 400, 150);
             }
 
+            return false;
+        }
+
+        function existeElemento(pCandidato) {
+            for (var i = 0; i < vCandidatos.length; i++) {
+                var vValue = vCandidatos[i];
+                if (vValue.idCandidato == pCandidato.idCandidato)
+                    return true;
+            }
             return false;
         }
 

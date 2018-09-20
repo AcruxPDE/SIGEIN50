@@ -33,6 +33,13 @@ namespace SIGE.WebApp.EO.Cuestionarios
             get { return (int)ViewState["vs_vidEvaluadoMeta"]; }
             set { ViewState["vs_vidEvaluadoMeta"] = value; }
         }
+
+        public int? vIdEvaluador
+        {
+            get { return (int?)ViewState["vs_vIdEvaluador"]; }
+            set { ViewState["vs_vIdEvaluador"] = value; }
+        }
+
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
         string vClRutaArchivosTemporales;
         public string vClUsuario;
@@ -42,6 +49,7 @@ namespace SIGE.WebApp.EO.Cuestionarios
         #endregion
 
         #region Funciones
+
         protected void AddDocumento(string pClTipoDocumento, RadAsyncUpload pFiDocumentos)
         {
             foreach (UploadedFile f in pFiDocumentos.UploadedFiles)
@@ -64,6 +72,7 @@ namespace SIGE.WebApp.EO.Cuestionarios
             if (vLstDocumentos == null)
                 vLstDocumentos = new List<E_DOCUMENTO>();
         }
+
         protected void EliminarDocumento(string pIdItemDocumento)
         {
             E_DOCUMENTO d = vLstDocumentos.FirstOrDefault(f => f.ID_ITEM.ToString().Equals(pIdItemDocumento));
@@ -78,6 +87,7 @@ namespace SIGE.WebApp.EO.Cuestionarios
             vLstDocumentos.Remove(d);
             grdDocumentos.Rebind();
         }
+
         protected void CargarDocumentos()
         {
             PeriodoDesempenoNegocio neg = new PeriodoDesempenoNegocio();
@@ -106,29 +116,34 @@ namespace SIGE.WebApp.EO.Cuestionarios
         }
 
         #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
             PeriodoDesempenoNegocio neg = new PeriodoDesempenoNegocio();
+     
 
             if (!IsPostBack)
             {
-                if (Request.Params["pIdEvaluadoMeta"] != null)
-                {
-                    IdEvaluadoMeta = int.Parse(Request.QueryString["pIdEvaluadoMeta"]);
+                if (Request.Params["pIdEvaluador"] != null)
+                    {
+                        vIdEvaluador = int.Parse(Request.Params["pIdEvaluador"].ToString());
+                    }  
 
-                }
-                else
-                {
-                    IdEvaluadoMeta = 0;
-                }
-                vLstDocumentos = new List<E_DOCUMENTO>();
-                var oMeta = neg.ObtieneMetas(pIdEvaluadoMeta: IdEvaluadoMeta).FirstOrDefault();
-
-                if (oMeta != null)
-                {
-                    txtMeta.InnerText = oMeta.DS_META;
-                }
-                CargarDocumentos();
+                    if (Request.Params["pIdEvaluadoMeta"] != null)
+                    {
+                        IdEvaluadoMeta = int.Parse(Request.QueryString["pIdEvaluadoMeta"]);
+                    }
+                    else
+                    {
+                        IdEvaluadoMeta = 0;
+                    }
+                    vLstDocumentos = new List<E_DOCUMENTO>();
+                    var oMeta = neg.ObtieneMetas(pIdEvaluadoMeta: IdEvaluadoMeta).FirstOrDefault();
+                    if (oMeta != null)
+                    {
+                        txtMeta.InnerText = oMeta.DS_META;
+                    }
+                    CargarDocumentos();
             }
 
             vNbPrograma = ContextoUsuario.nbPrograma;
@@ -173,9 +188,11 @@ namespace SIGE.WebApp.EO.Cuestionarios
                 }
             }
             PeriodoDesempenoNegocio nSolicitud = new PeriodoDesempenoNegocio();
-            E_RESULTADO vResultado = nSolicitud.InsertaActualizaEvidenciasMetas(IdEvaluadoMeta, vLstArchivos, vLstDocumentos, vClUsuario, vNbPrograma);
-            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
+
+                E_RESULTADO vResultado = nSolicitud.InsertaActualizaEvidenciasMetas(IdEvaluadoMeta, vLstArchivos, vLstDocumentos, vClUsuario, vNbPrograma, vIdEvaluador);
+                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
+
         }
     }
 

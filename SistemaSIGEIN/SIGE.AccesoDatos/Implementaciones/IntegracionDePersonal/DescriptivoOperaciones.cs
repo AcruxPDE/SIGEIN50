@@ -21,6 +21,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
                 return context.SPE_OBTIENE_DESCRIPTIVO(pIdDescriptivo).FirstOrDefault();   
             }
         }
+
         public SPE_OBTIENE_DESCRIPTIVO_REQUISICION_Result ObtenerDescriptivoRequisicion(int? pIdDescriptivo)
         {
             using (context = new SistemaSigeinEntities())
@@ -78,6 +79,22 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 return context.SPE_OBTIENE_DESCRIPTIVOS_PUESTOS().ToList();
+            }
+        }
+
+        public List<SPE_OBTIENE_JEFES_DESCRIPTIVO_Result> ObtenerJefesDescriptivo(int? pIdPuesto)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                return context.SPE_OBTIENE_JEFES_DESCRIPTIVO(pIdPuesto).ToList();
+            }
+        }
+
+        public List<SPE_OBTIENE_SUBORDINADOS_DESCRIPTIVO_Result> ObtenerSubordinadosDescriptivo(int? pIdPuesto)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                return context.SPE_OBTIENE_SUBORDINADOS_DESCRIPTIVO(pIdPuesto).ToList();
             }
         }
 

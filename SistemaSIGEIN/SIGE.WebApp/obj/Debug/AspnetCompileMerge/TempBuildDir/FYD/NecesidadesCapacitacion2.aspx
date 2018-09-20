@@ -5,7 +5,7 @@
     <script type="text/javascript">
 
         function OpenAreaSelectionWindow() {
-            OpenSelectionWindow("../Comunes/SeleccionArea.aspx", "winSeleccion", "Selección de área")
+            OpenSelectionWindow("../Comunes/SeleccionArea.aspx", "winSeleccion", "Selección de área/departamento")
         }
 
         function OpenProgramaSelectionWindow() {
@@ -18,7 +18,7 @@
 
         function GetRadWindow() {
             var oWindow = null;
-            if 
+            if
                 (window.radWindow) oWindow = window.radWindow;
             else
                 if (window.frameElement.radWindow)
@@ -52,14 +52,14 @@
                 if (vDatosSeleccionados.clTipoCatalogo == "PROGRAMA") {
                     vLstDato.idItem = vDatosSeleccionados.idPrograma;
                     vLstDato.nbItem = vDatosSeleccionados.nbPrograma;
-                    list = $find('<%=lstProgramas.ClientID %>');
-                    ChangeListItem(vLstDato.idItem, vLstDato.nbItem, list);
+                    //list = $find('<=lstProgramas.ClientID %>');
+                    // ChangeListItem(vLstDato.idItem, vLstDato.nbItem, list);
 
                 }
                 else {
                     vLstDato.idItem = vDatosSeleccionados.idArea;
                     vLstDato.nbItem = vDatosSeleccionados.nbArea;
-                  //  list = $find('<=lstDepartamento.ClientID %>');
+                    //  list = $find('<=lstDepartamento.ClientID %>');
                     ChangeListItem(vLstDato.idItem, vLstDato.nbItem, list);
                 }
 
@@ -88,8 +88,8 @@
 
         function ValidarNuevoProgramaCapacitacion(sender, args) {
 
-            var txtProgClave = $find('<%=txtClavePrograma.ClientID %>').get_value();
-            var txtProgNombre = $find('<%= txtNombrePrograma.ClientID %>').get_value();
+            //var txtProgClave = $find('<=txtClavePrograma.ClientID %>').get_value();
+            //var txtProgNombre = $find('<= txtNombrePrograma.ClientID %>').get_value();
 
             if (txtProgClave != "" & txtProgNombre != "") {
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
@@ -112,7 +112,7 @@
 
         function ValidarActualizacionProgramaCapacitacion(sender, args) {
 
-        //    var vListBox = $find('<=lstDepartamento.ClientID %>');
+            //    var vListBox = $find('<=lstDepartamento.ClientID %>');
             var items = vListBox.get_items();
             var item = items[0];
             var vIdPrograma = item.get_value();
@@ -283,8 +283,8 @@
                 var vChecks = [];
                 var vFgIncluirNa = $find('<%= chkIncluirNa.ClientID %>').get_checked();
                 var vFgIncluirNoNecesarias = $find('<%= chkIncluirNoNecesarias.ClientID %>').get_checked();
-                var txtProgClave = $find('<%=txtClavePrograma.ClientID %>').get_value();
-                var txtProgNombre = $find('<%= txtNombrePrograma.ClientID %>').get_value();
+                //var txtProgClave = $find('<=txtClavePrograma.ClientID %>').get_value();
+                //var txtProgNombre = $find('<= txtNombrePrograma.ClientID %>').get_value();
 
                 if (txtProgClave != "" & txtProgNombre != "") {
 
@@ -350,7 +350,7 @@
                 var vChecks = [];
                 var vFgIncluirNa = $find('<%= chkIncluirNa.ClientID %>').get_checked();
                 var vFgIncluirNoNecesarias = $find('<%= chkIncluirNoNecesarias.ClientID %>').get_checked();
-                var vListBox = $find('<%=lstProgramas.ClientID %>');
+                //var vListBox = $find('<lstProgramas.ClientID %>');
 
                 var items = vListBox.get_items();
                 var item = vListBox.getItem(0);
@@ -405,11 +405,11 @@
 
 
         //funcion general para todos los modulos, se tomara como base estas funciones de abajo
-       
+
 
         function EncapsularSeleccion(pClTipoAccion, pIdPrograma, pClPrograma, pNbPrograma, pLstSeleccion) {
             //{ clTipo: pClTipoSeleccion, oSeleccion: pLstSeleccion }
-            return JSON.stringify({clTipoAccion: pClTipoAccion, idPrograma: pIdPrograma, clPrograma: pClPrograma, nbPrograma: pNbPrograma, oSeleccion:  pLstSeleccion});
+            return JSON.stringify({ clTipoAccion: pClTipoAccion, idPrograma: pIdPrograma, clPrograma: pClPrograma, nbPrograma: pNbPrograma, oSeleccion: pLstSeleccion });
         }
 
         function InsertEvaluado(pDato) {
@@ -502,7 +502,65 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
+        <telerik:RadTabStrip runat="server" ID="rtsNecesidades" SelectedIndex="0" Width="100%" MultiPageID="rmpNecesidades">
+        <Tabs>
+            <telerik:RadTab Text="Contexto"></telerik:RadTab>
+            <telerik:RadTab Text="Necesidades de capacitación"></telerik:RadTab>
+        </Tabs>
+    </telerik:RadTabStrip>
+        <div style="height: calc(100% - 60px); width: 100%;">
+        <telerik:RadMultiPage runat="server" ID="rmpNecesidades" SelectedIndex="0" Width="100%" Height="100%">
+               <telerik:RadPageView ID="rpvContexto" runat="server">  
 
+    <div style="clear: both; height: 10px;"></div>
+                   <div class="ctrlBasico">
+                                    <table class="ctrlTableForm" text-align: left;>
+                                        <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="lbPeriodo" name="lbTabulador" runat="server">Período:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtClPeriodo" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="lbNbPeriodo" name="lbTabulador" runat="server">Descripción:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtDsPeriodo" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                                 <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="Label1" name="lbTabulador" runat="server">Estatus:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtEstatus" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                                      <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="Label2" name="lbTabulador" runat="server">Tipo de evaluación:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtTipoEvaluacion" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                             <tr>
+                                            <td class="ctrlTableDataContext">
+                                                <label id="Label3" name="lbTabulador" runat="server">Notas:</label>
+                                            </td>
+                                            <td  class="ctrlTableDataBorderContext">
+                                                <div id="txtNotas" runat="server"></div>
+                                            </td>
+                                        </tr>
+                                        </table>
+                                    </div>
+                 </telerik:RadPageView>
+
+
+            <telerik:RadPageView runat="server" ID="rpvNecesidades">
 
     <telerik:RadSplitter ID="rsPlantilla" Width="100%" Height="100%" BorderSize="0" runat="server">
         <telerik:RadPane ID="rpGridEvaluados" runat="server" Height="100%" ShowContentDuringLoad="false">
@@ -515,11 +573,11 @@
             <div class="ctrlBasico">
                 <telerik:RadTextBox runat="server" Width="80px" ID="txtPeriodo" Text="10" EnabledStyle-HorizontalAlign="Right" ReadOnly="true"></telerik:RadTextBox>
             </div>--%>
-             <div class="ctrlBasico">
+            <%-- <div class="ctrlBasico">
                     <table class="ctrlTableForm">
                         <tr>
                             <td class="ctrlTableDataContext">
-                                <label>Periodo:</label></td>
+                                <label>Período:</label></td>
                             <td colspan="2" class="ctrlTableDataBorderContext">
                                 <div id="txtPeriodo" runat="server" style="min-width: 100px;"></div>
                             </td>
@@ -528,7 +586,7 @@
                             </td>
                         </tr>
                     </table>
-         </div>
+         </div>--%>
 
             <div class="ctrlBasico">
                 <%--<telerik:RadTextBox runat="server" Width="300px" ID="txtNombrePeriodo" ReadOnly="true"></telerik:RadTextBox>--%>
@@ -586,15 +644,11 @@
             <div class="ctrlBasico">
                 <telerik:RadButton runat="server" ID="btnSeleccionarTodos" Text="Seleccionar Todos" AutoPostBack="false" OnClientClicked="SeleccionaTodos"></telerik:RadButton>
             </div>
-
             <div class="ctrlBasico">
                 <telerik:RadButton runat="server" ID="btnQuitarSeleccion" Text="Deseleccionar Todos" AutoPostBack="false" OnClientClicked="DeseleccionaTodos"></telerik:RadButton>
             </div>
-
             <div style="clear: both;"></div>
-
-            <div style="height: calc(100% - 160px); width: 100%;">
-
+            <div style="height: calc(100% - 130px); width: 100%;">
                 <telerik:RadGrid ID="grdCapacitacion" runat="server" HeaderStyle-Font-Bold="true" Height="100%" AutoGenerateColumns="true" OnItemCreated="grdCapacitacion_ItemCreated"
                     OnNeedDataSource="grdCapacitacion_NeedDataSource" OnColumnCreated="grdCapacitacion_ColumnCreated" AllowMultiRowSelection="true" AllowPaging="false">
                     <ClientSettings EnablePostBackOnRowClick="false" Scrolling-FrozenColumnsCount="3">
@@ -611,7 +665,7 @@
                 <telerik:RadButton runat="server" ID="btnFormatoExcel" Text="Formato Excel" OnClick="btnFormatoExcel_Click"></telerik:RadButton>
             </div>
         </telerik:RadPane>
-        <telerik:RadPane ID="rpAyuda" runat="server" Width="22px" ShowContentDuringLoad="false">
+       <%-- <telerik:RadPane ID="rpAyuda" runat="server" Width="22px" ShowContentDuringLoad="false">
             <telerik:RadSlidingZone ID="rszPrograma" runat="server" SlideDirection="Left" Width="22px">
                 <telerik:RadSlidingPane ID="rspNuevoPrograma" runat="server" Title="Generar programa" Width="340px" RenderMode="Mobile" Height="200">
                     <div style="clear: both;"></div>
@@ -632,9 +686,9 @@
                     </div>
                     <div style="clear: both; height: 5px;"></div>
                     <div class="ctrlBasico">
-                        <telerik:RadButton runat="server" ID="btnGuardarPrograma" Text="Guardar" AutoPostBack="false" CssClass="btnGuardarPrograma" ToolTip="Esta opción te permite crear un programa de capacitación a partir de los resultados obtenidos en un periodo de Detección de Necesidades de Capacitación (DNC). Selecciona el periodo deseado:"></telerik:RadButton>
+                        <telerik:RadButton runat="server" ID="btnGuardarPrograma" Text="Guardar" AutoPostBack="false" CssClass="btnGuardarPrograma" ToolTip="Esta opción te permite crear un programa de capacitación a partir de los resultados obtenidos en un período de Detección de Necesidades de Capacitación (DNC). Selecciona el periodo deseado:"></telerik:RadButton>--%>
                         <%--<telerik:RadButton runat="server" ID="btnGuardarPrograma" Text="Guardar" AutoPostBack="false" class="btnGuardarPrograma" OnClientClicking="ValidarNuevoProgramaCapacitacion" OnClick="btnGuardarPrograma_Click" ToolTip="Esta opción te permite crear un programa de capacitación a partir de los resultados obtenidos en un periodo de Detección de Necesidades de Capacitación (DNC). Selecciona el periodo deseado:"></telerik:RadButton> --%>
-                    </div>
+                  <%--  </div>
                 </telerik:RadSlidingPane>
                 <telerik:RadSlidingPane ID="rspActualizaPrograma" runat="server" Title="Actualizar programa" Width="315">
                     <div style="clear: both;"></div>
@@ -652,7 +706,10 @@
                     </div>
                 </telerik:RadSlidingPane>
             </telerik:RadSlidingZone>
-        </telerik:RadPane>
+        </telerik:RadPane>--%>
     </telerik:RadSplitter>
+                </telerik:RadPageView>
+            </telerik:RadMultiPage>
+            </div>
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>
 </asp:Content>

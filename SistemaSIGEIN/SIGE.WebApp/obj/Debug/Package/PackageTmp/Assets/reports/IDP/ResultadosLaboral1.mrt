@@ -64,7 +64,7 @@
               <Name>Text1</Name>
               <Page isRef="2" />
               <Parent isRef="3" />
-              <Text>Resultados personalidad labora I</Text>
+              <Text>Resultados personalidad laboral I</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text1>
@@ -1440,7 +1440,7 @@
               <Name>Text31</Name>
               <Page isRef="188" />
               <Parent isRef="189" />
-              <Text>Resultados personalidad labora 1</Text>
+              <Text>Resultados personalidad laboral I</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text31>
@@ -1527,7 +1527,7 @@
               <Name>Text39</Name>
               <Page isRef="195" />
               <Parent isRef="196" />
-              <Text>Resultados personalidad labora 1</Text>
+              <Text>Resultados personalidad laboral I</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text39>
@@ -1616,7 +1616,7 @@
               <Name>Text54</Name>
               <Page isRef="202" />
               <Parent isRef="203" />
-              <Text>Resultados personalidad labora 1</Text>
+              <Text>Resultados personalidad laboral I</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
             </Text54>
@@ -1727,10 +1727,10 @@
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>11/8/2017 11:29:59 AM</ReportChanged>
+  <ReportChanged>9/4/2018 6:40:41 PM</ReportChanged>
   <ReportCreated>11/1/2017 9:52:38 AM</ReportCreated>
-  <ReportFile>C:\Users\usuario\Documents\SIGEIN 50\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosLaboral1.mrt</ReportFile>
-  <ReportGuid>00bf73e798ea4012b996eabae24ed35f</ReportGuid>
+  <ReportFile>C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ResultadosLaboral1.mrt</ReportFile>
+  <ReportGuid>f324270cf2c54587bf50cbe5a1e46f41</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2015.3.0</ReportVersion>

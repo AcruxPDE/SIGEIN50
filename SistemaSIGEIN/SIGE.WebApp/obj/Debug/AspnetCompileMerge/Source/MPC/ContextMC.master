@@ -1,6 +1,6 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/AppSIGE.Master" AutoEventWireup="true" CodeBehind="ContextMC.master.cs" Inherits="SIGE.WebApp.MPC.ContextMC" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="/Assets/css/Temas/<%= cssModulo %>" rel="stylesheet" type="text/css"/>
+    <link href="../Assets/css/Temas/<%= cssModulo %>" rel="stylesheet" type="text/css"/>
     <asp:ContentPlaceHolder ID="headContexto" runat="server">
     </asp:ContentPlaceHolder>
 </asp:Content>

@@ -61,7 +61,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
-                context.SPE_INSERTA_ACTUALIZA_ROLES(pOutClRetorno, pRol.ID_ROL, pRol.CL_ROL, pRol.NB_ROL, pRol.FG_ACTIVO, pXmlFunciones.ToString(), pClUsuario, pNbPrograma, pClTipoOperacion.ToString());
+                context.SPE_INSERTA_ACTUALIZA_ROLES(pOutClRetorno, pRol.ID_ROL, pRol.CL_ROL, pRol.NB_ROL,pRol.ID_PLANTILLA, pRol.FG_ACTIVO, pXmlFunciones.ToString(),pRol.XML_GRUPOS, pClUsuario, pNbPrograma, pClTipoOperacion.ToString());
                 return XElement.Parse(pOutClRetorno.Value.ToString());
             }
         }
