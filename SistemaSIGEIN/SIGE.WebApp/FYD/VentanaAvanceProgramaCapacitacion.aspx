@@ -204,8 +204,6 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <telerik:RadSplitter ID="splHelp" runat="server" Width="100%" Height="100%" BorderSize="0">
-        <telerik:RadPane ID="radPanelProgramaCapacitacion" runat="server" Height="100%">
             <telerik:RadTabStrip ID="tbAvanceProgramaCapacitacion" runat="server" AutoPostBack="true" SelectedIndex="0" MultiPageID="mpgProgramaCapacitacion">
                 <Tabs>
                     <telerik:RadTab Text="Contexto" runat="server"></telerik:RadTab>
@@ -352,6 +350,9 @@
                     </telerik:RadPageView>
                     <telerik:RadPageView ID="rpvVista2" runat="server" Height="100%">
                         <div style="height: calc(100% - 50px);">
+                              <telerik:RadSplitter ID="splHelp" runat="server" Width="100%" Height="100%" BorderSize="0">
+        <telerik:RadPane ID="radPanelProgramaCapacitacion" runat="server" Height="100%">
+
                             <telerik:RadGrid ID="rgAvancePrograma"
                                 runat="server"
                                 AllowSorting="false"
@@ -372,15 +373,10 @@
                                     </Columns>
                                 </MasterTableView>
                             </telerik:RadGrid>
-                        </div>
-                        <div style="height: 5px; clear: both;"></div>
-                        <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnExportar" runat="server" Text="Exportar a excel" AutoPostBack="true" OnClick="btnExportar_Click"></telerik:RadButton>
-                        </div>
-                    </telerik:RadPageView>
-                </telerik:RadMultiPage>
-            </div>
-        </telerik:RadPane>
+
+
+
+              </telerik:RadPane>
         <telerik:RadPane ID="rpnOpciones" runat="server" Height="50px" Width="22px" Scrolling="None">
             <telerik:RadSlidingZone ID="slzOpciones" runat="server" SlideDirection="Left" ExpandedPaneId="AyudaPrograma" ClickToOpen="true" Width="30px">
                 <telerik:RadSlidingPane ID="RSPHelp" runat="server" RenderMode="Mobile" Title="Ayuda" Width="250px" Height="100%">
@@ -429,6 +425,15 @@
             </telerik:RadSlidingZone>
         </telerik:RadPane>
     </telerik:RadSplitter>
+                        </div>
+                        <div style="height: 5px; clear: both;"></div>
+                        <div class="ctrlBasico">
+                            <telerik:RadButton ID="btnExportar" runat="server" Text="Exportar a excel" AutoPostBack="true" OnClick="btnExportar_Click"></telerik:RadButton>
+                        </div>
+                    </telerik:RadPageView>
+                </telerik:RadMultiPage>
+            </div>
+      
     <telerik:RadWindowManager ID="rwmMensaje" runat="server" EnableShadow="true">
     </telerik:RadWindowManager>
 </asp:Content>
