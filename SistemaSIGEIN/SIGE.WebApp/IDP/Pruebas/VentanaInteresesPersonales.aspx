@@ -65,7 +65,8 @@
                         if (shouldSubmit) {
                             var segundos = '<%=this.vTiempoPrueba%>';
                             if (segundos <= 0) {
-                                var oWnd = radalert("Usted ha terminado su prueba exitosamente o el tiempo de aplicación de la prueba ha concluido. <br>Recuerde que no es posible volver a ingresar la prueba previa; si intenta hacerlo por medio del botón del navegador, la aplicación no se lo permitirá: se generará un error y el intento quedará registrado", 400, 300, "");
+                                // var oWnd = radalert("Usted ha terminado su prueba exitosamente o el tiempo de aplicación de la prueba ha concluido. <br>Recuerde que no es posible volver a ingresar la prueba previa; si intenta hacerlo por medio del botón del navegador, la aplicación no se lo permitirá: se generará un error y el intento quedará registrado", 400, 300, "");
+                                var oWnd = radalert("El tiempo de la aplicación de la prueba ha concluido y has dejado espacios en blanco, por lo que la prueba será invalidada. Te sugerimos contactar al ejecutivo de selección para más opciones, ya que el sistema no te permitirá regresar a la aplicación.", 400, 300, "");
                                 oWnd.add_close(CloseTest);
                             }
                             else {
@@ -133,7 +134,8 @@
             }
 
             function mensajePruebaTerminada() {
-                var oWnd = radalert("Usted ha terminado su prueba exitosamente o el tiempo de aplicación de la prueba ha concluido. <br> Recuerde que no es posible volver a ingresar la prueba previa; si intenta hacerlo por medio del botón del navegador, la aplicación no te lo permitirá: se generará un error y el intento quedará registrado", 400, 300, "");
+                //var oWnd = radalert("Usted ha terminado su prueba exitosamente o el tiempo de aplicación de la prueba ha concluido. <br> Recuerde que no es posible volver a ingresar la prueba previa; si intenta hacerlo por medio del botón del navegador, la aplicación no te lo permitirá: se generará un error y el intento quedará registrado", 400, 300, "");
+                var oWnd = radalert("El tiempo de la aplicación de la prueba ha concluido y has dejado espacios en blanco, por lo que la prueba será invalidada. Te sugerimos contactar al ejecutivo de selección para más opciones, ya que el sistema no te permitirá regresar a la aplicación.", 400, 300, "");
                 oWnd.add_close(WinClose);
             }
 
@@ -192,7 +194,7 @@
                         GrupoNoContestado.focus();
                         GrupoNoContestado.get_styles().EnabledStyle[0] += "border-color: Red;";
                         var flag = false;
-                        radalert("Hay preguntas que no han sido contestadas. Revise la prueba por favor.", 400, 150, "");
+                        radalert("Hay preguntas que no han sido contestadas. Revisa la prueba por favor.", 400, 150, "");
                         break;
                     }
                 }

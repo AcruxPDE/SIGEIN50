@@ -862,7 +862,7 @@
                         <telerik:RadPageView ID="RegistroEntrevistas" runat="server">
 
                             <div style="height: calc(100% - 50px);">
-                                <telerik:RadGrid runat="server" ID="rgEntrevistas" HeaderStyle-Font-Bold="true"  AutoGenerateColumns="false" Width="100%" Height="100%" OnNeedDataSource="rgEntrevistas_NeedDataSource" ShowHeader="true" AllowFilteringByColumn="true">
+                                <telerik:RadGrid runat="server" ID="rgEntrevistas" HeaderStyle-Font-Bold="true" AllowMultiRowSelection="true"  AutoGenerateColumns="false" Width="100%" Height="100%" OnNeedDataSource="rgEntrevistas_NeedDataSource" ShowHeader="true" AllowFilteringByColumn="true">
                                     <ClientSettings>
                                         <Scrolling UseStaticHeaders="false" AllowScroll="true" />
                                         <Selecting AllowRowSelect="true" />
@@ -900,11 +900,11 @@
                                     <telerik:RadButton runat="server" ID="btnEliminarEntrevista" Text="Eliminar" OnClientClicking="ConfirmarEliminarEntrevista" OnClick="btnEliminarEntrevista_Click"></telerik:RadButton>
                                 </div>
                                 <div class="ctrlBasico">
-                                    <telerik:RadButton runat="server" ID="btnEnvioCorreos" Text="Enviar correos a seleccionados" OnClick="btnEnvioCorreos_Click"></telerik:RadButton>
+                                    <telerik:RadButton runat="server" ID="btnEnvioCorreos" Text="Enviar correo" OnClick="btnEnvioCorreos_Click"></telerik:RadButton>
                                 </div>
-                                <div class="ctrlBasico">
+                       <%--         <div class="ctrlBasico">
                                     <telerik:RadButton runat="server" ID="btnEnviarTodos" Text="Enviar correo a todos" OnClick="btnEnviarTodos_Click"></telerik:RadButton>
-                                </div>
+                                </div>--%>
                                 <div class="ctrlBasico">
                                     <telerik:RadButton runat="server" ID="btnComentarios" Text="Ver comentarios" OnClientClicking="OpenComentariosEntrevista"></telerik:RadButton>
                                 </div>

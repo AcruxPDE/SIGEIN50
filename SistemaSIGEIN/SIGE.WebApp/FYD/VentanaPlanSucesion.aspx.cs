@@ -184,6 +184,7 @@ namespace SIGE.WebApp.FYD
 
                 if (vEmpleado != null)
                 {
+
                     e.Cell.ToolTip = vEmpleado.NB_EMPLEADO;
                     e.Cell.Text = String.Format("<a href='#' onclick='OpenInventario({1})'>{0}</a>", vEmpleado.CL_EMPLEADO, vEmpleado.ID_EMPLEADO);
 
@@ -191,13 +192,12 @@ namespace SIGE.WebApp.FYD
                 }
             }
 
+
             if (e.Cell is PivotGridRowHeaderCell)
             {
                 if (e.Cell.Controls.Count > 1)
                 {
                     (e.Cell.Controls[0] as Button).Visible = false;
-
-   
                 }
             }
             else if (e.Cell is PivotGridDataCell)

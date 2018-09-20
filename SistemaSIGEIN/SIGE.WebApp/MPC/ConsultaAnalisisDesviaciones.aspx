@@ -276,13 +276,13 @@
                                         </telerik:GridTemplateColumn>
                                         <telerik:GridTemplateColumn AutoPostBackOnFilter="false" AllowFiltering="false" HeaderStyle-Width="150" FilterControlWidth="70" HeaderImageUrl="../Assets/images/Icons/25/ArrowDown.png" DataField="PR_AMARILLO_NEG" UniqueName="PR_AMARILLO_NEG">
                                             <HeaderTemplate>
-                                                <span id="Span3" runat="server" style="width: 40px; border: 1px solid gray; background-color: #ffd700; border-radius: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;
+                                                <span id="Span3" runat="server" style="width: 40px; border: 1px solid gray; background-color: yellow; border-radius: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;
                                             </HeaderTemplate>
                                             <ItemTemplate><%#  string.Format("{0:N2}", Eval("PR_AMARILLO_NEG"))%>%</ItemTemplate>
                                         </telerik:GridTemplateColumn>
                                         <telerik:GridTemplateColumn AutoPostBackOnFilter="false" AllowFiltering="false" HeaderStyle-Width="150" FilterControlWidth="70" HeaderImageUrl="../Assets/images/Icons/25/ArrowUp.png" DataField="PR_ROJO_POS" UniqueName="PR_ROJO_POS">
                                             <HeaderTemplate>
-                                                <span id="Span4" runat="server" style="width: 40px; border: 1px solid gray; background-color: #ff4500; border-radius: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;
+                                                <span id="Span4" runat="server" style="width: 40px; border: 1px solid gray; background-color: red; border-radius: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;
                                             </HeaderTemplate>
                                             <ItemTemplate><%#  string.Format("{0:N2}", Eval("PR_ROJO_POS"))%>%</ItemTemplate>
                                         </telerik:GridTemplateColumn>

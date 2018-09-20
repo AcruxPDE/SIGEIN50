@@ -40,6 +40,18 @@
             width: calc(70px * <%= vNoEmpleados %>) !important;
         
 
+       
+
+    </style>
+    <style>
+
+         .RadPivotGrid_Bootstrap .rpgFieldItem, .RadPivotGrid_Bootstrap .rpgUpdateButton
+        {
+         background: #f5f5f5 !important;
+          font-weight: bold;
+          border-color: #f5f5f5 !important;
+        }
+
     </style>
 
     <script type="text/javascript">
@@ -253,7 +265,7 @@
 
                             <div style="padding: 5px">
                                 <div class="ctrlBasico">
-                                    <telerik:RadGrid runat="server" ID="rgSucesores" AutoGenerateColumns="false" OnNeedDataSource="rgSucesores_NeedDataSource" OnItemDataBound="rgSucesores_ItemDataBound">
+                                    <telerik:RadGrid runat="server" ID="rgSucesores" AutoGenerateColumns="false" OnNeedDataSource="rgSucesores_NeedDataSource" OnItemDataBound="rgSucesores_ItemDataBound" HeaderStyle-Font-Bold="true">
                                         <MasterTableView>
                                             <Columns>
                                                 <telerik:GridHyperLinkColumn UniqueName="M_EMPLEADO_NB_EMPLEADO_COMPLETO" DataTextField="M_EMPLEADO_NB_EMPLEADO_COMPLETO" DataNavigateUrlFields="M_EMPLEADO_ID_EMPLEADO" HeaderText="Empleado" DataNavigateUrlFormatString="javascript:OpenEmpleadoSucesorWindow({0})"></telerik:GridHyperLinkColumn>
@@ -348,14 +360,14 @@
                                 </div>
                             </CellTemplate>
                         </telerik:PivotGridRowField>
-                        <telerik:PivotGridRowField Caption="Factor"  DataField="NB_COMPETENCIA">
+                        <telerik:PivotGridRowField Caption="Factor"   DataField="NB_COMPETENCIA">
                             <CellStyle Width="230px" />
                         </telerik:PivotGridRowField>
                         <telerik:PivotGridRowField Caption="Descripción"  DataField="DS_COMPETENCIA" CellStyle-Width="470"></telerik:PivotGridRowField>
 
                         <telerik:PivotGridColumnField Caption="Empleado" DataField="CL_EMPLEADO" CellStyle-Width="100">
                             <CellTemplate>
-                                <div style="text-align: center;">
+                                <div style="text-align: center; align-content:center;">
                                     <%# Container.DataItem %>
                                 </div>
                             </CellTemplate>

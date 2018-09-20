@@ -302,10 +302,10 @@ namespace SIGE.WebApp.EO
             }
         }
 
-        protected void btnEnviarTodos_Click(object sender, EventArgs e)
-        {
-            EnviarCorreo(true);
-        }
+        //protected void btnEnviarTodos_Click(object sender, EventArgs e)
+        //{
+        //    EnviarCorreo(true);
+        //}
 
         protected void btnEnviar_Click(object sender, EventArgs e)
         {
@@ -358,18 +358,18 @@ namespace SIGE.WebApp.EO
 
             if (vCuentaCuestionarios == vCuentaContestados)
             {
-                btnEnviarTodos.Enabled = false;
+                //btnEnviarTodos.Enabled = false;
                 btnEnviar.Enabled = false;
                 lbMensaje.Visible = true;
             }
             else if (vCuentaContestados != 0)
             {
-                btnEnviarTodos.Enabled = false;
+               // btnEnviarTodos.Enabled = false;
                 lbMensaje.Visible = false;
             }
             else
             {
-                btnEnviarTodos.Enabled = true;
+               // btnEnviarTodos.Enabled = true;
                 btnEnviar.Enabled = true;
                 lbMensaje.Visible = false;
             }
