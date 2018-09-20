@@ -20,6 +20,7 @@ using Stimulsoft.Base.Json.Linq;
 using Telerik.Web.UI;
 using System.Data;
 using System.Web.UI.HtmlControls;
+using SIGE.Entidades.MetodologiaCompensacion;
 
 namespace SIGE.WebApp.FYD
 {
@@ -1038,6 +1039,15 @@ namespace SIGE.WebApp.FYD
                     ConfigurarColumna(e.Column, 100, "", true, true, false);
                     break;
             }
+        }
+
+        protected void grdCodigoColores_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            List<E_CODIGO_COLORES> vCodigoColores = new List<E_CODIGO_COLORES>();
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "red", DESCRIPCION = "Prioridad alta" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "yellow", DESCRIPCION = "Prioridad intermedia" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "", DESCRIPCION = "Prioridad no necesaria" });
+            grdCodigoColores.DataSource = vCodigoColores;
         }
     }
 }

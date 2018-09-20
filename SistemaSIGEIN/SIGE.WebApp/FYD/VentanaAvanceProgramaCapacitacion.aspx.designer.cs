@@ -211,6 +211,24 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadSlidingPane RSPHelp;
         
         /// <summary>
+        /// rspSemaforo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSlidingPane rspSemaforo;
+        
+        /// <summary>
+        /// grdCodigoColores control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadGrid grdCodigoColores;
+        
+        /// <summary>
         /// rwmMensaje control.
         /// </summary>
         /// <remarks>

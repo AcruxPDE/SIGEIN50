@@ -1,6 +1,7 @@
 ﻿using SIGE.Entidades;
 using SIGE.Entidades.Externas;
 using SIGE.Entidades.FormacionDesarrollo;
+using SIGE.Entidades.MetodologiaCompensacion;
 using SIGE.Negocio.FormacionDesarrollo;
 using Stimulsoft.Base.Json;
 using System;
@@ -327,6 +328,16 @@ namespace SIGE.WebApp.FYD
             //    item["M_PUESTO_NB_PUESTO"].ToolTip = "Puesto";
 
             //}
+        }
+
+        protected void grdCodigoColores_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            List<E_CODIGO_COLORES> vCodigoColores = new List<E_CODIGO_COLORES>();
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "red", DESCRIPCION = "Alta" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "yellow", DESCRIPCION = "Intermedia" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "green", DESCRIPCION = "No necesaria" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "gray", DESCRIPCION = "No calificada" });
+            grdCodigoColores.DataSource = vCodigoColores;
         }
     }
 }

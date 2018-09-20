@@ -315,7 +315,7 @@
                                         </p>
                                     </div>
                                 </telerik:RadSlidingPane>
-                                <telerik:RadSlidingPane ID="rspSemaforo" runat="server" CollapseMode="Forward" EnableResize="false" Width="450px" Title="Semáforo" Height="100%">
+                                <telerik:RadSlidingPane ID="rspSemaforo" runat="server" CollapseMode="Forward" EnableResize="false" Width="450px" Title="Código de color" Height="100%">
                                     <div style="padding: 10px; text-align: justify;">
                                         <telerik:RadGrid ID="grdCodigoColores"
                                             runat="server"
@@ -403,7 +403,7 @@
                                         </p>
                                     </div>
                                 </telerik:RadSlidingPane>
-                                <telerik:RadSlidingPane ID="RadSlidingPane3" runat="server" CollapseMode="Forward" EnableResize="false" Width="450px" Title="Semáforo" Height="100%">
+                                <telerik:RadSlidingPane ID="RadSlidingPane3" runat="server" CollapseMode="Forward" EnableResize="false" Width="450px" Title="Código de color" Height="100%">
                                     <div style="padding: 10px; text-align: justify;">
                                         <telerik:RadGrid ID="RadGrid1"
                                             runat="server"

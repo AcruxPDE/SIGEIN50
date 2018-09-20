@@ -1014,7 +1014,7 @@
                             </p>
                         </div>
                     </telerik:RadSlidingPane>
-                    <telerik:RadSlidingPane ID="rspDefinicionCriterios" runat="server" Title="Simbología" Width="380px" RenderMode="Mobile"  Height="100%">
+                    <telerik:RadSlidingPane ID="rspDefinicionCriterios" runat="server" Title="Código de color" Width="380px" RenderMode="Mobile"  Height="100%">
                         <div style="padding: 10px; text-align: justify;">
                             <telerik:RadGrid ID="grdCodigoColores"
                                 runat="server"
