@@ -393,7 +393,7 @@
                                     <div style="padding: 10px; text-align: justify;">
                                         <telerik:RadGrid ID="grdCodigoColores"
                                             runat="server"
-                                            Height="400"
+                                            Height="420"
                                             Width="250"
                                             AllowSorting="true"
                                             AllowFilteringByColumn="true"

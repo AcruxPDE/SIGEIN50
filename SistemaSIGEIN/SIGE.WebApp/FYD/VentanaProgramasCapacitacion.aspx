@@ -716,7 +716,7 @@
                                     <div style="padding: 10px; text-align: justify;">
                                         <telerik:RadGrid ID="grdCodigoColores"
                                             runat="server"
-                                            Height="215"
+                                            Height="300"
                                             Width="250"
                                             AllowSorting="true"
                                             AllowFilteringByColumn="true"

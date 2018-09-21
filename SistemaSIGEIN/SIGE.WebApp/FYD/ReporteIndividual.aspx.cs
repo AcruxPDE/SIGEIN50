@@ -3,6 +3,7 @@ using SIGE.Entidades.Administracion;
 using SIGE.Entidades.EvaluacionOrganizacional;
 using SIGE.Entidades.Externas;
 using SIGE.Entidades.FormacionDesarrollo;
+using SIGE.Entidades.MetodologiaCompensacion;
 using SIGE.Negocio.FormacionDesarrollo;
 using SIGE.Negocio.Utilerias;
 using System;
@@ -1568,6 +1569,26 @@ namespace SIGE.WebApp.FYD
 
 
             }
+        }
+
+        protected void RadGrid1_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            List<E_CODIGO_COLORES> vCodigoColores = new List<E_CODIGO_COLORES>();
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "green", DESCRIPCION = "Compatibilidad alta" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "yellow", DESCRIPCION = "Compatibilidad intermedia" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "red", DESCRIPCION = "Compatibilidad baja" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "gray", DESCRIPCION = "No aplica" });
+            RadGrid1.DataSource = vCodigoColores;
+        }
+
+        protected void grdCodigoColores_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            List<E_CODIGO_COLORES> vCodigoColores = new List<E_CODIGO_COLORES>();
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "green", DESCRIPCION = "Compatibilidad alta" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "yellow", DESCRIPCION = "Compatibilidad intermedia" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "red", DESCRIPCION = "Compatibilidad baja" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "gray", DESCRIPCION = "No aplica" });
+            grdCodigoColores.DataSource = vCodigoColores;
         }
 
     }
