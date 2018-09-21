@@ -2,6 +2,7 @@
 using SIGE.Entidades;
 using SIGE.Entidades.Externas;
 using SIGE.Entidades.FormacionDesarrollo;
+using SIGE.Entidades.MetodologiaCompensacion;
 using SIGE.Negocio.FormacionDesarrollo;
 using SIGE.WebApp.Comunes;
 using System;
@@ -667,6 +668,16 @@ namespace SIGE.WebApp.FYD
         protected void chkAlta_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void grdCodigoColores_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            List<E_CODIGO_COLORES> vCodigoColores = new List<E_CODIGO_COLORES>();
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "red", DESCRIPCION = "Prioridad alta" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "gold", DESCRIPCION = "Prioridad intermedia" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "", DESCRIPCION = "Prioridad no necesaria" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "gray", DESCRIPCION = "No aplica" });
+            grdCodigoColores.DataSource = vCodigoColores;
         }
     }
 

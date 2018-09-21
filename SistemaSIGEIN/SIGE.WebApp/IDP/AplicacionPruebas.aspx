@@ -75,7 +75,7 @@
              };
              if (idCandidatoEmp != "") {
                  if (vIdBateriaEmp != "" && vIdBateriaEmp != null)
-                     openChildDialog("VentanaRevisarPruebas.aspx?pIdBateria=" + vIdBateriaEmp + "&pIdCandidato=" + idCandidatoEmp, "winPruebasEmp", "Vizualizar pruebas", windowProperties);
+                     openChildDialog("VentanaRevisarPruebas.aspx?pIdBateria=" + vIdBateriaEmp + "&pIdCandidato=" + idCandidatoEmp, "winPruebasEmp", "Visualizar pruebas", windowProperties);
                  else
                      radalert("No existe una batería creada.", 400, 150, "Error");
              }
@@ -340,7 +340,7 @@
             };
             if (idCandidato != "") {
                 if (vIdBateria != "" && vIdBateria != null)
-                    openChildDialog("VentanaRevisarPruebas.aspx?pIdBateria=" + vIdBateria + "&pIdCandidato=" + idCandidato, "winPruebas", "Vizualizar pruebas", windowProperties);
+                    openChildDialog("VentanaRevisarPruebas.aspx?pIdBateria=" + vIdBateria + "&pIdCandidato=" + idCandidato, "winPruebas", "Visualizar pruebas", windowProperties);
                 else
                     radalert("No existe una batería creada.", 400, 150, "Error");
             }

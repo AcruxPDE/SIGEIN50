@@ -1047,6 +1047,7 @@ namespace SIGE.WebApp.FYD
             vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "red", DESCRIPCION = "Prioridad alta" });
             vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "yellow", DESCRIPCION = "Prioridad intermedia" });
             vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "", DESCRIPCION = "Prioridad no necesaria" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "gray", DESCRIPCION = "No aplica" });
             grdCodigoColores.DataSource = vCodigoColores;
         }
     }
