@@ -3,6 +3,7 @@ using SIGE.Entidades;
 using SIGE.Entidades.EvaluacionOrganizacional;
 using SIGE.Entidades.Externas;
 using SIGE.Entidades.FormacionDesarrollo;
+using SIGE.Entidades.MetodologiaCompensacion;
 using SIGE.Negocio.EvaluacionOrganizacional;
 using SIGE.WebApp.Comunes;
 using System;
@@ -273,6 +274,28 @@ namespace SIGE.WebApp.EO
                 footerItem["FG_EVIDENCIA"].BorderColor = ObtieneColorCumplimiento(decimal.Parse(vResultados.ToString()));
 
             }
+        }
+
+        protected void grdCodigoColores_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            List<E_CODIGO_COLORES> vCodigoColores = new List<E_CODIGO_COLORES>();
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "#F2F2F2", DESCRIPCION = "No calificada" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "#FF0000", DESCRIPCION = "No alcanzada" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "#FFFF00", DESCRIPCION = "Mínimo" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "#0070C0", DESCRIPCION = "Satisfactorio" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "#00B050", DESCRIPCION = "Sobresaliente" });
+            grdCodigoColores.DataSource = vCodigoColores;
+        }
+
+        protected void rgColores2_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            List<E_CODIGO_COLORES> vCodigoColores = new List<E_CODIGO_COLORES>();
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "#F2F2F2", DESCRIPCION = "No calificada" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "#FF0000", DESCRIPCION = "No alcanzada" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "#FFFF00", DESCRIPCION = "Mínimo" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "#0070C0", DESCRIPCION = "Satisfactorio" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "#00B050", DESCRIPCION = "Sobresaliente" });
+            rgColores2.DataSource = vCodigoColores;
         }
     }
 

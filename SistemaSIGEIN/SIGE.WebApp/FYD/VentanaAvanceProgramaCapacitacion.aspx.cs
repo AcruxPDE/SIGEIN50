@@ -22,6 +22,7 @@ using System.Reflection;
 using OfficeOpenXml.Style;
 using System.Data;
 using SIGE.Negocio.Administracion;
+using SIGE.Entidades.MetodologiaCompensacion;
 
 namespace SIGE.WebApp.FYD
 {
@@ -960,7 +961,7 @@ namespace SIGE.WebApp.FYD
             return vPorcentaje;
         }
 
-              private void ConfigurarColumna(GridColumn pColumna, int pWidth, string pEncabezado, bool pVisible, bool pGenerarEncabezado, bool pFiltrarColumna, bool pAlinear)
+        private void ConfigurarColumna(GridColumn pColumna, int pWidth, string pEncabezado, bool pVisible, bool pGenerarEncabezado, bool pFiltrarColumna, bool pAlinear)
         {
             if (pGenerarEncabezado)
             {
@@ -1210,6 +1211,18 @@ namespace SIGE.WebApp.FYD
                     ConfigurarColumnaCompetencia(e.Column, 120, "", true, true, false, true, true);
                     break;
             }
+        }
+
+        protected void grdCodigoColores_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            List<E_CODIGO_COLORES> vCodigoColores = new List<E_CODIGO_COLORES>();
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "#F7D358", DESCRIPCION = "Programada" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "yellow", DESCRIPCION = "No programada" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "gray", DESCRIPCION = "No aplica" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "#A9D0F5", DESCRIPCION = "En curso" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "#9DDF63", DESCRIPCION = "Recibida" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "red", DESCRIPCION = "No asistio" });
+            grdCodigoColores.DataSource = vCodigoColores;
         }
 
     }

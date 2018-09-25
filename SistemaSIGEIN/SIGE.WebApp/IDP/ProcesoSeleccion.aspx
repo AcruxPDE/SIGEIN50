@@ -754,7 +754,7 @@
                     <span runat="server" id="txtFechaInicio" style="width: 100px;"></span>
                 </td>
                  <td class="ctrlTableDataContext" id="lbTerminoc" runat="server" visible="false">
-                    <label visible =" true">Fecha de termino: </label>
+                    <label visible =" true">Fecha de término: </label>
                 </td>
                 <td class="ctrlTableDataBorderContext" id="txtFechaTerminoc" visible="false" runat="server">
                     <span runat="server" id="txtFechaTermino" visible="true" style="width: 100px;"></span>
@@ -809,7 +809,7 @@
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave de requisición" DataField="NO_REQUISICION" UniqueName="NO_REQUISICION" HeaderStyle-Width="100" FilterControlWidth="50"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Puesto establecido en la requisición" DataField="NB_PUESTO" UniqueName="NB_PUESTO" HeaderStyle-Width="200" FilterControlWidth="70"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Fecha de inicio" DataField="FE_INICIO_PROCESO" UniqueName="FE_INICIO_PROCESO" HeaderStyle-Width="150" FilterControlWidth="80" DataFormatString="{0:d}"></telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Fecha de termino" DataField="FE_TERMINO_PROCESO" UniqueName="FE_TERMINO_PROCESO" HeaderStyle-Width="150" FilterControlWidth="80" DataFormatString="{0:d}"></telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Fecha de término" DataField="FE_TERMINO_PROCESO" UniqueName="FE_TERMINO_PROCESO" HeaderStyle-Width="150" FilterControlWidth="80" DataFormatString="{0:d}"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Estatus" DataField="CL_ESTADO" UniqueName="CL_ESTADO" HeaderStyle-Width="110" FilterControlWidth="70"></telerik:GridBoundColumn>
                                             <%--<telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="" DataField="FG_PROCESO_SELECCION_ACTUAL" UniqueName="FG_PROCESO_SELECCION_ACTUAL" HeaderStyle-Width="200" FilterControlWidth="70"></telerik:GridBoundColumn>--%>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Observaciones" DataField="DS_OBSERVACIONES_TERMINO_PROCESO" UniqueName="DS_OBSERVACIONES_TERMINO_PROCESO" HeaderStyle-Width="200" FilterControlWidth="70"></telerik:GridBoundColumn>
@@ -862,7 +862,7 @@
                         <telerik:RadPageView ID="RegistroEntrevistas" runat="server">
 
                             <div style="height: calc(100% - 50px);">
-                                <telerik:RadGrid runat="server" ID="rgEntrevistas" HeaderStyle-Font-Bold="true"  AutoGenerateColumns="false" Width="100%" Height="100%" OnNeedDataSource="rgEntrevistas_NeedDataSource" ShowHeader="true" AllowFilteringByColumn="true">
+                                <telerik:RadGrid runat="server" ID="rgEntrevistas" HeaderStyle-Font-Bold="true" AllowMultiRowSelection="true"  AutoGenerateColumns="false" Width="100%" Height="100%" OnNeedDataSource="rgEntrevistas_NeedDataSource" ShowHeader="true" AllowFilteringByColumn="true">
                                     <ClientSettings>
                                         <Scrolling UseStaticHeaders="false" AllowScroll="true" />
                                         <Selecting AllowRowSelect="true" />
@@ -900,11 +900,11 @@
                                     <telerik:RadButton runat="server" ID="btnEliminarEntrevista" Text="Eliminar" OnClientClicking="ConfirmarEliminarEntrevista" OnClick="btnEliminarEntrevista_Click"></telerik:RadButton>
                                 </div>
                                 <div class="ctrlBasico">
-                                    <telerik:RadButton runat="server" ID="btnEnvioCorreos" Text="Enviar correos a seleccionados" OnClick="btnEnvioCorreos_Click"></telerik:RadButton>
+                                    <telerik:RadButton runat="server" ID="btnEnvioCorreos" Text="Enviar correo" OnClick="btnEnvioCorreos_Click"></telerik:RadButton>
                                 </div>
-                                <div class="ctrlBasico">
+                       <%--         <div class="ctrlBasico">
                                     <telerik:RadButton runat="server" ID="btnEnviarTodos" Text="Enviar correo a todos" OnClick="btnEnviarTodos_Click"></telerik:RadButton>
-                                </div>
+                                </div>--%>
                                 <div class="ctrlBasico">
                                     <telerik:RadButton runat="server" ID="btnComentarios" Text="Ver comentarios" OnClientClicking="OpenComentariosEntrevista"></telerik:RadButton>
                                 </div>
@@ -3128,7 +3128,7 @@
                                         <td>
 
                                             <div class="divControlIzquierda">
-                                                <label id="Label29" name="lblNbIdioma" runat="server">Antecedentes familiares (cáncer, hipertensión, diabetes, etc.):</label>
+                                                <label id="Label29" name="lblNbIdioma" runat="server">Antecedentes familiares:</label>
                                             </div>
                                             <div class="ctrlBasico">
                                                  <div class="checkContainer">
@@ -3160,7 +3160,7 @@
                                                 <label id="Label30" name="lblNbIdioma" runat="server">Especificar:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadTextBox ID="txtEMAntecedentesComentarios" runat="server" Width="700" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
+                                                <telerik:RadTextBox ID="txtEMAntecedentesComentarios" runat="server" EmptyMessage="Ejemplo: cáncer, hipertensión, diabetes, etc." Width="700" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
                                             </div>
                                         </td>
 

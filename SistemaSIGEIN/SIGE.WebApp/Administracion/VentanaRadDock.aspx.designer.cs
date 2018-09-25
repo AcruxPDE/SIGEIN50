@@ -157,6 +157,15 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadButton chkActivo;
         
         /// <summary>
+        /// lbMensaje control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbMensaje;
+        
+        /// <summary>
         /// radEditorPuesto0 control.
         /// </summary>
         /// <remarks>

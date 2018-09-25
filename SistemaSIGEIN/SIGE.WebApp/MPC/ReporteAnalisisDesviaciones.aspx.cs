@@ -399,12 +399,12 @@ namespace SIGE.WebApp.MPC
 
             HtmlGenericControl vCtrlTh4 = new HtmlGenericControl("td");
             vCtrlTh4.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; font-weight:bold; width:150px; padding: 3px;");
-            vCtrlTh4.InnerHtml = String.Format("{0}", "<span style=\"border: 1px solid gray; border-radius: 5px; background: #ffd700;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;<img src='../Assets/images/Icons/25/ArrowDown.png' />");
+            vCtrlTh4.InnerHtml = String.Format("{0}", "<span style=\"border: 1px solid gray; border-radius: 5px; background: yellow;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;<img src='../Assets/images/Icons/25/ArrowDown.png' />");
             vCtrlRowEncabezado1.Controls.Add(vCtrlTh4);
 
             HtmlGenericControl vCtrlTh5 = new HtmlGenericControl("td");
             vCtrlTh5.Attributes.Add("style", "border: 1px solid #000000; font-family:arial; font-size: 11pt; font-weight:bold; width:150px; padding: 3px;");
-            vCtrlTh5.InnerHtml = String.Format("{0}", "<span style=\"border: 1px solid gray; border-radius: 5px; background: #ff4500;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;<img src='../Assets/images/Icons/25/ArrowUp.png' />");
+            vCtrlTh5.InnerHtml = String.Format("{0}", "<span style=\"border: 1px solid gray; border-radius: 5px; background: red;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;<img src='../Assets/images/Icons/25/ArrowUp.png' />");
             vCtrlRowEncabezado1.Controls.Add(vCtrlTh5);
 
             HtmlGenericControl vCtrlTh6 = new HtmlGenericControl("td");

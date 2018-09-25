@@ -1206,71 +1206,278 @@ namespace SIGE.WebApp.MPC
 
         protected void btnExcel_Click(object sender, EventArgs e)
         {
-            TabuladoresNegocio nTabulador = new TabuladoresNegocio();
-            SqlConnection sqlConection = new SqlConnection();
-            if (vIdTabulador != null) 
+
+            UDTT_ARCHIVO excel = obtieneValuacionPuestos(vIdTabulador, txtClTabulador.InnerText, txtNbTabulador.InnerText);
+
+            if (excel.FI_ARCHIVO.Length != 0)
             {
-                try
-                {
-                    string cadenaConexion = ConfigurationManager.ConnectionStrings["SistemaSigeinEntities"].ConnectionString.Substring(ConfigurationManager.ConnectionStrings["SistemaSigeinEntities"].ConnectionString.IndexOf("connection string=", 0) + 19).Substring(0, ConfigurationManager.ConnectionStrings["SistemaSigeinEntities"].ConnectionString.Substring(ConfigurationManager.ConnectionStrings["SistemaSigeinEntities"].ConnectionString.IndexOf("connection string=", 0) + 19).Length - 1);
-                    sqlConection.ConnectionString = cadenaConexion;
-
-                    SqlCommand mySqlCommand = sqlConection.CreateCommand();
-                    mySqlCommand.CommandText = "MC.SPE_OBTIENE_VALUACION_PUESTO_PIVOT";
-
-                    mySqlCommand.CommandType = CommandType.StoredProcedure;
-                    mySqlCommand.Parameters.Add("@PIN_ID_TABULADOR", SqlDbType.Int).Value = vIdTabulador;
-
-                    SqlDataAdapter mySqlDataAdapter = new SqlDataAdapter();
-                    mySqlDataAdapter.SelectCommand = mySqlCommand;
-                    DataSet myDataSet = new DataSet();
-                    sqlConection.Open();
-                    mySqlDataAdapter.Fill(myDataSet);
-                    sqlConection.Close();
-
-                    DataTable dt = new DataTable();
-                    if (myDataSet.Tables.Count > 0)
-                    {
-                        dt = myDataSet.Tables[0];
-                        ExportarAExcel(dt);
-                    }
-                }
-                catch (Exception ex) { sqlConection.Close(); }
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                Response.AddHeader("Content-Disposition", "attachment; filename=" + excel.NB_ARCHIVO);
+                Response.BinaryWrite(excel.FI_ARCHIVO);
+                Response.Flush();
+                Response.End();
             }
+            else
+            {
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "No hay datos para exportar.", E_TIPO_RESPUESTA_DB.WARNING, 400, 150, null);
+            }
+            //TabuladoresNegocio nTabulador = new TabuladoresNegocio();
+            //SqlConnection sqlConection = new SqlConnection();
+            //if (vIdTabulador != null) 
+            //{
+            //    try
+            //    {
+            //        string cadenaConexion = ConfigurationManager.ConnectionStrings["SistemaSigeinEntities"].ConnectionString.Substring(ConfigurationManager.ConnectionStrings["SistemaSigeinEntities"].ConnectionString.IndexOf("connection string=", 0) + 19).Substring(0, ConfigurationManager.ConnectionStrings["SistemaSigeinEntities"].ConnectionString.Substring(ConfigurationManager.ConnectionStrings["SistemaSigeinEntities"].ConnectionString.IndexOf("connection string=", 0) + 19).Length - 1);
+            //        sqlConection.ConnectionString = cadenaConexion;
+
+            //        SqlCommand mySqlCommand = sqlConection.CreateCommand();
+            //        mySqlCommand.CommandText = "MC.SPE_OBTIENE_VALUACION_PUESTO_PIVOT";
+
+            //        mySqlCommand.CommandType = CommandType.StoredProcedure;
+            //        mySqlCommand.Parameters.Add("@PIN_ID_TABULADOR", SqlDbType.Int).Value = vIdTabulador;
+
+            //        SqlDataAdapter mySqlDataAdapter = new SqlDataAdapter();
+            //        mySqlDataAdapter.SelectCommand = mySqlCommand;
+            //        DataSet myDataSet = new DataSet();
+            //        sqlConection.Open();
+            //        mySqlDataAdapter.Fill(myDataSet);
+            //        sqlConection.Close();
+
+            //        DataTable dt = new DataTable();
+            //        if (myDataSet.Tables.Count > 0)
+            //        {
+            //            dt = myDataSet.Tables[0];
+            //            ExportarAExcel(dt);
+            //        }
+            //    }
+            //    catch (Exception ex) { sqlConection.Close(); }
+            //}
         }
 
-        public void ExportarAExcel(DataTable dataTable)
+        //public void ExportarAExcel(DataTable dataTable)
+        //{
+        //    Stream newStream = null;
+        //    using (ExcelPackage excelPackage = new ExcelPackage(newStream ?? new MemoryStream()))
+        //    {
+        //        excelPackage.Workbook.Properties.Author = "Sigein 5.0";
+        //        excelPackage.Workbook.Properties.Title = "Valuacion de puestos";
+        //        excelPackage.Workbook.Properties.Comments = "Sigein 5.0";
+
+        //        excelPackage.Workbook.Worksheets.Add("Valuacion de puestos");
+        //        ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets[1];
+        //        worksheet.Cells["A1"].LoadFromDataTable(dataTable, true);
+        //       // string[] propertyNames = { "No", "Nómina", "Apellidos", "Nombres", "Fecha_Inicio_Servicio", "Opción_Medica" };
+        //       // MemberInfo[] membersToInclude = typeof(E_CREDENCIALES)
+        //       //.GetProperties(BindingFlags.Instance | BindingFlags.Public)
+        //       //.Where(p => propertyNames.Contains(p.Name))
+        //       //.ToArray();
+
+        //       // worksheet.Cells[1, 1].LoadFromCollection(lstCredenciales, true, OfficeOpenXml.Table.TableStyles.None, BindingFlags.Instance | BindingFlags.Public, membersToInclude);
+        //        worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+        //       // Color colFromHex = System.Drawing.ColorTranslator.FromHtml("#86909D");
+        //       // worksheet.Cells["A1:F1"].Style.Fill.PatternType = ExcelFillStyle.Solid;
+        //       // worksheet.Cells["A1:F1"].Style.Fill.BackgroundColor.SetColor(colFromHex);
+        //       // worksheet.Cells["A1:F1"].Style.Font.Bold = true;
+
+        //        excelPackage.Save();
+        //        newStream = excelPackage.Stream;
+        //    }
+        //    Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+        //    Response.AddHeader("content-disposition", "attachment; filename=ValuacionPuestosTabuladores.xlsx");
+        //    Response.BinaryWrite(((MemoryStream)newStream).ToArray());
+        //    Response.End();
+
+        //}
+
+
+        private void asignarEstiloCelda(ExcelRange celda, string clTipoCompetencia = null, bool border = true, OfficeOpenXml.Style.ExcelHorizontalAlignment alineacion = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left)
         {
-            Stream newStream = null;
-            using (ExcelPackage excelPackage = new ExcelPackage(newStream ?? new MemoryStream()))
+
+            if (border)
             {
-                excelPackage.Workbook.Properties.Author = "Sigein 5.0";
-                excelPackage.Workbook.Properties.Title = "Valuacion de puestos";
-                excelPackage.Workbook.Properties.Comments = "Sigeni 5.0";
-
-                excelPackage.Workbook.Worksheets.Add("Valuacion de puestos");
-                ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets[1];
-                worksheet.Cells["A1"].LoadFromDataTable(dataTable, true);
-               // string[] propertyNames = { "No", "Nómina", "Apellidos", "Nombres", "Fecha_Inicio_Servicio", "Opción_Medica" };
-               // MemberInfo[] membersToInclude = typeof(E_CREDENCIALES)
-               //.GetProperties(BindingFlags.Instance | BindingFlags.Public)
-               //.Where(p => propertyNames.Contains(p.Name))
-               //.ToArray();
-
-               // worksheet.Cells[1, 1].LoadFromCollection(lstCredenciales, true, OfficeOpenXml.Table.TableStyles.None, BindingFlags.Instance | BindingFlags.Public, membersToInclude);
-                worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
-               // Color colFromHex = System.Drawing.ColorTranslator.FromHtml("#86909D");
-               // worksheet.Cells["A1:F1"].Style.Fill.PatternType = ExcelFillStyle.Solid;
-               // worksheet.Cells["A1:F1"].Style.Fill.BackgroundColor.SetColor(colFromHex);
-               // worksheet.Cells["A1:F1"].Style.Font.Bold = true;
-
-                excelPackage.Save();
-                newStream = excelPackage.Stream;
+                celda.Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin, System.Drawing.Color.Black);
             }
-            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-            Response.AddHeader("content-disposition", "attachment; filename=ValuacionPuestosTabuladores.xlsx");
-            Response.BinaryWrite(((MemoryStream)newStream).ToArray());
-            Response.End();
+
+            if (!string.IsNullOrEmpty(clTipoCompetencia))
+            {
+                celda.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                if(clTipoCompetencia == "GEN")
+                    celda.Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml("#0087CF"));
+                else if (clTipoCompetencia == "ESP")
+                    celda.Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml("#A52A2A"));
+                else if (clTipoCompetencia == "FACTOR")
+                    celda.Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml("#E6EAEC"));
+            }
+
+            celda.Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Top;
+            celda.Style.HorizontalAlignment = alineacion;
+        }
+
+        public UDTT_ARCHIVO obtieneValuacionPuestos(int pIdTabulador, string pClVersion, string pDsVersion)
+        {
+
+            UDTT_ARCHIVO oValuacionPuestos = new UDTT_ARCHIVO();
+            Stream newStream = new MemoryStream();
+            List<E_VALUACION> vListaFactorsValuacion = new List<E_VALUACION>();
+
+            int vFila = 8;
+            int vColumna = 2;
+            string vClCelda = "";
+
+            //Creamos el archivo de excel
+            using (ExcelPackage pck = new ExcelPackage(newStream))
+            {
+                var ws = pck.Workbook.Worksheets.Add("ValuacionPuestos");
+
+                ws.Column(1).Width = 50;
+
+                ws.Cells["A3"].Value = "Valuación puestos";
+                ws.Cells["A3"].Style.Font.Size = 18;
+                ws.Cells["A3"].Style.Font.Color.SetColor(System.Drawing.Color.Blue);
+
+                ws.Cells["A5"].Value = "Versión: " + pClVersion + "     Descripción: " + pDsVersion;
+                ws.Cells["A5"].Style.Font.Bold = true;
+
+                ws.Cells["A7"].Value = "Puesto";
+                ws.Cells["A7"].Style.Font.Bold = true;
+
+                var vLstCompetencias = (from a in vListaValuacion select new { a.ID_COMPETENCIA, a.NB_COMPETENCIA, a.ID_TABULADOR_FACTOR, a.CL_TIPO_COMPETENCIA }).Distinct().OrderBy(t => t.ID_COMPETENCIA);
+
+                var vLstPuestos = (from a in vListaValuacion
+                                   select new
+                                   {
+                                       a.CL_PUESTO,
+                                       a.NB_PUESTO,
+                                       a.ID_TABULADOR_PUESTO,
+                                       a.ID_PUESTO,
+                                       a.NO_PROMEDIO_VALUACION,
+                                       a.NO_NIVEL
+                                   }).Distinct().OrderByDescending(o => o.NO_PROMEDIO_VALUACION).OrderBy(t => t.NO_NIVEL);
+
+
+                foreach (var item in vLstCompetencias.Where(t => t.CL_TIPO_COMPETENCIA == "GEN"))
+                {
+
+                    E_VALUACION f = new E_VALUACION
+                    {
+                        ID_COMPETENCIA = item.ID_COMPETENCIA,
+                        NB_COMPETENCIA = item.NB_COMPETENCIA,
+                        ID_TABULADOR_FACTOR = item.ID_TABULADOR_FACTOR,
+                        CL_TIPO_COMPETENCIA = item.CL_TIPO_COMPETENCIA
+                    };
+                    vListaFactorsValuacion.Add(f);
+
+                }
+
+                foreach (var item in vLstCompetencias.Where(t => t.CL_TIPO_COMPETENCIA == "ESP"))
+                {
+                    E_VALUACION f = new E_VALUACION
+                    {
+                        ID_COMPETENCIA = item.ID_COMPETENCIA,
+                        NB_COMPETENCIA = item.NB_COMPETENCIA,
+                        ID_TABULADOR_FACTOR = item.ID_TABULADOR_FACTOR,
+                        CL_TIPO_COMPETENCIA = item.CL_TIPO_COMPETENCIA
+                    };
+                    vListaFactorsValuacion.Add(f);
+
+                }
+
+                foreach (var item in vLstCompetencias.Where(t => t.CL_TIPO_COMPETENCIA == "FACTOR"))
+                {
+                    E_VALUACION f = new E_VALUACION
+                    {
+                        ID_COMPETENCIA = item.ID_COMPETENCIA,
+                        NB_COMPETENCIA = item.NB_COMPETENCIA,
+                        ID_TABULADOR_FACTOR = item.ID_TABULADOR_FACTOR,
+                        CL_TIPO_COMPETENCIA = item.CL_TIPO_COMPETENCIA
+                    };
+                    vListaFactorsValuacion.Add(f);
+
+                }
+
+
+                foreach (var item in vLstPuestos)
+                {
+                    vClCelda = "A" + vFila.ToString();
+                    ws.Cells[vClCelda].Value = item.NB_PUESTO;
+                    vFila++;
+                }
+
+                foreach (var item in vListaFactorsValuacion)
+                {
+                    vClCelda = ((char)(vColumna + 64)).ToString()  + "7";
+                    ws.Cells[vClCelda].Value = item.NB_COMPETENCIA;
+                    ws.Cells[vClCelda].Style.Font.Bold = true;
+                    asignarEstiloCelda(ws.Cells[vClCelda], item.CL_TIPO_COMPETENCIA, false);
+                    vColumna++;
+                }
+
+                ws.Cells[((char)(vColumna + 64)).ToString() + "7"].Value = "Promedio";
+                ws.Cells[((char)(vColumna + 64)).ToString() + "7"].Style.Font.Bold = true;
+                vColumna++;
+                ws.Cells[((char)(vColumna + 64)).ToString() + "7"].Value = "Nivel";
+                ws.Cells[((char)(vColumna + 64)).ToString() + "7"].Style.Font.Bold = true;
+
+                int vFilaMatriz = 8;
+                int vColumnaMatriz = 2;
+                foreach(var item in vLstPuestos)
+                {
+                    vColumnaMatriz = 2;
+                    foreach (var itemCompetencia in vListaFactorsValuacion)
+                    {
+                        var vValor = vListaValuacion.Where(w => w.ID_COMPETENCIA == itemCompetencia.ID_COMPETENCIA && w.ID_PUESTO == item.ID_PUESTO).FirstOrDefault();
+                        if (vValor != null)
+                        {
+                            vClCelda = ((char)(vColumnaMatriz + 64)).ToString() + vFilaMatriz.ToString();
+                            ws.Cells[vClCelda].Value = vValor.NO_VALOR;
+                        }
+                        else
+                        {
+                            vClCelda = ((char)(vColumnaMatriz + 64)).ToString() + vFilaMatriz.ToString();
+                            ws.Cells[vClCelda].Value = 0;
+                        }
+                        vColumnaMatriz++;
+                    }
+                    vFilaMatriz++;
+                }
+
+                vFilaMatriz = 8;
+                foreach (var item in vLstPuestos)
+                {  
+                        var vValor = vListaValuacion.Where(w => w.ID_PUESTO == item.ID_PUESTO).FirstOrDefault();
+                        if (vValor != null)
+                        {
+                            vClCelda = ((char)(vColumnaMatriz + 64)).ToString() + vFilaMatriz.ToString();
+                            ws.Cells[vClCelda].Value = vValor.NO_PROMEDIO_VALUACION;
+                        }
+                    
+                    vFilaMatriz++;
+                }
+
+                vColumnaMatriz++;
+
+                vFilaMatriz = 8;
+                foreach (var item in vLstPuestos)
+                {
+                    var vValor = vListaValuacion.Where(w => w.ID_PUESTO == item.ID_PUESTO).FirstOrDefault();
+                    if (vValor != null)
+                    {
+                        vClCelda = ((char)(vColumnaMatriz + 64)).ToString() + vFilaMatriz.ToString();
+                        ws.Cells[vClCelda].Value = vValor.NO_NIVEL;
+                    }
+
+                    vFilaMatriz++;
+                }
+
+
+                pck.Save();
+                newStream = pck.Stream;
+            }
+
+            oValuacionPuestos.NB_ARCHIVO = "ValuacionPuestos.xlsx";
+            oValuacionPuestos.FI_ARCHIVO = ((MemoryStream)newStream).ToArray();
+
+            return oValuacionPuestos;
 
         }
 

@@ -25,6 +25,12 @@ namespace SIGE.WebApp.Comunes
             set { ViewState["vs_vClCatalogo"] = value; }
         }
 
+        private string vClTipoFiltro
+        {
+            get { return (string)ViewState["vs_vClTipoFiltro"]; }
+            set { ViewState["vs_vClTipoFiltro"] = value; }
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -35,6 +41,7 @@ namespace SIGE.WebApp.Comunes
                 if (String.IsNullOrEmpty(vClCatalogo))
                     vClCatalogo = "REQUISICION";
 
+                vClTipoFiltro = Request.QueryString["CL_FILTRO_REQ"];
 
                 if (Request.Params["CandidatoId"] != null)
                 {
@@ -51,7 +58,7 @@ namespace SIGE.WebApp.Comunes
         protected void grdRequisiciones_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             RequisicionNegocio nRequisicion = new RequisicionNegocio();
-            grdRequisiciones.DataSource = nRequisicion.ObtieneRequisicion(pIdEmpresa: ContextoUsuario.oUsuario.ID_EMPRESA);
+            grdRequisiciones.DataSource = nRequisicion.ObtieneRequisicion(pClEstado:vClTipoFiltro, pIdEmpresa: ContextoUsuario.oUsuario.ID_EMPRESA);
         }
 
         protected void grdRequisiciones_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)

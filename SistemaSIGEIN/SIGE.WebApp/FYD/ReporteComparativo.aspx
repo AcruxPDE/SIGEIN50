@@ -141,6 +141,9 @@
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvReporteGlobal" runat="server">
                 <div style="height: calc(100% - 10px); overflow: auto;">
+                        <telerik:RadSplitter ID="splHelp" runat="server" Width="100%" Height="100%" BorderSize="0">
+        <telerik:RadPane ID="radPanelProgramaCapacitacion" runat="server" Height="100%">
+
                     <telerik:RadGrid runat="server" ID="rdComparativo" HeaderStyle-Font-Bold="true" OnNeedDataSource="rdComparativo_NeedDataSource" OnItemDataBound="rdComparativo_ItemDataBound" Height="100%">
                         <ClientSettings AllowKeyboardNavigation="true">
                             <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -239,6 +242,7 @@
                 </DetailTables>--%>
                         </MasterTableView>
                     </telerik:RadGrid>
+                                  </telerik:RadPane>
                     <%--        <telerik:RadGrid runat="server" ID="rdComparativo" HeaderStyle-Font-Bold="true" OnNeedDataSource="rdComparativo_NeedDataSource" Height="100%" Width="100%" OnDetailTableDataBind="rdComparativo_DetailTableDataBind">
             <ClientSettings AllowKeyboardNavigation="true">
                 <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -327,13 +331,55 @@
                 </DetailTables>
             </MasterTableView>
         </telerik:RadGrid>--%>
-                </div>
+
  <%--                 <div style="clear: both; height: 5px;"></div>
                 <div class="divControlDerecha">
                     <div class="ctrlBasico" style="padding-left: 5px;">
                         <telerik:RadButton runat="server" ID="btnImprimir" Text="Imprimir" AutoPostBack="false" OnClientClicked="OpenImpresion"></telerik:RadButton>
                     </div>
                 </div>--%>
+
+
+        <telerik:RadPane ID="rpnOpciones" runat="server" Height="50px" Width="22px" Scrolling="None">
+            <telerik:RadSlidingZone ID="slzOpciones" runat="server" SlideDirection="Left" ExpandedPaneId="AyudaPrograma" ClickToOpen="true" Width="30px">
+                   <telerik:RadSlidingPane ID="rspSemaforo" runat="server" CollapseMode="Forward" EnableResize="false" Width="300px" Title="Código de color" Height="100%">
+                                    <div style="padding: 10px; text-align: justify;">
+                                        <telerik:RadGrid ID="grdCodigoColores"
+                                            runat="server"
+                                            Height="300"
+                                            Width="250"
+                                            AllowSorting="true"
+                                            AllowFilteringByColumn="true"
+                                            HeaderStyle-Font-Bold="true"
+                                            ShowHeader="true"
+                                            OnNeedDataSource="grdCodigoColores_NeedDataSource">
+                                            <ClientSettings>
+                                                <Scrolling AllowScroll="true" UseStaticHeaders="false"></Scrolling>
+                                            </ClientSettings>
+                                            <PagerStyle AlwaysVisible="true" />
+                                            <GroupingSettings CaseSensitive="false" />
+                                            <MasterTableView AutoGenerateColumns="false" AllowPaging="false" AllowFilteringByColumn="false" ShowHeadersWhenNoRecords="true">
+                                                <CommandItemSettings ShowAddNewRecordButton="false" ShowExportToExcelButton="True" ShowExportToCsvButton="false" ShowRefreshButton="false"
+                                                    AddNewRecordText="Insertar" />
+                                                <Columns>
+                                                    <telerik:GridTemplateColumn HeaderText="Color" HeaderStyle-Width="60" AllowFiltering="false">
+                                                        <ItemTemplate>
+                                                            <div style="margin: auto; width: 25px; border: 1px solid gray; background: <%# Eval("COLOR")%>; border-radius: 5px;">&nbsp;&nbsp;</div>
+                                                            &nbsp;
+                                                        </div>
+                                                        </ItemTemplate>
+                                                    </telerik:GridTemplateColumn>
+                                                    <telerik:GridBoundColumn AutoPostBackOnFilter="false" CurrentFilterFunction="Contains" HeaderStyle-Width="260" HeaderText="Descripción" DataField="DESCRIPCION"></telerik:GridBoundColumn>
+                                                </Columns>
+                                            </MasterTableView>
+                                        </telerik:RadGrid>
+                                    </div>
+                                </telerik:RadSlidingPane>
+                </telerik:RadSlidingZone>
+            </telerik:RadPane>
+                          </telerik:RadSplitter>
+
+                  </div>
             </telerik:RadPageView>
         </telerik:RadMultiPage>
     </div>

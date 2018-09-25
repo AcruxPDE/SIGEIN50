@@ -117,6 +117,12 @@ namespace SIGE.WebApp.EO.Cuestionarios
             set { ViewState["vs_vLstDepartamentos"] = value; }
         }
 
+        private List<E_GENERO> vLstGeneros
+        {
+            get { return (List<E_GENERO>)ViewState["vs_vLstGeneros"]; }
+            set { ViewState["vs_vLstGeneros"] = value; }
+        }
+
         #endregion
 
         #region Metodos
@@ -235,12 +241,13 @@ namespace SIGE.WebApp.EO.Cuestionarios
                         }
                         else
                         {
-                            if (cmbGenero.SelectedValue == "Masculino")
-                                vClGenero = "M";
-                            else if (cmbGenero.SelectedValue == "Femenino")
-                                vClGenero = "F";
-                            else
-                                vClGenero = cmbGenero.SelectedValue;
+                            vClGenero = cmbGenero.SelectedValue;
+                            //if (cmbGenero.SelectedValue == "Masculino")
+                            //    vClGenero = "M";
+                            //else if (cmbGenero.SelectedValue == "Femenino")
+                            //    vClGenero = "F";
+                            //else
+                            //    vClGenero = cmbGenero.SelectedValue;
                         }
                     }
                     if (vFiltros.XML_DEPARTAMENTOS != null)
@@ -300,6 +307,33 @@ namespace SIGE.WebApp.EO.Cuestionarios
                 }
 
             return vValidacion;
+        }
+
+        protected string ObtieneGeneros(string pXmlGenros)
+        {
+            string vGeneros = "";
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(pXmlGenros);
+            XmlNodeList generos = xml.GetElementsByTagName("ITEMS");
+            vLstGeneros = new List<E_GENERO>();
+
+            XmlNodeList lista =
+            ((XmlElement)generos[0]).GetElementsByTagName("ITEM");
+
+            foreach (XmlElement nodo in lista)
+            {
+
+                vGeneros = vGeneros + nodo.GetAttribute("NB_GENERO") + ".\n";
+                E_GENERO f = new E_GENERO
+                {
+                    CL_GENERO = nodo.GetAttribute("CL_GENERO"),
+                    NB_GENERO = nodo.GetAttribute("NB_GENERO")
+                };
+                vLstGeneros.Add(f);
+            }
+
+
+            return vGeneros;
         }
 
         protected void ObtieneDepartamentos(string pXmlDepartamentos)
@@ -387,6 +421,7 @@ namespace SIGE.WebApp.EO.Cuestionarios
                 {
                     if (vFiltros.EDAD_INICIO != null)
                     {
+                        dvEdad.Attributes.Add("style", "display:block;");
                         lbEdad.Visible = true;
                         rntEdad.Visible = true;
                         rntEdad.Value = vFiltros.EDAD_INICIO;
@@ -395,6 +430,7 @@ namespace SIGE.WebApp.EO.Cuestionarios
                     }
                     if (vFiltros.ANTIGUEDAD_INICIO != null)
                     {
+                        dvFechaIngreso.Attributes.Add("style", "display:block;");
                         Label1.Visible = true;
                         rdpIngreso.Visible = true;
                         //rntAntiguedad.Value = vFiltros.ANTIGUEDAD_INICIO;
@@ -404,6 +440,7 @@ namespace SIGE.WebApp.EO.Cuestionarios
 
                     if (vFiltros.CL_GENERO != null)
                     {
+                        dvGenero.Attributes.Add("style", "display:block;");
                         lbGenero.Visible = true;
                         cmbGenero.Visible = true;
                     //    List<E_GENERO> vLstGenero = new List<E_GENERO>();
@@ -432,27 +469,28 @@ namespace SIGE.WebApp.EO.Cuestionarios
                     //}
                     //else
                     //{
-                        List<E_GENERO> vLstGenero = new List<E_GENERO>();
-                        E_GENERO g = new E_GENERO
-                        {
-                            NB_GENERO = "Masculino"
-                        };
-                        vLstGenero.Add(g);
-                        E_GENERO f = new E_GENERO
-                        {
-                            NB_GENERO = "Femenino"
-                        };
-                        vLstGenero.Add(f);
-
-                        cmbGenero.DataSource = vLstGenero;
+                        //List<E_GENERO> vLstGenero = new List<E_GENERO>();
+                        //E_GENERO g = new E_GENERO
+                        //{
+                        //    NB_GENERO = "Masculino"
+                        //};
+                        //vLstGenero.Add(g);
+                        //E_GENERO f = new E_GENERO
+                        //{
+                        //    NB_GENERO = "Femenino"
+                        //};
+                        //vLstGenero.Add(f);
+                        ObtieneGeneros(vFiltros.CL_GENERO);
+                        cmbGenero.DataSource = vLstGeneros;
                         cmbGenero.DataTextField = "NB_GENERO";
-                        cmbGenero.DataValueField = "NB_GENERO";
+                        cmbGenero.DataValueField = "CL_GENERO";
                         cmbGenero.DataBind();
                     }
 
 
                     if (vFiltros.XML_DEPARTAMENTOS != null)
                     {
+                        dvArea.Attributes.Add("style", "display:block;");
                         lbArea.Visible = true;
                         rcbArea.Visible = true;
                         ObtieneDepartamentos(vFiltros.XML_DEPARTAMENTOS);
@@ -518,12 +556,14 @@ namespace SIGE.WebApp.EO.Cuestionarios
                 {
                     if (vFiltros.EDAD_INICIO != null)
                     {
+                       
                         lbEdad.Visible = true;
                         rntEdad.Visible = true;
                         rntEdad.Value = (double)vDatosEvaluador.NO_EDAD;
                     }
                     if (vFiltros.ANTIGUEDAD_INICIO != null)
                     {
+               
                         Label1.Visible = true;
                         rdpIngreso.Visible = true;
                         rdpIngreso.SelectedDate = vDatosEvaluador.FECHA_INGRESO;
@@ -531,6 +571,7 @@ namespace SIGE.WebApp.EO.Cuestionarios
 
                     if (vFiltros.CL_GENERO != null)
                     {
+                
                         lbGenero.Visible = true;
                         cmbGenero.Visible = true;
                         cmbGenero.Text = vDatosEvaluador.NB_GENERO;
@@ -539,6 +580,7 @@ namespace SIGE.WebApp.EO.Cuestionarios
 
                     if (vFiltros.XML_DEPARTAMENTOS != null)
                     {
+                   
                         lbArea.Visible = true;
                         rcbArea.Visible = true;
                         rcbArea.Text = vDatosEvaluador.NB_DEPARTAMENTO;

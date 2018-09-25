@@ -330,7 +330,7 @@
                                     </MasterTableView>
                                 </telerik:RadGrid>
                             </div>
-                            <div class="ctrlBasico" style="padding-left:20px;">>
+                            <div class="ctrlBasico" style="padding-left:20px;">
                                 <telerik:RadButton ID="btnDelDocumentos" runat="server" Text="Eliminar" OnClick="btnDelDocumentos_Click"></telerik:RadButton>
                             </div>
                         </telerik:RadPageView>

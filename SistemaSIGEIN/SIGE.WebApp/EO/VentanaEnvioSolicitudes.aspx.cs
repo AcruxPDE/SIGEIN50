@@ -140,7 +140,7 @@ namespace SIGE.WebApp.EO
                 if (oPeriodo.CL_TIPO_CAPTURISTA == "Coordinador de evaluación")
                 {
                     btnEnviar.Enabled = false;
-                    btnEnviarTodos.Enabled = false;
+                  //  btnEnviarTodos.Enabled = false;
                     btnCancelar.Enabled = false;
                     lbMensaje2.Visible = true;
                 }
@@ -415,7 +415,7 @@ namespace SIGE.WebApp.EO
                 {
                     item.Enabled = false;
                     item.SelectableMode = GridItemSelectableMode.None;
-                    btnEnviarTodos.Enabled = false;
+                    //btnEnviarTodos.Enabled = false;
                     lbMensaje.Visible = true;
                 }
             }

@@ -1,6 +1,7 @@
 ﻿using SIGE.Entidades;
 using SIGE.Entidades.Externas;
 using SIGE.Entidades.FormacionDesarrollo;
+using SIGE.Entidades.MetodologiaCompensacion;
 using SIGE.Negocio.Administracion;
 using SIGE.Negocio.FormacionDesarrollo;
 using System;
@@ -328,6 +329,17 @@ namespace SIGE.WebApp.FYD
                     vFooterItem[item.NB_PUESTO].Text = string.Format("{0:N2}%", item.PR_PUESTO);
                 }
             }
+        }
+
+        protected void grdCodigoColores_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            List<E_CODIGO_COLORES> vCodigoColores = new List<E_CODIGO_COLORES>();
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "red", DESCRIPCION = "Alta" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "gold", DESCRIPCION = "Intermedia" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "green", DESCRIPCION = "No necesaria" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "lightgray", DESCRIPCION = "No calificada N/C" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "lightgray", DESCRIPCION = "No aplica N/A" });
+            grdCodigoColores.DataSource = vCodigoColores;
         }
     }
 }
