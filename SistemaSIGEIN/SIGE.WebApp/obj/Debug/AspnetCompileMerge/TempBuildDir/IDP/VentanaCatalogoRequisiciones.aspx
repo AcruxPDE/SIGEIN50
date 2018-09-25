@@ -7,6 +7,7 @@
         var fe_solicitud = "";
         var vIdPuesto = 0;
         var vFgNuevoPuesto = 0;
+        var vFgPuestoNuevoCreado = false;
 
         function GetRadWindow() {
             var oWindow = null;
@@ -42,11 +43,20 @@
         }
 
         function validacionRevisarPuesto(sender, args) {
+            if (vFgPuestoNuevoCreado != true) {
+                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
+                {
+                    if (!shouldSubmit) {
+                        this.click();
+                    }
+                    else {
+                        openComparacionperfilPuestosWindow();
+                    }
+                });
+                radconfirm('El descriptivo de puesto es la base de la requisición, ¿Deseas revisar el descriptivo antes de guardar la requisición?', callBackFunction, 400, 200, null, "Salir");
+                args.set_cancel(true);
 
-            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
-            { if (!shouldSubmit) { this.click(); } });
-            radconfirm('El descriptivo de puesto es la base de la requisición, ¿Deseas revisar el descriptivo antes de guardar la requisición?', callBackFunction, 400, 200, null, "Salir");
-            args.set_cancel(true);
+            }
 
         }
 
@@ -138,7 +148,7 @@
         function GetVentanaSeleccionarEmpleadosSuplente() {
             var wnd = GetWindowProperties();
             wnd.vTitulo = "Selección de empleado a suplir";
-            wnd.vURL = "../Comunes/SeleccionEmpleado.aspx?CatalogoCl=SUPLENTE&mulSel=0";
+            wnd.vURL = "../Comunes/SeleccionEmpleado.aspx?CatalogoCl=SUPLENTE&mulSel=0&CL_ORIGEN=REQUISICION";
             wnd.vRadWindowId = "winSeleccionEmpleados";
             return wnd;
         }
@@ -290,7 +300,7 @@
                         document.getElementById("<%= divAutorizaPuestoReq.ClientID %>").style.display = "block";
 
                         //divAutorizaPuestoReq.setAttribute("display", "block");
-
+                        vFgPuestoNuevoCreado = true;
                         break;
 
                     case "SOLICITANTE":
@@ -369,17 +379,21 @@
         function CleanSelectionSolicitante(sender, args) {
             var vListSolicitante = $find("<%=rlbSolicitante.ClientID %>");
             var txtPuestoSol = $find('<%= txtPuestoSolicitante.ClientID %>');
+            var txtCorreoPuestoSol = $find('<%= txtCorreoSolicitante.ClientID %>');
 
             SetListBoxItem(vListSolicitante, "No Seleccionado", "");
             txtPuestoSol.set_value("");
+            txtCorreoPuestoSol.set_value("");
         }
 
         function CleanSelectionAutoriza(sender, args) {
             var vListAutoriza = $find("<%=lstAutoriza.ClientID %>");
             var txtPuestoAuto = $find('<%= txtPuestoAutoriza.ClientID %>');
+            var txtCorreoAutorizaReq = $find('<%= txtCorreoAutorizaReq.ClientID %>');
 
             SetListBoxItem(vListAutoriza, "No Seleccionado", "");
             txtPuestoAuto.set_value("");
+            txtCorreoAutorizaReq.set_value("");
         }
 
         function CleanPuestoSelection(sender, args) {
@@ -403,17 +417,15 @@
         function CleanSelectionSuplente(sender, args) {
             var vListSuplente = $find("<%=rlbSuplente.ClientID %>");
             var comboCausa = $find("<%# cmbCausas.ClientID %>");
+            var vListPuesto = $find("<%# rlbPuesto.ClientID %>");
             SetListBoxItem(vListSuplente, "No Seleccionado", "");
+            SetListBoxItem(vListPuesto, "No Seleccionado", "0");
+            var txtSueldo = $find('<%# txtSueldo.ClientID %>');
+            txtSueldo.set_value("0.00");
 
             var item = comboCausa.get_selectedItem().get_text();
 
             if (item == "Vacante") {
-
-                var vListPuesto = $find('<%=rlbPuesto.ClientID %>');
-                SetListBoxItem(vListPuesto, "No Seleccionado", "0");
-
-                var txtSueldo = $find('<%# txtSueldo.ClientID %>');
-                txtSueldo.set_value("0.00");
 
                 var txtSueldoSugerido = $find('<%# txtSueldoSugerido.ClientID %>');
                 txtSueldoSugerido.set_value("0.00");
@@ -425,9 +437,11 @@
             //var vListSuplente = $find("=rlbPuestoReq.ClientID %>");
             var txtPuestoReq = $find("<%= txtPuestoReq.ClientID %>");
             var txtAutorizaPuesto = $find('<%= txtPuestoAutorizaPuesto.ClientID %>');
+            var txtCorreoAutorizaPuesto = $find('<%= txtPuestoAutorizaCorreo.ClientID %>');
             //SetListBoxItem(rlbPuestoReq, "No Seleccionado", "");
             txtPuestoReq.set_value("");
             txtAutorizaPuesto.set_value("");
+            txtCorreoAutorizaPuesto.set_value("");
         }
 
 
@@ -715,7 +729,7 @@
                 <div class="ctrlBasico">
                     <fieldset style="width: 500px; margin-left: 10px;">
                         <legend>
-                            <label>Rango sugerido</label></legend>
+                            <label>Rango sugerido sueldo mensual</label></legend>
 
                         <div class="ctrlBasico">
                             <div class="divControlIzquierda">
@@ -759,7 +773,7 @@
                                 <telerik:RadListBoxItem Text="No Seleccionado" Value="" />
                             </Items>
                         </telerik:RadListBox>
-                        <telerik:RadButton ID="btnSeleccionarSolicitante" runat="server" Text="B" ToolTip="Buscar persona que solicita" OnClientClicked="OpenSeleccionarEmpleadoSolicitante" AutoPostBack="false"></telerik:RadButton>
+                        <telerik:RadButton ID="btnSeleccionarSolicitante" runat="server" Text="B" ToolTip="Selecciona persona que solicita" OnClientClicked="OpenSeleccionarEmpleadoSolicitante" AutoPostBack="false"></telerik:RadButton>
                         <telerik:RadButton ID="btnBorrarSeleccionSolicitante" runat="server" Text="X" ToolTip="Eliminar persona que solicita" AutoPostBack="false" OnClientClicked="CleanSelectionSolicitante"></telerik:RadButton>
 
                         <telerik:RadTextBox runat="server" ID="txtPuestoSolicitante" Width="300px" Enabled="false"></telerik:RadTextBox>
@@ -775,7 +789,7 @@
                 <div class="ctrlBasico" runat="server" id="divAutorizaPuestoReq">
                     <fieldset style="width: 1020px; margin-left: 20px;">
                         <legend>
-                            <label id="Label4" name="lblNbIdioma" runat="server">Autoriza puesto creado en requisición:</label>
+                            <label id="Label4" name="lblNbIdioma" runat="server">Autoriza puesto nuevo:</label>
                         </legend>
 
                         <div class="ctrlBasico" style="padding-left: 20px;">

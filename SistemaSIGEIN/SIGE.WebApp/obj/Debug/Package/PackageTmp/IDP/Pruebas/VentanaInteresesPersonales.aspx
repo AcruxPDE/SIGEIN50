@@ -15,6 +15,14 @@
             width: 30%;
         }
 
+         .DivMoveLeft {
+            text-align: right;
+            float: left;
+            margin-right: 15px;
+            margin-left: 15px;
+            width: 142px;
+        }
+
 
         .divContenido {
             text-align: left;
@@ -57,7 +65,8 @@
                         if (shouldSubmit) {
                             var segundos = '<%=this.vTiempoPrueba%>';
                             if (segundos <= 0) {
-                                var oWnd = radalert("Usted ha terminado su prueba exitosamente o el tiempo de aplicación de la prueba ha concluido. <br>Recuerde que no es posible volver a ingresar la prueba previa; si intenta hacerlo por medio del botón del navegador, la aplicación no se lo permitirá: se generará un error y el intento quedará registrado", 400, 300, "");
+                                // var oWnd = radalert("Usted ha terminado su prueba exitosamente o el tiempo de aplicación de la prueba ha concluido. <br>Recuerde que no es posible volver a ingresar la prueba previa; si intenta hacerlo por medio del botón del navegador, la aplicación no se lo permitirá: se generará un error y el intento quedará registrado", 400, 300, "");
+                                var oWnd = radalert("El tiempo de la aplicación de la prueba ha concluido y has dejado espacios en blanco, por lo que la prueba será invalidada. Te sugerimos contactar al ejecutivo de selección para más opciones, ya que el sistema no te permitirá regresar a la aplicación.", 400, 300, "");
                                 oWnd.add_close(CloseTest);
                             }
                             else {
@@ -125,7 +134,8 @@
             }
 
             function mensajePruebaTerminada() {
-                var oWnd = radalert("Usted ha terminado su prueba exitosamente o el tiempo de aplicación de la prueba ha concluido. <br> Recuerde que no es posible volver a ingresar la prueba previa; si intenta hacerlo por medio del botón del navegador, la aplicación no te lo permitirá: se generará un error y el intento quedará registrado", 400, 300, "");
+                //var oWnd = radalert("Usted ha terminado su prueba exitosamente o el tiempo de aplicación de la prueba ha concluido. <br> Recuerde que no es posible volver a ingresar la prueba previa; si intenta hacerlo por medio del botón del navegador, la aplicación no te lo permitirá: se generará un error y el intento quedará registrado", 400, 300, "");
+                var oWnd = radalert("El tiempo de la aplicación de la prueba ha concluido y has dejado espacios en blanco, por lo que la prueba será invalidada. Te sugerimos contactar al ejecutivo de selección para más opciones, ya que el sistema no te permitirá regresar a la aplicación.", 400, 300, "");
                 oWnd.add_close(WinClose);
             }
 
@@ -184,7 +194,7 @@
                         GrupoNoContestado.focus();
                         GrupoNoContestado.get_styles().EnabledStyle[0] += "border-color: Red;";
                         var flag = false;
-                        radalert("Hay preguntas que no han sido contestadas. Revise la prueba por favor.", 400, 150, "");
+                        radalert("Hay preguntas que no han sido contestadas. Revisa la prueba por favor.", 400, 150, "");
                         break;
                     }
                 }
@@ -225,7 +235,7 @@
         </script>
     </telerik:RadCodeBlock>
     <label style="font-size: 21px;">Intereses personales</label>
-    <div style="height: calc(100% - 120px); overflow: auto;">
+    <div style="height: calc(100% - 100px); overflow: auto;">
         <telerik:RadSplitter ID="splHelp" runat="server" Width="100%" Height="100%" BorderSize="0" Orientation="Horizontal">
             <telerik:RadPane ID="rpnOpciones" runat="server" Height="30" Width="100%" Scrolling="None">
                 <telerik:RadSlidingZone ID="slzOpciones" runat="server" Width="30" ClickToOpen="true">
@@ -593,7 +603,7 @@
         </telerik:RadSplitter>
     </div>
     <div style="clear: both; height: 10px;"></div>
-    <div class="ctrlBasico" id="cronometro" runat="server">
+    <div class="DivMoveLeft" id="cronometro" runat="server">
         <div class="Cronometro">Tiempo restante <span id="time">05:00</span></div>
     </div>
         <div class="divControlDerecha">

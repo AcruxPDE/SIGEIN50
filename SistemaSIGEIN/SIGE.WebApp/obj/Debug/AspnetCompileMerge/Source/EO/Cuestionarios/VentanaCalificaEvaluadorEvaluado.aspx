@@ -39,7 +39,7 @@
         function OpenCapturaResultado() {
             var selectedItem = $find("<%=grdEvaluados.ClientID %>").get_masterTableView().get_selectedItems()[0];
             if (selectedItem != undefined) {
-                if (selectedItem.getDataKeyValue("CL_ESTADO_EMPLEADO") == "ALTA") {
+                if (selectedItem.getDataKeyValue("CL_ESTADO_EMPLEADO") == "Alta") {
                 var pIdPeriodo = '<%=vIdPeriodo%>';
                 var pIdEvaluado = selectedItem.getDataKeyValue("ID_EVALUADO");
                 OpenSelectionWindow("VentanaContextoCapturaResultados.aspx?idPeriodo=" + pIdPeriodo + "&idEvaluado=" + pIdEvaluado, "rwCaptura", "Captura de resultados")
