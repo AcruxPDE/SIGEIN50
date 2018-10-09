@@ -336,7 +336,7 @@ namespace SIGE.WebApp.EO
                 btnDesactivarMetas.Text = "Desactivar indicador";
                 btnModificarMetas.Text = "Editar indicador";
                 btnCopiarMetas.Text = "Copiar indicador";
-                btnGuardarMetas.Text= "Guardar indicadores";
+                btnGuardarMetas.Text= "Guardar";
 
                 grdDisenoMetas.MasterTableView.DetailTables[0].Columns[0].Visible = true;
             }
