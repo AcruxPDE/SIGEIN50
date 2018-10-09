@@ -291,19 +291,21 @@ namespace SIGE.WebApp.EO
                     //        }
                     //    }
                     //}
+                    vDsMensaje = vPeriodoClima.DS_MENSAJE_CORREO;
+                    lMensaje.InnerHtml = vDsMensaje;
                 }
-                vDsMensaje = ContextoApp.EO.MensajeCorreoEvaluador.dsMensaje;
-                lMensaje.InnerHtml = vDsMensaje;
+                //vDsMensaje = ContextoApp.EO.MensajeCorreoEvaluador.dsMensaje;
+                //lMensaje.InnerHtml = vDsMensaje;
 
                 vCuentaCuestionarios = nClima.ObtieneEvaluadoresCuestionario(pID_PERIODO: vIdPeriodo, pIdRol: vIdRol).Count;
                 vCuentaContestados = 0;
             }
         }
 
-        protected void btnEnviarTodos_Click(object sender, EventArgs e)
-        {
-            EnviarCorreo(true);
-        }
+        //protected void btnEnviarTodos_Click(object sender, EventArgs e)
+        //{
+        //    EnviarCorreo(true);
+        //}
 
         protected void btnEnviar_Click(object sender, EventArgs e)
         {
@@ -356,18 +358,18 @@ namespace SIGE.WebApp.EO
 
             if (vCuentaCuestionarios == vCuentaContestados)
             {
-                btnEnviarTodos.Enabled = false;
+                //btnEnviarTodos.Enabled = false;
                 btnEnviar.Enabled = false;
                 lbMensaje.Visible = true;
             }
             else if (vCuentaContestados != 0)
             {
-                btnEnviarTodos.Enabled = false;
+               // btnEnviarTodos.Enabled = false;
                 lbMensaje.Visible = false;
             }
             else
             {
-                btnEnviarTodos.Enabled = true;
+               // btnEnviarTodos.Enabled = true;
                 btnEnviar.Enabled = true;
                 lbMensaje.Visible = false;
             }

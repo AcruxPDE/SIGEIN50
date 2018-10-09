@@ -31,24 +31,6 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadAjaxManager ramAvanceProgramaCapacitacion;
         
         /// <summary>
-        /// splHelp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadSplitter splHelp;
-        
-        /// <summary>
-        /// radPanelProgramaCapacitacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadPane radPanelProgramaCapacitacion;
-        
-        /// <summary>
         /// tbAvanceProgramaCapacitacion control.
         /// </summary>
         /// <remarks>
@@ -166,6 +148,24 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadPageView rpvVista2;
         
         /// <summary>
+        /// splHelp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSplitter splHelp;
+        
+        /// <summary>
+        /// radPanelProgramaCapacitacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPane radPanelProgramaCapacitacion;
+        
+        /// <summary>
         /// rgAvancePrograma control.
         /// </summary>
         /// <remarks>
@@ -173,15 +173,6 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadGrid rgAvancePrograma;
-        
-        /// <summary>
-        /// btnExportar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnExportar;
         
         /// <summary>
         /// rpnOpciones control.
@@ -209,6 +200,33 @@ namespace SIGE.WebApp.FYD {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadSlidingPane RSPHelp;
+        
+        /// <summary>
+        /// rspSemaforo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSlidingPane rspSemaforo;
+        
+        /// <summary>
+        /// grdCodigoColores control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadGrid grdCodigoColores;
+        
+        /// <summary>
+        /// btnExportar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnExportar;
         
         /// <summary>
         /// rwmMensaje control.

@@ -37,7 +37,7 @@ namespace SIGE.WebApp.FYD
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            vNbUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
+            vNbUsuario = ContextoUsuario.oUsuario.NB_USUARIO;
             if (ContextoApp.InfoEmpresa.FiLogotipo.FiArchivo != null)
                 rbiLogoOrganizacion1.DataValue = ContextoApp.InfoEmpresa.FiLogotipo.FiArchivo;
             else

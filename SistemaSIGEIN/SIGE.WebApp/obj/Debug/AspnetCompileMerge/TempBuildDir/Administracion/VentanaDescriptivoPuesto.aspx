@@ -1323,7 +1323,7 @@
                             <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
                             <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>
                             <span style="border: 1px solid gray; background: #0087CF; border-radius: 5px;" title="Metodología para la compensación ">&nbsp;&nbsp;</span>&nbsp; 
-                             Funciones genéricas
+                             Funciones
                              </label>
 
                             <div style="height: calc(100% - 80px);">

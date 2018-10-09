@@ -240,12 +240,16 @@
             var divDistribucion;
             var divPreguntas;
             var divGlobal;
+            var simbologia;
 
             divContexto = document.getElementById('<%= divContexto.ClientID%>');
             divIndice = document.getElementById('<%= divIndice.ClientID%>');
             divDistribucion = document.getElementById('<%= divDistribucion.ClientID%>');
             divPreguntas = document.getElementById('<%= divPreguntas.ClientID%>');
             divGlobal = document.getElementById('<%= divGlobal.ClientID%>');
+ 
+            
+
 
             switch (vtabStrip) {
 
@@ -262,6 +266,7 @@
                     divDistribucion.style.display = 'none';
                     divPreguntas.style.display = 'none';
                     divGlobal.style.display = 'none';
+
                     break;
                 case 2:
                     divContexto.style.display = 'none';
@@ -353,7 +358,6 @@
                                 <telerik:RadTab Text="Distribución de los resultados" runat="server" SelectedIndex="2"></telerik:RadTab>
                                 <telerik:RadTab Text="Preguntas abiertas" runat="server" SelectedIndex="3"></telerik:RadTab>
                                 <telerik:RadTab Text="Resultado global" runat="server" SelectedIndex="4"></telerik:RadTab>
-
                             </Tabs>
                         </telerik:RadTabStrip>
                     </telerik:RadSlidingPane>
@@ -650,6 +654,10 @@
                                             </MasterTableView>
                                         </telerik:RadGrid>
                                     </div>
+
+
+                                    
+
 
                                 </telerik:RadPageView>
                             </telerik:RadMultiPage>
@@ -1006,7 +1014,7 @@
                             </p>
                         </div>
                     </telerik:RadSlidingPane>
-                    <telerik:RadSlidingPane ID="rspDefinicionCriterios" runat="server" Title="Simbología" Width="380px" RenderMode="Mobile" Height="100%">
+                    <telerik:RadSlidingPane ID="rspDefinicionCriterios" runat="server" Title="Código de color" Width="380px" RenderMode="Mobile"  Height="100%">
                         <div style="padding: 10px; text-align: justify;">
                             <telerik:RadGrid ID="grdCodigoColores"
                                 runat="server"

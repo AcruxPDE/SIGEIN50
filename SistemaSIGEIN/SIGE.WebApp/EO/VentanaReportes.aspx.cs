@@ -126,11 +126,11 @@ namespace SIGE.WebApp.EO
                 string vColor = ColoresPoncentajes(vPromedioPeriodo);
                 dvColorProm.Style.Add("background-color", vColor);
                 if (vColor == "green")
-                    lbTotal.InnerText = "Resultados satisfactorios";
+                    lbTotal.InnerText = "Resultado global satisfactorio";
                 if (vColor == "yellow")
-                    lbTotal.InnerText = "Resultados medianamente satisfactorios";
+                    lbTotal.InnerText = "Resultado global medianamente satisfactorio";
                 if (vColor == "red")
-                    lbTotal.InnerText = "Resultados poco satisfactorios";
+                    lbTotal.InnerText = "Resultado global poco satisfactorio";
             }
         }
 

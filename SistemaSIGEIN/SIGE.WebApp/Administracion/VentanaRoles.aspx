@@ -133,7 +133,7 @@
                         <label name="lblNombre">Activo:</label>
                     </div>
                     <div class="divControlDerecha">
-                        <telerik:RadButton ID="chkActivo" runat="server" ToggleType="CheckBox" name="chkActivo" Checked="true" AutoPostBack="false">
+                        <telerik:RadButton ID="chkActivo" runat="server" ToggleType="CheckBox" name="chkActivo" Checked="true" AutoPostBack="false" CausesValidation="false">
                             <ToggleStates>
                                 <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
                                 <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
@@ -154,7 +154,7 @@
             <telerik:RadSplitBar ID="barSeparador1" runat="server" Enabled="false" EnableResize="false" CollapseMode="None"></telerik:RadSplitBar>
             <telerik:RadPane ID="panPermisos" runat="server">
                 <div style="margin-left: 20px; height: 100%;">
-                    <telerik:RadTabStrip ID="tabPermisos" runat="server" SelectedIndex="0" MultiPageID="mpgPermisos">
+                    <telerik:RadTabStrip ID="tabPermisos" runat="server" SelectedIndex="0" MultiPageID="mpgPermisos" CausesValidation="false">
                         <Tabs>
                             <telerik:RadTab Text="Menú general"></telerik:RadTab>
                             <telerik:RadTab Text="Menú módulos"></telerik:RadTab>

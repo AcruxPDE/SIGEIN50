@@ -15,6 +15,7 @@ using System.IO;
 using System.Xml.Linq;
 using SIGE.Negocio.Utilerias;
 using SIGE.Entidades.Externas;
+using SIGE.Entidades.MetodologiaCompensacion;
 
 
 namespace SIGE.WebApp.IDP
@@ -523,6 +524,17 @@ namespace SIGE.WebApp.IDP
         protected void btnExportarDetalle_Click(object sender, EventArgs e)
         {
             GenerarExcelDetallada();
+        }
+
+        protected void grdCodigoColores_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            List<E_CODIGO_COLORES> vCodigoColores = new List<E_CODIGO_COLORES>();
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "green", DESCRIPCION = "Competencia alta" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "yellow", DESCRIPCION = "Competencia intermedia" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "red", DESCRIPCION = "Competencia baja" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "darkgray", DESCRIPCION = "Competencia no contestada" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "gray", DESCRIPCION = "Competencia invalida" });
+            grdCodigoColores.DataSource = vCodigoColores;
         }
 
         //protected void pgDetallada_CellDataBound(object sender, PivotGridCellDataBoundEventArgs e)

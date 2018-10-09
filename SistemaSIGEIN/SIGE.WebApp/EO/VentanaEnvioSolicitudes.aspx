@@ -139,7 +139,6 @@
                             </div>
                         </telerik:RadPageView>
                         <telerik:RadPageView ID="rpvEnvio" runat="server">
-                            <div style="clear: both; height: 5px;"></div>
                             <div style="height: calc(100% - 30px); width: 100%;">
                                 <telerik:RadGrid runat="server" ID="rgCorreos" HeaderStyle-Font-Bold="true" AutoGenerateColumns="false" OnItemDataBound="rgCorreos_ItemDataBound" OnNeedDataSource="rgCorreos_NeedDataSource" Height="100%" Width="100%" AllowSorting="true" AllowMultiRowSelection="true">
                                     <ClientSettings EnablePostBackOnRowClick="false">
@@ -186,9 +185,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <telerik:RadButton runat="server" ID="btnEnviar" Text="Enviar a seleccionados" OnClick="btnEnviar_Click"></telerik:RadButton>
+                                <div class="ctrlBasico">
+                                <telerik:RadButton runat="server" ID="btnEnviar" Text="Enviar" OnClick="btnEnviar_Click"></telerik:RadButton>
+                                    </div>
+                             <%--      <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" ID="btnEnviarTodos" Text="Enviar a todos" OnClick="btnEnviarTodos_Click"></telerik:RadButton>
+                                                 </div>--%>
+                                   <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" ID="btnCancelar" Text="Cancelar" AutoPostBack="false" OnClientClicked="closeWindow"></telerik:RadButton>
+                                       </div>
                             </div>
                         </telerik:RadPageView>
 

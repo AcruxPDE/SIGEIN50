@@ -35,7 +35,7 @@
                 <input id="txtAntiguedades" runat="server" type="text" value="        /        /" name="txtAntiguedades" visible="false" readonly="true" style="background-color: #cccccc; border-style: solid; border-width: 1px; border-radius: 5px; width: 110px">
             </div>
             <div class="ctrlBasico">
-                <label id="lbGenero" name="LbFiltros" runat="server" visible="false" style="width: 50px;">Género:</label>
+                <label id="lbGenero" name="lbGenero" runat="server" visible="false" style="width: 50px;">Género:</label>
             </div>
             <div id="dvGeneros" runat="server">
             </div>

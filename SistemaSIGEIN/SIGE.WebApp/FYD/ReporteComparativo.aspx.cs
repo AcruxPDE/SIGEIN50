@@ -1,5 +1,6 @@
 ﻿using SIGE.Entidades;
 using SIGE.Entidades.FormacionDesarrollo;
+using SIGE.Entidades.MetodologiaCompensacion;
 using SIGE.Negocio.FormacionDesarrollo;
 using SIGE.WebApp.Comunes;
 using System;
@@ -267,7 +268,7 @@ namespace SIGE.WebApp.FYD
                 vCtrlTabla.Controls.Add(vCtrlColumnO);
             }
 
-            foreach (int item in pListaPeriodos)
+            foreach (int item in pListaPeriodos.OrderBy(o => o))
             {
                 HtmlGenericControl vCtrlRow = new HtmlGenericControl("tr");
                 var oPeriodo = neg.ObtenerPeriodoEvaluacion(item);
@@ -506,9 +507,12 @@ namespace SIGE.WebApp.FYD
             ConsultaGeneralNegocio negGen = new ConsultaGeneralNegocio();
             int? vMaxPuestos = 1;
 
-            foreach (int item in listPeriodos)
+            foreach (int item in listPeriodos.OrderBy(o => o))
             {
-                vMaxPuestos = negGen.ObtenerDatosReporteGlobal(item, null, false).FirstOrDefault().NUM_PERIODOS;
+                var vDatosReporteGlobal = negGen.ObtenerDatosReporteGlobal(item, null, false).ToList();
+                if (vDatosReporteGlobal.Count > 0)
+                    vMaxPuestos = vDatosReporteGlobal.FirstOrDefault().NUM_PERIODOS;
+
                 SPE_OBTIENE_FYD_PERIODO_EVALUACION_Result oPeriodos = negGen.ObtenerPeriodoEvaluacion(item);
                 GridTemplateColumn vBoundColumn = new GridTemplateColumn();
                 vBoundColumn.DataField = oPeriodos.ID_PERIODO.ToString();
@@ -641,6 +645,16 @@ namespace SIGE.WebApp.FYD
                 }
 
             }
+        }
+
+        protected void grdCodigoColores_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            List<E_CODIGO_COLORES> vCodigoColores = new List<E_CODIGO_COLORES>();
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "green", DESCRIPCION = "Compatibilidad alta" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "yellow", DESCRIPCION = "Compatibilidad intermedia" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "red", DESCRIPCION = "Compatibilidad baja" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "gray", DESCRIPCION = "No aplica" });
+            grdCodigoColores.DataSource = vCodigoColores;
         }
     }
 }

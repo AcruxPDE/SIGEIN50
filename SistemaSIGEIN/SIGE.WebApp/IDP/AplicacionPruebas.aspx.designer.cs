@@ -13,6 +13,24 @@ namespace SIGE.WebApp.IDP {
     public partial class AplicacionPruebas {
         
         /// <summary>
+        /// ralpEvaluacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadAjaxLoadingPanel ralpEvaluacion;
+        
+        /// <summary>
+        /// ramEvaluacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadAjaxManager ramEvaluacion;
+        
+        /// <summary>
         /// rtsAplicacionPruebas control.
         /// </summary>
         /// <remarks>
@@ -236,15 +254,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btAsignaReqEmp;
-        
-        /// <summary>
-        /// hfSelectedRow control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfSelectedRow;
         
         /// <summary>
         /// RadWindowManager1 control.

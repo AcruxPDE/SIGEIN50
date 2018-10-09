@@ -42,7 +42,7 @@ namespace SIGE.Entidades
         public string XML_TELEFONOS { get; set; }
         public string CL_CORREO_ELECTRONICO { get; set; }
         public bool FG_ACTIVO { get; set; }
-        public System.DateTime FE_NACIMIENTO { get; set; }
+        public Nullable<System.DateTime> FE_NACIMIENTO { get; set; }
         public string DS_LUGAR_NACIMIENTO { get; set; }
         public System.DateTime FE_ALTA { get; set; }
         public Nullable<System.DateTime> FE_BAJA { get; set; }

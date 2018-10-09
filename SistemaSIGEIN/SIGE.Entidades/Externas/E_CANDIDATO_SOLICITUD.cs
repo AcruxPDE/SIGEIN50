@@ -10,6 +10,7 @@ namespace SIGE.Entidades.Externas
     public class E_CANDIDATO_SOLICITUD
     {
         public int ID_SOLICITUD { get; set; }
+        public string CL_SOLICITUD { get; set; }
         public string C_CANDIDATO_NB_EMPLEADO_COMPLETO { get; set; }
         public string C_CANDIDATO_CL_CORREO_ELECTRONICO { get; set; }
     }

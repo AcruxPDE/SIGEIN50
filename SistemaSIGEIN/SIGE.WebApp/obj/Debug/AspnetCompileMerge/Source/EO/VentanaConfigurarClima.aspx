@@ -123,7 +123,8 @@
                         break;
                     case "INDICE_GENERO":
                         var listGenero = $find("<%=rlbGenero.ClientID %>");
-                        InsertGenero(listGenero, pDato[0]);
+                        //  InsertGenero(listGenero, pDato[0]);
+                        InsertGenero(pDato, listGenero);
                         break;
                     case "INDICE_DEPARTAMENTO":
                         var vListBox = $find("<%=rlbDepartamento.ClientID %>");
@@ -205,7 +206,7 @@
         openChildDialog("../Comunes/SeleccionArea.aspx?CatalogoCl=INDICE_DEPARTAMENTO", "WinCuestionario", "Selección de área/departamento");
     }
     function OpenSelectionGenero() {
-        openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=INDICE_GENERO" + "&mulSel=0", "WinCuestionario", "Selección de género");
+        openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=INDICE_GENERO", "WinCuestionario", "Selección de género");
     }
 
     function OpenSelectionAdicionales() {
@@ -228,18 +229,26 @@
         Delete(vListBox);
     }
 
-    function InsertGenero(list, vSelectedData) {
-        if (list != undefined) {
-            list.trackChanges();
-            var items = list.get_items();
-            items.clear();
-            var item = new Telerik.Web.UI.RadListBoxItem();
-            item.set_text(vSelectedData.nbCatalogoValor);
-            item.set_value(vSelectedData.clCatalogoValor);
-            item.set_selected(true);
-            items.add(item);
-            list.commitChanges();
-        }
+        function InsertGenero(vSelectedData, list) {
+            var arrSeleccion = [];
+            for (var i = 0; i < vSelectedData.length; i++)
+                arrSeleccion.push({
+                    idItem: vSelectedData[i].clCatalogoValor,
+                    nbItem: vSelectedData[i].nbCatalogoValor
+                });
+
+            OrdenarSeleccion(arrSeleccion, list);
+        //if (list != undefined) {
+        //    list.trackChanges();
+        //    var items = list.get_items();
+        //    items.clear();
+        //    var item = new Telerik.Web.UI.RadListBoxItem();
+        //    item.set_text(vSelectedData.nbCatalogoValor);
+        //    item.set_value(vSelectedData.clCatalogoValor);
+        //    item.set_selected(true);
+        //    items.add(item);
+        //    list.commitChanges();
+        //}
     }
 
     function InsertDepartamentos(pDato, pListBox) {
@@ -643,7 +652,7 @@
                                         <label id="Label3" name="lblGenero" runat="server">Género:</label>
                                     </div>
                                     <div class="divControlDerecha">
-                                        <telerik:RadListBox ID="rlbGenero" Width="100" Height="35px" runat="server" ValidationGroup="vgGeneroDis"></telerik:RadListBox>
+                                        <telerik:RadListBox ID="rlbGenero" Width="200px" Height="100px" runat="server" ValidationGroup="vgGeneroDis"></telerik:RadListBox>
                                         <telerik:RadButton ID="btnDistribucionSeleccionarGen" runat="server" Text="B" AutoPostBack="false" OnClientClicked="OpenSelectionGenero"></telerik:RadButton>
                                         <telerik:RadButton ID="btnDistribucionEliminaGen" runat="server" Text="X" AutoPostBack="false" ValidationGroup="vgGeneroDis" OnClientClicked="DeleteGenero"></telerik:RadButton>
                                     </div>

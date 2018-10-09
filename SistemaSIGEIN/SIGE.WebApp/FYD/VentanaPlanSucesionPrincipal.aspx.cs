@@ -1,5 +1,6 @@
 ﻿using SIGE.Entidades;
 using SIGE.Entidades.FormacionDesarrollo;
+using SIGE.Entidades.MetodologiaCompensacion;
 using SIGE.Negocio.FormacionDesarrollo;
 using SIGE.WebApp.Comunes;
 using System;
@@ -311,6 +312,16 @@ namespace SIGE.WebApp.FYD
                     }
                 }
             }
+        }
+
+        protected void grdCodigoColores_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            List<E_CODIGO_COLORES> vCodigoColores = new List<E_CODIGO_COLORES>();
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "green", DESCRIPCION = "Alto potencial" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "yellow", DESCRIPCION = "Potencial medio" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "red", DESCRIPCION = "Bajo potencial" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "gray", DESCRIPCION = "Agregado" });
+            grdCodigoColores.DataSource = vCodigoColores;
         }
     }
 }

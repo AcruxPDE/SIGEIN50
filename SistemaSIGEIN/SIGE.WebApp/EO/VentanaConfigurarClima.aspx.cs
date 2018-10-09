@@ -74,6 +74,12 @@ namespace SIGE.WebApp.EO
             set { ViewState["vs_vLstDepartamentos"] = value; }
         }
 
+        private List<E_GENERO> vLstGeneros
+        {
+            get { return (List<E_GENERO>)ViewState["vs_vLstGeneros"]; }
+            set { ViewState["vs_vLstGeneros"] = value; }
+        }
+
         private List<E_ADICIONALES_SELECCIONADOS> vLstAdicionales
         {
             get { return (List<E_ADICIONALES_SELECCIONADOS>)ViewState["vs_vLstAdicionales"]; }
@@ -90,6 +96,7 @@ namespace SIGE.WebApp.EO
         {
             List<E_SELECCIONADOS> vDepartamentos = new List<E_SELECCIONADOS>();
             List<E_ADICIONALES_SELECCIONADOS> vAdicionales = new List<E_ADICIONALES_SELECCIONADOS>();
+            List<E_GENERO> vLstGenero = new List<E_GENERO>();
             XElement vXlmFiltros = new XElement("FILTROS");
             XElement vXlmDepartamentos = new XElement("DEPARTAMENTOS");
             XElement vXlmGeneros = new XElement("GENEROS");
@@ -128,9 +135,12 @@ namespace SIGE.WebApp.EO
             //{
                 foreach (RadListBoxItem item in rlbGenero.Items)
                 {
-                    vXlmGeneros = new XElement("GENERO", new XAttribute("NB_GENERO", item.Value));
+                    string vClGenero = item.Value;
+                    vLstGenero.Add(new E_GENERO {CL_GENERO = vClGenero });
                     vFgFiltroSeleccionado = true;
                 }
+                var vXmlLstGeneros = vLstGenero.Select(x => new XElement("GENERO", new XAttribute("NB_GENERO", x.CL_GENERO)));
+                vXlmGeneros = new XElement("GENEROS", vXmlLstGeneros);
                 vXlmFiltros.Add(vXlmGeneros);
            // }
 
@@ -225,6 +235,33 @@ namespace SIGE.WebApp.EO
             return false;
         }
 
+        protected string ObtieneGeneros(string pXmlGenros)
+        {
+            string vGeneros = "";
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(pXmlGenros);
+            XmlNodeList generos = xml.GetElementsByTagName("ITEMS");
+            vLstGeneros = new List<E_GENERO>();
+
+            XmlNodeList lista =
+            ((XmlElement)generos[0]).GetElementsByTagName("ITEM");
+
+            foreach (XmlElement nodo in lista)
+            {
+
+                vGeneros = vGeneros + nodo.GetAttribute("NB_GENERO") + ".\n";
+                E_GENERO f = new E_GENERO
+                {
+                    CL_GENERO = nodo.GetAttribute("CL_GENERO"),
+                    NB_GENERO = nodo.GetAttribute("NB_GENERO")
+                };
+                vLstGeneros.Add(f);
+            }
+
+
+            return vGeneros;
+        }
+
         protected string ObtieneDepartamentos(string pXmlDepartamentos)
         {
             string vDepartamentos = "";
@@ -315,31 +352,32 @@ namespace SIGE.WebApp.EO
                         //lbGenero.Visible = true;
                         //txtGenero.Visible = true;
                         //txtGenero.Attributes.Add("class", "ctrlTableDataBorderContext");
-                        List<E_GENERO> vLstGenero = new List<E_GENERO>();
+                        //List<E_GENERO> vLstGenero = new List<E_GENERO>();
 
-                        if (vFiltros.CL_GENERO == "Masculino")
-                        {
-                         //   txtGenero.InnerText = "Masculino";
-                            E_GENERO g = new E_GENERO
-                            {
-                                CL_GENERO = "M",
-                                NB_GENERO = "Masculino"
-                            };
-                            vLstGenero.Add(g);
+                        //if (vFiltros.CL_GENERO == "Masculino")
+                        //{
+                        // //   txtGenero.InnerText = "Masculino";
+                        //    E_GENERO g = new E_GENERO
+                        //    {
+                        //        CL_GENERO = "M",
+                        //        NB_GENERO = "Masculino"
+                        //    };
+                        //    vLstGenero.Add(g);
 
                            
-                        }
-                        else
-                        {
-                           // txtGenero.InnerText = "Femenino";
-                            E_GENERO g = new E_GENERO
-                            {
-                                CL_GENERO = "F",
-                                NB_GENERO = "Femenino"
-                            };
-                            vLstGenero.Add(g);
-                        }
-                        rlbGenero.DataSource = vLstGenero;
+                        //}
+                        //else if (vFiltros.CL_GENERO == "Masculino")
+                        //{
+                        //   // txtGenero.InnerText = "Femenino";
+                        //    E_GENERO g = new E_GENERO
+                        //    {
+                        //        CL_GENERO = "F",
+                        //        NB_GENERO = "Femenino"
+                        //    };
+                        //    vLstGenero.Add(g);
+                        //}
+                        ObtieneGeneros(vFiltros.CL_GENERO);
+                        rlbGenero.DataSource = vLstGeneros;
                         rlbGenero.DataTextField = "NB_GENERO";
                         rlbGenero.DataValueField = "CL_GENERO";
                         rlbGenero.DataBind();

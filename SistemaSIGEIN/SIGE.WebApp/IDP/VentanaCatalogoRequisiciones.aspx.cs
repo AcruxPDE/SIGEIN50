@@ -853,16 +853,30 @@ namespace SIGE.WebApp.Administracion
 
                     E_RESULTADO vResultado = nRequisicion.InsertaActualizaRequisicion(pTipoTransaccion: pTipoTransaccion, pNbPrograma: vNbPrograma, pClUsuario: vClUsuario, pRequisicion: vRequisicion);
                     string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-
+                    string vNumeroRequisicion = "";
 
                     if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
                     {
+                        if (pTipoTransaccion == "I")
+                        {
+                            XElement vDatosRespuesta = vResultado.ObtieneDatosRespuesta();
+                            if (vDatosRespuesta != null)
+                            {
+                                XElement vPuestoInsertado = vDatosRespuesta.Element("REQUISICION");
+                                vNumeroRequisicion = UtilXML.ValorAtributo<string>(vPuestoInsertado.Attribute("NO_REQUISICION"));                            
+                            }
+                            
+                        }
+
                         if (pTipoTransaccion == "I" || pClEstatusRequisicion == "ABIERTA" && vRequisicion.CL_ESTATUS_REQUISICION == "POR AUTORIZAR")
                         {
                             ValidarEnvioCorreos(vRequisicion);
                         }
 
-                        UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
+                        if(vNumeroRequisicion != "")
+                            UtilMensajes.MensajeResultadoDB(rnMensaje, "El folio " + txtNo_requisicion.Text + " ya ha sido asignado a otra requisición el nuevo folio asignado es: " + vNumeroRequisicion, vResultado.CL_TIPO_ERROR,400,160);
+                        else
+                             UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
                     }
                     else
                     {

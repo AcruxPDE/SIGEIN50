@@ -283,6 +283,42 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadButton btnFormatoExcel;
         
         /// <summary>
+        /// RadPane2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPane RadPane2;
+        
+        /// <summary>
+        /// RadSlidingZone1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSlidingZone RadSlidingZone1;
+        
+        /// <summary>
+        /// rspSemaforo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSlidingPane rspSemaforo;
+        
+        /// <summary>
+        /// grdCodigoColores control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadGrid grdCodigoColores;
+        
+        /// <summary>
         /// rnMensaje control.
         /// </summary>
         /// <remarks>

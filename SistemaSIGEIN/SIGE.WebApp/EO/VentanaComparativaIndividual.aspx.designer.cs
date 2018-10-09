@@ -85,6 +85,24 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadPageView rpvReporte;
         
         /// <summary>
+        /// rsSucesion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSplitter rsSucesion;
+        
+        /// <summary>
+        /// rpSucesion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPane rpSucesion;
+        
+        /// <summary>
         /// dvReporte control.
         /// </summary>
         /// <remarks>
@@ -92,6 +110,42 @@ namespace SIGE.WebApp.EO {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvReporte;
+        
+        /// <summary>
+        /// rpAyuda control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPane rpAyuda;
+        
+        /// <summary>
+        /// rszAyuda control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSlidingZone rszAyuda;
+        
+        /// <summary>
+        /// rspSemaforo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSlidingPane rspSemaforo;
+        
+        /// <summary>
+        /// grdCodigoColores control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadGrid grdCodigoColores;
         
         /// <summary>
         /// rpvGrafica control.

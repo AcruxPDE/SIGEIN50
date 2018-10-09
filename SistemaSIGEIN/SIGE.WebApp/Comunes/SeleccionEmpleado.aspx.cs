@@ -93,7 +93,14 @@ namespace SIGE.WebApp.Comunes
         #region Funciones
         private void DefineGrid()
         {
-
+            bool? vFgActivo = true; ;
+            if (Request.QueryString["CL_ORIGEN"] != null)
+                if (Request.QueryString["CL_ORIGEN"].ToString() == "REQUISICION")
+                {
+                    vFgActivo = null;
+                    vIdRol = null;
+                }
+            
             vClTipoSeleccion = Request.QueryString["vClTipoSeleccion"];
             if (string.IsNullOrEmpty(vClTipoSeleccion))
                 vClTipoSeleccion = "TODAS";
@@ -101,7 +108,7 @@ namespace SIGE.WebApp.Comunes
             XElement vXmlSeleccion = vTipoDeSeleccion(vClTipoSeleccion);
             EmpleadoNegocio nEmpleado = new EmpleadoNegocio();
             List<SPE_OBTIENE_EMPLEADOS_Result> eEmpleados;
-            eEmpleados = nEmpleado.ObtenerEmpleados(pXmlSeleccion: vXmlSeleccion, pClUsuario: vClUsuario, pFgActivo: true, pID_EMPRESA: vIdEmpresa, pID_ROL: vIdRol); // Se manda el ID ROL como parametro
+            eEmpleados = nEmpleado.ObtenerEmpleados(pXmlSeleccion: vXmlSeleccion, pClUsuario: vClUsuario, pFgActivo: vFgActivo, pID_EMPRESA: vIdEmpresa, pID_ROL: vIdRol); // Se manda el ID ROL como parametro
             CamposAdicionales cad = new CamposAdicionales();
             DataTable tEmpleados = cad.camposAdicionales(eEmpleados, "M_EMPLEADO_XML_CAMPOS_ADICIONALES", grdEmpleados, "M_EMPLEADO");
             grdEmpleados.DataSource = tEmpleados;

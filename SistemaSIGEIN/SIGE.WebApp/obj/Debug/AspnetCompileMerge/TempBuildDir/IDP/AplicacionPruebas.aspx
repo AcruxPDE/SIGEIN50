@@ -75,7 +75,7 @@
              };
              if (idCandidatoEmp != "") {
                  if (vIdBateriaEmp != "" && vIdBateriaEmp != null)
-                     openChildDialog("VentanaRevisarPruebas.aspx?pIdBateria=" + vIdBateriaEmp + "&pIdCandidato=" + idCandidatoEmp, "winPruebasEmp", "Vizualizar pruebas", windowProperties);
+                     openChildDialog("VentanaRevisarPruebas.aspx?pIdBateria=" + vIdBateriaEmp + "&pIdCandidato=" + idCandidatoEmp, "winPruebasEmp", "Visualizar pruebas", windowProperties);
                  else
                      radalert("No existe una batería creada.", 400, 150, "Error");
              }
@@ -340,7 +340,7 @@
             };
             if (idCandidato != "") {
                 if (vIdBateria != "" && vIdBateria != null)
-                    openChildDialog("VentanaRevisarPruebas.aspx?pIdBateria=" + vIdBateria + "&pIdCandidato=" + idCandidato, "winPruebas", "Vizualizar pruebas", windowProperties);
+                    openChildDialog("VentanaRevisarPruebas.aspx?pIdBateria=" + vIdBateria + "&pIdCandidato=" + idCandidato, "winPruebas", "Visualizar pruebas", windowProperties);
                 else
                     radalert("No existe una batería creada.", 400, 150, "Error");
             }
@@ -689,6 +689,17 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <telerik:RadAjaxLoadingPanel ID="ralpEvaluacion" runat="server"></telerik:RadAjaxLoadingPanel>
+    <telerik:RadAjaxManager ID="ramEvaluacion" runat="server">
+        <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="ramEvaluacion">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="grdSolicitudes" UpdatePanelHeight="100%" LoadingPanelID="ralpEvaluacion" />
+                    <telerik:AjaxUpdatedControl ControlID="rgPruebasEmpleados" UpdatePanelHeight="100%" LoadingPanelID="ralpEvaluacion" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+        </AjaxSettings>
+    </telerik:RadAjaxManager>
         <label class="labelTitulo">Candidatos</label>
         <div style="clear: both;"></div>
         <telerik:RadTabStrip ID="rtsAplicacionPruebas" runat="server" SelectedIndex="0" MultiPageID="rmpPruebas">
@@ -837,7 +848,7 @@
                 </telerik:RadPageView>
             </telerik:RadMultiPage>
         </div>
-    <asp:HiddenField runat="server" ID="hfSelectedRow" />
+  <%--  <asp:HiddenField runat="server" ID="hfSelectedRow" />--%>
     <telerik:RadWindowManager ID="RadWindowManager1" runat="server" EnableShadow="true" OnClientClose="returnDataToParentPopup">
         <Windows>
             <telerik:RadWindow ID="RWpruebasCorrecion" runat="server" Title="Pruebas" Left="5%" ReloadOnShow="true" ShowContentDuringLoad="false" VisibleStatusbar="false" VisibleTitlebar="true" Behaviors="Close" Modal="true" OnClientClose="onCloseWindow"></telerik:RadWindow>

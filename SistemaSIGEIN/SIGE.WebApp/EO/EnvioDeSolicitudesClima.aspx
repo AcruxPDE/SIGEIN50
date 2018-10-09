@@ -194,11 +194,11 @@
                             <label id="lbMensaje" runat="server" visible="false" style="color: red;">No hay cuestionarios creados que enviar o todos los cuestionarios para este período han sido enviados y contestados.</label>
                             <div class="divControlDerecha">
                             <div class="ctrlBasico">
-                                <telerik:RadButton runat="server" ID="btnEnviar" Text="Enviar a seleccionados" OnClick="btnEnviar_Click"></telerik:RadButton>
+                                <telerik:RadButton runat="server" ID="btnEnviar" Text="Enviar" OnClick="btnEnviar_Click"></telerik:RadButton>
                             </div>
-                            <div class="ctrlBasico">
+                           <%-- <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" ID="btnEnviarTodos" Text="Enviar a todos" OnClick="btnEnviarTodos_Click"></telerik:RadButton>
-                            </div>
+                            </div>--%>
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" ID="btnCancelar" Text="Cancelar" AutoPostBack="false" OnClientClicked="closeWindow"></telerik:RadButton>
                             </div>

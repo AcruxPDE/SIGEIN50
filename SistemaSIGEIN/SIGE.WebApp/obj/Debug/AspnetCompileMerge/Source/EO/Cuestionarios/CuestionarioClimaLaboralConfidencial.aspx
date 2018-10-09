@@ -52,7 +52,7 @@
                      </table>
                 </div>
                  <div style="clear: both; height: 5px"></div>
-                 <div class="ctrlBasico">
+                 <div class="ctrlBasico" id="dvEdad" runat="server" style="display:none;">
                                     <div class="divControlIzquierda">
                                         <label id="lbEdad" name="lblEdad" runat="server" visible ="false">Edad:</label>
                                     </div>
@@ -60,7 +60,7 @@
                                         <telerik:RadNumericTextBox runat="server" ID="rntEdad" Visible="false" NumberFormat-DecimalDigits="0" Name="rnEdad" Width="70px"  ShowSpinButtons="true"></telerik:RadNumericTextBox>
                                     </div>
                                 </div>
-                       <div class="ctrlBasico">
+                       <div class="ctrlBasico" id="dvGenero" runat="server" style="display:none;">
                                     <div class="divControlIzquierda">
                                         <label id="lbGenero" name="lbGenero" runat="server" visible="false">Género:</label>
                                     </div>
@@ -68,7 +68,7 @@
                                         <telerik:RadComboBox runat="server" AutoPostBack="false" Visible="false" MarkFirstMatch="true" EmptyMessage="Selecciona" Width="150" ID="cmbGenero"></telerik:RadComboBox>
                                     </div>
                                 </div>
-                                       <div class="ctrlBasico">
+                                       <div class="ctrlBasico" runat="server" id="dvArea" style="display:none;">
                                     <div class="divControlIzquierda">
                                         <label id="lbArea" name="lbArea" runat="server" visible="false">Área/Departamento:</label>
                                     </div>
@@ -76,7 +76,7 @@
                                         <telerik:RadComboBox runat="server" AutoPostBack="false" Visible="false" MarkFirstMatch="true" EmptyMessage="Selecciona" Width="250" ID="rcbArea"></telerik:RadComboBox>
                                     </div>
                                 </div>
-                               <div class="ctrlBasico">
+                               <div class="ctrlBasico" runat="server" id="dvFechaIngreso" style="display:none;">
                                     <div class="divControlIzquierda">
                                         <label id="Label1" name="lblEdad" runat="server" visible="false">Fecha de ingreso:</label>
                                     </div>

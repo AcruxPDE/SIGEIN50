@@ -7834,42 +7834,6 @@
             <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
             <Parameter Name="PIN_TIPO_TRANSACCION" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_M_EMPLEADO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_M_EMPLEADO_Result)">
-            <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_CL_EMPLEADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_EMPLEADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_APELLIDO_PATERNO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_APELLIDO_MATERNO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_ESTADO_EMPLEADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_GENERO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_ESTADO_CIVIL" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_CONYUGUE" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_RFC" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_CURP" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_NSS" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_TIPO_SANGUINEO" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_NACIONALIDAD" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_PAIS" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_ESTADO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_MUNICIPIO" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_COLONIA" Mode="In" Type="String" />
-            <Parameter Name="PIN_NB_CALLE" Mode="In" Type="String" />
-            <Parameter Name="PIN_NO_INTERIOR" Mode="In" Type="String" />
-            <Parameter Name="PIN_NO_EXTERIOR" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_CODIGO_POSTAL" Mode="In" Type="String" />
-            <Parameter Name="PIN_CL_CORREO_ELECTRONICO" Mode="In" Type="String" />
-            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
-            <Parameter Name="PIN_FE_NACIMIENTO" Mode="In" Type="DateTime" />
-            <Parameter Name="PIN_DS_LUGAR_NACIMIENTO" Mode="In" Type="String" />
-            <Parameter Name="PIN_FE_ALTA" Mode="In" Type="DateTime" />
-            <Parameter Name="PIN_FE_BAJA" Mode="In" Type="DateTime" />
-            <Parameter Name="PIN_ID_PUESTO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_MN_SUELDO" Mode="In" Type="Decimal" />
-            <Parameter Name="PIN_MN_SUELDO_VARIABLE" Mode="In" Type="Decimal" />
-            <Parameter Name="PIN_DS_SUELDO_COMPOSICION" Mode="In" Type="String" />
-            <Parameter Name="PIN_ID_CANDIDATO" Mode="In" Type="Int32" />
-            <Parameter Name="PIN_ID_EMPRESA" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SPE_ELIMINA_C_INSTRUCTOR">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="PIN_ID_INSTRUCTOR" Mode="In" Type="Int32" />
@@ -12042,6 +12006,42 @@
             <Parameter Name="PIN_ID_PROCESO_SELECCION" Mode="In" Type="Int32" />
             <Parameter Name="PIN_ID_REQUISICION" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="SPE_OBTIENE_M_EMPLEADO" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_M_EMPLEADO_Result)">
+            <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
+            <Parameter Name="PIN_CL_EMPLEADO" Mode="In" Type="String" />
+            <Parameter Name="PIN_NB_EMPLEADO" Mode="In" Type="String" />
+            <Parameter Name="PIN_NB_APELLIDO_PATERNO" Mode="In" Type="String" />
+            <Parameter Name="PIN_NB_APELLIDO_MATERNO" Mode="In" Type="String" />
+            <Parameter Name="PIN_CL_ESTADO_EMPLEADO" Mode="In" Type="String" />
+            <Parameter Name="PIN_CL_GENERO" Mode="In" Type="String" />
+            <Parameter Name="PIN_CL_ESTADO_CIVIL" Mode="In" Type="String" />
+            <Parameter Name="PIN_NB_CONYUGUE" Mode="In" Type="String" />
+            <Parameter Name="PIN_CL_RFC" Mode="In" Type="String" />
+            <Parameter Name="PIN_CL_CURP" Mode="In" Type="String" />
+            <Parameter Name="PIN_CL_NSS" Mode="In" Type="String" />
+            <Parameter Name="PIN_CL_TIPO_SANGUINEO" Mode="In" Type="String" />
+            <Parameter Name="PIN_CL_NACIONALIDAD" Mode="In" Type="String" />
+            <Parameter Name="PIN_NB_PAIS" Mode="In" Type="String" />
+            <Parameter Name="PIN_NB_ESTADO" Mode="In" Type="String" />
+            <Parameter Name="PIN_NB_MUNICIPIO" Mode="In" Type="String" />
+            <Parameter Name="PIN_NB_COLONIA" Mode="In" Type="String" />
+            <Parameter Name="PIN_NB_CALLE" Mode="In" Type="String" />
+            <Parameter Name="PIN_NO_INTERIOR" Mode="In" Type="String" />
+            <Parameter Name="PIN_NO_EXTERIOR" Mode="In" Type="String" />
+            <Parameter Name="PIN_CL_CODIGO_POSTAL" Mode="In" Type="String" />
+            <Parameter Name="PIN_CL_CORREO_ELECTRONICO" Mode="In" Type="String" />
+            <Parameter Name="PIN_FG_ACTIVO" Mode="In" Type="Boolean" />
+            <Parameter Name="PIN_FE_NACIMIENTO" Mode="In" Type="DateTime" />
+            <Parameter Name="PIN_DS_LUGAR_NACIMIENTO" Mode="In" Type="String" />
+            <Parameter Name="PIN_FE_ALTA" Mode="In" Type="DateTime" />
+            <Parameter Name="PIN_FE_BAJA" Mode="In" Type="DateTime" />
+            <Parameter Name="PIN_ID_PUESTO" Mode="In" Type="Int32" />
+            <Parameter Name="PIN_MN_SUELDO" Mode="In" Type="Decimal" />
+            <Parameter Name="PIN_MN_SUELDO_VARIABLE" Mode="In" Type="Decimal" />
+            <Parameter Name="PIN_DS_SUELDO_COMPOSICION" Mode="In" Type="String" />
+            <Parameter Name="PIN_ID_CANDIDATO" Mode="In" Type="Int32" />
+            <Parameter Name="PIN_ID_EMPRESA" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SPE_OBTIENE_C_CALLE_Result">
           <Property Type="Int32" Name="ID_CALLE" Nullable="false" />
@@ -12568,56 +12568,6 @@
           <Property Type="Int32" Name="ID_BITACORA" Nullable="true" />
           <Property Type="Boolean" Name="FG_ACTIVO" Nullable="false" />
           <Property Type="Binary" Name="FI_ARCHIVO" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SPE_OBTIENE_M_EMPLEADO_Result">
-          <Property Type="Int32" Name="ID_EMPLEADO" Nullable="false" />
-          <Property Type="String" Name="CL_EMPLEADO" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="NB_EMPLEADO_COMPLETO" Nullable="false" MaxLength="302" />
-          <Property Type="String" Name="NB_EMPLEADO" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="NB_APELLIDO_PATERNO" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="NB_APELLIDO_MATERNO" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="CL_ESTADO_EMPLEADO" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="CL_GENERO" Nullable="false" MaxLength="1" />
-          <Property Type="String" Name="CL_ESTADO_CIVIL" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="NB_CONYUGUE" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="CL_RFC" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="CL_CURP" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="CL_NSS" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="CL_TIPO_SANGUINEO" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="CL_NACIONALIDAD" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="NB_PAIS" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="CL_ESTADO" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="NB_ESTADO" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="CL_MUNICIPIO" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="NB_MUNICIPIO" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="CL_COLONIA" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="NB_COLONIA" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="NB_CALLE" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="NO_INTERIOR" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="NO_EXTERIOR" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="CL_CODIGO_POSTAL" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="XML_TELEFONOS" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="CL_CORREO_ELECTRONICO" Nullable="true" MaxLength="200" />
-          <Property Type="Boolean" Name="FG_ACTIVO" Nullable="false" />
-          <Property Type="DateTime" Name="FE_NACIMIENTO" Nullable="false" />
-          <Property Type="String" Name="DS_LUGAR_NACIMIENTO" Nullable="true" MaxLength="200" />
-          <Property Type="DateTime" Name="FE_ALTA" Nullable="false" />
-          <Property Type="DateTime" Name="FE_BAJA" Nullable="true" />
-          <Property Type="Int32" Name="ID_PUESTO" Nullable="false" />
-          <Property Type="Decimal" Name="MN_SUELDO" Nullable="false" Precision="13" Scale="2" />
-          <Property Type="Decimal" Name="MN_SUELDO_VARIABLE" Nullable="true" Precision="13" Scale="2" />
-          <Property Type="String" Name="DS_SUELDO_COMPOSICION" Nullable="true" MaxLength="512" />
-          <Property Type="Int32" Name="ID_CANDIDATO" Nullable="true" />
-          <Property Type="String" Name="XML_CAMPOS_ADICIONALES" Nullable="true" MaxLength="Max" />
-          <Property Type="Int32" Name="ID_EMPRESA" Nullable="false" />
-          <Property Type="String" Name="NB_PUESTO" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="CL_PUESTO" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="NB_CANDIDATO" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="NB_EMPRESA" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="CL_EMPRESA" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="NB_DEPARTAMENTO" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="CL_DEPARTAMENTO" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="DS_FILTRO" Nullable="false" MaxLength="1" />
         </ComplexType>
         <ComplexType Name="SPE_OBTIENE_ORGANIGRAMA_PUESTOS_EMPLEADOS_Result">
           <Property Type="Int32" Name="ID_PUESTO" Nullable="true" />
@@ -17933,6 +17883,56 @@
           <Property Type="String" Name="CL_SERVICIO_MEDICO" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="DS_SERVICIO_MEDICO" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <ComplexType Name="SPE_OBTIENE_M_EMPLEADO_Result">
+          <Property Type="Int32" Name="ID_EMPLEADO" Nullable="false" />
+          <Property Type="String" Name="CL_EMPLEADO" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="NB_EMPLEADO_COMPLETO" Nullable="false" MaxLength="302" />
+          <Property Type="String" Name="NB_EMPLEADO" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="NB_APELLIDO_PATERNO" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="NB_APELLIDO_MATERNO" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CL_ESTADO_EMPLEADO" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="CL_GENERO" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="CL_ESTADO_CIVIL" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NB_CONYUGUE" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CL_RFC" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CL_CURP" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CL_NSS" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CL_TIPO_SANGUINEO" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="CL_NACIONALIDAD" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="NB_PAIS" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CL_ESTADO" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="NB_ESTADO" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CL_MUNICIPIO" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="NB_MUNICIPIO" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CL_COLONIA" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="NB_COLONIA" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NB_CALLE" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NO_INTERIOR" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NO_EXTERIOR" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CL_CODIGO_POSTAL" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="XML_TELEFONOS" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="CL_CORREO_ELECTRONICO" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="FG_ACTIVO" Nullable="false" />
+          <Property Type="DateTime" Name="FE_NACIMIENTO" Nullable="true" />
+          <Property Type="String" Name="DS_LUGAR_NACIMIENTO" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="FE_ALTA" Nullable="false" />
+          <Property Type="DateTime" Name="FE_BAJA" Nullable="true" />
+          <Property Type="Int32" Name="ID_PUESTO" Nullable="false" />
+          <Property Type="Decimal" Name="MN_SUELDO" Nullable="false" Precision="13" Scale="2" />
+          <Property Type="Decimal" Name="MN_SUELDO_VARIABLE" Nullable="true" Precision="13" Scale="2" />
+          <Property Type="String" Name="DS_SUELDO_COMPOSICION" Nullable="true" MaxLength="512" />
+          <Property Type="Int32" Name="ID_CANDIDATO" Nullable="true" />
+          <Property Type="String" Name="XML_CAMPOS_ADICIONALES" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="ID_EMPRESA" Nullable="false" />
+          <Property Type="String" Name="NB_PUESTO" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CL_PUESTO" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NB_CANDIDATO" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NB_EMPRESA" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CL_EMPRESA" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NB_DEPARTAMENTO" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CL_DEPARTAMENTO" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="DS_FILTRO" Nullable="false" MaxLength="1" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -18814,60 +18814,6 @@
           <FunctionImportMapping FunctionImportName="SPE_INSERTA_ACTUALIZA_TABULADOR" FunctionName="SistemaSigeinModel.Store.SPE_INSERTA_ACTUALIZA_TABULADOR" />
           <FunctionImportMapping FunctionImportName="SPE_INSERTA_ACTUALIZA_TABULADOR_EMPLEADO" FunctionName="SistemaSigeinModel.Store.SPE_INSERTA_ACTUALIZA_TABULADOR_EMPLEADO" />
           <FunctionImportMapping FunctionImportName="SPE_INSERTA_ACTUALIZA_TABULADOR_PUESTO" FunctionName="SistemaSigeinModel.Store.SPE_INSERTA_ACTUALIZA_TABULADOR_PUESTO" />
-          <FunctionImportMapping FunctionImportName="SPE_OBTIENE_M_EMPLEADO" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_M_EMPLEADO">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_M_EMPLEADO_Result">
-                <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
-                <ScalarProperty Name="CL_EMPLEADO" ColumnName="CL_EMPLEADO" />
-                <ScalarProperty Name="NB_EMPLEADO_COMPLETO" ColumnName="NB_EMPLEADO_COMPLETO" />
-                <ScalarProperty Name="NB_EMPLEADO" ColumnName="NB_EMPLEADO" />
-                <ScalarProperty Name="NB_APELLIDO_PATERNO" ColumnName="NB_APELLIDO_PATERNO" />
-                <ScalarProperty Name="NB_APELLIDO_MATERNO" ColumnName="NB_APELLIDO_MATERNO" />
-                <ScalarProperty Name="CL_ESTADO_EMPLEADO" ColumnName="CL_ESTADO_EMPLEADO" />
-                <ScalarProperty Name="CL_GENERO" ColumnName="CL_GENERO" />
-                <ScalarProperty Name="CL_ESTADO_CIVIL" ColumnName="CL_ESTADO_CIVIL" />
-                <ScalarProperty Name="NB_CONYUGUE" ColumnName="NB_CONYUGUE" />
-                <ScalarProperty Name="CL_RFC" ColumnName="CL_RFC" />
-                <ScalarProperty Name="CL_CURP" ColumnName="CL_CURP" />
-                <ScalarProperty Name="CL_NSS" ColumnName="CL_NSS" />
-                <ScalarProperty Name="CL_TIPO_SANGUINEO" ColumnName="CL_TIPO_SANGUINEO" />
-                <ScalarProperty Name="CL_NACIONALIDAD" ColumnName="CL_NACIONALIDAD" />
-                <ScalarProperty Name="NB_PAIS" ColumnName="NB_PAIS" />
-                <ScalarProperty Name="CL_ESTADO" ColumnName="CL_ESTADO" />
-                <ScalarProperty Name="NB_ESTADO" ColumnName="NB_ESTADO" />
-                <ScalarProperty Name="CL_MUNICIPIO" ColumnName="CL_MUNICIPIO" />
-                <ScalarProperty Name="NB_MUNICIPIO" ColumnName="NB_MUNICIPIO" />
-                <ScalarProperty Name="CL_COLONIA" ColumnName="CL_COLONIA" />
-                <ScalarProperty Name="NB_COLONIA" ColumnName="NB_COLONIA" />
-                <ScalarProperty Name="NB_CALLE" ColumnName="NB_CALLE" />
-                <ScalarProperty Name="NO_INTERIOR" ColumnName="NO_INTERIOR" />
-                <ScalarProperty Name="NO_EXTERIOR" ColumnName="NO_EXTERIOR" />
-                <ScalarProperty Name="CL_CODIGO_POSTAL" ColumnName="CL_CODIGO_POSTAL" />
-                <ScalarProperty Name="XML_TELEFONOS" ColumnName="XML_TELEFONOS" />
-                <ScalarProperty Name="CL_CORREO_ELECTRONICO" ColumnName="CL_CORREO_ELECTRONICO" />
-                <ScalarProperty Name="FG_ACTIVO" ColumnName="FG_ACTIVO" />
-                <ScalarProperty Name="FE_NACIMIENTO" ColumnName="FE_NACIMIENTO" />
-                <ScalarProperty Name="DS_LUGAR_NACIMIENTO" ColumnName="DS_LUGAR_NACIMIENTO" />
-                <ScalarProperty Name="FE_ALTA" ColumnName="FE_ALTA" />
-                <ScalarProperty Name="FE_BAJA" ColumnName="FE_BAJA" />
-                <ScalarProperty Name="ID_PUESTO" ColumnName="ID_PUESTO" />
-                <ScalarProperty Name="MN_SUELDO" ColumnName="MN_SUELDO" />
-                <ScalarProperty Name="MN_SUELDO_VARIABLE" ColumnName="MN_SUELDO_VARIABLE" />
-                <ScalarProperty Name="DS_SUELDO_COMPOSICION" ColumnName="DS_SUELDO_COMPOSICION" />
-                <ScalarProperty Name="ID_CANDIDATO" ColumnName="ID_CANDIDATO" />
-                <ScalarProperty Name="XML_CAMPOS_ADICIONALES" ColumnName="XML_CAMPOS_ADICIONALES" />
-                <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
-                <ScalarProperty Name="NB_PUESTO" ColumnName="NB_PUESTO" />
-                <ScalarProperty Name="CL_PUESTO" ColumnName="CL_PUESTO" />
-                <ScalarProperty Name="NB_CANDIDATO" ColumnName="NB_CANDIDATO" />
-                <ScalarProperty Name="NB_EMPRESA" ColumnName="NB_EMPRESA" />
-                <ScalarProperty Name="CL_EMPRESA" ColumnName="CL_EMPRESA" />
-                <ScalarProperty Name="NB_DEPARTAMENTO" ColumnName="NB_DEPARTAMENTO" />
-                <ScalarProperty Name="CL_DEPARTAMENTO" ColumnName="CL_DEPARTAMENTO" />
-                <ScalarProperty Name="DS_FILTRO" ColumnName="DS_FILTRO" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPE_ELIMINA_C_INSTRUCTOR" FunctionName="SistemaSigeinModel.Store.SPE_ELIMINA_C_INSTRUCTOR" />
           <FunctionImportMapping FunctionImportName="SPE_OBTIENE_ORGANIGRAMA_PUESTOS_EMPLEADOS" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_ORGANIGRAMA_PUESTOS_EMPLEADOS">
             <ResultMapping>
@@ -25770,6 +25716,60 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPE_ELIMINA_K_PROCESO_SELECCION" FunctionName="SistemaSigeinModel.Store.SPE_ELIMINA_K_PROCESO_SELECCION" />
+          <FunctionImportMapping FunctionImportName="SPE_OBTIENE_M_EMPLEADO" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_M_EMPLEADO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_M_EMPLEADO_Result">
+                <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
+                <ScalarProperty Name="CL_EMPLEADO" ColumnName="CL_EMPLEADO" />
+                <ScalarProperty Name="NB_EMPLEADO_COMPLETO" ColumnName="NB_EMPLEADO_COMPLETO" />
+                <ScalarProperty Name="NB_EMPLEADO" ColumnName="NB_EMPLEADO" />
+                <ScalarProperty Name="NB_APELLIDO_PATERNO" ColumnName="NB_APELLIDO_PATERNO" />
+                <ScalarProperty Name="NB_APELLIDO_MATERNO" ColumnName="NB_APELLIDO_MATERNO" />
+                <ScalarProperty Name="CL_ESTADO_EMPLEADO" ColumnName="CL_ESTADO_EMPLEADO" />
+                <ScalarProperty Name="CL_GENERO" ColumnName="CL_GENERO" />
+                <ScalarProperty Name="CL_ESTADO_CIVIL" ColumnName="CL_ESTADO_CIVIL" />
+                <ScalarProperty Name="NB_CONYUGUE" ColumnName="NB_CONYUGUE" />
+                <ScalarProperty Name="CL_RFC" ColumnName="CL_RFC" />
+                <ScalarProperty Name="CL_CURP" ColumnName="CL_CURP" />
+                <ScalarProperty Name="CL_NSS" ColumnName="CL_NSS" />
+                <ScalarProperty Name="CL_TIPO_SANGUINEO" ColumnName="CL_TIPO_SANGUINEO" />
+                <ScalarProperty Name="CL_NACIONALIDAD" ColumnName="CL_NACIONALIDAD" />
+                <ScalarProperty Name="NB_PAIS" ColumnName="NB_PAIS" />
+                <ScalarProperty Name="CL_ESTADO" ColumnName="CL_ESTADO" />
+                <ScalarProperty Name="NB_ESTADO" ColumnName="NB_ESTADO" />
+                <ScalarProperty Name="CL_MUNICIPIO" ColumnName="CL_MUNICIPIO" />
+                <ScalarProperty Name="NB_MUNICIPIO" ColumnName="NB_MUNICIPIO" />
+                <ScalarProperty Name="CL_COLONIA" ColumnName="CL_COLONIA" />
+                <ScalarProperty Name="NB_COLONIA" ColumnName="NB_COLONIA" />
+                <ScalarProperty Name="NB_CALLE" ColumnName="NB_CALLE" />
+                <ScalarProperty Name="NO_INTERIOR" ColumnName="NO_INTERIOR" />
+                <ScalarProperty Name="NO_EXTERIOR" ColumnName="NO_EXTERIOR" />
+                <ScalarProperty Name="CL_CODIGO_POSTAL" ColumnName="CL_CODIGO_POSTAL" />
+                <ScalarProperty Name="XML_TELEFONOS" ColumnName="XML_TELEFONOS" />
+                <ScalarProperty Name="CL_CORREO_ELECTRONICO" ColumnName="CL_CORREO_ELECTRONICO" />
+                <ScalarProperty Name="FG_ACTIVO" ColumnName="FG_ACTIVO" />
+                <ScalarProperty Name="FE_NACIMIENTO" ColumnName="FE_NACIMIENTO" />
+                <ScalarProperty Name="DS_LUGAR_NACIMIENTO" ColumnName="DS_LUGAR_NACIMIENTO" />
+                <ScalarProperty Name="FE_ALTA" ColumnName="FE_ALTA" />
+                <ScalarProperty Name="FE_BAJA" ColumnName="FE_BAJA" />
+                <ScalarProperty Name="ID_PUESTO" ColumnName="ID_PUESTO" />
+                <ScalarProperty Name="MN_SUELDO" ColumnName="MN_SUELDO" />
+                <ScalarProperty Name="MN_SUELDO_VARIABLE" ColumnName="MN_SUELDO_VARIABLE" />
+                <ScalarProperty Name="DS_SUELDO_COMPOSICION" ColumnName="DS_SUELDO_COMPOSICION" />
+                <ScalarProperty Name="ID_CANDIDATO" ColumnName="ID_CANDIDATO" />
+                <ScalarProperty Name="XML_CAMPOS_ADICIONALES" ColumnName="XML_CAMPOS_ADICIONALES" />
+                <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
+                <ScalarProperty Name="NB_PUESTO" ColumnName="NB_PUESTO" />
+                <ScalarProperty Name="CL_PUESTO" ColumnName="CL_PUESTO" />
+                <ScalarProperty Name="NB_CANDIDATO" ColumnName="NB_CANDIDATO" />
+                <ScalarProperty Name="NB_EMPRESA" ColumnName="NB_EMPRESA" />
+                <ScalarProperty Name="CL_EMPRESA" ColumnName="CL_EMPRESA" />
+                <ScalarProperty Name="NB_DEPARTAMENTO" ColumnName="NB_DEPARTAMENTO" />
+                <ScalarProperty Name="CL_DEPARTAMENTO" ColumnName="CL_DEPARTAMENTO" />
+                <ScalarProperty Name="DS_FILTRO" ColumnName="DS_FILTRO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
