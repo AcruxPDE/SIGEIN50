@@ -603,6 +603,7 @@
                 <PagerStyle AlwaysVisible="true" />
                <MasterTableView ClientDataKeyNames="ID_PRUEBA" DataKeyNames="ID_PRUEBA" EnableColumnsViewState="false" AllowPaging="false" AllowFilteringByColumn="false" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="false">
                         <Columns>                        
+							<telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35" HeaderText="Sel."></telerik:GridClientSelectColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="200" FilterControlWidth="120" HeaderText="Prueba" DataField="NB_PRUEBA" UniqueName="NB_PRUEBA"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Height="300" FilterControlWidth="200" HeaderText="Factores que se evaluan" DataField="DS_PRUEBA_FACTOR" UniqueName="DS_PRUEBA_FACTOR"></telerik:GridBoundColumn>
                         </Columns>
