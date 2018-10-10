@@ -26,13 +26,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
 
     <div style="clear:both; height:10px;"></div>
-    <div class="ctrlBasico">
-        <div class="divControlIzquierda">
-            <label>Puesto: </label>
-        </div>
-        <div class="divControlDerecha">
-           <telerik:RadTextBox runat="server" ID="txtPuesto" Enabled="false" Width="300px"></telerik:RadTextBox>
-        </div>
+
+    <div style="width:100%; padding-left:2px;">
+        <telerik:RadTextBox runat="server" ID="txtPuesto" Enabled="false" Label="Puesto" LabelWidth="50px" Width="95%"></telerik:RadTextBox>
     </div>
 
     <div style="clear:both;"></div>

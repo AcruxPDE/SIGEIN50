@@ -527,7 +527,7 @@ namespace SIGE.WebApp.FYD
                 var vVerifica = nPeriodo.VerificaConfiguracion(vIdPeriodo, null, null);
                 if (vVerifica.FG_ESTATUS == true)
                 {
-                    ClientScript.RegisterStartupScript(GetType(), "script", "AbrirCopiarPeriodo("+ vIdPeriodo+");", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "AbrirCopiarPeriodo(" + vIdPeriodo + ");", true);
                 }
                 else
                 {

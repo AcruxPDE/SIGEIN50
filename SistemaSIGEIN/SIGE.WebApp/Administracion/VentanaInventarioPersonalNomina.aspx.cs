@@ -409,7 +409,7 @@ namespace SIGE.WebApp.Administracion
 
                 if (btnNOFalse.Checked && btnDOFalse.Checked)
                 {
-                    UtilMensajes.MensajeResultadoDB(rwMensaje, "El empleado debe de estar disponible en nómina o/y DO.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
+                    UtilMensajes.MensajeResultadoDB(rwMensaje, "El empleado debe de estar disponible en nómina y/o DO.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
                     return;
                 }
 

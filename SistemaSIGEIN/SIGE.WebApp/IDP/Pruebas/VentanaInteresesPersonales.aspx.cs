@@ -18,6 +18,7 @@ namespace SIGE.WebApp.IDP
 {
     public partial class VentanaInteresesPersonales : System.Web.UI.Page
     {
+        #region Propiedades
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
 
         private List<E_PREGUNTA> vPregunta
@@ -31,6 +32,7 @@ namespace SIGE.WebApp.IDP
             get { return (string)ViewState["vsvClUsuario"]; }
             set { ViewState["vsvClUsuario"] = value; }
         }
+
         private string vNbPrograma
         {
             get { return (string)ViewState["vsvNbPrograma"]; }
@@ -73,6 +75,12 @@ namespace SIGE.WebApp.IDP
             set { ViewState["vsMostrarCronometroIP"] = value; }
         }
 
+        public int vIdBateria
+        {
+            get { return (int)ViewState["vsIdBateria"]; }
+            set { ViewState["vsIdBateria"] = value; }
+        }
+        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
             vNbPrograma = ContextoUsuario.nbPrograma;
@@ -92,6 +100,8 @@ namespace SIGE.WebApp.IDP
                     PruebasNegocio nKprueba = new PruebasNegocio();
                     vIdPrueba = int.Parse(Request.QueryString["ID"]);
                     vClTokenExterno = new Guid(Request.QueryString["T"]);
+                    vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+
                     //Si el modo de revision esta activado
                     if (vTipoRevision == "REV")
                     {
@@ -616,22 +626,37 @@ namespace SIGE.WebApp.IDP
             }
         }
 
-        //protected void btnEliminar_Click(object sender, EventArgs e)
-        //{
-        //    if (vIdPrueba != null)
-        //    {
-        //        PruebasNegocio nPruebas = new PruebasNegocio();
-        //        var vResultado = nPruebas.EliminaRespuestasPrueba(vIdPrueba, vClUsuario, vNbPrograma);
-        //        string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-        //        if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
-        //        {
-        //            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (vIdPrueba != null)
+            {
+                PruebasNegocio nPruebas = new PruebasNegocio();
+                var vResultado = nPruebas.EliminaRespuestasPrueba(vIdPrueba, vClUsuario, vNbPrograma);
+                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+                {
+                    UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
 
-        //        }
-        //        else
-        //            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
-        //    }
+                }
+                else
+                    UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
+            }
 
-        //}
+        }
+
+        protected void btnEliminarBateria_Click(object sender, EventArgs e)
+        {
+            PruebasNegocio nPruebas = new PruebasNegocio();
+            var vResultado = nPruebas.EliminaRespuestasBaterias(vIdBateria, vClUsuario, vNbPrograma);
+            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+            if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+            {
+                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+            }
+            else
+            {
+                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
+            }
+        }
     }
 }

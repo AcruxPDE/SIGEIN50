@@ -252,7 +252,14 @@ namespace SIGE.WebApp.FYD
             if (e.CommandName == "Delete")
             {
                 GridDataItem item = e.Item as GridDataItem;
-                EliminarPeriodo(int.Parse(item.GetDataKeyValue("ID_PERIODO").ToString()));
+                if (int.Parse(item.GetDataKeyValue("ID_PERIODO").ToString()) != vIdPeriodo)
+                {
+                    EliminarPeriodo(int.Parse(item.GetDataKeyValue("ID_PERIODO").ToString()));
+                }
+                else
+                {
+                    UtilMensajes.MensajeResultadoDB(rnMensaje, "No se puede eliminar el periodo consultado.", E_TIPO_RESPUESTA_DB.WARNING, 400, 150, pCallBackFunction: "");
+                }
             }
         }
 
