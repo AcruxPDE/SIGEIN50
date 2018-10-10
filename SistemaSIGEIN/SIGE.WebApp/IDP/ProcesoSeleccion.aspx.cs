@@ -690,36 +690,36 @@ namespace SIGE.WebApp.IDP
             txtESSeguroSocial.Text = vEstudioSocioEconomico.CL_NSS;
 
             rlbEstado.Items.Clear();
-            if (string.IsNullOrEmpty(vEstudioSocioEconomico.CL_ESTADO))
+            if (string.IsNullOrEmpty(vEstudioSocioEconomico.NB_ESTADO))
             {
                 rlbEstado.Items.Add(new RadListBoxItem { Text = "No seleccionado", Value = "" });
             }
             else
             {
-                rlbEstado.Items.Add(new RadListBoxItem { Text = vEstudioSocioEconomico.NB_ESTADO, Value = vEstudioSocioEconomico.CL_ESTADO });
+                rlbEstado.Items.Add(new RadListBoxItem { Text = vEstudioSocioEconomico.NB_ESTADO, Value = vEstudioSocioEconomico.NB_ESTADO });
                 rlbEstado.SelectedIndex = 0;
             }
 
             rlbMunicipios.Items.Clear();
-            if (string.IsNullOrEmpty(vEstudioSocioEconomico.CL_MUNICIPIO))
+            if (string.IsNullOrEmpty(vEstudioSocioEconomico.NB_MUNICIPIO))
             {
                 rlbMunicipios.Items.Add(new RadListBoxItem { Text = "No seleccionado", Value = "" });
             }
             else
             {
-                rlbMunicipios.Items.Add(new RadListBoxItem { Text = vEstudioSocioEconomico.NB_MUNICIPIO, Value = vEstudioSocioEconomico.CL_MUNICIPIO });
+                rlbMunicipios.Items.Add(new RadListBoxItem { Text = vEstudioSocioEconomico.NB_MUNICIPIO, Value = vEstudioSocioEconomico.NB_MUNICIPIO });
                 rlbMunicipios.SelectedIndex = 0;
             }
 
 
             rlbColonia.Items.Clear();
-            if (string.IsNullOrEmpty(vEstudioSocioEconomico.CL_COLONIA))
+            if (string.IsNullOrEmpty(vEstudioSocioEconomico.NB_COLONIA))
             {
                 rlbColonia.Items.Add(new RadListBoxItem { Text = "No seleccionado", Value = "" });
             }
             else
             {
-                rlbColonia.Items.Add(new RadListBoxItem { Text = vEstudioSocioEconomico.NB_COLONIA, Value = vEstudioSocioEconomico.CL_COLONIA });
+                rlbColonia.Items.Add(new RadListBoxItem { Text = vEstudioSocioEconomico.NB_COLONIA, Value = vEstudioSocioEconomico.NB_COLONIA });
             }
 
 
@@ -1468,7 +1468,7 @@ namespace SIGE.WebApp.IDP
                         btnagregarEntrevista.Enabled = false;
                         btnEditarEntrevista.Enabled = false;
                         btnEliminarEntrevista.Enabled = false;
-                        btnEnviarTodos.Enabled = false;
+                       // btnEnviarTodos.Enabled = false;
                         btnEnvioCorreos.Enabled = false;
                         btnAgregarReferencia.Enabled = false;
                         btnGuardarExamenMedico.Enabled = false;

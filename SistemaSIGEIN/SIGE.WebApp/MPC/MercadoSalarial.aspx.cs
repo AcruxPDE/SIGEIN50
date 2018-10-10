@@ -126,10 +126,10 @@ namespace SIGE.WebApp.MPC
                 RadNumericTextBox vMinimo = (RadNumericTextBox)item.FindControl("txnMinimo");
                 RadNumericTextBox vMaximo = (RadNumericTextBox)item.FindControl("txnMaximo");
 
-                if (!vMinimo.Text.Equals("") & !vMaximo.Text.Equals(""))
-                {
-                    vTabuladorPuesto.Add(new E_TABULADOR_PUESTO { ID_PUESTO = vIdPuesto, MN_MINIMO = decimal.Parse(vMinimo.Text), MN_MAXIMO = decimal.Parse(vMaximo.Text), CL_ORIGEN = vClOrigen });
-                }
+                //if (!vMinimo.Text.Equals("") & !vMaximo.Text.Equals(""))
+                //{
+                vTabuladorPuesto.Add(new E_TABULADOR_PUESTO { ID_PUESTO = vIdPuesto, MN_MINIMO = decimal.Parse((vMinimo.Text == "") ? "0" : vMinimo.Text), MN_MAXIMO = decimal.Parse((vMaximo.Text == "") ? "0" : vMaximo.Text), CL_ORIGEN = vClOrigen });
+                //}
             }
             Actualizar();
             //for (int i = 0; i < vTabuladorPuesto.Count; i++)
