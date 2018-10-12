@@ -237,8 +237,14 @@ namespace SIGE.WebApp.IDP
                     vClToken = new Guid(Request.QueryString["T"]);
                     vClTokenExterno = new Guid(Request.QueryString["T"]);
                     if (Request.QueryString["vIdBateria"] != null)
-					vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
-
+                    {
+                        vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+                    }
+                    else
+                    {
+                        btnEliminar.Visible = false;
+                        btnEliminarBateria.Visible = false;
+                    }
                     SeleccionaSeccionPrueba(); //Método creado 13/04/2018 que permite cambiar de seccion si el tiempo esta agotado
 
                     //int position = mpgActitudMentalI.SelectedIndex;
