@@ -513,6 +513,7 @@
                     <telerik:AjaxUpdatedControl ControlID="lblDescripcionCausa" UpdatePanelRenderMode="Inline" />
                     <telerik:AjaxUpdatedControl ControlID="lblPuesto" UpdatePanelRenderMode="Inline" />
                     <telerik:AjaxUpdatedControl ControlID="lblTiempoCausa" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="rlbPuesto" UpdatePanelRenderMode="Inline" />
                     <telerik:AjaxUpdatedControl ControlID="txtTiempoCausa" UpdatePanelRenderMode="Inline" />
                     <telerik:AjaxUpdatedControl ControlID="btnReenviarAutorizaciones" UpdatePanelRenderMode="Inline" />
                     <telerik:AjaxUpdatedControl ControlID="divAutorizaPuestoReq" UpdatePanelRenderMode="Inline" />
