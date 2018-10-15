@@ -93,6 +93,7 @@ namespace SIGE.WebApp.IDP
                     PruebasNegocio nKprueba = new PruebasNegocio();
                     vIdPrueba = int.Parse(Request.QueryString["ID"]);
                     vClToken = new Guid(Request.QueryString["T"]);
+                    if (Request.QueryString["vIdBateria"] != null)
                     vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
 
                     MostrarCronometro = ContextoApp.IDP.ConfiguracionPsicometria.FgMostrarCronometro;

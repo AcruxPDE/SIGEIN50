@@ -294,7 +294,6 @@ namespace SIGE.WebApp.Administracion
             {
                 btnNuevoPuesto.Visible = true;
                 lblPuesto.InnerText = "Si ya has creado el nuevo puesto, selecciónalo";
-
                 lblTiempoCausa.Style.Add("display", "none");
                 txtTiempoCausa.Visible = false;
                 radBtnBuscarPuesto.ToolTip = "Aquí puedes seleccionar el nuevo puesto si es que ya lo creaste. Recuerda que el puesto que selecciones no aparecerá en el catálogo de descriptivos de puestos hasta que sea aprobado.";

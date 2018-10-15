@@ -64,7 +64,7 @@
 
         function openCuestionarioClima(pIdEvaluador, pIdPeriodo) {
             if (pIdEvaluador != "0" & pIdPeriodo != "0") {
-                var vURL = "/EO/Cuestionarios/CuestionarioClimaLaboral.aspx?ID_EVALUADOR=" + pIdEvaluador + "&ID_PERIODO=" + pIdPeriodo + "&FG_HABILITADO=False";
+                var vURL = "../EO/Cuestionarios/CuestionarioClimaLaboral.aspx?ID_EVALUADOR=" + pIdEvaluador + "&ID_PERIODO=" + pIdPeriodo + "&FG_HABILITADO=False";
                 var vTitulo = "Cuestionario";
                 var currentWnd = GetRadWindow();
                 var browserWnd = window;
@@ -111,7 +111,7 @@
 
             var idPuesto = '<%= vIdPuesto %>';
             var idEmpleado = '<%= vIdEmpleado %>';
-            wnd.vURL = "/TC/VentanaNuevoTableroControl.aspx?idEmpleado=" + idEmpleado + "&idPuesto=" + idPuesto ;
+            wnd.vURL = "../TC/VentanaNuevoTableroControl.aspx?idEmpleado=" + idEmpleado + "&idPuesto=" + idPuesto ;
             return wnd;
         }
 
@@ -203,7 +203,7 @@
         function GetConsultaGeneral(pIdPeriodo) {
             var wnd = GetWindowProperties();
             wnd.vTitulo = "Consulta General";
-            wnd.vURL = "/FYD/ConsultasGenerales.aspx?IdPeriodo=" + pIdPeriodo;
+            wnd.vURL = "../FYD/ConsultasGenerales.aspx?IdPeriodo=" + pIdPeriodo;
             wnd.vRadWindowId = "winDescriptivo";
             return wnd;
         }
