@@ -108,10 +108,10 @@
     </div>
      <div style="clear: both;"></div>
     <div class="ctrlBasico">            
-         <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar batería" AutoPostBack="true" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminar_Click" Visible="true"></telerik:RadButton>
+         <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar batería" AutoPostBack="true" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminar_Click" Visible="false"></telerik:RadButton>
     </div>
       <div class="divControlDerecha">            
-         <telerik:RadButton ID="btnEliminarRespuesta" runat="server" Text="Eliminar" AutoPostBack="true" OnClientClicking="ConfirmarEliminarPrueba" OnClick="btnEliminarRespuesta_Click" Visible="true"></telerik:RadButton>
+         <telerik:RadButton ID="btnEliminarRespuesta" runat="server" Text="Eliminar" AutoPostBack="true" OnClientClicking="ConfirmarEliminarPrueba" OnClick="btnEliminarRespuesta_Click" Visible="false"></telerik:RadButton>
     </div>
       <telerik:RadWindowManager ID="rwMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>
 </asp:Content>

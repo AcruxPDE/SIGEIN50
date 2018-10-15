@@ -848,7 +848,7 @@
                         </div>
                         <div class="divControlesBoton">
                             <div class="ctrlBasico">
-                                <telerik:RadButton runat="server" ID="btnGuardarMetas" Text="Guardar metas" OnClientClicking="ConfirmarEliminarInactivas" OnClick="btnGuardarMetas_Click"></telerik:RadButton>
+                                <telerik:RadButton runat="server" ID="btnGuardarMetas" Text="Guardar" OnClientClicking="ConfirmarEliminarInactivas" OnClick="btnGuardarMetas_Click"></telerik:RadButton>
                             </div>
                         </div>
                     </telerik:RadPane>

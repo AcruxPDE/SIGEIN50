@@ -634,18 +634,18 @@
             </div>
 
             <div class="ctrlBasico">
-                <telerik:RadButton runat="server" ID="chkIncluirNa" RenderMode="Lightweight" Text="Incluir N/A" ButtonType="ToggleButton" ToggleType="CheckBox" AutoPostBack="false" Checked="false"></telerik:RadButton>
+                <telerik:RadButton runat="server" ID="chkIncluirNa" RenderMode="Lightweight" Text="Incluir N/A" ButtonType="ToggleButton" ToggleType="CheckBox" AutoPostBack="false" Checked="false" Visible="false"></telerik:RadButton>
             </div>
 
             <div class="ctrlBasico">
-                <telerik:RadButton runat="server" ID="chkIncluirNoNecesarias" RenderMode="Lightweight" Text="Incluir No necesarias" ButtonType="ToggleButton" ToggleType="CheckBox" AutoPostBack="false" Checked="false"></telerik:RadButton>
+                <telerik:RadButton runat="server" ID="chkIncluirNoNecesarias" RenderMode="Lightweight" Text="Incluir No necesarias" ButtonType="ToggleButton" ToggleType="CheckBox" AutoPostBack="false" Checked="false" Visible="false"></telerik:RadButton>
             </div>
 
             <div class="ctrlBasico">
-                <telerik:RadButton runat="server" ID="btnSeleccionarTodos" Text="Seleccionar Todos" AutoPostBack="false" OnClientClicked="SeleccionaTodos"></telerik:RadButton>
+                <telerik:RadButton runat="server" ID="btnSeleccionarTodos" Text="Seleccionar Todos" AutoPostBack="false" OnClientClicked="SeleccionaTodos" Visible="false"></telerik:RadButton>
             </div>
             <div class="ctrlBasico">
-                <telerik:RadButton runat="server" ID="btnQuitarSeleccion" Text="Deseleccionar Todos" AutoPostBack="false" OnClientClicked="DeseleccionaTodos"></telerik:RadButton>
+                <telerik:RadButton runat="server" ID="btnQuitarSeleccion" Text="Deseleccionar Todos" AutoPostBack="false" OnClientClicked="DeseleccionaTodos" Visible="false"></telerik:RadButton>
             </div>
             <div style="clear: both;"></div>
             <div style="height: calc(100% - 130px); width: 100%;">

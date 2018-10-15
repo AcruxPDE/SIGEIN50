@@ -297,9 +297,8 @@
                     <div style="height: 96%;">
                         <telerik:RadSplitter ID="RadSplitter1" runat="server" Width="100%" Height="100%" BorderSize="0">
                             <telerik:RadPane ID="RadPane1" runat="server">
-
                                 <div style="clear: both; height: 10px;"></div>
-                                <div class="ctrlBasico" style="width: 60%; height: 100%">
+                                <div class="ctrlBasico" style="width: 100%; height: 80%;">
                                     <telerik:RadHtmlChart runat="server" ID="rhcCumplimientoPersonal" Width="100%" Height="100%" Transitions="true" Skin="Silk">
                                         <ChartTitle Text="Gráfica cumplimiento individual">
                                             <Appearance Align="Center" Position="Top">
@@ -314,7 +313,8 @@
                                         </PlotArea>
                                     </telerik:RadHtmlChart>
                                 </div>
-                                <div class="ctrlBasico" style="width: 40%;">
+                                <div style="clear: both"></div>
+                                <div class="ctrlBasico" style="width: 100%;">
                                     <telerik:RadGrid ID="grdResultados" ShowHeader="true" HeaderStyle-Font-Bold="true" runat="server" GridLines="None" AutoGenerateColumns="false" OnNeedDataSource="grdResultados_NeedDataSource">
                                         <MasterTableView>
                                             <Columns>
