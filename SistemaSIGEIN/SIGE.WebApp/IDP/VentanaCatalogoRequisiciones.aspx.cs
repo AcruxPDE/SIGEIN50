@@ -19,6 +19,7 @@ using SIGE.Negocio.IntegracionDePersonal;
 using System.Text;
 using System.Web.Security;
 using System.Net.Mail;
+using System.Text.RegularExpressions;
 
 namespace SIGE.WebApp.Administracion
 {
@@ -782,7 +783,7 @@ namespace SIGE.WebApp.Administracion
                 if (flRequisicion == Guid.Empty)
                 {
                     flRequisicion = Guid.NewGuid();
-                    clTokenRequisicion = Membership.GeneratePassword(12, 1);
+                    clTokenRequisicion = Membership.GeneratePassword(12, 1).Replace("@",Membership.GeneratePassword(1,1));
                 }
 
                 vRequisicion.FL_REQUISICION = flRequisicion;
@@ -839,7 +840,7 @@ namespace SIGE.WebApp.Administracion
                 {
                     vRequisicion.FL_NOTIFICACION = Guid.NewGuid();
                     flNotificacion = (Guid)vRequisicion.FL_NOTIFICACION;
-                    vRequisicion.CL_TOKEN_PUESTO = Membership.GeneratePassword(12, 1);
+                    vRequisicion.CL_TOKEN_PUESTO = Membership.GeneratePassword(12, 1).Replace("@", Membership.GeneratePassword(1, 1));
                     clTokenPuesto = vRequisicion.CL_TOKEN_PUESTO;
                 }
             }
