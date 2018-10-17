@@ -136,7 +136,6 @@ namespace SIGE.WebApp.FYD
 
         private void EnviarCorreos()
         {
-            Mail mail = new Mail(ContextoApp.mailConfiguration);
             string mensaje = vMensajeCorreo;
             int vEnviados = 0;
             int vNoEnviados = 0;
@@ -145,6 +144,7 @@ namespace SIGE.WebApp.FYD
             {
                 try
                 {
+                    Mail mail = new Mail(ContextoApp.mailConfiguration);
                     mensaje = vMensajeCorreo;
                     mensaje = mensaje.Replace("[Participante]", item.NB_PARTICIPANTE);
                     mail.addToAddress(item.CL_CORREO_ELECTRONICO, item.NB_PARTICIPANTE);
