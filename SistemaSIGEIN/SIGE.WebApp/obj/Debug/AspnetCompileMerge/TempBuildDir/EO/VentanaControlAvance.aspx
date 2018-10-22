@@ -33,6 +33,23 @@
         }
 
 
+        function ConfirmarEliminar(sender, args) {
+            var vMasterTable = $find('<%= grdEvaluadorCuestionarios.ClientID %>').get_masterTableView();
+            var vSeleccionados = vMasterTable.get_selectedItems();
+            if (vSeleccionados.length > 0) {
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
+            { if (shouldSubmit) { this.click(); } });
+
+            radconfirm('¿Estás seguro de eliminar las respuestas?, este proceso no podra revertirse.', callBackFunction, 460, 180, null, "Eliminar respuestas");
+            args.set_cancel(true);
+            }
+            else {
+                radalert("Selecciona un evaluado.", 400, 150);
+                args.set_cancel(true);
+            }
+        }
+
+
         function OpenCuestionario() {
 
             var vMasterTable = $find('<%= grdEvaluadorCuestionarios.ClientID %>').get_masterTableView();
@@ -72,7 +89,8 @@
             <telerik:RadTab Text="Detalle"></telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
-    <div style="height: calc(100% - 110px);">
+    <div style="height: calc(100% - 60px);">
+       <div style="clear: both; height: 10px;"></div>
         <telerik:RadMultiPage ID="rmpControlAvance" runat="server" SelectedIndex="0" Height="100%">
             <telerik:RadPageView ID="rpvContexto" runat="server">
                 <%-- <div class="ctrlBasico">
@@ -109,7 +127,6 @@
                                         </tr>
                                 </table>
                             </div>--%>
-                <div style="clear: both; height: 10px;"></div>
                                 <div class="ctrlBasico">
                                     <table class="ctrlTableForm" text-align: left;>
                                         <tr>
@@ -277,13 +294,12 @@
                         </MasterTableView>
                     </telerik:RadGrid>
                 </div>
-                 <div class="divControlDerecha">
                             <div class="ctrlBasico">
-                                                                 <telerik:RadButton runat="server" ID="btnEliminarRespuestas" Text="Eliminar respuestas" AutoPostBack="true" OnClick="btnEliminarRespuestas_Click"></telerik:RadButton>
-                                <telerik:RadButton runat="server" ID="btnVerCuestionario" Text="Ver cuestionario" OnClientClicked="OpenCuestionario"></telerik:RadButton>
+                                 <telerik:RadButton runat="server" ID="btnVerCuestionario" Text="Ver cuestionario" AutoPostBack="false" OnClientClicked="OpenCuestionario"></telerik:RadButton>
                                 <telerik:RadButton runat="server" ID="btnVerCuestionarioConfidencial" Visible="false" Text="Ver cuestionario" OnClientClicked="OpenCuestionarioConfidencial"></telerik:RadButton>
+                                <telerik:RadButton runat="server" ID="btnEliminarRespuestas" Text="Eliminar respuestas" AutoPostBack="true" OnClientClicking="ConfirmarEliminar" OnClick="btnEliminarRespuestas_Click"></telerik:RadButton>
+                               
                             </div>
-                     </div>
             </telerik:RadPageView>
         </telerik:RadMultiPage>
     </div>

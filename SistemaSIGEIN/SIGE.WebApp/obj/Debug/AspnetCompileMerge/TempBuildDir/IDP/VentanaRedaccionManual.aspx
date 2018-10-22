@@ -107,23 +107,22 @@
         </script>
     </telerik:RadCodeBlock>
          <label name="" id="lbltitulo" class="labelTitulo">Redacción</label>
-    <div style="height: calc(100% - 40px);">
+    <div style="height: calc(100% - 60px); padding:10px;">
         <telerik:RadSplitter ID="splHelp" runat="server" Width="100%" Height="100%" BorderSize="0" Orientation="Horizontal">
             <telerik:RadPane ID="rpnPrueba" runat="server">
-                <div style="padding: 5px">
                     <div style="border: 1px solid #ddd">
                             <div style="font-weight:bold;">Definición del factor</div>
                              <div class="JustificarTexto">
                             Capacidad para expresar de manera escrita ideas o pensamientos que se expresan en una forma adecuada gramaticalmente, que cumplan con las reglas ortográficas y que tengan un adecuado manejo del lenguaje.
                         </div>
                     </div>
-                    <div style="clear: both; height: 20px"></div>
+                    <div style="clear: both; height: 10px"></div>
 
                     <div>
                         <label>Por favor seleccione uno de los siguientes textos para la prueba:</label>
                     </div>
 
-                    <div style="clear: both; height: 20px"></div>
+                    <div style="clear: both; height: 10px"></div>
 
                     <table width="100%" style="border:1px solid #ddd">
                         <colgroup>
@@ -220,17 +219,12 @@
                             </td>
                         </tr>
                     </table>
-                </div>
             </telerik:RadPane>
         </telerik:RadSplitter>
     </div>
-
-
-    <div style="clear: both; height: 10px;"></div>
-    <div class="DivBtnTerminarDerecha ">
-          <div class="ctrlBasico">
-        <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Terminar" AutoPostBack="true"></telerik:RadButton>
-          </div>
+    <div style="clear: both;"></div>
+    <div class="divControlDerecha" style="padding-right:10px;">
+        <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Guardar" AutoPostBack="true"></telerik:RadButton>
     </div>
 
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>

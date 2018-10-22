@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <SIGEIN Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>SIGEIN</Alias>
+        <ConnectionStringEncrypted>+WyBK8VKQ1lvS6HM8YjhP944we/NXUGdy0uhzE0E4V7W8oGhSEqSQctbuOz0mGkTi1bb61YD851yW4T0YZzrY9/E+QlPCPoFa1wxUOo94j+NIPsJRl+TmUVf2YRj8OB7gND7KMgY0915UZxww4RlKsM8s8LFQeNFckvt7MPYovPFCg==</ConnectionStringEncrypted>
+        <Name>SIGEIN</Name>
+      </SIGEIN>
+    </Databases>
+    <DataSources isList="true" count="1">
+      <IDP_SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>IDP.SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE</Alias>
+        <Columns isList="true" count="17">
+          <value>NO_VALOR,System.Decimal</value>
+          <value>ID_VARIABLE,System.Int32</value>
+          <value>CL_VARIABLE,System.String</value>
+          <value>CL_FACTOR,System.String</value>
+          <value>NB_FACTOR,System.String</value>
+          <value>DS_FACTOR,System.String</value>
+          <value>NO_FACTOR,System.Int32</value>
+          <value>ID_FACTOR,System.Int32</value>
+          <value>ID_COMPETENCIA,System.Int32</value>
+          <value>NB_COMPETENCIA,System.String</value>
+          <value>DS_COMPETENCIA,System.String</value>
+          <value>CL_TIPO_COMPETENCIA,System.String</value>
+          <value>CL_CLASIFICACION,System.String</value>
+          <value>CL_COLOR,System.String</value>
+          <value>NB_CLASIFICACION_COMPETENCIA,System.String</value>
+          <value>NB_PRUEBA,System.String</value>
+          <value>NB_ABREVIATURA,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>IDP.SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE</Name>
+        <NameInSource>SIGEIN</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_PIN_ID_BATERIA,ID_BATERIA,8,0</value>
+        </Parameters>
+        <SqlCommand>IDP.SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE</SqlCommand>
+        <Type>StoredProcedure</Type>
+      </IDP_SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="3">
+      <value>,CL_SOLICITUD,CL_SOLICITUD,,System.String,,False,False,False,False</value>
+      <value>,NB_CANDIDATO,NB_CANDIDATO,,System.String,,False,False,False,False</value>
+      <value>,ID_BATERIA,ID_BATERIA,,System.Int32,,False,False,False,False</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="4" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="2">
+        <PageHeaderBand1 Ref="5" type="PageHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,19.6,2.2</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text1 Ref="6" type="Text" isKey="true">
+              <Border>Bottom;[186:20:25];4;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.2,19.6,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,20</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>Consulta personal detallada</Text>
+              <TextBrush>[192:0:0]</TextBrush>
+              <Type>Expression</Type>
+            </Text1>
+            <Text2 Ref="7" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1.4,6.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>Folio de solicitud: {CL_SOLICITUD}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text2>
+            <Text3 Ref="8" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.8,1.4,12.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>06b23b8284d8481295a9a3ad034bf887</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>Candidato: {NB_CANDIDATO}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text3>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>PageHeaderBand1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </PageHeaderBand1>
+        <CrossTab1 Ref="9" type="Stimulsoft.Report.CrossTab.StiCrossTab" isKey="true">
+          <Brush>[224:224:224]</Brush>
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,2.8,19.6,4.6</ClientRectangle>
+          <Components isList="true" count="17">
+            <CrossTab1_RowTotal2 Ref="10" type="CrossRowTotal" isKey="true">
+              <Border>All;[69:69:69];1;Solid;False;4;Black</Border>
+              <Brush>[219:219:219]</Brush>
+              <ClientRectangle>3,3.5,0,0</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>146b03e865a644f3a12c3d76bdf5c948</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_RowTotal2</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>Total</Text>
+              <TextBrush>Black</TextBrush>
+            </CrossTab1_RowTotal2>
+            <CrossTab1_Row1_Title Ref="11" type="CrossTitle" isKey="true">
+              <Border>All;[69:69:69];1;Solid;False;4;Black</Border>
+              <Brush>DarkGray</Brush>
+              <ClientRectangle>0,0.45,0.4,3</ClientRectangle>
+              <Font>Arial,8</Font>
+              <Guid>082786ff591447deaa7b7e8b158dfd19</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_Row1_Title</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <TextBrush>[19:19:19]</TextBrush>
+              <Type>Expression</Type>
+              <TypeOfComponent>Row:CrossTab1_Row1</TypeOfComponent>
+            </CrossTab1_Row1_Title>
+            <CrossTab1_LeftTitle Ref="12" type="CrossTitle" isKey="true">
+              <Border>All;[69:69:69];1;Solid;False;4;Black</Border>
+              <Brush>DarkGray</Brush>
+              <ClientRectangle>0,0,3.2,0.4</ClientRectangle>
+              <Font>Arial,8</Font>
+              <Guid>977c05136a9244c88f8d823cd9ec56c7</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_LeftTitle</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <TextBrush>[19:19:19]</TextBrush>
+              <Type>Expression</Type>
+              <TypeOfComponent>LeftTitle</TypeOfComponent>
+            </CrossTab1_LeftTitle>
+            <CrossTab1_ColTotal3 Ref="13" type="CrossColumnTotal" isKey="true">
+              <Border>All;[69:69:69];1;Solid;False;4;Black</Border>
+              <Brush>[219:219:219]</Brush>
+              <ClientRectangle>8.45,1.25,0,0</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>d0025426999c4b4394270da61da94670</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_ColTotal3</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>Total</Text>
+              <TextBrush>Black</TextBrush>
+            </CrossTab1_ColTotal3>
+            <CrossTab1_ColTotal4 Ref="14" type="CrossColumnTotal" isKey="true">
+              <Border>All;[69:69:69];1;Solid;False;4;Black</Border>
+              <Brush>[219:219:219]</Brush>
+              <ClientRectangle>8.45,1.65,0,0</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>56904cb5fca14004a24ca721ad4809f5</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_ColTotal4</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>Total</Text>
+              <TextBrush>Black</TextBrush>
+            </CrossTab1_ColTotal4>
+            <CrossTab1_ColTotal2 Ref="15" type="CrossColumnTotal" isKey="true">
+              <Border>All;[69:69:69];1;Solid;False;4;Black</Border>
+              <Brush>[219:219:219]</Brush>
+              <ClientRectangle>8.45,0.85,0,0</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>5cd13c0c18904268a145c10a6f4234d8</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_ColTotal2</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>Total</Text>
+              <TextBrush>Black</TextBrush>
+            </CrossTab1_ColTotal2>
+            <CrossTab1_RowTotal1 Ref="16" type="CrossRowTotal" isKey="true">
+              <Border>All;[69:69:69];1;Solid;False;4;Black</Border>
+              <Brush>[219:219:219]</Brush>
+              <ClientRectangle>0,3.5,7.6,0</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>4fd54798a68745fa8a5b2c3ce3f548f5</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_RowTotal1</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>Total</Text>
+              <TextBrush>Black</TextBrush>
+            </CrossTab1_RowTotal1>
+            <CrossTab1_Row2_Title Ref="17" type="CrossTitle" isKey="true">
+              <Border>All;[69:69:69];1;Solid;False;4;Black</Border>
+              <Brush>DarkGray</Brush>
+              <ClientRectangle>0.4,0.45,2.8,3</ClientRectangle>
+              <Font>Arial,8</Font>
+              <Guid>2d989e08745a41c2a2a664bfbca4b031</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_Row2_Title</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>Competencias</Text>
+              <TextBrush>[19:19:19]</TextBrush>
+              <Type>Expression</Type>
+              <TypeOfComponent>Row:CrossTab1_Row2</TypeOfComponent>
+            </CrossTab1_Row2_Title>
+            <CrossTab1_ColTotal1 Ref="18" type="CrossColumnTotal" isKey="true">
+              <Border>All;[69:69:69];1;Solid;False;4;Black</Border>
+              <Brush>[219:219:219]</Brush>
+              <ClientRectangle>8.45,0.45,0,3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>0e4e3bae84f64129baa3a7d55de8e7c6</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_ColTotal1</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>Total</Text>
+              <TextBrush>Black</TextBrush>
+            </CrossTab1_ColTotal1>
+            <CrossTab1_RightTitle Ref="19" type="CrossTitle" isKey="true">
+              <Border>All;[69:69:69];1;Solid;False;4;Black</Border>
+              <Brush>DarkGray</Brush>
+              <ClientRectangle>3.25,0,7.4,0.4</ClientRectangle>
+              <Font>Arial,8</Font>
+              <Guid>31bf36ba5b934a319ce9e6080b66d55b</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_RightTitle</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <TextBrush>[19:19:19]</TextBrush>
+              <Type>Expression</Type>
+              <TypeOfComponent>RightTitle</TypeOfComponent>
+            </CrossTab1_RightTitle>
+            <CrossTab1_Row1 Ref="20" type="CrossRow" isKey="true">
+              <Alias>CL_COLOR</Alias>
+              <Border>All;White;2;Solid;False;4;Black</Border>
+              <Brush>DarkGray</Brush>
+              <ClientRectangle>0,3.5,0.4,1</ClientRectangle>
+              <Conditions isList="true" count="6">
+                <value>_x007B_tag_x0020__x003D__x003D__x0020__x0022_MediumOrchid_x0022__x007D_,MediumOrchid,MediumOrchid,Arial_x002C_8,True,False,,,All</value>
+                <value>_x007B_tag_x0020__x003D__x003D__x0020__x0022_Yellow_x0022__x007D_,Yellow,Yellow,Arial_x002C_8,True,False,,,All</value>
+                <value>_x007B_tag_x0020__x003D__x003D__x0020__x0022_SkyBlue_x0022__x007D_,LightSkyBlue,LightSkyBlue,Arial_x002C_8,True,False,,,All</value>
+                <value>_x007B_tag_x0020__x003D__x003D__x0020__x0022_LawnGreen_x0022__x007D_,LawnGreen,LawnGreen,Arial_x002C_8,True,False,,,All</value>
+                <value>_x007B_tag_x0020__x003D__x003D__x0020__x0022_OrangeRed_x0022__x007D_,OrangeRed,OrangeRed,Arial_x002C_8,True,False,,,All</value>
+                <value>_x007B_tag_x0020__x003D__x003D__x0020__x0022_Orange_x0022__x007D_,Orange,Orange,Arial_x002C_8,True,False,,,All</value>
+              </Conditions>
+              <DisplayValue>{IDP_SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE.CL_COLOR}</DisplayValue>
+              <Font>Arial,5</Font>
+              <Guid>fd422e48a6a944de8f53e6d8c73b1ad5</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_Row1</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <ShowTotal>False</ShowTotal>
+              <SortDirection>None</SortDirection>
+              <Tag>{IDP_SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE.CL_COLOR}</Tag>
+              <Text>CL_COLOR</Text>
+              <TextBrush>[19:19:19]</TextBrush>
+              <TextOptions>,,,,,Angle=270</TextOptions>
+              <TotalGuid>4fd54798a68745fa8a5b2c3ce3f548f5</TotalGuid>
+              <Value>{IDP_SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE.CL_COLOR}</Value>
+            </CrossTab1_Row1>
+            <CrossTab1_Row2 Ref="21" type="CrossRow" isKey="true">
+              <Alias>NB_COMPETENCIA</Alias>
+              <Border>All;[69:69:69];1;Solid;False;4;Black</Border>
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0.4,3.5,2.8,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DisplayValue>{IDP_SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE.NB_COMPETENCIA}</DisplayValue>
+              <Font>Arial,8</Font>
+              <Guid>468b620dd88548c5a6e4669d26e948d0</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_Row2</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <ShowTotal>False</ShowTotal>
+              <SortDirection>None</SortDirection>
+              <SortType>ByValue</SortType>
+              <Text>NB_COMPETENCIA</Text>
+              <TextBrush>[19:19:19]</TextBrush>
+              <TotalGuid>146b03e865a644f3a12c3d76bdf5c948</TotalGuid>
+              <Value>{IDP_SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE.NB_COMPETENCIA}</Value>
+            </CrossTab1_Row2>
+            <CrossTab1_Column1 Ref="22" type="CrossColumn" isKey="true">
+              <Alias>NO_FACTOR</Alias>
+              <Border>Top, Left, Right;[69:69:69];1;Solid;False;4;EmptyBrush</Border>
+              <Brush>DarkGray</Brush>
+              <ClientRectangle>3.25,0.45,7.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DisplayValue>{IDP_SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE.NO_FACTOR}</DisplayValue>
+              <Font>Arial,8</Font>
+              <Guid>f3871d8546c446e39ae2a6b80e0681df</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_Column1</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <ShowTotal>False</ShowTotal>
+              <Text>NO_FACTOR</Text>
+              <TextBrush>DarkGray</TextBrush>
+              <TotalGuid>0e4e3bae84f64129baa3a7d55de8e7c6</TotalGuid>
+              <Value>{IDP_SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE.NO_FACTOR}</Value>
+            </CrossTab1_Column1>
+            <CrossTab1_Column2 Ref="23" type="CrossColumn" isKey="true">
+              <Alias>DS_FACTOR</Alias>
+              <Border>All;[69:69:69];1;Solid;False;4;Black</Border>
+              <Brush>DarkGray</Brush>
+              <ClientRectangle>3.25,0.85,7.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DisplayValue>{IDP_SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE.DS_FACTOR}</DisplayValue>
+              <Font>Arial,8</Font>
+              <Guid>8d0d8434c38a4b3dbce331ee560f537a</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_Column2</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <ShowTotal>False</ShowTotal>
+              <SortDirection>None</SortDirection>
+              <Text>DS_FACTOR</Text>
+              <TextBrush>[19:19:19]</TextBrush>
+              <TotalGuid>5cd13c0c18904268a145c10a6f4234d8</TotalGuid>
+              <Value>{IDP_SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE.DS_FACTOR}</Value>
+            </CrossTab1_Column2>
+            <CrossTab1_Column3 Ref="24" type="CrossColumn" isKey="true">
+              <Alias>ID_FACTOR</Alias>
+              <Border>All;[69:69:69];1;Solid;False;4;Black</Border>
+              <Brush>DarkGray</Brush>
+              <ClientRectangle>3.25,1.25,7.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DisplayValue>{IDP_SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE.ID_FACTOR}</DisplayValue>
+              <Font>Arial,8</Font>
+              <Guid>656e97c4470948619b9659e909080be8</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_Column3</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <ShowTotal>False</ShowTotal>
+              <Text>ID_FACTOR</Text>
+              <TextBrush>DarkGray</TextBrush>
+              <TotalGuid>d0025426999c4b4394270da61da94670</TotalGuid>
+              <Value>{IDP_SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE.ID_FACTOR}</Value>
+            </CrossTab1_Column3>
+            <CrossTab1_Column4 Ref="25" type="CrossColumn" isKey="true">
+              <Alias>NB_FACTOR</Alias>
+              <Border>All;[69:69:69];1;Solid;False;4;Black</Border>
+              <Brush>DarkGray</Brush>
+              <ClientRectangle>3.25,1.65,7.4,1.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DisplayValue>{IDP_SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE.NB_FACTOR}</DisplayValue>
+              <Font>Arial,8</Font>
+              <Guid>c84c7a3842c54f128b716bfd1239b69f</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_Column4</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <ShowTotal>False</ShowTotal>
+              <SortDirection>None</SortDirection>
+              <Text>NB_FACTOR</Text>
+              <TextBrush>[19:19:19]</TextBrush>
+              <TextOptions>,,,,,Angle=270</TextOptions>
+              <TotalGuid>56904cb5fca14004a24ca721ad4809f5</TotalGuid>
+              <Value>{IDP_SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE.NB_FACTOR}</Value>
+            </CrossTab1_Column4>
+            <CrossTab1_Sum1 Ref="26" type="CrossSummary" isKey="true">
+              <Alias>NO_VALOR</Alias>
+              <Border>All;[69:69:69];1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>3.25,3.5,7.4,1</ClientRectangle>
+              <Conditions isList="true" count="5">
+                <value>_x007B_value_x0020__x003E__x0020_4_x0020__x0026__x0026__x0020_value_x003C__x0020_6_x007D_,[224:224:224],[224:224:224],Arial_x002C_8,True,False,,,All</value>
+                <value>_x007B_value_x0020__x003E__x0020_3_x0020__x0026__x0026__x0020_value_x003C__x0020_5_x007D_,Gray,Gray,Arial_x002C_8,True,False,,,All</value>
+                <value>_x007B_value_x0020__x003E__x0020_2_x0020__x0026__x0026__x0020_value_x003C__x0020_4_x007D_,Lime,Lime,Arial_x002C_12_x002C_Regular_x002C_Point_x002C_False_x002C_0,True,False,,,All</value>
+                <value>_x007B_value_x003E__x0020_1_x0020__x0026__x0026__x0020_value_x003C__x0020_3_x007D_,Yellow,Yellow,Arial_x002C_9.75_x002C_Regular_x002C_Point_x002C_False_x002C_0,True,False,,,All</value>
+                <value>_x007B_value_x003E__x0020_0_x0020__x0026__x0026__x0020_value_x003C__x0020_2_x007D_,Red,Red,Arial_x002C_8,True,False,,,All</value>
+              </Conditions>
+              <Font>Arial,8</Font>
+              <Guid>1e8a858f14224b4bb0e1fe115d63dd09</Guid>
+              <HideZeros>False</HideZeros>
+              <ImageHorAlignment>Center</ImageHorAlignment>
+              <ImageVertAlignment>Center</ImageVertAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_Sum1</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>0</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="27" type="NumberFormat" isKey="true">
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+              </TextFormat>
+              <Type>Expression</Type>
+              <Value>{IDP_SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE.NO_VALOR}</Value>
+            </CrossTab1_Sum1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <CrossTabStyleIndex>1</CrossTabStyleIndex>
+          <DataRelationName />
+          <DataSourceName>IDP.SPE_OBTIENE_CONSULTA_DETALLADA_REPORTE</DataSourceName>
+          <EmptyValue />
+          <Filters isList="true" count="0" />
+          <GrowToHeight>True</GrowToHeight>
+          <HorAlignment>Center</HorAlignment>
+          <KeepCrossTabTogether>True</KeepCrossTabTogether>
+          <Name>CrossTab1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <ShiftMode>None</ShiftMode>
+          <Sort isList="true" count="6">
+            <value>ASC</value>
+            <value>ID_COMPETENCIA</value>
+            <value>ASC</value>
+            <value>NO_FACTOR</value>
+            <value>ASC</value>
+            <value>ID_FACTOR</value>
+          </Sort>
+          <Wrap>True</Wrap>
+        </CrossTab1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>2447e769e6554ab195c60e9e06266e08</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>27.9</PageHeight>
+      <PageWidth>21.6</PageWidth>
+      <PaperSize>Letter</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="28" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="29" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>5/31/2018 9:37:12 AM</ReportChanged>
+  <ReportCreated>11/9/2017 11:19:37 AM</ReportCreated>
+  <ReportFile>C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\ReporteConsultaPersonalDetallada.mrt</ReportFile>
+  <ReportGuid>e1e570377ac8427692843726b80f8990</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2015.3.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

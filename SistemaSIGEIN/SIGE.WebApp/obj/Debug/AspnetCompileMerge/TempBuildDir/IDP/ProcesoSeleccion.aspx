@@ -211,7 +211,7 @@
 
             }
             else {
-                radalert("Seleccione un proceso de selección", 400, 150, "");
+                radalert("Seleccione el proceso de evaluación del cual se va a copiar la información", 400, 170, "");
                 args.set_cancel(true);
             }
         }
@@ -718,7 +718,6 @@
     </telerik:RadAjaxManager>
 
     <div class="ctrlBasico">
-
         <table class="ctrlTableForm">
             <tr>
                 <td class="ctrlTableDataContext">
@@ -755,7 +754,7 @@
                     <span runat="server" id="txtFechaInicio" style="width: 100px;"></span>
                 </td>
                  <td class="ctrlTableDataContext" id="lbTerminoc" runat="server" visible="false">
-                    <label visible =" true">Fecha de termino: </label>
+                    <label visible =" true">Fecha de término: </label>
                 </td>
                 <td class="ctrlTableDataBorderContext" id="txtFechaTerminoc" visible="false" runat="server">
                     <span runat="server" id="txtFechaTermino" visible="true" style="width: 100px;"></span>
@@ -767,7 +766,7 @@
 
 <%--    <div style="clear: both; height: 5px"></div>--%>
 
-    <div style="height: calc(100% - 80px);">
+    <div style="height: calc(100% - 90px);">
         <telerik:RadSplitter ID="rsSolicitud" Width="100%" Height="100%" BorderSize="0" runat="server">
 
             <telerik:RadPane ID="rpBotones" runat="server" Width="220px" Height="100%">
@@ -810,7 +809,7 @@
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave de requisición" DataField="NO_REQUISICION" UniqueName="NO_REQUISICION" HeaderStyle-Width="100" FilterControlWidth="50"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Puesto establecido en la requisición" DataField="NB_PUESTO" UniqueName="NB_PUESTO" HeaderStyle-Width="200" FilterControlWidth="70"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Fecha de inicio" DataField="FE_INICIO_PROCESO" UniqueName="FE_INICIO_PROCESO" HeaderStyle-Width="150" FilterControlWidth="80" DataFormatString="{0:d}"></telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Fecha de termino" DataField="FE_TERMINO_PROCESO" UniqueName="FE_TERMINO_PROCESO" HeaderStyle-Width="150" FilterControlWidth="80" DataFormatString="{0:d}"></telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Fecha de término" DataField="FE_TERMINO_PROCESO" UniqueName="FE_TERMINO_PROCESO" HeaderStyle-Width="150" FilterControlWidth="80" DataFormatString="{0:d}"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Estatus" DataField="CL_ESTADO" UniqueName="CL_ESTADO" HeaderStyle-Width="110" FilterControlWidth="70"></telerik:GridBoundColumn>
                                             <%--<telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="" DataField="FG_PROCESO_SELECCION_ACTUAL" UniqueName="FG_PROCESO_SELECCION_ACTUAL" HeaderStyle-Width="200" FilterControlWidth="70"></telerik:GridBoundColumn>--%>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Observaciones" DataField="DS_OBSERVACIONES_TERMINO_PROCESO" UniqueName="DS_OBSERVACIONES_TERMINO_PROCESO" HeaderStyle-Width="200" FilterControlWidth="70"></telerik:GridBoundColumn>
@@ -863,7 +862,7 @@
                         <telerik:RadPageView ID="RegistroEntrevistas" runat="server">
 
                             <div style="height: calc(100% - 50px);">
-                                <telerik:RadGrid runat="server" ID="rgEntrevistas" HeaderStyle-Font-Bold="true"  AutoGenerateColumns="false" Width="100%" Height="100%" OnNeedDataSource="rgEntrevistas_NeedDataSource" ShowHeader="true" AllowFilteringByColumn="true">
+                                <telerik:RadGrid runat="server" ID="rgEntrevistas" HeaderStyle-Font-Bold="true" AllowMultiRowSelection="true"  AutoGenerateColumns="false" Width="100%" Height="100%" OnNeedDataSource="rgEntrevistas_NeedDataSource" ShowHeader="true" AllowFilteringByColumn="true">
                                     <ClientSettings>
                                         <Scrolling UseStaticHeaders="false" AllowScroll="true" />
                                         <Selecting AllowRowSelect="true" />
@@ -901,11 +900,11 @@
                                     <telerik:RadButton runat="server" ID="btnEliminarEntrevista" Text="Eliminar" OnClientClicking="ConfirmarEliminarEntrevista" OnClick="btnEliminarEntrevista_Click"></telerik:RadButton>
                                 </div>
                                 <div class="ctrlBasico">
-                                    <telerik:RadButton runat="server" ID="btnEnvioCorreos" Text="Enviar correos a seleccionados" OnClick="btnEnvioCorreos_Click"></telerik:RadButton>
+                                    <telerik:RadButton runat="server" ID="btnEnvioCorreos" Text="Enviar correo" OnClick="btnEnvioCorreos_Click"></telerik:RadButton>
                                 </div>
-                                <div class="ctrlBasico">
+                       <%--         <div class="ctrlBasico">
                                     <telerik:RadButton runat="server" ID="btnEnviarTodos" Text="Enviar correo a todos" OnClick="btnEnviarTodos_Click"></telerik:RadButton>
-                                </div>
+                                </div>--%>
                                 <div class="ctrlBasico">
                                     <telerik:RadButton runat="server" ID="btnComentarios" Text="Ver comentarios" OnClientClicking="OpenComentariosEntrevista"></telerik:RadButton>
                                 </div>
@@ -944,7 +943,7 @@
                             <div style="height: 10px; clear: both;"></div>
 
                             <div class="ctrlBasico">
-                                <telerik:RadButton runat="server" ID="btnAgregarReferencia" OnClientClicked="ShowPopupEditarExperiencia" Text="Modificar referencia" AutoPostBack="false"></telerik:RadButton>
+                                <telerik:RadButton runat="server" ID="btnAgregarReferencia" OnClientClicked="ShowPopupEditarExperiencia" Text="Editar" AutoPostBack="false"></telerik:RadButton>
                             </div>
                             <%-- <div style="clear: both; height: 10px"></div>
                 <div class="ctrlBasico">
@@ -1942,7 +1941,7 @@
                                                                 <div class="ctrlBasico">
                                                                     <label id="Label50" name="lblNbIdioma" runat="server">Tiempo de residencia en domicilio:</label>
                                                                     <br />
-                                                                    <telerik:RadNumericTextBox ID="txtEsTiempoResidencia" runat="server" Width="100" MaxLength="1000"></telerik:RadNumericTextBox>
+                                                                    <telerik:RadTextBox ID="txtEsTiempoResidencia" runat="server" Width="100" MaxLength="1000"></telerik:RadTextBox>
                                                                 </div>
                                                             </td>
                                                             <td></td>
@@ -2803,7 +2802,7 @@
                                                                     <br />
 
                                                                     <telerik:RadCheckBox runat="server" ID="chkDVVehiculo" AutoPostBack="false" Text="Vehículo"></telerik:RadCheckBox>
-                                                                    <telerik:RadCheckBox runat="server" ID="chkDVMotocicleta" AutoPostBack="false" Text="Luz"></telerik:RadCheckBox>
+                                                                    <telerik:RadCheckBox runat="server" ID="chkDVMotocicleta" AutoPostBack="false" Text="Motocicleta"></telerik:RadCheckBox>
                                                                     <telerik:RadCheckBox runat="server" ID="chkDVOtrosRelacionBienes" AutoPostBack="false" Text="Otros"></telerik:RadCheckBox>
                                                                 </div>
                                                             </td>
@@ -2927,27 +2926,27 @@
                                                 <label id="Label14" name="lblNbIdioma" runat="server">Edad:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadNumericTextBox ID="txtEMedad" runat="server" Width="85" NumberFormat-DecimalDigits="0" ReadOnly="true"></telerik:RadNumericTextBox>
+                                                <telerik:RadNumericTextBox ID="txtEMedad" runat="server" Width="60" NumberFormat-DecimalDigits="0" ReadOnly="true"></telerik:RadNumericTextBox>
                                             </div>
 
 
                                         </td>
-                                        <td>
+                                      <%--  <td>
                                             <div class="divControlIzquierda">
                                                 <label id="Label15" name="lblNbIdioma" runat="server">Talla:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadTextBox ID="txtEMtalla" runat="server" Width="100" MaxLength="1000"></telerik:RadTextBox>
+                                                <telerik:RadTextBox ID="txtEMtalla" runat="server" Width="60" MaxLength="1000"></telerik:RadTextBox>
                                             </div>
 
-                                        </td>
+                                        </td>--%>
                                         <td>
                                             <div style="clear: both;" />
                                             <div class="divControlIzquierda">
                                                 <label id="Label16" name="lblNbIdioma" runat="server">Peso:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadNumericTextBox ID="txtEMPeso" runat="server" Width="100" NumberFormat-DecimalDigits="2" MaxLength="1000"></telerik:RadNumericTextBox>
+                                                <telerik:RadNumericTextBox ID="txtEMPeso" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxLength="1000"></telerik:RadNumericTextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2957,26 +2956,27 @@
                                                 <label id="Label17" name="lblNbIdioma" runat="server">Índice de masa corporal:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadNumericTextBox ID="txtEMMasaCorporal" runat="server" Width="100" NumberFormat-DecimalDigits="2" MaxLength="1000"></telerik:RadNumericTextBox>
+                                                <telerik:RadNumericTextBox ID="txtEMMasaCorporal" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxLength="1000"></telerik:RadNumericTextBox>
+                                            </div>
+                                        </td>
+                                           <td>
+                                            <div class="divControlIzquierda">
+                                                <label id="Label19" name="lblNbIdioma" runat="server">Pulso:</label>
+                                            </div>
+                                            <div class="ctrlBasico">
+                                                <telerik:RadNumericTextBox ID="txtEMPulso" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxLength="1000"></telerik:RadNumericTextBox>
                                             </div>
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td>
-                                            <div class="divControlIzquierda">
-                                                <label id="Label19" name="lblNbIdioma" runat="server">Pulso:</label>
-                                            </div>
-                                            <div class="ctrlBasico">
-                                                <telerik:RadNumericTextBox ID="txtEMPulso" runat="server" Width="85px" NumberFormat-DecimalDigits="2" MaxLength="1000"></telerik:RadNumericTextBox>
-                                            </div>
-                                        </td>
+                                     
                                         <td>
                                             <div class="divControlIzquierda">
                                                 <label id="Label20" name="lblNbIdioma" runat="server">Presión arterial:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadTextBox ID="txtEMPresionArterial" runat="server" Width="100px" MaxLength="1000"></telerik:RadTextBox>
+                                                <telerik:RadTextBox ID="txtEMPresionArterial" runat="server" Width="60" MaxLength="1000"></telerik:RadTextBox>
                                             </div>
 
                                         </td>
@@ -2985,7 +2985,7 @@
                                                 <label id="Label21" name="lblNbIdioma" runat="server">Embarazos:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadNumericTextBox ID="txtEMEmbarazos" runat="server" NumberFormat-DecimalDigits="0" Width="100px" MaxLength="1000"></telerik:RadNumericTextBox>
+                                                <telerik:RadNumericTextBox ID="txtEMEmbarazos" runat="server" NumberFormat-DecimalDigits="0" Width="60" MaxLength="1000"></telerik:RadNumericTextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2993,7 +2993,7 @@
                                                 <label id="Label22" name="lblNbIdioma" runat="server">Hijos:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadNumericTextBox ID="txtEMHijos" runat="server" Width="100px" NumberFormat-DecimalDigits="0" MaxLength="1000"></telerik:RadNumericTextBox>
+                                                <telerik:RadNumericTextBox ID="txtEMHijos" runat="server" Width="60" NumberFormat-DecimalDigits="0" MaxLength="1000"></telerik:RadNumericTextBox>
                                             </div>
                                         </td>
                                     </tr>
@@ -3034,7 +3034,7 @@
                                                 <label id="Label24" name="lblNbIdioma" runat="server">Especificar:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadTextBox ID="txtEmEnfermedadComentario" runat="server" Width="760" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
+                                                <telerik:RadTextBox ID="txtEmEnfermedadComentario" runat="server" Width="700" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
                                             </div>
                                         </td>
 
@@ -3076,7 +3076,7 @@
                                                 <label id="Label26" name="lblNbIdioma" runat="server">Especificar:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadTextBox ID="txtEMMedicamentosComentarios" runat="server" Width="760" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
+                                                <telerik:RadTextBox ID="txtEMMedicamentosComentarios" runat="server" Width="700" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
                                             </div>
                                         </td>
 
@@ -3118,7 +3118,7 @@
                                                 <label id="Label28" name="lblNbIdioma" runat="server">Especificar:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadTextBox ID="txtEMAlergiasComentarios" runat="server" Width="760" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
+                                                <telerik:RadTextBox ID="txtEMAlergiasComentarios" runat="server" Width="700" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
                                             </div>
                                         </td>
 
@@ -3128,7 +3128,7 @@
                                         <td>
 
                                             <div class="divControlIzquierda">
-                                                <label id="Label29" name="lblNbIdioma" runat="server">Antecedentes familiares (cáncer, hipertensión, diabetes, etc.):</label>
+                                                <label id="Label29" name="lblNbIdioma" runat="server">Antecedentes familiares:</label>
                                             </div>
                                             <div class="ctrlBasico">
                                                  <div class="checkContainer">
@@ -3160,7 +3160,7 @@
                                                 <label id="Label30" name="lblNbIdioma" runat="server">Especificar:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadTextBox ID="txtEMAntecedentesComentarios" runat="server" Width="760" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
+                                                <telerik:RadTextBox ID="txtEMAntecedentesComentarios" runat="server" EmptyMessage="Ejemplo: cáncer, hipertensión, diabetes, etc." Width="700" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
                                             </div>
                                         </td>
 
@@ -3202,7 +3202,7 @@
                                                 <label id="Label32" name="lblNbIdioma" runat="server">Especificar:</label>
                                             </div>
                                             <div class="ctrlBasico">
-                                                <telerik:RadTextBox ID="txtEMCirujiasComentarios" runat="server" Width="760" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
+                                                <telerik:RadTextBox ID="txtEMCirujiasComentarios" runat="server" Width="700" MaxLength="1000" TextMode="MultiLine" Height="60"></telerik:RadTextBox>
                                             </div>
                                         </td>
 
@@ -3210,12 +3210,12 @@
 
                                     <tr>
                                         <td style="height: 200px;">
-                                            <div class="ctrlBasico">
+                                            <div class="divControlDerecha">
                                                 <label id="Label33" name="lblFolio">Observaciones:</label>
                                             </div>
                                         </td>
                                         <td colspan="3">
-                                            <telerik:RadEditor Height="200px" Width="100%" ToolsWidth="310px" EditModes="Design" ID="reObservaciones" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/BasicTools.xml"></telerik:RadEditor>
+                                            <telerik:RadEditor Height="200px" Width="700" ToolsWidth="310px" EditModes="Design" ID="reObservaciones" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/BasicTools.xml"></telerik:RadEditor>
                                         </td>
                                     </tr>
 
@@ -3287,7 +3287,7 @@
                                     </ClientSettings>
                                     <MasterTableView ClientDataKeyNames="ID_ARCHIVO,ID_ITEM" DataKeyNames="ID_ARCHIVO,ID_ITEM" AutoGenerateColumns="false" ShowHeadersWhenNoRecords="true">
                                         <Columns>
-                                            <telerik:GridHyperLinkColumn HeaderText="Nombre del documento" DataTextField="NB_DOCUMENTO" DataNavigateUrlFields="ID_ARCHIVO,ID_DOCUMENTO,FE_CREATED_DATE,NB_DOCUMENTO,ID_ITEM" DataNavigateUrlFormatString="/Comunes/ObtenerDocumento.ashx?ArchivoId={0}&ArchivoNb={2:yyyyMMdd}{4}&ArchivoDescargaNb={3}" Target="_blank"></telerik:GridHyperLinkColumn>
+                                            <telerik:GridHyperLinkColumn HeaderText="Nombre del documento" DataTextField="NB_DOCUMENTO" DataNavigateUrlFields="ID_ARCHIVO,ID_DOCUMENTO,FE_CREATED_DATE,NB_DOCUMENTO,ID_ITEM" DataNavigateUrlFormatString="~/Comunes/ObtenerDocumento.ashx?ArchivoId={0}&ArchivoNb={2:yyyyMMdd}{4}&ArchivoDescargaNb={3}" Target="_blank"></telerik:GridHyperLinkColumn>
                                             <telerik:GridBoundColumn HeaderText="Tipo de documento" HeaderStyle-Width="200" DataField="CL_TIPO_DOCUMENTO" UniqueName="CL_TIPO_DOCUMENTO"></telerik:GridBoundColumn>
                                         </Columns>
                                     </MasterTableView>
@@ -3340,7 +3340,7 @@
             </telerik:RadPane>
 
             <telerik:RadPane ID="rpAyuda" runat="server" Scrolling="None" Width="22px" Height="50px">
-                <telerik:RadSlidingZone ID="rszAvisoDePrivacidad" runat="server" SlideDirection="Left" ExpandedPaneId="rspAyuda" Width="22px">
+                <telerik:RadSlidingZone ID="rszAvisoDePrivacidad" runat="server" SlideDirection="Left" ExpandedPaneId="rspAyuda" Width="22px" ClickToOpen="true">
                     <telerik:RadSlidingPane ID="rspAyuda" runat="server" Title="Foto" Width="180px" RenderMode="Mobile" Height="230">
                         <div class="ctrlBasico" style="padding-left: 20px;">
                             <div style="clear: both; height: 10px"></div>
@@ -3358,7 +3358,7 @@
                     </telerik:RadSlidingPane>
                      <telerik:RadSlidingPane ID="rszAyuda" runat="server" Title="Ayuda" Width="270px" RenderMode="Mobile" Height="100%">
                        <div id="divEstatus" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
-                            <p>
+                            <p style="text-align:justify;">
                                 Estatus del participante: <br />
                                 En esta pestaña puedes observar los diferentes procesos de evaluación con los que cuenta el candidato.
                                 El proceso de evaluación actual se presenta en la parte superior junto a la información del candidato. <br />
@@ -3368,7 +3368,7 @@
                             </p>
                         </div>
                         <div id="divEntrevistas" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
-                            <p>
+                            <p style="text-align:justify;">
                                 Registro de entrevistas: <br />
                                 En esta pestaña puedes crear o registrar las entrevistas necesarias para el candidato. <br />
                                 Con el botón "Agregar" puedes ingresar los datos de la entrevista o generar la entrevista para que alguien más la realice. Al enviarla por correo el entrevistador podrá ingresar los comentarios de entrevista.
@@ -3378,7 +3378,7 @@
                         </div>
 
                         <div id="divReferencias" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
-                            <p>
+                            <p style="text-align:justify;">
                                 Referencias:
                                 <br />
 
@@ -3388,7 +3388,7 @@
                             </p>
                         </div>
                         <div id="divPuestoComp" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
-                            <p>
+                            <p style="text-align:justify;">
                                 Competencias del puesto:
                                 <br />
                                En esta pestaña se muestra la comparación de compatibilidad entre el puesto para el cual aplica el proceso de evaluación (si es que está basado en una requisicion)
@@ -3396,7 +3396,7 @@
                             </p>
                         </div>
                           <div id="divPruebas" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
-                            <p>
+                            <p style="text-align:justify;">
                                 Aplicación de pruebas:
                                 <br />
 
@@ -3404,7 +3404,7 @@
                             </p>
                         </div>
                         <div id="divMedico" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
-                            <p>
+                            <p style="text-align:justify;">
                                Resultados médicos:
                                 <br />
                                 En esta pestaña puedes capturar los resultados médicos del candidato. La edad se registrara automáticamente al generar el estudio socioeconómico. <br />
@@ -3412,7 +3412,7 @@
                             </p>
                         </div>
                          <div id="divSocioeconomico" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
-                            <p>
+                            <p style="text-align:justify;">
                                Estudio socieconómico:
                                 <br />
 
@@ -3422,7 +3422,7 @@
                             </p>
                         </div>
                         <div id="divDocumentacion" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
-                            <p>
+                            <p style="text-align:justify;">
                                Documentación del candidato:
                                 <br />
                                 En esta pestaña encontraras los documentos del candidato.<br />
@@ -3430,7 +3430,7 @@
                             </p>
                         </div>
                          <div id="divBitacora" runat="server" style="display: none; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
-                            <p>
+                            <p style="text-align:justify;">
                                Registro de cambios a la solicitud:
                                 <br />
                                 En esta pestaña se encuentra el registro de los cambios realizados a la solicitud del candidato. 
@@ -3441,7 +3441,6 @@
                 </telerik:RadSlidingZone>
             </telerik:RadPane>
         </telerik:RadSplitter>
-
     </div>
 
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true">

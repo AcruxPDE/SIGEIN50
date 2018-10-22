@@ -32,7 +32,8 @@
     <script>
 
         function OnCloseWindow() {
-            window.location = "/Logout.aspx"
+            var vUrl = '<%= ResolveClientUrl("~/Logout.aspx") %>';
+            window.location = vUrl;
         }
 
         function OpenPreview() {
@@ -139,7 +140,7 @@
                             </td>
                         </tr>
 
-                        <tr runat="server" id="rowSuplente">
+                        <tr runat="server" id="rowSuplente" >
                             <%-- Empleado a suplir--%>
                             <td class="ctrlTableDataContext">
                                 <label id="lblSuplir" name="lblSuplir" runat="server">Empleado a suplir:</label>

@@ -40,7 +40,7 @@
         }
 
         function CleanEmployeeSelection(sender, args) {
-            ChangeListItem("", "Todos", $find("<%=lstEmpleado.ClientID %>"));
+            ChangeListItem("", "No Seleccionado", $find("<%=lstEmpleado.ClientID %>"));
         }
 
         function useDataFromChild(pDato) {
@@ -251,7 +251,7 @@
                 <Selecting AllowRowSelect="true" EnableDragToSelectRows="true" />
             </ClientSettings>
             <PagerStyle AlwaysVisible="true" />
-            <MasterTableView DataKeyNames="ID_GRUPO" ClientDataKeyNames="ID_GRUPO" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
+            <MasterTableView DataKeyNames="ID_GRUPO, FG_SISTEMA" ClientDataKeyNames="ID_GRUPO" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
                 <Columns>
                     <telerik:GridBoundColumn UniqueName="CL_GRUPO" DataField="CL_GRUPO" HeaderText="Clave" AutoPostBackOnFilter="true" HeaderStyle-Width="100" FilterControlWidth="30" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn UniqueName="NB_GRUPO" DataField="NB_GRUPO" HeaderText="Nombre" AutoPostBackOnFilter="true" HeaderStyle-Width="290" FilterControlWidth="220" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>

@@ -2,7 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
     <style type="text/css">
-
         .Color0 {
             background: red;
             width: 100%;
@@ -12,7 +11,6 @@
             background: rgb(157, 223, 99);
             width: 100%;
             height: 70%;
-           
         }
 
         .Color11 {
@@ -80,11 +78,6 @@
             border-left: 10px solid transparent;
             border-bottom: 10px solid transparent;
         }
-
-        .PivotAvances td.rpgColumnHeaderZone {
-            width: calc(100px * <%= vNoEmpleados %>) !important;
-        }
-
     </style>
     <script>
 
@@ -125,7 +118,7 @@
 
         function OpenInventario(pIdEmpleado) {
             var vURL = "../Administracion/Empleado.aspx";
-            var vTitulo = "Editar Empleado";
+            var vTitulo = "Ver Empleado";
 
             if (pIdEmpleado != null)
                 vURL = vURL + "?EmpleadoId=" + pIdEmpleado + "&pFgHabilitaBotones=False";
@@ -194,8 +187,8 @@
 
         function onResponseEnd(sender, args) {
             if ($find("<%=btnExportar.ClientID %>")._uniqueID == sender.__EVENTTARGET)
-                            args.set_enableAjax(true);
-                    }
+                args.set_enableAjax(true);
+        }
 
     </script>
 </asp:Content>
@@ -211,47 +204,52 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <div style="height: calc(100% - 10px);">
-        <telerik:RadSplitter ID="splHelp" runat="server" Width="100%" Height="100%" BorderSize="0">
-            <telerik:RadPane ID="radPanelProgramaCapacitacion" runat="server" Height="100%">
-                <telerik:RadTabStrip ID="tbAvanceProgramaCapacitacion" runat="server" AutoPostBack="true" SelectedIndex="0" MultiPageID="mpgProgramaCapacitacion">
-                    <Tabs>
-                        <telerik:RadTab Text="Contexto" runat="server"></telerik:RadTab>
-                        <telerik:RadTab Text="Definición de criterios" runat="server"></telerik:RadTab>
-                        <telerik:RadTab Text="Avance" runat="server"></telerik:RadTab>
-                    </Tabs>
-                </telerik:RadTabStrip>
-                <telerik:RadMultiPage ID="mpgProgramaCapacitacion" runat="server" SelectedIndex="0" Height="90%" AutoPostBack="false">
+            <telerik:RadTabStrip ID="tbAvanceProgramaCapacitacion" runat="server" AutoPostBack="true" SelectedIndex="0" MultiPageID="mpgProgramaCapacitacion">
+                <Tabs>
+                    <telerik:RadTab Text="Contexto" runat="server"></telerik:RadTab>
+                    <telerik:RadTab Text="Definición de criterios" runat="server"></telerik:RadTab>
+                    <telerik:RadTab Text="Avance" runat="server"></telerik:RadTab>
+                </Tabs>
+            </telerik:RadTabStrip>
+            <div style="height: calc(100% - 45px);">
+                <telerik:RadMultiPage ID="mpgProgramaCapacitacion" runat="server" SelectedIndex="0" Height="100%" AutoPostBack="false">
                     <telerik:RadPageView ID="rpContexto" runat="server" Height="100%">
                         <div style="clear: both; height: 10px;"></div>
                         <div class="ctrlBasico">
-                            <table class="ctrlTableForm ctrlTableContext">
+                            <table class="ctrlTableForm">
                                 <tr>
-                                    <td>
-                                        <label>Período:</label></td>
-                                    <td colspan="2">
+                                    <td class="ctrlTableDataContext">
+                                        <label>Programa:</label></td>
+                                    <td colspan="2" class="ctrlTableDataBorderContext">
                                         <div id="txtPeriodo" runat="server" style="min-width: 100px;"></div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label id="Label1" name="lblTipoEvaluacion" runat="server">Tipo de evaluación:</label>
+                                        <label class="ctrlTableDataContext">Descripción:</label></td>
+                                    <td colspan="2" class="ctrlTableDataBorderContext">
+                                        <div id="txtDesPeriodo" runat="server" style="min-width: 100px;"></div>
                                     </td>
-                                    <td>
+                                </tr>
+                                <tr>
+                                    <td class="ctrlTableDataContext">
+                                        <label id="Label1" name="lblTipoEvaluacion" runat="server">Tipo:</label>
+                                    </td>
+                                    <td class="ctrlTableDataBorderContext">
                                         <div id="txtTipoEvaluacion" runat="server" width="170" maxlength="1000" enabled="false"></div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="ctrlTableDataContext">
                                         <label id="lblNotas" name="lblNotas" runat="server">Notas:</label>
                                     </td>
-                                    <td colspan="2">
+                                    <td colspan="2" class="ctrlTableDataBorderContext">
                                         <div id="radEditorNotas" runat="server" style="min-width: 100px;"></div>
                                     </td>
                                 </tr>
                             </table>
                         </div>
-                        <div class="ctrlBasico" style="width: 30%">
+                      <%--  <div class="ctrlBasico" style="width: 30%">
                             <fieldset>
                                 <legend>
                                     <label>Estatus de la competencia</label>
@@ -315,10 +313,9 @@
                                     </tr>
                                 </table>
                             </fieldset>
-                        </div>
+                        </div>--%>
                     </telerik:RadPageView>
                     <telerik:RadPageView ID="rpvFiltros" runat="server" Height="100%">
-                        <div style="clear: both; height: 10px;"></div>
                         <div style="height: calc(100% - 60px); overflow: auto;">
                             <telerik:RadGrid ID="rgPrograma"
                                 runat="server"
@@ -350,96 +347,93 @@
                         <div class="ctrlBasico">
                             <telerik:RadButton ID="btnEmpleadoFiltro" runat="server" OnClientClicked="OpenSelector" AutoPostBack="false" Text="Seleccionar mediante filtros"></telerik:RadButton>
                         </div>
-                        <%--                        <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnSeleccionarTodos" runat="server" OnClick="btnSeleccionarTodos_Click" AutoPostBack="true" Text="Seleccionar todos"></telerik:RadButton>
-                        </div>--%>
                     </telerik:RadPageView>
-                    <telerik:RadPageView ID="rpAvance" runat="server" Height="100%">
-                        <%--   <div class="divControlDerecha">
-                            <asp:ImageButton ID="Button2" runat="server" Width="20" Height="25" ImageUrl="../Assets/images/excel.png" OnClick="ButtonExcel_Click" AlternateText="Xlsx" />
-                        </div>--%>
-                        <div style="height: calc(100% - 40px);">
-                        <telerik:RadPivotGrid CssClass="PivotAvances"
-                            ID="pgridAvanceProgramaCapacitacion"
-                            runat="server"
-                            Width="100%" Height="100%"
-                            RowTableLayout="Tabular"
-                            ShowFilterHeaderZone="false"
-                            EmptyValue="5"                         
-                            OnCellDataBound="pgridAvanceProgramaCapacitacion_CellDataBound"
-                            ShowColumnHeaderZone="false" AllowFiltering="false" ShowDataHeaderZone="false" ShowRowHeaderZone="true" RenderEmptyStringInDataCells="False">
-                            <TotalsSettings ColumnGrandTotalsPosition="None" RowsSubTotalsPosition="None" GrandTotalsVisibility="None" ColumnsSubTotalsPosition="None" />
-                            <ClientSettings>
+                    <telerik:RadPageView ID="rpvVista2" runat="server" Height="100%">
+                        <div style="height: calc(100% - 50px);">
+                              <telerik:RadSplitter ID="splHelp" runat="server" Width="100%" Height="100%" BorderSize="0">
+        <telerik:RadPane ID="radPanelProgramaCapacitacion" runat="server" Height="100%">
 
-                                <Scrolling AllowVerticalScroll="true" />
-                            </ClientSettings>
-                            <Fields>
-                                <telerik:PivotGridColumnField DataField="NB_EMPLEADO" Caption="Empleado" CellStyle-Font-Size="Small">
-                                    <CellStyle Width="100px" />
-                                </telerik:PivotGridColumnField>
-                                <telerik:PivotGridColumnField DataField="ID_EMPLEADO" Caption="" CellStyle-Width="0" CellStyle-Height="0" CellStyle-Font-Size="0">
-                                </telerik:PivotGridColumnField>
-                                <%--   <telerik:PivotGridColumnField DataField="CL_EMPLEADO" Caption="" CellStyle-Font-Size="Small">
-                                </telerik:PivotGridColumnField>
-                                <telerik:PivotGridColumnField DataField="CL_PUESTO" Caption="Clave Puesto" CellStyle-Font-Size="Small">
-                                </telerik:PivotGridColumnField>
-                                <telerik:PivotGridColumnField DataField="NB_PUESTO" Caption="Puesto" CellStyle-Font-Size="Small">
-                                    <CellStyle Width="100px" />
-                                </telerik:PivotGridColumnField>--%>
-                                <telerik:PivotGridRowField Caption=" " DataField="ID_COMPETENCIA" CellStyle-Width="0" CellStyle-Font-Size="0"></telerik:PivotGridRowField>
-                                <telerik:PivotGridRowField Caption=" " DataField="CL_COLOR" CellStyle-BorderStyle="Solid" CellStyle-BorderWidth="1px" CellStyle-Width="40" CellStyle-Height="60">
-                                    <CellTemplate>
-                                        <table style="height: 100%;">
-                                            <tr>
-                                                <td style="border-width: 0px; padding: 0px;">
-                                                    <div style="height: 100%; border-radius: 5px; background: <%# Container.DataItem.ToString() %>;">&nbsp;</div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </CellTemplate>
-                                </telerik:PivotGridRowField>
-                                <telerik:PivotGridRowField DataField="NB_CATEGORIA" Caption="Categoria" CellStyle-BackColor="White" CellStyle-Width="150">
-                                </telerik:PivotGridRowField>
-                                <telerik:PivotGridRowField DataField="NB_CLASIFICACION" Caption="Clasificación" CellStyle-BackColor="White" CellStyle-Width="150">
-                                    <CellStyle Height="55px" />
-                                </telerik:PivotGridRowField>
-                                <telerik:PivotGridRowField DataField="NB_COMPETENCIA" Caption="Competencia" CellStyle-BackColor="White" CellStyle-Width="200">
-                                </telerik:PivotGridRowField>
-                                <telerik:PivotGridRowField DataField="NB_EVENTOS_RELACIONADOS" Caption="Eventos de capacitación asociados" CellStyle-BackColor="White" CellStyle-Width="250"></telerik:PivotGridRowField>
-                                <telerik:PivotGridAggregateField DataField="NO_COLOR_AVANCE" Aggregate="Average" Caption="Resultado" DataFormatString="{0:N0}" CellStyle-Width="100">
-                                    <CellTemplate>
-                                        <div class="Color<%# (Container as PivotGridDataCell).FormattedValue.Replace(".00","")  %>">
-                                            <div class="triangulo<%# (Container as PivotGridDataCell).FormattedValue.Replace(".00","") %>">
-                                                <br />
-                                            </div>
-                                            <div id="dvPorcentaje" runat="server" style="font-size: small; font-weight: bold; text-align: center;"></div>
-                                            <br />
-                                        </div>
-                                    </CellTemplate>
-                                </telerik:PivotGridAggregateField>
-                            </Fields>
-                        </telerik:RadPivotGrid>
-                            </div>
-                        <div style="height:5px; clear:both;"></div>
-                                                <div class="ctrlBasico">
+                            <telerik:RadGrid ID="rgAvancePrograma"
+                                runat="server"
+                                AllowSorting="false"
+                                Height="100%"
+                                HeaderStyle-Font-Size="Small"
+                                AutoGenerateColumns="true"
+                                HeaderStyle-Font-Bold="true"
+                                OnNeedDataSource="rgAvancePrograma_NeedDataSource"
+                                OnColumnCreated="rgAvancePrograma_ColumnCreated">
+                                <ClientSettings>
+                                    <Scrolling UseStaticHeaders="true" AllowScroll="true" />
+                                    <Selecting AllowRowSelect="true" />
+                                </ClientSettings>
+                                <PagerStyle AlwaysVisible="true" />
+                                <GroupingSettings CaseSensitive="false" />
+                                <MasterTableView AllowFilteringByColumn="false" AllowPaging="false" ShowHeadersWhenNoRecords="true" DataKeyNames="ID_EMPLEADO">
+                                    <Columns>
+                                    </Columns>
+                                </MasterTableView>
+                            </telerik:RadGrid>
+
+
+
+              </telerik:RadPane>
+        <telerik:RadPane ID="rpnOpciones" runat="server" Height="50px" Width="22px" Scrolling="None">
+            <telerik:RadSlidingZone ID="slzOpciones" runat="server" SlideDirection="Left" ExpandedPaneId="AyudaPrograma" ClickToOpen="true" Width="30px">
+                <telerik:RadSlidingPane ID="RSPHelp" runat="server" RenderMode="Mobile" Title="Ayuda" Width="250px" Height="100%">
+                    <p style="margin: 10px; text-align: justify;">
+                        Esta consulta presenta el avance que tiene el Programa de capacitación seleccionado.
+                        <br />
+                        <br />
+                        También podrás observar
+                                en los recuadros en verde la calificación obtenida por cada participante o si no tiene ninguna calificación. Cuando en estos recuadros aparezca un triángulo amarillo será porque
+                                el participante tuvo una asistencia menor al 80% y si el triángulo aparece en rojo entonces su participación fué menor al 60%.
+                    </p>
+                </telerik:RadSlidingPane>
+                                       <telerik:RadSlidingPane ID="rspSemaforo" runat="server" CollapseMode="Forward" EnableResize="false" Width="300px" Title="Código de color" Height="100%">
+                                    <div style="padding: 10px; text-align: justify;">
+                                        <telerik:RadGrid ID="grdCodigoColores"
+                                            runat="server"
+                                            Height="420"
+                                            Width="250"
+                                            AllowSorting="true"
+                                            AllowFilteringByColumn="true"
+                                            HeaderStyle-Font-Bold="true"
+                                            ShowHeader="true"
+                                            OnNeedDataSource="grdCodigoColores_NeedDataSource">
+                                            <ClientSettings>
+                                                <Scrolling AllowScroll="true" UseStaticHeaders="false"></Scrolling>
+                                            </ClientSettings>
+                                            <PagerStyle AlwaysVisible="true" />
+                                            <GroupingSettings CaseSensitive="false" />
+                                            <MasterTableView AutoGenerateColumns="false" AllowPaging="false" AllowFilteringByColumn="false" ShowHeadersWhenNoRecords="true">
+                                                <CommandItemSettings ShowAddNewRecordButton="false" ShowExportToExcelButton="True" ShowExportToCsvButton="false" ShowRefreshButton="false"
+                                                    AddNewRecordText="Insertar" />
+                                                <Columns>
+                                                    <telerik:GridTemplateColumn HeaderText="Color" HeaderStyle-Width="60" AllowFiltering="false">
+                                                        <ItemTemplate>
+                                                            <div style="margin: auto; width: 25px; border: 1px solid gray; background: <%# Eval("COLOR")%>; border-radius: 5px;">&nbsp;&nbsp;</div>
+                                                            &nbsp;
+                                                        </div>
+                                                        </ItemTemplate>
+                                                    </telerik:GridTemplateColumn>
+                                                    <telerik:GridBoundColumn AutoPostBackOnFilter="false" CurrentFilterFunction="Contains" HeaderStyle-Width="260" HeaderText="Descripción" DataField="DESCRIPCION"></telerik:GridBoundColumn>
+                                                </Columns>
+                                            </MasterTableView>
+                                        </telerik:RadGrid>
+                                    </div>
+                                </telerik:RadSlidingPane>
+            </telerik:RadSlidingZone>
+        </telerik:RadPane>
+    </telerik:RadSplitter>
+                        </div>
+                        <div style="height: 5px; clear: both;"></div>
+                        <div class="ctrlBasico">
                             <telerik:RadButton ID="btnExportar" runat="server" Text="Exportar a excel" AutoPostBack="true" OnClick="btnExportar_Click"></telerik:RadButton>
                         </div>
                     </telerik:RadPageView>
                 </telerik:RadMultiPage>
-            </telerik:RadPane>
-            <telerik:RadPane ID="rpnOpciones" runat="server" Height="50px" Width="22px" Scrolling="None">
-                <telerik:RadSlidingZone ID="slzOpciones" runat="server" SlideDirection="Left" ExpandedPaneId="AyudaPrograma" Width="30px">
-                    <telerik:RadSlidingPane ID="RSPHelp" runat="server" RenderMode="Mobile" Title="Ayuda" Width="250px" Height="100%">
-                        <p style="margin: 10px; text-align: justify;">
-                            Esta consulta presenta el avance que tiene el Programa de capacitación seleccionado. Si das clic en los eventos podrás ver el detalle de cada uno. También podrás observar
-                                en los recuadros en verde la calificación obtenida por cada participante o si no tiene ninguna calificación. Cuando en estos recuadros aparezca un triángulo amarillo será porque
-                                el participante tuvo una asistencia menor al 80% y si el triángulo aparece en rojo entonces su participación fué menor al 60%.
-                        </p>
-                    </telerik:RadSlidingPane>
-                </telerik:RadSlidingZone>
-            </telerik:RadPane>
-        </telerik:RadSplitter>
-    </div>
+            </div>
+      
     <telerik:RadWindowManager ID="rwmMensaje" runat="server" EnableShadow="true">
     </telerik:RadWindowManager>
 </asp:Content>

@@ -6,14 +6,13 @@
         <div style="height: 10px;"></div>
         <label style="display: block !important; width: 100% !important; padding: 0 !important; margin-bottom: 20px !important; font-size: 21px !important; line-height: inherit !important; border: 0 !important; border-bottom: 1px solid #C6DB95 !important;">
             Consulta candidato vs puestos</label>
-            <div style="clear: both; height: 10px"></div>
-            <label>Comparativo de persona:</label>
+           <%-- <label>Comparativo de persona:</label>
             <div style="clear: both; height: 10px"></div>
             <div id="lbCandidatosCom" runat="server"></div>
             <div style="clear: both; height: 10px"></div>
             <label>Contra los siguientes puestos:</label>
             <div style="clear: both; height: 10px"></div>
-            <div id="dvPuestos" runat="server"></div>
+            <div id="dvPuestos" runat="server"></div>--%>
 <%--        <div style="clear: both; height: 10px"></div>
         <div style="height: 1000px;">
             <telerik:RadHtmlChart runat="server" ID="rhcCandidatoPuestos" Height="650" Transitions="true" Skin="Silk">

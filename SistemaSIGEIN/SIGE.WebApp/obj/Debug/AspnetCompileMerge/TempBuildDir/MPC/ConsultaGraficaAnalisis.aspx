@@ -6,9 +6,21 @@
         function OpenSelectionEmployeeWindow() {
             prueba();
             if (arrIdTabuladores != "") {
+                var vPropierties = GetWindowProperties();
                 var myUrl = '<%= ResolveClientUrl("../Comunes/SeleccionEmpleado.aspx") %>';
-                openChildDialog(myUrl + "?&IdTabuladores=" + arrIdTabuladores + "&vClTipoSeleccion=MC_TABULADORES", "winSeleccion", "Selección de  empleados");
+                openChildDialog(myUrl + "?&IdTabuladores=" + arrIdTabuladores + "&vClTipoSeleccion=MC_TABULADORES", "winSeleccion", "Selección de  empleados", vPropierties);
             }
+        }
+
+        function GetWindowProperties() {
+            var currentWnd = GetRadWindow();
+            var browserWnd = window;
+            if (currentWnd)
+                browserWnd = currentWnd.BrowserWindow;
+            return {
+                width: browserWnd.innerWidth - 30,
+                height: browserWnd.innerHeight - 20
+            };
         }
 
         function DeleteTabulador() {
@@ -22,8 +34,9 @@
         }
 
         function OpenSelectionWindow() {
+            var vPropierties = GetWindowProperties();
             var myUrl = '<%= ResolveClientUrl("SeleccionTabulador.aspx") %>';
-            openChildDialog(myUrl, "winSeleccion", "Selección de tabuladores");
+            openChildDialog(myUrl, "winSeleccion", "Selección de tabuladores", vPropierties);
         }
 
         function useDataFromChild(pDato) {
@@ -33,6 +46,8 @@
                 switch (pDato[0].clTipoCatalogo) {
                     case "TABULADOR":
                         InsertTabuladores(pDato);
+                        var datos = JSON.stringify({ clTipo: "TABULADOR"});
+                        InsertEmpleado(datos);
                         break;
                     case "EMPLEADO":
                         for (var i = 0; i < pDato.length; ++i) {
@@ -50,6 +65,11 @@
             var ajaxManager = $find('<%= ramConsultas.ClientID%>');
             ajaxManager.ajaxRequest(pDato);
         }
+
+        function InsertTabulador(pDato) {
+            var ajaxManager = $find('<%= ramConsultas.ClientID%>');
+               ajaxManager.ajaxRequest(pDato);
+           }
 
         var arrIdTabuladores;
 
@@ -73,13 +93,15 @@
 
 
         function OpenSelectionTabuladorEmployee() {
+            var vPropierties = GetWindowProperties();
             var myUrl = '<%= ResolveClientUrl("SeleccionTabuladorEmpleado.aspx") %>';
-            openChildDialog(myUrl + "?&IdTabulador=" + <%=vIdTabulador%> + "&vClTipoSeleccion=CONSULTAS", "winSeleccion", "Selección de empleados");
+            openChildDialog(myUrl + "?&IdTabulador=" + <%=vIdTabulador%> + "&vClTipoSeleccion=CONSULTAS", "winSeleccion", "Selección de empleados", vPropierties);
             }
 
         function OpenTabuladorEmpleadoSueldo() {
+            var vPropierties = GetWindowProperties();
             var myUrl = '<%= ResolveClientUrl("SeleccionTabuladorEmpleado.aspx") %>';
-            openChildDialog(myUrl+"?&IdTabulador=" + <%=vIdTabulador%> + "&vClTipoSeleccion=CONSULTAS" + "&CatalogoCl=TABULADOR_SUELDOS", "winSeleccion", "Selección de empleados");
+            openChildDialog(myUrl + "?&IdTabulador=" + <%=vIdTabulador%> + "&vClTipoSeleccion=CONSULTAS" + "&CatalogoCl=TABULADOR_SUELDOS", "winSeleccion", "Selección de empleados", vPropierties);
             }
 
 
@@ -139,8 +161,9 @@
                 }
 
         function OpenSelectionWindow() {
+            var vPropierties = GetWindowProperties();
             var myUrl = '<%= ResolveClientUrl("SeleccionTabulador.aspx") %>';
-            openChildDialog(myUrl, "winSeleccion", "Selección de tabuladores");
+            openChildDialog(myUrl, "winSeleccion", "Selección de tabuladores", vPropierties);
                 }
 
                 function OpenSelectionWindows(pURL, pVentana, pTitle) {
@@ -156,11 +179,13 @@
                 }
 
                 function OpenWindowPeriodos() {
-                    OpenSelectionWindows("/Comunes/SeleccionPeriodosDesempeno.aspx?CL_TIPO=Bono", "winSeleccion", "Seleccion de períodos a comparar");
+                    var vPropierties = GetWindowProperties();
+                    OpenSelectionWindows("/Comunes/SeleccionPeriodosDesempeno.aspx?CL_TIPO=Bono", "winSeleccion", "Seleccion de períodos a comparar", vPropierties);
                 }
 
                 function OpenWindowComparar() {
-                    OpenSelectionWindows("VentanaConsultaBono.aspx", "winBonos", "Comparación de bonos");
+                    var vPropierties = GetWindowProperties();
+                    OpenSelectionWindows("VentanaConsultaBono.aspx", "winBonos", "Comparación de bonos", vPropierties);
                 }
 
                 //function OpenImprimir() {
@@ -176,9 +201,11 @@
                 //}
 
                 function OpenImprimirReporte() {
+                    var vPropierties = GetWindowProperties();
+                    vPropierties.width = 1100;
                     var pIdTabulador = '<%= vIdTabulador %>';
                     var pNivelMercado = '<%= vCuartilComparativo %>';
-                openChildDialog("ReporteGraficaAnalisis.aspx?ID=" + pIdTabulador + "&pNivelMercado=" + pNivelMercado, "winImprimir", "Imprimir consulta");
+                    openChildDialog("ReporteGraficaAnalisis.aspx?ID=" + pIdTabulador + "&pNivelMercado=" + pNivelMercado, "winImprimir", "Imprimir consulta", vPropierties);
             }
 
     </script>
@@ -269,7 +296,7 @@
                         </div>
                         <div style="clear: both;"></div>
                         <div class="ctrlBasico">
-                            <telerik:RadComboBox Filter="Contains" runat="server" ID="cmbCuartilComparacion" Width="190" MarkFirstMatch="true" AutoPostBack="false" EmptyMessage="Seleccione..."
+                            <telerik:RadComboBox Filter="Contains" runat="server" ID="cmbCuartilComparacion" Width="190" MarkFirstMatch="true" AutoPostBack="true" EmptyMessage="Seleccione..." OnSelectedIndexChanged="cmbCuartilComparacion_SelectedIndexChanged"
                                 DropDownWidth="190">
                             </telerik:RadComboBox>
                         </div>
@@ -289,8 +316,8 @@
                         </div>
                         <div style="clear: both;"></div>
                         <div class="ctrlBasico">
-                            <telerik:RadNumericTextBox runat="server" ID="rnComienza" NumberFormat-DecimalDigits="0" Name="rnComienza" Width="140px" MinValue="1" ShowSpinButtons="true" Value="1"></telerik:RadNumericTextBox>
-                            <telerik:RadNumericTextBox runat="server" ID="rnTermina" NumberFormat-DecimalDigits="0" Name="rnTermina" Width="140px" MinValue="1" ShowSpinButtons="true" Value="100"></telerik:RadNumericTextBox>
+                            <telerik:RadNumericTextBox runat="server" ID="rnComienza" NumberFormat-DecimalDigits="0" Name="rnComienza" Width="140px" MinValue="1" ShowSpinButtons="true" Value="1" AutoPostBack="true" OnTextChanged="rnTermina_TextChanged"></telerik:RadNumericTextBox>
+                            <telerik:RadNumericTextBox runat="server" ID="rnTermina" NumberFormat-DecimalDigits="0" Name="rnTermina" Width="140px" MinValue="1" ShowSpinButtons="true" Value="100" AutoPostBack="true" OnTextChanged="rnTermina_TextChanged"></telerik:RadNumericTextBox>
                         </div>
                     </telerik:RadPageView>
                     <telerik:RadPageView ID="rpvDefinicionCriterios" runat="server" Height="100%">
@@ -364,9 +391,9 @@
                 </telerik:RadMultiPage>
             </telerik:RadPane>
             <telerik:RadPane ID="rpAyuda" runat="server" Width="20px" Height="90%">
-                <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" Height="100%" ExpandedPaneId="rsConsultas" Width="20px" DockedPaneId="rsbConsultas">
+                <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" Height="100%" ExpandedPaneId="rsConsultas" Width="20px" DockedPaneId="rsbConsultas" ClickToOpen="true">
                     <telerik:RadSlidingPane ID="rsbAyuda" runat="server" CollapseMode="Forward" EnableResize="false" Width="325px" Title="Ayuda" Height="100%">
-                        <div id="divTabuladorMaestro" runat="server">
+                        <div id="divTabuladorMaestro" runat="server" style="text-align:justify; padding:10px;">
                             <p>
                                 Esta consulta te dará resultados gráficos según los datos que elijas a 																			
                              continuación.																			

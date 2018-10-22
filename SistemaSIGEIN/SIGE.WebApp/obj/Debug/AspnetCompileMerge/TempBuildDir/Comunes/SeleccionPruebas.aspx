@@ -22,9 +22,11 @@
                         idPrueba: selectedItem.getDataKeyValue("ID_PRUEBA"),
                         clTipoCatalogo: "PRUEBAS"
                     };
-                    vPruebas.push(vPrueba);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vPruebas.length;
+                    if (!existeElemento(vPrueba)) {
+                        vPruebas.push(vPrueba);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vPruebas.length;
+                    }
                 }
                 return true;
             }
@@ -38,7 +40,16 @@
             }
 
             return false;
+        }
 
+
+        function existeElemento(pPrueba) {
+            for (var i = 0; i < vPruebas.length; i++) {
+                var vValue = vPruebas[i];
+                if (vValue.idPrueba == pPrueba.idPrueba)
+                    return true;
+            }
+            return false;
         }
 
         function cancelarSeleccion() {

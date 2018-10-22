@@ -34,7 +34,7 @@
 
                 var combo = $find('<%=cmbEmpresas.ClientID %>');
                 var vIdEmpresa = combo.get_selectedItem().get_value();
-                if (vIdEmpresa != null && vValue != "")
+                if (vIdEmpresa != null && vIdEmpresa != "")
                     vUrl = vUrl + "&IdEmpresa=" + vIdEmpresa;
 
                 var lbArea = $find("<%= rlbArea.ClientID %>");
@@ -234,9 +234,8 @@
             <telerik:RadPane ID="RadPane2" runat="server">
                 <div style="width: 700px;">
                     <div class="ctrlBasico">
-
                         <label name="lblIdPuesto">Generar organigrama a partir de la plaza:</label>
-                        <div style="clear: both;"></div>
+                          <div style="clear: both; height: 10px;"></div>
                         <div class="ctrlBasico">
                             <telerik:RadListBox ID="lstPlaza" Width="300" runat="server" OnClientItemDoubleClicking="OpenPlazasSelectionWindow">
                                 <Items>
@@ -259,7 +258,7 @@
                     <telerik:RadClientExportManager runat="server" ID="RadClientExportManager1">
                     </telerik:RadClientExportManager>
                     </div>--%>
-                    <div style="clear: both; height: 20px;"></div>
+                    <div style="clear: both;"></div>
                     <label name="lblFiltros">Por favor indique por cuál de los siguientes criterios desea filtrar (seleccione solo uno):</label>
                     <div style="clear: both; height: 10px;"></div>
                     <div class="ctrlBasico">
@@ -291,9 +290,9 @@
                             <telerik:RadButton ID="RadButton4" runat="server" Text="X" OnClientClicked="CleanCamposSelection" AutoPostBack="false"></telerik:RadButton>
                         </div>
                     </div>
-                    <div style="clear: both; height: 20px;"></div>
-                    <label name="lblNiveles">Opcionalmente indique cuántos niveles desea mostrar a partir del puesto superior</label>
                     <div style="clear: both;"></div>
+                    <label name="lblNiveles">Opcionalmente indique cuántos niveles desea mostrar a partir del puesto superior</label>
+                    <div style="clear: both; height:10px;"></div>
                     <div class="ctrlBasico">
                         <div class="divControlIzquierda" style="width: 200px;">
                             Número de niveles:
@@ -302,8 +301,8 @@
                             <telerik:RadNumericTextBox ID="txtNiveles" runat="server" MaxLength="2" MaxValue="99" EmptyMessage="99" MinValue="1" NumberFormat-DecimalDigits="0" Width="50"></telerik:RadNumericTextBox>
                         </div>
                     </div>
-                    <div style="clear: both; height: 20px;"></div>
-                    <div class="divControlDerecha">
+                    <div style="clear: both; height: 10px;"></div>
+                    <div class="ctrlBasico">
                         <telerik:RadButton ID="btnOrganigrama" runat="server" AutoPostBack="false" Text="Generar organigrama" OnClientClicked="OpenOrganigrama"></telerik:RadButton>
                     </div>
                 </div>
@@ -332,11 +331,11 @@
                 <%--</div>--%>
             </telerik:RadPane>
             <telerik:RadPane ID="rpAyuda" runat="server" Scrolling="None" Width="22px" Height="50px">
-                <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" ExpandedPaneId="rspAyuda" Width="22px">
+                <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" ClickToOpen="true" ExpandedPaneId="rspAyuda" Width="22px">
                     <telerik:RadSlidingPane ID="RadSlidingPane1" runat="server" Title="Ayuda" Width="270px" RenderMode="Mobile" Height="100%">
                         <div style="display: block; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
                             <p>
-                                Aquí podrás refinar tu búsqueda para la generación del organigrama.
+                                Aquí podrás definir tu búsqueda para la generación del organigrama.
                                 <br />
                                 En caso de ingresar criterios de búsqueda, éstos serán utilizados para acotar el diagrama. 
                                <br />

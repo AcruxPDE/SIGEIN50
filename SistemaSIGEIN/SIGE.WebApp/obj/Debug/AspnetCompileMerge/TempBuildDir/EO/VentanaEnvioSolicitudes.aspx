@@ -58,15 +58,14 @@
         <telerik:RadSplitter runat="server" ID="rsAyuda" Width="100%" Height="100%" BorderSize="0">
             <telerik:RadPane ID="rpDatos" runat="server">
 
-                <div style="clear: both; height: 10px;"></div>
-
                 <telerik:RadTabStrip ID="rtsEnvioSolicitudes" runat="server" SelectedIndex="0" MultiPageID="rmpSolicitudes">
                     <Tabs>
                         <telerik:RadTab Text="Contexto"></telerik:RadTab>
-                        <telerik:RadTab Text="Envío de solicitudes"></telerik:RadTab>
+                        <telerik:RadTab Text="Enviar evaluaciones"></telerik:RadTab>
                     </Tabs>
                 </telerik:RadTabStrip>
                 <div style="height: calc(100% - 100px); width: 100%;">
+              <div style="clear: both; height: 10px;"></div>
                     <telerik:RadMultiPage ID="rmpSolicitudes" runat="server" SelectedIndex="0" Height="100%">
 
                         <telerik:RadPageView ID="RadPageView1" runat="server" Width="100%">
@@ -140,7 +139,6 @@
                             </div>
                         </telerik:RadPageView>
                         <telerik:RadPageView ID="rpvEnvio" runat="server">
-                            <div style="clear: both; height: 5px;"></div>
                             <div style="height: calc(100% - 30px); width: 100%;">
                                 <telerik:RadGrid runat="server" ID="rgCorreos" HeaderStyle-Font-Bold="true" AutoGenerateColumns="false" OnItemDataBound="rgCorreos_ItemDataBound" OnNeedDataSource="rgCorreos_NeedDataSource" Height="100%" Width="100%" AllowSorting="true" AllowMultiRowSelection="true">
                                     <ClientSettings EnablePostBackOnRowClick="false">
@@ -153,7 +151,7 @@
                                             <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30px"></telerik:GridClientSelectColumn>
                                             <telerik:GridBoundColumn UniqueName="CL_EVALUADOR" DataField="CL_EVALUADOR" HeaderText="No. de empleado" HeaderStyle-Width="100" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="NB_EVALUADOR" DataField="NB_EVALUADOR" HeaderText="Nombre completo" HeaderStyle-Width="300" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                            <telerik:GridTemplateColumn UniqueName="CL_CORREO_ELECTRONICO" DataField="CL_CORREO_ELECTRONICO" HeaderText="Correo electónico" HeaderStyle-Width="300" HeaderStyle-Font-Bold="true">
+                                            <telerik:GridTemplateColumn UniqueName="CL_CORREO_ELECTRONICO" DataField="CL_CORREO_ELECTRONICO" HeaderText="Correo electrónico" HeaderStyle-Width="300" HeaderStyle-Font-Bold="true">
                                                 <ItemTemplate>
                                                     <telerik:RadTextBox runat="server" ID="txtCorreo" Width="100%" Text='<%# Bind("CL_CORREO_ELECTRONICO") %>' AutoPostBack="false"></telerik:RadTextBox>
                                                 </ItemTemplate>
@@ -187,9 +185,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <telerik:RadButton runat="server" ID="btnEnviar" Text="Enviar a seleccionados" OnClick="btnEnviar_Click"></telerik:RadButton>
+                                <div class="ctrlBasico">
+                                <telerik:RadButton runat="server" ID="btnEnviar" Text="Enviar" OnClick="btnEnviar_Click"></telerik:RadButton>
+                                    </div>
+                             <%--      <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" ID="btnEnviarTodos" Text="Enviar a todos" OnClick="btnEnviarTodos_Click"></telerik:RadButton>
+                                                 </div>--%>
+                                   <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" ID="btnCancelar" Text="Cancelar" AutoPostBack="false" OnClientClicked="closeWindow"></telerik:RadButton>
+                                       </div>
                             </div>
                         </telerik:RadPageView>
 

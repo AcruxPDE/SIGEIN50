@@ -9,7 +9,7 @@
                     this.click();
                 }
             });
-            radconfirm("Este proceso borrará las respuestas de todas las pruebas de la batería ¿Desea continuar?", callBackFunction, 400, 180, null, "Eliminar respuestas batería");
+            radconfirm("Este proceso borrará las respuestas de todas las pruebas de la batería ¿Deseas continuar?", callBackFunction, 400, 180, null, "Eliminar respuestas batería");
             args.set_cancel(true);
         }
 
@@ -19,7 +19,7 @@
                     this.click();
                 }
             });
-            radconfirm("Este proceso borrará las respuestas de la prueba seleccionada ¿Desea continuar?", callBackFunction, 400, 180, null, "Eliminar respuestas prueba");
+            radconfirm("Este proceso borrará las respuestas de la prueba seleccionada ¿Deseas continuar?", callBackFunction, 400, 180, null, "Eliminar respuestas prueba");
             args.set_cancel(true);
         }
 
@@ -31,7 +31,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
-      <div style="height: calc(100% - 50px);">
+      <div style="height: calc(100% - 45px);">
         <telerik:RadSplitter ID="rsRevisarPruebas" Width="100%" Height="100%" BorderSize="0" runat="server">
             <telerik:RadPane ID="rpBotones" runat="server" Width="200px" Height="100%">
                 <telerik:RadTabStrip ID="tbRevisarPruebas" runat="server" Align="Right" SelectedIndex="0" Width="100%" MultiPageID="mpgRevisarPruebas" Orientation="VerticalLeft" CssClass="divControlDerecha">
@@ -54,52 +54,52 @@
                     </Tabs>
                 </telerik:RadTabStrip>
             </telerik:RadPane>
-            <telerik:RadSplitBar ID="rsbRevisarPruebas" runat="server" Width="100%" CollapseMode="Forward" EnableResize="false"></telerik:RadSplitBar>
-            <telerik:RadPane ID="rpRevisarPruebas" runat="server">
+  <%--          <telerik:RadSplitBar ID="rsbRevisarPruebas" runat="server" Width="100%" CollapseMode="Forward" EnableResize="false"></telerik:RadSplitBar>--%>
+            <telerik:RadPane ID="rpRevisarPruebas" runat="server" Height="100%">
                 <telerik:RadMultiPage ID="mpgRevisarPruebas" runat="server" SelectedIndex="0" Height="100%">
-                    <telerik:RadPageView ID="rpvLaboralI" runat="server">
+                    <telerik:RadPageView ID="rpvLaboralI" runat="server" Height="100%">
                         <iframe id="ifLaboralI" runat="server" frameborder="1"></iframe>
                     </telerik:RadPageView>
-                     <telerik:RadPageView ID="rpvInteresesPersonales" runat="server">
+                     <telerik:RadPageView ID="rpvInteresesPersonales" runat="server" Height="100%">
                         <iframe id="ifInteresesPersonales" runat="server" frameborder="1"></iframe>
                     </telerik:RadPageView>
-                     <telerik:RadPageView ID="rpvEstilo" runat="server">
+                     <telerik:RadPageView ID="rpvEstilo" runat="server" Height="100%">
                         <iframe id="ifEstilo" runat="server" frameborder="1"></iframe>
                     </telerik:RadPageView>
-                     <telerik:RadPageView ID="rpvMentalI" runat="server">
+                     <telerik:RadPageView ID="rpvMentalI" runat="server" Height="100%">
                         <iframe id="ifMentalI" runat="server" frameborder="1"></iframe>
                     </telerik:RadPageView>
-                     <telerik:RadPageView ID="rpvMentalII" runat="server">
+                     <telerik:RadPageView ID="rpvMentalII" runat="server" Height="100%">
                         <iframe id="ifMentalII" runat="server" frameborder="1"></iframe>
                     </telerik:RadPageView>
-                     <telerik:RadPageView ID="rpvLaboralII" runat="server">
+                     <telerik:RadPageView ID="rpvLaboralII" runat="server" Height="100%">
                         <iframe id="ifLaboralII" runat="server" frameborder="1"></iframe>
                     </telerik:RadPageView>
-                     <telerik:RadPageView ID="rpvAdáptacion" runat="server">
+                     <telerik:RadPageView ID="rpvAdáptacion" runat="server" Height="100%">
                         <iframe id="ifAdaptacion" runat="server" frameborder="1"></iframe>
                     </telerik:RadPageView>
-                     <telerik:RadPageView ID="rpvTiva" runat="server">
+                     <telerik:RadPageView ID="rpvTiva" runat="server" Height="100%">
                         <iframe id="ifTiva" runat="server" frameborder="1"></iframe>
                     </telerik:RadPageView>
-                     <telerik:RadPageView ID="rpvOrtografiaI" runat="server">
+                     <telerik:RadPageView ID="rpvOrtografiaI" runat="server" Height="100%">
                         <iframe id="ifOrtografiaI" runat="server" frameborder="1"></iframe>
                     </telerik:RadPageView>
-                     <telerik:RadPageView ID="rpvOrtgrafiaII" runat="server">
+                     <telerik:RadPageView ID="rpvOrtgrafiaII" runat="server" Height="100%">
                         <iframe id="ifOrtografiaII" runat="server" frameborder="1"></iframe>
                     </telerik:RadPageView>
-                     <telerik:RadPageView ID="rpvOrtografiaIII" runat="server">
+                     <telerik:RadPageView ID="rpvOrtografiaIII" runat="server" Height="100%">
                         <iframe id="ifOrtografiaIII" runat="server" frameborder="1"></iframe>
                     </telerik:RadPageView>
-                     <telerik:RadPageView ID="rpvTecnica" runat="server">
+                     <telerik:RadPageView ID="rpvTecnica" runat="server" Height="100%">
                         <iframe id="ifTecnica" runat="server" frameborder="1"></iframe>
                     </telerik:RadPageView>
-                     <telerik:RadPageView ID="rpvRedaccion" runat="server">
+                     <telerik:RadPageView ID="rpvRedaccion" runat="server" Height="100%">
                         <iframe id="ifRedaccion" runat="server" frameborder="1"></iframe>
                     </telerik:RadPageView>
-                     <telerik:RadPageView ID="rpvIngles" runat="server">
+                     <telerik:RadPageView ID="rpvIngles" runat="server" Height="100%">
                         <iframe id="ifIngles" runat="server" frameborder="1"></iframe>
                     </telerik:RadPageView>
-                     <telerik:RadPageView ID="rpvFactoresAdicionales" runat="server">
+                     <telerik:RadPageView ID="rpvFactoresAdicionales" runat="server" Height="100%">
                         <iframe id="ifFactoresAdicionales" runat="server" frameborder="1"></iframe>
                     </telerik:RadPageView>
                 </telerik:RadMultiPage>
@@ -108,10 +108,10 @@
     </div>
      <div style="clear: both;"></div>
     <div class="ctrlBasico">            
-         <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar batería" AutoPostBack="true" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminar_Click" Visible="true"></telerik:RadButton>
+         <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar batería" AutoPostBack="true" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminar_Click" Visible="false"></telerik:RadButton>
     </div>
       <div class="divControlDerecha">            
-         <telerik:RadButton ID="btnEliminarRespuesta" runat="server" Text="Eliminar" AutoPostBack="true" OnClientClicking="ConfirmarEliminarPrueba" OnClick="btnEliminarRespuesta_Click" Visible="true"></telerik:RadButton>
+         <telerik:RadButton ID="btnEliminarRespuesta" runat="server" Text="Eliminar" AutoPostBack="true" OnClientClicking="ConfirmarEliminarPrueba" OnClick="btnEliminarRespuesta_Click" Visible="false"></telerik:RadButton>
     </div>
       <telerik:RadWindowManager ID="rwMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>
 </asp:Content>

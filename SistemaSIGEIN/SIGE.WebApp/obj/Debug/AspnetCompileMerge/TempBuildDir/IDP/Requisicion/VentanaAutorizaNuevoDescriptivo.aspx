@@ -19,7 +19,8 @@
         <script type="text/javascript">
 
             function OnCloseWindow() {
-                window.location = "~/Logout.aspx"
+                var vUrl = '<%= ResolveClientUrl("~/Logout.aspx") %>';
+                window.location = vUrl;
             }
 
             function closeWindow() {

@@ -17,11 +17,23 @@
                 GetRadWindow().close();
             }
 
+            function GetWindowProperties() {
+                var currentWnd = GetRadWindow();
+                var browserWnd = window;
+                if (currentWnd)
+                    browserWnd = currentWnd.BrowserWindow;
+                return {
+                    width: browserWnd.innerWidth - 30,
+                    height: browserWnd.innerHeight - 20
+                };
+            }
+
             function winOpenTabuladores() {
+                var vPropierties = GetWindowProperties();
                 var vIdTabulador = '<%= vIdTabulador %>';
                 var myUrl = '<%= ResolveClientUrl("SeleccionTabulador.aspx") %>';
                 if (vIdTabulador != null)
-                    openChildDialog(myUrl + "?pFgMultSeleccion=0&pIdTabulador=" + vIdTabulador, "winSeleccion", "Selección de tabulador a copiar");
+                    openChildDialog(myUrl + "?pFgMultSeleccion=0&pIdTabulador=" + vIdTabulador, "winSeleccion", "Selección de tabulador a copiar", vPropierties);
             }
 
             function useDataFromChild(pDato) {
@@ -142,9 +154,9 @@
                         </div>
                     </telerik:RadPane>
                     <telerik:RadPane ID="rpAyudaMercadoSalarial" runat="server" Scrolling="None" Width="30px">
-                        <telerik:RadSlidingZone ID="rszAyudaMercadoSalarial" runat="server" SlideDirection="Left" ExpandedPaneId="rsMercadoSalarial" Width="30px">
+                        <telerik:RadSlidingZone ID="rszAyudaMercadoSalarial" runat="server" SlideDirection="Left" ExpandedPaneId="rsMercadoSalarial" Width="30px" ClickToOpen="true">
                             <telerik:RadSlidingPane ID="rspAyudaMercadoSalarial" runat="server" Title="Ayuda" Width="240px" RenderMode="Mobile" Height="100%">
-                                <div style="padding: 20px; text-align: justify;">
+                                <div style="padding: 10px; text-align: justify;">
                                     <p>
                                         Registra en la tabla el mínimo y el máximo de sueldo por puesto, de acuerdo a la información del mercado salarial de tu localidad y giro.
                                         <br />

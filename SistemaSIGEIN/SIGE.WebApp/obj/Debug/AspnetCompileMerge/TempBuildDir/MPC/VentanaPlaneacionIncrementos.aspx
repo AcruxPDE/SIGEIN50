@@ -209,7 +209,7 @@
                     </telerik:RadDatePicker>
                 </div>
                 <div style="clear: both"></div>--%>
-                        <div class="ctrlBasico">
+     <%--                   <div class="ctrlBasico">
                             <label id="lblSemaforoVerde"
                                 name="lblSemaforoVerde"
                                 runat="server">
@@ -232,12 +232,12 @@
                                 MaxLength="800"
                                 Enabled="false">
                             </telerik:RadTextBox>
-                        </div>
+                        </div>--%>
                         <div class="ctrlBasico">
                             <label id="lblCuartilIncremento"
                                 name="lblCuartilIncremento"
                                 runat="server">
-                                Cuartil del tabulador maestro para incrementos de sueldo:
+                                Nivel de mercado:
                             </label>
                         </div>
                         <div class="ctrlBasico">
@@ -330,8 +330,8 @@
                         </div>
                     </telerik:RadPane>
                     <telerik:RadPane ID="rpAyudaDefinicionCriterios" runat="server" Scrolling="None" Width="22px">
-                        <telerik:RadSlidingZone ID="rszAyudaDefinicionCriterios" runat="server" SlideDirection="Left" ExpandedPaneId="rsDefinicionCriterios" Width="22px">
-                            <telerik:RadSlidingPane ID="rspDefinicionCriterios" runat="server" Title="Simbología" Width="450px" RenderMode="Mobile" Height="100%">
+                        <telerik:RadSlidingZone ID="rszAyudaDefinicionCriterios" runat="server" SlideDirection="Left" ClickToOpen="true" ExpandedPaneId="rsDefinicionCriterios" Width="22px">
+                            <telerik:RadSlidingPane ID="rspDefinicionCriterios" runat="server" Title="Código de color" Width="450px" RenderMode="Mobile" Height="100%">
                                 <div style="padding: 10px; text-align: justify;">
                                     <telerik:RadGrid ID="grdCodigoColores"
                                         runat="server"
@@ -451,9 +451,9 @@
                     </div>
                 </div>
                 <div style="clear: both; height: 5px;"></div>
-                <div class="ctrlBasico">
+    <%--            <div class="ctrlBasico">
                     <telerik:RadButton ID="btnSeleccionar" AutoPostBack="false" runat="server" OnClientClicked="OpenEmployeeSelectionWindow" Text="Seleccionar empleados" Width="170"></telerik:RadButton>
-                </div>
+                </div>--%>
                 <%--<div class="ctrlBasico">
         <telerik:RadButton ID="btnRecalcular" AutoPostBack="true" runat="server" OnClick="btnRecalcular_Click" Text="Recalcular" Width="150"></telerik:RadButton>
     </div>--%>

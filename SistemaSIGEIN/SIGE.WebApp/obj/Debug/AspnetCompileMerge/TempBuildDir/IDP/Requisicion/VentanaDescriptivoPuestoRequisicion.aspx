@@ -12,6 +12,12 @@
         .rslItemsWrapper {
             z-index: 10 !important;
         }
+
+       .ruBrowse
+       {
+           
+           width: 150px !important;
+       }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
@@ -136,6 +142,12 @@
                     <telerik:AjaxUpdatedControl ControlID="radListacompetenciasEspecificas" LoadingPanelID="RadAjaxLoadingPanel2" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="radBtnAgregarExperiencia">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="radListaexperiencia" LoadingPanelID="RadAjaxLoadingPanel2" />
+                    <telerik:AjaxUpdatedControl ControlID="divContenido" LoadingPanelID="RadAjaxLoadingPanel2" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnEliminar">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="rgInterrelacionados" LoadingPanelID="RadAjaxLoadingPanel2" UpdatePanelHeight="100%" />
@@ -151,42 +163,9 @@
                     <telerik:AjaxUpdatedControl ControlID="rgAlternativa" LoadingPanelID="RadAjaxLoadingPanel2" UpdatePanelHeight="100%" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
-            <%--        <telerik:AjaxSetting AjaxControlID="radBtnAgregarExperiencia">
-                <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="radListaexperiencia" LoadingPanelID="RadAjaxLoadingPanel2" />
-                    <telerik:AjaxUpdatedControl ControlID="divContenido" LoadingPanelID="RadAjaxLoadingPanel2" />
-                </UpdatedControls>
-            </telerik:AjaxSetting>
-            <telerik:AjaxSetting AjaxControlID="radBtnAgregarPuestoSubordinado">
-                <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="radListaPuestosSubordinado" LoadingPanelID="RadAjaxLoadingPanel2" />
-                </UpdatedControls>
-            </telerik:AjaxSetting>
-            <telerik:AjaxSetting AjaxControlID="btnInter">
-                <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="radListaPuestosInterrelacionados" LoadingPanelID="RadAjaxLoadingPanel2" />
-                </UpdatedControls>
-            </telerik:AjaxSetting>
-            <telerik:AjaxSetting AjaxControlID="btnRutaAlter">
-                <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="radListaAlternativa" LoadingPanelID="RadAjaxLoadingPanel2" />
-                </UpdatedControls>
-            </telerik:AjaxSetting>
-            <telerik:AjaxSetting AjaxControlID="btnLateral">
-                <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="radListaLateral" LoadingPanelID="RadAjaxLoadingPanel2" />
-                </UpdatedControls>
-            </telerik:AjaxSetting>--%>
+
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <%--    
-            <telerik:AjaxSetting AjaxControlID="btnGuardar">
-                <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="lstJefeInmediato" LoadingPanelID="RadAjaxLoadingPanel2" />
-                    <telerik:AjaxUpdatedControl ControlID="txtPruebaXml" LoadingPanelID="RadAjaxLoadingPanel2" />
-                </UpdatedControls>
-            </telerik:AjaxSetting>
-    --%>
 
     <telerik:RadCodeBlock runat="server" ID="radCodeblock">
         <script type="text/javascript">
@@ -199,7 +178,8 @@
             }
 
             function OnCloseWindow() {
-                window.location = "/Logout.aspx"
+                var vUrl = '<%= ResolveClientUrl("~/Logout.aspx") %>';
+                window.location = vUrl;
             }
 
             //FUNCION AGREGAR UN POSGRADO 
@@ -210,6 +190,7 @@
                     args.set_cancel(true);
                 }
             }
+
 
             //FUNCION AGREGAR UN CARRERA PROFESIONAL 
             function validarCarreraProfesional(sender, args) {
@@ -341,6 +322,14 @@
                 openChildDialog("../Comunes/SeleccionPuesto.aspx?mulSel=1&CatalogoCl=LATERAL", "winSeleccionPuestos", "Selección de puestos laterales", windowProperties);
             }
 
+
+            function SetGenericFunctionWindowSettings(sender, args) {
+                var oWnd = $find("<%=winFuncionesGenericas.ClientID%>");
+                oWnd.SetWidth(document.documentElement.clientWidth - 20);
+                oWnd.SetHeight(document.documentElement.clientHeight - 20);
+                oWnd.show();
+            }
+
             //RECEPCION DE LA INFORMACION
             function useDataFromChild(pDato) {
                 if (pDato != null) {
@@ -355,20 +344,6 @@
                             InsertarDato(EncapsularDatos("ALTERNATIVO", pDato));
                     }
 
-                    //    var vPuestoSeleccionado = pPuestos[0];
-
-                    //    var list = $find("<=lstJefeInmediato.ClientID %>");
-                    //    list.trackChanges();
-
-                    //    var items = list.get_items();
-                    //    items.clear();
-
-                    //    var item = new Telerik.Web.UI.RadListBoxItem();
-                    //    item.set_text(vPuestoSeleccionado.nbPuesto);
-                    //    item.set_value(vPuestoSeleccionado.idPuesto);
-                    //    items.add(item);
-
-                    //    list.commitChanges();
                 }
             }
 
@@ -382,6 +357,7 @@
             function EncapsularDatos(pClTipoDato, pLstDatos) {
                 return JSON.stringify({ clTipo: pClTipoDato, oSeleccion: pLstDatos });
             }
+
 
             function fixEditor(sender, args) {
                 $find("<%= txtDetalleFuncion.ClientID %>").onParentNodeChanged();
@@ -433,15 +409,21 @@
                             ShowIndicadorDesempenoForm(sender, args, selectedItem, "Selecciona un indicador.");
                             break;
                         }
+                        else
+
+                            radalert("Selecciona un indicador.", 400, 150);
                     }
+                    else
+                        radalert("Selecciona un indicador.", 400, 150);
                 }
             }
+
 
             function ShowIndicadorDesempenoInsertForm(sender, args) {
                 var masterTable = $find("<%= grdFuncionCompetencias.ClientID %>").get_masterTableView();
 
                 var selectedItem = masterTable.get_selectedItems()[0];
-                ShowIndicadorDesempenoForm(sender, args, selectedItem, "Selecciona una competencia.");
+                ShowIndicadorDesempenoForm(sender, args, selectedItem, "Selecciona la competencia a la que se le agregará el indicador.")
             }
 
             function ShowIndicadorDesempenoForm(sender, args, selectedItem, alertMessage) {
@@ -460,7 +442,7 @@
 
             function confirmarEliminar(sender, args, masterTable, isMultiSelection) {
                 var selectedItems = masterTable.get_selectedItems();
-                if (selectedItems != undefined) {
+                if (selectedItems != undefined && selectedItems.length > 0) {
                     var length = 1;
 
                     if (isMultiSelection)
@@ -505,6 +487,17 @@
                 gNbPuesto = pNbPuesto;
                 gEstatus = pEstatus;
                 generateDataForParent();
+
+
+
+
+
+
+
+
+
+
+
             }
 
             function generateDataForParent() {
@@ -515,20 +508,25 @@
                     nbPuesto: gNbPuesto,
                     estatus: gEstatus,
                     clTipoCatalogo: "PUESTO_REQUISICION"
+
+
+
+
+
+
+
+
+
                 };
                 vPuestos.push(vPuesto);
                 sendDataToParent(vPuestos);
             }
-            //  function Remove() {
-            //    var lista = '< vListaExperiencia%>';
-            //  var list = $find("< lstExperiencia.ClientID %>");
-            //var items = list.get_items();
-            // var item = list.get_selectedItem();
-            //list.trackChanges();
-            //lista.remove(items.idPuesto);
-            //    list.commitChanges();
 
-            //}
+
+
+
+
+
         </script>
     </telerik:RadCodeBlock>
 
@@ -564,7 +562,7 @@
                         <label id="lblNombreCorto" name="lblNombreCorto">* Clave:</label>
                     </div>
                     <div class="divControlDerecha">
-                        <telerik:RadTextBox runat="server" ID="txtNombreCorto" Width="310px"></telerik:RadTextBox>
+  <telerik:RadTextBox runat="server" ID="txtNombreCorto" Width="310px" MaxLength="20" ToolTip="La clave del puesto es única, no puede repetirse y solo debes registrar letras, números y guiones bajos, y preferentemente en mayúsculas. (Ej. PR_004, TS001_22). Puedes registrar hasta 20 caracteres."></telerik:RadTextBox>
                     </div>
                 </div>
                 <div class="ctrlBasico">
@@ -572,7 +570,7 @@
                         <label id="lbldescriptivopuesto">* Nombre:</label>
                     </div>
                     <div class="divControlDerecha">
-                        <telerik:RadTextBox runat="server" ID="txtDescripcionPuesto" Width="310px"></telerik:RadTextBox>
+                        <telerik:RadTextBox runat="server" ID="txtDescripcionPuesto" Width="310px" MaxLength="100"></telerik:RadTextBox>
                     </div>
                 </div>
                 <div class="ctrlBasico">
@@ -588,7 +586,6 @@
                     <Tabs>
                         <telerik:RadTab Text="Perfil de ingreso"></telerik:RadTab>
                         <telerik:RadTab Text="Organigrama"></telerik:RadTab>
-                        <telerik:RadTab Text="Responsabilidades"></telerik:RadTab>
                         <telerik:RadTab Text="Funciones genéricas"></telerik:RadTab>
                         <telerik:RadTab Text="Competencias genéricas"></telerik:RadTab>
                         <telerik:RadTab Text="Campos extra"></telerik:RadTab>
@@ -605,7 +602,7 @@
                                     <span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>
                                     <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;
                                     <label id="lblRangoedad" name="lblRangoedad">
-                                        * Rango de edad:</label>&nbsp;
+                                        Rango de edad:</label>&nbsp;
                                     <telerik:RadNumericTextBox ID="txtRangoEdadMin" runat="server" Width="50" MinValue="15" MaxValue="99" Value="18" NumberFormat-DecimalDigits="0"></telerik:RadNumericTextBox>
                                     &nbsp;
                                     <label id="lblRangoI" name="lblRangoI">a</label>&nbsp;
@@ -616,7 +613,7 @@
                                     <div class="divControlIzquierda">
                                         <span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>
                                         <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;
-                                        <label id="lblGenero" name="lblGenero">* Género: </label>
+                                        <label id="lblGenero" name="lblGenero">Género: </label>
                                     </div>
                                     <div class="divControlDerecha">
                                         <telerik:RadComboBox runat="server" AutoPostBack="false" MarkFirstMatch="true" EmptyMessage="Selecciona" ID="cmbGenero"></telerik:RadComboBox>
@@ -626,7 +623,7 @@
                                     <div class="divControlIzquierda" style="width: 150px">
                                         <span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>
                                         <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;
-                                        <label id="lblEstadoCivil">* Estado civil: </label>
+                                        <label id="lblEstadoCivil">Estado civil: </label>
                                     </div>
                                     <div class="divControlDerecha">
                                         <telerik:RadComboBox runat="server" ID="cmbEdoCivil" MarkFirstMatch="true" AutoPostBack="false" EmptyMessage="Selecciona"></telerik:RadComboBox>
@@ -652,7 +649,7 @@
                                         </div>
                                     </div>
                                     <div style="padding: 5px">
-                                        <div class="ctrlBasico" style="text-align: right; width: 100%;">
+                                        <div class="ctrlBasico" style="text-align: left; width: 100%;">
                                             <telerik:RadListBox runat="server" ID="lstPostgrados" Width="100%" AllowDelete="true" ButtonSettings-AreaWidth="35px"></telerik:RadListBox>
                                         </div>
                                     </div>
@@ -670,7 +667,7 @@
                                         </div>
                                     </div>
                                     <div style="padding: 5px">
-                                        <div class="ctrlBasico" style="text-align: right; width: 100%;">
+                                        <div class="ctrlBasico" style="text-align: left; width: 100%;">
                                             <telerik:RadListBox runat="server" ID="lstCarreraprof" Width="100%" AllowDelete="true" ButtonSettings-AreaWidth="35px"></telerik:RadListBox>
                                         </div>
                                     </div>
@@ -688,7 +685,7 @@
                                         </div>
                                     </div>
                                     <div style="padding: 5px">
-                                        <div class="ctrlBasico" style="text-align: right; width: 100%;">
+                                        <div class="ctrlBasico" style="text-align: left; width: 100%;">
                                             <telerik:RadListBox runat="server" ID="lstCarreraTec" Width="100%" AllowDelete="true" ButtonSettings-AreaWidth="35px"></telerik:RadListBox>
                                         </div>
                                     </div>
@@ -703,37 +700,24 @@
                             </div>
                             <div class="ctrlBasico">
                                 <div class="BorderRadioComponenteHTML" style="width: 520px; float: left;">
-                                    <div class="divBarraTitulo">
-                                        <label style="float: left">Competencias específicas necesarias</label>
+                                                                       <div class="divBarraTitulo" title="Considerar que son experiencia y competencias necesarias para ingresar al puesto. Ejemplo: manejo del idioma inglés y experiencia en la traducción de escritos sencillos inglés-español, ó el manejo de algún sistema. Especificar poncentaje de conocimiento.">
+                                        <label style="float: left" title="Considerar que son experiencia y competencias necesarias para ingresar al puesto. Ejemplo: manejo del idioma inglés y experiencia en la traducción de escritos sencillos inglés-español, ó el manejo de algún sistema. Especificar poncentaje de conocimiento.">Competencias específicas necesarias</label>
                                         <div style="text-align: right;">
                                             <div class="divControlDerecha">
-                                                <telerik:RadComboBox runat="server" ID="cmbCompetenciaEspecificas" MarkFirstMatch="true" EmptyMessage="Selecciona" Filter="Contains" Width="200" MaxHeight="250" DropDownWidth="450" ToolTip="Considerar que son experiencia y competencias necesarias para ingresar al puesto. Ejemplo: manejo del idioma inglés y experiencia en la traducción de escritos sencillos inglés-español, ó el manejo de algún sistema. Especificar poncentaje de conocimiento.    "></telerik:RadComboBox>
+                                                <telerik:RadComboBox runat="server" ID="cmbCompetenciaEspecificas" Filter="Contains" MarkFirstMatch="true" EmptyMessage="Selecciona" Width="200" MaxHeight="250" DropDownWidth="450"
+                                                    ToolTip="Considerar que son experiencia y competencias necesarias para ingresar al puesto. Ejemplo: manejo del idioma inglés y experiencia en la traducción de escritos sencillos inglés-español, ó el manejo de algún sistema. Especificar poncentaje de conocimiento.">
+                                                </telerik:RadComboBox>
                                                 <telerik:RadButton runat="server" Style="width: 34px; padding: 6px 12px; font-size: 24px;" Text="+" ID="btnCompEsp" AutoPostBack="true" OnClick="btnCompEsp_Click" OnClientClicking="validarCompetencia" />
                                             </div>
                                         </div>
                                     </div>
                                     <div style="padding: 5px">
-                                        <div class="ctrlBasico" style="text-align: right; width: 100%;">
+                                        <div class="ctrlBasico" style="text-align: left; width: 100%;">
                                             <telerik:RadListBox runat="server" ID="lstCompetenciasEspecificas" Width="100%" Height="100px" AllowDelete="true" ButtonSettings-AreaWidth="35px"></telerik:RadListBox>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
-                            <div class="ctrlBasico">
-                                <div class="BorderRadioComponenteHTML" style="width: 520px; float: left;">
-                                    <div class="divBarraTitulo">
-                                        <label style="float: left">Competencias requeridas</label>
-                                    </div>
-                                    <div style="padding: 5px">
-                                        <div class="ctrlBasico" style="text-align: right; width: 100%;">
-                                            <telerik:RadTextBox runat="server" ID="txtCompetenciasRequeridas" Width="500px" Height="100px" TextMode="MultiLine"></telerik:RadTextBox>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div style="clear: both;"></div>
                             <div>
                                 <label class="labelTitulo" id="lblExperiencia" name="lblExperiencia">
@@ -759,7 +743,7 @@
                                                             <label id="Label1" name="lblExperiencia">Experiencia </label>
                                                         </div>
                                                         <div class="divControlDerecha">
-                                                            <telerik:RadComboBox runat="server" ID="cmbExperiencias" MarkFirstMatch="true" Filter="Contains" EmptyMessage="Selecciona" Width="200" DropDownWidth="450" MaxHeight="250"></telerik:RadComboBox>
+                                                           <telerik:RadComboBox runat="server" ID="cmbExperiencias" Filter="Contains" MarkFirstMatch="true" EmptyMessage="Selecciona" Width="200" DropDownWidth="450" MaxHeight="250"></telerik:RadComboBox>
                                                         </div>
                                                     </div>
                                                     <div style="clear: both; height: 5px"></div>
@@ -768,7 +752,7 @@
                                                             <label id="lblTiempo" name="lblTiempo">Tiempo </label>
                                                         </div>
                                                         <div class="divControlIzquierda" style="width: 50px">
-                                                            <telerik:RadTextBox runat="server" ID="txtTiempo" InputType="Number" Width="50px" />
+                                                            <telerik:RadNumericTextBox runat="server" ID="txtTiempo" Width="50px" NumberFormat-DecimalDigits="0" />
                                                         </div>
                                                     </div>
                                                     <div style="clear: both; height: 5px"></div>
@@ -800,8 +784,8 @@
                                         </div>
                                     </div>
                                     <div style="padding: 5px">
-                                        <div class="ctrlBasico" style="text-align: right; width: 100%;">
-                                            <telerik:RadListBox runat="server" ID="lstExperiencia" Width="100%" AllowDelete="true" OnDeleted="lstExperiencia_Deleted" AllowAutomaticUpdates="true" AutoPostBackOnDelete="true">
+                                        <div class="ctrlBasico" style="text-align: left; width: 100%;">
+                                         <telerik:RadListBox runat="server" ID="lstExperiencia" Width="100%" AllowDelete="true" OnDeleted="lstExperiencia_Deleted" ButtonSettings-AreaWidth="35px" AutoPostBackOnDelete="true" AllowAutomaticUpdates="True">
                                                 <HeaderTemplate>
                                                     <table style="width: 100%">
                                                         <colgroup>
@@ -809,10 +793,11 @@
                                                             <col style="width: 20%">
                                                             <col style="width: 30%">
                                                         </colgroup>
-                                                        <tr style="text-align: center">
-                                                            <td>Experiencia</td>
-                                                            <td>Tiempo/años</td>
-                                                            <td>Tipo</td>
+                                                       <tr style="text-align: left">
+
+                                                            <td><b>Experiencia</b></td>
+                                                            <td><b>Tiempo/años</b></td>
+                                                            <td><b>Tipo</b></td>
                                                         </tr>
                                                     </table>
                                                 </HeaderTemplate>
@@ -823,7 +808,7 @@
                                                             <col style='width: 20%'>
                                                             <col style='width: 30%'>
                                                         </colgroup>
-                                                        <tr style='text-align: center'>
+                                                        <tr style='text-align: left'>
                                                             <td><%# DataBinder.Eval(Container, "Text") %></td>
                                                             <td><%# DataBinder.Eval(Container.DataItem, "NO_TIEMPO") %></td>
                                                             <td><%# DataBinder.Eval(Container.DataItem, "CL_TIPO_EXPERIENCIA") %></td>
@@ -837,19 +822,23 @@
                             </div>
                             <div style="clear: both;"></div>
                             <div>
-                                <label class="labelTitulo" id="lblRequerimientos" name="lblRequerimientos">
+                               <label class="labelTitulo" id="lblRequerimientos" name="lblRequerimientos" title="Aquí puedes especificar si la persona que ocupará el puesto necesita aportar vehículo, licencia, material de trabajo, laptop, algún certificado de calidad, certificado de instructor interno, etc.">
                                     <span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>
-                                    <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;* Requerimientos / aportaciones adicionales del puesto (equipo, materiales, etc.)</label>
+                                    <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp; Requerimientos / aportaciones adicionales del puesto (equipo, materiales, etc.)</label>
                             </div>
-                            <div class="ctrlBasico">
-                                <telerik:RadEditor NewLineMode="Br" Height="100px" Width="100%" ToolsWidth="310px" EditModes="Design" ID="radEditorRequerimientos" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/AdvancedTools.xml" ToolTip="Aquí puedes especificar si la persona que ocupará el puesto necesita aportar vehículo, licencia, material de trabajo, laptop, algún certificado de calidad, certificado de instructor interno, etc."></telerik:RadEditor>
+                            <div class="ctrlBasico" title="Aquí puedes especificar si la persona que ocupará el puesto necesita aportar vehículo, licencia, material de trabajo, laptop, algún certificado de calidad, certificado de instructor interno, etc.">
+                                <telerik:RadEditor NewLineMode="Br" Height="100px" Width="100%" ToolsWidth="310px" EditModes="Design" ID="radEditorRequerimientos" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/AdvancedTools.xml"
+                                    ToolTip="Aquí puedes especificar si la persona que ocupará el puesto necesita aportar vehículo, licencia, material de trabajo, laptop, algún certificado de calidad, certificado de instructor interno, etc.">
+                                </telerik:RadEditor>
                             </div>
                             <div style="clear: both;"></div>
                             <div style="padding-bottom: 5px">
-                                <label class="labelTitulo" id="lblobservaciones" name="lblobservaciones"><span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>&nbsp;Observaciones</label>
+                                <label class="labelTitulo" id="lblobservaciones" name="lblobservaciones" title="Aquí puedes especificar alguna caraterística especial para el puesto. Ejemplo: la persona debe rolar turnos, la persona debe ser cordial, revisar que la persona tenga disponibilidad para viajar." ><span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>&nbsp;Observaciones</label>
                             </div>
-                            <div class="ctrlBasico">
-                                <telerik:RadEditor NewLineMode="Br" Height="100px" Width="100%" ToolsWidth="310px" EditModes="Design" ID="radEditorObservaciones" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/AdvancedTools.xml" ToolTip="Aquí puedes especificar alguna caraterística especial para el puesto. Ejemplo: la persona debe rolar turnos, la persona debe ser cordial, revisar que la persona tenga disponibilidad para viajar."></telerik:RadEditor>
+                            <div class="ctrlBasico" title="Aquí puedes especificar alguna caraterística especial para el puesto. Ejemplo: la persona debe rolar turnos, la persona debe ser cordial, revisar que la persona tenga disponibilidad para viajar.">
+                                <telerik:RadEditor NewLineMode="Br" Height="100px" Width="100%" ToolsWidth="310px" EditModes="Design" ID="radEditorObservaciones" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/AdvancedTools.xml"
+                                    ToolTip="Aquí puedes especificar alguna caraterística especial para el puesto. Ejemplo: la persona debe rolar turnos, la persona debe ser cordial, revisar que la persona tenga disponibilidad para viajar.">
+                                </telerik:RadEditor>
                             </div>
                             <div style="clear: both; height: 25px"></div>
                         </telerik:RadPageView>
@@ -858,65 +847,32 @@
                         <!-- Inicio del organigrama -->
                         <telerik:RadPageView ID="pvwOroganigrama" runat="server">
                             <div class="ctrlBasico">
-                                <%--<div class="divControlIzquierda">--%>
                                 <label id="lbltipoPuesto" name="lbltipoPuesto">
                                     <span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>
                                     <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
                                     <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>
-                                    <span style="border: 1px solid gray; background: #0087CF; border-radius: 5px;" title="Metodología para la compensación ">&nbsp;&nbsp;</span>&nbsp;* Tipo de puesto:</label>
-                                <%--</div>--%>
-                                <%--<div class="divControlIzquierda" style="line-height: 33px; width: 90px">--%>
-                                <telerik:RadButton ID="btnDirecto" runat="server" ToggleType="Radio" ButtonType="ToggleButton" Style="margin-left: 20px;" AutoPostBack="false" GroupName="Radios" ToolTip="Los puestos directos son los que intervienen directamente en el proceso de transformación o servicio,enfocados en la razón de ser de la organización. Ejemplos: en organizaciones de manufactura los puestos operativos; en organizaciones de servicio los puestos de atención al cliente.">
+                                   <span style="border: 1px solid gray; background: #0087CF; border-radius: 5px;" title="Metodología para la compensación ">&nbsp;&nbsp;</span>&nbsp; Tipo de puesto:</label>
+                                <telerik:RadButton ID="btnDirecto" runat="server" Style="margin-left: 20px;" ToggleType="Radio" ButtonType="ToggleButton" AutoPostBack="false" Checked="true" GroupName="Radios"
+                                    ToolTip="Los puestos directos son los que intervienen directamente en el proceso de transformación o servicio,enfocados en la razón de ser de la organización. Ejemplos: en organizaciones de manufactura los puestos operativos; en organizaciones de servicio los puestos de atención al cliente.">
                                     <ToggleStates>
                                         <telerik:RadButtonToggleState Text="Directo" PrimaryIconCssClass="rbToggleRadioChecked" />
                                         <telerik:RadButtonToggleState Text="Directo" PrimaryIconCssClass="rbToggleRadio" />
                                     </ToggleStates>
                                 </telerik:RadButton>
-                                <%--</div>
-                                <div class="divControlIzquierda" style="line-height: 33px; width: 90px">--%>
-                                <telerik:RadButton ID="btnIndirecto" runat="server" ToggleType="Radio" ButtonType="ToggleButton" Style="margin-left: 20px;" AutoPostBack="false" GroupName="Radios" ToolTip="Los puestos indirectos son los que apoyan de manera indirecta los procesos centrales que son la razón de ser de la organización. Ejemplo: puestos de servicio como Recursos Humanos, Sistemas, Calidad, etc.  ">
+                                <telerik:RadButton ID="btnIndirecto" runat="server" Style="margin-left: 20px;" ToggleType="Radio" ButtonType="ToggleButton" AutoPostBack="false" GroupName="Radios" ToolTip="Los puestos indirectos son los que apoyan de manera indirecta los procesos centrales que son la razón de ser de la organización. Ejemplo: puestos de servicio como Recursos Humanos, Sistemas, Calidad, etc.">
                                     <ToggleStates>
                                         <telerik:RadButtonToggleState Text="Indirecto" PrimaryIconCssClass="rbToggleRadioChecked" />
                                         <telerik:RadButtonToggleState Text="Indirecto" PrimaryIconCssClass="rbToggleRadio" />
                                     </ToggleStates>
                                 </telerik:RadButton>
-                                <%--</div>--%>
                             </div>
-                            <%--  <div class="ctrlBasico">
-                                <label id="lblarea" name="lblarea">
-                                    <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
-                                    <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>
-                                    <span style="border: 1px solid gray; background: #0087CF; border-radius: 5px;" title="Metodología para la compensación ">&nbsp;&nbsp;</span>&nbsp;* Área:
-                                </label>
-                                <br />
-                                <telerik:RadComboBox runat="server" ID="cmbAreas" AutoPostBack="false" MarkFirstMatch="true" EmptyMessage="Selecciona" Width="200" MaxHeight="200" DropDownWidth="450" ToolTip="Las áreas son los bloques grandes que existen dentro de una organización. Ejemplo: Dirección de Operaciones, Dirección Administrativa, Dirección Comercial. Los departamentos que existen dentro de estas áreas podemos integrarlos por medio de adscripciones."></telerik:RadComboBox>
-                            </div>--%>
-                          <%--  <div class="ctrlBasico">
-                                <label id="lblcentroadministrativo" name="lblcentroadministrativo">Centro administrativo: </label>
-                                <br />
-                                <telerik:RadComboBox runat="server" ID="cmbAdministrativo" AutoPostBack="false" MarkFirstMatch="true" EmptyMessage="Selecciona" Width="200" MaxHeight="200" DropDownWidth="450"></telerik:RadComboBox>
+ <div class="ctrlBasico">
+                               
                             </div>
-                            <div class="ctrlBasico">
-                                <label id="lblcentrooperativo" name="lblcentrooperativo">Centro operativo: </label>
-                                <br />
-                                <telerik:RadComboBox runat="server" ID="cmbOperativo" AutoPostBack="false" MarkFirstMatch="true" EmptyMessage="Selecciona" Width="200" MaxHeight="200" DropDownWidth="450"></telerik:RadComboBox>
-                            </div>--%>
-                            <%--                            <div class="ctrlBasico">
-                                <label id="lblpuestoJefeInmediato" name="lblpuestoJefeInmediato">
-                                    <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
-                                    <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>&nbsp;Puesto del jefe inmediato:
-                                </label>
-                                <br />
-                                <telerik:RadListBox ID="lstJefeInmediato" runat="server" ToolTip="Aquí debes especificar el puesto del jefe inmediato, debes asignar sólo uno, es a quien se le reporta directamente.">
-                                    <Items>
-                                        <telerik:RadListBoxItem Text="No Seleccionado" Value="" />
-                                    </Items>
-                                </telerik:RadListBox>
-                                <telerik:RadButton runat="server" ID="btnBuscarJefeInmediato" Text="B" Width="35px" AutoPostBack="false" OnClientClicked="OpenPuestosSelectionWindow" />
-                            </div>--%>
+                           
                             <div style="clear: both;"></div>
                             <div>
-                                <label class="labelTitulo" id="Label3" name="lblTituloPuestos">
+                              <label class="labelTitulo" id="lblTituloPuestos" name="lblTituloPuestos">
                                     <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
                                     <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>&nbsp;Puestos</label>
                             </div>
@@ -963,6 +919,7 @@
                                     HeaderStyle-Font-Bold="true"
                                     EnableHeaderContextMenu="true"
                                     OnNeedDataSource="rgSubordinados_NeedDataSource">
+                                    <GroupingSettings CaseSensitive="False" />
                                     <ClientSettings>
                                         <Scrolling AllowScroll="true" UseStaticHeaders="true" SaveScrollPosition="true" />
                                         <Selecting AllowRowSelect="true" />
@@ -977,228 +934,154 @@
                                     </MasterTableView>
                                 </telerik:RadGrid>
 
+                            </div>
+                            <div style="height: 10px; clear: both;"></div>
+                            <div class="ctrlBasico">
+                                <label id="lblInterelacionados" name="lblInterelacionados" title="Aquí debes especificar aquellos puestos que intervienen en los procesos centrales del puesto analizado, son los responsables de generar entradas o recibir salidas de estos procesos. Te sugerimos que selecciones máximo cinco.">Puestos interrelacionados:</label>
+                                <div style="clear: both"></div>
+                                <div class="ctrlBasico" style="width: 450px;">
+                                    <telerik:RadGrid
+                                        ID="rgInterrelacionados"
+                                        runat="server"
+                                        Width="450"
+                                        Height="350"
+                                        ToolTip="Aquí debes especificar aquellos puestos que intervienen en los procesos centrales del puesto analizado, son los responsables de generar entradas o recibir salidas de estos procesos. Te sugerimos que selecciones máximo cinco."
+                                        AllowPaging="true"
+                                        AutoGenerateColumns="false"
+                                        HeaderStyle-Font-Bold="true"
+                                        EnableHeaderContextMenu="true"
+                                        AllowMultiRowSelection="true"
+                                        OnNeedDataSource="rgInterrelacionados_NeedDataSource">
+                                        <GroupingSettings CaseSensitive="False" />
+                                        <ClientSettings>
+                                            <Scrolling AllowScroll="true" UseStaticHeaders="true" SaveScrollPosition="true" />
+                                            <Selecting AllowRowSelect="true" EnableDragToSelectRows="true" />
+                                        </ClientSettings>
+                                        <PagerStyle AlwaysVisible="true" />
+                                        <MasterTableView DataKeyNames="ID_PUESTO, ID_PUESTO_RELACION" ClientDataKeyNames="ID_PUESTO, ID_PUESTO_RELACION" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
+                                            <Columns>
+                                                <telerik:GridBoundColumn UniqueName="CL_PUESTO" DataField="CL_PUESTO" HeaderText="Clave puesto" AutoPostBackOnFilter="true" HeaderStyle-Width="120" FilterControlWidth="60" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn UniqueName="NB_PUESTO" DataField="NB_PUESTO" HeaderText="Nombre puesto" AutoPostBackOnFilter="true" HeaderStyle-Width="300" FilterControlWidth="220" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
+                                            </Columns>
+                                        </MasterTableView>
+                                    </telerik:RadGrid>
+                                </div>
+                                <div class="ctrlBasico" style="float: left">
+                                    <telerik:RadButton ID="btnAgregar" runat="server" Text="B" AutoPostBack="false" OnClientClicked="OpenPuestosInterrelacionadosWindow" ToolTip="Seleccionar puestos interrelacionados"></telerik:RadButton>
+                                    <div style="clear: both;"></div>
+                                    <telerik:RadButton ID="btnEliminar" runat="server" Text="X" AutoPostBack="true" OnClick="btnEliminar_Click" ToolTip="Eliminar puesto interrelacionado"></telerik:RadButton>
+                                </div>
 
-                                <%--                            <div>
-                                <label class="labelTitulo" id="lblTituloPuestos" name="lblTituloPuestos">
-                                    <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
-                                    <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>&nbsp;Puestos</label>
+                            </div>
+                            <div style="clear: both;"></div>
+                            <div>
+                                <label class="labelTitulo" id="lblRutas" name="lblRutas"><span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;Rutas</label>
                             </div>
                             <div class="ctrlBasico">
-                                <div class="BorderRadioComponenteHTML" style="width: 550px; float: left;">
-                                    <div class="divBarraTitulo">
-                                        <label style="float: left">Puestos que supervisa en forma inmediata</label>
-                                        <div style="text-align: right;">
-                                            <div class="divControlDerecha">
-                                                <telerik:RadComboBox runat="server" ID="cmbPuestosSubordinado" MarkFirstMatch="true" Filter="Contains" EmptyMessage="Selecciona" Width="200" MaxHeight="200" DropDownWidth="450" ToolTip="Aquí debes especificar los puestos que reportan directamente a este puesto."></telerik:RadComboBox>
-                                                <telerik:RadButton runat="server" Style="width: 34px; padding: 6px 12px; font-size: 24px;" Text="+" ID="radBtnAgregarPuestoSubordinado" AutoPostBack="true" OnClick="radBtnAgregarPuestoSubordinado_Click" OnClientClicking="validarPuestoSubordinado" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="padding: 5px">
-                                        <div class="ctrlBasico" style="text-align: right; width: 100%;">
-                                            <telerik:RadListBox runat="server" ID="lstPuestosSubordinado" Width="100%" AllowDelete="true" ButtonSettings-AreaWidth="35px"></telerik:RadListBox>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>--%>
-                                <%--<div class="ctrlBasico">
-                                <div class="BorderRadioComponenteHTML" style="width: 450px; float: left;">
-                                    <div class="divBarraTitulo">
-                                        <label style="float: left">Puestos interrelacionados</label>
-                                        <div style="text-align: right;">
-                                            <div class="divControlDerecha">
-                                                <telerik:RadComboBox runat="server" ID="cmbPuestosInterrelacionados" MarkFirstMatch="true" Filter="Contains" EmptyMessage="Selecciona" Width="200" MaxHeight="200" DropDownWidth="450" ToolTip="Aquí debes especificar aquellos puestos que intervienen en los procesos centrales del puesto analizado, son los responsables de generar entradas o recibir salidas de estos procesos. Te sugerimos que selecciones máximo cinco.    "></telerik:RadComboBox>
-                                                <telerik:RadButton runat="server" Style="width: 34px; padding: 6px 12px; font-size: 24px;" Text="+" ID="btnInter" AutoPostBack="true" OnClick="btnInter_Click" OnClientClicking="validarPuestoInterrelacionado" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="padding: 5px">
-                                        <div class="ctrlBasico" style="text-align: right; width: 100%;">
-                                            <telerik:RadListBox runat="server" ID="lstPuestosInterrelacionados" Width="100%" AllowDelete="true" ButtonSettings-AreaWidth="35px"></telerik:RadListBox>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>--%>
 
-                                <div style="height: 10px; clear: both;"></div>
-                                <div class="ctrlBasico">
-                                    <label id="lblInterelacionados" name="lblInterelacionados" title="Aquí debes especificar aquellos puestos que intervienen en los procesos centrales del puesto analizado, son los responsables de generar entradas o recibir salidas de estos procesos. Te sugerimos que selecciones máximo cinco.">Puestos interrelacionados:</label>
-                                    <div style="clear: both"></div>
-                                    <div class="ctrlBasico" style="width: 450px;">
-                                        <telerik:RadGrid
-                                            ID="rgInterrelacionados"
-                                            runat="server"
-                                            Width="450"
-                                            Height="350"
-                                            ToolTip="Aquí debes especificar aquellos puestos que intervienen en los procesos centrales del puesto analizado, son los responsables de generar entradas o recibir salidas de estos procesos. Te sugerimos que selecciones máximo cinco."
-                                            AllowPaging="true"
-                                            AutoGenerateColumns="false"
-                                            HeaderStyle-Font-Bold="true"
-                                            EnableHeaderContextMenu="true"
-                                            AllowMultiRowSelection="true"
-                                            OnNeedDataSource="rgInterrelacionados_NeedDataSource">
-                                            <ClientSettings>
-                                                <Scrolling AllowScroll="true" UseStaticHeaders="true" SaveScrollPosition="true" />
-                                                <Selecting AllowRowSelect="true" EnableDragToSelectRows="true" />
-                                            </ClientSettings>
-                                            <PagerStyle AlwaysVisible="true" />
-                                            <MasterTableView DataKeyNames="ID_PUESTO, ID_PUESTO_RELACION" ClientDataKeyNames="ID_PUESTO, ID_PUESTO_RELACION" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
-                                                <Columns>
-                                                    <telerik:GridBoundColumn UniqueName="CL_PUESTO" DataField="CL_PUESTO" HeaderText="Clave puesto" AutoPostBackOnFilter="true" HeaderStyle-Width="120" FilterControlWidth="60" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
-                                                    <telerik:GridBoundColumn UniqueName="NB_PUESTO" DataField="NB_PUESTO" HeaderText="Nombre puesto" AutoPostBackOnFilter="true" HeaderStyle-Width="300" FilterControlWidth="220" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
-                                                </Columns>
-                                            </MasterTableView>
-                                        </telerik:RadGrid>
-                                    </div>
-                                    <div class="ctrlBasico" style="float: left">
-                                        <telerik:RadButton ID="btnAgregar" runat="server" Text="B" AutoPostBack="false" OnClientClicked="OpenPuestosInterrelacionadosWindow" ToolTip="Seleccionar puestos interrelacionados"></telerik:RadButton>
-                                        <div style="clear: both;"></div>
-                                        <telerik:RadButton ID="btnEliminar" runat="server" Text="X" AutoPostBack="true" OnClick="btnEliminar_Click" ToolTip="Eliminar puesto interrelacionado"></telerik:RadButton>
-                                    </div>
+                                <label id="lblPosicionOrganigrama" name="lblPosicionOrganigrama">Posición en el organigrama:</label>
+
+ <telerik:RadButton ID="btnLinea" runat="server" ToggleType="Radio" ButtonType="ToggleButton" AutoPostBack="false" Checked="true" GroupName="RadiosPosicion" ToolTip="Debes seleccionar esta opción si la posición en el organigrama de este puesto es de línea. Ejemplo: Coordinador de Nómina, Gerente de Producción, Operario Especializado, etc.">
+                                    <ToggleStates>
+                                        <telerik:RadButtonToggleState Text="Línea" />
+                                        <telerik:RadButtonToggleState Text="Línea" />
+                                    </ToggleStates>
+                                </telerik:RadButton>
+
+                                <telerik:RadButton ID="btnStaff" runat="server" ToggleType="Radio" ButtonType="ToggleButton" AutoPostBack="false" GroupName="RadiosPosicion" ToolTip="Debes seleccionar esta opción si la posición en el organigrama de este puesto es staff. Ejemplo: auxiliares, asistentes, apoyo, etc. ">
+                                    <ToggleStates>
+                                        <telerik:RadButtonToggleState Text="Staff" />
+                                        <telerik:RadButtonToggleState Text="Staff" />
+                                    </ToggleStates>
+                                </telerik:RadButton>
+
+
+
+                            </div>
+                            <div style="clear: both"></div>
+                            <div class="ctrlBasico">
+
+                                <label id="lblRutaAlternativa" name="lblRutaAlternativa" title="La ruta de crecimiento alternativa debe estar conformada por puestos de un nivel orgánico superior pero que no corresponden a su línea ascendente natural es decir a la de su jefe inmediato. Te sugerimos que no selecciones más de tres.">Ruta de crecimiento alternativa:</label>
+                                <div style="clear: both"></div>
+                                <div class="ctrlBasico" style="width: 450px;">
+                                    <telerik:RadGrid
+                                        ID="rgAlternativa"
+                                        runat="server"
+                                        Width="450"
+                                        ToolTip="La ruta de crecimiento alternativa debe estar conformada por puestos de un nivel orgánico superior pero que no corresponden a su línea ascendente natural es decir a la de su jefe inmediato. Te sugerimos que no selecciones más de tres."
+                                        Height="350"
+                                        AllowPaging="true"
+                                        AutoGenerateColumns="false"
+                                        HeaderStyle-Font-Bold="true"
+                                        EnableHeaderContextMenu="true"
+                                        AllowMultiRowSelection="true"
+                                        OnNeedDataSource="rgAlternativa_NeedDataSource">
+                                        <GroupingSettings CaseSensitive="False" />
+                                        <ClientSettings>
+                                            <Scrolling AllowScroll="true" UseStaticHeaders="true" SaveScrollPosition="true" />
+                                            <Selecting AllowRowSelect="true" EnableDragToSelectRows="true" />
+                                        </ClientSettings>
+                                        <PagerStyle AlwaysVisible="true" />
+                                        <MasterTableView DataKeyNames="ID_PUESTO, ID_PUESTO_RELACION" ClientDataKeyNames="ID_PUESTO, ID_PUESTO_RELACION" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
+                                            <Columns>
+                                                <telerik:GridBoundColumn UniqueName="CL_PUESTO" DataField="CL_PUESTO" HeaderText="Clave puesto" AutoPostBackOnFilter="true" HeaderStyle-Width="120" FilterControlWidth="60" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn UniqueName="NB_PUESTO" DataField="NB_PUESTO" HeaderText="Nombre puesto" AutoPostBackOnFilter="true" HeaderStyle-Width="300" FilterControlWidth="220" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
+                                            </Columns>
+                                        </MasterTableView>
+                                    </telerik:RadGrid>
+                                </div>
+                                <div class="ctrlBasico" style="float: left">
+                                    <telerik:RadButton ID="btnAgregarAlternativa" runat="server" Text="B" AutoPostBack="false" OnClientClicked="OpenPuestosAlternativosWindow" ToolTip="Seleccionar puestos alternativos"></telerik:RadButton>
                                     <div style="clear: both;"></div>
-                                    <div>
-                                        <label class="labelTitulo" id="lblRutas" name="lblRutas"><span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;Rutas</label>
-                                    </div>
-                                    <div class="ctrlBasico">
-                                        <%--<div class="divControlIzquierda" style="width: 190px">--%>
-                                        <label id="lblPosicionOrganigrama" name="lblPosicionOrganigrama">Posición en el organigrama:</label>
-                                        <%--</div>
-                                <div class="divControlIzquierda" style="line-height: 33px; width: 80px">--%>
-                                        <telerik:RadButton ID="btnLinea" runat="server" ToggleType="Radio" ButtonType="ToggleButton" Checked="true" AutoPostBack="false" GroupName="RadiosPosicion" ToolTip="Debes seleccionar esta opción si la posición en el organigrama de este puesto es de línea. Ejemplo: Coordinador de Nómina, Gerente de Producción, Operario Especializado, etc.">
-                                            <ToggleStates>
-                                                <telerik:RadButtonToggleState Text="Línea" />
-                                                <telerik:RadButtonToggleState Text="Línea" />
-                                            </ToggleStates>
-                                        </telerik:RadButton>
-                                        <%--</div>
-                                <div class="divControlIzquierda" style="line-height: 33px; width: 80px">--%>
-                                        <telerik:RadButton ID="btnStaff" runat="server" ToggleType="Radio" ButtonType="ToggleButton" AutoPostBack="false" GroupName="RadiosPosicion" ToolTip="Debes seleccionar esta opción si la posición en el organigrama de este puesto es staff. Ejemplo: auxiliares, asistentes, apoyo, etc. ">
-                                            <ToggleStates>
-                                                <telerik:RadButtonToggleState Text="Staff" />
-                                                <telerik:RadButtonToggleState Text="Staff" />
-                                            </ToggleStates>
-                                        </telerik:RadButton>
-                                        <%--</div>--%>
-                                    </div>
-
-                                    <div style="clear: both"></div>
-                                    <div class="ctrlBasico">
-                                        <%--<div class="BorderRadioComponenteHTML" style="width: 500px; float: left;">--%>
-                                        <label id="lblRutaAlternativa" name="lblRutaAlternativa" title="La ruta de crecimiento alternativa debe estar conformada por puestos de un nivel orgánico superior pero que no corresponden a su línea ascendente natural es decir a la de su jefe inmediato. Te sugerimos que no selecciones más de tres.">Ruta de crecimiento alternativa:</label>
-                                        <div style="clear: both"></div>
-                                        <div class="ctrlBasico" style="width: 450px;">
-                                            <telerik:RadGrid
-                                                ID="rgAlternativa"
-                                                runat="server"
-                                                Width="450"
-                                                ToolTip="La ruta de crecimiento alternativa debe estar conformada por puestos de un nivel orgánico superior pero que no corresponden a su línea ascendente natural es decir a la de su jefe inmediato. Te sugerimos que no selecciones más de tres."
-                                                Height="350"
-                                                AllowPaging="true"
-                                                AutoGenerateColumns="false"
-                                                HeaderStyle-Font-Bold="true"
-                                                EnableHeaderContextMenu="true"
-                                                AllowMultiRowSelection="true"
-                                                OnNeedDataSource="rgAlternativa_NeedDataSource">
-                                                <ClientSettings>
-                                                    <Scrolling AllowScroll="true" UseStaticHeaders="true" SaveScrollPosition="true" />
-                                                    <Selecting AllowRowSelect="true" EnableDragToSelectRows="true" />
-                                                </ClientSettings>
-                                                <PagerStyle AlwaysVisible="true" />
-                                                <MasterTableView DataKeyNames="ID_PUESTO, ID_PUESTO_RELACION" ClientDataKeyNames="ID_PUESTO, ID_PUESTO_RELACION" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
-                                                    <Columns>
-                                                        <telerik:GridBoundColumn UniqueName="CL_PUESTO" DataField="CL_PUESTO" HeaderText="Clave puesto" AutoPostBackOnFilter="true" HeaderStyle-Width="120" FilterControlWidth="60" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
-                                                        <telerik:GridBoundColumn UniqueName="NB_PUESTO" DataField="NB_PUESTO" HeaderText="Nombre puesto" AutoPostBackOnFilter="true" HeaderStyle-Width="300" FilterControlWidth="220" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
-                                                    </Columns>
-                                                </MasterTableView>
-                                            </telerik:RadGrid>
-                                        </div>
-                                        <div class="ctrlBasico" style="float: left">
-                                            <telerik:RadButton ID="btnAgregarAlternativa" runat="server" Text="B" AutoPostBack="false" OnClientClicked="OpenPuestosAlternativosWindow" ToolTip="Seleccionar puestos alternativos"></telerik:RadButton>
-                                            <div style="clear: both;"></div>
-                                            <telerik:RadButton ID="btnEliminarAlternativa" runat="server" Text="X" AutoPostBack="true" OnClick="btnEliminarAlternativa_OnClick" ToolTip="Eliminar puesto alternativo"></telerik:RadButton>
-                                        </div>
-                                    </div>
-                                    <%--                            <div class="ctrlBasico">
-                                <div class="BorderRadioComponenteHTML" style="width: 500px; float: left;">
-                                    <div class="divBarraTitulo">
-                                        <label style="float: left">Ruta de crecimiento alternativa</label>
-                                        <div style="text-align: right;">
-                                            <div class="divControlDerecha">
-                                                <telerik:RadComboBox runat="server" ID="cmbAlternativa" MarkFirstMatch="true" EmptyMessage="Selecciona" Width="200" MaxHeight="200" DropDownWidth="400" ToolTip="La ruta de crecimiento alternativa debe estar conformada por puestos de un nivel orgánico superior pero que no corresponden a su línea ascendente natural es decir a la de su jefe inmediato. Te sugerimos que no selecciones más de tres."></telerik:RadComboBox>
-                                                <telerik:RadButton runat="server" Text="+" Style="width: 34px; padding: 6px 12px; font-size: 24px;" ID="btnRutaAlter" AutoPostBack="true" OnClick="btnRutaAlter_Click" OnClientClicking="validarRutaAlternativa" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="padding: 5px">
-                                        <div class="ctrlBasico" style="text-align: right; width: 100%;">
-                                            <telerik:RadListBox runat="server" ID="lstAlternativa" Width="100%" AllowDelete="true" ButtonSettings-AreaWidth="35px"></telerik:RadListBox>
-                                        </div>
-                                    </div>
+                                    <telerik:RadButton ID="btnEliminarAlternativa" runat="server" Text="X" AutoPostBack="true" OnClick="btnEliminarAlternativa_OnClick" ToolTip="Eliminar puesto alternativo"></telerik:RadButton>
                                 </div>
-                            </div>--%>
 
+                            </div>
+                            <div class="ctrlBasico">
 
-
-                                    <div class="ctrlBasico">
-                                        <%--  <div class="BorderRadioComponenteHTML" style="width: 500px; float: left;">--%>
-                                        <label id="lblRutaLateral" name="lblRutaLateral" title="La ruta de crecimiento lateral debe estar conformada por puestos del mismo nivel orgánico pero que implicarán desarrollar funciones y/o responsabilidades distintas.  Te sugerimos que no selecciones más de tres.">Ruta de crecimiento lateral:</label>
-                                        <div style="clear: both"></div>
-                                        <div class="ctrlBasico" style="width: 450px;">
-                                            <telerik:RadGrid
-                                                ID="rgLateral"
-                                                runat="server"
-                                                Width="450"
-                                                ToolTip="La ruta de crecimiento lateral debe estar conformada por puestos del mismo nivel orgánico pero que implicarán desarrollar funciones y/o responsabilidades distintas.  Te sugerimos que no selecciones más de tres."
-                                                Height="350"
-                                                AllowPaging="true"
-                                                AutoGenerateColumns="false"
-                                                HeaderStyle-Font-Bold="true"
-                                                EnableHeaderContextMenu="true"
-                                                AllowMultiRowSelection="true"
-                                                OnNeedDataSource="rgLateral_NeedDataSource">
-                                                <ClientSettings>
-                                                    <Scrolling AllowScroll="true" UseStaticHeaders="true" SaveScrollPosition="true" />
-                                                    <Selecting AllowRowSelect="true" EnableDragToSelectRows="true" />
-                                                </ClientSettings>
-                                                <PagerStyle AlwaysVisible="true" />
-                                                <MasterTableView DataKeyNames="ID_PUESTO, ID_PUESTO_RELACION" ClientDataKeyNames="ID_PUESTO, ID_PUESTO_RELACION" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
-                                                    <Columns>
-                                                        <telerik:GridBoundColumn UniqueName="CL_PUESTO" DataField="CL_PUESTO" HeaderText="Clave puesto" AutoPostBackOnFilter="true" HeaderStyle-Width="120" FilterControlWidth="60" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
-                                                        <telerik:GridBoundColumn UniqueName="NB_PUESTO" DataField="NB_PUESTO" HeaderText="Nombre puesto" AutoPostBackOnFilter="true" HeaderStyle-Width="300" FilterControlWidth="220" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
-                                                    </Columns>
-                                                </MasterTableView>
-                                            </telerik:RadGrid>
-                                        </div>
-                                        <div class="ctrlBasico" style="float: left">
-                                            <telerik:RadButton ID="btnAgregarLateral" runat="server" Text="B" AutoPostBack="false" OnClientClicked="OpenPuestosLateralesWindow" ToolTip="Seleccionar puestos laterales"></telerik:RadButton>
-                                            <div style="clear: both;"></div>
-                                            <telerik:RadButton ID="btnEliminarLateral" runat="server" Text="X" AutoPostBack="true" OnClick="btnEliminarLateral_Click" ToolTip="Eliminar puesto lateral"></telerik:RadButton>
-                                        </div>
-                                    </div>
-                                    <%--                    <div class="ctrlBasico">
-                                <div class="BorderRadioComponenteHTML" style="width: 500px; float: left;">
-                                    <div class="divBarraTitulo">
-                                        <label style="float: left">Ruta de crecimiento lateral</label>
-                                        <div style="text-align: right;">
-                                            <div class="divControlDerecha">
-                                                <telerik:RadComboBox runat="server" ID="cmbLateral" MarkFirstMatch="true" Filter="Contains" EmptyMessage="Selecciona" Width="200" MaxHeight="200" DropDownWidth="400" ToolTip="La ruta de crecimiento lateral debe estar conformada por puestos del mismo nivel orgánico pero que implicarán desarrollar funciones y/o responsabilidades distintas.  Te sugerimos que no selecciones más de tres. "></telerik:RadComboBox>
-                                                <telerik:RadButton runat="server" Text="+" Style="width: 34px; padding: 6px 12px; font-size: 24px;" ID="btnLateral" AutoPostBack="true" OnClick="btnLateral_Click" OnClientClicking="validarRutaLateral" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="padding: 5px">
-                                        <div class="ctrlBasico" style="text-align: right; width: 100%;">
-                                            <telerik:RadListBox runat="server" ID="lstLateral" Width="100%" AllowDelete="true" ButtonSettings-AreaWidth="35px"></telerik:RadListBox>
-                                        </div>
-                                    </div>
+                                <label id="lblRutaLateral" name="lblRutaLateral" title="La ruta de crecimiento lateral debe estar conformada por puestos del mismo nivel orgánico pero que implicarán desarrollar funciones y/o responsabilidades distintas.  Te sugerimos que no selecciones más de tres.">Ruta de crecimiento lateral:</label>
+                                <div style="clear: both"></div>
+                                <div class="ctrlBasico" style="width: 450px;">
+                                    <telerik:RadGrid
+                                        ID="rgLateral"
+                                        runat="server"
+                                        Width="450"
+                                        ToolTip="La ruta de crecimiento lateral debe estar conformada por puestos del mismo nivel orgánico pero que implicarán desarrollar funciones y/o responsabilidades distintas.  Te sugerimos que no selecciones más de tres."
+                                        Height="350"
+                                        AllowPaging="true"
+                                        AutoGenerateColumns="false"
+                                        HeaderStyle-Font-Bold="true"
+                                        EnableHeaderContextMenu="true"
+                                        AllowMultiRowSelection="true"
+                                        OnNeedDataSource="rgLateral_NeedDataSource">
+                                        <GroupingSettings CaseSensitive="False" />
+                                        <ClientSettings>
+                                            <Scrolling AllowScroll="true" UseStaticHeaders="true" SaveScrollPosition="true" />
+                                            <Selecting AllowRowSelect="true" EnableDragToSelectRows="true" />
+                                        </ClientSettings>
+                                        <PagerStyle AlwaysVisible="true" />
+                                        <MasterTableView DataKeyNames="ID_PUESTO, ID_PUESTO_RELACION" ClientDataKeyNames="ID_PUESTO, ID_PUESTO_RELACION" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
+                                            <Columns>
+                                                <telerik:GridBoundColumn UniqueName="CL_PUESTO" DataField="CL_PUESTO" HeaderText="Clave puesto" AutoPostBackOnFilter="true" HeaderStyle-Width="120" FilterControlWidth="60" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn UniqueName="NB_PUESTO" DataField="NB_PUESTO" HeaderText="Nombre puesto" AutoPostBackOnFilter="true" HeaderStyle-Width="300" FilterControlWidth="220" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
+                                            </Columns>
+                                        </MasterTableView>
+                                    </telerik:RadGrid>
                                 </div>
-                            </div>--%>
+                                <div class="ctrlBasico" style="float: left">
+                                    <telerik:RadButton ID="btnAgregarLateral" runat="server" Text="B" AutoPostBack="false" OnClientClicked="OpenPuestosLateralesWindow" ToolTip="Seleccionar puestos laterales"></telerik:RadButton>
+                                    <div style="clear: both;"></div>
+                                    <telerik:RadButton ID="btnEliminarLateral" runat="server" Text="X" AutoPostBack="true" OnClick="btnEliminarLateral_Click" ToolTip="Eliminar puesto lateral"></telerik:RadButton>
+                                </div>
+
+                            </div>
                         </telerik:RadPageView>
                         <!-- Fin del organigrama -->
 
                         <!-- Inicio de responsabilidades y funciones genericas -->
-                        <telerik:RadPageView ID="pvwResponsaFuncionalidadesGener" runat="server">
+                      <%--   <telerik:RadPageView ID="pvwResponsaFuncionalidadesGener" runat="server">
                             <div>
+
                                 <label class="labelTitulo" id="lblResponsable" name="lblResponsable">
                                     <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
                                     <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>&nbsp;* Es responsable de:</label>
@@ -1209,18 +1092,55 @@
                             <div>
                                 <label class="labelTitulo" id="lblAutoridad" name="lblAutoridad">
                                     <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;* Autoridad</label>
+
+
+
+
                             </div>
                             <div>
+
                                 <telerik:RadEditor NewLineMode="Br" Height="150px" Width="99%" ToolsWidth="100%" EditModes="Design" ID="radEditorAutoridad" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/AdvancedTools.xml" ToolTip="Aquí debes especificar la autoridad que posee el puesto en relación a la toma de decisiones. Dirigir: puestos directivos, Gestionar: puestos gerenciales, Coordinar: puestos de jefatura y/o coordinación, Supervisar: puestos de supervisión, Operar: puestos operativos y/o asistentes, auxiliares."></telerik:RadEditor>
+
+
                             </div>
-                            <%--<telerik:RadFormDecorator ID="RadFormDecorator1" runat="server" DecorationZoneID="demo" DecoratedControls="All" EnableRoundedCorners="false" />--%>
-                        </telerik:RadPageView>
+
+
+
+
+
+
+                        </telerik:RadPageView>--%>
                         <!-- Fin de responsabilidades y funciones genericas -->
 
                         <telerik:RadPageView ID="pvwFuncionesGenericas" runat="server">
+      <div title="Aquí debes especificar la razón de ser del puesto de manera genérica. Ejemplo: puesto de Gerente de Producción: es responsable de administrar los programas de producción garantizando que el producto terminado cumpla con las especificaciones del cliente y logrando la satisfacción laboral de su equipo de trabajo, respetando y haciendo respetar las políticas, valores y procedimientos de la empresa.">
+                                <label class="labelTitulo" id="lblResponsable" name="lblResponsable" title="Aquí debes especificar la razón de ser del puesto de manera genérica. Ejemplo: puesto de Gerente de Producción: es responsable de administrar los programas de producción garantizando que el producto terminado cumpla con las especificaciones del cliente y logrando la satisfacción laboral de su equipo de trabajo, respetando y haciendo respetar las políticas, valores y procedimientos de la empresa.">
+                                    <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
+                                    <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>&nbsp; Es responsable de:</label>
+                            </div>
+                            <div title="Aquí debes especificar la razón de ser del puesto de manera genérica. Ejemplo: puesto de Gerente de Producción: es responsable de administrar los programas de producción garantizando que el producto terminado cumpla con las especificaciones del cliente y logrando la satisfacción laboral de su equipo de trabajo, respetando y haciendo respetar las políticas, valores y procedimientos de la empresa.">
+                                <telerik:RadEditor NewLineMode="Br" Height="150px" Width="99%" EditModes="Design" ID="radEditorResponsable" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/AdvancedTools.xml"
+                                    ToolTip="Aquí debes especificar la razón de ser del puesto de manera genérica. Ejemplo: puesto de Gerente de Producción: es responsable de administrar los programas de producción garantizando que el producto terminado cumpla con las especificaciones del cliente y logrando la satisfacción laboral de su equipo de trabajo, respetando y haciendo respetar las políticas, valores y procedimientos de la empresa.">
+                                </telerik:RadEditor>
+                            </div>
+                            <div title="Aquí debes especificar la autoridad que posee el puesto en relación a la toma de decisiones. Dirigir: puestos directivos, Gestionar: puestos gerenciales, Coordinar: puestos de jefatura y/o coordinación, Supervisar: puestos de supervisión, Operar: puestos operativos y/o asistentes, auxiliares.">
+                                <label class="labelTitulo" id="lblAutoridad" name="lblAutoridad" title="Aquí debes especificar la autoridad que posee el puesto en relación a la toma de decisiones. Dirigir: puestos directivos, Gestionar: puestos gerenciales, Coordinar: puestos de jefatura y/o coordinación, Supervisar: puestos de supervisión, Operar: puestos operativos y/o asistentes, auxiliares.">
+                                    <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;
+                                     Autoridad</label>
+                            </div>
+                            <div title="Aquí debes especificar la autoridad que posee el puesto en relación a la toma de decisiones. Dirigir: puestos directivos, Gestionar: puestos gerenciales, Coordinar: puestos de jefatura y/o coordinación, Supervisar: puestos de supervisión, Operar: puestos operativos y/o asistentes, auxiliares.">
+                                <telerik:RadEditor NewLineMode="Br" Height="150px" Width="99%" ToolsWidth="100%" EditModes="Design" ID="radEditorAutoridad" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/AdvancedTools.xml"
+                                    ToolTip="Aquí debes especificar la autoridad que posee el puesto en relación a la toma de decisiones. Dirigir: puestos directivos, Gestionar: puestos gerenciales, Coordinar: puestos de jefatura y/o coordinación, Supervisar: puestos de supervisión, Operar: puestos operativos y/o asistentes, auxiliares.">
+                                </telerik:RadEditor>
+                            </div>
+                             <label class="labelTitulo" id="lblFuncionesGenericas" name="lblFuncionesGenericas">
                             <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
                             <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>
                             <span style="border: 1px solid gray; background: #0087CF; border-radius: 5px;" title="Metodología para la compensación ">&nbsp;&nbsp;</span>&nbsp; 
+
+                             Funciones genéricas
+                             </label>
+
                             <div style="height: calc(100% - 80px);">
 
                                 <telerik:RadGrid ID="grdFuncionesGenericas" runat="server" AutoGenerateColumns="false" Height="100%"
@@ -1238,8 +1158,10 @@
                                                     <div><%# Eval("DS_DETALLE") %></div>
                                                     <telerik:RadGrid ID="grdCompetencias" runat="server" AutoGenerateColumns="false">
                                                         <MasterTableView>
+
                                                             <Columns>
                                                                 <telerik:GridBoundColumn HeaderText="Competencias específicas" DataField="NB_COMPETENCIA" HeaderStyle-Width="300" UniqueName="NB_COMPETENCIA"></telerik:GridBoundColumn>
+
                                                                 <telerik:GridBoundColumn HeaderText="Nivel" DataField="NB_NIVEL" UniqueName="NB_NIVEL"></telerik:GridBoundColumn>
                                                                 <telerik:GridTemplateColumn HeaderText="Indicadores desempeño - Evidencias" DataField="DS_INDICADORES" UniqueName="DS_INDICADORES">
                                                                     <ItemTemplate>
@@ -1275,11 +1197,11 @@
                         <telerik:RadPageView ID="pvwCompetenciasGenericas" runat="server">
                             <span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>
                             <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
-                            <span style="border: 1px solid gray; background: #0087CF; border-radius: 5px;" title="Metodología para la compensación ">&nbsp;&nbsp;</span>&nbsp;
-                           
+                            <span style="border: 1px solid gray; background: #0087CF; border-radius: 5px;" title="Metodología para la compensación ">&nbsp;&nbsp;</span>&nbsp;                          
+
                               <div style="height: calc(100% - 40px);">
                                   <telerik:RadGrid ID="dgvCompetencias" runat="server" ShowStatusBar="True" AutoGenerateColumns="False" AllowPaging="false" AllowSorting="false" Width="100%" Height="100%"
-                                      OnNeedDataSource="dgvCompetencias_NeedDataSource" OnDataBound="dgvCompetencias_DataBound">
+                                         OnNeedDataSource="dgvCompetencias_NeedDataSource" OnDataBound="dgvCompetencias_DataBound" HeaderStyle-Font-Bold="true">
                                       <ClientSettings>
                                           <Scrolling UseStaticHeaders="true" AllowScroll="true" />
                                       </ClientSettings>
@@ -1387,7 +1309,7 @@
                                 </telerik:RadComboBox>
                             </div>
                             <div class="ctrlBasico">
-                                <label id="lblSubarea" name="lblSubarea">*Sub-área: </label>
+                                <label id="lblSubarea" name="lblSubarea">Sub-área: </label>
                                 <br />
                                 <telerik:RadComboBox ID="cmbSubarea" Skin="Bootstrap" name="cmbSubarea" ToolTip="Campo obligatorio" CssClass="textbox"
                                     runat="server"
@@ -1403,7 +1325,7 @@
                             </div>
                             <div style="clear: both; height: 20px;"></div>
                             <div class="ctrlBasico">
-                                <label id="lblModulo" name="lblModulo">*Módulo: </label>
+                                <label id="lblModulo" name="lblModulo">Módulo: </label>
                                 <br />
                                 <telerik:RadComboBox ID="cmbModulo" Skin="Bootstrap" name="cmbModulo" ToolTip="Campo obligatorio" CssClass="textbox"
                                     runat="server"
@@ -1470,44 +1392,80 @@
                         </telerik:RadPageView>
                         <!-- Fin de Ocupaciones -->
                         <!--Inicio autorizar-->
+
+
                         <telerik:RadPageView ID="pvwAutorizar" runat="server">
                             <div class="ctrlBasico" style="padding-left: 20px; width: 100%;">
                                 <telerik:RadCheckBox runat="server" ID="rcbAutorizar" Text="Autorizar puesto" AutoPostBack="false"></telerik:RadCheckBox>
+
+
+
+
+
+
+
+
+
                             </div>
                             <br />
                             <br />
                             <div class="ctrlBasico" style="padding-left: 20px;">
                                 <label id="Label9" name="lblNbIdioma" runat="server" style="font-size: 14px">Comentarios:</label>
+
+
+
+
+
                             </div>
                             <br />
                             <div class="ctrlBasico" style="width: 100%; padding-left: 20px;">
-
                                 <telerik:RadEditor Width="100%" Height="200px" EditModes="Design" ToolbarMode="Default" ID="radEditorAutorizar" runat="server" ToolsFile="~/Assets/AdvancedTools.xml"></telerik:RadEditor>
 
+
                             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                         </telerik:RadPageView>
                         <!--Fin autorizar-->
 
+
+
                     </telerik:RadMultiPage>
                 </div>
                 <div class="divControlDerecha">
-                    <%--<div class="ctrlBasico">
-            <telerik:RadButton runat="server" ID="btnGuardarCerrar" Text="Guardar y cerrar" AutoPostBack="true" OnClick="btnGuardarCerrar_Click" />
-        </div>--%>
                     <div class="ctrlBasico">
                         <telerik:RadButton runat="server" ID="btnGuardar" Text="Guardar" AutoPostBack="true" OnClick="btnGuardar_Click" />
                     </div>
+
                     <div class="ctrlBasico">
                         <telerik:RadButton runat="server" ID="btnAutorizar" Text="Aceptar" OnClick="btnAutorizar_Click"></telerik:RadButton>
                     </div>
+
                     <div class="ctrlBasico">
                         <telerik:RadButton ID="btnCancelarAutoriza" runat="server" Text="Cancelar" PostBackUrl="~/Logon.aspx"></telerik:RadButton>
+
                     </div>
+
                     <div class="ctrlBasico">
                         <telerik:RadButton runat="server" ID="btnCancelar" Text="Cancelar" AutoPostBack="false" OnClientClicked="closeWindow" />
                     </div>
+
                 </div>
             </telerik:RadPane>
             <telerik:RadPane ID="rpnOpciones" runat="server" Width="30">
@@ -1519,7 +1477,9 @@
                                     <label id="lblClaveDocumento" name="lblClaveDocumento">Clave del documento:</label>
                                 </div>
                                 <div class="divControlDerecha">
+
                                     <telerik:RadTextBox runat="server" ID="txtClaveDocumento" Width="280px" ToolTip="Aquí podras integrar la clave del formato que tienes registrada en el Sistema de Gestión de Calidad."></telerik:RadTextBox>
+
                                 </div>
                             </div>
                             <div class="ctrlBasico">
@@ -1535,6 +1495,7 @@
                                     <label id="lblFechaElaboracion" name="lblFechaElaboracion">Fecha Elaboración:</label>
                                 </div>
                                 <div class="divControlDerecha">
+
                                     <telerik:RadTextBox runat="server" ID="txtFeElabDocumento" Width="280px" InputType="Date" ToolTip="Aquí debes especificar la fecha de creación del descriptivo de puesto."></telerik:RadTextBox>
                                 </div>
                             </div>
@@ -1551,7 +1512,9 @@
                                     <label id="lblFechaRevision" name="lblFechaRevision">Fecha de revisón:</label>
                                 </div>
                                 <div class="divControlDerecha">
+
                                     <telerik:RadTextBox runat="server" ID="txtFeRevDocumento" Width="280px" InputType="Date" ToolTip="Aquí debes especificar la fecha con los últimos cambios dentro del descriptivo de puesto."></telerik:RadTextBox>
+
                                 </div>
                             </div>
                             <br />
@@ -1570,6 +1533,8 @@
                                 </div>
                                 <div class="divControlDerecha">
                                     <telerik:RadTextBox runat="server" ID="txtFeAutorizoDocumento" Width="280px" InputType="Date"></telerik:RadTextBox>
+
+
                                 </div>
                             </div>
                             <br />

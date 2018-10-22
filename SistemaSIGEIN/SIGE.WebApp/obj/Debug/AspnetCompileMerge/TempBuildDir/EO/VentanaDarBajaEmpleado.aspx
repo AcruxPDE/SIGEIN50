@@ -37,9 +37,14 @@
         }
 
         function GetWindowProperties() {
+            var currentWnd = GetRadWindow();
+            var browserWnd = window;
+            if (currentWnd)
+                browserWnd = currentWnd.BrowserWindow;
+
             return {
-                width: document.documentElement.clientWidth - 10,
-                height: document.documentElement.clientHeight - 10
+                width: browserWnd.innerWidth - 20,
+                height: browserWnd.innerHeight - 20
             };
         }
 

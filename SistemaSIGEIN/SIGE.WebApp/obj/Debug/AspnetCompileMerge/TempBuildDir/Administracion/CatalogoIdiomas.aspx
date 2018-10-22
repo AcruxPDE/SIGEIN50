@@ -126,10 +126,8 @@
 
         </script>
     </telerik:RadCodeBlock>
-
     <label class="labelTitulo">Idiomas</label>
     <div style="height: calc(100% - 100px);">
-
         <telerik:RadGrid 
             ID="GridIdiomas" 
             ShowHeader="true"
@@ -179,17 +177,15 @@
 
     <div style="clear: both; height: 10px;"></div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowPopupAgregarIdiomas" AutoPostBack="false" runat="server" Text="Agregar" Width="100"></telerik:RadButton>
+        <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowPopupAgregarIdiomas" AutoPostBack="false" runat="server" Text="Agregar" ></telerik:RadButton>
          </div>
     <div class="ctrlBasico">
-     <telerik:RadButton ID="btnEditar" OnClientClicked="ShowPopupEditarIdiomas" AutoPostBack="false" runat="server" Text="Editar" Width="100"></telerik:RadButton>
+     <telerik:RadButton ID="btnEditar" OnClientClicked="ShowPopupEditarIdiomas" AutoPostBack="false" runat="server" Text="Editar" ></telerik:RadButton>
         </div>
      <div class="ctrlBasico">
-         <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" Width="100" OnClick="btnEliminar_Click" OnClientClicking="ConfirmarEliminar"></telerik:RadButton>
+         <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" OnClientClicking="ConfirmarEliminar"></telerik:RadButton>
     </div>
-
-
-
+   <div style="clear:both;"></div>
     <telerik:RadWindowManager ID="RadWindowManager1" runat="server" EnableShadow="true">
         <Windows>
             <telerik:RadWindow 

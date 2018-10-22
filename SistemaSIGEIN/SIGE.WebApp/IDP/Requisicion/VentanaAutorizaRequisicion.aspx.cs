@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Telerik.Web.UI;
 
 namespace SIGE.WebApp.IDP
 {
@@ -52,13 +53,13 @@ namespace SIGE.WebApp.IDP
         #endregion
 
         #region Metodos
-        
+
         public void EnvioCorreo(string Email, string Mensaje, string Asunto)
         {
             Mail mail = new Mail(ContextoApp.mailConfiguration);
-            mail.addToAddress(Email, String.Format("{0}", Mensaje));
-            //RadProgressContext progress = RadProgressContext.Current;
-            mail.Send(Asunto, Mensaje);
+            mail.addToAddress(Email, "");
+            RadProgressContext progress = RadProgressContext.Current;
+            mail.Send(Asunto, String.Format("{0}", Mensaje));
         }
 
         private void CargarDatos()

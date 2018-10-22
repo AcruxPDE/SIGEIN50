@@ -16,6 +16,8 @@
             $find("<%=rgPruebasEmpleados.ClientID%>").get_masterTableView().rebind();
         }
 
+  
+
 
         function obtenerIdFilaEmpleados() {
             vIdBateriaEmp = "";
@@ -73,20 +75,84 @@
              };
              if (idCandidatoEmp != "") {
                  if (vIdBateriaEmp != "" && vIdBateriaEmp != null)
-                     openChildDialog("VentanaRevisarPruebas.aspx?pIdBateria=" + vIdBateriaEmp + "&pIdCandidato=" + idCandidatoEmp, "winPruebasEmp", "Vizualizar pruebas", windowProperties);
+                     openChildDialog("VentanaRevisarPruebas.aspx?pIdBateria=" + vIdBateriaEmp + "&pIdCandidato=" + idCandidatoEmp, "winPruebasEmp", "Visualizar pruebas", windowProperties);
                  else
                      radalert("No existe una batería creada.", 400, 150, "Error");
              }
          }
 
          function OpenCrearBateriasEmpleado() {
-             var pIdCandidatosPruebas = '<%= vIdGeneraBaterias%>';
-            openChildDialog("AgregarPruebas.aspx?pIdCandidatosPruebas=" + pIdCandidatosPruebas, "winPruebasEmp", "Crear batería", GetWindowProperties());
-        }
+             var vCandidatos = [];
+             var vCandidatosJson = "";
+             var grid = $find("<%=rgPruebasEmpleados.ClientID %>");
+             var MasterTable = grid.get_masterTableView();
+             var selectedRows = MasterTable.get_selectedItems();
+             if (selectedRows.length > 0) {
+                 for (i = 0; i < selectedRows.length; i++) {
+                     selectedItem = selectedRows[i];
+
+                     if ((selectedItem.getDataKeyValue("ESTATUS")) == "NO CREADA") {
+                         var vIdCandidato = selectedItem.getDataKeyValue("ID_CANDIDATO")
+                         if (vIdCandidato == null)
+                             vIdCandidato =0;
+
+                         var vCandidato = {                            
+                             ID_EMPLEADO: selectedItem.getDataKeyValue("M_EMPLEADO_ID_EMPLEADO"),
+                             ID_CANDIDATO: vIdCandidato,
+                         }
+
+                         vCandidatos.push(vCandidato);
+                     }
+                     else {
+                         radalert("Uno de los empleados seleccionados ya cuenta con una batería creada. Elimina sus respuestas para asignar una nueva.", 400, 170, "Error");
+                         return;
+                     }
+                 }
+
+                 vCandidatosJson = JSON.stringify(vCandidatos);
+
+                // var pIdCandidatosPruebas = '<= vIdGeneraBaterias%>';
+                 openChildDialog("AgregarPruebas.aspx?candidatos=" + vCandidatosJson +"&CL_ORIGEN=EMPLEADO", "winPruebasEmp", "Asignar pruebas", GetWindowProperties());
+             }
+             else {
+                 radalert("Selecciona una solicitud.", 400, 150, "Error");
+             }
+         }
+
 
         function OpenAplicarPruebasEmp() {
-            var pIdCandidatosPruebas = '<%= vIdGeneraBaterias%>';
-            openChildDialog("VentanaAplicarPruebas.aspx?pIdCandidatosPruebas=" + pIdCandidatosPruebas, "winPruebasEmp", "Aplicar pruebas", GetWindowProperties());
+            var vCandidatos = [];
+            var vCandidatosJson = "";
+            var grid = $find("<%=rgPruebasEmpleados.ClientID %>");
+             var MasterTable = grid.get_masterTableView();
+             var selectedRows = MasterTable.get_selectedItems();
+             if (selectedRows.length > 0) {
+                 for (i = 0; i < selectedRows.length; i++) {
+                     selectedItem = selectedRows[i];
+
+                     if ((selectedItem.getDataKeyValue("ESTATUS")) != "NO CREADA") {
+                         var vCandidato = {
+                             ID_CANDIDATO: selectedItem.getDataKeyValue("ID_CANDIDATO"),
+                         }
+
+                         vCandidatos.push(vCandidato);
+                     }
+                     else {
+                         radalert("Uno de los empleados seleccionados no cuenta con una batería creada. Crea la batería o deselecciónalo para este proceso.", 400, 170, "Error");
+                         return;
+                     }
+                 }
+
+                 vCandidatosJson = JSON.stringify(vCandidatos);
+
+
+           // var pIdCandidatosPruebas = '<= vIdGeneraBaterias%>';
+                 openChildDialog("VentanaAplicarPruebas.aspx?candidatos=" + vCandidatosJson, "winPruebasEmp", "Aplicar pruebas", GetWindowProperties());
+
+             }
+             else {
+                 radalert("Selecciona un empleado.", 400, 150, "Error");
+             }
         }
 
 
@@ -173,13 +239,69 @@
         var clEstatus = "";
 
         function OpenCrearBaterias() {
-            var pIdCandidatosPruebas = '<%= vIdGeneraBaterias%>';
-            openChildDialog("AgregarPruebas.aspx?pIdCandidatosPruebas=" + pIdCandidatosPruebas, "winPruebas", "Crear batería", GetWindowProperties());
+            var vCandidatos = [];
+            var vCandidatosJson = "";
+            var grid = $find("<%=grdSolicitudes.ClientID %>");
+             var MasterTable = grid.get_masterTableView();
+             var selectedRows = MasterTable.get_selectedItems();
+             if (selectedRows.length > 0) {
+                 for (i = 0; i < selectedRows.length; i++) {
+                     selectedItem = selectedRows[i];
+
+                     if ((selectedItem.getDataKeyValue("ESTATUS")) == "NO CREADA") {
+                         var vCandidato = {
+                             ID_CANDIDATO: selectedItem.getDataKeyValue("ID_CANDIDATO"),
+                         }
+
+                         vCandidatos.push(vCandidato);
+                     }
+                     else {
+                         radalert("Una de las solicitudes seleccionadas ya cuenta con una batería creada. Elimina sus respuestas para asignar una nueva.", 400, 170, "Error");
+                         return;
+                     }
+                 }
+
+                 vCandidatosJson = JSON.stringify(vCandidatos);
+
+                 openChildDialog("AgregarPruebas.aspx?candidatos=" + vCandidatosJson, "winPruebasSolicitud", "Asignar pruebas", GetWindowProperties());
+             }
+             else {
+                 radalert("Selecciona una solicitud.", 400, 150, "Error");
+             }
         }
 
         function OpenAplicarPruebas() {
-            var pIdCandidatosPruebas = '<%= vIdGeneraBaterias%>';
-            openChildDialog("VentanaAplicarPruebas.aspx?pIdCandidatosPruebas=" + pIdCandidatosPruebas, "winPruebas", "Aplicar pruebas", GetWindowProperties());
+            var vCandidatos = [];
+            var vCandidatosJson = "";
+            var grid = $find("<%=grdSolicitudes.ClientID %>");
+            var MasterTable = grid.get_masterTableView();
+            var selectedRows = MasterTable.get_selectedItems();
+            if (selectedRows.length > 0) {
+                for (i = 0; i < selectedRows.length; i++) {
+                    selectedItem = selectedRows[i];
+
+                    if ((selectedItem.getDataKeyValue("ESTATUS")) != "NO CREADA") {
+                        var vCandidato = {
+                            ID_CANDIDATO: selectedItem.getDataKeyValue("ID_CANDIDATO"),
+                        }
+
+                        vCandidatos.push(vCandidato);
+                    }
+                    else {
+                        radalert("Una de las solicitudes seleccionada no cuenta con una batería creada. Crea la batería o deselecciónala para este proceso.", 400, 170, "Error");
+                        return;
+                    }
+                }
+
+                vCandidatosJson = JSON.stringify(vCandidatos);
+
+
+           // var pIdCandidatosPruebas = '<= vIdGeneraBaterias%>';
+                openChildDialog("VentanaAplicarPruebas.aspx?candidatos=" + vCandidatosJson, "winPruebas", "Aplicar pruebas", GetWindowProperties());
+            }
+            else {
+                radalert("Selecciona una solicitud.", 400, 150, "Error");
+            }
         }
 
         function useDataFromChild(pDato) {
@@ -218,7 +340,7 @@
             };
             if (idCandidato != "") {
                 if (vIdBateria != "" && vIdBateria != null)
-                    openChildDialog("VentanaRevisarPruebas.aspx?pIdBateria=" + vIdBateria + "&pIdCandidato=" + idCandidato, "winPruebas", "Vizualizar pruebas", windowProperties);
+                    openChildDialog("VentanaRevisarPruebas.aspx?pIdBateria=" + vIdBateria + "&pIdCandidato=" + idCandidato, "winPruebas", "Visualizar pruebas", windowProperties);
                 else
                     radalert("No existe una batería creada.", 400, 150, "Error");
             }
@@ -347,7 +469,7 @@
             var vIdRequisicion = '<%= vIdRequisicion %>';
 
                 var vURL = "VentanaAsignarRequisicion.aspx";
-                var vTitulo = "Asignar candidato a requisicion";
+                var vTitulo = "Asignar candidato a requisición";
 
                 var grid = $find("<%=grdSolicitudes.ClientID %>");
                 var MasterTable = grid.get_masterTableView();
@@ -567,7 +689,17 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="height: calc(100% - 30px);">
+    <telerik:RadAjaxLoadingPanel ID="ralpEvaluacion" runat="server"></telerik:RadAjaxLoadingPanel>
+    <telerik:RadAjaxManager ID="ramEvaluacion" runat="server">
+        <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="ramEvaluacion">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="grdSolicitudes" UpdatePanelHeight="100%" LoadingPanelID="ralpEvaluacion" />
+                    <telerik:AjaxUpdatedControl ControlID="rgPruebasEmpleados" UpdatePanelHeight="100%" LoadingPanelID="ralpEvaluacion" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+        </AjaxSettings>
+    </telerik:RadAjaxManager>
         <label class="labelTitulo">Candidatos</label>
         <div style="clear: both;"></div>
         <telerik:RadTabStrip ID="rtsAplicacionPruebas" runat="server" SelectedIndex="0" MultiPageID="rmpPruebas">
@@ -576,7 +708,8 @@
                 <telerik:RadTab Text="Empleados"></telerik:RadTab>
             </Tabs>
         </telerik:RadTabStrip>
-        <div style="height: calc(100% - 50px);">
+        <div style="height: calc(100% - 90px);">
+                 <div style="clear: both; height: 10px;"></div>
             <telerik:RadMultiPage ID="rmpPruebas" runat="server" SelectedIndex="0" Height="100%">
                 <telerik:RadPageView ID="rpvPruebasSolicitudes" runat="server">
                     <telerik:RadSplitter ID="splSolicitudes" runat="server" Width="100%" Height="100%" BorderSize="0" Orientation="Vertical">
@@ -606,8 +739,8 @@
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" FilterControlWidth="40" HeaderText="Folio de solicitud" DataField="CL_SOLICITUD" UniqueName="CL_SOLICITUD"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="250" FilterControlWidth="180" HeaderText="Nombre completo" DataField="NB_CANDIDATO" UniqueName="NB_CANDIDATO"></telerik:GridBoundColumn>
                                             <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="90" HeaderText="Fecha de solicitud" DataField="FE_SOLICITUD" UniqueName="FE_SOLICITUD" DataFormatString="{0:d}"></telerik:GridDateTimeColumn>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Etapa del proceso" DataField="CL_SOLICITUD_ESTATUS" UniqueName="CL_SOLICITUD_ESTATUS"></telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Estado batería" DataField="ESTATUS" UniqueName="ESTATUS"></telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Estatus del proceso" DataField="CL_SOLICITUD_ESTATUS" UniqueName="CL_SOLICITUD_ESTATUS"></telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Estatus batería" DataField="ESTATUS" UniqueName="ESTATUS"></telerik:GridBoundColumn>
                                             <telerik:GridDateTimeColumn DataFormatString="{0:d}" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Fecha de aplicación" DataField="FE_TERMINO" UniqueName="FE_TERMINO"></telerik:GridDateTimeColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="100" FilterControlWidth="40" HeaderText="Enviada" DataField="FG_ENVIO_CORREO" UniqueName="FG_ENVIO_CORREO"></telerik:GridBoundColumn>
                                             <telerik:GridDateTimeColumn DataFormatString="{0:d}" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Fecha de envío" DataField="FE_ENVIO_CORREO" UniqueName="FE_ENVIO_CORREO"></telerik:GridDateTimeColumn>
@@ -619,13 +752,13 @@
                             </div>
                             <div style="clear: both; height: 10px;"></div>
                             <div class="ctrlBasico">
-                                <telerik:RadButton runat="server" Text="Crear batería" ID="btnCrearBateria" AutoPostBack="true" OnClick="btnCrearBateria_Click" />
-                            </div>
-                            <div class="ctrlBasico">
-                                <telerik:RadButton runat="server" Text="Aplicar pruebas" ID="btnAplicarPruebas" AutoPostBack="true" OnClick="btnAplicarPruebas_Click" />
-                            </div>
+                                <telerik:RadButton runat="server" Text="Asignar pruebas" ID="btnCrearBateria" AutoPostBack="false" OnClientClicked="OpenCrearBaterias" />
+                            </div>                          
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" Text="Agregar pruebas" ID="btnAgrgarPruebas" AutoPostBack="false" OnClientClicked="OpenAgregarPruebas" />
+                            </div>
+                             <div class="ctrlBasico">
+                                <telerik:RadButton runat="server" ToolTip="Da clic en esta opción para para que selecciones la forma más apta de aplicación de psicometría para tu(s) candidato(s)." Text="Aplicar pruebas" ID="btnAplicarPruebas" AutoPostBack="false" OnClientClicked="OpenAplicarPruebas" />
                             </div>
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" Text="Captura manual" ID="btnCapturaManual" AutoPostBack="false" OnClientClicked="OpenCapturaManual" />
@@ -668,7 +801,7 @@
                                     </ClientSettings>
                                     <PagerStyle AlwaysVisible="true" />
                                     <GroupingSettings CaseSensitive="false" />
-                                    <MasterTableView ClientDataKeyNames="ID_BATERIA,M_EMPLEADO_ID_EMPLEADO, ID_CANDIDATO, ID_SOLICITUD" Name="Baterias"
+                                    <MasterTableView ClientDataKeyNames="ID_BATERIA,M_EMPLEADO_ID_EMPLEADO, ID_CANDIDATO, ID_SOLICITUD, ESTATUS" Name="Baterias"
                                         EnableColumnsViewState="false" DataKeyNames="ID_BATERIA,M_EMPLEADO_ID_EMPLEADO, M_EMPLEADO_CL_EMPLEADO, ID_CANDIDATO, ESTATUS" AllowPaging="true"
                                         AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
                                         <Columns>
@@ -677,8 +810,8 @@
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="250" FilterControlWidth="180" HeaderText="Nombre completo" DataField="M_EMPLEADO_NB_EMPLEADO_COMPLETO" UniqueName="M_EMPLEADO_NB_EMPLEADO_COMPLETO"></telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="60" HeaderText="Folio de solicitud" DataField="CL_SOLICITUD" UniqueName="CL_SOLICITUD"></telerik:GridBoundColumn>
                                             <%--<telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="120" FilterControlWidth="60" HeaderText="Etapa del proceso" DataField="CL_ESTATUS_SOLICITUD" UniqueName="CL_ESTATUS_SOLICITUD"></telerik:GridBoundColumn>--%>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="60" ItemStyle-HorizontalAlign="Center" HeaderText="Estado" DataField="M_EMPLEADO_CL_ESTADO_EMPLEADO" UniqueName="M_EMPLEADO_CL_ESTADO_EMPLEADO"></telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Estado batería" DataField="ESTATUS" UniqueName="ESTATUS"></telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="130" FilterControlWidth="60" ItemStyle-HorizontalAlign="Center" HeaderText="Estatus" DataField="M_EMPLEADO_CL_ESTADO_EMPLEADO" UniqueName="M_EMPLEADO_CL_ESTADO_EMPLEADO"></telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Estatus batería" DataField="ESTATUS" UniqueName="ESTATUS"></telerik:GridBoundColumn>
                                             <telerik:GridDateTimeColumn DataFormatString="{0:d}" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Fecha de aplicación" DataField="FE_TERMINO" UniqueName="FE_TERMINO"></telerik:GridDateTimeColumn>
                                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="110" FilterControlWidth="40" HeaderText="Enviada" DataField="FG_ENVIO_CORREO" UniqueName="FG_ENVIO_CORREO"></telerik:GridBoundColumn>
                                             <telerik:GridDateTimeColumn DataFormatString="{0:d}" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Fecha de envío" DataField="FE_ENVIO_CORREO" UniqueName="FE_ENVIO_CORREO"></telerik:GridDateTimeColumn>
@@ -690,13 +823,13 @@
                             </div>
                             <div style="clear: both; height: 10px;"></div>
                             <div class="ctrlBasico">
-                                <telerik:RadButton runat="server" Text="Crear batería" ID="btnCrearBateriaEmp" AutoPostBack="true" OnClick="btnCrearBateriaEmp_Click" />
-                            </div>
-                            <div class="ctrlBasico">
-                                <telerik:RadButton runat="server" Text="Aplicar pruebas" ID="btnAplicarPruebaEmp" AutoPostBack="true" OnClick="btnAplicarPruebaEmp_Click" />
-                            </div>
+                                <telerik:RadButton runat="server" Text="Asignar pruebas" ID="btnCrearBateriaEmp" AutoPostBack="false" OnClientClicked="OpenCrearBateriasEmpleado" />
+                            </div>         
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" Text="Agregar pruebas" ID="btnAgregarPruebaEmp" AutoPostBack="false" OnClientClicked="OpenAgregarPruebasEmp" />
+                            </div>
+                             <div class="ctrlBasico">
+                                <telerik:RadButton runat="server" ToolTip="Da clic en esta opción para para que selecciones la forma más apta de aplicación de psicometría para tu(s) empleado(s)." Text="Aplicar pruebas" ID="btnAplicarPruebaEmp" AutoPostBack="false" OnClientClicked="OpenAplicarPruebasEmp" />
                             </div>
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" Text="Captura manual" ID="btnManualEmp" AutoPostBack="false" OnClientClicked="OpenManualEmp" />
@@ -715,8 +848,7 @@
                 </telerik:RadPageView>
             </telerik:RadMultiPage>
         </div>
-    </div>
-    <asp:HiddenField runat="server" ID="hfSelectedRow" />
+  <%--  <asp:HiddenField runat="server" ID="hfSelectedRow" />--%>
     <telerik:RadWindowManager ID="RadWindowManager1" runat="server" EnableShadow="true" OnClientClose="returnDataToParentPopup">
         <Windows>
             <telerik:RadWindow ID="RWpruebasCorrecion" runat="server" Title="Pruebas" Left="5%" ReloadOnShow="true" ShowContentDuringLoad="false" VisibleStatusbar="false" VisibleTitlebar="true" Behaviors="Close" Modal="true" OnClientClose="onCloseWindow"></telerik:RadWindow>
@@ -737,7 +869,9 @@
             <telerik:RadWindow ID="winSeleccionPuestos" runat="server" Title="Seleccionar Jefe inmediato" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
             <telerik:RadWindow ID="winPruebasEmp" runat="server" ReloadOnShow="true" ShowContentDuringLoad="false" VisibleStatusbar="false" VisibleTitlebar="true" Behaviors="Close" Modal="true" OnClientClose="returnDataToParentPopupEmp"></telerik:RadWindow>
             <telerik:RadWindow ID="rwListaProcesoSeleccionEmp" runat="server" Behaviors="Close" Modal="true" VisibleStatusbar="false" ReloadOnShow="true" OnClientClose="returnDataToParentPopupEmp"></telerik:RadWindow>
-        </Windows>
+            <telerik:RadWindow ID="rwComentarios" runat="server" Behaviors="Close" Modal="true" VisibleStatusbar="false" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
+            <telerik:RadWindow ID="winPruebasSolicitud" runat="server" ReloadOnShow="true" ShowContentDuringLoad="false" VisibleStatusbar="false" VisibleTitlebar="true" Behaviors="Close" Modal="true" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>           
+             </Windows>
     </telerik:RadWindowManager>
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true" Height="100%">
     </telerik:RadWindowManager>

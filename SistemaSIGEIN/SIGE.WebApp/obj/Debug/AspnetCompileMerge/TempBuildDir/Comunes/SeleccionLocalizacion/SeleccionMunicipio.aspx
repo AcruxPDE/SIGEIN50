@@ -30,7 +30,7 @@
             sendDataToParent(null);
         }
     </script>
-       <style>
+     <%--  <style>
 
         .BordeModulo {
     border: 2px solid #A9BCF5;
@@ -103,7 +103,7 @@ span.RadButton.rbSkinnedButton, span.RadButton.rbLinkButton, span.RadButton.rbVe
     color: #333 !important;
 }
 
-    </style>
+    </style>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
     <telerik:RadGrid ID="grdMunicipios" runat="server" Height="485" HeaderStyle-Font-Bold="true" AutoGenerateColumns="false" AllowSorting="true" OnNeedDataSource="grdMunicipios_NeedDataSource">

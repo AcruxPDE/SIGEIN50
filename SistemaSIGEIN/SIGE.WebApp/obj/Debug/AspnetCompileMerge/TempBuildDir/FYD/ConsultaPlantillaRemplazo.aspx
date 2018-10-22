@@ -14,7 +14,7 @@
         }
 
         function OpenPuestoSelectionReportePlantillaWindow() {
-            OpenSelectionWindow("../Comunes/SeleccionPuesto.aspx?m=FORMACION&CatalogoCl=PLANTILLA&vClTipoSeleccion=PUESTO_OBJETIVO", "winSeleccion", "Selección de puestos");
+            OpenSelectionWindow("../Comunes/SeleccionPuesto.aspx?CatalogoCl=PLANTILLA&vClTipoSeleccion=PUESTO_OBJETIVO", "winSeleccion", "Selección de puestos");
         }
 
         function OpenSelectionWindow(pURL, pIdWindow, pTitle) {
@@ -83,12 +83,11 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <label class="labelTitulo">Plantillas de Reemplazo</label>
-    <div style="height: 10px; clear: both;"></div>
-    <div style="height: calc(100% - 100px); width: 100%;">
+    <label class="labelTitulo">Plantillas de reemplazo</label>
+    <div style="height: calc(100% - 60px); width: 100%;">
         <telerik:RadSplitter ID="rsReportes" Width="100%" Height="100%" BorderSize="0" runat="server">
             <telerik:RadPane ID="rpReportes" runat="server">
-                <div style="clear: both; height: 15px;"></div>
+                <div style="clear: both; height: 10px;"></div>
                 <div style="height: calc(100% - 600px);">
                     <div class="ctrlBasico">
                         <div class="divControlIzquierda" style="width: 250px;">
@@ -106,11 +105,13 @@
                         AutoPostBack="false" OnClientClicked="OpenPuestoSelectionReportePlantillaWindow">
                     </telerik:RadButton>
                     <div style="clear: both; height: 10px;"></div>
+                    <div class="ctrlBasico">
                     <telerik:RadButton runat="server" ID="btnPlantillas" Text="Emitir" AutoPostBack="false" OnClientClicked="OpenPlantillasWindow"></telerik:RadButton>
+                    </div>
                 </div>
             </telerik:RadPane>
             <telerik:RadPane ID="rpAyuda" runat="server" Scrolling="None" Width="22px" Height="50px">
-                <telerik:RadSlidingZone ID="rszAyuda" SlideDirection="Left" runat="server" ExpandedPaneId="rspAyuda" Width="22px">
+                <telerik:RadSlidingZone ID="rszAyuda" SlideDirection="Left" runat="server" ExpandedPaneId="rspAyuda" ClickToOpen="true" Width="22px">
                     <telerik:RadSlidingPane ID="rspAyuda" runat="server" Title="Ayuda" Width="270px" RenderMode="Mobile" Height="100%">
                         <div id="divPlantilla" runat="server" style="display: block; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
                             Plantillas de remplazo

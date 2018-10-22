@@ -63,19 +63,20 @@
         }
 
         function SetListBoxItem(list, text, value) {
-            if (list != undefined) {
+            if (list != undefined && value != null) {
                 list.trackChanges();
 
                 var items = list.get_items();
                 items.clear();
 
                 var item = new Telerik.Web.UI.RadListBoxItem();
-                item.set_text(text);
-                item.set_value(value);
-                item.set_selected(true);
-                items.add(item);
+                    item.set_text(text);
+                    item.set_value(value);
+                    item.set_selected(true);
+                    items.add(item);
 
-                list.commitChanges();
+                    list.commitChanges();
+                
             }
         }
 
@@ -192,7 +193,7 @@
 
     <div class="divControlDerecha">
         <div class="ctrlBasico">
-            <telerik:RadButton runat="server" ID="btnGurdar" Text="Guardar" OnClick="btnGurdar_Click"></telerik:RadButton>
+            <telerik:RadButton runat="server" ID="btnGurdar" Text="Guardar" AutoPostBack="true" OnClick="btnGurdar_Click"></telerik:RadButton>
         </div>
 
         <div class="ctrlBasico">

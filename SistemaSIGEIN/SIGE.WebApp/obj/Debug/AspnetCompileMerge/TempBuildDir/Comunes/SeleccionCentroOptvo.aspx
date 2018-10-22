@@ -24,10 +24,12 @@
                             clCentro: masterTable.getCellByColumnUniqueName(selectedItem, "CL_CENTRO_OPTVO").innerHTML,
                             nbCentro: masterTable.getCellByColumnUniqueName(selectedItem, "NB_CENTRO_OPTVO").innerHTML,
                             clTipoCatalogo: "<%= vClCatalogo %>"
-                    };
-                    vCentros.push(vGrupo);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vCentros.length;
+                        };
+                        if (!existeElemento(vGrupo)) {
+                            vCentros.push(vGrupo);
+                            var vLabel = document.getElementsByName('lblAgregar')[0];
+                            vLabel.innerText = "Agregados: " + vCentros.length;
+                        }
                 }
 
                 return true;
@@ -40,6 +42,15 @@
                 browserWnd.radalert("Selecciona un centro operativo.", 400, 150);
             }
 
+            return false;
+        }
+
+        function existeElemento(pGrupo) {
+            for (var i = 0; i < vCentros.length; i++) {
+                var vValue = vCentros[i];
+                if (vValue.idCentro == pGrupo.idCentro)
+                    return true;
+            }
             return false;
         }
 

@@ -24,6 +24,7 @@
             <telerik:AjaxSetting AjaxControlID="cmbCategoria">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="cmbCategoria" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                     <telerik:AjaxUpdatedControl ControlID="lbMensaje" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
 
@@ -71,7 +72,7 @@
                             </div>
                             <div class="divControlDerecha">
                                 <telerik:RadComboBox Filter="Contains" runat="server" ID="cmbCategoria" Width="300" MarkFirstMatch="true" EnableLoadOnDemand="true" 
-                                    AutoPostBack="true" HighlightTemplatedItems="true"  DropDownWidth="315" ValidationGroup="VGcmbCategoria">
+                                    AutoPostBack="true" HighlightTemplatedItems="true"  DropDownWidth="315" ValidationGroup="VGcmbCategoria" OnSelectedIndexChanged="cmbCategoria_SelectedIndexChanged">
                                 </telerik:RadComboBox>
                             </div>
                         </div>
@@ -115,7 +116,7 @@
                                 <label id="Label1" runat="server">Descripción:</label>
                             </div>
                             <div class="divControlDerecha">
-                                <telerik:RadTextBox ID="txtDescripcion" runat="server" Width="300px" Height="130px" MaxLength="1000" CssClass="textarea" TextMode="MultiLine"></telerik:RadTextBox>
+                                <telerik:RadTextBox ID="txtDescripcion" runat="server" Width="300px" Height="120px" MaxLength="1000" CssClass="textarea" TextMode="MultiLine"></telerik:RadTextBox>
                             </div>
                         </div>
                         <div style="clear: both;" />
@@ -132,7 +133,7 @@
                                 </telerik:RadButton>
                             </div>
                         </div>
-
+                        <label id="lbMensaje" runat="server" style="color:red;" visible="false">*Si agregas competecias genéricas esto puede tener una repercusión en tus procesos.</label>
                     </ContentTemplate>
                 </telerik:RadPanelItem>
 

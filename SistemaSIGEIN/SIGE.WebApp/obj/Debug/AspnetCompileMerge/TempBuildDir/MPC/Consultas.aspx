@@ -1191,7 +1191,7 @@
 
                         <div id="divAyudaAnalisisDesviaciones" runat="server" style="display: none">
                             <p>
-                                Esta hoja permite refinar tu búsqueda para el reporte solicitado.																	
+                                Esta hoja permite definir tu búsqueda para el reporte solicitado.																	
                                 Con excepción de los parámetros de períodos que son mandatorios,																	
                                 dejando en blanco los criterios solicitados indicas que dicho criterio																	
                                 es irrelevante y el sistema no lo tomará en cuenta para filtrar los datos.																	

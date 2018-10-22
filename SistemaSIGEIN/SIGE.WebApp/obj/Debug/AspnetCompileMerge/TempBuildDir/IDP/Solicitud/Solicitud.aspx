@@ -10,6 +10,30 @@
            
            width: 150px !important;
        }
+
+        .DivFotoCss {
+           background: #fafafa; 
+           position: absolute; 
+           right: 0px; 
+           margin-right: 50px; 
+           border: 1px solid lightgray; 
+           border-radius: 10px; 
+           padding: 5px;
+        }
+
+         @media only screen and (max-width: 700px) {
+            .DivFotoCss {
+               background: #fafafa; 
+               position: relative;
+               right: 0px; 
+               margin-right: 50px; 
+               border: 1px solid lightgray; 
+               border-radius: 10px; 
+               padding: 5px;
+               width:170px;
+            }
+        }
+
    </style>
     <script id="MyScript" type="text/javascript">
 
@@ -238,7 +262,7 @@
                     <telerik:RadMultiPage ID="mpgSolicitud" runat="server" SelectedIndex="0" Height="100%">
                         <telerik:RadPageView ID="pvwPersonal" runat="server">
 
-                            <div style="background: #fafafa; position: absolute; right: 0px; margin-right: 50px; border: 1px solid lightgray; border-radius: 10px; padding: 5px;">
+                            <div class="DivFotoCss">
                                 <table class="ctrlTableForm">
                                     <tr>
                                         <td style="text-align: center;">
@@ -300,13 +324,13 @@
                                     </ClientSettings>
                                     <MasterTableView ClientDataKeyNames="ID_ARCHIVO,ID_ITEM" DataKeyNames="ID_ARCHIVO,ID_ITEM" AutoGenerateColumns="false" ShowHeadersWhenNoRecords="true">
                                         <Columns>
-                                            <telerik:GridHyperLinkColumn HeaderText="Nombre del documento" DataTextField="NB_DOCUMENTO" DataNavigateUrlFields="ID_ARCHIVO,ID_DOCUMENTO,FE_CREATED_DATE,NB_DOCUMENTO,ID_ITEM" DataNavigateUrlFormatString="/Comunes/ObtenerDocumento.ashx?ArchivoId={0}&ArchivoNb={2:yyyyMMdd}{4}&ArchivoDescargaNb={3}" Target="_blank"></telerik:GridHyperLinkColumn>
+                                            <telerik:GridHyperLinkColumn HeaderText="Nombre del documento" DataTextField="NB_DOCUMENTO" DataNavigateUrlFields="ID_ARCHIVO,ID_DOCUMENTO,FE_CREATED_DATE,NB_DOCUMENTO,ID_ITEM" DataNavigateUrlFormatString="~/Comunes/ObtenerDocumento.ashx?ArchivoId={0}&ArchivoNb={2:yyyyMMdd}{4}&ArchivoDescargaNb={3}" Target="_blank"></telerik:GridHyperLinkColumn>
                                             <telerik:GridBoundColumn HeaderText="Tipo de documento" HeaderStyle-Width="200" DataField="CL_TIPO_DOCUMENTO" UniqueName="CL_TIPO_DOCUMENTO"></telerik:GridBoundColumn>
                                         </Columns>
                                     </MasterTableView>
                                 </telerik:RadGrid>
                             </div>
-                            <div class="ctrlBasico">
+                            <div class="ctrlBasico" style="padding-left:20px;">
                                 <telerik:RadButton ID="btnDelDocumentos" runat="server" Text="Eliminar" OnClick="btnDelDocumentos_Click"></telerik:RadButton>
                             </div>
                         </telerik:RadPageView>
@@ -314,7 +338,7 @@
                 </div>
             </telerik:RadPane>
             <telerik:RadPane ID="rpAyuda" runat="server" Scrolling="None" Width="22px">
-                <telerik:RadSlidingZone ID="rszAvisoDePrivacidad" runat="server" SlideDirection="Left" ExpandedPaneId="rspAvisoDePrivacidad" Width="22px">
+                <telerik:RadSlidingZone ID="rszAvisoDePrivacidad" runat="server" SlideDirection="Left" ExpandedPaneId="rspAvisoDePrivacidad" Width="22px" ClickToOpen="true">
                     <telerik:RadSlidingPane ID="rspAvisoDePrivacidad" runat="server"  Title="Aviso de privacidad" Width="400px">
                         <div style="padding: 10px; text-align: justify;">
                             <literal id="lbAvisoPrivacidad" runat="server"></literal>

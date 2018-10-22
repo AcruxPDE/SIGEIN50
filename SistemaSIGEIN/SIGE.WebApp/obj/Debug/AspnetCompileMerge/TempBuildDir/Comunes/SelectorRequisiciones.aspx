@@ -26,9 +26,11 @@
                         nbPuesto: masterTable.getCellByColumnUniqueName(selectedItem, "NB_PUESTO").innerHTML,
                         clTipoCatalogo: "<%= vClCatalogo %>"
                     };
-                    vRequisiciones.push(vRequisicion);
-                    var vLabel = document.getElementsByName('lblAgregar')[0];
-                    vLabel.innerText = "Agregados: " + vRequisiciones.length;
+                    if (!existeElemento(vRequisicion)) {
+                        vRequisiciones.push(vRequisicion);
+                        var vLabel = document.getElementsByName('lblAgregar')[0];
+                        vLabel.innerText = "Agregados: " + vRequisiciones.length;
+                    }
                 }
                 return true;
             }
@@ -42,6 +44,16 @@
 
             return false;
         }
+
+        function existeElemento(pRequisicion) {
+            for (var i = 0; i < vRequisiciones.length; i++) {
+                var vValue = vRequisiciones[i];
+                if (vValue.idRequisicion == pRequisicion.idRequisicion)
+                    return true;
+            }
+            return false;
+        }
+
 
         function cancelarSeleccion() {
             sendDataToParent(null);

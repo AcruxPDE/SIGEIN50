@@ -23,7 +23,7 @@
 
             if (sender == vbtnRequisicion) {
                 windowProperties.width = 1100;
-                openChildDialog("../Comunes/SelectorRequisiciones.aspx", "winSeleccion", "Selección de la requisición", windowProperties);
+                openChildDialog("../Comunes/SelectorRequisiciones.aspx?CL_FILTRO_REQ=AUTORIZADO", "winSeleccion", "Selección de la requisición", windowProperties);
             }
 
         }
@@ -68,7 +68,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
-    <div style="height: calc(100% - 40px);">
+    <div style="height: calc(100% - 60px);">
         <table class="ctrlTableForm">
             <tr>
                 <td class="ctrlTableDataContext">
@@ -103,8 +103,12 @@
         <div style="clear: both;"></div>
     </div>
     <div class="divControlDerecha">
+        <div class="ctrlBasico">
         <telerik:RadButton ID="btnAceptar" runat="server" Text="Aceptar" AutoPostBack="true" OnClick="btnAceptar_Click"></telerik:RadButton>
+        </div>
+         <div class="ctrlBasico">
         <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" AutoPostBack="false" OnClientClicked="onCloseWindows"></telerik:RadButton>
+             </div>
     </div>
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true" Height="100%"></telerik:RadWindowManager>
 </asp:Content>

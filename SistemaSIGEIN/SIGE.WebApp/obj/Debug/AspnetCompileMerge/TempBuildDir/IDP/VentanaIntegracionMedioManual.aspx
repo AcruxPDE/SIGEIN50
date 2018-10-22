@@ -59,14 +59,24 @@
 <script type="text/javascript">
 
     function ConfirmarEliminarRespuestas(sender, args) {
-                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
-                    if (shouldSubmit) {
-                        this.click();
-                    }
-                });
-                radconfirm("Este proceso borrará las respuestas de la prueba, ¿Deseas continuar?", callBackFunction, 400, 150, null, "Eliminar respuestas");
-                args.set_cancel(true);
+        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+            if (shouldSubmit) {
+                this.click();
             }
+        });
+        radconfirm("Este proceso borrará las respuestas de todas las pruebas de la batería ¿Desea continuar?", callBackFunction, 400, 180, null, "Eliminar respuestas batería");
+        args.set_cancel(true);
+    }
+
+    function ConfirmarEliminarPrueba(sender, args) {
+        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+            if (shouldSubmit) {
+                this.click();
+            }
+        });
+        radconfirm("Este proceso borrará las respuestas de la prueba seleccionada ¿Desea continuar?", callBackFunction, 400, 180, null, "Eliminar respuestas prueba");
+        args.set_cancel(true);
+    }
 
 </script>
 </asp:Content>
@@ -236,9 +246,15 @@
 
     <div style="clear: both; height: 10px;"></div>
     <div class="divControlDerecha">
-       
-        <telerik:RadButton ID="btnTerminar" runat="server" Text="Guardar" AutoPostBack="true" OnClick="btnTerminar_Click" UseSubmitBehavior="false"></telerik:RadButton>
-        <%-- <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" AutoPostBack="true" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminar_Click" Visible="true"></telerik:RadButton>--%>
+        <div class="ctrlBasico">
+            <telerik:RadButton ID="btnTerminar" runat="server" Text="Guardar" AutoPostBack="true" OnClick="btnTerminar_Click" UseSubmitBehavior="false"></telerik:RadButton>
+        </div>
+         <div class="ctrlBasico">
+             <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" AutoPostBack="true" OnClientClicking="ConfirmarEliminarPrueba" OnClick="btnEliminar_Click" Visible="true"></telerik:RadButton>
+         </div>
+        <div class="ctrlBasico">
+            <telerik:RadButton ID="btnEliminarBateria" runat="server" Text="Eliminar batería" AutoPostBack="true" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminarBateria_Click" Visible="true"></telerik:RadButton>
+         </div>
     </div>
 
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>

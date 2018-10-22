@@ -52,7 +52,7 @@
                      </table>
                 </div>
                  <div style="clear: both; height: 5px"></div>
-                 <div class="ctrlBasico">
+                 <div class="ctrlBasico" id="dvEdad" runat="server" style="display:none;">
                                     <div class="divControlIzquierda">
                                         <label id="lbEdad" name="lblEdad" runat="server" visible ="false">Edad:</label>
                                     </div>
@@ -60,7 +60,7 @@
                                         <telerik:RadNumericTextBox runat="server" ID="rntEdad" Visible="false" NumberFormat-DecimalDigits="0" Name="rnEdad" Width="70px"  ShowSpinButtons="true"></telerik:RadNumericTextBox>
                                     </div>
                                 </div>
-                       <div class="ctrlBasico">
+                       <div class="ctrlBasico" id="dvGenero" runat="server" style="display:none;">
                                     <div class="divControlIzquierda">
                                         <label id="lbGenero" name="lbGenero" runat="server" visible="false">Género:</label>
                                     </div>
@@ -68,7 +68,7 @@
                                         <telerik:RadComboBox runat="server" AutoPostBack="false" Visible="false" MarkFirstMatch="true" EmptyMessage="Selecciona" Width="150" ID="cmbGenero"></telerik:RadComboBox>
                                     </div>
                                 </div>
-                                       <div class="ctrlBasico">
+                                       <div class="ctrlBasico" runat="server" id="dvArea" style="display:none;">
                                     <div class="divControlIzquierda">
                                         <label id="lbArea" name="lbArea" runat="server" visible="false">Área/Departamento:</label>
                                     </div>
@@ -76,7 +76,7 @@
                                         <telerik:RadComboBox runat="server" AutoPostBack="false" Visible="false" MarkFirstMatch="true" EmptyMessage="Selecciona" Width="250" ID="rcbArea"></telerik:RadComboBox>
                                     </div>
                                 </div>
-                               <div class="ctrlBasico">
+                               <div class="ctrlBasico" runat="server" id="dvFechaIngreso" style="display:none;">
                                     <div class="divControlIzquierda">
                                         <label id="Label1" name="lblEdad" runat="server" visible="false">Fecha de ingreso:</label>
                                     </div>
@@ -98,44 +98,44 @@
                     <MasterTableView ShowHeadersWhenNoRecords="true" DataKeyNames="ID_CUESTIONARIO_PREGUNTA">
                         <Columns>
                             <telerik:GridBoundColumn HeaderText="#" HeaderStyle-Width="30" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" DataField="NO_SECUENCIA" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn HeaderText="Pregunta" HeaderStyle-Width="100" DataField="NB_PREGUNTA" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                            <telerik:GridTemplateColumn HeaderStyle-Width="120" ItemStyle-HorizontalAlign="Center" ReadOnly="true">
+                      <telerik:GridBoundColumn HeaderText="Pregunta" HeaderStyle-Width="400" DataField="NB_PREGUNTA" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
+                            <telerik:GridTemplateColumn HeaderStyle-Width="70" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" ReadOnly="true" HeaderText="Totalmente de acuerdo">
                                 <ItemTemplate>
-                                    <telerik:RadButton runat="server" ID="rbTotalmenteAcuerdo" Text="Totalmente de acuerdo" ToggleType="Radio" AutoPostBack="false" GroupName="respuestas" Checked='<%# Eval("FG_VALOR1") %>'>
-                                        <ToggleStates>
+                                    <telerik:RadButton runat="server" ID="rbTotalmenteAcuerdo" ButtonType="ToggleButton"  ToggleType="Radio" AutoPostBack="false" GroupName="respuestas" Checked='<%# Eval("FG_VALOR1") %>'>
+                                       <%-- <ToggleStates>
                                             <telerik:RadButtonToggleState PrimaryIconCssClass="rbToggleRadioChecked"></telerik:RadButtonToggleState>
                                             <telerik:RadButtonToggleState CssClass="unchecked" PrimaryIconCssClass="rbToggleRadio"></telerik:RadButtonToggleState>
-                                        </ToggleStates>
+                                        </ToggleStates>--%>
                                     </telerik:RadButton>
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
-                            <telerik:GridTemplateColumn HeaderStyle-Width="125" ItemStyle-HorizontalAlign="Center" ReadOnly="true">
+                            <telerik:GridTemplateColumn HeaderStyle-Width="70" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" ReadOnly="true" HeaderText="Casi siempre de acuerdo">
                                 <ItemTemplate>
-                                    <telerik:RadButton runat="server" ID="rbCasiAcuerdo" Text="Casi siempre de acuerdo" ToggleType="Radio" AutoPostBack="false" GroupName="respuestas" Checked='<%# Eval("FG_VALOR2") %>'>
-                                        <ToggleStates>
+                                    <telerik:RadButton runat="server" ID="rbCasiAcuerdo" ButtonType="ToggleButton"  ToggleType="Radio" AutoPostBack="false" GroupName="respuestas" Checked='<%# Eval("FG_VALOR2") %>'>
+                                       <%-- <ToggleStates>
                                             <telerik:RadButtonToggleState PrimaryIconCssClass="rbToggleRadioChecked"></telerik:RadButtonToggleState>
                                             <telerik:RadButtonToggleState CssClass="unchecked" PrimaryIconCssClass="rbToggleRadio"></telerik:RadButtonToggleState>
-                                        </ToggleStates>
+                                        </ToggleStates>--%>
                                     </telerik:RadButton>
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
-                            <telerik:GridTemplateColumn HeaderStyle-Width="140" ItemStyle-HorizontalAlign="Center" ReadOnly="true">
+                            <telerik:GridTemplateColumn HeaderStyle-Width="70" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" ReadOnly="true" HeaderText="Casi siempre en desacuerdo">
                                 <ItemTemplate>
-                                    <telerik:RadButton runat="server" ID="rbCasiDesacuerdo" Text="Casi siempre en desacuerdo" ToggleType="Radio" AutoPostBack="false" GroupName="respuestas" Checked='<%# Eval("FG_VALOR3") %>'>
-                                        <ToggleStates>
+                                    <telerik:RadButton runat="server" ID="rbCasiDesacuerdo" ButtonType="ToggleButton" ToggleType="Radio" AutoPostBack="false" GroupName="respuestas" Checked='<%# Eval("FG_VALOR3") %>'>
+                                      <%--  <ToggleStates>
                                             <telerik:RadButtonToggleState PrimaryIconCssClass="rbToggleRadioChecked"></telerik:RadButtonToggleState>
                                             <telerik:RadButtonToggleState CssClass="unchecked" PrimaryIconCssClass="rbToggleRadio"></telerik:RadButtonToggleState>
-                                        </ToggleStates>
+                                        </ToggleStates>--%>
                                     </telerik:RadButton>
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
-                            <telerik:GridTemplateColumn HeaderStyle-Width="130" ItemStyle-HorizontalAlign="Center" ReadOnly="true">
+                            <telerik:GridTemplateColumn HeaderStyle-Width="70" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" ReadOnly="true" HeaderText="Totalmente en desacuerdo">
                                 <ItemTemplate>
-                                    <telerik:RadButton runat="server" ID="rbTotalmenteDesacuerdo" Text="Totalmente en desacuerdo" ToggleType="Radio" AutoPostBack="false" GroupName="respuestas" Checked='<%# Eval("FG_VALOR4") %>'>
-                                        <ToggleStates>
-                                            <telerik:RadButtonToggleState PrimaryIconCssClass="rbToggleRadioChecked"></telerik:RadButtonToggleState>
-                                            <telerik:RadButtonToggleState CssClass="unchecked" PrimaryIconCssClass="rbToggleRadio"></telerik:RadButtonToggleState>
-                                        </ToggleStates>
+                                    <telerik:RadButton runat="server" ID="rbTotalmenteDesacuerdo" ButtonType="ToggleButton" ToggleType="Radio" AutoPostBack="false" GroupName="respuestas" Checked='<%# Eval("FG_VALOR4") %>'>
+                                      <%--  <ToggleStates>
+                                            <telerik:RadButtonToggleState PrimaryIconCssClass="rbToggleRadioChecked" ></telerik:RadButtonToggleState>
+                                            <telerik:RadButtonToggleState CssClass="unchecked" PrimaryIconCssClass="rbToggleRadio" ></telerik:RadButtonToggleState>
+                                        </ToggleStates>--%>
                                     </telerik:RadButton>
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
@@ -150,14 +150,14 @@
                     </ClientSettings>
                     <MasterTableView ShowHeadersWhenNoRecords="true" DataKeyNames="ID_PREGUNTA">
                         <Columns>
-                            <telerik:GridTemplateColumn DataField="NB_PREGUNTA" HeaderStyle-Width="130" HeaderText="Pregunta" UniqueName="NB_PREGUNTA" ReadOnly="true">
+                            <telerik:GridTemplateColumn DataField="NB_PREGUNTA" HeaderStyle-Width="130" HeaderText="Pregunta abierta" UniqueName="NB_PREGUNTA" ReadOnly="true">
                                 <ItemTemplate>
                                     <div title="<%# Eval("DS_PREGUNTA") %>"><%# Eval("NB_PREGUNTA") %></div>
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
                             <telerik:GridTemplateColumn HeaderStyle-Width="520" ItemStyle-HorizontalAlign="Center" ReadOnly="true" HeaderText="Respuesta">
                                 <ItemTemplate>
-                                    <telerik:RadTextBox ID="txtRespuesta" runat="server" Width="950" Text='<%# Eval("NB_RESPUESTA")%>'></telerik:RadTextBox>
+                                    <telerik:RadTextBox ID="txtRespuesta" runat="server" Width="950" MaxLength="3500" Text='<%# Eval("NB_RESPUESTA")%>'></telerik:RadTextBox>
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
                         </Columns>

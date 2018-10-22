@@ -124,7 +124,6 @@
 
         </script>
     </telerik:RadCodeBlock>
-
     <label class="labelTitulo">Áreas/Departamentos</label>
     <div style="height: calc(100% - 100px);">
         <telerik:RadGrid ID="grdDepartamentos" ShowHeader="true" runat="server" AllowPaging="true" AllowSorting="true" GroupPanelPosition="Top" Width="1000px" Height="100%" AllowFilteringByColumn="true"
@@ -145,7 +144,7 @@
                 <Columns>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave" DataField="CL_DEPARTAMENTO" UniqueName="CL_DEPARTAMENTO" HeaderStyle-Width="150" FilterControlWidth="30"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO" HeaderStyle-Width="370" FilterControlWidth="300"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Tipo departamento" DataField="NB_TIPO_DEPARTAMENTO" UniqueName="NB_TIPO_DEPARTAMENTO" HeaderStyle-Width="120" FilterControlWidth="70"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Tipo" DataField="NB_TIPO_DEPARTAMENTO" UniqueName="NB_TIPO_DEPARTAMENTO" HeaderStyle-Width="120" FilterControlWidth="70"></telerik:GridBoundColumn>
                      <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Último usuario que modifica" DataField="CL_USUARIO_MODIFICA" UniqueName="CL_USUARIO_MODIFICA"></telerik:GridBoundColumn>
                      <telerik:GridBoundColumn DataFormatString="{0:d}"  AutoPostBackOnFilter="true" HeaderText="Última fecha de modificación" DataField="FE_MODIFICACION" UniqueName="FE_MODIFICACION" HeaderStyle-Width="150" FilterControlWidth="80" DataType="System.DateTime"></telerik:GridBoundColumn>
                 </Columns>
@@ -154,9 +153,13 @@
     </div>
     <div style="clear: both; height: 10px;"></div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowInsertForm" AutoPostBack="false" runat="server" Text="Agregar" Width="100"></telerik:RadButton>
-        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowEditForm" AutoPostBack="false" runat="server" Text="Editar" Width="100"></telerik:RadButton>
-        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" Width="100" OnClick="btnEliminar_click" OnClientClicking="ConfirmarEliminar"></telerik:RadButton>
+        <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowInsertForm" AutoPostBack="false" runat="server" Text="Agregar" ></telerik:RadButton>
+        </div>
+     <div class="ctrlBasico">
+        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowEditForm" AutoPostBack="false" runat="server" Text="Editar" ></telerik:RadButton>
+         </div>
+     <div class="ctrlBasico">
+        <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar"  OnClick="btnEliminar_click" OnClientClicking="ConfirmarEliminar"></telerik:RadButton>
     </div>
 <%--    <telerik:RadWindowManager ID="RadWindowManager1" runat="server" EnableShadow="true">
         <Windows>
@@ -166,7 +169,7 @@
             </telerik:RadWindow>
         </Windows>
     </telerik:RadWindowManager>--%>
-
+    <div style="clear:both;"></div>
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true">
         <Windows>
             <telerik:RadWindow ID="winSeleccion" runat="server" Title="Seleccionar área/departamento" Width="800" Height="600" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>

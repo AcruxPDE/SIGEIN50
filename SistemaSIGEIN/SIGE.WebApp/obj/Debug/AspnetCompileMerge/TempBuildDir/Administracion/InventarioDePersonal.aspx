@@ -54,7 +54,7 @@
 
             function GetWindowPropertiesNomina() {
                 return {
-                    width: document.documentElement.clientWidth - 400,//750,
+                    width: document.documentElement.clientWidth - 20,//750,
                     height: document.documentElement.clientHeight - 20//15
                 };
             }
@@ -97,7 +97,7 @@
 
             function GetInventarioEditWindowProperties() {
                 var wnd = GetWindowPropertiesNomina();
-                wnd.vTitulo = "Editar Empleado";
+                wnd.vTitulo = "Editar empleado";
                 wnd.vURL = "VentanaInventarioPersonalNomina.aspx?pIdEmpleado=" + vIdEmpleado;
                 wnd.vRadWindowId = "winEmpleadoInventario";
 
@@ -188,13 +188,13 @@
 
             function GetEmpleadoWindowProperties() {
                 var wnd = GetWindowProperties();
-                wnd.vTitulo = "Agregar Empleado";
+                wnd.vTitulo = "Agregar empleado";
                 wnd.vURL = "Empleado.aspx";
                 wnd.vRadWindowId = "winEmpleado";
 
                 if (vIdEmpleado != "") {
                     wnd.vURL = wnd.vURL + "?EmpleadoNoDoID=" + vIdEmpleado;
-                    wnd.vTitulo = "Editar Empleado";
+                    wnd.vTitulo = "Editar empleado";
                 }
 
                 return wnd;
@@ -295,12 +295,17 @@
                 }
             }
 
+            function CancelarBaja() {
+                var ajaxManager = $find('<%= ramInventario.ClientID %>');
+                ajaxManager.ajaxRequest(JSON.stringify({ clTipo: "CANCELARBAJA" }));
+            }
+
         </script>
     </telerik:RadCodeBlock>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <telerik:RadAjaxLoadingPanel ID="ralpInventario" runat="server"></telerik:RadAjaxLoadingPanel>
-    <telerik:RadAjaxManager ID="ramInventario" runat="server" DefaultLoadingPanelID="ralpInventario">
+    <telerik:RadAjaxManager ID="ramInventario" runat="server" DefaultLoadingPanelID="ralpInventario" OnAjaxRequest="ramInventario_AjaxRequest">
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="grdEmpleados">
                 <UpdatedControls>
@@ -310,6 +315,13 @@
         </AjaxSettings>
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="btnEliminar">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="grdEmpleados" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+        </AjaxSettings>
+                <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="ramInventario">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="grdEmpleados" UpdatePanelHeight="100%" />
                 </UpdatedControls>
@@ -374,7 +386,6 @@
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="No. Exterior" DataField="M_EMPLEADO_NO_EXTERIOR" UniqueName="M_EMPLEADO_NO_EXTERIOR"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="No. Interior" DataField="M_EMPLEADO_NO_INTERIOR" UniqueName="M_EMPLEADO_NO_INTERIOR"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Código postal" DataField="M_EMPLEADO_CL_CODIGO_POSTAL" UniqueName="M_EMPLEADO_CL_CODIGO_POSTAL"></telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Empresa" DataField="M_EMPLEADO_NB_EMPRESA" UniqueName="M_EMPLEADO_NB_EMPRESA"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Correo electrónico" DataField="M_EMPLEADO_CL_CORREO_ELECTRONICO" UniqueName="M_EMPLEADO_CL_CORREO_ELECTRONICO"></telerik:GridBoundColumn>
                             <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" ShowFilterIcon="false" HeaderStyle-Width="130" FilterControlWidth="120" HeaderText="Natalicio" DataField="M_EMPLEADO_FE_NACIMIENTO" UniqueName="M_EMPLEADO_FE_NACIMIENTO" DataFormatString="{0:d}"></telerik:GridDateTimeColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Lugar de nacimiento" DataField="M_EMPLEADO_DS_LUGAR_NACIMIENTO" UniqueName="M_EMPLEADO_DS_LUGAR_NACIMIENTO"></telerik:GridBoundColumn>
@@ -387,7 +398,7 @@
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="180" FilterControlWidth="110" HeaderText="Nombre de la empresa" DataField="C_EMPRESA_NB_EMPRESA" UniqueName="C_EMPRESA_NB_EMPRESA"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="80" FilterControlWidth="20" HeaderText="Disponible" DataField="NB_ACTIVO_NOMINA" UniqueName="NB_ACTIVO_NOMINA"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Razón social" DataField="C_EMPRESA_NB_RAZON_SOCIAL" UniqueName="C_EMPRESA_NB_RAZON_SOCIAL"></telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Estado" DataField="M_EMPLEADO_CL_ESTADO_EMPLEADO" UniqueName="M_EMPLEADO_CL_ESTADO_EMPLEADO"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Estatus" DataField="M_EMPLEADO_CL_ESTADO_EMPLEADO" UniqueName="M_EMPLEADO_CL_ESTADO_EMPLEADO"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="95" FilterControlWidth="25" HeaderText="Activo" DataField="M_EMPLEADO_FG_ACTIVO" UniqueName="M_EMPLEADO_FG_ACTIVO"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="120" FilterControlWidth="60" HeaderText="Último usuario que modifica" DataField="M_EMPLEADO_CL_USUARIO_APP_MODIFICA" UniqueName="M_EMPLEADO_CL_USUARIO_APP_MODIFICA"></telerik:GridBoundColumn>
                             <%-- <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" DataType="System.DateTime" CurrentFilterFunction="EqualTo"   HeaderStyle-Width="120" FilterControlWidth="100" HeaderText="Última fecha de modificación" DataField="M_FE_MODIFICA" UniqueName="M_FE_MODIFICA" DataFormatString="{0:d}"></telerik:GridDateTimeColumn>--%>
@@ -398,7 +409,7 @@
             </telerik:RadPane>
             <telerik:RadPane ID="rpnOpciones" runat="server" Width="30">
                 <telerik:RadSlidingZone ID="slzOpciones" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
-                    <telerik:RadSlidingPane ID="RSPAdvSearch" runat="server" Title="Búsqueda avanzada" Width="500" MinWidth="500" Height="100%">
+                    <telerik:RadSlidingPane ID="RSPAdvSearch"  runat="server" Title="Búsqueda avanzada" Width="500" MinWidth="500" Height="100%">
                         <div style="padding: 20px;">
                             <telerik:RadFilter runat="server" ID="ftGrdEmpleados" FilterContainerID="grdEmpleados" ShowApplyButton="true" Height="100">
                                 <ContextMenu Height="100" EnableAutoScroll="false">
@@ -446,6 +457,7 @@
             <telerik:RadWindow ID="winSolicitud" runat="server" Title="Solicitud" Behaviors="None" Modal="true" VisibleStatusbar="false"></telerik:RadWindow>
             <telerik:RadWindow ID="winEmpleado" runat="server" Title="Empleado" Behaviors="None" Modal="true" VisibleStatusbar="false" OnClientClose="onCloseWindow"></telerik:RadWindow>
             <telerik:RadWindow ID="winSeleccion" runat="server" Title="Seleccionar" Height="600px" Width="600px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
+            <telerik:RadWindow ID="winEmpleadoGeneral" runat="server" Title="Empleado" Behaviors="None" Modal="true" VisibleStatusbar="false" ></telerik:RadWindow>
             <telerik:RadWindow ID="WinDarBaja" runat="server" Width="900px" Height="400px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" OnClientClose="onCloseWindow"></telerik:RadWindow>
             <telerik:RadWindow ID="WinSeleccionCausa" runat="server" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade"></telerik:RadWindow>
             <telerik:RadWindow ID="rwConsultas" runat="server" Title="Consultas Personales" Height="600px" Width="1100px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
@@ -463,7 +475,8 @@
                  <img  src="../Assets/images/Exito.png" />
                 <label>¿Qué tipo de alta es?:</label>
                  <div style="height:20px;"></div>
-                <input type="button" value="Cancelar baja" style="width: 120px;" class="rwOkBtn" onclick="__doPostBack('btnSubmit', 'cancelarBaja');" />
+                <%--<input type="button" value="Cancelar baja" style="width: 120px;" class="rwOkBtn" onclick="__doPostBack('btnSubmit', 'cancelarBaja');" />--%>
+                <input type="button" value="Cancelar baja" style="width: 120px;" class="rwOkBtn" onclick="CancelarBaja(); $find('{0}').close(true);" />
                 <input type="button" value="Reingreso" style="width: 80px" class="rwCancelBtn" onclick="OpenWindowReingreso(); $find('{0}').close(true);"  />
                 <input type="button" value="Cancelar" style="width: 80px" class="rwCancelBtn"  onclick="$find('{0}').close(true);" />
             </div>

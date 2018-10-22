@@ -296,9 +296,15 @@
             var selectedItem = masterTable.get_selectedItems()[0];
             if (selectedItem != undefined) {
                 var vNombre = masterTable.getCellByColumnUniqueName(selectedItem, "NB_PLANTILLA_SOLICITUD").innerHTML;
+                var vFgDefecto = masterTable.getCellByColumnUniqueName(selectedItem, "FG_GENERAL_CL").innerHTML;
                 switch (clAccion) {
                     case "eliminar":
-                        confirmAction(sender, args, "¿Deseas eliminar la plantilla " + vNombre + "?, este proceso no podrá revertirse");
+                        if (vFgDefecto != "Sí")
+                            confirmAction(sender, args, "¿Deseas eliminar la plantilla " + vNombre + "?, este proceso no podrá revertirse");
+                        else {
+                            radalert("No se puede eliminar una plantilla establecida por defecto.", 400, 150);
+                            args.set_cancel(true);
+                        }
                         break;
                     case "general":
                         confirmAction(sender, args, "¿Deseas establecer la plantilla " + vNombre + " por defecto?");
@@ -402,11 +408,10 @@
                                         PostbackTriggers="btnActualizarLogoOrganizacion" OnFileUploaded="rauLogoOrganizacion_FileUploaded" Width="300" ToolTip="Haz clic en este botón para seleccionar el logotipo de tu empresa">
                                         <Localization Select="Seleccionar imagen" />
                                     </telerik:RadAsyncUpload>
-
-                                    <telerik:RadButton ID="btnActualizarLogoOrganizacion" runat="server" Text="Cambiar logotipo" Width="140" ToolTip="Haz clic en este botón para cambiar la imagen que hayas seleccionado"></telerik:RadButton>
-                                    <br />
-                                    <br />
-                                    <telerik:RadButton ID="btnEliminarLogoOrganizacion" runat="server" Text="Eliminar logotipo" Width="140" OnClick="btnEliminarLogoOrganizacion_Click" ToolTip="Elimina el logotipo que esta establecido actualmente"></telerik:RadButton>
+                                    <div style="height:10px; clear:both;"></div>
+                                    <telerik:RadButton ID="btnActualizarLogoOrganizacion" runat="server" Text="Cambiar logotipo"  ToolTip="Haz clic en este botón para cambiar la imagen que hayas seleccionado"></telerik:RadButton>
+                                   <div style="height:10px; clear:both;"></div>
+                                    <telerik:RadButton ID="btnEliminarLogoOrganizacion" runat="server" Text="Eliminar logotipo"  OnClick="btnEliminarLogoOrganizacion_Click" ToolTip="Elimina el logotipo que esta establecido actualmente"></telerik:RadButton>
                                 </td>
                                 <td>
                                     <telerik:RadBinaryImage ID="rbiLogoOrganizacion" runat="server" />
@@ -425,7 +430,6 @@
                     </div>
                 </div>
             </telerik:RadPageView>
-
             <telerik:RadPageView ID="rpvCatalogos" runat="server">
                 <telerik:RadSplitter ID="rsConfiguracion" Width="100%" Height="100%" BorderSize="0" runat="server">
                     <telerik:RadPane ID="rpConfiguracion" runat="server">
@@ -435,7 +439,7 @@
                                 <label name="lblCatalogoGenero">Géneros</label>
                             </div>
                             <div class="divControlDerecha">
-                                <telerik:RadComboBox ID="cmbCatalogoGenero" runat="server" DataTextField="NB_CATALOGO_LISTA" DataValueField="ID_CATALOGO_LISTA"></telerik:RadComboBox>
+                                <telerik:RadComboBox ID="cmbCatalogoGenero" runat="server" DataTextField="NB_CATALOGO_LISTA" DataValueField="ID_CATALOGO_LISTA" Width="250"></telerik:RadComboBox>
                             </div>
                         </div>
                         <div style="clear: both;"></div>
@@ -444,7 +448,7 @@
                                 <label name="lblCatalogoGenero">Causas de baja</label>
                             </div>
                             <div class="divControlDerecha">
-                                <telerik:RadComboBox ID="cmbCatalogoCausaVacante" runat="server" DataTextField="NB_CATALOGO_LISTA" DataValueField="ID_CATALOGO_LISTA"></telerik:RadComboBox>
+                                <telerik:RadComboBox ID="cmbCatalogoCausaVacante" runat="server" DataTextField="NB_CATALOGO_LISTA" DataValueField="ID_CATALOGO_LISTA" Width="250"></telerik:RadComboBox>
                             </div>
                         </div>
                         <div style="clear: both;"></div>
@@ -453,7 +457,7 @@
                                 <label name="lblCatalogoGenero">Estados civiles</label>
                             </div>
                             <div class="divControlDerecha">
-                                <telerik:RadComboBox ID="cmbCatalogoEstadoCivil" runat="server" DataTextField="NB_CATALOGO_LISTA" DataValueField="ID_CATALOGO_LISTA"></telerik:RadComboBox>
+                                <telerik:RadComboBox ID="cmbCatalogoEstadoCivil" runat="server" DataTextField="NB_CATALOGO_LISTA" DataValueField="ID_CATALOGO_LISTA" Width="250"></telerik:RadComboBox>
                             </div>
                         </div>
                         <div style="clear: both;"></div>
@@ -462,7 +466,7 @@
                                 <label name="lblCatalogoGenero">Tipos de teléfono</label>
                             </div>
                             <div class="divControlDerecha">
-                                <telerik:RadComboBox ID="cmbCatalogoTipoTelefono" runat="server" DataTextField="NB_CATALOGO_LISTA" DataValueField="ID_CATALOGO_LISTA"></telerik:RadComboBox>
+                                <telerik:RadComboBox ID="cmbCatalogoTipoTelefono" runat="server" DataTextField="NB_CATALOGO_LISTA" DataValueField="ID_CATALOGO_LISTA" Width="250"></telerik:RadComboBox>
                             </div>
                         </div>
                         <div style="clear: both;"></div>
@@ -471,7 +475,7 @@
                                 <label name="lblCatalogoGenero">Parentescos</label>
                             </div>
                             <div class="divControlDerecha">
-                                <telerik:RadComboBox ID="cmbCatalogoParentesco" runat="server" DataTextField="NB_CATALOGO_LISTA" DataValueField="ID_CATALOGO_LISTA"></telerik:RadComboBox>
+                                <telerik:RadComboBox ID="cmbCatalogoParentesco" runat="server" DataTextField="NB_CATALOGO_LISTA" DataValueField="ID_CATALOGO_LISTA" Width="250"></telerik:RadComboBox>
                             </div>
                         </div>
                         <div style="clear: both;"></div>
@@ -480,7 +484,7 @@
                                 <label name="lblCatalogoGenero">Ocupaciones</label>
                             </div>
                             <div class="divControlDerecha">
-                                <telerik:RadComboBox ID="cmbCatalogoOcupacion" runat="server" DataTextField="NB_CATALOGO_LISTA" DataValueField="ID_CATALOGO_LISTA"></telerik:RadComboBox>
+                                <telerik:RadComboBox ID="cmbCatalogoOcupacion" runat="server" DataTextField="NB_CATALOGO_LISTA" DataValueField="ID_CATALOGO_LISTA" Width="250"></telerik:RadComboBox>
                             </div>
                         </div>
                         <div style="clear: both;"></div>
@@ -489,7 +493,7 @@
                                 <label name="lblCatalogoGenero">Redes sociales</label>
                             </div>
                             <div class="divControlDerecha">
-                                <telerik:RadComboBox ID="cmbCatalogoRedSocial" runat="server" DataTextField="NB_CATALOGO_LISTA" DataValueField="ID_CATALOGO_LISTA"></telerik:RadComboBox>
+                                <telerik:RadComboBox ID="cmbCatalogoRedSocial" runat="server" DataTextField="NB_CATALOGO_LISTA" DataValueField="ID_CATALOGO_LISTA" Width="250"></telerik:RadComboBox>
                             </div>
                         </div>
                         <div style="clear: both;"></div>
@@ -499,13 +503,13 @@
                             </div>
        
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox ID="cmbCatalogoCausasRequisicion" runat="server" DataTextField="NB_CATALOGO_LISTA" DataValueField="ID_CATALOGO_LISTA"></telerik:RadComboBox>
+                                    <telerik:RadComboBox ID="cmbCatalogoCausasRequisicion" runat="server" DataTextField="NB_CATALOGO_LISTA" DataValueField="ID_CATALOGO_LISTA" Width="250"></telerik:RadComboBox>
                                 </div>
                  
                         </div>
                     </telerik:RadPane>
                     <telerik:RadPane ID="rpAyuda" runat="server" Scrolling="None" Width="22px">
-                        <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" Width="22px">
+                        <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" Width="22px" ClickToOpen="true">
                             <telerik:RadSlidingPane ID="rspAyuda" runat="server" Title="Instrucciones" Width="320px" RenderMode="Mobile" Height="200">
                                 <div style="padding: 10px; text-align: justify;">
                                     <p>
@@ -532,8 +536,9 @@
                     </telerik:RadPane>
                 </telerik:RadSplitter>
             </telerik:RadPageView>
-
             <telerik:RadPageView ID="rpvCorreoElectronico" runat="server">
+                   <telerik:RadSplitter ID="RadSplitter1" Width="100%" Height="100%" BorderSize="0" runat="server">
+                    <telerik:RadPane ID="RadPane1" runat="server">
                 <div class="ctrlBasico">
                     <div class="divControlIzquierda">
                         <label name="lblCatalogoGenero">Servidor</label>
@@ -641,6 +646,8 @@
                         </div>
                     </div>
                 </div>
+                        </telerik:RadPane>
+                       </telerik:RadSplitter>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvControlDocumentos" runat="server">
                 <div class="ctrlBasico">
@@ -658,7 +665,7 @@
                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvPlantillas" runat="server">
-                <div style="height: calc(100% - 9px);">
+                <div style="height: calc(100% - 10px);">
                     <telerik:RadGrid ID="grdPlantillas" runat="server" OnItemDataBound="grdPlantillas_ItemDataBound" HeaderStyle-Font-Bold="true" OnNeedDataSource="grdPlantillas_NeedDataSource" Height="100%" Width="100%" AllowSorting="true">
                         <ClientSettings>
                             <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -700,7 +707,7 @@
                         </MasterTableView>
                     </telerik:RadGrid>
                 </div>
-                <div style="height: 9px;"></div>
+                <div style="height: 10px;"></div>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnEditarPlantilla" runat="server" Text="Editar" AutoPostBack="false" OnClientClicked="ShowEditForm"></telerik:RadButton>
                 </div>
@@ -708,7 +715,7 @@
                     <telerik:RadButton ID="btnEliminarPlantilla" runat="server" Text="Eliminar" AutoPostBack="true" OnClientClicking="confirmarEliminar" OnClick="btnEliminarPlantilla_Click"></telerik:RadButton>
                 </div>
                 <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnCopiarPlantilla" runat="server" Text="Copiar de..." AutoPostBack="false" OnClientClicked="ShowInsertForm"></telerik:RadButton>
+                    <telerik:RadButton ID="btnCopiarPlantilla" runat="server" Text="Copiar" AutoPostBack="false" OnClientClicked="ShowInsertForm"></telerik:RadButton>
                 </div>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnEstablecerGeneral" runat="server" Text="Establecer por defecto" AutoPostBack="true" OnClientClicking="confirmarEstablecerGeneral" OnClick="btnEstablecerGeneral_Click"></telerik:RadButton>
@@ -718,7 +725,7 @@
                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvCamposExtras" runat="server">
-                <div style="height: calc(100% - 9px);">
+                <div style="height: calc(100% - 10px);">
                     <telerik:RadGrid ID="grdCamposFormulario" runat="server" OnItemDataBound="grdCamposFormulario_ItemDataBound" OnNeedDataSource="grdCamposAdicionales_NeedDataSource" Height="100%" HeaderStyle-Font-Bold="true" AllowSorting="true" PageSize="50">
                         <ClientSettings>
                             <Scrolling UseStaticHeaders="true" AllowScroll="true" />
@@ -767,7 +774,7 @@
                         </MasterTableView>
                     </telerik:RadGrid>
                 </div>
-                <div style="height: 9px;"></div>
+                <div style="height: 10px;"></div>
                 <div class="ctrlBasico">
                     <telerik:RadButton ID="btnAgregarCampo" runat="server" Text="Agregar" AutoPostBack="false" OnClientClicked="ShowInsertFieldForm"></telerik:RadButton>
                 </div>
@@ -778,7 +785,7 @@
                     <telerik:RadButton ID="btnEliminarCampo" runat="server" Text="Eliminar" AutoPostBack="true" OnClientClicking="confirmarEliminarCampo" OnClick="btnEliminarCampo_Click"></telerik:RadButton>
                 </div>
                 <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnCopiarCampo" runat="server" Text="Copiar de..." AutoPostBack="false" OnClientClicked="ShowCopyFieldForm"></telerik:RadButton>
+                    <telerik:RadButton ID="btnCopiarCampo" runat="server" Text="Copiar" AutoPostBack="false" OnClientClicked="ShowCopyFieldForm"></telerik:RadButton>
                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvIntegracionNomina" runat="server">
@@ -803,12 +810,12 @@
                         </table>
                         <div style="height: calc(100% - 150px); width: 400px; overflow: auto; float: left;">
                             <table class="ctrlTableForm" style="width: 100%;">
-                                <tr>
-                                    <td style="text-align: left; width: 200px;">
+                                <tr style="padding-bottom:10px;">
+                                    <td style="text-align: left; width: 200px; padding-bottom:10px;">
                                         <label name="lblRFC">RFC</label>
                                     </td>
                                     <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
+                                        <div class="checkContainer" style="width: 82px; ">
                                             <telerik:RadButton ID="btnRFCNOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpRFCNO" AutoPostBack="false">
                                                 <ToggleStates>
                                                     <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>

@@ -22,7 +22,7 @@
                 vTitulo = "Editar Curso";
             }
             var windowProperties = {};
-            windowProperties.width = document.documentElement.clientWidth - 550;
+            windowProperties.width = document.documentElement.clientWidth - 400;
             windowProperties.height = document.documentElement.clientHeight - 40;
             openChildDialog(vURL, "winCurso", vTitulo, windowProperties);
         }
@@ -127,23 +127,26 @@
                     <div style="clear: both; height: 10px;"></div>
                 </NestedViewTemplate>
                 <Columns>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave" DataField="CL_CURSO" UniqueName="CL_CURSO" HeaderStyle-Width="150" FilterControlWidth="80"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave" DataField="CL_CURSO" UniqueName="CL_CURSO" HeaderStyle-Width="180" FilterControlWidth="110"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre" DataField="NB_CURSO" UniqueName="NB_CURSO" HeaderStyle-Width="300" FilterControlWidth="225"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Tipo" DataField="CL_TIPO_CURSO" UniqueName="CL_TIPO_CURSO" HeaderStyle-Width="175" FilterControlWidth="105"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Duración" DataField="NO_DURACION" UniqueName="NO_DURACION" HeaderStyle-Width="175" FilterControlWidth="105" DataFormatString="{0:N1}h"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="130" FilterControlWidth="60" HeaderText="Último usuario que modifica" DataField="CL_USUARIO_APP_MODIFICA" UniqueName="CL_USUARIO_APP_MODIFICA"></telerik:GridBoundColumn>
-                    <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Última fecha de modificación" DataField="FE_MODIFICA" UniqueName="FE_MODIFICA" DataFormatString="{0:d}"  HeaderStyle-Width="150" FilterControlWidth="100" DataType="System.DateTime"></telerik:GridDateTimeColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Tipo" DataField="CL_TIPO_CURSO" UniqueName="CL_TIPO_CURSO" HeaderStyle-Width="100" FilterControlWidth="40"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Duración" DataField="NO_DURACION" UniqueName="NO_DURACION" HeaderStyle-Width="100" FilterControlWidth="40" DataFormatString="{0:N1}h"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="120" FilterControlWidth="60" HeaderText="Último usuario que modifica" DataField="CL_USUARIO_APP_MODIFICA" UniqueName="CL_USUARIO_APP_MODIFICA"></telerik:GridBoundColumn>
+                    <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Última fecha de modificación" DataField="FE_MODIFICA" UniqueName="FE_MODIFICA" DataFormatString="{0:d}"  HeaderStyle-Width="120" FilterControlWidth="60" DataType="System.DateTime"></telerik:GridDateTimeColumn>
                 </Columns>
             </MasterTableView>
         </telerik:RadGrid>
     </div>
     <div style="clear: both; height: 10px;"></div>
     <div class="ctrlBasico">
-        <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowInsertForm" AutoPostBack="false" runat="server" Text="Agregar" Width="100"></telerik:RadButton>
-        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowEditForm" AutoPostBack="false" runat="server" Text="Editar" Width="100"></telerik:RadButton>
-        <telerik:RadButton ID="btnEliminar" OnClientClicking="confirmarEliminar" AutoPostBack="true" OnClick="btnEliminar_Click" runat="server" Text="Eliminar" Width="100"></telerik:RadButton>
+        <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowInsertForm" AutoPostBack="false" runat="server" Text="Agregar"></telerik:RadButton>
     </div>
-
+    <div class="ctrlBasico">
+        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowEditForm" AutoPostBack="false" runat="server" Text="Editar"></telerik:RadButton>
+    </div>
+    <div class="ctrlBasico">
+        <telerik:RadButton ID="btnEliminar" OnClientClicking="confirmarEliminar" AutoPostBack="true" OnClick="btnEliminar_Click" runat="server" Text="Eliminar"></telerik:RadButton>
+    </div>
     <telerik:RadWindowManager ID="RadWindowManager1" runat="server" EnableShadow="true">
         <Windows>
             <telerik:RadWindow ID="winCurso" runat="server" Title="Agregar/Editar Curso" Behaviors="Close" Modal="true" VisibleStatusbar="false" OnClientClose="onCloseWindow"></telerik:RadWindow>

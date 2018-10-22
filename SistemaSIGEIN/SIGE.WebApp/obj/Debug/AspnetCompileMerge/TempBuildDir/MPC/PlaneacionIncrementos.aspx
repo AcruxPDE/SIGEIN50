@@ -209,7 +209,7 @@
                     </telerik:RadDatePicker>
                 </div>
                 <div style="clear: both"></div>--%>
-                        <div class="ctrlBasico">
+    <%--                    <div class="ctrlBasico">
                             <label id="lblSemaforoVerde"
                                 name="lblSemaforoVerde"
                                 runat="server">
@@ -232,7 +232,7 @@
                                 MaxLength="800"
                                 Enabled="false">
                             </telerik:RadTextBox>
-                        </div>
+                        </div>--%>
                         <div class="ctrlBasico">
                             <label id="lblCuartilIncremento"
                                 name="lblCuartilIncremento"
@@ -326,7 +326,7 @@
                     </telerik:RadPane>
                     <telerik:RadPane ID="rpAyudaDefinicionCriterios" runat="server" Scrolling="None" Width="22px">
                         <telerik:RadSlidingZone ID="rszAyudaDefinicionCriterios" runat="server" SlideDirection="Left" ExpandedPaneId="rsDefinicionCriterios" Width="22px">
-                            <telerik:RadSlidingPane ID="rspDefinicionCriterios" runat="server" Title="Simbología" Width="450px" RenderMode="Mobile" Height="100%">
+                            <telerik:RadSlidingPane ID="rspDefinicionCriterios" runat="server" Title="Código de color" Width="450px" RenderMode="Mobile" Height="100%">
                                 <div style="padding: 10px; text-align: justify;">
                                     <telerik:RadGrid ID="grdCodigoColores"
                                         runat="server"

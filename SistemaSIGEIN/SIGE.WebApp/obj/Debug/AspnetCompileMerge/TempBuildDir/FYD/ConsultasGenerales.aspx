@@ -7,7 +7,7 @@
         }
 
         function OpenPeriodoSelectionWindow() {
-            OpenSelectionWindow("../Comunes/SeleccionPeriodo.aspx?m=FORMACION", "winSeleccion", "Selección de período")
+            OpenSelectionWindow("../Comunes/SeleccionPeriodo.aspx?", "winSeleccion", "Selección de período")
         }
 
         function OpenPuestoSelectionWindow() {
@@ -168,7 +168,7 @@
         <Tabs>
             <telerik:RadTab Text="Contexto"></telerik:RadTab>
             <telerik:RadTab Text="Reporte global"></telerik:RadTab>
-            <telerik:RadTab Text="Reporte comparativo"></telerik:RadTab>
+            <telerik:RadTab Text="Selección de períodos a comparar"></telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
     <div style="height: calc(100% - 60px); width: 100%;">
@@ -312,7 +312,7 @@
                 </div>
                 <div style="clear: both; height: 5px;"></div>
                 <div class="ctrlBasico">
-                    <telerik:RadButton runat="server" ID="btnAgregarPeriodosComparacion" Text="Agregar períodos" AutoPostBack="false" OnClientClicked="OpenPeriodoSelectionWindow"></telerik:RadButton>
+                    <telerik:RadButton runat="server" ID="btnAgregarPeriodosComparacion" Text="Seleccionar períodos" AutoPostBack="false" OnClientClicked="OpenPeriodoSelectionWindow"></telerik:RadButton>
                 </div>
 
 

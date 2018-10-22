@@ -241,7 +241,7 @@
             </div>
         </telerik:RadPane>
         <telerik:RadPane ID="rpAyuda" runat="server" Width="20px" Height="90%">
-            <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" Height="100%" ExpandedPaneId="rsConsultas" Width="20px" DockedPaneId="rsbConsultas">
+            <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" Height="100%" ExpandedPaneId="rsConsultas" Width="20px" DockedPaneId="rsbConsultas" ClickToOpen="true">
                 <telerik:RadSlidingPane ID="rsbAyuda" runat="server" CollapseMode="Forward" EnableResize="false" Width="250px" Title="Instrucciones" Height="100%">
                     <div id="divTabuladorMaestro" runat="server">
                         <p style="text-align: justify; margin-left: 10px; margin-right: 10px;">

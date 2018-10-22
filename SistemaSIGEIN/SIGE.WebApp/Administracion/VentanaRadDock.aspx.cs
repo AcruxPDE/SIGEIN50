@@ -57,8 +57,8 @@ namespace SIGE.WebApp.Administracion
         private void CargarCatalogos()
         {
             ClasificacionCompetenciaNegocio nCompetenciaClasificacion = new ClasificacionCompetenciaNegocio();
-            var vClasificaciones = nCompetenciaClasificacion.ObtieneClasificacionCompetencia(4);
-            var vEspecificas = nCompetenciaClasificacion.ObtieneClasificacionCompetencia(4).FirstOrDefault(); ;
+            var vClasificaciones = nCompetenciaClasificacion.ObtieneClasificacionCompetencia();
+            var vEspecificas = nCompetenciaClasificacion.ObtieneClasificacionCompetencia().FirstOrDefault(); ;
             if (vClasificaciones != null)
             {
 
