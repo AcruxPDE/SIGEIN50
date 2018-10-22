@@ -29,6 +29,12 @@ namespace SIGE.WebApp.EO
             set { ViewState["vs_vLstCamposAdicionales"] = value; }
         }
 
+        public List<E_CAMPOS_ADICIONALES> vLstCamposAd
+        {
+            get { return (List<E_CAMPOS_ADICIONALES>)ViewState["vs_vLstCamposAd"]; }
+            set { ViewState["vs_vLstCamposAd"] = value; }
+        }
+
         private List<E_DEPARTAMENTOS> vLstDepartamentos
         {
             get { return (List<E_DEPARTAMENTOS>)ViewState["vs_vLstDepartamentos"]; }
@@ -65,6 +71,31 @@ namespace SIGE.WebApp.EO
                 bool exist = vLstCamposAdicionales.Exists(e => e.ID_CATALOGO_LISTA == vIdCatalogo);
                 if (!exist)
                     vLstCamposAdicionales.Add(new E_CAMPOS_ADICIONALES { ID_CATALOGO_LISTA = vIdCatalogo });
+            }
+
+        }
+
+        protected void ObtieneAdicionalesCampos(string pXmlAdicionales)
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(pXmlAdicionales);
+            vLstCamposAd = new List<E_CAMPOS_ADICIONALES>();
+
+            XmlNodeList departamentos = xml.GetElementsByTagName("ITEMS");
+
+            XmlNodeList lista =
+            ((XmlElement)departamentos[0]).GetElementsByTagName("ITEM");
+
+            foreach (XmlElement nodo in lista)
+            {
+                bool exist = vLstCamposAd.Exists(e => e.ID_CATALOGO_LISTA == int.Parse(nodo.GetAttribute("ID_CATALOGO_LISTA")) && e.CL_CAMPO == nodo.GetAttribute("CL_CAMPO").ToString() && e.NB_CAMPO == nodo.GetAttribute("CL_CAMPO").ToString());
+                if (!exist)
+                    vLstCamposAd.Add(
+                        new E_CAMPOS_ADICIONALES { 
+                            ID_CATALOGO_LISTA = int.Parse(nodo.GetAttribute("ID_CATALOGO_LISTA"))
+                            , CL_CAMPO = nodo.GetAttribute("CL_CAMPO")
+                            , NB_CAMPO = nodo.GetAttribute("NB_CAMPO")
+                        });
             }
 
         }
@@ -360,6 +391,8 @@ namespace SIGE.WebApp.EO
                             {
                                 RotacionPersonalNegocio negocio = new RotacionPersonalNegocio();
                                 ObtieneAdicionales(vFiltros.XML_CAMPOS_ADICIONALES);
+                                ObtieneAdicionalesCampos(vFiltros.XML_CAMPOS_ADICIONALES); //vLstCamposAd
+
                                 foreach (E_CAMPOS_ADICIONALES item in vLstCamposAdicionales)
                                 {
                                     var ListaAdscripcion = negocio.ObtieneCatalogoAdscripciones(item.ID_CATALOGO_LISTA).FirstOrDefault();
@@ -369,13 +402,15 @@ namespace SIGE.WebApp.EO
                                     row.Cells.Add(cell);
                                     cell = new HtmlTableCell();
                                     cell.Style.Add("Height", "30px");
-                                    var ListaAdscripcionValor = negocio.ObtieneCatalogoAdscripciones(item.ID_CATALOGO_LISTA).ToList();
-                                    foreach (var itemValor in ListaAdscripcionValor)
+
+                                    //var ListaAdscripcionValor = negocio.ObtieneCatalogoAdscripciones(item.ID_CATALOGO_LISTA).ToList();
+                                    var vListCampos = vLstCamposAd.Where(w => w.ID_CATALOGO_LISTA == item.ID_CATALOGO_LISTA).ToList();
+                                    foreach (var itemValor in vListCampos)
                                     {
                                         var checkbox = new CheckBox();
                                         cell.Controls.Add(checkbox);
                                         var label = new Label();
-                                        label.Text = itemValor.NB_CATALOGO_VALOR;
+                                        label.Text = itemValor.NB_CAMPO;
                                         cell.Controls.Add(label);
                                     }
                                     row.Cells.Add(cell);
