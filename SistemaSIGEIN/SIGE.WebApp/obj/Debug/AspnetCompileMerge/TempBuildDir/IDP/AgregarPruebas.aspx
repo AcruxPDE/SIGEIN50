@@ -588,13 +588,13 @@
                 ShowHeader="true"
                 runat="server"
                 AllowPaging="false"
+                AllowSorting="true"
                 GridLines="None"
                 Height="230"
                 Width="100%"
                 AllowMultiRowSelection="true"
                 AutoGenerateColumns="false"
                 HeaderStyle-Font-Bold="true"
-                AllowFilteringByColumn="false"
                 OnNeedDataSource="grdPruebas_NeedDataSource">
                 <ClientSettings EnableRowHoverStyle="true" >
                     <Selecting AllowRowSelect="true" EnableDragToSelectRows="true" />
