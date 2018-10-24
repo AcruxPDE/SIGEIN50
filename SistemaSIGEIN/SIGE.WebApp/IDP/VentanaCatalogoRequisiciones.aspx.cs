@@ -261,10 +261,27 @@ namespace SIGE.WebApp.Administracion
 
         public void EstatusControles(string pClEstatus)
         {
+            txtSueldoMin.Text = "";
+            txtSueldoMax.Text = "";
+            rlbSolicitante.Items[0].Text = "No Seleccionado";
+            rlbSolicitante.Items[0].Value = "0";
+            txtPuestoSolicitante.Text = "";
+            txtCorreoSolicitante.Text = "";
+            lstAutoriza.Items[0].Text = "No Seleccionado";
+            lstAutoriza.Items[0].Value = "0";
+            txtPuestoAutoriza.Text = "";
+            txtCorreoAutorizaReq.Text = "";
+            txtSueldo.Text = "0.00";
+
+            //txtPuestoReq.Text = "";
+            //txtPuestoAutorizaPuesto.Text = "";
+            //txtPuestoAutorizaCorreo.Text = "";
+
             if (pClEstatus.Equals("OTRA"))
             {
                 lblDescripcionCausa.Style.Add("display", "block");
                 lblDescripcionCausa.InnerText = "Causa de otra:";
+                txtDescripcionCausa.Text = "";
                 txtDescripcionCausa.Visible = true;
                 radBtnBuscarPuesto.ToolTip = "";
 
@@ -272,6 +289,7 @@ namespace SIGE.WebApp.Administracion
                 lblTiempoCausa.Style.Add("display", "none");
                 divUltimoSueldo.Style.Add("display", "block");
                 dvSueldoSugerido.Style.Add("display", "block");
+                lblTiempoCausa.Visible = false;
                 txtTiempoCausa.Visible = false;
 
                 btnNuevoPuesto.Visible = false;
@@ -334,10 +352,13 @@ namespace SIGE.WebApp.Administracion
                 dvSueldoSugerido.Style.Add("display", "block");
 
                 lblDescripcionCausa.Style.Add("display", "block");
+                txtDescripcionCausa.Text = "";
                 txtDescripcionCausa.Visible = true;
                 lblDescripcionCausa.InnerText = "Causa de temporal:";
 
                 lblTiempoCausa.Style.Add("display", "block");
+                txtTiempoCausa.Text = "";
+                lblTiempoCausa.Visible = true;
                 txtTiempoCausa.Visible = true;
 
                 //lblEmpleadoSuplir.Visible = false;
@@ -379,16 +400,21 @@ namespace SIGE.WebApp.Administracion
                     lblUltimoSueldo.InnerText = "Ultimo Sueldo";
                     divUltimoSueldo.Style.Add("display", "block");
                     dvSueldoSugerido.Style.Add("display", "none");
+                    lblTiempoCausa.Visible = false;
+                    txtTiempoCausa.Visible = false;
                 }
                 else
                 {
                     lblDescripcionCausa.Style.Add("display", "block");
                     lblDescripcionCausa.InnerText = "Causa de suplencia:";
+                    txtDescripcionCausa.Text = "";
                     txtDescripcionCausa.Visible = true;
                     dvSueldoSugerido.Style.Add("display", "none");
 
                     lblEmpleadoSuplir.InnerText = "Empleado a suplir";
                     lblTiempoCausa.Style.Add("display", "block");
+                    lblTiempoCausa.Visible = true;
+                    txtTiempoCausa.Text = "";
                     txtTiempoCausa.Visible = true;
                 }
 

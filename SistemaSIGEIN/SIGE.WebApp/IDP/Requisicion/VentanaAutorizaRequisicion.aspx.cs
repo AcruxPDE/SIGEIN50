@@ -5,6 +5,7 @@ using SIGE.WebApp.Comunes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -16,6 +17,7 @@ namespace SIGE.WebApp.IDP
     {
         #region Variables
 
+        StringBuilder builder = new StringBuilder();
         private int pIdRequisicion
         {
             get { return (int)ViewState["vspIdRequisicion"]; }
@@ -185,7 +187,8 @@ namespace SIGE.WebApp.IDP
 
             if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
             {
-                EnvioCorreo(vNbCorreo, vMensajeCorreo, Asunto);
+                builder.Append(vNbCorreo + ";");
+                EnvioCorreo(builder.ToString(), vMensajeCorreo, Asunto);
                 UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "OnCloseWindow");
             }
             else
@@ -235,7 +238,8 @@ namespace SIGE.WebApp.IDP
 
             if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
             {
-                EnvioCorreo(vNbCorreo, vMensajeCorreo, Asunto);
+                builder.Append(vNbCorreo + ";");
+                EnvioCorreo(builder.ToString(), vMensajeCorreo, Asunto);
                 UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "OnCloseWindow");
             }
             else
@@ -286,7 +290,8 @@ namespace SIGE.WebApp.IDP
 
             if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
             {
-                EnvioCorreo(vNbCorreo, vMensajeCorreo, Asunto);
+                builder.Append(vNbCorreo + ";");
+                EnvioCorreo(builder.ToString(), vMensajeCorreo, Asunto);
                 UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "OnCloseWindow");
             }
             else
