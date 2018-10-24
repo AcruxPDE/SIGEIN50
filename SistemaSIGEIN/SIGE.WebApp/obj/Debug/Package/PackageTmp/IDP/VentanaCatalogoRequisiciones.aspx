@@ -518,6 +518,19 @@
                     <telerik:AjaxUpdatedControl ControlID="btnReenviarAutorizaciones" UpdatePanelRenderMode="Inline" />
                     <telerik:AjaxUpdatedControl ControlID="divAutorizaPuestoReq" UpdatePanelRenderMode="Inline" />
                     <telerik:AjaxUpdatedControl ControlID="divEmpleadoSuplir" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="txtSueldoMin" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="txtSueldoMax" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="rlbSolicitante" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="txtPuestoSolicitante" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="txtCorreoSolicitante" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="lstAutoriza" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="txtPuestoAutoriza" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="txtCorreoAutorizaReq" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="txtSueldo" UpdatePanelRenderMode="Inline" />
+
+                    <%--<telerik:AjaxUpdatedControl ControlID="txtPuestoReq" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="txtPuestoAutorizaPuesto" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="txtPuestoAutorizaCorreo" UpdatePanelRenderMode="Inline" />--%>
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="txtNotificarRH">
