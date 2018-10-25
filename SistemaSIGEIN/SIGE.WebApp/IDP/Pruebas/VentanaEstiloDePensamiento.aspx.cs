@@ -109,7 +109,8 @@ namespace SIGE.WebApp.IDP
                     vIdPrueba = int.Parse(Request.QueryString["ID"]);
                     vClToken = new Guid(Request.QueryString["T"]);
                     vClTokenExterno = new Guid(Request.QueryString["T"]);
-					vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+                    if (Request.QueryString["vIdBateria"] != null)
+                        vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
 
                     if (vTipoRevision == "REV")
                     {

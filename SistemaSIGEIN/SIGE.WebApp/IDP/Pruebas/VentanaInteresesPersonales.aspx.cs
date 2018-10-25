@@ -100,7 +100,8 @@ namespace SIGE.WebApp.IDP
                     PruebasNegocio nKprueba = new PruebasNegocio();
                     vIdPrueba = int.Parse(Request.QueryString["ID"]);
                     vClTokenExterno = new Guid(Request.QueryString["T"]);
-                    vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+                    if (Request.QueryString["vIdBateria"] != null)
+                        vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
 
                     //Si el modo de revision esta activado
                     if (vTipoRevision == "REV")
