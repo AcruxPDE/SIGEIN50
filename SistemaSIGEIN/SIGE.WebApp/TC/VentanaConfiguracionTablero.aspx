@@ -263,6 +263,11 @@
                     <telerik:AjaxUpdatedControl ControlID="grdSalarial" LoadingPanelID="ralpConfiguracionTablero" UpdatePanelRenderMode="Inline" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnSeleccionPorArea">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="grdEvaluados" LoadingPanelID="ralpConfiguracionTablero" UpdatePanelRenderMode="Inline" />
+                </UpdatedControls>                
+            </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
     <div class="ctrlBasico">

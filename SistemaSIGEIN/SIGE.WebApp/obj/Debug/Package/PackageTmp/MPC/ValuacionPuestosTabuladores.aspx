@@ -93,7 +93,7 @@
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="ramGuardar">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="RadValuacion" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="RadValuacion" UpdatePanelHeight="120%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                     <telerik:AjaxUpdatedControl ControlID="lblCompetencia" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                     <telerik:AjaxUpdatedControl ControlID="lblTitulo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
@@ -270,21 +270,21 @@
                                     </p>
                                 </div>
                             </telerik:RadSlidingPane>--%>
-                            <telerik:RadSlidingPane ID="rspValoresValuacionPuestos" runat="server" Title="Niveles" Width="620px" RenderMode="Mobile" Height="100%">
-                                <div style="padding: 10px; text-align: justify; height: 100%;">
+                            <telerik:RadSlidingPane ID="rspValoresValuacionPuestos" runat="server" Title="Niveles" Width="620px" RenderMode="Mobile" Height="100%"> <%-- Width 620px Height 100% --%>
+                                <%--<div style="padding: 10px; text-align: justify; height: 100%;">--%>
                                     <div class="ctrlBasico" style="text-align: justify; font-size: 14px;">
                                         <telerik:RadLabel runat="server" ID="lblTitulo" Font-Bold="true"></telerik:RadLabel>
                                         <telerik:RadLabel runat="server" ID="lblCompetencia"></telerik:RadLabel>
                                     </div>
                                     <telerik:RadGrid ID="RadValuacion"
                                         runat="server"
-                                        Height="80%"
-                                        Width="590"
+                                        Height="100%"
+                                        Width="100%"
                                         AllowSorting="true"
                                         AllowFilteringByColumn="true"
                                         HeaderStyle-Font-Bold="true"
                                         ShowHeader="true"
-                                        OnNeedDataSource="RadValuacion_NeedDataSource">
+                                        OnNeedDataSource="RadValuacion_NeedDataSource"> <%-- Width 590  Height 80%--%>
                                         <ClientSettings>
                                             <Scrolling AllowScroll="true" UseStaticHeaders="false"></Scrolling>
                                         </ClientSettings>
@@ -299,7 +299,7 @@
                                             </Columns>
                                         </MasterTableView>
                                     </telerik:RadGrid>
-                                </div>
+                                <%--</div>--%>
                             </telerik:RadSlidingPane>
                         </telerik:RadSlidingZone>
                     </telerik:RadPane>
