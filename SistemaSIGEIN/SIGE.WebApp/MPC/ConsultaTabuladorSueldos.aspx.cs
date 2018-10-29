@@ -709,6 +709,7 @@ namespace SIGE.WebApp.MPC
                 pEncabezado = GeneraEncabezado(pColumna);
                 pColumna.ColumnGroupName = "TABMEDIO";
                 pColumna.ItemStyle.Font.Bold = true;
+                pWidth = 100;
             }
 
             pColumna.HeaderStyle.Width = Unit.Pixel(pWidth);

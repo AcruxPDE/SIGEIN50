@@ -15,6 +15,7 @@ using SIGE.Negocio.Utilerias;
 using Newtonsoft.Json;
 using WebApp.Comunes;
 using SIGE.WebApp.Comunes;
+using SIGE.Entidades.MetodologiaCompensacion;
 
 namespace SIGE.WebApp.EO
 {
@@ -161,6 +162,16 @@ namespace SIGE.WebApp.EO
             return vColor;
         }
 
+        private List<E_CODIGO_COLORES> CodigosColores()
+        {
+            List<E_CODIGO_COLORES> vCodigoColores = new List<E_CODIGO_COLORES>();
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "#F2F2F2", DESCRIPCION = "No calificada" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "#FF0000", DESCRIPCION = "No alcanzada" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "#FFFF00", DESCRIPCION = "Mínimo" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "#0070C0", DESCRIPCION = "Satisfactorio" });
+            vCodigoColores.Add(new E_CODIGO_COLORES { COLOR = "#00B050", DESCRIPCION = "Sobresaliente" });
+            return vCodigoColores;
+        }
 
         #endregion
 
@@ -314,6 +325,16 @@ namespace SIGE.WebApp.EO
                          
             }
 
+        }
+
+        protected void grdCodigoColores_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            grdCodigoColores.DataSource = CodigosColores();
+        }
+
+        protected void rgColores2_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            rgColores2.DataSource = CodigosColores();
         }
 
     }
