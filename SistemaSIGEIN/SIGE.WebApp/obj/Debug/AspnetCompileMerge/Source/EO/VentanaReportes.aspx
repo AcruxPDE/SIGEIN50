@@ -1014,7 +1014,11 @@
                             </p>
                         </div>
                     </telerik:RadSlidingPane>
+<<<<<<< HEAD
                     <telerik:RadSlidingPane ID="rspDefinicionCriterios" runat="server" Title="Código de color" Width="380px" RenderMode="Mobile"  Height="100%" Visible="false">
+=======
+                    <telerik:RadSlidingPane ID="rspDefinicionCriterios" runat="server" Title="Código de color" Width="380px" RenderMode="Mobile"  Height="100%">
+>>>>>>> SIGEINQA
                         <div style="padding: 10px; text-align: justify;">
                             <telerik:RadGrid ID="grdCodigoColores"
                                 runat="server"
