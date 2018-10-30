@@ -142,33 +142,6 @@
                 </telerik:RadPageView>
                 <telerik:RadPageView ID="rpvReporte" runat="server">
                     <div style="height: calc(100% - 10px);">
-<<<<<<< HEAD
-                        <telerik:RadGrid ID="rgEvaluados"
-                            runat="server"
-                            Height="100%"
-                            Width="100%"
-                            AllowSorting="true"
-                            ShowFooter="true"
-                            HeaderStyle-Font-Bold="true"
-                            AllowMultiRowSelection="true"
-                            OnNeedDataSource="rgEvaluados_NeedDataSource"
-                            OnItemDataBound="rgEvaluados_ItemDataBound">
-                            <ClientSettings EnablePostBackOnRowClick="false">
-                                <Selecting AllowRowSelect="true" />
-                                <Scrolling AllowScroll="true" UseStaticHeaders="true" SaveScrollPosition="true"></Scrolling>
-                            </ClientSettings>
-                            <PagerStyle AlwaysVisible="true" />
-                            <MasterTableView DataKeyNames="ID_EVALUADO, ID_PERIODO" ClientDataKeyNames="ID_EVALUADO, ID_PERIODO" AutoGenerateColumns="false" ShowHeadersWhenNoRecords="true" AllowPaging="false" AllowFilteringByColumn="true">
-                                <Columns>
-                                    <telerik:GridBoundColumn HeaderStyle-Width="300" HeaderText="Puesto" DataField="NB_PUESTO_PERIODO" UniqueName="NB_PUESTO_PERIODO" FooterStyle-BackColor="#A20804" FooterStyle-BorderColor="#A20804" CurrentFilterFunction="Contains" FilterControlWidth="220" AutoPostBackOnFilter="true" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                    <telerik:GridHyperLinkColumn HeaderStyle-Width="300" UniqueName="NB_EVALUADO" HeaderText="Nombre completo" DataTextField="NB_EVALUADO" FooterStyle-BackColor="#A20804" FooterStyle-BorderColor="#A20804" DataNavigateUrlFields="ID_EVALUADO, ID_PERIODO" DataNavigateUrlFormatString="javascript:OpenCumPersonal({0},{1})" CurrentFilterFunction="Contains" FilterControlWidth="220" AutoPostBackOnFilter="true" HeaderStyle-Font-Bold="true"></telerik:GridHyperLinkColumn>
-                                    <telerik:GridBoundColumn HeaderStyle-Width="100" HeaderText="Valor cumplido" DataField="PR_CUMPLIMIENTO_EVALUADO" UniqueName="PR_CUMPLIMIENTO_EVALUADO" FooterStyle-BackColor="#A20804" FooterStyle-BorderColor="#A20804" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%" CurrentFilterFunction="Contains" FilterControlWidth="50" AutoPostBackOnFilter="true" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn HeaderStyle-Width="120" HeaderText="Valor ponderado" FooterStyle-Font-Bold="true" DataField="PR_EVALUADO" UniqueName="PR_EVALUADO" ItemStyle-HorizontalAlign="Right" FooterStyle-BackColor="#A20804" FooterStyle-BorderColor="#A20804" DataFormatString="{0:N2}%" FooterText="Cumplimiento general:" FooterStyle-HorizontalAlign="Right" FooterStyle-ForeColor="White" CurrentFilterFunction="Contains" FilterControlWidth="60" AutoPostBackOnFilter="true" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn CurrentFilterFunction="Contains" HeaderStyle-Width="100" FooterStyle-Font-Bold="true" HeaderText="Aporte a cumplimiento general" DataField="C_GENERAL" UniqueName="C_GENERAL" Aggregate="Sum" FooterAggregateFormatString="{0:N2}%" FooterStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Right" DataFormatString="{0:N2}%" FilterControlWidth="60" AutoPostBackOnFilter="true" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                </Columns>
-                            </MasterTableView>
-                        </telerik:RadGrid>
-=======
                         <telerik:RadSplitter ID="rsSucesion" runat="server" Width="100%" Height="100%" BorderSize="0">
                             <telerik:RadPane ID="rpSucesion" runat="server">
                                 <telerik:RadGrid ID="rgEvaluados"
@@ -235,31 +208,10 @@
                                 </telerik:RadSlidingZone>
                             </telerik:RadPane>
                         </telerik:RadSplitter>
->>>>>>> SIGEINQA
                     </div>
                 </telerik:RadPageView>
                 <telerik:RadPageView ID="rpvGrafica" runat="server" Height="100%">
                     <div style="height: calc(100% - 10px);">
-<<<<<<< HEAD
-                        <telerik:RadHtmlChart
-                            runat="server"
-                            ID="rhcGraficaGlobal"
-                            Width="100%"
-                            Height="100%"
-                            Transitions="true"
-                            Skin="Silk">
-                            <ChartTitle Text="Cumplimiento general del período">
-                                <Appearance Align="Center" Position="Top">
-                                </Appearance>
-                            </ChartTitle>
-                            <Legend>
-                                <Appearance Position="Right" Visible="true">
-                                </Appearance>
-                            </Legend>
-                            <PlotArea>
-                            </PlotArea>
-                        </telerik:RadHtmlChart>
-=======
                         <telerik:RadSplitter ID="RadSplitter2" runat="server" Width="100%" Height="100%" BorderSize="0">
                             <telerik:RadPane ID="RadPane1" runat="server">
                                 <telerik:RadHtmlChart runat="server" ID="rhcGraficaGlobal" Width="100%" Height="100%" Transitions="true" Skin="Silk">
@@ -315,7 +267,6 @@
                         </telerik:RadSplitter>
                         
                     
->>>>>>> SIGEINQA
                     </div>
                 </telerik:RadPageView>
                 <telerik:RadPageView ID="rpvComparar" runat="server" Height="100%">

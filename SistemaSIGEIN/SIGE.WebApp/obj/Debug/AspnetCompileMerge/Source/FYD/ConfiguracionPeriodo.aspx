@@ -259,11 +259,7 @@
             var vNoItemsCuestionarios = $find("<%= grdCuestionarios.ClientID %>").get_masterTableView().get_dataItems().length;
 
             if (vValueTab == 4 && '<%= vFgInterrelacionado%>' == "True" && vNoItemsCuestionarios == 0) {
-<<<<<<< HEAD
-                radalert("Si deseas filtrar los interrelacionados por algún campo selecciónalo en la pestaña antes de seleccionar los evaluados.", 400, 170);
-=======
                 radalert("Si deseas filtrar los interrelacionados por algún campo, seleccionalo en la pestaña antes de seleccionar los evaluados.", 400, 170);
->>>>>>> SIGEINQA
             }
 
             if (vValueTab == 6 & vEstadoPeriodo != 'CERRADO' & vNoItemsCuestionarios == 0) {

@@ -326,10 +326,7 @@
                                     </telerik:RadGrid>
                                 </div>
                                 <div style="clear: both"></div>
-<<<<<<< HEAD
 
-=======
->>>>>>> SIGEINQA
                             </telerik:RadPane>
                             <telerik:RadPane ID="RadPane2" runat="server" Width="30">
                                 <telerik:RadSlidingZone ID="RadSlidingZone1" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
