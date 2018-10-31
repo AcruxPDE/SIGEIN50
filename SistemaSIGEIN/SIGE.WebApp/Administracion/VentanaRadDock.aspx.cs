@@ -482,7 +482,7 @@ namespace SIGE.WebApp.Administracion
                
                 var vClasificaciones = nCompetenciaClasificacion.ObtieneClasificacionCompetencia(pClTipoCompetecia: e.Value);
                 var vValorSelect = nCompetenciaClasificacion.ObtieneClasificacionCompetencia(pClTipoCompetecia: e.Value).FirstOrDefault();
-                if (vClasificaciones != null)
+                if (vClasificaciones != null && vValorSelect != null)
                 {
                     cmbClasificaciones.DataSource = vClasificaciones;
                     cmbClasificaciones.DataTextField = "NB_CLASIFICACION_COMPETENCIA";
@@ -490,7 +490,14 @@ namespace SIGE.WebApp.Administracion
                     cmbClasificaciones.DataBind();
                     cmbClasificaciones.SelectedValue = vValorSelect.CL_CLASIFICACION;
                     cmbClasificaciones.Text = vValorSelect.NB_CLASIFICACION_COMPETENCIA;
+                    cmbClasificaciones.Enabled = true;
                 }
+                else
+                {
+                    cmbClasificaciones.Text = "Seleccionar";
+                    cmbClasificaciones.Enabled = false;
+                }
+
                 if (e.Value == "GEN")
                     lbMensaje.Visible = true;
                 else
