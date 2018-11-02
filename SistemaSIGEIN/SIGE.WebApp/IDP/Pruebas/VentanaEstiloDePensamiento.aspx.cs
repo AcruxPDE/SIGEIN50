@@ -110,7 +110,15 @@ namespace SIGE.WebApp.IDP
                     vClToken = new Guid(Request.QueryString["T"]);
                     vClTokenExterno = new Guid(Request.QueryString["T"]);
                     if (Request.QueryString["vIdBateria"] != null)
-					vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+                    {
+					    vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+                        btnEliminarBateria.Visible = true;
+                    }
+                    else
+                    {
+                        btnEliminar.Visible = false;
+                        btnEliminarBateria.Visible = false;
+                    }
 
                     if (vTipoRevision == "REV")
                     {

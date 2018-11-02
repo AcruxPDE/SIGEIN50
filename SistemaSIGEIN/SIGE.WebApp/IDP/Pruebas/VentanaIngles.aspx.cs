@@ -139,6 +139,7 @@ namespace SIGE.WebApp.IDP.Pruebas
                vSeccionesPrueba = new List<E_PRUEBA_TIEMPO>();
                var vSegmentos = nKprueba.Obtener_K_PRUEBA_SECCION(pIdPrueba: vIdPrueba);
                vSeccionesPrueba = ParseList(vSegmentos);
+                
                //Si el modo de revision esta activado
                if (vTipoRevision == "REV" || vTipoRevision == "EDIT")
                {
@@ -196,6 +197,18 @@ namespace SIGE.WebApp.IDP.Pruebas
                     vSeccionesPrueba = new List<E_PRUEBA_TIEMPO>();
                     var vSegmentos = nKprueba.Obtener_K_PRUEBA_SECCION(pIdPrueba: vIdPrueba);
                     vSeccionesPrueba = ParseList(vSegmentos);
+
+                    if (Request.QueryString["vIdBateria"] != null)
+                    {
+                        vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+                        btnEliminar.Visible = true;
+                        btnEliminarBateria.Visible = true;
+                    }
+                    else
+                    {
+                        btnEliminar.Visible = false;
+                        btnEliminarBateria.Visible = false;
+                    }
 
                     int VPosicionPrueba = IniciaPruebaSeccion(vSeccionesPrueba);
                     E_RESULTADO vObjetoPrueba = nKprueba.INICIAR_K_PRUEBA_SECCION(pIdPrueba: vSeccionesPrueba.ElementAt(VPosicionPrueba).ID_PRUEBA_SECCION, pFeInicio: DateTime.Now, usuario: vClUsuario, programa: vNbPrograma);
