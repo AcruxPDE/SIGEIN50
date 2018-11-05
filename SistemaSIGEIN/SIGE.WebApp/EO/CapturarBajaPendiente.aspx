@@ -103,7 +103,7 @@
                     </td>
                     <td colspan="2" class="ctrlTableDataContext">
                         <div class="divControlIzquierda">
-                            <telerik:RadDatePicker ID="rdpFechaBaja" Enabled="true" runat="server" Visible="false">
+                            <telerik:RadDatePicker ID="rdpFechaBaja" Enabled="true" runat="server" Visible="true">
                             </telerik:RadDatePicker>
                         </div>
                     </td>

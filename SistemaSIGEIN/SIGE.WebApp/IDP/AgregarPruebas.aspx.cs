@@ -210,7 +210,7 @@ namespace SIGE.WebApp.IDP
                    
                 }
 
-                grdPruebas.ClientSettings.Selecting.AllowRowSelect = false;
+                //grdPruebas.ClientSettings.Selecting.AllowRowSelect = false;
 
                 //foreach (SPE_OBTIENE_PRUEBA_POR_PUESTO_Result prueba in vPruebas)
                 //{
@@ -1302,6 +1302,7 @@ namespace SIGE.WebApp.IDP
 
         protected void SeleccionpruebasNivelEje()
         {
+            var grid = grdPruebas.Items;
             foreach(GridDataItem item in grdPruebas.Items)
             {
                 switch(int.Parse(item.GetDataKeyValue("ID_PRUEBA").ToString())){
@@ -1510,7 +1511,8 @@ namespace SIGE.WebApp.IDP
             {
                 grdPruebas.ClientSettings.Selecting.AllowRowSelect = true;
                 SeleccionpruebasNivelEje();
-                grdPruebas.ClientSettings.Selecting.AllowRowSelect = false;
+                //grdPruebas.ClientSettings.Selecting.AllowRowSelect = false;
+
                 //CambiarEstatusDePruebas(false);
                 //ActivarDesactivarPrueba(PersonalidadLab1, true);
                 //ActivarDesactivarPrueba(InteresesPersonales, true);
@@ -1532,7 +1534,8 @@ namespace SIGE.WebApp.IDP
             {
                 grdPruebas.ClientSettings.Selecting.AllowRowSelect = true;
                 SeleccionpruebasNivelOpe();
-                grdPruebas.ClientSettings.Selecting.AllowRowSelect = false;
+                //grdPruebas.ClientSettings.Selecting.AllowRowSelect = false;
+
                 //CambiarEstatusDePruebas(false);
                 //ActivarDesactivarPrueba(InteresesPersonales, true);
                 //ActivarDesactivarPrueba(EstiloPensamiento, true);

@@ -124,6 +124,10 @@ namespace SIGE.WebApp.EO
                         btnEliminarPeriodo.Enabled = false;
                         lstPeriodo.Items.Add(new RadListBoxItem(vPeriodo.CL_PERIODO, vIdPeriodoCopia.ToString()));
                         lstPeriodo.Items.FirstOrDefault().Selected = true;
+                        btnAceptar.Enabled = true;
+                        txtDsEstado.Text = "Abierto";
+                        rbParametros.Enabled = false;
+                        rbSeleccion.Enabled = false;
                     }
                     else
                     {
@@ -149,6 +153,7 @@ namespace SIGE.WebApp.EO
                 {
                     lstPeriodo.Items.Add(vNoSeleccionado);
                     rbSeleccion.Checked = true;
+                    rbCuestionarioPredefinido.Checked = true;
                 }
 
             }

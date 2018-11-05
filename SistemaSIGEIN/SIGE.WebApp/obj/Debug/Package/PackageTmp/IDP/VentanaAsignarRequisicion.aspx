@@ -23,7 +23,7 @@
 
             if (sender == vbtnRequisicion) {
                 windowProperties.width = 1100;
-                openChildDialog("../Comunes/SelectorRequisiciones.aspx", "winSeleccion", "Selección de la requisición", windowProperties);
+                openChildDialog("../Comunes/SelectorRequisiciones.aspx?CL_FILTRO_REQ=AUTORIZADO", "winSeleccion", "Selección de la requisición", windowProperties);
             }
 
         }

@@ -296,9 +296,15 @@
             var selectedItem = masterTable.get_selectedItems()[0];
             if (selectedItem != undefined) {
                 var vNombre = masterTable.getCellByColumnUniqueName(selectedItem, "NB_PLANTILLA_SOLICITUD").innerHTML;
+                var vFgDefecto = masterTable.getCellByColumnUniqueName(selectedItem, "FG_GENERAL_CL").innerHTML;
                 switch (clAccion) {
                     case "eliminar":
-                        confirmAction(sender, args, "¿Deseas eliminar la plantilla " + vNombre + "?, este proceso no podrá revertirse");
+                        if (vFgDefecto != "Sí")
+                            confirmAction(sender, args, "¿Deseas eliminar la plantilla " + vNombre + "?, este proceso no podrá revertirse");
+                        else {
+                            radalert("No se puede eliminar una plantilla establecida por defecto.", 400, 150);
+                            args.set_cancel(true);
+                        }
                         break;
                     case "general":
                         confirmAction(sender, args, "¿Deseas establecer la plantilla " + vNombre + " por defecto?");

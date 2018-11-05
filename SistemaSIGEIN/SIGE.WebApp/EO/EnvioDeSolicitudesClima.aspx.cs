@@ -6,7 +6,6 @@ using SIGE.WebApp.Comunes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -93,10 +92,7 @@ namespace SIGE.WebApp.EO
                         vMensaje = vMensaje.Replace("[URL]", vUrl + "&FlProceso=" + item.GetDataKeyValue("FL_EVALUADOR").ToString());
                         vMensaje = vMensaje.Replace("[CONTRASENA]", item.GetDataKeyValue("CL_TOKEN").ToString());
 
-                        StringBuilder builder = new StringBuilder();
-                        builder.Append(vClCorreo + ";");
-
-                        bool vEstatusCorreo = pe.EnvioCorreo(builder.ToString(), vNbEvaluador, "Cuestionarios para evaluación", vMensaje);
+                        bool vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbEvaluador, "Cuestionarios para evaluación", vMensaje);
 
                         if (vEstatusCorreo)
                         {
@@ -295,19 +291,21 @@ namespace SIGE.WebApp.EO
                     //        }
                     //    }
                     //}
+                    vDsMensaje = vPeriodoClima.DS_MENSAJE_CORREO;
+                    lMensaje.InnerHtml = vDsMensaje;
                 }
-                vDsMensaje = ContextoApp.EO.MensajeCorreoEvaluador.dsMensaje;
-                lMensaje.InnerHtml = vDsMensaje;
+                //vDsMensaje = ContextoApp.EO.MensajeCorreoEvaluador.dsMensaje;
+                //lMensaje.InnerHtml = vDsMensaje;
 
                 vCuentaCuestionarios = nClima.ObtieneEvaluadoresCuestionario(pID_PERIODO: vIdPeriodo, pIdRol: vIdRol).Count;
                 vCuentaContestados = 0;
             }
         }
 
-        protected void btnEnviarTodos_Click(object sender, EventArgs e)
-        {
-            EnviarCorreo(true);
-        }
+        //protected void btnEnviarTodos_Click(object sender, EventArgs e)
+        //{
+        //    EnviarCorreo(true);
+        //}
 
         protected void btnEnviar_Click(object sender, EventArgs e)
         {
@@ -360,18 +358,18 @@ namespace SIGE.WebApp.EO
 
             if (vCuentaCuestionarios == vCuentaContestados)
             {
-                btnEnviarTodos.Enabled = false;
+                //btnEnviarTodos.Enabled = false;
                 btnEnviar.Enabled = false;
                 lbMensaje.Visible = true;
             }
             else if (vCuentaContestados != 0)
             {
-                btnEnviarTodos.Enabled = false;
+               // btnEnviarTodos.Enabled = false;
                 lbMensaje.Visible = false;
             }
             else
             {
-                btnEnviarTodos.Enabled = true;
+               // btnEnviarTodos.Enabled = true;
                 btnEnviar.Enabled = true;
                 lbMensaje.Visible = false;
             }

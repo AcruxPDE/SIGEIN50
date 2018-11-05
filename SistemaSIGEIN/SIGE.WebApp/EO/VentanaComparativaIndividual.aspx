@@ -77,7 +77,7 @@
                         </tr>
                     </table>
                 </div>
-                <div class="divControlDerecha" style="width: 15%; text-align: left; margin-right: 50%;">
+              <%--  <div class="divControlDerecha" style="width: 15%; text-align: left; margin-right: 50%;">
                     <fieldset>
                         <legend>
                             <label>Estatus de la meta</label>
@@ -131,12 +131,53 @@
                             </tr>
                         </table>
                     </fieldset>
-                </div>
+                </div>--%>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvReporte" runat="server">
                 <div style="clear: both; height: 20px;"></div>
+                 <telerik:RadSplitter ID="rsSucesion" runat="server" Width="100%" Height="100%" BorderSize="0">
+                            <telerik:RadPane ID="rpSucesion" runat="server">
                 <div id="dvReporte" runat="server" style="height: calc(100% - 90px);">
                 </div>
+                                 </telerik:RadPane>
+                            <telerik:RadPane ID="rpAyuda" runat="server" Width="30">
+                                <telerik:RadSlidingZone ID="rszAyuda" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
+                                    <telerik:RadSlidingPane ID="rspSemaforo" runat="server" CollapseMode="Forward" EnableResize="false" Width="300px" Title="Código de color" Height="100%">
+                                        <div style="padding: 10px; text-align: justify;">
+                                            <telerik:RadGrid ID="grdCodigoColores"
+                                                runat="server"
+                                                Height="350"
+                                                Width="250"
+                                                AllowSorting="true"
+                                                AllowFilteringByColumn="true"
+                                                HeaderStyle-Font-Bold="true"
+                                                ShowHeader="true"
+                                                OnNeedDataSource="grdCodigoColores_NeedDataSource">
+                                                <ClientSettings>
+                                                    <Scrolling AllowScroll="true" UseStaticHeaders="false"></Scrolling>
+                                                </ClientSettings>
+                                                <PagerStyle AlwaysVisible="true" />
+                                                <GroupingSettings CaseSensitive="false" />
+                                                <MasterTableView AutoGenerateColumns="false" AllowPaging="false" AllowFilteringByColumn="false" ShowHeadersWhenNoRecords="true">
+                                                    <CommandItemSettings ShowAddNewRecordButton="false" ShowExportToExcelButton="True" ShowExportToCsvButton="false" ShowRefreshButton="false"
+                                                        AddNewRecordText="Insertar" />
+                                                    <Columns>
+                                                        <telerik:GridTemplateColumn HeaderText="Color" HeaderStyle-Width="60" AllowFiltering="false">
+                                                            <ItemTemplate>
+                                                                <div style="margin: auto; width: 25px; border: 1px solid gray; background: <%# Eval("COLOR")%>; border-radius: 5px;">&nbsp;&nbsp;</div>
+                                                                &nbsp;
+                                                        </div>
+                                                            </ItemTemplate>
+                                                        </telerik:GridTemplateColumn>
+                                                        <telerik:GridBoundColumn AutoPostBackOnFilter="false" CurrentFilterFunction="Contains" HeaderStyle-Width="260" HeaderText="Descripción" DataField="DESCRIPCION"></telerik:GridBoundColumn>
+                                                    </Columns>
+                                                </MasterTableView>
+                                            </telerik:RadGrid>
+                                        </div>
+                                    </telerik:RadSlidingPane>
+                                </telerik:RadSlidingZone>
+                            </telerik:RadPane>
+                        </telerik:RadSplitter>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvGrafica" runat="server">
                 <div style="height: 100%;">

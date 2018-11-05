@@ -275,10 +275,10 @@ namespace SIGE.WebApp.FYD
             rgEvaluadores.DataSource = oCuestionario.ObtieneEvaluadores(pIdPeriodo: vIdPeriodo, pID_EMPRESA: vIdEmpresa, pID_ROL: vIdRol);
         }
 
-        protected void btnEnviarTodos_Click(object sender, EventArgs e)
-        {
-            EnviarCorreo(true);
-        }
+        //protected void btnEnviarTodos_Click(object sender, EventArgs e)
+        //{
+        //    EnviarCorreo(true);
+        //}
 
         protected void rgEvaluadores_ItemDataBound(object sender, GridItemEventArgs e)
         {

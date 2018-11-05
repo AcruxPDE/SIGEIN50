@@ -297,7 +297,7 @@
                                 <telerik:RadButton ID="btnConfigurar" runat="server" Text="Configurar" AutoPostBack="false" OnClientClicked="OpenConfigurarTableroWindow"></telerik:RadButton>
                             </div>
                             <div class="ctrlBasico">
-                                <telerik:RadButton ID="btnCerrar" runat="server" Text="Cerrar tablero" OnClientClicking="ConfirmarCerrar" OnClick="btnCerrar_Click"></telerik:RadButton>
+                                <telerik:RadButton ID="btnCerrar" runat="server" Text="Cerrar" OnClientClicking="ConfirmarCerrar" OnClick="btnCerrar_Click"></telerik:RadButton>
                             </div>
                             <%-- <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" OnClientClicking="ConfirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>--%>
                             <div class="ctrlBasico">

@@ -9,6 +9,7 @@ using SIGE.Negocio.EvaluacionOrganizacional;
 using System.Xml;
 using SIGE.Entidades;
 using System.Web.UI.HtmlControls;
+using SIGE.WebApp.EO.Cuestionarios;
 
 namespace SIGE.WebApp.EO
 {
@@ -28,10 +29,22 @@ namespace SIGE.WebApp.EO
             set { ViewState["vs_vLstCamposAdicionales"] = value; }
         }
 
+        public List<E_CAMPOS_ADICIONALES> vLstCamposAd
+        {
+            get { return (List<E_CAMPOS_ADICIONALES>)ViewState["vs_vLstCamposAd"]; }
+            set { ViewState["vs_vLstCamposAd"] = value; }
+        }
+
         private List<E_DEPARTAMENTOS> vLstDepartamentos
         {
             get { return (List<E_DEPARTAMENTOS>)ViewState["vs_vLstDepartamentos"]; }
             set { ViewState["vs_vLstDepartamentos"] = value; }
+        }
+
+        private List<E_GENERO> vLstGeneros
+        {
+            get { return (List<E_GENERO>)ViewState["vs_vLstGeneros"]; }
+            set { ViewState["vs_vLstGeneros"] = value; }
         }
 
         #endregion
@@ -62,6 +75,31 @@ namespace SIGE.WebApp.EO
 
         }
 
+        protected void ObtieneAdicionalesCampos(string pXmlAdicionales)
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(pXmlAdicionales);
+            vLstCamposAd = new List<E_CAMPOS_ADICIONALES>();
+
+            XmlNodeList departamentos = xml.GetElementsByTagName("ITEMS");
+
+            XmlNodeList lista =
+            ((XmlElement)departamentos[0]).GetElementsByTagName("ITEM");
+
+            foreach (XmlElement nodo in lista)
+            {
+                bool exist = vLstCamposAd.Exists(e => e.ID_CATALOGO_LISTA == int.Parse(nodo.GetAttribute("ID_CATALOGO_LISTA")) && e.CL_CAMPO == nodo.GetAttribute("CL_CAMPO").ToString() && e.NB_CAMPO == nodo.GetAttribute("CL_CAMPO").ToString());
+                if (!exist)
+                    vLstCamposAd.Add(
+                        new E_CAMPOS_ADICIONALES { 
+                            ID_CATALOGO_LISTA = int.Parse(nodo.GetAttribute("ID_CATALOGO_LISTA"))
+                            , CL_CAMPO = nodo.GetAttribute("CL_CAMPO")
+                            , NB_CAMPO = nodo.GetAttribute("NB_CAMPO")
+                        });
+            }
+
+        }
+
         protected string ObtieneDepartamentos(string pXmlDepartamentos)
         {
             string vDepartamentos = "";
@@ -87,6 +125,34 @@ namespace SIGE.WebApp.EO
 
 
             return vDepartamentos;
+        }
+
+
+        protected string ObtieneGeneros(string pXmlGenros)
+        {
+            string vGeneros = "";
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(pXmlGenros);
+            XmlNodeList generos = xml.GetElementsByTagName("ITEMS");
+            vLstGeneros = new List<E_GENERO>();
+
+            XmlNodeList lista =
+            ((XmlElement)generos[0]).GetElementsByTagName("ITEM");
+
+            foreach (XmlElement nodo in lista)
+            {
+
+                vGeneros = vGeneros + nodo.GetAttribute("NB_GENERO") + ".\n";
+                E_GENERO f = new E_GENERO
+                {
+                    CL_GENERO = nodo.GetAttribute("CL_GENERO"),
+                    NB_GENERO = nodo.GetAttribute("NB_GENERO")
+                };
+                vLstGeneros.Add(f);
+            }
+
+
+            return vGeneros;
         }
 
         protected HtmlGenericControl GenerarCuestionario()
@@ -283,14 +349,25 @@ namespace SIGE.WebApp.EO
                             if (vFiltros.CL_GENERO != null)
                             {                             
                                     lbGenero.Visible = true;
-                                    CheckBox vCheckM = new CheckBox();
-                                    vCheckM.Text = "Masculino";
-                                    CheckBox vCheckF = new CheckBox();
-                                    vCheckF.Text = "Femenino";
-                                    if (vFiltros.CL_GENERO == "Femenino")
-                                    dvGeneros.Controls.Add(vCheckF);
-                                    if (vFiltros.CL_GENERO == "Masculino")
-                                    dvGeneros.Controls.Add(vCheckM);
+
+                                    ObtieneGeneros(vFiltros.CL_GENERO);
+                                    foreach (E_GENERO item in vLstGeneros)
+                                    {
+                                        HtmlGenericControl vDiv = new HtmlGenericControl("div");
+                                        vDiv.Attributes.Add("class", "ctrlBasico");
+                                        var checkbox = new CheckBox();
+                                        checkbox.Text = item.NB_GENERO;
+                                        vDiv.Controls.Add(checkbox);
+                                        dvGeneros.Controls.Add(vDiv);
+                                    }
+                                    //CheckBox vCheckM = new CheckBox();
+                                    //vCheckM.Text = "Masculino";
+                                    //CheckBox vCheckF = new CheckBox();
+                                    //vCheckF.Text = "Femenino";
+                                    //if (vFiltros.CL_GENERO == "Femenino")
+                                    //dvGeneros.Controls.Add(vCheckF);
+                                    //if (vFiltros.CL_GENERO == "Masculino")
+                                    //dvGeneros.Controls.Add(vCheckM);
                             }
 
                             if (vFiltros.XML_DEPARTAMENTOS != null)
@@ -314,6 +391,8 @@ namespace SIGE.WebApp.EO
                             {
                                 RotacionPersonalNegocio negocio = new RotacionPersonalNegocio();
                                 ObtieneAdicionales(vFiltros.XML_CAMPOS_ADICIONALES);
+                                ObtieneAdicionalesCampos(vFiltros.XML_CAMPOS_ADICIONALES); //vLstCamposAd
+
                                 foreach (E_CAMPOS_ADICIONALES item in vLstCamposAdicionales)
                                 {
                                     var ListaAdscripcion = negocio.ObtieneCatalogoAdscripciones(item.ID_CATALOGO_LISTA).FirstOrDefault();
@@ -323,13 +402,15 @@ namespace SIGE.WebApp.EO
                                     row.Cells.Add(cell);
                                     cell = new HtmlTableCell();
                                     cell.Style.Add("Height", "30px");
-                                    var ListaAdscripcionValor = negocio.ObtieneCatalogoAdscripciones(item.ID_CATALOGO_LISTA).ToList();
-                                    foreach (var itemValor in ListaAdscripcionValor)
+
+                                    //var ListaAdscripcionValor = negocio.ObtieneCatalogoAdscripciones(item.ID_CATALOGO_LISTA).ToList();
+                                    var vListCampos = vLstCamposAd.Where(w => w.ID_CATALOGO_LISTA == item.ID_CATALOGO_LISTA).ToList();
+                                    foreach (var itemValor in vListCampos)
                                     {
                                         var checkbox = new CheckBox();
                                         cell.Controls.Add(checkbox);
                                         var label = new Label();
-                                        label.Text = itemValor.NB_CATALOGO_VALOR;
+                                        label.Text = itemValor.NB_CAMPO;
                                         cell.Controls.Add(label);
                                     }
                                     row.Cells.Add(cell);

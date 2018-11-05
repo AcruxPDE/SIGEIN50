@@ -261,10 +261,27 @@ namespace SIGE.WebApp.Administracion
 
         public void EstatusControles(string pClEstatus)
         {
+            txtSueldoMin.Text = "";
+            txtSueldoMax.Text = "";
+            rlbSolicitante.Items[0].Text = "No Seleccionado";
+            rlbSolicitante.Items[0].Value = "0";
+            txtPuestoSolicitante.Text = "";
+            txtCorreoSolicitante.Text = "";
+            lstAutoriza.Items[0].Text = "No Seleccionado";
+            lstAutoriza.Items[0].Value = "0";
+            txtPuestoAutoriza.Text = "";
+            txtCorreoAutorizaReq.Text = "";
+            txtSueldo.Text = "0.00";
+
+            //txtPuestoReq.Text = "";
+            //txtPuestoAutorizaPuesto.Text = "";
+            //txtPuestoAutorizaCorreo.Text = "";
+
             if (pClEstatus.Equals("OTRA"))
             {
                 lblDescripcionCausa.Style.Add("display", "block");
                 lblDescripcionCausa.InnerText = "Causa de otra:";
+                txtDescripcionCausa.Text = "";
                 txtDescripcionCausa.Visible = true;
                 radBtnBuscarPuesto.ToolTip = "";
 
@@ -272,6 +289,7 @@ namespace SIGE.WebApp.Administracion
                 lblTiempoCausa.Style.Add("display", "none");
                 divUltimoSueldo.Style.Add("display", "block");
                 dvSueldoSugerido.Style.Add("display", "block");
+                lblTiempoCausa.Visible = false;
                 txtTiempoCausa.Visible = false;
 
                 btnNuevoPuesto.Visible = false;
@@ -294,7 +312,6 @@ namespace SIGE.WebApp.Administracion
             {
                 btnNuevoPuesto.Visible = true;
                 lblPuesto.InnerText = "Si ya has creado el nuevo puesto, selecciónalo";
-
                 lblTiempoCausa.Style.Add("display", "none");
                 txtTiempoCausa.Visible = false;
                 radBtnBuscarPuesto.ToolTip = "Aquí puedes seleccionar el nuevo puesto si es que ya lo creaste. Recuerda que el puesto que selecciones no aparecerá en el catálogo de descriptivos de puestos hasta que sea aprobado.";
@@ -335,10 +352,13 @@ namespace SIGE.WebApp.Administracion
                 dvSueldoSugerido.Style.Add("display", "block");
 
                 lblDescripcionCausa.Style.Add("display", "block");
+                txtDescripcionCausa.Text = "";
                 txtDescripcionCausa.Visible = true;
                 lblDescripcionCausa.InnerText = "Causa de temporal:";
 
                 lblTiempoCausa.Style.Add("display", "block");
+                txtTiempoCausa.Text = "";
+                lblTiempoCausa.Visible = true;
                 txtTiempoCausa.Visible = true;
 
                 //lblEmpleadoSuplir.Visible = false;
@@ -380,16 +400,21 @@ namespace SIGE.WebApp.Administracion
                     lblUltimoSueldo.InnerText = "Ultimo Sueldo";
                     divUltimoSueldo.Style.Add("display", "block");
                     dvSueldoSugerido.Style.Add("display", "none");
+                    lblTiempoCausa.Visible = false;
+                    txtTiempoCausa.Visible = false;
                 }
                 else
                 {
                     lblDescripcionCausa.Style.Add("display", "block");
                     lblDescripcionCausa.InnerText = "Causa de suplencia:";
+                    txtDescripcionCausa.Text = "";
                     txtDescripcionCausa.Visible = true;
                     dvSueldoSugerido.Style.Add("display", "none");
 
                     lblEmpleadoSuplir.InnerText = "Empleado a suplir";
                     lblTiempoCausa.Style.Add("display", "block");
+                    lblTiempoCausa.Visible = true;
+                    txtTiempoCausa.Text = "";
                     txtTiempoCausa.Visible = true;
                 }
 
@@ -853,16 +878,30 @@ namespace SIGE.WebApp.Administracion
 
                     E_RESULTADO vResultado = nRequisicion.InsertaActualizaRequisicion(pTipoTransaccion: pTipoTransaccion, pNbPrograma: vNbPrograma, pClUsuario: vClUsuario, pRequisicion: vRequisicion);
                     string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-
+                    string vNumeroRequisicion = "";
 
                     if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
                     {
+                        if (pTipoTransaccion == "I")
+                        {
+                            XElement vDatosRespuesta = vResultado.ObtieneDatosRespuesta();
+                            if (vDatosRespuesta != null)
+                            {
+                                XElement vPuestoInsertado = vDatosRespuesta.Element("REQUISICION");
+                                vNumeroRequisicion = UtilXML.ValorAtributo<string>(vPuestoInsertado.Attribute("NO_REQUISICION"));                            
+                            }
+                            
+                        }
+
                         if (pTipoTransaccion == "I" || pClEstatusRequisicion == "ABIERTA" && vRequisicion.CL_ESTATUS_REQUISICION == "POR AUTORIZAR")
                         {
                             ValidarEnvioCorreos(vRequisicion);
                         }
 
-                        UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
+                        if(vNumeroRequisicion != "")
+                            UtilMensajes.MensajeResultadoDB(rnMensaje, "El folio " + txtNo_requisicion.Text + " ya ha sido asignado a otra requisición el nuevo folio asignado es: " + vNumeroRequisicion, vResultado.CL_TIPO_ERROR,400,160);
+                        else
+                             UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
                     }
                     else
                     {

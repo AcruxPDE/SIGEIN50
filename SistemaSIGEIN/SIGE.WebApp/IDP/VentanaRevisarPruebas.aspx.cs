@@ -100,91 +100,91 @@ namespace SIGE.WebApp.IDP
                         tbRevisarPruebas.Tabs[6].Enabled = true;
                         tbRevisarPruebas.Tabs[6].Selected = true;
                         rpvAdáptacion.Selected = true;
-                        ifAdaptacion.Attributes.Add("src", "VentanaIntegracionMedioManual.aspx?ID=" + item.ID_PRUEBA + "&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT");
+                        ifAdaptacion.Attributes.Add("src", "VentanaIntegracionMedioManual.aspx?ID=" + item.ID_PRUEBA + "&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT&vIdBateria=" + vIdBateria );
                         break;
                     case 2: //2	Mental I
                         tbRevisarPruebas.Tabs[3].Enabled = true;
                         tbRevisarPruebas.Tabs[3].Selected = true;
                         rpvMentalI.Selected = true;
-                        ifMentalI.Attributes.Add("src", "Pruebas/VentanaAptitudMentalI.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT");
+                        ifMentalI.Attributes.Add("src", "Pruebas/VentanaAptitudMentalI.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT&vIdBateria=" + vIdBateria);
                         break;
                     case 3: //3	Mental II
                         tbRevisarPruebas.Tabs[4].Enabled = true;
                         tbRevisarPruebas.Tabs[4].Selected = true;
                         rpvMentalII.Selected = true;
-                        ifMentalII.Attributes.Add("src", "Pruebas/VentanaAptitudMentalII.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT");
+                        ifMentalII.Attributes.Add("src", "Pruebas/VentanaAptitudMentalII.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT&vIdBateria=" + vIdBateria);
                         break;
                     case 4: //4	Inglés
                         tbRevisarPruebas.Tabs[13].Enabled = true;
                         tbRevisarPruebas.Tabs[13].Selected = true;
                         rpvIngles.Selected = true;
-                        ifIngles.Attributes.Add("src", "Pruebas/VentanaIngles.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT");
+                        ifIngles.Attributes.Add("src", "Pruebas/VentanaIngles.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT&vIdBateria=" + vIdBateria);
                         break;
                     case 5: //5	Intereses personales
                         tbRevisarPruebas.Tabs[1].Enabled = true;
                         tbRevisarPruebas.Tabs[1].Selected = true;
                         rpvInteresesPersonales.Selected = true;
-                        ifInteresesPersonales.Attributes.Add("src", "Pruebas/VentanaInteresesPersonales.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT");
+                        ifInteresesPersonales.Attributes.Add("src", "Pruebas/VentanaInteresesPersonales.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT&vIdBateria=" + vIdBateria);
                         break;
                     case 6: //6	Laboral I
                         tbRevisarPruebas.Tabs[0].Enabled = true;
                         tbRevisarPruebas.Tabs[0].Selected = true;
                         rpvLaboralI.Selected = true;
-                        ifLaboralI.Attributes.Add("src", "Pruebas/VentanaPersonalidadLaboralI.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT");
+                        ifLaboralI.Attributes.Add("src", "Pruebas/VentanaPersonalidadLaboralI.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT&vIdBateria=" + vIdBateria);
                         break;
                     case 7: //7 Laboral II
                         tbRevisarPruebas.Tabs[5].Enabled = true;
                         tbRevisarPruebas.Tabs[5].Selected = true;
                         rpvLaboralI.Selected = true;
-                        ifLaboralII.Attributes.Add("src", "Pruebas/VentanaPersonalidadLaboralII.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT");
+                        ifLaboralII.Attributes.Add("src", "Pruebas/VentanaPersonalidadLaboralII.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT&vIdBateria=" + vIdBateria);
                         break;
                     case 8: //8	Otografía I
                         tbRevisarPruebas.Tabs[8].Enabled = true;
                         tbRevisarPruebas.Tabs[8].Selected = true;
                         rpvOrtgrafiaII.Selected = true;
-                        ifOrtografiaI.Attributes.Add("src", "Pruebas/VentanaOrtografiaI.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&CLAVE=" + item.CL_PRUEBA + "&MOD=EDIT");
+                        ifOrtografiaI.Attributes.Add("src", "Pruebas/VentanaOrtografiaI.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&CLAVE=" + item.CL_PRUEBA + "&MOD=EDIT&vIdBateria=" + vIdBateria);
                         break;
                     case 9: //9	Ortografia II
                         tbRevisarPruebas.Tabs[9].Enabled = true;
                         tbRevisarPruebas.Tabs[9].Selected = true;
                         rpvOrtgrafiaII.Selected = true;
-                        ifOrtografiaII.Attributes.Add("src", "Pruebas/VentanaOrtografiaII.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&CLAVE=" + item.CL_PRUEBA + "&MOD=EDIT");
+                        ifOrtografiaII.Attributes.Add("src", "Pruebas/VentanaOrtografiaII.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&CLAVE=" + item.CL_PRUEBA + "&MOD=EDIT&vIdBateria=" + vIdBateria);
                         break;
                     case 10: //10 Ortografia III
                         tbRevisarPruebas.Tabs[10].Enabled = true;
                         tbRevisarPruebas.Tabs[10].Enabled = true;
                         rpvOrtografiaIII.Selected = true;
-                        ifOrtografiaIII.Attributes.Add("src", "Pruebas/VentanaOrtografiaIII.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&CLAVE=" + item.CL_PRUEBA + "&MOD=EDIT");
+                        ifOrtografiaIII.Attributes.Add("src", "Pruebas/VentanaOrtografiaIII.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&CLAVE=" + item.CL_PRUEBA + "&MOD=EDIT&vIdBateria=" + vIdBateria);
                         break;
                     case 11: //11 Estilo de pensamiento
                         tbRevisarPruebas.Tabs[2].Enabled = true;
                         tbRevisarPruebas.Tabs[2].Selected = true;
                         rpvEstilo.Selected = true;
-                        ifEstilo.Attributes.Add("src", "Pruebas/VentanaEstiloDePensamiento.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT");
+                        ifEstilo.Attributes.Add("src", "Pruebas/VentanaEstiloDePensamiento.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT&vIdBateria=" + vIdBateria);
                         break;
                     case 12: //12 Redacción
                         tbRevisarPruebas.Tabs[12].Enabled = true;
                         tbRevisarPruebas.Tabs[12].Selected = true;
                         rpvRedaccion.Selected = true;
-                        ifRedaccion.Attributes.Add("src", "Pruebas/VentanaRedaccion.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT");
+                        ifRedaccion.Attributes.Add("src", "Pruebas/VentanaRedaccion.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT&vIdBateria=" + vIdBateria);
                         break;
                     case 13: //13 Técnica PC
                         tbRevisarPruebas.Tabs[11].Enabled = true;
                         tbRevisarPruebas.Tabs[11].Selected = true;
                         rpvTecnica.Selected = true;
-                        ifTecnica.Attributes.Add("src", "Pruebas/VentanaTecnicaPC.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT");
+                        ifTecnica.Attributes.Add("src", "Pruebas/VentanaTecnicaPC.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT&vIdBateria=" + vIdBateria);
                         break;
                     case 14: //14 TIVA
                         tbRevisarPruebas.Tabs[7].Enabled = true;
                         tbRevisarPruebas.Tabs[7].Selected = true;
                         rpvTiva.Selected = true;
-                        ifTiva.Attributes.Add("src", "Pruebas/VentanaTIVA.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT");
+                        ifTiva.Attributes.Add("src", "Pruebas/VentanaTIVA.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&MOD=EDIT&vIdBateria=" + vIdBateria);
                         break;
                     case 15: //15 Entrevista
                         tbRevisarPruebas.Tabs[14].Enabled = true;
                         tbRevisarPruebas.Tabs[14].Selected = true;
                         rpvFactoresAdicionales.Selected = true;
-                        ifFactoresAdicionales.Attributes.Add("src", "VentanaResultadosEntrevista.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&CL=EDIT");
+                        ifFactoresAdicionales.Attributes.Add("src", "VentanaResultadosEntrevista.aspx?ID=" + item.ID_PRUEBA + "&&T=" + item.CL_TOKEN_EXTERNO + "&CL=EDIT&vIdBateria=" + vIdBateria);
                         break;
                 }
 

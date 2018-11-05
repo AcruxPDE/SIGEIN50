@@ -242,9 +242,11 @@ namespace SIGE.WebApp.IDP
             if (lstCandidatoS.Count > 1)
             {
                 btnAplicacionInterna.Enabled = false;
+                btnAplicacionMasiva.Enabled = true;
             }
             else
             {
+                btnAplicacionInterna.Enabled = true;
                 btnAplicacionMasiva.Enabled = false;
             }
         }

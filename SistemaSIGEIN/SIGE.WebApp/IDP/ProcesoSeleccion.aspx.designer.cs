@@ -283,15 +283,6 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadButton btnEnvioCorreos;
         
         /// <summary>
-        /// btnEnviarTodos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnEnviarTodos;
-        
-        /// <summary>
         /// btnComentarios control.
         /// </summary>
         /// <remarks>

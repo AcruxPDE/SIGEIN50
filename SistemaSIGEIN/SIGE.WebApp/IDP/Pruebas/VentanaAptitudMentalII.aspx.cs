@@ -70,6 +70,11 @@ namespace SIGE.WebApp.IDP
             set { ViewState["vsMostrarCronometroAM2"] = value; }
         }
 
+        public int vIdBateria
+        {
+            get { return (int)ViewState["vsIdBateria"]; }
+            set { ViewState["vsIdBateria"] = value; }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             vClUsuario = (ContextoUsuario.oUsuario != null ? ContextoUsuario.oUsuario.CL_USUARIO : "INVITADO");
@@ -88,6 +93,8 @@ namespace SIGE.WebApp.IDP
                     PruebasNegocio nKprueba = new PruebasNegocio();
                     vIdPrueba = int.Parse(Request.QueryString["ID"]);
                     vClToken = new Guid(Request.QueryString["T"]);
+                    if (Request.QueryString["vIdBateria"] != null)
+					vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
 
                     if (vTipoRevision == "REV")
                     {
@@ -1024,22 +1031,37 @@ namespace SIGE.WebApp.IDP
 
         }
 
-        //protected void btnEliminar_Click(object sender, EventArgs e)
-        //{
-        //    if (vIdPrueba != null)
-        //    {
-        //        PruebasNegocio nPruebas = new PruebasNegocio();
-        //        var vResultado = nPruebas.EliminaRespuestasPrueba(vIdPrueba, vClUsuario, vNbPrograma);
-        //        string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-        //        if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
-        //        {
-        //            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+        protected void btnEliminarBateria_Click(object sender, EventArgs e)
+        {
+            PruebasNegocio nPruebas = new PruebasNegocio();
+            var vResultado = nPruebas.EliminaRespuestasBaterias(vIdBateria, vClUsuario, vNbPrograma);
+            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+            if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+            {
+                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+            }
+            else
+            {
+                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
+            }
+        }
 
-        //        }
-        //        else
-        //            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
-        //    }
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (vIdPrueba != null)
+            {
+                PruebasNegocio nPruebas = new PruebasNegocio();
+                var vResultado = nPruebas.EliminaRespuestasPrueba(vIdPrueba, vClUsuario, vNbPrograma);
+                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+                {
+                    UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
 
-        //}
+                }
+                else
+                    UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
+            }
+
+        }
     }
 }

@@ -354,9 +354,17 @@ namespace SIGE.WebApp.Comunes
                             break;
                         case "DATEPICKER":
                             RadDatePicker vRadDatePicker = (RadDatePicker)vPageView.FindControl(vIdControl);
-                            DateTime vFecha = vRadDatePicker.SelectedDate ?? DateTime.Now;
-                            vItem.Add(new XAttribute(vIdColumnaValor, vFecha.ToString("dd/MM/yyyy")));
-                            vValorControl = vFecha.ToString("dd/MM/yyyy");
+                           // DateTime vFecha = vRadDatePicker.SelectedDate ?? DateTime.Now;
+                            if (vRadDatePicker.SelectedDate != null)
+                            {
+                                DateTime vFecha = vRadDatePicker.SelectedDate.Value;
+                                vItem.Add(new XAttribute(vIdColumnaValor, vFecha.ToString("dd/MM/yyyy")));
+                                vValorControl = vFecha.ToString("dd/MM/yyyy");
+                            }
+                            else
+                            {
+                                vValorControl= "";
+                            }
                            // vRadDatePicker.SelectedDate = null;
                             break;
                         case "DATEAGE":
@@ -386,34 +394,34 @@ namespace SIGE.WebApp.Comunes
                     }
                 }
 
-                if (vIdControlGrid == "LS_PARIENTES")
-                {
-                    if (string.IsNullOrEmpty(vMensajes))
-                    {
-                        //if (UtilXML.ValorAtributo<string>(vItem.Attribute("NB_PARIENTE")).ToString() != "")
-                        vXmlGrid.Element("GRID").Element("DATOS").Add(vItem);
-                        LimpiarControles(vIdControlGrid);
-                    }
-                    else
-                    {
-                        if (vPageView.Page is Empleado)
-                        {
-                            RadWindowManager rwmAlertas = (RadWindowManager)(((Empleado)vPageView.Page).FindControl("rwmAlertas"));
-                            RadWindowManager vRw = (RadWindowManager)vPageView.FindControl("rwmAlertas");
-                            if (vRw != null)
-                                vRw.RadAlert(vMensajes, 350, 150, "Mensaje", null);
-                        }
-                        if (vPageView.Page is Solicitud)
-                        {
-                            RadWindowManager rwmAlertas = (RadWindowManager)(((Solicitud)vPageView.Page).FindControl("rwmAlertas"));
-                            RadWindowManager vRw = (RadWindowManager)vPageView.FindControl("rwmAlertas");
-                            if (vRw != null)
-                                vRw.RadAlert(vMensajes, 350, 150, "Mensaje", null);
-                        }
-                    }
-                }
-                else
-                {
+                //if (vIdControlGrid == "LS_PARIENTES")
+                //{
+                //    if (string.IsNullOrEmpty(vMensajes))
+                //    {
+                //        //if (UtilXML.ValorAtributo<string>(vItem.Attribute("NB_PARIENTE")).ToString() != "")
+                //        vXmlGrid.Element("GRID").Element("DATOS").Add(vItem);
+                //        LimpiarControles(vIdControlGrid);
+                //    }
+                //    else
+                //    {
+                //        if (vPageView.Page is Empleado)
+                //        {
+                //            RadWindowManager rwmAlertas = (RadWindowManager)(((Empleado)vPageView.Page).FindControl("rwmAlertas"));
+                //            RadWindowManager vRw = (RadWindowManager)vPageView.FindControl("rwmAlertas");
+                //            if (vRw != null)
+                //                vRw.RadAlert(vMensajes, 350, 150, "Mensaje", null);
+                //        }
+                //        if (vPageView.Page is Solicitud)
+                //        {
+                //            RadWindowManager rwmAlertas = (RadWindowManager)(((Solicitud)vPageView.Page).FindControl("rwmAlertas"));
+                //            RadWindowManager vRw = (RadWindowManager)vPageView.FindControl("rwmAlertas");
+                //            if (vRw != null)
+                //                vRw.RadAlert(vMensajes, 350, 150, "Mensaje", null);
+                //        }
+                //    }
+                //}
+                //else
+                //{
                     if (string.IsNullOrEmpty(vMensajes))
                     {
                         vXmlGrid.Element("GRID").Element("DATOS").Add(vItem);
@@ -438,7 +446,7 @@ namespace SIGE.WebApp.Comunes
 
                     }
     
-                }
+              //  }
 
                 xmlPlantilla = vXmlPlantilla.ToString();
 
@@ -602,8 +610,11 @@ namespace SIGE.WebApp.Comunes
                                 break;
                             case "DATEPICKER":
                             case "DATEAGE":
-                                RadDatePicker vRadDatePicker = ((RadDatePicker)vPageView.FindControl(vIdCampoControl));
-                                vRadDatePicker.SelectedDate = DateTime.Parse(vNbValor);
+                                if (vNbValor != "")
+                                {
+                                    RadDatePicker vRadDatePicker = ((RadDatePicker)vPageView.FindControl(vIdCampoControl));
+                                    vRadDatePicker.SelectedDate = DateTime.Parse(vNbValor);
+                                }
                                 break;
                             case "CHECKBOX":
                                 RadButton vRadCheckBox = (RadButton)vPageView.FindControl(vIdCampoControl);

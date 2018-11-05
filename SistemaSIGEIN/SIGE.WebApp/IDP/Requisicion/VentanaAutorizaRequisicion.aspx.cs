@@ -5,9 +5,11 @@ using SIGE.WebApp.Comunes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Telerik.Web.UI;
 
 namespace SIGE.WebApp.IDP
 {
@@ -15,6 +17,7 @@ namespace SIGE.WebApp.IDP
     {
         #region Variables
 
+        StringBuilder builder = new StringBuilder();
         private int pIdRequisicion
         {
             get { return (int)ViewState["vspIdRequisicion"]; }
@@ -52,13 +55,13 @@ namespace SIGE.WebApp.IDP
         #endregion
 
         #region Metodos
-        
+
         public void EnvioCorreo(string Email, string Mensaje, string Asunto)
         {
             Mail mail = new Mail(ContextoApp.mailConfiguration);
-            mail.addToAddress(Email, String.Format("{0}", Mensaje));
-            //RadProgressContext progress = RadProgressContext.Current;
-            mail.Send(Asunto, Mensaje);
+            mail.addToAddress(Email, "");
+            RadProgressContext progress = RadProgressContext.Current;
+            mail.Send(Asunto, String.Format("{0}", Mensaje));
         }
 
         private void CargarDatos()
@@ -109,13 +112,15 @@ namespace SIGE.WebApp.IDP
                 {
                     //lblSuplir.Visible = true;
                     //txtEmpleadoSuplir.Visible = true;
-                    rowSuplente.Style.Add("dispay", "block");
+                  //  rowSuplente.Style.Add("dispay", "block");
                     txtEmpleadoSuplir.InnerText = vAutorizaRequisicion.NB_EMPLEADO_SUPLENTE;
+                 
 
                 }
                 else
                 {
                     rowSuplente.Style.Add("dispay", "none");
+                    txtEmpleadoSuplir.InnerText = "NA";
                 }
             }
 
@@ -152,12 +157,15 @@ namespace SIGE.WebApp.IDP
             string Asunto = "Actualización de puesto de requisición";
 
             var vRequisicion = nRequisicion.ObtieneRequisicion(pIdRequisicion: pIdRequisicion).FirstOrDefault();
-            var vSolicitante = nEmpleado.ObtenerEmpleado(ID_EMPLEADO: vRequisicion.ID_SOLICITANTE).FirstOrDefault();
+          //  var vSolicitante = nEmpleado.ObtenerEmpleado(ID_EMPLEADO: vRequisicion.ID_SOLICITANTE).FirstOrDefault();
 
-            if (vSolicitante != null)
+           // if (vSolicitante != null)
+            if (vRequisicion != null)
             {
-                nbCreaRequisicion = vSolicitante.NB_EMPLEADO_COMPLETO;
-                vNbCorreo = vSolicitante.CL_CORREO_ELECTRONICO;
+                //nbCreaRequisicion = vSolicitante.NB_EMPLEADO_COMPLETO;
+                //vNbCorreo = vSolicitante.CL_CORREO_ELECTRONICO;
+                nbCreaRequisicion = vRequisicion.NB_EMPLEADO_SOLICITANTE;
+                vNbCorreo = vRequisicion.NB_CORREO_SOLICITANTE;
             }
 
             if (vClEstatusPuesto.Equals("RECHAZADO"))
@@ -179,7 +187,8 @@ namespace SIGE.WebApp.IDP
 
             if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
             {
-                EnvioCorreo(vNbCorreo, vMensajeCorreo, Asunto);
+                builder.Append(vNbCorreo + ";");
+                EnvioCorreo(builder.ToString(), vMensajeCorreo, Asunto);
                 UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "OnCloseWindow");
             }
             else
@@ -201,12 +210,13 @@ namespace SIGE.WebApp.IDP
             string Asunto = "Actualización de requisición";
 
             var vRequisicion = nRequisicion.ObtieneRequisicion(pIdRequisicion: pIdRequisicion).FirstOrDefault();
-            var vSolicitante = nEmpleado.ObtenerEmpleado(ID_EMPLEADO: vRequisicion.ID_SOLICITANTE).FirstOrDefault();
+           // var vSolicitante = nEmpleado.ObtenerEmpleado(ID_EMPLEADO: vRequisicion.ID_SOLICITANTE).FirstOrDefault();
 
-            if (vSolicitante != null)
+            //if (vSolicitante != null)
+            if (vRequisicion != null)
             {
-                nbCreaRequisicion = vSolicitante.NB_EMPLEADO_COMPLETO;
-                vNbCorreo = vSolicitante.CL_CORREO_ELECTRONICO;
+                nbCreaRequisicion = vRequisicion.NB_EMPLEADO_SOLICITANTE;
+                vNbCorreo = vRequisicion.NB_CORREO_SOLICITANTE;
             }
 
             if (vClEstatusRequisicion.Equals("RECHAZADO"))
@@ -228,7 +238,8 @@ namespace SIGE.WebApp.IDP
 
             if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
             {
-                EnvioCorreo(vNbCorreo, vMensajeCorreo, Asunto);
+                builder.Append(vNbCorreo + ";");
+                EnvioCorreo(builder.ToString(), vMensajeCorreo, Asunto);
                 UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "OnCloseWindow");
             }
             else
@@ -253,12 +264,15 @@ namespace SIGE.WebApp.IDP
             string Asunto = "Actualización de requisición y puesto";
 
             var vRequisicion = nRequisicion.ObtieneRequisicion(pIdRequisicion: pIdRequisicion).FirstOrDefault();
-            var vSolicitante = nEmpleado.ObtenerEmpleado(ID_EMPLEADO: vRequisicion.ID_SOLICITANTE).FirstOrDefault();
+           // var vSolicitante = nEmpleado.ObtenerEmpleado(ID_EMPLEADO: vRequisicion.ID_SOLICITANTE).FirstOrDefault();
 
-            if (vSolicitante != null)
+           // if (vSolicitante != null)
+            if (vRequisicion != null)
             {
-                nbCreaRequisicion = vSolicitante.NB_EMPLEADO_COMPLETO;
-                vNbCorreo = vSolicitante.CL_CORREO_ELECTRONICO;
+                //nbCreaRequisicion = vSolicitante.NB_EMPLEADO_COMPLETO;
+                //vNbCorreo = vSolicitante.CL_CORREO_ELECTRONICO;
+                nbCreaRequisicion = vRequisicion.NB_EMPLEADO_SOLICITANTE;
+                vNbCorreo = vRequisicion.NB_CORREO_SOLICITANTE;
             }
 
             vMensajeCorreo = ContextoApp.IDP.NotificacionRrhh.dsEstatusReqPuesto.dsMensaje;
@@ -276,7 +290,8 @@ namespace SIGE.WebApp.IDP
 
             if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
             {
-                EnvioCorreo(vNbCorreo, vMensajeCorreo, Asunto);
+                builder.Append(vNbCorreo + ";");
+                EnvioCorreo(builder.ToString(), vMensajeCorreo, Asunto);
                 UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "OnCloseWindow");
             }
             else

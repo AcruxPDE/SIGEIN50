@@ -663,7 +663,7 @@
                         <telerik:RadTab Text="Organigrama"></telerik:RadTab>
                  <%--       <telerik:RadTab Text="Responsabilidades"></telerik:RadTab>--%>
                         <telerik:RadTab Text="Funciones"></telerik:RadTab>
-                        <telerik:RadTab Text="Competencias genéricas"></telerik:RadTab>
+                        <telerik:RadTab Text="Competencias e Indicadores"></telerik:RadTab><%--<telerik:RadTab Text="Competencias genéricas"></telerik:RadTab>--%>
                         <telerik:RadTab Text="Campos extra"></telerik:RadTab>
                         <telerik:RadTab Text="STPS"></telerik:RadTab>
                         <telerik:RadTab Text="Documentación"></telerik:RadTab>

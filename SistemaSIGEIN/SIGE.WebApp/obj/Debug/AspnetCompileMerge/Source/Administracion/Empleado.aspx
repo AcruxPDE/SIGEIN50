@@ -542,7 +542,7 @@
                                     </MasterTableView>
                                 </telerik:RadGrid>
                             </div>
-                            <div class="ctrlBasico" style="padding-left:20px;">
+                            <div class="ctrlBasico">
                                 <telerik:RadButton ID="btnDelDocumentos" runat="server" Text="Eliminar" OnClick="btnDelDocumentos_Click"></telerik:RadButton>
                             </div>
                         </telerik:RadPageView>
@@ -601,7 +601,7 @@
                                     <CommandItemSettings ShowExportToExcelButton="true" ShowAddNewRecordButton="false" />
                                     <Columns>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="150" FilterControlWidth="90" HeaderText="Clave" DataField="CL_PROGRAMA" UniqueName="CL_PROGRAMA"></telerik:GridBoundColumn>
-                                        <telerik:GridHyperLinkColumn AutoPostBackOnFilter="true" HeaderText="Programa" DataTextField="NB_PROGRAMA" UniqueName="NB_PROGRAMA" DataNavigateUrlFields="ID_PROGRAMA" DataNavigateUrlFormatString="javascript:openAvanceProgramaCapacitacion({0})"></telerik:GridHyperLinkColumn>
+                                        <telerik:GridHyperLinkColumn AutoPostBackOnFilter="true" HeaderText="Descripción" DataTextField="NB_PROGRAMA" UniqueName="NB_PROGRAMA" DataNavigateUrlFields="ID_PROGRAMA" DataNavigateUrlFormatString="javascript:openAvanceProgramaCapacitacion({0})"></telerik:GridHyperLinkColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" FilterControlWidth="25" HeaderText="Creado por" DataField="CL_USUARIO_APP_CREA" UniqueName="CL_USUARIO_APP_CREA"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" DataFormatString="{0:d}" FilterControlWidth="25" HeaderText="Fecha de creación" DataField="FE_CREACION" UniqueName="FE_CREACION"></telerik:GridBoundColumn>
                                         <telerik:GridButtonColumn CommandName="Delete" Text="Eliminar" UniqueName="DeleteColumn" ButtonType="ImageButton" HeaderStyle-Width="30" ConfirmTextFields="NB_PROGRAMA" ConfirmTextFormatString="¿Desea eliminar al empleado del programa de capacitación {0}?, este proceso no podrá revertirse." ConfirmDialogWidth="450" ConfirmDialogHeight="175" ConfirmDialogType="RadWindow" />
@@ -620,7 +620,7 @@
                                     <CommandItemSettings ShowExportToExcelButton="true" ShowAddNewRecordButton="false" />
                                     <Columns>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="150" HeaderText="Clave" DataField="CL_EVENTO" UniqueName="CL_EVENTO"></telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="200" HeaderText="Evento" DataField="NB_EVENTO" UniqueName="NB_EVENTO"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="200" HeaderText="Descripción" DataField="NB_EVENTO" UniqueName="NB_EVENTO"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" FilterControlWidth="25" HeaderText="Clave curso" DataField="CL_CURSO" UniqueName="CL_CURSO"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="200" FilterControlWidth="25" HeaderText="Curso" DataField="NB_CURSO" UniqueName="NB_CURSO"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" FilterControlWidth="25" HeaderText="Costo" DataField="MN_COSTO_DIRECTO" UniqueName="MN_COSTO_DIRECTO" Aggregate="Sum" FooterAggregateFormatString="Total: ${0:N2}" DataFormatString="{0:C2}">
@@ -650,7 +650,7 @@
                                     <Columns>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="150" HeaderText="Clave" DataField="CL_PERIODO" UniqueName="CL_PERIODO"></telerik:GridBoundColumn>
                                         <%--<telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="200" HeaderText="Evento" DataField="NB_PERIODO" UniqueName="NB_PERIODO"></telerik:GridBoundColumn>--%>
-                                        <telerik:GridHyperLinkColumn AutoPostBackOnFilter="true" HeaderText="Período" DataTextField="NB_PERIODO" UniqueName="NB_PERIODO" DataNavigateUrlFields="ID_EVALUADO,ID_PERIODO" DataNavigateUrlFormatString="javascript:openReporteCumplimientoPersonalDesempeno({0},{1})"></telerik:GridHyperLinkColumn>
+                                        <telerik:GridHyperLinkColumn AutoPostBackOnFilter="true" HeaderText="Descripción" DataTextField="NB_PERIODO" UniqueName="NB_PERIODO" DataNavigateUrlFields="ID_EVALUADO,ID_PERIODO" DataNavigateUrlFormatString="javascript:openReporteCumplimientoPersonalDesempeno({0},{1})"></telerik:GridHyperLinkColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" FilterControlWidth="25" HeaderText="Cumplimiento" DataField="PR_CUMPLIMIENTO_EVALUADO" UniqueName="PR_CUMPLIMIENTO_EVALUADO" DataFormatString="{0}%">
                                             <ItemStyle HorizontalAlign="Right" />
                                         </telerik:GridBoundColumn>

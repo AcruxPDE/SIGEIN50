@@ -430,23 +430,23 @@ namespace SIGE.Negocio.Administracion
 
             if (vListaDetallada.Count > 0)
             {
-                if(vListaDetallada.Exists(e=> e.CL_VARIABLE == "TV-TOTAL"))
-                vTvTotal = Math.Round(vListaDetallada.Where(w => w.CL_VARIABLE == "TV-TOTAL").Select(s => s.NO_VALOR).FirstOrDefault(), 0);
+                if (vListaDetallada.Exists(e => e.CL_VARIABLE == "TV-TOTAL"))
+                    vTvTotal = Math.Round(vListaDetallada.Where(w => w.CL_VARIABLE == "TV-TOTAL").Select(s => s.NO_VALOR).FirstOrDefault(), 0);
             }
 
             foreach (var item in vBaremos)
             {
-             if(item.CL_VARIABLE == "L1-CONSTANCIA" || item.CL_VARIABLE == "L1-CUMPLIMIENTO" || item.CL_VARIABLE == "L2-MANTIENE Y CONSERVA" || item.CL_VARIABLE == "IN-REGULATORIO")
-                               {
-                          if (vTvTotal == 1)
-                                       vResBaremos += (item.NO_VALOR == 1 || item.NO_VALOR == 2) ? 1 : 0;
-                                   
-                                   if (vTvTotal == 2)
-                                       vResBaremos += (item.NO_VALOR == 3 || item.NO_VALOR == 2) ? 1 : 0;
-                                   
-                                   if (vTvTotal == 3)
-                                       vResBaremos += (item.NO_VALOR == 3 || item.NO_VALOR == 2) ? 1 : 0;
-                               }
+                if (item.CL_VARIABLE == "L1-CONSTANCIA" || item.CL_VARIABLE == "L1-CUMPLIMIENTO" || item.CL_VARIABLE == "L2-MANTIENE Y CONSERVA" || item.CL_VARIABLE == "IN-REGULATORIO")
+                {
+                    if (vTvTotal == 1)
+                        vResBaremos += (item.NO_VALOR == 1 || item.NO_VALOR == 2) ? 1 : 0;
+
+                    if (vTvTotal == 2)
+                        vResBaremos += (item.NO_VALOR == 3 || item.NO_VALOR == 2) ? 1 : 0;
+
+                    if (vTvTotal == 3)
+                        vResBaremos += (item.NO_VALOR == 3 || item.NO_VALOR == 2) ? 1 : 0;
+                }
             }
 
             if ((4 - vResBaremos) >= 2)
@@ -500,8 +500,6 @@ namespace SIGE.Negocio.Administracion
                                 vDr[vFac.ID_FACTOR.ToString() + "E"] = vNum;
                             }
                         }
-
-
                     }
                     else
                     {
@@ -664,7 +662,6 @@ namespace SIGE.Negocio.Administracion
                 conditionalFormattingRule03.Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Medium;
                 conditionalFormattingRule03.Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Medium;
 
-
                 var conditionalFormattingRule04 = ws.ConditionalFormatting.AddEqual(ws.Cells[3, 3, (vNoFilas + 3), (vNoColumnas + 3)]);
                 conditionalFormattingRule04.Formula = "-1";
                 conditionalFormattingRule04.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
@@ -674,7 +671,6 @@ namespace SIGE.Negocio.Administracion
                 conditionalFormattingRule04.Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Medium;
                 conditionalFormattingRule04.Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Medium;
                 conditionalFormattingRule04.Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Medium;
-
   
                 ws.Column(1).Hidden = true;
 

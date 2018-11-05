@@ -70,7 +70,7 @@
                 <telerik:RadTextBox ID="txtClaveGrupo" MaxLength="20" runat="server" Width="250"></telerik:RadTextBox>
             </div>
         </div>
-        <div style="height: 10px; clear: both;"></div>
+        <div style="clear: both;"></div>
         <div class="ctrlBasico">
             <div class="divControlIzquierda" style="width: 160px;">
                 <label name="lblNombreGrupo">*Nombre del grupo:</label>
@@ -79,7 +79,7 @@
                 <telerik:RadTextBox ID="txtNombreGrupo" runat="server" Width="250"></telerik:RadTextBox>
             </div>
         </div>
-        <div style="height: 10px; clear: both;"></div>
+        <div style="clear: both;"></div>
         <div class="ctrlBasico">
             <label name="lblIntegrantes">Seleccionar integrantes</label>
         </div>
@@ -119,7 +119,9 @@
             <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" AutoPostBack="true" OnClick="btnEliminar_Click"></telerik:RadButton>
         </div>
         <div class="divControlDerecha">
+            <div class="ctrlBasico">
             <telerik:RadButton ID="btnAceptar" runat="server" Text="Aceptar" AutoPostBack="true" OnClick="btnAceptar_Click"></telerik:RadButton>
+                </div>
             <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" AutoPostBack="false" OnClientClicked="OnCloseWindows"></telerik:RadButton>
         </div>
     </div>

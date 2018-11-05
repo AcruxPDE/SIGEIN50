@@ -32,17 +32,18 @@
 
         function OpenSelectionWindow() {
 
-            var currentWnd = GetRadWindow();
-            var browserWnd = window;
-            if (currentWnd)
-                browserWnd = currentWnd.BrowserWindow;
+                var currentWnd = GetRadWindow();
+                var browserWnd = window;
+                if (currentWnd)
+                    browserWnd = currentWnd.BrowserWindow;
 
-            var windowProperties = {
-                width: browserWnd.innerWidth - 20,
-                height: browserWnd.innerHeight - 20
-            };
+                var windowProperties = {
+                    width: browserWnd.innerWidth - 20,
+                    height: browserWnd.innerHeight - 20
+                };
 
-            openChildDialog("../Comunes/SeleccionPeriodoClima.aspx?mulSel=0", "winSeleccion", "Selección de período", windowProperties);
+                openChildDialog("../Comunes/SeleccionPeriodoClima.aspx?mulSel=0", "winSeleccion", "Selección de período", windowProperties);
+
         }
 
         function useDataFromChild(pData) {

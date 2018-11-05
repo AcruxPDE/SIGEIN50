@@ -383,10 +383,10 @@ namespace SIGE.WebApp.MPC
             PieSeries vSerie = new PieSeries();
 
             vSerie.SeriesItems.Add(vNivelGrafica.PR_VERDE, System.Drawing.Color.Green, "Sueldo dentro del nivel establecido por el tabulador (variación inferior al " + vRangoVerde.ToString() + "%).", false, true);
-            vSerie.SeriesItems.Add(vNivelGrafica.PR_AMARILLO_POS, System.Drawing.Color.Yellow, "Sueldo superior al nivel establecido por el tabulador entre la variación del " + vRangoVerde.ToString() + "% y el " + vRangoAmarillo.ToString() + "%.", false, true);
-            vSerie.SeriesItems.Add(vNivelGrafica.PR_AMARILLO_NEG, System.Drawing.Color.Gold, "Sueldo inferior al nivel establecido por el tabulador entre la variación del " + vRangoVerde.ToString() + "% y el " + vRangoAmarillo.ToString() + "%.", false, true);
-            vSerie.SeriesItems.Add(vNivelGrafica.PR_ROJO_POS, System.Drawing.Color.OrangeRed, "Sueldo superior al nivel establecido por el tabulador en más del " + vRangoAmarillo.ToString() + "%.", false, true);
-            vSerie.SeriesItems.Add(vNivelGrafica.PR_ROJO_NEG, System.Drawing.Color.Red, "Sueldo inferior al nivel establecido por el tabulador en más del " + vRangoAmarillo.ToString() + "%.", false, true);
+            vSerie.SeriesItems.Add(vNivelGrafica.PR_AMARILLO_POS + vNivelGrafica.PR_AMARILLO_NEG, System.Drawing.Color.Yellow, "Sueldo superior o inferior al nivel establecido por el tabulador entre la variación del " + vRangoVerde.ToString() + "% y el " + vRangoAmarillo.ToString() + "%.", false, true);
+          //  vSerie.SeriesItems.Add(vNivelGrafica.PR_AMARILLO_NEG, System.Drawing.Color.Gold, "Sueldo inferior al nivel establecido por el tabulador entre la variación del " + vRangoVerde.ToString() + "% y el " + vRangoAmarillo.ToString() + "%.", false, true);
+           // vSerie.SeriesItems.Add(vNivelGrafica.PR_ROJO_POS, System.Drawing.Color.OrangeRed, "Sueldo superior al nivel establecido por el tabulador en más del " + vRangoAmarillo.ToString() + "%.", false, true);
+            vSerie.SeriesItems.Add(vNivelGrafica.PR_ROJO_POS + vNivelGrafica.PR_ROJO_NEG, System.Drawing.Color.Red, "Sueldo superior o inferior al nivel establecido por el tabulador en más del " + vRangoAmarillo.ToString() + "%.", false, true);
 
             vSerie.TooltipsAppearance.Visible = false;
             vSerie.TooltipsAppearance.DataFormatString = "{0:N2}";

@@ -250,7 +250,9 @@
         </div>
     </div>
     <div>
+        <div class="divControlDerecha">
         <telerik:RadButton ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click"></telerik:RadButton>
+            </div>
     </div>
     <telerik:RadWindowManager ID="rwmAlertas" runat="server" EnableShadow="true"></telerik:RadWindowManager>
 </asp:Content>

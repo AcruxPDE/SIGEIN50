@@ -433,6 +433,12 @@
                     <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnCopiar">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnCopiar" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+
         </AjaxSettings>
     </telerik:RadAjaxManager>
     <telerik:RadSplitter ID="rsPeriodosEvaluacion" BorderSize="0" Width="100%" Height="100%" runat="server">

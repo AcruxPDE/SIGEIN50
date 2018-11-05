@@ -40,15 +40,6 @@ namespace SIGE.WebApp.IDP {
         protected global::Telerik.Web.UI.RadTabStrip tbRevisarPruebas;
         
         /// <summary>
-        /// rsbRevisarPruebas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadSplitBar rsbRevisarPruebas;
-        
-        /// <summary>
         /// rpRevisarPruebas control.
         /// </summary>
         /// <remarks>

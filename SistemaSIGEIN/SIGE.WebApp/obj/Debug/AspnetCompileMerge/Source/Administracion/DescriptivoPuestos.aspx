@@ -85,10 +85,13 @@
                 if (pIdPuesto != null) {
                     vURL = vURL + "?PuestoId=" + pIdPuesto
 
-                    if (pIsCopy != null)
-                        vURL = vURL + "&pIsCopy=C";
-
                     vTitulo = "Editar descripción del puesto";
+
+                    if (pIsCopy != null) {
+                        vURL = vURL + "&pIsCopy=C";
+                        vTitulo = "Copiar descripción del puesto";
+                    }
+
                 }
                 var windowProperties = {
                     width: document.documentElement.clientWidth - 20,

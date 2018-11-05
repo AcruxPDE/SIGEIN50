@@ -53,8 +53,8 @@
             }
             function ObtenerPropiedadesVentana() {
                 return {
-                    width: document.documentElement.clientWidth - 680,//750,
-                    height: document.documentElement.clientHeight - 420//15
+                    width: 700,//750,
+                    height:  250//15
                 };
             }
             function onClose() {
