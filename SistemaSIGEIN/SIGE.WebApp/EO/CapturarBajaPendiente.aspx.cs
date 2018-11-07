@@ -74,7 +74,9 @@ namespace SIGE.WebApp.EO
                     var vEmpleadoBaja = nRotacion.ObtieneBajasPendientes(vIdBajaEmpleado).FirstOrDefault();
                     txtNbEmpleado.InnerText = vEmpleadoBaja.CL_EMPLEADO + " - " + vEmpleadoBaja.NB_EMPLEADO;
                     txtNbPuesto.InnerText = vEmpleadoBaja.CL_PUESTO + " - " + vEmpleadoBaja.NB_PUESTO;
-                    rdpFechaBaja.SelectedDate = DateTime.Now;
+                    rdpFechaBaja.SelectedDate = vEmpleadoBaja.FE_BAJA_EFECTIVA;
+                    XElement xmlComentarios = XElement.Parse(vEmpleadoBaja.DS_COMENTARIOS);
+                    reComentarios.Content = xmlComentarios.Value;                  
                 }
             }
 

@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIGE.Entidades", "SIGE.Entidades\SIGE.Entidades.csproj", "{D7A963F8-45AA-4E2A-9BD3-7E31B48922A7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIGE.Negocio", "SIGE.Negocio\SIGE.Negocio.csproj", "{14D9AD14-2846-4490-9DDB-9A2B8441FDA3}"
@@ -89,5 +91,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1302D427-5E6A-45ED-A380-DC5351EA7DED}
 	EndGlobalSection
 EndGlobal

@@ -335,9 +335,10 @@ namespace SIGE.WebApp.EO
                 rhtColumnChart.PlotArea.YAxis.MinValue = 0;
                 rhtColumnChart.PlotArea.YAxis.Step = 10;
                 vCsIndiceSatisfaccion.LabelsAppearance.Visible = false;
-                vCsIndiceSatisfaccion.LabelsAppearance.DataFormatString = "{0:N1}";
-                vCsIndiceSatisfaccion.LabelsAppearance.RotationAngle = 270;
-                vCsIndiceSatisfaccion.TooltipsAppearance.ClientTemplate = item.NOMBRE;
+               // vCsIndiceSatisfaccion.LabelsAppearance.DataFormatString = "{0:N2}";
+               // vCsIndiceSatisfaccion.LabelsAppearance.RotationAngle = 270;
+                vCsIndiceSatisfaccion.TooltipsAppearance.ClientTemplate = item.NO_NOMBRE + "</br>" + item.PORCENTAJE + "%";
+                vCsIndiceSatisfaccion.TooltipsAppearance.DataFormatString = "{0:N2}%";
                 vCsIndiceSatisfaccion.TooltipsAppearance.Color = Color.Black;
                 //rhtColumnChart.PlotArea.XAxis.Items.Add(item.NO_NOMBRE.ToString());
                 rhtColumnChart.PlotArea.Series.Add(vCsIndiceSatisfaccion);
@@ -497,7 +498,7 @@ namespace SIGE.WebApp.EO
                 string vColorColumna = ColorRespuesta(item.NO_RESPUESTA);
                 Color vColor = System.Drawing.ColorTranslator.FromHtml(vColorColumna);
                 vSerie.SeriesItems.Add(item.PORCENTAJE, vColor, item.NOMBRE);
-                //vSerie.LabelsAppearance.DataFormatString = "{0:N2}%";
+                vSerie.LabelsAppearance.DataFormatString = "{0:N2}%";
                 vSerie.LabelsAppearance.Visible = false;
                 vSerie.TooltipsAppearance.DataFormatString = "{0:N2}%";
             }
@@ -541,8 +542,8 @@ namespace SIGE.WebApp.EO
                 string vColorColumna = ColorRespuesta(item.NO_RESPUESTA);
                 Color vColor = System.Drawing.ColorTranslator.FromHtml(vColorColumna);
                 vSerie.SeriesItems.Add(item.PORCENTAJE, vColor, item.NOMBRE);
-                //vSerie.LabelsAppearance.DataFormatString = "{0:N2}%";
-                vSerie.LabelsAppearance.Visible = false;
+                vSerie.LabelsAppearance.DataFormatString = "{0:N2}%";
+                vSerie.LabelsAppearance.Visible = true;
                 vSerie.TooltipsAppearance.DataFormatString = "{0:N2}%";
                 rhcGraficaGlobal.PlotArea.XAxis.Items.Add(item.NO_NOMBRE.ToString());
                 rhcGraficaGlobal.PlotArea.XAxis.LabelsAppearance.DataFormatString = item.NO_NOMBRE.ToString();
