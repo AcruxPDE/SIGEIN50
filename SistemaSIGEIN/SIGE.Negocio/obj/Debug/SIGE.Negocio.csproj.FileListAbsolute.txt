@@ -86,3 +86,4 @@ C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Deb
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.Negocio.csproj.CopyComplete
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.Negocio.dll
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.Negocio.pdb
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\Microsoft.AnalysisServices.AdomdClient.dll
