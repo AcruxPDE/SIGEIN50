@@ -239,7 +239,7 @@ namespace SIGE.WebApp.EO
 
             ContextoApp.EO = EO;
             ContextoApp.SaveConfiguration(vClUsuario, "Configuracion.aspx");
-            UtilMensajes.MensajeResultadoDB(rwmMensaje, "Configuración guardada con exito.", E_TIPO_RESPUESTA_DB.SUCCESSFUL, pCallBackFunction: "");
+            UtilMensajes.MensajeResultadoDB(rwmMensaje, "Proceso exitoso.", E_TIPO_RESPUESTA_DB.SUCCESSFUL, pCallBackFunction: "");
         }
 
         //protected void grdCapturaResultados_ItemDataBound(object sender, GridItemEventArgs e)
