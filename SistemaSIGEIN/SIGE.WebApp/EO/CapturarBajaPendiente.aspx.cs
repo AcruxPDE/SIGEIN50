@@ -24,7 +24,7 @@ namespace SIGE.WebApp.EO
 
         private int? vIdBajaEmpleado
         {
-            get { return (int?)ViewState["vs_vIdEvaluadoPeriodo"];}
+            get { return (int?)ViewState["vs_vIdEvaluadoPeriodo"]; }
             set { ViewState["vs_vIdEvaluadoPeriodo"] = value; }
         }
 
@@ -76,7 +76,7 @@ namespace SIGE.WebApp.EO
                     txtNbPuesto.InnerText = vEmpleadoBaja.CL_PUESTO + " - " + vEmpleadoBaja.NB_PUESTO;
                     rdpFechaBaja.SelectedDate = vEmpleadoBaja.FE_BAJA_EFECTIVA;
                     XElement xmlComentarios = XElement.Parse(vEmpleadoBaja.DS_COMENTARIOS);
-                    reComentarios.Content = xmlComentarios.Value;                  
+                    reComentarios.Content = xmlComentarios.Value;
                 }
             }
 
@@ -86,7 +86,7 @@ namespace SIGE.WebApp.EO
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-      
+
             DateTime? vFeBaja = rdpFechaBaja.SelectedDate;
             XElement nodoPrincipal = new XElement("XML_COMENTARIOS", EditorContentToXml("COMENTARIOS", reComentarios.Content.Replace("&lt;", ""), vNbFirstRadEditorTagName));
             string vDesComentarios = nodoPrincipal.ToString();
@@ -100,7 +100,7 @@ namespace SIGE.WebApp.EO
                 if (rdpFechaBaja.SelectedDate != null)
                 {
                     RotacionPersonalNegocio nBaja = new RotacionPersonalNegocio();
-                    E_RESULTADO vResultado = nBaja.ActualizaBajaPendiente(vIdBajaEmpleado, vIdEmpleado, vIdCausaBaja, vDesComentarios, vFeBaja, vClUsuario, vNbPrograma,  pTIPO_TRANSACCION: E_TIPO_OPERACION_DB.I.ToString());
+                    E_RESULTADO vResultado = nBaja.ActualizaBajaPendiente(vIdBajaEmpleado, vIdEmpleado, vIdCausaBaja, vDesComentarios, vFeBaja, vClUsuario, vNbPrograma, pTIPO_TRANSACCION: E_TIPO_OPERACION_DB.I.ToString());
                     string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
                     UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
                 }
@@ -111,7 +111,7 @@ namespace SIGE.WebApp.EO
             }
             else
             {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje,"Seleccione la causa de la baja.",E_TIPO_RESPUESTA_DB.WARNING,pCallBackFunction:"");
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione la causa de la baja.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
             }
 
         }

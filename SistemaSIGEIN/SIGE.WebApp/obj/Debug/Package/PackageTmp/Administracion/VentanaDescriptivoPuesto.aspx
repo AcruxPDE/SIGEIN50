@@ -1767,9 +1767,11 @@
                                         <telerik:RadComboBox ID="cmbCompetenciaEspecifica" Width="350" runat="server" OnSelectedIndexChanged="cmbCompetenciaEspecifica_SelectedIndexChanged" EmptyMessage="Seleccione..." AutoPostBack="true" ToolTip="Selecciona las competencias específicas que requiere para desempeñar adecuadamente la función y establecer el nivel de competencia. Aquí debes especificar lo que se debe SABER HACER para lograr la función anterior, referido generalmente a un conocimiento  específico del puesto y/o empresa. Ejemplo: Es capaz de desarrollar planes y programas de capacitación, es capaz de formar instructores internos, es capaz de operar la máquina laser, etc."></telerik:RadComboBox>
                                     </div>
                                     <div class="ctrlBasico">
-                                        <telerik:RadGrid ID="grdNivelCompetenciaEspecifica" runat="server" OnPreRender="grdNivelCompetenciaEspecifica_PreRender" HeaderStyle-Font-Bold="true">
-                                            <ClientSettings Selecting-AllowRowSelect="true"></ClientSettings>
-                                            <MasterTableView DataKeyNames="NO_VALOR" AutoGenerateColumns="false">
+                                        <telerik:RadGrid ID="grdNivelCompetenciaEspecifica" runat="server" AllowSorting="true" OnPreRender="grdNivelCompetenciaEspecifica_PreRender" HeaderStyle-Font-Bold="true">
+                                            <ClientSettings Selecting-AllowRowSelect="true">
+                                                <Scrolling AllowScroll="true" UseStaticHeaders="true"></Scrolling>
+                                            </ClientSettings>
+                                            <MasterTableView DataKeyNames="NO_VALOR" AutoGenerateColumns="false" AllowSorting="true">
                                                 <Columns>
                                                     <telerik:GridBoundColumn HeaderText="Nivel de la competencia" DataField="NB_NIVEL" UniqueName="NB_NIVEL"></telerik:GridBoundColumn>
                                                     <telerik:GridBoundColumn HeaderText="Descripción del nivel" DataField="DS_NIVEL" UniqueName="DS_NIVEL"></telerik:GridBoundColumn>
@@ -1802,15 +1804,15 @@
                                 </div>
                                 <div style="clear: both;"></div>
                                 <div style="height: calc(100% - 100px);">
-                                    <telerik:RadGrid ID="grdFuncionCompetencias" runat="server" AutoGenerateColumns="false" Height="300" ShowHeader="true" EnableHierarchyExpandAll="true"
+                                    <telerik:RadGrid ID="grdFuncionCompetencias" runat="server" AutoGenerateColumns="false" Height="250" ShowHeader="true" EnableHierarchyExpandAll="true"
                                         OnDetailTableDataBind="grdFuncionCompetencias_DetailTableDataBind"
-                                        OnNeedDataSource="grdFuncionCompetencias_NeedDataSource"
+                                        OnNeedDataSource="grdFuncionCompetencias_NeedDataSource" AllowSorting="true"
                                         OnItemCommand="grdFuncionCompetencias_ItemCommand" HeaderStyle-Font-Bold="true">
                                         <ClientSettings>
                                             <Scrolling UseStaticHeaders="true" AllowScroll="true" />
                                             <Selecting AllowRowSelect="true" />
                                         </ClientSettings>
-                                        <MasterTableView Name="mtvCompetencias" DataKeyNames="ID_ITEM" ShowHeader="true" ShowHeadersWhenNoRecords="true">
+                                        <MasterTableView Name="mtvCompetencias" DataKeyNames="ID_ITEM" ShowHeader="true" ShowHeadersWhenNoRecords="true" AllowSorting="true">
                                             <Columns>
                                                 <telerik:GridBoundColumn HeaderText="Competencia" DataField="NB_COMPETENCIA" HeaderStyle-Width="300" UniqueName="NB_COMPETENCIA"></telerik:GridBoundColumn>
                                                 <telerik:GridBoundColumn HeaderText="Nivel" DataField="NB_NIVEL" UniqueName="NB_NIVEL"></telerik:GridBoundColumn>
