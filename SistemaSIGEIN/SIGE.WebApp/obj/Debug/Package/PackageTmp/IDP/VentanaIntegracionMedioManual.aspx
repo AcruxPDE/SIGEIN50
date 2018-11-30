@@ -250,10 +250,10 @@
             <telerik:RadButton ID="btnTerminar" runat="server" Text="Guardar" AutoPostBack="true" OnClick="btnTerminar_Click" UseSubmitBehavior="false"></telerik:RadButton>
         </div>
          <div class="ctrlBasico">
-             <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" AutoPostBack="true" OnClientClicking="ConfirmarEliminarPrueba" OnClick="btnEliminar_Click" Visible="true"></telerik:RadButton>
+             <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" AutoPostBack="true" OnClientClicking="ConfirmarEliminarPrueba" OnClick="btnEliminar_Click"></telerik:RadButton>
          </div>
         <div class="ctrlBasico">
-            <telerik:RadButton ID="btnEliminarBateria" runat="server" Text="Eliminar batería" AutoPostBack="true" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminarBateria_Click" Visible="true"></telerik:RadButton>
+            <telerik:RadButton ID="btnEliminarBateria" runat="server" Text="Eliminar batería" AutoPostBack="true" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminarBateria_Click"></telerik:RadButton>
          </div>
     </div>
 

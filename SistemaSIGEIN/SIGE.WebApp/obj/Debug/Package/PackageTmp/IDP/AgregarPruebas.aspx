@@ -588,20 +588,13 @@
                 ShowHeader="true"
                 runat="server"
                 AllowPaging="false"
-<<<<<<< HEAD
                 AllowSorting="true"
-=======
->>>>>>> SIGEINQA
                 GridLines="None"
                 Height="230"
                 Width="100%"
                 AllowMultiRowSelection="true"
                 AutoGenerateColumns="false"
                 HeaderStyle-Font-Bold="true"
-<<<<<<< HEAD
-=======
-                AllowFilteringByColumn="false"
->>>>>>> SIGEINQA
                 OnNeedDataSource="grdPruebas_NeedDataSource">
                 <ClientSettings EnableRowHoverStyle="true" >
                     <Selecting AllowRowSelect="true" EnableDragToSelectRows="true" />
