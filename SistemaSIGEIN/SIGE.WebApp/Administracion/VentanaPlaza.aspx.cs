@@ -177,8 +177,9 @@ namespace SIGE.WebApp.Administracion
                 {
                     vIdPlaza = vIdPlazaQS;
                     vClOperacion = E_TIPO_OPERACION_DB.A;
+                    btnBuscarPuesto.Enabled = false;
                 }
-
+     
                 vLstGruposPlaza = new List<E_GRUPOS>();
                 CargarDatos(vIdPlaza ?? 0);
                 SeguridadProcesos();

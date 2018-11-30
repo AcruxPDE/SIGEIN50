@@ -174,7 +174,7 @@
                     <telerik:RadListBoxItem Text="No seleccionado" Value="" />
                 </Items>
             </telerik:RadListBox>
-            <telerik:RadButton ID="btnBuscarPuesto" runat="server" Text="B" OnClientClicked="OpenPuestosSelectionWindow" AutoPostBack="false"></telerik:RadButton>
+            <telerik:RadButton ID="btnBuscarPuesto" runat="server" Text="B" OnClientClicked="OpenPuestosSelectionWindow" AutoPostBack="false" Enabled="true"></telerik:RadButton>
         </div>
     </div>
     <div style="clear: both;"></div>
