@@ -1296,10 +1296,11 @@
                         <!-- Fin de responsabilidades y funciones genericas -->
 
                         <telerik:RadPageView ID="pvwFuncionesGenericas" runat="server">
-                                                        <div title="Aquí debes especificar la razón de ser del puesto de manera genérica. Ejemplo: puesto de Gerente de Producción: es responsable de administrar los programas de producción garantizando que el producto terminado cumpla con las especificaciones del cliente y logrando la satisfacción laboral de su equipo de trabajo, respetando y haciendo respetar las políticas, valores y procedimientos de la empresa.">
+                            <div title="Aquí debes especificar la razón de ser del puesto de manera genérica. Ejemplo: puesto de Gerente de Producción: es responsable de administrar los programas de producción garantizando que el producto terminado cumpla con las especificaciones del cliente y logrando la satisfacción laboral de su equipo de trabajo, respetando y haciendo respetar las políticas, valores y procedimientos de la empresa.">
                                 <label class="labelTitulo" id="lblResponsable" name="lblResponsable" title="Aquí debes especificar la razón de ser del puesto de manera genérica. Ejemplo: puesto de Gerente de Producción: es responsable de administrar los programas de producción garantizando que el producto terminado cumpla con las especificaciones del cliente y logrando la satisfacción laboral de su equipo de trabajo, respetando y haciendo respetar las políticas, valores y procedimientos de la empresa.">
                                     <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
-                                    <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>&nbsp; Es responsable de:</label>
+                                    <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>&nbsp; Es responsable de:
+                                </label>
                             </div>
                             <div title="Aquí debes especificar la razón de ser del puesto de manera genérica. Ejemplo: puesto de Gerente de Producción: es responsable de administrar los programas de producción garantizando que el producto terminado cumpla con las especificaciones del cliente y logrando la satisfacción laboral de su equipo de trabajo, respetando y haciendo respetar las políticas, valores y procedimientos de la empresa.">
                                 <telerik:RadEditor NewLineMode="Br" Height="150px" Width="99%" EditModes="Design" ID="radEditorResponsable" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/AdvancedTools.xml"
@@ -1308,23 +1309,30 @@
                             </div>
 
                             <div style="height:10px; clear:both;"></div>
+
                             <div title="Aquí debes especificar la autoridad que posee el puesto en relación a la toma de decisiones. Dirigir: puestos directivos, Gestionar: puestos gerenciales, Coordinar: puestos de jefatura y/o coordinación, Supervisar: puestos de supervisión, Operar: puestos operativos y/o asistentes, auxiliares.">
                                 <label class="labelTitulo" id="lblAutoridad" name="lblAutoridad" title="Aquí debes especificar la autoridad que posee el puesto en relación a la toma de decisiones. Dirigir: puestos directivos, Gestionar: puestos gerenciales, Coordinar: puestos de jefatura y/o coordinación, Supervisar: puestos de supervisión, Operar: puestos operativos y/o asistentes, auxiliares.">
                                     <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;
-                                     Autoridad</label>
+                                     Autoridad
+                                </label>
                             </div>
                             <div title="Aquí debes especificar la autoridad que posee el puesto en relación a la toma de decisiones. Dirigir: puestos directivos, Gestionar: puestos gerenciales, Coordinar: puestos de jefatura y/o coordinación, Supervisar: puestos de supervisión, Operar: puestos operativos y/o asistentes, auxiliares.">
                                 <telerik:RadEditor NewLineMode="Br" Height="150px" Width="99%" ToolsWidth="100%" EditModes="Design" ID="radEditorAutoridad" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/AdvancedTools.xml"
                                     ToolTip="Aquí debes especificar la autoridad que posee el puesto en relación a la toma de decisiones. Dirigir: puestos directivos, Gestionar: puestos gerenciales, Coordinar: puestos de jefatura y/o coordinación, Supervisar: puestos de supervisión, Operar: puestos operativos y/o asistentes, auxiliares.">
                                 </telerik:RadEditor>
                             </div>
-                               <div style="height:10px; clear:both;"></div>
-                             <label class="labelTitulo" id="lblFuncionesGenericas" name="lblFuncionesGenericas">
-                            <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
-                            <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>
-                            <span style="border: 1px solid gray; background: #0087CF; border-radius: 5px;" title="Metodología para la compensación ">&nbsp;&nbsp;</span>&nbsp; 
-                             Funciones
-                             </label>
+                            <div style="clear: both; height:5px;"></div>
+                            <div id="MnsAutoridad" runat="server" class="ctrlBasico" style="padding:10px; border:1px solid gray; border-radius:5px;">
+                                <telerik:RadLabel ID="MnsAutoridadPoliticaIntegral" runat="server"></telerik:RadLabel>
+                            </div>
+
+                            <div style="height:10px; clear:both;"></div>
+                            <label class="labelTitulo" id="lblFuncionesGenericas" name="lblFuncionesGenericas">
+                                <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
+                                <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>
+                                <span style="border: 1px solid gray; background: #0087CF; border-radius: 5px;" title="Metodología para la compensación ">&nbsp;&nbsp;</span>&nbsp; 
+                                Funciones
+                            </label>
 
                             <div style="height: calc(100% - 80px);">
                                 <telerik:RadGrid ID="grdFuncionesGenericas" runat="server" AutoGenerateColumns="false" Height="100%"
@@ -1371,9 +1379,6 @@
                             <div class="ctrlBasico">
                                 <telerik:RadButton ID="btnEliminarFuncionGenerica" runat="server" OnClick="btnEliminarFuncionGenerica_Click" OnClientClicking="ConfirmFuncionGenericaDelete" Text="Eliminar"></telerik:RadButton>
                             </div>
-
-                            <div style="clear: both;"></div>
-
                         </telerik:RadPageView>
 
                         <!-- Inicio de competencias genericas -->

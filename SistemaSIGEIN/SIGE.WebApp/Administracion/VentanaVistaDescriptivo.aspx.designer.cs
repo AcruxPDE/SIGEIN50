@@ -229,6 +229,24 @@ namespace SIGE.WebApp.Administracion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtAutoridad;
         
         /// <summary>
+        /// MnsAutoridad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MnsAutoridad;
+        
+        /// <summary>
+        /// MnsAutoridadPoliticaIntegral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadLabel MnsAutoridadPoliticaIntegral;
+        
+        /// <summary>
         /// grdFuncionesGenericas control.
         /// </summary>
         /// <remarks>
