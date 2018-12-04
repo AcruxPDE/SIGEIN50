@@ -1322,6 +1322,9 @@
                                 </telerik:RadEditor>
                             </div>
                             <div style="clear: both; height:5px;"></div>
+                            <label class="labelTitulo" id="lblPoliticaIntegral" name="lblAutoridad" runat="server">
+                                &nbsp;Autoridad / Política Integral
+                            </label>
                             <div id="MnsAutoridad" runat="server" class="ctrlBasico" style="padding:10px; border:1px solid gray; border-radius:5px;">
                                 <telerik:RadLabel ID="MnsAutoridadPoliticaIntegral" runat="server"></telerik:RadLabel>
                             </div>

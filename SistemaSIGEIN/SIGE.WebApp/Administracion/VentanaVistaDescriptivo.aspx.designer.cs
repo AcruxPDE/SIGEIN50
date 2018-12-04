@@ -229,6 +229,15 @@ namespace SIGE.WebApp.Administracion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtAutoridad;
         
         /// <summary>
+        /// lblPoliticaIntegral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPoliticaIntegral;
+        
+        /// <summary>
         /// MnsAutoridad control.
         /// </summary>
         /// <remarks>

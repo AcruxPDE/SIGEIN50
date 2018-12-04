@@ -1348,6 +1348,8 @@ namespace SIGE.WebApp.Administracion
 
                 MnsAutoridadPoliticaIntegral.Visible = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
                 MnsAutoridad.Visible = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
+                lblPoliticaIntegral.Visible = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
+
                 if (ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible)
                 {
                     MnsAutoridadPoliticaIntegral.Text = ContextoApp.ADM.AutoridadPoliticaIntegral.dsMensaje;
