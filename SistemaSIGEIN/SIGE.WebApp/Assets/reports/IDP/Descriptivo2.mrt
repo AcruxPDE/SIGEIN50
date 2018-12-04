@@ -1164,19 +1164,18 @@ Lo necesita de manera imprescindible</Text>
               <Type>Expression</Type>
             </Text88>
             <Text9 Ref="82" type="Text" isKey="true">
-              <Border>None;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>0,5.6,17,0.4</ClientRectangle>
-              <Conditions isList="true" count="1">
-                <value>_x007B_FG_VISIBLE_x007D_,Red,Transparent,Arial_x002C_8,True,False,,,All</value>
-              </Conditions>
+              <Conditions isList="true" count="0" />
               <Font>Arial,9,Bold</Font>
               <HorAlignment>Width</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text9</Name>
               <Page isRef="50" />
               <Parent isRef="67" />
-              <Text>{IIF(FG_VISIBLE=="True","Autoridad / Política Integral","")}
+              <Text>
+{IIF(FG_VISIBLE=="True","Autoridad / Política Integral","")}
+
 {IIF(FG_VISIBLE=="True",DS_MENSAJE,"")}</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
@@ -2225,10 +2224,10 @@ Lo necesita de manera imprenscindible</Text>
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>12/4/2018 9:14:04 AM</ReportChanged>
+  <ReportChanged>12/4/2018 11:59:27 AM</ReportChanged>
   <ReportCreated>8/5/2017 10:53:10 AM</ReportCreated>
   <ReportFile>C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\Descriptivo2.mrt</ReportFile>
-  <ReportGuid>17b424f9e2b24825b6dcd73eddb199aa</ReportGuid>
+  <ReportGuid>8b2ddc107af94a389e90d8cc9213b6b1</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2015.3.0</ReportVersion>
