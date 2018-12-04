@@ -113,27 +113,49 @@
             }
 
             if (sender == vBtnMunicipios) {
-                //var clEstado = vLstEstados.get_selectedItem().get_value();
-                var nbEstado = vLstEstados.get_selectedItem().get_value();
-                windowProperties.width = document.documentElement.clientWidth - 100;
-                windowProperties.height = document.documentElement.clientHeight - 20;
-                //var myUrl = '<= ResolveUrl("~/Comunes/SeleccionLocalizacion/SeleccionMunicipio.aspx?ClEstado=") %>';
-                var myUrl = '<%= ResolveUrl("~/Comunes/SeleccionLocalizacion/SeleccionMunicipio.aspx?NbEstado=") %>';
-                //openChildDialog(myUrl + clEstado, "winSeleccion", "Selección de municipio", windowProperties);
-                openChildDialog(myUrl + nbEstado, "winSeleccion", "Selección de municipio", windowProperties);
+
+                if (vLstEstados != null) {
+                    //var clEstado = vLstEstados.get_selectedItem().get_value();
+                    var nbEstado = vLstEstados.get_selectedItem().get_value();
+                    windowProperties.width = document.documentElement.clientWidth - 100;
+                    windowProperties.height = document.documentElement.clientHeight - 20;
+                    //var myUrl = '<= ResolveUrl("~/Comunes/SeleccionLocalizacion/SeleccionMunicipio.aspx?ClEstado=") %>';
+                    var myUrl = '<%= ResolveUrl("~/Comunes/SeleccionLocalizacion/SeleccionMunicipio.aspx?NbEstado=") %>';
+                    //openChildDialog(myUrl + clEstado, "winSeleccion", "Selección de municipio", windowProperties);
+                    openChildDialog(myUrl + nbEstado, "winSeleccion", "Selección de municipio", windowProperties);
+                } else {
+                    windowProperties.width = document.documentElement.clientWidth - 100;
+                    windowProperties.height = document.documentElement.clientHeight - 20;
+                    var myUrl = '<%= ResolveUrl("~/Comunes/SeleccionLocalizacion/SeleccionMunicipio.aspx") %>';
+                    openChildDialog(myUrl, "winSeleccion", "Selección de municipio", windowProperties);
+                }
             }
 
             if (sender == vBtnColonia) {
-                //var clEstado = vLstEstados.get_selectedItem().get_value();
-                //var clMunicipio = vLstMunicipios.get_selectedItem().get_value();
-                var nbEstado = vLstEstados.get_selectedItem().get_value();
-                var nbMunicipio = vLstMunicipios.get_selectedItem().get_value();
-                windowProperties.width = document.documentElement.clientWidth - 100;
-                windowProperties.height = document.documentElement.clientHeight - 20;
-                //var myUrl = '<= ResolveUrl("~/Comunes/SeleccionLocalizacion/SeleccionColonia.aspx?ClEstado=") %>';
-                var myUrl = '<%= ResolveUrl("~/Comunes/SeleccionLocalizacion/SeleccionColonia.aspx?NbEstado=") %>';
-                //openChildDialog(myUrl + clEstado + "&ClMunicipio=" + clMunicipio, "winSeleccion", "Selección de colonia", windowProperties);
-                openChildDialog(myUrl + nbEstado + "&NbMunicipio=" + nbMunicipio, "winSeleccion", "Selección de colonia", windowProperties);
+
+                if (vLstEstados != null && vLstMunicipios != null) {
+                    //var clEstado = vLstEstados.get_selectedItem().get_value();
+                    //var clMunicipio = vLstMunicipios.get_selectedItem().get_value();
+                    var nbEstado = vLstEstados.get_selectedItem().get_value();
+                    var nbMunicipio = vLstMunicipios.get_selectedItem().get_value();
+                    windowProperties.width = document.documentElement.clientWidth - 100;
+                    windowProperties.height = document.documentElement.clientHeight - 20;
+                    //var myUrl = '<= ResolveUrl("~/Comunes/SeleccionLocalizacion/SeleccionColonia.aspx?ClEstado=") %>';
+                    var myUrl = '<%= ResolveUrl("~/Comunes/SeleccionLocalizacion/SeleccionColonia.aspx?NbEstado=") %>';
+                    //openChildDialog(myUrl + clEstado + "&ClMunicipio=" + clMunicipio, "winSeleccion", "Selección de colonia", windowProperties);
+                    openChildDialog(myUrl + nbEstado + "&NbMunicipio=" + nbMunicipio, "winSeleccion", "Selección de colonia", windowProperties);
+                } else if (vLstMunicipios != null) {
+                    var nbMunicipio = vLstMunicipios.get_selectedItem().get_value();
+                    windowProperties.width = document.documentElement.clientWidth - 100;
+                    windowProperties.height = document.documentElement.clientHeight - 20;
+                    var myUrl = '<%= ResolveUrl("~/Comunes/SeleccionLocalizacion/SeleccionColonia.aspx?NbMunicipio=") %>';
+                    openChildDialog(myUrl + nbMunicipio, "winSeleccion", "Selección de colonia", windowProperties);
+                } else {
+                    windowProperties.width = document.documentElement.clientWidth - 100;
+                    windowProperties.height = document.documentElement.clientHeight - 20;
+                    var myUrl = '<%= ResolveUrl("~/Comunes/SeleccionLocalizacion/SeleccionColonia.aspx") %>';
+                    openChildDialog(myUrl, "winSeleccion", "Selección de colonia", windowProperties);
+                }
             }
 
             if (sender == vBtnCP) {
