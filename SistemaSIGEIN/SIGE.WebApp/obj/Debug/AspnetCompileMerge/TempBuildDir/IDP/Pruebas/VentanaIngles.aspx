@@ -172,6 +172,9 @@
             function CloseTest() {
                 window.location = "Default.aspx?ty=sig";
             }
+            function Close() {
+                window.close();
+            }
             function updateTimer(seccion) {
                 var multiPage = $find("<%=mpgIngles.ClientID %>");
                 if ('<%=this.vTipoRevision%>' != "REV" && '<%=this.vTipoRevision%>' != "EDIT") {

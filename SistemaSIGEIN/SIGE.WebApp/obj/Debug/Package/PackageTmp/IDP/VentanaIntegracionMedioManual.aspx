@@ -130,6 +130,9 @@
 
             }
 
+            function Close() {
+                window.close();
+            }
         </script>
     </telerik:RadCodeBlock>
 

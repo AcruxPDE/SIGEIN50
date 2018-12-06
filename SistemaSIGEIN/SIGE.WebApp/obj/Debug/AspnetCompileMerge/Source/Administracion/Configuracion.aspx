@@ -381,6 +381,7 @@
             <telerik:RadTab Text="Campos"></telerik:RadTab>
             <telerik:RadTab Text="Integración con nómina"></telerik:RadTab>
             <%-- <telerik:RadTab Text="Grupos"></telerik:RadTab>--%>
+            <telerik:RadTab Text="Mensajes"></telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
     <div style="height: calc(100% - 130px); padding-top: 10px;">
@@ -1644,6 +1645,27 @@
                 <telerik:RadButton ID="btnAgregarDesc" runat="server" Text="Descriptivo" Width="100" AutoPostBack="false" OnClientClicked="OpenDescriptivoWindows"></telerik:RadButton>
                 <telerik:RadButton ID="btnConfigInventario" runat="server" Text="Inventario" Width="100" AutoPostBack="false" OnClientClicked="OpenInventarioWindows"></telerik:RadButton>
             </telerik:RadPageView>--%>
+            <telerik:RadPageView ID="rpvMensajes" runat="server">
+                <div class="ctrlBasico">
+                    <div class="ctrlIzquierda">
+                        <label id="Label2" name="lblAutoridadPoliticaIntegral" width="220px" runat="server">Autoridad/Política Integral:</label>
+                    </div>
+                    <div class="ctrlDerecha">
+                        <label id="lbl" name="lblMAutoridadPoliticaIntegral" width="200px" runat="server">¿Mostrar mensaje de Autoridad/Política Integral?</label>
+                    </div>
+                </div>
+                <div style="clear: both"></div>
+                <div class="ctrlBasico">
+                    <telerik:RadButton ID="btnMostrarMensaje" runat="server" ToggleType="CheckBox" name="btMostrarMensaje" AutoPostBack="false">
+                        <ToggleStates>
+                            <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
+                            <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
+                        </ToggleStates>
+                    </telerik:RadButton>
+                </div>
+                <div style="clear: both"></div>
+                    <telerik:RadEditor Width="700px" Height="250PX" EditModes="Design" ID="txbMensaje" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/AdvancedTools.xml"></telerik:RadEditor>
+            </telerik:RadPageView>
         </telerik:RadMultiPage>
     </div>
     <div>

@@ -214,8 +214,10 @@
     </DataSources>
     <Relations isList="true" count="0" />
     <Report isRef="0" />
-    <Variables isList="true" count="1">
+    <Variables isList="true" count="3">
       <value>,ID_PUESTO,ID_PUESTO,,System.Int32,,False,False,False,False,,,True</value>
+      <value>,FG_VISIBLE,FG_VISIBLE,Bandera_x0020_mensaje_x0020_visible,System.String,,True,False,False,False,,,True</value>
+      <value>,DS_MENSAJE,DS_MENSAJE,Descripción_x0020_del_x0020_mensaje,System.String,,True,False,False,False,,,True</value>
     </Variables>
   </Dictionary>
   <EngineVersion>EngineV2</EngineVersion>
@@ -950,7 +952,7 @@ Lo necesita de manera imprescindible</Text>
         <DataBand5 Ref="67" type="DataBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,13.4,17,12.2</ClientRectangle>
-          <Components isList="true" count="14">
+          <Components isList="true" count="15">
             <Text75 Ref="68" type="Text" isKey="true">
               <Border>Bottom;[149:55:52];2;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
@@ -1161,6 +1163,24 @@ Lo necesita de manera imprescindible</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
             </Text88>
+            <Text9 Ref="82" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,5.6,17,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9,Bold</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="50" />
+              <Parent isRef="67" />
+              <Text>
+{IIF(FG_VISIBLE=="True","Autoridad / Política Integral","")}
+
+{IIF(FG_VISIBLE=="True",DS_MENSAJE,"")}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text9>
           </Components>
           <Conditions isList="true" count="0" />
           <DataRelationName isNull="true" />
@@ -1179,21 +1199,21 @@ Lo necesita de manera imprescindible</Text>
       <PageHeight>29.7</PageHeight>
       <PageWidth>21</PageWidth>
       <Report isRef="0" />
-      <Watermark Ref="82" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+      <Watermark Ref="83" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
         <Font>Arial,100</Font>
         <TextBrush>[50:0:0:0]</TextBrush>
       </Watermark>
     </Page1>
-    <Page2 Ref="83" type="Page" isKey="true">
+    <Page2 Ref="84" type="Page" isKey="true">
       <Border>None;Black;2;Solid;False;4;Black</Border>
       <Brush>Transparent</Brush>
       <Components isList="true" count="8">
-        <DataBand6 Ref="84" type="DataBand" isKey="true">
+        <DataBand6 Ref="85" type="DataBand" isKey="true">
           <Border>None;Red;1;Solid;False;4;Black</Border>
           <Brush>Transparent</Brush>
           <ClientRectangle>0,0.4,17,3.6</ClientRectangle>
           <Components isList="true" count="2">
-            <Text89 Ref="85" type="Text" isKey="true">
+            <Text89 Ref="86" type="Text" isKey="true">
               <AllowHtmlTags>True</AllowHtmlTags>
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
@@ -1203,13 +1223,13 @@ Lo necesita de manera imprescindible</Text>
               <Guid>c4e9e593efa04e5e801d1f8b917a9196</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text89</Name>
-              <Page isRef="83" />
-              <Parent isRef="84" />
+              <Page isRef="84" />
+              <Parent isRef="85" />
               <Text>{IDP_SPE_REP_RESULT_PUESTO.XML_COMPETENCIAS_REQUERIDAS}</Text>
               <TextBrush>Black</TextBrush>
               <TextQuality>Wysiwyg</TextQuality>
             </Text89>
-            <Text90 Ref="86" type="Text" isKey="true">
+            <Text90 Ref="87" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>0,0,3.6,2.4</ClientRectangle>
               <Conditions isList="true" count="0" />
@@ -1217,8 +1237,8 @@ Lo necesita de manera imprescindible</Text>
               <Guid>36b4583c255746fb84824ae923bec6e3</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text90</Name>
-              <Page isRef="83" />
-              <Parent isRef="84" />
+              <Page isRef="84" />
+              <Parent isRef="85" />
               <Text>Competencias técnicas necesarias:</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
@@ -1230,15 +1250,15 @@ Lo necesita de manera imprescindible</Text>
           <Filters isList="true" count="0" />
           <Guid>0a81666c2b5e40268fec43a9c52b2d08</Guid>
           <Name>DataBand6</Name>
-          <Page isRef="83" />
-          <Parent isRef="83" />
+          <Page isRef="84" />
+          <Parent isRef="84" />
           <Sort isList="true" count="0" />
         </DataBand6>
-        <HeaderIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA Ref="87" type="HeaderBand" isKey="true">
+        <HeaderIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA Ref="88" type="HeaderBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,4.8,17,0.5</ClientRectangle>
           <Components isList="true" count="4">
-            <HeaderIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_CL_NIVEL_REQUERIDO Ref="88" type="Text" isKey="true">
+            <HeaderIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_CL_NIVEL_REQUERIDO Ref="89" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>13.4,0,3.6,0.5</ClientRectangle>
@@ -1248,15 +1268,15 @@ Lo necesita de manera imprescindible</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>HeaderIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_CL_NIVEL_REQUERIDO</Name>
-              <Page isRef="83" />
-              <Parent isRef="87" />
+              <Page isRef="84" />
+              <Parent isRef="88" />
               <Text>Nivel requerido</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <Type>Expression</Type>
               <VertAlignment>Center</VertAlignment>
             </HeaderIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_CL_NIVEL_REQUERIDO>
-            <HeaderIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_NB_AREA_INTERES Ref="89" type="Text" isKey="true">
+            <HeaderIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_NB_AREA_INTERES Ref="90" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>5.4,0,8,0.5</ClientRectangle>
@@ -1266,15 +1286,15 @@ Lo necesita de manera imprescindible</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>HeaderIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_NB_AREA_INTERES</Name>
-              <Page isRef="83" />
-              <Parent isRef="87" />
+              <Page isRef="84" />
+              <Parent isRef="88" />
               <Text>Experiencia en</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <Type>Expression</Type>
               <VertAlignment>Center</VertAlignment>
             </HeaderIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_NB_AREA_INTERES>
-            <HeaderIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_NO_TIEMPO Ref="90" type="Text" isKey="true">
+            <HeaderIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_NO_TIEMPO Ref="91" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>3.4,0,2,0.5</ClientRectangle>
@@ -1284,15 +1304,15 @@ Lo necesita de manera imprescindible</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>HeaderIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_NO_TIEMPO</Name>
-              <Page isRef="83" />
-              <Parent isRef="87" />
+              <Page isRef="84" />
+              <Parent isRef="88" />
               <Text>Tiempo</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <Type>Expression</Type>
               <VertAlignment>Center</VertAlignment>
             </HeaderIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_NO_TIEMPO>
-            <Text91 Ref="91" type="Text" isKey="true">
+            <Text91 Ref="92" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>0,0,3.4,1</ClientRectangle>
               <Conditions isList="true" count="0" />
@@ -1300,8 +1320,8 @@ Lo necesita de manera imprescindible</Text>
               <Guid>8b8f1f17af6544648c70a69815ff8ab7</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text91</Name>
-              <Page isRef="83" />
-              <Parent isRef="87" />
+              <Page isRef="84" />
+              <Parent isRef="88" />
               <Text>Experiencia necesaria:</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
@@ -1311,15 +1331,15 @@ Lo necesita de manera imprescindible</Text>
           <Conditions isList="true" count="0" />
           <Guid>f56afc38f18b4d2ba66f1c31d9e2de95</Guid>
           <Name>HeaderIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA</Name>
-          <Page isRef="83" />
-          <Parent isRef="83" />
+          <Page isRef="84" />
+          <Parent isRef="84" />
         </HeaderIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA>
-        <DataIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA Ref="92" type="DataBand" isKey="true">
+        <DataIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA Ref="93" type="DataBand" isKey="true">
           <Brush>Transparent</Brush>
           <BusinessObjectGuid isNull="true" />
           <ClientRectangle>0,6.1,17,1.1</ClientRectangle>
           <Components isList="true" count="3">
-            <DataIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_CL_NIVEL_REQUERIDO Ref="93" type="Text" isKey="true">
+            <DataIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_CL_NIVEL_REQUERIDO Ref="94" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <CanGrow>True</CanGrow>
@@ -1330,14 +1350,14 @@ Lo necesita de manera imprescindible</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>DataIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_CL_NIVEL_REQUERIDO</Name>
-              <Page isRef="83" />
-              <Parent isRef="92" />
+              <Page isRef="84" />
+              <Parent isRef="93" />
               <Text>{IDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA.CL_NIVEL_REQUERIDO}</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <VertAlignment>Center</VertAlignment>
             </DataIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_CL_NIVEL_REQUERIDO>
-            <DataIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_NB_AREA_INTERES Ref="94" type="Text" isKey="true">
+            <DataIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_NB_AREA_INTERES Ref="95" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <CanGrow>True</CanGrow>
@@ -1348,14 +1368,14 @@ Lo necesita de manera imprescindible</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>DataIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_NB_AREA_INTERES</Name>
-              <Page isRef="83" />
-              <Parent isRef="92" />
+              <Page isRef="84" />
+              <Parent isRef="93" />
               <Text>{IDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA.NB_AREA_INTERES}</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <VertAlignment>Center</VertAlignment>
             </DataIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_NB_AREA_INTERES>
-            <DataIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_NO_TIEMPO Ref="95" type="Text" isKey="true">
+            <DataIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_NO_TIEMPO Ref="96" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <CanGrow>True</CanGrow>
@@ -1366,11 +1386,11 @@ Lo necesita de manera imprescindible</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>DataIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA_NO_TIEMPO</Name>
-              <Page isRef="83" />
-              <Parent isRef="92" />
+              <Page isRef="84" />
+              <Parent isRef="93" />
               <Text>{IDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA.NO_TIEMPO}</Text>
               <TextBrush>Black</TextBrush>
-              <TextFormat Ref="96" type="NumberFormat" isKey="true">
+              <TextFormat Ref="97" type="NumberFormat" isKey="true">
                 <DecimalDigits>0</DecimalDigits>
                 <GroupSeparator>,</GroupSeparator>
                 <NegativePattern>1</NegativePattern>
@@ -1385,15 +1405,15 @@ Lo necesita de manera imprescindible</Text>
           <Filters isList="true" count="0" />
           <Guid>d06e769febc345c4ac526aeabb92adf1</Guid>
           <Name>DataIDP.SPE_REP_RESULT_PUESTO_EXPERIENCIA</Name>
-          <Page isRef="83" />
-          <Parent isRef="83" />
+          <Page isRef="84" />
+          <Parent isRef="84" />
           <Sort isList="true" count="0" />
         </DataIDP_SPE_REP_RESULT_PUESTO_EXPERIENCIA>
-        <DataBand7 Ref="97" type="DataBand" isKey="true">
+        <DataBand7 Ref="98" type="DataBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,8,17,5.4</ClientRectangle>
           <Components isList="true" count="4">
-            <Text93 Ref="98" type="Text" isKey="true">
+            <Text93 Ref="99" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>0,0.6,3.4,1.4</ClientRectangle>
               <Conditions isList="true" count="0" />
@@ -1401,14 +1421,14 @@ Lo necesita de manera imprescindible</Text>
               <Guid>95cc54e749ee4c0298de795bb6ea3300</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text93</Name>
-              <Page isRef="83" />
-              <Parent isRef="97" />
+              <Page isRef="84" />
+              <Parent isRef="98" />
               <Text>Requerimientos del puesto:</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <Type>Expression</Type>
             </Text93>
-            <Text92 Ref="99" type="Text" isKey="true">
+            <Text92 Ref="100" type="Text" isKey="true">
               <AllowHtmlTags>True</AllowHtmlTags>
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
@@ -1418,14 +1438,14 @@ Lo necesita de manera imprescindible</Text>
               <Guid>017ff22259344fa6a11230d4036ef07c</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text92</Name>
-              <Page isRef="83" />
-              <Parent isRef="97" />
+              <Page isRef="84" />
+              <Parent isRef="98" />
               <Text>{IDP_SPE_REP_RESULT_PUESTO.XML_REQUERIMIENTOS}</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <TextQuality>Wysiwyg</TextQuality>
             </Text92>
-            <Text94 Ref="100" type="Text" isKey="true">
+            <Text94 Ref="101" type="Text" isKey="true">
               <AllowHtmlTags>True</AllowHtmlTags>
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
@@ -1435,13 +1455,13 @@ Lo necesita de manera imprescindible</Text>
               <Guid>4d3897463ea64aeaac5f08c83ddd7339</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text94</Name>
-              <Page isRef="83" />
-              <Parent isRef="97" />
+              <Page isRef="84" />
+              <Parent isRef="98" />
               <Text>{IDP_SPE_REP_RESULT_PUESTO.XML_OBSERVACIONES}</Text>
               <TextBrush>Black</TextBrush>
               <TextQuality>Wysiwyg</TextQuality>
             </Text94>
-            <Text95 Ref="101" type="Text" isKey="true">
+            <Text95 Ref="102" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>0,3.4,3.4,0.6</ClientRectangle>
               <Conditions isList="true" count="0" />
@@ -1449,8 +1469,8 @@ Lo necesita de manera imprescindible</Text>
               <Guid>c46ece6e0c89493c9e3ecc8638231d83</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text95</Name>
-              <Page isRef="83" />
-              <Parent isRef="97" />
+              <Page isRef="84" />
+              <Parent isRef="98" />
               <Text>Observaciones:</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
@@ -1462,15 +1482,15 @@ Lo necesita de manera imprescindible</Text>
           <Filters isList="true" count="0" />
           <Guid>409f72ec39394747ae8d050008a49a09</Guid>
           <Name>DataBand7</Name>
-          <Page isRef="83" />
-          <Parent isRef="83" />
+          <Page isRef="84" />
+          <Parent isRef="84" />
           <Sort isList="true" count="0" />
         </DataBand7>
-        <DataBand8 Ref="102" type="DataBand" isKey="true">
+        <DataBand8 Ref="103" type="DataBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,14.2,17,2.8</ClientRectangle>
           <Components isList="true" count="3">
-            <Text1 Ref="103" type="Text" isKey="true">
+            <Text1 Ref="104" type="Text" isKey="true">
               <Border>Bottom;[149:55:52];2;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>0,0,17,0.6</ClientRectangle>
@@ -1480,14 +1500,14 @@ Lo necesita de manera imprescindible</Text>
               <HorAlignment>Right</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text1</Name>
-              <Page isRef="83" />
-              <Parent isRef="102" />
+              <Page isRef="84" />
+              <Parent isRef="103" />
               <Text>VI. Prestaciones especiales del puesto</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
               <VertAlignment>Bottom</VertAlignment>
             </Text1>
-            <Text2 Ref="104" type="Text" isKey="true">
+            <Text2 Ref="105" type="Text" isKey="true">
               <AllowHtmlTags>True</AllowHtmlTags>
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
@@ -1497,13 +1517,13 @@ Lo necesita de manera imprescindible</Text>
               <Guid>d3f62323fe104c46869f1aa5dea09ef8</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text2</Name>
-              <Page isRef="83" />
-              <Parent isRef="102" />
+              <Page isRef="84" />
+              <Parent isRef="103" />
               <Text>{IDP_SPE_REP_RESULT_PUESTO.XML_PRESTACIONES}</Text>
               <TextBrush>Black</TextBrush>
               <TextQuality>Wysiwyg</TextQuality>
             </Text2>
-            <Text3 Ref="105" type="Text" isKey="true">
+            <Text3 Ref="106" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>0,0.8,3.4,0.6</ClientRectangle>
               <Conditions isList="true" count="0" />
@@ -1511,8 +1531,8 @@ Lo necesita de manera imprescindible</Text>
               <Guid>9616d997ba1247e9ae5b0583b7d112c7</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>Text3</Name>
-              <Page isRef="83" />
-              <Parent isRef="102" />
+              <Page isRef="84" />
+              <Parent isRef="103" />
               <Text>Prestaciones:</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
@@ -1523,15 +1543,15 @@ Lo necesita de manera imprescindible</Text>
           <Filters isList="true" count="0" />
           <Guid>b678ef4cdddf4896acc286df0348ae73</Guid>
           <Name>DataBand8</Name>
-          <Page isRef="83" />
-          <Parent isRef="83" />
+          <Page isRef="84" />
+          <Parent isRef="84" />
           <Sort isList="true" count="0" />
         </DataBand8>
-        <DataBand9 Ref="106" type="DataBand" isKey="true">
+        <DataBand9 Ref="107" type="DataBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,17.8,17,1.2</ClientRectangle>
           <Components isList="true" count="1">
-            <Text4 Ref="107" type="Text" isKey="true">
+            <Text4 Ref="108" type="Text" isKey="true">
               <Border>Bottom;[149:55:52];2;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>0,0.2,17,0.6</ClientRectangle>
@@ -1541,8 +1561,8 @@ Lo necesita de manera imprescindible</Text>
               <HorAlignment>Right</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text4</Name>
-              <Page isRef="83" />
-              <Parent isRef="106" />
+              <Page isRef="84" />
+              <Parent isRef="107" />
               <Text>VII. Funciones genericas del puesto</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
@@ -1554,15 +1574,15 @@ Lo necesita de manera imprescindible</Text>
           <Filters isList="true" count="0" />
           <Guid>e57d9a01935b4892bbd71f5b743f08ad</Guid>
           <Name>DataBand9</Name>
-          <Page isRef="83" />
-          <Parent isRef="83" />
+          <Page isRef="84" />
+          <Parent isRef="84" />
           <Sort isList="true" count="0" />
         </DataBand9>
-        <HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES Ref="108" type="HeaderBand" isKey="true">
+        <HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES Ref="109" type="HeaderBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,19.8,17,1.4</ClientRectangle>
           <Components isList="true" count="5">
-            <HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_PUESTO_FUNCION Ref="109" type="Text" isKey="true">
+            <HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_PUESTO_FUNCION Ref="110" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>0,0,3.6,1.2</ClientRectangle>
@@ -1572,15 +1592,15 @@ Lo necesita de manera imprescindible</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_PUESTO_FUNCION</Name>
-              <Page isRef="83" />
-              <Parent isRef="108" />
+              <Page isRef="84" />
+              <Parent isRef="109" />
               <Text>Actividad</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <Type>Expression</Type>
               <VertAlignment>Center</VertAlignment>
             </HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_PUESTO_FUNCION>
-            <HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_XML_DETALLE Ref="110" type="Text" isKey="true">
+            <HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_XML_DETALLE Ref="111" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>3.6,0,4.4,1.2</ClientRectangle>
@@ -1590,15 +1610,15 @@ Lo necesita de manera imprescindible</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_XML_DETALLE</Name>
-              <Page isRef="83" />
-              <Parent isRef="108" />
+              <Page isRef="84" />
+              <Parent isRef="109" />
               <Text>Detalle</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <Type>Expression</Type>
               <VertAlignment>Center</VertAlignment>
             </HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_XML_DETALLE>
-            <HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_COMPETENCIA Ref="111" type="Text" isKey="true">
+            <HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_COMPETENCIA Ref="112" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>8,0,3.6,1.2</ClientRectangle>
@@ -1608,15 +1628,15 @@ Lo necesita de manera imprescindible</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_COMPETENCIA</Name>
-              <Page isRef="83" />
-              <Parent isRef="108" />
+              <Page isRef="84" />
+              <Parent isRef="109" />
               <Text>Competencias específicas</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <Type>Expression</Type>
               <VertAlignment>Center</VertAlignment>
             </HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_COMPETENCIA>
-            <HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NO_VALOR_NIVEL Ref="112" type="Text" isKey="true">
+            <HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NO_VALOR_NIVEL Ref="113" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>11.6,0,1.4,1.2</ClientRectangle>
@@ -1626,15 +1646,15 @@ Lo necesita de manera imprescindible</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NO_VALOR_NIVEL</Name>
-              <Page isRef="83" />
-              <Parent isRef="108" />
+              <Page isRef="84" />
+              <Parent isRef="109" />
               <Text>Nivel</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <Type>Expression</Type>
               <VertAlignment>Center</VertAlignment>
             </HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NO_VALOR_NIVEL>
-            <HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_INDICADOR Ref="113" type="Text" isKey="true">
+            <HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_INDICADOR Ref="114" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>13,0,4,1.2</ClientRectangle>
@@ -1644,8 +1664,8 @@ Lo necesita de manera imprescindible</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_INDICADOR</Name>
-              <Page isRef="83" />
-              <Parent isRef="108" />
+              <Page isRef="84" />
+              <Parent isRef="109" />
               <Text>Indicadores de desempeño de evidencias</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
@@ -1656,15 +1676,15 @@ Lo necesita de manera imprescindible</Text>
           <Conditions isList="true" count="0" />
           <Guid>2a5ae7561eae46c6bb3e832d92a2f399</Guid>
           <Name>HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES</Name>
-          <Page isRef="83" />
-          <Parent isRef="83" />
+          <Page isRef="84" />
+          <Parent isRef="84" />
         </HeaderIDP_SPE_REP_RESULT_PUESTO_FUNCIONES>
-        <DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES Ref="114" type="DataBand" isKey="true">
+        <DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES Ref="115" type="DataBand" isKey="true">
           <Brush>Transparent</Brush>
           <BusinessObjectGuid isNull="true" />
           <ClientRectangle>0,22,17,2.8</ClientRectangle>
           <Components isList="true" count="5">
-            <DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_PUESTO_FUNCION Ref="115" type="Text" isKey="true">
+            <DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_PUESTO_FUNCION Ref="116" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <CanGrow>True</CanGrow>
@@ -1675,14 +1695,14 @@ Lo necesita de manera imprescindible</Text>
               <Guid>76edd68bd54f43a99efe4313dda6e4bc</Guid>
               <Margins>2,2,0,0</Margins>
               <Name>DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_PUESTO_FUNCION</Name>
-              <Page isRef="83" />
-              <Parent isRef="114" />
+              <Page isRef="84" />
+              <Parent isRef="115" />
               <ProcessingDuplicates>Merge</ProcessingDuplicates>
               <Text>{IDP_SPE_REP_RESULT_PUESTO_FUNCIONES.NB_PUESTO_FUNCION}</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
             </DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_PUESTO_FUNCION>
-            <DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_XML_DETALLE Ref="116" type="Text" isKey="true">
+            <DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_XML_DETALLE Ref="117" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <CanGrow>True</CanGrow>
@@ -1692,14 +1712,14 @@ Lo necesita de manera imprescindible</Text>
               <Guid>723906c43a6445a78ef9c537b6bbd2db</Guid>
               <Margins>2,2,0,0</Margins>
               <Name>DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_XML_DETALLE</Name>
-              <Page isRef="83" />
-              <Parent isRef="114" />
+              <Page isRef="84" />
+              <Parent isRef="115" />
               <ProcessingDuplicates>Merge</ProcessingDuplicates>
               <Text>{IDP_SPE_REP_RESULT_PUESTO_FUNCIONES.XML_DETALLE}</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
             </DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_XML_DETALLE>
-            <DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_COMPETENCIA Ref="117" type="Text" isKey="true">
+            <DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_COMPETENCIA Ref="118" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <CanGrow>True</CanGrow>
@@ -1710,14 +1730,14 @@ Lo necesita de manera imprescindible</Text>
               <Guid>b0103794c9c44921b4248015b712f643</Guid>
               <Margins>2,2,0,0</Margins>
               <Name>DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_COMPETENCIA</Name>
-              <Page isRef="83" />
-              <Parent isRef="114" />
+              <Page isRef="84" />
+              <Parent isRef="115" />
               <ProcessingDuplicates>Merge</ProcessingDuplicates>
               <Text>{IDP_SPE_REP_RESULT_PUESTO_FUNCIONES.NB_COMPETENCIA}</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
             </DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_COMPETENCIA>
-            <DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NO_VALOR_NIVEL Ref="118" type="Text" isKey="true">
+            <DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NO_VALOR_NIVEL Ref="119" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <CanGrow>True</CanGrow>
@@ -1729,13 +1749,13 @@ Lo necesita de manera imprescindible</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NO_VALOR_NIVEL</Name>
-              <Page isRef="83" />
-              <Parent isRef="114" />
+              <Page isRef="84" />
+              <Parent isRef="115" />
               <Text>{IDP_SPE_REP_RESULT_PUESTO_FUNCIONES.NO_VALOR_NIVEL}</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
             </DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NO_VALOR_NIVEL>
-            <DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_INDICADOR Ref="119" type="Text" isKey="true">
+            <DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_INDICADOR Ref="120" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <CanGrow>True</CanGrow>
@@ -1746,8 +1766,8 @@ Lo necesita de manera imprescindible</Text>
               <Guid>df3f2a836d4f4332a484abd092eec0a8</Guid>
               <Margins>2,2,0,0</Margins>
               <Name>DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES_NB_INDICADOR</Name>
-              <Page isRef="83" />
-              <Parent isRef="114" />
+              <Page isRef="84" />
+              <Parent isRef="115" />
               <Text>{IDP_SPE_REP_RESULT_PUESTO_FUNCIONES.NB_INDICADOR}</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
@@ -1758,8 +1778,8 @@ Lo necesita de manera imprescindible</Text>
           <Filters isList="true" count="0" />
           <Guid>96e805ba74c8439d859bc41c582a8ee7</Guid>
           <Name>DataIDP.SPE_REP_RESULT_PUESTO_FUNCIONES</Name>
-          <Page isRef="83" />
-          <Parent isRef="83" />
+          <Page isRef="84" />
+          <Parent isRef="84" />
           <Sort isList="true" count="0" />
         </DataIDP_SPE_REP_RESULT_PUESTO_FUNCIONES>
       </Components>
@@ -1770,20 +1790,20 @@ Lo necesita de manera imprescindible</Text>
       <PageHeight>29.7</PageHeight>
       <PageWidth>21</PageWidth>
       <Report isRef="0" />
-      <Watermark Ref="120" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+      <Watermark Ref="121" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
         <Font>Arial,100</Font>
         <TextBrush>[50:0:0:0]</TextBrush>
       </Watermark>
     </Page2>
-    <Page3 Ref="121" type="Page" isKey="true">
+    <Page3 Ref="122" type="Page" isKey="true">
       <Border>None;Black;2;Solid;False;4;Black</Border>
       <Brush>Transparent</Brush>
       <Components isList="true" count="5">
-        <DataBand10 Ref="122" type="DataBand" isKey="true">
+        <DataBand10 Ref="123" type="DataBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,0.4,17,1</ClientRectangle>
           <Components isList="true" count="1">
-            <Text5 Ref="123" type="Text" isKey="true">
+            <Text5 Ref="124" type="Text" isKey="true">
               <Border>Bottom;[149:55:52];2;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>0,0.2,17,0.6</ClientRectangle>
@@ -1793,8 +1813,8 @@ Lo necesita de manera imprescindible</Text>
               <HorAlignment>Right</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text5</Name>
-              <Page isRef="121" />
-              <Parent isRef="122" />
+              <Page isRef="122" />
+              <Parent isRef="123" />
               <Text>VIII. Competencias genéricas del puesto</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
@@ -1806,15 +1826,15 @@ Lo necesita de manera imprescindible</Text>
           <Filters isList="true" count="0" />
           <Guid>0ddc8256631340d3a7a5328a42d2ea4a</Guid>
           <Name>DataBand10</Name>
-          <Page isRef="121" />
-          <Parent isRef="121" />
+          <Page isRef="122" />
+          <Parent isRef="122" />
           <Sort isList="true" count="0" />
         </DataBand10>
-        <HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS Ref="124" type="HeaderBand" isKey="true">
+        <HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS Ref="125" type="HeaderBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,2.2,17,2.4</ClientRectangle>
           <Components isList="true" count="8">
-            <HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_NB_CLASIFICACION_COMPETENCIA Ref="125" type="Text" isKey="true">
+            <HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_NB_CLASIFICACION_COMPETENCIA Ref="126" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>0,0,3.6,2.2</ClientRectangle>
@@ -1824,15 +1844,15 @@ Lo necesita de manera imprescindible</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_NB_CLASIFICACION_COMPETENCIA</Name>
-              <Page isRef="121" />
-              <Parent isRef="124" />
+              <Page isRef="122" />
+              <Parent isRef="125" />
               <Text>Clasificación</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <Type>Expression</Type>
               <VertAlignment>Center</VertAlignment>
             </HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_NB_CLASIFICACION_COMPETENCIA>
-            <HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_NB_COMPETENCIA Ref="126" type="Text" isKey="true">
+            <HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_NB_COMPETENCIA Ref="127" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>3.6,0,5,2.2</ClientRectangle>
@@ -1842,15 +1862,15 @@ Lo necesita de manera imprescindible</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_NB_COMPETENCIA</Name>
-              <Page isRef="121" />
-              <Parent isRef="124" />
+              <Page isRef="122" />
+              <Parent isRef="125" />
               <Text>Competencia</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <Type>Expression</Type>
               <VertAlignment>Center</VertAlignment>
             </HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_NB_COMPETENCIA>
-            <HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_0 Ref="127" type="Text" isKey="true">
+            <HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_0 Ref="128" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>8.6,0,1.4,2.2</ClientRectangle>
@@ -1860,15 +1880,15 @@ Lo necesita de manera imprescindible</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_0</Name>
-              <Page isRef="121" />
-              <Parent isRef="124" />
+              <Page isRef="122" />
+              <Parent isRef="125" />
               <Text>0%
 No la necesita</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <Type>Expression</Type>
             </HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_0>
-            <HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_1 Ref="128" type="Text" isKey="true">
+            <HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_1 Ref="129" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>10,0,1.4,2.2</ClientRectangle>
@@ -1878,15 +1898,15 @@ No la necesita</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_1</Name>
-              <Page isRef="121" />
-              <Parent isRef="124" />
+              <Page isRef="122" />
+              <Parent isRef="125" />
               <Text>20%
 La necesita poco</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <Type>Expression</Type>
             </HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_1>
-            <HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_2 Ref="129" type="Text" isKey="true">
+            <HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_2 Ref="130" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>11.4,0,1.4,2.2</ClientRectangle>
@@ -1896,15 +1916,15 @@ La necesita poco</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_2</Name>
-              <Page isRef="121" />
-              <Parent isRef="124" />
+              <Page isRef="122" />
+              <Parent isRef="125" />
               <Text>40%
 Lo necesita medio bajo</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <Type>Expression</Type>
             </HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_2>
-            <HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_3 Ref="130" type="Text" isKey="true">
+            <HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_3 Ref="131" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>12.8,0,1.4,2.2</ClientRectangle>
@@ -1914,15 +1934,15 @@ Lo necesita medio bajo</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_3</Name>
-              <Page isRef="121" />
-              <Parent isRef="124" />
+              <Page isRef="122" />
+              <Parent isRef="125" />
               <Text>60%
 Lo necesita medio alto</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <Type>Expression</Type>
             </HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_3>
-            <HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_4 Ref="131" type="Text" isKey="true">
+            <HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_4 Ref="132" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>14.2,0,1.4,2.2</ClientRectangle>
@@ -1932,15 +1952,15 @@ Lo necesita medio alto</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_4</Name>
-              <Page isRef="121" />
-              <Parent isRef="124" />
+              <Page isRef="122" />
+              <Parent isRef="125" />
               <Text>80%
 Lo necesita de manera importante</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <Type>Expression</Type>
             </HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_4>
-            <Text8 Ref="132" type="Text" isKey="true">
+            <Text8 Ref="133" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>15.6,0,1.4,2.2</ClientRectangle>
@@ -1950,8 +1970,8 @@ Lo necesita de manera importante</Text>
               <HorAlignment>Center</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text8</Name>
-              <Page isRef="121" />
-              <Parent isRef="124" />
+              <Page isRef="122" />
+              <Parent isRef="125" />
               <Text>100%
 Lo necesita de manera imprenscindible</Text>
               <TextBrush>Black</TextBrush>
@@ -1962,15 +1982,15 @@ Lo necesita de manera imprenscindible</Text>
           <Conditions isList="true" count="0" />
           <Guid>2580527659ea494190175a833071c424</Guid>
           <Name>HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS</Name>
-          <Page isRef="121" />
-          <Parent isRef="121" />
+          <Page isRef="122" />
+          <Parent isRef="122" />
         </HeaderIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS>
-        <DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS Ref="133" type="DataBand" isKey="true">
+        <DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS Ref="134" type="DataBand" isKey="true">
           <Brush>Transparent</Brush>
           <BusinessObjectGuid isNull="true" />
           <ClientRectangle>0,5.4,17,0.8</ClientRectangle>
           <Components isList="true" count="8">
-            <DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_NB_CLASIFICACION_COMPETENCIA Ref="134" type="Text" isKey="true">
+            <DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_NB_CLASIFICACION_COMPETENCIA Ref="135" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <CanGrow>True</CanGrow>
@@ -1980,15 +2000,15 @@ Lo necesita de manera imprenscindible</Text>
               <Guid>3b9b951c288d479c9631112831f094c6</Guid>
               <Margins>2,0,0,0</Margins>
               <Name>DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_NB_CLASIFICACION_COMPETENCIA</Name>
-              <Page isRef="121" />
-              <Parent isRef="133" />
+              <Page isRef="122" />
+              <Parent isRef="134" />
               <ProcessingDuplicates>Merge</ProcessingDuplicates>
               <Text>{IDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS.NB_CLASIFICACION_COMPETENCIA}</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <VertAlignment>Center</VertAlignment>
             </DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_NB_CLASIFICACION_COMPETENCIA>
-            <DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_NB_COMPETENCIA Ref="135" type="Text" isKey="true">
+            <DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_NB_COMPETENCIA Ref="136" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <CanGrow>True</CanGrow>
@@ -1998,14 +2018,14 @@ Lo necesita de manera imprenscindible</Text>
               <Guid>373612cda0fe4e5fac3261e24365f3c7</Guid>
               <Margins>2,0,0,0</Margins>
               <Name>DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_NB_COMPETENCIA</Name>
-              <Page isRef="121" />
-              <Parent isRef="133" />
+              <Page isRef="122" />
+              <Parent isRef="134" />
               <Text>{IDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS.NB_COMPETENCIA}</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <VertAlignment>Center</VertAlignment>
             </DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_NB_COMPETENCIA>
-            <DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_0 Ref="136" type="CheckBox" isKey="true">
+            <DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_0 Ref="137" type="CheckBox" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <Checked>{IDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS.FG_NIVEL_0}</Checked>
@@ -2015,11 +2035,11 @@ Lo necesita de manera imprenscindible</Text>
               <ContourColor>Black</ContourColor>
               <Guid>d18a3376ca954c94a0c4d742b3aeacdc</Guid>
               <Name>DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_0</Name>
-              <Page isRef="121" />
-              <Parent isRef="133" />
+              <Page isRef="122" />
+              <Parent isRef="134" />
               <TextBrush>Black</TextBrush>
             </DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_0>
-            <DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_1 Ref="137" type="CheckBox" isKey="true">
+            <DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_1 Ref="138" type="CheckBox" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <Checked>{IDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS.FG_NIVEL_1}</Checked>
@@ -2029,11 +2049,11 @@ Lo necesita de manera imprenscindible</Text>
               <ContourColor>Black</ContourColor>
               <Guid>9950ee4f0c4442a29c64746043320180</Guid>
               <Name>DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_1</Name>
-              <Page isRef="121" />
-              <Parent isRef="133" />
+              <Page isRef="122" />
+              <Parent isRef="134" />
               <TextBrush>Black</TextBrush>
             </DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_1>
-            <DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_2 Ref="138" type="CheckBox" isKey="true">
+            <DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_2 Ref="139" type="CheckBox" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <Checked>{IDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS.FG_NIVEL_2}</Checked>
@@ -2043,11 +2063,11 @@ Lo necesita de manera imprenscindible</Text>
               <ContourColor>Black</ContourColor>
               <Guid>d3b4c0eefa60416f83efe4a56c039dcb</Guid>
               <Name>DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_2</Name>
-              <Page isRef="121" />
-              <Parent isRef="133" />
+              <Page isRef="122" />
+              <Parent isRef="134" />
               <TextBrush>Black</TextBrush>
             </DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_2>
-            <DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_3 Ref="139" type="CheckBox" isKey="true">
+            <DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_3 Ref="140" type="CheckBox" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <Checked>{IDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS.FG_NIVEL_3}</Checked>
@@ -2057,11 +2077,11 @@ Lo necesita de manera imprenscindible</Text>
               <ContourColor>Black</ContourColor>
               <Guid>c83f3a30d9b7481a919f7e080109652a</Guid>
               <Name>DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_3</Name>
-              <Page isRef="121" />
-              <Parent isRef="133" />
+              <Page isRef="122" />
+              <Parent isRef="134" />
               <TextBrush>Black</TextBrush>
             </DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_3>
-            <DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_4 Ref="140" type="CheckBox" isKey="true">
+            <DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_4 Ref="141" type="CheckBox" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <Checked>{IDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS.FG_NIVEL_4}</Checked>
@@ -2071,11 +2091,11 @@ Lo necesita de manera imprenscindible</Text>
               <ContourColor>Black</ContourColor>
               <Guid>1ae6a43487104d2c86b6c71203bcf809</Guid>
               <Name>DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_4</Name>
-              <Page isRef="121" />
-              <Parent isRef="133" />
+              <Page isRef="122" />
+              <Parent isRef="134" />
               <TextBrush>Black</TextBrush>
             </DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS_FG_NIVEL_4>
-            <CheckBox1 Ref="141" type="CheckBox" isKey="true">
+            <CheckBox1 Ref="142" type="CheckBox" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <Checked>{IDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS.FG_NIVEL_5}</Checked>
@@ -2085,8 +2105,8 @@ Lo necesita de manera imprenscindible</Text>
               <ContourColor>Black</ContourColor>
               <Guid>f948598e89fc4f2482762ef3cfd724df</Guid>
               <Name>CheckBox1</Name>
-              <Page isRef="121" />
-              <Parent isRef="133" />
+              <Page isRef="122" />
+              <Parent isRef="134" />
               <TextBrush>Black</TextBrush>
             </CheckBox1>
           </Components>
@@ -2095,15 +2115,15 @@ Lo necesita de manera imprenscindible</Text>
           <Filters isList="true" count="0" />
           <Guid>f3e037ea91264806bb808799c25f1e76</Guid>
           <Name>DataIDP.SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS</Name>
-          <Page isRef="121" />
-          <Parent isRef="121" />
+          <Page isRef="122" />
+          <Parent isRef="122" />
           <Sort isList="true" count="0" />
         </DataIDP_SPE_REP_RESULT_PUESTO_COMPETENCIAS_GENERICAS>
-        <DataBand11 Ref="142" type="DataBand" isKey="true">
+        <DataBand11 Ref="143" type="DataBand" isKey="true">
           <Brush>Transparent</Brush>
           <ClientRectangle>0,7,17,1.4</ClientRectangle>
           <Components isList="true" count="1">
-            <Text6 Ref="143" type="Text" isKey="true">
+            <Text6 Ref="144" type="Text" isKey="true">
               <Border>Bottom;[149:55:52];2;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <ClientRectangle>0,0.2,17,0.6</ClientRectangle>
@@ -2113,8 +2133,8 @@ Lo necesita de manera imprenscindible</Text>
               <HorAlignment>Right</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text6</Name>
-              <Page isRef="121" />
-              <Parent isRef="142" />
+              <Page isRef="122" />
+              <Parent isRef="143" />
               <Text>IX. Campos extras</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
@@ -2126,16 +2146,16 @@ Lo necesita de manera imprenscindible</Text>
           <Filters isList="true" count="0" />
           <Guid>fc71a00843054529a1a686c4f89b54b2</Guid>
           <Name>DataBand11</Name>
-          <Page isRef="121" />
-          <Parent isRef="121" />
+          <Page isRef="122" />
+          <Parent isRef="122" />
           <Sort isList="true" count="0" />
         </DataBand11>
-        <DataIDP_SPE_REP_RESULT_PUESTO_CAMPOS_ADICIONALES Ref="144" type="DataBand" isKey="true">
+        <DataIDP_SPE_REP_RESULT_PUESTO_CAMPOS_ADICIONALES Ref="145" type="DataBand" isKey="true">
           <Brush>Transparent</Brush>
           <BusinessObjectGuid isNull="true" />
           <ClientRectangle>0,9.2,17,2.6</ClientRectangle>
           <Components isList="true" count="2">
-            <DataIDP_SPE_REP_RESULT_PUESTO_CAMPOS_ADICIONALES_NB_CAMPO Ref="145" type="Text" isKey="true">
+            <DataIDP_SPE_REP_RESULT_PUESTO_CAMPOS_ADICIONALES_NB_CAMPO Ref="146" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <CanGrow>True</CanGrow>
               <ClientRectangle>0,0.4,4.8,1.4</ClientRectangle>
@@ -2144,14 +2164,14 @@ Lo necesita de manera imprenscindible</Text>
               <Guid>1ec8f5867227489ba8c8869965890284</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>DataIDP_SPE_REP_RESULT_PUESTO_CAMPOS_ADICIONALES_NB_CAMPO</Name>
-              <Page isRef="121" />
-              <Parent isRef="144" />
+              <Page isRef="122" />
+              <Parent isRef="145" />
               <Text>{IDP_SPE_REP_RESULT_PUESTO_CAMPOS_ADICIONALES.NB_CAMPO}</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
               <VertAlignment>Center</VertAlignment>
             </DataIDP_SPE_REP_RESULT_PUESTO_CAMPOS_ADICIONALES_NB_CAMPO>
-            <DataIDP_SPE_REP_RESULT_PUESTO_CAMPOS_ADICIONALES_NO_VALOR Ref="146" type="Text" isKey="true">
+            <DataIDP_SPE_REP_RESULT_PUESTO_CAMPOS_ADICIONALES_NO_VALOR Ref="147" type="Text" isKey="true">
               <Border>All;Black;1;Solid;False;4;Black</Border>
               <Brush>Transparent</Brush>
               <CanGrow>True</CanGrow>
@@ -2161,8 +2181,8 @@ Lo necesita de manera imprenscindible</Text>
               <Guid>20e1b70ccc2c4344a487e0e36cb8f335</Guid>
               <Margins>0,0,0,0</Margins>
               <Name>DataIDP_SPE_REP_RESULT_PUESTO_CAMPOS_ADICIONALES_NO_VALOR</Name>
-              <Page isRef="121" />
-              <Parent isRef="144" />
+              <Page isRef="122" />
+              <Parent isRef="145" />
               <Text>{IDP_SPE_REP_RESULT_PUESTO_CAMPOS_ADICIONALES.NO_VALOR}</Text>
               <TextBrush>Black</TextBrush>
               <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
@@ -2174,8 +2194,8 @@ Lo necesita de manera imprenscindible</Text>
           <Filters isList="true" count="0" />
           <Guid>1d333c597b7b4e6ca3c43eee0774b66c</Guid>
           <Name>DataIDP.SPE_REP_RESULT_PUESTO_CAMPOS_ADICIONALES</Name>
-          <Page isRef="121" />
-          <Parent isRef="121" />
+          <Page isRef="122" />
+          <Parent isRef="122" />
           <Sort isList="true" count="0" />
         </DataIDP_SPE_REP_RESULT_PUESTO_CAMPOS_ADICIONALES>
       </Components>
@@ -2186,13 +2206,13 @@ Lo necesita de manera imprenscindible</Text>
       <PageHeight>29.7</PageHeight>
       <PageWidth>21</PageWidth>
       <Report isRef="0" />
-      <Watermark Ref="147" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+      <Watermark Ref="148" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
         <Font>Arial,100</Font>
         <TextBrush>[50:0:0:0]</TextBrush>
       </Watermark>
     </Page3>
   </Pages>
-  <PrinterSettings Ref="148" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <PrinterSettings Ref="149" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
   <ReferencedAssemblies isList="true" count="8">
     <value>System.Dll</value>
     <value>System.Drawing.Dll</value>
@@ -2204,10 +2224,10 @@ Lo necesita de manera imprenscindible</Text>
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>8/9/2018 2:06:03 PM</ReportChanged>
+  <ReportChanged>12/4/2018 11:59:27 AM</ReportChanged>
   <ReportCreated>8/5/2017 10:53:10 AM</ReportCreated>
-  <ReportFile>C:\Users\acrux\Documents\ProyectosMartin\SIGEIN50\branches\DEV\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\Descriptivo2.mrt</ReportFile>
-  <ReportGuid>083661bbe21443a1b14c6f0a4921957e</ReportGuid>
+  <ReportFile>C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\Descriptivo2.mrt</ReportFile>
+  <ReportGuid>8b2ddc107af94a389e90d8cc9213b6b1</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2015.3.0</ReportVersion>

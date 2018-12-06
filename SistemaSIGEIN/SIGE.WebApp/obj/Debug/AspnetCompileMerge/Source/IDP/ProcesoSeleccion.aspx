@@ -460,18 +460,23 @@
             var vLstColonia = $find("<%= rlbColonia.ClientID %>");
             var vBtnColonia = $find("<%= btnBuscarColonia.ClientID %>");
 
+            var windowProperties = {
+                width: window.innerWidth - 50,
+                height: window.innerHeight - 50
+            };
+
             if (sender == vBtnEstados)
-                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionEstado.aspx", "winSeleccion", "Selección de estado");
+                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionEstado.aspx", "winSeleccion", "Selección de estado", windowProperties);
 
             if (sender == vBtnMunicipios) {
                 var clEstado = vLstEstados.get_selectedItem().get_value();
-                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionMunicipio.aspx?ClEstado=" + clEstado, "winSeleccion", "Selección de municipio");
+                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionMunicipio.aspx?ClEstado=" + clEstado, "winSeleccion", "Selección de municipio", windowProperties);
             }
 
             if (sender == vBtnColonia) {
                 var clEstado = vLstEstados.get_selectedItem().get_value();
                 var clMunicipio = vLstMunicipios.get_selectedItem().get_value();
-                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionColonia.aspx?ClEstado=" + clEstado + "&ClMunicipio=" + clMunicipio, "winSeleccion", "Selección de colonia");
+                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionColonia.aspx?ClEstado=" + clEstado + "&ClMunicipio=" + clMunicipio, "winSeleccion", "Selección de colonia", windowProperties);
             }
         }
 

@@ -177,6 +177,10 @@
                 window.location = "Default.aspx?ty=sig";
             }
 
+            function Close() {
+                window.close();
+            }
+
             function addGrupoContestado(valor) {
                 if (a.indexOf(valor) == -1 || a.length == 0) {
                     a.push(valor);

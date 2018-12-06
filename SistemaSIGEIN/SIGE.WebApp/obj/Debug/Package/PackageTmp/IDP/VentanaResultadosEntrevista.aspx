@@ -83,10 +83,13 @@
                     }
 
 
-                    function CloseTest() {
-                        GetRadWindow().close();
-                    }
+            function CloseTest() {
+                GetRadWindow().close();
+            }
 
+            function Close() {
+                window.close();
+            }
                     function ConfirmarEliminarRespuestas(sender, args) {
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
                             if (shouldSubmit) {
