@@ -188,6 +188,10 @@
                 window.location = "Default.aspx?ty=sig";
             }
 
+            function Close() {
+                window.close();
+            }
+
             function validarCampos(sender, args) {
 
                 var vNewValue = sender._displayText;

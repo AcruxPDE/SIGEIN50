@@ -148,6 +148,10 @@
                 window.location = "Default.aspx?ty=sig";
             }
 
+            function Close() {
+                window.close();
+            }
+
             function OnClientLoad(editor, args) {
                 editor.get_contentArea().setAttribute("spellcheck", "false");
             }
