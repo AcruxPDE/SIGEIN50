@@ -445,6 +445,13 @@ namespace SIGE.WebApp.Administracion
             {
                 CargarDatos();
                 EstatusBotones();
+                rpvMensajes.Visible = ContextoApp.ADM.fgVisibleMensajes;
+                rtsConfiguracion.Tabs[7].Visible = ContextoApp.ADM.fgVisibleMensajes;
+                if (ContextoApp.ADM.fgVisibleMensajes)
+                {
+                    btnMostrarMensaje.Checked = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
+                    txbMensaje.Content = ContextoApp.ADM.AutoridadPoliticaIntegral.dsMensaje;
+                }
             }
 
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
