@@ -488,6 +488,12 @@ namespace SIGE.WebApp.Administracion
             ContextoApp.InfoEmpresa.FiLogotipo.FiArchivo = vFiLogotipo != null ? Convert.FromBase64String(vFiLogotipo) : null;
             ContextoApp.InfoEmpresa.FiLogotipo.NbArchivo = vNbLogotipo;
 
+            if (ContextoApp.ADM.fgVisibleMensajes)
+            {
+                ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible = btnMostrarMensaje.Checked;
+                ContextoApp.ADM.AutoridadPoliticaIntegral.dsMensaje = txbMensaje.Content;
+            }
+
             E_RESULTADO vResultado = ContextoApp.SaveConfiguration(vClUsuario, vNbPrograma);
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
 
