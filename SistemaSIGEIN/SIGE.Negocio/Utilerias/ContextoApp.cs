@@ -65,8 +65,6 @@ namespace SIGE.Negocio.Utilerias
         //Idioma del sistema
         public static string clCultureIdioma { get; set; }
 
-        public static Administracion ADM { get; set; }
-
         static ContextoApp()
         {
             ConfiguracionOperaciones oConfiguracion = new ConfiguracionOperaciones();
@@ -100,7 +98,6 @@ namespace SIGE.Negocio.Utilerias
             XElement vXmlConfiguracionFYD = vXmlConfiguracion.Element("FYD");
             XElement vXmlCatalogos = vXmlConfiguracion.Element("CATALOGOS");
             XElement vXmlMailServer = vXmlConfiguracion.Element("MAIL").Element("SERVER");
-            XElement vXmlConfiguracionADM = vXmlConfiguracion.Element("ADM");
 
             mailConfiguration = new MailConf()
             {
@@ -137,18 +134,6 @@ namespace SIGE.Negocio.Utilerias
           //  clCultureIdioma = UtilXML.ValorAtributo<string>(vXmlConfiguracion.Element("IDIOMA").Attribute("CULTURE"));
             clCultureIdioma = "ES";
 
-            ADM = new Administracion();
-            ADM.fgVisibleMensajes = UtilXML.ValorAtributo<bool>(vXmlConfiguracionADM.Element("MENSAJES").Attribute("FG_VISIBLE"));
-            if (ADM.fgVisibleMensajes)
-            {
-                foreach (XElement vXmlMensaje in vXmlConfiguracionADM.Element("MENSAJES").Elements("MENSAJE"))
-                    if ((UtilXML.ValorAtributo<string>(vXmlMensaje.Attribute("CL_MENSAJE")) == "AUTORIDAD_POLITICA_INTEGRAL"))
-                    {
-                        ADM.AutoridadPoliticaIntegral.fgVisible = UtilXML.ValorAtributo<bool>(vXmlMensaje.Attribute("FG_VISIBLE"));
-                        ADM.AutoridadPoliticaIntegral.dsMensaje = UtilXML.ValorAtributo<string>(vXmlMensaje.Attribute("DS_MENSAJE"));
-                        break;
-                    }
-            }
 
             IDP = new IntegracionDePersonal();
             foreach (XElement vXmlMensaje in vXmlConfiguracionIDP.Element("MENSAJES").Elements("MENSAJE"))
@@ -445,14 +430,6 @@ namespace SIGE.Negocio.Utilerias
                     new XElement("CAUSA_REQUISICION", new XAttribute("ID_CATALOGO", IdCatalogoCausaRequisicion))),
                 new XElement("CONTROL_DOCUMENTOS",
                     new XAttribute("FG_HABILITADO", ctrlDocumentos.fgHabilitado ? "1" : "0")),
-                new XElement("ADM",
-                    new XElement("MENSAJES",
-                            new XAttribute("FG_VISIBLE", ADM.fgVisibleMensajes ? "1" : "0"),
-                            new XElement("MENSAJE",
-                                new XAttribute("CL_MENSAJE", "AUTORIDAD_POLITICA_INTEGRAL"),
-                                new XAttribute("FG_VISIBLE", ADM.AutoridadPoliticaIntegral.fgVisible ? "1" : "0"),
-                                new XAttribute("DS_MENSAJE", ADM.AutoridadPoliticaIntegral.dsMensaje)
-                                ))),
                   new XElement("IDP",
                 new XElement("MENSAJES",
                     new XElement("MENSAJE",
@@ -923,16 +900,5 @@ namespace SIGE.Negocio.Utilerias
        
     }
 
-    public class Administracion
-    {
-        public Mensaje AutoridadPoliticaIntegral { get; set; }
-        public bool fgVisibleMensajes { get; set; }
-
-        public Administracion()
-        {
-            AutoridadPoliticaIntegral = new Mensaje();
-        }
-
-    }
 }
 

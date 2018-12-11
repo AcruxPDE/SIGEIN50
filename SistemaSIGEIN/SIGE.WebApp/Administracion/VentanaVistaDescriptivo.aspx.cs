@@ -1345,16 +1345,6 @@ namespace SIGE.WebApp.Administracion
                 lstExperiencia.DataValueField = "ID_AREA_INTERES";
                 lstExperiencia.DataTextField = "NB_AREA_INTERES";
                 lstExperiencia.DataBind();
-
-                MnsAutoridadPoliticaIntegral.Visible = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
-                MnsAutoridad.Visible = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
-                lblPoliticaIntegral.Visible = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
-
-                if (ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible)
-                {
-                    MnsAutoridadPoliticaIntegral.Text = ContextoApp.ADM.AutoridadPoliticaIntegral.dsMensaje;
-                }
-
             }
 
             //winFuncionesGenericas.VisibleOnPageLoad = false;

@@ -445,13 +445,6 @@ namespace SIGE.WebApp.Administracion
             {
                 CargarDatos();
                 EstatusBotones();
-                rpvMensajes.Visible = ContextoApp.ADM.fgVisibleMensajes;
-                rtsConfiguracion.Tabs[7].Visible = ContextoApp.ADM.fgVisibleMensajes;
-                if (ContextoApp.ADM.fgVisibleMensajes)
-                {
-                    btnMostrarMensaje.Checked = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
-                    txbMensaje.Content = ContextoApp.ADM.AutoridadPoliticaIntegral.dsMensaje;
-                }
             }
 
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
@@ -487,12 +480,6 @@ namespace SIGE.WebApp.Administracion
             ContextoApp.InfoEmpresa.NbEmpresa = txtNbOrganizacion.Text;
             ContextoApp.InfoEmpresa.FiLogotipo.FiArchivo = vFiLogotipo != null ? Convert.FromBase64String(vFiLogotipo) : null;
             ContextoApp.InfoEmpresa.FiLogotipo.NbArchivo = vNbLogotipo;
-
-            if (ContextoApp.ADM.fgVisibleMensajes)
-            {
-                ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible = btnMostrarMensaje.Checked;
-                ContextoApp.ADM.AutoridadPoliticaIntegral.dsMensaje = txbMensaje.Content;
-            }
 
             E_RESULTADO vResultado = ContextoApp.SaveConfiguration(vClUsuario, vNbPrograma);
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;

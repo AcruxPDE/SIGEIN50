@@ -412,7 +412,7 @@
                             <div class="row" style="padding: 10px;">
                                 <label style="width: 110px; padding-right: 10px;">Período:</label>
                                 <div class="divControlDerecha">
-                                    <telerik:RadTextBox ID="txtPeriodoClima" runat="server" EnableViewState="false" Enabled="false"></telerik:RadTextBox>
+                                    <telerik:RadTextBox ID="txtPeriodoClima" runat="server" EnableViewState="false"></telerik:RadTextBox>
                                 </div>
                                 <br />
 <%--                                <span class="col-md-12 col-sm-12 col-xs-12 " style="padding: 0px"></span>

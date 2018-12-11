@@ -102,16 +102,7 @@ namespace SIGE.WebApp.IDP
                     vIdPrueba = int.Parse(Request.QueryString["ID"]);
                     vClToken = new Guid(Request.QueryString["T"]);
                     if (Request.QueryString["vIdBateria"] != null)
-                    {
                         vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
-                        btnEliminar.Visible = true;
-                        btnEliminarBateria.Visible = true;
-                    }
-                    else
-                    {
-                        btnEliminar.Visible = false;
-                        btnEliminarBateria.Visible = false;
-                    }
 
                     MostrarCronometro = ContextoApp.IDP.ConfiguracionPsicometria.FgMostrarCronometro;
 

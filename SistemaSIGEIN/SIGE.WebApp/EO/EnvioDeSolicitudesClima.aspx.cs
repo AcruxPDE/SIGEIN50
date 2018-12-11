@@ -6,7 +6,6 @@ using SIGE.WebApp.Comunes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -93,10 +92,8 @@ namespace SIGE.WebApp.EO
                         vMensaje = vMensaje.Replace("[URL]", vUrl + "&FlProceso=" + item.GetDataKeyValue("FL_EVALUADOR").ToString());
                         vMensaje = vMensaje.Replace("[CONTRASENA]", item.GetDataKeyValue("CL_TOKEN").ToString());
 
-                        StringBuilder builder = new StringBuilder();
-                        builder.Append(vClCorreo + ";");
+                        bool vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbEvaluador, "Cuestionarios para evaluación", vMensaje);
 
-                        bool vEstatusCorreo = pe.EnvioCorreo(builder.ToString(), vNbEvaluador, "Cuestionarios para evaluación", vMensaje);
                         if (vEstatusCorreo)
                         {
                             vXmlEvaluados.Add(new XElement("EVALUADOR", new XAttribute("ID_EVALUADOR", vIdEvaluador), new XAttribute("CL_CORREO_ELECTRONICO", vClCorreo)));

@@ -1,5 +1,4 @@
-﻿<%--<%@ Page Title="" Language="C#" MasterPageFile="~/MPC/ContextMC.master" AutoEventWireup="true" CodeBehind="GraficaPuestoVsCandidatos.aspx.cs" Inherits="SIGE.WebApp.IDP.GraficaPuestoVsCandidatos" %>--%>
-<%@ Page Title="" Language="C#" MasterPageFile="~/IDP/ContextIDP.master" AutoEventWireup="true" CodeBehind="GraficaPuestoVsCandidatos.aspx.cs" Inherits="SIGE.WebApp.IDP.GraficaPuestoVsCandidatos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MPC/ContextMC.master" AutoEventWireup="true" CodeBehind="GraficaPuestoVsCandidatos.aspx.cs" Inherits="SIGE.WebApp.IDP.GraficaPuestoVsCandidatos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">

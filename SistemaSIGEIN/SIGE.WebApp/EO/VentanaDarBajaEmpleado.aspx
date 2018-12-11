@@ -173,7 +173,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" class="ctrlTableDataContext">
-                        <div class="divControlDerecha" style="width: 85%;">
+                        <div class="divControlDerecha" style="width: 70%;">
                             <telerik:RadTextBox ID="txtDsCausa" InputType="Text" Width="100%" Height="100px" TextMode="MultiLine" Enabled="false" runat="server"></telerik:RadTextBox>
                         </div>
                     </td>
@@ -185,7 +185,7 @@
                         </div>
                     </td>
                     <td colspan="2" class="ctrlTableDataContext">
-                     <%--   <div class="divControlIzquierda">
+                        <div class="divControlIzquierda">
                              <div class="checkContainer">
                                 <telerik:RadButton ID="btnProgramarTrue" runat="server" ToggleType="Radio" OnClick="btnProgramarTrue_Click" ButtonType="StandardButton" GroupName="grpOtros" AutoPostBack="true" Width="55">
                                     <ToggleStates>
@@ -200,8 +200,8 @@
                                     </ToggleStates>
                                 </telerik:RadButton>
                             </div>
-                        </div>--%>
-                        <div class="divControlIzquierda">
+                        </div>
+                        <div class="divControlDerecha">
                             <telerik:RadDatePicker ID="rdpFechaBaja" Enabled="true" runat="server" Visible="true">
                             </telerik:RadDatePicker>
                             </div>
