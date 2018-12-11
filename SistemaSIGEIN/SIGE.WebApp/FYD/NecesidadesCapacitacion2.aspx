@@ -626,7 +626,7 @@
 
             <div class="ctrlBasico">
                 <%--<telerik:RadCheckBox runat="server" ID="chkNoNecesaria" Text="No necesaria" Checked="true" AutoPostBack="false"></telerik:RadCheckBox>--%>
-                <telerik:RadButton runat="server" ID="chkNoNecesaria" RenderMode="Lightweight" EnableViewState="true" Text="No necesaria" ButtonType="ToggleButton" ToggleType="CheckBox" AutoPostBack="false" OnCheckedChanged="chkNoNecesaria_CheckedChanged" Checked="false"></telerik:RadButton>
+                <telerik:RadButton runat="server" ID="chkNoNecesaria" RenderMode="Lightweight" EnableViewState="true" Text="No necesaria" ButtonType="ToggleButton" ToggleType="CheckBox" AutoPostBack="false" OnCheckedChanged="chkNoNecesaria_CheckedChanged" Checked="true"></telerik:RadButton>
             </div>
 
             <div class="ctrlBasico">
