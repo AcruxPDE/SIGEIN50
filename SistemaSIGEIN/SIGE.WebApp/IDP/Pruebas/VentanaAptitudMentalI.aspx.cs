@@ -239,6 +239,8 @@ namespace SIGE.WebApp.IDP
                     if (Request.QueryString["vIdBateria"] != null)
                     {
                         vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+                        btnEliminar.Visible = true;
+                        btnEliminarBateria.Visible = true;
                     }
                     else
                     {

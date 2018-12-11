@@ -206,7 +206,7 @@ namespace SIGE.WebApp.EO
             {
                 grdEvaluados.Rebind();
                 grdDisenoMetas.Rebind();
-                GenerarContrasena();
+                GenerarContrasena(vResultado);
                // grdContrasenaEvaluadores.Rebind();
             }
             //UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
@@ -229,7 +229,7 @@ namespace SIGE.WebApp.EO
             E_RESULTADO vResultado = nPeriodo.InsertaEvaluados(vIdPeriodo, pXmlElementos, vClUsuario, vNbPrograma);
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
 
-            if (vMensaje == "Proceso exitoso")
+            if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
             {
                 grdEvaluados.Rebind();
                 grdDisenoMetas.Rebind();
@@ -237,7 +237,7 @@ namespace SIGE.WebApp.EO
                // grdContrasenaEvaluadores.Rebind();
 
               if(vFgCordinador)
-                GenerarContrasena();
+                GenerarContrasena(vResultado);
               else
                   grdContrasenaEvaluadores.Rebind();
 
@@ -248,14 +248,18 @@ namespace SIGE.WebApp.EO
             }
         }
 
-        protected void GenerarContrasena()
+        protected void GenerarContrasena(E_RESULTADO vResultadoAgregar)
         {
             PeriodoNegocio nPeriodo = new PeriodoNegocio();
 
             E_RESULTADO vResultado = nPeriodo.InsertarActualizarTokenEvaluadores(vIdPeriodo, null, vClUsuario, vNbPrograma, pIdRol: vIdRol);
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+            string vMensajeAgregar = vResultadoAgregar.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
 
-            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
+            if (vMensaje.Equals("Proceso exitoso"))
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensajeAgregar, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
+            else
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
 
             if (vResultado.CL_TIPO_ERROR.Equals(E_TIPO_RESPUESTA_DB.SUCCESSFUL))
                 grdContrasenaEvaluadores.Rebind();
