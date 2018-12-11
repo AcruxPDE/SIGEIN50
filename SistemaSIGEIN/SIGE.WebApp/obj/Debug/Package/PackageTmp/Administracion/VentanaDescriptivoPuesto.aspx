@@ -1318,6 +1318,14 @@
                                     ToolTip="Aquí debes especificar la autoridad que posee el puesto en relación a la toma de decisiones. Dirigir: puestos directivos, Gestionar: puestos gerenciales, Coordinar: puestos de jefatura y/o coordinación, Supervisar: puestos de supervisión, Operar: puestos operativos y/o asistentes, auxiliares.">
                                 </telerik:RadEditor>
                             </div>
+                            <div style="clear: both; height:5px;"></div>
+                            <label class="labelTitulo" id="lblPoliticaIntegral" name="lblAutoridad" runat="server">
+                                &nbsp;Autoridad / Política Integral
+                            </label>
+                            <div id="MnsAutoridad" runat="server" class="ctrlBasico" style="padding:10px; border:1px solid gray; border-radius:5px;">
+                                <telerik:RadLabel ID="MnsAutoridadPoliticaIntegral" runat="server"></telerik:RadLabel>
+                            </div>
+
                                <div style="height:10px; clear:both;"></div>
                              <label class="labelTitulo" id="lblFuncionesGenericas" name="lblFuncionesGenericas">
                             <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
