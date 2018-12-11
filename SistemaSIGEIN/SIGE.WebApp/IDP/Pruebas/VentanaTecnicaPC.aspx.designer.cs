@@ -13,69 +13,6 @@ namespace SIGE.WebApp.IDP {
     public partial class VentanaTecnicaPC {
         
         /// <summary>
-        /// RadAjaxLoadingPanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadAjaxLoadingPanel RadAjaxLoadingPanel1;
-        
-        /// <summary>
-        /// RadAjaxManager1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadAjaxManager RadAjaxManager1;
-        
-        /// <summary>
-        /// RadCodeBlock2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadCodeBlock RadCodeBlock2;
-        
-        /// <summary>
-        /// splHelp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadSplitter splHelp;
-        
-        /// <summary>
-        /// rpnAyudaTexto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadPane rpnAyudaTexto;
-        
-        /// <summary>
-        /// slzOpciones control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadSlidingZone slzOpciones;
-        
-        /// <summary>
-        /// RSPHelp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadSlidingPane RSPHelp;
-        
-        /// <summary>
         /// Label104 control.
         /// </summary>
         /// <remarks>
@@ -83,15 +20,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label104;
-        
-        /// <summary>
-        /// radPanelPreguntas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadPane radPanelPreguntas;
         
         /// <summary>
         /// Label1 control.
@@ -112,24 +40,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label2;
         
         /// <summary>
-        /// btnPregunta1Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta1Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta1Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta1Resp1NO;
-        
-        /// <summary>
         /// Label3 control.
         /// </summary>
         /// <remarks>
@@ -137,24 +47,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label3;
-        
-        /// <summary>
-        /// btnPregunta1Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta1Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta1Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta1Resp2NO;
         
         /// <summary>
         /// Label4 control.
@@ -166,24 +58,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label4;
         
         /// <summary>
-        /// btnPregunta1Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta1Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta1Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta1Resp3NO;
-        
-        /// <summary>
         /// Label5 control.
         /// </summary>
         /// <remarks>
@@ -191,24 +65,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label5;
-        
-        /// <summary>
-        /// btnPregunta1Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta1Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta1Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta1Resp4NO;
         
         /// <summary>
         /// Label6 control.
@@ -229,24 +85,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label7;
         
         /// <summary>
-        /// btnPregunta2Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta2Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta2Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta2Resp1NO;
-        
-        /// <summary>
         /// Label9 control.
         /// </summary>
         /// <remarks>
@@ -254,24 +92,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label9;
-        
-        /// <summary>
-        /// btnPregunta2Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta2Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta2Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta2Resp2NO;
         
         /// <summary>
         /// Label76 control.
@@ -283,24 +103,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label76;
         
         /// <summary>
-        /// btnPregunta2Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta2Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta2Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta2Resp3NO;
-        
-        /// <summary>
         /// Label10 control.
         /// </summary>
         /// <remarks>
@@ -308,24 +110,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label10;
-        
-        /// <summary>
-        /// btnPregunta2Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta2Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta2Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta2Resp4NO;
         
         /// <summary>
         /// Label11 control.
@@ -346,24 +130,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label12;
         
         /// <summary>
-        /// btnPregunta3Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta3Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta3Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta3Resp1NO;
-        
-        /// <summary>
         /// Label13 control.
         /// </summary>
         /// <remarks>
@@ -371,24 +137,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label13;
-        
-        /// <summary>
-        /// btnPregunta3Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta3Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta3Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta3Resp2NO;
         
         /// <summary>
         /// Label14 control.
@@ -400,24 +148,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label14;
         
         /// <summary>
-        /// btnPregunta3Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta3Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta3Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta3Resp3NO;
-        
-        /// <summary>
         /// Label15 control.
         /// </summary>
         /// <remarks>
@@ -425,24 +155,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label15;
-        
-        /// <summary>
-        /// btnPregunta3Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta3Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta3Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta3Resp4NO;
         
         /// <summary>
         /// Label16 control.
@@ -463,24 +175,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label17;
         
         /// <summary>
-        /// btnPregunta4Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta4Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta4Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta4Resp1NO;
-        
-        /// <summary>
         /// Label18 control.
         /// </summary>
         /// <remarks>
@@ -488,24 +182,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label18;
-        
-        /// <summary>
-        /// btnPregunta4Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta4Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta4Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta4Resp2NO;
         
         /// <summary>
         /// Label19 control.
@@ -517,24 +193,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label19;
         
         /// <summary>
-        /// btnPregunta4Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta4Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta4Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta4Resp3NO;
-        
-        /// <summary>
         /// Label20 control.
         /// </summary>
         /// <remarks>
@@ -542,24 +200,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label20;
-        
-        /// <summary>
-        /// btnPregunta4Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta4Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta4Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta4Resp4NO;
         
         /// <summary>
         /// Label21 control.
@@ -580,24 +220,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label22;
         
         /// <summary>
-        /// btnPregunta5Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta5Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta5Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta5Resp1NO;
-        
-        /// <summary>
         /// Label23 control.
         /// </summary>
         /// <remarks>
@@ -605,24 +227,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label23;
-        
-        /// <summary>
-        /// btnPregunta5Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta5Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta5Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta5Resp2NO;
         
         /// <summary>
         /// Label24 control.
@@ -634,24 +238,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label24;
         
         /// <summary>
-        /// btnPregunta5Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta5Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta5Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta5Resp3NO;
-        
-        /// <summary>
         /// Label25 control.
         /// </summary>
         /// <remarks>
@@ -659,24 +245,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label25;
-        
-        /// <summary>
-        /// btnPregunta5Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta5Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta5Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta5Resp4NO;
         
         /// <summary>
         /// Label8 control.
@@ -706,24 +274,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label27;
         
         /// <summary>
-        /// btnPregunta6Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta6Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta6Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta6Resp1NO;
-        
-        /// <summary>
         /// Label28 control.
         /// </summary>
         /// <remarks>
@@ -731,24 +281,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label28;
-        
-        /// <summary>
-        /// btnPregunta6Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta6Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta6Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta6Resp2NO;
         
         /// <summary>
         /// Label29 control.
@@ -760,24 +292,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label29;
         
         /// <summary>
-        /// btnPregunta6Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta6Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta6Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta6Resp3NO;
-        
-        /// <summary>
         /// Label30 control.
         /// </summary>
         /// <remarks>
@@ -785,24 +299,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label30;
-        
-        /// <summary>
-        /// btnPregunta6Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta6Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta6Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta6Resp4NO;
         
         /// <summary>
         /// Label31 control.
@@ -823,24 +319,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label32;
         
         /// <summary>
-        /// btnPregunta7Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta7Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta7Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta7Resp1NO;
-        
-        /// <summary>
         /// Label33 control.
         /// </summary>
         /// <remarks>
@@ -848,24 +326,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label33;
-        
-        /// <summary>
-        /// btnPregunta7Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta7Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta7Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta7Resp2NO;
         
         /// <summary>
         /// Label34 control.
@@ -877,24 +337,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label34;
         
         /// <summary>
-        /// btnPregunta7Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta7Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta7Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta7Resp3NO;
-        
-        /// <summary>
         /// Label35 control.
         /// </summary>
         /// <remarks>
@@ -902,24 +344,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label35;
-        
-        /// <summary>
-        /// btnPregunta7Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta7Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta7Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta7Resp4NO;
         
         /// <summary>
         /// Label36 control.
@@ -940,24 +364,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label37;
         
         /// <summary>
-        /// btnPregunta8Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta8Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta8Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta8Resp1NO;
-        
-        /// <summary>
         /// Label38 control.
         /// </summary>
         /// <remarks>
@@ -965,24 +371,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label38;
-        
-        /// <summary>
-        /// btnPregunta8Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta8Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta8Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta8Resp2NO;
         
         /// <summary>
         /// Label39 control.
@@ -994,24 +382,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label39;
         
         /// <summary>
-        /// btnPregunta8Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta8Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta8Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta8Resp3NO;
-        
-        /// <summary>
         /// Label40 control.
         /// </summary>
         /// <remarks>
@@ -1019,24 +389,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label40;
-        
-        /// <summary>
-        /// btnPregunta8Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta8Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta8Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta8Resp4NO;
         
         /// <summary>
         /// Label41 control.
@@ -1057,24 +409,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label42;
         
         /// <summary>
-        /// btnPregunta9Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta9Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta9Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta9Resp1NO;
-        
-        /// <summary>
         /// Label43 control.
         /// </summary>
         /// <remarks>
@@ -1082,24 +416,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label43;
-        
-        /// <summary>
-        /// btnPregunta9Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta9Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta9Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta9Resp2NO;
         
         /// <summary>
         /// Label44 control.
@@ -1111,24 +427,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label44;
         
         /// <summary>
-        /// btnPregunta9Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta9Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta9Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta9Resp3NO;
-        
-        /// <summary>
         /// Label45 control.
         /// </summary>
         /// <remarks>
@@ -1136,24 +434,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label45;
-        
-        /// <summary>
-        /// btnPregunta9Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta9Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta9Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta9Resp4NO;
         
         /// <summary>
         /// Label46 control.
@@ -1174,24 +454,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label47;
         
         /// <summary>
-        /// btnPregunta10Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta10Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta10Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta10Resp1NO;
-        
-        /// <summary>
         /// Label48 control.
         /// </summary>
         /// <remarks>
@@ -1199,24 +461,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label48;
-        
-        /// <summary>
-        /// btnPregunta10Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta10Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta10Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta10Resp2NO;
         
         /// <summary>
         /// Label49 control.
@@ -1228,24 +472,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label49;
         
         /// <summary>
-        /// btnPregunta10Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta10Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta10Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta10Resp3NO;
-        
-        /// <summary>
         /// Label50 control.
         /// </summary>
         /// <remarks>
@@ -1253,24 +479,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label50;
-        
-        /// <summary>
-        /// btnPregunta10Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta10Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta10Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta10Resp4NO;
         
         /// <summary>
         /// Label51 control.
@@ -1291,24 +499,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label52;
         
         /// <summary>
-        /// btnPregunta11Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta11Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta11Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta11Resp1NO;
-        
-        /// <summary>
         /// Label53 control.
         /// </summary>
         /// <remarks>
@@ -1316,24 +506,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label53;
-        
-        /// <summary>
-        /// btnPregunta11Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta11Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta11Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta11Resp2NO;
         
         /// <summary>
         /// Label54 control.
@@ -1345,24 +517,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label54;
         
         /// <summary>
-        /// btnPregunta11Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta11Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta11Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta11Resp3NO;
-        
-        /// <summary>
         /// Label55 control.
         /// </summary>
         /// <remarks>
@@ -1370,24 +524,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label55;
-        
-        /// <summary>
-        /// btnPregunta11Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta11Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta11Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta11Resp4NO;
         
         /// <summary>
         /// Label107 control.
@@ -1417,24 +553,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label57;
         
         /// <summary>
-        /// btnPregunta12Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta12Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta12Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta12Resp1NO;
-        
-        /// <summary>
         /// Label58 control.
         /// </summary>
         /// <remarks>
@@ -1442,24 +560,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label58;
-        
-        /// <summary>
-        /// btnPregunta12Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta12Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta12Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta12Resp2NO;
         
         /// <summary>
         /// Label59 control.
@@ -1471,24 +571,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label59;
         
         /// <summary>
-        /// btnPregunta12Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta12Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta12Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta12Resp3NO;
-        
-        /// <summary>
         /// Label60 control.
         /// </summary>
         /// <remarks>
@@ -1496,24 +578,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label60;
-        
-        /// <summary>
-        /// btnPregunta12Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta12Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta12Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta12Resp4NO;
         
         /// <summary>
         /// Label61 control.
@@ -1534,24 +598,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label62;
         
         /// <summary>
-        /// btnPregunta13Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta13Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta13Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta13Resp1NO;
-        
-        /// <summary>
         /// Label63 control.
         /// </summary>
         /// <remarks>
@@ -1559,24 +605,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label63;
-        
-        /// <summary>
-        /// btnPregunta13Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta13Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta13Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta13Resp2NO;
         
         /// <summary>
         /// Label64 control.
@@ -1588,24 +616,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label64;
         
         /// <summary>
-        /// btnPregunta13Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta13Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta13Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta13Resp3NO;
-        
-        /// <summary>
         /// Label65 control.
         /// </summary>
         /// <remarks>
@@ -1613,24 +623,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label65;
-        
-        /// <summary>
-        /// btnPregunta13Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta13Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta13Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta13Resp4NO;
         
         /// <summary>
         /// Label106 control.
@@ -1651,24 +643,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label72;
         
         /// <summary>
-        /// btnPregunta14Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta14Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta14Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta14Resp1NO;
-        
-        /// <summary>
         /// Label73 control.
         /// </summary>
         /// <remarks>
@@ -1676,24 +650,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label73;
-        
-        /// <summary>
-        /// btnPregunta14Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta14Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta14Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta14Resp2NO;
         
         /// <summary>
         /// Label74 control.
@@ -1705,24 +661,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label74;
         
         /// <summary>
-        /// btnPregunta14Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta14Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta14Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta14Resp3NO;
-        
-        /// <summary>
         /// Label75 control.
         /// </summary>
         /// <remarks>
@@ -1730,24 +668,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label75;
-        
-        /// <summary>
-        /// btnPregunta14Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta14Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta14Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta14Resp4NO;
         
         /// <summary>
         /// Label66 control.
@@ -1768,24 +688,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label67;
         
         /// <summary>
-        /// btnPregunta15Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta15Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta15Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta15Resp1NO;
-        
-        /// <summary>
         /// Label68 control.
         /// </summary>
         /// <remarks>
@@ -1793,24 +695,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label68;
-        
-        /// <summary>
-        /// btnPregunta15Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta15Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta15Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta15Resp2NO;
         
         /// <summary>
         /// Label69 control.
@@ -1822,24 +706,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label69;
         
         /// <summary>
-        /// btnPregunta15Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta15Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta15Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta15Resp3NO;
-        
-        /// <summary>
         /// Label70 control.
         /// </summary>
         /// <remarks>
@@ -1847,24 +713,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label70;
-        
-        /// <summary>
-        /// btnPregunta15Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta15Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta15Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta15Resp4NO;
         
         /// <summary>
         /// Label108 control.
@@ -1894,24 +742,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label77;
         
         /// <summary>
-        /// btnPregunta16Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta16Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta16Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta16Resp1NO;
-        
-        /// <summary>
         /// Label78 control.
         /// </summary>
         /// <remarks>
@@ -1919,24 +749,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label78;
-        
-        /// <summary>
-        /// btnPregunta16Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta16Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta16Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta16Resp2NO;
         
         /// <summary>
         /// Label79 control.
@@ -1948,24 +760,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label79;
         
         /// <summary>
-        /// btnPregunta16Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta16Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta16Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta16Resp3NO;
-        
-        /// <summary>
         /// Label80 control.
         /// </summary>
         /// <remarks>
@@ -1973,24 +767,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label80;
-        
-        /// <summary>
-        /// btnPregunta16Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta16Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta16Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta16Resp4NO;
         
         /// <summary>
         /// Label81 control.
@@ -2011,24 +787,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label82;
         
         /// <summary>
-        /// btnPregunta17Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta17Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta17Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta17Resp1NO;
-        
-        /// <summary>
         /// Label83 control.
         /// </summary>
         /// <remarks>
@@ -2036,24 +794,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label83;
-        
-        /// <summary>
-        /// btnPregunta17Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta17Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta17Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta17Resp2NO;
         
         /// <summary>
         /// Label84 control.
@@ -2065,24 +805,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label84;
         
         /// <summary>
-        /// btnPregunta17Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta17Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta17Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta17Resp3NO;
-        
-        /// <summary>
         /// Label85 control.
         /// </summary>
         /// <remarks>
@@ -2090,24 +812,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label85;
-        
-        /// <summary>
-        /// btnPregunta17Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta17Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta17Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta17Resp4NO;
         
         /// <summary>
         /// Label86 control.
@@ -2128,24 +832,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label87;
         
         /// <summary>
-        /// btnPregunta18Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta18Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta18Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta18Resp1NO;
-        
-        /// <summary>
         /// Label88 control.
         /// </summary>
         /// <remarks>
@@ -2153,24 +839,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label88;
-        
-        /// <summary>
-        /// btnPregunta18Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta18Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta18Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta18Resp2NO;
         
         /// <summary>
         /// Label89 control.
@@ -2182,24 +850,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label89;
         
         /// <summary>
-        /// btnPregunta18Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta18Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta18Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta18Resp3NO;
-        
-        /// <summary>
         /// Label90 control.
         /// </summary>
         /// <remarks>
@@ -2207,24 +857,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label90;
-        
-        /// <summary>
-        /// btnPregunta18Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta18Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta18Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta18Resp4NO;
         
         /// <summary>
         /// Label91 control.
@@ -2245,24 +877,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label92;
         
         /// <summary>
-        /// btnPregunta19Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta19Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta19Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta19Resp1NO;
-        
-        /// <summary>
         /// Label93 control.
         /// </summary>
         /// <remarks>
@@ -2270,24 +884,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label93;
-        
-        /// <summary>
-        /// btnPregunta19Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta19Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta19Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta19Resp2NO;
         
         /// <summary>
         /// Label94 control.
@@ -2299,24 +895,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label94;
         
         /// <summary>
-        /// btnPregunta19Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta19Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta19Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta19Resp3NO;
-        
-        /// <summary>
         /// Label95 control.
         /// </summary>
         /// <remarks>
@@ -2324,24 +902,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label95;
-        
-        /// <summary>
-        /// btnPregunta19Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta19Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta19Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta19Resp4NO;
         
         /// <summary>
         /// Label96 control.
@@ -2362,24 +922,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label97;
         
         /// <summary>
-        /// btnPregunta20Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta20Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta20Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta20Resp1NO;
-        
-        /// <summary>
         /// Label98 control.
         /// </summary>
         /// <remarks>
@@ -2387,24 +929,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label98;
-        
-        /// <summary>
-        /// btnPregunta20Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta20Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta20Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta20Resp2NO;
         
         /// <summary>
         /// Label99 control.
@@ -2416,24 +940,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label99;
         
         /// <summary>
-        /// btnPregunta20Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta20Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta20Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta20Resp3NO;
-        
-        /// <summary>
         /// Label100 control.
         /// </summary>
         /// <remarks>
@@ -2441,24 +947,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label100;
-        
-        /// <summary>
-        /// btnPregunta20Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta20Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta20Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta20Resp4NO;
         
         /// <summary>
         /// Label101 control.
@@ -2479,24 +967,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label102;
         
         /// <summary>
-        /// btnPregunta21Resp1SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta21Resp1SI;
-        
-        /// <summary>
-        /// btnPregunta21Resp1NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta21Resp1NO;
-        
-        /// <summary>
         /// Label103 control.
         /// </summary>
         /// <remarks>
@@ -2504,24 +974,6 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label103;
-        
-        /// <summary>
-        /// btnPregunta21Resp2SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta21Resp2SI;
-        
-        /// <summary>
-        /// btnPregunta21Resp2NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta21Resp2NO;
         
         /// <summary>
         /// Label105 control.
@@ -2533,24 +985,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label105;
         
         /// <summary>
-        /// btnPregunta21Resp3SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta21Resp3SI;
-        
-        /// <summary>
-        /// btnPregunta21Resp3NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta21Resp3NO;
-        
-        /// <summary>
         /// Label109 control.
         /// </summary>
         /// <remarks>
@@ -2560,24 +994,6 @@ namespace SIGE.WebApp.IDP {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label109;
         
         /// <summary>
-        /// btnPregunta21Resp4SI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta21Resp4SI;
-        
-        /// <summary>
-        /// btnPregunta21Resp4NO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnPregunta21Resp4NO;
-        
-        /// <summary>
         /// cronometro control.
         /// </summary>
         /// <remarks>
@@ -2585,41 +1001,5 @@ namespace SIGE.WebApp.IDP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl cronometro;
-        
-        /// <summary>
-        /// btnTerminar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnTerminar;
-        
-        /// <summary>
-        /// btnCorregir control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnCorregir;
-        
-        /// <summary>
-        /// btnImpresionPrueba control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnImpresionPrueba;
-        
-        /// <summary>
-        /// rnMensaje control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadWindowManager rnMensaje;
     }
 }

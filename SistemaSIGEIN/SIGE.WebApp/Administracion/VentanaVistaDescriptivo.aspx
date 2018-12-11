@@ -544,6 +544,15 @@
 
     </div>
 
+    <div style="clear: both; height:5px;"></div>
+    <label class="labelTitulo" id="lblPoliticaIntegral" name="lblAutoridad" runat="server">
+        &nbsp;Autoridad / Política Integral
+    </label>
+    <div id="MnsAutoridad" runat="server" class="ctrlBasico" style="padding:10px; border:1px solid gray; border-radius:5px;">
+        <telerik:RadLabel ID="MnsAutoridadPoliticaIntegral" runat="server"></telerik:RadLabel>
+    </div>
+    <div style="clear: both; height:5px;"></div>
+
     <!-- Funciones genericas -->
     <label id="Label1" class="labelTitulo" name="lblFuncionesGenericas">
         <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>

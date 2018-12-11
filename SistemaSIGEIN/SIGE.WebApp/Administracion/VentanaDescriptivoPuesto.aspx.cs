@@ -1677,6 +1677,15 @@ namespace SIGE.WebApp.Administracion
                 lstExperiencia.DataBind();
 
                 SeguridadProcesos();
+
+                MnsAutoridadPoliticaIntegral.Visible = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
+                MnsAutoridad.Visible = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
+                lblPoliticaIntegral.Visible = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
+                if (ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible)
+                {
+                    MnsAutoridadPoliticaIntegral.Text = ContextoApp.ADM.AutoridadPoliticaIntegral.dsMensaje;
+                }
+
             }
             vClRutaArchivosTemporales = Server.MapPath(ContextoApp.ClRutaArchivosTemporales);
             winFuncionesGenericas.VisibleOnPageLoad = false;
@@ -1772,6 +1781,7 @@ namespace SIGE.WebApp.Administracion
             }
 
             rgInterrelacionados.Rebind();
+
         }
 
         protected void AgregarLateral(string pLateral)

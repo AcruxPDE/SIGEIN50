@@ -45,8 +45,8 @@
         }
 
         function existeElemento(pGrupo) {
-            for (var i = 0; i < vGrupos.length; i++) {
-                var vValue = vGrupos[i];
+            for (var i = 0; i < pGrupo.length; i++) {
+                var vValue = pGrupo[i];
                 if (vValue.idCentro == pGrupo.idCentro)
                     return true;
             }

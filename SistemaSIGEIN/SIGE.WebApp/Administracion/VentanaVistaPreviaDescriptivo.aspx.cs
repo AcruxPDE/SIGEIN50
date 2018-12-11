@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Stimulsoft.Report;
 using Stimulsoft.Report.Web;
+using SIGE.Negocio.Utilerias;
 namespace SIGE.WebApp.IDP
 {
     public partial class VentanaVistaPreviaDescriptivo : System.Web.UI.Page
@@ -29,6 +30,11 @@ namespace SIGE.WebApp.IDP
                    report.Dictionary.Databases.Add(new Stimulsoft.Report.Dictionary.StiSqlDatabase("Sigein", pathValue));
 
                     report.Dictionary.Variables["ID_PUESTO"].Value = Request.Params["pIdPuesto"].ToString();
+                    if (ContextoApp.ADM.fgVisibleMensajes)
+                    {
+                        report.Dictionary.Variables["FG_VISIBLE"].Value = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible.ToString();
+                        report.Dictionary.Variables["DS_MENSAJE"].Value = ContextoApp.ADM.AutoridadPoliticaIntegral.dsMensaje.ToString();
+                    }
 
                     report.Compile();
                     

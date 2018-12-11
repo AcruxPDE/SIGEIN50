@@ -101,7 +101,16 @@ namespace SIGE.WebApp.IDP
                     vIdPrueba = int.Parse(Request.QueryString["ID"]);
                     vClTokenExterno = new Guid(Request.QueryString["T"]);
                     if (Request.QueryString["vIdBateria"] != null)
-                    vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+                    {
+                        vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+                        btnEliminar.Visible = true;
+                        btnEliminarBateria.Visible = true;
+                    }
+                    else
+                    {
+                        btnEliminar.Visible = false;
+                        btnEliminarBateria.Visible = false;
+                    }
 
                     //Si el modo de revision esta activado
                     if (vTipoRevision == "REV")
