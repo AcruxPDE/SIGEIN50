@@ -561,15 +561,15 @@ namespace SIGE.Negocio.Utilerias
 
             if (clEstatusProceso == "AUTORIZADO")
             {
-                MensajeError = "La requisición ya esta autorizada.";
+                MensajeError = "La requisición ya ha sido autorizada.";
                 return false;
             }
 
-            //if (clEstatusProceso == "RECHAZADO")
-            //{
-            //    MensajeError = "La requisición fue rechazada";
-            //    return false;
-            //}
+            if (clEstatusProceso == "RECHAZADO")
+            {
+                MensajeError = "La requisición ya ha sido rechazada";
+                return false;
+            }
 
             return true;
         }
