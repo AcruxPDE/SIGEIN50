@@ -462,6 +462,9 @@ namespace SIGE.WebApp
                         {
                             txtProgramaCapacitacion.Text = DocumentoAutorizar.NB_PERIODO;
                             vIdPeriodo = DocumentoAutorizar.ID_PERIODO;
+                            txtProgramaCapacitacion.ReadOnly = true;
+                            txtAutorizador.ReadOnly = true;
+
                         }
 
                         //txtAutorizador.Text = DocumentoAutorizar.NB_EMPLEADO_ELABORA.ToString();
