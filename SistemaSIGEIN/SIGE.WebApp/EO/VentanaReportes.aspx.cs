@@ -570,7 +570,7 @@ namespace SIGE.WebApp.EO
             List<E_ADICIONALES_SELECCIONADOS> vAdicionales = new List<E_ADICIONALES_SELECCIONADOS>();
             XElement vXlmFiltros = new XElement("FILTROS");
             XElement vXlmDepartamentos = new XElement("DEPARTAMENTOS");
-            XElement vXlmGeneros = new XElement("GENEROS");
+            XElement vXlmGeneros = new XElement("GENERO");
             XElement vXlmEdad = new XElement("EDAD");
             XElement vXlmAntiguedad = new XElement("ANTIGUEDAD");
             XElement vXlmCamposAdicional = new XElement("CAMPOS_ADICIONALES");
@@ -620,7 +620,7 @@ namespace SIGE.WebApp.EO
             List<E_ADICIONALES_SELECCIONADOS> vAdicionalesDist = new List<E_ADICIONALES_SELECCIONADOS>();
             XElement vXlmFiltros = new XElement("FILTROS");
             XElement vXlmDepartamentos = new XElement("DEPARTAMENTOS");
-            XElement vXlmGeneros = new XElement("GENEROS");
+            XElement vXlmGeneros = new XElement("GENERO");
             XElement vXlmEdad = new XElement("EDAD");
             XElement vXlmAntiguedad = new XElement("ANTIGUEDAD");
             XElement vXlmCamposAdicional = new XElement("CAMPOS_ADICIONALES");
