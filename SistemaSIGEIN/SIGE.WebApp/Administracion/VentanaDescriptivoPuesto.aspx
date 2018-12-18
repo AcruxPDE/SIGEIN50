@@ -663,7 +663,7 @@
                         <telerik:RadTab Text="Organigrama"></telerik:RadTab>
                  <%--       <telerik:RadTab Text="Responsabilidades"></telerik:RadTab>--%>
                         <telerik:RadTab Text="Funciones"></telerik:RadTab>
-                        <telerik:RadTab Text="Competencias e Indicadores"></telerik:RadTab><%--<telerik:RadTab Text="Competencias genéricas"></telerik:RadTab>--%>
+                        <telerik:RadTab Text="Competencias genéricas"></telerik:RadTab><%--<telerik:RadTab Text="Competencias genéricas"></telerik:RadTab>--%>
                         <telerik:RadTab Text="Campos extra"></telerik:RadTab>
                         <telerik:RadTab Text="STPS"></telerik:RadTab>
                         <telerik:RadTab Text="Documentación"></telerik:RadTab>
@@ -1747,7 +1747,7 @@
                 <telerik:RadTabStrip ID="rtsFuncionGenerica" runat="server" SelectedIndex="0" MultiPageID="rmpFuncionGenerica">
                     <Tabs>
                         <telerik:RadTab Text="Definición"></telerik:RadTab>
-                        <telerik:RadTab Text="Competencias e indicadores"></telerik:RadTab>
+                        <telerik:RadTab Text="Competencias genéricas"></telerik:RadTab>
                     </Tabs>
                 </telerik:RadTabStrip>
                 <div style="height: calc(100% - 90px);">
