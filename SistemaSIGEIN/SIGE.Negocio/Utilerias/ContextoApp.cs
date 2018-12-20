@@ -420,6 +420,8 @@ namespace SIGE.Negocio.Utilerias
                                 new XAttribute("ID_EMPLEADO", IDP.NotificacionRrhh.idEmpleadoAutorizaRequisicion)));
             }
 
+            if (ADM.AutoridadPoliticaIntegral.dsMensaje == null)
+                ADM.AutoridadPoliticaIntegral.dsMensaje = "";
 
             XElement vXmlConfiguracion = new XElement("CONFIGURACIONES",
                 new XElement("MAIL",
