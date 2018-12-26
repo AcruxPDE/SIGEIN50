@@ -106,7 +106,7 @@
                                 <label>Ponderación del puesto:</label></td>
                             <td colspan="2" class="ctrlTableDataContext">
                                 <div id="Div2" runat="server">
-                                    <telerik:RadNumericTextBox ID="txtPonderacion" MaxValue="100" MinValue="0" DataType="Decimal" runat="server" Width="100px" MaxLength="13"></telerik:RadNumericTextBox>
+                                    <telerik:RadNumericTextBox ID="txtPonderacion" MaxValue="100" MinValue="0" DataType="Decimal" runat="server" Width="100px" MaxLength="13" Enabled="false"></telerik:RadNumericTextBox>
                                     <label>%</label>
                                 </div>
                             </td>
