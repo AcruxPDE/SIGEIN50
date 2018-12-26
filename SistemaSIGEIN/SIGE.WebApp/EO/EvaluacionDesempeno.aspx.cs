@@ -434,5 +434,44 @@ namespace SIGE.WebApp.EO
                 }
             }
         }
+
+        protected void rbAscendente_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbAscendente.Checked)
+            {
+                ordenarListView(" ASC");
+            }
+        }
+
+        protected void rbDescendente_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbAscendente.Checked)
+            {
+                ordenarListView(" DESC");
+            }
+        }
+
+        private void ordenarListView(string ordenamiento)
+        {
+            var campo = cmbOrdenamiento.SelectedValue;
+            rlvPeriodos.Items[0].FireCommandEvent(RadListView.SortCommandName, campo + ordenamiento);
+        }
+
+        protected void rfFiltros_ApplyExpressions(object sender, RadFilterApplyExpressionsEventArgs e)
+        {
+            RadFilterListViewQueryProvider provider = new RadFilterListViewQueryProvider(new List<RadFilterGroupOperation>() { RadFilterGroupOperation.And, RadFilterGroupOperation.Or });
+            provider.ProcessGroup(e.ExpressionRoot);
+
+            if (provider.ListViewExpressions.Count > 0)
+            {
+                rlvPeriodos.FilterExpressions.Add(provider.ListViewExpressions[0]);
+            }
+            else
+            {
+                rlvPeriodos.FilterExpressions.Clear();
+            }
+
+            rlvPeriodos.Rebind();
+        }
     }
 }
