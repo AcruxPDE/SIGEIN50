@@ -1346,11 +1346,11 @@ namespace SIGE.WebApp.Administracion
                 lstExperiencia.DataTextField = "NB_AREA_INTERES";
                 lstExperiencia.DataBind();
 
-                MnsAutoridadPoliticaIntegral.Visible = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
-                MnsAutoridad.Visible = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
-                lblPoliticaIntegral.Visible = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
+                MnsAutoridadPoliticaIntegral.Visible = ContextoApp.ADM.fgVisibleMensajes;
+                MnsAutoridad.Visible = ContextoApp.ADM.fgVisibleMensajes;
+                lblPoliticaIntegral.Visible = ContextoApp.ADM.fgVisibleMensajes;
 
-                if (ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible)
+                if (ContextoApp.ADM.fgVisibleMensajes)
                 {
                     MnsAutoridadPoliticaIntegral.Text = ContextoApp.ADM.AutoridadPoliticaIntegral.dsMensaje;
                 }
