@@ -107,45 +107,45 @@ namespace SIGE.WebApp.EO
 
             //if (chkarea.Checked == true)
             //{
-                foreach (RadListBoxItem item in rlbDepartamento.Items)
-                {
-                    int vIdDepartamento = int.Parse(item.Value);
-                    vDepartamentos.Add(new E_SELECCIONADOS { ID_SELECCIONADO = vIdDepartamento });
-                    vFgFiltroSeleccionado = true;
-                }
-                var vXelements = vDepartamentos.Select(x => new XElement("DEPARTAMENTO", new XAttribute("ID_DEPARTAMENTO", x.ID_SELECCIONADO)));
-                vXlmDepartamentos = new XElement("DEPARTAMENTOS", vXelements);
-                vXlmFiltros.Add(vXlmDepartamentos);
-           // }
+            foreach (RadListBoxItem item in rlbDepartamento.Items)
+            {
+                int vIdDepartamento = int.Parse(item.Value);
+                vDepartamentos.Add(new E_SELECCIONADOS { ID_SELECCIONADO = vIdDepartamento });
+                vFgFiltroSeleccionado = true;
+            }
+            var vXelements = vDepartamentos.Select(x => new XElement("DEPARTAMENTO", new XAttribute("ID_DEPARTAMENTO", x.ID_SELECCIONADO)));
+            vXlmDepartamentos = new XElement("DEPARTAMENTOS", vXelements);
+            vXlmFiltros.Add(vXlmDepartamentos);
+            // }
 
             //if (chkadicionales.Checked == true)
             //{
-                foreach (RadListBoxItem item in rlbAdicionales.Items)
-                {
-                    string vClAdicional = item.Value;
-                    vAdicionales.Add(new E_ADICIONALES_SELECCIONADOS { CL_CAMPO = vClAdicional });
-                    vFgFiltroSeleccionado = true;
-                }
-                var vXelementsAdicionales = vAdicionales.Select(x => new XElement("ADICIONAL", new XAttribute("CL_CAMPO", x.CL_CAMPO)));
-                vXlmCamposAdicional = new XElement("ADICIONALES", vXelementsAdicionales);
-                vXlmFiltros.Add(vXlmCamposAdicional);
+            foreach (RadListBoxItem item in rlbAdicionales.Items)
+            {
+                string vClAdicional = item.Value;
+                vAdicionales.Add(new E_ADICIONALES_SELECCIONADOS { CL_CAMPO = vClAdicional });
+                vFgFiltroSeleccionado = true;
+            }
+            var vXelementsAdicionales = vAdicionales.Select(x => new XElement("ADICIONAL", new XAttribute("CL_CAMPO", x.CL_CAMPO)));
+            vXlmCamposAdicional = new XElement("ADICIONALES", vXelementsAdicionales);
+            vXlmFiltros.Add(vXlmCamposAdicional);
             //}
 
             //if (chkgenero.Checked == true)
             //{
-                foreach (RadListBoxItem item in rlbGenero.Items)
-                {
-                    string vClGenero = item.Value;
-                    vLstGenero.Add(new E_GENERO {CL_GENERO = vClGenero });
-                    vFgFiltroSeleccionado = true;
-                }
-                var vXmlLstGeneros = vLstGenero.Select(x => new XElement("GENERO", new XAttribute("NB_GENERO", x.CL_GENERO)));
-                vXlmGeneros = new XElement("GENEROS", vXmlLstGeneros);
-                vXlmFiltros.Add(vXlmGeneros);
-           // }
+            foreach (RadListBoxItem item in rlbGenero.Items)
+            {
+                string vClGenero = item.Value;
+                vLstGenero.Add(new E_GENERO { CL_GENERO = vClGenero });
+                vFgFiltroSeleccionado = true;
+            }
+            var vXmlLstGeneros = vLstGenero.Select(x => new XElement("GENERO", new XAttribute("NB_GENERO", x.CL_GENERO)));
+            vXlmGeneros = new XElement("GENEROS", vXmlLstGeneros);
+            vXlmFiltros.Add(vXlmGeneros);
+            // }
 
-                if (rbEdad.Checked == true)
-                {
+            if (rbEdad.Checked == true)
+            {
 
                 vXlmEdad = new XElement("EDAD", new XAttribute("EDAD_INICIAL", rntEdadInicial.Text), new XAttribute("EDAD_FINAL", rntEdadFinal.Text));
                 vXlmFiltros.Add(vXlmEdad);
@@ -364,7 +364,7 @@ namespace SIGE.WebApp.EO
                         //    };
                         //    vLstGenero.Add(g);
 
-                           
+
                         //}
                         //else if (vFiltros.CL_GENERO == "Masculino")
                         //{
@@ -382,7 +382,7 @@ namespace SIGE.WebApp.EO
                         rlbGenero.DataValueField = "CL_GENERO";
                         rlbGenero.DataBind();
 
-                      //  chkgenero.Checked = true;
+                        //  chkgenero.Checked = true;
                     }
 
                     if (vFiltros.XML_DEPARTAMENTOS != null)
@@ -392,7 +392,7 @@ namespace SIGE.WebApp.EO
                         //rlDepartamento.Attributes.Add("class", "ctrlTableDataBorderContext");
                         //rlDepartamento.Text = ObtieneDepartamentos(vFiltros.XML_DEPARTAMENTOS);
                         ObtieneDepartamentos(vFiltros.XML_DEPARTAMENTOS);
-                      //  chkarea.Checked = true;
+                        //  chkarea.Checked = true;
                         rlbDepartamento.DataSource = vLstDepartamentos;
                         rlbDepartamento.DataTextField = "NB_DEPARTAMENTO";
                         rlbDepartamento.DataValueField = "ID_DEPARTAMENTO";
@@ -406,7 +406,7 @@ namespace SIGE.WebApp.EO
                         //rlAdicionales.Attributes.Add("class", "ctrlTableDataBorderContext");
                         //rlAdicionales.Text = ObtieneAdicionales(vFiltros.XML_CAMPOS_ADICIONALES);
                         ObtieneAdicionales(vFiltros.XML_CAMPOS_ADICIONALES);
-                       // chkadicionales.Checked = true;
+                        // chkadicionales.Checked = true;
                         rlbAdicionales.DataSource = vLstAdicionales;
                         rlbAdicionales.DataTextField = "NB_CAMPO";
                         rlbAdicionales.DataValueField = "CL_CAMPO";
@@ -427,9 +427,9 @@ namespace SIGE.WebApp.EO
                 grdEmpleadosContrasenias.Rebind();
         }
 
-        private void SeguridadProcesos( bool pFgCuestionariosCreados)
+        private void SeguridadProcesos(bool pFgCuestionariosCreados)
         {
-          btnEnvioCuestionarios.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.I") && pFgCuestionariosCreados;
+            btnEnvioCuestionarios.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.I") && pFgCuestionariosCreados;
         }
 
         #endregion
@@ -565,7 +565,7 @@ namespace SIGE.WebApp.EO
 
             if (vSeleccion.clTipo == "AREA")
                 AgregarEvaluadosPorArea(vSeleccion.oSeleccion.ToString());
-             
+
         }
 
         protected void grdEmpleadosSeleccionados_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
@@ -696,23 +696,31 @@ namespace SIGE.WebApp.EO
         protected void btnReasignarContrasena_Click(object sender, EventArgs e)
         {
             string vMensaje = "";
-            foreach (GridDataItem item in grdEmpleadosContrasenias.SelectedItems)
+            if (grdEmpleadosContrasenias.SelectedItems.Count == 0)
             {
-                ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-                E_RESULTADO vResultado = nClima.InsertarActualizarTokenEvaluadoresClima(vIdPeriodo, int.Parse(item.GetDataKeyValue("ID_EVALUADOR").ToString()), vClUsuario, vNbPrograma);
-                vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                
-               // UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindowC");
-                if (!vResultado.CL_TIPO_ERROR.Equals(E_TIPO_RESPUESTA_DB.SUCCESSFUL))
-                {
-                    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindowC");
-                    return;
-                }
-                   
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Selecciona un evaluador", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "onCloseWindowC");
+                grdEmpleadosContrasenias.Rebind();
             }
+            else
+            {
+                foreach (GridDataItem item in grdEmpleadosContrasenias.SelectedItems)
+                {
+                    ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
+                    E_RESULTADO vResultado = nClima.InsertarActualizarTokenEvaluadoresClima(vIdPeriodo, int.Parse(item.GetDataKeyValue("ID_EVALUADOR").ToString()), vClUsuario, vNbPrograma);
+                    vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
 
-            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, E_TIPO_RESPUESTA_DB.SUCCESSFUL, pCallBackFunction: "onCloseWindowC");
-            grdEmpleadosContrasenias.Rebind();
+                    // UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindowC");
+                    if (!vResultado.CL_TIPO_ERROR.Equals(E_TIPO_RESPUESTA_DB.SUCCESSFUL))
+                    {
+                        UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindowC");
+                        return;
+                    }
+
+                }
+
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, E_TIPO_RESPUESTA_DB.SUCCESSFUL, pCallBackFunction: "onCloseWindowC");
+                grdEmpleadosContrasenias.Rebind();
+            }
         }
 
         protected void grdEmpleadosContrasenias_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
@@ -779,19 +787,19 @@ namespace SIGE.WebApp.EO
             //ContextoApp.EO.MensajeCorreoEvaluador.dsMensaje = lMensaje.Content;
             ClimaLaboralNegocio nPeriodo = new ClimaLaboralNegocio();
             E_PERIODO_CLIMA vDsPeriodo = nPeriodo.ObtienePeriodosClima(pIdPerido: vIdPeriodo).Select(s => new E_PERIODO_CLIMA
-                {
+            {
                 ID_PERIODO = s.ID_PERIODO,
                 CL_PERIODO = s.CL_PERIODO,
-                NB_PERIODO= s.NB_PERIODO,
+                NB_PERIODO = s.NB_PERIODO,
                 DS_PERIODO = s.DS_PERIODO,
-                FE_INICIO= s.FE_INICIO,
-                CL_ESTADO_PERIODO= s.CL_ESTADO_PERIODO,
+                FE_INICIO = s.FE_INICIO,
+                CL_ESTADO_PERIODO = s.CL_ESTADO_PERIODO,
                 DS_NOTAS = s.DS_NOTAS,
                 ID_PERIODO_CLIMA = s.ID_PERIODO_CLIMA,
                 CL_TIPO_CONFIGURACION = s.CL_TIPO_CONFIGURACION,
                 CL_ORIGEN_CUESTIONARIO = s.CL_ORIGEN_CUESTIONARIO,
                 ID_PERIODO_ORIGEN = s.ID_PERIODO_ORIGEN
-                }
+            }
                 ).FirstOrDefault();
 
             vDsPeriodo.DS_MENSAJE_ENVIO = lMensaje.Content;
