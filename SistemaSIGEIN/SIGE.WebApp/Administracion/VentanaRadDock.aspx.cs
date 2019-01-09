@@ -71,7 +71,7 @@ namespace SIGE.WebApp.Administracion
 
 
             ClasificacionCompetenciaNegocio nCompetenciaClasificacion = new ClasificacionCompetenciaNegocio();
-            var vClasificaciones = nCompetenciaClasificacion.ObtieneClasificacionCompetencia();
+            var vClasificaciones = nCompetenciaClasificacion.ObtieneClasificacionCompetencia().Where(w => w.CL_TIPO_COMPETENCIA == vTipoCompetenciaDefault.CL_TIPO_COMPETENCIA);
             var vEspecificas = nCompetenciaClasificacion.ObtieneClasificacionCompetencia().Where(s => s.CL_TIPO_COMPETENCIA == vTipoCompetenciaDefault.CL_TIPO_COMPETENCIA).FirstOrDefault();
             if (vClasificaciones != null)
             {

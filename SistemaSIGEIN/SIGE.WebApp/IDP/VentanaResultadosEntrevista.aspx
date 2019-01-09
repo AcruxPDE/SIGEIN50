@@ -132,10 +132,10 @@
                     <Tabs>
                         <telerik:RadTab Text="Comunicación verbal"></telerik:RadTab>
                         <telerik:RadTab Text="Comunicación no verbal"></telerik:RadTab>
-                        <telerik:RadTab Text="Seguridad en si mismo"></telerik:RadTab>
-                        <telerik:RadTab Text="Enfoque a resultados"></telerik:RadTab>
-                        <telerik:RadTab Text="Manejo del conflicto"></telerik:RadTab>
-                        <telerik:RadTab Text="Carisma"></telerik:RadTab>
+                        <telerik:RadTab Text="Seguridad en si mismo"  Visible="false"></telerik:RadTab>
+                        <telerik:RadTab Text="Enfoque a resultados"  Visible="false"></telerik:RadTab>
+                        <telerik:RadTab Text="Manejo del conflicto"  Visible="false"></telerik:RadTab>
+                        <telerik:RadTab Text="Carisma"  Visible="false"></telerik:RadTab>
                     </Tabs>
                 </telerik:RadTabStrip>
                 <telerik:RadMultiPage ID="mpgresultados" runat="server" SelectedIndex="0" Height="70%" Width="100%">
