@@ -76,7 +76,7 @@ namespace SIGE.WebApp.Administracion
             if (vClasificaciones != null)
             {
 
-                cmbClasificaciones.DataSource = vClasificaciones;
+                cmbClasificaciones.DataSource = vClasificaciones.Where(w=> w.CL_TIPO_COMPETENCIA==vTipoCompetenciaDefault.CL_TIPO_COMPETENCIA);
                 cmbClasificaciones.DataTextField = "NB_CLASIFICACION_COMPETENCIA";
                 cmbClasificaciones.DataValueField = "CL_CLASIFICACION";
                 cmbClasificaciones.DataBind();
@@ -132,7 +132,20 @@ namespace SIGE.WebApp.Administracion
                     radEditorPuesto5.Content = vobjetoCompetenciaNivel.DS_NIVEL_COMPETENCIA_PUESTO;
                 }
             }
+            ClasificacionCompetenciaNegocio nCompetenciaClasificacion = new ClasificacionCompetenciaNegocio();
 
+            var vClasificaciones = nCompetenciaClasificacion.ObtieneClasificacionCompetencia(pClTipoCompetecia: vCompetencia.CL_TIPO_COMPETENCIA);
+            var vValorSelect = nCompetenciaClasificacion.ObtieneClasificacionCompetencia(pClTipoCompetecia: vCompetencia.CL_TIPO_COMPETENCIA).FirstOrDefault();
+            if (vClasificaciones.Count > 0)
+            {
+                cmbClasificaciones.ClearSelection();
+                cmbClasificaciones.DataSource = vClasificaciones;
+                cmbClasificaciones.DataTextField = "NB_CLASIFICACION_COMPETENCIA";
+                cmbClasificaciones.DataValueField = "CL_CLASIFICACION";
+                cmbClasificaciones.DataBind();
+                cmbClasificaciones.SelectedValue = vValorSelect.CL_CLASIFICACION;
+                cmbClasificaciones.Text = vValorSelect.NB_CLASIFICACION_COMPETENCIA;
+            }
             cmbClasificaciones.SelectedValue = vCompetencia.CL_CLASIFICACION;
             cmbClasificaciones.Text = vCompetencia.NB_CLASIFICACION_COMPETENCIA;
             cmbCategoria.SelectedValue = vCompetencia.CL_TIPO_COMPETENCIA;

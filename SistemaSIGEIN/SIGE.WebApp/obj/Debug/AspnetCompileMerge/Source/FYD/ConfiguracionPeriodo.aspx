@@ -1464,57 +1464,135 @@
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvPonderacion" runat="server">
                 <div style="height: calc(100% - 20px); width:100%;">
-                    <div class="ctrlBasico" style="height: 100%; width:40%;">
-                    <div>
-                        <label id="lblNbMensajeEval" name="lblNbMensajeEval" style="text-align:justify;" runat="server">SIGEIN tiene una fórmula que pondera equitativamente la opinión de los evaluadores. Si deseas modificarla haz click en personalizar ponderación. </label>
-                    </div>
-                    <div style="height: 5px; clear: both;"></div>
-                    <div style="height: calc(100%-120px);">
-                        <fieldset>
-                            <legend id="lgPorEval" runat="server">Por evaluador</legend>
-                            <div class="ctrlBasico">
-                                <telerik:RadButton RenderMode="Lightweight" ID="chkFgPonderarEvaluadoresAuto" runat="server" ToggleType="Radio" ButtonType="ToggleButton" Text="Ponderación estandar" AutoPostBack="false" GroupName="btnEvaluadores">
-                                </telerik:RadButton>
-                            </div>
-                            <div class="ctrlBasico">
-                                <telerik:RadButton RenderMode="Lightweight" Enabled="false" ID="chkFgPonderarEvaluadores" runat="server" ToggleType="Radio" ButtonType="ToggleButton" Text="Personalizar ponderación" GroupName="btnEvaluadores" OnClientCheckedChanged="enableCtrlPonderarEvaluadores"
-                                    AutoPostBack="false">
-                                </telerik:RadButton>
-                                <div style="clear: both; height: 10px;"></div>
-                                <div style="display: none;" id="divPonderarEvaluadores" runat="server">
+                    <div class="ctrlBasico" style="height: 100%; width:45%;">
+                        <div style="height:80px;">
+                            <label id="lblNbMensajeEval" name="lblNbMensajeEval" style="text-align:justify;" runat="server">SIGEIN tiene una fórmula que pondera equitativamente la opinión de los evaluadores. Si deseas modificarla haz click en personalizar ponderación. </label>
+                        </div>
+                        <div style="height: 5px; clear: both;"></div>
+                        <div style="height: calc(100%-120px);">
+                            <fieldset>
+                                <legend id="lgPorEval" runat="server">Por evaluador</legend>
+                                <div class="ctrlBasico">
+                                    <telerik:RadButton RenderMode="Lightweight" ID="chkFgPonderarEvaluadoresAuto" runat="server" ToggleType="Radio" ButtonType="ToggleButton" Text="Ponderación estandar" AutoPostBack="false" GroupName="btnEvaluadores">
+                                    </telerik:RadButton>
+                                </div>
+                                <div class="ctrlBasico">
+                                    <telerik:RadButton RenderMode="Lightweight" Enabled="false" ID="chkFgPonderarEvaluadores" runat="server" ToggleType="Radio" ButtonType="ToggleButton" Text="Personalizar ponderación" GroupName="btnEvaluadores" OnClientCheckedChanged="enableCtrlPonderarEvaluadores"
+                                        AutoPostBack="false">
+                                    </telerik:RadButton>
+                                    <div style="clear: both; height: 10px;"></div>
+                                    <div style="display: none;" id="divPonderarEvaluadores" runat="server">
 
+                                        <table class="ctrlTableForm">
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                    <label id="lblNoAutoevaluacion" name="lblNoAutoevaluacion" runat="server">Autoevaluación:</label></td>
+                                                <td>
+                                                    <telerik:RadNumericTextBox ID="txtPrAutoevaluacion" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionEvaluadores"></telerik:RadNumericTextBox><span> %</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                    <label id="lblNoSuperior" name="lblNoSuperior" runat="server">Jefe inmediato:</label></td>
+                                                <td>
+                                                    <telerik:RadNumericTextBox ID="txtPrSuperior" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionEvaluadores"></telerik:RadNumericTextBox><span> %</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                    <label name="lblNoSubordinados" id="lblNoSubordinados" runat="server">Subordinados:</label></td>
+                                                <td>
+                                                    <telerik:RadNumericTextBox ID="txtPrSubordinados" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionEvaluadores"></telerik:RadNumericTextBox><span> %</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                    <label name="lblNoInterrelacionados" id="lblNoInterrelacionados" runat="server">Interrelacionados:</label></td>
+                                                <td>
+                                                    <telerik:RadNumericTextBox ID="txtPrInterrelacionados" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionEvaluadores"></telerik:RadNumericTextBox><span> %</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                    <label name="lblNoOtros" id="lblNoOtros" runat="server">Otros:</label></td>
+                                                <td>
+                                                    <telerik:RadNumericTextBox ID="txtPrOtros" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionEvaluadores"></telerik:RadNumericTextBox><span> %</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                    <label name="lblNoTotal" id="lblNoTotal" runat="server">Total:</label>
+                                                </td>
+                                                <td>
+                                                    <telerik:RadNumericTextBox ID="txtPrTotal" runat="server" Enabled="false" Width="60" NumberFormat-DecimalDigits="0"></telerik:RadNumericTextBox><span> %</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    
+                    <div class="ctrlBasico" style="height: 100%; width: 45%;" >
+                        <div style="display: inline-block;" id="divPonderacionCompetencias" runat="server">
+                            <div style="height:80px;">
+                                <label name="lblNbMensajeComp" id="lblNbMensajeComp" style="text-align:justify;" runat="server">SIGEIN tiene una fórmula que pondera equitativamente las competencias que has seleccionado para realizar el proceso de evaluación. Si deseas modificarla haz click en personalizar ponderación. Nota: esta función esta disponible únicamente para algunas de las opciones de evaluación.</label>
+                            </div> 
+                            <div style="height: 5px; clear: both;"></div>
+                            <div class="ctrlBasico" style="height: calc(100%-60px); width:100%;">
+                                <fieldset>
+                                <legend id="lgPorCompetencia" runat="server">Por competencia</legend>
+                                <div class="ctrlBasico" style="display: inline-block;" id="div1" runat="server">
+                                    <telerik:RadButton RenderMode="Lightweight" ID="chkFgPonderarCompetenciasAuto" runat="server" ToggleType="Radio" ButtonType="ToggleButton" Text="Ponderación estandar" AutoPostBack="false" GroupName="btnCompetencia">
+                                    </telerik:RadButton>
+                                </div>
+                                <%--                    <div style="clear: both; height: 10px;"></div>--%>
+                                <%-- <div class="ctrlBasico">
+                            <telerik:RadButton RenderMode="Lightweight" Enabled="false" ID="chkFgPonderarEvaluadores" runat="server" ToggleType="CheckBox" ButtonType="ToggleButton" Text="Ponderar evaluación por evaluadores" OnClientCheckedChanged="enableCtrlPonderarEvaluadores"
+                                AutoPostBack="false">
+                            </telerik:RadButton>
+                            <div style="clear: both; height: 10px;"></div>--%>
+                                <%--<div style="display: none;" id="divPonderarEvaluadores" runat="server">--%>
+
+                                <%-- <fieldset>
+                                    <legend>Por evaluador</legend>
                                     <table class="ctrlTableForm">
                                         <tr>
                                             <td style="text-align: right;">
-                                                <label id="lblNoAutoevaluacion" name="lblNoAutoevaluacion" runat="server">Autoevaluación:</label></td>
+                                                <label name="lblNoAutoevaluacion">Autoevaluación:</label></td>
                                             <td>
                                                 <telerik:RadNumericTextBox ID="txtPrAutoevaluacion" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionEvaluadores"></telerik:RadNumericTextBox><span> %</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="text-align: right;">
-                                                <label id="lblNoSuperior" name="lblNoSuperior" runat="server">Jefe inmediato:</label></td>
+                                                <label name="lblNoSuperior">Jefe inmediato:</label></td>
                                             <td>
                                                 <telerik:RadNumericTextBox ID="txtPrSuperior" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionEvaluadores"></telerik:RadNumericTextBox><span> %</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="text-align: right;">
-                                                <label name="lblNoSubordinados" id="lblNoSubordinados" runat="server">Subordinados:</label></td>
+                                                <label name="lblNoSubordinados">Subordinados:</label></td>
                                             <td>
                                                 <telerik:RadNumericTextBox ID="txtPrSubordinados" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionEvaluadores"></telerik:RadNumericTextBox><span> %</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="text-align: right;">
-                                                <label name="lblNoInterrelacionados" id="lblNoInterrelacionados" runat="server">Interrelacionados:</label></td>
+                                                <label name="lblNoInterrelacionados">Interrelacionados:</label></td>
                                             <td>
                                                 <telerik:RadNumericTextBox ID="txtPrInterrelacionados" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionEvaluadores"></telerik:RadNumericTextBox><span> %</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="text-align: right;">
-                                                <label name="lblNoOtros" id="lblNoOtros" runat="server">Otros:</label></td>
+                                                <label name="lblNoOtros">Otros:</label></td>
                                             <td>
                                                 <telerik:RadNumericTextBox ID="txtPrOtros" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionEvaluadores"></telerik:RadNumericTextBox><span> %</span>
                                             </td>
@@ -1524,151 +1602,69 @@
                                         </tr>
                                         <tr>
                                             <td style="text-align: right;">
-                                                <label name="lblNoTotal" id="lblNoTotal" runat="server">Total:</label>
+                                                <label name="lblNoTotal">Total:</label>
                                             </td>
                                             <td>
                                                 <telerik:RadNumericTextBox ID="txtPrTotal" runat="server" Enabled="false" Width="60" NumberFormat-DecimalDigits="0"></telerik:RadNumericTextBox><span> %</span>
                                             </td>
                                         </tr>
                                     </table>
-
+                                </fieldset>--%>
+                                <%--  </div>--%>
+                                <%--   </div>--%>
+                                <div class="ctrlBasico" runat="server">
+                                    <telerik:RadButton RenderMode="Lightweight" Enabled="false" ID="chkFgPonderacionCompetencia" runat="server" ToggleType="Radio" ButtonType="ToggleButton" Text="Personalizar ponderación" OnClientCheckedChanged="enableCtrlPonderarCompetencias" GroupName="btnCompetencia"
+                                        AutoPostBack="false">
+                                    </telerik:RadButton>
+                                    <div style="clear: both; height: 10px;"></div>
+                                    <div style="display: none;" id="divPonderarCompetencias" runat="server">
+                                        <%-- <fieldset>
+                                    <legend>Por competencia</legend>--%>
+                                        <table class="ctrlTableForm">
+                                            <tr>
+                                                <td>
+                                                    <label name="lblPrGenericas" id="lblPrGenericas" runat="server">Genéricas:</label></td>
+                                                <td>
+                                                    <telerik:RadNumericTextBox ID="txtPrGenericas" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionCompetencias"></telerik:RadNumericTextBox><span> %</span>
+                                                </td>
+                                            </tr>
+                                       
+                                            <tr>
+                                                <td>
+                                                    <label name="lblPrEspecificas" id="lblPrEspecificas" runat="server">Específicas:</label></td>
+                                                <td>
+                                                    <telerik:RadNumericTextBox ID="txtPrEspecificas" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionCompetencias"></telerik:RadNumericTextBox><span> %</span>
+                                                </td>
+                                            </tr>
+                                       
+                                            <tr>
+                                                <td>
+                                                    <label name="lblPrInstitucionales" id="lblPrInstitucionales" runat="server">Institucionales:</label></td>
+                                                <td>
+                                                    <telerik:RadNumericTextBox ID="txtPrInstitucionales" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionCompetencias"></telerik:RadNumericTextBox><span> %</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">&nbsp;</td>
+                                            </tr>
+                                   <tr>
+                                                <td colspan="2">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label name="lblPrTotalCom" id="lblPrTotalCom" runat="server">Total:</label></td>
+                                                <td>
+                                                    <telerik:RadNumericTextBox ID="txtPrTotalCompetencias" runat="server" Enabled="false" Width="60" NumberFormat-DecimalDigits="0"></telerik:RadNumericTextBox><span> %</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <%-- </fieldset>--%>
+                                    </div>
                                 </div>
+
+                            </fieldset>
                             </div>
-                        </fieldset>
-                    </div>
                         </div>
-                    
-                    <div class="ctrlBasico" style="height: 100%; width: 40%;" >
-                        <div style="display: inline-block;" id="divPonderacionCompetencias" runat="server">
-                        <div >
-                            <label name="lblNbMensajeComp" id="lblNbMensajeComp" style="text-align:justify;" runat="server">
-                                SIGEIN tiene una fórmula que pondera equitativamente las competencias que has seleccionado para realizar el proceso de evaluación. 
-                               Si deseas modificarla haz click en personalizar ponderación. 
-                                 Nota: esta función esta disponible únicamente para algunas de las opciones de evaluación.
-                            </label>
-                            </div> 
-                        <div style="height: 5px; clear: both;"></div>
-                         <div class="ctrlBasico" style="height: calc(100%-60px); width:100%;">
-                        <fieldset>
-                            <legend id="lgPorCompetencia" runat="server">Por competencia</legend>
-                            <div class="ctrlBasico" style="display: inline-block;" id="div1" runat="server">
-                                <telerik:RadButton RenderMode="Lightweight" ID="chkFgPonderarCompetenciasAuto" runat="server" ToggleType="Radio" ButtonType="ToggleButton" Text="Ponderación estandar" AutoPostBack="false" GroupName="btnCompetencia">
-                                </telerik:RadButton>
-                            </div>
-                            <%--                    <div style="clear: both; height: 10px;"></div>--%>
-                            <%-- <div class="ctrlBasico">
-                        <telerik:RadButton RenderMode="Lightweight" Enabled="false" ID="chkFgPonderarEvaluadores" runat="server" ToggleType="CheckBox" ButtonType="ToggleButton" Text="Ponderar evaluación por evaluadores" OnClientCheckedChanged="enableCtrlPonderarEvaluadores"
-                            AutoPostBack="false">
-                        </telerik:RadButton>
-                        <div style="clear: both; height: 10px;"></div>--%>
-                            <%--<div style="display: none;" id="divPonderarEvaluadores" runat="server">--%>
-
-                            <%-- <fieldset>
-                                <legend>Por evaluador</legend>
-                                <table class="ctrlTableForm">
-                                    <tr>
-                                        <td style="text-align: right;">
-                                            <label name="lblNoAutoevaluacion">Autoevaluación:</label></td>
-                                        <td>
-                                            <telerik:RadNumericTextBox ID="txtPrAutoevaluacion" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionEvaluadores"></telerik:RadNumericTextBox><span> %</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align: right;">
-                                            <label name="lblNoSuperior">Jefe inmediato:</label></td>
-                                        <td>
-                                            <telerik:RadNumericTextBox ID="txtPrSuperior" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionEvaluadores"></telerik:RadNumericTextBox><span> %</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align: right;">
-                                            <label name="lblNoSubordinados">Subordinados:</label></td>
-                                        <td>
-                                            <telerik:RadNumericTextBox ID="txtPrSubordinados" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionEvaluadores"></telerik:RadNumericTextBox><span> %</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align: right;">
-                                            <label name="lblNoInterrelacionados">Interrelacionados:</label></td>
-                                        <td>
-                                            <telerik:RadNumericTextBox ID="txtPrInterrelacionados" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionEvaluadores"></telerik:RadNumericTextBox><span> %</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align: right;">
-                                            <label name="lblNoOtros">Otros:</label></td>
-                                        <td>
-                                            <telerik:RadNumericTextBox ID="txtPrOtros" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionEvaluadores"></telerik:RadNumericTextBox><span> %</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">&nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align: right;">
-                                            <label name="lblNoTotal">Total:</label>
-                                        </td>
-                                        <td>
-                                            <telerik:RadNumericTextBox ID="txtPrTotal" runat="server" Enabled="false" Width="60" NumberFormat-DecimalDigits="0"></telerik:RadNumericTextBox><span> %</span>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </fieldset>--%>
-                            <%--  </div>--%>
-                            <%--   </div>--%>
-                            <div class="ctrlBasico" runat="server">
-                                <telerik:RadButton RenderMode="Lightweight" Enabled="false" ID="chkFgPonderacionCompetencia" runat="server" ToggleType="Radio" ButtonType="ToggleButton" Text="Personalizar ponderación" OnClientCheckedChanged="enableCtrlPonderarCompetencias" GroupName="btnCompetencia"
-                                    AutoPostBack="false">
-                                </telerik:RadButton>
-                                <div style="clear: both; height: 10px;"></div>
-                                <div style="display: none;" id="divPonderarCompetencias" runat="server">
-                                    <%-- <fieldset>
-                                <legend>Por competencia</legend>--%>
-                                    <table class="ctrlTableForm">
-                                        <tr>
-                                            <td>
-                                                <label name="lblPrGenericas" id="lblPrGenericas" runat="server">Genéricas:</label></td>
-                                            <td>
-                                                <telerik:RadNumericTextBox ID="txtPrGenericas" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionCompetencias"></telerik:RadNumericTextBox><span> %</span>
-                                            </td>
-                                        </tr>
-                                       
-                                        <tr>
-                                            <td>
-                                                <label name="lblPrEspecificas" id="lblPrEspecificas" runat="server">Específicas:</label></td>
-                                            <td>
-                                                <telerik:RadNumericTextBox ID="txtPrEspecificas" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionCompetencias"></telerik:RadNumericTextBox><span> %</span>
-                                            </td>
-                                        </tr>
-                                       
-                                        <tr>
-                                            <td>
-                                                <label name="lblPrInstitucionales" id="lblPrInstitucionales" runat="server">Institucionales:</label></td>
-                                            <td>
-                                                <telerik:RadNumericTextBox ID="txtPrInstitucionales" runat="server" Width="60" NumberFormat-DecimalDigits="2" MaxValue="100" MinValue="-1" ClientEvents-OnValueChanged="CheckPonderacionCompetencias"></telerik:RadNumericTextBox><span> %</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">&nbsp;</td>
-                                        </tr>
-                               <tr>
-                                            <td colspan="2">&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label name="lblPrTotalCom" id="lblPrTotalCom" runat="server">Total:</label></td>
-                                            <td>
-                                                <telerik:RadNumericTextBox ID="txtPrTotalCompetencias" runat="server" Enabled="false" Width="60" NumberFormat-DecimalDigits="0"></telerik:RadNumericTextBox><span> %</span>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <%-- </fieldset>--%>
-                                </div>
-                            </div>
-
-                        </fieldset>
-                           </div>
-                            </div>
                     </div>
                     <div style="height: 10px; clear: both;"></div>
                     <div class="divControlDerecha">

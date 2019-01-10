@@ -39,13 +39,14 @@
                 height: browserWnd.innerHeight - 40
             };
 
-
+            var vIdListaCurso = '<%# vIdListaCurso %>';
+            var vCursoId = '<%# vCursoId%>';
 
             if (sender == vBtnGuardarTema) {
                 var windowProperties = {};
                 windowProperties.width = document.documentElement.clientWidth - 40;
                 windowProperties.height = document.documentElement.clientHeight - 40;
-                openChildDialog("VentanaTemas.aspx?IdCursoItem=" + '<%# vIdListaCurso %>', "winAgregarTema", "Agregar Tema", windowProperties);
+                openChildDialog("VentanaTemas.aspx?IdCursoItem=" + vIdListaCurso, "winAgregarTema", "Agregar Tema", windowProperties);
             }
 
             if (sender == vBtnPuesto)
@@ -55,9 +56,12 @@
                 openChildDialog("../Comunes/SeleccionCompetencia.aspx", "winSeleccionCompetencia", "Selección de competencia", windowProperties);
 
             if (sender == vBtnGuardarInstructor)
-               // openChildDialog("/Comunes/SeleccionInstructor.aspx?IdCurso=" + '<%# vIdListaCurso %>' + "&IdCursoInstructor=" + '<%# vCursoId%>' , "winSeleccionInstructor", "Selección de instructor");
-              //openChildDialog("/Comunes/SeleccionInstructor.aspx?IdCurso=" + '<%# vIdListaCurso %>' + "&IdCursoInstructor=" + '<%# vCursoId%>' , "winSeleccionInstructor", "Selección de instructor");
-                openChildDialog("../Comunes/SeleccionInstructor.aspx?IdCurso=" + '<%# vIdListaCurso %>', "winSeleccionInstructor", "Selección de instructor" , windowProperties);
+                // openChildDialog("/Comunes/SeleccionInstructor.aspx?IdCurso=" + vIdListaCurso + "&IdCursoInstructor=" + vCursoId , "winSeleccionInstructor", "Selección de instructor");
+                //openChildDialog("/Comunes/SeleccionInstructor.aspx?IdCurso=" + vIdListaCurso + "&IdCursoInstructor=" + vCursoId , "winSeleccionInstructor", "Selección de instructor");
+
+                // Se comenta validación de selección de Instructores en base a copetencias seleccionadas
+                //openChildDialog("../Comunes/SeleccionInstructor.aspx?IdCurso=" + vIdListaCurso, "winSeleccionInstructor", "Selección de instructor", windowProperties);
+                openChildDialog("../Comunes/SeleccionInstructor.aspx", "winSeleccionInstructor", "Selección de instructor", windowProperties);
              
         }
 

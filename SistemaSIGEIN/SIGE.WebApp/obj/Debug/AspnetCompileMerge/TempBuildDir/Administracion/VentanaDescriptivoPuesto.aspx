@@ -663,7 +663,7 @@
                         <telerik:RadTab Text="Organigrama"></telerik:RadTab>
                  <%--       <telerik:RadTab Text="Responsabilidades"></telerik:RadTab>--%>
                         <telerik:RadTab Text="Funciones"></telerik:RadTab>
-                        <telerik:RadTab Text="Competencias e Indicadores"></telerik:RadTab><%--<telerik:RadTab Text="Competencias genéricas"></telerik:RadTab>--%>
+                        <telerik:RadTab Text="Competencias genéricas"></telerik:RadTab><%--<telerik:RadTab Text="Competencias genéricas"></telerik:RadTab>--%>
                         <telerik:RadTab Text="Campos extra"></telerik:RadTab>
                         <telerik:RadTab Text="STPS"></telerik:RadTab>
                         <telerik:RadTab Text="Documentación"></telerik:RadTab>
@@ -1318,6 +1318,14 @@
                                     ToolTip="Aquí debes especificar la autoridad que posee el puesto en relación a la toma de decisiones. Dirigir: puestos directivos, Gestionar: puestos gerenciales, Coordinar: puestos de jefatura y/o coordinación, Supervisar: puestos de supervisión, Operar: puestos operativos y/o asistentes, auxiliares.">
                                 </telerik:RadEditor>
                             </div>
+                            <div style="clear: both; height:5px;"></div>
+                            <label class="labelTitulo" id="lblPoliticaIntegral" name="lblAutoridad" runat="server">
+                                &nbsp;Autoridad / Política Integral
+                            </label>
+                            <div id="MnsAutoridad" runat="server" class="ctrlBasico" style="padding:10px; border:1px solid gray; border-radius:5px;">
+                                <telerik:RadLabel ID="MnsAutoridadPoliticaIntegral" runat="server"></telerik:RadLabel>
+                            </div>
+
                                <div style="height:10px; clear:both;"></div>
                              <label class="labelTitulo" id="lblFuncionesGenericas" name="lblFuncionesGenericas">
                             <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
@@ -1739,7 +1747,7 @@
                 <telerik:RadTabStrip ID="rtsFuncionGenerica" runat="server" SelectedIndex="0" MultiPageID="rmpFuncionGenerica">
                     <Tabs>
                         <telerik:RadTab Text="Definición"></telerik:RadTab>
-                        <telerik:RadTab Text="Competencias e indicadores"></telerik:RadTab>
+                        <telerik:RadTab Text="Competencias genéricas"></telerik:RadTab>
                     </Tabs>
                 </telerik:RadTabStrip>
                 <div style="height: calc(100% - 90px);">

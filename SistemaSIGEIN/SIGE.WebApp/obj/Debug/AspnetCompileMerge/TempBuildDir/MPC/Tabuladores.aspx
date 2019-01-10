@@ -70,18 +70,27 @@
                     return null;
             }
 
+            function GetPeriodoClaveTabulador() {
+                var listView = $find('<%= rlvConsultas.ClientID %>');
+                var selectedIndex = listView.get_selectedIndexes();
+                if (selectedIndex.length > 0)
+                    return listView.get_clientDataKeyValue()[selectedIndex]["CL_TABULADOR"];
+                else
+                    return null;
+            }
 
             function ConfirmarEliminar(sender, args) {
                 var vPermisoEliminar = '<%= vFgEliminar%>';
                 var vIdPeriodo = GetPeriodoId();
                 var vNbPeriodo = GetPeriodoNombre();
+                var vClTabulador = GetPeriodoClaveTabulador();
                 if (vPermisoEliminar == "True") {
                     if (vIdPeriodo != null) {
 
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas eliminar la version ' + vNbPeriodo + ' del tabulador? Esta opción eliminará todos los datos relacionados con la versión y no podrá revertirse.', callBackFunction, 450, 200, null, "Eliminar versión del tabulador");
+                        radconfirm('¿Deseas eliminar la versión ' + vClTabulador + ' del tabulador? Esta opción eliminará todos los datos relacionados con la versión y no podrá revertirse.', callBackFunction, 450, 200, null, "Eliminar versión del tabulador");
                         args.set_cancel(true);
                     }
                     else {
@@ -629,7 +638,7 @@
         <telerik:RadPane ID="rpPeriodosEvaluacion" runat="server">
             <label class="labelTitulo">Tabuladores</label>
             <div class="ctrlBasico">
-                <telerik:RadListView ID="rlvConsultas" runat="server" DataKeyNames="ID_TABULADOR, CL_ESTADO" ClientDataKeyNames="ID_TABULADOR, NB_TABULADOR, CL_ESTADO"
+                <telerik:RadListView ID="rlvConsultas" runat="server" DataKeyNames="ID_TABULADOR, CL_ESTADO, CL_TABULADOR" ClientDataKeyNames="ID_TABULADOR, NB_TABULADOR, CL_ESTADO, CL_TABULADOR"
                     OnNeedDataSource="rlvConsultas_NeedDataSource" OnItemCommand="rlvConsultas_ItemCommand" AllowPaging="true" ItemPlaceholderID="ProductsHolder">
                     <LayoutTemplate>
                         <div style="overflow: auto; width: 700px;">

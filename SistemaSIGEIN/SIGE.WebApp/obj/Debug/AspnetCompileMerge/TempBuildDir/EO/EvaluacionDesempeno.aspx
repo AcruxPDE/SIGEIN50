@@ -742,6 +742,44 @@
                     </telerik:RadMultiPage>
                 </div>
         </telerik:RadPane>
+          <telerik:RadPane ID="rpOrdenarFiltrar" runat="server" Scrolling="None" Width="20px">
+              <telerik:RadSlidingZone ID="rszOrdenarFiltrar" runat="server" SlideDirection="Left" ExpandedPaneId="rsEvaluacionDesempeno" Width="20px" ClickToOpen="true">
+                  <telerik:RadSlidingPane ID="rspOrdenarFiltrar" runat="server" Title="Ordenar y filtrar" Width="450px" RenderMode="Mobile" Height="100%">
+                      <div style="clear: both; height: 10px;"></div>
+                    <div>
+                        <fieldset>
+                            <legend>Ordenar por:</legend>
+                            <telerik:RadComboBox ID="cmbOrdenamiento" runat="server">
+                                <Items>
+                                    <telerik:RadComboBoxItem Text="Clave del período" Value="CL_PERIODO" />
+                                    <telerik:RadComboBoxItem Text="Nombre del período" Value="NB_PERIODO" />
+                                    <telerik:RadComboBoxItem Text="Estatus" Value="CL_ESTADO_PERIODO" />
+                                    <telerik:RadComboBoxItem Text="Fecha de inicio del período" Value="FE_INICIO" />
+                                </Items>
+                            </telerik:RadComboBox>
+                            <telerik:RadButton ID="rbAscendente" runat="server" ButtonType="ToggleButton" ToggleType="Radio" Text="Ascendente" GroupName="ordenamiento" OnCheckedChanged="rbAscendente_CheckedChanged"></telerik:RadButton>
+                            <telerik:RadButton ID="rbDescendente" runat="server" ButtonType="ToggleButton" ToggleType="Radio" Text="Descendente" GroupName="ordenamiento" OnCheckedChanged="rbDescendente_CheckedChanged"></telerik:RadButton>
+                        </fieldset>
+                    </div>
+                    <div style="clear: both; height: 10px;"></div>
+                    <div>
+                        <fieldset>
+                            <legend>Filtrar por:</legend>
+                            <telerik:RadFilter runat="server" ID="rfFiltros" ExpressionPreviewPosition="Top" OnApplyExpressions="rfFiltros_ApplyExpressions">
+                                <FieldEditors>
+                                    <telerik:RadFilterTextFieldEditor DataType="System.Int32" DisplayName="No." FieldName="ID_PERIODO" DefaultFilterFunction="Contains" ToolTip="Numero del periodo" />
+                                    <telerik:RadFilterTextFieldEditor DataType="System.String" DisplayName="Clave" FieldName="CL_PERIODO" DefaultFilterFunction="Contains" ToolTip="Clave del periodo" />
+                                    <telerik:RadFilterTextFieldEditor DataType="System.String" DisplayName="Nombre" FieldName="NB_PERIODO" DefaultFilterFunction="Contains" ToolTip="Nombre del periodo" />
+                                    <telerik:RadFilterTextFieldEditor DataType="System.String" DisplayName="Descripción" FieldName="DS_PERIODO" DefaultFilterFunction="Contains" ToolTip="Descripción del periodo" />
+                                    <telerik:RadFilterTextFieldEditor DataType="System.DateTime" DisplayName="F. Inicial" FieldName="FE_INICIO" DefaultFilterFunction="GreaterThanOrEqualTo" ToolTip="Fecha Inicial" />
+                                    <telerik:RadFilterTextFieldEditor DataType="System.String" DisplayName="Estatus" FieldName="CL_ESTADO_PERIODO" DefaultFilterFunction="Contains" ToolTip="Estatus del periodo" />
+                                </FieldEditors>
+                            </telerik:RadFilter>
+                        </fieldset>
+                    </div>
+                  </telerik:RadSlidingPane>
+              </telerik:RadSlidingZone>
+          </telerik:RadPane>
       </telerik:RadSplitter>
     <div style="clear: both;"></div>
     <telerik:RadWindowManager ID="rwmMensaje" runat="server" EnableShadow="true" OnClientClose="returnDataToParentPopup">
