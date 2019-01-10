@@ -400,7 +400,7 @@
                                     </div>
                                     <div class="ctrlBasico" style="width: 200px;">
                                         <telerik:RadButton ID="btnBaseCotizacion" runat="server" ButtonType="ToggleButton" ToggleType="Radio" AutoPostBack="false" GroupName="sueldoDo" OnClientClicked="CopyValueBase"></telerik:RadButton>
-                                        <telerik:RadNumericTextBox ID="txtMnSueldoBase" MinValue="0" Type="Currency" runat="server" Width="150" NumberFormat-DecimalDigits="4"></telerik:RadNumericTextBox>
+                                        <telerik:RadNumericTextBox ID="txtMnSueldoBase" MinValue="0" Type="Currency" runat="server" Width="150"></telerik:RadNumericTextBox>
                                     </div>
                                 </div>
                             </div>
