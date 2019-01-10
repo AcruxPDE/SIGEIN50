@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/FYD/ContextFYD.master" AutoEventWireup="true" CodeBehind="MenuMA.master.cs" Inherits="SIGE.WebApp.ModulosApoyo.MenuMA" %>
+﻿<%@ Master Language="C#" MasterPageFile="~/ContextHTML.master" AutoEventWireup="true" CodeBehind="MenuMA.master.cs" Inherits="SIGE.WebApp.ModulosApoyo.MenuMA" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
         <style>

@@ -449,7 +449,7 @@ namespace SIGE.WebApp
                     ptipo = (string)(Request.QueryString["AUTORIZA"]);
                     pFolioAutorizacion = Guid.Parse((Request.QueryString["TOKEN"]));
                     DocumentoAutorizarNegocio nDocumento = new DocumentoAutorizarNegocio();
-                    var DocumentoAutorizar = nDocumento.ObtieneEmpleadoDocumentoAutorizacion(pFlAutorizacion: pFolioAutorizacion).FirstOrDefault();
+                    var DocumentoAutorizar = nDocumento.ObtieneEmpleadoDocumentoAutorizacion(pFlAutorizacion: pFolioAutorizacion).Where(w=> w.ID_PERIODO !=null).FirstOrDefault();
 
                     if (DocumentoAutorizar != null)
                     {
