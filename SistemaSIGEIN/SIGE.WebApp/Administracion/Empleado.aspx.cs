@@ -349,6 +349,7 @@ namespace SIGE.WebApp.Administracion
                 else
                 {
                     UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                    Response.Redirect(Request.RawUrl); 
                 }
 
             }
