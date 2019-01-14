@@ -300,6 +300,9 @@ namespace SIGE.WebApp.Administracion
                 txtRangoEdadMax.Value = vDescriptivo.NO_EDAD_MAXIMA;
                // txtCompetenciasRequeridas.Text = vDescriptivo.DS_COMPETENCIAS_REQUERIDAS;
 
+                var xmlPuestoEscolaridad = XElement.Parse(vDescriptivo.XML_PUESTO_ESCOLARIDAD).Element("OTRO_PUESTO_ESCOLARIDAD");
+                txtOtroNivelEst.Text = xmlPuestoEscolaridad.Attribute("DS_OTRO_NIVEL_ESCOLARIDAD").Value;
+
                 foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTO_ESCOLARIDAD).Elements("PUESTO_ESCOLARIDAD"))
                 {
                     if (item.Attribute("CL_TIPO_ESCOLARIDAD").Value == E_CL_TIPO_ESCOLARIDAD.POSTGRADO.ToString())
@@ -980,6 +983,9 @@ namespace SIGE.WebApp.Administracion
                 pEscolaridad.Add(new XElement("ESCOLARIDAD",
                     new XAttribute("ID_ESCOLARIDAD", item.Value)));
             }
+
+            pEscolaridad.Add(new XElement("OTRO",
+                    new XAttribute("DS_OTRO_NIVEL_ESCOLARIDAD", (txtOtroNivelEst.Text == null) ? "" : txtOtroNivelEst.Text)));
 
             //LISTA DE RELACION DE PUESTOS
 
