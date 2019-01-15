@@ -168,8 +168,9 @@ namespace SIGE.Entidades.Administracion
         public DateTime FE_CAMBIO { get; set; }
         public string NB_PROCESO { get; set; }
         public string DS_PROCESO { get; set; }
-        public decimal NB_ANTERIOR { get; set; }
-        public decimal NB_ACTUAL { get; set; }
+        public string NB_ANTERIOR { get; set; }
+        public string NB_ACTUAL { get; set; }
+        public string CL_TIPO_BITACORA { get; set; }
 
         public E_BITACORA_SUELDO()
         {
@@ -177,8 +178,9 @@ namespace SIGE.Entidades.Administracion
             FE_CAMBIO = DateTime.Now;
             NB_PROCESO = "";
             DS_PROCESO = "";
-            NB_ANTERIOR = 0;
-            NB_ACTUAL = 0;
+            NB_ANTERIOR = "";
+            NB_ACTUAL = "";
+            CL_TIPO_BITACORA = "";
         }
 
     }
