@@ -237,7 +237,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/27/2018 13:14:46</publishTime>
     </File>
     <File Include="Administracion/VentanaDescriptivoPuesto.aspx">
-      <publishTime>12/21/2018 11:14:53</publishTime>
+      <publishTime>01/14/2019 14:05:25</publishTime>
     </File>
     <File Include="Administracion/VentanaDescriptivoPuestos.aspx">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -252,7 +252,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2018 13:43:15</publishTime>
     </File>
     <File Include="Administracion/VentanaInventarioPersonalNomina.aspx">
-      <publishTime>01/09/2019 14:34:51</publishTime>
+      <publishTime>01/10/2019 15:27:03</publishTime>
     </File>
     <File Include="Administracion/VentanaLocalizacion.aspx">
       <publishTime>08/27/2018 13:14:46</publishTime>
@@ -1347,16 +1347,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/11/2018 13:31:22</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>01/10/2019 10:58:18</publishTime>
+      <publishTime>01/15/2019 13:05:21</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>01/10/2019 10:58:18</publishTime>
+      <publishTime>01/15/2019 13:05:21</publishTime>
     </File>
     <File Include="bin/App_GlobalResources.compiled">
-      <publishTime>01/10/2019 10:58:18</publishTime>
+      <publishTime>01/15/2019 13:05:21</publishTime>
     </File>
     <File Include="bin/App_GlobalResources.dll">
-      <publishTime>01/10/2019 10:58:18</publishTime>
+      <publishTime>01/15/2019 13:05:20</publishTime>
     </File>
     <File Include="bin/Common.Logging.Core.dll">
       <publishTime>08/27/2018 13:16:34</publishTime>
@@ -1377,7 +1377,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/27/2018 13:16:35</publishTime>
     </File>
     <File Include="bin/es/App_GlobalResources.resources.dll">
-      <publishTime>01/10/2019 10:58:17</publishTime>
+      <publishTime>01/15/2019 13:05:20</publishTime>
     </File>
     <File Include="bin/itextsharp.dll">
       <publishTime>08/27/2018 13:16:39</publishTime>
@@ -1401,7 +1401,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/27/2018 13:16:37</publishTime>
     </File>
     <File Include="bin/pt-BR/App_GlobalResources.resources.dll">
-      <publishTime>01/10/2019 10:58:16</publishTime>
+      <publishTime>01/15/2019 13:05:19</publishTime>
     </File>
     <File Include="bin/Quartz.dll">
       <publishTime>08/27/2018 13:16:38</publishTime>
@@ -1410,13 +1410,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/27/2018 13:16:38</publishTime>
     </File>
     <File Include="bin/SIGE.AccesoDatos.dll">
-      <publishTime>01/10/2019 10:55:34</publishTime>
+      <publishTime>01/14/2019 14:05:24</publishTime>
     </File>
     <File Include="bin/SIGE.AccesoDatos.dll.config">
       <publishTime>12/11/2018 13:31:22</publishTime>
     </File>
     <File Include="bin/SIGE.AccesoDatos.pdb">
-      <publishTime>01/10/2019 10:55:34</publishTime>
+      <publishTime>01/14/2019 14:05:24</publishTime>
     </File>
     <File Include="bin/SIGE.Entidades.dll">
       <publishTime>12/06/2018 13:22:49</publishTime>
@@ -1425,19 +1425,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/06/2018 13:22:49</publishTime>
     </File>
     <File Include="bin/SIGE.Negocio.dll">
-      <publishTime>01/10/2019 10:55:34</publishTime>
+      <publishTime>01/14/2019 14:05:24</publishTime>
     </File>
     <File Include="bin/SIGE.Negocio.dll.config">
       <publishTime>12/11/2018 13:31:22</publishTime>
     </File>
     <File Include="bin/SIGE.Negocio.pdb">
-      <publishTime>01/10/2019 10:55:34</publishTime>
+      <publishTime>01/14/2019 14:05:25</publishTime>
     </File>
     <File Include="bin/SIGE.WebApp.dll">
-      <publishTime>01/10/2019 10:55:34</publishTime>
+      <publishTime>01/15/2019 13:03:39</publishTime>
     </File>
     <File Include="bin/SIGE.WebApp.pdb">
-      <publishTime>01/10/2019 10:55:34</publishTime>
+      <publishTime>01/15/2019 13:03:39</publishTime>
     </File>
     <File Include="bin/Stimulsoft.Base.dll">
       <publishTime>08/27/2018 13:16:38</publishTime>
@@ -2778,7 +2778,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/27/2018 13:15:09</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>01/10/2019 10:57:45</publishTime>
+      <publishTime>01/15/2019 13:04:50</publishTime>
     </File>
     <File Include="print.css">
       <publishTime>09/29/2017 13:20:35</publishTime>
@@ -2835,7 +2835,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/20/2018 16:19:57</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/10/2019 10:57:41</publishTime>
+      <publishTime>01/15/2019 13:04:45</publishTime>
     </File>
   </ItemGroup>
 </Project>

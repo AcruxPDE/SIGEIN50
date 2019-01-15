@@ -767,6 +767,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="ctrlBasico">
+                                <div class="divBarraTitulo">
+                                    <telerik:RadTextBox ID="txtOtroNivelEst" runat="server" Width="500" Label="Otro" LabelWidth="100"></telerik:RadTextBox>
+                                </div>
+                            </div>
                             <div style="clear: both;"></div>
                             <div>
                                 <label class="labelTitulo" id="lblcompetencias" name="lblcompetencias">
