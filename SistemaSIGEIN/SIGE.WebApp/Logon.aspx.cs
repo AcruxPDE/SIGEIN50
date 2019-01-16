@@ -457,6 +457,8 @@ namespace SIGE.WebApp
                         {
                             txtProgramaCapacitacion.Text = DocumentoAutorizar.NB_PROGRAMA.ToString();
                             vIdPrograma = DocumentoAutorizar.ID_PROGRAMA;
+                            txtProgramaCapacitacion.ReadOnly = true;
+                            txtAutorizador.ReadOnly = true;
                         }
                         else
                         {
