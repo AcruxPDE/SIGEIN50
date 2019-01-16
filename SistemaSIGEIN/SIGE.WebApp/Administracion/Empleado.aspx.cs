@@ -543,7 +543,7 @@ namespace SIGE.WebApp.Administracion
                         {
                             //Session["__clUsuario__"] = vClUsuario;
                             tabSolicitud.Tabs[8].Visible = true;
-                            ifNomina.Attributes.Add("src", "/NOMINA/InventarioPersonal/PopupInventarioPersonalNuevoEditar.aspx?clOrigen=DO&clUsuario=" + vClUsuario + "&ID=" + vEmpleado.ID_EMPLEADO_NOMINA + "&Fg_Reactiva=1");
+                            ifNomina.Attributes.Add("src", "/NOMINA/InventarioPersonal/PopupInventarioPersonalNuevoEditar.aspx?clOrigen=DO&clUsuario=" + vClUsuario + "&ID=" + vEmpleado.ID_EMPLEADO_NOMINA + "&FgReactiva=1");
                         }
 
                         if (vEmpleado.FG_DO == true)
