@@ -301,7 +301,8 @@ namespace SIGE.WebApp.Administracion
                // txtCompetenciasRequeridas.Text = vDescriptivo.DS_COMPETENCIAS_REQUERIDAS;
 
                 var xmlPuestoEscolaridad = XElement.Parse(vDescriptivo.XML_PUESTO_ESCOLARIDAD).Element("OTRO_PUESTO_ESCOLARIDAD");
-                txtOtroNivelEst.Text = xmlPuestoEscolaridad.Attribute("DS_OTRO_NIVEL_ESCOLARIDAD").Value;
+                if(xmlPuestoEscolaridad != null)
+                    txtOtroNivelEst.Text = xmlPuestoEscolaridad.Attribute("DS_OTRO_NIVEL_ESCOLARIDAD").Value;
 
                 foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTO_ESCOLARIDAD).Elements("PUESTO_ESCOLARIDAD"))
                 {
@@ -926,8 +927,8 @@ namespace SIGE.WebApp.Administracion
                 new XAttribute("ID_DESCRIPTIVO", vIdDescriptivo),
                 new XAttribute("CL_PUESTO", txtNombreCorto.Text),
                 new XAttribute("NB_PUESTO", txtDescripcionPuesto.Text),
-                new XAttribute("NO_EDAD_MINIMA", txtRangoEdadMin.Value),
-                new XAttribute("NO_EDAD_MAXIMA", txtRangoEdadMax.Value),
+                new XAttribute("NO_EDAD_MINIMA", (txtRangoEdadMin.Value == null) ? 18.0 : txtRangoEdadMin.Value),
+                new XAttribute("NO_EDAD_MAXIMA", (txtRangoEdadMax.Value == null) ? 65.0 : txtRangoEdadMax.Value),
                 new XAttribute("CL_GENERO", cmbGenero.SelectedValue),
                 new XAttribute("CL_ESTADO_CIVIL", cmbEdoCivil.SelectedValue),
                 new XAttribute("CL_TIPO_PUESTO", btnDirecto.Checked ? "DIRECTO" : "INDIRECTO"),
