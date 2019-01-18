@@ -92,12 +92,11 @@ namespace SIGE.WebApp.EO
                         vMensaje = vMensaje.Replace("[EVALUADOR]", vNbEvaluador);
                         vMensaje = vMensaje.Replace("[URL]", vUrl + "&FlProceso=" + item.GetDataKeyValue("FL_EVALUADOR").ToString());
                         vMensaje = vMensaje.Replace("[CONTRASENA]", item.GetDataKeyValue("CL_TOKEN").ToString());
-                        
+
                         StringBuilder builder = new StringBuilder();
                         builder.Append(vClCorreo + ";");
-                        
-                        bool vEstatusCorreo = pe.EnvioCorreo(builder.ToString(), vNbEvaluador, "Cuestionarios para evaluación", vMensaje);
 
+                        bool vEstatusCorreo = pe.EnvioCorreo(builder.ToString(), vNbEvaluador, "Cuestionarios para evaluación", vMensaje);
                         if (vEstatusCorreo)
                         {
                             vXmlEvaluados.Add(new XElement("EVALUADOR", new XAttribute("ID_EVALUADOR", vIdEvaluador), new XAttribute("CL_CORREO_ELECTRONICO", vClCorreo)));

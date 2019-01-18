@@ -680,14 +680,14 @@
 
                                      <telerik:RadPageView ID="rpvGraficaCausasRotacion" runat="server" Height="100%">--%>
 
-                            <div class="ctrlBasico" style="width: 60%; height: 100%">
-                                <telerik:RadHtmlChart runat="server" ID="rhcGraficaCausasRotacion" Width="100%" Height="100%" Transitions="true" Skin="Silk">
+                            <div class="ctrlBasico" style="width: 65%; height: 100%">
+                                <telerik:RadHtmlChart runat="server" ID="rhcGraficaCausasRotacion" Width="100%" Height="100%" Transitions="true" Skin="Silk" Legend-Appearance-Width="40">
                                     <ChartTitle Text="Causas de rotación">
                                         <Appearance Align="Center" Position="Top">
                                         </Appearance>
                                     </ChartTitle>
                                     <Legend>
-                                        <Appearance Position="Right" Visible="true">
+                                        <Appearance Position="Right" Visible="true" Align="End">
                                         </Appearance>
                                     </Legend>
                                     <PlotArea>
@@ -701,7 +701,7 @@
                                     </PlotArea>
                                 </telerik:RadHtmlChart>
                             </div>
-                            <div class="ctrlBasico" style="width: 40%;">
+                            <div class="ctrlBasico" style="width: 35%;">
                                 <telerik:RadGrid ID="rgGraficaCausaRotacion"
                                     runat="server"
                                     AllowSorting="false"

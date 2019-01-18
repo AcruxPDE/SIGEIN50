@@ -4161,6 +4161,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\SIGEINQA - QA2.pubxml" />
     <None Include="Resources\Prueba.mrt" />
     <Content Include="TC\MenuTC.Master" />
     <Content Include="TC\ContextTC.Master" />

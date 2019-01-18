@@ -193,6 +193,19 @@ namespace SIGE.WebApp.IDP.Pruebas
                     PruebasNegocio nKprueba = new PruebasNegocio();
                     vIdPrueba = int.Parse(Request.QueryString["ID"]);
                     vClToken = new Guid(Request.QueryString["T"]);
+
+                    if (Request.QueryString["vIdBateria"] != null)
+                    {
+                        vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+                        btnEliminar.Visible = true;
+                        btnEliminarBateria.Visible = true;
+                    }
+                    else
+                    {
+                        btnEliminar.Visible = false;
+                        btnEliminarBateria.Visible = false;
+                    }
+
                     int position = mpgIngles.SelectedIndex;
                     vSeccionesPrueba = new List<E_PRUEBA_TIEMPO>();
                     var vSegmentos = nKprueba.Obtener_K_PRUEBA_SECCION(pIdPrueba: vIdPrueba);

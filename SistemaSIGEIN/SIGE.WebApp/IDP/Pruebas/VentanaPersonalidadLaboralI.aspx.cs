@@ -112,6 +112,7 @@ namespace SIGE.WebApp.IDP
                         btnEliminar.Visible = false;
                         btnEliminarBateria.Visible = false;
                     }
+
                     MostrarCronometro = ContextoApp.IDP.ConfiguracionPsicometria.FgMostrarCronometro;
 
                     //Si el modo de revision esta activado

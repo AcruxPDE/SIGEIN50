@@ -447,7 +447,7 @@ namespace SIGE.Negocio.Utilerias
                     new XAttribute("FG_HABILITADO", ctrlDocumentos.fgHabilitado ? "1" : "0")),
                 new XElement("ADM",
                     new XElement("MENSAJES",
-                            new XAttribute("FG_VISIBLE",ADM.fgVisibleMensajes ? "1" : "0"),
+                            new XAttribute("FG_VISIBLE", ADM.fgVisibleMensajes ? "1" : "0"),
                             new XElement("MENSAJE",
                                 new XAttribute("CL_MENSAJE", "AUTORIDAD_POLITICA_INTEGRAL"),
                                 new XAttribute("FG_VISIBLE", ADM.AutoridadPoliticaIntegral.fgVisible ? "1" : "0"),

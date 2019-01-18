@@ -26,7 +26,7 @@ namespace SIGE.WebApp.Administracion
         private int? vIdEmpresa;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
 
-        private int? vIdPlaza
+        public int? vIdPlaza
         {
             get { return (int?)ViewState["vs_vIdPlaza"]; }
             set { ViewState["vs_vIdPlaza"] = value; }
@@ -43,12 +43,17 @@ namespace SIGE.WebApp.Administracion
             get { return (List<E_GRUPOS>)ViewState["vs_vLstGruposPlaza"]; }
             set { ViewState["vs_vLstGruposPlaza"] = value; }
         }
+        public int? vIdEmpleado
+        {
+            get { return (int?)ViewState["vs_vIdEmpleado"]; }
+            set { ViewState["vs_vIdEmpleado"] = value; }
+        }
 
         #endregion
 
         #region Metodos
 
-         protected void CargarDatos(int? vIdPlaza)
+        protected void CargarDatos(int? vIdPlaza)
         {
             PlazaNegocio nPlaza = new PlazaNegocio();
             SPE_OBTIENE_PLAZAS_Result vPlaza = nPlaza.ObtienePlazas(vIdPlaza).FirstOrDefault() ?? new SPE_OBTIENE_PLAZAS_Result();
@@ -72,6 +77,8 @@ namespace SIGE.WebApp.Administracion
 
             if (vPlaza.ID_EMPLEADO != null)
             {
+                vIdEmpleado = vPlaza.ID_EMPLEADO;
+                lstEmpleado.Enabled = false;
                 lstEmpleado.Items.Clear();
                 lstEmpleado.Items.Add(new RadListBoxItem(vPlaza.NB_EMPLEADO_COMPLETO, vPlaza.ID_EMPLEADO.ToString()));
             }
@@ -172,13 +179,16 @@ namespace SIGE.WebApp.Administracion
             if (!Page.IsPostBack)
             {
                 int vIdPlazaQS = -1;
+                vIdEmpleado = 0;
                 vClOperacion = E_TIPO_OPERACION_DB.I;
                 if (int.TryParse(Request.QueryString["PlazaId"], out vIdPlazaQS))
                 {
                     vIdPlaza = vIdPlazaQS;
                     vClOperacion = E_TIPO_OPERACION_DB.A;
+                    btnBuscarPuesto.Enabled = false;
+                    
                 }
-
+     
                 vLstGruposPlaza = new List<E_GRUPOS>();
                 CargarDatos(vIdPlaza ?? 0);
                 SeguridadProcesos();

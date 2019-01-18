@@ -59,9 +59,9 @@ namespace SIGE.WebApp.EO
                     DateTime vFecha = DateTime.Now;
                     rdpFechaBaja.SelectedDate = vFecha;
                     rdpFechaBaja.MaxDate = vFecha;
-                    lbFechaBaja.InnerText = "Programar fecha efectiva de baja:";
-                    btnProgramarTrue.Checked = false;
-                    btnProgramarFalse.Checked = true;
+                    lbFechaBaja.InnerText = "Fecha de baja:";
+                    //btnProgramarTrue.Checked = false;
+                    //btnProgramarFalse.Checked = true;
                     vFgProgramarFecha = false;
                 }
             }
@@ -127,22 +127,22 @@ namespace SIGE.WebApp.EO
             //}
         }
 
-        protected void btnProgramarTrue_Click(object sender, EventArgs e)
-        {
-            lbFechaBaja.InnerText = "Fecha efectiva de la baja:";
-            rdpFechaBaja.Enabled = true;
-            rdpFechaBaja.MaxDate = DateTime.Today.AddYears(100);
-            rdpFechaBaja.MinDate = DateTime.Today.AddDays(1);
-            vFgProgramarFecha = true;
+        //protected void btnProgramarTrue_Click(object sender, EventArgs e)
+        //{
+        //    lbFechaBaja.InnerText = "Fecha efectiva de la baja:";
+        //    rdpFechaBaja.Enabled = true;
+        //    rdpFechaBaja.MaxDate = DateTime.Today.AddYears(100);
+        //    rdpFechaBaja.MinDate = DateTime.Today.AddDays(1);
+        //    vFgProgramarFecha = true;
             
-        }
+        //}
 
-        protected void btnProgramarFalse_Click(object sender, EventArgs e)
-        {
-            lbFechaBaja.InnerText = "Programar fecha efectiva de baja:";
-            rdpFechaBaja.MinDate = DateTime.Today.AddYears(-100);
-            rdpFechaBaja.MaxDate = DateTime.Now;
-            vFgProgramarFecha = false;
-        }
+        //protected void btnProgramarFalse_Click(object sender, EventArgs e)
+        //{
+        //    lbFechaBaja.InnerText = "Programar fecha efectiva de baja:";
+        //    rdpFechaBaja.MinDate = DateTime.Today.AddYears(-100);
+        //    rdpFechaBaja.MaxDate = DateTime.Now;
+        //    vFgProgramarFecha = false;
+        //}
     }
 }
