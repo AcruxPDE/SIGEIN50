@@ -1563,7 +1563,7 @@ Lo necesita de manera imprescindible</Text>
               <Name>Text4</Name>
               <Page isRef="84" />
               <Parent isRef="107" />
-              <Text>VII. Funciones genericas del puesto</Text>
+              <Text>VII. Funciones genéricas del puesto</Text>
               <TextBrush>[192:0:0]</TextBrush>
               <Type>Expression</Type>
               <VertAlignment>Bottom</VertAlignment>
