@@ -11,3 +11,12 @@ C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.dll
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.pdb
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.csprojResolveAssemblyReference.cache
+C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\SIGE.Entidades.dll
+C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\SIGE.Entidades.pdb
+C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\Newtonsoft.Json.dll
+C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\Newtonsoft.Json.xml
+C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.csprojAssemblyReference.cache
+C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.csproj.CoreCompileInputs.cache
+C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.csproj.CopyComplete
+C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.dll
+C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.pdb
