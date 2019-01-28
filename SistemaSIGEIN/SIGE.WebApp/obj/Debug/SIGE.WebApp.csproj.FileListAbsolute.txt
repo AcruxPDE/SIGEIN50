@@ -248,4 +248,6 @@ C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debu
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.dll
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.pdb
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Microsoft.AnalysisServices.AdomdClient.dll
-C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Negocio.XmlSerializers.dll
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Entidades.pdb
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Negocio.pdb
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.AccesoDatos.pdb

@@ -149,7 +149,8 @@
             }
 
             function Close() {
-                window.close();
+                window.top.location.href = window.top.location.href;
+                //window.close();
             }
 
             function OnClientLoad(editor, args) {

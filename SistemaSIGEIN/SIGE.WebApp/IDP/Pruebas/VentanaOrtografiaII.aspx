@@ -150,7 +150,8 @@
             }
 
             function Close() {
-                window.close();
+                window.top.location.href = window.top.location.href;
+                //window.close();
             }
 
             //FUNCION PARA HABILITAR O DESHABILITAR LOS TEXTBOX

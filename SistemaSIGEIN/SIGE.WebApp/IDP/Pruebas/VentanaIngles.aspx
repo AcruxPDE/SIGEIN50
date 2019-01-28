@@ -173,7 +173,8 @@
                 window.location = "Default.aspx?ty=sig";
             }
             function Close() {
-                window.close();
+                window.top.location.href = window.top.location.href;
+                //window.close();
             }
             function updateTimer(seccion) {
                 var multiPage = $find("<%=mpgIngles.ClientID %>");

@@ -88,7 +88,8 @@
             }
 
             function Close() {
-                window.close();
+                window.top.location.href = window.top.location.href;
+                //window.close();
             }
                     function ConfirmarEliminarRespuestas(sender, args) {
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {

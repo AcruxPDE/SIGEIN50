@@ -173,7 +173,8 @@
             }
 
             function Close() {
-                window.close();
+                window.top.location.href = window.top.location.href;
+                //window.close();
             }
 
             //EN PROCESO PARA LA DETECCION DEL 3 EN LOS SEGMENTOS
