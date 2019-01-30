@@ -213,6 +213,11 @@ namespace SIGE.WebApp.Administracion
                 txtRangoEdadMin.InnerText = vDescriptivo.NO_EDAD_MINIMA.ToString();
                 txtRangoEdadMax.InnerText = vDescriptivo.NO_EDAD_MAXIMA.ToString();
 
+                var xmlPuestoEscolaridad = XElement.Parse(vDescriptivo.XML_PUESTO_ESCOLARIDAD).Element("OTRO_PUESTO_ESCOLARIDAD");
+
+                if (xmlPuestoEscolaridad.HasAttributes)
+                    txtOtroNivelEst.Text = xmlPuestoEscolaridad.Attribute("DS_OTRO_NIVEL_ESCOLARIDAD").Value;
+
                // txtCompetenciasRequeridas.InnerHtml = vDescriptivo.DS_COMPETENCIAS_REQUERIDAS;
                 foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTO_ESCOLARIDAD).Elements("PUESTO_ESCOLARIDAD"))
                 {

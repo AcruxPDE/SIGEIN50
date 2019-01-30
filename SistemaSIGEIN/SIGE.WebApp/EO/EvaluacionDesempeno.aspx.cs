@@ -365,7 +365,7 @@ namespace SIGE.WebApp.EO
 
                     if (vMensaje == "No hay empleados dados de baja")
                     {
-                        ClientScript.RegisterStartupScript(GetType(), "script", "OpenReplicaPeriodoWindow(" + idPeriodo + ");", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "OpenReplicaPeriodoWindow(" + idPeriodo + ");", true);
                     }
                     else
                     {
@@ -392,7 +392,7 @@ namespace SIGE.WebApp.EO
                 }
                 else
                 {
-                    ClientScript.RegisterStartupScript(GetType(), "script", "OpenCopiaPeriodoWindow(" + vIdPeriodo + ");", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "OpenCopiaPeriodoWindow(" + vIdPeriodo + ");", true);
                 }
             }
 
