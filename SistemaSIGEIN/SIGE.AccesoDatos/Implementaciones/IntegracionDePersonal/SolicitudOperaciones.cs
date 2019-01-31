@@ -9,12 +9,13 @@ using SIGE.Entidades.Externas;
 using System.Data.SqlClient;
 using System.Data;
 using System.Data.SqlTypes;
+using SIGE.Entidades.Administracion;
 
 namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 {
-
     public class SolicitudOperaciones
     {
+
         private SistemaSigeinEntities contexto;
 
         public List<SPE_OBTIENE_K_SOLICITUD_Result> ObtenerSolicitudes(int? ID_SOLICITUD = null, int? ID_CANDIDATO = null, int? ID_EMPLEADO = null, int? ID_DESCRIPTIVO = null, int? ID_REQUISICION = null, String CL_SOLICITUD = null, String CL_ACCESO_EVALUACION = null, int? ID_PLANTILLA_SOLICITUD = null, String DS_COMPETENCIAS_ADICIONALES = null, DateTime? FE_CREACION = null, DateTime? FE_MODIFICACION = null, String CL_USUARIO_APP_CREA = null, String CL_USUARIO_APP_MODIFICA = null, String NB_PROGRAMA_CREA = null, String NB_PROGRAMA_MODIFICA = null, String CL_SOLICITUD_ESTATUS = null, DateTime? FE_SOLICITUD = null)
@@ -207,13 +208,28 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             }
         }
 
-        public List<SPE_OBTIENE_DATOS_EMPLEADOS_Result> ObtenerDatosEmpleados(int? pIdEmpresa = null, int? pIdRol = null)
+        //public List<SPE_OBTIENE_DATOS_EMPLEADOS_Result> ObtenerDatosEmpleados(int? pIdEmpresa = null, int? pIdRol = null)
+        //{
+        //    using (contexto = new SistemaSigeinEntities())
+        //    {
+        //        return contexto.SPE_OBTIENE_DATOS_EMPLEADOS(pIdEmpresa, pIdRol).ToList();
+        //    }
+        //}
+        public List<E_EMPLEADO_RPT> ObtenerDatosEmpleados(int? pIdEmpresa = null, int? pIdRol = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_DATOS_EMPLEADOS(pIdEmpresa, pIdRol).ToList();
+              
+                return contexto.Database.SqlQuery<E_EMPLEADO_RPT>("EXEC " +
+                    "ADM.SPE_OBTIENE_DATOS_EMPLEADOS " +
+                    "@PIN_ID_EMPRESA, " +
+                    "@PIN_ID_ROL",
+                    new SqlParameter("@PIN_ID_EMPRESA", (object)pIdEmpresa ?? DBNull.Value),
+                    new SqlParameter("@PIN_ID_ROL", (object)pIdRol ?? DBNull.Value)
+                    ).ToList();
             }
         }
+
 
         public List<SPE_OBTIENE_ENTREVISTAS_SELECCIONADOS_Result> ObtenerEntrevistasSeleccionados()
         {
@@ -221,6 +237,6 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             {
                 return contexto.SPE_OBTIENE_ENTREVISTAS_SELECCIONADOS().ToList();
             }
-        }        
+        }
     }
 }

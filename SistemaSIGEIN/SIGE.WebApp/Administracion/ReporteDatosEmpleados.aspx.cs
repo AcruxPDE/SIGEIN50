@@ -1,4 +1,5 @@
 ﻿using SIGE.Entidades;
+using SIGE.Entidades.Administracion;
 using SIGE.Entidades.Externas;
 using SIGE.Negocio.Administracion;
 using SIGE.WebApp.Comunes;
@@ -43,7 +44,7 @@ namespace SIGE.WebApp.Administracion
         protected void grdEmpleados_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             SolicitudNegocio empleados = new SolicitudNegocio();
-            List<SPE_OBTIENE_DATOS_EMPLEADOS_Result> listaEmpleados = new List<SPE_OBTIENE_DATOS_EMPLEADOS_Result>();
+            List<E_EMPLEADO_RPT> listaEmpleados = new List<E_EMPLEADO_RPT>();
             listaEmpleados = empleados.ObtieneDatosEmpleados(pIdEmpresa: vIdEmpresa, pIdRol: vIdRol);
             grdEmpleados.DataSource = listaEmpleados;
         }

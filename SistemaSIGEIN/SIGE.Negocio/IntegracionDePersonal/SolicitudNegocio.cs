@@ -8,7 +8,7 @@ using SIGE.Negocio.Utilerias;
 using System.Xml.Linq;
 using System.Linq;
 using System.Web.Security;
-
+using SIGE.Entidades.Administracion;
 
 namespace SIGE.Negocio.Administracion
 {
@@ -137,7 +137,7 @@ namespace SIGE.Negocio.Administracion
             return operaciones.ObtenerSolicitudesEmpleo();
         }
 
-        public List<SPE_OBTIENE_DATOS_EMPLEADOS_Result> ObtieneDatosEmpleados(int? pIdEmpresa = null, int? pIdRol = null)
+        public List<E_EMPLEADO_RPT> ObtieneDatosEmpleados(int? pIdEmpresa = null, int? pIdRol = null)
         {
             SolicitudOperaciones operaciones = new SolicitudOperaciones();
             return operaciones.ObtenerDatosEmpleados(pIdEmpresa, pIdRol);
