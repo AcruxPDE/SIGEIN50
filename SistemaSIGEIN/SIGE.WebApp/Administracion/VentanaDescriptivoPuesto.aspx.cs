@@ -1263,7 +1263,8 @@ namespace SIGE.WebApp.Administracion
 
         private XElement EditorContentToXml(string pNbNodoRaiz, string pDsContenido, string pNbTag)
         {
-            return XElement.Parse(EncapsularRadEditorContent(XElement.Parse(String.Format("<{1}>{0}</{1}>", HttpUtility.HtmlDecode(HttpUtility.UrlDecode(pDsContenido)), pNbNodoRaiz)), pNbNodoRaiz));
+            var vDsContenido = HttpUtility.HtmlDecode(HttpUtility.UrlDecode(pDsContenido)).Replace("&", "");
+            return XElement.Parse(EncapsularRadEditorContent(XElement.Parse(String.Format("<{1}>{0}</{1}>", vDsContenido, pNbNodoRaiz)), pNbNodoRaiz));
         }
 
         private string EncapsularRadEditorContent(XElement nodo, string nbNodo)
