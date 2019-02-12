@@ -372,7 +372,7 @@ namespace SIGE.WebApp.TC
                                 }
                                 else
                                 {
-                                    vPorcentajeCL = vPorcentajeCL + vResult.PROMEDIO_RESULTADO;
+                                    vPorcentajeCL = vPorcentajeCL + ((vResult.PROMEDIO_RESULTADO == null) ? 0 : vResult.PROMEDIO_RESULTADO);
                                     vNumPeriodoCL = vNumPeriodoCL + 1;
                                     vDr[vColumn.ID_PERIODO_REFERENCIA.ToString()] = String.Format(vDivsCeldasPo, "<p title=\"" + item.CL_PUESTO + ", " + item.NB_PUESTO + "\"><a href=\"javascript:openCuestionarioClima(" + vResult.ID_EVALUADOR + ", " + vResult.ID_PERIODO + ")\">0%</a></p>", vResult.COLOR_DIMENSION);
                                 }
@@ -412,8 +412,10 @@ namespace SIGE.WebApp.TC
                             vDr["BONO"] = "N/A";
                     }
 
+                    //// Se hace proceso de calculo de porcentajes por modulo del tablero
+
                     if (vNumPeriodoFyD > 0)
-                        vPromedio = vPromedio + ((vPorcentajeFYD / vNumPeriodoFyD) * (vPeriodoTablero.PR_FYD / 100));
+                        vPromedio = ((vPromedio == null) ? 0 : vPromedio) + ((vPorcentajeFYD / vNumPeriodoFyD) * (vPeriodoTablero.PR_FYD / 100));
                     if (vNumPeriodoED > 0)
                         vPromedio = vPromedio + ((vPorcentajeED / vNumPeriodoED) * (vPeriodoTablero.PR_DESEMPENO / 100));
                     if (vNumPeriodoCL > 0)
