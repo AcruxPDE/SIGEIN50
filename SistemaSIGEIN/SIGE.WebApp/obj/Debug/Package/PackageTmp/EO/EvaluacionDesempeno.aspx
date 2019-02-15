@@ -539,6 +539,16 @@
 
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnCopiar">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnCopiar" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnReplicar">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnReplicar" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
       <telerik:RadSplitter ID="rsEvaluacionDesempeno" BorderSize="0" Width="100%" Height="100%" runat="server">
