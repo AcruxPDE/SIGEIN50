@@ -741,16 +741,16 @@ namespace SIGE.WebApp.IDP
 
                 var telefonos = xmlTelefonos.Elements("TELEFONO").Select(el => new E_TIPO_TELEFONO
                 {
-                    TELEFONO = el.Attribute("NO_TELEFONO").Value,
-                    TIPO = el.Attribute("CL_TIPO").Value
+                    NO_TELEFONO = el.Attribute("NO_TELEFONO").Value,
+                    CL_TIPO_TELEFONO = el.Attribute("CL_TIPO_TELEFONO").Value
 
                 }).ToList();
 
-                var telmovil = telefonos.Where(w => w.TIPO.Equals("MOVIL")).FirstOrDefault();
-                var telfijo = telefonos.Where(w => w.TIPO.Equals("FIJO")).FirstOrDefault();
+                var telmovil = telefonos.Where(w => w.CL_TIPO_TELEFONO.Equals("MOVIL")).FirstOrDefault();
+                var telfijo = telefonos.Where(w => w.CL_TIPO_TELEFONO.Equals("FIJO")).FirstOrDefault();
 
-                txtESTelefonoMovil.Text = (telmovil != null) ? telmovil.TELEFONO : "";
-                txtESTelefono.Text = (telfijo != null) ? telfijo.TELEFONO : "";
+                txtESTelefonoMovil.Text = (telmovil != null) ? telmovil.NO_TELEFONO : "";
+                txtESTelefono.Text = (telfijo != null) ? telfijo.NO_TELEFONO : "";
 
             }
         }
@@ -1836,8 +1836,8 @@ namespace SIGE.WebApp.IDP
         [Serializable]
         public class E_TIPO_TELEFONO
         {
-            public string TELEFONO { get; set; }
-            public string TIPO { get; set; }
+            public string NO_TELEFONO { get; set; }
+            public string CL_TIPO_TELEFONO { get; set; }
         }
 
         protected void grdReferencias_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
