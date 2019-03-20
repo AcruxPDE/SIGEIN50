@@ -45,7 +45,8 @@
         <div class="divControlDerecha">
             <telerik:RadTextBox ID="txtVersionTabulador"
                 runat="server"
-                Width="180px">
+                Width="180px"
+                MaxLength="20"> 
             </telerik:RadTextBox>
             <asp:RequiredFieldValidator
                 Display="Dynamic"

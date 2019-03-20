@@ -337,6 +337,69 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadTextBox txtFechaMod;
         
         /// <summary>
+        /// rpOrdenarFiltrar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPane rpOrdenarFiltrar;
+        
+        /// <summary>
+        /// rszOrdenarFiltrar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSlidingZone rszOrdenarFiltrar;
+        
+        /// <summary>
+        /// rspOrdenarFiltrar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSlidingPane rspOrdenarFiltrar;
+        
+        /// <summary>
+        /// cmbOrdenamiento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox cmbOrdenamiento;
+        
+        /// <summary>
+        /// rbAscendente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton rbAscendente;
+        
+        /// <summary>
+        /// rbDescendente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton rbDescendente;
+        
+        /// <summary>
+        /// rfFiltros control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadFilter rfFiltros;
+        
+        /// <summary>
         /// rwmMensaje control.
         /// </summary>
         /// <remarks>

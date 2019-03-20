@@ -71,7 +71,7 @@
                                 <label id="Label3" runat="server">Categoría:</label>
                             </div>
                             <div class="divControlDerecha">
-                                <telerik:RadComboBox Filter="Contains" runat="server" ID="cmbCategoria" Width="300" MarkFirstMatch="true" EnableLoadOnDemand="true" 
+                                <telerik:RadComboBox Filter="Contains" runat="server" ID="cmbCategoria" Width="300" MarkFirstMatch="true" EnableLoadOnDemand="true"
                                     AutoPostBack="true" HighlightTemplatedItems="true"  DropDownWidth="315" ValidationGroup="VGcmbCategoria" OnSelectedIndexChanged="cmbCategoria_SelectedIndexChanged">
                                 </telerik:RadComboBox>
                             </div>
@@ -86,7 +86,7 @@
                                 <label id="Label2" runat="server">Clasificación:</label>
                             </div>
                             <div class="divControlDerecha">
-                                <telerik:RadComboBox Filter="Contains" runat="server" ID="cmbClasificaciones" Width="300" MaxHeight="200" MarkFirstMatch="true" EnableLoadOnDemand="true" 
+                                <telerik:RadComboBox Filter="Contains" runat="server" ID="cmbClasificaciones" Width="300" MaxHeight="200" MarkFirstMatch="true" EnableLoadOnDemand="true"  
                                     AutoPostBack="true" HighlightTemplatedItems="true"  DropDownWidth="310" ValidationGroup="VGcmbClasificaciones">
                                 </telerik:RadComboBox>                                
                             </div>

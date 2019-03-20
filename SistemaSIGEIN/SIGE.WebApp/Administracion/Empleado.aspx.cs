@@ -349,6 +349,7 @@ namespace SIGE.WebApp.Administracion
                 else
                 {
                     UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                    grdCompensacion.Rebind();
                     Response.Redirect(Request.RawUrl); 
                 }
 
@@ -543,7 +544,7 @@ namespace SIGE.WebApp.Administracion
                         {
                             //Session["__clUsuario__"] = vClUsuario;
                             tabSolicitud.Tabs[8].Visible = true;
-                            ifNomina.Attributes.Add("src", "/NOMINA/InventarioPersonal/PopupInventarioPersonalNuevoEditar.aspx?clOrigen=DO&clUsuario=" + vClUsuario + "&ID=" + vEmpleado.ID_EMPLEADO_NOMINA);
+                            ifNomina.Attributes.Add("src", "/NOMINA/InventarioPersonal/PopupInventarioPersonalNuevoEditar.aspx?clOrigen=DO&clUsuario=" + vClUsuario + "&ID=" + vEmpleado.ID_EMPLEADO_NOMINA + "&FgReactiva=1");
                         }
 
                         if (vEmpleado.FG_DO == true)

@@ -283,7 +283,7 @@ namespace SIGE.Negocio.Administracion
             {
                 if (vXmlReporte.Element("MC").Element("BITACORA_CAMBIOS") != null)
                 {
-                    foreach (XElement item in vXmlReporte.Element("MC").Element("BITACORA_CAMBIOS").Elements("SUELDO"))
+                    foreach (XElement item in vXmlReporte.Element("MC").Element("BITACORA_CAMBIOS").Elements("SUELDO_PUESTO"))
                     {
                         vReporteEmpleado.DatosMc.vLstBitacoraSueldos.Add(new E_BITACORA_SUELDO 
                         {
@@ -291,8 +291,9 @@ namespace SIGE.Negocio.Administracion
                             FE_CAMBIO = UtilXML.ValorAtributo<DateTime>(item.Attribute("FE_CAMBIO")),
                             NB_PROCESO = UtilXML.ValorAtributo<string>(item.Attribute("NB_PROCESO")),
                             DS_PROCESO = UtilXML.ValorAtributo<string>(item.Attribute("DS_PROCESO")),
-                            NB_ANTERIOR = UtilXML.ValorAtributo<decimal>(item.Attribute("NB_ANTERIOR")),
-                            NB_ACTUAL = UtilXML.ValorAtributo<decimal>(item.Attribute("NB_ACTUAL"))
+                            NB_ANTERIOR = UtilXML.ValorAtributo<string>(item.Attribute("NB_ANTERIOR")),//UtilXML.ValorAtributo<decimal>(item.Attribute("NB_ANTERIOR")),
+                            NB_ACTUAL = UtilXML.ValorAtributo<string>(item.Attribute("NB_ACTUAL")), //UtilXML.ValorAtributo<decimal>(item.Attribute("NB_ACTUAL"))
+                            CL_TIPO_BITACORA = UtilXML.ValorAtributo<string>(item.Attribute("CL_TIPO_BITACORA"))
                         });
                     }
                 }

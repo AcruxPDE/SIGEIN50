@@ -76,55 +76,58 @@ namespace SIGE.WebApp.FYD
             {
                 source = source.OrderByDescending(t => t.NO_NIVEL).ToList();
             }
-
-            if (source[i].ID_PUESTO == vIdPuesto)
+            if (source.Count > 0)
             {
-                mostrarcheck = false;
-
-                switch (tipo)
+                if (source[i].ID_PUESTO == vIdPuesto)
                 {
-                    case "NATURAL":
-                        css = "cssNaturalActual";
-                        break;
-                    case "ALTER":
-                        css = "cssAlternativaActual";
-                        break;
-                    case "HOR":
-                        css = "cssHorizontalActual";
-                        break;
-                }
-            }
-            else
-            {
-                mostrarcheck = true;
+                    mostrarcheck = false;
 
-                switch (tipo)
+                    switch (tipo)
+                    {
+                        case "NATURAL":
+                            css = "cssNaturalActual";
+                            break;
+                        case "ALTER":
+                            css = "cssAlternativaActual";
+                            break;
+                        case "HOR":
+                            css = "cssHorizontalActual";
+                            break;
+                    }
+                }
+                else
                 {
-                    case "NATURAL":
-                        css = "cssNatural";
-                        break;
-                    case "ALTER":
-                        css = "cssAlternativa";
-                        break;
-                    case "HOR":
-                        css = "cssHorizontal";
-                        break;
+                    mostrarcheck = true;
+
+                    switch (tipo)
+                    {
+                        case "NATURAL":
+                            css = "cssNatural";
+                            break;
+                        case "ALTER":
+                            css = "cssAlternativa";
+                            break;
+                        case "HOR":
+                            css = "cssHorizontal";
+                            break;
+                    }
                 }
+
+                var node = new OrgChartNode();
+                node.DataItem = source[i];
+
+                var groupItem = new OrgChartGroupItem() { Template = new SelectionTemplate(source[i].ID_PUESTO, source[i].NB_PUESTO, mostrarcheck, css) };
+                groupItem.CssClass = css;
+
+                if (source.Count > 1)
+                {
+                    generarOrganigrama(source, node, i + 1, tipo);
+                }
+
+                node.GroupItems.Add(groupItem);
+                control.Nodes.Add(node);
             }
 
-            var node = new OrgChartNode();
-            node.DataItem = source[i];
-
-            var groupItem = new OrgChartGroupItem() { Template = new SelectionTemplate(source[i].ID_PUESTO, source[i].NB_PUESTO, mostrarcheck, css) };
-            groupItem.CssClass = css;
-
-            if (source.Count > 1)
-            {
-                generarOrganigrama(source, node, i + 1, tipo);
-            }
-
-            node.GroupItems.Add(groupItem);
-            control.Nodes.Add(node);
         }
 
         private void generarOrganigrama(List<SPE_OBTIENE_PLAN_VIDA_CARRERA_Result> source, OrgChartNode nodo, int i, string tipo)

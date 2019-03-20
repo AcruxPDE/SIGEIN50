@@ -98,15 +98,16 @@ namespace SIGE.WebApp.IDP
                 int vNumeroLista = 0;
                 var vCandidatoSeleccionado = pLstCandidatos.Where(w => w.ID_CANDIDATO == vIdCandidato).FirstOrDefault();
                 if (vCandidatoSeleccionado != null)
+                {
                     vNumeroLista = int.Parse(vCandidatoSeleccionado.RENGLON.ToString());
 
-                decimal vNumeroItem = Math.Round(((decimal)vNumeroLista / 10), 1);
-                int vNumeroPag = (vNumeroLista / 10);
-                if (vNumeroItem > vNumeroPag)
-                    grdSolicitudes.CurrentPageIndex = (vNumeroPag - 1) + 1;
-                else
-                    grdSolicitudes.CurrentPageIndex = (vNumeroPag - 1);
-
+                    decimal vNumeroItem = Math.Round(((decimal)vNumeroLista / 10), 1);
+                    int vNumeroPag = (vNumeroLista / 10);
+                    if (vNumeroItem > vNumeroPag)
+                        grdSolicitudes.CurrentPageIndex = (vNumeroPag - 1) + 1;
+                    else
+                        grdSolicitudes.CurrentPageIndex = (vNumeroPag - 1);
+                }
             }
         }
 
@@ -379,7 +380,7 @@ namespace SIGE.WebApp.IDP
         //    {
         //        vIdGeneraBaterias = Guid.NewGuid();
         //        ContextoCandidatosBateria.oCandidatosBateria = new List<E_CANDIDATOS_BATERIA>();
-                
+
 
         //        ContextoCandidatosBateria.oCandidatosBateria.Add(new E_CANDIDATOS_BATERIA
         //        {

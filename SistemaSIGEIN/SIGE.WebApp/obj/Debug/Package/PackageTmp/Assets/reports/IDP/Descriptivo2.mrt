@@ -2224,10 +2224,10 @@ Lo necesita de manera imprenscindible</Text>
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>12/4/2018 11:59:27 AM</ReportChanged>
+  <ReportChanged>12/6/2018 1:39:56 PM</ReportChanged>
   <ReportCreated>8/5/2017 10:53:10 AM</ReportCreated>
   <ReportFile>C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\Assets\reports\IDP\Descriptivo2.mrt</ReportFile>
-  <ReportGuid>8b2ddc107af94a389e90d8cc9213b6b1</ReportGuid>
+  <ReportGuid>e770e9a169a841e591a3f2e2dc3d6669</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2015.3.0</ReportVersion>

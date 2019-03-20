@@ -69,8 +69,10 @@
                 openChildDialog("../Comunes/SeleccionCompetencia.aspx", "winSeleccionCompetencia", "Selección de competencia", windowProperties);
 
             if (sender == vBtnGuardarCurso) {
-                var vIdInstructor = '<%# vIdInstructor %>';
-                openChildDialog("../Comunes/SeleccionCurso.aspx?IdInstructor=" + vIdInstructor, "winSeleccionCurso", "Selección de curso", windowProperties);
+                // Se cometa validación de selección de cursos por competencias seleccionadas, por cambio solicitado en pendiente 
+                //var vIdInstructor = '<%# vIdInstructor %>';
+                //openChildDialog("../Comunes/SeleccionCurso.aspx?IdInstructor=" + vIdInstructor, "winSeleccionCurso", "Selección de curso", windowProperties);
+                openChildDialog("../Comunes/SeleccionCurso.aspx", "winSeleccionCurso", "Selección de curso", windowProperties);
             }
 
             if (sender == vBtnBuscaCP) {

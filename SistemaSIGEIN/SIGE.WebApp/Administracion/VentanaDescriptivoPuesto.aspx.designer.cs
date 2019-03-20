@@ -229,6 +229,15 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadListBox lstCarreraTec;
         
         /// <summary>
+        /// txtOtroNivelEst control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox txtOtroNivelEst;
+        
+        /// <summary>
         /// cmbCompetenciaEspecificas control.
         /// </summary>
         /// <remarks>

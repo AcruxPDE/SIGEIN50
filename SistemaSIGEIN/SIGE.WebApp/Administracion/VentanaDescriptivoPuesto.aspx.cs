@@ -300,6 +300,11 @@ namespace SIGE.WebApp.Administracion
                 txtRangoEdadMax.Value = vDescriptivo.NO_EDAD_MAXIMA;
                // txtCompetenciasRequeridas.Text = vDescriptivo.DS_COMPETENCIAS_REQUERIDAS;
 
+                var xmlPuestoEscolaridad = XElement.Parse(vDescriptivo.XML_PUESTO_ESCOLARIDAD).Element("OTRO_PUESTO_ESCOLARIDAD");
+
+                if (xmlPuestoEscolaridad.HasAttributes)
+                    txtOtroNivelEst.Text = xmlPuestoEscolaridad.Attribute("DS_OTRO_NIVEL_ESCOLARIDAD").Value;
+
                 foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTO_ESCOLARIDAD).Elements("PUESTO_ESCOLARIDAD"))
                 {
                     if (item.Attribute("CL_TIPO_ESCOLARIDAD").Value == E_CL_TIPO_ESCOLARIDAD.POSTGRADO.ToString())
@@ -923,8 +928,8 @@ namespace SIGE.WebApp.Administracion
                 new XAttribute("ID_DESCRIPTIVO", vIdDescriptivo),
                 new XAttribute("CL_PUESTO", txtNombreCorto.Text),
                 new XAttribute("NB_PUESTO", txtDescripcionPuesto.Text),
-                new XAttribute("NO_EDAD_MINIMA", txtRangoEdadMin.Value),
-                new XAttribute("NO_EDAD_MAXIMA", txtRangoEdadMax.Value),
+                new XAttribute("NO_EDAD_MINIMA", (txtRangoEdadMin.Value == null) ? 18.0 : txtRangoEdadMin.Value),
+                new XAttribute("NO_EDAD_MAXIMA", (txtRangoEdadMax.Value == null) ? 65.0 : txtRangoEdadMax.Value),
                 new XAttribute("CL_GENERO", cmbGenero.SelectedValue),
                 new XAttribute("CL_ESTADO_CIVIL", cmbEdoCivil.SelectedValue),
                 new XAttribute("CL_TIPO_PUESTO", btnDirecto.Checked ? "DIRECTO" : "INDIRECTO"),
@@ -980,6 +985,9 @@ namespace SIGE.WebApp.Administracion
                 pEscolaridad.Add(new XElement("ESCOLARIDAD",
                     new XAttribute("ID_ESCOLARIDAD", item.Value)));
             }
+
+            pEscolaridad.Add(new XElement("OTRO",
+                    new XAttribute("DS_OTRO_NIVEL_ESCOLARIDAD", (txtOtroNivelEst.Text == null) ? "" : txtOtroNivelEst.Text)));
 
             //LISTA DE RELACION DE PUESTOS
 
@@ -1255,7 +1263,8 @@ namespace SIGE.WebApp.Administracion
 
         private XElement EditorContentToXml(string pNbNodoRaiz, string pDsContenido, string pNbTag)
         {
-            return XElement.Parse(EncapsularRadEditorContent(XElement.Parse(String.Format("<{1}>{0}</{1}>", HttpUtility.HtmlDecode(HttpUtility.UrlDecode(pDsContenido)), pNbNodoRaiz)), pNbNodoRaiz));
+            var vDsContenido = HttpUtility.HtmlDecode(HttpUtility.UrlDecode(pDsContenido)).Replace("&", "");
+            return XElement.Parse(EncapsularRadEditorContent(XElement.Parse(String.Format("<{1}>{0}</{1}>", vDsContenido, pNbNodoRaiz)), pNbNodoRaiz));
         }
 
         private string EncapsularRadEditorContent(XElement nodo, string nbNodo)
@@ -1678,10 +1687,10 @@ namespace SIGE.WebApp.Administracion
 
                 SeguridadProcesos();
 
-                MnsAutoridadPoliticaIntegral.Visible = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
-                MnsAutoridad.Visible = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
-                lblPoliticaIntegral.Visible = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
-                if (ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible)
+                MnsAutoridadPoliticaIntegral.Visible = ContextoApp.ADM.fgVisibleMensajes;
+                MnsAutoridad.Visible = ContextoApp.ADM.fgVisibleMensajes;
+                lblPoliticaIntegral.Visible = ContextoApp.ADM.fgVisibleMensajes;
+                if (ContextoApp.ADM.fgVisibleMensajes)
                 {
                     MnsAutoridadPoliticaIntegral.Text = ContextoApp.ADM.AutoridadPoliticaIntegral.dsMensaje;
                 }

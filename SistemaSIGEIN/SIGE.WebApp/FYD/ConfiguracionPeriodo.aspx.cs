@@ -887,9 +887,9 @@ namespace SIGE.WebApp.FYD
             else
             {
                 btnPlanVidaCarrera.Enabled = pFgHabilitarTipoEvaluacion;
-                chkFgRutaVertical.Enabled = !pFgHabilitarTipoEvaluacion;
-                chkFgRutaVerticalAlternativa.Enabled = !pFgHabilitarTipoEvaluacion;
-                chkFgRutaHorizontalAlternativa.Enabled = !pFgHabilitarTipoEvaluacion;
+                chkFgRutaVertical.Enabled = pFgHabilitarTipoEvaluacion;
+                chkFgRutaVerticalAlternativa.Enabled = pFgHabilitarTipoEvaluacion;
+                chkFgRutaHorizontalAlternativa.Enabled = pFgHabilitarTipoEvaluacion;
             }
 
        

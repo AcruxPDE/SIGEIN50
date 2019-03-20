@@ -377,7 +377,7 @@
                                 <telerik:RadNumericTextBox runat="server" ID="rnAntiguedadInicial" NumberFormat-DecimalDigits="0" Value="0" Name="rnAntiguedadInicial" Width="60px" MinValue="0" ShowSpinButtons="true"></telerik:RadNumericTextBox>
                                 a
                                         <telerik:RadNumericTextBox runat="server" ID="rnAtiguedadFinal" NumberFormat-DecimalDigits="0" Value="30" Name="rnAtiguedadFinal" Width="60px" MinValue="1" ShowSpinButtons="true"></telerik:RadNumericTextBox>
-                                años.
+                                meses.
                             </div>
                         </div>
                         <div style="clear: both; height: 20px"></div>

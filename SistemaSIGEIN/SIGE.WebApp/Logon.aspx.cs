@@ -449,7 +449,7 @@ namespace SIGE.WebApp
                     ptipo = (string)(Request.QueryString["AUTORIZA"]);
                     pFolioAutorizacion = Guid.Parse((Request.QueryString["TOKEN"]));
                     DocumentoAutorizarNegocio nDocumento = new DocumentoAutorizarNegocio();
-                    var DocumentoAutorizar = nDocumento.ObtieneEmpleadoDocumentoAutorizacion(pFlAutorizacion: pFolioAutorizacion).FirstOrDefault();
+                    var DocumentoAutorizar = nDocumento.ObtieneEmpleadoDocumentoAutorizacion(pFlAutorizacion: pFolioAutorizacion).Where(w=> w.ID_PERIODO !=null).FirstOrDefault();
 
                     if (DocumentoAutorizar != null)
                     {
@@ -457,11 +457,16 @@ namespace SIGE.WebApp
                         {
                             txtProgramaCapacitacion.Text = DocumentoAutorizar.NB_PROGRAMA.ToString();
                             vIdPrograma = DocumentoAutorizar.ID_PROGRAMA;
+                            txtProgramaCapacitacion.ReadOnly = true;
+                            txtAutorizador.ReadOnly = true;
                         }
                         else
                         {
                             txtProgramaCapacitacion.Text = DocumentoAutorizar.NB_PERIODO;
                             vIdPeriodo = DocumentoAutorizar.ID_PERIODO;
+                            txtProgramaCapacitacion.ReadOnly = true;
+                            txtAutorizador.ReadOnly = true;
+
                         }
 
                         //txtAutorizador.Text = DocumentoAutorizar.NB_EMPLEADO_ELABORA.ToString();

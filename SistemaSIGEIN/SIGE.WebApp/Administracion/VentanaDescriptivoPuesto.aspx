@@ -663,7 +663,7 @@
                         <telerik:RadTab Text="Organigrama"></telerik:RadTab>
                  <%--       <telerik:RadTab Text="Responsabilidades"></telerik:RadTab>--%>
                         <telerik:RadTab Text="Funciones"></telerik:RadTab>
-                        <telerik:RadTab Text="Competencias e Indicadores"></telerik:RadTab><%--<telerik:RadTab Text="Competencias genéricas"></telerik:RadTab>--%>
+                        <telerik:RadTab Text="Competencias genéricas"></telerik:RadTab><%--<telerik:RadTab Text="Competencias genéricas"></telerik:RadTab>--%>
                         <telerik:RadTab Text="Campos extra"></telerik:RadTab>
                         <telerik:RadTab Text="STPS"></telerik:RadTab>
                         <telerik:RadTab Text="Documentación"></telerik:RadTab>
@@ -765,6 +765,11 @@
                                             <telerik:RadListBox runat="server" ID="lstCarreraTec" Width="100%" AllowDelete="true" ButtonSettings-AreaWidth="35px"></telerik:RadListBox>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="ctrlBasico">
+                                <div class="divBarraTitulo">
+                                    <telerik:RadTextBox ID="txtOtroNivelEst" runat="server" Width="500" Label="Otro" LabelWidth="100"></telerik:RadTextBox>
                                 </div>
                             </div>
                             <div style="clear: both;"></div>
@@ -1747,7 +1752,7 @@
                 <telerik:RadTabStrip ID="rtsFuncionGenerica" runat="server" SelectedIndex="0" MultiPageID="rmpFuncionGenerica">
                     <Tabs>
                         <telerik:RadTab Text="Definición"></telerik:RadTab>
-                        <telerik:RadTab Text="Competencias e indicadores"></telerik:RadTab>
+                        <telerik:RadTab Text="Competencias genéricas"></telerik:RadTab>
                     </Tabs>
                 </telerik:RadTabStrip>
                 <div style="height: calc(100% - 90px);">
