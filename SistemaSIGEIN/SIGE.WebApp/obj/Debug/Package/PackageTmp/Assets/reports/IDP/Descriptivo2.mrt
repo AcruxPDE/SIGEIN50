@@ -1168,6 +1168,7 @@ Lo necesita de manera imprescindible</Text>
               <ClientRectangle>0,5.6,17,0.4</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Font>Arial,9,Bold</Font>
+              <HorAlignment>Width</HorAlignment>
               <Margins>0,0,0,0</Margins>
               <Name>Text9</Name>
               <Page isRef="50" />
@@ -1178,6 +1179,7 @@ Lo necesita de manera imprescindible</Text>
 {IIF(FG_VISIBLE=="True",DS_MENSAJE,"")}</Text>
               <TextBrush>Black</TextBrush>
               <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
             </Text9>
           </Components>
           <Conditions isList="true" count="0" />

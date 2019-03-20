@@ -244,6 +244,11 @@
                 window.location = "Default.aspx?ty=sig";
             }
 
+            function Close() {
+                window.top.location.href = window.top.location.href;
+                //window.close();
+            }
+
             function updateTimer(seccion, sender) {
                 var multiPage = $find("<%=mpgActitudMentalI.ClientID %>");
                 if ('<%=this.vTipoRevision%>' != "REV" && '<%=this.vTipoRevision%>' != "EDIT") {

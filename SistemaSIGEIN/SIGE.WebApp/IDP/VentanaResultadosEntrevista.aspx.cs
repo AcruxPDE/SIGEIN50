@@ -120,7 +120,17 @@ namespace SIGE.WebApp.IDP
                     vIdPrueba = int.Parse(Request.QueryString["ID"]);
                     vClToken = new Guid(Request.QueryString["T"]);
                     if (Request.QueryString["vIdBateria"] != null)
-                    vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+                    {
+                        vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+                        btnEliminar.Visible = true;
+                        btnEliminarBateria.Visible = true;
+                    }
+                    else
+                    {
+                        btnEliminar.Visible = false;
+                        btnEliminarBateria.Visible = false;
+                    }
+
                      btnTerminar.Text = "Guardar";
 
                      CargarFactores();
@@ -371,7 +381,7 @@ namespace SIGE.WebApp.IDP
                 if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
                 {
                     UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
-
+                    Response.Redirect(Request.RawUrl); 
                 }
                 else
                     UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
@@ -386,7 +396,7 @@ namespace SIGE.WebApp.IDP
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
             if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
             {
-                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "Close");
             }
             else
             {

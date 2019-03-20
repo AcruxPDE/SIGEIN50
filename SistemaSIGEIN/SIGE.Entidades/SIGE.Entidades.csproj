@@ -232,6 +232,7 @@
     <Compile Include="IntegracionDePersonal\E_FACTORES_PRUEBAS.cs" />
     <Compile Include="IntegracionDePersonal\E_PARAMETROS_BUSQUEDA_CANDIDATO.cs" />
     <Compile Include="IntegracionDePersonal\E_PRUEBAS.cs" />
+    <Compile Include="IntegracionDePersonal\E_PRUEBAS_EVALUACION.cs" />
     <Compile Include="IntegracionDePersonal\E_REPORTE_RESULTADO_BAREMOS.cs" />
     <Compile Include="IntegracionDePersonal\E_RESULTADOS_PRUEBAS_REPORTE.cs" />
     <Compile Include="MetodologiaCompensacion\E_CONSULTA_SUELDOS.cs" />

@@ -89,7 +89,17 @@ namespace SIGE.WebApp.IDP
                     PruebasNegocio nKprueba = new PruebasNegocio();
                     vIdPrueba = int.Parse(Request.QueryString["ID"]);
                     vClToken = new Guid(Request.QueryString["T"]);
-                    vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+                    if (Request.QueryString["vIdBateria"] != null)
+                    {
+                        vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+                        btnEliminar.Visible = true;
+                        btnEliminarBateria.Visible = true;
+                    }
+                    else
+                    {
+                        btnEliminar.Visible = false;
+                        btnEliminarBateria.Visible = false;
+                    }
 
                     //E_RESULTADO vObjetoPrueba = nKprueba.INICIAR_K_PRUEBA(pIdPrueba: vIdPrueba, pFeInicio: DateTime.Now, pClTokenExterno: vClToken, usuario: vClUsuario, programa: vNbPrograma);
                     //if (vObjetoPrueba.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.ERROR)
@@ -329,6 +339,7 @@ namespace SIGE.WebApp.IDP
                     if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
                     {
                         UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                        Response.Redirect(Request.RawUrl); 
                         //var prueba = nPruebas.Obtener_RESULTADO_PRUEBA(pClTokenExterno: vClToken, pIdPrueba: vIdPrueba).ToList();
                         //var vPrueba = nPruebas.Obtener_K_PRUEBA(pIdPrueba: vIdPrueba, pClTokenExterno: vClToken).FirstOrDefault();
                         //if (prueba != null)
@@ -350,7 +361,7 @@ namespace SIGE.WebApp.IDP
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
             if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
             {
-                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "s");
+                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "Close");
             }
             else
             {

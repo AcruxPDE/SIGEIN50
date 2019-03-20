@@ -1,0 +1,5 @@
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Demo\SIGE.Entidades.dll
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Demo\Newtonsoft.Json.dll
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Demo\Newtonsoft.Json.xml
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Demo\SIGE.Entidades.csprojResolveAssemblyReference.cache
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Demo\SIGE.Entidades.dll

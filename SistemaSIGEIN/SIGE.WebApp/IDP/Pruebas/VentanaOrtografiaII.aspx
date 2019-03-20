@@ -149,6 +149,11 @@
                 window.location = "Default.aspx?ty=sig";
             }
 
+            function Close() {
+                window.top.location.href = window.top.location.href;
+                //window.close();
+            }
+
             //FUNCION PARA HABILITAR O DESHABILITAR LOS TEXTBOX
             function EventChangedItem(sender, eventArgs) {
                 var vClassName = document.getElementById(sender.get_id()).className;//OBTENEMOS EL CLASSNAME DEL RADCOMBOBOX POR DEFECTO

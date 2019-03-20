@@ -129,8 +129,6 @@ C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Telerik.W
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Telerik.Windows.Zip.dll
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.AccesoDatos.dll
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\EntityFramework.dll
-C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Entidades.pdb
-C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Negocio.pdb
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Common.Logging.pdb
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Common.Logging.xml
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Common.Logging.Core.pdb
@@ -152,7 +150,6 @@ C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Telerik.W
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.xml
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf.xml
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Telerik.Windows.Zip.xml
-C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.AccesoDatos.pdb
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\EntityFramework.xml
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.csprojResolveAssemblyReference.cache
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.dll.licenses
@@ -251,3 +248,6 @@ C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debu
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.dll
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.pdb
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Microsoft.AnalysisServices.AdomdClient.dll
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Entidades.pdb
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Negocio.pdb
+C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.AccesoDatos.pdb

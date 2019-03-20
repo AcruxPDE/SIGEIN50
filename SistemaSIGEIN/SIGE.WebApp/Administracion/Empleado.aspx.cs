@@ -350,6 +350,7 @@ namespace SIGE.WebApp.Administracion
                 {
                     UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
                     grdCompensacion.Rebind();
+                    Response.Redirect(Request.RawUrl); 
                 }
 
             }

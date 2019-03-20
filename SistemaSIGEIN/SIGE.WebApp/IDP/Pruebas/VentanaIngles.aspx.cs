@@ -139,6 +139,7 @@ namespace SIGE.WebApp.IDP.Pruebas
                vSeccionesPrueba = new List<E_PRUEBA_TIEMPO>();
                var vSegmentos = nKprueba.Obtener_K_PRUEBA_SECCION(pIdPrueba: vIdPrueba);
                vSeccionesPrueba = ParseList(vSegmentos);
+                
                //Si el modo de revision esta activado
                if (vTipoRevision == "REV" || vTipoRevision == "EDIT")
                {
@@ -193,6 +194,11 @@ namespace SIGE.WebApp.IDP.Pruebas
                     vIdPrueba = int.Parse(Request.QueryString["ID"]);
                     vClToken = new Guid(Request.QueryString["T"]);
 
+                    int position = mpgIngles.SelectedIndex;
+                    vSeccionesPrueba = new List<E_PRUEBA_TIEMPO>();
+                    var vSegmentos = nKprueba.Obtener_K_PRUEBA_SECCION(pIdPrueba: vIdPrueba);
+                    vSeccionesPrueba = ParseList(vSegmentos);
+
                     if (Request.QueryString["vIdBateria"] != null)
                     {
                         vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
@@ -204,11 +210,6 @@ namespace SIGE.WebApp.IDP.Pruebas
                         btnEliminar.Visible = false;
                         btnEliminarBateria.Visible = false;
                     }
-
-                    int position = mpgIngles.SelectedIndex;
-                    vSeccionesPrueba = new List<E_PRUEBA_TIEMPO>();
-                    var vSegmentos = nKprueba.Obtener_K_PRUEBA_SECCION(pIdPrueba: vIdPrueba);
-                    vSeccionesPrueba = ParseList(vSegmentos);
 
                     int VPosicionPrueba = IniciaPruebaSeccion(vSeccionesPrueba);
                     E_RESULTADO vObjetoPrueba = nKprueba.INICIAR_K_PRUEBA_SECCION(pIdPrueba: vSeccionesPrueba.ElementAt(VPosicionPrueba).ID_PRUEBA_SECCION, pFeInicio: DateTime.Now, usuario: vClUsuario, programa: vNbPrograma);
@@ -232,6 +233,19 @@ namespace SIGE.WebApp.IDP.Pruebas
                     initRespuestasIngles();
                     mpgIngles.RenderSelectedPageOnly = true;
                 }
+
+                if (Request.QueryString["vIdBateria"] != null)
+                {
+                    vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+                    btnEliminar.Visible = true;
+                    btnEliminarBateria.Visible = true;
+                }
+                else
+                {
+                    btnEliminar.Visible = false;
+                    btnEliminarBateria.Visible = false;
+                }
+
                 vRespuestas = new List<E_PREGUNTA>();
                
             }
@@ -1576,7 +1590,7 @@ namespace SIGE.WebApp.IDP.Pruebas
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
             if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
             {
-                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "Close");
             }
             else
             {
@@ -1594,7 +1608,7 @@ namespace SIGE.WebApp.IDP.Pruebas
                 if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
                 {
                     UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
-
+                    Response.Redirect(Request.RawUrl); 
                 }
                 else
                     UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");

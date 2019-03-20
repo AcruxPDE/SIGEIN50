@@ -13,11 +13,12 @@ using System.Xml.Linq;
 using SIGE.WebApp.Comunes;
 using SIGE.Entidades.Externas;
 
-
 namespace SIGE.WebApp.IDP
 {
     public partial class RelacionCompetenciaFactor : System.Web.UI.Page
     {
+        #region Variables
+
         private string vClUsuario;
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
@@ -46,6 +47,13 @@ namespace SIGE.WebApp.IDP
             set { ViewState["vs_vIdPrueba"] = value; }
         }
 
+        private List<E_PRUEBAS_EVALUACION> vlstPruebas
+        {
+            get { return (List<E_PRUEBAS_EVALUACION>)ViewState["vs_vlstPruebas"]; }
+            set { ViewState["vs_vlstPruebas"] = value; }
+        }
+
+        #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -56,14 +64,21 @@ namespace SIGE.WebApp.IDP
             {
                 vlstFactores = new List<E_SELECCIONADOS>();
                 vlstCompetencias = new List<E_SELECCIONADOS>();
+                vlstPruebas = new List<E_PRUEBAS_EVALUACION>();
+
+                PruebasNegocio nPruebasNegocio = new PruebasNegocio();
+                var vPruebas = nPruebasNegocio.Obtener_C_PRUEBA();
+
+                foreach (var item in vPruebas)
+                {
+                    vlstPruebas.Add(new E_PRUEBAS_EVALUACION { ID_PRUEBA = item.ID_PRUEBA, CL_PRUEBA = item.CL_PRUEBA, NB_PRUEBA = item.NB_PRUEBA, ID_CUESTIONARIO = item.ID_CUESTIONARIO, NO_TIEMPO_PRUEBA = item.NO_TIEMPO_PRUEBA });
+                }
             }
         }
 
         protected void rgdPruebas_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            PruebasNegocio nPruebasNegocio = new PruebasNegocio();
-            var vPruebas = nPruebasNegocio.Obtener_C_PRUEBA();
-            rgdPruebas.DataSource = vPruebas;
+            rgdPruebas.DataSource = vlstPruebas;
         }
 
         protected void rgdFactores_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
@@ -95,9 +110,13 @@ namespace SIGE.WebApp.IDP
         {
             GridDataItem item = (GridDataItem)rgdFactores.SelectedItems[0];
             vIdFactor = int.Parse(item.GetDataKeyValue("ID_SELECCION").ToString());
+            bool vValida = true;
+
+            vValida = (vlstPruebas.Where(w => w.ID_PRUEBA == vIdPrueba).FirstOrDefault().CL_PRUEBA == "INGLES")? false:true;
+
             CargaCompetencias();
-            btnAgregar.Enabled = true;
-            btnEliminar.Enabled = true;
+            btnAgregar.Enabled = vValida;
+            btnEliminar.Enabled = vValida;
         }
 
         protected void CargaCompetencias() {

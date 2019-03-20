@@ -236,17 +236,6 @@ namespace SIGE.WebApp.IDP
                     vIdPrueba = int.Parse(Request.QueryString["ID"]);
                     vClToken = new Guid(Request.QueryString["T"]);
                     vClTokenExterno = new Guid(Request.QueryString["T"]);
-                    if (Request.QueryString["vIdBateria"] != null)
-                    {
-                        vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
-                        btnEliminar.Visible = true;
-                        btnEliminarBateria.Visible = true;
-                    }
-                    else
-                    {
-                        btnEliminar.Visible = false;
-                        btnEliminarBateria.Visible = false;
-                    }
                     SeleccionaSeccionPrueba(); //Método creado 13/04/2018 que permite cambiar de seccion si el tiempo esta agotado
 
                     //int position = mpgActitudMentalI.SelectedIndex;
@@ -283,6 +272,18 @@ namespace SIGE.WebApp.IDP
                     vMOD = Request.QueryString["MOD"];            
                     PintarRespuestasMentalI();
                     mpgActitudMentalI.RenderSelectedPageOnly = true;
+                }
+
+                if (Request.QueryString["vIdBateria"] != null)
+                {
+                    vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+                    btnEliminar.Visible = true;
+                    btnEliminarBateria.Visible = true;
+                }
+                else
+                {
+                    btnEliminar.Visible = false;
+                    btnEliminarBateria.Visible = false;
                 }
 
                 MostrarCronometro = ContextoApp.IDP.ConfiguracionPsicometria.FgMostrarCronometro;
@@ -2648,7 +2649,7 @@ namespace SIGE.WebApp.IDP
                 if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
                 {
                     UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
-
+                    Response.Redirect(Request.RawUrl); 
                 }
                 else
                     UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
@@ -2663,7 +2664,7 @@ namespace SIGE.WebApp.IDP
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
             if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
             {
-                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "s");
+                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "Close");
             }
             else
             {

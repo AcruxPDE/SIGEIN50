@@ -164,6 +164,9 @@
         window.location = "Default.aspx?ty=sig";
     }
 
+    function Close() {
+        window.top.location.href = window.top.location.href;//window.close();
+    }
 
     function ValidarContendorPreguntas(sender, args) {
         var flag = true;

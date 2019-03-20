@@ -126,7 +126,7 @@ namespace SIGE.WebApp.EO
 
             if (vNoTotalCorreos == vNoCorreosEnviados)
             {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Los correos han sido enviados con éxito.", E_TIPO_RESPUESTA_DB.SUCCESSFUL);
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Proceso exitoso.", E_TIPO_RESPUESTA_DB.SUCCESSFUL);
             }
             else
             {

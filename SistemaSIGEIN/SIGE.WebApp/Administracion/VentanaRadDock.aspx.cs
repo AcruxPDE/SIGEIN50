@@ -512,7 +512,14 @@ namespace SIGE.WebApp.Administracion
                     cmbClasificaciones.DataBind();
                     cmbClasificaciones.SelectedValue = vValorSelect.CL_CLASIFICACION;
                     cmbClasificaciones.Text = vValorSelect.NB_CLASIFICACION_COMPETENCIA;
+                    cmbClasificaciones.Enabled = true;
                 }
+                else
+                {
+                    cmbClasificaciones.Text = "Seleccionar";
+                    cmbClasificaciones.Enabled = false;
+                }
+
                 if (e.Value == "GEN")
                     lbMensaje.Visible = true;
                 else

@@ -143,6 +143,11 @@
                 window.location = "Default.aspx?ty=sig";
             }
 
+            function Close() {
+                window.top.location.href = window.top.location.href;
+                //window.close();
+            }
+
             function validarCampos(sender, args) {
                 if (!vFgEnValidacion) {
                     vFgEnValidacion = true;
