@@ -15,7 +15,6 @@ C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\D
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\SIGE.Entidades.pdb
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\Newtonsoft.Json.dll
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\Newtonsoft.Json.xml
-C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.csprojAssemblyReference.cache
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.csproj.CoreCompileInputs.cache
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.csproj.CopyComplete
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.dll
