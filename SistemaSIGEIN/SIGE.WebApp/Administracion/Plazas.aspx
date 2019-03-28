@@ -85,8 +85,10 @@
                 <Selecting AllowRowSelect="true" />
                 <Scrolling AllowScroll="true" UseStaticHeaders="true"></Scrolling>
             </ClientSettings>
+            <ExportSettings ExportOnlyData="true" FileName="Plazas" Excel-Format="Xlsx" IgnorePaging="true"></ExportSettings>
             <PagerStyle AlwaysVisible="true" />
-            <MasterTableView DataKeyNames="ID_PLAZA" ClientDataKeyNames="ID_PLAZA" ShowHeadersWhenNoRecords="true" >
+            <MasterTableView DataKeyNames="ID_PLAZA" ClientDataKeyNames="ID_PLAZA" ShowHeadersWhenNoRecords="true" CommandItemDisplay="Top">
+                <CommandItemSettings ShowExportToExcelButton="true" ShowAddNewRecordButton="false" />
                 <Columns>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave plaza" DataField="CL_PLAZA" UniqueName="CL_PLAZA" HeaderStyle-Width="120" FilterControlWidth="50"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre plaza" DataField="NB_PLAZA" UniqueName="NB_PLAZA" HeaderStyle-Width="250" FilterControlWidth="180"></telerik:GridBoundColumn>
