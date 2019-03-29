@@ -30,15 +30,3 @@ C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Debug\SIGE.AccesoDatos.csproj.CopyComplete
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Debug\SIGE.AccesoDatos.dll
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Debug\SIGE.AccesoDatos.pdb
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Debug\SIGE.AccesoDatos.dll.config
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Debug\SIGE.AccesoDatos.dll
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Debug\SIGE.AccesoDatos.pdb
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Debug\EntityFramework.dll
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Debug\SIGE.Entidades.dll
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Debug\SIGE.Entidades.pdb
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Debug\EntityFramework.xml
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Debug\SIGE.AccesoDatos.csprojAssemblyReference.cache
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Debug\SIGE.AccesoDatos.csproj.CoreCompileInputs.cache
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Debug\SIGE.AccesoDatos.csproj.CopyComplete
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Debug\SIGE.AccesoDatos.dll
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Debug\SIGE.AccesoDatos.pdb
