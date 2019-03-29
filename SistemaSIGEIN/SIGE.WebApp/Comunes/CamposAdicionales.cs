@@ -26,7 +26,6 @@ namespace SIGE.WebApp.Comunes
             {
                 GridBoundColumn vBoundColumn = new GridBoundColumn();
                 vBoundColumn.DataField = vCampoAdicional.CL_CAMPO;
-                vBoundColumn.UniqueName = vCampoAdicional.CL_CAMPO;
                 vBoundColumn.HeaderText = vCampoAdicional.NB_CAMPO;
                 vBoundColumn.FilterControlWidth = System.Web.UI.WebControls.Unit.Pixel(80);
                 vBoundColumn.HeaderStyle.Width = System.Web.UI.WebControls.Unit.Pixel(150);
