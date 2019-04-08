@@ -1412,7 +1412,7 @@
                             <div style="height: 10px;"></div>
                             
                             <div class="ctrlBasico" ID="ctrlAgregarFuncion">
-                                <telerik:RadButton ID="btnAgregarFuncion" runat="server" OnClick="btnAgregarFuncion_Click" Text="Agregar"></telerik:RadButton>
+                                <telerik:RadButton ID="btnAgregarFuncion" runat="server" OnClick="btnAgregarFuncion_Click1" Text="Agregar"></telerik:RadButton>
                             </div>
                             <%--<div class="ctrlBasico"  ID="ctrlAgregarFuncionGenerica">
                                 <telerik:RadButton ID="btnAgregarFuncionGenerica" runat="server" OnClick="btnAgregarFuncionGenerica_Click" Text="Agregar"></telerik:RadButton>

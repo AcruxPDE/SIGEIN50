@@ -2481,7 +2481,7 @@ namespace SIGE.WebApp.Administracion
                 EliminarDocumento(i.GetDataKeyValue("ID_ITEM").ToString());
         }
 
-        protected void btnAgregarFuncion_Click(object sender, EventArgs e)
+        protected void btnAgregarFuncion_Click1(object sender, EventArgs e)
         {
             //ShowFuncionesGenericas
             btnAgregarFuncionGenerica();
