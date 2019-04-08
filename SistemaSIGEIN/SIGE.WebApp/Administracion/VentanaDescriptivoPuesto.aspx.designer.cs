@@ -580,13 +580,13 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadGrid grdFuncionesGenericas;
         
         /// <summary>
-        /// Control btnAgregarFuncionGenerica.
+        /// Control btnAgregarFuncion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnAgregarFuncionGenerica;
+        protected global::Telerik.Web.UI.RadButton btnAgregarFuncion;
         
         /// <summary>
         /// Control btnEditarFuncionGenerica.
@@ -605,6 +605,213 @@ namespace SIGE.WebApp.Administracion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnEliminarFuncionGenerica;
+        
+        /// <summary>
+        /// Control rtsFuncionGenerica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTabStrip rtsFuncionGenerica;
+        
+        /// <summary>
+        /// Control rmpFuncionGenerica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadMultiPage rmpFuncionGenerica;
+        
+        /// <summary>
+        /// Control rpvFuncionGenericaDefinicion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPageView rpvFuncionGenericaDefinicion;
+        
+        /// <summary>
+        /// Control txtNbFuncion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox txtNbFuncion;
+        
+        /// <summary>
+        /// Control txtDetalleFuncion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadEditor txtDetalleFuncion;
+        
+        /// <summary>
+        /// Control txtNotasFuncion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadEditor txtNotasFuncion;
+        
+        /// <summary>
+        /// Control rpvFuncionGenericaCompetencias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPageView rpvFuncionGenericaCompetencias;
+        
+        /// <summary>
+        /// Control cmbCompetenciaEspecifica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox cmbCompetenciaEspecifica;
+        
+        /// <summary>
+        /// Control grdNivelCompetenciaEspecifica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadGrid grdNivelCompetenciaEspecifica;
+        
+        /// <summary>
+        /// Control btnAgregarCompetenciaEspecifica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnAgregarCompetenciaEspecifica;
+        
+        /// <summary>
+        /// Control btnCancelarAgregarCompetenciaEspecifica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnCancelarAgregarCompetenciaEspecifica;
+        
+        /// <summary>
+        /// Control txtIndicadorDesempeno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox txtIndicadorDesempeno;
+        
+        /// <summary>
+        /// Control btnAgregarIndicadorDesempeno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnAgregarIndicadorDesempeno;
+        
+        /// <summary>
+        /// Control btnCancelarAgregarIndicadorDesempeno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnCancelarAgregarIndicadorDesempeno;
+        
+        /// <summary>
+        /// Control grdFuncionCompetencias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadGrid grdFuncionCompetencias;
+        
+        /// <summary>
+        /// Control btnAgregarCompetencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnAgregarCompetencia;
+        
+        /// <summary>
+        /// Control btnEditarCompetencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnEditarCompetencia;
+        
+        /// <summary>
+        /// Control btnEliminarCompetencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnEliminarCompetencia;
+        
+        /// <summary>
+        /// Control btnAgregarIndicador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnAgregarIndicador;
+        
+        /// <summary>
+        /// Control btnEditarIndicador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnEditarIndicador;
+        
+        /// <summary>
+        /// Control btnEliminarIndicador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnEliminarIndicador;
+        
+        /// <summary>
+        /// Control btnGuardarFuncionGenerica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnGuardarFuncionGenerica;
+        
+        /// <summary>
+        /// Control btnCancelarGuardarFuncionGenerica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnCancelarGuardarFuncionGenerica;
         
         /// <summary>
         /// Control pvwCompetenciasGenericas.
@@ -938,221 +1145,5 @@ namespace SIGE.WebApp.Administracion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Telerik.Web.UI.RadWindowManager rwmAlertas;
-        
-        /// <summary>
-        /// Control winFuncionesGenericas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadWindow winFuncionesGenericas;
-        
-        /// <summary>
-        /// Control rtsFuncionGenerica.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTabStrip rtsFuncionGenerica;
-        
-        /// <summary>
-        /// Control rmpFuncionGenerica.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadMultiPage rmpFuncionGenerica;
-        
-        /// <summary>
-        /// Control rpvFuncionGenericaDefinicion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadPageView rpvFuncionGenericaDefinicion;
-        
-        /// <summary>
-        /// Control txtNbFuncion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtNbFuncion;
-        
-        /// <summary>
-        /// Control txtDetalleFuncion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadEditor txtDetalleFuncion;
-        
-        /// <summary>
-        /// Control txtNotasFuncion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadEditor txtNotasFuncion;
-        
-        /// <summary>
-        /// Control rpvFuncionGenericaCompetencias.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadPageView rpvFuncionGenericaCompetencias;
-        
-        /// <summary>
-        /// Control cmbCompetenciaEspecifica.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox cmbCompetenciaEspecifica;
-        
-        /// <summary>
-        /// Control grdNivelCompetenciaEspecifica.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid grdNivelCompetenciaEspecifica;
-        
-        /// <summary>
-        /// Control btnAgregarCompetenciaEspecifica.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnAgregarCompetenciaEspecifica;
-        
-        /// <summary>
-        /// Control btnCancelarAgregarCompetenciaEspecifica.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnCancelarAgregarCompetenciaEspecifica;
-        
-        /// <summary>
-        /// Control txtIndicadorDesempeno.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtIndicadorDesempeno;
-        
-        /// <summary>
-        /// Control btnAgregarIndicadorDesempeno.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnAgregarIndicadorDesempeno;
-        
-        /// <summary>
-        /// Control btnCancelarAgregarIndicadorDesempeno.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnCancelarAgregarIndicadorDesempeno;
-        
-        /// <summary>
-        /// Control grdFuncionCompetencias.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid grdFuncionCompetencias;
-        
-        /// <summary>
-        /// Control btnAgregarCompetencia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnAgregarCompetencia;
-        
-        /// <summary>
-        /// Control btnEditarCompetencia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnEditarCompetencia;
-        
-        /// <summary>
-        /// Control btnEliminarCompetencia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnEliminarCompetencia;
-        
-        /// <summary>
-        /// Control btnAgregarIndicador.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnAgregarIndicador;
-        
-        /// <summary>
-        /// Control btnEditarIndicador.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnEditarIndicador;
-        
-        /// <summary>
-        /// Control btnEliminarIndicador.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnEliminarIndicador;
-        
-        /// <summary>
-        /// Control btnGuardarFuncionGenerica.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnGuardarFuncionGenerica;
-        
-        /// <summary>
-        /// Control btnCancelarGuardarFuncionGenerica.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnCancelarGuardarFuncionGenerica;
     }
 }
