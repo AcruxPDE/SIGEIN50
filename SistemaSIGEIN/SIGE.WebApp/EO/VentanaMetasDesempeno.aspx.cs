@@ -246,6 +246,30 @@ namespace SIGE.WebApp.EO
                                 txtSMinimo.Text = oMeta.NB_CUMPLIMIENTO_MINIMO.ToString();
                                 txtPSobresaliente.Text = oMeta.NB_CUMPLIMIENTO_SATISFACTORIO.ToString();
                                 break;
+                            default:
+                                //PORCENTUAL
+                                txtPActual.Text = "";
+                                txtPMinimo.Text = "";
+                                txtPSatisfactoria.Text = "";
+                                txtPSobresaliente.Text = "";
+
+                                //CANTIDAD
+                                txtMActual.Text = "";
+                                txtMMinima.Text = "";
+                                txtMSatisfactoria.Text = "";
+                                txtMSobresaliente.Text = "";
+
+                                //FECHA
+                                dtpActual.Clear();
+                                dtpMinimo.Clear();
+                                dtpSatisfactoria.Clear();
+                                dtpSobresaliente.Clear();
+
+                                //SI/NO
+                                txtSMinimo.Text = "";
+                                txtPSobresaliente.Text = "";
+
+                                break;
                         }
                         txtPonderacion.Text = oMeta.PR_META.ToString();
                     }
@@ -546,9 +570,13 @@ namespace SIGE.WebApp.EO
                     traerIndicadores();
                     vFgActivo = true;
                 }
-            }
-            
-           
+
+                if (Request.Params["Accion"] != null && Request.Params["Accion"] == "Editar")
+                {
+                    cmbFunciones.Enabled = false;
+                    cmbIndicador.Enabled = false;
+                }
+            }           
         }
 
         protected void btnGuadrar_Click(object sender, EventArgs e)

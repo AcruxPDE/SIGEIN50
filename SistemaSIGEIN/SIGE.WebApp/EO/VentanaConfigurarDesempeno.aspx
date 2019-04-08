@@ -206,7 +206,7 @@
 
             if (idE != null & idE != "") {
                 if (vFgEvaluar != "False")
-                    OpenSelectionWindowC("VentanaMetasDesempeno.aspx?IdEvaluado=" + idEvaluadoMeta + "&IdPeriodo=" + vIdPeriodo + "&NoMeta=" + idE + "&Meta=" + noMeta, "WinMetas", vTextoVentana);
+                    OpenSelectionWindowC("VentanaMetasDesempeno.aspx?IdEvaluado=" + idEvaluadoMeta + "&IdPeriodo=" + vIdPeriodo + "&NoMeta=" + idE + "&Meta=" + noMeta + "&Accion=Editar", "WinMetas", vTextoVentana);
                 else {
                     if ('<%= vClTipoMetas %>' == "DESCRIPTIVO")
                         radalert("No se puede editar un indicador inactivo.", 400, 150);
