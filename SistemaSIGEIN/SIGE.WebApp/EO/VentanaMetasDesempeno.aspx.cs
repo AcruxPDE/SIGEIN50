@@ -159,13 +159,13 @@ namespace SIGE.WebApp.EO
                 {
                     //SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO_Result oEvaluado = nPeriodo.ObtieneEvaluados(pIdEvaluado: vIdEvaluado).FirstOrDefault();
                     vIndicadoresMetas = nPeriodo.ObtieneIndicadoresMetas(pIdPeriodo: vIdPeriodo, pIdEvaluado: vIdEvaluado, pDsFuncion: oMeta.DS_FUNCION.ToString());
-                    vIndicadoresMetas.Add(new E_INDICADORES_METAS
-                        {
-                            ID_EVALUADO = vIdEvaluado,
-                            ID_PERIODO = vIdPeriodo,
-                            DS_FUNCION="Proyecto",
-                            NB_INDICADOR = "Proyecto"
-                        });
+                    //vIndicadoresMetas.Add(new E_INDICADORES_METAS
+                    //    {
+                    //        ID_EVALUADO = vIdEvaluado,
+                    //        ID_PERIODO = vIdPeriodo,
+                    //        DS_FUNCION="Proyecto",
+                    //        NB_INDICADOR = "Proyecto"
+                    //    });
                     traerIndicadores();
 
                     if (oMeta != null)
@@ -646,7 +646,7 @@ namespace SIGE.WebApp.EO
                 });
             }
             else
-            vIndicadoresMetas = nPeriodo.ObtieneIndicadoresMetas(pIdPeriodo: vIdPeriodo, pIdEvaluado: vIdEvaluado, pDsFuncion: (cmbFunciones.Text == "" ? null : cmbFunciones.Text));
+                vIndicadoresMetas = nPeriodo.ObtieneIndicadoresMetas(pIdPeriodo: vIdPeriodo, pIdEvaluado: vIdEvaluado, pDsFuncion: (cmbFunciones.Text == "" ? null : cmbFunciones.Text));
 
             traerIndicadores();
         }
