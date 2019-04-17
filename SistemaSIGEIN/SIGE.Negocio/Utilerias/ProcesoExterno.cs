@@ -105,14 +105,16 @@ namespace SIGE.Negocio.Utilerias
                     PeriodoOperaciones oPeriodo = new PeriodoOperaciones();
 
                     SPE_OBTIENE_FYD_PERIODO_EVALUADOR_Result oPeriodoEvaluador = oPeriodo.ObtenerPeriodoEvaluador(pFlEvaluador: FolioProceso);
-
                     if (oPeriodoEvaluador != null)
                     {
+                        int oPeriodoEvaluadorcontestado = oPeriodo.ObtenerPeriodoEvaluadorContestado(pFlEvaluador: FolioProceso);
+                        bool fg_contestado_total;
+                        if (oPeriodoEvaluadorcontestado > 0) { fg_contestado_total = false; } else { fg_contestado_total = true; } 
                         IdProceso = oPeriodoEvaluador.ID_EVALUADOR;
                         NombreProceso = oPeriodoEvaluador.NB_PERIODO;
                         UsuarioProceso = oPeriodoEvaluador.NB_EVALUADOR;
                         ContraseñaProceso = oPeriodoEvaluador.CL_TOKEN;
-                        fgCuestionarioContestado = oPeriodoEvaluador.FG_CONTESTADO;
+                        fgCuestionarioContestado = fg_contestado_total;
                         clEstatusProceso = oPeriodoEvaluador.CL_ESTADO_PERIODO;
                         MensajeError = "";
                         resultado = true;
