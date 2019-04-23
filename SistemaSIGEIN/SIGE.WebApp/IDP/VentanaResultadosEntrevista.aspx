@@ -657,6 +657,7 @@
     <div style="clear: both; height: 10px;"></div>
     <div class="divControlDerecha">
         <div class="ctrlBasico">
+            
             <telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" AutoPostBack="true"></telerik:RadButton>
 
         </div>

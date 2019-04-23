@@ -1694,10 +1694,10 @@ namespace SIGE.WebApp.Administracion
                 {
                     MnsAutoridadPoliticaIntegral.Text = ContextoApp.ADM.AutoridadPoliticaIntegral.dsMensaje;
                 }
-
+                
             }
             vClRutaArchivosTemporales = Server.MapPath(ContextoApp.ClRutaArchivosTemporales);
-            winFuncionesGenericas.VisibleOnPageLoad = false;
+            //winFuncionesGenericas.VisibleOnPageLoad = false;
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
         }
@@ -1853,7 +1853,7 @@ namespace SIGE.WebApp.Administracion
             Response.Redirect("../IDP/DescriptivoPuestos.aspx");
         }
 
-        protected void btnAgregarFuncionGenerica_Click(object sender, EventArgs e)
+        protected void btnAgregarFuncionGenerica()
         {
             vFuncionGenericaABC = new E_FUNCION_GENERICA();
             vLstFuncionCompetenciaABC = new List<E_FUNCION_COMPETENCIA>();
@@ -1891,12 +1891,13 @@ namespace SIGE.WebApp.Administracion
             txtIndicadorDesempeno.Text = String.Empty;
 
             grdFuncionCompetencias.Rebind();
-            winFuncionesGenericas.VisibleOnPageLoad = true;
+            ClientScript.RegisterStartupScript(this.GetType(), "myScript", "ShowFuncionesGenericas();", true);
+            //winFuncionesGenericas.VisibleOnPageLoad = true;
         }
 
         protected void grdFuncionCompetencias_ItemCommand(object sender, GridCommandEventArgs e)
         {
-            winFuncionesGenericas.VisibleOnPageLoad = true;
+            //winFuncionesGenericas.VisibleOnPageLoad = true;
         }
 
         protected void grdFuncionCompetencias_DetailTableDataBind(object sender, GridDetailTableDataBindEventArgs e)
@@ -2480,5 +2481,10 @@ namespace SIGE.WebApp.Administracion
                 EliminarDocumento(i.GetDataKeyValue("ID_ITEM").ToString());
         }
 
+        protected void btnAgregarFuncion_Click1(object sender, EventArgs e)
+        {
+            //ShowFuncionesGenericas
+            btnAgregarFuncionGenerica();
+        }
     }
 }

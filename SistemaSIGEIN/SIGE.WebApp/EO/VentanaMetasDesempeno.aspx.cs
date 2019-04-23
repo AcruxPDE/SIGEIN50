@@ -160,18 +160,18 @@ namespace SIGE.WebApp.EO
                     //SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO_Result oEvaluado = nPeriodo.ObtieneEvaluados(pIdEvaluado: vIdEvaluado).FirstOrDefault();
                     vIndicadoresMetas = nPeriodo.ObtieneIndicadoresMetas(pIdPeriodo: vIdPeriodo, pIdEvaluado: vIdEvaluado, pDsFuncion: oMeta.DS_FUNCION.ToString());
                     vIndicadoresMetas.Add(new E_INDICADORES_METAS
-                        {
-                            ID_EVALUADO = vIdEvaluado,
-                            ID_PERIODO = vIdPeriodo,
-                            DS_FUNCION="Proyecto",
-                            NB_INDICADOR = "Proyecto"
-                        });
+                    {
+                        ID_EVALUADO = vIdEvaluado,
+                        ID_PERIODO = vIdPeriodo,
+                        DS_FUNCION = "Proyecto",
+                        NB_INDICADOR = "Proyecto"
+                    });
                     traerIndicadores();
 
                     if (oMeta != null)
                     {
                         vIdMetaEvaluado = oMeta.ID_EVALUADO_META;
-                        cmbFunciones.SelectedValue = oMeta.DS_FUNCION.ToString();
+                        cmbFunciones.Text = oMeta.DS_FUNCION.ToString();
                         cmbIndicador.SelectedValue = oMeta.NB_INDICADOR.ToString();
                         txtMeta.Text = oMeta.DS_META;
                         txtMetaActual.Text = oMeta.NO_META;
@@ -245,6 +245,30 @@ namespace SIGE.WebApp.EO
                                 rbSiNo.Checked = true;
                                 txtSMinimo.Text = oMeta.NB_CUMPLIMIENTO_MINIMO.ToString();
                                 txtPSobresaliente.Text = oMeta.NB_CUMPLIMIENTO_SATISFACTORIO.ToString();
+                                break;
+                            default:
+                                //PORCENTUAL
+                                txtPActual.Text = "";
+                                txtPMinimo.Text = "";
+                                txtPSatisfactoria.Text = "";
+                                txtPSobresaliente.Text = "";
+
+                                //CANTIDAD
+                                txtMActual.Text = "";
+                                txtMMinima.Text = "";
+                                txtMSatisfactoria.Text = "";
+                                txtMSobresaliente.Text = "";
+
+                                //FECHA
+                                dtpActual.Clear();
+                                dtpMinimo.Clear();
+                                dtpSatisfactoria.Clear();
+                                dtpSobresaliente.Clear();
+
+                                //SI/NO
+                                txtSMinimo.Text = "";
+                                txtPSobresaliente.Text = "";
+
                                 break;
                         }
                         txtPonderacion.Text = oMeta.PR_META.ToString();
@@ -546,9 +570,13 @@ namespace SIGE.WebApp.EO
                     traerIndicadores();
                     vFgActivo = true;
                 }
-            }
-            
-           
+
+                if (Request.Params["Accion"] != null && Request.Params["Accion"] == "Editar")
+                {
+                    cmbFunciones.Enabled = false;
+                    cmbIndicador.Enabled = false;
+                }
+            }           
         }
 
         protected void btnGuadrar_Click(object sender, EventArgs e)
@@ -618,7 +646,7 @@ namespace SIGE.WebApp.EO
                 });
             }
             else
-            vIndicadoresMetas = nPeriodo.ObtieneIndicadoresMetas(pIdPeriodo: vIdPeriodo, pIdEvaluado: vIdEvaluado, pDsFuncion: (cmbFunciones.Text == "" ? null : cmbFunciones.Text));
+                vIndicadoresMetas = nPeriodo.ObtieneIndicadoresMetas(pIdPeriodo: vIdPeriodo, pIdEvaluado: vIdEvaluado, pDsFuncion: (cmbFunciones.Text == "" ? null : cmbFunciones.Text));
 
             traerIndicadores();
         }

@@ -70,10 +70,13 @@ C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\T
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.csprojResolveAssemblyReference.cache
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.exe
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.pdb
+<<<<<<< HEAD
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.csprojAssemblyReference.cache
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.csproj.CoreCompileInputs.cache
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.exe
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.pdb
+=======
+>>>>>>> Mantto
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\SIGE.Replicas.exe.config
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\SIGE.Replicas.exe
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\SIGE.Replicas.pdb
@@ -111,4 +114,12 @@ C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\De
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\Telerik.Web.Spreadsheet.xml
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.xml
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\Telerik.Windows.Zip.xml
+<<<<<<< HEAD
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.csproj.CopyComplete
+=======
+C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.csprojAssemblyReference.cache
+C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.csproj.CoreCompileInputs.cache
+C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.csproj.CopyComplete
+C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.exe
+C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.pdb
+>>>>>>> Mantto

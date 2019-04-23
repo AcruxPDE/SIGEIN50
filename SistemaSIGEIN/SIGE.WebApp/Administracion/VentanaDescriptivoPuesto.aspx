@@ -355,12 +355,12 @@
                 }
             }
 
-            function SetGenericFunctionWindowSettings(sender, args) {
+            <%--function SetGenericFunctionWindowSettings(sender, args) {
                 var oWnd = $find("<%=winFuncionesGenericas.ClientID%>");
                 oWnd.SetWidth(document.documentElement.clientWidth - 20);
                 oWnd.SetHeight(document.documentElement.clientHeight - 20);
                 oWnd.show();
-            }
+            }--%>
 
             //RECEPCION DE LA INFORMACION
             function useDataFromChild(pDato) {
@@ -602,6 +602,15 @@
 
                 openChildDialog(pURL, pIdWindow, pTitle, windowProperties)
             }
+
+            function ShowFuncionesGenericas() {
+                document.getElementById("pvwFuncionGenerica").style.display = "block";
+            }
+
+            function HideFuncionesGenericas() {
+                document.getElementById("pvwFuncionGenerica").style.display = "none";
+            }
+
         </script>
     </telerik:RadCodeBlock>
 
@@ -627,6 +636,29 @@
         .RadSlider_Default .rslHorizontal a.rslHandle {
             background-image: none;
         }
+
+        .popFunciones{
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 80px; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto;
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+        }
+
+        .popFunciones-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
     </style>
 
     <div style="height: 100%; padding: 10px 10px 0px 10px;">
@@ -1376,17 +1408,168 @@
                                     </MasterTableView>
                                 </telerik:RadGrid>
                             </div>
-                            <div style="height: 10px;"></div>
-                            <div class="ctrlBasico">
 
-                                <telerik:RadButton ID="btnAgregarFuncionGenerica" runat="server" OnClick="btnAgregarFuncionGenerica_Click" Text="Agregar"></telerik:RadButton>
+                            <div style="height: 10px;"></div>
+                            
+                            <div class="ctrlBasico" ID="ctrlAgregarFuncion">
+                                <telerik:RadButton ID="btnAgregarFuncion" runat="server" OnClick="btnAgregarFuncion_Click1" Text="Agregar"></telerik:RadButton>
                             </div>
-                            <div class="ctrlBasico">
+                            <%--<div class="ctrlBasico"  ID="ctrlAgregarFuncionGenerica">
+                                <telerik:RadButton ID="btnAgregarFuncionGenerica" runat="server" OnClick="btnAgregarFuncionGenerica_Click" Text="Agregar"></telerik:RadButton>
+                            </div>--%>
+                            <div class="ctrlBasico"  ID="ctrlEditarFuncionGenerica">
                                 <telerik:RadButton ID="btnEditarFuncionGenerica" runat="server" OnClick="btnEditarFuncionGenerica_Click" Text="Editar"></telerik:RadButton>
                             </div>
-                            <div class="ctrlBasico">
+                            <div class="ctrlBasico"  ID="ctrlEliminarFuncionGenerica">
                                 <telerik:RadButton ID="btnEliminarFuncionGenerica" runat="server" OnClick="btnEliminarFuncionGenerica_Click" OnClientClicking="ConfirmFuncionGenericaDelete" Text="Eliminar"></telerik:RadButton>
                             </div>
+
+                            <!--Inicio Popup Funciones Genericas -->
+                            <div id="pvwFuncionGenerica" class="popFunciones">
+                                
+                                <!--Inicio Contenido Popup Funciones Genericas -->
+                                <div class="popFunciones-content" style="border: 2px solid gray; margin-top: -40px;">
+                                    <div style="text-align: right">
+                                        <telerik:RadTabStrip ID="rtsFuncionGenerica" runat="server" SelectedIndex="0" MultiPageID="rmpFuncionGenerica">
+                                            <Tabs>
+                                                <telerik:RadTab Text="Definición"></telerik:RadTab>
+                                                <telerik:RadTab Text="Competencias genéricas"></telerik:RadTab>
+                                            </Tabs>
+                                        </telerik:RadTabStrip>
+                                    </div>
+                                    <div style="height: calc(100% - 90px);">
+                                        <div style="padding-top: 10px; height: 100%;">
+                                            <telerik:RadMultiPage ID="rmpFuncionGenerica" runat="server" SelectedIndex="0" Height="100%">
+                                                <telerik:RadPageView ID="rpvFuncionGenericaDefinicion" runat="server">
+                                                    <div style="padding-bottom: 10px;">
+                                                        <label id="Label2" name="lblNbFuncion">Descripción de la función genérica:</label>
+                                                        <telerik:RadTextBox ID="txtNbFuncion" runat="server" Width="600" MaxLength="200" ToolTip="Son los principales QUÉ, responde a la pregunta ¿Qué hace? Son las áreas de resultado. Cada función genérica deberá comenzar con un verbo en infinitivo. Ejemplo: Coordinar, desarrollar, dirigir, realizar, operar, etc."></telerik:RadTextBox>
+                                                    </div>
+                                                    <div style="padding-bottom: 10px;">
+                                                        <label class="labelTitulo" name="lblDetalleFuncion" title="Las actividades específicas responden a la pregunta ¿CÓMO LO HACE? Respecto a la función genérica, se puede responder a la pregunta definiendo los pasos más importantes a seguir. Cada actividad específica debe comenzar con un verbo en activo. Ejemplo: Verifica, supervisa, coordina, desarrolla, elabora, captura, registra, etc.">Detallar las funciones específicas</label>
+                                                        <telerik:RadEditor NewLineMode="Br" Height="125px" Width="100%" ToolsWidth="310px" EditModes="Design" ID="txtDetalleFuncion" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/AdvancedTools.xml" ToolTip="Las actividades específicas responden a la pregunta ¿CÓMO LO HACE? Respecto a la función genérica, se puede responder a la pregunta definiendo los pasos más importantes a seguir. Cada actividad específica debe comenzar con un verbo en activo. Ejemplo: Verifica, supervisa, coordina, desarrolla, elabora, captura, registra, etc."></telerik:RadEditor>
+                                                    </div>
+                                                    <div>
+                                                        <label class="labelTitulo" name="lblNotasFuncion">Notas</label>
+                                                        <telerik:RadEditor NewLineMode="Br" Height="125px" Width="100%" ToolsWidth="310px" EditModes="Design" ID="txtNotasFuncion" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/AdvancedTools.xml"></telerik:RadEditor>
+                                                    </div>
+                                                </telerik:RadPageView>
+
+                                                <telerik:RadPageView ID="rpvFuncionGenericaCompetencias" runat="server">
+                                                    <label class="labelTitulo" id="lblTituloCompetencias" name="lblTituloCompetencias">Competencias</label>
+                                                    <div id="ctrlAgregarCompetenciaEspecifica" style="display: none; padding: 10px; border: 1px solid lightgray; border-radius: 5px;">
+                                                        <div class="ctrlBasico">
+                                                            <label id="lblNbCompetenciaABC" name="lblNbCompetenciaABC" title="Selecciona las competencias específicas que requiere para desempeñar adecuadamente la función y establecer el nivel de competencia. Aquí debes especificar lo que se debe SABER HACER para lograr la función anterior, referido generalmente a un conocimiento  específico del puesto y/o empresa. Ejemplo: Es capaz de desarrollar planes y programas de capacitación, es capaz de formar instructores internos, es capaz de operar la máquina laser, etc.">Competencia específica:</label>
+                                                            <telerik:RadComboBox ID="cmbCompetenciaEspecifica" Width="350" runat="server" OnSelectedIndexChanged="cmbCompetenciaEspecifica_SelectedIndexChanged" EmptyMessage="Seleccione..." AutoPostBack="true" ToolTip="Selecciona las competencias específicas que requiere para desempeñar adecuadamente la función y establecer el nivel de competencia. Aquí debes especificar lo que se debe SABER HACER para lograr la función anterior, referido generalmente a un conocimiento  específico del puesto y/o empresa. Ejemplo: Es capaz de desarrollar planes y programas de capacitación, es capaz de formar instructores internos, es capaz de operar la máquina laser, etc."></telerik:RadComboBox>
+                                                        </div>
+                                                        <div class="ctrlBasico">
+                                                            <telerik:RadGrid ID="grdNivelCompetenciaEspecifica" runat="server" AllowSorting="true" OnPreRender="grdNivelCompetenciaEspecifica_PreRender" HeaderStyle-Font-Bold="true">
+                                                                <ClientSettings Selecting-AllowRowSelect="true">
+                                                                    <Scrolling AllowScroll="true" UseStaticHeaders="true"></Scrolling>
+                                                                </ClientSettings>
+                                                                <MasterTableView DataKeyNames="NO_VALOR" AutoGenerateColumns="false" AllowSorting="true">
+                                                                    <Columns>
+                                                                        <telerik:GridBoundColumn HeaderText="Nivel de la competencia" DataField="NB_NIVEL" UniqueName="NB_NIVEL"></telerik:GridBoundColumn>
+                                                                        <telerik:GridBoundColumn HeaderText="Descripción del nivel" DataField="DS_NIVEL" UniqueName="DS_NIVEL"></telerik:GridBoundColumn>
+                                                                    </Columns>
+                                                                </MasterTableView>
+                                                            </telerik:RadGrid>
+                                                        </div>
+                                                        <div style="clear: both;"></div>
+                                                        <div class="ctrlBasico">
+                                                            <telerik:RadButton ID="btnAgregarCompetenciaEspecifica" runat="server" Text="Aceptar" Enabled="false" OnClick="btnAgregarCompetenciaEspecifica_Click" OnClientClicking="HideForms" ></telerik:RadButton>
+                                                        </div>
+                                                        <div class="ctrlBasico">
+                                                            <telerik:RadButton ID="btnCancelarAgregarCompetenciaEspecifica" runat="server" Text="Cancelar" AutoPostBack="false" OnClientClicked="HideForms"></telerik:RadButton>
+                                                        </div>
+                                                        <div style="clear: both;"></div>
+                                                    </div>
+                                                    <div id="ctrlAgregarIndicadorDesempeno" style="display: none; padding: 10px; border: 1px solid lightgray; border-radius: 5px;">
+                                                        <div class="ctrlBasico">
+                                                            <label id="lblNbIndicadorABC" name="lblNbIndicadorABC" title="¿Cómo se demuestra la competencia anterior?, ¿Cómo se da cuenta el jefe que se está desarrollando de manera efectiva la competencia? Puede haber uno o varios indicadores de desempeño (evidencias) en las competencias. Ejemplo: Programa de producción, Encuesta de satisfacción, Margen de utilidad, Costo, Avance del programa de capacitación, etc." >Indicadores de desepempeño (evidencias):</label>
+                                                            <telerik:RadTextBox ID="txtIndicadorDesempeno" runat="server" Width="400" ToolTip="¿Cómo se demuestra la competencia anterior?, ¿Cómo se da cuenta el jefe que se está desarrollando de manera efectiva la competencia? Puede haber uno o varios indicadores de desempeño (evidencias) en las competencias. Ejemplo: Programa de producción, Encuesta de satisfacción, Margen de utilidad, Costo, Avance del programa de capacitación, etc. "></telerik:RadTextBox>
+                                                        </div>
+                                                        <div style="clear: both;"></div>
+                                                        <div class="ctrlBasico">
+                                                            <telerik:RadButton ID="btnAgregarIndicadorDesempeno" runat="server" Text="Aceptar" OnClick="btnAgregarIndicadorDesempeno_Click" OnClientClicking="HideForms"></telerik:RadButton>
+                                                        </div>
+                                                        <div class="ctrlBasico">
+                                                            <telerik:RadButton ID="btnCancelarAgregarIndicadorDesempeno" runat="server" Text="Cancelar" AutoPostBack="false" OnClientClicked="HideForms"></telerik:RadButton>
+                                                        </div>
+                                                        <div style="clear: both;"></div>
+                                                    </div>
+                                                    <div style="clear: both;"></div>
+                                                    <div style="height: calc(100% - 100px); margin-top: 20px;">
+                                                        <telerik:RadGrid ID="grdFuncionCompetencias" runat="server" AutoGenerateColumns="false" Height="250" ShowHeader="true" EnableHierarchyExpandAll="true"
+                                                            OnDetailTableDataBind="grdFuncionCompetencias_DetailTableDataBind"
+                                                            OnNeedDataSource="grdFuncionCompetencias_NeedDataSource" AllowSorting="true"
+                                                            OnItemCommand="grdFuncionCompetencias_ItemCommand" HeaderStyle-Font-Bold="true">
+                                                            <ClientSettings>
+                                                                <Scrolling UseStaticHeaders="true" AllowScroll="true" />
+                                                                <Selecting AllowRowSelect="true" />
+                                                            </ClientSettings>
+                                                            <MasterTableView Name="mtvCompetencias" DataKeyNames="ID_ITEM" ShowHeader="true" ShowHeadersWhenNoRecords="true" AllowSorting="true">
+                                                                <Columns>
+                                                                    <telerik:GridBoundColumn HeaderText="Competencia" DataField="NB_COMPETENCIA" HeaderStyle-Width="300" UniqueName="NB_COMPETENCIA"></telerik:GridBoundColumn>
+                                                                    <telerik:GridBoundColumn HeaderText="Nivel" DataField="NB_NIVEL" UniqueName="NB_NIVEL"></telerik:GridBoundColumn>
+                                                                    <telerik:GridTemplateColumn HeaderText="Indicadores" DataField="DS_INDICADORES" UniqueName="DS_INDICADORES">
+                                                                        <ItemTemplate>
+                                                                            <%# Eval("DS_INDICADORES") %>
+                                                                        </ItemTemplate>
+                                                                    </telerik:GridTemplateColumn>
+                                                                </Columns>
+                                                                <DetailTables>
+                                                                    <telerik:GridTableView Name="dgvIndicadores" DataKeyNames="ID_ITEM" runat="server">
+                                                                        <ParentTableRelation>
+                                                                            <telerik:GridRelationFields DetailKeyField="ID_PARENT_ITEM" MasterKeyField="ID_ITEM" />
+                                                                        </ParentTableRelation>
+                                                                        <Columns>
+                                                                            <telerik:GridBoundColumn HeaderText="Indicador" DataField="NB_INDICADOR_DESEMPENO"></telerik:GridBoundColumn>
+                                                                        </Columns>
+                                                                    </telerik:GridTableView>
+                                                                </DetailTables>
+                                                            </MasterTableView>
+                                                        </telerik:RadGrid>
+                                                        <div style="clear: both;"></div>
+                                                    </div>
+                                                    <div style="clear: both;"></div>
+                                                    <div class="ctrlBasico" style="margin-top: 20px;">
+                                                        <telerik:RadButton ID="btnAgregarCompetencia" runat="server" Text="Agregar competencia" AutoPostBack="false" OnClientClicked="ShowFormFromButton"></telerik:RadButton>
+                                                    </div>
+                                                    <div class="ctrlBasico" style="margin-top: 20px;">
+                                                        <telerik:RadButton ID="btnEditarCompetencia" runat="server" Text="Editar competencia" OnClientClicking="ShowIndicadorDesempenoInsertForm" OnClick="btnEditarCompetencia_Click"></telerik:RadButton>
+                                                    </div>
+                                                    <div class="ctrlBasico" style="margin-top: 20px;">
+                                                        <telerik:RadButton ID="btnEliminarCompetencia" runat="server" Text="Eliminar competencia" OnClick="btnEliminarCompetencia_Click"></telerik:RadButton>
+                                                    </div>
+                                                    <div class="ctrlBasico" style="margin-top: 20px;">
+                                                        <telerik:RadButton ID="btnAgregarIndicador" runat="server" Text="Agregar indicador" AutoPostBack="false" OnClientClicked="ShowIndicadorDesempenoInsertForm" ToolTip="Aquí puedes agregar uno o más indicadores de acuerdo a la función genérica seleccionada."></telerik:RadButton>
+                                                    </div>
+                                                    <div class="ctrlBasico" style="margin-top: 20px;">
+                                                        <telerik:RadButton ID="btnEditarIndicador" runat="server" Text="Editar indicador" OnClientClicking="ShowIndicadorDesempenoEditForm" OnClick="btnEditarIndicador_Click"></telerik:RadButton>
+                                                    </div>
+                                                    <div class="ctrlBasico" style="margin-top: 20px;">
+                                                        <telerik:RadButton ID="btnEliminarIndicador" runat="server" Text="Eliminar indicador" OnClick="btnEliminarIndicador_Click"></telerik:RadButton>
+                                                    </div>
+                                                    <div style="clear: both;"></div>
+                                                </telerik:RadPageView>
+                                            </telerik:RadMultiPage>
+                                            <div style="clear: both;"></div>
+                                        </div>
+                                        <div style="clear: both;"></div>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                    <div style="text-align: right; margin-top: 20px;">
+                                            <telerik:RadButton ID="btnGuardarFuncionGenerica" runat="server" Text="Aceptar" OnClick="btnGuardarFuncionGenerica_Click" ToolTip="Guardar los cambios realizados y regresar a la pantalla anterior."></telerik:RadButton>
+                                        
+                                            <telerik:RadButton ID="btnCancelarGuardarFuncionGenerica" runat="server" Text="Cancelar" ToolTip="No guardar modificaciones realizadas y regresar a la pantalla anterior."></telerik:RadButton>
+                                        <div style="clear: both;"></div>
+                                    </div>
+                                </div>
+                                <!--Fin Contenido Popup Funciones Genericas -->                                                                
+                            </div>
+                            <!--Fin Popup de Funciones Genericas -->
+
                         </telerik:RadPageView>
 
                         <!-- Inicio de competencias genericas -->
@@ -1457,7 +1640,6 @@
                                       </MasterTableView>
                                   </telerik:RadGrid>
                               </div>
-
                         </telerik:RadPageView>
                         <!-- Fin de competencias genericas -->
 
@@ -1629,7 +1811,7 @@
                             </div>
                         </telerik:RadPageView>
 
-                        <!-- Fin de doscumentos -->
+                        <!-- Fin de documentos -->
 
                     </telerik:RadMultiPage>
                 </div>
@@ -1746,7 +1928,7 @@
         </telerik:RadSplitter>
     </div>
     <telerik:RadWindowManager ID="rwmAlertas" runat="server"></telerik:RadWindowManager>
-    <telerik:RadWindow ID="winFuncionesGenericas" runat="server" Width="1000" Height="530" Behaviors="Close" Title="Función genérica" VisibleStatusbar="false" Modal="true" OnClientShow="fixEditor" VisibleOnPageLoad="false" DestroyOnClose="true">
+    <%--<telerik:RadWindow ID="winFuncionesGenericas" runat="server" Width="1000" Height="530" Behaviors="Close" Title="Función genérica" VisibleStatusbar="false" Modal="true" OnClientShow="fixEditor" VisibleOnPageLoad="false" DestroyOnClose="true">
         <ContentTemplate>
             <div style="width: calc(100% - 2px); padding: 10px; height: 100%">
                 <telerik:RadTabStrip ID="rtsFuncionGenerica" runat="server" SelectedIndex="0" MultiPageID="rmpFuncionGenerica">
@@ -1774,24 +1956,8 @@
                             </telerik:RadPageView>
                             <telerik:RadPageView ID="rpvFuncionGenericaCompetencias" runat="server">
                                 <label class="labelTitulo" id="lblTituloCompetencias" name="lblTituloCompetencias">Competencias</label>
-                                <div id="ctrlAgregarCompetenciaEspecifica" style="display: none; padding: 10px; border: 1px solid lightgray; border-radius: 5px;">
-                                    <div class="ctrlBasico">
-                                        <label id="lblNbCompetenciaABC" name="lblNbCompetenciaABC" title="Selecciona las competencias específicas que requiere para desempeñar adecuadamente la función y establecer el nivel de competencia. Aquí debes especificar lo que se debe SABER HACER para lograr la función anterior, referido generalmente a un conocimiento  específico del puesto y/o empresa. Ejemplo: Es capaz de desarrollar planes y programas de capacitación, es capaz de formar instructores internos, es capaz de operar la máquina laser, etc.">Competencia específica:</label>
-                                        <telerik:RadComboBox ID="cmbCompetenciaEspecifica" Width="350" runat="server" OnSelectedIndexChanged="cmbCompetenciaEspecifica_SelectedIndexChanged" EmptyMessage="Seleccione..." AutoPostBack="true" ToolTip="Selecciona las competencias específicas que requiere para desempeñar adecuadamente la función y establecer el nivel de competencia. Aquí debes especificar lo que se debe SABER HACER para lograr la función anterior, referido generalmente a un conocimiento  específico del puesto y/o empresa. Ejemplo: Es capaz de desarrollar planes y programas de capacitación, es capaz de formar instructores internos, es capaz de operar la máquina laser, etc."></telerik:RadComboBox>
-                                    </div>
-                                    <div class="ctrlBasico">
-                                        <telerik:RadGrid ID="grdNivelCompetenciaEspecifica" runat="server" AllowSorting="true" OnPreRender="grdNivelCompetenciaEspecifica_PreRender" HeaderStyle-Font-Bold="true">
-                                            <ClientSettings Selecting-AllowRowSelect="true">
-                                                <Scrolling AllowScroll="true" UseStaticHeaders="true"></Scrolling>
-                                            </ClientSettings>
-                                            <MasterTableView DataKeyNames="NO_VALOR" AutoGenerateColumns="false" AllowSorting="true">
-                                                <Columns>
-                                                    <telerik:GridBoundColumn HeaderText="Nivel de la competencia" DataField="NB_NIVEL" UniqueName="NB_NIVEL"></telerik:GridBoundColumn>
-                                                    <telerik:GridBoundColumn HeaderText="Descripción del nivel" DataField="DS_NIVEL" UniqueName="DS_NIVEL"></telerik:GridBoundColumn>
-                                                </Columns>
-                                            </MasterTableView>
-                                        </telerik:RadGrid>
-                                    </div>
+                                <div id="ctrlAgregarCompetenciaEspecificas" style="display: none; padding: 10px; border: 1px solid lightgray; border-radius: 5px;">
+                                    
                                     <div style="clear: both;"></div>
                                     <div class="ctrlBasico">
                                         <telerik:RadButton ID="btnAgregarCompetenciaEspecifica" runat="server" Text="Aceptar" Enabled="false" OnClick="btnAgregarCompetenciaEspecifica_Click" OnClientClicking="HideForms" ></telerik:RadButton>
@@ -1887,7 +2053,7 @@
                 </div>
             </div>
         </ContentTemplate>
-    </telerik:RadWindow>
+    </telerik:RadWindow>--%>
 </asp:Content>
 
 

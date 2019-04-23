@@ -150,6 +150,16 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
             }
         }
 
+        public int ObtenerPeriodoEvaluadorContestado(int? pIdPeriodoEvaluador = null, Guid? pFlEvaluador = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                var resultado = contexto.SPE_OBTIENE_FYD_PERIODO_EVALUADOR(pIdPeriodoEvaluador, pFlEvaluador);
+                return resultado.Where(p => p.FG_CONTESTADO == false).Count();
+            }
+        }
+
+
         public SPE_OBTIENE_FYD_EVALUADO_Result ObtenerEvaluado(int? pIdEvaluadoEvaluador = null, int? pIdEvaluado = null)
         {
             using (contexto = new SistemaSigeinEntities())
