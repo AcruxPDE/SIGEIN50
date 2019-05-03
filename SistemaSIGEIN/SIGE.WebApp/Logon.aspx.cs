@@ -108,6 +108,8 @@ namespace SIGE.WebApp
                     {
                         UtilMensajes.MensajeResultadoDB(RadWindowManager1, pe.MensajeError, E_TIPO_RESPUESTA_DB.WARNING);
                     }
+                    txtEvento.ReadOnly = true;
+                    txtEvaluador.ReadOnly = true;
 
                     break;
 
@@ -132,6 +134,8 @@ namespace SIGE.WebApp
                         txtEvaluadorCuestionario.Text = pe.UsuarioProceso;
                         txtPeriodoCapacitacion.Text = pe.NombreProceso;
                     }
+                    txtEvaluadorCuestionario.ReadOnly = true;
+                    txtPeriodoCapacitacion.ReadOnly = true;
 
                     break;
 
@@ -156,8 +160,10 @@ namespace SIGE.WebApp
                         //txtEvaluadorClima.Text = pe.UsuarioProceso;
                         txtPeriodoClima.Text = pe.NombreProceso;
                     }
+                    txtPeriodoClima.ReadOnly = true;
 
                     break;
+
                 case "ACTUALIZACIONCARTERA":
                     ContentAutorizaDocumentos.Visible = false;
                     ContentLogin.Visible = false;
@@ -196,8 +202,10 @@ namespace SIGE.WebApp
                     {
                         txtEntrevistador.Text = pe.UsuarioProceso;
                     }
+                    txtEntrevistador.ReadOnly = true;
 
                     break;
+
                 case "NOTIFICACIONRRHH":
                     ContentAutorizaDocumentos.Visible = false;
                     ContentLogin.Visible = false;
@@ -220,6 +228,8 @@ namespace SIGE.WebApp
                         txtNotificacion.Text = pe.FlRequisicion;
                         txtPuesto.Text = pe.NombreProceso;
                     }
+                    txtNotificacion.ReadOnly = true;
+                    txtPuesto.ReadOnly = true;
 
                     break;
                 case "AUTORIZAREQUISICION":
@@ -244,6 +254,8 @@ namespace SIGE.WebApp
                         rtbAutRequisicion.Text = pe.FlRequisicion;
                         rtbPuesto.Text = pe.NombreProceso;
                     }
+                    rtbAutRequisicion.ReadOnly = true;
+                    rtbPuesto.ReadOnly = true;
 
                     break;
 
@@ -269,6 +281,8 @@ namespace SIGE.WebApp
                         txtAPRequisicion.Text = pe.FlRequisicion;
                         txtAPPuesto.Text = pe.NombreProceso;
                     }
+                    txtAPRequisicion.ReadOnly = true;
+                    txtAPPuesto.ReadOnly = true;
 
                     break;
 
@@ -294,9 +308,11 @@ namespace SIGE.WebApp
                         txtEvaluadorDesempeno.Text = pe.UsuarioProceso;
                         txtPeriodoDesempeno.Text = pe.NombreProceso;
                     }
-
+                    txtEvaluadorDesempeno.ReadOnly = true;
+                    txtPeriodoDesempeno.ReadOnly = true;
 
                     break;
+
                 case "CUESTIONARIO":
                     ContentAutorizaDocumentos.Visible = false;
                     ContentLogin.Visible = false;
@@ -320,6 +336,8 @@ namespace SIGE.WebApp
                         txtPeriodoCuestionarioInd.Text = pe.NombreProceso;
                     }
 
+                    txtEvaluadorCuestionarioInd.ReadOnly = true;
+                    txtPeriodoCuestionarioInd.ReadOnly = true;
 
                     break;
 
@@ -330,6 +348,7 @@ namespace SIGE.WebApp
                         var vLstPlanilla = nPlantilla.ObtienePlantillas(pFlPlantillaSolicitud: vFolioProceso).FirstOrDefault();
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "OpenWindowPlantilla(" + vLstPlanilla.ID_PLANTILLA_SOLICITUD.ToString() + ")", true);
                     }
+
                     break;
                 default:
                     break;
@@ -449,7 +468,7 @@ namespace SIGE.WebApp
                     ptipo = (string)(Request.QueryString["AUTORIZA"]);
                     pFolioAutorizacion = Guid.Parse((Request.QueryString["TOKEN"]));
                     DocumentoAutorizarNegocio nDocumento = new DocumentoAutorizarNegocio();
-                    var DocumentoAutorizar = nDocumento.ObtieneEmpleadoDocumentoAutorizacion(pFlAutorizacion: pFolioAutorizacion).Where(w=> w.ID_PERIODO !=null).FirstOrDefault();
+                    var DocumentoAutorizar = nDocumento.ObtieneEmpleadoDocumentoAutorizacion(pFlAutorizacion: pFolioAutorizacion).Where(w => w.ID_PERIODO != null).FirstOrDefault();
 
                     if (DocumentoAutorizar != null)
                     {
