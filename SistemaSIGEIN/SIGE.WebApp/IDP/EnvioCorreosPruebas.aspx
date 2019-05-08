@@ -29,7 +29,7 @@
                                         <Columns>
                                           <%-- <telerik:GridBoundColumn UniqueName="CL_SOLICITUD" DataField="CL_SOLICITUD" HeaderText="Folio de solicitud" HeaderStyle-Width="120" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>--%>
                                             <telerik:GridBoundColumn UniqueName="NB_CANDIDATO" DataField="NB_CANDIDATO" HeaderText="Nombre completo" HeaderStyle-Width="250" HeaderStyle-Font-Bold="true"></telerik:GridBoundColumn>
-                                            <telerik:GridTemplateColumn UniqueName="CL_CORREO_ELECTRONICO" DataField="CL_CORREO_ELECTRONICO" HeaderText="Correo electónico" HeaderStyle-Width="300" HeaderStyle-Font-Bold="true">
+                                            <telerik:GridTemplateColumn UniqueName="CL_CORREO_ELECTRONICO" DataField="CL_CORREO_ELECTRONICO" HeaderText="Correo electrónico" HeaderStyle-Width="300" HeaderStyle-Font-Bold="true">
                                                 <ItemTemplate>
                                                     <telerik:RadTextBox runat="server" ID="txtCorreo" Width="100%" Text='<%# Bind("CL_CORREO_ELECTRONICO") %>' AutoPostBack="false"></telerik:RadTextBox>
                                                 </ItemTemplate>
