@@ -375,7 +375,8 @@ namespace SIGE.WebApp.EO
             else
             {
                 var validarProceso = nPeriodo.ValidaPeriodoDesempeno(vIdPeriodo).FirstOrDefault();
-                if (validarProceso.VALIDACION == "COMPLETO")
+                // CORRECCIÓN TEMPORAL VALIDA FALLOS DE ENVÍO
+                if (validarProceso.VALIDACION == "COMPLETO" || validarProceso.VALIDACION == "SI_HAY_IMPORTANTE_EVALUADOR" || validarProceso.VALIDACION == "SI_HAY_IMPORTANTE_EVALUADO")
                 {
                     EnviarCorreo(false);
                 }
