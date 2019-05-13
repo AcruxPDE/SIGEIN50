@@ -178,7 +178,7 @@ namespace SIGE.WebApp.FYD
         protected void CargarDatos(int? pInstructorId)
         {
             InstructorNegocio nInstructorCurso = new InstructorNegocio();
-            SPE_OBTIENE_INSTRUCTORES_Result lista = nInstructorCurso.ObtieneInstructor(pInstructorId).FirstOrDefault();
+            E_INSTRUCTORES lista = nInstructorCurso.ObtieneInstructor(pInstructorId).FirstOrDefault();
 
             rbInstInterno.Checked = lista.CL_TIPO_INSTRUCTOR == "INTERNO";
             rbInstExterno.Checked = lista.CL_TIPO_INSTRUCTOR == "EXTERNO";

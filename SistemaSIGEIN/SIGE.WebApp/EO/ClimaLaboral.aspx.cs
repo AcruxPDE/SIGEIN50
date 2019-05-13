@@ -94,6 +94,8 @@ namespace SIGE.WebApp.EO
             set { ViewState["vs_vFgCuestionariosCreados"] = value; }
         }
 
+        private bool cl_tipo_configuracion = true;
+
         #endregion
 
         #region Funciones
@@ -112,7 +114,8 @@ namespace SIGE.WebApp.EO
                 CL_ESTADO_PERIODO = s.CL_ESTADO_PERIODO,
                 ID_PERIODO_CLIMA = s.ID_PERIODO_CLIMA,
                 CL_ORIGEN_CUESTIONARIO = s.CL_ORIGEN_CUESTIONARIO,
-                ID_PERIODO_ORIGEN = s.ID_PERIODO_ORIGEN
+                ID_PERIODO_ORIGEN = s.ID_PERIODO_ORIGEN,
+                CL_TIPO_CONFIGURACION = s.CL_TIPO_CONFIGURACION
             }).ToList();
 
 
@@ -123,7 +126,8 @@ namespace SIGE.WebApp.EO
             btnConfigurar.Enabled = pFgEstatus && vConfigurar;
             btnCerrar.Enabled = pFgEstatus && vCerrar;
 
-            btnEnviarSolicitudes.Enabled = pFgEstatus && vEnviarSolicitudes && pFgCuestionariosCreados;
+
+            btnEnviarSolicitudes.Enabled = pFgEstatus && vEnviarSolicitudes && pFgCuestionariosCreados && cl_tipo_configuracion;
             btnContestar.Enabled = pFgEstatus && vContestar && pFgCuestionariosCreados;
             btnControlAvance.Enabled = vControlAvance && pFgCuestionariosCreados;
             btnVistaPreviaCuestionario.Enabled = vVistaPrevia && pFgCuestionariosCreados;
@@ -145,7 +149,14 @@ namespace SIGE.WebApp.EO
                 txtClPeriodo.Text = vPeriodo.CL_PERIODO;
                 txtDsPeriodo.Text = vPeriodo.DS_PERIODO;
                 txtClEstatus.Text = vPeriodo.CL_ESTADO_PERIODO;
+                string tipoPeriodo = vPeriodo.CL_TIPO_CONFIGURACION;
 
+                //VERIFICAR SI EL PERIODO ES CON EVALUADORES O SIN EVALUADORES
+                if (tipoPeriodo == "PARAMETROS")
+                    cl_tipo_configuracion = false;
+                else
+                    cl_tipo_configuracion = true;
+                                    
                 if (vPeriodo.CL_ORIGEN_CUESTIONARIO == "PREDEFINIDO")
                     txtTipo.Text = "Predefinido de SIGEIN";    
                 else if (vPeriodo.CL_ORIGEN_CUESTIONARIO == "COPIA")
