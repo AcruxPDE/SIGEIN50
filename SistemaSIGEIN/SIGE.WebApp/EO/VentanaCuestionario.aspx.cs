@@ -216,8 +216,8 @@ namespace SIGE.WebApp.EO
 
             if (cmbDimension.Text != "")
                 vPreguntas.NB_DIMENSION = cmbDimension.Text;
-            else if (txtAgDimension.Text != "")
-                vPreguntas.NB_DIMENSION = txtAgDimension.Text;
+            //else if (txtAgDimension.Text != "")
+            //    vPreguntas.NB_DIMENSION = txtAgDimension.Text;
             else
             {
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione o ingrese una dimensión.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
@@ -226,8 +226,8 @@ namespace SIGE.WebApp.EO
 
             if (cmbTema.Text != "")
                 vPreguntas.NB_TEMA = cmbTema.Text;
-            else if (txtAgTema.Text != "")
-                vPreguntas.NB_TEMA = txtAgTema.Text;
+            //else if (txtAgTema.Text != "")
+            //    vPreguntas.NB_TEMA = txtAgTema.Text;
             else
             {
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione o ingrese un tema.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
@@ -311,20 +311,20 @@ namespace SIGE.WebApp.EO
                 cmbTema.DataValueField = "CL_TEMA";
                 cmbTema.DataTextField = "NB_TEMA";
                 cmbTema.DataBind();
-                txtAgDimension.Enabled = false;
+                //txtAgDimension.Enabled = false;
             }
             else
             {
-                txtAgDimension.Enabled = true;
+                //txtAgDimension.Enabled = true;
             }
         }
 
         protected void cmbTema_SelectedIndexChanged(object sender, Telerik.Web.UI.RadComboBoxSelectedIndexChangedEventArgs e)
         {
-            if (e.Value != "")
-                txtAgTema.Enabled = false;
-            else
-                txtAgTema.Enabled = true;
+            //if (e.Value != "")
+            //    txtAgTema.Enabled = false;
+            //else
+            //    txtAgTema.Enabled = true;
         }
 
         protected void btnVerificacionTrue_CheckedChanged(object sender, EventArgs e)

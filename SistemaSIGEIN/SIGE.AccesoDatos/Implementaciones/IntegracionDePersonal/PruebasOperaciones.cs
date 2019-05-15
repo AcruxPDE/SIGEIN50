@@ -3,6 +3,7 @@ using SIGE.Entidades.Administracion;
 using SIGE.Entidades.IntegracionDePersonal;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Data.Objects;
 using System.Linq;
 using System.Text;
@@ -21,8 +22,10 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
         {
             using (context = new SistemaSigeinEntities())
             {
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 var q = from V_C_PRUEBA in context.SPE_OBTIENE_C_PRUEBA(pIdPrueba, pClPrueba,pNbPrueba,pIdCuestionario,pNoTiempo)
                         select V_C_PRUEBA;
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return q.ToList();
             }
         }
@@ -31,8 +34,10 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
         {
             using (context = new SistemaSigeinEntities())
             {
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 var q = from V_C_CANDIDATOS in context.SPE_OBTIENE_CANDIDATOS_BATERIA_MASIVA(pNbCandidato, pNbPaterno, pNbMaterno)
                         select V_C_CANDIDATOS;
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return q.ToList();
             }
         }
@@ -41,7 +46,11 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_PRUEBAS_CONFIGURADAS(pID_BATERIA).ToList();
+                List<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result> retorno = new List<SPE_OBTIENE_PRUEBAS_CONFIGURADAS_Result>();
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
+                retorno = context.SPE_OBTIENE_PRUEBAS_CONFIGURADAS(pID_BATERIA).ToList();
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
+                return retorno;
             }
         }
                
@@ -50,7 +59,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_INSERTA_ACTUALIZA_C_PRUEBA(pout_clave_retorno, V_C_PRUEBA.ID_PRUEBA,V_C_PRUEBA.CL_PRUEBA,V_C_PRUEBA.NB_PRUEBA,V_C_PRUEBA.ID_CUESTIONARIO,V_C_PRUEBA.NO_TIEMPO_PRUEBA,usuario,usuario,programa,programa, tipo_transaccion);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -60,7 +71,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_GENERA_PRUEBAS_CANDIDATOS(pout_clave_retorno, vEmpleados.ToString(), vPruebas.ToString(), usuario,  programa);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -70,7 +83,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_ACTUALIZA_PRUEBAS_CANDIDATOS(pout_clave_retorno, vPruebas.ToString(), pIdBateria, usuario, programa);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -80,7 +95,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_ELIMINA_C_PRUEBA(pout_clave_retorno, ID_PRUEBA, usuario, programa);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -90,7 +107,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_ELIMINA_K_BATERIA_PRUEBA(pout_clave_retorno, pXmlBaterias, pNbUsuario, pNbPrograma);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }     
@@ -101,8 +120,10 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
         {
             using (context = new SistemaSigeinEntities())
             {
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 var q = from V_K_PRUEBA in context.SPE_OBTIENE_K_PRUEBA(pIdPrueba, pIdPruebaPlantilla, pIdCandidato, pIdEmpleado, pClEmpleado, pClEstado, pFeInicio, pFeTermino, pNoTiempo, pClTokenExterno, pClTokenBateria, pIdBateria, pFgAsignada)
                         select V_K_PRUEBA;
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return q.ToList();
             }
         }
@@ -111,8 +132,10 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
         {
             using (context = new SistemaSigeinEntities())
             {
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 var q = from V_K_PRUEBA in context.SPE_OBTIENE_RESULTADO_PRUEBA(pIdPrueba, pClTokenExterno)
                         select V_K_PRUEBA;
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return q.ToList();
             }        
         }
@@ -121,7 +144,11 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_BATERIA_PRUEBAS(pIdBateria, pFlBateria, pIdCandidato, pCorreoElectronico).ToList();
+                List<SPE_OBTIENE_BATERIA_PRUEBAS_Result> retorno = new List<SPE_OBTIENE_BATERIA_PRUEBAS_Result>();
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
+                retorno = context.SPE_OBTIENE_BATERIA_PRUEBAS(pIdBateria, pFlBateria, pIdCandidato, pCorreoElectronico).ToList();
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
+                return retorno;
             }
         }              
        
@@ -129,8 +156,10 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
         {
             using (context = new SistemaSigeinEntities())
             {
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 var q = from V_K_PRUEBA in context.SPE_OBTIENE_PRUEBA_POR_PUESTO(pIdPuesto, pNoValorCompetencia)
                         select V_K_PRUEBA;
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return q.ToList();
             }
         }
@@ -140,7 +169,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_INSERTA_ACTUALIZA_K_PRUEBA(pout_clave_retorno,pID_PRUEBA ,V_K_PRUEBA.ID_PRUEBA_PLANTILLA, V_K_PRUEBA.ID_CANDIDATO, V_K_PRUEBA.ID_EMPLEADO, V_K_PRUEBA.CL_EMPLEADO, V_K_PRUEBA.CL_ESTADO,V_K_PRUEBA.FE_INICIO,V_K_PRUEBA.FE_TERMINO,V_K_PRUEBA.NO_TIEMPO, usuario, usuario, programa, programa, tipo_transaccion,V_K_PRUEBA.NB_TIPO_PRUEBA);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -150,7 +181,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_ACTUALIZA_PRUEBAS_BATERIA(pout_clave_retorno, pID_BATERIA, pXmlPruebas, usuario, programa, clTipoTransaccion);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -160,7 +193,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_ACTUALIZA_K_PRUEBA_CORREGIDA(pout_clave_retorno, pID_PRUEBA, V_K_PRUEBA.ID_PRUEBA_PLANTILLA, V_K_PRUEBA.ID_CANDIDATO, V_K_PRUEBA.ID_EMPLEADO, V_K_PRUEBA.CL_EMPLEADO, V_K_PRUEBA.CL_ESTADO, V_K_PRUEBA.FE_INICIO, V_K_PRUEBA.FE_TERMINO, V_K_PRUEBA.NO_TIEMPO, usuario, usuario, programa, programa, tipo_transaccion, V_K_PRUEBA.NB_TIPO_PRUEBA);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -170,7 +205,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_ELIMINA_K_PRUEBA(pout_clave_retorno, ID_PRUEBA_PLANTILLA, usuario, programa);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -180,7 +217,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_INICIA_CUESTIONARIO_PRUEBA(pout_clave_retorno, pIdEmpleado, pIdCandidato, pIdPrueba, pIdPruebaPlantilla, pFeInicio,pClTokenExterno, usuario, programa);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -190,8 +229,10 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_ELIMINA_RESPUESTAS_PRUEBA(pout_clave_retorno, pIdPrueba, pClUsuario, pNbPrograma);
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
             }
         }
 
@@ -200,7 +241,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_ELIMINA_PRUEBA_RESPUESTAS(pout_clave_retorno, pXmlPruebas, pIdBateria, pClUsuario, pNbPrograma);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -210,7 +253,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_ELIMINA_RESPUESTAS_BATERIA(pout_clave_retorno, pIdBateria, pClUsuario, pNbPrograma);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -221,8 +266,10 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
         {
             using (context = new SistemaSigeinEntities())
             {
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 var q = from V_C_PRUEBA_TIEMPO in context.SPE_OBTIENE_C_PRUEBA_SECCION(pIdPruebaTiempo,pIdPrueba, pClPruebaTiempo, pNbPruebaTiempo, pNoTiempo)
                         select V_C_PRUEBA_TIEMPO;
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return q.ToList();
             }
         }
@@ -232,7 +279,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_INSERTA_ACTUALIZA_K_PRUEBA_SECCION(pout_clave_retorno,V_C_PRUEBA_TIEMPO.ID_PRUEBA_SECCION ,V_C_PRUEBA_TIEMPO.ID_PRUEBA, V_C_PRUEBA_TIEMPO.CL_PRUEBA_SECCION, V_C_PRUEBA_TIEMPO.NB_PRUEBA_SECCION, V_C_PRUEBA_TIEMPO.NO_TIEMPO,V_C_PRUEBA_TIEMPO.CL_ESTADO,V_C_PRUEBA_TIEMPO.FE_INICIO,V_C_PRUEBA_TIEMPO.FE_TERMINO,usuario, usuario, programa, programa, tipo_transaccion);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -242,7 +291,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_ELIMINA_C_PRUEBA_SECCION(pout_clave_retorno, ID_PRUEBA_TIEMPO, usuario, programa);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -252,7 +303,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_INICIA_CUESTIONARIO_PRUEBA_SECCION(pout_clave_retorno, pIdPrueba, pFeInicio, usuario, programa);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -262,7 +315,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_ACTUALIZA_TIEMPO_PRUEBA_SECCION(pout_clave_retorno, pXmlTiempo, pTipoTransaccion, usuario, programa);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }        
@@ -273,8 +328,10 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
         {
             using (context = new SistemaSigeinEntities())
             {
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 var q = from V_K_PRUEBA in context.SPE_OBTIENE_K_PRUEBA_SECCION(pIdPruebaSeccion, pIdPrueba, pCLPruebaSeccion, pNbPruebaSeccion, pNoTiempo, pClEstado, pFeInicio, pFeTermino)
                         select V_K_PRUEBA;
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return q.ToList();
             }
         }
@@ -284,7 +341,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_INSERTA_ACTUALIZA_K_PRUEBA_SECCION(pout_clave_retorno, V_K_PRUEBA.ID_PRUEBA_SECCION, V_K_PRUEBA.ID_PRUEBA, V_K_PRUEBA.CL_PRUEBA_SECCION, V_K_PRUEBA.NB_PRUEBA_SECCION, V_K_PRUEBA.NO_TIEMPO,V_K_PRUEBA.CL_ESTADO, V_K_PRUEBA.FE_INICIO, V_K_PRUEBA.FE_TERMINO, usuario, usuario, programa, programa, tipo_transaccion);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -294,7 +353,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_ELIMINA_K_PRUEBA_SECCION(pout_clave_retorno, ID_PRUEBA_SECCION, usuario, programa);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -316,7 +377,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_ACTUALIZA_BATERIAS_ENVIADAS(pout_clave_retorno, pBaterias.ToString(), usuario, programa);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -325,9 +388,10 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
         {
             using (context = new SistemaSigeinEntities())
             {
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 var q = from a in context.SPE_OBTIENE_VARIABLES_BAREMOS(ID_BATERIA)
                         select a;
-
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return q.ToList();
             }
         }
@@ -336,9 +400,10 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
         {
             using (context = new SistemaSigeinEntities())
             {
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 var q = from a in context.SPE_OBTIENE_VARIABLES_BAREMOS_SUSTITUCION(ID_BATERIA)
                         select a;
-
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return q.ToList();
             }
         }
@@ -348,7 +413,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_INSERTA_VARIABLES_BAREMOS(pout_clave_retorno, ID_BATERIA, XML_BAREMOS, CL_USUARIO, NB_PROGRAMA);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -359,6 +426,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 context.SPE_GENERA_VARIABLES_BAREMOS(pout_clave_retorno, ID_BATERIA, CL_USUARIO, NB_PROGRAMA);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
@@ -369,8 +437,10 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
         {
             using (context = new SistemaSigeinEntities())
             {
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 var q = from a in context.SPE_OBTIENE_PRUEBAS_FACTORES_COMPETENCIAS(pID_SELECCION,pCL_SELECCION)
                         select a;
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return q.ToList();
             }
         }
@@ -380,7 +450,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter poutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_INSERTA_ACTUALIZA_COMPETENCIA_FACTOR(poutClaveRetorno,pXML_COMPETENCIAS,pID_FACTOR,pID_PRUEBA,pCL_USUARIO,pNB_PROGRAMA);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(poutClaveRetorno.Value.ToString());
             }
         }
@@ -390,7 +462,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter poutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 context.SPE_ELIMINA_COMPETENCIA_FACTOR(poutClaveRetorno, pID_FACTOR, pXML_COMPETENCIAS, usuario, programa);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return XElement.Parse(poutClaveRetorno.Value.ToString());
             }
         }
@@ -399,8 +473,10 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
         {
             using (context = new SistemaSigeinEntities())
             {
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 var q = from a in context.SPE_OBTIENE_BATERIA_PRUEBAS_CANDIDATO(pIdBateria)
                         select a;
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return q.FirstOrDefault();
             }
         }
@@ -409,8 +485,10 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
         {
             using (context = new SistemaSigeinEntities())
             {
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
                 var q = from a in context.SPE_OBTIENE_FACTOR_POR_PRUEBA(pClPrueba)
                         select a;
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
                 return q.FirstOrDefault();
             }
         }

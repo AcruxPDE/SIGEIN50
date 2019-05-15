@@ -189,7 +189,9 @@ namespace SIGE.WebApp.EO
             ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
             E_RESULTADO vResultado = nClima.InsertaActualizaEvaluadorClima(vIdPeriodo, pXmlElementos.ToString(), vClUsuario, vNbPrograma, E_TIPO_OPERACION_DB.I.ToString());
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-            UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindowE");
+            //UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindowE");
+            ClientScript.RegisterStartupScript(GetType(), "rebind", "onCloseWindowE();", true);
+            grdEmpleadosSeleccionados.Rebind();
             GenerarContraseñas();
             grdEmpleadosContrasenias.Rebind();
         }
@@ -782,44 +784,11 @@ namespace SIGE.WebApp.EO
 
         }
 
-        protected void btnGuardar_Click(object sender, EventArgs e)
-        {
-            //ContextoApp.EO.MensajeCorreoEvaluador.dsMensaje = lMensaje.Content;
-            ClimaLaboralNegocio nPeriodo = new ClimaLaboralNegocio();
-            E_PERIODO_CLIMA vDsPeriodo = nPeriodo.ObtienePeriodosClima(pIdPerido: vIdPeriodo).Select(s => new E_PERIODO_CLIMA
-            {
-                ID_PERIODO = s.ID_PERIODO,
-                CL_PERIODO = s.CL_PERIODO,
-                NB_PERIODO = s.NB_PERIODO,
-                DS_PERIODO = s.DS_PERIODO,
-                FE_INICIO = s.FE_INICIO,
-                CL_ESTADO_PERIODO = s.CL_ESTADO_PERIODO,
-                DS_NOTAS = s.DS_NOTAS,
-                ID_PERIODO_CLIMA = s.ID_PERIODO_CLIMA,
-                CL_TIPO_CONFIGURACION = s.CL_TIPO_CONFIGURACION,
-                CL_ORIGEN_CUESTIONARIO = s.CL_ORIGEN_CUESTIONARIO,
-                ID_PERIODO_ORIGEN = s.ID_PERIODO_ORIGEN
-            }
-                ).FirstOrDefault();
-
-            vDsPeriodo.DS_MENSAJE_ENVIO = lMensaje.Content;
-
-            string vInstrucciones = reInstrucciones.Content;
-            ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
-            E_RESULTADO vResultadoInstrucciones = nClima.InsertaInstruccionesCuestionario(vInstrucciones, vIdPeriodo, vClUsuario, vNbPrograma);
-            string vMensajeInstrucciones = vResultadoInstrucciones.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-            if (vResultadoInstrucciones.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
-            {
-                E_RESULTADO vResultado = nPeriodo.InsertaActualizaPeriodoClima(pPeriodo: vDsPeriodo, pCL_USUARIO: vClUsuario, pNB_PROGRAMA: vNbPrograma, pTIPO_TRANSACCION: "A");
-                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
-            }
-            else
-            {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensajeInstrucciones, vResultadoInstrucciones.CL_TIPO_ERROR, pCallBackFunction: null);
-
-            }
-        }
+        //protected void btnGuardar_Click(object sender, EventArgs e)
+        //{
+        //    //ContextoApp.EO.MensajeCorreoEvaluador.dsMensaje = lMensaje.Content;
+            
+        //}
 
         //protected void btnInstrucciones_Click(object sender, EventArgs e)
         //{
@@ -941,5 +910,57 @@ namespace SIGE.WebApp.EO
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
         }
 
+        protected void btnGuardarCerrar_Click(object sender, EventArgs e)
+        {
+            GuardarDatos(true);
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            GuardarDatos(false);
+        }
+
+        private void GuardarDatos(bool pCerrar)
+        {
+            ClimaLaboralNegocio nPeriodo = new ClimaLaboralNegocio();
+            E_PERIODO_CLIMA vDsPeriodo = nPeriodo.ObtienePeriodosClima(pIdPerido: vIdPeriodo).Select(s => new E_PERIODO_CLIMA
+            {
+                ID_PERIODO = s.ID_PERIODO,
+                CL_PERIODO = s.CL_PERIODO,
+                NB_PERIODO = s.NB_PERIODO,
+                DS_PERIODO = s.DS_PERIODO,
+                FE_INICIO = s.FE_INICIO,
+                CL_ESTADO_PERIODO = s.CL_ESTADO_PERIODO,
+                DS_NOTAS = s.DS_NOTAS,
+                ID_PERIODO_CLIMA = s.ID_PERIODO_CLIMA,
+                CL_TIPO_CONFIGURACION = s.CL_TIPO_CONFIGURACION,
+                CL_ORIGEN_CUESTIONARIO = s.CL_ORIGEN_CUESTIONARIO,
+                ID_PERIODO_ORIGEN = s.ID_PERIODO_ORIGEN
+            }
+                ).FirstOrDefault();
+
+            vDsPeriodo.DS_MENSAJE_ENVIO = lMensaje.Content;
+
+            string vInstrucciones = reInstrucciones.Content;
+            ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
+            E_RESULTADO vResultadoInstrucciones = nClima.InsertaInstruccionesCuestionario(vInstrucciones, vIdPeriodo, vClUsuario, vNbPrograma);
+            string vMensajeInstrucciones = vResultadoInstrucciones.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+            
+            E_RESULTADO vResultado = nPeriodo.InsertaActualizaPeriodoClima(pPeriodo: vDsPeriodo, pCL_USUARIO: vClUsuario, pNB_PROGRAMA: vNbPrograma, pTIPO_TRANSACCION: "A");
+            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+            //UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
+            
+            //UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensajeInstrucciones, vResultadoInstrucciones.CL_TIPO_ERROR, pCallBackFunction: null);
+
+
+            if (pCerrar)
+            {
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
+            }
+            else
+            {
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+            }
+        }
     }
 }

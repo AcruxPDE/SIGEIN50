@@ -245,7 +245,7 @@ namespace SIGE.WebApp.Administracion
             if (vRequisicion.CL_ESTATUS_REQUISICION != "CREADA" && vRequisicion.CL_ESTATUS_REQUISICION != "RECHAZADO")
             {
                 cmbCausas.Enabled = false;
-                btnGuardarCatalogo.Enabled = false;
+                //btnGuardarCatalogo.Enabled = false;
                 btnNuevoPuesto.Enabled = false;
             }
 
