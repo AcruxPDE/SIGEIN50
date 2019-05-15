@@ -7,6 +7,7 @@ using SIGE.Entidades.Administracion;
 using SIGE.Entidades;
 using System.Data.Objects;
 using System.Xml.Linq;
+using System.Data.Entity.Infrastructure;
 
 namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar por la carpeta correspondiente
 {
@@ -21,7 +22,11 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_K_CUESTIONARIO_PREGUNTA(ID_CUESTIONARIO_PREGUNTA, ID_CUESTIONARIO, ID_PREGUNTA, NB_PREGUNTA, NB_RESPUESTA, NO_VALOR_RESPUESTA).ToList();
+                List<SPE_OBTIENE_K_CUESTIONARIO_PREGUNTA_Result> retorno = new List<SPE_OBTIENE_K_CUESTIONARIO_PREGUNTA_Result>();
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
+                retorno = context.SPE_OBTIENE_K_CUESTIONARIO_PREGUNTA(ID_CUESTIONARIO_PREGUNTA, ID_CUESTIONARIO, ID_PREGUNTA, NB_PREGUNTA, NB_RESPUESTA, NO_VALOR_RESPUESTA).ToList();
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
+                return retorno;
             }
         }
                 
@@ -32,7 +37,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar
                 //Declaramos el objeto de valor de retorno
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 //context.SPE_INSERTA_ACTUALIZA_K_CUESTIONARIO_PREGUNTA(pout_clave_retorno, V_K_CUESTIONARIO_PREGUNTA.ID_CUESTIONARIO_PREGUNTA, V_K_CUESTIONARIO_PREGUNTA.ID_CUESTIONARIO, V_K_CUESTIONARIO_PREGUNTA.ID_PREGUNTA, V_K_CUESTIONARIO_PREGUNTA.NB_PREGUNTA, V_K_CUESTIONARIO_PREGUNTA.NB_RESPUESTA, V_K_CUESTIONARIO_PREGUNTA.NO_VALOR_RESPUESTA, usuario, usuario, programa, programa, tipo_transaccion);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 10000;
                 context.SPE_INSERTA_ACTUALIZA_K_CUESTIONARIO_PREGUNTA(pOutClRetorno,pIdevaluado,pIdevaluador,pIdCuestionarioPregunta,pIdCuestionario,XML_CUESTIONARIO, pNbPrueba, usuario, usuario, programa, programa, tipo_transaccion);
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 60;
                 //regresamos el valor de retorno de sql
                 return XElement.Parse(pOutClRetorno.Value.ToString());
             }
@@ -54,7 +61,11 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar
         {
             using (context = new SistemaSigeinEntities())
             {
-                 return context.SPE_OBTIENE_K_CUESTIONARIO_PREGUNTA_PPRUEBA(ID_PRUEBA, CL_TOKEN).ToList();
+                List<SPE_OBTIENE_K_CUESTIONARIO_PREGUNTA_PPRUEBA_Result> retorno = new List<SPE_OBTIENE_K_CUESTIONARIO_PREGUNTA_PPRUEBA_Result>();
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
+                retorno = context.SPE_OBTIENE_K_CUESTIONARIO_PREGUNTA_PPRUEBA(ID_PRUEBA, CL_TOKEN).ToList();
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 30;
+                return retorno;
             }
         }
        

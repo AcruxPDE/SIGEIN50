@@ -5,3 +5,12 @@ C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Demo
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Demo\EntityFramework.xml
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Demo\SIGE.AccesoDatos.csprojResolveAssemblyReference.cache
 C:\Users\acrux\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Demo\SIGE.AccesoDatos.dll
+C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Demo\SIGE.AccesoDatos.dll.config
+C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Demo\SIGE.AccesoDatos.dll
+C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Demo\EntityFramework.dll
+C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Demo\SIGE.Entidades.dll
+C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Demo\EntityFramework.xml
+C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Demo\SIGE.AccesoDatos.csprojAssemblyReference.cache
+C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Demo\SIGE.AccesoDatos.csproj.CoreCompileInputs.cache
+C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Demo\SIGE.AccesoDatos.csproj.CopyComplete
+C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Demo\SIGE.AccesoDatos.dll

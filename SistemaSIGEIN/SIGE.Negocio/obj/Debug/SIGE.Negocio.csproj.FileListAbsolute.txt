@@ -102,7 +102,6 @@ C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\Teler
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\Telerik.Windows.Zip.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\EntityFramework.dll
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\Microsoft.AnalysisServices.AdomdClient.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\SIGE.AccesoDatos.pdb
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\SIGE.AccesoDatos.dll.config
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\SIGE.Entidades.pdb
