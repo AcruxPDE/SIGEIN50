@@ -268,7 +268,7 @@
                         <label id="Label1" name="lblDuracion" runat="server">Duración:</label>
                     </div>
                     <div class="divControlDerecha">
-                        <telerik:RadNumericTextBox ID="txtDuracion" MinValue="1" MaxValue="9999999999" runat="server" Width="100px" NumberFormat-DecimalDigits="0" IncrementSettings-InterceptMouseWheel="false" MaxLength="250"></telerik:RadNumericTextBox>
+                        <telerik:RadNumericTextBox ID="txtDuracion" MinValue="0.1" MaxValue="9999999999" runat="server" Width="100px" IncrementSettings-InterceptMouseWheel="false" MaxLength="250"></telerik:RadNumericTextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" Display="Dynamic"
                             ControlToValidate="txtDuracion" ForeColor="Red" CssClass="validacion" Font-Size="Smaller" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
                     </div>

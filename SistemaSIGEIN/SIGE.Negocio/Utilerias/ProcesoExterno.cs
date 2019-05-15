@@ -493,11 +493,12 @@ namespace SIGE.Negocio.Utilerias
                 return false;
             }
 
-            if (DateTime.Now.Date > FechaFinalProceso)
-            {
-                MensajeError = "El periodo de evaluación concluyó el " + FechaFinalProceso.ToString("dd/MM/yyyy");
-                return false;
-            }
+            //SE COMENTO EL SIGUIENTE CODIGO POR SOLICITUD EN EL TICKET TT1046 DE NUTEC
+            //if (DateTime.Now.Date > FechaFinalProceso)
+            //{
+            //    MensajeError = "El periodo de evaluación concluyó el " + FechaFinalProceso.ToString("dd/MM/yyyy");
+            //    return false;
+            //}
 
             return true;
         }
