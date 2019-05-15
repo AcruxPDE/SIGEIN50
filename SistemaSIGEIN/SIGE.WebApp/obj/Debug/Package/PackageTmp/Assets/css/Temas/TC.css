@@ -1,0 +1,72 @@
+﻿.BordeModulo {
+    border: 2px solid #7F7F7F;
+}
+
+.RadButton .rbDecorated {
+    background-color: transparent !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    color: #fff !important;
+}
+
+span.RadButton.rbSkinnedButton, span.RadButton.rbLinkButton, span.RadButton.rbVerticalButton {
+    background-color: #7F7F7F !important;
+    color: #fff !important;
+}
+
+.RadButton.rbSkinnedButton {
+    background-color: #7F7F7F !important;
+}
+
+.RadGrid .rgPagerCell .rgNumPart a.rgCurrentPage, .RadDataPager .rdpNumPart a.rdpCurrentPage {
+    border: 1px solid #ddd !important;
+    background-color: #7F7F7F !important;
+    color: #fff !important;
+}
+
+.rwTitleRow .rwTitlebar, .rwTitleRow .rwCorner {
+    border-bottom: 6px solid #7F7F7F !important;
+}
+
+.RadGrid .rgMasterTable .rgSelectedCell, .RadGrid .rgSelectedRow > td, .RadGrid td.rgEditRow .rgSelectedRow, .RadGrid .rgSelectedRow td.rgSorted {
+    color: #fff !important;
+    background: #7F7F7F none repeat scroll 0% 0% !important;
+    border-color: #FFF !important;
+}
+
+.RadTreeList .rtlRSel td {
+    background: #7F7F7F none repeat scroll 0% 0% !important;
+}
+
+.RadTreeList .rtlVBorders td.rtlL, .RadTreeList_Bootstrap .rtlLines td.rtlL {
+    background-color: #FFF !important;
+}
+
+.RadTreeList .rtlRSel {
+    color: #333 !important;
+}
+
+.RadListBox .rlbItem.rlbSelected {
+    color: #000 !important;
+    background-color: #eee !important;
+}
+
+.RadListBox {
+    line-height: 1.75 !important;
+}
+
+.RadTabStrip .rtsLevel1 .rtsSelected, .RadTabStrip .rtsLevel1 .rtsSelected:hover {
+    background-color: #7F7F7F !important;
+    color: #fff !important;
+}
+
+.RadTabStripLeft .rtsLevel1 .rtsSelected, .RadTabStripLeft .rtsLevel1 .rtsSelected:hover {
+    background-color: #7F7F7F !important;
+    color: #fff !important;
+}
+
+.RadToolTip {
+    border: 1px solid #7F7F7F !important;
+    background-color: #7F7F7F !important;
+    color: #333 !important;
+}
+
