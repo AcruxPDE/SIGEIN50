@@ -74,9 +74,7 @@ namespace SIGE.WebApp.FYD
         protected void grdInstructores_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             InstructorNegocio nInstructor = new InstructorNegocio();
-            List<E_INSTRUCTORES> listaInstructores = new List<E_INSTRUCTORES>();
-            listaInstructores = nInstructor.ObtieneInstructores(null, null, null, null, vIdEmpresa);
-            grdInstructores.DataSource = listaInstructores;
+            grdInstructores.DataSource = nInstructor.ObtieneInstructores(null, null, null, null, vIdEmpresa);
         }
         #endregion
 
@@ -130,7 +128,7 @@ namespace SIGE.WebApp.FYD
                     System.Web.UI.HtmlControls.HtmlGenericControl txtTblEmail = (System.Web.UI.HtmlControls.HtmlGenericControl)nestedItem.FindControl("txtTblEmail");
 
                     InstructorNegocio nInstructorCurso = new InstructorNegocio();
-                    E_INSTRUCTORES lista = nInstructorCurso.ObtieneInstructor(pInstructorId).FirstOrDefault();
+                    SPE_OBTIENE_INSTRUCTORES_Result lista = nInstructorCurso.ObtieneInstructor(pInstructorId).FirstOrDefault();
 
                     List<E_INSTRUCTOR_CURSO> vLstCurso = new List<E_INSTRUCTOR_CURSO>();
                     if (lista.XML_CURSOS != null & lista.XML_CURSOS != "")

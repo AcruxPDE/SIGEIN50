@@ -220,7 +220,6 @@
     <Compile Include="E_DESCRIPTIVO_PDE.cs" />
     <Compile Include="E_LOGIN.cs" />
     <Compile Include="FormacionDesarrollo\E_AVANCE_PROGRAMA_CAPACITACION.cs" />
-    <Compile Include="FormacionDesarrollo\E_INSTRUCTORES.cs" />
     <Compile Include="FormacionDesarrollo\E_OBTIENE_PLAN_SUCESION.cs" />
     <Compile Include="FormacionDesarrollo\E_PUESTOS_EVALUADOS.cs" />
     <Compile Include="FormacionDesarrollo\E_PUESTOS_PERIODOS.cs" />

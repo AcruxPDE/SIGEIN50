@@ -128,11 +128,11 @@
                     var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
                         if (shouldSubmit) {
 
-                            //if (ValidarContendorPreguntas()) {
+                            if (ValidarContendorPreguntas()) {
                                 clearInterval(c);//Se agrega para detener el tiempo del reloj antes de guardar resultados 12/04/2018
                                 var btn = $find("<%=btnTerminar.ClientID%>");
                                 btn.click();
-                            //}
+                            }
                         }
                     });
                     var text = "¿Estás seguro que deseas terminar tu prueba?";

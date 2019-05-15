@@ -18,23 +18,11 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
     {
         private SistemaSigeinEntities contexto;
 
-        public List<E_INSTRUCTORES> ObtenerInstructores(int? pIdInstructor = null, int? pIdCompetencia = null, int? pIdCurso = null, string pXmlCompetencias = null, int? pID_EMPRESA = null)
+        public List<SPE_OBTIENE_INSTRUCTORES_Result> ObtenerInstructores(int? pIdInstructor = null, int? pIdCompetencia = null, int? pIdCurso = null, string pXmlCompetencias = null, int? pID_EMPRESA = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.Database.SqlQuery<E_INSTRUCTORES>("EXEC " +
-                    "FYD.SPE_OBTIENE_INSTRUCTORES " +
-                    "@PIN_ID_INSTRUCTOR, " +
-                    "@PIN_ID_COMPETENCIA, " +
-                    "@PIN_ID_CURSO, " +
-                    "@PIN_XML_COMPETENCIAS, " +
-                    "@PIN_ID_EMPRESA",
-                    new SqlParameter("@PIN_ID_INSTRUCTOR", (object)pIdInstructor ?? DBNull.Value ),
-                    new SqlParameter("@PIN_ID_COMPETENCIA", (object)pIdCompetencia ?? DBNull.Value ),
-                    new SqlParameter("@PIN_ID_CURSO", (object)pIdCurso ?? DBNull.Value ),
-                    new SqlParameter("@PIN_XML_COMPETENCIAS",(object)pXmlCompetencias ?? DBNull.Value ),
-                    new SqlParameter("@PIN_ID_EMPRESA", (object)pID_EMPRESA ?? DBNull.Value)
-                ).ToList();
+                return contexto.SPE_OBTIENE_INSTRUCTORES(pIdInstructor, pIdCompetencia, pIdCurso, pXmlCompetencias,pID_EMPRESA).ToList();
             }
         }
 

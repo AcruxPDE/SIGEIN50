@@ -719,17 +719,18 @@
                         <div class="ctrlBasico">
                             <telerik:RadButton ID="btnAgregarEvaluador" Visible="false" runat="server" AutoPostBack="false" OnClientClicked="OpenEmpleadosSelectionWindowEvaluador" Text="Agregar evaluador"></telerik:RadButton>
                         </div>
-                        <div class="ctrlBasico">
-                            <telerik:RadButton runat="server" ID="btnReasignarPonderacion" AutoPostBack="true" Text="Reasignar ponderación" OnClick="btnReasignarPonderacion_Click" ToolTip="Selecciona ésta opción si lo que deseas es modificar de manera automática y equitativa el impacto de cada uno de los evaluados."></telerik:RadButton>
-                        </div>
-                        <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnEliminarEvaluado" runat="server" Text="Eliminar" OnClientClicking="confirmarEliminarEvaluados" OnClick="btnEliminarEvaluado_Click"></telerik:RadButton>
-                        </div>
                         <div class="divControlesBoton">
+                            <div class="ctrlBasico">
+                                <telerik:RadButton runat="server" ID="btnReasignarPonderacion" AutoPostBack="true" Text="Reasignar ponderación" OnClick="btnReasignarPonderacion_Click" ToolTip="Selecciona ésta opción si lo que deseas es modificar de manera automática y equitativa el impacto de cada uno de los evaluados."></telerik:RadButton>
+                            </div>
                             <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" ID="btnGuardarEvaluado" Text="Guardar" OnClick="btnGuardarEvaluado_Click"></telerik:RadButton>
                             </div>
                         </div>
+                        <div class="ctrlBasico">
+                            <telerik:RadButton ID="btnEliminarEvaluado" runat="server" Text="Eliminar" OnClientClicking="confirmarEliminarEvaluados" OnClick="btnEliminarEvaluado_Click"></telerik:RadButton>
+                        </div>
+
                     </telerik:RadPane>
                     <telerik:RadPane ID="RadPane2" runat="server" Width="30">
                         <telerik:RadSlidingZone ID="RadSlidingZone2" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
@@ -1030,12 +1031,12 @@
                     <div class="ctrlBasico">
                         <telerik:RadButton runat="server" ID="btnGuardar" Text="Guardar" OnClick="btnGuardar_Click"></telerik:RadButton>
                     </div>
-                    <%--<div class="ctrlBasico">
+                                        <div class="ctrlBasico">
                         <telerik:RadButton runat="server" ID="btnGuardarCerrar" Text="Guardar y cerrar" OnClick="btnGuardarCerrar_Click"></telerik:RadButton>
-                    </div>--%>
-                    <%--<div class="ctrlBasico">
+                    </div>
+                    <div class="ctrlBasico">
                         <telerik:RadButton runat="server" ID="btnCancelar" Text="Cancelar" OnClientClicked="closeWindow"></telerik:RadButton>
-                    </div>--%>
+                    </div>
                 </div>
 
                  </telerik:RadPane>

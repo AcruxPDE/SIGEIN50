@@ -626,11 +626,6 @@
                             <telerik:RadButton ID="btnSeleccionarPuesto" runat="server" Text="Seleccionar por puesto" OnClientClicked="OpenPuestoSelectionWindow"></telerik:RadButton>
                             <telerik:RadButton ID="btmSleccionarArea" runat="server" Text="Seleccionar por área/departamento" OnClientClicked="OpenAreaSelectionWindow"></telerik:RadButton>
                             <telerik:RadButton ID="btnEliminarEvaluador" runat="server" Text="Eliminar" OnClick="btnEliminarEvaluador_Click"></telerik:RadButton>
-                            <div class="divControlesBoton">
-                                <div class="ctrlBasico">
-                                    <telerik:RadButton runat="server" ID="btnGuardarEvaluados" Text="Guardar" OnClick="btnGuardar_Click"></telerik:RadButton>
-                                </div>
-                            </div>
                         </telerik:RadPageView>
                         <telerik:RadPageView ID="rpvCampos" runat="server">
                             <div style="clear: both;"></div>
@@ -763,11 +758,6 @@
                             <div class="ctrlBasico">
                                 <label style="color: red;" runat="server" id="dvPreguntasAbiertas" visible="false">No se pueden modificar las preguntas abiertas por que ya fueron asignadas al cuestionario.</label>
                             </div>
-                            <div class="divControlesBoton">
-                                <div class="ctrlBasico">
-                                    <telerik:RadButton runat="server" ID="btnGuardarAbierta" Text="Guardar" OnClick="btnGuardar_Click"></telerik:RadButton>
-                                </div>
-                            </div>
                            <%-- <div class="ctrlBasico">
                                 <telerik:RadButton ID="btnGuardarAbierta" runat="server" Text="Asignar preguntas a cuestionario" ToolTip="Esta opción te permite asignar las preguntas abiertas al cuestionario, una vez realizado este proceso no se podrán diseñar preguntas abiertas." OnClientClicking="ConfirmarAsignarPreguntas" OnClick="btnGuardarAbierta_Click"></telerik:RadButton>
                             </div>--%>
@@ -830,11 +820,6 @@
                             </div>
                             <div class="ctrlBasico">
                                 <telerik:RadButton ID="btnCrearCuestionarios" runat="server" Text="Crear cuestionarios" ToolTip="Esta opción te permite asignar los cuestionarios a los evaluadores seleccionados, una vez realizado este proceso no se podrá rediseñar el cuestionario." OnClientClicking="ConfirmarAsignar" OnClick="btnCrearCuestionarios_Click"></telerik:RadButton>
-                            </div>
-                            <div class="divControlesBoton">
-                                <div class="ctrlBasico">
-                                    <telerik:RadButton runat="server" ID="btnGuardarCuestionarios" Text="Guardar" OnClick="btnGuardar_Click"></telerik:RadButton>
-                                </div>
                             </div>
                             <div class="ctrlBasico">
                                 <label style="color: red;" runat="server" id="divMensajeCuestionarios">No se puede modificar las preguntas por que ya existen cuestionarios creados.</label>
@@ -908,15 +893,10 @@
                                     </MasterTableView>
                                 </telerik:RadGrid>
                             </div>
-                            <div style="clear: both;"></div>
-                            <%-- <telerik:RadButton ID="btnReasignarTodasContrasenas" runat="server" Text="Reasignar a todos" OnClick="btnReasignarTodasContrasenas_Click"></telerik:RadButton>--%>
+                              <div style="clear: both;"></div>
+                           <%-- <telerik:RadButton ID="btnReasignarTodasContrasenas" runat="server" Text="Reasignar a todos" OnClick="btnReasignarTodasContrasenas_Click"></telerik:RadButton>--%>
                             <telerik:RadButton ID="btnReasignarContrasena" runat="server" Text="Reasignar contraseña al evaluador seleccionado" OnClick="btnReasignarContrasena_Click"></telerik:RadButton>
-                            <telerik:RadButton ID="btnEnvioCuestionarios" runat="server" Text="Enviar cuestionarios" Enabled="false" OnClientClicking="OpenEnvioSolicitudesWindow"></telerik:RadButton>
-                            <div class="divControlesBoton">
-                                <div class="ctrlBasico">
-                                    <telerik:RadButton runat="server" ID="btnGuardarCerrar" Text="Guardar y Cerrar" OnClick="btnGuardarCerrar_Click"></telerik:RadButton>
-                                </div>
-                            </div>
+                             <telerik:RadButton ID="btnEnvioCuestionarios" runat="server" Text="Enviar cuestionarios" Enabled="false" OnClientClicking="OpenEnvioSolicitudesWindow"></telerik:RadButton>
                         </telerik:RadPageView>
                     </telerik:RadMultiPage>
           <%--  </telerik:RadPane>

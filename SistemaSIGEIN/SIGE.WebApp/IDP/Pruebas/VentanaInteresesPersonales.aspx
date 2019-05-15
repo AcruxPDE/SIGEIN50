@@ -107,32 +107,19 @@
 
             function close_window(sender, args) {
                 if (vPruebaEstatus != "Terminado") {
-                    if (ValidarContendorPreguntas()) {
-                        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
-                            if (shouldSubmit) {
-
+                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+                        if (shouldSubmit) {
+                            if (ValidarContendorPreguntas()) {
                                 clearInterval(c);//Se agrega para detener el tiempo del reloj antes de guardar resultados 12/04/2018
                                 var btn = $find("<%=btnTerminar.ClientID%>");
                                 btn.click();
                             }
-                        });
+                        }
+                    });
 
-                        var text = "¿Estás seguro que deseas terminar tu prueba Intereses Personales?";
-                        radconfirm(text, callBackFunction, 400, 150, null, "");
-                        args.set_cancel(true);
-                    }
-                    else {
-                        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
-                            if (shouldSubmit) {
-
-                            }
-                        });
-
-                        var text = "Faltan contestar preguntas";
-                        radconfirm(text, callBackFunction, 400, 150, null, "");
-                        args.set_cancel(true);
-                    }
-                    
+                    var text = "¿Estás seguro que deseas terminar tu prueba?";
+                    radconfirm(text, callBackFunction, 400, 150, null, "");
+                    args.set_cancel(true);
                 }
                 else {
                     //window.close();

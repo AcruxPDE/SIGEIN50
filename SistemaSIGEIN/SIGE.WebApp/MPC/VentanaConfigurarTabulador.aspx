@@ -330,11 +330,6 @@
                         <div class="ctrlBasico">
                             <telerik:RadButton ID="btnEliminarEmpleados" OnClick="btnEliminarEmpleados_Click" runat="server" name="btnEliminarEmpleados" AutoPostBack="true" Text="Eliminar"></telerik:RadButton>
                         </div>
-                        <div class="divControlDerecha">
-                            <div class="ctrlBasico">
-                                <telerik:RadButton ID="RadButton2" runat="server" name="btnGuardarConfiguracion" AutoPostBack="true" Text="Guardar" OnClick="btnGuardarConfiguracion_Click"></telerik:RadButton>
-                            </div>
-                        </div>
                     </telerik:RadPane>
                     <telerik:RadPane ID="rpAyudaSeleccionEmpleados" runat="server" Scrolling="None" Width="22px">
                         <telerik:RadSlidingZone ID="rszSeleccionEmpleados" runat="server" SlideDirection="Left" ExpandedPaneId="rsSeleccionEmpleados" Width="22px" ClickToOpen="true">
@@ -405,11 +400,6 @@
                         <div class="ctrlBasico">
                             <telerik:RadButton ID="btnEliminarCompetencias" OnClick="btnEliminarCompetencias_Click" runat="server" name="btnEliminarCompetencias" AutoPostBack="true" Text="Eliminar" Width="100"></telerik:RadButton>
                         </div>
-                        <div class="divControlDerecha">
-                            <div class="ctrlBasico">
-                                <telerik:RadButton ID="RadButton1" runat="server" name="btnGuardarConfiguracion" AutoPostBack="true" Text="Guardar" OnClick="btnGuardarConfiguracion_Click"></telerik:RadButton>
-                            </div>
-                        </div>
                     </telerik:RadPane>
                     <telerik:RadPane ID="rpAyudaFactoresValuacion" runat="server" Scrolling="None" Width="22px">
                         <telerik:RadSlidingZone ID="rszFactoresValuacion" runat="server" SlideDirection="Left" ExpandedPaneId="rsFactoresValuacion" Width="22px" ClickToOpen="true">
@@ -421,7 +411,6 @@
                         </telerik:RadSlidingZone>
                     </telerik:RadPane>
                 </telerik:RadSplitter>
-                
             </telerik:RadPageView>
             <%--<telerik:RadPageView ID="rpvConsultasComparativas" runat="server">
                 <telerik:RadSplitter ID="rsConsultasComparativas" Width="100%" Height="100%" BorderSize="0" runat="server">

@@ -110,7 +110,7 @@
     <telerik:RadTabStrip ID="RadTabStrip1" runat="server" MultiPageID="rmpVentanaTema" SelectedIndex="0">
         <Tabs>
             <telerik:RadTab Text="Tema"></telerik:RadTab>
-            <telerik:RadTab Visible ="false" Text="Competencias"></telerik:RadTab>
+            <telerik:RadTab Text="Competencias"></telerik:RadTab>
             <telerik:RadTab Text="Materiales"></telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
@@ -160,7 +160,7 @@
                     </div>
                 </div>
             </telerik:RadPageView>
-            <telerik:RadPageView ID="rpvVentanaCompetencia" runat="server" Visible ="false">
+            <telerik:RadPageView ID="rpvVentanaCompetencia" runat="server">
                 <telerik:RadGrid ID="grdTemaCompetencia" runat="server" ShowHeader="true" AllowPaging="false"
                     AllowSorting="true" GroupPanelPosition="Top" Width="605px" GridLines="None"
                     Height="290px" HeaderStyle-Font-Bold="true"

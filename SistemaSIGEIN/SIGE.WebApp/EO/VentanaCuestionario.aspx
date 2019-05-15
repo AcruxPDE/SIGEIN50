@@ -95,14 +95,14 @@
                         <div class="divControlIzquierda">
                             <label id="lblDimension">Dimensión:</label>
                         </div>
-                        <%--<div class="divControlDerecha" style="margin-left: 20px;">
+                        <div class="divControlDerecha" style="margin-left: 20px;">
                             <telerik:RadTextBox ID="txtAgDimension" runat="server" ToolTip="Agregar nueva dimensión" EmptyMessage="Agregar"></telerik:RadTextBox>
                         </div>
                         <div class="divControlDerecha" style="margin-left: 20px;">
                             <label id="Label1">ó </label>
-                        </div>--%>
+                        </div>
                         <div class="divControlDerecha">
-                            <telerik:RadComboBox runat="server" ID="cmbDimension" EmptyMessage="Seleccione o agregue" OnSelectedIndexChanged="cmbDimension_SelectedIndexChanged" Width="320" AllowCustomText="true" AutoPostBack="true" Filter="Contains"></telerik:RadComboBox>
+                            <telerik:RadComboBox runat="server" ID="cmbDimension" EmptyMessage="Seleccione" OnSelectedIndexChanged="cmbDimension_SelectedIndexChanged" Width="320" AllowCustomText="true" AutoPostBack="true" Filter="Contains"></telerik:RadComboBox>
                         </div>
                     </div>
                     <div style="clear: both;"></div>
@@ -110,14 +110,14 @@
                         <div class="divControlIzquierda">
                             <label id="lblNombre">Tema:</label>
                         </div>
-                        <%--<div class="divControlDerecha" style="margin-left: 20px;">
+                        <div class="divControlDerecha" style="margin-left: 20px;">
                             <telerik:RadTextBox ID="txtAgTema" runat="server" EmptyMessage="Agregar" ToolTip="Agregar nuevo tema"></telerik:RadTextBox>
                         </div>
                         <div class="divControlDerecha" style="margin-left: 20px;">
                             <label id="Label2">ó </label>
-                        </div>--%>
+                        </div>
                         <div class="divControlDerecha">
-                            <telerik:RadComboBox runat="server" ID="cmbTema" EmptyMessage="Seleccione o agregue" AutoPostBack="true" OnSelectedIndexChanged="cmbTema_SelectedIndexChanged" Width="320" AllowCustomText="true" Filter="Contains" MaxHeight="400"></telerik:RadComboBox>
+                            <telerik:RadComboBox runat="server" ID="cmbTema" EmptyMessage="Seleccione" AutoPostBack="true" OnSelectedIndexChanged="cmbTema_SelectedIndexChanged" Width="320" AllowCustomText="true" Filter="Contains" MaxHeight="400"></telerik:RadComboBox>
                         </div>
                     </div>
                     <div style="clear: both;"></div>

@@ -199,7 +199,7 @@
 
                 <label class="labelSubtitulo">Progreso de la evaluación</label>
                 <div>
-                    <telerik:RadProgressBar runat="server" ID="cpbEvaluacion" BarType="Percent" Width="100%" MinValue="0.00"></telerik:RadProgressBar>
+                    <telerik:RadProgressBar runat="server" ID="cpbEvaluacion" BarType="Percent" Width="100%" MinValue="0"></telerik:RadProgressBar>
                 </div>
 
                 <table runat="server" id="tblCompetencia" class="ctrlTableForm" style="width: 100%">

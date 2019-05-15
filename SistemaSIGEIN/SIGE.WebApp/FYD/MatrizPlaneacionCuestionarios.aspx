@@ -381,7 +381,7 @@
     </div>
     <div class="divControlDerecha">
         <div class="ctrlBasico">
-            <telerik:RadButton Visible="false" runat="server" ID="btnCerrar" Text="Cerrar" AutoPostBack="false" OnClientClicked="OnClientBeforeClose"></telerik:RadButton>
+            <telerik:RadButton runat="server" ID="btnCerrar" Text="Cerrar" AutoPostBack="false" OnClientClicked="OnClientBeforeClose"></telerik:RadButton>
         </div>
     </div>
     <telerik:RadWindowManager ID="rwmMensaje" runat="server" EnableShadow="true"></telerik:RadWindowManager>

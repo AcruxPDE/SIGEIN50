@@ -1337,9 +1337,9 @@
                     <div class="ctrlBasico">
                         <telerik:RadButton ID="btnGuardarConfiguracion" runat="server" Text="Guardar" OnClick="btnGuardarConfiguracion_Click"></telerik:RadButton>
                     </div>
-                    <%--<div class="ctrlBasico">
+                    <div class="ctrlBasico">
                         <telerik:RadButton ID="btnGuardarConfiguracionCerrar" runat="server" Text="Guardar y cerrar" OnClick="btnGuardarConfiguracionCerrar_Click"></telerik:RadButton>
-                    </div>--%>
+                    </div>
                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvMensajeInicial" runat="server">
@@ -1456,9 +1456,9 @@
                     <div class="ctrlBasico">
                         <telerik:RadButton ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardarConfiguracion_Click"></telerik:RadButton>
                     </div>
-                    <%--<div class="ctrlBasico">
+                    <div class="ctrlBasico">
                         <telerik:RadButton ID="btnGuardarCerrar" runat="server" Text="Guardar y cerrar" OnClick="btnGuardarConfiguracionCerrar_Click"></telerik:RadButton>
-                    </div>--%>
+                    </div>
                 </div>
 
             </telerik:RadPageView>
@@ -1671,9 +1671,9 @@
                         <div class="ctrlBasico">
                             <telerik:RadButton ID="btnGuardarPonderacion" runat="server" Text="Guardar" OnClick="btnGuardarConfiguracion_Click"></telerik:RadButton>
                         </div>
-                        <%--<div class="ctrlBasico">
+                        <div class="ctrlBasico">
                             <telerik:RadButton ID="btnGuardarPonderacionCerrar" runat="server" Text="Guardar y cerrar" OnClick="btnGuardarConfiguracionCerrar_Click"></telerik:RadButton>
-                        </div>--%>
+                        </div>
                     </div>
                 </div>
             </telerik:RadPageView>
@@ -1813,12 +1813,6 @@
                             <div class="ctrlBasico">
                                 <telerik:RadButton ID="btnAgregarPuestos" runat="server" Text="Puestos contra los que se evaluará" OnClientClicked="OpenOtrosPuestosSelectionWindow"></telerik:RadButton>
                             </div>
-
-                <div class="divControlDerecha">
-                    <div class="ctrlBasico">
-                        <telerik:RadButton ID="RadButton1" runat="server" Text="Guardar" OnClick="btnGuardarConfiguracion_Click"></telerik:RadButton>
-                    </div>
-                </div>
                        
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvOtrosEvaluadores" runat="server">
@@ -2052,11 +2046,6 @@
                     <div class="ctrlBasico">
                         <telerik:RadButton ID="btnCrearCuestionarios" runat="server" Text="Crear cuestionarios" OnClick="btnCrearCuestionarios_Click" Visible="false"></telerik:RadButton>
                     </div>
-                    <div class="divControlDerecha">
-                    <div class="ctrlBasico">
-                        <telerik:RadButton ID="btnGuardarCuestionarios" runat="server" Text="Guardar" OnClick="btnGuardarConfiguracion_Click"></telerik:RadButton>
-                        </div>
-                    </div>
                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvContasenas" runat="server">
@@ -2098,9 +2087,7 @@
                     <telerik:RadButton ID="btnEnviarCuestionarios" runat="server" Text="Enviar evaluaciones" Enabled="false" OnClientClicked="OpenEnvioCuestionariosWindow" AutoPostBack="false"></telerik:RadButton>
                 </div>
                 <div class="divControlesBoton">
-                    <div class="ctrlBasico">
-                        <telerik:RadButton ID="btnGuardarCerrar" runat="server" Text="Guardar y Cerrar" OnClick="btnGuardarConfiguracionCerrar_Click"></telerik:RadButton>
-                    </div>
+                    <telerik:RadButton ID="btnCerrarPantalla" runat="server" Text="Guardar y cerrar" OnClientClicked="closeWindow" AutoPostBack="false"></telerik:RadButton>
                 </div>
             </telerik:RadPageView>
         </telerik:RadMultiPage>

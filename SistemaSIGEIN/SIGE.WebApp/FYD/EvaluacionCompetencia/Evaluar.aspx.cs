@@ -179,13 +179,11 @@ namespace SIGE.WebApp.FYD.EvaluacionCompetencia
         {
             int vNoPreguntasContestadas, vNoPreguntasTotales;
             double vPrAvance;
-            double value;
 
             vNoPreguntasTotales = pListPeguntas.Count;
             vNoPreguntasContestadas = pListPeguntas.Where(t => t.FG_VALOR0 || t.FG_VALOR1 || t.FG_VALOR2 || t.FG_VALOR3 || t.FG_VALOR4 || t.FG_VALOR5).Count();
 
-            value = (((double)vNoPreguntasContestadas / (double)vNoPreguntasTotales) * 100);
-            vPrAvance = (Math.Truncate(value * 100) / 100);
+            vPrAvance = (((double)vNoPreguntasContestadas / (double)vNoPreguntasTotales) * 100);
             cpbEvaluacion.Value = vPrAvance;
 
         }

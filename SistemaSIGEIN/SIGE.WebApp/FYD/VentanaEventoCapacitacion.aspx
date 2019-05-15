@@ -683,7 +683,7 @@
 
     <div class="divControlDerecha">
         <div class="ctrlBasico">
-            <telerik:RadButton runat="server" ID="btnGuardarEvento" Text="Guardar y Cerrar" OnClick="btnGuardarEvento_Click" />
+            <telerik:RadButton runat="server" ID="btnGuardarEvento" Text="Guardar" OnClick="btnGuardarEvento_Click" />
         </div>
         <div class="ctrlBasico">
             <telerik:RadButton runat="server" ID="btnCancelarEvento" Text="Cancelar" AutoPostBack="false" OnClientClicked="closeWindow"></telerik:RadButton>

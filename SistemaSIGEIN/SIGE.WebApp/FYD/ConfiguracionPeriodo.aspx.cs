@@ -386,18 +386,18 @@ namespace SIGE.WebApp.FYD
                 btnEvaluacionPorEstandar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEvaluacionPorEstandar").FirstOrDefault().DS_TEXTO;
                 btnEvaluacionPorOtras.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEvaluacionPorOtras").FirstOrDefault().DS_TEXTO;
                 btnGuardarConfiguracion.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardarConfiguracion").FirstOrDefault().DS_TEXTO;
-                //btnGuardarConfiguracionCerrar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardarConfiguracionCerrar").FirstOrDefault().DS_TEXTO;
+                btnGuardarConfiguracionCerrar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardarConfiguracionCerrar").FirstOrDefault().DS_TEXTO;
                 btnAgregarCampoAdicional.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnAgregarCampoAdicional").FirstOrDefault().DS_TEXTO;
                 btnEditar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEditar").FirstOrDefault().DS_TEXTO;
                 btnEliminar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEliminar").FirstOrDefault().DS_TEXTO;
                 btnGuardar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardar").FirstOrDefault().DS_TEXTO;
-                //btnGuardarCerrar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardarCerrar").FirstOrDefault().DS_TEXTO;
+                btnGuardarCerrar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardarCerrar").FirstOrDefault().DS_TEXTO;
                 chkFgPonderarEvaluadoresAuto.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgPonderarEvaluadoresAuto").FirstOrDefault().DS_TEXTO;
                 chkFgPonderarEvaluadores.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgPonderarEvaluadores").FirstOrDefault().DS_TEXTO;
                 chkFgPonderarCompetenciasAuto.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgPonderarCompetenciasAuto").FirstOrDefault().DS_TEXTO;
                 chkFgPonderacionCompetencia.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgPonderacionCompetencia").FirstOrDefault().DS_TEXTO;
                 btnGuardarPonderacion.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardarPonderacion").FirstOrDefault().DS_TEXTO;
-                //btnGuardarPonderacionCerrar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardarPonderacionCerrar").FirstOrDefault().DS_TEXTO;
+                btnGuardarPonderacionCerrar.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnGuardarPonderacionCerrar").FirstOrDefault().DS_TEXTO;
                 btnSeleccionPorPersona.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnSeleccionPorPersona").FirstOrDefault().DS_TEXTO;
                 btnSeleccionPorPuesto.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnSeleccionPorPuesto").FirstOrDefault().DS_TEXTO;
                 btnSeleccionPorArea.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnSeleccionPorArea").FirstOrDefault().DS_TEXTO;
@@ -412,7 +412,7 @@ namespace SIGE.WebApp.FYD
                 btnCrearCuestionarios.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnCrearCuestionarios").FirstOrDefault().DS_TEXTO;
                 btnReasignarContrasena.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnReasignarContrasena").FirstOrDefault().DS_TEXTO;
                 btnEnviarCuestionarios.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnEnviarCuestionarios").FirstOrDefault().DS_TEXTO;
-                //btnCerrarPantalla.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnCerrarPantalla").FirstOrDefault().DS_TEXTO;
+                btnCerrarPantalla.Text = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vbtnCerrarPantalla").FirstOrDefault().DS_TEXTO;
 
                 //Asignar tooltip a RadButton
                 chkFgPuestoActual.ToolTip = vLstTextosTraduccion.Where(w => w.CL_TEXTO == "vchkFgPuestoActual").FirstOrDefault().DS_TEXTO;             
@@ -955,7 +955,7 @@ namespace SIGE.WebApp.FYD
             }
 
             btnGuardarConfiguracion.Enabled = vFgPermitirEdicion;
-            //btnGuardarConfiguracionCerrar.Enabled = vFgPermitirEdicion;
+            btnGuardarConfiguracionCerrar.Enabled = vFgPermitirEdicion;
 
             ChangeEnablePonderacion(vFgEvaluacionPorPuesto);
 
@@ -973,7 +973,7 @@ namespace SIGE.WebApp.FYD
             bool vFgPermitirEdicion = (vPeriodo.CL_ESTADO != "CERRADO");
             divPonderacionCompetencias.Style.Value = String.Format("display: {0}", pFgHabilitarPonderacion ? "block" : "none");
             btnGuardarPonderacion.Enabled = vFgPermitirEdicion;
-            //btnGuardarPonderacionCerrar.Enabled = vFgPermitirEdicion;
+            btnGuardarPonderacionCerrar.Enabled = vFgPermitirEdicion;
         }
 
         protected void ChangeEnableSeleccionEvaluados(bool fgHabilitaPonderacion)

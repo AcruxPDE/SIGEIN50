@@ -245,10 +245,7 @@ namespace SIGE.WebApp.IDP
             vPruebaTerminada.NB_TIPO_PRUEBA = "APLICACION";
             E_RESULTADO vResultado = nKprueba.InsertaActualiza_K_PRUEBA(tipo_transaccion: E_TIPO_OPERACION_DB.A.ToString(), pID_PRUEBA: vIdPrueba, v_k_prueba: vPruebaTerminada, usuario: vClUsuario, programa: vNbPrograma);
             if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
-            {
-                btnTerminar.Enabled = false;    
-                GuardarPrueba();
-            }                
+            GuardarPrueba();
             else if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.WARNING)
             {
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
@@ -347,12 +344,10 @@ namespace SIGE.WebApp.IDP
             var vResultPrueba = nKprueba.Obtener_K_PRUEBA(pIdPrueba: vIdPrueba, pClTokenExterno: vClTokenExterno).FirstOrDefault();
 
             if(vResultPrueba != null){
-                CuestionarioPreguntaNegocio negocioCuestionario = new CuestionarioPreguntaNegocio();
-                
-                E_RESULTADO vResultado = negocioCuestionario.InsertaActualiza_K_CUESTIONARIO_PREGUNTA(tipo_transaccion: E_TIPO_OPERACION_DB.A.ToString(), pIdEvaluado: vResultPrueba.ID_CANDIDATO, pIdEvaluador: null, pIdCuestionarioPregunta: 0, pIdCuestionario: 0, XML_CUESTIONARIO: RESPUESTAS.ToString(),pNbPrueba: "INTERES", usuario: vClUsuario, programa: vNbPrograma);
-                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "CloseTest");
-                btnTerminar.Enabled = true;
+            CuestionarioPreguntaNegocio negocioCuestionario = new CuestionarioPreguntaNegocio();
+            E_RESULTADO vResultado = negocioCuestionario.InsertaActualiza_K_CUESTIONARIO_PREGUNTA(tipo_transaccion: E_TIPO_OPERACION_DB.A.ToString(), pIdEvaluado: vResultPrueba.ID_CANDIDATO, pIdEvaluador: null, pIdCuestionarioPregunta: 0, pIdCuestionario: 0, XML_CUESTIONARIO: RESPUESTAS.ToString(),pNbPrueba: "INTERES", usuario: vClUsuario, programa: vNbPrograma);
+            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+            UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "CloseTest");
             }
 
         }
