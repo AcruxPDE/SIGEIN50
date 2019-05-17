@@ -269,6 +269,7 @@ namespace SIGE.WebApp.EO
                                 txtSMinimo.Text = "";
                                 txtPSobresaliente.Text = "";
 
+                                ActivarDivs("");
                                 break;
                         }
                         txtPonderacion.Text = oMeta.PR_META.ToString();
@@ -457,6 +458,12 @@ namespace SIGE.WebApp.EO
                     divMonto.Style["display"] = "none";
                     divFecha.Style["display"] = "none";
                     divSiNo.Style["display"] = "block";
+                    break;
+                default:
+                    divPorcentual.Style["display"] = "none";
+                    divMonto.Style["display"] = "none";
+                    divFecha.Style["display"] = "none";
+                    divSiNo.Style["display"] = "none";
                     break;
             }
         }
