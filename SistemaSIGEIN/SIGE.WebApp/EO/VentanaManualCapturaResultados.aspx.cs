@@ -196,16 +196,14 @@ namespace SIGE.WebApp.EO
             return resultado;
         }
 
-        private bool ValidaConfiguracionMeta( string vCumplimientoMin, string vCumplimientoSatisfactorio, string vCumplimientoSobresaliente)
+        private bool ValidaConfiguracionMeta(string cl_tipo_meta,  string vCumplimientoMin, string vCumplimientoSatisfactorio, string vCumplimientoSobresaliente)
         {
-            bool vFgMetaConfigurada = false;
-
-            if (vCumplimientoMin != "" && vCumplimientoSatisfactorio != "" && vCumplimientoSobresaliente != "")
-                {
-                    vFgMetaConfigurada = true;
-                }
-
-            return vFgMetaConfigurada;
+            if (cl_tipo_meta == "Si/No" && vCumplimientoSatisfactorio != "" && vCumplimientoSobresaliente != "")
+                return true;
+            else if (vCumplimientoMin != "" && vCumplimientoSatisfactorio != "" && vCumplimientoSobresaliente != "")
+                return true;
+            else
+                return false;
         }
 
         public string validarDsNotas(string vdsNotas)
@@ -477,7 +475,7 @@ namespace SIGE.WebApp.EO
                 vCumplimientoSatisfactorio = (item.GetDataKeyValue("NB_CUMPLIMIENTO_SATISFACTORIO").ToString());
                 vCumplimientoSobresaliente = (item.GetDataKeyValue("NB_CUMPLIMIENTO_SOBRESALIENTE").ToString());
 
-                 vHabilitaMeta  = ValidaConfiguracionMeta(vCumplimientoMin, vCumplimientoSatisfactorio, vCumplimientoSobresaliente);
+                 vHabilitaMeta  = ValidaConfiguracionMeta(cl_tipo_meta, vCumplimientoMin, vCumplimientoSatisfactorio, vCumplimientoSobresaliente);
                  if (!vHabilitaMeta)
                      lbMetasConfiguradas.Visible = true;
 

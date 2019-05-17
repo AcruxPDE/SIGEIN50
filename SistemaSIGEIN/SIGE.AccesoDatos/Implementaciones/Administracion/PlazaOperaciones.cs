@@ -19,7 +19,7 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
             using (contexto = new SistemaSigeinEntities())
             {
                 if (pXmlSeleccion == null)
-                    pXmlSeleccion = new XElement("SELECCION", new XAttribute("CL_TIPO", "ACTIVAS"));
+                    pXmlSeleccion = new XElement("SELECCION", new XAttribute("CL_TIPO", "ACTIVAS_INACTIVAS"));
                 return contexto.SPE_OBTIENE_PLAZAS(pIdPlaza, pXmlSeleccion.ToString(), pID_EMPRESA, pID_ROL).ToList();
             }
         }

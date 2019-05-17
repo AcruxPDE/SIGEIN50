@@ -20,6 +20,7 @@ namespace SIGE.WebApp.EO
         private string vClUsuario;
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private string Indicador = "";
 
         private int vIdPeriodo
         {
@@ -128,6 +129,7 @@ namespace SIGE.WebApp.EO
 
         public void traerIndicadores()
         {
+            Indicador = cmbIndicador.Text.ToString();
             if (vIndicadoresMetas != null)
             {
                 cmbIndicador.DataSource = null;
@@ -166,6 +168,7 @@ namespace SIGE.WebApp.EO
                         DS_FUNCION = "Proyecto",
                         NB_INDICADOR = "Proyecto"
                     });
+
                     traerIndicadores();
 
                     if (oMeta != null)
@@ -173,6 +176,7 @@ namespace SIGE.WebApp.EO
                         vIdMetaEvaluado = oMeta.ID_EVALUADO_META;
                         cmbFunciones.Text = oMeta.DS_FUNCION.ToString();
                         cmbIndicador.SelectedValue = oMeta.NB_INDICADOR.ToString();
+                        Indicador = oMeta.NB_INDICADOR.ToString();
                         txtMeta.Text = oMeta.DS_META;
                         txtMetaActual.Text = oMeta.NO_META;
                         txtMetaTotal.Text = oEvaluado.NO_TOTAL_METAS == 0 ? "1" : oEvaluado.NO_TOTAL_METAS.ToString();
@@ -247,6 +251,11 @@ namespace SIGE.WebApp.EO
                                 txtPSobresaliente.Text = oMeta.NB_CUMPLIMIENTO_SATISFACTORIO.ToString();
                                 break;
                             default:
+                                rbPorcentual.Checked = false;
+                                rbMonto.Checked = false;
+                                rbFecha.Checked = false;
+                                rbSiNo.Checked = false;
+
                                 //PORCENTUAL
                                 txtPActual.Text = "";
                                 txtPMinimo.Text = "";
@@ -298,6 +307,14 @@ namespace SIGE.WebApp.EO
             string vNbSatisfactorio = "";
             string vNbSobresaliente = "";
             decimal? vPrMeta = null;
+            string Funciones = cmbFunciones.Text.ToString();
+            string valueIndicador = cmbIndicador.Text.ToString();
+
+            if (valueIndicador == "")
+            {
+                valueIndicador = Indicador;
+                cmbIndicador.SelectedValue = Indicador;
+            }
 
             if (txtPonderacion.Text != "")
             {
@@ -346,7 +363,7 @@ namespace SIGE.WebApp.EO
                 vNbSatisfactorio = "0";
                 vNbSobresaliente = txtSMaximo.Text;
             }
-            if ( oTipoMeta == "CERO" || oTipoMeta == "DESCRIPTIVO" && cmbIndicador.Text != "" && cmbFunciones.Text != "")
+            if ( oTipoMeta == "CERO" || oTipoMeta == "DESCRIPTIVO" && valueIndicador != "" && Funciones != "")
             {
                 if (txtMeta.Text != "")
                 {
@@ -354,7 +371,7 @@ namespace SIGE.WebApp.EO
                     {
                         if ((vPrMeta != null && vNbMinimo != "" && vNbSatisfactorio != "" && vNbSobresaliente != "") || (vCltipoMeta == "Si/No" && vPrMeta != null))
                         {
-                            E_RESULTADO vResultado = nPeriodo.InsetaActualizaMetasEvaluados(vIdMetaEvaluado, vIdPeriodo, vIdEvaluado, dsMetas, vNoMeta, cmbIndicador.Text, txtMeta.Text, vCltipoMeta, null, vFgActivo, vNbActual, vNbMinimo, vNbSatisfactorio, vNbSobresaliente, vPrMeta, null, null, null, vClUsuario, vNbPrograma, vTipoTransaccion);
+                            E_RESULTADO vResultado = nPeriodo.InsetaActualizaMetasEvaluados(vIdMetaEvaluado, vIdPeriodo, vIdEvaluado, dsMetas, vNoMeta, valueIndicador, txtMeta.Text, vCltipoMeta, null, vFgActivo, vNbActual, vNbMinimo, vNbSatisfactorio, vNbSobresaliente, vPrMeta, null, null, null, vClUsuario, vNbPrograma, vTipoTransaccion);
                             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
                             if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
                             {
@@ -497,7 +514,6 @@ namespace SIGE.WebApp.EO
             PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
-            
 
             if (!Page.IsPostBack)
             {

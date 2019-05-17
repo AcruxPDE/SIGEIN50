@@ -202,15 +202,6 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadButton btnReasignarPonderacion;
         
         /// <summary>
-        /// Control btnGuardarEvaluado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnGuardarEvaluado;
-        
-        /// <summary>
         /// Control btnEliminarEvaluado.
         /// </summary>
         /// <remarks>
@@ -218,6 +209,15 @@ namespace SIGE.WebApp.EO {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnEliminarEvaluado;
+        
+        /// <summary>
+        /// Control btnGuardarEvaluado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnGuardarEvaluado;
         
         /// <summary>
         /// Control RadPane2.
