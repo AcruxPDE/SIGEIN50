@@ -2506,7 +2506,7 @@
                                                             <td></td>
                                                             <td>
                                                                 <div class="divControlIzquierdaPS">
-                                                                    <label id="Label78" name="lblNbIdioma" runat="server">Hipotéca:</label>
+                                                                    <label id="Label78" name="lblNbIdioma" runat="server">Hipoteca:</label>
                                                                     <br />
                                                                     <telerik:RadNumericTextBox ID="txtDEHipoteca" NumberFormat-DecimalDigits="2" runat="server" Width="100" MaxLength="1000"></telerik:RadNumericTextBox>
                                                                 </div>
