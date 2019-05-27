@@ -261,7 +261,6 @@ C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\itextsharp.d
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\itextsharp.pdfa.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\itextsharp.xmlworker.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\itextsharp.xtra.dll
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Newtonsoft.Json.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Quartz.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Entidades.dll

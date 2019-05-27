@@ -11116,7 +11116,7 @@ namespace SIGE.Entidades
             var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
                 new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
                 new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
-    
+            
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_PERIODO", xML_RESULTADO, iD_PERIODOParameter, cL_PERIODOParameter, nB_PERIODOParameter, dS_PERIODOParameter, fE_INICIOParameter, fE_TERMINOParameter, cL_ESTADO_PERIODOParameter, dS_NOTASParameter, iD_BITACORAParameter, xML_CAMPOS_ADICIONALESParameter, iD_PERIODO_EVALUACIONParameter, fG_AUTOEVALUACIONParameter, fG_SUPERVISORParameter, fG_SUBORDINADOSParameter, fG_INTERRELACIONADOSParameter, fG_OTROSParameter, fG_CREADO_POR_PVCParameter, cL_USUARIOParameter, nB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter);
         }
     

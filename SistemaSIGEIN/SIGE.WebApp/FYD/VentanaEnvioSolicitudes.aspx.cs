@@ -57,6 +57,8 @@ namespace SIGE.WebApp.FYD
                 txtClPeriodo.InnerText = oPeriodo.NB_PERIODO;
                 txtDsPeriodo.InnerText = oPeriodo.DS_PERIODO;
                 txtEstatus.InnerText = oPeriodo.CL_ESTADO_PERIODO;
+                vDsMensaje = oPeriodo.XML_MENSAJE_INICIAL;
+
                 string vTiposEvaluacion = "";
 
                 if (oPeriodo.FG_AUTOEVALUACION)
@@ -152,7 +154,7 @@ namespace SIGE.WebApp.FYD
                     {
                         vMensaje = vMensaje.Replace("[nombre]", vNbEvaluador);
                         vMensaje = vMensaje.Replace("[URL]", vUrl + "&FlProceso=" + item.GetDataKeyValue("FL_EVALUADOR").ToString());
-                        vMensaje = vMensaje.Replace("[contraseña]", item.GetDataKeyValue("CL_TOKEN").ToString());
+                        vMensaje = vMensaje.Replace("[contrase&ntilde;a]", item.GetDataKeyValue("CL_TOKEN").ToString());
 
                         //bool vEstatusCorreo = pe.EnvioCorreo("gabriel.vazquez@acrux.mx", item.NB_EVALUADOR, "Cuestionarios para evaluación", vMensaje);
 
@@ -226,8 +228,8 @@ namespace SIGE.WebApp.FYD
                     CargarPeriodo();
                 }
 
-                 vDsMensaje = ContextoApp.FYD.MensajeCorreoSolicitudes.dsMensaje;
-                 lMensaje.InnerHtml = vDsMensaje.Replace("<a href=\"[URL]\">","").Replace("</a>","");
+                 //vDsMensaje = ContextoApp.FYD.MensajeCorreoSolicitudes.dsMensaje;
+                 //lMensaje.InnerHtml = vDsMensaje.Replace("<a href=\"[URL]\">","").Replace("</a>","");
             }
         }
 
