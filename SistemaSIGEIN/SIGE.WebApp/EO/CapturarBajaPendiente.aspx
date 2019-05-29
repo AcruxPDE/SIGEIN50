@@ -15,7 +15,7 @@
     }
 
     function OpenSelectionCausaWindow() {
-        openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=3", "WinSeleccionCausa", "Selección de causa de baja");
+        openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=<%=vIdCatalogoBaja%>", "WinSeleccionCausa", "Selección de causa de baja");
     }
 
     function useDataFromChild(pDato) {

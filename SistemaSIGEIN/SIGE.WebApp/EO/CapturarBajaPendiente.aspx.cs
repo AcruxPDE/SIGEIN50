@@ -1,5 +1,7 @@
-﻿using SIGE.Entidades.EvaluacionOrganizacional;
+﻿using SIGE.Entidades;
+using SIGE.Entidades.EvaluacionOrganizacional;
 using SIGE.Entidades.Externas;
+using SIGE.Negocio.Administracion;
 using SIGE.Negocio.EvaluacionOrganizacional;
 using SIGE.WebApp.Comunes;
 using System;
@@ -40,6 +42,12 @@ namespace SIGE.WebApp.EO
             set { ViewState["vs_vIdCausaBaja"] = value; }
         }
 
+        public int? vIdCatalogoBaja
+        {
+            get { return (int?)ViewState["vs_vIdCatalogoBaja"]; }
+            set { ViewState["vs_vIdCatalogoBaja"] = value; }
+        }
+
         #endregion
 
         #region Funciones
@@ -77,6 +85,10 @@ namespace SIGE.WebApp.EO
                     rdpFechaBaja.SelectedDate = vEmpleadoBaja.FE_BAJA_EFECTIVA;
                     XElement xmlComentarios = XElement.Parse(vEmpleadoBaja.DS_COMENTARIOS);
                     reComentarios.Content = xmlComentarios.Value;
+                    CatalogoListaNegocio negocio = new CatalogoListaNegocio();
+                    SPE_OBTIENE_C_CATALOGO_LISTA_Result vCatalogo = new SPE_OBTIENE_C_CATALOGO_LISTA_Result();
+                    vCatalogo =negocio.ObtieneCatalogoLista().Where(w=>w.NB_CATALOGO_LISTA== "Causas de baja").FirstOrDefault();
+                    vIdCatalogoBaja = vCatalogo.ID_CATALOGO_LISTA;
                 }
             }
 
