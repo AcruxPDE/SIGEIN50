@@ -511,6 +511,10 @@ namespace SIGE.WebApp.EO
                         btmSleccionarArea.Enabled = false;
                         btnEliminarEvaluador.Enabled = false;
                         btnAplicar.Enabled = false;
+                        btnGuardarPreguntasAbiertas.Enabled = false;
+                        btnGuardarCuestionario.Enabled = false;
+                        btnGuardarCerrar.Visible = false;
+                        btnCerrar.Visible = true;
                     }
                     else
                     {
@@ -614,6 +618,10 @@ namespace SIGE.WebApp.EO
                         btmSleccionarArea.Enabled = false;
                         btnEliminarEvaluador.Enabled = false;
                         btnAplicar.Enabled = false;
+                        btnGuardarPreguntasAbiertas.Enabled = false;
+                        btnGuardarCuestionario.Enabled = false;
+                        btnGuardarCerrar.Visible = false;
+                        btnCerrar.Visible = true;
 
                         btnSeleccionar.Enabled = false;
                         btnSeleccionarPuesto.Enabled = false;
@@ -765,24 +773,25 @@ namespace SIGE.WebApp.EO
         //    }
         //}
 
-        protected void btnAplicar_Click(object sender, EventArgs e)
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
         {
             FiltrosIndice();
             if (vXmlFiltrosSel != null)
             {
                 ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
                 E_RESULTADO vResultado = nClima.InsertaFiltroClima(vIdPeriodo, vXmlFiltrosSel, vClUsuario, vNbPrograma);
-                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                //string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                //UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                GuardarDatos(false);
             }
             else
             {
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, "Aplique por lo menos un filtro para guardar la configuración.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
-            }
-
+            }            
         }
 
-        protected void btnGuardar_Click(object sender, EventArgs e)
+        protected void GuardarDatos(bool cerrar)
         {
             //ContextoApp.EO.MensajeCorreoEvaluador.dsMensaje = lMensaje.Content;
             ClimaLaboralNegocio nPeriodo = new ClimaLaboralNegocio();
@@ -812,7 +821,11 @@ namespace SIGE.WebApp.EO
             {
                 E_RESULTADO vResultado = nPeriodo.InsertaActualizaPeriodoClima(pPeriodo: vDsPeriodo, pCL_USUARIO: vClUsuario, pNB_PROGRAMA: vNbPrograma, pTIPO_TRANSACCION: "A");
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
+
+                if (cerrar)
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "CloseWindowConfig");
+                else
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
             }
             else
             {
@@ -939,6 +952,11 @@ namespace SIGE.WebApp.EO
             E_RESULTADO vResultado = nClima.ActualizaValidezCuestionario(vIdPeriodo);
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
+        }
+
+        protected void btnGuardarCerrar_Click(object sender, EventArgs e)
+        {
+            GuardarDatos(true);
         }
 
     }
