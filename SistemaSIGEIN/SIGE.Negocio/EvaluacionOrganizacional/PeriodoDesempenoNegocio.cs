@@ -460,7 +460,7 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
                     }).ToList();
         }
 
-        public List<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result> ObtenerEvaluadoresPeriodo(int pID_PERIODO, int? pID_ROL)
+        public List<SPE_OBTIENE_EO_EVALUADORES_TOKEN> ObtenerEvaluadoresPeriodo(int pID_PERIODO, int? pID_ROL)
         {
             PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
             return oPeriodo.ObtenerEvaluadores(pID_PERIODO, pID_ROL);
@@ -628,5 +628,10 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
         //    PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
         //    return oPeriodo.ObtenerResultadoJerarquico(pIdEvaluador);
         //}
+        public List<E_BAJAS_PERIODO_EDD> ObtieneBajasEDD(int? pIdEmpleado = null)
+        {
+            PeriodoDesempenoOperaciones oPeriodo = new PeriodoDesempenoOperaciones();
+            return oPeriodo.ObtenerBajasEDD(pIdEmpleado).ToList();
+        }
     }
 }

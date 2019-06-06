@@ -1,4 +1,5 @@
 ﻿using SIGE.Entidades;
+using SIGE.Entidades.EvaluacionOrganizacional;
 using SIGE.Entidades.Externas;
 using SIGE.Negocio.EvaluacionOrganizacional;
 using SIGE.Negocio.FormacionDesarrollo;
@@ -233,7 +234,7 @@ namespace SIGE.WebApp.EO
 
         protected void rgCorreos_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            List<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result> vEvaluadores = new List<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result>();
+            List<SPE_OBTIENE_EO_EVALUADORES_TOKEN> vEvaluadores = new List<SPE_OBTIENE_EO_EVALUADORES_TOKEN>();
             PeriodoDesempenoNegocio eoNegocio = new PeriodoDesempenoNegocio();
             vEvaluadores = eoNegocio.ObtenerEvaluadoresPeriodo(vIdPeriodo, null);
             rgCorreos.DataSource = vEvaluadores;

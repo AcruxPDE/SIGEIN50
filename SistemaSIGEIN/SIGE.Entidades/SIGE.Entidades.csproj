@@ -107,6 +107,7 @@
     <Compile Include="Administracion\E_USUARIO.cs" />
     <Compile Include="EvaluacionOrganizacional\E_ADICIONALES_SELECCIONADOS.cs" />
     <Compile Include="EvaluacionOrganizacional\E_BAJAS_PENDIENTES.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_BAJAS_PERIODO_EDD.cs" />
     <Compile Include="EvaluacionOrganizacional\E_BAJA_EMPLEADO.cs" />
     <Compile Include="EvaluacionOrganizacional\E_CAMPOS_ADICIONALES.cs" />
     <Compile Include="EvaluacionOrganizacional\E_CAPTURA_RESULTADO.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="EvaluacionOrganizacional\E_SELECCIONA_EMPLEADOS.cs" />
     <Compile Include="EvaluacionOrganizacional\E_SELECCION_PERIODOS_DESEMPENO.cs" />
     <Compile Include="EvaluacionOrganizacional\E_TIPO_GRAFICAR.cs" />
+    <Compile Include="EvaluacionOrganizacional\SPE_OBTIENE_EO_EVALUADORES_TOKEN.cs" />
     <Compile Include="Externas\E_CANDIDATO_SOLICITUD.cs" />
     <Compile Include="Externas\E_CLASIFICACION.cs" />
     <Compile Include="Externas\E_COMPARACION_COMPETENCIA.cs" />
