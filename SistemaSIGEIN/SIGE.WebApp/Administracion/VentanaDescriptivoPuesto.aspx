@@ -1122,8 +1122,8 @@
                                     <telerik:RadGrid
                                         ID="rgInterrelacionados"
                                         runat="server"
-                                        Width="450"
-                                        Height="350"
+                                        Width="660"
+                                        Height="300"
                                         ToolTip="Aquí debes especificar aquellos puestos que intervienen en los procesos centrales del puesto analizado, son los responsables de generar entradas o recibir salidas de estos procesos. Te sugerimos que selecciones máximo cinco."
                                         AllowPaging="true"
                                         AutoGenerateColumns="false"
@@ -1137,18 +1137,19 @@
                                             <Selecting AllowRowSelect="true" EnableDragToSelectRows="true" />
                                         </ClientSettings>
                                         <PagerStyle AlwaysVisible="true" />
-                                        <MasterTableView DataKeyNames="ID_PUESTO, ID_PUESTO_RELACION" ClientDataKeyNames="ID_PUESTO, ID_PUESTO_RELACION" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
+                                        <MasterTableView DataKeyNames="ID_PUESTO" ClientDataKeyNames="ID_PUESTO" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
                                             <Columns>
-                                                <telerik:GridBoundColumn UniqueName="CL_PUESTO" DataField="CL_PUESTO" HeaderText="Clave puesto" AutoPostBackOnFilter="true" HeaderStyle-Width="120" FilterControlWidth="60" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
-                                                <telerik:GridBoundColumn UniqueName="NB_PUESTO" DataField="NB_PUESTO" HeaderText="Nombre puesto" AutoPostBackOnFilter="true" HeaderStyle-Width="300" FilterControlWidth="220" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn UniqueName="CL_PUESTO" DataField="CL_PUESTO" HeaderText="Clave puesto" AutoPostBackOnFilter="true" HeaderStyle-Width="150" FilterControlWidth="90" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn UniqueName="NB_PUESTO" DataField="NB_PUESTO" HeaderText="Nombre puesto" AutoPostBackOnFilter="true" HeaderStyle-Width="330" FilterControlWidth="270" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn UniqueName="NO_PLAZAS" DataField="NO_PLAZAS" HeaderText="No. plazas" AutoPostBackOnFilter="true" HeaderStyle-Width="120" FilterControlWidth="60" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
                                             </Columns>
                                         </MasterTableView>
                                     </telerik:RadGrid>
                                 </div>
                                 <div class="ctrlBasico" style="float: left">
-                                    <telerik:RadButton ID="btnAgregar" runat="server" Text="B" AutoPostBack="false" OnClientClicked="OpenPuestosInterrelacionadosWindow" ToolTip="Seleccionar puestos interrelacionados"></telerik:RadButton>
+                                    <telerik:RadButton ID="btnAgregar" Visible="false" Enabled="false" runat="server" Text="B" AutoPostBack="false" OnClientClicked="OpenPuestosInterrelacionadosWindow" ToolTip="Seleccionar puestos interrelacionados"></telerik:RadButton>
                                     <div style="clear: both;"></div>
-                                    <telerik:RadButton ID="btnEliminar" runat="server" Text="X" AutoPostBack="true" OnClick="btnEliminar_Click" ToolTip="Eliminar puesto interrelacionado"></telerik:RadButton>
+                                    <telerik:RadButton ID="btnEliminar" Visible="false" Enabled="false" runat="server" Text="X" AutoPostBack="true" OnClick="btnEliminar_Click" ToolTip="Eliminar puesto interrelacionado"></telerik:RadButton>
                                 </div>
                                 <%-- <div class="BorderRadioComponenteHTML" style="width: 450px; float: left;">
                                     <div class="divBarraTitulo">

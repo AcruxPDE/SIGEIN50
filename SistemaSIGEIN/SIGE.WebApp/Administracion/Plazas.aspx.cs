@@ -47,8 +47,8 @@ namespace SIGE.WebApp.Administracion
             {
                 E_RESULTADO vResultado = nPlaza.EliminaPlaza(int.Parse(item.GetDataKeyValue("ID_PLAZA").ToString()), vClUsuario, vNbPrograma);
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-
                 UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
+                
                 grdPlazas.Rebind();
             }
         }

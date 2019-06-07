@@ -92,10 +92,12 @@
     <Compile Include="Administracion\E_NIVEL_ESCOLARIDAD.cs" />
     <Compile Include="Administracion\E_ORGANIGRAMA.cs" />
     <Compile Include="Administracion\E_PERIODO.cs" />
+    <Compile Include="Administracion\E_PLAZA.cs" />
     <Compile Include="Administracion\E_PLAZA_GRUPO.cs" />
     <Compile Include="Administracion\E_PUESTO.cs" />
     <Compile Include="Administracion\E_PUESTOS_CONSULTA.cs" />
     <Compile Include="Administracion\E_PUESTOS_CONSULTA_GLOBAL.cs" />
+    <Compile Include="Administracion\E_PUESTO_INTERRELACIONADO.cs" />
     <Compile Include="Administracion\E_REPORTE_EMPLEADO.cs" />
     <Compile Include="Administracion\E_REQUISICION.cs" />
     <Compile Include="Administracion\E_ROL.cs" />

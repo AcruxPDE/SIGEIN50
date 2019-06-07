@@ -51,44 +51,50 @@
                             </tr>
                      </table>
                 </div>
-                 <div style="clear: both; height: 5px"></div>
-                 <div class="ctrlBasico" id="dvEdad" runat="server" style="display:none;">
-                                    <div class="divControlIzquierda">
-                                        <label id="lbEdad" name="lblEdad" runat="server" visible ="false">Edad:</label>
-                                    </div>
-                                    <div class="divControlDerecha">
-                                        <telerik:RadNumericTextBox runat="server" ID="rntEdad" Visible="false" NumberFormat-DecimalDigits="0" Name="rnEdad" Width="70px"  ShowSpinButtons="true"></telerik:RadNumericTextBox>
-                                    </div>
-                                </div>
-                       <div class="ctrlBasico" id="dvGenero" runat="server" style="display:none;">
-                                    <div class="divControlIzquierda">
-                                        <label id="lbGenero" name="lbGenero" runat="server" visible="false">Género:</label>
-                                    </div>
-                                    <div class="divControlDerecha">
-                                        <telerik:RadComboBox runat="server" AutoPostBack="false" Visible="false" MarkFirstMatch="true" EmptyMessage="Selecciona" Width="150" ID="cmbGenero"></telerik:RadComboBox>
-                                    </div>
-                                </div>
-                                       <div class="ctrlBasico" runat="server" id="dvArea" style="display:none;">
-                                    <div class="divControlIzquierda">
-                                        <label id="lbArea" name="lbArea" runat="server" visible="false">Área/Departamento:</label>
-                                    </div>
-                                    <div class="divControlDerecha">
-                                        <telerik:RadComboBox runat="server" AutoPostBack="false" Visible="false" MarkFirstMatch="true" EmptyMessage="Selecciona" Width="250" ID="rcbArea"></telerik:RadComboBox>
-                                    </div>
-                                </div>
-                               <div class="ctrlBasico" runat="server" id="dvFechaIngreso" style="display:none;">
-                                    <div class="divControlIzquierda">
-                                        <label id="Label1" name="lblEdad" runat="server" visible="false">Fecha de ingreso:</label>
-                                    </div>
-                                    <div class="divControlDerecha">
-                                        <telerik:RadDatePicker ID="rdpIngreso" runat="server" Visible="false" Width="130"></telerik:RadDatePicker>
-                                        <%--<telerik:RadNumericTextBox runat="server" ID="rntAntiguedad" NumberFormat-DecimalDigits="0" Name="rntAntiguedad" Width="70px"  ShowSpinButtons="true"></telerik:RadNumericTextBox>--%>
-                                    </div>
-                                </div>
-                 <div style="height:5px; clear:both;"></div>
+                <div style="clear: both; height: 5px"></div>
+
+                <div class="ctrlBasico" runat="server" id="dvArea" style="display:none;">
+                    <div class="divControlIzquierda">
+                        <label id="lbArea" name="lbArea" runat="server" visible="false"><b>Área/Departamento:</b></label>
+                    </div>
+                    <div class="divControlDerecha">
+                        <telerik:RadComboBox runat="server" AutoPostBack="false" Visible="false" MarkFirstMatch="true" EmptyMessage="Selecciona" Width="250" ID="rcbArea"></telerik:RadComboBox>
+                    </div>
+                </div>
+
+                <div class="ctrlBasico" id="dvGenero" runat="server" style="display:none;">
+                    <div class="divControlIzquierda">
+                        <label id="lbGenero" name="lbGenero" runat="server" visible="false"><b>Género:</b></label>
+                    </div>
+                    <div class="divControlDerecha">
+                        <telerik:RadComboBox runat="server" AutoPostBack="false" Visible="false" MarkFirstMatch="true" EmptyMessage="Selecciona" Width="150" ID="cmbGenero"></telerik:RadComboBox>
+                    </div>
+                </div>
+
                 <div id="dvCamposExtra" runat="server">
 
                 </div>
+
+                <div class="ctrlBasico" id="dvEdad" runat="server" style="display:none;">
+                    <div class="divControlIzquierda">
+                        <label id="lbEdad" name="lblEdad" runat="server" visible ="false"><b>Edad:</b></label>
+                    </div>
+                    <div class="divControlDerecha">
+                        <telerik:RadNumericTextBox runat="server" ID="rntEdad" Visible="false" NumberFormat-DecimalDigits="0" Name="rnEdad" Width="70px"  ShowSpinButtons="true"></telerik:RadNumericTextBox>
+                    </div>
+                </div>
+                                           
+                <div style="height:5px; clear:both;"></div>
+                <div class="ctrlBasico" runat="server" id="dvFechaIngreso" style="display:none;">
+                    <div class="divControlIzquierda">
+                        <label id="Label1" name="lblEdad" runat="server" visible="false"><b>Fecha de ingreso:</b></label>
+                    </div>
+                    <div class="divControlDerecha">
+                        <telerik:RadDatePicker ID="rdpIngreso" runat="server" Visible="false" Width="200"></telerik:RadDatePicker>
+                        <%--<telerik:RadNumericTextBox runat="server" ID="rntAntiguedad" NumberFormat-DecimalDigits="0" Name="rntAntiguedad" Width="70px"  ShowSpinButtons="true"></telerik:RadNumericTextBox>--%>
+                    </div>
+                </div>
+                
                 <div style="height:5px; clear:both;"></div>
                 <telerik:RadGrid runat="server" HeaderStyle-Font-Bold="true" ID="rgCuestionario" AutoGenerateColumns="false" Height="100%" Width="100%" AllowSorting="true" AllowMultiRowSelection="true" OnNeedDataSource="rgCuestionario_NeedDataSource">
                     <ClientSettings EnablePostBackOnRowClick="false" EnableAlternatingItems="false">

@@ -450,7 +450,9 @@ namespace SIGE.WebApp.Administracion
                             ID_PUESTO_RELACION = int.Parse(item.Attribute("ID_PUESTO_RELACIONADO").Value),
                             CL_PUESTO = item.Attribute("CL_PUESTO").Value,
                             NB_PUESTO = item.Attribute("NB_PUESTO").Value,
-                            CL_TIPO_RELACION = item.Attribute("CL_TIPO_RELACION").Value
+                            CL_TIPO_RELACION = item.Attribute("CL_TIPO_RELACION").Value,
+                            NO_PLAZAS = int.Parse(item.Attribute("NO_PLAZAS").Value)
+
                         });
                     }
                 }
@@ -1002,12 +1004,12 @@ namespace SIGE.WebApp.Administracion
             //}
 
             //INTERRELACIONADOS
-            foreach (GridDataItem item in rgInterrelacionados.MasterTableView.Items)
-            {
-                pPuestosRel.Add(new XElement("PUESTO_REL",
-                    new XAttribute("ID_PUESTO_REL", item.GetDataKeyValue("ID_PUESTO_RELACION").ToString()),
-                    new XAttribute("CL_TIPO_RELACION", E_PUESTO_RELACION.INTERRELACIONADO.ToString())));
-            }
+            //foreach (GridDataItem item in rgInterrelacionados.MasterTableView.Items)
+            //{
+            //    pPuestosRel.Add(new XElement("PUESTO_REL",
+            //        new XAttribute("ID_PUESTO_REL", item.GetDataKeyValue("ID_PUESTO_RELACION").ToString()),
+            //        new XAttribute("CL_TIPO_RELACION", E_PUESTO_RELACION.INTERRELACIONADO.ToString())));
+            //}
 
             //RUTA ALTERNATIVA
             foreach (GridDataItem item in rgAlternativa.MasterTableView.Items)
@@ -2372,7 +2374,8 @@ namespace SIGE.WebApp.Administracion
 
         protected void rgInterrelacionados_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
-            rgInterrelacionados.DataSource = vLstInterrelacionados;
+            DescriptivoNegocio vNeg = new DescriptivoNegocio();
+            rgInterrelacionados.DataSource = vNeg.ObtenerPuestosInterrelacionadas(vIdDescriptivo).ToList();
         }
 
         protected void rgLateral_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)

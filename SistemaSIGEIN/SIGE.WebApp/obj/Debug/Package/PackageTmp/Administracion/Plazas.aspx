@@ -58,17 +58,25 @@
             function confirmarEliminar(sender, args) {
                 var masterTable = $find("<%= grdPlazas.ClientID %>").get_masterTableView();
                 var selectedItem = masterTable.get_selectedItems()[0];
+
                 if (selectedItem != undefined) {
                     var vNombre = masterTable.getCellByColumnUniqueName(selectedItem, "NB_PLAZA").innerHTML;
+                    var vCL_EMPLEADO = masterTable.getCellByColumnUniqueName(selectedItem, "CL_EMPLEADO").innerHTML;
 
-                    var vWindowsProperties = {
-                        height: 200
-                    };
+                    if (vCL_EMPLEADO == "&nbsp;") {
+                        var vWindowsProperties = {
+                            height: 200
+                        };
 
-                    confirmAction(sender, args, "¿Deseas eliminar la plaza " + vNombre + "?, este proceso no podrá revertirse");
+                        confirmAction(sender, args, "¿Deseas eliminar la plaza " + vNombre + "?, este proceso no podrá revertirse");
+                    }
+                    else {
+                        radalert("La plaza no puede ser eliminada porque tiene relación con el empleado " + vCL_EMPLEADO + ". ", 400, 150, "AVISO");
+                        args.set_cancel(true);
+                    }                    
                 }
                 else {
-                    radalert("Selecciona un plaza.", 400, 150);
+                    radalert("Selecciona un plaza.", 400, 150, "AVISO" );
                     args.set_cancel(true);
                 }
             }
@@ -87,7 +95,7 @@
             </ClientSettings>
             <ExportSettings ExportOnlyData="true" FileName="Plazas" Excel-Format="Xlsx" IgnorePaging="true"></ExportSettings>
             <PagerStyle AlwaysVisible="true" />
-            <MasterTableView DataKeyNames="ID_PLAZA" ClientDataKeyNames="ID_PLAZA" ShowHeadersWhenNoRecords="true" CommandItemDisplay="Top">
+            <MasterTableView DataKeyNames="ID_PLAZA, CL_EMPLEADO" ClientDataKeyNames="ID_PLAZA, CL_EMPLEADO" ShowHeadersWhenNoRecords="true" CommandItemDisplay="Top">
                 <CommandItemSettings ShowExportToExcelButton="true" ShowAddNewRecordButton="false" />
                 <Columns>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave plaza" DataField="CL_PLAZA" UniqueName="CL_PLAZA" HeaderStyle-Width="120" FilterControlWidth="50"></telerik:GridBoundColumn>

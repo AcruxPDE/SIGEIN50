@@ -7,6 +7,10 @@
             GetRadWindow().close();
         }
 
+        function CloseWindowConfig() {
+            GetRadWindow().close();
+        }
+
         function onCloseWindowE(oWnd, args) {
             $find("<%=grdEmpleadosSeleccionados.ClientID%>").get_masterTableView().rebind();
         }
@@ -702,7 +706,7 @@
                             </div>
                             <div style="clear: both; height: 10px"></div>
                             <div class="divControlDerecha" style="padding-right: 30px;">
-                                <telerik:RadButton ID="btnAplicar" runat="server" name="btnAplicar" AutoPostBack="true" Text="Guardar" Width="100" OnClick="btnAplicar_Click"></telerik:RadButton>
+                                <telerik:RadButton ID="btnAplicar" runat="server" name="btnAplicar" AutoPostBack="true" Text="Guardar" Width="100" OnClick="btnGuardar_Click"></telerik:RadButton>
                             </div>
                         </telerik:RadPageView>
                         <telerik:RadPageView ID="rpvPreguntasAbiertas" runat="server">
@@ -757,6 +761,9 @@
                             </div>
                             <div class="ctrlBasico">
                                 <label style="color: red;" runat="server" id="dvPreguntasAbiertas" visible="false">No se pueden modificar las preguntas abiertas por que ya fueron asignadas al cuestionario.</label>
+                            </div>
+                            <div class="divControlDerecha" style="padding-right: 30px;">
+                                <telerik:RadButton ID="btnGuardarPreguntasAbiertas" runat="server" name="btnGuardarPreguntasAbiertas" AutoPostBack="true" Text="Guardar" Width="100" OnClick="btnGuardar_Click"></telerik:RadButton>
                             </div>
                            <%-- <div class="ctrlBasico">
                                 <telerik:RadButton ID="btnGuardarAbierta" runat="server" Text="Asignar preguntas a cuestionario" ToolTip="Esta opción te permite asignar las preguntas abiertas al cuestionario, una vez realizado este proceso no se podrán diseñar preguntas abiertas." OnClientClicking="ConfirmarAsignarPreguntas" OnClick="btnGuardarAbierta_Click"></telerik:RadButton>
@@ -824,6 +831,9 @@
                             <div class="ctrlBasico">
                                 <label style="color: red;" runat="server" id="divMensajeCuestionarios">No se puede modificar las preguntas por que ya existen cuestionarios creados.</label>
                             </div>
+                            <div class="divControlDerecha" style="padding-right: 30px;">
+                                <telerik:RadButton ID="btnGuardarCuestionario" runat="server" name="btnGuardarCuestionario" AutoPostBack="true" Text="Guardar" Width="100" OnClick="btnGuardar_Click"></telerik:RadButton>
+                            </div>
                         </telerik:RadPageView>
                         <telerik:RadPageView ID="rpvMensaje" runat="server">
                             <div style="height: calc(100% - 50px);">
@@ -868,7 +878,8 @@
                             </div>
                             <div style="height: 10px; clear: both;"></div>
                             <div class="divControlDerecha" style="padding-right:30px;">
-                                <telerik:RadButton ID="btnGuardar" runat="server" Text="Guardar" UseSubmitBehavior="false" AutoPostBack="true" OnClick="btnGuardar_Click"></telerik:RadButton>
+                                <telerik:RadButton ID="btnGuardarCerrar" runat="server" Text="Guardar y Cerrar" UseSubmitBehavior="false" AutoPostBack="true" OnClick="btnGuardarCerrar_Click" ></telerik:RadButton>
+                                <telerik:RadButton ID="btnCerrar" runat="server" Visible ="false" Text="Cerrar" UseSubmitBehavior="false" AutoPostBack="true" OnClientClicked="closeWindow" ></telerik:RadButton>
                             </div>
                         </telerik:RadPageView>
                         <telerik:RadPageView ID="rpvEmpleadoContrasenia" runat="server">

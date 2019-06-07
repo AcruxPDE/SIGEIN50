@@ -348,7 +348,6 @@ namespace SIGE.WebApp.Administracion
                     if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.INTERRELACIONADO.ToString())
                     {
                         RadListBoxItem i = new RadListBoxItem();
-
                         i.Text = item.Attribute("CL_PUESTO").Value +" - "+ item.Attribute("NB_PUESTO").Value;
                         i.Value = item.Attribute("ID_PUESTO_RELACIONADO").Value;
                         lstPuestosInterrelacionados.Items.Add(i);
