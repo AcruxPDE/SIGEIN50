@@ -1606,8 +1606,8 @@
                                               <telerik:GridTemplateColumn DataField="NO_VALOR_NIVEL" HeaderText="Nivel" UniqueName="NO_NIVEL_DESEADO">
                                                   <HeaderTemplate>
                                                       <div style="padding-left: 40px;">
-                                                          <telerik:RadSlider ID="rsEncabezado" AutoPostBack="false" runat="server" AnimationDuration="400" Skin="Default" ShowDecreaseHandle="false"
-                                                              ShowIncreaseHandle="false" Value="5" ShowDragHandle="false" Height="60px" ItemType="item" ThumbsInteractionMode="Free" Width="720">
+                                                          <telerik:RadSlider ID="rsEncabezado" AutoPostBack="false" runat="server" AnimationDuration="400" Skin="Default" ShowDecreaseHandle="true"
+                                                              ShowIncreaseHandle="true" Value="5" ShowDragHandle="false" Height="60px" ItemType="item" ThumbsInteractionMode="Free" Width="720">
                                                               <Items>
                                                                   <telerik:RadSliderItem Text="Nivel 0<br />0%<br />No lo necesita" Value="0" />
                                                                   <telerik:RadSliderItem Text="Nivel 1<br />20%<br />Lo necesita poco" Value="1" />
