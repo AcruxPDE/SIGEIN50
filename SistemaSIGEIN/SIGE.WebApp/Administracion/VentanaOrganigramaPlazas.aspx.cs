@@ -53,42 +53,46 @@ namespace SIGE.WebApp.Administracion
 
         #region Metodos 
 
-        protected string ObtieneCssClass(bool pFgEmpleados, int vNivelDiferencia)
+        protected string ObtieneCssClass(bool pFgEmpleados, int pNoNivelDiferencia, string pClCss)
         {
-            string vCssClass = "";
-            switch (vNivelDiferencia)
-            {
-                case 1:
-                    vCssClass = "cssNivel1" + pFgEmpleados.ToString();
-                    break;
-                case 2:
-                    vCssClass = "cssNivel2" + pFgEmpleados.ToString();
-                    break;
-                case 3:
-                    vCssClass = "cssNivel3" + pFgEmpleados.ToString();
-                    break;
-                case 4:
-                    vCssClass = "cssNivel4" + pFgEmpleados.ToString();
-                    break;
-                case 5:
-                    vCssClass = "cssNivel5" + pFgEmpleados.ToString();
-                    break;
-                case 6:
-                    vCssClass = "cssNivel6" + pFgEmpleados.ToString();
-                    break;
-                case 7:
-                    vCssClass = "cssNivel7" + pFgEmpleados.ToString();
-                    break;
-                case 8:
-                    vCssClass = "cssNivel8" + pFgEmpleados.ToString();
-                    break;
-                case 9:
-                    vCssClass = "cssNivel9" + pFgEmpleados.ToString();
-                    break;
-                case 10:
-                    vCssClass = "cssNivel10" + pFgEmpleados.ToString();
-                    break;
-            }
+            string vCssClass = String.IsNullOrWhiteSpace(pClCss) ? String.Empty : pClCss;
+
+            if (pNoNivelDiferencia <= 10 && pNoNivelDiferencia >= 1)
+                vCssClass = String.Format("cssNivel{0}{1} {2}", pNoNivelDiferencia, pFgEmpleados.ToString(), pClCss);
+
+            //switch (pNoNivelDiferencia)
+            //{
+            //    case 1:
+            //        vCssClass = "cssNivel1" + pFgEmpleados.ToString();
+            //        break;
+            //    case 2:
+            //        vCssClass = "cssNivel2" + pFgEmpleados.ToString();
+            //        break;
+            //    case 3:
+            //        vCssClass = "cssNivel3" + pFgEmpleados.ToString();
+            //        break;
+            //    case 4:
+            //        vCssClass = "cssNivel4" + pFgEmpleados.ToString();
+            //        break;
+            //    case 5:
+            //        vCssClass = "cssNivel5" + pFgEmpleados.ToString();
+            //        break;
+            //    case 6:
+            //        vCssClass = "cssNivel6" + pFgEmpleados.ToString();
+            //        break;
+            //    case 7:
+            //        vCssClass = "cssNivel7" + pFgEmpleados.ToString();
+            //        break;
+            //    case 8:
+            //        vCssClass = "cssNivel8" + pFgEmpleados.ToString();
+            //        break;
+            //    case 9:
+            //        vCssClass = "cssNivel9" + pFgEmpleados.ToString();
+            //        break;
+            //    case 10:
+            //        vCssClass = "cssNivel10" + pFgEmpleados.ToString();
+            //        break;
+            //}
 
             return vCssClass;
         }
@@ -202,8 +206,10 @@ namespace SIGE.WebApp.Administracion
 
         protected void rocPlazas_NodeDataBound(object sender, OrgChartNodeDataBoundEventArguments e)
         {
+            string vClCss = String.Empty;
+
             if (((E_ORGANIGRAMA_NODO)e.Node.DataItem).clTipoNodo == "STAFF")
-                e.Node.CssClass = "cssStaff";
+                vClCss = "cssStaff";
 
             foreach (OrgChartGroupItem groupItem in e.Node.GroupItems)
                 if (!String.IsNullOrWhiteSpace(((E_ORGANIGRAMA_GRUPO)groupItem.DataItem).cssItem))
@@ -215,8 +221,10 @@ namespace SIGE.WebApp.Administracion
             {
                 int vNivelDiferencia = ((E_ORGANIGRAMA_NODO)e.Node.DataItem).noNivelPuesto - ((E_ORGANIGRAMA_NODO)e.Node.DataItem).noNivel;
 
-                e.Node.CssClass = ObtieneCssClass(chkMostrarEmpleados.Checked == null? false:(bool)chkMostrarEmpleados.Checked, vNivelDiferencia);
+                vClCss = ObtieneCssClass(chkMostrarEmpleados.Checked ?? false, vNivelDiferencia, vClCss);
             }
+
+            e.Node.CssClass = vClCss;
         }
 
         //protected void cmbEmpresas_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
