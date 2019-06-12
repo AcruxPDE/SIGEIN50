@@ -46,3 +46,15 @@ C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.csproj.CopyComplete
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.dll
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.pdb
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\SIGE.Entidades.dll.config
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\SIGE.Entidades.dll
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\SIGE.Entidades.pdb
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\EntityFramework.dll
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\Newtonsoft.Json.dll
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\EntityFramework.xml
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\Newtonsoft.Json.xml
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.csproj.CoreCompileInputs.cache
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.csproj.CopyComplete
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.dll
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.pdb
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.csprojAssemblyReference.cache

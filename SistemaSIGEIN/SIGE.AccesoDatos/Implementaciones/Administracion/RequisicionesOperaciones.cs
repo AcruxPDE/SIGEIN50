@@ -13,24 +13,23 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 {
     public class RequisicionOperaciones
     {
-		private SistemaSigeinEntities context;
 
-		public List<SPE_OBTIENE_K_REQUISICION_Result> ObtenerRequisicion(int? pIdRequisicion = null, String pNoRequisicion = null, DateTime?  pFeSolicitud = null, DateTime? pFeRequisicion = null, int? pIdPuesto = null, String pClEstado = null, String pClCausa = null, String pDsCausa = null, int? pIdNotificacion = null, int? pIdSolicitante = null, int? pIdAutoriza = null, int? pIdVistoBueno = null, int? pIdEmpresa = null, Guid? flRequisicion=null, Guid? flNotificacion = null, int? pIdCandidato = null)
-		{
-			using (context = new SistemaSigeinEntities ())
-			{
+        public List<SPE_OBTIENE_K_REQUISICION_Result> ObtenerRequisicion(int? pIdRequisicion = null, String pNoRequisicion = null, DateTime? pFeSolicitud = null, DateTime? pFeRequisicion = null, int? pIdPuesto = null, String pClEstado = null, String pClCausa = null, String pDsCausa = null, int? pIdNotificacion = null, int? pIdSolicitante = null, int? pIdAutoriza = null, int? pIdVistoBueno = null, int? pIdEmpresa = null, Guid? flRequisicion = null, Guid? flNotificacion = null, int? pIdCandidato = null)
+        {
+            using (SistemaSigeinEntities context = new SistemaSigeinEntities())
+            {
                 return context.SPE_OBTIENE_K_REQUISICION(pIdRequisicion, pNoRequisicion, pFeSolicitud, pFeRequisicion, pIdPuesto, pClEstado, pClCausa, pDsCausa, pIdNotificacion, pIdSolicitante, pIdAutoriza, pIdVistoBueno, pIdEmpresa, flRequisicion, flNotificacion, pIdCandidato).ToList();
-			}
-		}
+            }
+        }
 
-      
+
 
         public XElement InsertarActualizarRequisicion(string pTipoTransaccion, E_REQUISICION pRequisicion, string pClUsuario, string pNbPrograma)
-		{
-			using (context = new SistemaSigeinEntities ())
-			{
+        {
+            using (SistemaSigeinEntities context = new SistemaSigeinEntities())
+            {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
-                
+
                 context.SPE_INSERTA_ACTUALIZA_K_REQUISICION(pout_clave_retorno,
                     pRequisicion.ID_REQUISICION, pRequisicion.NO_REQUISICION,
                     pRequisicion.FE_SOLICITUD, pRequisicion.FE_REQUERIMIENTO,
@@ -48,42 +47,42 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
                     pRequisicion.NB_EMPLEADO_AUTORIZA_PUESTO,
                     pRequisicion.NB_EMPLEADO_AUTORIZA_PUESTO_PUESTO,
                     pRequisicion.NB_CORREO_AUTORIZA_PUESTO,
-                    pRequisicion.ID_EMPRESA, pRequisicion.CL_TOKEN, 
+                    pRequisicion.ID_EMPRESA, pRequisicion.CL_TOKEN,
                     pRequisicion.FL_REQUISICION,
-                    pRequisicion.ID_EMPLEADO_SUPLENTE, pRequisicion.NB_EMPLEADO_SUPLENTE, 
+                    pRequisicion.ID_EMPLEADO_SUPLENTE, pRequisicion.NB_EMPLEADO_SUPLENTE,
                     pRequisicion.MN_SUELDO, pRequisicion.MN_SUELDO_TABULADOR,
-                    pRequisicion.MN_SUELDO_SUGERIDO, pRequisicion.MAX_SUELDO_SUGERIDO, 
+                    pRequisicion.MN_SUELDO_SUGERIDO, pRequisicion.MAX_SUELDO_SUGERIDO,
                     pRequisicion.CL_TOKEN_PUESTO,
                     pRequisicion.FL_NOTIFICACION,
                     pRequisicion.DS_COMENTARIOS,
                     pClUsuario, pNbPrograma, pTipoTransaccion);
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
-             
-			}
-		}
 
-		public XElement Elimina_K_REQUISICION(int?  ID_REQUISICION = null, string usuario  = null, string programa  = null)
-		{
-			using (context = new SistemaSigeinEntities ())
-			{
+            }
+        }
+
+        public XElement Elimina_K_REQUISICION(int? ID_REQUISICION = null, string usuario = null, string programa = null)
+        {
+            using (SistemaSigeinEntities context = new SistemaSigeinEntities())
+            {
 
                 //Declaramos el objeto de valor de retorno
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 pout_clave_retorno.Value = "";
-             
-	
-				context.SPE_ELIMINA_K_REQUISICION(pout_clave_retorno, ID_REQUISICION, usuario, programa);
-				//regresamos el valor de retorno de sql				
+
+
+                context.SPE_ELIMINA_K_REQUISICION(pout_clave_retorno, ID_REQUISICION, usuario, programa);
+                //regresamos el valor de retorno de sql				
 
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
-			}
-		}
+            }
+        }
 
 
 
         public XElement ActualizaEstatusRequisicion(int? ID_REQUISICION = null, string usuario = null, string programa = null)
         {
-            using (context = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities context = new SistemaSigeinEntities())
             {
 
                 //Declaramos el objeto de valor de retorno
@@ -98,29 +97,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             }
         }
 
-        //public List<SPE_OBTIENE_C_NOTIFICAR_REQUISICION_Result> Obtener_Tablas_Notificar()
-        //{
-        //    using (context = new SistemaSigeinEntities())
-        //    {
-        //        var q = from V_K_NOTIFICAR in context.SPE_OBTIENE_C_NOTIFICAR_REQUISICION()
-        //                select V_K_NOTIFICAR;
-        //        return q.ToList();
-        //    }
-        //}
-
-        //public List<SPE_OBTIENE_SUELDO_PROMEDIO_PUESTO_Result> Obtiene_Sueldo_Promedio_Puesto(int? ID_PUESTO = null)
-        //{
-        //    using (context = new SistemaSigeinEntities())
-        //    {
-        //        var q = from V_K_NOTIFICAR in context.SPE_OBTIENE_SUELDO_PROMEDIO_PUESTO(ID_PUESTO)
-        //                select V_K_NOTIFICAR;
-        //        return q.ToList();
-        //    }
-        //}
-        
-        public List<SPE_OBTIENE_K_AUTORIZA_REQUISICION_Result> ObtenerAutorizarRequisicion(int? ID_REQUISICION =null, string NO_REQUISICION = null, DateTime? FE_SOLICITUD = null, DateTime? FE_REQUERIMIENTO = null, int? ID_PUESTO = null, string CL_ESTADO= null, string CL_CAUSA = null, string DS_CAUSA = null, int? ID_NOTIFICACION = null, int? ID_SOLICITANTE = null, int? ID_AUTORIZA = null, int? ID_VISTO_BUENO = null, int? ID_EMPRESA = null, string NB_EMPRESA = null, string NB_PUESTO = null, string SOLICITANTE = null, Guid? FL_REQUISICION = null, string CL_TOKEN = null )
+        public List<SPE_OBTIENE_K_AUTORIZA_REQUISICION_Result> ObtenerAutorizarRequisicion(int? ID_REQUISICION = null, string NO_REQUISICION = null, DateTime? FE_SOLICITUD = null, DateTime? FE_REQUERIMIENTO = null, int? ID_PUESTO = null, string CL_ESTADO = null, string CL_CAUSA = null, string DS_CAUSA = null, int? ID_NOTIFICACION = null, int? ID_SOLICITANTE = null, int? ID_AUTORIZA = null, int? ID_VISTO_BUENO = null, int? ID_EMPRESA = null, string NB_EMPRESA = null, string NB_PUESTO = null, string SOLICITANTE = null, Guid? FL_REQUISICION = null, string CL_TOKEN = null)
         {
-            using (context = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities context = new SistemaSigeinEntities())
             {
                 return context.SPE_OBTIENE_K_AUTORIZA_REQUISICION(FL_REQUISICION, ID_REQUISICION).ToList();
             }
@@ -128,17 +107,37 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 
         public XElement ActualizaEstatusRequisicion(bool pFgActualizaRequisicion, bool pFgActualizaPuesto, int pIdRequisicion, int pIdPuesto, string pDsComentariosPuesto, string pDsComentariosRequisicion, string pEstatusPuesto, string pEstatusRequisicion, string pNbPrograma, string pClUsuario)
         {
-            using (context = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities context = new SistemaSigeinEntities())
             {
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
-                context.SPE_ACTUALIZA_ESTADO_REQUISICION(pout_clave_retorno, pFgActualizaRequisicion, pFgActualizaPuesto, pIdRequisicion, pIdPuesto, pDsComentariosPuesto, pDsComentariosRequisicion, pEstatusPuesto, pEstatusRequisicion, pNbPrograma, pClUsuario );
+                context.SPE_ACTUALIZA_ESTADO_REQUISICION(pout_clave_retorno, pFgActualizaRequisicion, pFgActualizaPuesto, pIdRequisicion, pIdPuesto, pDsComentariosPuesto, pDsComentariosRequisicion, pEstatusPuesto, pEstatusRequisicion, pNbPrograma, pClUsuario);
                 return XElement.Parse(pout_clave_retorno.Value.ToString());
             }
         }
-        
-        public string  ObtenerNumeroRequisicion()
+
+        public XElement InsertaCandidatoRequisicion(int pIdCandidato, int pIdEmpleado, int pIdRequisicion, string pClUsuario, string pNbPrograma)
         {
-            using (context = new SistemaSigeinEntities())
+            using (IntegracionDePersonalEntities context = new IntegracionDePersonalEntities())
+            {
+                ObjectParameter pOutRespuesta = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                context.SPE_INSERTA_CANDIDATO_REQUISICION(pOutRespuesta, pIdCandidato, pIdEmpleado, pIdRequisicion, pClUsuario, pNbPrograma);
+                return XElement.Parse(pOutRespuesta.Value.ToString());
+            }
+        }
+
+        public XElement EliminaCandidatoRequisicion(int pIdRequisicion, int pIdCandidato, string pClUsuario, string pNbPrograma)
+        {
+            using (IntegracionDePersonalEntities context = new IntegracionDePersonalEntities())
+            {
+                ObjectParameter pOutRespuesta = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                context.SPE_ELIMINA_CANDIDATO_REQUISICION(pOutRespuesta, pIdRequisicion, pIdCandidato, pClUsuario, pNbPrograma);
+                return XElement.Parse(pOutRespuesta.Value.ToString());
+            }
+        }
+
+        public string ObtenerNumeroRequisicion()
+        {
+            using (SistemaSigeinEntities context = new SistemaSigeinEntities())
             {
                 return context.SPE_OBTIENE_K_NUMERO_REQUISICION().FirstOrDefault();
             }
@@ -146,11 +145,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 
         public List<E_CANDIDATO_IDONEO> BuscarCandidatoRequisicion(int pIdRequisicion, string pXmlParametrosBusqueda)
         {
-            using (context = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities context = new SistemaSigeinEntities())
             {
-                var vLista = context.SPE_OBTIENE_BUSQUEDA_CANDIDATO_REQUISICION(pIdRequisicion, pXmlParametrosBusqueda).ToList();
-
-                var vLista2 = vLista.Select(a => new E_CANDIDATO_IDONEO
+                return context.SPE_OBTIENE_BUSQUEDA_CANDIDATO_REQUISICION(pIdRequisicion, pXmlParametrosBusqueda).Select(a => new E_CANDIDATO_IDONEO
                 {
                     ID_CANDIDATO = a.ID_CANDIDATO,
                     ID_SOLICITUD = a.ID_SOLICITUD,
@@ -179,26 +176,23 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
                     NB_PUESTO = a.NB_PUESTO,
                     CL_ORIGEN = a.CL_ORIGEN
                 }).ToList();
-
-                return vLista2;
             }
         }
 
-        public List<SPE_OBTIENE_COMPARACION_CANDIDATO_PUESTO_REQUISICION_Result> ObtenerComparacionCandidatoPuesto(int pIdRequisicion,int pIdCandidato, string pXmlParametrosBusqueda)
+        public List<SPE_OBTIENE_COMPARACION_CANDIDATO_PUESTO_REQUISICION_Result> ObtenerComparacionCandidatoPuesto(int pIdRequisicion, int pIdCandidato, string pXmlParametrosBusqueda)
         {
-            using (context = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities context = new SistemaSigeinEntities())
             {
                 return context.SPE_OBTIENE_COMPARACION_CANDIDATO_PUESTO_REQUISICION(pIdRequisicion, pIdCandidato, pXmlParametrosBusqueda).ToList();
             }
         }
 
-        public List<SPE_OBTIENE_CANDIDATOS_POR_REQUISICION_Result> ObtenerCandidatosPorRequisicion(int? pIdRequisicion = null, int? pIdProcesoSeleccion = null,int? pIdCandidato = null,int? pIdSolicitud = null)
+        public List<SPE_OBTIENE_CANDIDATOS_POR_REQUISICION_Result> ObtenerCandidatosPorRequisicion(int? pIdRequisicion = null, int? pIdProcesoSeleccion = null, int? pIdCandidato = null, int? pIdSolicitud = null)
         {
-            using (context = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities context = new SistemaSigeinEntities())
             {
                 return context.SPE_OBTIENE_CANDIDATOS_POR_REQUISICION(pIdRequisicion, pIdProcesoSeleccion, pIdCandidato, pIdSolicitud).ToList();
             }
         }
-
     }
 }

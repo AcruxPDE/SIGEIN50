@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IntegracionDePersonalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="IntegracionDePersonalEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="SPE_ELIMINA_CANDIDATO_REQUISICION">
+      <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
+      <Parameter Name="PIN_ID_REQUISICION" Mode="In" Type="Int32" />
+      <Parameter Name="PIN_ID_CANDIDATO" Mode="In" Type="Int32" />
+      <Parameter Name="PIN_CL_USUARIO" Mode="In" Type="String" />
+      <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPE_OBTIENE_CARTERA" ReturnType="Collection(IntegracionDePersonalModel.SPE_OBTIENE_CARTERA_Result)" />
+    <FunctionImport Name="SPE_INSERTA_CANDIDATO_REQUISICION">
+      <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
+      <Parameter Name="PIN_ID_CANDIDATO" Mode="In" Type="Int32" />
+      <Parameter Name="PIN_ID_EMPLEADO" Mode="In" Type="Int32" />
+      <Parameter Name="PIN_ID_REQUISICION" Mode="In" Type="Int32" />
+      <Parameter Name="PIN_CL_USUARIO_APP" Mode="In" Type="String" />
+      <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SPE_OBTIENE_CARTERA_Result">
+    <Property Type="Int32" Name="ID_SOLICITUD" Nullable="false" />
+    <Property Type="Int32" Name="ID_CANDIDATO" Nullable="true" />
+    <Property Type="Int32" Name="ID_EMPLEADO" Nullable="true" />
+    <Property Type="Int32" Name="ID_REQUISICION" Nullable="true" />
+    <Property Type="String" Name="K_SOLICITUD_CL_SOLICITUD" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="K_SOLICITUD_CL_ACCESO_EVALUACION" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="K_SOLICITUD_DS_COMPETENCIAS_ADICIONALES" Nullable="true" MaxLength="1000" />
+    <Property Type="DateTime" Name="K_SOLICITUD_FE_SOLICITUD" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="K_SOLICITUD_FE_MODIFICACION" Nullable="true" Precision="23" />
+    <Property Type="String" Name="K_SOLICITUD_CL_SOLICITUD_ESTATUS" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="C_CANDIDATO_NB_CANDIDATO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_CANDIDATO_NB_APELLIDO_PATERNO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_CANDIDATO_NB_APELLIDO_MATERNO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_CANDIDATO_NB_EMPLEADO_COMPLETO" Nullable="false" MaxLength="302" />
+    <Property Type="String" Name="C_CANDIDATO_CL_GENERO" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="C_CANDIDATO_CL_RFC" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="C_CANDIDATO_CL_CURP" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="C_CANDIDATO_CL_ESTADO_CIVIL" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="C_CANDIDATO_NB_CONYUGUE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_CANDIDATO_CL_NSS" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="C_CANDIDATO_CL_TIPO_SANGUINEO" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="C_CANDIDATO_NB_PAIS" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_CANDIDATO_NB_ESTADO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_CANDIDATO_NB_MUNICIPIO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_CANDIDATO_NB_COLONIA" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_CANDIDATO_NB_CALLE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_CANDIDATO_NO_INTERIOR" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="C_CANDIDATO_NO_EXTERIOR" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="C_CANDIDATO_CL_CODIGO_POSTAL" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="C_CANDIDATO_CL_CORREO_ELECTRONICO" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="C_CANDIDATO_FE_NACIMIENTO" Nullable="true" />
+    <Property Type="String" Name="C_CANDIDATO_DS_LUGAR_NACIMIENTO" Nullable="true" MaxLength="200" />
+    <Property Type="Decimal" Name="C_CANDIDATO_MN_SUELDO" Nullable="true" Precision="13" Scale="2" />
+    <Property Type="String" Name="C_CANDIDATO_CL_NACIONALIDAD" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="C_CANDIDATO_DS_NACIONALIDAD" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="C_CANDIDATO_NB_LICENCIA" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="C_CANDIDATO_DS_VEHICULO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_CANDIDATO_CL_CARTILLA_MILITAR" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="C_CANDIDATO_CL_CEDULA_PROFESIONAL" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="C_CANDIDATO_XML_TELEFONOS" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="C_CANDIDATO_XML_INGRESOS" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="C_CANDIDATO_XML_EGRESOS" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="C_CANDIDATO_XML_PATRIMONIO" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="C_CANDIDATO_DS_DISPONIBILIDAD" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_CANDIDATO_CL_DISPONIBILIDAD_VIAJE" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="C_CANDIDATO_XML_PERFIL_RED_SOCIAL" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="C_CANDIDATO_DS_COMENTARIO" Nullable="true" MaxLength="1000" />
+    <Property Type="Boolean" Name="C_CANDIDATO_FG_ACTIVO" Nullable="true" />
+    <Property Type="String" Name="C_CANDIDATO_NB_ACTIVO" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="M_EMPLEADO_CL_EMPLEADO" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="M_EMPLEADO_NB_EMPLEADO_COMPLETO" Nullable="false" MaxLength="302" />
+    <Property Type="String" Name="M_EMPLEADO_NB_EMPLEADO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="M_EMPLEADO_NB_APELLIDO_PATERNO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="M_EMPLEADO_NB_APELLIDO_MATERNO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="M_EMPLEADO_CL_ESTADO_EMPLEADO" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="M_EMPLEADO_CL_GENERO" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="M_EMPLEADO_CL_ESTADO_CIVIL" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="M_EMPLEADO_NB_CONYUGUE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="M_EMPLEADO_CL_RFC" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="M_EMPLEADO_CL_CURP" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="M_EMPLEADO_CL_NSS" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="M_EMPLEADO_CL_TIPO_SANGUINEO" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="M_EMPLEADO_CL_NACIONALIDAD" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="M_EMPLEADO_NB_PAIS" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="M_EMPLEADO_NB_ESTADO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="M_EMPLEADO_NB_MUNICIPIO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="M_EMPLEADO_NB_COLONIA" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="M_EMPLEADO_NB_CALLE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="M_EMPLEADO_NO_INTERIOR" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="M_EMPLEADO_NO_EXTERIOR" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="M_EMPLEADO_CL_CODIGO_POSTAL" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="M_EMPLEADO_XML_TELEFONOS" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="M_EMPLEADO_CL_CORREO_ELECTRONICO" Nullable="true" MaxLength="200" />
+    <Property Type="Boolean" Name="M_EMPLEADO_FG_ACTIVO" Nullable="true" />
+    <Property Type="String" Name="M_EMPLEADO_NB_ACTIVO" Nullable="true" MaxLength="2" />
+    <Property Type="DateTime" Name="M_EMPLEADO_FE_NACIMIENTO" Nullable="true" />
+    <Property Type="String" Name="M_EMPLEADO_DS_LUGAR_NACIMIENTO" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="M_EMPLEADO_FE_ALTA" Nullable="true" />
+    <Property Type="DateTime" Name="M_EMPLEADO_FE_BAJA" Nullable="true" />
+    <Property Type="Decimal" Name="M_EMPLEADO_MN_SUELDO" Nullable="true" Precision="13" Scale="2" />
+    <Property Type="Decimal" Name="M_EMPLEADO_MN_SUELDO_VARIABLE" Nullable="true" Precision="13" Scale="2" />
+    <Property Type="String" Name="M_EMPLEADO_DS_SUELDO_COMPOSICION" Nullable="true" MaxLength="512" />
+    <Property Type="String" Name="M_EMPLEADO_XML_CAMPOS_ADICIONALES" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="M_PUESTO_FG_ACTIVO" Nullable="true" />
+    <Property Type="String" Name="NB_ACTIVO" Nullable="true" MaxLength="2" />
+    <Property Type="DateTime" Name="M_PUESTO_FE_INACTIVO" Nullable="true" Precision="23" />
+    <Property Type="String" Name="M_PUESTO_CL_PUESTO" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="M_PUESTO_NB_PUESTO" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="ID_DEPARTAMENTO" Nullable="true" />
+    <Property Type="String" Name="M_PUESTO_XML_CAMPOS_ADICIONALES" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="ID_BITACORA" Nullable="true" />
+    <Property Type="Byte" Name="M_PUESTO_NO_EDAD_MINIMA" Nullable="true" />
+    <Property Type="Byte" Name="M_PUESTO_NO_EDAD_MAXIMA" Nullable="true" />
+    <Property Type="String" Name="M_PUESTO_CL_GENERO" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="M_PUESTO_CL_ESTADO_CIVIL" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="M_PUESTO_XML_REQUERIMIENTOS" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="M_PUESTO_XML_OBSERVACIONES" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="M_PUESTO_XML_RESPONSABILIDAD" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="M_PUESTO_XML_AUTORIDAD" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="M_PUESTO_XML_CURSOS_ADICIONALES" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="M_PUESTO_XML_MENTOR" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="M_PUESTO_CL_TIPO_PUESTO" Nullable="true" MaxLength="20" />
+    <Property Type="Guid" Name="ID_CENTRO_ADMINISTRATIVO" Nullable="true" />
+    <Property Type="Guid" Name="ID_CENTRO_OPERATIVO" Nullable="true" />
+    <Property Type="Int32" Name="ID_PAQUETE_PRESTACIONES" Nullable="true" />
+    <Property Type="String" Name="M_DEPARTAMENTO_NO_REQUISICION" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="M_DEPARTAMENTO_FE_SOLICITUD" Nullable="true" Precision="23" />
+    <Property Type="String" Name="M_DEPARTAMENTO_CL_ESTADO" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="M_DEPARTAMENTO_CL_CAUSA" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="M_DEPARTAMENTO_DS_CAUSA" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="ID_SOLICITANTE" Nullable="true" />
+    <Property Type="Int32" Name="ID_AUTORIZA" Nullable="true" />
+    <Property Type="Int32" Name="ID_EMPRESA" Nullable="true" />
+    <Property Type="String" Name="C_EMPRESA_CL_EMPRESA" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="C_EMPRESA_NB_EMPRESA" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_EMPRESA_NB_RAZON_SOCIAL" Nullable="true" MaxLength="200" />
+    <Property Type="Boolean" Name="M_DEPARTAMENTO_FG_ACTIVO" Nullable="true" />
+    <Property Type="String" Name="M_DEPARTAMENTO_NB_ACTIVO" Nullable="true" MaxLength="2" />
+    <Property Type="DateTime" Name="M_DEPARTAMENTO_FE_INACTIVO" Nullable="true" Precision="23" />
+    <Property Type="String" Name="M_DEPARTAMENTO_CL_DEPARTAMENTO" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="M_DEPARTAMENTO_NB_DEPARTAMENTO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="M_DEPARTAMENTO_XML_CAMPOS_ADICIONALES" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="ID_BATERIA" Nullable="true" />
+    <Property Type="Guid" Name="CL_ACCESO_CARTERA" Nullable="true" />
+    <Property Type="String" Name="CL_CONTRASENA_CARTERA" Nullable="true" MaxLength="20" />
+  </ComplexType>
+</Schema>

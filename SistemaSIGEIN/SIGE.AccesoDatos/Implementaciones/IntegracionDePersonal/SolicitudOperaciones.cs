@@ -16,11 +16,9 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
     public class SolicitudOperaciones
     {
 
-        private SistemaSigeinEntities contexto;
-
         public List<SPE_OBTIENE_K_SOLICITUD_Result> ObtenerSolicitudes(int? ID_SOLICITUD = null, int? ID_CANDIDATO = null, int? ID_EMPLEADO = null, int? ID_DESCRIPTIVO = null, int? ID_REQUISICION = null, String CL_SOLICITUD = null, String CL_ACCESO_EVALUACION = null, int? ID_PLANTILLA_SOLICITUD = null, String DS_COMPETENCIAS_ADICIONALES = null, DateTime? FE_CREACION = null, DateTime? FE_MODIFICACION = null, String CL_USUARIO_APP_CREA = null, String CL_USUARIO_APP_MODIFICA = null, String NB_PROGRAMA_CREA = null, String NB_PROGRAMA_MODIFICA = null, String CL_SOLICITUD_ESTATUS = null, DateTime? FE_SOLICITUD = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_K_SOLICITUD(ID_SOLICITUD, ID_CANDIDATO, ID_EMPLEADO, ID_DESCRIPTIVO, ID_REQUISICION, CL_SOLICITUD, CL_ACCESO_EVALUACION, ID_PLANTILLA_SOLICITUD, DS_COMPETENCIAS_ADICIONALES).ToList();//, CL_SOLICITUD_ESTATUS, FE_SOLICITUD).ToList();
             }
@@ -28,7 +26,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 
         public XElement InsertarActualizarSolicitud(XElement pXmlSolicitud, int? pIdSolicitud, List<UDTT_ARCHIVO> pLstArchivosTemporales, List<E_DOCUMENTO> pLstDocumentos, string pClUsuario, string pNbPrograma, string pTipoTransaccion)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
 
                 var pXmlResultado = new SqlParameter("@XML_RESULTADO", SqlDbType.Xml)
@@ -87,7 +85,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 
         public XElement Elimina_K_SOLICITUD(int? ID_SOLICITUD = null, string usuario = null, string programa = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_ELIMINA_K_SOLICITUD(pOutClRetorno, ID_SOLICITUD, usuario, programa);
@@ -98,7 +96,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 
         public XElement InsertaCandidatoEmpleado(int? ID_EMPLEADO = null, string usuario = null, string programa = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_INSERTA_SOLICITUD_EMPLEADO(pOutClRetorno, ID_EMPLEADO, usuario, programa);
@@ -109,7 +107,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 
         public XElement ActualizaDatosSolicitudCorreo(int? ID_SOLICITUD = null, Guid? CL_ACCESO_CARTERA = null, string CL_CONTRASENA_CARTERA = null, string usuario = null, string programa = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_ACTUALIZA_CARTERA_K_SOLICITUD(pOutClRetorno, ID_SOLICITUD, CL_ACCESO_CARTERA, CL_CONTRASENA_CARTERA, usuario, programa);
@@ -121,7 +119,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 
         public XElement Elimina_K_SOLICITUDES(XElement listaSolicitudes, string usuario = null, string programa = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_ELIMINA_SOLICITUDES(pOutClRetorno, listaSolicitudes.ToString(), usuario, programa);
@@ -132,7 +130,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 
         public List<SPE_OBTIENE_SOLICITUDES_Result> ObtenerCatalogoSolicitudes(string pXmlSeleccion = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 if (pXmlSeleccion == null)
                     pXmlSeleccion = (new XElement("SELECCION", new XElement("FILTRO", new XAttribute("CL_TIPO", "TODAS")))).ToString();
@@ -143,7 +141,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 
         public List<SPE_OBTIENE_SOLICITUDES_PROCESOS_EVALUACION_Result> ObtieneSolicitudesEvaluacion()
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_SOLICITUDES_PROCESOS_EVALUACION().ToList();
             }
@@ -151,7 +149,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 
         public List<SPE_OBTIENE_CANDIDATOS_BATERIAS_Result> ObtieneCandidatosBaterias()
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_CANDIDATOS_BATERIAS().ToList();
             }
@@ -159,7 +157,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 
         public List<SPE_OBTIENE_EMPLEADOS_PROCESOS_EVALUACION_Result> ObtieneEmpleadosEvaluacion(int? pID_EMPRESA = null, int? pID_ROL = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_EMPLEADOS_PROCESOS_EVALUACION(pID_EMPRESA, pID_ROL).ToList();
             }
@@ -167,7 +165,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 
         public List<SPE_OBTIENE_CARTERA_Result> Obtener_SOLICITUDES_CARTERA()
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (IntegracionDePersonalEntities contexto = new IntegracionDePersonalEntities())
             {
                 return contexto.SPE_OBTIENE_CARTERA().ToList();
             }
@@ -175,7 +173,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 
         public List<SPE_OBTIENE_CARTERA_A_ELIMINAR_Result> Obtener_SOLICITUDES_CARTERA_A_ELIMINAR()
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_CARTERA_A_ELIMINAR().ToList();
             }
@@ -183,7 +181,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 
         public SPE_OBTIENE_SOLICITUD_PLANTILLA_Result ObtenerSolicitudPlantilla(int? pIdPlantilla, int? pIdSolicitud, Guid? pFlPlantillaSolicitud)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_SOLICITUD_PLANTILLA(pIdPlantilla, pIdSolicitud, pFlPlantillaSolicitud).FirstOrDefault();
             }
@@ -191,7 +189,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 
         public XElement InsertarCandidatoContratado(string pXmlDatosCandidato, string pClUsuario, string pNbPrograma)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_INSERTA_EMPLEADO_CONTRATADO(pOutClRetorno, pXmlDatosCandidato, pClUsuario, pNbPrograma);
@@ -202,22 +200,15 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 
         public List<SPE_OBTIENE_SOLICITUDES_EMPLEO_Result> ObtenerSolicitudesEmpleo()
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_SOLICITUDES_EMPLEO().ToList();
             }
         }
 
-        //public List<SPE_OBTIENE_DATOS_EMPLEADOS_Result> ObtenerDatosEmpleados(int? pIdEmpresa = null, int? pIdRol = null)
-        //{
-        //    using (contexto = new SistemaSigeinEntities())
-        //    {
-        //        return contexto.SPE_OBTIENE_DATOS_EMPLEADOS(pIdEmpresa, pIdRol).ToList();
-        //    }
-        //}
         public List<E_EMPLEADO_RPT> ObtenerDatosEmpleados(int? pIdEmpresa = null, int? pIdRol = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
               
                 return contexto.Database.SqlQuery<E_EMPLEADO_RPT>("EXEC " +
@@ -233,7 +224,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
 
         public List<SPE_OBTIENE_ENTREVISTAS_SELECCIONADOS_Result> ObtenerEntrevistasSeleccionados()
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_ENTREVISTAS_SELECCIONADOS().ToList();
             }

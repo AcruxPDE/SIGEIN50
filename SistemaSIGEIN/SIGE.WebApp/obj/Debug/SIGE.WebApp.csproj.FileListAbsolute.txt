@@ -533,6 +533,7 @@ C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIG
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.csproj.CopyComplete
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.dll
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.pdb
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.dll.licenses
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.WebApp.dll.config
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.WebApp.dll
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.WebApp.pdb
@@ -588,7 +589,6 @@ D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\ADODB.dll
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.Mvc.dll
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\EnvDTE.dll
-D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Microsoft.AnalysisServices.AdomdClient.dll
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\EntityFramework.dll
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.Razor.dll
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.Razor.dll
@@ -596,6 +596,7 @@ D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Syst
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\stdole.dll
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.Deployment.dll
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Entidades.pdb
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Entidades.dll.config
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Negocio.pdb
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Negocio.dll.config
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Common.Logging.pdb
@@ -628,7 +629,6 @@ D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Syst
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.xml
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.Deployment.xml
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.csprojAssemblyReference.cache
-D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.dll.licenses
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.csproj.CoreCompileInputs.cache
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.csproj.CopyComplete
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.dll

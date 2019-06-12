@@ -183,6 +183,7 @@ C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SI
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.Negocio.csproj.CopyComplete
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.Negocio.dll
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.Negocio.pdb
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.Negocio.csproj.CoreCompileInputs.cache
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\SIGE.Negocio.dll.config
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\SIGE.Negocio.dll
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\SIGE.Negocio.pdb
@@ -198,10 +199,10 @@ D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Deb
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\Telerik.Windows.Zip.dll
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\EntityFramework.dll
-D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\Microsoft.AnalysisServices.AdomdClient.dll
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\SIGE.AccesoDatos.pdb
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\SIGE.AccesoDatos.dll.config
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\SIGE.Entidades.pdb
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\SIGE.Entidades.dll.config
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\Newtonsoft.Json.xml
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\Telerik.Web.Spreadsheet.xml
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\Telerik.Web.UI.xml
@@ -211,7 +212,6 @@ D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Deb
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\Telerik.Windows.Zip.xml
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\EntityFramework.xml
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.Negocio.csprojAssemblyReference.cache
-D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.Negocio.csproj.CoreCompileInputs.cache
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.Negocio.csproj.CopyComplete
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.Negocio.dll
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.Negocio.pdb

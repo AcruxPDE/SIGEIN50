@@ -162,8 +162,7 @@ namespace SIGE.WebApp.IDP
 
         protected void grdProcesoSeleccion_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            ProcesoSeleccionNegocio nProcesoSeleccion = new ProcesoSeleccionNegocio();
-            grdProcesoSeleccion.DataSource = nProcesoSeleccion.ObtieneProcesoSeleccion(pIdCandidato: vIdCandidato);
+            grdProcesoSeleccion.DataSource = new ProcesoSeleccionNegocio().ObtieneProcesoSeleccion(pIdCandidato: vIdCandidato);
         }
 
         protected void grdProcesoSeleccion_SelectedIndexChanged(object sender, EventArgs e)

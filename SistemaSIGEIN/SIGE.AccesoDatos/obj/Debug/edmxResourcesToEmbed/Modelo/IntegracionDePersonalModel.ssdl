@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IntegracionDePersonalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <Function Name="SPE_ELIMINA_CANDIDATO_REQUISICION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_REQUISICION" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_CANDIDATO" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SPE_INSERTA_CANDIDATO_REQUISICION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP">
+    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
+    <Parameter Name="PIN_ID_CANDIDATO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_EMPLEADO" Type="int" Mode="In" />
+    <Parameter Name="PIN_ID_REQUISICION" Type="int" Mode="In" />
+    <Parameter Name="PIN_CL_USUARIO_APP" Type="nvarchar" Mode="In" />
+    <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SPE_OBTIENE_CARTERA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="IDP" />
+  <EntityContainer Name="IntegracionDePersonalModelStoreContainer" />
+</Schema>

@@ -1,15 +1,8 @@
-﻿using SIGE.Entidades;
-using SIGE.Entidades.Externas;
+﻿using SIGE.Entidades.Externas;
 using SIGE.Negocio.Administracion;
-using SIGE.Negocio.FormacionDesarrollo;
-using SIGE.Negocio.IntegracionDePersonal;
 using SIGE.WebApp.Comunes;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace SIGE.WebApp.IDP
 {
@@ -132,15 +125,18 @@ namespace SIGE.WebApp.IDP
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (rlbRequicion.SelectedValue != "")
+            int vIdRequisicion;
+
+            if (int.TryParse(rlbRequicion.SelectedValue, out vIdRequisicion))
             {
-                ProcesoSeleccionNegocio nProcesoSeleccion = new ProcesoSeleccionNegocio();
-                E_RESULTADO vResultado = nProcesoSeleccion.InsertaProcesoSeleccion(pIdCandidato: vIdCandidato, pIdEmpleado: vIdEmpleado, pIdRequisicion: int.Parse(rlbRequicion.SelectedValue), pClUsuario: vClUsuario, pNbPrograma: vNbPrograma);
+                E_RESULTADO vResultado = new RequisicionNegocio().InsertarCandidatoRequisicion(vIdCandidato ?? 0, vIdEmpleado ?? 0, vIdRequisicion, vClUsuario, vNbPrograma);
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
                 UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "onCloseWindows");
             }
             else
+            {
                 UtilMensajes.MensajeResultadoDB(rnMensaje, "No se ha seleccionado la requisición.", Entidades.Externas.E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
+            }
         }
     }
 }
