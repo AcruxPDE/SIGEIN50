@@ -976,7 +976,7 @@ namespace SIGE.WebApp.EO
                 }
             }
             PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
-            E_RESULTADO vResultado = nPeriodo.EliminaMetaInactivas(vIdPeriodo);
+            E_RESULTADO vResultado = nPeriodo.EliminaMetaInactivas(vIdPeriodo, vClUsuario, vNbPrograma);
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "recargarMetas()");
 

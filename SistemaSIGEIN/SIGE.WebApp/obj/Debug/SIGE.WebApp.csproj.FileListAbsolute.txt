@@ -533,7 +533,9 @@ C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIG
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.csproj.CopyComplete
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.dll
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.pdb
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.csprojAssemblyReference.cache
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.dll.licenses
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.csproj.CoreCompileInputs.cache
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.WebApp.dll.config
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.WebApp.dll
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.WebApp.pdb
@@ -628,8 +630,6 @@ D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Syst
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.Razor.xml
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.xml
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.Deployment.xml
-D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.csprojAssemblyReference.cache
-D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.csproj.CoreCompileInputs.cache
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.csproj.CopyComplete
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.dll
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.pdb

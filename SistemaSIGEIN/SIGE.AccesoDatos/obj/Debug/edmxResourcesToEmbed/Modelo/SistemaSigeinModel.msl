@@ -5812,7 +5812,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="SPE_ELIMINA_EO_METAS_INACTIVAS" FunctionName="SistemaSigeinModel.Store.SPE_ELIMINA_EO_METAS_INACTIVAS" />
     <FunctionImportMapping FunctionImportName="SPE_INSERTA_PERIODOS_DESEMPENO_REPLICA" FunctionName="SistemaSigeinModel.Store.SPE_INSERTA_PERIODOS_DESEMPENO_REPLICA" />
     <FunctionImportMapping FunctionImportName="SPE_OBTIENE_PERIODOS_SOLICITUDES_ENVIAR" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_PERIODOS_SOLICITUDES_ENVIAR">
       <ResultMapping>
@@ -7513,19 +7512,6 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="SPE_ELIMINA_PRUEBA_RESPUESTAS" FunctionName="SistemaSigeinModel.Store.SPE_ELIMINA_PRUEBA_RESPUESTAS" />
-    <FunctionImportMapping FunctionImportName="SPE_OBTIENE_ADSCRIPCIONES" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_ADSCRIPCIONES">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_ADSCRIPCIONES_Result">
-          <ScalarProperty Name="ID_CAMPO" ColumnName="ID_CAMPO" />
-          <ScalarProperty Name="CL_CAMPO" ColumnName="CL_CAMPO" />
-          <ScalarProperty Name="CL_CAMPO_CATALOGO" ColumnName="CL_CAMPO_CATALOGO" />
-          <ScalarProperty Name="NB_CAMPO" ColumnName="NB_CAMPO" />
-          <ScalarProperty Name="NB_CATALOGO_VALOR" ColumnName="NB_CATALOGO_VALOR" />
-          <ScalarProperty Name="DS_CAMPO" ColumnName="DS_CAMPO" />
-          <ScalarProperty Name="CL_TABLA_REFERENCIA" ColumnName="CL_TABLA_REFERENCIA" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="SPE_OBTIENE_EMPLEADOS" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_EMPLEADOS">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_EMPLEADOS_Result">

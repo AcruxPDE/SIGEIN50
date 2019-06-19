@@ -2571,10 +2571,6 @@
     <Parameter Name="PIN_CL_USUARIO_APP_CREA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA_CREA" Type="nvarchar" Mode="In" />
   </Function>
-  <Function Name="SPE_ELIMINA_EO_METAS_INACTIVAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
-    <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
-    <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
-  </Function>
   <Function Name="SPE_ELIMINA_EO_PREGUNTAS_ABIERTAS_PERIODO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
@@ -2882,9 +2878,6 @@
     <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
     <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
-  </Function>
-  <Function Name="SPE_OBTIENE_ADSCRIPCIONES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
-    <Parameter Name="PIN_ID_CATALOGO_LISTA" Type="int" Mode="In" />
   </Function>
   <Function Name="SPE_OBTIENE_BONO_EVALUADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
     <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />

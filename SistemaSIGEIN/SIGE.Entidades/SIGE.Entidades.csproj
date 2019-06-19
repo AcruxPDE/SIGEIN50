@@ -112,6 +112,11 @@
     <Compile Include="Administracion\E_SELECCION_PUESTOS.cs" />
     <Compile Include="Administracion\E_SISTEMA.cs" />
     <Compile Include="Administracion\E_USUARIO.cs" />
+    <Compile Include="EvaluacionOrganizacionalModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EvaluacionOrganizacionalModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EvaluacionOrganizacional\E_ADICIONALES_SELECCIONADOS.cs" />
     <Compile Include="EvaluacionOrganizacional\E_BAJAS_PENDIENTES.cs" />
     <Compile Include="EvaluacionOrganizacional\E_BAJA_EMPLEADO.cs" />
@@ -253,7 +258,7 @@
     <Compile Include="PuntoDeEncuentro\E_OBTIENE_EMPLEADOS_GENERA_CONTRASENA.cs" />
     <Compile Include="PuntoDeEncuentro\E_USUARIO_CORREO.cs" />
     <Compile Include="SPE_OBTIENE_ADSCRIPCIONES_Result.cs">
-      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+      <DependentUpon>EvaluacionOrganizacionalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_BONOS_EVALUADOS_DESEMPENO_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
@@ -280,7 +285,7 @@
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_CARTERA_Result.cs">
-      <DependentUpon>IntegracionDePersonalModel.tt</DependentUpon>
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_CENTROS_ADMINISTRATIVOS_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
@@ -1579,6 +1584,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EvaluacionOrganizacionalModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EvaluacionOrganizacionalModel.cs</LastGenOutput>
+    </Content>
     <Content Include="IntegracionDePersonalModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IntegracionDePersonalModel.cs</LastGenOutput>

@@ -57,4 +57,3 @@ D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\D
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.csproj.CopyComplete
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.dll
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.pdb
-D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.csprojAssemblyReference.cache

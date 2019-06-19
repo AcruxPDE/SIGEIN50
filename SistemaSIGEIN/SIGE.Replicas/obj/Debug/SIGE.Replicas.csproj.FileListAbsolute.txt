@@ -113,6 +113,7 @@ C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\De
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.exe
 C:\Users\pvelazquez\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.pdb
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.csproj.CoreCompileInputs.cache
+D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.csprojAssemblyReference.cache
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\SIGE.Replicas.exe.config
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\SIGE.Replicas.exe
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\SIGE.Replicas.pdb
@@ -150,7 +151,6 @@ D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\De
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\Telerik.Web.Spreadsheet.xml
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.xml
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\Telerik.Windows.Zip.xml
-D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.csprojAssemblyReference.cache
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.csproj.CopyComplete
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.exe
 D:\Usuarios\Usuario\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\obj\Debug\SIGE.Replicas.pdb

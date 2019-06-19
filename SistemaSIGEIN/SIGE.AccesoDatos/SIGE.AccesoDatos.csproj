@@ -147,6 +147,16 @@
     <Compile Include="Implementaciones\SecretariaTrabajoPrevisionSocial\AreasTematicasOperaciones.cs" />
     <Compile Include="Implementaciones\SecretariaTrabajoPrevisionSocial\OcupacionesOperaciones.cs" />
     <Compile Include="Implementaciones\TableroControl\TableroControlOperaciones.cs" />
+    <Compile Include="Modelo\EvaluacionOrganizacionalModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EvaluacionOrganizacionalModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\EvaluacionOrganizacionalModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EvaluacionOrganizacionalModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\IntegracionDePersonalModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -186,6 +196,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>IntegracionDePersonalModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="Modelo\EvaluacionOrganizacionalModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EvaluacionOrganizacionalModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelo\EvaluacionOrganizacionalModel.edmx.diagram">
+      <DependentUpon>EvaluacionOrganizacionalModel.edmx</DependentUpon>
+    </None>
     <None Include="Modelo\IntegracionDePersonalModel.edmx.diagram">
       <DependentUpon>IntegracionDePersonalModel.edmx</DependentUpon>
     </None>
@@ -210,6 +227,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Modelo\EvaluacionOrganizacionalModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EvaluacionOrganizacionalModel.edmx</DependentUpon>
+      <LastGenOutput>EvaluacionOrganizacionalModel.Context.cs</LastGenOutput>
+      <CustomToolNamespace>SIGE.Entidades</CustomToolNamespace>
+    </Content>
     <Content Include="Modelo\IntegracionDePersonalModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>IntegracionDePersonalModel.edmx</DependentUpon>
