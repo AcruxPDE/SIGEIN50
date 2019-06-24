@@ -80,7 +80,7 @@
                             }
                         });
                         var text = "¿Estas seguro que deseas terminar tu prueba?";
-                        radconfirm(text, callBackFunction, 400, 160, null, "");
+                        radconfirm(text, callBackFunction, 400, 160, null, "Aviso");
                         args.set_cancel(true);
             }
 

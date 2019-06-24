@@ -38,7 +38,7 @@
                     var browserWnd = window;
                     if (currentWnd)
                         browserWnd = currentWnd.BrowserWindow;
-                    browserWnd.radalert("Para asignar esta plaza a otra persona, es importante que se libere desde el inventario de personal.", 400, 180);
+                    browserWnd.radalert("Para asignar esta plaza a otra persona, es importante que se libere desde el inventario de personal.", 400, 180, "Aviso");
                 } else { OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?mulSel=0", "winSeleccion", "Selección de empleado") }
             }
         }
@@ -64,7 +64,7 @@
                     var browserWnd = window;
                     if (currentWnd)
                         browserWnd = currentWnd.BrowserWindow;
-                    browserWnd.radalert("Para asignar esta plaza a otra persona, es importante que se libere desde el inventario de personal.", 400, 180);
+                    browserWnd.radalert("Para asignar esta plaza a otra persona, es importante que se libere desde el inventario de personal.", 400, 180, "Aviso");
                 } else { ChangeListItem("", "No Seleccionado", $find("<%=lstEmpleado.ClientID %>")); }
             }
         }

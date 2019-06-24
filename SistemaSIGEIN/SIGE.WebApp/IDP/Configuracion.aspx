@@ -45,7 +45,7 @@
                 if ((vFlBateria != "")) {
                     var win = openChildDialog("VentanaSustitucionBaremos.aspx?pIdBateria=" + vFlBateria, 'rwBaremos', "Sustitución de Baremos", windowProperties);
                 }
-                else { radalert("No has seleccionado una bateria.", 400, 150, ""); }
+                else { radalert("No has seleccionado una bateria.", 400, 150, "Aviso"); }
             }
 
             function VentanaResultados() {
@@ -70,7 +70,7 @@
                     }
                 }
                 else {
-                    radalert("No has seleccionado una bateria.", 400, 150, "");
+                    radalert("No has seleccionado una bateria.", 400, 150, "Aviso");
                 }
             }
 
@@ -95,7 +95,7 @@
                             var nbCorreo = vEmpleadoSeleccionado.nbCorreoElectronico.replace("&nbsp;", "");
 
                             if (nbCorreo == "") {
-                                radalert("El empleado que has seleccionado no tiene correo eletrónico.", 450, 150, "");
+                                radalert("El empleado que has seleccionado no tiene correo eletrónico.", 450, 150, "Aviso");
                                 return;
                             }
                             //var txtNombre = $find("<=rtbNombreRrhh.ClientID %>");

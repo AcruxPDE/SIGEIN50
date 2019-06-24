@@ -38,7 +38,7 @@
                  var browserWnd = window;
                  if (currentWnd)
                      browserWnd = currentWnd.BrowserWindow;
-                 browserWnd.radalert("Selecciona un periodo.", 400, 150);
+                 browserWnd.radalert("Selecciona un periodo.", 400, 150, "Aviso");
              }
          }
 

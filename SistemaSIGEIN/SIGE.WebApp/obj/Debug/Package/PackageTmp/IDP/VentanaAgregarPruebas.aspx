@@ -43,11 +43,11 @@
                             this.click();
                         }
                     });
-                    radconfirm("Este proceso borrará la prueba seleccionada y sus posibles respuestas ¿Deseas continuar?", callBackFunction, 400, 180, null, "Eliminar prueba");
+                    radconfirm("Este proceso borrará la prueba seleccionada y sus posibles respuestas ¿Deseas continuar?", callBackFunction, 400, 180, null, "Aviso");
                     args.set_cancel(true);
                 }
                 else {
-                    radalert("Selecciona una prueba", 400, 150, "Warning");
+                    radalert("Selecciona una prueba", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
         }

@@ -73,7 +73,7 @@
              return wnd;
          }
          else {
-             radalert("Selecciona el puesto objetivo.", 400, 150);
+             radalert("Selecciona el puesto objetivo.", 400, 150, "Aviso");
          }
      }
 

@@ -54,7 +54,7 @@
                 OpenSelectionWindow("VentanaPlanSucesion.aspx?idEmpleado=" + idEmpleadoSeleccionado + "&sucesores=" + vEmpleadosJson, "winAnalisis", "Plan de sucesión - Análisis de sucesores");
             }
             else {
-                radalert("Selecciona un empleado.", 400, 150);
+                radalert("Selecciona un empleado.", 400, 150, "Aviso");
             }
         }
 

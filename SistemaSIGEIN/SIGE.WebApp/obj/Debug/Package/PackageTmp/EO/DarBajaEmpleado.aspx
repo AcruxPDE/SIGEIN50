@@ -33,7 +33,7 @@
               if (idEmpleado != "")
                   OpenWindow(GetDarBajaWindowProperties(idEmpleado));
               else
-                  radalert("Selecciona un empleado.", 400, 150);
+                  radalert("Selecciona un empleado.", 400, 150, "Aviso");
           }
 
           function GetDarBajaWindowProperties(pIdEmpleado) {

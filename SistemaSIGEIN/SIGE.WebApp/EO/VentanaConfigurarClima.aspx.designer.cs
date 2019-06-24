@@ -220,6 +220,15 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadButton btnEliminarEvaluador;
         
         /// <summary>
+        /// Control btnGuardarSeleccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnGuardarSeleccion;
+        
+        /// <summary>
         /// Control rpvCampos.
         /// </summary>
         /// <remarks>
@@ -724,22 +733,13 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadSlidingPane RadSlidingPane2;
         
         /// <summary>
-        /// Control btnGuardarCerrar.
+        /// Control btnGuardarEnvioCuestionarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnGuardarCerrar;
-        
-        /// <summary>
-        /// Control btnCerrar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnCerrar;
+        protected global::Telerik.Web.UI.RadButton btnGuardarEnvioCuestionarios;
         
         /// <summary>
         /// Control rpvEmpleadoContrasenia.
@@ -776,6 +776,24 @@ namespace SIGE.WebApp.EO {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnEnvioCuestionarios;
+        
+        /// <summary>
+        /// Control btnGuardarCerrar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnGuardarCerrar;
+        
+        /// <summary>
+        /// Control btnCerrar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnCerrar;
         
         /// <summary>
         /// Control rwmMensaje.

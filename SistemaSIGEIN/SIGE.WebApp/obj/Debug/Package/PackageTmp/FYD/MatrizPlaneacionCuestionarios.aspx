@@ -254,8 +254,10 @@
         }
 
         function confirmarCrearCuestionarios(sender, args) {
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
 
-            confirmAction(sender, args, vconfirmarCrearCuestionarios_confirm);
+            radconfirm(vconfirmarCrearCuestionarios_confirm, callBackFunction, 400, 170, null, "Aviso");
+            args.set_cancel(true);
         }
 
 

@@ -8,7 +8,7 @@
             if (selectedItem != undefined)
                 OpenWindow(selectedItem.getDataKeyValue("ID_ITEM"));
             else
-                radalert("Selecciona un tema.", 400, 150);
+                radalert("Selecciona un tema.", 400, 150, "Aviso");
         }
 
         function OpenWindow(pIdTemaItem) {
@@ -165,7 +165,7 @@
         function ConfirmarEliminar(sender, args) {
             var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
             { if (shouldSubmit) { this.click(); } });
-            radconfirm('¿Deseas eliminar el área temática de este curso?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar área temática");
+            radconfirm('¿Deseas eliminar el área temática de este curso?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
             args.set_cancel(true);
 
         }

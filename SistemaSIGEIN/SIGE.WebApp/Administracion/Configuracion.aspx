@@ -158,7 +158,7 @@
                 openChildDialog(vURL, "winPlantillas", vTitulo, windowProperties);
             }
             else
-                radalert("Selecciona un plantilla.", 400, 150);
+                radalert("Selecciona un plantilla.", 400, 150, "Aviso");
         }
 
         function OpenDescriptivoWindows() {
@@ -221,11 +221,11 @@
                         if (vFgAbrirVentana)
                             openChildDialog(vURL, "winCamposFormulario", vTitulo, windowProperties);
                         else
-                            radalert(vDsMensajeAdvertencia, 400, 150);
+                            radalert(vDsMensajeAdvertencia, 400, 150, "Aviso");
                     }
                 }
                 else
-                    radalert("Selecciona un campo.", 400, 150);
+                    radalert("Selecciona un campo.", 400, 150, "Aviso");
             }
         }
 
@@ -256,7 +256,7 @@
                 openChildDialog(vURL, "winPlantillas", vTitulo, windowProperties);
             }
             else
-                radalert("Selecciona un plantilla.", 400, 150);
+                radalert("Selecciona un plantilla.", 400, 150, "Aviso");
         }
 
         function onCloseWindow(oWnd, args) {
@@ -277,7 +277,11 @@
 
                 if (vFgAbrirVentana) {
                     var vNombre = masterTable.getCellByColumnUniqueName(selectedItem, "NB_CAMPO_FORMULARIO").innerHTML;
-                    confirmAction(sender, args, "¿Deseas eliminar el campo " + vNombre + "?, este proceso no podrá revertirse");
+                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                    radconfirm("¿Deseas eliminar el campo " + vNombre + "?, este proceso no podrá revertirse", callBackFunction, 400, 170, null, "Aviso");
+                    args.set_cancel(true);
+                    
                 } else
                     vDsMensajeAdvertencia = "Los campos de sistema no pueden se eliminados.";
             }
@@ -285,7 +289,7 @@
                 vDsMensajeAdvertencia = "Selecciona un campo.";
 
             if (!vFgAbrirVentana) {
-                radalert(vDsMensajeAdvertencia, 400, 150);
+                radalert(vDsMensajeAdvertencia, 400, 150, "Aviso");
                 args.set_cancel(true);
             }
 
@@ -300,19 +304,26 @@
                 switch (clAccion) {
                     case "eliminar":
                         if (vFgDefecto != "Sí")
-                            confirmAction(sender, args, "¿Deseas eliminar la plantilla " + vNombre + "?, este proceso no podrá revertirse");
+                            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                            radconfirm("¿Deseas eliminar la plantilla " + vNombre + "?, este proceso no podrá revertirse", callBackFunction, 400, 170, null, "Aviso");
+                            args.set_cancel(true);
+
                         else {
-                            radalert("No se puede eliminar una plantilla establecida por defecto.", 400, 150);
+                            radalert("No se puede eliminar una plantilla establecida por defecto.", 400, 150, "Aviso");
                             args.set_cancel(true);
                         }
                         break;
                     case "general":
-                        confirmAction(sender, args, "¿Deseas establecer la plantilla " + vNombre + " por defecto?");
+                        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                        radconfirm("¿Deseas establecer la plantilla " + vNombre + " por defecto?", callBackFunction, 400, 170, null, "Aviso");
+                        args.set_cancel(true);
                         break;
                 }
             }
             else {
-                radalert("Selecciona una plantilla.", 400, 150);
+                radalert("Selecciona una plantilla.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }

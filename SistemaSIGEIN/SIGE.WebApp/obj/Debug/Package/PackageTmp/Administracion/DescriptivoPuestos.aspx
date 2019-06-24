@@ -28,7 +28,7 @@
                     openChildDialog(vURL, "winNuevoDescriptivo", vTitulo);
                 }
                 else
-                    radalert("Selecciona un puesto.", 400, 150);
+                    radalert("Selecciona un puesto.", 400, 150, "Aviso");
 
             }
 
@@ -42,11 +42,11 @@
                         CELL_NOMBRE = MasterTable.getCellByColumnUniqueName(row, "NB_PUESTO");
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
-                        radconfirm("¿Deseas eliminar el puesto " + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 200, null, "Eliminar Registro");
+                        radconfirm("¿Deseas eliminar el puesto " + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 200, null, "Aviso");
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Seleccione un Puesto.", 400, 150, "Error");
+                    radalert("Seleccione un Puesto.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -56,7 +56,7 @@
                 if (selectedItem != undefined)
                     OpenWindow(selectedItem.getDataKeyValue("ID_PUESTO"), null);
                 else
-                    radalert("Selecciona un puesto.", 400, 150);
+                    radalert("Selecciona un puesto.", 400, 150, "Aviso");
             }
 
             function RebindGrid() {
@@ -68,7 +68,7 @@
                 if (selectedItem != undefined)
                     OpenWindow(selectedItem.getDataKeyValue("ID_PUESTO_DO"), "C");
                 else
-                    radalert("Selecciona un puesto.", 400, 150);
+                    radalert("Selecciona un puesto.", 400, 150, "Aviso");
             }
 
             function ShowPreviewForm() {
@@ -76,7 +76,7 @@
                 if (selectedItem != undefined)
                     OpenPreview(selectedItem.getDataKeyValue("ID_PUESTO_DO"));
                 else
-                    radalert("Selecciona un puesto.", 400, 150);
+                    radalert("Selecciona un puesto.", 400, 150, "Aviso");
             }
 
             function OpenWindow(pIdPuesto, pIsCopy) {
@@ -127,11 +127,11 @@
                             CELL_NOMBRE = MasterTable.getCellByColumnUniqueName(row, "NB_PUESTO");
                             var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                             { if (shouldSubmit) { this.click(); } });
-                            radconfirm("¿Deseas eliminar el puesto " + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 200, null, "Eliminar Registro");
+                            radconfirm("¿Deseas eliminar el puesto " + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 200, null, "Aviso");
                             args.set_cancel(true);
                         }
                     } else {
-                        radalert("Seleccione un Puesto.", 400, 150, "Error");
+                        radalert("Seleccione un Puesto.", 400, 150, "Aviso");
                         args.set_cancel(true);
                     }
                 }
@@ -158,7 +158,7 @@
                 if (selectedItem != undefined)
                     OpenFactoresWindow(selectedItem.getDataKeyValue("ID_PUESTO"), null);
                 else
-                    radalert("Selecciona un puesto.", 400, 150);
+                    radalert("Selecciona un puesto.", 400, 150, "Aviso");
             }
 
             function OpenFactoresWindow(pIdPuesto) {
@@ -185,7 +185,7 @@
                 if (selectedItem != undefined)
                     OpenReport(selectedItem.getDataKeyValue("ID_PUESTO_DO"), null);
                 else
-                    radalert("Selecciona un puesto.", 400, 150);
+                    radalert("Selecciona un puesto.", 400, 150, "Aviso");
             }
 
             function OpenReport(pIdPuesto) {

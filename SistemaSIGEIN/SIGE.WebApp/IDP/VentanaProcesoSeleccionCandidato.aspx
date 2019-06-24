@@ -41,11 +41,11 @@
                 var callBackFunction = Function.createDelegate(sender,function (shouldSubmit)
                 { if (shouldSubmit) { this.click(); } });
 
-                radconfirm('¿Deseas eliminar este proceso de evaluación?, este proceso no podrá revertirse.', callBackFunction, 400, 150, null, "Eliminar proceso de evaluación");
+                radconfirm('¿Deseas eliminar este proceso de evaluación?, este proceso no podrá revertirse.', callBackFunction, 400, 150, null, "Aviso");
                 args.set_cancel(true);
             }
             else {
-                radalert("Selecciona un proceso de evaluación", 400, 150, "");
+                radalert("Selecciona un proceso de evaluación", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -76,7 +76,7 @@
              }
 
              if (idProcesoSeleccion == "") {
-                 radalert("Selecciona un proceso de evaluación", 400, 150, "");
+                 radalert("Selecciona un proceso de evaluación", 400, 150, "Aviso");
              }
              else {
                  OpenSelectionWindow(vURL, "rwProcesoSeleccion", vTitulo);
@@ -110,7 +110,7 @@
             }
 
             if (idProcesoSeleccion == "") {
-                radalert("Selecciona un proceso de evaluación", 400, 150, "");
+                radalert("Selecciona un proceso de evaluación", 400, 150, "Aviso");
             }
             else {
                 OpenSelectionWindow(vURL, "rwProcesoSeleccion", vTitulo);
@@ -122,7 +122,11 @@
             var vProcesos = '<%= grdProcesoSeleccion.Items.Count %>';
 
             if (vProcesos > 0) {
-                confirmAction(sender, args, 'Ya cuentas con procesos de evaluación.¿Deseas iniciar un nuevo proceso?');
+                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                radconfirm('Ya cuentas con procesos de evaluación.¿Deseas iniciar un nuevo proceso?', callBackFunction, 400, 150, null, "Aviso");
+                args.set_cancel(true);
+
             }
         }
 

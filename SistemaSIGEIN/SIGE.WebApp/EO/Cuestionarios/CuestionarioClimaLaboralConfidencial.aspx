@@ -8,11 +8,18 @@
 
         function confirmarFinalizar(sender, args) {
             var vWindowsProperties = { height: 180, width: 400 };
-            confirmAction(sender, args, "¿Estás seguro que deseas terminar el cuestionario? No podrás volver a contestarlo.", vWindowsProperties);
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+            radconfirm("¿Estás seguro que deseas terminar el cuestionario? No podrás volver a contestarlo.", callBackFunction, 400, 170, null, "Aviso");
+            args.set_cancel(true);
+
         }
 
         function confirmarGuardar(sender, args) {
-            confirmAction(sender, args, "¿Estás seguro que deseas guardar los datos y terminar la sesión?");
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+            radconfirm("¿Estás seguro que deseas guardar los datos y terminar la sesión?", callBackFunction, 400, 170, null, "Aviso");
+            args.set_cancel(true);
         }
 
 

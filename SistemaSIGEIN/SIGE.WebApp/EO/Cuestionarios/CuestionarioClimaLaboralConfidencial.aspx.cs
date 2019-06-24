@@ -502,41 +502,44 @@ namespace SIGE.WebApp.EO.Cuestionarios
 
                     if (vFiltros.XML_CAMPOS_ADICIONALES != null)
                     {
-                    ObtieneAdicionales(vFiltros.XML_CAMPOS_ADICIONALES);
-                    RotacionPersonalNegocio negocio = new RotacionPersonalNegocio();
-                    foreach (E_CAMPOS_ADICIONALES item in vLstCamposAdicionales)
-                    {
-                        HtmlGenericControl vDiv = new HtmlGenericControl("div");
-                        vDiv.Attributes.Add("class", "ctrlBasico");
-                        SPE_OBTIENE_ADSCRIPCIONES_Result ListaAdscripcion = negocio.ObtieneCatalogoAdscripciones(item.ID_CATALOGO_LISTA).FirstOrDefault();
-                        List<E_ADICIONALES_SELECCIONADOS> LstValores = vLstAdicionales.Where(w => w.ID_CATALOGO_LISTA == item.ID_CATALOGO_LISTA.ToString()).ToList();
-
-                        RadLabel vControlLabel = new RadLabel();
-                        vControlLabel.Text = ListaAdscripcion.NB_CAMPO + ": ";
-                        vControlLabel.Font.Bold = true;
-
-                        Control vControl = new RadComboBox()
+                        ObtieneAdicionales(vFiltros.XML_CAMPOS_ADICIONALES);
+                        RotacionPersonalNegocio negocio = new RotacionPersonalNegocio();
+                        foreach (E_CAMPOS_ADICIONALES item in vLstCamposAdicionales)
                         {
-                            ID = ListaAdscripcion.CL_CAMPO,
-                            Width = 250,
-                            Filter = RadComboBoxFilter.Contains,
-                            EmptyMessage = "Selecciona",
-                        };
+                            HtmlGenericControl vDiv = new HtmlGenericControl("div");
+                            vDiv.Attributes.Add("class", "ctrlBasico");
+                            SPE_OBTIENE_ADSCRIPCIONES_Result ListaAdscripcion = negocio.ObtieneCatalogoAdscripciones(item.ID_CATALOGO_LISTA).FirstOrDefault();
+                            List<E_ADICIONALES_SELECCIONADOS> LstValores = vLstAdicionales.Where(w => w.ID_CATALOGO_LISTA == item.ID_CATALOGO_LISTA.ToString()).ToList();
 
-                        foreach (var itemValue in LstValores)
-                        {
-                            ((RadComboBox)vControl).Items.Add(new RadComboBoxItem()
+                            if(ListaAdscripcion != null)
                             {
-                                Text = itemValue.NB_CAMPO,
-                                Value = itemValue.CL_CAMPO,
-                            });
+                                RadLabel vControlLabel = new RadLabel();
+                                vControlLabel.Text = ListaAdscripcion.NB_CAMPO + ": ";
+                                vControlLabel.Font.Bold = true;
+
+                                Control vControl = new RadComboBox()
+                                {
+                                    ID = ListaAdscripcion.CL_CAMPO,
+                                    Width = 250,
+                                    Filter = RadComboBoxFilter.Contains,
+                                    EmptyMessage = "Selecciona",
+                                };
+
+                                foreach (var itemValue in LstValores)
+                                {
+                                    ((RadComboBox)vControl).Items.Add(new RadComboBoxItem()
+                                    {
+                                        Text = itemValue.NB_CAMPO,
+                                        Value = itemValue.CL_CAMPO,
+                                    });
+                                }
+
+
+                                vDiv.Controls.Add(vControlLabel);
+                                vDiv.Controls.Add(vControl);
+                                dvCamposExtra.Controls.Add(vDiv);
+                            }                        
                         }
-
-
-                        vDiv.Controls.Add(vControlLabel);
-                        vDiv.Controls.Add(vControl);
-                        dvCamposExtra.Controls.Add(vDiv);
-                    }
 
                     }
                 }

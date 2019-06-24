@@ -49,7 +49,7 @@
                 }
             }
 
-            radconfirm("¿Estás seguro que quieres salir de la pantalla? Si no has guardado los cambios se perderán", confirmCallback, 400, 170, null, "Cerrar");
+            radconfirm("¿Estás seguro que quieres salir de la pantalla? Si no has guardado los cambios se perderán", confirmCallback, 400, 170, null, "Aviso");
         }
 
         //function OpenImpresion() {

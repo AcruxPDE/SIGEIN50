@@ -27,7 +27,7 @@
                 var wnd = openChildDialog(vURL, "WinCuestionario", vTitulo, windowProperties);
             }
             else {
-                radalert("Selecciona un evaluado.", 400, 150);
+                radalert("Selecciona un evaluado.", 400, 150, "Aviso");
             }
 
         }
@@ -44,7 +44,7 @@
             args.set_cancel(true);
             }
             else {
-                radalert("Selecciona un evaluado.", 400, 150);
+                radalert("Selecciona un evaluado.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -75,7 +75,7 @@
                     var wnd = openChildDialog(vURL, "WinCuestionario", vTitulo, windowProperties);
             }
             else {
-                radalert("Selecciona un evaluado.", 400, 150);
+                radalert("Selecciona un evaluado.", 400, 150, "Aviso");
             }
         }
 

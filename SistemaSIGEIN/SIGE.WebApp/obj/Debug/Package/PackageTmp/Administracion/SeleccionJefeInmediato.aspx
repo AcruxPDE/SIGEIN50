@@ -24,7 +24,7 @@
                 var browserWnd = window;
                 if (currentWnd)
                     browserWnd = currentWnd.BrowserWindow;
-                browserWnd.radalert("Selecciona un puesto.", 400, 150);
+                browserWnd.radalert("Selecciona un puesto.", 400, 150, "Aviso");
             }
         }
 

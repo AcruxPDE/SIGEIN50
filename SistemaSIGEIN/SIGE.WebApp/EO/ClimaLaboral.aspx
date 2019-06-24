@@ -92,7 +92,7 @@
                     OpenPeriodoWindow(GetPeriodoId());
                 }
                 else {
-                    radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "");
+                    radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "Aviso");
                 }
             }
 
@@ -110,15 +110,21 @@
                 var vWindowsProperties = {
                     height: 200
                 };
-                confirmAction(sender, args, "¿Deseas eliminar el período " + vNombre + '?, este proceso no podrá revertirse');
+
+                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                radconfirm('¿Deseas eliminar el período ' + vNombre + '? este proceso no podrá revertirse', callBackFunction, 400, 170, null, "Aviso");
+                args.set_cancel(true);
+
+                //confirmAction(sender, args, "¿Deseas eliminar el período " + vNombre + '?, este proceso no podrá revertirse', "Aviso");
             }
             else {
-                radalert("Selecciona un período.", 400, 150);
+                radalert("Selecciona un período.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
                 }
                 else {
-                    radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "");
+                    radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "Aviso");
                     args.set_cancel(true);
                 }
         }
@@ -150,7 +156,7 @@
             if (vIdPeriodo != null)
                 OpenWindow(GetConfiguracionWindowProperties(vIdPeriodo));
             else
-                radalert("Selecciona un período.", 400, 150);
+                radalert("Selecciona un período.", 400, 150, "Aviso");
         }
 
         function GetConfiguracionWindowProperties(pIdPeriodo) {
@@ -174,7 +180,7 @@
             if (vIdPeriodo != null)
                 OpenWindow(GetCopiaWindowProperties(vIdPeriodo));
             else
-                radalert("Selecciona un período.", 400, 150);
+                radalert("Selecciona un período.", 400, 150, "Aviso");
         }
 
         function GetCopiaWindowProperties(pIdPeriodo) {
@@ -200,7 +206,7 @@
             if (vIdPeriodo != null)
                 OpenWindow(GetEnvioSolicitudesWindowProperties(vIdPeriodo));
             else
-                radalert("Selecciona un período.", 400, 150);
+                radalert("Selecciona un período.", 400, 150, "Aviso");
         }
 
         function GetEnvioSolicitudesWindowProperties(pIdPeriodo) {
@@ -218,7 +224,7 @@
             if (vIdPeriodo != null)
                 OpenWindow(GetControlAvanceWindowProperties(vIdPeriodo));
             else
-                radalert("Selecciona un período.", 400, 150);
+                radalert("Selecciona un período.", 400, 150, "Aviso");
         }
 
         function GetControlAvanceWindowProperties(pIdPeriodo) {
@@ -238,7 +244,7 @@
                 win.focus();
             }
             else {
-                radalert("Selecciona un período.", 400, 150);
+                radalert("Selecciona un período.", 400, 150, "Aviso");
             }
         }
 
@@ -255,7 +261,7 @@
             if (vIdPeriodo != null)
                 OpenWindow(GetContestarWindowProperties(vIdPeriodo));
             else
-                radalert("Selecciona un período.", 400, 150);
+                radalert("Selecciona un período.", 400, 150, "Aviso");
         }
 
         function GetContestarWindowProperties(pIdPeriodo) {
@@ -273,7 +279,7 @@
             if (vIdPeriodo != null)
                 OpenWindow(GetReportesProperties(vIdPeriodo, "INDICE"));
             else
-                radalert("Selecciona un período.", 400, 150);
+                radalert("Selecciona un período.", 400, 150, "Aviso");
         }
 
         function OpenDistribucionWindow() {
@@ -281,7 +287,7 @@
             if (vIdPeriodo != null)
                 OpenWindow(GetReportesProperties(vIdPeriodo, "DISTRIBUCION"));
             else
-                radalert("Selecciona un período.", 400, 150);
+                radalert("Selecciona un período.", 400, 150, "Aviso");
         }
 
         function OpenPAbiertasWindow() {
@@ -289,7 +295,7 @@
             if (vIdPeriodo != null)
                 OpenWindow(GetReportesProperties(vIdPeriodo, "PREGUNTAS"));
             else
-                radalert("Selecciona un período.", 400, 150);
+                radalert("Selecciona un período.", 400, 150, "Aviso");
         }
 
         function OpenGlobalWindow() {
@@ -297,7 +303,7 @@
             if (vIdPeriodo != null)
                 OpenWindow(GetReportesProperties(vIdPeriodo, "GENERAL"));
             else
-                radalert("Selecciona un período.", 400, 150);
+                radalert("Selecciona un período.", 400, 150, "Aviso");
         }
 
         //
@@ -327,11 +333,11 @@
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                 { if (shouldSubmit) { this.click(); } });
 
-                radconfirm('¿Deseas cerrar el período ' + vNbPeriodo + ' ?', callBackFunction, 400, 170, null, "Cerrar Período");
+                radconfirm('¿Deseas cerrar el período ' + vNbPeriodo + ' ?', callBackFunction, 400, 170, null, "Aviso");
                 args.set_cancel(true);
             }
             else {
-                radalert("Seleccione un período.", 400, 150, "");
+                radalert("Seleccione un período.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -345,11 +351,11 @@
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                 { if (shouldSubmit) { this.click(); } });
 
-                radconfirm('¿Deseas reactivar el período ' + vNbPeriodo + ' ?', callBackFunction, 400, 170, null, "Reactivar Período");
+                radconfirm('¿Deseas reactivar el período ' + vNbPeriodo + ' ?', callBackFunction, 400, 170, null, "Aviso");
                 args.set_cancel(true);
             }
             else {
-                radalert("Seleccione un período.", 400, 150, "");
+                radalert("Seleccione un período.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }

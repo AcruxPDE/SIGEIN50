@@ -8,7 +8,7 @@
             if (valor != null) {
                 window.location.href = "DiseñoReportes.aspx?ruta=" + valor;
             } else {
-                alert("no ha seleccionado un reporte.");
+                radalert("Debe seleccionar un reporte.", 400, 150, "Aviso");
             }
             
         }

@@ -28,7 +28,7 @@
                     vUrl = vUrl + "?idPlaza=" + vValue;
                 }
                 else {
-                    radalert("Selecciona la plaza a partir de la cual se generará el organigrama.", 400, 150, "");
+                    radalert("Selecciona la plaza a partir de la cual se generará el organigrama.", 400, 150, "Plaza");
                     return;
                 }
 
@@ -42,7 +42,7 @@
                 var lbCampos = $find("<%= RadListBox2.ClientID %>");
                 var selCampos= lbCampos.get_selectedItem();
                 if ((selArea != null && selArea.get_value() != "") && (selCampos != null && selCampos.get_value() != "")) {
-                        radalert("Selecciona solo un filtro (área/departamento o campo adicional).", 400, 150, "");
+                        radalert("Selecciona solo un filtro (área/departamento o campo adicional).", 400, 150, "Plaza");
                         return;
                     }               
                 else {
@@ -66,7 +66,7 @@
 
             }
             else {
-                radalert("Selecciona la plaza a partir de la cual se generará el organigrama.", 400, 150, "");
+                radalert("Selecciona la plaza a partir de la cual se generará el organigrama.", 400, 150, "Plaza");
                 return;
             }
 

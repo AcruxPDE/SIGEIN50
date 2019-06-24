@@ -96,13 +96,13 @@
             }
             else {
                 if (txtProgClave == "") {
-                    radalert("Indique la clave del programa.", 400, 150, "Error");
+                    radalert("Indique la clave del programa.", 400, 150, "Aviso");
                     args.set_cancel(true);
                     return;
                 }
 
                 if (txtProgNombre == "") {
-                    radalert("Indique el nombre del programa.", 400, 150, "Error");
+                    radalert("Indique el nombre del programa.", 400, 150, "Aviso");
                     args.set_cancel(true);
                     return;
                 }
@@ -122,7 +122,7 @@
             }
             else {
 
-                radalert("Seleccione un programa existente", 400, 150, "Error");
+                radalert("Seleccione un programa existente", 400, 150, "Aviso");
                 args.set_cancel(true);
                 return;
             }

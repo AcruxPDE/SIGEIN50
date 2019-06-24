@@ -67,7 +67,7 @@
                 if (selectedItem != undefined)
                     OpenWindow(selectedItem.getDataKeyValue("ID_DEPARTAMENTO"));
                 else
-                    radalert("Selecciona una área/departamento.", 400, 150);
+                    radalert("Selecciona una área/departamento.", 400, 150, "Aviso");
             }
 
             function OpenWindow(pIdArea) {
@@ -113,11 +113,11 @@
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas eliminar el área/departamento ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                        radconfirm('¿Deseas eliminar el área/departamento ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Seleccione una área/departamento.", 400, 150, "");
+                    radalert("Seleccione una área/departamento.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }

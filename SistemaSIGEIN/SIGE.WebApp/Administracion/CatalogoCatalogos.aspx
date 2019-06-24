@@ -40,7 +40,7 @@
                     var oWnd = radopen("VentanaCatalogoCatalogos.aspx?&ID=" + idCatalogo + "&TIPO=Editar", "RWPopupmodalCatalogoGenericoEditar");
                     oWnd.set_title("Editar catálogo genérico");
                 } else {
-                    radalert("Selecciona un registro.", 400,150, "");
+                    radalert("Selecciona un registro.", 400,150, "Aviso");
                 }
             }
 
@@ -61,11 +61,11 @@
                             var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                             { if (shouldSubmit) { this.click(); } });
 
-                            radconfirm('¿Deseas eliminar ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 150, null, "Eliminar Registro");
+                            radconfirm('¿Deseas eliminar ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 150, null, "Aviso");
                             args.set_cancel(true);
                         }
                     } else {
-                        radalert("Seleccione un cátalogo general.", 400, 150, "");
+                        radalert("Seleccione un cátalogo general.", 400, 150, "Aviso");
                         args.set_cancel(true);
                     }
                 }

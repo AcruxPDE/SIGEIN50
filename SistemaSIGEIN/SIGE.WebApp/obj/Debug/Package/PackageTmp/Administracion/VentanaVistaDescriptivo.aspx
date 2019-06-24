@@ -81,10 +81,15 @@
                         confirmMessage = String.format("¿Deseas eliminar la función genérica {0}?", vNombre);
                     }
 
-                    confirmar(sender, args, confirmMessage);
+                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                    radconfirm(confirmMessage, callBackFunction, 400, 170, null, "Aviso");
+                    args.set_cancel(true);
+
+                    //confirmar(sender, args, confirmMessage);
                 }
                 else {
-                    radalert("Selecciona una función genérica.", 400, 150);
+                    radalert("Selecciona una función genérica.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }

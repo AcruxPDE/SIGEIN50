@@ -36,7 +36,7 @@
                 var vIdEvaluador = vEvaluado.getDataKeyValue("ID_EVALUADOR");
                 OpenSelectionWindow("EvaluacionCompetencia/CuestionariosInterno.aspx?ID_EVALUADOR=" + vIdEvaluador + "&ESTADO_PERIODO=" + vEstadoPeriodo, "winContestarCuestionarios", "Evaluación")
             } else {
-                radalert("Selecciona un evaluado.", 400, 150);
+                radalert("Selecciona un evaluado.", 400, 150, "Aviso");
             }
         }
 

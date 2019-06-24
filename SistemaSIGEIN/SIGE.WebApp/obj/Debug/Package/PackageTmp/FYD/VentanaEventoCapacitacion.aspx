@@ -48,7 +48,7 @@
             var item = list.getItem(0);
             var valorPrograma = item.get_text();
             if (valorPrograma == "No Seleccionado" && vinculo_check == "Si") {
-                radalert("Selecciona un programa.", 400, 150);
+                radalert("Selecciona un programa.", 400, 150, "Aviso");
                 return;
             } else {
                 OpenSelectionWindow("../Comunes/SeleccionCurso.aspx?Idprograma=" + programa + "&pVinculado=" + vinculo_check + "&mulSel=0", "winSeleccion", "Selección de curso");
@@ -94,7 +94,7 @@
             if (valorCurso != "No Seleccionado") {
                 OpenSelectionWindow("../Comunes/SeleccionInstructor.aspx?IdCursoInstructor=" + curso + "&mulSel=0", "winSeleccion", "Selección de instructor");
             } else {
-                radalert("Selecciona un curso.", 400, 150);
+                radalert("Selecciona un curso.", 400, 150, "Aviso");
                 return;
             }
         }

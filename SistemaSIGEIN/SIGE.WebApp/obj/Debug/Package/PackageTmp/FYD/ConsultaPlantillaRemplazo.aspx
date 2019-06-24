@@ -62,7 +62,7 @@
                 }
             }
             else {
-                radalert("Selecciona el puesto a consultar.", 400, 150);
+                radalert("Selecciona el puesto a consultar.", 400, 150, "Aviso");
             }
         }
 

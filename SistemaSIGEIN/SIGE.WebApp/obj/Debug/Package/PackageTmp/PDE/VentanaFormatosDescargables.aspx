@@ -21,7 +21,7 @@
             if (selectedItem != undefined)
                 OpenVisorArchivosFormatosTramites(pIdFormato, pNbArchivo);
             else
-                radalert("Selecciona un formato.", 400, 150);
+                radalert("Selecciona un formato.", 400, 150, "Aviso");
 
         }
     
@@ -31,7 +31,7 @@
              if (selectedItem != undefined)
                  OpenVisorArchivosFormatosTramites(pIdTramite, pNbArchivo);
              else
-                 radalert("Selecciona un trámite.", 400, 150);
+                 radalert("Selecciona un trámite.", 400, 150, "Aviso");
 
          }
     </script>

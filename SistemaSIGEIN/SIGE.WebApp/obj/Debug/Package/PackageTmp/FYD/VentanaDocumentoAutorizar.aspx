@@ -69,11 +69,11 @@
                     var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                     { if (shouldSubmit) { this.click(); } });
 
-                    radconfirm('¿Deseas eliminar el empleado ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                    radconfirm('¿Deseas eliminar el empleado ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                     args.set_cancel(true);
                 }
             } else {
-                radalert("Seleccione un empleado", 400, 150, "");
+                radalert("Seleccione un empleado", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -86,7 +86,7 @@
                 if (row != null) {
                     //
                 } else {
-                    radalert("Seleccione un empleado", 400, 150, "");
+                    radalert("Seleccione un empleado", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -202,7 +202,7 @@
                     <Selecting AllowRowSelect="true" />
                 </ClientSettings>
                 <GroupingSettings CaseSensitive="false" />
-                <MasterTableView ClientDataKeyNames="ID_AUTORIZACION" DataKeyNames="ID_AUTORIZACION" ShowHeadersWhenNoRecords="true" AutoGenerateColumns="false" PageSize="10">
+                <MasterTableView ClientDataKeyNames="ID_AUTORIZACION, NB_EMPLEADO" DataKeyNames="ID_AUTORIZACION, NB_EMPLEADO" ShowHeadersWhenNoRecords="true" AutoGenerateColumns="false" PageSize="10">
                     <Columns>
                         <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre de quién autoriza" DataField="NB_EMPLEADO" UniqueName="NB_EMPLEADO" HeaderStyle-Width="150" FilterControlWidth="80"></telerik:GridBoundColumn>

@@ -34,7 +34,7 @@
 
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                 { if (shouldSubmit) { this.click(); } });
-                radconfirm('Si cancelas el proceso, se eliminará el nuevo puesto que se haya creado.', callBackFunction, 400, 200, null, "Salir");
+                radconfirm('Si cancelas el proceso, se eliminará el nuevo puesto que se haya creado.', callBackFunction, 400, 200, null, "Aviso");
                 args.set_cancel(true);
             }
             else {
@@ -53,7 +53,7 @@
                         openComparacionperfilPuestosWindow();
                     }
                 });
-                radconfirm('El descriptivo de puesto es la base de la requisición, ¿Deseas revisar el descriptivo antes de guardar la requisición?', callBackFunction, 400, 200, null, "Salir");
+                radconfirm('El descriptivo de puesto es la base de la requisición, ¿Deseas revisar el descriptivo antes de guardar la requisición?', callBackFunction, 400, 200, null, "Aviso");
                 args.set_cancel(true);
 
             }
@@ -234,7 +234,7 @@
 
                         }
                         else {
-                            radalert("Selecciona una causa", 450, 150, "Seleccionar puesto");
+                            radalert("Selecciona una causa", 450, 150, "Aviso");
                         }
 
                         vFgNuevoPuesto = 0;
@@ -289,7 +289,7 @@
 
                         SetListBoxItem(vListPuesto, pDato[0].nbPuesto, pDato[0].idPuesto);
 
-                        radalert("Proceso Exitoso. Recuerde que este descriptivo no aparecerá en el catálogo hasta que se autorice, solo podrá entrar desde está requisición.", 450, 200, "Descriptivo guardado");
+                        radalert("Proceso Exitoso. Recuerde que este descriptivo no aparecerá en el catálogo hasta que se autorice, solo podrá entrar desde está requisición.", 450, 200, "Aviso");
 
                         btnBuscarPuesto.set_enabled(false);
                         btnEliminarPuesto.set_enabled(false);
@@ -469,7 +469,7 @@
                 OpenSelectionWindowVistaPrevia("../Administracion/VentanaDescriptivoPuesto.aspx?PuestoId=" + vIdPuesto, "winPerfil", "Revisar descriptivo de puesto")
             }
             else {
-                radalert("Selecciona un puesto para revisar el descriptivo", 450, 150, "Revisar descriptivo");
+                radalert("Selecciona un puesto para revisar el descriptivo", 450, 150, "Aviso");
             }
         }
 

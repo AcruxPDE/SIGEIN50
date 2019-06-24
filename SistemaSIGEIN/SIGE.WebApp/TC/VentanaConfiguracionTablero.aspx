@@ -47,12 +47,15 @@
                     vNombre = selectedItems.length;
                     vMensaje = "¿Deseas eliminar los " + vNombre + " evaluadores seleccionados?, este proceso no podrá revertirse";
                 }
-                var vWindowsProperties = { height: 200 };
 
-                confirmAction(sender, args, vMensaje, vWindowsProperties);
+                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                radconfirm(vMensaje, callBackFunction, 400, 170, null, "Aviso");
+                args.set_cancel(true);
+
             }
             else {
-                radalert("Selecciona un evaluado.", 400, 150);
+                radalert("Selecciona un evaluado.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -72,12 +75,14 @@
                     vNombre = selectedItems.length;
                     vMensaje = "¿Deseas eliminar los " + vNombre + " períodos seleccionados?, este proceso no podrá revertirse";
                 }
-                var vWindowsProperties = { height: 200 };
 
-                confirmAction(sender, args, vMensaje, vWindowsProperties);
+                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                radconfirm(vMensaje, callBackFunction, 400, 170, null, "Aviso");
+                args.set_cancel(true);
             }
             else {
-                radalert("Selecciona un período de evaluación.", 400, 150);
+                radalert("Selecciona un período de evaluación.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -165,12 +170,14 @@
                     vNombre = selectedItems.length;
                     vMensaje = "¿Deseas eliminar los " + vNombre + " períodos seleccionados?, este proceso no podrá revertirse";
                 }
-                var vWindowsProperties = { height: 200 };
 
-                confirmAction(sender, args, vMensaje, vWindowsProperties);
+                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                radconfirm(vMensaje, callBackFunction, 400, 170, null, "Aviso");
+                args.set_cancel(true);
             }
             else {
-                radalert("Selecciona un periodo de clima laboral.", 400, 150);
+                radalert("Selecciona un periodo de clima laboral.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -189,12 +196,14 @@
                     vNombre = selectedItems.length;
                     vMensaje = "¿Deseas eliminar los " + vNombre + " períodos seleccionados?, este proceso no podrá revertirse";
                 }
-                var vWindowsProperties = { height: 200 };
 
-                confirmAction(sender, args, vMensaje, vWindowsProperties);
+                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                radconfirm(vMensaje, callBackFunction, 400, 170, null, "Aviso");
+                args.set_cancel(true);
             }
             else {
-                radalert("Selecciona un periodo de desempeño", 400, 150);
+                radalert("Selecciona un periodo de desempeño", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -213,12 +222,14 @@
                     vNombre = selectedItems.length;
                     vMensaje = "¿Deseas eliminar los " + vNombre + " tabuladores seleccionados?, este proceso no podrá revertirse";
                 }
-                var vWindowsProperties = { height: 200 };
 
-                confirmAction(sender, args, vMensaje, vWindowsProperties);
+                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                radconfirm(vMensaje, callBackFunction, 400, 170, null, "Aviso");
+                args.set_cancel(true);
             }
             else {
-                radalert("Selecciona un tabulador.", 400, 150);
+                radalert("Selecciona un tabulador.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }

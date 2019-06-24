@@ -89,7 +89,7 @@ namespace SIGE.Negocio.AdministracionSitio
             return oCampo.ObtenerRazonSocialNomina(pID_RAZON_SOCIAL, pCL_CLIENTE);
         }
 
-        public List<SPE_OBTIENE_EMPLEADOS_GENERAL_Result> ObtieneEmpleadosGenerales(string pCL_EMPLEADO = null, bool? pFG_ACTIVO = null, int? pID_EMPRESA = null, int? pID_ROL = null)
+        public List<E_PERSONAL> ObtieneEmpleadosGenerales(string pCL_EMPLEADO = null, bool? pFG_ACTIVO = null, int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
             return oCampo.ObtieneEmpleadosGenerales(pCL_EMPLEADO, pFG_ACTIVO, pID_EMPRESA, pID_ROL);

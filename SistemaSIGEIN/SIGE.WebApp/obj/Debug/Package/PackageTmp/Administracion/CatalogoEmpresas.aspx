@@ -37,7 +37,7 @@
                     var oWnd = radopen("VentanaCatalogoEmpresas.aspx?&ID=" + idEmpresa + "&TIPO=Editar", "RWPopupmodalCatalogoGenericoEditar");
                     oWnd.set_title("Editar Empresa");
                 } else {
-                    radalert("No has seleccionado un registro.", 350, 148, "");
+                    radalert("No has seleccionado un registro.", 350, 148, "Aviso");
                 }
             }
 
@@ -60,11 +60,11 @@
                          var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                          { if (shouldSubmit) { this.click(); } });
 
-                         radconfirm('¿Deseas eliminar la empresa ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                         radconfirm('¿Deseas eliminar la empresa ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                          args.set_cancel(true);
                      }
                  } else {
-                     radalert("Seleccione una empresa.", 400, 150, "");
+                     radalert("Seleccione una empresa.", 400, 150, "Aviso");
                      args.set_cancel(true);
                  }
             }

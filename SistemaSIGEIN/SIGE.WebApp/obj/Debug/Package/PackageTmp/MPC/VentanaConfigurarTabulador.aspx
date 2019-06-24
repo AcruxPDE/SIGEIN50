@@ -143,11 +143,11 @@
                             "Nuevo/Editar Competencia")
                     }
                     else {
-                        radalert("La competencia no se puede editar.", 400, 150, "Error");
+                        radalert("La competencia no se puede editar.", 400, 150, "Aviso");
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Selecciona una competencia.", 400, 150, "Error");
+                    radalert("Selecciona una competencia.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
 

@@ -33,7 +33,7 @@
                     var oWnd = radopen("VentanaCatalogoAreasTematicas.aspx?&ID=" + idAreaTematica, "RWPopupmodalCatalogoGenericoEditar");
                     oWnd.set_title("Editar área temática");
                 } else {
-                    radalert("No has seleccionado un registro.", 350, 148, "");
+                    radalert("No has seleccionado un registro.", 350, 148, "Aviso");
                 }
             }
 
@@ -52,11 +52,11 @@
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas eliminar el área temática ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                        radconfirm('¿Deseas eliminar el área temática ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Seleccione un área temática.", 400, 150, "");
+                    radalert("Seleccione un área temática.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }

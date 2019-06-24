@@ -46,7 +46,7 @@
                         oWnd.set_title("Editar Escolaridad");
                     }
                 } else {
-                    radalert("No has seleccionado un registro.", 400, 150, "");
+                    radalert("No has seleccionado un registro.", 400, 150, "Aviso");
                 }
             }
 
@@ -59,7 +59,7 @@
                     var oWnd = radopen("VentanaCatalogoEscolaridades.aspx?&TIPO=Agregar" + "&ID_NIVEL_ESCOLARIDAD=" + vvalor_combo, "RWPopupmodalCatalogoGenericoEditar");
                     oWnd.set_title("Agregar Escolaridad");
                 }
-                else { radalert("No has seleccionado el nivel Escolaridad.", 400, 150, ""); }
+                else { radalert("No has seleccionado el nivel Escolaridad.", 400, 150, "Aviso"); }
 
             }
 
@@ -77,12 +77,12 @@
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas eliminar la Escolaridad ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                        radconfirm('¿Deseas eliminar la Escolaridad ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                         //Deseas eliminar ___________?, este proceso no podrá revertirse.
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Seleccione una escolaridad.", 400, 150, "");
+                    radalert("Seleccione una escolaridad.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }

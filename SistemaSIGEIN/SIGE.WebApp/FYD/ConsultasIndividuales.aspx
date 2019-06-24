@@ -26,7 +26,7 @@
                 var win = window.open("PlanVidaCarrera.aspx?idEmpleado=" + vIdEmpleado, '_self', true);
                 win.focus();
             }
-            else { radalert("No has seleccionado un empleado.", 400, 150, ""); }
+            else { radalert("No has seleccionado un empleado.", 400, 150, "Aviso"); }
         }
 
         function OpenReporteIndividualWindow() {
@@ -39,7 +39,7 @@
             if (vIdPeriodo != null & vIdEvaluado != 0) {
                 OpenSelectionWindow("ReporteIndividual.aspx?IdPeriodo=" + vIdPeriodo + "&IdEvaluado=" + vIdEvaluado + "&IdReporteIndividual=" + vIdReporteIndividual + "&ClTipoReporte=INDIVIADUAL", "rwReporte", "Consulta Individual - Evaluación de competencias");
             } else {
-                radalert("No has seleccionado un evaluado.", 400, 150, "");
+                radalert("No has seleccionado un evaluado.", 400, 150, "Aviso");
             }
         }
 
@@ -75,7 +75,7 @@
                 OpenSelectionWindow("../Comunes/SeleccionPeriodo.aspx?IdEmpleado=" + vIdEmpleado, "winSeleccion", "Selección de período")
             }
             else {
-                radalert("No has seleccionado un empleado.", 400, 150, "");
+                radalert("No has seleccionado un empleado.", 400, 150, "Aviso");
             }
         }
 

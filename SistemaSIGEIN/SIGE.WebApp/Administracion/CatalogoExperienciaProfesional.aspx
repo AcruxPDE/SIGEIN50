@@ -35,7 +35,7 @@
                     var oWnd = radopen("VentanaCatExperProf.aspx?&ID=" + idExperienciaProfesional + "&TIPO=Editar", "RWPopupmodalCatalogoGenericoEditar");
                     oWnd.set_title("Editar experiencia profesional");
                 } else {
-                    radalert("No has seleccionado un registro", 400, 150, "");
+                    radalert("No has seleccionado un registro", 400, 150, "Aviso");
                 }
             }
 
@@ -56,11 +56,11 @@
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas eliminar la experiencia profesional ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                        radconfirm('¿Deseas eliminar la experiencia profesional ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Seleccione una experiencia profesional.", 400, 150, "");
+                    radalert("Seleccione una experiencia profesional.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }

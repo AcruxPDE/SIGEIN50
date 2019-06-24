@@ -193,6 +193,7 @@ namespace SIGE.WebApp.EO
             foreach (GridDataItem item in oListaEvaluadores)
             {
                 string vMensaje = vDsMensaje;
+                string vPeriodo = txtClPeriodo.InnerText.ToString();
                 vClCorreo = (item.FindControl("txtCorreo") as RadTextBox).Text;
                 vNbEvaluador = item["NB_EVALUADOR"].Text;
                 vIdEvaluador = int.Parse(item.GetDataKeyValue("ID_EVALUADOR").ToString());
@@ -205,11 +206,12 @@ namespace SIGE.WebApp.EO
                         if (item.GetDataKeyValue("CL_TOKEN") != null)
                         {
                             vMensaje = vMensaje.Replace("[NB_EVALUADOR]", vNbEvaluador);
+                            vMensaje = vMensaje.Replace("[NB_PERIODO]", vPeriodo);
                             vMensaje = vMensaje.Replace("[URL]", vUrl + "&FlProceso=" + item.GetDataKeyValue("FL_EVALUADOR").ToString());
                             vMensaje = vMensaje.Replace("[CONTRASENA]", item.GetDataKeyValue("CL_TOKEN").ToString());
 
                             //Envío de correo
-                            bool vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbEvaluador, "Solicitud para calificar metas", vMensaje);
+                            bool vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbEvaluador, "Solicitud de evaluación", vMensaje);
 
                             if (vEstatusCorreo)
                             {

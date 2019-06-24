@@ -607,33 +607,6 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadButton btnEliminarFuncionGenerica;
         
         /// <summary>
-        /// Control rtsFuncionGenerica.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTabStrip rtsFuncionGenerica;
-        
-        /// <summary>
-        /// Control rmpFuncionGenerica.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadMultiPage rmpFuncionGenerica;
-        
-        /// <summary>
-        /// Control rpvFuncionGenericaDefinicion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadPageView rpvFuncionGenericaDefinicion;
-        
-        /// <summary>
         /// Control txtNbFuncion.
         /// </summary>
         /// <remarks>
@@ -661,15 +634,6 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadEditor txtNotasFuncion;
         
         /// <summary>
-        /// Control rpvFuncionGenericaCompetencias.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadPageView rpvFuncionGenericaCompetencias;
-        
-        /// <summary>
         /// Control cmbCompetenciaEspecifica.
         /// </summary>
         /// <remarks>
@@ -688,6 +652,15 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadGrid grdNivelCompetenciaEspecifica;
         
         /// <summary>
+        /// Control txtIndicadorDesempeno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox txtIndicadorDesempeno;
+        
+        /// <summary>
         /// Control btnAgregarCompetenciaEspecifica.
         /// </summary>
         /// <remarks>
@@ -704,15 +677,6 @@ namespace SIGE.WebApp.Administracion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnCancelarAgregarCompetenciaEspecifica;
-        
-        /// <summary>
-        /// Control txtIndicadorDesempeno.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtIndicadorDesempeno;
         
         /// <summary>
         /// Control btnAgregarIndicadorDesempeno.

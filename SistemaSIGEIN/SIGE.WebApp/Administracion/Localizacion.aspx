@@ -92,13 +92,13 @@
                 //Validacion
                 var vEstado = document.getElementById("<%= cmbEstados.ClientID %>").value;
             if (vEstado == "") {
-                radalert("Selecciona un Estado.", 400, 150, "Localización");
+                radalert("Selecciona un Estado.", 400, 150, "Aviso");
                 return false;
             }
 
             var vMunicipio = document.getElementById("<%=  cmbMunicipio.ClientID%>").value;
             if (vMunicipio == "") {
-                radalert("Selecciona un municipio.", 400, 150, "Localización");
+                radalert("Selecciona un municipio.", 400, 150, "Aviso");
                 return false;
             }
 
@@ -112,7 +112,7 @@
                     var oWnd = radopen(vURL + "?pID=" + vIdCatalogo + "&pClEstado=" + vEstado + "&pClMunicipio=" + vMunicipio, "RWPopupmodalColonia");
                     oWnd.set_title(vTitulo);
                 } else {
-                    radalert("Selecciona una colonia.", 400, 150, "Localización");
+                    radalert("Selecciona una colonia.", 400, 150, "Aviso");
                 }
 
             }
@@ -124,13 +124,13 @@
                 //Validacion
                 var vEstado = document.getElementById("<%= cmbEstados.ClientID %>").value;
                 if (vEstado == "") {
-                    radalert("Selecciona un Estado.", 400, 150, "Localización");
+                    radalert("Selecciona un Estado.", 400, 150, "Aviso");
                     return false;
                 }
 
                 var vMunicipio = document.getElementById("<%=  cmbMunicipio.ClientID%>").value;
                 if (vMunicipio == "") {
-                    radalert("Selecciona un municipio.", 400, 150, "Localización");
+                    radalert("Selecciona un municipio.", 400, 150, "Aviso");
                     return false;
                 }
 
@@ -154,7 +154,7 @@
                     args.set_cancel(true);
                 }
                 else {
-                    radalert("Selecciona una colonia.", 400, 150, "Localización");
+                    radalert("Selecciona una colonia.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -168,7 +168,7 @@
                 });
 
 
-                radconfirm(text, callBackFunction, 400, 150, null, "Confirmar");
+                radconfirm(text, callBackFunction, 400, 150, null, "Aviso");
                 //always prevent the original postback so the RadConfirm can work, it will be initiated again with code in the callback function
                 args.set_cancel(true);
             }

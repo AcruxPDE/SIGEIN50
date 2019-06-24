@@ -514,6 +514,8 @@ namespace SIGE.WebApp.EO
                         btnGuardarPreguntasAbiertas.Enabled = false;
                         btnGuardarCuestionario.Enabled = false;
                         btnGuardarCerrar.Visible = false;
+                        btnGuardarEnvioCuestionarios.Enabled = false;
+                        btnGuardarSeleccion.Enabled = false;
                         btnCerrar.Visible = true;
                     }
                     else
@@ -621,6 +623,8 @@ namespace SIGE.WebApp.EO
                         btnGuardarPreguntasAbiertas.Enabled = false;
                         btnGuardarCuestionario.Enabled = false;
                         btnGuardarCerrar.Visible = false;
+                        btnGuardarEnvioCuestionarios.Enabled = false;
+                        btnGuardarSeleccion.Enabled = false;
                         btnCerrar.Visible = true;
 
                         btnSeleccionar.Enabled = false;
@@ -785,10 +789,10 @@ namespace SIGE.WebApp.EO
                 //UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
                 GuardarDatos(false);
             }
+            else if (txtTipo.InnerText == "Evaluadores asignados")
+                GuardarDatos(false);            
             else
-            {
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, "Aplique por lo menos un filtro para guardar la configuración.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
-            }            
         }
 
         protected void GuardarDatos(bool cerrar)
@@ -828,10 +832,8 @@ namespace SIGE.WebApp.EO
                     UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
             }
             else
-            {
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensajeInstrucciones, vResultadoInstrucciones.CL_TIPO_ERROR, pCallBackFunction: null);
 
-            }
         }
 
         //protected void btnInstrucciones_Click(object sender, EventArgs e)
@@ -956,8 +958,18 @@ namespace SIGE.WebApp.EO
 
         protected void btnGuardarCerrar_Click(object sender, EventArgs e)
         {
-            GuardarDatos(true);
+            if (grdEmpleadosSeleccionados.Items.Count != 0)
+                GuardarDatos(true);
+            else
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione por lo menos un evaluado para guardar la configuración.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
         }
 
+        protected void btnGuardarSeleccion_Click(object sender, EventArgs e)
+        {
+            if(grdEmpleadosSeleccionados.Items.Count != 0)
+                GuardarDatos(false);
+            else
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione por lo menos un evaluado para guardar la configuración.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+        }
     }
 }

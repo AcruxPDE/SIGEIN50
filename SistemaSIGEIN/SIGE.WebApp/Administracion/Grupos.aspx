@@ -28,14 +28,14 @@
                 };
 
                 if (vSelectedItems.getDataKeyValue("FG_SISTEMA") == "True") {
-                    radalert("Este grupo pertenece al sistema y no es posible editarlo (contiene todo el inventario de personal).", 400, 170);
+                    radalert("Este grupo pertenece al sistema y no es posible editarlo (contiene todo el inventario de personal).", 400, 170, "Aviso");
                     return;
                 }
 
                 openChildDialog(vURl, "winGrupos", vTitulo, vWindowsPropierties);
             }
             else
-                radalert("Selecciona un grupo.", 400, 150);
+                radalert("Selecciona un grupo.", 400, 150, "Aviso");
         }
 
 
@@ -47,17 +47,17 @@
 
             if (selectedItem != undefined) {
                 if (selectedItem.getDataKeyValue("FG_SISTEMA") == "True") {
-                    radalert("Este grupo pertenece al sistema y no es posible eliminarlo.", 400, 150);
+                    radalert("Este grupo pertenece al sistema y no es posible eliminarlo.", 400, 150, "Aviso");
                     args.set_cancel(true);
                     return;
                 }
                 var vNombre = masterTable.getCellByColumnUniqueName(selectedItem, "NB_GRUPO").innerHTML;
                 //confirmAction(sender, args, "¿Deseas eliminar el grupo " + vNombre + "?, este proceso no podrá revertirse");
-                radconfirm('¿Deseas eliminar el grupo ' + vNombre + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar grupo");
+                radconfirm('¿Deseas eliminar el grupo ' + vNombre + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                 args.set_cancel(true);
             }
             else {
-                radalert("Selecciona un grupo.", 400, 150);
+                radalert("Selecciona un grupo.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }

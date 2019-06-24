@@ -150,6 +150,10 @@ namespace SIGE.WebApp.EO
                     txtClPeriodo.InnerText = vPeriodoClima.CL_PERIODO;
                     txtDsPeriodo.InnerText = vPeriodoClima.DS_PERIODO;
                     txtEstatus.InnerText = vPeriodoClima.CL_ESTADO_PERIODO;
+
+                    if (vPeriodoClima.CL_ESTADO_PERIODO == "Abierto")
+                        msResultadosParciales.Visible = true;
+                    
                     if (vPeriodoClima.CL_TIPO_CONFIGURACION == "PARAMETROS")
                         txtTipo.InnerText = "Sin asignación de evaluadores";
                     else

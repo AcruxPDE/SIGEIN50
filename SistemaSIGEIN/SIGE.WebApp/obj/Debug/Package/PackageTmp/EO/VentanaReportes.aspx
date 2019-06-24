@@ -627,8 +627,8 @@
                                                 <Appearance BackgroundColor="Transparent" Position="Bottom">
                                                 </Appearance>
                                             </Legend>
-                                        </telerik:RadHtmlChart>
-                                    </div>
+                                        </telerik:RadHtmlChart>                                        
+                                    </div>                                    
                                     <div class="ctrlBasico" style="width: 40%;">
                                         <telerik:RadGrid ID="rgdGraficasIndice"
                                             runat="server"
@@ -653,11 +653,10 @@
                                                 </Columns>
                                             </MasterTableView>
                                         </telerik:RadGrid>
+                                    </div>           
+                                    <div class="ctrlBasico" style="width: 40%; text-align:center" >
+                                        <telerik:RadLabel runat="server" ID="msResultadosParciales" Visible="false" ForeColor="Red" Text="* Los resultados para este periodo son parciales." ></telerik:RadLabel>
                                     </div>
-
-
-                                    
-
 
                                 </telerik:RadPageView>
                             </telerik:RadMultiPage>
