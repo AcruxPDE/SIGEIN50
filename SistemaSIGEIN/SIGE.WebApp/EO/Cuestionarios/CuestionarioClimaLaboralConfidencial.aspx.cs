@@ -558,14 +558,14 @@ namespace SIGE.WebApp.EO.Cuestionarios
                 {
                     if (vFiltros.EDAD_INICIO != null)
                     {
-
+                        dvEdad.Attributes.Add("style", "display:block;");
                         lbEdad.Visible = true;
                         rntEdad.Visible = true;
                         rntEdad.Value = (double)vDatosEvaluador.NO_EDAD;
                     }
                     if (vFiltros.ANTIGUEDAD_INICIO != null)
                     {
-
+                        dvFechaIngreso.Attributes.Add("style", "display:block;");
                         Label1.Visible = true;
                         rdpIngreso.Visible = true;
                         rdpIngreso.SelectedDate = vDatosEvaluador.FECHA_INGRESO;
@@ -573,7 +573,7 @@ namespace SIGE.WebApp.EO.Cuestionarios
 
                     if (vFiltros.CL_GENERO != null)
                     {
-
+                        dvGenero.Attributes.Add("style", "display:block;");
                         lbGenero.Visible = true;
                         cmbGenero.Visible = true;
                         cmbGenero.Text = vDatosEvaluador.NB_GENERO;
@@ -582,7 +582,7 @@ namespace SIGE.WebApp.EO.Cuestionarios
 
                     if (vFiltros.XML_DEPARTAMENTOS != null)
                     {
-
+                        dvArea.Attributes.Add("style", "display:block;");
                         lbArea.Visible = true;
                         rcbArea.Visible = true;
                         rcbArea.Text = vDatosEvaluador.NB_DEPARTAMENTO;

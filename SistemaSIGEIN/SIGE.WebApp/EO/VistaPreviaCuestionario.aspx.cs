@@ -396,25 +396,29 @@ namespace SIGE.WebApp.EO
                                 foreach (E_CAMPOS_ADICIONALES item in vLstCamposAdicionales)
                                 {
                                     var ListaAdscripcion = negocio.ObtieneCatalogoAdscripciones(item.ID_CATALOGO_LISTA).FirstOrDefault();
-                                    var row = new HtmlTableRow();
-                                    var cell = new HtmlTableCell() { InnerHtml = "<label name='adscripcion' name='name' width='100'>" + ListaAdscripcion.NB_CAMPO + ":" + "</ label>" };
-                                    cell.Attributes.Add("style", "width:150px;");
-                                    row.Cells.Add(cell);
-                                    cell = new HtmlTableCell();
-                                    cell.Style.Add("Height", "30px");
 
-                                    //var ListaAdscripcionValor = negocio.ObtieneCatalogoAdscripciones(item.ID_CATALOGO_LISTA).ToList();
-                                    var vListCampos = vLstCamposAd.Where(w => w.ID_CATALOGO_LISTA == item.ID_CATALOGO_LISTA).ToList();
-                                    foreach (var itemValor in vListCampos)
+                                    if(ListaAdscripcion != null)
                                     {
-                                        var checkbox = new CheckBox();
-                                        cell.Controls.Add(checkbox);
-                                        var label = new Label();
-                                        label.Text = itemValor.NB_CAMPO;
-                                        cell.Controls.Add(label);
-                                    }
-                                    row.Cells.Add(cell);
-                                    tbAdscripciones.Rows.Add(row);
+                                        var row = new HtmlTableRow();
+                                        var cell = new HtmlTableCell() { InnerHtml = "<label name='adscripcion' name='name' width='100'>" + ListaAdscripcion.NB_CAMPO + ":" + "</ label>" };
+                                        cell.Attributes.Add("style", "width:150px;");
+                                        row.Cells.Add(cell);
+                                        cell = new HtmlTableCell();
+                                        cell.Style.Add("Height", "30px");
+
+                                        //var ListaAdscripcionValor = negocio.ObtieneCatalogoAdscripciones(item.ID_CATALOGO_LISTA).ToList();
+                                        var vListCampos = vLstCamposAd.Where(w => w.ID_CATALOGO_LISTA == item.ID_CATALOGO_LISTA).ToList();
+                                        foreach (var itemValor in vListCampos)
+                                        {
+                                            var checkbox = new CheckBox();
+                                            cell.Controls.Add(checkbox);
+                                            var label = new Label();
+                                            label.Text = itemValor.NB_CAMPO;
+                                            cell.Controls.Add(label);
+                                        }
+                                        row.Cells.Add(cell);
+                                        tbAdscripciones.Rows.Add(row);
+                                    }                                    
                                 }
                             }
                         }
