@@ -71,7 +71,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPruebas" runat="server">
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
-    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest">
 
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="btnTerminar">
@@ -94,6 +94,8 @@
                 if ('<%=this.vTipoRevision%>' != "REV" && '<%=this.vTipoRevision%>' != "EDIT") {
                     var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
                         if (shouldSubmit) {
+                            var ajaxManager = $find("<%=RadAjaxManager1.ClientID%>");
+                            ajaxManager.ajaxRequest(null);
                             var segundos = '<%= this.vTiempoPrueba %>';
                             //alert(segundos);
                             if (segundos <= 0) {

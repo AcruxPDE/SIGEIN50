@@ -60,7 +60,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPruebas" runat="server">
 
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
-    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest">
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="btnTerminar">
                 <UpdatedControls>
@@ -80,7 +80,9 @@
             window.onload = function (sender, args) {
                 if ('<%=this.vTipoRevision%>' != "REV" && '<%=this.vTipoRevision%>' != "EDIT") {
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
-                        if (shouldSubmit) {
+                    if (shouldSubmit) {
+                            var ajaxManager = $find("<%=RadAjaxManager1.ClientID%>");
+                            ajaxManager.ajaxRequest(null);
                             var segundos = '<%=this.vTiempoRedaccion%>';
                             if (segundos <= 0) {
                                 //var oWnd = radalert("Usted ha terminado su prueba exitosamente o el tiempo de aplicación de la prueba ha concluido. <br> Recuerde que no es posible volver a ingresar la prueba previa; si intenta hacerlo por medio del botón del navegador, la aplicación no se lo permitirá: se generará un error y el intento quedará registrado", 400, 300, "");

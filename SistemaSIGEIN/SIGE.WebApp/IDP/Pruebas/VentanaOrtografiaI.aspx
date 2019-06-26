@@ -71,7 +71,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPruebas" runat="server">
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
-    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest">
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="btnTerminar">
                 <UpdatedControls>
@@ -107,6 +107,8 @@
                             btn.disabled = true;
                         }
                         else {
+                            var ajaxManager = $find("<%=RadAjaxManager1.ClientID%>");
+                            ajaxManager.ajaxRequest(null);
                             var display = document.querySelector('#time');
                             var contenedor = document.querySelector('.Cronometro');
 

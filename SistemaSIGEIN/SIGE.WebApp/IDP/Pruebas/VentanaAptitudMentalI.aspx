@@ -116,6 +116,8 @@
                 if ('<%=this.vTipoRevision%>' != "REV" && '<%=this.vTipoRevision%>' != "EDIT") {
                     var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
                         if (shouldSubmit) {
+                            var ajaxManager = $find("<%=RadAjaxManager1.ClientID%>");
+                            ajaxManager.ajaxRequest(null);
                             var segundos = "";
                                 segundos = setInitTime(multiPage.get_selectedIndex() + "");
                                 if (segundos <= 0) {

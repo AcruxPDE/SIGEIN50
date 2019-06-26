@@ -212,7 +212,18 @@ namespace SIGE.WebApp.IDP.Pruebas
                     }
 
                     int VPosicionPrueba = IniciaPruebaSeccion(vSeccionesPrueba);
-                    E_RESULTADO vObjetoPrueba = nKprueba.INICIAR_K_PRUEBA_SECCION(pIdPrueba: vSeccionesPrueba.ElementAt(VPosicionPrueba).ID_PRUEBA_SECCION, pFeInicio: DateTime.Now, usuario: vClUsuario, programa: vNbPrograma);
+                    var vSeccionObj = vSeccionesPrueba[VPosicionPrueba];
+                    var tiempoTotal = vSeccionObj.NO_TIEMPO * 60;
+                    if (vSeccionObj.FE_INICIO.HasValue)
+                    {
+                        var tiempoTranscurrido = DateTime.Now.Subtract(vSeccionObj.FE_INICIO.Value);
+                        vTiempoInicio = tiempoTotal - (int)tiempoTranscurrido.TotalSeconds;
+                    }
+                    else
+                        vTiempoInicio = tiempoTotal;
+                    controltime(VPosicionPrueba, vTiempoInicio);
+                    vRadAlertAltura = HeightRadAlert(VPosicionPrueba);
+                    /*E_RESULTADO vObjetoPrueba = nKprueba.INICIAR_K_PRUEBA_SECCION(pIdPrueba: vSeccionesPrueba.ElementAt(VPosicionPrueba).ID_PRUEBA_SECCION, pFeInicio: DateTime.Now, usuario: vClUsuario, programa: vNbPrograma);
                     E_RESULTADO vPrueba = nKprueba.INICIAR_K_PRUEBA(pIdPrueba: vIdPrueba, pFeInicio: DateTime.Now, pClTokenExterno: vClToken, usuario: vClUsuario, programa: vNbPrograma);
 
                     if (vObjetoPrueba != null)
@@ -226,7 +237,7 @@ namespace SIGE.WebApp.IDP.Pruebas
                         }
                         controltime(VPosicionPrueba, vTiempoInicio);
                         vRadAlertAltura = HeightRadAlert(VPosicionPrueba);
-                    }
+                    }*/
                 }
                 else 
                 {
@@ -1614,6 +1625,14 @@ namespace SIGE.WebApp.IDP.Pruebas
                     UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
             }
 
+        }
+
+        protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
+        {
+            PruebasNegocio nKprueba = new PruebasNegocio();
+            int VPosicionPrueba = mpgIngles.SelectedIndex;
+            E_RESULTADO vObjetoPrueba = nKprueba.INICIAR_K_PRUEBA_SECCION(pIdPrueba: vSeccionesPrueba.ElementAt(VPosicionPrueba).ID_PRUEBA_SECCION, pFeInicio: DateTime.Now, usuario: vClUsuario, programa: vNbPrograma);
+            E_RESULTADO vPrueba = nKprueba.INICIAR_K_PRUEBA(pIdPrueba: vIdPrueba, pFeInicio: DateTime.Now, pClTokenExterno: vClToken, usuario: vClUsuario, programa: vNbPrograma);
         }
     }
 }
