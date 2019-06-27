@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using System.Data.Objects;
+using System.Data.SqlClient;
 using System.Xml.Linq;
 
 namespace SIGE.AccesoDatos.Implementaciones.Administracion
@@ -132,5 +135,64 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
                 return vOrganigrama;
             }
         }
+
+
+        public E_ORGANIGRAMA_PUESTO ObtenerOrganigramaPuesto(int? pIdPlazaOrigen, int? pIdEmpresa, bool pFgMostrarEmpleados, int? pIdDepartamento, string pClCampoAdicional, int? pNuNivel)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                E_ORGANIGRAMA_PUESTO vOrganigrama = new E_ORGANIGRAMA_PUESTO();
+
+                List<E_ORGANIGRAMA_NODO_PUESTO> lstNodos = context.Database.SqlQuery<E_ORGANIGRAMA_AGRUPA_PUESTO>("EXEC " +
+                     "[ADM].[SPE_OBTIENE_ORGANIGRAMA_PLAZA_AGRUPA_PUESTO] " +
+                            "@PIN_ID_PLAZA, " +
+                            "@PIN_ID_EMPRESA, " +
+                            "@PIN_ID_DEPARTAMENTO, " +
+                            "@PIN_CL_CAMPO_ADICIONAL, " +
+                            "@PIN_NO_NIVELES "
+                            , new SqlParameter("@PIN_ID_PLAZA", (object)pIdPlazaOrigen ?? DBNull.Value)
+                            , new SqlParameter("@PIN_ID_EMPRESA", (object)pIdEmpresa ?? DBNull.Value)
+                            , new SqlParameter("@PIN_ID_DEPARTAMENTO", (object)pIdDepartamento ?? DBNull.Value)
+                            , new SqlParameter("@PIN_CL_CAMPO_ADICIONAL", (object)pClCampoAdicional ?? DBNull.Value)
+                            , new SqlParameter("@PIN_NO_NIVELES", (object)pNuNivel ?? DBNull.Value)
+
+                            ).Select(s => new E_ORGANIGRAMA_NODO_PUESTO()
+                            {
+                                idNodo = s.ID_PUESTO,
+                                idNodoSuperior = s.ID_PUESTO_SUPERIOR,
+                                //idNodoP = s.ID_PLAZA,
+                                //idNodoSuperiorP = s.ID_PLAZA_SUPERIOR,
+                                clNodo = s.CL_PUESTO,
+                                nbNodo = String.Format("{0} <br>({1})", s.NB_PUESTO, s.CANTIDAD),
+                                clTipoNodo = s.CL_POSICION_ORGANIGRAMA,
+                                clTipoGenealogia = s.CL_TIPO_GENEALOGIA,
+                                noNivel = s.NO_NIVEL ?? 0,
+                                noNivelPuesto = s.NO_NIVEL_ORGANIGRAMA ?? 0
+                            }).ToList();
+                vOrganigrama.lstNodoDescendencia = lstNodos.Where(w => w.clTipoGenealogia.Equals("DESCENDENCIA")).ToList();
+                vOrganigrama.lstNodoAscendencia = lstNodos.Where(w => w.clTipoGenealogia.Equals("ASCENDENCIA")).ToList();
+
+                return vOrganigrama;
+
+                //List < E_ORGANIGRAMA_NODO_PUESTO> lstNodos = context.SPE_OBTIENE_ORGANIGRAMA_PLAZA(pIdPlazaOrigen, pIdEmpresa, pIdDepartamento, pClCampoAdicional, pNuNivel).Select(s => new E_ORGANIGRAMA_NODO_PUESTO()
+                //{
+                //    idNodo = s.ID_PLAZA,
+                //    idNodoSuperior = s.ID_PLAZA_SUPERIOR,
+                //    clNodo = s.CL_PUESTO,
+                //    nbNodo = s.NB_PUESTO,
+                //    clTipoNodo = s.CL_POSICION_ORGANIGRAMA,
+                //    clTipoGenealogia = s.CL_TIPO_GENEALOGIA,
+                //    noNivel = s.NO_NIVEL ?? 0,
+                //    noNivelPuesto = s.NO_NIVEL_ORGANIGRAMA ?? 0
+                //}).ToList();
+
+                //vOrganigrama.lstNodoDescendencia = lstNodos.Where(w => w.clTipoGenealogia.Equals("DESCENDENCIA")).ToList();
+                //vOrganigrama.lstNodoAscendencia = lstNodos.Where(w => w.clTipoGenealogia.Equals("ASCENDENCIA")).ToList();
+
+                //return vOrganigrama;
+            }
+        }
+
+
     }
 }

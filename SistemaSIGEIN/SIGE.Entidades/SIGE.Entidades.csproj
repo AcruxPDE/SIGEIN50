@@ -91,6 +91,7 @@
     <Compile Include="Administracion\E_MUNICIPIO.cs" />
     <Compile Include="Administracion\E_NIVEL_ESCOLARIDAD.cs" />
     <Compile Include="Administracion\E_ORGANIGRAMA.cs" />
+    <Compile Include="Administracion\E_ORGANIGRAMA_PUESTO.cs" />
     <Compile Include="Administracion\E_PERIODO.cs" />
     <Compile Include="Administracion\E_PERSONAL.cs" />
     <Compile Include="Administracion\E_PLAZA.cs" />

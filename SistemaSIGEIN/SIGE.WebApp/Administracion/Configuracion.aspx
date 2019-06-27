@@ -303,13 +303,13 @@
                 var vFgDefecto = masterTable.getCellByColumnUniqueName(selectedItem, "FG_GENERAL_CL").innerHTML;
                 switch (clAccion) {
                     case "eliminar":
-                        if (vFgDefecto != "Sí")
+                        if (vFgDefecto != "Sí") {
                             var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
 
                             radconfirm("¿Deseas eliminar la plantilla " + vNombre + "?, este proceso no podrá revertirse", callBackFunction, 400, 170, null, "Aviso");
                             args.set_cancel(true);
 
-                        else {
+                        }else {
                             radalert("No se puede eliminar una plantilla establecida por defecto.", 400, 150, "Aviso");
                             args.set_cancel(true);
                         }

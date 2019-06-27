@@ -280,7 +280,7 @@ namespace SIGE.WebApp.Administracion
             List<SPE_OBTIENE_C_CATALOGO_VALOR_Result> vCatalogoValor = nCatalogoValor.Obtener_C_CATALOGO_VALOR();
 
             cmbComboboxDefault.DataSource = vCatalogoValor.Where(w => w.ID_CATALOGO_LISTA.Equals(int.Parse(cmbComboboxCatalogo.SelectedValue)));
-            cmbComboboxDefault.DataSource = vCatalogoValor;
+            cmbComboboxDefault.DataTextField = "NB_CATALOGO_VALOR";
             cmbComboboxDefault.DataValueField = "CL_CATALOGO_VALOR";
             cmbComboboxDefault.DataBind();
         }

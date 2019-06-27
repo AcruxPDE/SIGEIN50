@@ -31,5 +31,7 @@ namespace SIGE.Negocio.AdministracionSitio
             PlazaOperaciones oPlaza = new PlazaOperaciones();
             return UtilRespuesta.EnvioRespuesta(oPlaza.EliminarPlaza(pIdPlaza, pClUsuario, pNbPrograma));
         }
+
+        
     }
 }

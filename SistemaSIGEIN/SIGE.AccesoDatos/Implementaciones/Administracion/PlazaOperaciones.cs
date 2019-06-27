@@ -105,5 +105,7 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
                 return XElement.Parse(pOutClRetorno.Value.ToString());
             }
         }
+
+        
     }
 }

@@ -49,6 +49,24 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadPane RadPane2;
         
         /// <summary>
+        /// Control lblPlazaPuesto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPlazaPuesto;
+        
+        /// <summary>
+        /// Control cmbPlazaPuesto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox cmbPlazaPuesto;
+        
+        /// <summary>
         /// Control lstPlaza.
         /// </summary>
         /// <remarks>
@@ -74,6 +92,42 @@ namespace SIGE.WebApp.Administracion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnLimpiarPuesto;
+        
+        /// <summary>
+        /// Control lstPuesto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadListBox lstPuesto;
+        
+        /// <summary>
+        /// Control btnBuscarSeleccionPuesto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnBuscarSeleccionPuesto;
+        
+        /// <summary>
+        /// Control btnLimpiarSeleccionPuesto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnLimpiarSeleccionPuesto;
+        
+        /// <summary>
+        /// Control lblEmpresa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmpresa;
         
         /// <summary>
         /// Control cmbEmpresas.
