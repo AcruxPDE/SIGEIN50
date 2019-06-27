@@ -70,8 +70,9 @@ namespace SIGE.WebApp.IDP.Pruebas
                     PruebasNegocio pruebas = new PruebasNegocio();
                     var vPruebas = pruebas.Obtener_K_PRUEBA(pIdBateria: ContextoUsuario.idBateriaPruebas, pClTokenBateria: ContextoUsuario.clTokenPruebas, pFgAsignada: true);
                     var vsPruebas = from c in vPruebas
-                                     where c.CL_ESTADO == "CREADA" || c.CL_ESTADO == "INICIADA"
-                                     select c;                    
+                                    where c.CL_ESTADO == "CREADA" || c.CL_ESTADO == "INICIADA"
+                                    orderby c.NO_ORDEN
+                                    select c;                    
                     foreach (var itemPrueba in vsPruebas)
                     {
                         switch (itemPrueba.CL_PRUEBA)
