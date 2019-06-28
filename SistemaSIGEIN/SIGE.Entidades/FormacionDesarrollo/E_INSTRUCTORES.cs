@@ -45,12 +45,12 @@ namespace SIGE.Entidades.FormacionDesarrollo
         public string XML_PLANTILLA_CAMPOS_ADICIONALES { get; set; }
         public string XML_CAMPOS_ADICIONALES { get; set; }
         public Nullable<int> ID_EMPRESA { get; set; }
+
         public string CL_ESTATUS_INSTRUCTOR { get; set; }
         public string NB_PUESTO { get; set; }
         public string NB_NOMBRE_INSTRUCTOR { get; set; }
         public string NB_APELLIDO_PATERNO { get; set; }
         public string NB_APELLIDO_MATERNO { get; set; }
-
 
     }
 }
