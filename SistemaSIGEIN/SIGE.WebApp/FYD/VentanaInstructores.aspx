@@ -263,7 +263,25 @@
                         <label id="lblNombre" name="lblNombre" runat="server">Nombre:</label>
                     </div>
                     <div class="divControlDerecha">
-                        <telerik:RadTextBox ID="txtNombre" runat="server" Width="450px" MaxLength="250"></telerik:RadTextBox>
+                        <telerik:RadTextBox ID="txtNombre" runat="server" Width="230px" MaxLength="250"></telerik:RadTextBox>
+                    </div>
+                </div>
+                <div style="clear: both;"></div>
+                <div class="ctrlBasico">
+                    <div class="divControlIzquierda">
+                        <label id="lblApellidoPaterno" name="lblApellidoPaterno" runat="server">Apellido paterno:</label>
+                    </div>
+                    <div class="divControlDerecha">
+                        <telerik:RadTextBox ID="txtApellidoPaterno" runat="server" Width="230px" MaxLength="250"></telerik:RadTextBox>
+                    </div>
+                </div>
+                <div style="clear: both;"></div>
+                <div class="ctrlBasico">
+                    <div class="divControlIzquierda">
+                        <label id="lblApellidoMaterno" name="lblApellidoMaterno" runat="server">Apellido materno:</label>
+                    </div>
+                    <div class="divControlDerecha">
+                        <telerik:RadTextBox ID="txtApellidoMaterno" runat="server" Width="230px" MaxLength="250"></telerik:RadTextBox>
                     </div>
                 </div>
                 <div style="clear: both;"></div>

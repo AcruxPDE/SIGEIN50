@@ -215,7 +215,25 @@ namespace SIGE.WebApp.FYD
             else
             {
                 lblAdvertencia.InnerText = "* El período aún no ha sido cerrado por lo que las calificaciones podrían ser parciales";
-                rtsReportes.Tabs[4].Visible = false;
+
+                var oPeriodoComp = neg.ObtenerPeriodoEvaluacion(vIdPeriodo);
+                if (oPeriodoComp.CL_ESTADO_PERIODO == "ABIERTO")
+                {
+                    ControlAvanceNegocio negocio = new ControlAvanceNegocio();
+                    var datos = negocio.obtenerDatosControlAvance(vIdPeriodo, null);
+
+                    if (datos.NO_PERSONAS_EVALUADAS == datos.NO_TOTAL_EVALUADOS)
+                        lblAdvertencia.Visible = false;
+                    else if (datos.NO_PERSONAS_EVALUADAS < datos.NO_TOTAL_EVALUADOS)
+                    {
+                        lblAdvertencia.Visible = true;
+                        rtsReportes.Tabs[4].Visible = false;
+                    }
+                    else
+                        lblAdvertencia.Visible = false;
+                }
+
+                
             }
 
             foreach (int item in vListaPeriodos)
@@ -225,7 +243,15 @@ namespace SIGE.WebApp.FYD
                 {
                     if (oPeriodoComp.CL_ESTADO_PERIODO == "ABIERTO")
                     {
-                        lblAdvertencia.Visible = true;
+                        ControlAvanceNegocio negocio = new ControlAvanceNegocio();
+                        var datos = negocio.obtenerDatosControlAvance(vIdPeriodo, null);
+
+                        if (datos.NO_PERSONAS_EVALUADAS == datos.NO_TOTAL_EVALUADOS)
+                            lblAdvertencia.Visible = false;
+                        else if (datos.NO_PERSONAS_EVALUADAS < datos.NO_TOTAL_EVALUADOS)
+                            lblAdvertencia.Visible = true;
+                        else
+                            lblAdvertencia.Visible = false;
                     }
                 }
             }

@@ -111,7 +111,9 @@ namespace SIGE.WebApp.FYD
             if (empleado != null)
             {
                 txtClave.Text = empleado.CL_EMPLEADO;
-                txtNombre.Text = empleado.NB_EMPLEADO_COMPLETO;
+                txtNombre.Text = empleado.NB_EMPLEADO;
+                txtApellidoPaterno.Text = empleado.NB_APELLIDO_PATERNO;
+                txtApellidoMaterno.Text = empleado.NB_APELLIDO_MATERNO;
                 txtRFC.Text = empleado.CL_RFC;
                 txtCURP.Text = empleado.CL_CURP;
                 txtCP.Text = empleado.CL_CODIGO_POSTAL;
@@ -178,7 +180,7 @@ namespace SIGE.WebApp.FYD
         protected void CargarDatos(int? pInstructorId)
         {
             InstructorNegocio nInstructorCurso = new InstructorNegocio();
-            SPE_OBTIENE_INSTRUCTORES_Result lista = nInstructorCurso.ObtieneInstructor(pInstructorId).FirstOrDefault();
+            E_INSTRUCTORES lista = nInstructorCurso.ObtieneInstructor(pInstructorId).FirstOrDefault();
 
             rbInstInterno.Checked = lista.CL_TIPO_INSTRUCTOR == "INTERNO";
             rbInstExterno.Checked = lista.CL_TIPO_INSTRUCTOR == "EXTERNO";
@@ -187,6 +189,8 @@ namespace SIGE.WebApp.FYD
 
             txtClave.Text = lista.CL_INTRUCTOR;
             txtNombre.Text = lista.NB_INSTRUCTOR;
+            txtApellidoPaterno.Text = lista.NB_APELLIDO_PATERNO;
+            txtApellidoMaterno.Text = lista.NB_APELLIDO_MATERNO;
             txtNombreValIns.Text = lista.NB_VALIDADOR;
             txtRFC.Text = lista.CL_RFC;
             txtCURP.Text = lista.CL_CURP;
@@ -288,6 +292,8 @@ namespace SIGE.WebApp.FYD
             radBtnBuscarclave.Enabled = vFgHabilitarCampoExterno;
             txtClave.Enabled = vFgHabilitarCampoInterno;
             txtNombre.Enabled = vFgHabilitarCampoInterno;
+            txtApellidoPaterno.Enabled = vFgHabilitarCampoInterno;
+            txtApellidoMaterno.Enabled = vFgHabilitarCampoInterno;
             txtRFC.Enabled = vFgHabilitarCampoInterno;
             txtCURP.Enabled = vFgHabilitarCampoInterno;
 
@@ -732,6 +738,8 @@ namespace SIGE.WebApp.FYD
 
             txtClave.Text = "";
             txtNombre.Text = "";
+            txtApellidoPaterno.Text = "";
+            txtApellidoMaterno.Text = "";
             txtNombreValIns.Text = "";
             txtRFC.Text = "";
             txtCURP.Text = "";
@@ -809,6 +817,8 @@ namespace SIGE.WebApp.FYD
 
             VInstructorAgregar.CL_INTRUCTOR = txtClave.Text;
             VInstructorAgregar.NB_INSTRUCTOR = txtNombre.Text;
+            VInstructorAgregar.NB_APELLIDO_PATERNO = txtApellidoPaterno.Text;
+            VInstructorAgregar.NB_APELLIDO_MATERNO = txtApellidoMaterno.Text;
             VInstructorAgregar.NB_VALIDADOR = txtNombreValIns.Text;
             VInstructorAgregar.CL_RFC = txtRFC.Text;
             VInstructorAgregar.CL_CURP = txtCURP.Text;
