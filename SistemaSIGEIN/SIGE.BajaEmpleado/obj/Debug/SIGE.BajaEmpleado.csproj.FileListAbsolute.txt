@@ -100,7 +100,6 @@ C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\Telerik.Windows.Documents.Core.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\Telerik.Windows.Documents.Spreadsheet.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\Telerik.Web.Spreadsheet.dll
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\Microsoft.AnalysisServices.AdomdClient.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\Telerik.Windows.Zip.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\SIGE.Entidades.pdb

@@ -258,9 +258,9 @@
 
             var vNoItemsCuestionarios = $find("<%= grdCuestionarios.ClientID %>").get_masterTableView().get_dataItems().length;
 
-            if (vValueTab == 4 && '<%= vFgInterrelacionado%>' == "True" && vNoItemsCuestionarios == 0) {
+            <%--if (vValueTab == 4 && '<%= vFgInterrelacionado%>' == "True" && vNoItemsCuestionarios == 0) {
                 radalert("Si deseas filtrar los interrelacionados por algún campo, seleccionalo en la pestaña antes de seleccionar los evaluados.", 400, 170, "Aviso");
-            }
+            }--%>
 
             if (vValueTab == 6 & vEstadoPeriodo != 'CERRADO' & vNoItemsCuestionarios == 0) {
                 OpenSelectionWindow("MatrizPlaneacionCuestionarios.aspx?IdPeriodo=<%= vPeriodo.ID_PERIODO %>", "winMatrizCuestionarios", vOpenPlaneacionMatrizWindow);
@@ -1761,8 +1761,8 @@
                             </telerik:RadGrid>
                          </telerik:RadPane>
                        <telerik:RadPane ID="RadPane2" runat="server" Scrolling="None" Width="22px">
-                           <telerik:RadSlidingZone ID="RadSlidingZone1" runat="server" SlideDirection="Left" Width="22px" ClickToOpen="true">
-                               <telerik:RadSlidingPane ID="rspFiltroInter" runat="server" Title="Filtro interrelacionados" Width="500px">
+                           <telerik:RadSlidingZone Visible="false" Enabled="false" ID="RadSlidingZone1" runat="server" SlideDirection="Left" Width="22px" ClickToOpen="true">
+                               <telerik:RadSlidingPane ID="rspFiltroInter" Visible="false" Enabled="false" runat="server" Title="Filtro interrelacionados" Width="500px">
                                    <div class="ctrlBasico" style="display: inline-block;" id="divConfiguracionInterrelacionados" runat="server">
                                        <fieldset style="padding-left: 10px; vertical-align: middle;">
                                            <legend id="lgInterrelacionado" runat="server">Interrelacionados</legend>

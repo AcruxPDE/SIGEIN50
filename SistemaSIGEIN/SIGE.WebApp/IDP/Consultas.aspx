@@ -138,8 +138,9 @@
                 windowProperties.height = document.documentElement.clientHeight - 20;
                 openChildDialog(vURL, "winConsultas", vTitulo, windowProperties);
             }
-            else { radalert("Selecciona un candidato.", 400, 150, "Aviso"); }
-            else { radalert("Selecciona un candidato.", 400, 150, "Aviso"); }
+            else {
+                radalert("Selecciona un candidato.", 400, 150, "Aviso");
+            }
         }
 
         function RowSelecting(sender, eventArgs) {
