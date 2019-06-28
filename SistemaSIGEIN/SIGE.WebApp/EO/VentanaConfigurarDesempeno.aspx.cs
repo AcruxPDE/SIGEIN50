@@ -1270,7 +1270,8 @@ namespace SIGE.WebApp.EO
                 int vIdEvaluado = int.Parse(item.GetDataKeyValue("ID_EVALUADO").ToString());
                 if (vClEstadoEmpleado != null && vClEstadoEmpleado != "Alta")
                 {
-                    item["CL_ESTADO_EMPLEADO"].Text = "<a href='javascript:OpenRemplazaBaja(" + vIdEvaluado + "," + vIdPeriodo + ")'>" + vClEstadoEmpleado + "</a>";
+                    //item["CL_ESTADO_EMPLEADO"].Text = "<a href='javascript:OpenRemplazaBaja(" + vIdEvaluado + "," + vIdPeriodo + ")'>" + vClEstadoEmpleado + "</a>";
+                    item["CL_ESTADO_EMPLEADO"].Text = vClEstadoEmpleado;
                 }
 
             }
