@@ -695,7 +695,7 @@
                         <telerik:RadTab Text="Competencias genéricas"></telerik:RadTab>
                         <%--<telerik:RadTab Text="Competencias genéricas"></telerik:RadTab>--%>
                         <telerik:RadTab Text="Campos extra"></telerik:RadTab>
-                        <telerik:RadTab Text="STPS"></telerik:RadTab>
+                        <telerik:RadTab Text="STPS" Visible="false"></telerik:RadTab>
                         <telerik:RadTab Text="Documentación"></telerik:RadTab>
                     </Tabs>
                 </telerik:RadTabStrip>
@@ -946,16 +946,18 @@
                                 </div>
                             </div>
                             <div style="clear: both;"></div>
-                            <div>
+                            <!-- La sección requerimientos se coloca como invisible dado que no es requerida de momento en el sistema-->
+                            <%--<div style="visibility:collapse;">
                                 <label class="labelTitulo" id="lblRequerimientos" name="lblRequerimientos" title="Aquí puedes especificar si la persona que ocupará el puesto necesita aportar vehículo, licencia, material de trabajo, laptop, algún certificado de calidad, certificado de instructor interno, etc.">
                                     <span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>
                                     <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp; Requerimientos / aportaciones adicionales del puesto (equipo, materiales, etc.)</label>
                             </div>
-                            <div class="ctrlBasico" title="Aquí puedes especificar si la persona que ocupará el puesto necesita aportar vehículo, licencia, material de trabajo, laptop, algún certificado de calidad, certificado de instructor interno, etc.">
+                            <div style="visibility:collapse;" class="ctrlBasico" title="Aquí puedes especificar si la persona que ocupará el puesto necesita aportar vehículo, licencia, material de trabajo, laptop, algún certificado de calidad, certificado de instructor interno, etc.">
                                 <telerik:RadEditor NewLineMode="Br" Height="100px" Width="100%" ToolsWidth="310px" EditModes="Design" ID="radEditorRequerimientos" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/AdvancedTools.xml"
                                     ToolTip="Aquí puedes especificar si la persona que ocupará el puesto necesita aportar vehículo, licencia, material de trabajo, laptop, algún certificado de calidad, certificado de instructor interno, etc.">
                                 </telerik:RadEditor>
-                            </div>
+                            </div>--%>
+                            <!-- Fin de la sección requerimientos-->
                             <div style="clear: both;"></div>
                             <div style="padding-bottom: 5px">
                                 <label class="labelTitulo" id="lblobservaciones" name="lblobservaciones" title="Aquí puedes especificar alguna caraterística especial para el puesto. Ejemplo: la persona debe rolar turnos, la persona debe ser cordial, revisar que la persona tenga disponibilidad para viajar."><span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>&nbsp;Observaciones</label>
@@ -1676,7 +1678,7 @@
                         </telerik:RadPageView>
 
                         <!-- Inicio de ocupaciones -->
-                        <telerik:RadPageView ID="pvwOcupaciones" runat="server">
+                        <telerik:RadPageView ID="pvwOcupaciones" runat="server" Visible="false">
                             <div class="ctrlBasico">
                                 <label id="lblAreaO" name="lblAreaO">Área/Departamento: </label>
                                 <br />

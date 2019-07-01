@@ -346,15 +346,6 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadListBox lstExperiencia;
         
         /// <summary>
-        /// Control radEditorRequerimientos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadEditor radEditorRequerimientos;
-        
-        /// <summary>
         /// Control radEditorObservaciones.
         /// </summary>
         /// <remarks>

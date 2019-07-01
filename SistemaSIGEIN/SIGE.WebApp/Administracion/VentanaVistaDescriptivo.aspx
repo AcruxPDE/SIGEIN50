@@ -135,7 +135,11 @@
     </style>
 
     <div style="clear: both;"></div>
-
+    <div>
+        <label class="labelTitulo" id="lblDatosGenerales" name="lblDatosGenerales">
+            <span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>
+            <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;Datos generales del puesto</label>
+    </div>
     <div>
         <table class="ctrlTableForm">
             <tr>
@@ -145,12 +149,16 @@
                 <td class="ctrlTableDataBorderContext">
                     <span id="txtNombreCorto" runat="server" style="width: 300px;"></span>
                 </td>
+            </tr>
+            <tr>
                 <td class="ctrlTableDataContext">
                     <label>Nombre: </label>
                 </td>
                 <td class="ctrlTableDataBorderContext">
                     <span id="txtDescripcionPuesto" runat="server" style="width: 300px;"></span>
                 </td>
+            </tr>
+            <tr>
                 <td class="ctrlTableDataContext">
                     <label>No. de plazas: </label>
                 </td>
@@ -164,23 +172,33 @@
     <div style="clear: both;"></div>
 
     <%-- Perfil del puesto --%>
+    <div>
+        <label class="labelTitulo" id="lblPerfildelPuesto" name="lblPerfildelPuesto">
+            <span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>
+            <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;Perfil del puesto</label>
+    </div>
 
     <div>
         <div class="ctrlBasico">
             <div>
                 <table class="ctrlTableForm">
                     <tr>
-                        <td class="ctrlTableDataContext">
+<%--                        <td class="ctrlTableDataContext">
 
                             <label id="lblRangoedad" name="lblRangoedad">
                                 <span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>
                                 <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;
                                 Rango de edad:
                             </label>
+                        </td>--%>
+                       
+                        <td class="ctrlTableDataContext">
+                            <label>Rango de edad: </label>
                         </td>
                         <td class="ctrlTableDataBorderContext">
                             <span id="txtRangoEdadMin" runat="server"></span>
                         </td>
+                     
                         <td class="ctrlTableDataContext">
                             <label id="lblRangoI" name="lblRangoI">a</label>
                         </td>
@@ -190,18 +208,25 @@
                         <td class="ctrlTableDataContext">
                             <label id="lblRangoF" name="lblRangoF">años de edad</label>
                         </td>
-                        <td class="ctrlTableDataContext">
+                    </tr>
+                    <tr>
+                        <%--<td class="ctrlTableDataContext">
                             <span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>
                             <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;
                                         <label id="lblGenero" name="lblGenero">Género: </label>
+                        </td>--%>
+                        <td class="ctrlTableDataContext">
+                            <label>Género: </label>
                         </td>
                         <td class="ctrlTableDataBorderContext">
                             <span id="cmbGenero" runat="server"></span>
                         </td>
+                    </tr>
+                    <tr>
                         <td class="ctrlTableDataContext">
-                            <span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>
-                            <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;
-                                        <label id="lblEstadoCivil">Estado civil: </label>
+                            <%--<span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>
+                            <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;--%>
+                                       <label id="lblEstadoCivil">Estado civil: </label>
                         </td>
                         <td class="ctrlTableDataBorderContext">
                             <span id="cmbEdoCivil" runat="server"></span>
@@ -226,7 +251,7 @@
                 <label style="float: left">Postgrado</label>
             </div>
             <div style="padding: 5px">
-                <div class="ctrlBasico" style="text-align: right; width: 100%;">
+                <div class="ctrlBasico" style="text-align: left; width: 100%;">
                     <telerik:RadListBox runat="server" ID="lstPostgrados" Width="100%" AllowDelete="false" ButtonSettings-AreaWidth="35px"></telerik:RadListBox>
                 </div>
             </div>
@@ -239,7 +264,7 @@
                 <label style="float: left">Carrera profesional</label>
             </div>
             <div style="padding: 5px">
-                <div class="ctrlBasico" style="text-align: right; width: 100%;">
+                <div class="ctrlBasico" style="text-align: left; width: 100%;">
                     <telerik:RadListBox runat="server" ID="lstCarreraprof" Width="100%" AllowDelete="false" ButtonSettings-AreaWidth="35px"></telerik:RadListBox>
                 </div>
             </div>
@@ -252,7 +277,7 @@
                 <label style="float: left">Carrera técnica</label>
             </div>
             <div style="padding: 5px">
-                <div class="ctrlBasico" style="text-align: right; width: 100%;">
+                <div class="ctrlBasico" style="text-align: left; width: 100%;">
                     <telerik:RadListBox runat="server" ID="lstCarreraTec" Width="100%" AllowDelete="false" ButtonSettings-AreaWidth="35px"></telerik:RadListBox>
                 </div>
             </div>
@@ -260,17 +285,37 @@
     </div>
 
     <div class="ctrlBasico">
-        <div class="divBarraTitulo">
-            <telerik:RadTextBox ID="txtOtroNivelEst" runat="server" Width="500" Label="Otro" LabelWidth="100" Enabled="false"></telerik:RadTextBox>
+        <div class="BorderRadioComponenteHTML" style="width: 500px; float: left;">
+            <div class="divBarraTitulo">
+                <label style="float: left">Otro</label>
+            </div>
+            <div style="padding: 5px">
+                <div class="ctrlBasico" style="text-align: left; width: 100%;">
+                    <telerik:RadListBox runat="server" ID="txtOtroNivelEst" Width="100%" AllowDelete="false" ButtonSettings-AreaWidth="35px"></telerik:RadListBox>
+                    <%--<telerik:RadTextBox ID="txtOtroNivelEst" runat="server" Width="500px" Enabled="false"></telerik:RadTextBox>--%>
+                </div>
+            </div>
         </div>
     </div>
+    <%--<div class="ctrlBasico">
+        <div class="BorderRadioComponenteHTML" style="width: 50%; float: left;">
+            <div class="divBarraTitulo">
+                <label style="float: left">Otro</label>
+            </div>
+            <div style="padding: 5px">
+                <div class="ctrlBasico" style="text-align: right; width: 100%;">
+                    <telerik:RadListBox runat="server" ID="lstOtro" Width="100%" AllowDelete="false" ButtonSettings-AreaWidth="35px"></telerik:RadListBox>
+                </div>
+            </div>
+        </div>
+    </div>--%>
 
     <div style="clear: both;"></div>
     <div>
         <label class="labelTitulo" id="lblcompetencias" name="lblcompetencias">
             <span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>
             <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
-            <span style="border: 1px solid gray; background: #0087CF; border-radius: 5px;" title="Metodología para la compensación ">&nbsp;&nbsp;</span>&nbsp;Competencias</label>
+            <span style="border: 1px solid gray; background: #0087CF; border-radius: 5px;" title="Metodología para la compensación ">&nbsp;&nbsp;</span>&nbsp;Competencias específicas necesarias</label>
     </div>
 
     <div class="ctrlBasico">
@@ -350,36 +395,7 @@
 
     <div style="clear: both;"></div>
 
-    <div>
-        <table class="ctrlTableForm" style="width: 100%;">
-            <tr>
-                <td class="ctrlTableDataContext">
-                    <label class="labelTitulo" id="lblRequerimientos" name="lblRequerimientos">
-                        <span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>
-                        <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;Requerimientos / aportaciones adicionales del puesto (equipo, materiales, etc.)</label>
-                </td>
-            </tr>
-            <tr>
-                <td class="ctrlTableDataBorderContext">
-                    <div id="txtRequerimientos" runat="server"></div>
-                </td>
-            </tr>
-            <tr>
-                <td class="ctrlTableDataContext">
-                    <label class="labelTitulo" id="lblobservaciones" name="lblobservaciones"><span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>&nbsp;Observaciones</label>
-                </td>
-            </tr>
-            <tr>
-                <td class="ctrlTableDataBorderContext">
-                    <span id="txtObservaciones" runat="server"></span>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <div style="clear: both; height: 25px"></div>
-
-    <%-- Organigrama --%>
+     <%-- Organigrama --%>
     <label class="labelTitulo" id="lblOrganigrama" name="lblOrganigrama">Organigrama</label>
     <div>
         <table class="ctrlTableForm">
@@ -430,6 +446,40 @@
             </tr>
         </table>
     </div>
+
+     <div style="clear: both; height: 25px"></div>
+
+    <!-- Requerimientos (de momento esta invisible, ya que para efectos de cambios se pidio que no apareciera en vista previa)-->
+    <div style="visibility:collapse;">
+        <table class="ctrlTableForm" style="width: 100%;">
+            <tr>
+                <td class="ctrlTableDataContext">
+                    <label class="labelTitulo" id="lblobservaciones" name="lblobservaciones"><span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>&nbsp;Observaciones</label>
+                </td>
+            </tr>
+            <tr>
+                <td class="ctrlTableDataBorderContext">
+                    <span id="txtObservaciones" runat="server"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="ctrlTableDataContext">
+                    <label class="labelTitulo" id="lblRequerimientos" name="lblRequerimientos">
+                        <span style="border: 1px solid gray; background: #C6DB95; border-radius: 5px;" title="Intregación de personal">&nbsp;&nbsp;</span>
+                        <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;Requerimientos / aportaciones adicionales del puesto (equipo, materiales, etc.)</label>
+                </td>
+            </tr>
+            <tr>
+                <td class="ctrlTableDataBorderContext">
+                    <div id="txtRequerimientos" runat="server"></div>
+                </td>
+            </tr>
+            
+        </table>
+    </div>
+    <!-- div requerimientos finaliza-->
+   
     <div style="clear: both;"></div>
 
         <div class="ctrlBasico">
@@ -445,7 +495,7 @@
         </div>
     </div>
 
-
+    <!-- Puesto inmediato -->
      <div style="clear: both;"></div>
     <div>
         <label class="labelTitulo" id="lblTituloPuestos" name="lblTituloPuestos">
@@ -459,15 +509,17 @@
                 <label style="float: left">Puestos que supervisa en forma inmediata</label>
             </div>
             <div style="padding: 5px">
-                <div class="ctrlBasico" style="text-align: right; width: 100%;">
+                <div class="ctrlBasico" style="text-align: left; width: 100%;">
                     <telerik:RadListBox runat="server" ID="lstPuestosSubordinado" Width="100%" ButtonSettings-AreaWidth="35px"></telerik:RadListBox>
                 </div>
             </div>
         </div>
     </div>
 
+    <div style="clear: both;"></div>
+    <!-- Puesto interralacionado -->
     <div class="ctrlBasico">
-        <div class="BorderRadioComponenteHTML" style="width: 450px; float: left;">
+        <div class="BorderRadioComponenteHTML" style="width: 550px; float: left;">
             <div class="divBarraTitulo">
                 <label style="float: left">Puestos interrelacionados</label>
             </div>
@@ -479,6 +531,7 @@
         </div>
     </div>
 
+    <!-- rutas-->
     <div style="clear: both;"></div>
     <label class="labelTitulo" id="lblRutas" name="lblRutas"><span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;Rutas</label>
 
@@ -498,7 +551,7 @@
     <div style="clear: both"></div>
 
     <div class="ctrlBasico">
-        <div class="BorderRadioComponenteHTML" style="width: 500px; float: left;">
+        <div class="BorderRadioComponenteHTML" style="width: 550px; float: left;">
             <div class="divBarraTitulo">
                 <label style="float: left">Ruta de crecimiento alternativa</label>
             </div>
@@ -510,8 +563,10 @@
         </div>
     </div>
 
+    <div style="clear: both"></div>
+
     <div class="ctrlBasico">
-        <div class="BorderRadioComponenteHTML" style="width: 500px; float: left;">
+        <div class="BorderRadioComponenteHTML" style="width: 550px; float: left;">
             <div class="divBarraTitulo">
                 <label style="float: left">Ruta de crecimiento lateral</label>
             </div>
@@ -531,26 +586,50 @@
                 <td class="ctrlTableDataContext">
                     <label class="labelTitulo" id="lblResponsable" name="lblResponsable">
                         <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>
-                        <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>&nbsp;Es responsable de:</label>
+                        <span style="border: 1px solid gray; background: #A20804; border-radius: 5px;" title="Evaluación de desempeño">&nbsp;&nbsp;</span>&nbsp;Funciones</label>
                 </td>
             </tr>
             <tr>
-                <td class="ctrlTableDataBorderContext">
+                <td>
+                <%--<td class="ctrlTableDataBorderContext">
                     <span id="txtResponsable" runat="server"></span>
-                </td>
+                </td>--%>
+                <div class="BorderRadioComponenteHTML" style="width: 100%; float: left;">
+                    <div class="divBarraTitulo">
+                        <label style="float: left">Es responsable de:</label>
+                    </div>
+                    <div style="padding: 5px">
+                        <div class="ctrlBasico" style="text-align: justify; width: 100%;">
+                            <span id="txtResponsable" runat="server"></span>
+                        </div>
+                    </div>
+                </div>
+                    </td>
             </tr>
             <tr>
-                <td class="ctrlTableDataContext">
+                <%--<td class="ctrlTableDataContext">
                     <label class="labelTitulo" id="lblAutoridad" name="lblAutoridad">
                         <span style="border: 1px solid gray; background: #FF7400; border-radius: 5px;" title="Formación y desarrollo ">&nbsp;&nbsp;</span>&nbsp;Autoridad
                     </label>
+                </td>--%>
+                <td>
+                    <div class="BorderRadioComponenteHTML" style="width: 100%; float: left;">
+                    <div class="divBarraTitulo">
+                        <label style="float: left">Autoridad</label>
+                    </div>
+                    <div style="padding: 5px">
+                        <div class="ctrlBasico" style="text-align: justify; width: 100%;">
+                            <span id="txtAutoridad" runat="server"></span>
+                        </div>
+                    </div>
+                </div>
                 </td>
             </tr>
-            <tr>
+            <%--<tr>
                 <td class="ctrlTableDataBorderContext">
                     <span id="txtAutoridad" runat="server"></span>
                 </td>
-            </tr>
+            </tr>--%>
         </table>
 
     </div>
@@ -680,7 +759,7 @@
 
     <!-- Campos Extras -->
     <div style="clear: both; height: 10px;"></div>
-
+    <label id="lblCampoExtra" class="labelTitulo" name="lblCampoextra">Campos extra</label>
     <div>
         <table class="ctrlTableForm">
             <tr>
@@ -706,27 +785,28 @@
     <div style="clear: both; height: 10px;"></div>
 
     <!-- ocupaciones -->
-
-    <label id="lblOcupacionPuesto" class="labelTitulo" name="lblOcupacionPuesto">Ocupación</label>
-    <div style="clear: both; height: 10px;"></div>
-    <div class="ctrlBasico">
-        <div class="divControlIzquierdaAT">
-            <label id="lblCveOcupacion" name="lblCveOcupacion" runat="server">Clave de la ocupación:</label>
+    <%--<div style="visibility:collapse;">
+        <label id="lblOcupacionPuesto" class="labelTitulo" name="lblOcupacionPuesto">Ocupación</label>
+        <div style="clear: both; height: 10px;"></div>
+        <div class="ctrlBasico">
+            <div class="divControlIzquierdaAT">
+                <label id="lblCveOcupacion" name="lblCveOcupacion" runat="server">Clave de la ocupación:</label>
+            </div>
+            <div class="divControlDerecha">
+                <telerik:RadLabel runat="server" ID="lblClOcupación"></telerik:RadLabel>
+            </div>
         </div>
-        <div class="divControlDerecha">
-            <telerik:RadLabel runat="server" ID="lblClOcupación"></telerik:RadLabel>
+        <div style="clear: both; height: 10px;"></div>
+        <div class="ctrlBasico">
+            <div class="divControlIzquierdaAT">
+                <label id="lblOcupacionS" name="lblOcupacionS" runat="server">Descripción:</label>
+            </div>
+            <div class="divControlDerecha">
+                <telerik:RadLabel runat="server" ID="lblOcupacionSeleccionada"></telerik:RadLabel>
+            </div>
         </div>
-    </div>
-    <div style="clear: both; height: 10px;"></div>
-    <div class="ctrlBasico">
-        <div class="divControlIzquierdaAT">
-            <label id="lblOcupacionS" name="lblOcupacionS" runat="server">Descripción:</label>
-        </div>
-        <div class="divControlDerecha">
-            <telerik:RadLabel runat="server" ID="lblOcupacionSeleccionada"></telerik:RadLabel>
-        </div>
-    </div>
-    <div style="clear: both; height: 10px;"></div>
+        <div style="clear: both; height: 10px;"></div>
+    </div>--%>
 
     <!-- Control de documentos -->
     <label id="Label3" class="labelTitulo" name="lblOcupacionPuesto">Control de documentos</label>
@@ -741,14 +821,16 @@
                 <td class="ctrlTableDataBorderContext">
                     <span id="txtCDClaveDocumento" runat="server"></span>
                 </td>
-
+            </tr>
+            <tr>
                 <td class="ctrlTableDataContext">
                     <label id="Label6" name="lblTipoPrestacion">Versión: </label>
                 </td>
                 <td class="ctrlTableDataBorderContext">
                     <span id="txtCDVersion" runat="server"></span>
                 </td>
-
+            </tr>
+            <tr>
                 <td class="ctrlTableDataContext">
                     <label id="Label7" name="lblTipoPrestacion">Fecha Elaboración: </label>
                 </td>
@@ -764,14 +846,16 @@
                 <td class="ctrlTableDataBorderContext">
                     <span id="txtCDElaboro" runat="server"></span>
                 </td>
-
+            </tr>
+            <tr>
                 <td class="ctrlTableDataContext">
                     <label id="Label8" name="lblTipoPrestacion">Fecha de revisón: </label>
                 </td>
                 <td class="ctrlTableDataBorderContext">
                     <span id="txtCDFechaRevision" runat="server"></span>
                 </td>
-
+            </tr>
+            <tr>
                 <td class="ctrlTableDataContext">
                     <label id="Label9" name="lblTipoPrestacion">Revisó: </label>
                 </td>
@@ -787,14 +871,16 @@
                 <td class="ctrlTableDataBorderContext">
                     <span id="txtCDFechaAutorizacion" runat="server"></span>
                 </td>
-
+            </tr>
+            <tr>
                 <td class="ctrlTableDataContext">
                     <label id="Label11" name="lblTipoPrestacion">Autorizó: </label>
                 </td>
                 <td class="ctrlTableDataBorderContext">
                     <span id="txtCDAutorizo" runat="server"></span>
                 </td>
-
+           </tr>
+            <tr>
                 <td class="ctrlTableDataContext">
                     <label id="Label12" name="lblTipoPrestacion">Control de cambios: </label>
                 </td>

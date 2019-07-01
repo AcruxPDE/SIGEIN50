@@ -365,22 +365,22 @@ namespace SIGE.WebApp.Administracion
                 lstExperiencia.DataSource = vListaExperiencia;
                 lstExperiencia.DataBind();
 
-                if (vDescriptivo.XML_REQUERIMIENTOS != null && vDescriptivo.XML_REQUERIMIENTOS != "")
-                {
-                    if (vDescriptivo.XML_REQUERIMIENTOS.Contains("DS_NOTA"))
-                    {
-                        radEditorRequerimientos.Content = Utileria.MostrarNotas(vDescriptivo.XML_REQUERIMIENTOS);
-                    }
-                    else
-                    {
-                        XElement vRequerimientos = XElement.Parse(vDescriptivo.XML_REQUERIMIENTOS);
-                        if (vRequerimientos != null)
-                        {
-                            vRequerimientos.Name = vNbFirstRadEditorTagName;
-                            radEditorRequerimientos.Content = vRequerimientos.ToString();
-                        }
-                    }
-                }
+                //if (vDescriptivo.XML_REQUERIMIENTOS != null && vDescriptivo.XML_REQUERIMIENTOS != "")
+                //{
+                //    if (vDescriptivo.XML_REQUERIMIENTOS.Contains("DS_NOTA"))
+                //    {
+                //        radEditorRequerimientos.Content = Utileria.MostrarNotas(vDescriptivo.XML_REQUERIMIENTOS);
+                //    }
+                //    else
+                //    {
+                //        XElement vRequerimientos = XElement.Parse(vDescriptivo.XML_REQUERIMIENTOS);
+                //        if (vRequerimientos != null)
+                //        {
+                //            vRequerimientos.Name = vNbFirstRadEditorTagName;
+                //            radEditorRequerimientos.Content = vRequerimientos.ToString();
+                //        }
+                //    }
+                //}
 
                 if (vDescriptivo.XML_OBSERVACIONES != null && vDescriptivo.XML_OBSERVACIONES != "")
                 {
@@ -955,7 +955,7 @@ namespace SIGE.WebApp.Administracion
                 new XAttribute("DS_COMPETENCIAS_REQUERIDAS", ""),
 
                Utileria.GuardarNotas(radEditorPrestaciones.Content, "NOTAS_PRESTACIONES"), // EditorContentToXml("XML_PRESTACIONES", radEditorPrestaciones.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
-               Utileria.GuardarNotas(radEditorRequerimientos.Content, "NOTAS_REQUERIMIENTOS"),// EditorContentToXml("XML_REQUERIMIENTOS", radEditorRequerimientos.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
+               //Utileria.GuardarNotas(radEditorRequerimientos.Content, "NOTAS_REQUERIMIENTOS"),// EditorContentToXml("XML_REQUERIMIENTOS", radEditorRequerimientos.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
                Utileria.GuardarNotas(radEditorObservaciones.Content, "NOTAS_OBSERVACIONES"),// EditorContentToXml("XML_OBSERVACIONES", radEditorObservaciones.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
                Utileria.GuardarNotas(radEditorResponsable.Content, "NOTAS_RESPONSABILIDAD"),// EditorContentToXml("XML_RESPONSABILIDAD", radEditorResponsable.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
                Utileria.GuardarNotas(radEditorAutoridad.Content, "NOTAS_AUTORIDAD"),// EditorContentToXml("XML_AUTORIDAD", radEditorAutoridad.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
