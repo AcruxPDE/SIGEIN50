@@ -96,7 +96,7 @@
                 vIdEvaluadoEvaluador = ObtenerDataKeyNameValue($find('<%= grdOtrosEvaluadores.ClientID %>'));
 
             if (vIdEvaluadoEvaluador == null)
-                radalert("Selecciona a un evaluador.", 400, 150);
+                radalert("Selecciona a un evaluador.", 400, 150, "Aviso");
             else
                 OpenCuestionarioWindow(vIdEvaluadoEvaluador);
         }

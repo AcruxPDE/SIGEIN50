@@ -1,7 +1,9 @@
 ﻿using SIGE.Entidades;
+using SIGE.Entidades.Administracion;
 using System;
 using System.Collections.Generic;
 using System.Data.Objects;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -93,11 +95,23 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
             }
         }
 
-        public List<SPE_OBTIENE_EMPLEADOS_GENERAL_Result> ObtieneEmpleadosGenerales(string pCL_EMPLEADO = null, bool? pFG_ACTIVO = null, int? pID_EMPRESA = null, int? pID_ROL = null)
+        public List<E_PERSONAL> ObtieneEmpleadosGenerales(string pCL_EMPLEADO = null, bool? pFG_ACTIVO = null, int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_EMPLEADOS_GENERAL(pCL_EMPLEADO, pFG_ACTIVO, pID_EMPRESA, pID_ROL).ToList();
+                return contexto.Database.SqlQuery<E_PERSONAL>("EXEC " +
+                    "ADM.SPE_OBTIENE_EMPLEADOS_GENERAL " +
+                    "@PIN_CL_EMPLEADO, " +
+                    "@PIN_FG_ACTIVO, " +
+                    "@PIN_ID_EMPRESA, " +
+                    "@PIN_ID_ROL ",
+                    new SqlParameter("@PIN_CL_EMPLEADO", (object)pCL_EMPLEADO ?? DBNull.Value),
+                    new SqlParameter("@PIN_FG_ACTIVO", (object)pFG_ACTIVO ?? DBNull.Value),
+                    new SqlParameter("@PIN_ID_EMPRESA", (object)pID_EMPRESA ?? DBNull.Value),
+                    new SqlParameter("@PIN_ID_ROL", (object)pID_ROL ?? DBNull.Value)
+                ).ToList();
+
+                //return contexto.SPE_OBTIENE_EMPLEADOS_GENERAL(pCL_EMPLEADO, pFG_ACTIVO, pID_EMPRESA, pID_ROL).ToList();
             }
         }
 

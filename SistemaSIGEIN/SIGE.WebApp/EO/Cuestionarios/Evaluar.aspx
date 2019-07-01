@@ -55,25 +55,20 @@
         }
 
         function confirmarGuardar(sender, args) {
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
 
-            var windowProperties = {
-                width: 400,
-                height: 200
-            };
-
-            confirmAction(sender, args, "¿Deseas finalizar el cuestionario?.", windowProperties);
+            radconfirm("¿Deseas finalizar el cuestionario?", callBackFunction, 400, 170, null, "Aviso");
+            args.set_cancel(true);
         }
 
 
         function confirmarTerminar(sender, args) {
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
 
-            var windowProperties = {
-                width: 400,
-                height: 200
-            };
-
-            confirmAction(sender, args, "¿Deseas terminar el cuestionario? Esta opción guarda y marca como contestado el cuestionario.", windowProperties);
+            radconfirm("¿Deseas terminar el cuestionario? Esta opción guarda y marca como contestado el cuestionario.", callBackFunction, 400, 170, null, "Aviso");
+            args.set_cancel(true);
         }
+
     </script>
 
 </asp:Content>

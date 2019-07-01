@@ -60,7 +60,7 @@
                                 AutoPostBack="false"
                                 runat="server"
                                 AnimationDuration="400"
-                                Value='<%# decimal.Parse(Eval("NO_VALOR").ToString()) %>'
+                                Value='<%# int.Parse(Eval("NO_VALOR").ToString()) +  1%>'
                                 CssClass="fItemsSlider"
                                 Height="70px" ItemType="item" ThumbsInteractionMode="Free" Width="500px">
                                 <Items>

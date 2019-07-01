@@ -187,7 +187,7 @@
             if (GetEventoId() != null) {
                 OpenEventoWindow(GetEventoId());
             } else {
-                radalert("Seleccione un evento.", 400, 150, "Error");
+                radalert("Seleccione un evento.", 400, 150, "Aviso");
             }
         }
 
@@ -196,7 +196,7 @@
                 OpenEditarEventoWindow(GetEventoId());
             }
             else {
-                radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "");
+                radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "Aviso");
             }
         }
 
@@ -215,7 +215,7 @@
                 OpenWindow(GetCopiaEventoWindowProperties(idEvento));
             }
             else {
-                radalert("Selecciona un evento.", 400, 150);
+                radalert("Selecciona un evento.", 400, 150, "Aviso");
             }
         }
 
@@ -226,7 +226,7 @@
                 OpenWindow(GetCalendarioWindowProperties(idEvento));
             }
             else {
-                radalert("Selecciona un evento.", 400, 150);
+                radalert("Selecciona un evento.", 400, 150, "Aviso");
             }
         }
 
@@ -237,7 +237,7 @@
                 OpenWindow(GetAsistenciaWindowProperties(idEvento));
             }
             else {
-                radalert("Selecciona un evento.", 400, 150);
+                radalert("Selecciona un evento.", 400, 150, "Aviso");
             }
         }
 
@@ -248,7 +248,7 @@
                 OpenWindow(GetEnvioCorreosParticipantesWindowProperties(idEvento));
             }
             else {
-                radalert("Selecciona un evento.", 400, 150);
+                radalert("Selecciona un evento.", 400, 150, "Aviso");
             }
         }
 
@@ -266,7 +266,7 @@
                 OpenWindow(GetEnvioCorreoEvaluadorWindowProperties(idEvento));
             }
             else {
-                radalert("Selecciona un evento.", 400, 150);
+                radalert("Selecciona un evento.", 400, 150, "Aviso");
             }
         }
 
@@ -277,7 +277,7 @@
                 OpenWindow(GetEvaluacionResultadosWindowProperties(idEvento));
             }
             else {
-                radalert("Selecciona un evento.", 400, 150);
+                radalert("Selecciona un evento.", 400, 150, "Aviso");
             }
         }
 
@@ -288,7 +288,7 @@
                 OpenWindow(GetReporteEvaluacionResultadosWindowProperties(idEvento));
             }
             else {
-                radalert("Selecciona un evento.", 400, 150);
+                radalert("Selecciona un evento.", 400, 150, "Aviso");
             }
         }
 
@@ -303,16 +303,16 @@
 
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                 { if (shouldSubmit) { this.click(); } });
-                radconfirm("¿Deseas eliminar el evento " + nbEvento + '?, este proceso no podrá revertirse.', callBackFunction, 400, 200, null, "Eliminar Registro");
+                radconfirm("¿Deseas eliminar el evento " + nbEvento + '?, este proceso no podrá revertirse.', callBackFunction, 400, 200, null, "Aviso");
                 args.set_cancel(true);
 
             } else {
-                radalert("Seleccione un evento.", 400, 150, "Error");
+                radalert("Seleccione un evento.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
             }
             else {
-                radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "");
+                radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "Aviso");
                 args.set_cancel(true);
             }
         }

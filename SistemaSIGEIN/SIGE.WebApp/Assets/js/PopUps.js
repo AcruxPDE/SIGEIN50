@@ -68,7 +68,7 @@ function confirmAction(sender, args, text, windowProperties) {
             vWindowsHeight = windowProperties.height;
     }
 
-    radconfirm(text, callBackFunction, vWindowsWidth, vWindowsHeight, null, "Confirmar");
+    radconfirm(text, callBackFunction, vWindowsWidth, vWindowsHeight, null, "Aviso");
     //always prevent the original postback so the RadConfirm can work, it will be initiated again with code in the callback function
     args.set_cancel(true);
 }

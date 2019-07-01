@@ -15,6 +15,8 @@ namespace SIGE.Entidades.FormacionDesarrollo
         public string CL_TIPO_INSTRUCTOR { get; set; }
         public string CL_INTRUCTOR { get; set; }
         public string NB_INSTRUCTOR { get; set; }
+        public string NB_APELLIDO_PATERNO { get; set; }
+        public string NB_APELLIDO_MATERNO { get; set; }
         public string NB_VALIDADOR { get; set; }
         public string CL_RFC { get; set; }
         public string CL_CURP { get; set; }

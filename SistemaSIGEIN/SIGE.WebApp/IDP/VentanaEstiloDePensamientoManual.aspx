@@ -77,7 +77,7 @@
                         }
                     });
                     var text = "¿Estas seguro que deseas terminar tu prueba?";
-                    radconfirm(text, callBackFunction, 400, 150, null, "");
+                    radconfirm(text, callBackFunction, 400, 150, null, "Aviso");
                     args.set_cancel(true);
                 }
                 else {
@@ -93,7 +93,7 @@
             }
 
             function mensajePruebaTerminada() {
-                var oWnd = radalert("Usted ha terminado su prueba exitosamente o el tiempo de aplicación de la prueba ha concluido. <br> Cuando esté listo para pasar a la siguiente prueba, por favor haga clic en el botón 'Siguiente' más abajo <br>Recuerde que no es posible volver a ingresar la prueba previa; si intenta hacerlo por medio del botón del navegador, la aplicación no te lo permitirá: se generará un error y el intento quedará registrado", 400, 300, "");
+                var oWnd = radalert("Usted ha terminado su prueba exitosamente o el tiempo de aplicación de la prueba ha concluido. <br> Cuando esté listo para pasar a la siguiente prueba, por favor haga clic en el botón 'Siguiente' más abajo <br>Recuerde que no es posible volver a ingresar la prueba previa; si intenta hacerlo por medio del botón del navegador, la aplicación no te lo permitirá: se generará un error y el intento quedará registrado", 400, 300, "Aviso");
                 oWnd.add_close(WinClose);
             }
 

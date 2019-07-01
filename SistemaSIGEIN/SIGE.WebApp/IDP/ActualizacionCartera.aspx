@@ -12,10 +12,10 @@
                     vClSolicitud = ((vClSolicitud == "&nbsp;") ? "" : " " + vClSolicitud);                    
                     var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                     { if (shouldSubmit) { this.click(); } });
-                    radconfirm('¿Deseas eliminar la solicitud' + vClSolicitud + '?, se eliminaran y enviaran notificaciones si asi esta configurado, este proceso no podrá revertirse.', callBackFunction, 400, 200, null, "Eliminar solicitud");
+                    radconfirm('¿Deseas eliminar la solicitud' + vClSolicitud + '?, se eliminaran y enviaran notificaciones si asi esta configurado, este proceso no podrá revertirse.', callBackFunction, 400, 200, null, "Aviso");
                     args.set_cancel(true);
                 } else {
-                    radalert("Seleccione una solicitud.", 400, 150, "");
+                    radalert("Seleccione una solicitud.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -23,7 +23,7 @@
             function ConfirmarEliminarTodas(sender, args) {
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                 { if (shouldSubmit) { this.click(); } });
-                radconfirm('¿Deseas eliminar todas las solicitudes?, se eliminaran y enviaran notificaciones si asi esta configurado, este proceso no podrá revertirse.', callBackFunction, 400, 200, null, "Eliminar solicitudes");
+                radconfirm('¿Deseas eliminar todas las solicitudes?, se eliminaran y enviaran notificaciones si asi esta configurado, este proceso no podrá revertirse.', callBackFunction, 400, 200, null, "Aviso");
                 args.set_cancel(true);             
             }
 
@@ -39,10 +39,10 @@
                      vClSolicitud = ((vClSolicitud == "&nbsp;") ? "" : " " + vClSolicitud);
                      var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                      { if (shouldSubmit) { this.click(); } });
-                     radconfirm('¿Deseas enviar notificación de la solicitud' + vClSolicitud + '?, este proceso enviará un correo con una contraseña para la actualización de datos.', callBackFunction, 400, 200, null, "Eliminar solicitud");
+                     radconfirm('¿Deseas enviar notificación de la solicitud' + vClSolicitud + '?, este proceso enviará un correo con una contraseña para la actualización de datos.', callBackFunction, 400, 200, null, "Aviso");
                      args.set_cancel(true);
                  } else {
-                     radalert("Seleccione una solicitud.", 400, 150, "");
+                     radalert("Seleccione una solicitud.", 400, 150, "Aviso");
                      args.set_cancel(true);
                  }
              }

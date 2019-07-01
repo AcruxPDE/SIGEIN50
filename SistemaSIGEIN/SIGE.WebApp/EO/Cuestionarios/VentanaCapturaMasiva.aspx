@@ -25,7 +25,10 @@
         }
 
         function confirmarTerminar(sender, args) {
-            confirmAction(sender, args, "¿Deseas terminar la sesión?");
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+            radconfirm("¿Deseas terminar la sesión?", callBackFunction, 400, 170, null, "Aviso");
+            args.set_cancel(true);
         }
 
         function ShowInsertForm(IdMetaEvaluado)

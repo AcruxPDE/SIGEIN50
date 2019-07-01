@@ -9,7 +9,7 @@
                     this.click();
                 }
             });
-            radconfirm("Este proceso borrará las respuestas de todas las pruebas de la batería ¿Deseas continuar?", callBackFunction, 400, 180, null, "Eliminar respuestas batería");
+            radconfirm("Este proceso borrará las respuestas de todas las pruebas de la batería ¿Deseas continuar?", callBackFunction, 400, 180, null, "Aviso");
             args.set_cancel(true);
         }
 
@@ -19,7 +19,7 @@
                     this.click();
                 }
             });
-            radconfirm("Este proceso borrará las respuestas de la prueba seleccionada ¿Deseas continuar?", callBackFunction, 400, 180, null, "Eliminar respuestas prueba");
+            radconfirm("Este proceso borrará las respuestas de la prueba seleccionada ¿Deseas continuar?", callBackFunction, 400, 180, null, "Aviso");
             args.set_cancel(true);
         }
 

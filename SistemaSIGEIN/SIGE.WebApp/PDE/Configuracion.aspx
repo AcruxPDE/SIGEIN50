@@ -11,17 +11,25 @@
              var selectedItem = masterTable.get_selectedItems()[0];
              if (selectedItem != undefined) {
                  var vNombre = masterTable.getCellByColumnUniqueName(selectedItem, "NB_PLANTILLA_SOLICITUD").innerHTML;
+                 var mensaje;
+
                  switch (clAccion) {
                      case "eliminar":
-                         confirmAction(sender, args, "¿Deseas eliminar la plantilla " + vNombre + "?, este proceso no podrá revertirse");
+                         mensaje = "¿Deseas eliminar la plantilla " + vNombre + "?, este proceso no podrá revertirse"
                          break;
                      case "general":
-                         confirmAction(sender, args, "¿Deseas establecer la plantilla " + vNombre + " por defecto?");
+                         mensaje = "¿Deseas establecer la plantilla " + vNombre + " por defecto?"
                          break;
                  }
+
+                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                 radconfirm(mensaje, callBackFunction, 400, 170, null, "Aviso");
+                 args.set_cancel(true);
+
              }
              else {
-                 radalert("Selecciona una plantilla.", 400, 150);
+                 radalert("Selecciona una plantilla.", 400, 150, "Aviso");
                  args.set_cancel(true);
              }
          }
@@ -35,7 +43,11 @@
 
                   if (vFgAbrirVentana) {
                       var vNombre = masterTable.getCellByColumnUniqueName(selectedItem, "NB_CAMPO_FORMULARIO").innerHTML;
-                      confirmAction(sender, args, "¿Deseas eliminar el campo " + vNombre + "?, este proceso no podrá revertirse");
+                      var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                      radconfirm("¿Deseas eliminar el campo " + vNombre + "?, este proceso no podrá revertirse", callBackFunction, 400, 170, null, "Aviso");
+                      args.set_cancel(true);
+
                   } else
                       vDsMensajeAdvertencia = "Los campos de sistema no pueden se eliminados.";
               }
@@ -79,7 +91,7 @@
                 //openChildDialog(vURL, "winPlantillas", vTitulo, windowProperties);
             }
             else
-                radalert("Selecciona un plantilla.", 400, 150);
+                radalert("Selecciona un plantilla.", 400, 150, "Aviso");
         }
 
         function onCloseWindow(oWnd, args) {
@@ -90,7 +102,10 @@
 
         }
         function confirmarEliminar(sender, args) {
-            confirmarAccion(sender, args, "eliminar");
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+            radconfirm("¿Seguro que deseas eliminar", callBackFunction, 400, 170, null, "Aviso");
+            args.set_cancel(true);
         }
         function ShowInsertForm() {
             OpenWindow("copy");

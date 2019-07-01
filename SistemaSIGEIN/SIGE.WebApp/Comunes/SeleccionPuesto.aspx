@@ -50,7 +50,7 @@
                 var browserWnd = window;
                 if (currentWnd)
                     browserWnd = currentWnd.BrowserWindow;
-                browserWnd.radalert(vaddSelection_alert, 400, 150);
+                browserWnd.radalert(vaddSelection_alert, 400, 150, "Aviso");
             }
             return false;
         }

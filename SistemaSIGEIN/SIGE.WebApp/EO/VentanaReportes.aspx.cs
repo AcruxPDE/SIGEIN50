@@ -147,9 +147,22 @@ namespace SIGE.WebApp.EO
                     vIdPeriodo = int.Parse(Request.Params["PeriodoID"]);
                     ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
                     var vPeriodoClima = nClima.ObtienePeriodosClima(pIdPerido: vIdPeriodo).FirstOrDefault();
+                    var vControlAance = nClima.ObtieneControlAvance(pID_PERIODO: vIdPeriodo, pID_ROL: vIdRol).FirstOrDefault();
+
                     txtClPeriodo.InnerText = vPeriodoClima.CL_PERIODO;
                     txtDsPeriodo.InnerText = vPeriodoClima.DS_PERIODO;
                     txtEstatus.InnerText = vPeriodoClima.CL_ESTADO_PERIODO;
+
+                    if (vPeriodoClima.CL_ESTADO_PERIODO == "Abierto")
+                    {
+                        if (vControlAance.NO_CUESTIONARIOS_RESPONDIDOS == vControlAance.NO_CUESTIONARIOS_TOTALES)
+                            msResultadosParciales.Visible = false;
+                        else if (vControlAance.NO_CUESTIONARIOS_RESPONDIDOS < vControlAance.NO_CUESTIONARIOS_TOTALES)
+                            msResultadosParciales.Visible = true;
+                        else
+                            msResultadosParciales.Visible = false;
+                    }
+                    
                     if (vPeriodoClima.CL_TIPO_CONFIGURACION == "PARAMETROS")
                         txtTipo.InnerText = "Sin asignación de evaluadores";
                     else

@@ -83,7 +83,7 @@
                     confirmar(sender, args, confirmMessage);
                 }
                 else {
-                    radalert("Selecciona una función genérica.", 400, 150);
+                    radalert("Selecciona una función genérica.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -95,7 +95,7 @@
                     }
                 });
 
-                var wnd = radconfirm(text, callBackFunction, 400, 200, null, "Confirmar");
+                var wnd = radconfirm(text, callBackFunction, 400, 200, null, "Aviso");
                 //always prevent the original postback so the RadConfirm can work, it will be initiated again with code in the callback function
                 args.set_cancel(true);
             }

@@ -15,7 +15,7 @@
             if (selectedItem != undefined)
                 OpenWindowCopiarFormato(selectedItem.getDataKeyValue("ID_FORMATO_TRAMITE"));
             else
-                radalert("Selecciona un formato.", 400, 150);
+                radalert("Selecciona un formato.", 400, 150, "Aviso");
         }
 
         function OpenWindowCopiarFormato(pIdFormato) {
@@ -36,11 +36,11 @@
                     var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                     { if (shouldSubmit) { this.click(); } });
 
-                    radconfirm('¿Deseas eliminar el formato ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                    radconfirm('¿Deseas eliminar el formato ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                     args.set_cancel(true);
                 }
             } else {
-                radalert("Seleccione un formato.", 400, 150, "");
+                radalert("Seleccione un formato.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }

@@ -368,10 +368,18 @@ namespace SIGE.Negocio.MetodologiaCompensacion
            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
            return operaciones.ObtenerTabuladorNivel(ID_TABULADOR, ID_TABULADOR_NIVEL);
        }
-       #endregion
+        #endregion
 
-       #region ACTUALIZA NIVEL A K_TABULADOR_NIVEL
-       public E_RESULTADO ActualizaTabuladorNivel(int? ID_TABULADOR, string XML_NIVELES, string usuario, string programa)
+        #region OBTIENE EL TOTAL DE NIVELES DE K_TABULADOR_NIVEL
+        public int ObtieneTotalTabuladorNivel(int? ID_TABULADOR)
+        {
+            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
+            return operaciones.ObtieneTotalTabuladorNivel(ID_TABULADOR);
+        }
+        #endregion
+
+        #region ACTUALIZA NIVEL A K_TABULADOR_NIVEL
+        public E_RESULTADO ActualizaTabuladorNivel(int? ID_TABULADOR, string XML_NIVELES, string usuario, string programa)
        {
            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
            return UtilRespuesta.EnvioRespuesta(operaciones.ActualizarTabuladorNivel(ID_TABULADOR, XML_NIVELES, usuario, programa));

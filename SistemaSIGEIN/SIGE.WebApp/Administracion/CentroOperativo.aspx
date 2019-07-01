@@ -33,7 +33,7 @@
                     var oWnd = radopen("VentanaCentroOperativo.aspx?&ID=" + idCentroOptvo, "winCentroOperativo");
                     oWnd.set_title("Editar Centro operativo de trabajo");
                 } else {
-                    radalert("No has seleccionado un registro.", 350, 148, "");
+                    radalert("No has seleccionado un registro.", 350, 148, "Aviso");
                 }
             }
 
@@ -49,11 +49,11 @@
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas eliminar el centro operativo' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                        radconfirm('¿Deseas eliminar el centro operativo' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Selecciona un centro operativo", 400, 150, "");
+                    radalert("Selecciona un centro operativo", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }

@@ -511,7 +511,7 @@ namespace SIGE.WebApp.EO.Cuestionarios
                             SPE_OBTIENE_ADSCRIPCIONES_Result ListaAdscripcion = negocio.ObtieneCatalogoAdscripciones(item.ID_CATALOGO_LISTA).FirstOrDefault();
                             List<E_ADICIONALES_SELECCIONADOS> LstValores = vLstAdicionales.Where(w => w.ID_CATALOGO_LISTA == item.ID_CATALOGO_LISTA.ToString()).ToList();
 
-                            if (ListaAdscripcion != null)
+                            if(ListaAdscripcion != null)
                             {
                                 RadLabel vControlLabel = new RadLabel();
                                 vControlLabel.Text = ListaAdscripcion.NB_CAMPO + ": ";
@@ -533,6 +533,13 @@ namespace SIGE.WebApp.EO.Cuestionarios
                                         Value = itemValue.CL_CAMPO,
                                     });
                                 }
+
+
+                                vDiv.Controls.Add(vControlLabel);
+                                vDiv.Controls.Add(vControl);
+                                dvCamposExtra.Controls.Add(vDiv);
+                            }                        
+                        }
 
 
                                 vDiv.Controls.Add(vControlLabel);

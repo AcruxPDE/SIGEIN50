@@ -1,7 +1,9 @@
 ﻿using SIGE.Entidades;
+using SIGE.Entidades.Administracion;
 using System;
 using System.Collections.Generic;
 using System.Data.Objects;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -98,5 +100,16 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             }
         }
 
+        public List<E_PUESTO_INTERRELACIONADO> ObtenerPuestosInterrelacionadas(int? pIdPuesto)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                return context.Database.SqlQuery<E_PUESTO_INTERRELACIONADO>("EXEC " +
+                    "[ADM].[SPE_OBTIENE_PLAZAS_INTERRELACIONADAS_DESCRIPTIVO] " +
+                    "@PIN_ID_PUESTO " 
+                    , new SqlParameter("@PIN_ID_PUESTO", (object)pIdPuesto ?? DBNull.Value)
+                ).ToList();
+            }
+        }
     }
 }

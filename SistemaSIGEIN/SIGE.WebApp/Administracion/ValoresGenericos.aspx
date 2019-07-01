@@ -43,7 +43,7 @@
                     var oWnd = radopen("VentanaValoresGenericos.aspx?&ID=" + idCatalogo + "&ID_LISTA=" + value + "&TIPO=Editar", "rwValorGenerico");
                     oWnd.set_title("Editar valor génerico");
                 } else {
-                    radalert("Selecciona una fila para editar", 350, 148, "");
+                    radalert("Selecciona una fila para editar", 350, 148, "Aviso");
                 }
             }
 
@@ -55,10 +55,6 @@
                     oWnd.set_title("Agregar valor génerico");
                 }
             }
-
-       
-
-
 
             function ConfirmarEliminar(sender, args) {
                 var MasterTable = $find("<%=grvValoresGenericos.ClientID %>").get_masterTableView();
@@ -72,11 +68,11 @@
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas eliminar el valor génerico ' + CELL_NOMBRE.innerHTML + '?', callBackFunction, 400, 170, null, "Eliminar Registro");
+                        radconfirm('¿Deseas eliminar el valor génerico ' + CELL_NOMBRE.innerHTML + '?', callBackFunction, 400, 170, null, "Aviso");
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Seleccione un valor génerico.", 400, 150, "");
+                    radalert("Seleccione un valor génerico.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }

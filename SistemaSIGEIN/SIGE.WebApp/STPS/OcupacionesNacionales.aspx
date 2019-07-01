@@ -32,7 +32,7 @@
                     var oWnd = radopen("VentanaOcupacionArea.aspx?&ID=" + idArea, "RWPopupmodalCatalogoArea");
                     oWnd.set_title("Editar área");
                 } else {
-                    radalert("No has seleccionado un registro.", 350, 148, "");
+                    radalert("No has seleccionado un registro.", 350, 148, "Aviso");
                 }
             }
 
@@ -51,11 +51,11 @@
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas eliminar el área ' + CELL_NOMBRE.innerHTML + ' y la relación con las ocupaciones?', callBackFunction, 400, 170, null, "Eliminar Registro");
+                        radconfirm('¿Deseas eliminar el área ' + CELL_NOMBRE.innerHTML + ' y la relación con las ocupaciones?', callBackFunction, 400, 170, null, "Aviso");
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Seleccione un área.", 400, 150, "");
+                    radalert("Seleccione un área.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -85,7 +85,7 @@
                     var oWnd = radopen("VentanaOcupacionSubarea.aspx?&ID=" + idSubarea, "RWPopupmodalCatalogoSubarea");
                     oWnd.set_title("Editar sub-área");
                 } else {
-                    radalert("No has seleccionado un registro.", 350, 148, "");
+                    radalert("No has seleccionado un registro.", 350, 148, "Aviso");
                 }
             }
 
@@ -104,11 +104,11 @@
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas eliminar la sub-área ' + CELL_NOMBRE.innerHTML + ' y la relación con las ocupaciones?.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                        radconfirm('¿Deseas eliminar la sub-área ' + CELL_NOMBRE.innerHTML + ' y la relación con las ocupaciones?.', callBackFunction, 400, 170, null, "Aviso");
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Seleccione una sub-área.", 400, 150, "");
+                    radalert("Seleccione una sub-área.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -138,7 +138,7 @@
                     var oWnd = radopen("VentanaOcupacionModulo.aspx?&ID=" + idModulo, "RWPopupmodalCatalogoModulo");
                     oWnd.set_title("Editar módulo");
                 } else {
-                    radalert("No has seleccionado un registro.", 350, 148, "");
+                    radalert("No has seleccionado un registro.", 350, 148, "Aviso");
                 }
             }
 
@@ -157,11 +157,11 @@
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas eliminar el módulo ' + CELL_NOMBRE.innerHTML + ' y la relación con las ocupaciones?.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                        radconfirm('¿Deseas eliminar el módulo ' + CELL_NOMBRE.innerHTML + ' y la relación con las ocupaciones?.', callBackFunction, 400, 170, null, "Aviso");
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Seleccione un módulo.", 400, 150, "");
+                    radalert("Seleccione un módulo.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -192,7 +192,7 @@
                     var oWnd = radopen("VentanaOcupacionesNacionales.aspx?&ID=" + idOcupacion, "RWPopupmodalCatalogoOcupacion");
                     oWnd.set_title("Editar ocupación");
                 } else {
-                    radalert("No has seleccionado un registro.", 350, 148, "");
+                    radalert("No has seleccionado un registro.", 350, 148, "Aviso");
                 }
             }
 
@@ -211,11 +211,11 @@
                          var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                          { if (shouldSubmit) { this.click(); } });
 
-                         radconfirm('¿Deseas eliminar la ocupación ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                         radconfirm('¿Deseas eliminar la ocupación ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                          args.set_cancel(true);
                      }
                  } else {
-                     radalert("Seleccione una ocupación.", 400, 150, "");
+                     radalert("Seleccione una ocupación.", 400, 150, "Aviso");
                      args.set_cancel(true);
                  }
              }

@@ -143,11 +143,11 @@
                             "Nuevo/Editar Competencia")
                     }
                     else {
-                        radalert("La competencia no se puede editar.", 400, 150, "Error");
+                        radalert("La competencia no se puede editar.", 400, 150, "Aviso");
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Selecciona una competencia.", 400, 150, "Error");
+                    radalert("Selecciona una competencia.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
 
@@ -158,6 +158,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
+    
     <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="grdEmpleadosSeleccionados">
@@ -187,6 +188,7 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
+
     <%--  <div class="ctrlBasico">
         <label id="lbTabulador"
             name="lbTabulador"
@@ -223,6 +225,7 @@
         <telerik:RadDatePicker ID="rdpVigencia" Enabled="false" runat="server" Width="140px">
         </telerik:RadDatePicker>
     </div>--%>
+
     <telerik:RadTabStrip ID="rtsConfiguracion" runat="server" MultiPageID="rmpConfiguracion">
         <Tabs>
             <telerik:RadTab Text="Contexto" SelectedIndex="0"></telerik:RadTab>
@@ -233,8 +236,11 @@
             <telerik:RadTab Text="Niveles" SelectedIndex="4"></telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
+
     <div style="height: calc(100% - 60px);">
         <telerik:RadMultiPage ID="rmpConfiguracion" runat="server" SelectedIndex="0" Height="100%">
+            
+            <%--Inicio Contexto--%>
             <telerik:RadPageView ID="rpvContexto" runat="server">
                 <div style="clear: both; height: 10px;"></div>
                 <div class="ctrlBasico">
@@ -284,6 +290,9 @@
                     </table>
                 </div>
             </telerik:RadPageView>
+            <%--Fin Contexto--%>
+
+            <%--Inicio Seleccion Empleados--%>
             <telerik:RadPageView ID="rpvSeleccionEmpleados" runat="server">
                 <telerik:RadSplitter ID="rsSeleccionEmpleados" Width="100%" Height="100%" BorderSize="0" runat="server">
                     <telerik:RadPane ID="rpSeleccionEmpleados" runat="server">
@@ -330,6 +339,11 @@
                         <div class="ctrlBasico">
                             <telerik:RadButton ID="btnEliminarEmpleados" OnClick="btnEliminarEmpleados_Click" runat="server" name="btnEliminarEmpleados" AutoPostBack="true" Text="Eliminar"></telerik:RadButton>
                         </div>
+                        <div class="divControlDerecha">
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnGuardarEmpleados" runat="server" name="btnGuardarEmpleados" AutoPostBack="true" Text="Guardar" OnClick="btnGuardarEmpleados_Click"></telerik:RadButton>
+                            </div>
+                        </div>
                     </telerik:RadPane>
                     <telerik:RadPane ID="rpAyudaSeleccionEmpleados" runat="server" Scrolling="None" Width="22px">
                         <telerik:RadSlidingZone ID="rszSeleccionEmpleados" runat="server" SlideDirection="Left" ExpandedPaneId="rsSeleccionEmpleados" Width="22px" ClickToOpen="true">
@@ -347,6 +361,9 @@
                     </telerik:RadPane>
                 </telerik:RadSplitter>
             </telerik:RadPageView>
+            <%--Fin Seleccion Empleados--%>
+
+            <%--Inicio Seleccion Factores Valuacion--%>
             <telerik:RadPageView ID="rpvFactoresValuacion" runat="server">
                 <telerik:RadSplitter ID="rsFactoresValuacion" Width="100%" Height="100%" BorderSize="0" runat="server">
                     <telerik:RadPane ID="rpFactoresValuacion" runat="server">
@@ -400,6 +417,11 @@
                         <div class="ctrlBasico">
                             <telerik:RadButton ID="btnEliminarCompetencias" OnClick="btnEliminarCompetencias_Click" runat="server" name="btnEliminarCompetencias" AutoPostBack="true" Text="Eliminar" Width="100"></telerik:RadButton>
                         </div>
+                        <div class="divControlDerecha">
+                            <div class="ctrlBasico">
+                                <telerik:RadButton ID="btnGuardarCompetencias" runat="server" name="btnGuardarCompetencias" AutoPostBack="true" Text="Guardar" OnClick="btnGuardarCompetencias_Click"></telerik:RadButton>
+                            </div>
+                        </div>
                     </telerik:RadPane>
                     <telerik:RadPane ID="rpAyudaFactoresValuacion" runat="server" Scrolling="None" Width="22px">
                         <telerik:RadSlidingZone ID="rszFactoresValuacion" runat="server" SlideDirection="Left" ExpandedPaneId="rsFactoresValuacion" Width="22px" ClickToOpen="true">
@@ -412,6 +434,9 @@
                     </telerik:RadPane>
                 </telerik:RadSplitter>
             </telerik:RadPageView>
+            <%--Fin Seleccion Factores Valuacion--%>
+
+            <%--Inicio Consultas Comparativas--%>
             <%--<telerik:RadPageView ID="rpvConsultasComparativas" runat="server">
                 <telerik:RadSplitter ID="rsConsultasComparativas" Width="100%" Height="100%" BorderSize="0" runat="server">
                     <telerik:RadPane ID="rpConsultasComparativas" runat="server">
@@ -438,6 +463,9 @@
                     </telerik:RadPane>
                 </telerik:RadSplitter>
             </telerik:RadPageView>--%>
+            <%--Fin Consultas Comparativas--%>
+
+            <%--Inicio Parametros--%>
             <telerik:RadPageView ID="rpvNivelesParametros" runat="server">
                 <div style="clear: both; height: 10px;"></div>
                 <div class="ctrlBasico">
@@ -573,12 +601,15 @@
                     </telerik:RadNumericTextBox>
                 </div>
                 <div style="height: 10px; clear: both"></div>
-                          <div class="divControlDerecha">
-                <div class="ctrlBasico">
-                    <telerik:RadButton ID="btnGuardarConfiguracion" runat="server" name="btnGuardarConfiguracion" AutoPostBack="true" Text="Guardar" OnClick="btnGuardarConfiguracion_Click"></telerik:RadButton>
+                <div class="divControlDerecha">
+                    <div class="ctrlBasico">
+                        <telerik:RadButton ID="btnGuardarConfiguracion" runat="server" name="btnGuardarConfiguracion" AutoPostBack="true" Text="Guardar" OnClick="btnGuardarConfiguracion_Click"></telerik:RadButton>
+                    </div>
                 </div>
-                              </div>
             </telerik:RadPageView>
+            <%--Fin Parametros--%>
+
+            <%--Inicio Niveles--%>
             <telerik:RadPageView ID="rpvNiveles" runat="server">
                 <div style="height: calc(100% - 50px);">
                     <telerik:RadGrid ID="grdNiveles"
@@ -630,11 +661,9 @@
                 </div>
                 </div>
             </telerik:RadPageView>
-        </telerik:RadMultiPage>
-        <%--<div style="clear: both"></div>
-           <div class="ctrlBasico">
-            <telerik:RadButton ID="btnGuardarConfiguracion" runat="server" name="btnGuardarConfiguracion" AutoPostBack="true" Text="Guardar" Width="100" OnClick="btnGuardarConfiguracion_Click"></telerik:RadButton>
-        </div>--%>
+            <%--Fin Niveles--%>
+
+        </telerik:RadMultiPage>        
         <telerik:RadWindowManager ID="rwmMensaje" runat="server"></telerik:RadWindowManager>
     </div>
 </asp:Content>

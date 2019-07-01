@@ -35,7 +35,7 @@
                 var browserWnd = window;
                 if (currentWnd)
                     browserWnd = currentWnd.BrowserWindow;
-                browserWnd.radalert("Selecciona una prueba", 400, 150);
+                browserWnd.radalert("Selecciona una prueba", 400, 150, "Aviso");
 
             }
 

@@ -155,7 +155,7 @@
             if (vIdPeriodo != null)
                 OpenWindow(GetControlAvanceWindowProperties(vIdPeriodo));
             else
-                radalert("Selecciona un periodo.", 400, 150);
+                radalert("Selecciona un periodo.", 400, 150, "Aviso");
         }
         <%--
         function OpenNecesidadCapacitacionWindow(sender, args) {
@@ -200,7 +200,7 @@
                 OpenWindow(GetEnvioSolicitudesWindowProperties(vIdPeriodo));
             }
             else {
-                radalert("Selecciona un periodo.", 400, 150);
+                radalert("Selecciona un periodo.", 400, 150, "Aviso");
             }
         }
         <%--
@@ -229,7 +229,7 @@
             if (vIdPeriodo != null) {
                 OpenWindow(GetContestarCuestionariosWindowProperties(vIdPeriodo, vNbPeriodo, vEstadoPeriodo));
             } else {
-                radalert("Selecciona un periodo.", 400, 150);
+                radalert("Selecciona un periodo.", 400, 150, "Aviso");
             }
         }
 

@@ -88,7 +88,7 @@
                     oWnd.set_title("Editar Idioma");
                 }
                 else {
-                    radalert("No has seleccionado un registro.", 400, 150, "");
+                    radalert("No has seleccionado un registro.", 400, 150, "Aviso");
                 }
             }
 
@@ -112,11 +112,11 @@
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas eliminar el idioma ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 150, null, "Eliminar Registro");
+                        radconfirm('¿Deseas eliminar el idioma ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 150, null, "Aviso");
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Seleccione una idioma.", 400, 150, "");
+                    radalert("Seleccione una idioma.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }

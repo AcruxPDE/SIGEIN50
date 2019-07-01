@@ -42,12 +42,12 @@
 
         function OpenAnalisisWindow() {
             if (idPeriodo == "") {
-                radalert("Selecciona un periodo", 300, 135);
+                radalert("Selecciona un periodo", 300, 135, "Aviso");
                 return;
             }
 
             if (arr.length == 0) {
-                radalert("Selecciona puestos para comparar", 400, 135);
+                radalert("Selecciona puestos para comparar", 400, 135, "Aviso");
                 return;
             }
 
@@ -130,7 +130,7 @@
 
         function OpenInsertPeriodoWindow() {
             if (arr.length == 0) {
-                radalert("Selecciona puestos para comparar", 400, 135);
+                radalert("Selecciona puestos para comparar", 400, 135, "Aviso");
                 return;
             }
             OpenPeriodoWindow(null);

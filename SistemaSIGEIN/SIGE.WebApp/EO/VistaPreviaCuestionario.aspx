@@ -27,6 +27,23 @@
             <input id="txtClPeriodo" runat="server" type="text" name="txtClPeriodo" readonly="true" style="background-color: #cccccc; border-style: solid; border-width: 1px; border-radius: 5px; width: 420px">
         </div>
         <div id="dvMostrar" runat="server">
+            <div style="clear: both; height: 5px;"></div>
+            <div class="ctrlBasico">
+                <label id="lbDepartamento" name="LbFiltros" runat="server" visible="false" style="width: 150px;">Área/Departamento:</label>
+            </div>
+            <div id="dvAreas" runat="server">
+            </div>
+            <div style="clear: both; height: 2px;"></div>
+            <div class="ctrlBasico">
+                <label id="lbGenero" name="lbGenero" runat="server" visible="false" style="width: 50px;">Género:</label>
+            </div>
+            <div id="dvGeneros" runat="server">
+            </div>
+            <div style="clear: both; height: 2px;"></div>
+            <div class="ctrlBasico">
+                <table id="tbAdscripciones" runat="server">
+                </table>
+            </div>
             <div style="clear: both; height: 2px;"></div>
             <div class="ctrlBasico">
                 <label id="lbedad" name="LbFiltros" runat="server" visible="false" style="width: 100px;">Edad:</label>
@@ -34,22 +51,10 @@
                 <label id="lbAntiguedad" name="LbFiltros" runat="server" visible="false" style="width: 120px;">Fecha de ingreso:</label>
                 <input id="txtAntiguedades" runat="server" type="text" value="        /        /" name="txtAntiguedades" visible="false" readonly="true" style="background-color: #cccccc; border-style: solid; border-width: 1px; border-radius: 5px; width: 110px">
             </div>
-            <div class="ctrlBasico">
-                <label id="lbGenero" name="lbGenero" runat="server" visible="false" style="width: 50px;">Género:</label>
-            </div>
-            <div id="dvGeneros" runat="server">
-            </div>
+            
+            
             <div style="clear: both; height: 5px;"></div>
-            <div class="ctrlBasico">
-                <label id="lbDepartamento" name="LbFiltros" runat="server" visible="false" style="width: 150px;">Área/Departamento:</label>
-            </div>
-            <div id="dvAreas" runat="server">
-            </div>
-            <div style="clear: both; height: 5px;"></div>
-            <div class="ctrlBasico">
-                <table id="tbAdscripciones" runat="server">
-                </table>
-            </div>
+            
         </div>
         <div style="clear: both; height: 5px;"></div>
         <div style="text-align: justify;">

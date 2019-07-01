@@ -43,7 +43,7 @@
                             var oWnd = radopen("VentanaCatalogoClasificacionComp.aspx?&ID=" + idClasificacion + "&TIPO=Editar", "modalClasCompetenciaEditar");
                             oWnd.set_title("Editar clasificación de competencia");
                         } else {
-                            radalert("Selecciona un registro.", 400, 150, "");
+                            radalert("Selecciona un registro.", 400, 150, "Aviso");
                         }
                     }
 
@@ -67,11 +67,11 @@
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas eliminar la clasificación de competencia ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                        radconfirm('¿Deseas eliminar la clasificación de competencia ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Seleccione una clasificación de competencia.", 400, 150, "");
+                    radalert("Seleccione una clasificación de competencia.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }

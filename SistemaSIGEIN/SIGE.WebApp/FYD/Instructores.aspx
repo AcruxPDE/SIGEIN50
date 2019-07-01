@@ -11,7 +11,7 @@
             if (selectedItem != undefined)
                 OpenWindow(selectedItem.getDataKeyValue("ID_INSTRUCTOR"));
             else
-                radalert("Selecciona un instructor.", 400, 150);
+                radalert("Selecciona un instructor.", 400, 150, "Aviso");
         }
 
         function OpenWindow(pIdInstructor) {
@@ -36,15 +36,13 @@
             var selectedItem = masterTable.get_selectedItems()[0];
             if (selectedItem != undefined) {
                 var vNombre = masterTable.getCellByColumnUniqueName(selectedItem, "NB_INSTRUCTOR").innerHTML;
+                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
 
-                var vWindowsProperties = {
-                    height: 250
-                };
-
-                confirmAction(sender, args, "¿Deseas eliminar al instructor " + vNombre + "?, este proceso no podrá revertirse");
+                radconfirm("¿Deseas eliminar al instructor " + vNombre + "?, este proceso no podrá revertirse", callBackFunction, 400, 170, null, "Aviso");
+                args.set_cancel(true);
             }
             else {
-                radalert("Selecciona un instructor.", 400, 250);
+                radalert("Selecciona un instructor.", 400, 250, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -141,11 +139,12 @@
                             <div style="clear: both; height: 10px;"></div>
                         </NestedViewTemplate>
                         <Columns>
-                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave" DataField="CL_INTRUCTOR" UniqueName="CL_INTRUCTOR" HeaderStyle-Width="180" FilterControlWidth="110"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave" DataField="CL_INTRUCTOR" UniqueName="CL_INTRUCTOR" HeaderStyle-Width="100" FilterControlWidth="70"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre completo" DataField="NB_NOMBRE_INSTRUCTOR" UniqueName="NB_NOMBRE_INSTRUCTOR" HeaderStyle-Width="350" FilterControlWidth="275"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Tipo" DataField="CL_TIPO_INSTRUCTOR" UniqueName="CL_TIPO_INSTRUCTOR" HeaderStyle-Width="100" FilterControlWidth="40"></telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre" DataField="NB_INSTRUCTOR" UniqueName="NB_INSTRUCTOR" HeaderStyle-Width="350" FilterControlWidth="275"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="120" FilterControlWidth="60" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="DS_PUESTO"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="120" FilterControlWidth="60" HeaderText="Último usuario que modifica" DataField="CL_USUARIO_APP_MODIFICA" UniqueName="CL_USUARIO_APP_MODIFICA"></telerik:GridBoundColumn>
-                             <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Última fecha de modificación" DataField="FE_MODIFICA" UniqueName="FE_MODIFICA" DataFormatString="{0:d}"  HeaderStyle-Width="120" FilterControlWidth="60" DataType="System.DateTime"></telerik:GridDateTimeColumn>
+                            <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Última fecha de modificación" DataField="FE_MODIFICA" UniqueName="FE_MODIFICA" DataFormatString="{0:d}"  HeaderStyle-Width="120" FilterControlWidth="60" DataType="System.DateTime"></telerik:GridDateTimeColumn>
                         </Columns>
                     </MasterTableView>
                 </telerik:RadGrid>

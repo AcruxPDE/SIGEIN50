@@ -11,7 +11,7 @@
             if (selectedItem != undefined)
                 OpenWindow(selectedItem.getDataKeyValue("ID_CURSO"));
             else
-                radalert("Selecciona un curso.", 400, 150);
+                radalert("Selecciona un curso.", 400, 150, "Aviso");
         }
 
         function OpenWindow(pIdCurso) {
@@ -37,14 +37,13 @@
             if (selectedItem != undefined) {
                 var vNombre = masterTable.getCellByColumnUniqueName(selectedItem, "NB_CURSO").innerHTML;
 
-                var vWindowsProperties = {
-                    height: 250
-                };
+                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
 
-                confirmAction(sender, args, "¿Deseas eliminar el curso " + vNombre + "?, este proceso no podrá revertirse");
+                radconfirm("¿Deseas eliminar el curso " + vNombre + "?, este proceso no podrá revertirse", callBackFunction, 400, 170, null, "Aviso");
+                args.set_cancel(true);
             }
             else {
-                radalert("Selecciona un curso.", 400, 150);
+                radalert("Selecciona un curso.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -127,7 +126,7 @@
                     <div style="clear: both; height: 10px;"></div>
                 </NestedViewTemplate>
                 <Columns>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave" DataField="CL_CURSO" UniqueName="CL_CURSO" HeaderStyle-Width="180" FilterControlWidth="110"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave" DataField="CL_CURSO" UniqueName="CL_CURSO" HeaderStyle-Width="100" FilterControlWidth="70"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre" DataField="NB_CURSO" UniqueName="NB_CURSO" HeaderStyle-Width="300" FilterControlWidth="225"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Tipo" DataField="CL_TIPO_CURSO" UniqueName="CL_TIPO_CURSO" HeaderStyle-Width="100" FilterControlWidth="40"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Duración" DataField="NO_DURACION" UniqueName="NO_DURACION" HeaderStyle-Width="100" FilterControlWidth="40" DataFormatString="{0:N1}h"></telerik:GridBoundColumn>

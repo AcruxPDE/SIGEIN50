@@ -188,7 +188,10 @@
         }
 
         function CopiarDatos(sender, args) {
-            confirmAction(sender, args, "Si hay información será remplazada. ¿Desea hacer la copia?");
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+            radconfirm('Si hay información será remplazada. ¿Desea hacer la copia?', callBackFunction, 400, 150, null, "Aviso");
+            args.set_cancel(true);
         }
 
         function ConfirmarCopiarDatos(sender, args) {
@@ -206,12 +209,12 @@
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                 { if (shouldSubmit) { this.click(); } });
 
-                radconfirm('¿Deseas copiar la información del proceso de evaluación seleccionado al actual?', callBackFunction, 400, 150, null, "Copiar información");
+                radconfirm('¿Deseas copiar la información del proceso de evaluación seleccionado al actual?', callBackFunction, 400, 150, null, "Aviso");
                 args.set_cancel(true);
 
             }
             else {
-                radalert("Seleccione el proceso de evaluación del cual se va a copiar la información", 400, 170, "");
+                radalert("Seleccione el proceso de evaluación del cual se va a copiar la información", 400, 170, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -389,7 +392,7 @@
             if (idEntrevista != "")
                 OpenWindow(GetEntrevistaWindowProperties(idEntrevista));
             else
-                radalert("Selecciona una entrevista.", 400, 150);
+                radalert("Selecciona una entrevista.", 400, 150, "Aviso");
         }
 
         function ShowPopupEditarExperiencia(sender, args) {
@@ -398,7 +401,7 @@
             if (idExperiencia != "" & idCandidato != "")
                 OpenWindow(GetReferenciaWindowProperties(idExperiencia, idCandidato));
             else
-                radalert("Selecciona un registro.", 400, 150);
+                radalert("Selecciona un registro.", 400, 150, "Aviso");
         }
 
         function ConfirmarEliminarEntrevista(sender, args) {
@@ -406,9 +409,12 @@
             ObtenerEntrevista();
 
             if (idEntrevista != "") {
-                confirmAction(sender, args, '¿Deseas eliminar la entrevista seleccionada?');
+                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                radconfirm('¿Deseas eliminar la entrevista seleccionada?', callBackFunction, 400, 150, null, "Aviso");
+                args.set_cancel(true);
             } else {
-                radalert("Seleccione una entrevista.", 400, 150, "");
+                radalert("Seleccione una entrevista.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -487,7 +493,7 @@
                 win.focus();
             }
             else {
-                radalert("El candidato no tiene pruebas.", 400, 150, "");
+                radalert("El candidato no tiene pruebas.", 400, 150, "Aviso");
                 return;
             }
         }

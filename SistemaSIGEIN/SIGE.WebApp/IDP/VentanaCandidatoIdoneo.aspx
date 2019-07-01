@@ -67,7 +67,7 @@
             obtenerIdFila();
 
             if (idCandidato == "") {
-                radalert("Selecciona un candidato de la lista.", 400, 150);
+                radalert("Selecciona un candidato de la lista.", 400, 150, "Aviso");
                 return;
             }
 
@@ -173,7 +173,7 @@
             }
 
             if (idProcesoSeleccion == "") {
-                radalert("Selecciona un proceso de evaluación", 400, 150, "");
+                radalert("Selecciona un proceso de evaluación", 400, 150, "Aviso");
             }
             else {
                 openChildDialog(vURL, "winProcesoSeleccion", vTitulo, windowProperties);
@@ -214,7 +214,7 @@
             }
 
             if (idProcesoSeleccion == "") {
-                radalert("Selecciona un proceso de evaluación", 400, 150, "");
+                radalert("Selecciona un proceso de evaluación", 400, 150, "Aviso");
             }
             else {
                 openChildDialog(vURL, "winProcesoSeleccion", vTitulo, windowProperties);
@@ -253,7 +253,7 @@
             }
 
             if (idProcesoSeleccion == "") {
-                radalert("Selecciona un proceso de evaluación", 400, 150, "");
+                radalert("Selecciona un proceso de evaluación", 400, 150, "Aviso");
             }
             else {
                 openChildDialog(vURL, "winProcesoSeleccion", vTitulo, windowProperties);
@@ -280,7 +280,7 @@
                 window.parent.location = vUrl;
             }
             else
-                radalert("Selecciona un candidato de la lista.", 400, 150);
+                radalert("Selecciona un candidato de la lista.", 400, 150, "Aviso");
         }
 
 
@@ -335,7 +335,7 @@
             obtenerIdFila();
 
             if (idCandidato == "") {
-                radalert("Selecciona un candidato de la lista.", 400, 150);
+                radalert("Selecciona un candidato de la lista.", 400, 150, "Aviso");
                 return;
             }
 

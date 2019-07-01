@@ -3,7 +3,10 @@ using SIGE.Entidades.Externas;
 using SIGE.Entidades.FormacionDesarrollo;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Data.Objects;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -234,9 +237,32 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
-                contexto.SPE_INSERTA_ACTUALIZA_FYD_CUESTIONARIO(pOutClRetorno, pIdPeriodo, pFgCreaCuestionarios, pClUsuario, pNbPrograma);
-                return XElement.Parse(pOutClRetorno.Value.ToString());
+                //ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                var pXmlResultado = new SqlParameter("@XML_RESULTADO", SqlDbType.Xml)
+                {
+                    Direction = ParameterDirection.Output
+                };
+
+                ((IObjectContextAdapter)contexto).ObjectContext.CommandTimeout = 6000;
+                contexto.Database.ExecuteSqlCommand("EXEC " +
+                    "FYD.SPE_INSERTA_ACTUALIZA_FYD_CUESTIONARIO " +
+                    "@XML_RESULTADO OUTPUT, " +
+                    "@PIN_ID_PERIODO, " +
+                    "@PIN_FG_CREA_CUESTINARIOS, " +
+                    "@PIN_CL_USUARIO, " +
+                    "@PIN_NB_PROGRAMA ",
+                    pXmlResultado,
+                    new SqlParameter("@PIN_ID_PERIODO", pIdPeriodo),
+                    new SqlParameter("@PIN_FG_CREA_CUESTINARIOS", pFgCreaCuestionarios),
+                    new SqlParameter("@PIN_CL_USUARIO", pClUsuario),
+                    new SqlParameter("@PIN_NB_PROGRAMA", pNbPrograma)
+                );
+                ((IObjectContextAdapter)contexto).ObjectContext.CommandTimeout = 3000;
+                //return XElement.Parse(pOutClRetorno.Value.ToString());
+                //ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                //contexto.SPE_INSERTA_ACTUALIZA_FYD_CUESTIONARIO(pOutClRetorno, pIdPeriodo, pFgCreaCuestionarios, pClUsuario, pNbPrograma);
+
+                return XElement.Parse(pXmlResultado.Value.ToString());
             }
         }
 

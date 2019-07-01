@@ -39,7 +39,7 @@
                 var browserWnd = window;
                 if (currentWnd)
                     browserWnd = currentWnd.BrowserWindow;
-                browserWnd.radalert("Selecciona un programa.", 400, 150);
+                browserWnd.radalert("Selecciona un programa.", 400, 150, "Aviso");
             }
 
             return false;

@@ -260,7 +260,7 @@
                 var selectedRows = MasterTable.get_selectedItems();
                 var row = selectedRows[0];
                 if (row == null) {
-                    radalert("Selecciona a un candidato", 400, 150, "Warning");
+                    radalert("Selecciona a un candidato", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
