@@ -768,14 +768,17 @@ namespace SIGE.WebApp.IDP.Pruebas
                         }
                         else
                         {
-                            CallBackFunction = "updateTimer('" + (-1) + "')";
+                            E_RESULTADO vResultadoSeccion = nKprueba.InsertaActualiza_K_PRUEBA_SECCION(tipo_transaccion: E_TIPO_OPERACION_DB.A.ToString(), v_k_prueba: vSeccionInicia, usuario: vClUsuario, programa: vNbPrograma);
+                            E_RESULTADO vResultado = nCustionarioPregunta.InsertaActualiza_K_CUESTIONARIO_PREGUNTA(tipo_transaccion: E_TIPO_OPERACION_DB.A.ToString(), pIdEvaluado: vObjetoPrueba.ID_CANDIDATO, pIdEvaluador: null, pIdCuestionarioPregunta: 0, pIdCuestionario: 0, XML_CUESTIONARIO: RESPUESTAS.ToString(), pNbPrueba: "INGLES-" + (vseccion + 1), usuario: vClUsuario, programa: vNbPrograma);
+                            Response.Redirect("Default.aspx?ty=sig", true);
+                            //CallBackFunction = "updateTimer('" + (-1) + "')";
                         }
                         vSeccionInicia = vSeccionesPrueba.ElementAt(vseccion + 1);
                         vSeccionInicia.FE_INICIO = DateTime.Now;
                         vSeccionInicia.CL_ESTADO = E_ESTADO_PRUEBA.INICIADA.ToString();
                     }
                     else
-                    {
+                    { 
                         SPE_OBTIENE_K_PRUEBA_Result vPruebaTerminada = nKprueba.Obtener_K_PRUEBA(pIdPrueba: vIdPrueba).FirstOrDefault();
                         vPruebaTerminada.FE_TERMINO = DateTime.Now;
                         vPruebaTerminada.CL_ESTADO = E_ESTADO_PRUEBA.TERMINADA.ToString();
@@ -802,7 +805,7 @@ namespace SIGE.WebApp.IDP.Pruebas
                         E_RESULTADO vResultado = nCustionarioPregunta.InsertaActualiza_K_CUESTIONARIO_PREGUNTA(tipo_transaccion: E_TIPO_OPERACION_DB.A.ToString(), pIdEvaluado: vObjetoPrueba.ID_CANDIDATO, pIdEvaluador: null, pIdCuestionarioPregunta: 0, pIdCuestionario: 0, XML_CUESTIONARIO: RESPUESTAS.ToString(), pNbPrueba: "INGLES-" + (vseccion + 1), usuario: vClUsuario, programa: vNbPrograma);
                         string vMensaje = instrucciones(vseccion + 1);
                         int vHeight = HeightRadAlert(vseccion + 1);
-                        UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, vHeight, CallBackFunction);
+                        UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.SUCCESSFUL, 400, vHeight, CallBackFunction);
                        }
                 }
             }

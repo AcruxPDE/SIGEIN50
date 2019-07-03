@@ -1147,12 +1147,13 @@ namespace SIGE.WebApp.IDP
                     else
                     {
                         E_RESULTADO vResultado = nCustionarioPregunta.InsertaActualiza_K_CUESTIONARIO_PREGUNTA(tipo_transaccion: E_TIPO_OPERACION_DB.A.ToString(), pIdEvaluado: vObjetoPrueba.ID_CANDIDATO, pIdEvaluador: null, pIdCuestionarioPregunta: 0, pIdCuestionario: 0, XML_CUESTIONARIO: RESPUESTAS.ToString(), pNbPrueba: vPrueba, usuario: vClUsuario, programa: vNbPrograma);
-                      //  string vMensaje = instrucciones(vseccion + 1);
+                        //  string vMensaje = instrucciones(vseccion + 1);
                         //int vHeight = HeightRadAlert(vseccion + 1);
-                      //  vRadAlertAltura = HeightRadAlert(vseccion + 1);
+                        //  vRadAlertAltura = HeightRadAlert(vseccion + 1);
 
                         //UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, vHeight, CallBackFunction);
-                        E_RESULTADO vResultadoSeccion = nKprueba.InsertaActualiza_K_PRUEBA_SECCION(tipo_transaccion: E_TIPO_OPERACION_DB.A.ToString(), v_k_prueba: vSeccionInicia, usuario: vClUsuario, programa: vNbPrograma);
+                        //E_RESULTADO vResultadoSeccion = nKprueba.InsertaActualiza_K_PRUEBA_SECCION(tipo_transaccion: E_TIPO_OPERACION_DB.A.ToString(), v_k_prueba: vSeccionInicia, usuario: vClUsuario, programa: vNbPrograma);
+                        vIniciarSeccion = true;
                         mpgActitudMentalI.SelectedIndex = vseccion + 1;
                         //ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "MyScript", CallBackFunction, true);
 

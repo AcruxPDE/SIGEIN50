@@ -61,7 +61,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPruebas" runat="server">
 
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel2" runat="server"></telerik:RadAjaxLoadingPanel>
-    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest">
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest" ClientEvents-OnResponseEnd="retorno">
         <AjaxSettings>
 
             <telerik:AjaxSetting AjaxControlID="btnAgregarPalabra">
@@ -142,7 +142,10 @@
                                     contenedor.style.display = 'none';
                                 }
 
-                            c = Cronometro(segundos, display);
+                                c = Cronometro(segundos, display);
+
+                                var pane = $find("<%= radPanelPreguntas.ClientID %>");
+                                pane.collapse();
                             }
                         }
                         else {
@@ -155,6 +158,29 @@
                     radconfirm(JustificarTexto(text), callBackFunction, 900, 650, null, "Ortografía III");
                 }
             };
+
+            function retorno(sender, args) {
+                var segundos = '<%=this.vTiempoPrueba%>';
+                var display = document.querySelector('#time');
+                var contenedor = document.querySelector('.Cronometro');
+
+
+                var vFgCronometro = '<%=MostrarCronometro %>';
+                if (vFgCronometro == "True") {
+                    contenedor.style.display = 'block';
+                }
+                else {
+                    contenedor.style.display = 'none';
+                }
+
+
+                c = Cronometro(segundos, display);
+
+                setTimeout(function () {
+                    var pane = $find("<%= radPanelPreguntas.ClientID %>");
+                    pane.expand();
+                }, 1000);                
+            }
 
             function OpenReport() {
                 var vURL = "ReporteadorPruebasIDP.aspx";
@@ -294,7 +320,7 @@ solo le dije timidamente que si. No se por que su pregunta me hizo sentir incomo
     <div style="clear: both; height: 10px;"></div>
 
     <div class="DivMoveLeft" id="cronometro" runat="server">
-        <div class="Cronometro">Tiempo restante <span id="time">15:00</span></div>
+        <div class="Cronometro">Tiempo restante <span id="time"></span></div>
     </div>
 
      <div class="divControlDerecha">

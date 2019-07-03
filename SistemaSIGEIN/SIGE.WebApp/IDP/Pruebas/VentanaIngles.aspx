@@ -65,7 +65,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPruebas" runat="server">
 
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
-    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest">
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest" ClientEvents-OnResponseEnd="retorno">
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="btnTerminar">
                 <UpdatedControls>
@@ -122,6 +122,9 @@
                                     contenedor.style.display = 'none';
                                 }
                                 c = Cronometro(segundos, display);
+
+                                var pane = $find("<%= radPanelPreguntas.ClientID %>");
+                                pane.collapse();
                             }
                         }
                         else {
@@ -138,6 +141,30 @@
                     prueba(multiPage.get_selectedIndex());
                 }
             };
+
+            function retorno(sender, args) {
+                clearInterval(c);
+                var multiPage = $find("<%=mpgIngles.ClientID %>");
+                var segundos = setInitTime(multiPage.get_selectedIndex() + "");
+                var display = document.querySelector('#time');
+                var contenedor = document.querySelector('.Cronometro');
+
+                var vFgCronometro = '<%=MostrarCronometro %>';
+                if (vFgCronometro == "True") {
+                    contenedor.style.display = 'block';
+                }
+                else {
+                    contenedor.style.display = 'none';
+                }
+
+
+                c = Cronometro(segundos, display);
+
+                setTimeout(function () {
+                    var pane = $find("<%= radPanelPreguntas.ClientID %>");
+                    pane.expand();
+                }, 500);                
+            }
 
             function close_window(sender, args) {
                 if (vPruebaEstatus != "Terminado") {
@@ -188,8 +215,6 @@
                             window.location = "Default.aspx?ty=sig";
                             break;
                         case "1":
-                            var ajaxManager = $find("<%=RadAjaxManager1.ClientID%>");
-                            ajaxManager.ajaxRequest(null);
                             var segundos = '<%=this.vSeccionBtime%>';
                             prueba(seccion);
                             if (segundos <= 0) {
@@ -199,6 +224,10 @@
                                 var display = document.querySelector('#time');
                                 c = Cronometro(segundos, display);
                                 multiPage.set_selectedIndex(parseInt(position));
+                                var ajaxManager = $find("<%=RadAjaxManager1.ClientID%>");
+                                ajaxManager.ajaxRequest(null);
+                                var pane = $find("<%= radPanelPreguntas.ClientID %>");
+                                pane.collapse();
                             }
                             break;
                         case "2":
@@ -213,6 +242,8 @@
                                 var display = document.querySelector('#time');
                                 c = Cronometro(segundos, display);
                                 multiPage.set_selectedIndex(parseInt(position));
+                                var pane = $find("<%= radPanelPreguntas.ClientID %>");
+                                pane.collapse();
                             }
 
                             break;
@@ -229,6 +260,8 @@
                                 var display = document.querySelector('#time');
                                 c = Cronometro(segundos, display);
                                 multiPage.set_selectedIndex(parseInt(position));
+                                var pane = $find("<%= radPanelPreguntas.ClientID %>");
+                                pane.collapse();
                             }
                             break;
                         default: break;
@@ -7204,7 +7237,7 @@
     <div style="clear: both; height: 10px;"></div>
 
     <div class="DivMoveLeft" id="cronometro" runat="server">
-        <div class="Cronometro">Tiempo restante <span id="time">15:00</span></div>
+        <div class="Cronometro">Tiempo restante <span id="time"></span></div>
     </div>
 
     <div class="divControlDerecha">
