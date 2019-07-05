@@ -64,8 +64,6 @@ namespace SIGE.WebApp.Comunes
                 vClCatalogo = Request.QueryString["CatalogoCl"];
                 if (String.IsNullOrEmpty(vClCatalogo))
                     vClCatalogo = "PLAZA";
-                else if (vClCatalogo.ToString() == "2")
-                    vClCatalogo = "PLAZA_INTERRELACIONADA";
 
                 vClTipoSeleccion = Request.QueryString["TipoSeleccionCl"];
                 if (String.IsNullOrEmpty(vClTipoSeleccion))

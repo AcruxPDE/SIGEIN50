@@ -64,11 +64,7 @@ namespace SIGE.WebApp.Comunes
                                 ((HtmlGenericControl)vControl.CtrlLabel).Style.Add("display", "inline-block");
                                 ((HtmlGenericControl)vControl.CtrlLabel).Style.Add("padding-right", "10px");
                                 ((HtmlGenericControl)vControl.CtrlLabel).Style.Add("text-align", "right");
-
-                                if(vControl.IdControl == "DS_COMPETENCIAS_ADICIONALES")
-                                    ((HtmlGenericControl)vControl.CtrlLabel).Style.Add("width", "670px");
-                                else
-                                    ((HtmlGenericControl)vControl.CtrlLabel).Style.Add("width", "200px");
+                                ((HtmlGenericControl)vControl.CtrlLabel).Style.Add("width", "200px");
 
                                 vControlHTML.Controls.Add(vControl.CtrlLabel);
                             }
@@ -208,7 +204,6 @@ namespace SIGE.WebApp.Comunes
                             case "COMBOBOX":
                                 RadComboBox vCtrlControlDependiente = (RadComboBox)vPageView.FindControl(vIdControlDependiente);
                                 vCtrlControlDependiente.Items.Clear();
-                                vCtrlControlDependiente.Text = "Seleccione";
                                 if (vXmlCtrlDependiente.Element("ITEMS") != null)
                                     foreach (XElement item in vXmlCtrlDependiente.Element("ITEMS").Elements("ITEM").Where(w => UtilXML.ValorAtributo<string>(w.Attribute("NB_VALOR_PADRE")).ToUpper() == vNbValor.ToUpper()))
                                         vCtrlControlDependiente.Items.Add(new RadComboBoxItem()
@@ -219,21 +214,6 @@ namespace SIGE.WebApp.Comunes
                                             Selected = UtilXML.ValorAtributo<string>(item.Attribute("NB_VALOR")).Equals(vValorSeleccionado) ? true : false
                                         });
 
-                                if(vNbValor == "PRIMARIA" || vNbValor == "SECUNDARIA")
-                                {
-                                    vCtrlControlDependiente.SelectedIndex = 0;
-                                    vCtrlControlDependiente.Enabled = true;
-                                }
-                                    
-                                else if (vNbValor == "SINESTUDIOS")
-                                {
-                                    vCtrlControlDependiente.SelectedIndex = 0;
-                                    vCtrlControlDependiente.Enabled = false;
-                                }
-
-                                else
-                                    vCtrlControlDependiente.Enabled = true;
-                                
                                 break;
                         }
                     }

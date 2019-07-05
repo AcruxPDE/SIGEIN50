@@ -193,15 +193,6 @@ namespace SIGE.WebApp.MPC {
         protected global::Telerik.Web.UI.RadButton btnEliminarEmpleados;
         
         /// <summary>
-        /// btnGuardarEmpleados control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnGuardarEmpleados;
-        
-        /// <summary>
         /// rpAyudaSeleccionEmpleados control.
         /// </summary>
         /// <remarks>
@@ -317,15 +308,6 @@ namespace SIGE.WebApp.MPC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnEliminarCompetencias;
-        
-        /// <summary>
-        /// btnGuardarCompetencias control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnGuardarCompetencias;
         
         /// <summary>
         /// rpAyudaFactoresValuacion control.

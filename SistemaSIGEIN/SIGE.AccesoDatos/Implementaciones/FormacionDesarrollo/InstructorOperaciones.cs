@@ -18,25 +18,11 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
     {
         private SistemaSigeinEntities contexto;
 
-        public List<E_INSTRUCTORES> ObtenerInstructores(int? pIdInstructor = null, int? pIdCompetencia = null, int? pIdCurso = null, string pXmlCompetencias = null, int? pID_EMPRESA = null)
+        public List<SPE_OBTIENE_INSTRUCTORES_Result> ObtenerInstructores(int? pIdInstructor = null, int? pIdCompetencia = null, int? pIdCurso = null, string pXmlCompetencias = null, int? pID_EMPRESA = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.Database.SqlQuery<E_INSTRUCTORES>("EXEC " +
-                    "FYD.SPE_OBTIENE_INSTRUCTORES " +
-                    "@PIN_ID_INSTRUCTOR, " +
-                    "@PIN_ID_COMPETENCIA, " +
-                    "@PIN_ID_CURSO, " +
-                    "@PIN_XML_COMPETENCIAS, " +
-                    "@PIN_ID_EMPRESA ",
-                    new SqlParameter("@PIN_ID_INSTRUCTOR", (Object)pIdInstructor ?? DBNull.Value),
-                    new SqlParameter("@PIN_ID_COMPETENCIA", (Object)pIdCompetencia ?? DBNull.Value),
-                    new SqlParameter("@PIN_ID_CURSO", (Object)pIdCurso ?? DBNull.Value),
-                    new SqlParameter("@PIN_XML_COMPETENCIAS", (Object)pXmlCompetencias ?? DBNull.Value),
-                    new SqlParameter("@PIN_ID_EMPRESA", (Object)pID_EMPRESA ?? DBNull.Value)
-                ).ToList();
-
-                //return contexto.SPE_OBTIENE_INSTRUCTORES(pIdInstructor, pIdCompetencia, pIdCurso, pXmlCompetencias,pID_EMPRESA).ToList();
+                return contexto.SPE_OBTIENE_INSTRUCTORES(pIdInstructor, pIdCompetencia, pIdCurso, pXmlCompetencias,pID_EMPRESA).ToList();
             }
         }
 
@@ -122,9 +108,7 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
                       ",@PIN_CL_TIPO_INSTRUCTOR " +
                       ",@PIN_CL_INTRUCTOR " +   
                       ",@PIN_NB_INSTRUCTOR " +
-                      ",@PIN_NB_APELLIDO_PATERNO " +
-                      ",@PIN_NB_APELLIDO_MATERNO " +
-                      ",@PIN_NB_VALIDADOR " +                      
+                      ",@PIN_NB_VALIDADOR " +
                       ",@PIN_CL_RFC " +
                       ",@PIN_CL_CURP " +
                       ",@PIN_CL_STPS " +
@@ -160,8 +144,6 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
                     , new SqlParameter("@PIN_CL_TIPO_INSTRUCTOR", (object)pInstructor.CL_TIPO_INSTRUCTOR ?? DBNull.Value)
                     , new SqlParameter("@PIN_CL_INTRUCTOR", (object)pInstructor.CL_INTRUCTOR ?? DBNull.Value)
                     , new SqlParameter("@PIN_NB_INSTRUCTOR", (object)pInstructor.NB_INSTRUCTOR ?? DBNull.Value)
-                    , new SqlParameter("@PIN_NB_APELLIDO_PATERNO", (object)pInstructor.NB_APELLIDO_PATERNO ?? DBNull.Value)
-                    , new SqlParameter("@PIN_NB_APELLIDO_MATERNO", (object)pInstructor.NB_APELLIDO_MATERNO ?? DBNull.Value)
                     , new SqlParameter("@PIN_NB_VALIDADOR", (object)pInstructor.NB_VALIDADOR ?? DBNull.Value)
                     , new SqlParameter("@PIN_CL_RFC", (object)pInstructor.CL_RFC ?? DBNull.Value)
                     , new SqlParameter("@PIN_CL_CURP", (object)pInstructor.CL_CURP ?? DBNull.Value)

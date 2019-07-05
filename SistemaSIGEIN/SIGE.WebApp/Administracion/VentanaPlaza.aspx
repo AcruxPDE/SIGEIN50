@@ -38,7 +38,7 @@
                     var browserWnd = window;
                     if (currentWnd)
                         browserWnd = currentWnd.BrowserWindow;
-                    browserWnd.radalert("Para asignar esta plaza a otra persona, es importante que se libere desde el inventario de personal.", 400, 180, "Aviso");
+                    browserWnd.radalert("Para asignar esta plaza a otra persona, es importante que se libere desde el inventario de personal.", 400, 180);
                 } else { OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?mulSel=0", "winSeleccion", "Selección de empleado") }
             }
         }
@@ -64,7 +64,7 @@
                     var browserWnd = window;
                     if (currentWnd)
                         browserWnd = currentWnd.BrowserWindow;
-                    browserWnd.radalert("Para asignar esta plaza a otra persona, es importante que se libere desde el inventario de personal.", 400, 180, "Aviso");
+                    browserWnd.radalert("Para asignar esta plaza a otra persona, es importante que se libere desde el inventario de personal.", 400, 180);
                 } else { ChangeListItem("", "No Seleccionado", $find("<%=lstEmpleado.ClientID %>")); }
             }
         }
@@ -103,10 +103,6 @@
                     case "GRUPO":
                         InsertarDato(EncapsularDatos("GRUPO", pDato));
                         break;
-                    case "PLAZA_INTERRELACIONADA":
-                        InsertarDato(EncapsularDatos("PLAZA_INTERRELACIONADA", pDato));
-                        break;
-
                 }
 
                 if (list)
@@ -139,11 +135,6 @@
             item.set_selected(true);
             vListBox.commitChanges();
         }
-
-        function OpenPlazaInterrelacionadaSelectionWindow() {
-            OpenSelectionWindow("../Comunes/SeleccionPlaza.aspx?mulSel=1&CatalogoCl=2&TipoSeleccionCl=OCUPADAS", "winSeleccion", "Selección de plaza")
-        }
-
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
@@ -155,18 +146,11 @@
                     <telerik:AjaxUpdatedControl ControlID="rgGrupos" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel2"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
-            <telerik:AjaxSetting AjaxControlID="btnEliminarPlazaInter">
-                <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="grdPuestosInterrelacionados" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel2"></telerik:AjaxUpdatedControl>
-                </UpdatedControls>
-            </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="rgGrupos" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel2"></telerik:AjaxUpdatedControl>
-                    <telerik:AjaxUpdatedControl ControlID="grdPuestosInterrelacionados" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel2"></telerik:AjaxUpdatedControl>
-                 </UpdatedControls>
+                </UpdatedControls>
             </telerik:AjaxSetting>
-
         </AjaxSettings>
     </telerik:RadAjaxManager>
     <div style="height: calc(100% - 50px); overflow: auto;">
@@ -308,48 +292,7 @@
                 </div>
             </div>
         </div>
-        <div style="clear: both;"></div>
-        <div class="ctrlBasico">
-            <div class="divControlIzquierda">
-                <label name="lblPuestoInterrelacionados">Puestos interrelacionados:</label>
-            </div>
-            <div class="divControlDerecha">
-                <div class="ctrlBasico" style="width: 420px;">
-                    <telerik:RadGrid OnNeedDataSource="grdPuestosInterrelacionados_NeedDataSource"
-                        ID="grdPuestosInterrelacionados"
-                        runat="server"
-                        Width="420"
-                        Height="300"
-                        AllowPaging="true"
-                        AutoGenerateColumns="false"
-                        HeaderStyle-Font-Bold="true"
-                        EnableHeaderContextMenu="true"
-                        AllowMultiRowSelection="true">
-                        <GroupingSettings CaseSensitive="False" />
-                        <ClientSettings>
-                            <Scrolling AllowScroll="true" UseStaticHeaders="true" SaveScrollPosition="true" />
-                            <Selecting AllowRowSelect="true" EnableDragToSelectRows="true" />
-                        </ClientSettings>
-                        <PagerStyle AlwaysVisible="true" />
-                        <MasterTableView DataKeyNames="ID_PLAZA" ClientDataKeyNames="ID_PLAZA" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true">
-                            <Columns>
-                                <telerik:GridBoundColumn Visible="false" UniqueName="ID_PLAZA" DataField="ID_PLAZA" HeaderText="Clave" AutoPostBackOnFilter="true" HeaderStyle-Width="100" FilterControlWidth="30" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn UniqueName="NB_PLAZA" DataField="NB_PLAZA" HeaderText="Clave" AutoPostBackOnFilter="true" HeaderStyle-Width="150" FilterControlWidth="50" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn UniqueName="NB_EMPLEADO" DataField="NB_EMPLEADO" HeaderText="Nombre" AutoPostBackOnFilter="true" HeaderStyle-Width="240" FilterControlWidth="200" CurrentFilterFunction="Contains"></telerik:GridBoundColumn>
-                            </Columns>
-                        </MasterTableView>
-                    </telerik:RadGrid>
-                </div>
-                <div class="ctrlBasico" style="float: left">
-                    <telerik:RadButton ID="btnBuscarPlazaInter" runat="server" Text="B" AutoPostBack="false" ToolTip="Seleccionar plaza interrelacionada" OnClientClicked="OpenPlazaInterrelacionadaSelectionWindow"></telerik:RadButton>
-                    <div style="clear: both;"></div>
-                    <telerik:RadButton ID="btnEliminarPlazaInter" runat="server" Text="X" AutoPostBack="true" ToolTip="Eliminar puesto interrelacionado" OnClick="btnEliminarPlazaInter_Click"></telerik:RadButton>
-                </div>
-            </div>
-        </div>
-
     </div>
-
     <div style="clear: both;"></div>
     <div class="divControlDerecha">
         <div class="ctrlBasico">

@@ -103,42 +103,6 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadTextBox txtNombre;
         
         /// <summary>
-        /// lblApellidoPaterno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblApellidoPaterno;
-        
-        /// <summary>
-        /// txtApellidoPaterno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtApellidoPaterno;
-        
-        /// <summary>
-        /// lblApellidoMaterno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblApellidoMaterno;
-        
-        /// <summary>
-        /// txtApellidoMaterno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtApellidoMaterno;
-        
-        /// <summary>
         /// lblNombreValIns control.
         /// </summary>
         /// <remarks>

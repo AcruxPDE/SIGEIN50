@@ -1,6 +1,5 @@
 ﻿using SIGE.AccesoDatos.Implementaciones.Administracion;
 using SIGE.Entidades;
-using SIGE.Entidades.Administracion;
 using SIGE.Entidades.Externas;
 using SIGE.Negocio.Utilerias;
 using System;
@@ -14,13 +13,13 @@ namespace SIGE.Negocio.AdministracionSitio
 {
     public class PlazaNegocio
     {
-        public List<E_PLAZA> ObtienePlazas(int? pIdPlaza = null, XElement pXmlSeleccion = null, int? pID_EMPRESA = null, int? pID_ROL = null)
+        public List<SPE_OBTIENE_PLAZAS_Result> ObtienePlazas(int? pIdPlaza = null, XElement pXmlSeleccion = null, int? pID_EMPRESA = null, int? pID_ROL = null)
         {
             PlazaOperaciones oPlaza = new PlazaOperaciones();
             return oPlaza.ObtenerPlazas(pIdPlaza, pXmlSeleccion, pID_EMPRESA, pID_ROL);
         }
 
-        public E_RESULTADO InsertaActualizaPlaza(E_TIPO_OPERACION_DB pClTipoOperacion, Entidades.Administracion.E_PLAZA pPlaza, string pClUsuario, string pNbPrograma)
+        public E_RESULTADO InsertaActualizaPlaza(E_TIPO_OPERACION_DB pClTipoOperacion, SPE_OBTIENE_PLAZAS_Result pPlaza, string pClUsuario, string pNbPrograma)
         {
             PlazaOperaciones oPlaza = new PlazaOperaciones();
             return UtilRespuesta.EnvioRespuesta(oPlaza.InsertarActualizarPlaza(pClTipoOperacion, pPlaza, pClUsuario, pNbPrograma));
@@ -31,7 +30,5 @@ namespace SIGE.Negocio.AdministracionSitio
             PlazaOperaciones oPlaza = new PlazaOperaciones();
             return UtilRespuesta.EnvioRespuesta(oPlaza.EliminarPlaza(pIdPlaza, pClUsuario, pNbPrograma));
         }
-
-        
     }
 }

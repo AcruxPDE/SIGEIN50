@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using SIGE.Entidades;
 using System.Xml.Linq;
 using SIGE.Entidades.SecretariaTrabajoPrevisionSocial;
-using SIGE.Entidades.Administracion;
 
 namespace SIGE.Negocio.Administracion
 {
@@ -665,12 +664,6 @@ namespace SIGE.Negocio.Administracion
         {
             DescriptivoOperaciones oDescriptivo = new DescriptivoOperaciones();
             return oDescriptivo.ObtenerSubordinadosDescriptivo(pIdPuesto);
-        }
-
-        public List<E_PUESTO_INTERRELACIONADO> ObtenerPuestosInterrelacionadas(int? pIdPuesto)
-        {
-            DescriptivoOperaciones oDescriptivo = new DescriptivoOperaciones();
-            return oDescriptivo.ObtenerPuestosInterrelacionadas(pIdPuesto);
         }
 
     }

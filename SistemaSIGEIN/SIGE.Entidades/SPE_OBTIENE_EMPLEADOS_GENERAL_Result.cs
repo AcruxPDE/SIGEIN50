@@ -61,7 +61,6 @@ namespace SIGE.Entidades
         public string C_EMPRESA_NB_EMPRESA { get; set; }
         public string C_EMPRESA_NB_RAZON_SOCIAL { get; set; }
         public Nullable<int> C_EMPRESA_ID_EMPRESA { get; set; }
-        public string  M_DEPARTAMENTO_NB_DEPARTAMENTO { get; set; }
         public byte[] FI_FOTOGRAFIA { get; set; }
         public string CL_EMPLEADO_NOMINA { get; set; }
         public Nullable<bool> FG_ACTIVO_DO { get; set; }

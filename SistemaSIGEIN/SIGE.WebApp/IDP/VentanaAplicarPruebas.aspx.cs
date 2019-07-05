@@ -171,8 +171,7 @@ namespace SIGE.WebApp.IDP
                 if (es != null)
                 {
                     lstCandidatoS.Remove(es);
-                    UtilMensajes.MensajeDB(rwmAlertas, "Proceso exitoso", E_TIPO_RESPUESTA_DB.SUCCESSFUL, 400, 150, "");
-                    // ContextoCandidatosBateria.oCandidatosBateria.Where(w=> w.vIdGeneraBaterias == vIdCandidatosPruebas).FirstOrDefault().vListaCandidatos.RemoveAll(w => w == es.ID_CANDIDATO);
+                   // ContextoCandidatosBateria.oCandidatosBateria.Where(w=> w.vIdGeneraBaterias == vIdCandidatosPruebas).FirstOrDefault().vListaCandidatos.RemoveAll(w => w == es.ID_CANDIDATO);
                 }
             }
             grdCandidatos.Rebind();

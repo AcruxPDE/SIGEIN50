@@ -494,17 +494,14 @@ namespace SIGE.WebApp.FYD
                 string vClEstadoMail = "SendMail";
                 //int contador = 0;
                 string vTitulo;
-                string vTipo;
 
                 if (vPrograma != null)
                 {
-                    vTitulo = "Autorización programa de capacitación    ";
-                    vTipo = "Programa Capacitacion";
+                    vTitulo = "Solicitud de autorización de un programa de capacitación";
                 }
                 else
                 {
-                    vTitulo = "Autorización matriz de evaluación";
-                    vTipo = "Matriz evaluacion";
+                    vTitulo = "Solicitud de autorización de período de evaluación";
                 }
 
 
@@ -515,9 +512,6 @@ namespace SIGE.WebApp.FYD
 
                     int idAutorizacion = int.Parse(vDataItem.GetDataKeyValue("ID_AUTORIZACION").ToString());
                     //RadTextBox vClCorreoElectronico = (RadTextBox)vDataItem.FindControl("txtClCorreoElectronico");
-
-                    string nbEmpleado = vDataItem.GetDataKeyValue("NB_EMPLEADO").ToString();
-                    //Persona aquien se enviara la autorizacion
 
                     var vDocumento = vDocumentosAutorizar.Where(x => x.ID_AUTORIZACION == idAutorizacion).FirstOrDefault();
                     //vDocumento.CL_CORREO_ELECTRONICO = vClCorreoElectronico.Text;
@@ -540,46 +534,23 @@ namespace SIGE.WebApp.FYD
                         switch (vClEstadoMail)
                         {
                             case "SendMail":
-                                if(vTipo == "Matriz evaluacion")
-                                {
-                                    vResultadoEnvio = mail.Send(vTitulo, String.Format(" <html>" +
+                                vResultadoEnvio = mail.Send(vTitulo, String.Format(" <html>" +
                                         " <head>" +
                                         " <title>Solicitud</title>" +
                                         " <meta charset=\"utf-8\"> " +
                                         " </head>" +
                                         " <body>" +
-                                        " <p>Estimado(a):  <b> " + nbEmpleado + " </b></p>" +
-                                        " <p> Por medio de la presente te informamos que has recibido una solicitud para autorizar la matriz de evaluación de competencias del período: <b>" + vPeriodo.NB_PERIODO + " </b></p> " +
-                                        " <p> Para autorizar, da clik <a href=\"{1}\" >aquí</a> </p>" +
-                                        " <p>Tu contraseña de acceso es <b>{0}</b></p>" +
-                                        " <p>¡Gracias por tu apoyo! </p>" +
+                                        " <p>Has recibido una solicitud de autorización de documentos. En caso de que decidas no autorizarlo anota las razones de esta decisión. </p>" +
+                                        " <br>" +
+                                        " <a href=\"{1}\" >Haga click aquí para ver el documento </a>" +
+                                        " <br>" +
+                                        " <p>Tu contraseña de acceso es <b>{0}</b> . ¡Gracias por tu apoyo! </p>" +
                                         " </body>" +
                                         " </html>",
                                         vDocumento.CL_TOKEN.ToString(),
                                         vUrl
                                        ));
-                                }
-                                else if (vTipo == "Programa Capacitacion")
-                                {
-                                    vResultadoEnvio = mail.Send(vTitulo, String.Format(" <html>" +
-                                        " <head>" +
-                                        " <title>Solicitud</title>" +
-                                        " <meta charset=\"utf-8\"> " +
-                                        " </head>" +
-                                        " <body>" +
-                                        " <p>Estimado(a):  <b> " + nbEmpleado + " </b></p>" +
-                                        " <p> Por medio de la presente te informamos que has recibido una solicitud para autorizar el programa de capacitación <b>" + vPeriodo.NB_PERIODO + " </b></p> " +
-                                        " <p> Para autorizar, da clik <a href=\"{1}\" >aquí</a> </p>" +
-                                        " <p> La contraseña de acceso es <b>{0}</b></p>" +
-                                        " <p>¡Gracias por tu apoyo! </p>" +
-                                        " </body>" +
-                                        " </html>",
-                                        vDocumento.CL_TOKEN.ToString(),
-                                        vUrl
-                                       ));
-                                }
-                                
-                            break;
+                                break;
                         }
                         if (vResultadoEnvio == "0")
                         {

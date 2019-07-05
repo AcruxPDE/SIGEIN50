@@ -511,12 +511,6 @@ namespace SIGE.WebApp.EO
                         btmSleccionarArea.Enabled = false;
                         btnEliminarEvaluador.Enabled = false;
                         btnAplicar.Enabled = false;
-                        btnGuardarPreguntasAbiertas.Enabled = false;
-                        btnGuardarCuestionario.Enabled = false;
-                        btnGuardarCerrar.Visible = false;
-                        btnGuardarEnvioCuestionarios.Enabled = false;
-                        btnGuardarSeleccion.Enabled = false;
-                        btnCerrar.Visible = true;
                     }
                     else
                     {
@@ -620,12 +614,6 @@ namespace SIGE.WebApp.EO
                         btmSleccionarArea.Enabled = false;
                         btnEliminarEvaluador.Enabled = false;
                         btnAplicar.Enabled = false;
-                        btnGuardarPreguntasAbiertas.Enabled = false;
-                        btnGuardarCuestionario.Enabled = false;
-                        btnGuardarCerrar.Visible = false;
-                        btnGuardarEnvioCuestionarios.Enabled = false;
-                        btnGuardarSeleccion.Enabled = false;
-                        btnCerrar.Visible = true;
 
                         btnSeleccionar.Enabled = false;
                         btnSeleccionarPuesto.Enabled = false;
@@ -777,25 +765,24 @@ namespace SIGE.WebApp.EO
         //    }
         //}
 
-
-        protected void btnGuardar_Click(object sender, EventArgs e)
+        protected void btnAplicar_Click(object sender, EventArgs e)
         {
             FiltrosIndice();
             if (vXmlFiltrosSel != null)
             {
                 ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
                 E_RESULTADO vResultado = nClima.InsertaFiltroClima(vIdPeriodo, vXmlFiltrosSel, vClUsuario, vNbPrograma);
-                //string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                //UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
-                GuardarDatos(false);
+                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
             }
-            else if (txtTipo.InnerText == "Evaluadores asignados")
-                GuardarDatos(false);            
             else
+            {
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, "Aplique por lo menos un filtro para guardar la configuración.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+            }
+
         }
 
-        protected void GuardarDatos(bool cerrar)
+        protected void btnGuardar_Click(object sender, EventArgs e)
         {
             //ContextoApp.EO.MensajeCorreoEvaluador.dsMensaje = lMensaje.Content;
             ClimaLaboralNegocio nPeriodo = new ClimaLaboralNegocio();
@@ -825,15 +812,13 @@ namespace SIGE.WebApp.EO
             {
                 E_RESULTADO vResultado = nPeriodo.InsertaActualizaPeriodoClima(pPeriodo: vDsPeriodo, pCL_USUARIO: vClUsuario, pNB_PROGRAMA: vNbPrograma, pTIPO_TRANSACCION: "A");
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-
-                if (cerrar)
-                    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "CloseWindowConfig");
-                else
-                    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
             }
             else
+            {
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensajeInstrucciones, vResultadoInstrucciones.CL_TIPO_ERROR, pCallBackFunction: null);
 
+            }
         }
 
         //protected void btnInstrucciones_Click(object sender, EventArgs e)
@@ -956,20 +941,5 @@ namespace SIGE.WebApp.EO
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: null);
         }
 
-        protected void btnGuardarCerrar_Click(object sender, EventArgs e)
-        {
-            if (grdEmpleadosSeleccionados.Items.Count != 0)
-                GuardarDatos(true);
-            else
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione por lo menos un evaluado para guardar la configuración.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
-        }
-
-        protected void btnGuardarSeleccion_Click(object sender, EventArgs e)
-        {
-            if(grdEmpleadosSeleccionados.Items.Count != 0)
-                GuardarDatos(false);
-            else
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione por lo menos un evaluado para guardar la configuración.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
-        }
     }
 }

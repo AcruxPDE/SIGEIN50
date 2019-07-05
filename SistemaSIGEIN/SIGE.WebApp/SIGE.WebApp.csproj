@@ -21,7 +21,6 @@
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <TargetFrameworkProfile />
     <UseGlobalApplicationHostFile />
-    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -283,7 +282,6 @@
     <Content Include="Administracion\VentanaGrupos.aspx" />
     <Content Include="Administracion\VentanaInventarioPersonalNomina.aspx" />
     <Content Include="Administracion\VentanaOrganigramaPlazas.aspx" />
-    <Content Include="Administracion\VentanaOrganigramaPuesto.aspx" />
     <Content Include="Administracion\VentanaReingresoEmpleado.aspx" />
     <Content Include="Administracion\VentanaVerOrganigrama.aspx" />
     <Content Include="Assets\AdvancedTools.xml">
@@ -604,7 +602,6 @@
     <Content Include="Comunes\SeleccionLocalizacion\SeleccionCP.aspx" />
     <Content Include="Comunes\SeleccionPeriodoParaTablero.aspx" />
     <Content Include="Comunes\SeleccionPeriodosDesempeno.aspx" />
-    <Content Include="Comunes\SeleccionPlazaPuesto.aspx" />
     <Content Include="Comunes\SeleccionPruebas.aspx" />
     <Content Include="Comunes\SeleccionPuestoNominaDo.aspx" />
     <Content Include="Comunes\SeleccionUsuario.aspx" />
@@ -1236,13 +1233,6 @@
     <Compile Include="Administracion\VentanaOrganigramaPlazas.aspx.designer.cs">
       <DependentUpon>VentanaOrganigramaPlazas.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Administracion\VentanaOrganigramaPuesto.aspx.cs">
-      <DependentUpon>VentanaOrganigramaPuesto.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Administracion\VentanaOrganigramaPuesto.aspx.designer.cs">
-      <DependentUpon>VentanaOrganigramaPuesto.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Administracion\VentanaReingresoEmpleado.aspx.cs">
       <DependentUpon>VentanaReingresoEmpleado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1315,13 +1305,6 @@
     </Compile>
     <Compile Include="Comunes\SeleccionPeriodosDesempeno.aspx.designer.cs">
       <DependentUpon>SeleccionPeriodosDesempeno.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Comunes\SeleccionPlazaPuesto.aspx.cs">
-      <DependentUpon>SeleccionPlazaPuesto.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Comunes\SeleccionPlazaPuesto.aspx.designer.cs">
-      <DependentUpon>SeleccionPlazaPuesto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Comunes\SeleccionPruebas.aspx.cs">
       <DependentUpon>SeleccionPruebas.aspx</DependentUpon>

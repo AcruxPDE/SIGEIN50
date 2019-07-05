@@ -193,33 +193,6 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadButton btnEliminar;
         
         /// <summary>
-        /// Control grdPuestosInterrelacionados.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid grdPuestosInterrelacionados;
-        
-        /// <summary>
-        /// Control btnBuscarPlazaInter.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnBuscarPlazaInter;
-        
-        /// <summary>
-        /// Control btnEliminarPlazaInter.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnEliminarPlazaInter;
-        
-        /// <summary>
         /// Control btnGuardar.
         /// </summary>
         /// <remarks>

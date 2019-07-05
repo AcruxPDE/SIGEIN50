@@ -15,7 +15,7 @@ namespace SIGE.Negocio.FormacionDesarrollo
 {
     public class InstructorNegocio
     {
-        public List<E_INSTRUCTORES> ObtieneInstructores(int? pIdInstructor = null, int? pIdCompetencia = null, int? pIdCurso = null, string pXmlCompetencias = null, int? pIdEmpresa = null)
+        public List<SPE_OBTIENE_INSTRUCTORES_Result> ObtieneInstructores(int? pIdInstructor = null, int? pIdCompetencia = null, int? pIdCurso = null, string pXmlCompetencias = null, int? pIdEmpresa = null)
         {
             InstructorOperaciones oInstructor = new InstructorOperaciones();
             return oInstructor.ObtenerInstructores(pIdInstructor, pIdCompetencia, pIdCurso, pXmlCompetencias,pIdEmpresa);
@@ -27,21 +27,21 @@ namespace SIGE.Negocio.FormacionDesarrollo
             return oTipoTelefono.ObtenerTipoTelefono(pIdTipoTelefono);
         }
 
-        public List<E_INSTRUCTORES> ObtieneInstructor(int? pIdInstructor)
+        public List<SPE_OBTIENE_INSTRUCTORES_Result> ObtieneInstructor(int? pIdInstructor)
         {
             InstructorOperaciones nInstructorCurso = new InstructorOperaciones();
-            List<E_INSTRUCTORES> vInstructorCompetencia = nInstructorCurso.ObtenerInstructores(pIdInstructor, null, null);
+            List<SPE_OBTIENE_INSTRUCTORES_Result> vInstructorCompetencia = nInstructorCurso.ObtenerInstructores(pIdInstructor, null, null);
             return vInstructorCompetencia;
         }
 
         public List<E_INSTRUCTOR_COMPETENCIA> ObtieneInstructorCompetencia(int? pIdInstructor)
         {
             InstructorOperaciones nInstructorCompetencia = new InstructorOperaciones();
-            List<E_INSTRUCTORES> vInstructorCompetencia = nInstructorCompetencia.ObtenerInstructores(pIdInstructor, null, null);
+            List<SPE_OBTIENE_INSTRUCTORES_Result> vInstructorCompetencia = nInstructorCompetencia.ObtenerInstructores(pIdInstructor, null, null);
 
             List<E_INSTRUCTOR_COMPETENCIA> InstructorCompetencia = new List<E_INSTRUCTOR_COMPETENCIA>();
 
-            foreach (E_INSTRUCTORES element in vInstructorCompetencia)
+            foreach (SPE_OBTIENE_INSTRUCTORES_Result element in vInstructorCompetencia)
             {
                 InstructorCompetencia = XElement.Parse(element.XML_COMPETENCIAS).Elements("COMPETENCIA").Select(el => new E_INSTRUCTOR_COMPETENCIA
                 {

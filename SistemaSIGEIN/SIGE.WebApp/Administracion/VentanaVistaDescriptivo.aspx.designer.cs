@@ -118,7 +118,7 @@ namespace SIGE.WebApp.Administracion {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadListBox txtOtroNivelEst;
+        protected global::Telerik.Web.UI.RadTextBox txtOtroNivelEst;
         
         /// <summary>
         /// Control lstCompetenciasEspecificas.
@@ -139,13 +139,13 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadListBox lstExperiencia;
         
         /// <summary>
-        /// Control txtTipoPuesto.
+        /// Control txtRequerimientos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtTipoPuesto;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtRequerimientos;
         
         /// <summary>
         /// Control txtObservaciones.
@@ -157,13 +157,13 @@ namespace SIGE.WebApp.Administracion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtObservaciones;
         
         /// <summary>
-        /// Control txtRequerimientos.
+        /// Control txtTipoPuesto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtRequerimientos;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtTipoPuesto;
         
         /// <summary>
         /// Control lstJefesInmediatos.
@@ -299,6 +299,42 @@ namespace SIGE.WebApp.Administracion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtPrestaciones;
+        
+        /// <summary>
+        /// Control lblCveOcupacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCveOcupacion;
+        
+        /// <summary>
+        /// Control lblClOcupación.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadLabel lblClOcupación;
+        
+        /// <summary>
+        /// Control lblOcupacionS.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblOcupacionS;
+        
+        /// <summary>
+        /// Control lblOcupacionSeleccionada.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadLabel lblOcupacionSeleccionada;
         
         /// <summary>
         /// Control txtCDClaveDocumento.
