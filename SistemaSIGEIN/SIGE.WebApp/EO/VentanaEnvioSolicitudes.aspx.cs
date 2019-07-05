@@ -214,7 +214,7 @@ namespace SIGE.WebApp.EO
                             vMensaje = vMensaje.Replace("[CONTRASENA]", item.GetDataKeyValue("CL_TOKEN").ToString());
 
                             //Envío de correo
-                            bool vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbEvaluador, "Solicitud de evaluación", vMensaje);
+                            vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbEvaluador, "Solicitud de evaluación", vMensaje);
 
                             if (vEstatusCorreo)
                             {

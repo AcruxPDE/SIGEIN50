@@ -10,6 +10,7 @@ using System.Xml;
 using SIGE.Entidades;
 using System.Web.UI.HtmlControls;
 using SIGE.WebApp.EO.Cuestionarios;
+using static SIGE.WebApp.EO.ConfiguracionClima;
 
 namespace SIGE.WebApp.EO
 {
