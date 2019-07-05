@@ -13,7 +13,7 @@
                 if (selectedItem != undefined)
                     OpenWindow(selectedItem.getDataKeyValue("ID_ROL"));
                 else
-                    radalert("Selecciona un rol.", 400, 150);
+                    radalert("Selecciona un rol.", 400, 150, "Aviso");
             }
 
             function OpenWindow(pIdRol) {
@@ -56,10 +56,14 @@
                         height: 200
                     };
 
-                    confirmAction(sender, args, "¿Deseas eliminar el rol " + vNombre + "?, este proceso no podrá revertirse");
+                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                    radconfirm("¿Deseas eliminar el rol " + vNombre + "?, este proceso no podrá revertirse", callBackFunction, 400, 170, null, "Aviso");
+                    args.set_cancel(true);
+
                 }
                 else {
-                    radalert("Selecciona un rol.", 400, 150);
+                    radalert("Selecciona un rol.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }

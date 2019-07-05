@@ -77,7 +77,7 @@
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                 { if (shouldSubmit) { this.click(); } });
 
-                radconfirm('Los cambios efectuados impactará en la planeación de incrementos y las consultas, ¿Deseas continuar?', callBackFunction, 400, 170, null, "Confirmar guardar");
+                radconfirm('Los cambios efectuados impactará en la planeación de incrementos y las consultas, ¿Deseas continuar?', callBackFunction, 400, 170, null, "Aviso");
                 args.set_cancel(true);
             }
 
@@ -85,7 +85,7 @@
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                 { if (shouldSubmit) { this.click(); } });
 
-                radconfirm('Esta opción borrará los valores en tabulador(mostrados actualmente) y recalculará en base al mercado salarial, ¿Deseas continuar?', callBackFunction, 400, 170, null, "Confirmar");
+                radconfirm('Esta opción borrará los valores en tabulador(mostrados actualmente) y recalculará en base al mercado salarial, ¿Deseas continuar?', callBackFunction, 400, 170, null, "Aviso");
                 args.set_cancel(true);
             }
 

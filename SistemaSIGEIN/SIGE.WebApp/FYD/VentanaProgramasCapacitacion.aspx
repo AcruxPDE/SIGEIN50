@@ -75,11 +75,11 @@
                     var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                     { if (shouldSubmit) { this.click(); } });
 
-                    radconfirm('¿Deseas eliminar la competencia ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                    radconfirm('¿Deseas eliminar la competencia ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                     args.set_cancel(true);
                 }
             } else {
-                radalert("Seleccione una competencia.", 400, 150, "");
+                radalert("Seleccione una competencia.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -112,7 +112,7 @@
                 OpenRadWindow(GetAutorizacionProgramaProperties(vIdPrograma));
             }
             else {
-                radalert("Selecciona un programa.", 400, 150);
+                radalert("Selecciona un programa.", 400, 150, "Aviso");
             }
         }
 
@@ -129,11 +129,11 @@
                     var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                     { if (shouldSubmit) { this.click(); } });
 
-                    radconfirm('¿Deseas eliminar el empleado ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                    radconfirm('¿Deseas eliminar el empleado ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                     args.set_cancel(true);
                 }
             } else {
-                radalert("Seleccione un empleado.", 400, 150, "");
+                radalert("Seleccione un empleado.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -150,11 +150,11 @@
                     var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                     { if (shouldSubmit) { this.click(); } });
 
-                    radconfirm('¿Deseas eliminar la competencia(s) seleccionadas ' + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                    radconfirm('¿Deseas eliminar la competencia(s) seleccionadas ' + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                     args.set_cancel(true);
                 }
             } else {
-                radalert("Seleccione una competencia.", 400, 150, "");
+                radalert("Seleccione una competencia.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }

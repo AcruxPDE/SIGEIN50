@@ -90,16 +90,16 @@
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas eliminar la versión ' + vClTabulador + ' del tabulador? Esta opción eliminará todos los datos relacionados con la versión y no podrá revertirse.', callBackFunction, 450, 200, null, "Eliminar versión del tabulador");
+                        radconfirm('¿Deseas eliminar la versión ' + vClTabulador + ' del tabulador? Esta opción eliminará todos los datos relacionados con la versión y no podrá revertirse.', callBackFunction, 450, 200, null, "Aviso");
                         args.set_cancel(true);
                     }
                     else {
-                        radalert("Seleccione una versión del tabulador.", 400, 200, "");
+                        radalert("Seleccione una versión del tabulador.", 400, 200, "Aviso");
                         args.set_cancel(true);
                     }
                 }
                 else {
-                    radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "");
+                    radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "Aviso");
                     args.set_cancel(true);
                 }
 
@@ -136,11 +136,11 @@
                     var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                     { if (shouldSubmit) { this.click(); } });
 
-                    radconfirm('¿Deseas cerrar la versión ' + vNbTabulador + ' ?', callBackFunction, 400, 170, null, "Cerrar versión del tabulador");
+                    radconfirm('¿Deseas cerrar la versión ' + vNbTabulador + ' ?', callBackFunction, 400, 170, null, "Aviso");
                     args.set_cancel(true);
                 }
                 else {
-                    radalert("Seleccione una versión.", 400, 150, "");
+                    radalert("Seleccione una versión.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -188,7 +188,7 @@
                     }
                 }
                 else {
-                    radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "");
+                    radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "Aviso");
                 }
             }
 
@@ -223,7 +223,7 @@
                     openChildDialog("VentanaCopiarTabulador.aspx?&ID=" + vIdTabulador, "winMenuTabuladores", "Copiar tabulador '" + vNombre + "'")
                 }
                 else
-                    radalert("Selecciona un tabulador.", 400, 150);
+                    radalert("Selecciona un tabulador.", 400, 150, "Aviso");
                 //else {
                 //    radalert("Seleccione una versión del tabulador.", 450, 200, "");
                 //    args.set_cancel(true);
@@ -243,7 +243,7 @@
                 if (vIdTabulador != "" && vIdTabulador != null)
                     OpenWindow(GetConfiguracionWindowProperties(vIdTabulador));
                 else
-                    radalert("Selecciona un tabulador.", 400, 150);
+                    radalert("Selecciona un tabulador.", 400, 150, "Aviso");
             }
 
             function GetConfiguracionWindowProperties(pIdTabulador) {
@@ -260,7 +260,7 @@
                 if (vIdTabulador != "")
                     OpenWindow(GetConsultarWindowProperties(vIdTabulador));
                 else
-                    radalert("Selecciona un tabulador.", 400, 150);
+                    radalert("Selecciona un tabulador.", 400, 150, "Aviso");
             }
 
             function GetConsultarWindowProperties(pIdTabulador) {
@@ -277,7 +277,7 @@
                 if (vIdTabulador != "" && vIdTabulador != null)
                     OpenWindow(GetNivelesWindowProperties(vIdTabulador));
                 else
-                    radalert("Selecciona un tabulador.", 400, 150);
+                    radalert("Selecciona un tabulador.", 400, 150, "Aviso");
             }
 
             function GetNivelesWindowProperties(pIdTabulador) {
@@ -294,7 +294,7 @@
                 if (vIdTabulador != "" && vIdTabulador != null)
                     OpenWindow(GetMercadoWindowProperties(vIdTabulador));
                 else
-                    radalert("Selecciona un tabulador.", 400, 150);
+                    radalert("Selecciona un tabulador.", 400, 150, "Aviso");
             }
             function GetMercadoWindowProperties(pIdTabulador) {
                 var wnd = GetWindowProperties();
@@ -310,7 +310,7 @@
                 if (vIdTabulador != "" && vIdTabulador != null)
                     OpenWindow(GetValuacionWindowProperties(vIdTabulador));
                 else
-                    radalert("Selecciona un tabulador.", 400, 150);
+                    radalert("Selecciona un tabulador.", 400, 150, "Aviso");
             }
             function GetValuacionWindowProperties(pIdTabulador) {
                 var wnd = GetWindowProperties();
@@ -327,7 +327,7 @@
                 if (vIdTabulador != "" && vIdTabulador != null)
                     OpenWindow(GetTabuladorMaestroWindowProperties(vIdTabulador));
                 else
-                    radalert("Selecciona un tabulador.", 400, 150);
+                    radalert("Selecciona un tabulador.", 400, 150, "Aviso");
             }
             function GetTabuladorMaestroWindowProperties(pIdTabulador) {
                 var wnd = GetWindowProperties();
@@ -344,7 +344,7 @@
                 if (vIdTabulador != "" && vIdTabulador != null)
                     OpenWindow(GetPlaneacionWindowProperties(vIdTabulador));
                 else
-                    radalert("Selecciona un tabulador.", 400, 150);
+                    radalert("Selecciona un tabulador.", 400, 150, "Aviso");
             }
             function GetPlaneacionWindowProperties(pIdTabulador) {
                 var wnd = GetWindowProperties();
@@ -360,7 +360,7 @@
                 if (vIdTabulador != "" && vIdTabulador != null)
                     OpenWindow(GetConsultarWindowPropertiesSueldos(vIdTabulador));
                 else
-                    radalert("Selecciona un tabulador.", 400, 150);
+                    radalert("Selecciona un tabulador.", 400, 150, "Aviso");
             }
 
             function GetConsultarWindowPropertiesSueldos(pIdTabulador) {
@@ -380,7 +380,7 @@
                 if (vIdTabulador != "" && vIdTabulador != null)
                     OpenWindow(GetConsultarWindowPropertiesAnalisis(vIdTabulador));
                 else
-                    radalert("Selecciona un tabulador.", 400, 150);
+                    radalert("Selecciona un tabulador.", 400, 150, "Aviso");
             }
 
             function GetConsultarWindowPropertiesAnalisis(pIdTabulador) {
@@ -400,7 +400,7 @@
                 if (vIdTabulador != "" && vIdTabulador != null)
                     OpenWindow(GetConsultarWindowPropertiesDesviaciones(vIdTabulador));
                 else
-                    radalert("Selecciona un tabulador.", 400, 150);
+                    radalert("Selecciona un tabulador.", 400, 150, "Aviso");
             }
 
             function GetConsultarWindowPropertiesDesviaciones(pIdTabulador) {
@@ -419,7 +419,7 @@
                 if (vIdTabulador != "")
                     OpenWindow(GetConsultarWindowPropertiesTabMaestro(vIdTabulador));
                 else
-                    radalert("Selecciona un tabulador.", 400, 150);
+                    radalert("Selecciona un tabulador.", 400, 150, "Aviso");
             }
 
             function GetConsultarWindowPropertiesTabMaestro(pIdTabulador) {
@@ -438,7 +438,7 @@
                 if (vIdTabulador != "")
                     OpenWindow(GetConsultarWindowPropertiesMercadoCons(vIdTabulador));
                 else
-                    radalert("Selecciona un tabulador.", 400, 150);
+                    radalert("Selecciona un tabulador.", 400, 150, "Aviso");
             }
 
             function GetConsultarWindowPropertiesMercadoCons(pIdTabulador) {
@@ -457,7 +457,7 @@
                 if (vIdTabulador != "")
                     OpenWindow(GetConsultarWindowPropertiesIncrementosCons(vIdTabulador));
                 else
-                    radalert("Selecciona un tabulador.", 400, 150);
+                    radalert("Selecciona un tabulador.", 400, 150, "Aviso");
             }
 
             function GetConsultarWindowPropertiesIncrementosCons(pIdTabulador) {
@@ -476,7 +476,7 @@
                 if (vIdTabulador != "")
                     OpenWindow(GetConsultarWindowPropertiesComparacion(vIdTabulador));
                 else
-                    radalert("Selecciona un tabulador.", 400, 150);
+                    radalert("Selecciona un tabulador.", 400, 150, "Aviso");
             }
 
             function GetConsultarWindowPropertiesComparacion(pIdTabulador) {
@@ -495,7 +495,7 @@
                 if (vIdTabulador != "")
                     OpenWindow(GetConsultarWindowPropertiesBono(vIdTabulador));
                 else
-                    radalert("Selecciona un tabulador.", 400, 150);
+                    radalert("Selecciona un tabulador.", 400, 150, "Aviso");
             }
 
             function GetConsultarWindowPropertiesBono(pIdTabulador) {
@@ -776,7 +776,7 @@
                                 <telerik:RadButton ID="btnCambiarEstado" runat="server" Text="Cerrar" OnClientClicking="cambiarEstado" OnClick="btnCambiarEstado_Click"></telerik:RadButton>
                             </div>
                             <div class="ctrlBasico">
-                                <telerik:RadButton ID="btnReabrir" runat="server" Text="Re abrir" OnClick="btnReabrir_Click"></telerik:RadButton>
+                                <telerik:RadButton ID="btnReabrir" runat="server" Text="Re abrir"  OnClick="btnReabrir_Click"></telerik:RadButton>
                             </div>
                             <div class="ctrlBasico">
                                 <telerik:RadButton ID="btnCopiar" runat="server" Text="Copiar" AutoPostBack="false" OnClientClicked="CopiarTabulador"></telerik:RadButton>

@@ -33,7 +33,7 @@
                 if ((vFlBateria != "")) {
                     var win = radopen("VentanaSustitucionBaremos.aspx?pIdBateria=" + vFlBateria, 'rwBaremos');
                 }
-                else { radalert("No has seleccionado una bateria.", 400, 150, ""); }
+                else { radalert("No has seleccionado una bateria.", 400, 150, "Aviso"); }
             }
        
         </script>

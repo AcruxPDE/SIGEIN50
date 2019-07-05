@@ -54,7 +54,7 @@
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                 { if (shouldSubmit) { this.click(); } });
 
-                radconfirm('Los cambios efectuados impactarán en el tabulador maestro, ¿Deseas continuar?', callBackFunction, 400, 170, null, "Confirmar guardar");
+                radconfirm('Los cambios efectuados impactarán en el tabulador maestro, ¿Deseas continuar?', callBackFunction, 400, 170, null, "Aviso");
                 args.set_cancel(true);
             }
 

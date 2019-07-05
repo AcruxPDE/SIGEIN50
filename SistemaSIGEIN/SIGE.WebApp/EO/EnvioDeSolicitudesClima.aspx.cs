@@ -96,7 +96,7 @@ namespace SIGE.WebApp.EO
                         StringBuilder builder = new StringBuilder();
                         builder.Append(vClCorreo + ";");
 
-                        bool vEstatusCorreo = pe.EnvioCorreo(builder.ToString(), vNbEvaluador, "Cuestionarios para evaluación", vMensaje);
+                        bool vEstatusCorreo = pe.EnvioCorreo(builder.ToString(), vNbEvaluador, "Solictud de evaluación", vMensaje);
                         if (vEstatusCorreo)
                         {
                             vXmlEvaluados.Add(new XElement("EVALUADOR", new XAttribute("ID_EVALUADOR", vIdEvaluador), new XAttribute("CL_CORREO_ELECTRONICO", vClCorreo)));

@@ -123,9 +123,10 @@ namespace SIGE.WebApp.IDP
                     {
                         if (item.GetDataKeyValue("ID_BATERIA") != null)
                         {
-                            string vMensaje = "Estimado(a) {0}: <br/><br>Bienvenido al sistema automatizado para aplicación de pruebas psicométricas SIGEIN por medio de Internet.<br/><br/> Por favor haz clic en la siguiente liga para comenzar tu aplicación de pruebas via electrónica: <br/><br/>" +
-                                                "<a href=\"{1}\">Aplicación de pruebas psicométricas </a> <br/><br/>" +
-                                                "¡Te deseamos la mejor de las suertes!";
+                            string vMensaje = "<p>Estimado(a) <b>{0}:</b> </p> " +
+                                " <p>Bienvenido al sistema automatizado para aplicación de pruebas psicométricas SIGEIN. </p>" +
+                                " <p> Por favor da click <a href=\"{1}\">aquí</a> para comenzar tu aplicación de pruebas </p>" +
+                                " <p>¡Te deseamos la mejor de las suertes! </p>";
 
                             string vIdBateria = item.GetDataKeyValue("ID_BATERIA").ToString();
                             string vClToken = item.GetDataKeyValue("CL_TOKEN").ToString();
@@ -151,7 +152,7 @@ namespace SIGE.WebApp.IDP
                                 Mail mail = new Mail(ContextoApp.mailConfiguration);
                                 mail.addToAddress(vClCorreoElectronico, null);
                                 //mail.Send("Pruebas SIGEIN", String.Format("Estimado(a) {0},<br/><br/>Para realizar las prueba click en el siguiente enlace: <br/><br/>{1}<br/><br/>Saludos cordiales.", vNbCandidato, url));
-                                mail.Send("Aplicación de pruebas psicométricas", String.Format(vMensaje, vNbCandidato, url));
+                                mail.Send("Aplicación de psicométria", String.Format(vMensaje, vNbCandidato, url));
                             }
                         }
                     }

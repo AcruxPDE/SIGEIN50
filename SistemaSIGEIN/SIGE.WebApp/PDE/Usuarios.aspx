@@ -12,7 +12,7 @@
                 if (selectedItem != undefined)
                     OpenWindow(selectedItem.getDataKeyValue("CL_USUARIO"), selectedItem.getDataKeyValue("FG_ACTIVO"));
                 else
-                    radalert("Selecciona un usuario.", 400, 150);
+                    radalert("Selecciona un usuario.", 400, 150, "Aviso");
             }
 
 
@@ -41,10 +41,13 @@
                 var selectedItem = masterTable.get_selectedItems()[0];
                 if (selectedItem != undefined) {
                     var vNombre = masterTable.getCellByColumnUniqueName(selectedItem, "CL_USUARIO").innerHTML;
-                    confirmar(sender, args, "¿Deseas eliminar el usuario " + vNombre + "?, este proceso no podrá revertirse");
+                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                    radconfirm("¿Deseas eliminar el usuario " + vNombre + "?, este proceso no podrá revertirse", callBackFunction, 400, 170, null, "Aviso");
+                    args.set_cancel(true);
                 }
                 else {
-                    radalert("Selecciona un usuario.", 400, 150);
+                    radalert("Selecciona un usuario.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -56,7 +59,7 @@
                     }
                 });
 
-                radconfirm(text, callBackFunction, 400, 150, null, "Confirmar");
+                radconfirm(text, callBackFunction, 400, 150, null, "Aviso");
                 //always prevent the original postback so the RadConfirm can work, it will be initiated again with code in the callback function
                 args.set_cancel(true);
             }

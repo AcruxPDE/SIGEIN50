@@ -15,5 +15,6 @@ namespace SIGE.Entidades.Externas
         public string NB_PUESTO { get; set; }
         public int? ID_DEPARTAMENTO { get; set; }
         public string CL_TIPO_RELACION { get; set; }
+        public int NO_PLAZAS { get; set; }
     }
 }

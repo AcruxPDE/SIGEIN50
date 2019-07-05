@@ -41,10 +41,11 @@
                 //} else {
                 //    radalert("Periodo cerrado.", 400, 150);
                 //}
-                } else {
-                    radalert("Selecciona un evaluado.", 400, 150);
-                }
             }
+            else {
+                radalert("Selecciona un evaluado.", 400, 150, "Aviso");
+                }
+        }
 
             function OpenSelectionWindow(pURL, pIdWindow, pTitle, pWindowProperties) {
                 var currentWnd = GetRadWindow();

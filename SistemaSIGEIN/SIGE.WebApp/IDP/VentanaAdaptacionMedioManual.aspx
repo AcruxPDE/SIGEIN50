@@ -129,7 +129,7 @@
                     });
 
                     var text = "¿Estás seguro que deseas terminar tu prueba?";
-                    radconfirm(text, callBackFunction, 400, 160, null, "");
+                    radconfirm(text, callBackFunction, 400, 160, null, "Aviso");
                     args.set_cancel(true);
                 }
                 else {
@@ -144,7 +144,7 @@
             }
 
             function mensajePruebaTerminada() {
-                var oWnd = radalert("Usted ha terminado su prueba exitosamente o el tiempo de aplicación de la prueba ha concluido. <br> Recuerde que no es posible volver a ingresar la prueba previa; si intenta hacerlo por medio del botón del navegador, la aplicación no te lo permitirá: se generará un error y el intento quedará registrado", 400, 300, "");
+                var oWnd = radalert("Usted ha terminado su prueba exitosamente o el tiempo de aplicación de la prueba ha concluido. <br> Recuerde que no es posible volver a ingresar la prueba previa; si intenta hacerlo por medio del botón del navegador, la aplicación no te lo permitirá: se generará un error y el intento quedará registrado", 400, 300, "Aviso");
                 oWnd.add_close(WinClose);
             }
 
@@ -201,7 +201,7 @@
 
                 if (colores.length > TarjetaFin) {
                     var text = "Ahora vuelve a efectuar la selección, olvidando que anteriormente ya habías visto estos colores, por lo cual se te pide no tratar de repetir la selección anterior, ni tratar de no repetirla, así como no asociarla a objetos tales como autos, ropa, etc. <br> Concéntrece en elegir la que más le atraiga visualmente, repitiendo la operación hasta agotar las cartas.";
-                    radconfirm(JustificarTexto(text), callBackFn, 500, 250, null, "Adaptación al medio");
+                    radconfirm(JustificarTexto(text), callBackFn, 500, 250, null, "Aviso");
                 }
                 else if (colores.length > 15) {
                     saveAnswers();

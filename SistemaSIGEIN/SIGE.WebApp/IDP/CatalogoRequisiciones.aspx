@@ -90,12 +90,12 @@
                 if (clEstadoRequisicion != "CANCELADA")
                     OpenWindow(GetCandidatoIdoneaoWindowProperties(idRequisicion));
                 else {
-                    radalert("La requisición esta cancelada.", 400, 150, "");
+                    radalert("La requisición esta cancelada.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
             else {
-                radalert("Selecciona una requisición.", 400, 150, "");
+                radalert("Selecciona una requisición.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -115,7 +115,7 @@
                 OpenWindow(GetRequisicionWindowProperties(idRequisicion));
             }
             else {
-                radalert("Selecciona una requisición.", 400, 150, "");
+                radalert("Selecciona una requisición.", 400, 150, "Aviso");
             }
         }
 
@@ -131,11 +131,11 @@
                     var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                     { if (shouldSubmit) { this.click(); } });
 
-                    radconfirm('¿Deseas eliminar la requisición ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 150, null, "Eliminar Registro");
+                    radconfirm('¿Deseas eliminar la requisición ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 150, null, "Alerta");
                     args.set_cancel(true);
                 }
             } else {
-                radalert("Seleccione una requisición.", 400, 150, "");
+                radalert("Seleccione una requisición.", 400, 150, "Alerta");
                 args.set_cancel(true);
             }
         }
@@ -154,16 +154,16 @@
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas cancelar la requisición ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 150, null, "Cancelar requisición");
+                        radconfirm('¿Deseas cancelar la requisición ' + CELL_NOMBRE.innerHTML + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 150, null, "Aviso");
                         args.set_cancel(true);
                     }
                 }
                 else {
-                    radalert("La requisición ya fue cerrada, no se puede cancelar.", 400, 150, "");
+                    radalert("La requisición ya fue cerrada, no se puede cancelar.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             } else {
-                radalert("Seleccione una requisición.", 400, 150, "");
+                radalert("Seleccione una requisición.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -181,7 +181,7 @@
                     { if (shouldSubmit) { this.click(); } });
                 }
             } else {
-                radalert("Seleccione una requisición.", 400, 150, "");
+                radalert("Seleccione una requisición.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }

@@ -95,7 +95,7 @@
                                 this.click();
                             }
                         });
-                        radconfirm('¿Estas seguro que deseas dar de baja a este empleado?', callBackFunction, 400, 170, null, "Cancelar baja");
+                        radconfirm('¿Estas seguro que deseas dar de baja a este empleado?', callBackFunction, 400, 170, null, "Aviso");
                         args.set_cancel(true);
                     }
     </script>

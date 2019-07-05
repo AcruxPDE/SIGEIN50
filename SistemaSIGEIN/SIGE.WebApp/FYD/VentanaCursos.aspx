@@ -8,7 +8,7 @@
             if (selectedItem != undefined)
                 OpenWindow(selectedItem.getDataKeyValue("ID_ITEM"));
             else
-                radalert("Selecciona un tema.", 400, 150);
+                radalert("Selecciona un tema.", 400, 150, "Aviso");
         }
 
         function OpenWindow(pIdTemaItem) {
@@ -165,7 +165,7 @@
         function ConfirmarEliminar(sender, args) {
             var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
             { if (shouldSubmit) { this.click(); } });
-            radconfirm('¿Deseas eliminar el área temática de este curso?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar área temática");
+            radconfirm('¿Deseas eliminar el área temática de este curso?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
             args.set_cancel(true);
 
         }
@@ -219,7 +219,7 @@
             <telerik:RadTab Text="Temas"></telerik:RadTab>
             <telerik:RadTab Text="Documentación"></telerik:RadTab>
             <telerik:RadTab Text="Campos extra"></telerik:RadTab>
-            <telerik:RadTab Text="STPS"></telerik:RadTab>
+            <telerik:RadTab Text="STPS" Visible="false"></telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
     <div style="height: calc(100% - 100px); padding: 10px 10px 10px 10px;">
@@ -444,7 +444,7 @@ Adicionalmente no podrá agregar otras competencias específicas que no sean del
 
             <telerik:RadPageView ID="pvwCamposExtras" runat="server">
             </telerik:RadPageView>
-            <telerik:RadPageView ID="rpvAreasTematicas" runat="server">
+            <telerik:RadPageView ID="rpvAreasTematicas" runat="server" Visible="false">
                 <div style="clear: both; height: 10px;"></div>
                 <div class="ctrlBasico">
                     <div class="divControlIzquierda">

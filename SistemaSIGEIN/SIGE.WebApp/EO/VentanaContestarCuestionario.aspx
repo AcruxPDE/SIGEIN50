@@ -41,12 +41,12 @@
                     OpenWindow(GetCuestionarioWindowProperties(idEvaluador));
                 }
                 else {
-                    radalert("El cuestionario ya ha sido contestado.", 400, 150, "Error");
+                    radalert("El cuestionario ya ha sido contestado.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
             else
-                radalert("Selecciona un evaluador.", 400, 150);
+                radalert("Selecciona un evaluador.", 400, 150, "Aviso");
             args.set_cancel(true);
         }
 

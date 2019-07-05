@@ -38,7 +38,7 @@
                 OpenSelectionWindow("VentanaPlanVidaCarreraPrincipal.aspx?idEmpleado=" + idEmpleado + "&idPlaza=" + idPlaza, 'rwReporte', "Plan de vida y carrera");
                // win.focus();
             }
-            else { radalert("No has seleccionado un empleado.", 400, 150, ""); }
+            else { radalert("No has seleccionado un empleado.", 400, 150, "Aviso"); }
         }
 
         function abrirSucesion() {
@@ -49,7 +49,7 @@
               //  win.focus();
             }
             else {
-                radalert("No has seleccionado un empleado.", 400, 150, "");
+                radalert("No has seleccionado un empleado.", 400, 150, "Aviso");
             }
         }
 

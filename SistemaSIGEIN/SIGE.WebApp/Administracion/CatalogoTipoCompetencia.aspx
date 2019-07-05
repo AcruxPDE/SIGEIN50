@@ -38,7 +38,7 @@
                     var oWnd = radopen("VentanaCatalogoTipoCompetencia.aspx?&ID=" + idTipo + "&TIPO=Editar", "modalTipoCompetenciaEditar");
                     oWnd.set_title("Editar categoría de competencia");
                 } else {
-                    radalert("Selecciona un registro", 400, 150, "");
+                    radalert("Selecciona un registro", 400, 150, "Aviso");
                 }
             }
 
@@ -59,11 +59,11 @@
                           var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                           { if (shouldSubmit) { this.click(); } });
 
-                          radconfirm('¿Deseas eliminar el tipo de competencia ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                          radconfirm('¿Deseas eliminar el tipo de competencia ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                           args.set_cancel(true);
                       }
                   } else {
-                      radalert("Seleccione un regristro", 400, 150, "");
+                      radalert("Seleccione un regristro", 400, 150, "Aviso");
                       args.set_cancel(true);
                   }
               }

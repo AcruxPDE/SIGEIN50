@@ -83,7 +83,7 @@
                 if (vIdEmpleado != "")
                     OpenNewWindow(GetEmpleadoWindowProperties());
                 else
-                    radalert("Selecciona un empleado.", 400, 150);
+                    radalert("Selecciona un empleado.", 400, 150, "Aviso");
             }
 
             function ShowEditInventario() {
@@ -92,7 +92,7 @@
                 if (vIdEmpleado != "")
                     OpenNewWindow(GetInventarioEditWindowProperties());
                 else
-                    radalert("Selecciona un empleado.", 400, 150);
+                    radalert("Selecciona un empleado.", 400, 150, "Aviso");
             }
 
             function GetInventarioEditWindowProperties() {
@@ -128,11 +128,11 @@
                     var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                     { if (shouldSubmit) { this.click(); } });
 
-                    radconfirm('¿Deseas eliminar el empleado ' + vNbEmpleado + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                    radconfirm('¿Deseas eliminar el empleado ' + vNbEmpleado + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                     args.set_cancel(true);
 
                 } else {
-                    radalert("Seleccione un empleado.", 400, 150, "");
+                    radalert("Seleccione un empleado.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -148,7 +148,7 @@
                     args.set_cancel(true);
 
                 } else {
-                    radalert("Seleccione un empleado.", 400, 150, "");
+                    radalert("Seleccione un empleado.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -170,7 +170,7 @@
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Selecciona un empleado", 400, 150, "Error");
+                    radalert("Selecciona un empleado", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -206,10 +206,10 @@
                     OpenNewWindow(GetDarBajaWindowProperties());
                 }
                 else if (vIdEmpleado == "") {
-                    radalert("Selecciona un empleado.", 400, 150);
+                    radalert("Selecciona un empleado.", 400, 150, "Aviso");
                 }
                 else if (vClEstatus == "BAJA") {
-                    radalert("El empleado ya está dado de baja.", 400, 150);
+                    radalert("El empleado ya está dado de baja.", 400, 150, "Aviso");
                 }
             }
 
@@ -232,10 +232,10 @@
                     OpenNewWindow(GetReingresoWindowProperties());
                 }
                 else if (vIdEmpleado == "") {
-                    radalert("Selecciona un empleado.", 400, 150);
+                    radalert("Selecciona un empleado.", 400, 150, "Aviso");
                 }
                 else if (vClEstatus == "ALTA") {
-                    radalert("El empleado no está dado de baja", 400, 150);
+                    radalert("El empleado no está dado de baja", 400, 150, "Aviso");
                 }
             }
 
@@ -290,7 +290,7 @@
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Selecciona un empleado", 400, 150, "Error");
+                    radalert("Selecciona un empleado", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -368,9 +368,9 @@
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Apellido paterno" DataField="M_EMPLEADO_NB_APELLIDO_PATERNO" UniqueName="M_EMPLEADO_NB_APELLIDO_PATERNO"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Apellido materno" DataField="M_EMPLEADO_NB_APELLIDO_MATERNO" UniqueName="M_EMPLEADO_NB_APELLIDO_MATERNO"></telerik:GridBoundColumn>
                             --%>
-                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Puesto" DataField="M_PUESTO_NB_PUESTO" UniqueName="M_PUESTO_NB_PUESTO"></telerik:GridBoundColumn>
-                           <%-- <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Clave del área/departamento" DataField="M_DEPARTAMENTO_CL_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_CL_DEPARTAMENTO"></telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Área/departamento" DataField="M_DEPARTAMENTO_NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO"></telerik:GridBoundColumn>--%>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="160" FilterControlWidth="80" HeaderText="Puesto" DataField="M_PUESTO_NB_PUESTO" UniqueName="M_PUESTO_NB_PUESTO"></telerik:GridBoundColumn>
+                            <%--<telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Clave del área/departamento" DataField="M_DEPARTAMENTO_CL_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_CL_DEPARTAMENTO"></telerik:GridBoundColumn>--%>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="170" FilterControlWidth="80" HeaderText="Área / departamento" DataField="M_DEPARTAMENTO_NB_DEPARTAMENTO" UniqueName="M_DEPARTAMENTO_NB_DEPARTAMENTO"></telerik:GridBoundColumn>
                             <%--<telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Género" DataField="M_EMPLEADO_CL_GENERO" UniqueName="M_EMPLEADO_CL_GENERO"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Estado civil" DataField="M_EMPLEADO_CL_ESTADO_CIVIL" UniqueName="M_EMPLEADO_CL_ESTADO_CIVIL"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="false" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Nombre del cónyuge" DataField="M_EMPLEADO_NB_CONYUGUE" UniqueName="M_EMPLEADO_NB_CONYUGUE"></telerik:GridBoundColumn>

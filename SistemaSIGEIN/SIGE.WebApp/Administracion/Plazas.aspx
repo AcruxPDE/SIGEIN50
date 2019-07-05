@@ -12,7 +12,7 @@
                 if (selectedItem != undefined)
                     OpenWindow(GetPlazasWindowsPropierties(selectedItem.getDataKeyValue("ID_PLAZA")));
                 else
-                    radalert("Selecciona una plaza.", 400, 150);
+                    radalert("Selecciona una plaza.", 400, 150, "Aviso");
             }
 
             function GetPlazasWindowsPropierties(pIdPlaza) {
@@ -58,17 +58,29 @@
             function confirmarEliminar(sender, args) {
                 var masterTable = $find("<%= grdPlazas.ClientID %>").get_masterTableView();
                 var selectedItem = masterTable.get_selectedItems()[0];
+
                 if (selectedItem != undefined) {
                     var vNombre = masterTable.getCellByColumnUniqueName(selectedItem, "NB_PLAZA").innerHTML;
+                    var vCL_EMPLEADO = masterTable.getCellByColumnUniqueName(selectedItem, "CL_EMPLEADO").innerHTML;
 
-                    var vWindowsProperties = {
-                        height: 200
-                    };
+                    if (vCL_EMPLEADO == "&nbsp;") {
+                        var vWindowsProperties = {
+                            height: 200
+                        };
 
-                    confirmAction(sender, args, "¿Deseas eliminar la plaza " + vNombre + "?, este proceso no podrá revertirse");
+                        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                        radconfirm("¿Deseas eliminar la plaza " + vNombre + "?, este proceso no podrá revertirse", callBackFunction, 400, 170, null, "Aviso");
+                        args.set_cancel(true);
+
+                    }
+                    else {
+                        radalert("La plaza no puede ser eliminada porque tiene relación con el empleado " + vCL_EMPLEADO + ". ", 400, 150, "Aviso");
+                        args.set_cancel(true);
+                    }                    
                 }
                 else {
-                    radalert("Selecciona un plaza.", 400, 150);
+                    radalert("Selecciona un plaza.", 400, 150, "Aviso" );
                     args.set_cancel(true);
                 }
             }
@@ -87,7 +99,7 @@
             </ClientSettings>
             <ExportSettings ExportOnlyData="true" FileName="Plazas" Excel-Format="Xlsx" IgnorePaging="true"></ExportSettings>
             <PagerStyle AlwaysVisible="true" />
-            <MasterTableView DataKeyNames="ID_PLAZA" ClientDataKeyNames="ID_PLAZA" ShowHeadersWhenNoRecords="true" CommandItemDisplay="Top">
+            <MasterTableView DataKeyNames="ID_PLAZA, CL_EMPLEADO" ClientDataKeyNames="ID_PLAZA, CL_EMPLEADO" ShowHeadersWhenNoRecords="true" CommandItemDisplay="Top">
                 <CommandItemSettings ShowExportToExcelButton="true" ShowAddNewRecordButton="false" />
                 <Columns>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave plaza" DataField="CL_PLAZA" UniqueName="CL_PLAZA" HeaderStyle-Width="120" FilterControlWidth="50"></telerik:GridBoundColumn>
@@ -96,6 +108,7 @@
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre completo" DataField="NB_EMPLEADO_COMPLETO" UniqueName="NB_EMPLEADO_COMPLETO" HeaderStyle-Width="250" FilterControlWidth="180"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave puesto" DataField="CL_PUESTO" UniqueName="CL_PUESTO" HeaderStyle-Width="120" FilterControlWidth="50"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="NB_PUESTO" HeaderStyle-Width="250" FilterControlWidth="180"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Área / departamento" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO" HeaderStyle-Width="250" FilterControlWidth="180"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave plaza jefe" DataField="CL_PLAZA_JEFE" UniqueName="CL_PLAZA_JEFE" HeaderStyle-Width="120" FilterControlWidth="50"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Nombre plaza jefe" DataField="NB_PLAZA_JEFE" UniqueName="NB_PLAZA_JEFE" HeaderStyle-Width="250" FilterControlWidth="180"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave jefe" DataField="CL_EMPLEADO_JEFE" UniqueName="CL_EMPLEADO_JEFE" HeaderStyle-Width="120" FilterControlWidth="50"></telerik:GridBoundColumn>

@@ -92,11 +92,11 @@
 
         function OpenPuestoVsCandidatos() {
             if (vIdPuesto === 0) {
-                radalert("Selecciona un puesto.", 400, 150);
+                radalert("Selecciona un puesto.", 400, 150, "Aviso");
                 return;
             }
             if (datos === "") {
-                radalert("Selecciona por lo menos un candidato.", 400, 150);
+                radalert("Selecciona por lo menos un candidato.", 400, 150, "Aviso");
                 return;
             }
 
@@ -122,7 +122,7 @@
 
                 OpenWindow(GetVentanaPuestoVsCandidatos(vCandidatosJson));
             }
-        else { radalert("Selecciona un candidato.", 400, 150, ""); }
+            else { radalert("Selecciona un candidato.", 400, 150, "Aviso"); }
         }
 
         function GetVentanaCandidatoVsPuestos() {
@@ -135,12 +135,12 @@
 
         function OpenCandidatoVsPuestos() {
             if (vIdCandidato === 0) {
-                radalert("Selecciona un candidato.", 400, 150);
+                radalert("Selecciona un candidato.", 400, 150, "Aviso");
                 return;
             }
 
             if (vJsonPeriodo === "") {
-                radalert("Selecciona por lo menos un puesto.", 400, 150);
+                radalert("Selecciona por lo menos un puesto.", 400, 150, "Aviso");
                 return;
             }
             OpenWindow(GetVentanaCandidatoVsPuestos());
@@ -186,12 +186,12 @@
         function OpenConsultaGlobalWindow() {
 
             if (vIdPuestoGlobal === 0) {
-                radalert("Selecciona un puesto.", 400, 150);
+                radalert("Selecciona un puesto.", 400, 150, "Aviso");
                 return;
             }
 
             if (vIdCandidatoGlobal === 0) {
-                radalert("Selecciona un candidato.", 400, 150);
+                radalert("Selecciona un candidato.", 400, 150, "Aviso");
                 return;
             }
             OpenWindow(GetConfiguracionWindowProperties());

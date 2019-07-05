@@ -266,7 +266,7 @@
                 if (vIdPrograma != "")
                     OpenRadWindow(GetAvanceProgramaProperties(vIdPrograma));
                 else
-                    radalert("Selecciona un programa.", 400, 150);
+                    radalert("Selecciona un programa.", 400, 150, "Aviso");
             }
 
             function OpenAutorizacionProgramaWindow() {
@@ -275,7 +275,7 @@
                     OpenRadWindow(GetAutorizacionProgramaProperties(vIdPrograma));
                 }
                 else {
-                    radalert("Selecciona un programa.", 400, 150);
+                    radalert("Selecciona un programa.", 400, 150, "Aviso");
                 }
             }
 
@@ -289,7 +289,7 @@
                     OpenRadWindow(GetConfigurarPropierties(vIdPrograma, false));
                 }
                 else {
-                    radalert("Selecciona un programa.", 400, 150);
+                    radalert("Selecciona un programa.", 400, 150, "Aviso");
                 }
             }
 
@@ -300,11 +300,11 @@
                     OpenRadWindow(GetProgramaPropierties(vIdPrograma, false));
                 }
                 else {
-                    radalert("Selecciona un programa.", 400, 150);
+                    radalert("Selecciona un programa.", 400, 150, "Aviso");
                 }
                 }
                 else {
-                    radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "");
+                    radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "Aviso");
                 }
             }
 
@@ -315,7 +315,7 @@
                     OpenRadWindow(GetProgramaPropierties(vIdPrograma, true));
                 }
                 else {
-                    radalert("Selecciona un programa.", 400, 150);
+                    radalert("Selecciona un programa.", 400, 150, "Aviso");
                 }
             }
 
@@ -330,16 +330,16 @@
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas eliminar el programa de capacitación ' + vNbPrograma + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                        radconfirm('¿Deseas eliminar el programa de capacitación ' + vNbPrograma + ' ?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                         args.set_cancel(true);
 
                     } else {
-                        radalert("Seleccione un programa de capacitación.", 400, 150, "");
+                        radalert("Seleccione un programa de capacitación.", 400, 150, "Aviso");
                         args.set_cancel(true);
                     }
                 }
                 else {
-                    radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "");
+                    radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -350,23 +350,23 @@
                 if (vIdPrograma != "") {
 
                     if (vClEstatus == "Terminado") {
-                        radalert("El programa de capacitación ya está terminado.", 400, 150, "");
+                        radalert("El programa de capacitación ya está terminado.", 400, 150, "Aviso");
                         args.set_cancel(true);
                     }
                     else if (vClAutorizacion == "Por Autorizar") {
-                        radalert("El programa de capacitación no puede cambiar a terminado.", 400, 150, "");
+                        radalert("El programa de capacitación no puede cambiar a terminado.", 400, 150, "Aviso");
                         args.set_cancel(true);
                     }
                     else {
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas terminar el programa de capacitación ' + vNbPrograma + '?', callBackFunction, 400, 170, null, "Terminar programa");
+                        radconfirm('¿Deseas terminar el programa de capacitación ' + vNbPrograma + '?', callBackFunction, 400, 170, null, "Aviso");
                         args.set_cancel(true);
                     }
 
                 } else {
-                    radalert("Selecciona un programa de capacitación.", 400, 150, "");
+                    radalert("Selecciona un programa de capacitación.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }

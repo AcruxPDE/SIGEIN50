@@ -45,14 +45,18 @@
                 OpenSelectionWindow("VentanaContextoCapturaResultados.aspx?idPeriodo=" + pIdPeriodo + "&idEvaluado=" + pIdEvaluado, "rwCaptura", "Captura de resultados")
                 }
                 else
-                    radalert("Evaluado dado de baja.", 400, 150);
+                    radalert("Evaluado dado de baja.", 400, 150, "Aviso");
                 }
             else
-                radalert("Selecciona a un evaluado.", 400, 150);
+                radalert("Selecciona a un evaluado.", 400, 150, "Aviso");
         }
 
         function confirmarTerminar(sender, args) {
-           confirmAction(sender, args, "¿Deseas terminar la sesión?");
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+            radconfirm('¿Deseas terminar la sesión?', callBackFunction, 400, 170, null, "Aviso");
+            args.set_cancel(true);
+
         }
     </script>
 </asp:Content>

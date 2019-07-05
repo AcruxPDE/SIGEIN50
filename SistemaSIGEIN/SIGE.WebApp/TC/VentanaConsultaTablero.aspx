@@ -77,7 +77,7 @@
                 var wnd = openChildDialog(vURL, "winDescriptivo", vTitulo, windowProperties);
             }
             else {
-                radalert("El empleado no tiene una cuestionario de clima asociado", 400, 150, "");
+                radalert("El empleado no tiene una cuestionario de clima asociado", 400, 150, "Aviso");
             }
         }
 
@@ -86,7 +86,7 @@
             var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
             { if (shouldSubmit) { this.click(); } });
 
-            radconfirm('Una vez guardada la consulta ya no será posible cambiar las ponderaciones y/o los comentarios. ¿Estás seguro que deseas continuar?', callBackFunction, 400, 170, null, "Guardar consulta");
+            radconfirm('Una vez guardada la consulta ya no será posible cambiar las ponderaciones y/o los comentarios. ¿Estás seguro que deseas continuar?', callBackFunction, 400, 170, null, "Aviso");
             args.set_cancel(true);
         }
 

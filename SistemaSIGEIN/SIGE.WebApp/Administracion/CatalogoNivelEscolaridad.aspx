@@ -50,7 +50,7 @@
                         oWnd.set_title("Editar Nivel Escolaridad");
                     }
                 } else {
-                    radalert("No has seleccionado un registro.", 400, 150, "");
+                    radalert("No has seleccionado un registro.", 400, 150, "Aviso");
                 }
             }
 
@@ -77,12 +77,12 @@
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas eliminar el nivel de escolaridad ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                        radconfirm('¿Deseas eliminar el nivel de escolaridad ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                         //Deseas eliminar ___________?, este proceso no podrá revertirse.
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Seleccione un nivel de escolaridad.", 400, 150, "");
+                    radalert("Seleccione un nivel de escolaridad.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
