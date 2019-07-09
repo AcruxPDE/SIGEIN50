@@ -1,5 +1,6 @@
 ﻿using SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional;
 using SIGE.Entidades;
+using SIGE.Entidades.EvaluacionOrganizacional;
 using SIGE.Entidades.Externas;
 using SIGE.Entidades.FormacionDesarrollo;
 using SIGE.Negocio.Utilerias;
@@ -88,5 +89,7 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
             ConfiguracionOperaciones oPeriodo = new ConfiguracionOperaciones();
             return UtilRespuesta.EnvioRespuesta(oPeriodo.EliminarConfiguracionNotificado(pXmlEmpleados));
         }
+
+      
     }
 }

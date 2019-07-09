@@ -1,7 +1,9 @@
 ﻿using SIGE.Entidades;
+using SIGE.Entidades.EvaluacionOrganizacional;
 using System;
 using System.Collections.Generic;
 using System.Data.Objects;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +16,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
     {
         private SistemaSigeinEntities context;
 
-        public List<SPE_OBTIENE_EMPLEADOS_Result> ObtieneEmpleados(XElement pXmlSeleccion = null,bool? pFgFoto = null, string pCL_USUARIO = null, bool? pFgActivo = null, int? pIdEmpresa = null, int? pIdRol = null)
+        public List<SPE_OBTIENE_EMPLEADOS_Result> ObtieneEmpleados(XElement pXmlSeleccion = null, bool? pFgFoto = null, string pCL_USUARIO = null, bool? pFgActivo = null, int? pIdEmpresa = null, int? pIdRol = null)
         {
             using (context = new SistemaSigeinEntities())
             {
@@ -52,5 +54,6 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
                 return XElement.Parse(pOutClRetrno.Value.ToString());
             }
         }
+
     }
 }

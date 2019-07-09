@@ -113,6 +113,7 @@
     <Compile Include="EvaluacionOrganizacional\E_BAJAS_PENDIENTES.cs" />
     <Compile Include="EvaluacionOrganizacional\E_BAJAS_PERIODO_EDD.cs" />
     <Compile Include="EvaluacionOrganizacional\E_BAJA_EMPLEADO.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_BAJA_IMPORTANTE_EO.cs" />
     <Compile Include="EvaluacionOrganizacional\E_CAMPOS_ADICIONALES.cs" />
     <Compile Include="EvaluacionOrganizacional\E_CAPTURA_RESULTADO.cs" />
     <Compile Include="EvaluacionOrganizacional\E_EMPLEADOS_CONTRASENIAS.cs" />

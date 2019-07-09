@@ -40,7 +40,6 @@ C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\SIGE.Entidades.pdb
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\Newtonsoft.Json.dll
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\bin\Debug\Newtonsoft.Json.xml
-C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.csprojAssemblyReference.cache
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.csproj.CoreCompileInputs.cache
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.csproj.CopyComplete
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Entidades\obj\Debug\SIGE.Entidades.dll
