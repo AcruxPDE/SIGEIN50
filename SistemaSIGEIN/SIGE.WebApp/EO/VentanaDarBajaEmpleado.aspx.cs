@@ -33,7 +33,7 @@ namespace SIGE.WebApp.EO
 
         private bool vFgProgramarFecha
         {
-            get { return (bool)ViewState["vs_vFgProgramarFecha"];}
+            get { return (bool)ViewState["vs_vFgProgramarFecha"]; }
             set { ViewState["vs_vFgProgramarFecha"] = value; }
         }
 
@@ -107,7 +107,7 @@ namespace SIGE.WebApp.EO
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
         }
-       
+
         private XElement EditorContentToXml(string pNbNodoRaiz, string pDsContenido, string pNbTag)
         {
             return XElement.Parse(EncapsularRadEditorContent(XElement.Parse(String.Format("<{1}>{0}</{1}>", HttpUtility.HtmlDecode(HttpUtility.UrlDecode(pDsContenido)), pNbNodoRaiz)), pNbNodoRaiz));
@@ -132,7 +132,7 @@ namespace SIGE.WebApp.EO
             vBaja.NB_EMPLEADO = txtNombre.InnerText;
             vBaja.FE_BAJA_EFECTIVA = rdpFechaBaja.SelectedDate;
             vBaja.ID_EMPLEADO = vIdEmpleado;
-            XElement nodoPrincipal = new XElement("XML_COMENTARIOS", EditorContentToXml("COMENTARIOS", reComentarios.Content.Replace("&lt;",""), vNbFirstRadEditorTagName));
+            XElement nodoPrincipal = new XElement("XML_COMENTARIOS", EditorContentToXml("COMENTARIOS", reComentarios.Content.Replace("&lt;", ""), vNbFirstRadEditorTagName));
             vBaja.DS_COMENTARIOS = nodoPrincipal.ToString();
 
             foreach (RadListBoxItem item in lstCausaBaja.Items)
@@ -142,19 +142,37 @@ namespace SIGE.WebApp.EO
             }
             //if (vIdCausaBaja != null)
             //{
-                if (vFgProgramarFecha)
+            if (vFgProgramarFecha)
+            {
+                if (rdpFechaBaja.SelectedDate != null)
                 {
-                    if (rdpFechaBaja.SelectedDate != null)
-                    {
-                        RotacionPersonalNegocio nBaja = new RotacionPersonalNegocio();
-                        E_RESULTADO vResultado = nBaja.InsertaBajaEmpleado(pBaja: vBaja, pCL_USUARIO: vClUsuario, pNB_PROGRAMA: vNbPrograma, pTIPO_TRANSACCION: E_TIPO_OPERACION_DB.I.ToString());
-                        string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                        UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
-                    }
+                    RotacionPersonalNegocio nBaja = new RotacionPersonalNegocio();
+                    E_RESULTADO vResultado = nBaja.InsertaBajaEmpleado(pBaja: vBaja, pCL_USUARIO: vClUsuario, pNB_PROGRAMA: vNbPrograma, pTIPO_TRANSACCION: E_TIPO_OPERACION_DB.I.ToString());
+                    string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
                 }
+            }
             else
             {
+
                 RotacionPersonalNegocio nBaja = new RotacionPersonalNegocio();
+                List<E_BAJA_IMPORTANTE_EO> LstEmpleadoBajaImportante = new List<E_BAJA_IMPORTANTE_EO>();
+                LstEmpleadoBajaImportante = nBaja.ObtieneEmpleadoImportante().ToList();
+
+                string NotificacionBajas = "";
+                E_BAJA_IMPORTANTE_EO bImportante = new E_BAJA_IMPORTANTE_EO();
+                E_BAJA_IMPORTANTE_EO bBajaNotificado = new E_BAJA_IMPORTANTE_EO();
+
+                if (LstEmpleadoBajaImportante.Count() > 0)
+                {
+                    bImportante = LstEmpleadoBajaImportante.Where(w => w.ID_EMPLEADO == vBaja.ID_EMPLEADO).FirstOrDefault();
+                    bBajaNotificado = LstEmpleadoBajaImportante.Where(w => w.CL_TIPO_NOTIFICACION == "BAJANOTIFICADO").FirstOrDefault();
+
+                    if (bImportante != null)
+                        NotificacionBajas = "IMPORTANTE";
+                }
+
+
                 E_RESULTADO vResultado = nBaja.InsertaBajaManualEmpleado(pBaja: vBaja, pCL_USUARIO: vClUsuario, pNB_PROGRAMA: vNbPrograma, pTIPO_TRANSACCION: E_TIPO_OPERACION_DB.I.ToString());
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
@@ -173,6 +191,14 @@ namespace SIGE.WebApp.EO
                         }
 
                     }
+
+                    if (NotificacionBajas == "IMPORTANTE")
+                    {
+                        if (bBajaNotificado != null)
+                            EnviarCorreoImportate(bBajaNotificado.CL_CORREO_ELECTRONICO, bBajaNotificado.NB_EMPLEADO_COMPLETO);
+
+                    }
+
 
                 }
             }
@@ -248,5 +274,23 @@ namespace SIGE.WebApp.EO
 
             }
         }
+        private void EnviarCorreoImportate(string correo, string NombreBajaNotificado)
+        {
+            ProcesoExterno pe = new ProcesoExterno();
+            string vClCorreo;
+            string vNbBajaNotificado;
+            string vMensaje;
+            vClCorreo = correo;
+            vNbBajaNotificado = NombreBajaNotificado;
+            vMensaje = "Estimado " + NombreBajaNotificado + "la persona configurada para recibir las notificaciones de los periodos de desempeño, ha sido dado de baja";
+
+            if (Utileria.ComprobarFormatoEmail(vClCorreo) && (vClCorreo != null || vClCorreo == ""))
+            {
+                //Envío de correo
+                bool vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbBajaNotificado, "Configuración Desempeño ", vMensaje);
+
+            }
+        }
+
     }
 }

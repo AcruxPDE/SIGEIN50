@@ -131,7 +131,6 @@ C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\T
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\Telerik.Windows.Documents.Core.dll
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\Telerik.Windows.Documents.Spreadsheet.dll
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\Telerik.Web.Spreadsheet.dll
-C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\Microsoft.AnalysisServices.AdomdClient.dll
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\Telerik.Windows.Zip.dll
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Replicas\bin\Debug\SIGE.Entidades.pdb

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using SIGE.Entidades.EvaluacionOrganizacional;
+using System.Data.SqlClient;
 
 namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 {
@@ -110,5 +111,14 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
+        public List<E_BAJA_IMPORTANTE_EO> ObtenerEmpleadoImportante()
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                return context.Database.SqlQuery<E_BAJA_IMPORTANTE_EO>("EXEC " +
+                "EO.SPE_OBTIENE_CONFIGURACION_EO_BAJA_IMPORTANTE"
+            ).ToList();
+            }
+        }
     }
 }

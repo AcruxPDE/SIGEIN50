@@ -95,5 +95,11 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
             return UtilRespuesta.EnvioRespuesta(operaciones.ActualizaBajaPendiente(pID_BAJA_EMPLEADO, pID_EMPLEADO, pID_CAUSA_ROTACION, pDS_COMENTARIO, pFE_BAJA_EFECTIVA, pCL_USUARIO, pNB_PROGRAMA, pTIPO_TRANSACCION));
         }
 
+        public List<E_BAJA_IMPORTANTE_EO> ObtieneEmpleadoImportante()
+        {
+            RotacionPersonalOperaciones operaciones = new RotacionPersonalOperaciones();
+            return operaciones.ObtenerEmpleadoImportante();
+        }
+
     }
 }

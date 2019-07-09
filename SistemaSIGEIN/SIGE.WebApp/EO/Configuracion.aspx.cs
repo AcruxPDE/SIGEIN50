@@ -13,6 +13,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using Telerik.Web.UI;
+using WebApp.Comunes;
 
 namespace SIGE.WebApp.EO
 {
@@ -97,6 +98,21 @@ namespace SIGE.WebApp.EO
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
             pGrid.Rebind();
+            if (vResultado.CL_TIPO_ERROR.ToString() == "SUCCESSFUL")
+            {
+
+                List<E_BAJA_IMPORTANTE_EO> LstEmpleadoBajaImportante = new List<E_BAJA_IMPORTANTE_EO>();
+                RotacionPersonalNegocio nBaja = new RotacionPersonalNegocio();
+                E_BAJA_IMPORTANTE_EO bBajaNotificado = new E_BAJA_IMPORTANTE_EO();
+                LstEmpleadoBajaImportante = nBaja.ObtieneEmpleadoImportante().ToList();
+                bBajaNotificado = LstEmpleadoBajaImportante.Where(w => w.CL_TIPO_NOTIFICACION == "BAJANOTIFICADO").FirstOrDefault();
+                if (bBajaNotificado != null)
+                    EnviarCorreoImportate(bBajaNotificado.CL_CORREO_ELECTRONICO, bBajaNotificado.NB_EMPLEADO_COMPLETO);
+
+
+            }
+
+
         }
 
         #endregion
@@ -128,7 +144,7 @@ namespace SIGE.WebApp.EO
 
             if (nConfiguracion.ObteneConfiguracionEvaluacionOrganizacional("IMPORTANTE").Count() > 0)
                 btnAgregarImportante.Enabled = false;
-            else 
+            else
                 btnAgregarImportante.Enabled = true;
         }
 
@@ -341,6 +357,24 @@ namespace SIGE.WebApp.EO
         protected void btnEliminarEncargado_Click(object sender, EventArgs e)
         {
             EliminarEmpleados(rgBajaReplica);
+        }
+
+        private void EnviarCorreoImportate(string correo, string NombreBajaNotificado)
+        {
+            ProcesoExterno pe = new ProcesoExterno();
+            string vClCorreo;
+            string vNbBajaNotificado;
+            string vMensaje;
+            vClCorreo = correo;
+            vNbBajaNotificado = NombreBajaNotificado;
+            vMensaje = "Estimado " + NombreBajaNotificado + " la persona configurada para recibir las notificaciones de los periodos de desempeño, ha sido dado de baja";
+
+            if (Utileria.ComprobarFormatoEmail(vClCorreo) && (vClCorreo != null || vClCorreo == ""))
+            {
+                //Envío de correo
+                bool vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbBajaNotificado, "Configuración Desempeño ", vMensaje);
+
+            }
         }
 
     }
