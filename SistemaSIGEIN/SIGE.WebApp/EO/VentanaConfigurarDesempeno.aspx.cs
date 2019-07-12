@@ -335,11 +335,11 @@ namespace SIGE.WebApp.EO
                 btnAgregarMeta.Enabled = true;
                 btnModificarMetas.Enabled = true;
 
-                btnAgregarMeta.Text = "Agregar indicador";
-                btnActivarMetas.Text = "Activar indicador";
-                btnDesactivarMetas.Text = "Desactivar indicador";
-                btnModificarMetas.Text = "Editar indicador";
-                btnCopiarMetas.Text = "Copiar indicador";
+                btnAgregarMeta.Text = "Agregar";
+                btnActivarMetas.Text = "Activar";
+                btnDesactivarMetas.Text = "Desactivar";
+                btnModificarMetas.Text = "Editar";
+                btnCopiarMetas.Text = "Copiar";
                 btnGuardarMetas.Text= "Guardar";
 
                 grdDisenoMetas.MasterTableView.DetailTables[0].Columns[0].Visible = true;
