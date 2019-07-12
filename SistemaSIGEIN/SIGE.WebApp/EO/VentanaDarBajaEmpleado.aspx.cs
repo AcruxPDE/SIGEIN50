@@ -282,7 +282,7 @@ namespace SIGE.WebApp.EO
             string vMensaje;
             vClCorreo = correo;
             vNbBajaNotificado = NombreBajaNotificado;
-            vMensaje = "Estimado " + NombreBajaNotificado + "la persona configurada para recibir las notificaciones de los periodos de desempeño, ha sido dado de baja";
+            vMensaje = "Estimado " + NombreBajaNotificado + " ,la persona configurada para recibir las notificaciones de los periodos de desempeño, ha sido dado de baja";
 
             if (Utileria.ComprobarFormatoEmail(vClCorreo) && (vClCorreo != null || vClCorreo == ""))
             {
