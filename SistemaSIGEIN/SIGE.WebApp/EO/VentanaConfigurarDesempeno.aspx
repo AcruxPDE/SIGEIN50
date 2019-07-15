@@ -145,9 +145,9 @@
         function OpenAgregarMetasWindow() {
             GetIdEvaluado();
             var vIdPeriodo = '<%= vIdPeriodo %>';
-            var vTextoVentana = "Agregar meta";
+            var vTextoVentana = "Agregar";
             if ('<%= vClTipoMetas %>' == "DESCRIPTIVO")
-                vTextoVentana = "Agregar indicador";
+                vTextoVentana = "Agregar";
 
             if (vIdEvaluado != null) {
                 OpenSelectionWindowC("VentanaMetasDesempeno.aspx?IdEvaluado=" + vIdEvaluado + "&IdPeriodo=" + vIdPeriodo + "&Accion=Agregar", "WinMetas", vTextoVentana);
@@ -206,9 +206,9 @@
             GetIdEvaluado();
             obtenerIdMeta();
             var vIdPeriodo = '<%= vIdPeriodo %>';
-            var vTextoVentana = "Editar meta";
+            var vTextoVentana = "Editar";
             if ('<%= vClTipoMetas %>' == "DESCRIPTIVO")
-                vTextoVentana = "Editar indicador";
+                vTextoVentana = "Editar";
 
             if (idE != null & idE != "") {
                 if (vFgEvaluar != "False")
@@ -844,16 +844,16 @@
                             <telerik:RadButton ID="btnAgregarMeta" runat="server" name="btnAgregarMeta" AutoPostBack="false" Text="Agregar meta" OnClientClicked="OpenAgregarMetasWindow" Enabled="false" ToolTip="Selecciona esta opción si lo que deseas es dar de alta una meta."></telerik:RadButton>
                         </div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnActivarMetas" runat="server" AutoPostBack="true" Text="Activar meta" OnClick="btnActivarMetas_Click"></telerik:RadButton>
+                            <telerik:RadButton ID="btnActivarMetas" runat="server" AutoPostBack="true" Text="Activar" OnClick="btnActivarMetas_Click"></telerik:RadButton>
                         </div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnDesactivarMetas" runat="server" OnClick="btnDesactivarMetas_Click" Text="Desactivar meta"></telerik:RadButton>
+                            <telerik:RadButton ID="btnDesactivarMetas" runat="server" OnClick="btnDesactivarMetas_Click" Text="Desactivar"></telerik:RadButton>
                         </div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnModificarMetas" runat="server" AutoPostBack="false" Text="Editar meta" OnClientClicked="OpenModificarMetasWindow" Enabled="false"></telerik:RadButton>
+                            <telerik:RadButton ID="btnModificarMetas" runat="server" AutoPostBack="false" Text="Editar" OnClientClicked="OpenModificarMetasWindow" Enabled="false"></telerik:RadButton>
                         </div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnCopiarMetas" runat="server" OnClick="btnCopiarMetas_Click" Text="Copiar meta"></telerik:RadButton>
+                            <telerik:RadButton ID="btnCopiarMetas" runat="server" OnClick="btnCopiarMetas_Click" Text="Copiar"></telerik:RadButton>
                         </div>
                         <div class="divControlesBoton">
                             <div class="ctrlBasico">
