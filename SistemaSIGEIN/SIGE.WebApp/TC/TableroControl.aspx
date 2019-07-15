@@ -415,6 +415,7 @@
             <telerik:RadWindow ID="WinTableroControl" runat="server" Width="750px" Height="580px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" ReloadOnShow="false"></telerik:RadWindow>
             <telerik:RadWindow ID="winConsultatablero" runat="server" Width="760px" Height="590px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" ReloadOnShow="false"></telerik:RadWindow>
             <telerik:RadWindow ID="winSeleccion" runat="server" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" ReloadOnShow="false" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
+            <telerik:RadWindow ID="rwReporteComparativo" runat="server" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" ReloadOnShow="false"></telerik:RadWindow>
         </Windows>
     </telerik:RadWindowManager>
 </asp:Content>

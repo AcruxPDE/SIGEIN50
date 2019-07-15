@@ -82,7 +82,7 @@
 
         function OpenReporteIndividual(pIdEvaluado) {
             var vIdPeriodo = '<%= vIdPeriodo %>';
-            var vURL = "ReporteIndividual.aspx";
+            var vURL = "../FYD/ReporteIndividual.aspx";
             var vTitulo = "Reporte Individual";
 
             vURL = vURL + "?IdPeriodo=" + vIdPeriodo
