@@ -78,11 +78,14 @@ namespace SIGE.WebApp.FYD
             {
                 txtStock.ReadOnlyStyle.BackColor = System.Drawing.Color.Red;
                 txtStock.ReadOnlyStyle.ForeColor = System.Drawing.Color.White;
+                lblMensaje.InnerText = "Es momento de programar un curso para desarrollar el puesto";
                 lblMensaje.Visible = true;
+                
             }
             else
             {
                 txtStock.ReadOnlyStyle.BackColor = System.Drawing.Color.Yellow;
+                lblMensaje.InnerText = "Es momento de programar un curso para desarrollar el puesto";
                 lblMensaje.Visible = true; 
             }
         }
