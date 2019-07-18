@@ -298,7 +298,7 @@ namespace SIGE.WebApp.Administracion
 
                 txtRangoEdadMin.Value = vDescriptivo.NO_EDAD_MINIMA;
                 txtRangoEdadMax.Value = vDescriptivo.NO_EDAD_MAXIMA;
-               // txtCompetenciasRequeridas.Text = vDescriptivo.DS_COMPETENCIAS_REQUERIDAS;
+                // txtCompetenciasRequeridas.Text = vDescriptivo.DS_COMPETENCIAS_REQUERIDAS;
 
                 var xmlPuestoEscolaridad = XElement.Parse(vDescriptivo.XML_PUESTO_ESCOLARIDAD).Element("OTRO_PUESTO_ESCOLARIDAD");
 
@@ -585,7 +585,7 @@ namespace SIGE.WebApp.Administracion
                     fc.NB_NIVEL = CrearNivelCompetencia(null).FirstOrDefault(f => f.NO_VALOR.Equals(item.NO_VALOR_NIVEL)).NB_NIVEL;
                     if (vFuncionesGenericas.Count > 0)
                         if (vFuncionesGenericas.Exists(x => x.ID_FUNCION_GENERICA.Equals(item.ID_PUESTO_FUNCION)))
-                        fc.ID_PARENT_ITEM = vFuncionesGenericas.FirstOrDefault(f => item.ID_PUESTO_FUNCION.Equals(f.ID_FUNCION_GENERICA)).ID_ITEM;
+                            fc.ID_PARENT_ITEM = vFuncionesGenericas.FirstOrDefault(f => item.ID_PUESTO_FUNCION.Equals(f.ID_FUNCION_GENERICA)).ID_ITEM;
 
                     vLstFuncionCompetencia.Add(fc);
                 }
@@ -937,7 +937,7 @@ namespace SIGE.WebApp.Administracion
                 new XAttribute("CL_TIPO_PUESTO", btnDirecto.Checked ? "DIRECTO" : "INDIRECTO"),
                 //new XAttribute("ID_CENTRO_ADMINISTRATIVO", cmbAdministrativo.SelectedValue),
                 //new XAttribute("ID_CENTRO_OPERATIVO", cmbOperativo.SelectedValue),
-              //  new XAttribute("ID_DEPARTAMENTO", cmbAreas.SelectedValue),
+                //  new XAttribute("ID_DEPARTAMENTO", cmbAreas.SelectedValue),
                 new XAttribute("CL_POSICION_ORGANIGRAMA", btnStaff.Checked ? "STAFF" : "LINEA"),
                 new XAttribute("NO_NIVEL_ORGANIGRAMA", txtNivelOrg.Text),
                 new XAttribute("CL_DOCUMENTO", ContextoApp.FgControlDocumentos ? txtClaveDocumento.Text : ""),
@@ -951,11 +951,11 @@ namespace SIGE.WebApp.Administracion
                 new XAttribute("DS_CONTROL_CAMBIOS", ContextoApp.FgControlDocumentos ? txtControlCambios.Text : ""),
                 new XAttribute("CL_TIPO_PRESTACIONES", cmbTipoPrestaciones.SelectedValue),
                 new XAttribute("NO_PLAZAS", vNoPlazas),
-               // new XAttribute("DS_COMPETENCIAS_REQUERIDAS", txtCompetenciasRequeridas.Text),
+                // new XAttribute("DS_COMPETENCIAS_REQUERIDAS", txtCompetenciasRequeridas.Text),
                 new XAttribute("DS_COMPETENCIAS_REQUERIDAS", ""),
 
                Utileria.GuardarNotas(radEditorPrestaciones.Content, "NOTAS_PRESTACIONES"), // EditorContentToXml("XML_PRESTACIONES", radEditorPrestaciones.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
-               //Utileria.GuardarNotas(radEditorRequerimientos.Content, "NOTAS_REQUERIMIENTOS"),// EditorContentToXml("XML_REQUERIMIENTOS", radEditorRequerimientos.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
+                                                                                           //Utileria.GuardarNotas(radEditorRequerimientos.Content, "NOTAS_REQUERIMIENTOS"),// EditorContentToXml("XML_REQUERIMIENTOS", radEditorRequerimientos.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
                Utileria.GuardarNotas(radEditorObservaciones.Content, "NOTAS_OBSERVACIONES"),// EditorContentToXml("XML_OBSERVACIONES", radEditorObservaciones.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
                Utileria.GuardarNotas(radEditorResponsable.Content, "NOTAS_RESPONSABILIDAD"),// EditorContentToXml("XML_RESPONSABILIDAD", radEditorResponsable.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
                Utileria.GuardarNotas(radEditorAutoridad.Content, "NOTAS_AUTORIDAD"),// EditorContentToXml("XML_AUTORIDAD", radEditorAutoridad.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
@@ -1637,7 +1637,7 @@ namespace SIGE.WebApp.Administracion
             if (!Page.IsPostBack)
             {
                 traerAreas();
-          
+
                 vListaExperiencia = new List<E_EXPERIENCIA>();
                 rdtFeElabDocumento.SelectedDate = DateTime.Now.Date;
                 if (!ContextoApp.FgControlDocumentos)
@@ -1696,7 +1696,7 @@ namespace SIGE.WebApp.Administracion
                 {
                     MnsAutoridadPoliticaIntegral.Text = ContextoApp.ADM.AutoridadPoliticaIntegral.dsMensaje;
                 }
-                
+
             }
             vClRutaArchivosTemporales = Server.MapPath(ContextoApp.ClRutaArchivosTemporales);
             //winFuncionesGenericas.VisibleOnPageLoad = false;
@@ -1737,7 +1737,7 @@ namespace SIGE.WebApp.Administracion
         protected void radBtnAgregarExperiencia_Click(object sender, EventArgs e)
         {
             E_EXPERIENCIA ex = new E_EXPERIENCIA();
-           
+
             ex.ID_AREA_INTERES = int.Parse(cmbExperiencias.SelectedValue);
             ex.NB_AREA_INTERES = cmbExperiencias.Text;
             ex.NO_TIEMPO = int.Parse(txtTiempo.Text);
@@ -1911,7 +1911,7 @@ namespace SIGE.WebApp.Administracion
 
         protected void cmbCompetenciaEspecifica_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
-            CargarNivelesCompetencias(); 
+            CargarNivelesCompetencias();
         }
 
         protected List<E_NIVEL_COMPETENCIA> CrearNivelCompetencia(E_COMPETENCIAS pCompetencia = null)
@@ -1979,10 +1979,10 @@ namespace SIGE.WebApp.Administracion
             {
                 if (int.TryParse(item.GetDataKeyValue("NO_VALOR").ToString(), out vNoNivel))
                 {
-                    E_FUNCION_COMPETENCIA vCompetencia = vLstFuncionCompetenciaABC.FirstOrDefault(f => f.ID_ITEM == (vIdEditingItem ?? Guid.NewGuid()));
+                    E_FUNCION_COMPETENCIA vCompetencia = vLstFuncionCompetenciaABC.FirstOrDefault(f => f.ID_ITEM == (vIdEditingItem));
 
-                    //if (vCompetencia != null)
-                    //{
+                    if (vCompetencia == null)
+                    {
                         vLstFuncionCompetenciaABC.Add(new E_FUNCION_COMPETENCIA()
                         {
                             ID_PARENT_ITEM = vFuncionGenericaABC.ID_ITEM,
@@ -1992,15 +1992,15 @@ namespace SIGE.WebApp.Administracion
                             NB_NIVEL = item["NB_NIVEL"].Text,
                             DS_INDICADORES = "<ul>" + "<li>" + txtIndicadorDesempeno.Text + "</ul>" + "</li>"
                         });
-                    //}
-                    //else
-                    //{
-                    //    vCompetencia.NB_COMPETENCIA = cmbCompetenciaEspecifica.SelectedItem.Text;
-                    //    vCompetencia.ID_COMPETENCIA = int.Parse(cmbCompetenciaEspecifica.SelectedItem.Value);
-                    //    vCompetencia.NO_NIVEL = vNoNivel;
-                    //    vCompetencia.NB_NIVEL = item["NB_NIVEL"].Text;
-                    //    vCompetencia.DS_INDICADORES = txtIndicadorDesempeno.Text;
-                    //}
+                    }
+                    else
+                    {
+                        vCompetencia.NB_COMPETENCIA = cmbCompetenciaEspecifica.SelectedItem.Text;
+                        vCompetencia.ID_COMPETENCIA = int.Parse(cmbCompetenciaEspecifica.SelectedItem.Value);
+                        vCompetencia.NO_NIVEL = vNoNivel;
+                        vCompetencia.NB_NIVEL = item["NB_NIVEL"].Text;
+                        vCompetencia.DS_INDICADORES = txtIndicadorDesempeno.Text;
+                    }
 
                     vFgRebindGrid = true | vFgRebindGrid;
 
@@ -2196,7 +2196,7 @@ namespace SIGE.WebApp.Administracion
                     competencia = new E_FUNCION_COMPETENCIA();
 
                 cmbCompetenciaEspecifica.SelectedValue = competencia.ID_COMPETENCIA.ToString();
-                
+
                 txtIndicadorDesempeno.Text = Regex.Replace(competencia.DS_INDICADORES.ToString(), "<.*?>", string.Empty);
                 CargarNivelesCompetencias();
             }
@@ -2495,6 +2495,24 @@ namespace SIGE.WebApp.Administracion
         {
             //ShowFuncionesGenericas
             btnAgregarFuncionGenerica();
+        }
+
+        protected void btnAgregarCompetencia_Click(object sender, EventArgs e)
+        {
+            vIdEditingItem = Guid.NewGuid();
+          
+            cmbCompetenciaEspecificas.DataSource = vListaCatalogoCompetencias.Where(n => n.CL_TIPO_COMPETENCIA == "ESP");
+            cmbCompetenciaEspecificas.DataTextField = "NB_COMPETENCIA";
+            cmbCompetenciaEspecificas.DataValueField = "ID_COMPETENCIA";
+            cmbCompetenciaEspecificas.DataBind();
+
+            cmbCompetenciaEspecifica.DataSource = vListaCatalogoCompetencias.Where(n => n.CL_TIPO_COMPETENCIA == "ESP");
+            cmbCompetenciaEspecifica.DataTextField = "NB_COMPETENCIA";
+            cmbCompetenciaEspecifica.DataValueField = "ID_COMPETENCIA";
+            cmbCompetenciaEspecifica.DataBind();
+
+            txtIndicadorDesempeno.Text = "";
+            CargarNivelesCompetencias();
         }
     }
 }
