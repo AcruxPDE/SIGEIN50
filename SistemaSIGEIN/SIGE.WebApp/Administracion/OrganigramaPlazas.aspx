@@ -17,18 +17,32 @@
             OpenSelectionWindow("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=0", "winSeleccion", "Selección de campo adicional")
         }
 
+        function OpenPuestoSelectionWindow() {
+            OpenSelectionWindow("../Comunes/SeleccionPlazaPuesto.aspx?mulSel=0", "winSeleccion", "Selección de puesto")
+        }
+
         function OpenOrganigrama() {
-            var vUrl = "VentanaOrganigramaPlazas.aspx";
+            var vUrl = "";
             var lbPlazas = $find("<%= lstPlaza.ClientID %>");
-            var sel = lbPlazas.get_selectedItem();
+            var lbPuesto = $find("<%= lstPuesto.ClientID %>");
+            var sel1 = null;
+            var sel = null;
+            
+            if (lbPlazas != null) {
+                sel = lbPlazas.get_selectedItem();
+            }else if (lbPuesto != null) {
+                 sel1 = lbPuesto.get_selectedItem();
+            }
+           
 
             if (sel != null) {
+                vUrl = "VentanaOrganigramaPlazas.aspx";
                 var vValue = sel.get_value();
                 if (vValue != null && vValue != "") {
                     vUrl = vUrl + "?idPlaza=" + vValue;
                 }
                 else {
-                    radalert("Selecciona la plaza a partir de la cual se generará el organigrama.", 400, 150, "");
+                    radalert("Selecciona la plaza a partir de la cual se generará el organigrama.", 400, 150, "Plaza");
                     return;
                 }
 
@@ -42,7 +56,7 @@
                 var lbCampos = $find("<%= RadListBox2.ClientID %>");
                 var selCampos= lbCampos.get_selectedItem();
                 if ((selArea != null && selArea.get_value() != "") && (selCampos != null && selCampos.get_value() != "")) {
-                        radalert("Selecciona solo un filtro (área/departamento o campo adicional).", 400, 150, "");
+                        radalert("Selecciona solo un filtro (área/departamento o campo adicional).", 400, 150, "Plaza");
                         return;
                     }               
                 else {
@@ -64,9 +78,53 @@
                 if(vValorNiveles != null && vValorNiveles != "")
                     vUrl = vUrl + "&NoNiveles=" + vValorNiveles;
 
+            } else if (sel1 != null) {
+                vUrl = "VentanaOrganigramaPuesto.aspx";
+                var vValue = sel1.get_value();
+                if (vValue != null && vValue != "") {
+                    vUrl = vUrl + "?idPuesto=" + vValue;
+                }
+                else {
+                    radalert("Selecciona el puesto a partir del cual se generará el organigrama.", 400, 150, "Puesto");
+                    return;
+                }
+
+                var combo = $find('<%=cmbEmpresas.ClientID %>');
+                var vIdEmpresa = combo.get_selectedItem().get_value();
+                if (vIdEmpresa != null && vIdEmpresa != "")
+                    vUrl = vUrl + "&IdEmpresa=" + vIdEmpresa;
+
+                var lbArea = $find("<%= rlbArea.ClientID %>");
+                var selArea = lbArea.get_selectedItem();
+                var lbCampos = $find("<%= RadListBox2.ClientID %>");
+                var selCampos = lbCampos.get_selectedItem();
+                if ((selArea != null && selArea.get_value() != "") && (selCampos != null && selCampos.get_value() != "")) {
+                    radalert("Selecciona solo un filtro (área/departamento o campo adicional).", 400, 150, "Plaza");
+                    return;
+                }
+                else {
+                    if (selArea != null && selArea.get_value() != "") {
+                        var vValueArea = selArea.get_value();
+                        if (vValueArea != "")
+                            vUrl = vUrl + "&IdDepartamento=" + vValueArea;
+                    }
+                    else if (selCampos != null && selCampos.get_value() != "") {
+                        var vValueCampo = selCampos.get_value();
+                        if (vValueCampo != "")
+                            vUrl = vUrl + "&IdCampo=" + vValueCampo;
+                    }
+                }
+
+
+                var vNiveles = $find("<%=txtNiveles.ClientID %>");
+                var vValorNiveles = vNiveles.get_value();
+                if (vValorNiveles != null && vValorNiveles != "")
+                    vUrl = vUrl + "&NoNiveles=" + vValorNiveles;
+
+
             }
             else {
-                radalert("Selecciona la plaza a partir de la cual se generará el organigrama.", 400, 150, "");
+                radalert("Selecciona el puesto o la plaza a partir del cual se generará el organigrama.", 400, 150, "Plaza/Puesto");
                 return;
             }
 
@@ -114,6 +172,12 @@
                         vLstDato.nbItem = vDatosSeleccionados.nbValor;
                         ChangeCamposItem(vLstDato.idItem, vLstDato.nbItem);
                         break;
+                    case "PUESTO":
+                        var vDatosSeleccionados = pDato[0];
+                        vLstDato.idItem = vDatosSeleccionados.idPlaza;
+                        vLstDato.nbItem = vDatosSeleccionados.nbPlaza;
+                        ChangePuestoItem(vLstDato.idItem, vLstDato.nbItem);
+                        break;
                 }
             }
         }
@@ -136,54 +200,81 @@
             ChangeCamposItem("", "Seleccione");
         }
 
+        function CleanPuestoSelection(sender, args) {
+            ChangePuestoItem("", "Seleccione");
+        }
+
         function ChangePlazaItem(pIdItem, pNbItem) {
             var vListBox = $find("<%=lstPlaza.ClientID %>");
-            vListBox.trackChanges();
+            if (vListBox != null) {
+                vListBox.trackChanges();
 
-            var items = vListBox.get_items();
-            items.clear();
+                var items = vListBox.get_items();
+                items.clear();
 
-            var item = new Telerik.Web.UI.RadListBoxItem();
-            item.set_text(pNbItem);
-            item.set_value(pIdItem);
-            items.add(item);
-            item.set_selected(true);
-            vListBox.commitChanges();
+                var item = new Telerik.Web.UI.RadListBoxItem();
+                item.set_text(pNbItem);
+                item.set_value(pIdItem);
+                items.add(item);
+                item.set_selected(true);
+                vListBox.commitChanges();
 
-            //var ajaxManager = $find("<= ramOrganigrama.ClientID %>");
-            //ajaxManager.ajaxRequest("seleccionPlaza"); //Making ajax request with the argument        
+                //var ajaxManager = $find("<= ramOrganigrama.ClientID %>");
+                //ajaxManager.ajaxRequest("seleccionPlaza"); //Making ajax request with the argument   
+            }
         }
 
         function ChangeCamposItem(pIdItem, pNbItem) {
             var vListBox = $find("<%=RadListBox2.ClientID %>");
-            vListBox.trackChanges();
+            if (vListBox != null) {
+                vListBox.trackChanges();
 
-            var items = vListBox.get_items();
-            items.clear();
+                var items = vListBox.get_items();
+                items.clear();
 
-            var item = new Telerik.Web.UI.RadListBoxItem();
-            item.set_text(pNbItem);
-            item.set_value(pIdItem);
-            items.add(item);
-            item.set_selected(true);
-            vListBox.commitChanges();
+                var item = new Telerik.Web.UI.RadListBoxItem();
+                item.set_text(pNbItem);
+                item.set_value(pIdItem);
+                items.add(item);
+                item.set_selected(true);
+                vListBox.commitChanges();
+            }
 
         }
 
         function ChangeDepartamentosItem(pIdItem, pNbItem) {
             var vListBox = $find("<%=rlbArea.ClientID %>");
-            vListBox.trackChanges();
+            if (vListBox != null) {
+                vListBox.trackChanges();
 
-            var items = vListBox.get_items();
-            items.clear();
+                var items = vListBox.get_items();
+                items.clear();
 
-            var item = new Telerik.Web.UI.RadListBoxItem();
-            item.set_text(pNbItem);
-            item.set_value(pIdItem);
-            items.add(item);
-            item.set_selected(true);
-            vListBox.commitChanges();
+                var item = new Telerik.Web.UI.RadListBoxItem();
+                item.set_text(pNbItem);
+                item.set_value(pIdItem);
+                items.add(item);
+                item.set_selected(true);
+                vListBox.commitChanges();
+            }
         }
+
+        function ChangePuestoItem(pIdItem, pNbItem) {
+            var vListBox = $find("<%=lstPuesto.ClientID %>");
+            if (vListBox != null) {
+                vListBox.trackChanges();
+
+                var items = vListBox.get_items();
+                items.clear();
+
+                var item = new Telerik.Web.UI.RadListBoxItem();
+                item.set_text(pNbItem);
+                item.set_value(pIdItem);
+                items.add(item);
+                item.set_selected(true);
+                vListBox.commitChanges();
+            }
+         }
     </script>
 
     <!-- Load Pako ZLIB library to enable PDF compression -->
@@ -227,6 +318,22 @@
                     <%--   <telerik:AjaxUpdatedControl ControlID="lstAscendencia" LoadingPanelID="ralpOrganigrama"></telerik:AjaxUpdatedControl>--%>
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="cmbPlazaPuesto">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="lstPlaza" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="lstPuesto" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="rocPlazas" UpdatePanelHeight="100%"  UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnBuscarPuesto" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnLimpiarPuesto" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnBuscarSeleccionPuesto" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnLimpiarSeleccionPuesto" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                     <telerik:AjaxUpdatedControl ControlID="cmbEmpresas" UpdatePanelHeight="100%" UpdatePanelRenderMode="Inline" ></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="lblEmpresa" UpdatePanelHeight="100%"  UpdatePanelRenderMode="Inline"></telerik:AjaxUpdatedControl>
+                
+                
+                
+                </UpdatedControls>
+            </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
     <div style="height: calc(100% - 10px);">
@@ -234,19 +341,42 @@
             <telerik:RadPane ID="RadPane2" runat="server">
                 <div style="width: 700px;">
                     <div class="ctrlBasico">
-                        <label name="lblIdPuesto">Generar organigrama a partir de la plaza:</label>
+                        <label name="lblIdPuesto">Generar organigrama a partir de la plaza o puesto:</label>
                           <div style="clear: both; height: 10px;"></div>
+                        <div class="Divisiones2">
+                            <asp:Label ID="lblPlazaPuesto" CssClass="Etiquetas" Text="Cargar Plaza o Puesto" runat="server" Width="150px" Font-Size="Small"></asp:Label>
+                            <telerik:RadComboBox runat="server"  ID="cmbPlazaPuesto" EmptyMessage="Seleccione" OnSelectedIndexChanged="cmbPlazaPuesto_SelectedIndexChanged" AutoPostBack="true">
+                                <Items>
+                                    <telerik:RadComboBoxItem Text="Por plaza" Value="plaza" />
+                                    <telerik:RadComboBoxItem Text="Por puesto" Value="puesto" />
+                                </Items>
+                            </telerik:RadComboBox>
+                        </div>
+                          <div style="height:10px; clear:both;"></div>
+                        <!-- Plazas-->
                         <div class="ctrlBasico">
-                            <telerik:RadListBox ID="lstPlaza" Width="300" runat="server" OnClientItemDoubleClicking="OpenPlazasSelectionWindow">
+                            <telerik:RadListBox ID="lstPlaza" Width="300" runat="server" OnClientItemDoubleClicking="OpenPlazasSelectionWindow" Visible="false">
                                 <Items>
                                     <telerik:RadListBoxItem Text="Seleccione" Value="" />
                                 </Items>
                             </telerik:RadListBox>
-                            <telerik:RadButton ID="btnBuscarPuesto" runat="server" Text="B" OnClientClicked="OpenPlazasSelectionWindow" AutoPostBack="false"></telerik:RadButton>
-                            <telerik:RadButton ID="btnLimpiarPuesto" runat="server" Text="X" OnClientClicked="CleanPlazasSelection" AutoPostBack="false"></telerik:RadButton>
+                            <telerik:RadButton ID="btnBuscarPuesto" runat="server" Text="B" OnClientClicked="OpenPlazasSelectionWindow" AutoPostBack="false" Visible="false"></telerik:RadButton>
+                            <telerik:RadButton ID="btnLimpiarPuesto" runat="server" Text="X" OnClientClicked="CleanPlazasSelection" AutoPostBack="false" Visible="false"></telerik:RadButton>
                         </div>
+                        <!-- Puestos-->
                         <div class="ctrlBasico">
-                            Empresa:<telerik:RadComboBox ID="cmbEmpresas" Width="200" runat="server"></telerik:RadComboBox>
+                            <telerik:RadListBox ID="lstPuesto" Width="300" runat="server" OnClientItemDoubleClicking="OpenPuestoSelectionWindow" Visible="false">
+                                <Items>
+                                    <telerik:RadListBoxItem Text="Seleccione" Value="" />
+                                </Items>
+                            </telerik:RadListBox>
+                            <telerik:RadButton ID="btnBuscarSeleccionPuesto" runat="server" Text="B" OnClientClicked="OpenPuestoSelectionWindow" AutoPostBack="false" Visible="false"></telerik:RadButton>
+                            <telerik:RadButton ID="btnLimpiarSeleccionPuesto" runat="server" Text="X" OnClientClicked="CleanPuestoSelection" AutoPostBack="false" Visible="false"></telerik:RadButton>
+                        </div>
+
+                        <div class="ctrlBasico">
+                            <asp:Label ID="lblEmpresa" CssClass="Etiquetas" runat="server" Text="Empresa:" Width="100px" Font-Size="Small" Visible="false"></asp:Label>
+                            <telerik:RadComboBox ID="cmbEmpresas"  Width="200" runat="server" Visible="false"></telerik:RadComboBox>
                         </div>
                     </div>
                     <%--      <div class="ctrlBasico"></div>
@@ -258,7 +388,7 @@
                     <telerik:RadClientExportManager runat="server" ID="RadClientExportManager1">
                     </telerik:RadClientExportManager>
                     </div>--%>
-                    <div style="clear: both;"></div>
+                    <div style="clear:both;"></div>
                     <label name="lblFiltros">Por favor indique por cuál de los siguientes criterios desea filtrar (seleccione solo uno):</label>
                     <div style="clear: both; height: 10px;"></div>
                     <div class="ctrlBasico">
@@ -303,7 +433,7 @@
                     </div>
                     <div style="clear: both; height: 10px;"></div>
                     <div class="ctrlBasico">
-                        <telerik:RadButton ID="btnOrganigrama" runat="server" AutoPostBack="false" Text="Generar organigrama" OnClientClicked="OpenOrganigrama"></telerik:RadButton>
+                        <telerik:RadButton ID="btnOrganigrama" runat="server" AutoPostBack="false" Text="Generar organigrama" OnClientClicked="OpenOrganigrama" ></telerik:RadButton>
                     </div>
                 </div>
                 <%--           <div style="height: calc(100% - 50px); overflow: auto;">
@@ -334,13 +464,13 @@
                 <telerik:RadSlidingZone ID="rszAyuda" runat="server" SlideDirection="Left" ClickToOpen="true" ExpandedPaneId="rspAyuda" Width="22px">
                     <telerik:RadSlidingPane ID="RadSlidingPane1" runat="server" Title="Ayuda" Width="270px" RenderMode="Mobile" Height="100%">
                         <div style="display: block; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
-                            <p>
+                            <p align="justify">
                                 Aquí podrás definir tu búsqueda para la generación del organigrama.
                                 <br />
                                 En caso de ingresar criterios de búsqueda, éstos serán utilizados para acotar el diagrama. 
                                <br />
                                 <br />
-                                <b>Nota:</b> Las opciones de Área/Departamento y de Capos extra son mutualmente exclusivas, no pueden ser combinadas entre si.										
+                                <b>Nota:</b> Las opciones de Área/Departamento y de Campos extra son exclusivas, no pueden ser combinadas entre si.										
                             </p>
                         </div>
                     </telerik:RadSlidingPane>

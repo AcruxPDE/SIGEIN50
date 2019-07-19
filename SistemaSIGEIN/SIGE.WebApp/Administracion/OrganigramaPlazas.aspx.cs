@@ -185,6 +185,65 @@ namespace SIGE.WebApp.Administracion
         //    }
         //}
 
+        protected void cmbPlazaPuesto_SelectedIndexChanged (object sender, Telerik.Web.UI.RadComboBoxSelectedIndexChangedEventArgs e)
+        {
+            if(cmbPlazaPuesto.SelectedValue == "plaza")
+            {
+                lstPlaza.Visible = true;
+                btnBuscarPuesto.Visible = true;
+                btnLimpiarPuesto.Visible = true;
+                lblEmpresa.Visible = true;
+                cmbEmpresas.Visible = true;
+                lstPuesto.Visible = false;
+                btnBuscarSeleccionPuesto.Visible = false;
+                btnLimpiarSeleccionPuesto.Visible = false;
+                //ClientScript.RegisterClientScriptBlock(this.GetType(), "Puesto", "<script> CleanPuestoSelection(); </script>");
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "script", "ChangePuestoItem('', 'Seleccione');", true);
+                //ClientScript.RegisterStartupScript(GetType(), "Puesto", "CleanPuestoSelection();", true);
+                //ScriptManager.RegisterStartupScript(this.lstPlaza, GetType(), "Puesto", "ChangePuestoItem('', 'Seleccione')", true);
+                lstPuesto.DataValueField = "";
+                lstPuesto.DataTextField = "Seleccione";
+                lstPuesto.Items.Clear();
+                lstPuesto.Items.Add(new RadListBoxItem("Seleccione", ""));
+                
+            }
+            else if(cmbPlazaPuesto.SelectedValue == "puesto")
+            {
+                lstPuesto.Visible = true;
+                btnBuscarSeleccionPuesto.Visible = true;
+                btnLimpiarSeleccionPuesto.Visible = true;
+                lblEmpresa.Visible = true;
+                cmbEmpresas.Visible = true;
+                lstPlaza.Visible = false;
+                btnBuscarPuesto.Visible = false;
+                btnLimpiarPuesto.Visible = false;
+                //ClientScript.RegisterClientScriptBlock(this.GetType(), "Plaza", "<script> CleanPlazasSelection(); </script>");
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "script", "ChangePlazaItem('', 'Seleccione');", true);
+                //ClientScript.RegisterStartupScript(GetType(),"Plaza", "CleanPlazasSelection();", true);
+                //ScriptManager.RegisterStartupScript(this.lstPlaza, GetType(), "Plaza", "ChangePlazaItem('', 'Seleccione')", true);
+                lstPlaza.DataValueField = "";
+                lstPlaza.DataTextField = "Seleccione";
+                lstPlaza.Items.Clear();
+                lstPlaza.Items.Add(new RadListBoxItem("Seleccione", ""));
+            }
+            else
+            {
+                lstPlaza.Visible = false;
+                btnBuscarPuesto.Visible = false;
+                btnLimpiarPuesto.Visible = false;
+                lblEmpresa.Visible = false;
+                cmbEmpresas.Visible = false;
+                lstPuesto.Visible = false;
+                btnBuscarSeleccionPuesto.Visible = false;
+                btnLimpiarSeleccionPuesto.Visible = false;
+            }
+        }
+
+        //protected void btnGenerar(object sender, EventArgs e)
+        //{
+        //    System.Diagnostics.Debug.WriteLine("Llegue");
+        //}
+
         protected int? ObtieneIdPlaza()
         {
             int vIdPlaza = 0;

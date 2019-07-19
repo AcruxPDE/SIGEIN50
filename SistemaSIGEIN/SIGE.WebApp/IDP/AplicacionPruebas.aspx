@@ -33,7 +33,7 @@
                  idEmpleado = row.getDataKeyValue("M_EMPLEADO_ID_EMPLEADO");
              }
              else {
-                 radalert("Selecciona un empleado.", 400, 150, "Error");
+                 radalert("Selecciona un empleado.", 400, 150, "Aviso");
              }
          }
 
@@ -47,7 +47,7 @@
                  if (vIdBateriaEmp != "" && vIdBateriaEmp != null)
                      openChildDialog("VentanaAgregarPruebas.aspx?pIdBateria=" + vIdBateriaEmp, "winPruebasEmp", "Agregar pruebas", windowProperties);
                  else
-                     radalert("No existe una batería creada.", 400, 150, "Error");
+                     radalert("No existe una batería creada.", 400, 150, "Aviso");
              }
          }
 
@@ -62,7 +62,7 @@
                  if (vIdBateriaEmp != "" && vIdBateriaEmp != null)
                      openChildDialog("VentanaCapturaManualPruebas.aspx?pIdBateria=" + vIdBateriaEmp + "&pIdCandidato=" + idCandidatoEmp, "winPruebasEmp", "Captura manual", windowProperties);
                  else
-                     radalert("No existe una batería creada.", 400, 150, "Error");
+                     radalert("No existe una batería creada.", 400, 150, "Aviso");
              }
          }
 
@@ -77,7 +77,7 @@
                  if (vIdBateriaEmp != "" && vIdBateriaEmp != null)
                      openChildDialog("VentanaRevisarPruebas.aspx?pIdBateria=" + vIdBateriaEmp + "&pIdCandidato=" + idCandidatoEmp, "winPruebasEmp", "Visualizar pruebas", windowProperties);
                  else
-                     radalert("No existe una batería creada.", 400, 150, "Error");
+                     radalert("No existe una batería creada.", 400, 150, "Aviso");
              }
          }
 
@@ -104,7 +104,7 @@
                          vCandidatos.push(vCandidato);
                      }
                      else {
-                         radalert("Uno de los empleados seleccionados ya cuenta con una batería creada. Elimina sus respuestas para asignar una nueva.", 400, 170, "Error");
+                         radalert("Uno de los empleados seleccionados ya cuenta con una batería creada. Elimina sus respuestas para asignar una nueva.", 400, 170, "Aviso");
                          return;
                      }
                  }
@@ -115,7 +115,7 @@
                  openChildDialog("AgregarPruebas.aspx?candidatos=" + vCandidatosJson +"&CL_ORIGEN=EMPLEADO", "winPruebasEmp", "Asignar pruebas", GetWindowProperties());
              }
              else {
-                 radalert("Selecciona una solicitud.", 400, 150, "Error");
+                 radalert("Selecciona una solicitud.", 400, 150, "Aviso");
              }
          }
 
@@ -138,7 +138,7 @@
                          vCandidatos.push(vCandidato);
                      }
                      else {
-                         radalert("Uno de los empleados seleccionados no cuenta con una batería creada. Crea la batería o deselecciónalo para este proceso.", 400, 170, "Error");
+                         radalert("Uno de los empleados seleccionados no cuenta con una batería creada. Crea la batería o deselecciónalo para este proceso.", 400, 170, "Aviso");
                          return;
                      }
                  }
@@ -151,7 +151,7 @@
 
              }
              else {
-                 radalert("Selecciona un empleado.", 400, 150, "Error");
+                 radalert("Selecciona un empleado.", 400, 150, "Aviso");
              }
         }
 
@@ -256,7 +256,7 @@
                          vCandidatos.push(vCandidato);
                      }
                      else {
-                         radalert("Una de las solicitudes seleccionadas ya cuenta con una batería creada. Elimina sus respuestas para asignar una nueva.", 400, 170, "Error");
+                         radalert("Una de las solicitudes seleccionadas ya cuenta con una batería creada. Elimina sus respuestas para asignar una nueva.", 400, 170, "Aviso");
                          return;
                      }
                  }
@@ -266,7 +266,7 @@
                  openChildDialog("AgregarPruebas.aspx?candidatos=" + vCandidatosJson, "winPruebasSolicitud", "Asignar pruebas", GetWindowProperties());
              }
              else {
-                 radalert("Selecciona una solicitud.", 400, 150, "Error");
+                 radalert("Selecciona una solicitud.", 400, 150, "Aviso");
              }
         }
 
@@ -288,7 +288,7 @@
                         vCandidatos.push(vCandidato);
                     }
                     else {
-                        radalert("Una de las solicitudes seleccionada no cuenta con una batería creada. Crea la batería o deselecciónala para este proceso.", 400, 170, "Error");
+                        radalert("Una de las solicitudes seleccionada no cuenta con una batería creada. Crea la batería o deselecciónala para este proceso.", 400, 170, "Aviso");
                         return;
                     }
                 }
@@ -300,7 +300,7 @@
                 openChildDialog("VentanaAplicarPruebas.aspx?candidatos=" + vCandidatosJson, "winPruebas", "Aplicar pruebas", GetWindowProperties());
             }
             else {
-                radalert("Selecciona una solicitud.", 400, 150, "Error");
+                radalert("Selecciona una solicitud.", 400, 150, "Aviso");
             }
         }
 
@@ -328,7 +328,7 @@
                 if (vIdBateria != "" && vIdBateria != null)
                     openChildDialog("VentanaCapturaManualPruebas.aspx?pIdBateria=" + vIdBateria + "&pIdCandidato=" + idCandidato, "winPruebas", "Captura manual", windowProperties);
                 else
-                    radalert("No existe una batería creada.", 400, 150, "Error");
+                    radalert("No existe una batería creada.", 400, 150, "Aviso");
             }
         }
 
@@ -342,7 +342,7 @@
                 if (vIdBateria != "" && vIdBateria != null)
                     openChildDialog("VentanaRevisarPruebas.aspx?pIdBateria=" + vIdBateria + "&pIdCandidato=" + idCandidato, "winPruebas", "Visualizar pruebas", windowProperties);
                 else
-                    radalert("No existe una batería creada.", 400, 150, "Error");
+                    radalert("No existe una batería creada.", 400, 150, "Aviso");
             }
         }
 
@@ -358,7 +358,7 @@
                 idCandidato = row.getDataKeyValue("ID_CANDIDATO");
             }
             else {
-                radalert("Selecciona una solicitud.", 400, 150, "Error");
+                radalert("Selecciona una solicitud.", 400, 150, "Aviso");
             }
         }
 
@@ -378,7 +378,7 @@
                 clToken = row.getDataKeyValue("CL_TOKEN");
             }
             if (idSolicitud == "") {
-                radalert("Selecciona una solicitud.", 400, 150);
+                radalert("Selecciona una solicitud.", 400, 150, "Aviso");
                 return;
             }
             OpenProcesoSeleccionWindow();
@@ -428,12 +428,12 @@
                 clEstatus = row.getDataKeyValue("CL_SOLICITUD_ESTATUS");
             }
             if (idSolicitud == "") {
-                radalert("Selecciona una solicitud.", 400, 150);
+                radalert("Selecciona una solicitud.", 400, 150, "Aviso");
                 return;
             }
 
             if (clEstatus == "Contratado") {
-                radalert("El candidato de la solicitud ya está contratado. Selecciona otra solicitud.", 400, 150);
+                radalert("El candidato de la solicitud ya está contratado. Selecciona otra solicitud.", 400, 150, "Aviso");
                 return;
             }
 
@@ -461,7 +461,7 @@
                 if (vIdBateria != "" && vIdBateria != null)
                     openChildDialog("VentanaAgregarPruebas.aspx?pIdBateria=" + vIdBateria, "winPruebas", "Agregar pruebas", windowProperties);
                 else
-                    radalert("No existe una batería creada.", 400, 150, "Error");
+                    radalert("No existe una batería creada.", 400, 150, "Aviso");
             }
         }
 
@@ -496,7 +496,7 @@
                 if (idCandidato != "")
                     openChildDialog(vURL, "rwListaProcesoSeleccion", vTitulo, windowProperties);
                 else
-                    radalert("Selecciona una solicitud.", 400, 150);
+                    radalert("Selecciona una solicitud.", 400, 150, "Aviso");
             }
 
 

@@ -46,7 +46,7 @@
                    confirmAction(sender, args, vMensaje, vWindowsProperties);
                }
                else {
-                   radalert("Selecciona una competencia.", 400, 150);
+                   radalert("Selecciona una competencia.", 400, 150, "Aviso");
                    args.set_cancel(true);
                }
            }

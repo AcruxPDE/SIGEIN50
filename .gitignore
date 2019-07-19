@@ -1,3 +1,23 @@
 
 SistemaSIGEIN/SIGE.WebApp/obj/Release/sige.webapp.dll.licenses
 SistemaSIGEIN/SistemaSIGEIN.v11.suo
+*.pdb
+*.pdb
+*.dll
+SistemaSIGEIN/SIGE.WebApp/obj/Debug/SIGE.WebApp.dll
+*.txt
+*.cache
+SistemaSIGEIN/SIGE.WebApp/obj/Debug/SIGE.WebApp.csproj.CoreCompileInputs.cache
+SistemaSIGEIN/SIGE.WebApp/obj/Debug/SIGE.WebApp.csproj.FileListAbsolute.txt
+SistemaSIGEIN/SIGE.WebApp/obj/Debug/SIGE.WebApp.csprojAssemblyReference.cache
+SistemaSIGEIN/SIGE.WebApp/obj/Debug/SIGE.WebApp.dll
+SistemaSIGEIN/SIGE.WebApp/obj/Debug/SIGE.WebApp.pdb
+*.pdb
+*.config
+*.dll
+*.cache
+*.ide-wal
+*.ide-shm
+*.ide
+*.ide
+*.ide

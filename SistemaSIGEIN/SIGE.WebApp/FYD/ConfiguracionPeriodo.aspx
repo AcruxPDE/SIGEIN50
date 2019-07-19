@@ -58,8 +58,8 @@
         var vOpenCamposInterrelacionadosSelectionWindow = "Selección de campos para interrelacionados";
         var vOpenCamposAdicionalesSelectionWindow = "Selección de campos para preguntas adicionales";
         var vOpenAgregarCuestionarioSelectionWindow = "Agregar/Editar cuestionario";
-        var vOpenAgregarPreguntasAdicionalesWindow = "Agregar pregunta adicional";
-        var vOpenEditarPreguntasAdicionalesWindow = "Editar pregunta adicional";
+        var vOpenAgregarPreguntasAdicionalesWindow = "Agregar pregunta abierta";
+        var vOpenEditarPreguntasAdicionalesWindow = "Editar pregunta abierta";
         var vOpenEditarPreguntasAdicionalesWindow_alert = "Selecciona una pregunta.";
         var vConfirmarEliminarPregunta = "¿Estás seguro de eliminar esta pregunta?, este proceso no podrá revertirse. ";
         var vConfirmarEliminarPregunta_window = "Eliminar pregunta";
@@ -198,7 +198,7 @@
                 var vIdPregunta = vPregunta.getDataKeyValue("ID_PREGUNTA_ADICIONAL");
                 OpenSelectionWindow("VentanaPeriodoPreguntasAdicionales.aspx?IdPeriodo=<%= vPeriodo.ID_PERIODO %>&IdPregunta=" + vIdPregunta, "winCamposAdicionales", vOpenEditarPreguntasAdicionalesWindow, windowProperties);
             } else {
-                radalert(vOpenEditarPreguntasAdicionalesWindow_alert, 400, 150);
+                radalert(vOpenEditarPreguntasAdicionalesWindow_alert, 400, 150, "Aviso");
             }
         }
 
@@ -206,7 +206,7 @@
             var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
             { if (shouldSubmit) { this.click(); } });
 
-            radconfirm(vConfirmarEliminarPregunta, callBackFunction, 400, 170, null, vConfirmarEliminarPregunta_window);
+            radconfirm(vConfirmarEliminarPregunta, callBackFunction, 400, 170, null, "Aviso");
             args.set_cancel(true);
         }
 
@@ -231,7 +231,7 @@
                 OpenSelectionWindow("../Comunes/SeleccionPuesto.aspx?m=FORMACION&CatalogoCl=OTROSPUESTOS", "winSeleccion", vOpenOtrosPuestosSelectionWindow)
             }
             else {
-                radalert(vOpenOtrosPuestosSelectionWindow_alert, 400, 150);
+                radalert(vOpenOtrosPuestosSelectionWindow_alert, 400, 150, "Aviso");
             }
         }
 
@@ -243,7 +243,7 @@
                 var vIdEvaluado = vEvaluado.getDataKeyValue("ID_EVALUADO");
                 OpenSelectionWindow("MatrizCuestionarios.aspx?PeriodoId=<%= vPeriodo.ID_PERIODO %>&EvaluadoId=" + vIdEvaluado, "winEdicionPorEvaluado", vOpenMatrizEvaluadoresWindow)
             } else {
-                radalert(vOpenMatrizEvaluadoresWindow_alert, 400, 150);
+                radalert(vOpenMatrizEvaluadoresWindow_alert, 400, 150, "Aviso");
             }
         }
 
@@ -258,9 +258,9 @@
 
             var vNoItemsCuestionarios = $find("<%= grdCuestionarios.ClientID %>").get_masterTableView().get_dataItems().length;
 
-            if (vValueTab == 4 && '<%= vFgInterrelacionado%>' == "True" && vNoItemsCuestionarios == 0) {
-                radalert("Si deseas filtrar los interrelacionados por algún campo, seleccionalo en la pestaña antes de seleccionar los evaluados.", 400, 170);
-            }
+            <%--if (vValueTab == 4 && '<%= vFgInterrelacionado%>' == "True" && vNoItemsCuestionarios == 0) {
+                radalert("Si deseas filtrar los interrelacionados por algún campo, seleccionalo en la pestaña antes de seleccionar los evaluados.", 400, 170, "Aviso");
+            }--%>
 
             if (vValueTab == 6 & vEstadoPeriodo != 'CERRADO' & vNoItemsCuestionarios == 0) {
                 OpenSelectionWindow("MatrizPlaneacionCuestionarios.aspx?IdPeriodo=<%= vPeriodo.ID_PERIODO %>", "winMatrizCuestionarios", vOpenPlaneacionMatrizWindow);
@@ -389,7 +389,7 @@
                 confirmAction(sender, args, vMensaje, vWindowsProperties);
             }
             else {
-                radalert(vconfirmarEliminarEvaluados_alert, 400, 150);
+                radalert(vconfirmarEliminarEvaluados_alert, 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -1032,7 +1032,7 @@
         </Tabs>
     </telerik:RadTabStrip>
     <div style="height: calc(100% - 90px); padding-top: 10px;">
-        <telerik:RadMultiPage ID="rmpConfiguracionPeriodo" runat="server" SelectedIndex="0" Height="100%">
+        <telerik:RadMultiPage ID="rmpConfiguracionPeriodo" runat="server" SelectedIndexSelectedIndex="0" Height="100%">
             <telerik:RadPageView ID="rpvContexto" runat="server">
             <div style="clear: both; height: 10px;"></div>
                                 <div class="ctrlBasico">
@@ -1430,7 +1430,7 @@
                         <MasterTableView DataKeyNames="ID_PREGUNTA_ADICIONAL,CL_CUESTIONARIO_OBJETIVO" ClientDataKeyNames="ID_PREGUNTA_ADICIONAL" AllowPaging="true" ShowHeadersWhenNoRecords="true">
                             <Columns>
                                 <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="30"></telerik:GridClientSelectColumn>
-                                <telerik:GridBoundColumn HeaderText="Título del campo" DataField="NB_PREGUNTA" UniqueName="NB_PREGUNTA">
+                                <telerik:GridBoundColumn HeaderText="Preguntas abiertas" DataField="NB_PREGUNTA" UniqueName="NB_PREGUNTA">
                                     <HeaderStyle Font-Bold="true" />
                                 </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn HeaderStyle-Width="150" HeaderText="Cuestionario" DataField="NB_CUESTIONARIO_OBJETIVO" UniqueName="NB_CUESTIONARIO_OBJETIVO">
@@ -1761,8 +1761,8 @@
                             </telerik:RadGrid>
                          </telerik:RadPane>
                        <telerik:RadPane ID="RadPane2" runat="server" Scrolling="None" Width="22px">
-                           <telerik:RadSlidingZone ID="RadSlidingZone1" runat="server" SlideDirection="Left" Width="22px" ClickToOpen="true">
-                               <telerik:RadSlidingPane ID="rspFiltroInter" runat="server" Title="Filtro interrelacionados" Width="500px">
+                           <telerik:RadSlidingZone Visible="false" Enabled="false" ID="RadSlidingZone1" runat="server" SlideDirection="Left" Width="22px" ClickToOpen="true">
+                               <telerik:RadSlidingPane ID="rspFiltroInter" Visible="false" Enabled="false" runat="server" Title="Filtro interrelacionados" Width="500px">
                                    <div class="ctrlBasico" style="display: inline-block;" id="divConfiguracionInterrelacionados" runat="server">
                                        <fieldset style="padding-left: 10px; vertical-align: middle;">
                                            <legend id="lgInterrelacionado" runat="server">Interrelacionados</legend>

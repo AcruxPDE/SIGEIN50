@@ -140,7 +140,7 @@
                 if (pIdPeriodo != null)
                     OpenWindow(GetCopiaWindowProperties(pIdPeriodo));
                 else
-                    radalert("Selecciona un período.", 400, 150);
+                    radalert("Selecciona un período.", 400, 150, "Aviso");
             }
 
             function GetReplicaWindowProperties(pIdPeriodo) {
@@ -241,7 +241,7 @@
                     }
                 }
                 else {
-                    radalert("Selecciona un período.", 400, 150);
+                    radalert("Selecciona un período.", 400, 150, "Aviso");
                 }
             }
 
@@ -283,7 +283,7 @@
                 if (vIdPeriodo != null)
                     OpenWindow(GetConfiguracionPeriodoProperties(vIdPeriodo));
                 else
-                    radalert("Selecciona un período.", 400, 150);
+                    radalert("Selecciona un período.", 400, 150, "Aviso");
             }
 
             function OpenInsertPeriodoWindow() {
@@ -299,11 +299,11 @@
                         OpenWindow(GetPeriodoWindowProperties(vIdPeriodo));
                     }
                     else {
-                        radalert("Selecciona un período.", 400, 150);
+                        radalert("Selecciona un período.", 400, 150, "Aviso");
                     }
                 }
                 else {
-                    radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "");
+                    radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "Aviso");
                 }
             }
 
@@ -315,11 +315,11 @@
                     var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                     { if (shouldSubmit) { this.click(); } });
 
-                    radconfirm('¿Deseas cerrar el período ' + vNbPeriodo + ' ?', callBackFunction, 400, 170, null, "Cerrar período");
+                    radconfirm('¿Deseas cerrar el período ' + vNbPeriodo + ' ?', callBackFunction, 400, 170, null, "Aviso");
                     args.set_cancel(true);
                 }
                 else {
-                    radalert("Seleccione un período.", 400, 150, "");
+                    radalert("Seleccione un período.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -332,11 +332,11 @@
                     var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                     { if (shouldSubmit) { this.click(); } });
 
-                    radconfirm('¿Deseas reactivar el período ' + vNbPeriodo + ' ?', callBackFunction, 400, 170, null, "Reactivar período");
+                    radconfirm('¿Deseas reactivar el período ' + vNbPeriodo + ' ?', callBackFunction, 400, 170, null, "Aviso");
                     args.set_cancel(true);
                 }
                 else {
-                    radalert("Seleccione un período.", 400, 150, "");
+                    radalert("Seleccione un período.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -352,15 +352,19 @@
                     var vWindowsProperties = {
                         height: 200
                     };
-                    confirmAction(sender, args, "¿Deseas eliminar el período " + vNbPeriodo + "?, este proceso no podrá revertirse");
+                    
+                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                    radconfirm("¿Deseas eliminar el período " + vNbPeriodo + "?, este proceso no podrá revertirse", callBackFunction, 400, 170, null, "Aviso");
+                    args.set_cancel(true);
                 }
                 else {
-                    radalert("Selecciona un período.", 400, 150);
+                    radalert("Selecciona un período.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
             else {
-                radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "");
+                radalert("No tiene los permisos necesarios para llevar a cabo esta función.", 450, 200, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -370,7 +374,7 @@
             if (vIdPeriodo != null)
                 OpenWindow(GetCapturarResultadosPeriodoProperties(vIdPeriodo));
             else
-                radalert("Selecciona un período.", 400, 150);
+                radalert("Selecciona un período.", 400, 150, "Aviso");
         }
 
         function OpenCumplimientoPersonal() {
@@ -378,7 +382,7 @@
             if (vIdPeriodo != null)
                 OpenWindow(GetCumplimientoPersonal(vIdPeriodo));
             else
-                radalert("Selecciona un período.", 400, 150);
+                radalert("Selecciona un período.", 400, 150, "Aviso");
         }
 
         function OpenCumplimientoGlobal() {
@@ -390,7 +394,7 @@
                 //else 
                 //  OpenWindow(GetCumplimientoGlobalConsecuente(vIdPeriodo, vClCopia));
             else
-                radalert("Selecciona un período.", 400, 150);
+                radalert("Selecciona un período.", 400, 150, "Aviso");
         }
 
         function OpenReporteBono() {
@@ -398,7 +402,7 @@
             if (vIdPeriodo != null)
                 OpenWindow(GetReporteBono(vIdPeriodo));
             else
-                radalert("Selecciona un período.", 400, 150);
+                radalert("Selecciona un período.", 400, 150, "Aviso");
         }
 
         function GetReporteBono(pIdPeriodo) {
@@ -428,7 +432,7 @@
             if (vIdPeriodo != null)
                 OpenWindow(GetControlAvance(vIdPeriodo));
             else
-                radalert("Selecciona un período.", 400, 150);
+                radalert("Selecciona un período.", 400, 150, "Aviso");
         }
 
         function useDataFromChild(pDato) {
@@ -464,6 +468,7 @@
             <telerik:AjaxSetting AjaxControlID="rlvPeriodos">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" LoadingPanelID="ralpPeriodosEvaluacion"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="btnConfiguracion" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>                
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="rdAgregar">
@@ -547,6 +552,11 @@
             <telerik:AjaxSetting AjaxControlID="btnReplicar">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="btnReplicar" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnConfiguracion">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" />   
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>

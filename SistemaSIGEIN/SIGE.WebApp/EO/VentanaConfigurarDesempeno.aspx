@@ -55,8 +55,14 @@
                 vMensaje = "¿Los indicadores inactivos serán eliminados, estas seguro que deseas continuar?, este proceso no podrá revertirse";
             else
                 vMensaje = "¿Las metas inactivas serán eliminadas, estas seguro que deseas continuar?, este proceso no podrá revertirse";
-            var vWindowsProperties = { height: 200 };
-            confirmAction(sender, args, vMensaje, vWindowsProperties);
+
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+            radconfirm(vMensaje, callBackFunction, 400, 170, null, "Aviso");
+            args.set_cancel(true);
+
+            //var vWindowsProperties = { height: 200 };
+            //confirmAction(sender, args, vMensaje, vWindowsProperties);
         }
 
         function OpenEnvioSolicitudes() {
@@ -132,22 +138,22 @@
                 OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?CatalogoCl=EVALUADOR&mulSel=0&CLFILTRO=NINGUNO", "winSeleccion", "Selección de evaluadores");
             }
             else {
-                radalert("Selecciona un evaluado.", 400, 150);
+                radalert("Selecciona un evaluado.", 400, 150, "Aviso");
             }
         }
 
         function OpenAgregarMetasWindow() {
             GetIdEvaluado();
             var vIdPeriodo = '<%= vIdPeriodo %>';
-            var vTextoVentana = "Agregar meta";
+            var vTextoVentana = "Agregar";
             if ('<%= vClTipoMetas %>' == "DESCRIPTIVO")
-                vTextoVentana = "Agregar indicador";
+                vTextoVentana = "Agregar";
 
             if (vIdEvaluado != null) {
                 OpenSelectionWindowC("VentanaMetasDesempeno.aspx?IdEvaluado=" + vIdEvaluado + "&IdPeriodo=" + vIdPeriodo + "&Accion=Agregar", "WinMetas", vTextoVentana);
             }
             else {
-                radalert("Selecciona un evaluado.", 400, 150);
+                radalert("Selecciona un evaluado.", 400, 150, "Aviso");
             }
         }
 
@@ -200,25 +206,25 @@
             GetIdEvaluado();
             obtenerIdMeta();
             var vIdPeriodo = '<%= vIdPeriodo %>';
-            var vTextoVentana = "Editar meta";
+            var vTextoVentana = "Editar";
             if ('<%= vClTipoMetas %>' == "DESCRIPTIVO")
-                vTextoVentana = "Editar indicador";
+                vTextoVentana = "Editar";
 
             if (idE != null & idE != "") {
                 if (vFgEvaluar != "False")
                     OpenSelectionWindowC("VentanaMetasDesempeno.aspx?IdEvaluado=" + idEvaluadoMeta + "&IdPeriodo=" + vIdPeriodo + "&NoMeta=" + idE + "&Meta=" + noMeta + "&Accion=Editar", "WinMetas", vTextoVentana);
                 else {
                     if ('<%= vClTipoMetas %>' == "DESCRIPTIVO")
-                        radalert("No se puede editar un indicador inactivo.", 400, 150);
+                        radalert("No se puede editar un indicador inactivo.", 400, 150, "Aviso");
                         else
-                    radalert("No se puede editar una meta inactiva.", 400, 150);
+                        radalert("No se puede editar una meta inactiva.", 400, 150, "Aviso");
                 }
             }
             else {
                 if ('<%= vClTipoMetas %>' == "DESCRIPTIVO")
-                    radalert("Selecciona un indicador.", 400, 150);
+                    radalert("Selecciona un indicador.", 400, 150, "Aviso");
                 else
-                radalert("Selecciona una meta.", 400, 150);
+                    radalert("Selecciona una meta.", 400, 150, "Aviso");
             }
         }
 
@@ -316,12 +322,16 @@
                     vNombre = selectedItems.length;
                     vMensaje = "¿Deseas eliminar a los " + vNombre + " evaluadores seleccionados?, este proceso no podrá revertirse";
                 }
-                var vWindowsProperties = { height: 200 };
+                //var vWindowsProperties = { height: 200 };
 
-                confirmAction(sender, args, vMensaje, vWindowsProperties);
+                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                radconfirm(vMensaje, callBackFunction, 400, 170, null, "Aviso");
+                args.set_cancel(true);
+
             }
             else {
-                radalert("Selecciona un evaluado.", 400, 150);
+                radalert("Selecciona un evaluado.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -400,7 +410,7 @@
             }
 
             if (vValueTab == 1 && '<%= vFgBajas%>' == "True")
-                radalert("Existen evaluados o evaluadores dados de baja en el período.", 400, 150);
+                radalert("Existen evaluados o evaluadores dados de baja en el período.", 400, 150, "Aviso");
         }
 
     </script>
@@ -821,7 +831,7 @@
                                                 </telerik:GridBoundColumn>
                                                 <telerik:GridButtonColumn CommandName="Delete" Text="Eliminar" UniqueName="Delete" ButtonType="ImageButton" HeaderStyle-Width="40"
                                                     ConfirmText="¿Desea eliminar la meta?"
-                                                    ConfirmTextFormatString="¿Desea eliminar la meta?" ConfirmTitle="Confirmar" ConfirmDialogWidth="400"
+                                                    ConfirmTextFormatString="¿Desea eliminar la meta?" ConfirmTitle="Aviso" ConfirmDialogWidth="400"
                                                     ConfirmDialogHeight="150" ConfirmDialogType="RadWindow" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" />
                                             </Columns>
                                         </telerik:GridTableView>
@@ -834,16 +844,16 @@
                             <telerik:RadButton ID="btnAgregarMeta" runat="server" name="btnAgregarMeta" AutoPostBack="false" Text="Agregar meta" OnClientClicked="OpenAgregarMetasWindow" Enabled="false" ToolTip="Selecciona esta opción si lo que deseas es dar de alta una meta."></telerik:RadButton>
                         </div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnActivarMetas" runat="server" AutoPostBack="true" Text="Activar meta" OnClick="btnActivarMetas_Click"></telerik:RadButton>
+                            <telerik:RadButton ID="btnActivarMetas" runat="server" AutoPostBack="true" Text="Activar" OnClick="btnActivarMetas_Click"></telerik:RadButton>
                         </div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnDesactivarMetas" runat="server" OnClick="btnDesactivarMetas_Click" Text="Desactivar meta"></telerik:RadButton>
+                            <telerik:RadButton ID="btnDesactivarMetas" runat="server" OnClick="btnDesactivarMetas_Click" Text="Desactivar"></telerik:RadButton>
                         </div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnModificarMetas" runat="server" AutoPostBack="false" Text="Editar meta" OnClientClicked="OpenModificarMetasWindow" Enabled="false"></telerik:RadButton>
+                            <telerik:RadButton ID="btnModificarMetas" runat="server" AutoPostBack="false" Text="Editar" OnClientClicked="OpenModificarMetasWindow" Enabled="false"></telerik:RadButton>
                         </div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnCopiarMetas" runat="server" OnClick="btnCopiarMetas_Click" Text="Copiar meta"></telerik:RadButton>
+                            <telerik:RadButton ID="btnCopiarMetas" runat="server" OnClick="btnCopiarMetas_Click" Text="Copiar"></telerik:RadButton>
                         </div>
                         <div class="divControlesBoton">
                             <div class="ctrlBasico">
@@ -1030,12 +1040,6 @@
                     <div class="ctrlBasico">
                         <telerik:RadButton runat="server" ID="btnGuardar" Text="Guardar" OnClick="btnGuardar_Click"></telerik:RadButton>
                     </div>
-                                        <div class="ctrlBasico">
-                        <telerik:RadButton runat="server" ID="btnGuardarCerrar" Text="Guardar y cerrar" OnClick="btnGuardarCerrar_Click"></telerik:RadButton>
-                    </div>
-                    <div class="ctrlBasico">
-                        <telerik:RadButton runat="server" ID="btnCancelar" Text="Cancelar" OnClientClicked="closeWindow"></telerik:RadButton>
-                    </div>
                 </div>
 
                  </telerik:RadPane>
@@ -1084,7 +1088,9 @@
                     <telerik:RadButton ID="btnEnvioSolicitudes" runat="server" Text="Enviar evaluaciones" OnClientClicking="OpenEnvioSolicitudes"></telerik:RadButton>
                 </div>
                 <div class="divControlDerecha">
-                    <telerik:RadButton runat="server" ID="btnCerraryGuaradar" Text="Guardar y cerrar" OnClientClicked="CloseWindowConfig"></telerik:RadButton>
+                    <div class="ctrlBasico">
+                        <telerik:RadButton runat="server" ID="btnGuardarCerrar" Text="Guardar y cerrar" OnClick="btnGuardarCerrar_Click"></telerik:RadButton>
+                    </div>
                 </div>
             </telerik:RadPageView>
         </telerik:RadMultiPage>

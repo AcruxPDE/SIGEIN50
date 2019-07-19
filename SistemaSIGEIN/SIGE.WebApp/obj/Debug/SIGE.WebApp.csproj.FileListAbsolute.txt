@@ -303,15 +303,9 @@ C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Telerik.Wind
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Telerik.Windows.Zip.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.AccesoDatos.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\ADODB.dll
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.Mvc.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\EnvDTE.dll
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Microsoft.AnalysisServices.AdomdClient.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\EntityFramework.dll
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.Razor.dll
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.Razor.dll
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\stdole.dll
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.Deployment.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Entidades.pdb
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Negocio.pdb
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Negocio.dll.config
@@ -319,7 +313,6 @@ C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Common.Loggi
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Common.Logging.xml
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Common.Logging.Core.pdb
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Common.Logging.Core.xml
-C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Microsoft.Web.Infrastructure.xml
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Newtonsoft.Json.xml
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Quartz.pdb
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Quartz.xml
@@ -491,15 +484,9 @@ C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Telerik.W
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Telerik.Windows.Zip.dll
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.AccesoDatos.dll
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\ADODB.dll
-C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.Mvc.dll
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\EnvDTE.dll
-C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Microsoft.AnalysisServices.AdomdClient.dll
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\EntityFramework.dll
-C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.Razor.dll
-C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.Razor.dll
-C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.dll
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\stdole.dll
-C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.Deployment.dll
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Entidades.pdb
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Negocio.pdb
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Negocio.dll.config
@@ -507,7 +494,6 @@ C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Common.Lo
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Common.Logging.xml
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Common.Logging.Core.pdb
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Common.Logging.Core.xml
-C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Microsoft.Web.Infrastructure.xml
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Newtonsoft.Json.xml
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Quartz.pdb
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Quartz.xml

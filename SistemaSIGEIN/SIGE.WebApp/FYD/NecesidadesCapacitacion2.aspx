@@ -97,13 +97,13 @@
             }
             else {
                 if (txtProgClave == "") {
-                    radalert("Indique la clave del programa.", 400, 150, "Error");
+                    radalert("Indique la clave del programa.", 400, 150, "Aviso");
                     args.set_cancel(true);
                     return;
                 }
 
                 if (txtProgNombre == "") {
-                    radalert("Indique el nombre del programa.", 400, 150, "Error");
+                    radalert("Indique el nombre del programa.", 400, 150, "Aviso");
                     args.set_cancel(true);
                     return;
                 }
@@ -123,7 +123,7 @@
                 { if (shouldSubmit) { this.click(); } });
             }
             else {
-                radalert("Seleccione un programa existente", 400, 150, "Error");
+                radalert("Seleccione un programa existente", 400, 150, "Aviso");
                 args.set_cancel(true);
                 return;
             }
@@ -331,12 +331,12 @@
                 }
                 else {
                     if (txtProgClave == "") {
-                        radalert("Indique la clave del programa.", 400, 150, "Error");
+                        radalert("Indique la clave del programa.", 400, 150, "Aviso");
                         return;
                     }
 
                     if (txtProgNombre == "") {
-                        radalert("Indique el nombre del programa.", 400, 150, "Error");
+                        radalert("Indique el nombre del programa.", 400, 150, "Aviso");
                         return;
                     }
                 }
@@ -397,7 +397,7 @@
                     InsertEvaluado(EncapsularSeleccion("ACTUALIZAR", vIdPrograma, "", "", vChecks));
                 }
                 else {
-                    radalert("Seleccione un programa existente", 400, 150, "Error");
+                    radalert("Seleccione un programa existente", 400, 150, "Aviso");
                     return;
                 }
             })

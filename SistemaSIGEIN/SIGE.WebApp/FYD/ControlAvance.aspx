@@ -63,7 +63,7 @@
                 OpenSelectionWindow("VentanaVerCuestionario.aspx?ID_EVALUADOR=" + IdEvaluador + "&ID_EVALUADO_EVALUADOR=" + IdEvaluadoEvaluador, "winContestarCuestionarios", "Vista cuestionario")
             }
             else {
-                radalert("Selecciona un evaluado.", 400, 150);
+                radalert("Selecciona un evaluado.", 400, 150, "Aviso");
             }
         }
 

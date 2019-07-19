@@ -48,7 +48,7 @@
                 var win = window.open("../IDP/ResultadosPruebas.aspx?ID=" + vIdBateria + "&&T=" + vClToken, '_blank');
                 win.focus();
             }
-            else { radalert("La persona no tiene una batería de pruebas asociada", 400, 150, ""); }
+            else { radalert("La persona no tiene una batería de pruebas asociada", 400, 150, "Aviso"); }
 
         }
 
@@ -76,7 +76,7 @@
                 var wnd = openChildDialog(vURL, "rwConsultas", vTitulo, windowProperties);
             }
             else {
-                radalert("El empleado no tiene una batería de pruebas asociada", 400, 150, "");
+                radalert("El empleado no tiene una batería de pruebas asociada", 400, 150, "Aviso");
             }
         }
 
@@ -155,7 +155,7 @@
                 var wnd = openChildDialog(vURL, "WinCuestionario", vTitulo, windowProperties);
             }
             else {
-                radalert("El empleado no tiene una cuestionario de clima asociado", 400, 150, "");
+                radalert("El empleado no tiene una cuestionario de clima asociado", 400, 150, "Aviso");
             }
         }
 
@@ -214,7 +214,7 @@
                 }
             }
 
-            radconfirm("¿Estás seguro que quieres salir de la pantalla? Si no has guardado los cambios se perderán", confirmCallback, 400, 170, null, "Cerrar");
+            radconfirm("¿Estás seguro que quieres salir de la pantalla? Si no has guardado los cambios se perderán", confirmCallback, 400, 170, null, "Aviso");
         }
 
         function OpenSelectionWindow(sender, args) {

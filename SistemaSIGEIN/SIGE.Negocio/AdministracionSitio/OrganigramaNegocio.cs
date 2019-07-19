@@ -27,5 +27,12 @@ namespace SIGE.Negocio.AdministracionSitio
             OrganigramaOperaciones oOrganigrama = new OrganigramaOperaciones();
             return oOrganigrama.ObtenerOrganigramaAreas(pIdPlazaOrigen, pFgMostrarEmpleados);
         }
+
+        public E_ORGANIGRAMA_PUESTO ObtieneOrganigramaPuesto(int? pIdPlazaOrigen, int? pIdEmpresa, bool pFgMostrarEmpleados, int? pIdDepartamento, string pClCampoAdicional, int? pNuNivel)
+        {
+            OrganigramaOperaciones oOrganigrama = new OrganigramaOperaciones();
+            return oOrganigrama.ObtenerOrganigramaPuesto(pIdPlazaOrigen, pIdEmpresa, pFgMostrarEmpleados, pIdDepartamento, pClCampoAdicional, pNuNivel);
+
+        }
     }
 }

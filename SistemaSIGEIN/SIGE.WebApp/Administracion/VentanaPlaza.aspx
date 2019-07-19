@@ -38,7 +38,7 @@
                     var browserWnd = window;
                     if (currentWnd)
                         browserWnd = currentWnd.BrowserWindow;
-                    browserWnd.radalert("Para asignar esta plaza a otra persona, es importante que se libere desde el inventario de personal.", 400, 180);
+                    browserWnd.radalert("Para asignar esta plaza a otra persona, es importante que se libere desde el inventario de personal.", 400, 180, "Aviso");
                 } else { OpenSelectionWindow("../Comunes/SeleccionEmpleado.aspx?mulSel=0", "winSeleccion", "Selección de empleado") }
             }
         }
@@ -64,7 +64,7 @@
                     var browserWnd = window;
                     if (currentWnd)
                         browserWnd = currentWnd.BrowserWindow;
-                    browserWnd.radalert("Para asignar esta plaza a otra persona, es importante que se libere desde el inventario de personal.", 400, 180);
+                    browserWnd.radalert("Para asignar esta plaza a otra persona, es importante que se libere desde el inventario de personal.", 400, 180, "Aviso");
                 } else { ChangeListItem("", "No Seleccionado", $find("<%=lstEmpleado.ClientID %>")); }
             }
         }
@@ -302,9 +302,9 @@
                     </telerik:RadGrid>
                 </div>
                 <div class="ctrlBasico" style="float: left">
-                    <telerik:RadButton ID="btnAgregar" runat="server" Text="B" AutoPostBack="false" ToolTip="Seleccionar grupos" OnClientClicked="OpenGruposWindows"></telerik:RadButton>
+                    <telerik:RadButton ID="btnAgregar" runat="server" Text="B" AutoPostBack="false" ToolTip="Seleccionar grupos" OnClientClicked="OpenGruposWindows" Enabled="false"></telerik:RadButton>
                     <div style="clear: both;"></div>
-                    <telerik:RadButton ID="btnEliminar" runat="server" Text="X" AutoPostBack="true" ToolTip="Eliminar grupo" OnClick="btnEliminar_Click"></telerik:RadButton>
+                    <telerik:RadButton ID="btnEliminar" runat="server" Text="X" AutoPostBack="true" ToolTip="Eliminar grupo" OnClick="btnEliminar_Click" Enabled="false"></telerik:RadButton>
                 </div>
             </div>
         </div>

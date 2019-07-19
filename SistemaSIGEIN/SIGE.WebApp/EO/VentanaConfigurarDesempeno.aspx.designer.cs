@@ -544,24 +544,6 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadButton btnGuardar;
         
         /// <summary>
-        /// Control btnGuardarCerrar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnGuardarCerrar;
-        
-        /// <summary>
-        /// Control btnCancelar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnCancelar;
-        
-        /// <summary>
         /// Control RadPane4.
         /// </summary>
         /// <remarks>
@@ -634,13 +616,13 @@ namespace SIGE.WebApp.EO {
         protected global::Telerik.Web.UI.RadButton btnEnvioSolicitudes;
         
         /// <summary>
-        /// Control btnCerraryGuaradar.
+        /// Control btnGuardarCerrar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnCerraryGuaradar;
+        protected global::Telerik.Web.UI.RadButton btnGuardarCerrar;
         
         /// <summary>
         /// Control rwmMensaje.

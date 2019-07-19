@@ -661,7 +661,7 @@ namespace SIGE.WebApp.IDP
         }
 
         private void CargarDatosEstudioSocioEconomico(bool pAsignarDatos)
-        {
+    {
             ProcesoSeleccionNegocio nProcesoSeleccion = new ProcesoSeleccionNegocio();
 
             vEstudioSocioEconomico = nProcesoSeleccion.ObtieneEstudioSocioeconomico(pIdProcesoSeleccion: vIdProcesoSeleccion, pIdCandidato: vIdCandidato);
@@ -742,12 +742,12 @@ namespace SIGE.WebApp.IDP
                 var telefonos = xmlTelefonos.Elements("TELEFONO").Select(el => new E_TIPO_TELEFONO
                 {
                     NO_TELEFONO = el.Attribute("NO_TELEFONO").Value,
-                    CL_TIPO_TELEFONO = el.Attribute("CL_TIPO_TELEFONO").Value
+                    CL_TIPO = el.Attribute("CL_TIPO").Value
 
                 }).ToList();
 
-                var telmovil = telefonos.Where(w => w.CL_TIPO_TELEFONO.Equals("MOVIL")).FirstOrDefault();
-                var telfijo = telefonos.Where(w => w.CL_TIPO_TELEFONO.Equals("FIJO")).FirstOrDefault();
+                var telmovil = telefonos.Where(w => w.CL_TIPO.Equals("MOVIL")).FirstOrDefault();
+                var telfijo = telefonos.Where(w => w.CL_TIPO.Equals("FIJO")).FirstOrDefault();
 
                 txtESTelefonoMovil.Text = (telmovil != null) ? telmovil.NO_TELEFONO : "";
                 txtESTelefono.Text = (telfijo != null) ? telfijo.NO_TELEFONO : "";
@@ -1837,7 +1837,7 @@ namespace SIGE.WebApp.IDP
         public class E_TIPO_TELEFONO
         {
             public string NO_TELEFONO { get; set; }
-            public string CL_TIPO_TELEFONO { get; set; }
+            public string CL_TIPO { get; set; }
         }
 
         protected void grdReferencias_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)

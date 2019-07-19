@@ -20,7 +20,7 @@
                     oWnd.set_title("Editar Comunicado");
                 }
                 else {
-                    radalert("No has seleccionado un comunicado.", 400, 150, "");
+                    radalert("No has seleccionado un comunicado.", 400, 150, "Aviso");
                 }
             }
 
@@ -38,11 +38,11 @@
                                 this.click();
                             }
                         });
-                        radconfirm('¿Deseas eliminar el comunicado "' + CELL_NOMBRE.innerHTML + '"?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
+                        radconfirm('¿Deseas eliminar el comunicado "' + CELL_NOMBRE.innerHTML + '"?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Selecciona un comunicado", 400, 150, "Error");
+                    radalert("Selecciona un comunicado", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }

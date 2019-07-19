@@ -365,22 +365,22 @@ namespace SIGE.WebApp.Administracion
                 lstExperiencia.DataSource = vListaExperiencia;
                 lstExperiencia.DataBind();
 
-                if (vDescriptivo.XML_REQUERIMIENTOS != null && vDescriptivo.XML_REQUERIMIENTOS != "")
-                {
-                    if (vDescriptivo.XML_REQUERIMIENTOS.Contains("DS_NOTA"))
-                    {
-                        radEditorRequerimientos.Content = Utileria.MostrarNotas(vDescriptivo.XML_REQUERIMIENTOS);
-                    }
-                    else
-                    {
-                        XElement vRequerimientos = XElement.Parse(vDescriptivo.XML_REQUERIMIENTOS);
-                        if (vRequerimientos != null)
-                        {
-                            vRequerimientos.Name = vNbFirstRadEditorTagName;
-                            radEditorRequerimientos.Content = vRequerimientos.ToString();
-                        }
-                    }
-                }
+                //if (vDescriptivo.XML_REQUERIMIENTOS != null && vDescriptivo.XML_REQUERIMIENTOS != "")
+                //{
+                //    if (vDescriptivo.XML_REQUERIMIENTOS.Contains("DS_NOTA"))
+                //    {
+                //        radEditorRequerimientos.Content = Utileria.MostrarNotas(vDescriptivo.XML_REQUERIMIENTOS);
+                //    }
+                //    else
+                //    {
+                //        XElement vRequerimientos = XElement.Parse(vDescriptivo.XML_REQUERIMIENTOS);
+                //        if (vRequerimientos != null)
+                //        {
+                //            vRequerimientos.Name = vNbFirstRadEditorTagName;
+                //            radEditorRequerimientos.Content = vRequerimientos.ToString();
+                //        }
+                //    }
+                //}
 
                 if (vDescriptivo.XML_OBSERVACIONES != null && vDescriptivo.XML_OBSERVACIONES != "")
                 {
@@ -440,22 +440,22 @@ namespace SIGE.WebApp.Administracion
                 //        lstPuestosInterrelacionados.Items.Add(i);
                 //    }
                 //}
-                foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
-                {
-                    if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.INTERRELACIONADO.ToString())
-                    {
-                        vLstInterrelacionados.Add(new E_PUESTOS
-                        {
-                            ID_PUESTO = int.Parse(item.Attribute("ID_PUESTO").Value),
-                            ID_PUESTO_RELACION = int.Parse(item.Attribute("ID_PUESTO_RELACIONADO").Value),
-                            CL_PUESTO = item.Attribute("CL_PUESTO").Value,
-                            NB_PUESTO = item.Attribute("NB_PUESTO").Value,
-                            CL_TIPO_RELACION = item.Attribute("CL_TIPO_RELACION").Value,
-                            NO_PLAZAS = int.Parse(item.Attribute("NO_PLAZAS").Value)
+                //foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTOS_RELACIONADOS).Elements("PUESTO_RELACIONADO"))
+                //{
+                //    if (item.Attribute("CL_TIPO_RELACION").Value == E_PUESTO_RELACION.INTERRELACIONADO.ToString())
+                //    {
+                //        vLstInterrelacionados.Add(new E_PUESTOS
+                //        {
+                //            ID_PUESTO = int.Parse(item.Attribute("ID_PUESTO").Value),
+                //            ID_PUESTO_RELACION = int.Parse(item.Attribute("ID_PUESTO_RELACIONADO").Value),
+                //            CL_PUESTO = item.Attribute("CL_PUESTO").Value,
+                //            NB_PUESTO = item.Attribute("NB_PUESTO").Value,
+                //            CL_TIPO_RELACION = item.Attribute("CL_TIPO_RELACION").Value,
+                //            NO_PLAZAS = int.Parse(item.Attribute("NO_PLAZAS").Value)
 
-                        });
-                    }
-                }
+                //        });
+                //    }
+                //}
 
 
                 btnLinea.Checked = vDescriptivo.CL_POSICION_ORGANIGRAMA == "LINEA";
@@ -955,7 +955,7 @@ namespace SIGE.WebApp.Administracion
                 new XAttribute("DS_COMPETENCIAS_REQUERIDAS", ""),
 
                Utileria.GuardarNotas(radEditorPrestaciones.Content, "NOTAS_PRESTACIONES"), // EditorContentToXml("XML_PRESTACIONES", radEditorPrestaciones.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
-               Utileria.GuardarNotas(radEditorRequerimientos.Content, "NOTAS_REQUERIMIENTOS"),// EditorContentToXml("XML_REQUERIMIENTOS", radEditorRequerimientos.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
+               //Utileria.GuardarNotas(radEditorRequerimientos.Content, "NOTAS_REQUERIMIENTOS"),// EditorContentToXml("XML_REQUERIMIENTOS", radEditorRequerimientos.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
                Utileria.GuardarNotas(radEditorObservaciones.Content, "NOTAS_OBSERVACIONES"),// EditorContentToXml("XML_OBSERVACIONES", radEditorObservaciones.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
                Utileria.GuardarNotas(radEditorResponsable.Content, "NOTAS_RESPONSABILIDAD"),// EditorContentToXml("XML_RESPONSABILIDAD", radEditorResponsable.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
                Utileria.GuardarNotas(radEditorAutoridad.Content, "NOTAS_AUTORIDAD"),// EditorContentToXml("XML_AUTORIDAD", radEditorAutoridad.Content.Replace("&lt;",""), vNbFirstRadEditorTagName),
@@ -1888,8 +1888,8 @@ namespace SIGE.WebApp.Administracion
             txtDetalleFuncion.Content = vFuncionGenericaABC.DS_DETALLE;
             txtNotasFuncion.Content = vFuncionGenericaABC.DS_NOTAS;
             cmbCompetenciaEspecifica.ClearSelection();
-            rtsFuncionGenerica.SelectedIndex = 0;
-            rmpFuncionGenerica.SelectedIndex = 0;
+            //rtsFuncionGenerica.SelectedIndex = 0;
+            //rmpFuncionGenerica.SelectedIndex = 0;
             txtIndicadorDesempeno.Text = String.Empty;
 
             grdFuncionCompetencias.Rebind();
@@ -1911,7 +1911,7 @@ namespace SIGE.WebApp.Administracion
 
         protected void cmbCompetenciaEspecifica_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
-            CargarNivelesCompetencias();
+            CargarNivelesCompetencias(); 
         }
 
         protected List<E_NIVEL_COMPETENCIA> CrearNivelCompetencia(E_COMPETENCIAS pCompetencia = null)
@@ -1981,30 +1981,35 @@ namespace SIGE.WebApp.Administracion
                 {
                     E_FUNCION_COMPETENCIA vCompetencia = vLstFuncionCompetenciaABC.FirstOrDefault(f => f.ID_ITEM == (vIdEditingItem ?? Guid.NewGuid()));
 
-                    if (vCompetencia == null)
-                    {
+                    //if (vCompetencia != null)
+                    //{
                         vLstFuncionCompetenciaABC.Add(new E_FUNCION_COMPETENCIA()
                         {
                             ID_PARENT_ITEM = vFuncionGenericaABC.ID_ITEM,
                             NB_COMPETENCIA = cmbCompetenciaEspecifica.SelectedItem.Text,
                             ID_COMPETENCIA = int.Parse(cmbCompetenciaEspecifica.SelectedItem.Value),
                             NO_NIVEL = vNoNivel,
-                            NB_NIVEL = item["NB_NIVEL"].Text
+                            NB_NIVEL = item["NB_NIVEL"].Text,
+                            DS_INDICADORES = "<ul>" + "<li>" + txtIndicadorDesempeno.Text + "</ul>" + "</li>"
                         });
-                    }
-                    else
-                    {
-                        vCompetencia.NB_COMPETENCIA = cmbCompetenciaEspecifica.SelectedItem.Text;
-                        vCompetencia.ID_COMPETENCIA = int.Parse(cmbCompetenciaEspecifica.SelectedItem.Value);
-                        vCompetencia.NO_NIVEL = vNoNivel;
-                        vCompetencia.NB_NIVEL = item["NB_NIVEL"].Text;
-                    }
+                    //}
+                    //else
+                    //{
+                    //    vCompetencia.NB_COMPETENCIA = cmbCompetenciaEspecifica.SelectedItem.Text;
+                    //    vCompetencia.ID_COMPETENCIA = int.Parse(cmbCompetenciaEspecifica.SelectedItem.Value);
+                    //    vCompetencia.NO_NIVEL = vNoNivel;
+                    //    vCompetencia.NB_NIVEL = item["NB_NIVEL"].Text;
+                    //    vCompetencia.DS_INDICADORES = txtIndicadorDesempeno.Text;
+                    //}
+
                     vFgRebindGrid = true | vFgRebindGrid;
+
                 }
             }
 
             if (vFgRebindGrid)
                 grdFuncionCompetencias.Rebind();
+
         }
 
         protected void btnAgregarIndicadorDesempeno_Click(object sender, EventArgs e)
@@ -2191,6 +2196,8 @@ namespace SIGE.WebApp.Administracion
                     competencia = new E_FUNCION_COMPETENCIA();
 
                 cmbCompetenciaEspecifica.SelectedValue = competencia.ID_COMPETENCIA.ToString();
+                
+                txtIndicadorDesempeno.Text = Regex.Replace(competencia.DS_INDICADORES.ToString(), "<.*?>", string.Empty);
                 CargarNivelesCompetencias();
             }
         }

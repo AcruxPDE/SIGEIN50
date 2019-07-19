@@ -64,11 +64,11 @@
                         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                         { if (shouldSubmit) { this.click(); } });
 
-                        radconfirm('¿Deseas eliminar la competencia ' + CELL_NOMBRE.innerHTML + '?', callBackFunction, 400, 170, null, "Eliminar Registro");
+                        radconfirm('¿Deseas eliminar la competencia ' + CELL_NOMBRE.innerHTML + '?', callBackFunction, 400, 170, null, "Aviso");
                         args.set_cancel(true);
                     }
                 } else {
-                    radalert("Seleccione una competencia.", 400, 150, "Error");
+                    radalert("Seleccione una competencia.", 400, 150, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -86,13 +86,13 @@
                         }
 
                     });
-                    radconfirm("¿Deseas copiar los niveles de alguna otra Competencia laboral que ya se encuentre en el catálogo?", callBackFunction, 400, 200, null, "Agregar Competencias laborales");
+                    radconfirm("¿Deseas copiar los niveles de alguna otra Competencia laboral que ya se encuentre en el catálogo?", callBackFunction, 400, 200, null, "Aviso");
 
                     args.set_cancel(true);
                 }
                 else {
                     args.set_cancel(true);
-                    radalert("Selecciona un registro.", 400, 150, " ");
+                    radalert("Selecciona un registro.", 400, 150, "Aviso");
                 }
             }
 

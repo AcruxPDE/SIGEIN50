@@ -15,6 +15,7 @@ using WebApp.Comunes;
 using System.Xml;
 using System.Web.UI.HtmlControls;
 using SIGE.Entidades;
+using static SIGE.WebApp.EO.ConfiguracionClima;
 
 namespace SIGE.WebApp.EO.Cuestionarios
 {
@@ -259,52 +260,52 @@ namespace SIGE.WebApp.EO.Cuestionarios
                             return vValidacion;
                         }
                         else
-                        vIdDepartamento = int.Parse(rcbArea.SelectedValue) ;
+                            vIdDepartamento = int.Parse(rcbArea.SelectedValue);
                         vNbDepartamento = rcbArea.Text;
                     }
 
-                    XElement vXmlDatosEvaluador = new XElement("EVALUADOR", 
+                    XElement vXmlDatosEvaluador = new XElement("EVALUADOR",
                                                               new XElement("DATOS",
-                                                              new XAttribute("ID_DEPARTAMENTO", vIdDepartamento == null? "": vIdDepartamento.ToString()),
+                                                              new XAttribute("ID_DEPARTAMENTO", vIdDepartamento == null ? "" : vIdDepartamento.ToString()),
                                                               new XAttribute("NB_DEPARTAMENTO", vNbDepartamento),
                                                               new XAttribute("CL_GENERO", vClGenero),
-                                                              new XAttribute("NO_EDAD", vEdad == null? "": vEdad.ToString()),
-                                                              new XAttribute("NO_ANTIGUEDAD_EMPRESA", vAntiguedad == null? "":vAntiguedad.ToString())
+                                                              new XAttribute("NO_EDAD", vEdad == null ? "" : vEdad.ToString()),
+                                                              new XAttribute("NO_ANTIGUEDAD_EMPRESA", vAntiguedad == null ? "" : vAntiguedad.ToString())
                                                               ));
                     xmlDatosEvaluador = vXmlDatosEvaluador.ToString();
 
-                    XElement vXmlCamposExtra= new XElement("CAMPOS");
+                    XElement vXmlCamposExtra = new XElement("CAMPOS");
                     if (vFiltros.XML_CAMPOS_ADICIONALES != null)
                     {
-                                   RotacionPersonalNegocio negocio = new RotacionPersonalNegocio();
-                      foreach (E_CAMPOS_ADICIONALES item in vLstCamposAdicionales)
-                      {
-                          XElement xXmlCampo = new XElement("CAMPO");
-                          var ListaAdscripcion = negocio.ObtieneCatalogoAdscripciones(item.ID_CATALOGO_LISTA).FirstOrDefault();
-                          Control vControl = dvCamposExtra.FindControl(ListaAdscripcion.CL_CAMPO);
-                          if (vControl != null)
-                          {
-                              if (((RadComboBox)vControl).SelectedValue == "")
-                              {
-                                  UtilMensajes.MensajeResultadoDB(rwmMensaje, "Ingrese " + ListaAdscripcion.NB_CAMPO, E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
-                                  vValidacion = false;
-                                  return vValidacion;
-                              }
-                              else
-                              {
-                              string vNbValor = ((RadComboBox)vControl).SelectedValue;
-                              string vNbTexto = ((RadComboBox)vControl).Text;
-                              xXmlCampo.Add(new XAttribute("ID_CAMPO", ListaAdscripcion.CL_CAMPO), new XAttribute("NB_VALOR", vNbValor), new XAttribute("NB_TEXTO", vNbTexto));
-                          }
-                          }
-                          vXmlCamposExtra.Add(xXmlCampo);
-                      }
+                        RotacionPersonalNegocio negocio = new RotacionPersonalNegocio();
+                        foreach (E_CAMPOS_ADICIONALES item in vLstCamposAdicionales)
+                        {
+                            XElement xXmlCampo = new XElement("CAMPO");
+                            var ListaAdscripcion = negocio.ObtieneCatalogoAdscripciones(item.ID_CATALOGO_LISTA).FirstOrDefault();
+                            Control vControl = dvCamposExtra.FindControl(ListaAdscripcion.CL_CAMPO);
+                            if (vControl != null)
+                            {
+                                if (((RadComboBox)vControl).SelectedValue == "")
+                                {
+                                    UtilMensajes.MensajeResultadoDB(rwmMensaje, "Ingrese " + ListaAdscripcion.NB_CAMPO, E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
+                                    vValidacion = false;
+                                    return vValidacion;
+                                }
+                                else
+                                {
+                                    string vNbValor = ((RadComboBox)vControl).SelectedValue;
+                                    string vNbTexto = ((RadComboBox)vControl).Text;
+                                    xXmlCampo.Add(new XAttribute("ID_CAMPO", ListaAdscripcion.CL_CAMPO), new XAttribute("NB_VALOR", vNbValor), new XAttribute("NB_TEXTO", vNbTexto));
+                                }
+                            }
+                            vXmlCamposExtra.Add(xXmlCampo);
+                        }
 
-                      xmlDatosAdicionales = vXmlCamposExtra.ToString();
+                        xmlDatosAdicionales = vXmlCamposExtra.ToString();
                     }
 
-                    }
                 }
+            }
 
             return vValidacion;
         }
@@ -443,32 +444,32 @@ namespace SIGE.WebApp.EO.Cuestionarios
                         dvGenero.Attributes.Add("style", "display:block;");
                         lbGenero.Visible = true;
                         cmbGenero.Visible = true;
-                    //    List<E_GENERO> vLstGenero = new List<E_GENERO>();
-                    //    //cmbGenero.Text = vFiltros.CL_GENERO;
-                    //    if (vFiltros.CL_GENERO == "Masculino")
-                    //    {
-                    //        E_GENERO g = new E_GENERO
-                    //        {
-                    //            NB_GENERO = "Masculino"
-                    //        };
-                    //        vLstGenero.Add(g);
-                    //    }
-                    //    else
-                    //    {
-                    //        E_GENERO g = new E_GENERO
-                    //        {
-                    //            NB_GENERO = "Femenino"
-                    //        };
-                    //        vLstGenero.Add(g);
-                    //    }
+                        //    List<E_GENERO> vLstGenero = new List<E_GENERO>();
+                        //    //cmbGenero.Text = vFiltros.CL_GENERO;
+                        //    if (vFiltros.CL_GENERO == "Masculino")
+                        //    {
+                        //        E_GENERO g = new E_GENERO
+                        //        {
+                        //            NB_GENERO = "Masculino"
+                        //        };
+                        //        vLstGenero.Add(g);
+                        //    }
+                        //    else
+                        //    {
+                        //        E_GENERO g = new E_GENERO
+                        //        {
+                        //            NB_GENERO = "Femenino"
+                        //        };
+                        //        vLstGenero.Add(g);
+                        //    }
 
-                    //    cmbGenero.DataSource = vLstGenero;
-                    //    cmbGenero.DataTextField = "NB_GENERO";
-                    //    cmbGenero.DataValueField = "NB_GENERO";
-                    //    cmbGenero.DataBind();
-                    //}
-                    //else
-                    //{
+                        //    cmbGenero.DataSource = vLstGenero;
+                        //    cmbGenero.DataTextField = "NB_GENERO";
+                        //    cmbGenero.DataValueField = "NB_GENERO";
+                        //    cmbGenero.DataBind();
+                        //}
+                        //else
+                        //{
                         //List<E_GENERO> vLstGenero = new List<E_GENERO>();
                         //E_GENERO g = new E_GENERO
                         //{
@@ -502,42 +503,44 @@ namespace SIGE.WebApp.EO.Cuestionarios
 
                     if (vFiltros.XML_CAMPOS_ADICIONALES != null)
                     {
-                    ObtieneAdicionales(vFiltros.XML_CAMPOS_ADICIONALES);
-                    RotacionPersonalNegocio negocio = new RotacionPersonalNegocio();
-                    foreach (E_CAMPOS_ADICIONALES item in vLstCamposAdicionales)
-                    {
-                        HtmlGenericControl vDiv = new HtmlGenericControl("div");
-                        vDiv.Attributes.Add("class", "ctrlBasico");
-                        SPE_OBTIENE_ADSCRIPCIONES_Result ListaAdscripcion = negocio.ObtieneCatalogoAdscripciones(item.ID_CATALOGO_LISTA).FirstOrDefault();
-                        List<E_ADICIONALES_SELECCIONADOS> LstValores = vLstAdicionales.Where(w => w.ID_CATALOGO_LISTA == item.ID_CATALOGO_LISTA.ToString()).ToList();
-
-                        RadLabel vControlLabel = new RadLabel();
-                        vControlLabel.Text = ListaAdscripcion.NB_CAMPO + ": ";
-                        vControlLabel.Font.Bold = true;
-
-                        Control vControl = new RadComboBox()
+                        ObtieneAdicionales(vFiltros.XML_CAMPOS_ADICIONALES);
+                        RotacionPersonalNegocio negocio = new RotacionPersonalNegocio();
+                        foreach (E_CAMPOS_ADICIONALES item in vLstCamposAdicionales)
                         {
-                            ID = ListaAdscripcion.CL_CAMPO,
-                            Width = 250,
-                            Filter = RadComboBoxFilter.Contains,
-                            EmptyMessage = "Selecciona",
-                        };
+                            HtmlGenericControl vDiv = new HtmlGenericControl("div");
+                            vDiv.Attributes.Add("class", "ctrlBasico");
+                            SPE_OBTIENE_ADSCRIPCIONES_Result ListaAdscripcion = negocio.ObtieneCatalogoAdscripciones(item.ID_CATALOGO_LISTA).FirstOrDefault();
+                            List<E_ADICIONALES_SELECCIONADOS> LstValores = vLstAdicionales.Where(w => w.ID_CATALOGO_LISTA == item.ID_CATALOGO_LISTA.ToString()).ToList();
 
-                        foreach (var itemValue in LstValores)
-                        {
-                            ((RadComboBox)vControl).Items.Add(new RadComboBoxItem()
+                            if (ListaAdscripcion != null)
                             {
-                                Text = itemValue.NB_CAMPO,
-                                Value = itemValue.CL_CAMPO,
-                            });
+                                RadLabel vControlLabel = new RadLabel();
+                                vControlLabel.Text = ListaAdscripcion.NB_CAMPO + ": ";
+                                vControlLabel.Font.Bold = true;
+
+                                Control vControl = new RadComboBox()
+                                {
+                                    ID = ListaAdscripcion.CL_CAMPO,
+                                    Width = 250,
+                                    Filter = RadComboBoxFilter.Contains,
+                                    EmptyMessage = "Selecciona",
+                                };
+
+                                foreach (var itemValue in LstValores)
+                                {
+                                    ((RadComboBox)vControl).Items.Add(new RadComboBoxItem()
+                                    {
+                                        Text = itemValue.NB_CAMPO,
+                                        Value = itemValue.CL_CAMPO,
+                                    });
+                                }
+
+
+                                vDiv.Controls.Add(vControlLabel);
+                                vDiv.Controls.Add(vControl);
+                                dvCamposExtra.Controls.Add(vDiv);
+                            }
                         }
-
-
-                        vDiv.Controls.Add(vControlLabel);
-                        vDiv.Controls.Add(vControl);
-                        dvCamposExtra.Controls.Add(vDiv);
-                    }
-
                     }
                 }
             }
@@ -551,19 +554,19 @@ namespace SIGE.WebApp.EO.Cuestionarios
             {
                 var vFiltros = nClima.ObtenerParametrosFiltros(vIdPeriodo).FirstOrDefault();
 
-               SPE_OBTIENE_DATOS_EVALUADORES_CLIMA_Result vDatosEvaluador = nClima.ObtenerValoresDatos(vIdPeriodo,vIdEvaluado).FirstOrDefault();
+                SPE_OBTIENE_DATOS_EVALUADORES_CLIMA_Result vDatosEvaluador = nClima.ObtenerValoresDatos(vIdPeriodo, vIdEvaluado).FirstOrDefault();
                 if (vFiltros != null)
                 {
                     if (vFiltros.EDAD_INICIO != null)
                     {
-                       
+                        dvEdad.Attributes.Add("style", "display:block;");
                         lbEdad.Visible = true;
                         rntEdad.Visible = true;
                         rntEdad.Value = (double)vDatosEvaluador.NO_EDAD;
                     }
                     if (vFiltros.ANTIGUEDAD_INICIO != null)
                     {
-               
+                        dvFechaIngreso.Attributes.Add("style", "display:block;");
                         Label1.Visible = true;
                         rdpIngreso.Visible = true;
                         rdpIngreso.SelectedDate = vDatosEvaluador.FECHA_INGRESO;
@@ -571,7 +574,7 @@ namespace SIGE.WebApp.EO.Cuestionarios
 
                     if (vFiltros.CL_GENERO != null)
                     {
-                
+                        dvGenero.Attributes.Add("style", "display:block;");
                         lbGenero.Visible = true;
                         cmbGenero.Visible = true;
                         cmbGenero.Text = vDatosEvaluador.NB_GENERO;
@@ -580,7 +583,7 @@ namespace SIGE.WebApp.EO.Cuestionarios
 
                     if (vFiltros.XML_DEPARTAMENTOS != null)
                     {
-                   
+                        dvArea.Attributes.Add("style", "display:block;");
                         lbArea.Visible = true;
                         rcbArea.Visible = true;
                         rcbArea.Text = vDatosEvaluador.NB_DEPARTAMENTO;
@@ -623,12 +626,10 @@ namespace SIGE.WebApp.EO.Cuestionarios
                             vDiv.Controls.Add(vControl);
                             dvCamposExtra.Controls.Add(vDiv);
                         }
-
                     }
                 }
             }
         }
-
         protected void SeguridadProcesos()
         {
             btnFinalizar.Enabled = ContextoUsuario.oUsuario.TienePermiso("L.A.A.J.A");
@@ -639,28 +640,28 @@ namespace SIGE.WebApp.EO.Cuestionarios
         protected void Page_Init(object sender, EventArgs e)
         {
 
-                if (Request.QueryString["ID_PERIODO"] != null)
-                {
-                    vIdPeriodo = int.Parse(Request.QueryString["ID_PERIODO"]);
-                }
-                if (Request.QueryString["ID_EVALUADOR"] != null)
-                {
-                    vIdEvaluado = int.Parse(Request.QueryString["ID_EVALUADOR"]);
-                    CargarCombosDatos();
-                }
-                else
-                {
-                    vIdEvaluado = 0;
-                    CargarCombos();
-                }
-                if (Request.Params["FG_HABILITADO"] != null)
-                {
-                    vFgHabilitado = bool.Parse(Request.Params["FG_HABILITADO"].ToString());
-                }
-                else
-                {
-                    vFgHabilitado = true;
-                }
+            if (Request.QueryString["ID_PERIODO"] != null)
+            {
+                vIdPeriodo = int.Parse(Request.QueryString["ID_PERIODO"]);
+            }
+            if (Request.QueryString["ID_EVALUADOR"] != null)
+            {
+                vIdEvaluado = int.Parse(Request.QueryString["ID_EVALUADOR"]);
+                CargarCombosDatos();
+            }
+            else
+            {
+                vIdEvaluado = 0;
+                CargarCombos();
+            }
+            if (Request.Params["FG_HABILITADO"] != null)
+            {
+                vFgHabilitado = bool.Parse(Request.Params["FG_HABILITADO"].ToString());
+            }
+            else
+            {
+                vFgHabilitado = true;
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -693,7 +694,7 @@ namespace SIGE.WebApp.EO.Cuestionarios
 
                 ClimaLaboralNegocio nClima = new ClimaLaboralNegocio();
                 var vPeriodoClima = nClima.ObtienePeriodosClima(pIdPerido: vIdPeriodo).FirstOrDefault();
-                txtNoPeriodo.InnerText = vPeriodoClima.NB_PERIODO.ToString() +" - "+ vPeriodoClima.DS_PERIODO.ToString();
+                txtNoPeriodo.InnerText = vPeriodoClima.NB_PERIODO.ToString() + " - " + vPeriodoClima.DS_PERIODO.ToString();
 
                 SeguridadProcesos();
 
@@ -734,15 +735,15 @@ namespace SIGE.WebApp.EO.Cuestionarios
                 int vCantPreguntas = nClima.ObtienePreguntasPeriodo(pID_PERIODO: vIdPeriodo).Count();
 
                 lstCuestionario = nClima.ObtienePreguntasPeriodo(pID_PERIODO: vIdPeriodo).Select(s => new E_PREGUNTAS_CUESTIONARIO_CLIMA
-               {
-                   ID_CUESTIONARIO_PREGUNTA = s.ID_PREGUNTA,
-                   NB_PREGUNTA = s.NB_PREGUNTA,
-                   NO_SECUENCIA = s.NO_SECUENCIA,
-                   FG_VALOR1 = false,
-                   FG_VALOR2 = false,
-                   FG_VALOR3 = false,
-                   FG_VALOR4 = false,
-               }).ToList();
+                {
+                    ID_CUESTIONARIO_PREGUNTA = s.ID_PREGUNTA,
+                    NB_PREGUNTA = s.NB_PREGUNTA,
+                    NO_SECUENCIA = s.NO_SECUENCIA,
+                    FG_VALOR1 = false,
+                    FG_VALOR2 = false,
+                    FG_VALOR3 = false,
+                    FG_VALOR4 = false,
+                }).ToList();
                 rgCuestionario.DataSource = lstCuestionario;
             }
         }
@@ -792,12 +793,4 @@ namespace SIGE.WebApp.EO.Cuestionarios
             }
         }
     }
-
-    [Serializable]
-    public class E_GENERO
-    {
-        public string CL_GENERO { get; set; }
-        public string NB_GENERO { get; set; }
-    }
-
 }

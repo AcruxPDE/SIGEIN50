@@ -12,6 +12,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml;
 using System.Xml.Linq;
 using Telerik.Web.UI;
 
@@ -119,7 +120,7 @@ namespace SIGE.WebApp.Administracion
             E_ROL vRol = nRol.ObtieneFuncionesRol(pIdRol);
 
             txtClRol.Text = vRol.CL_ROL;
-            txtNbRol.Text = vRol.NB_ROL;    
+            txtNbRol.Text = vRol.NB_ROL;
             chkActivo.Checked = vRol.FG_ACTIVO;
             vLstFunciones = vRol.LST_FUNCIONES;
 
@@ -135,20 +136,26 @@ namespace SIGE.WebApp.Administracion
             {
                 rcbPlantilla.ClearSelection();
                 rcbPlantilla.SelectedValue = vRol.ID_PLANTILLA.ToString();
-                
+
             }
 
 
             if (vRol.XML_GRUPOS != null)
             {
+
                 vLstGruposPlaza = (XElement.Parse(vRol.XML_GRUPOS).Elements("GRUPOS")).Select(s => new E_GRUPOS
                 {
                     ID_GRUPO = int.Parse(s.Attribute("ID_GRUPO").Value),
                     CL_GRUPO = s.Attribute("CL_GRUPO").Value,
                     NB_GRUPO = s.Attribute("NB_GRUPO").Value
                 }).ToList();
-            }
 
+            }
+            else
+            {
+
+                vLstGruposPlaza.Add(new E_GRUPOS() { ID_GRUPO = 1, CL_GRUPO = "TODOS", NB_GRUPO = "Todos" });
+            }
         }
 
         protected void grdMenuModulos_NeedDataSource(object sender, TreeListNeedDataSourceEventArgs e)
@@ -215,7 +222,7 @@ namespace SIGE.WebApp.Administracion
             SPE_OBTIENE_C_ROL_Result vRol = new SPE_OBTIENE_C_ROL_Result
             {
                 CL_ROL = txtClRol.Text,
-                ID_PLANTILLA = vIdPlantilla,         
+                ID_PLANTILLA = vIdPlantilla,
                 FG_ACTIVO = chkActivo.Checked,
                 NB_ROL = txtNbRol.Text,
                 XML_AUTORIZACION = vFunciones.ToString()
@@ -241,7 +248,7 @@ namespace SIGE.WebApp.Administracion
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            foreach(GridDataItem item in rgGrupos.SelectedItems)
+            foreach (GridDataItem item in rgGrupos.SelectedItems)
             {
                 int vIdGrupo = int.Parse(item.GetDataKeyValue("ID_GRUPO").ToString());
 

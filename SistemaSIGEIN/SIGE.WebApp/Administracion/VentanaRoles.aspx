@@ -251,9 +251,9 @@
                                             </telerik:RadGrid>
                                         </div>
                                         <div class="ctrlBasico" style="float: left">
-                                            <telerik:RadButton ID="btnAgregar" runat="server" Text="B" AutoPostBack="false" ToolTip="Seleccionar grupos" OnClientClicked="OpenGruposWindows"></telerik:RadButton>
+                                            <telerik:RadButton ID="btnAgregar" runat="server" Text="B" AutoPostBack="false" ToolTip="Seleccionar grupos" OnClientClicked="OpenGruposWindows" Enabled="false"></telerik:RadButton>
                                             <div style="clear: both;"></div>
-                                            <telerik:RadButton ID="btnEliminar" runat="server" Text="X" AutoPostBack="true" ToolTip="Eliminar grupo" OnClick="btnEliminar_Click"></telerik:RadButton>
+                                            <telerik:RadButton ID="btnEliminar" runat="server" Text="X" AutoPostBack="true" ToolTip="Eliminar grupo" OnClick="btnEliminar_Click"  Enabled="false"></telerik:RadButton>
                                         </div>
                                     </div>
                                     <div style="height: 15px; clear: both;"></div>

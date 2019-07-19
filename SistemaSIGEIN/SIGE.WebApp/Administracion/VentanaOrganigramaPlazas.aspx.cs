@@ -24,6 +24,12 @@ namespace SIGE.WebApp.Administracion
             set { ViewState["vs_vIdPlaza"] = value; }
         }
 
+        private int? vIdPuesto
+        {
+            get { return (int?)ViewState["vs_vIdPuesto"]; }
+            set { ViewState["vs_vIdPuesto"] = value; }
+        }
+
         private int? vIdDepartamento
         {
             get { return (int?)ViewState["vs_vIdDepartamento"]; }
@@ -162,6 +168,7 @@ namespace SIGE.WebApp.Administracion
             }
         }
 
+        
 
         #endregion
 
@@ -198,9 +205,11 @@ namespace SIGE.WebApp.Administracion
                         vNoNiveles = int.Parse(Request.Params["NoNiveles"].ToString());
                     }
 
+                    CargarDatosOrganigrama(vIdEmpresa, false, vIdPlaza, vIdDepartamento, vClCampo, vNoNiveles);
                 }
-                // CargarDatosEmpresas();
-                CargarDatosOrganigrama(vIdEmpresa, false, vIdPlaza, vIdDepartamento, vClCampo, vNoNiveles);
+                
+                    // CargarDatosEmpresas();
+                    
             }
         }
 
@@ -221,7 +230,7 @@ namespace SIGE.WebApp.Administracion
             {
                 int vNivelDiferencia = ((E_ORGANIGRAMA_NODO)e.Node.DataItem).noNivelPuesto - ((E_ORGANIGRAMA_NODO)e.Node.DataItem).noNivel;
 
-                vClCss = ObtieneCssClass(chkMostrarEmpleados.Checked ?? false, vNivelDiferencia, vClCss);
+                e.Node.CssClass = ObtieneCssClass(chkMostrarEmpleados.Checked == null ? false : (bool)chkMostrarEmpleados.Checked, vNivelDiferencia);
             }
 
             e.Node.CssClass = vClCss;

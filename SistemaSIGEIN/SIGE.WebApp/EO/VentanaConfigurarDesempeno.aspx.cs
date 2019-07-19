@@ -335,11 +335,11 @@ namespace SIGE.WebApp.EO
                 btnAgregarMeta.Enabled = true;
                 btnModificarMetas.Enabled = true;
 
-                btnAgregarMeta.Text = "Agregar indicador";
-                btnActivarMetas.Text = "Activar indicador";
-                btnDesactivarMetas.Text = "Desactivar indicador";
-                btnModificarMetas.Text = "Editar indicador";
-                btnCopiarMetas.Text = "Copiar indicador";
+                btnAgregarMeta.Text = "Agregar";
+                btnActivarMetas.Text = "Activar";
+                btnDesactivarMetas.Text = "Desactivar";
+                btnModificarMetas.Text = "Editar";
+                btnCopiarMetas.Text = "Copiar";
                 btnGuardarMetas.Text= "Guardar";
 
                 grdDisenoMetas.MasterTableView.DetailTables[0].Columns[0].Visible = true;
@@ -795,6 +795,12 @@ namespace SIGE.WebApp.EO
 
         protected void btnReasignarPonderacion_Click(object sender, EventArgs e)
         {
+            if(grdEvaluados.Items.Count <=0)
+            {
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Debe seleccionar por lo menos un evaluado", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+                return;
+            }
+
             List<E_PONDERACION_META> ponderacionMeta = new List<E_PONDERACION_META>();
             foreach (GridDataItem item in grdEvaluados.MasterTableView.Items)
             {
@@ -844,6 +850,12 @@ namespace SIGE.WebApp.EO
 
         protected void btnGuardarEvaluado_Click(object sender, EventArgs e)
         {
+            if(grdEvaluados.Items.Count == 0)
+            {
+                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Debe seleccionar por lo menos un evaluado.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: null);
+                return;
+            }
+            
             PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
 
             List<E_PONDERACION_META> ponderacionMeta = new List<E_PONDERACION_META>();
@@ -872,15 +884,15 @@ namespace SIGE.WebApp.EO
 
                 ponderacionMeta.Add(ponderacionM);
                 var vXelements = ponderacionMeta.Select(x =>
-                                      new XElement("EVALUADO",
-                                      new XAttribute("ID_EMPLEADO", x.ID_EMPLEADO),
-                                      new XAttribute("ID_EVALUADO", x.ID_EVALUADO),
-                                      new XAttribute("CL_EMPLEADO", x.CL_EMPLEADO),
-                                      new XAttribute("NB_EMPLEADO_COMPLETO", x.NB_EMPLEADO),
-                                      new XAttribute("NB_PUESTO", x.NB_PUESTO),
-                                      new XAttribute("NB_DEPARTAMENTO", x.NB_AREA),
-                                      new XAttribute("PR_EVALUADO", x.PR_PONDERACION)
-                          ));
+                                        new XElement("EVALUADO",
+                                        new XAttribute("ID_EMPLEADO", x.ID_EMPLEADO),
+                                        new XAttribute("ID_EVALUADO", x.ID_EVALUADO),
+                                        new XAttribute("CL_EMPLEADO", x.CL_EMPLEADO),
+                                        new XAttribute("NB_EMPLEADO_COMPLETO", x.NB_EMPLEADO),
+                                        new XAttribute("NB_PUESTO", x.NB_PUESTO),
+                                        new XAttribute("NB_DEPARTAMENTO", x.NB_AREA),
+                                        new XAttribute("PR_EVALUADO", x.PR_PONDERACION)
+                            ));
                 RESULTADOS =
                 new XElement("EVALUADOS", vXelements
                 );
@@ -916,6 +928,10 @@ namespace SIGE.WebApp.EO
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
             UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
             grdEvaluados.Rebind();
+            
+                
+
+
 
         }
 
@@ -1270,7 +1286,8 @@ namespace SIGE.WebApp.EO
                 int vIdEvaluado = int.Parse(item.GetDataKeyValue("ID_EVALUADO").ToString());
                 if (vClEstadoEmpleado != null && vClEstadoEmpleado != "Alta")
                 {
-                    item["CL_ESTADO_EMPLEADO"].Text = "<a href='javascript:OpenRemplazaBaja(" + vIdEvaluado + "," + vIdPeriodo + ")'>" + vClEstadoEmpleado + "</a>";
+                    //item["CL_ESTADO_EMPLEADO"].Text = "<a href='javascript:OpenRemplazaBaja(" + vIdEvaluado + "," + vIdPeriodo + ")'>" + vClEstadoEmpleado + "</a>";
+                    item["CL_ESTADO_EMPLEADO"].Text = vClEstadoEmpleado;
                 }
 
             }

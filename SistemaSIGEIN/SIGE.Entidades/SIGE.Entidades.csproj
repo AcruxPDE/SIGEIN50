@@ -96,7 +96,9 @@
     <Compile Include="Administracion\E_MUNICIPIO.cs" />
     <Compile Include="Administracion\E_NIVEL_ESCOLARIDAD.cs" />
     <Compile Include="Administracion\E_ORGANIGRAMA.cs" />
+    <Compile Include="Administracion\E_ORGANIGRAMA_PUESTO.cs" />
     <Compile Include="Administracion\E_PERIODO.cs" />
+    <Compile Include="Administracion\E_PERSONAL.cs" />
     <Compile Include="Administracion\E_PLAZA.cs" />
     <Compile Include="Administracion\E_PLAZA_GRUPO.cs" />
     <Compile Include="Administracion\E_PUESTO.cs" />
@@ -119,7 +121,9 @@
     </Compile>
     <Compile Include="EvaluacionOrganizacional\E_ADICIONALES_SELECCIONADOS.cs" />
     <Compile Include="EvaluacionOrganizacional\E_BAJAS_PENDIENTES.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_BAJAS_PERIODO_EDD.cs" />
     <Compile Include="EvaluacionOrganizacional\E_BAJA_EMPLEADO.cs" />
+    <Compile Include="EvaluacionOrganizacional\E_BAJA_IMPORTANTE_EO.cs" />
     <Compile Include="EvaluacionOrganizacional\E_CAMPOS_ADICIONALES.cs" />
     <Compile Include="EvaluacionOrganizacional\E_CAPTURA_RESULTADO.cs" />
     <Compile Include="EvaluacionOrganizacional\E_EMPLEADOS_CONTRASENIAS.cs" />
@@ -157,6 +161,7 @@
     <Compile Include="EvaluacionOrganizacional\E_SELECCIONA_EMPLEADOS.cs" />
     <Compile Include="EvaluacionOrganizacional\E_SELECCION_PERIODOS_DESEMPENO.cs" />
     <Compile Include="EvaluacionOrganizacional\E_TIPO_GRAFICAR.cs" />
+    <Compile Include="EvaluacionOrganizacional\SPE_OBTIENE_EO_EVALUADORES_TOKEN.cs" />
     <Compile Include="Externas\E_CANDIDATO_SOLICITUD.cs" />
     <Compile Include="Externas\E_CLASIFICACION.cs" />
     <Compile Include="Externas\E_COMPARACION_COMPETENCIA.cs" />
@@ -232,6 +237,7 @@
     <Compile Include="E_DESCRIPTIVO_PDE.cs" />
     <Compile Include="E_LOGIN.cs" />
     <Compile Include="FormacionDesarrollo\E_AVANCE_PROGRAMA_CAPACITACION.cs" />
+    <Compile Include="FormacionDesarrollo\E_INSTRUCTORES.cs" />
     <Compile Include="FormacionDesarrollo\E_OBTIENE_PLAN_SUCESION.cs" />
     <Compile Include="FormacionDesarrollo\E_PUESTOS_EVALUADOS.cs" />
     <Compile Include="FormacionDesarrollo\E_PUESTOS_PERIODOS.cs" />

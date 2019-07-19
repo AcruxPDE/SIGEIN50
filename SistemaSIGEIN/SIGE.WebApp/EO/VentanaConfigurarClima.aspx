@@ -183,7 +183,7 @@
                 openChildDialog("VentanaCuestionario.aspx?&ID_PREGUNTA=" + idPregunta + "&ID_PERIODO=" + <%=vIdPeriodo%> + "", "WinCuestionario",
                        "Nuevo/Editar pregunta cuestionario")
             } else {
-                radalert("Selecciona una pregunta.", 400, 150, "Error");
+                radalert("Selecciona una pregunta.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -192,7 +192,7 @@
             var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
             { if (shouldSubmit) { this.click(); } });
 
-            radconfirm('¿Estás seguro de eliminar la validez del cuestionario? Una vez realizado ya no podrá revertirse. ', callBackFunction, 400, 170, null, "Eliminar validez");
+            radconfirm('¿Estás seguro de eliminar la validez del cuestionario? Una vez realizado ya no podrá revertirse. ', callBackFunction, 400, 170, null, "Aviso");
             args.set_cancel(true);
         }
 
@@ -201,7 +201,7 @@
             if (idPregunta != "") {
                 openChildDialog("VentanaPreguntaAbierta.aspx?ID_PREGUNTA=" + idPregunta + "&ID_PERIODO=" + <%=vIdPeriodo%> + "", "WinPreguntas", "Editar pregunta abierta")
         } else {
-            radalert("Selecciona una pregunta.", 400, 150, "Error");
+            radalert("Selecciona una pregunta.", 400, 150, "Aviso");
             args.set_cancel(true);
         }
     }
@@ -340,7 +340,7 @@
         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
         { if (shouldSubmit) { this.click(); } });
 
-        radconfirm('¿Deseas asignar los cuestionarios a los evaluadores?, este proceso no te permitirá rediseñar el cuestionario.', callBackFunction, 400, 170, null, "Asignar cuestionarios");
+        radconfirm('¿Deseas asignar los cuestionarios a los evaluadores?, este proceso no te permitirá rediseñar el cuestionario.', callBackFunction, 400, 170, null, "Aviso");
         args.set_cancel(true);
     }
 
@@ -348,25 +348,37 @@
         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
         { if (shouldSubmit) { this.click(); } });
 
-        radconfirm('¿Deseas asignar las preguntas al cuestionario?, este proceso no te permitirá rediseñar las preguntas.', callBackFunction, 400, 170, null, "Asignar cuestionarios");
+        radconfirm('¿Deseas asignar las preguntas al cuestionario?, este proceso no te permitirá rediseñar las preguntas.', callBackFunction, 400, 170, null, "Aviso");
         args.set_cancel(true);
     }
 
 
     function ConfirmaElimina(sender, args) {
-        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
-        { if (shouldSubmit) { this.click(); } });
+        obtenerFilaPrAbiertas();
+        if (idPregunta != "") {
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
 
-        radconfirm('¿Estás seguro de eliminar esta pregunta?, este proceso no podrá revertirse. ', callBackFunction, 400, 170, null, "Eliminar pregunta abierta");
-        args.set_cancel(true);
+            radconfirm('¿Estás seguro de eliminar esta pregunta?, este proceso no podrá revertirse. ', callBackFunction, 400, 170, null, "Aviso");
+            args.set_cancel(true);
+        }
+        else {
+            radalert("Selecciona la pregunta a eliminar.", 400, 150, "Aviso");
+            args.set_cancel(true);
+        }
     }
 
     function ConfirmEliminaPregunta(sender, args) {
-        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
-        { if (shouldSubmit) { this.click(); } });
+        if (idPregunta != "") {
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
 
-        radconfirm('¿Estás seguro de eliminar esta pregunta?, este proceso no podrá revertirse. ', callBackFunction, 400, 170, null, "Eliminar pregunta");
-        args.set_cancel(true);
+            radconfirm('¿Estás seguro de eliminar esta pregunta?, este proceso no podrá revertirse. ', callBackFunction, 400, 170, null, "Aviso");
+            args.set_cancel(true);
+        }
+        else {
+            radalert("Selecciona la pregunta a eliminar.", 400, 150, "Aviso");
+            args.set_cancel(true);
+        }
+        
     }
 
 
@@ -374,7 +386,7 @@
         var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
         { if (shouldSubmit) { this.click(); } });
 
-        radconfirm('¿Estás seguro de actualizar el mensaje envío cuestionarios?, Recuerda que este mensaje es único para todos los períodos. Para más información ve a la sección de ayuda.', callBackFunction, 460, 180, null, "Actualizar mensaje");
+        radconfirm('¿Estás seguro de actualizar el mensaje envío cuestionarios?, Recuerda que este mensaje es único para todos los períodos. Para más información ve a la sección de ayuda.', callBackFunction, 460, 180, null, "Aviso");
         args.set_cancel(true);
     }
 
@@ -630,6 +642,9 @@
                             <telerik:RadButton ID="btnSeleccionarPuesto" runat="server" Text="Seleccionar por puesto" OnClientClicked="OpenPuestoSelectionWindow"></telerik:RadButton>
                             <telerik:RadButton ID="btmSleccionarArea" runat="server" Text="Seleccionar por área/departamento" OnClientClicked="OpenAreaSelectionWindow"></telerik:RadButton>
                             <telerik:RadButton ID="btnEliminarEvaluador" runat="server" Text="Eliminar" OnClick="btnEliminarEvaluador_Click"></telerik:RadButton>
+                            <div class="divControlDerecha" style="padding-right: 30px;">
+                                <telerik:RadButton ID="btnGuardarSeleccion" runat="server" name="btnGuardarSeleccion" AutoPostBack="true" Text="Guardar" Width="100" OnClick="btnGuardarSeleccion_Click"></telerik:RadButton>
+                            </div>
                         </telerik:RadPageView>
                         <telerik:RadPageView ID="rpvCampos" runat="server">
                             <div style="clear: both;"></div>
@@ -877,9 +892,8 @@
                                 </telerik:RadSplitter>
                             </div>
                             <div style="height: 10px; clear: both;"></div>
-                            <div class="divControlDerecha" style="padding-right:30px;">
-                                <telerik:RadButton ID="btnGuardarCerrar" runat="server" Text="Guardar y Cerrar" UseSubmitBehavior="false" AutoPostBack="true" OnClick="btnGuardarCerrar_Click" ></telerik:RadButton>
-                                <telerik:RadButton ID="btnCerrar" runat="server" Visible ="false" Text="Cerrar" UseSubmitBehavior="false" AutoPostBack="true" OnClientClicked="closeWindow" ></telerik:RadButton>
+                            <div class="divControlDerecha" style="padding-right: 30px;">
+                                <telerik:RadButton ID="btnGuardarEnvioCuestionarios" Visible="true" runat="server" name="btnGuardarEnvioCuestionarios" AutoPostBack="true" Text="Guardar" Width="100" OnClick="btnGuardar_Click"></telerik:RadButton>
                             </div>
                         </telerik:RadPageView>
                         <telerik:RadPageView ID="rpvEmpleadoContrasenia" runat="server">
@@ -908,6 +922,10 @@
                            <%-- <telerik:RadButton ID="btnReasignarTodasContrasenas" runat="server" Text="Reasignar a todos" OnClick="btnReasignarTodasContrasenas_Click"></telerik:RadButton>--%>
                             <telerik:RadButton ID="btnReasignarContrasena" runat="server" Text="Reasignar contraseña al evaluador seleccionado" OnClick="btnReasignarContrasena_Click"></telerik:RadButton>
                              <telerik:RadButton ID="btnEnvioCuestionarios" runat="server" Text="Enviar cuestionarios" Enabled="false" OnClientClicking="OpenEnvioSolicitudesWindow"></telerik:RadButton>
+                            <div class="divControlDerecha" style="padding-right:30px;">
+                                <telerik:RadButton ID="btnGuardarCerrar" runat="server" Text="Guardar y cerrar" UseSubmitBehavior="false" AutoPostBack="true" OnClick="btnGuardarCerrar_Click" ></telerik:RadButton>
+                                <telerik:RadButton ID="btnCerrar" runat="server" Visible ="false" Text="Guardar y cerrar" UseSubmitBehavior="false" AutoPostBack="true" OnClientClicked="closeWindow" ></telerik:RadButton>
+                            </div>
                         </telerik:RadPageView>
                     </telerik:RadMultiPage>
           <%--  </telerik:RadPane>

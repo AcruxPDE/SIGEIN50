@@ -44,7 +44,7 @@
                 var browserWnd = window;
                 if (currentWnd)
                     browserWnd = currentWnd.BrowserWindow;
-                browserWnd.radalert("Selecciona una plaza.", 400, 150);
+                browserWnd.radalert("Selecciona una plaza.", 400, 150, "Aviso");
             }
 
             return false;

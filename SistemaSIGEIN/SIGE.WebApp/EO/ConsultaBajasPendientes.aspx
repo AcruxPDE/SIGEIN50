@@ -11,7 +11,7 @@
             if (idEmpleadoBaja != "")
                 openChildDialog("CapturarBajaPendiente.aspx?pIdEmpleadoBaja=" + idEmpleadoBaja + "&pIdEmpleado=" + idEmpleado, "winBajaPendiente", "Capturar baja pendiente");
             else
-                radalert("Selecciona un empleado.", 400, 150);
+                radalert("Selecciona un empleado.", 400, 150, "Aviso");
         }
 
         function ConfirmarCancelar(sender, args) {
@@ -26,11 +26,11 @@
                             this.click();
                         }
                     });
-                    radconfirm('¿Deseas cancelar la baja de "' + CELL_NOMBRE.innerHTML + '"?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Cancelar baja");
+                    radconfirm('¿Deseas cancelar la baja de "' + CELL_NOMBRE.innerHTML + '"?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                     args.set_cancel(true);
                 }
             } else {
-                radalert("Selecciona un empleado", 400, 150, "Error");
+                radalert("Selecciona un empleado", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }

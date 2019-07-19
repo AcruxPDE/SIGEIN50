@@ -192,11 +192,11 @@ namespace SIGE.WebApp.Administracion
 
             //txtNoPlazas.MinValue = (double)vNoMinimoPlazas;
 
-            if (vDescriptivo.LST_OCUPACION_PUESTO != null)
-            {
-                lblClOcupación.Text = vDescriptivo.LST_OCUPACION_PUESTO.CL_OCUPACION;
-                lblOcupacionSeleccionada.Text = vDescriptivo.LST_OCUPACION_PUESTO.NB_OCUPACION;
-            }
+            //if (vDescriptivo.LST_OCUPACION_PUESTO != null)
+            //{
+            //    lblClOcupación.Text = vDescriptivo.LST_OCUPACION_PUESTO.CL_OCUPACION;
+            //    lblOcupacionSeleccionada.Text = vDescriptivo.LST_OCUPACION_PUESTO.NB_OCUPACION;
+            //}
 
             vFuncionesGenericas = new List<E_FUNCION_GENERICA>();
             vLstFuncionCompetencia = new List<E_FUNCION_COMPETENCIA>();
@@ -214,9 +214,13 @@ namespace SIGE.WebApp.Administracion
                 txtRangoEdadMax.InnerText = vDescriptivo.NO_EDAD_MAXIMA.ToString();
 
                 var xmlPuestoEscolaridad = XElement.Parse(vDescriptivo.XML_PUESTO_ESCOLARIDAD).Element("OTRO_PUESTO_ESCOLARIDAD");
+                //foreach (XElement item2 in XElement.Parse(vDescriptivo.XML_PUESTO_ESCOLARIDAD).Element("OTRO_PUESTO_ESCOLARIDAD"))
+                
+                    //if(item2.Attribute("DS_OTRO_NIVEL_ESCOLARIDAD").Value == )
 
-                if (xmlPuestoEscolaridad.HasAttributes)
-                    txtOtroNivelEst.Text = xmlPuestoEscolaridad.Attribute("DS_OTRO_NIVEL_ESCOLARIDAD").Value;
+                    if (xmlPuestoEscolaridad.HasAttributes)
+                        txtOtroNivelEst.Items.Add(xmlPuestoEscolaridad.Attribute("DS_OTRO_NIVEL_ESCOLARIDAD").Value);
+                
 
                // txtCompetenciasRequeridas.InnerHtml = vDescriptivo.DS_COMPETENCIAS_REQUERIDAS;
                 foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTO_ESCOLARIDAD).Elements("PUESTO_ESCOLARIDAD"))
@@ -1350,11 +1354,12 @@ namespace SIGE.WebApp.Administracion
                 lstExperiencia.DataTextField = "NB_AREA_INTERES";
                 lstExperiencia.DataBind();
 
-                MnsAutoridadPoliticaIntegral.Visible = ContextoApp.ADM.fgVisibleMensajes;
-                MnsAutoridad.Visible = ContextoApp.ADM.fgVisibleMensajes;
-                lblPoliticaIntegral.Visible = ContextoApp.ADM.fgVisibleMensajes;
+                MnsAutoridadPoliticaIntegral.Visible = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
+                
+                MnsAutoridad.Visible = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
+                lblPoliticaIntegral.Visible = ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible;
 
-                if (ContextoApp.ADM.fgVisibleMensajes)
+                if (ContextoApp.ADM.AutoridadPoliticaIntegral.fgVisible)
                 {
                     MnsAutoridadPoliticaIntegral.Text = ContextoApp.ADM.AutoridadPoliticaIntegral.dsMensaje;
                 }

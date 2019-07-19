@@ -105,7 +105,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public List<SPE_OBTIENE_EO_METAS_EVALUADOS_CONSECUENTES_Result> ObtenerMetasConsecuentes(int? pIdPeriodoOriginal = null, int? pIdPeriodoConsecuente = null, int? pIdEvaOriginal= null, int? pIdEvaConsecuente = null)
+        public List<SPE_OBTIENE_EO_METAS_EVALUADOS_CONSECUENTES_Result> ObtenerMetasConsecuentes(int? pIdPeriodoOriginal = null, int? pIdPeriodoConsecuente = null, int? pIdEvaOriginal = null, int? pIdEvaConsecuente = null)
         {
             using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
@@ -121,7 +121,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public List<SPE_OBTIENE_EVALUADOS_PERIODOS_DESEMPENO_Result> ObtenerEvaluadosDesempeno( string pXmlPeriodos = null, int? pIdRol = null)
+        public List<SPE_OBTIENE_EVALUADOS_PERIODOS_DESEMPENO_Result> ObtenerEvaluadosDesempeno(string pXmlPeriodos = null, int? pIdRol = null)
         {
             using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
@@ -310,15 +310,15 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
                 return contexto.SPE_OBTIENE_EO_FUNCIONES_METAS(pIdEvaluado, pIdPeriodo).ToList();
             }
         }
-//**************************************************************************************
+        //**************************************************************************************
         public List<SPE_OBTIENE_IDICADORES_METAS_Result> ObtenerIndicadoresMetas(int? pIdPeriodo = null, int? pIdEvaluado = null, string pDsFuncion = null)
         {
             using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_IDICADORES_METAS(pIdPeriodo, pIdEvaluado, pDsFuncion).ToList();
-            } 
+            }
         }
-//*******************************************************************************************
+        //*******************************************************************************************
         public XElement InsetarActualizarMetasEvaluados(int? pIdMetaEvaluado = null, int? pIdPeriodo = null, int? pIdEvaluado = null, string pDsFuncion = null, int? pNoMeta = null, string pNbIndicador = null, string pDsMeta = null, string pClTipoMeta = null, bool? pFgValidaCumplimiento = null, bool? pFgEvaluar = null, string pNbCumplimientoActual = null, string pNbCumplimientoMinimo = null, string pNbCumplimientoSatisfactorio = null, string pNbCumplimientoSobresaliente = null, decimal? pPrMeta = null, decimal? pPrResultado = null, int? pClNivel = null, decimal? pPrCumplimientoMeta = null, string pClUsuario = null, string pNbPrograma = null, string pTipoTransaccion = null)
         {
             using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
@@ -342,12 +342,22 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public List<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result> ObtenerEvaluadores(int pIdPeriodo, int? pIdRol)
+        public List<SPE_OBTIENE_EO_EVALUADORES_TOKEN> ObtenerEvaluadores(int pIdPeriodo, int? pIdRol)
         {
             using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_EO_EVALUADORES_TOKEN(pIdPeriodo, pIdRol).ToList();
+                return contexto.Database.SqlQuery<SPE_OBTIENE_EO_EVALUADORES_TOKEN>("EXEC " +
+                "EO.SPE_OBTIENE_EO_EVALUADORES_TOKEN " +
+                "@PIN_ID_PERIODO, " +
+                "@PIN_ID_ROL",
+                new SqlParameter("@PIN_ID_PERIODO", (object)pIdPeriodo ?? DBNull.Value),
+                new SqlParameter("@PIN_ID_ROL", (object)pIdRol ?? DBNull.Value)
+            ).ToList();
             }
+            //using (contexto = new SistemaSigeinEntities())
+            //{
+            //    return contexto.SPE_OBTIENE_EO_EVALUADORES_TOKEN(pIdPeriodo, pIdRol).ToList();
+            //}
         }
 
         public List<SPE_OBTIENE_EO_METAS_EVALUADOS_Result> ObtenerMetasEvaluados(int? idEvaluadoMeta = null, int? pIdPeriodo = null, int? idEvaluado = null, int? no_Meta = null, string cl_nivel = null, bool? FgEvaluar = null, int? pIdEmpleado = null)
@@ -623,15 +633,15 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public XElement InsertaCopiaMetas(string METAS_COPIAS_XML = null,int? ID_PERIODO = null, string NB_USUARIO = null, string PROGRAMA_APP = null)
+        public XElement InsertaCopiaMetas(string METAS_COPIAS_XML = null, int? ID_PERIODO = null, string NB_USUARIO = null, string PROGRAMA_APP = null)
         {
             using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
-                 ObjectParameter poutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ObjectParameter poutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_INSERTA_METAS_EVALUADO(poutClaveRetorno, METAS_COPIAS_XML, ID_PERIODO, NB_USUARIO, PROGRAMA_APP);
                 return XElement.Parse(poutClaveRetorno.Value.ToString());
             }
-            }
+        }
 
         public XElement InsertaEstatusEnvioSolicitudes(int? pIdPeriodo = null, bool? pFgEstatus = null, string pClUsuario = null, string pNbPrograma = null)
         {
@@ -666,5 +676,18 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
         //        return contexto.SPE_OBTIENE_EO_RESULTADO_JERARQUICO(pIdEvaluador).ToList();
         //    }
         //}
+        public List<E_BAJAS_PERIODO_EDD> ObtenerBajasEDD(int? pIdEmpleado = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+
+                return contexto.Database.SqlQuery<E_BAJAS_PERIODO_EDD>("EXEC " +
+                    "EO.SPE_OBTIENE_EO_BAJA_EMPLEADO_DE_EDD " +
+                    "@PIN_ID_EMPLEADO ",
+                    new SqlParameter("@PIN_ID_EMPLEADO", (object)pIdEmpleado ?? DBNull.Value)
+                    ).ToList();
+            }
+
+        }
     }
 }

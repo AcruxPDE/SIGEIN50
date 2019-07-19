@@ -234,7 +234,8 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
                 string vXML_FILTROS = null;
                 if (pXmlFiltros != null)
                     vXML_FILTROS = pXmlFiltros.ToString();
-                return context.SPE_OBTIENE_EO_GRAFICA_INDICE_DIMENSION(pIdPeriodo, vXML_FILTROS, pIdRol).ToList();
+                var retorno = context.SPE_OBTIENE_EO_GRAFICA_INDICE_DIMENSION(pIdPeriodo, vXML_FILTROS, pIdRol).ToList();
+                return retorno;
             }
         }
 

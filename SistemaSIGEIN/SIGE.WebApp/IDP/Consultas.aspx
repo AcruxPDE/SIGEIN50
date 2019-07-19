@@ -36,7 +36,7 @@
             if (idBateria != "") {
                 openChildDialog("ResultadosPruebas.aspx?ID=" + idBateria + "&&T=" + clToken, "winConsultas", "Resultados pruebas", windowProperties);
             }
-            else { radalert("Selecciona un candidato.", 400, 150, ""); }
+            else { radalert("Selecciona un candidato.", 400, 150, "Aviso"); }
         }
 
         function OpenConsultaResumida() {
@@ -48,7 +48,7 @@
             if (idBateria != "" && idSolicitud != "") {
                 openChildDialog("ConsultasPersonales.aspx?pIdBateria=" + idBateria + "&pClTipoConsulta=RESUMIDA", "winConsultas", "Consulta personal resumida", windowProperties);
             }
-            else { radalert("Selecciona un candidato.", 400, 150, ""); }
+            else { radalert("Selecciona un candidato.", 400, 150, "Aviso"); }
         }
 
         function OpenConsultaDetallada() {
@@ -60,7 +60,7 @@
             if (idBateria != "" && idSolicitud != "") {
                 openChildDialog("ConsultasPersonales.aspx?pIdBateria=" + idBateria + "&pClTipoConsulta=DETALLADA", "winConsultas", "Consulta personal detallada", windowProperties);
             }
-            else { radalert("Selecciona un candidato.", 400, 150, ""); }
+            else { radalert("Selecciona un candidato.", 400, 150, "Aviso"); }
         }
 
         function OpenConsultaGlobal() {
@@ -72,7 +72,7 @@
             if (idCandidato != "") {
                 openChildDialog("ConsultasComparativas.aspx?pIdCandidato=" + idCandidato + "&pClTipoConsulta=GLOBAL", "winConsultas", "Consulta comparativa global", windowProperties);
             }
-            else { radalert("Selecciona un candidato.", 400, 150, ""); }
+            else { radalert("Selecciona un candidato.", 400, 150, "Aviso"); }
         }
 
         function OpenConsultaPuestoPersonas() {
@@ -101,7 +101,7 @@
 
                 openChildDialog("ConsultasComparativas.aspx?pClTipoConsulta=PSVP&candidatos=" + vCandidatosJson, "winConsultas", "Consulta comparativa Puesto vs N. Personas", windowProperties);
             }
-            else { radalert("Selecciona un candidato.", 400, 150, ""); }
+            else { radalert("Selecciona un candidato.", 400, 150, "Aviso"); }
         }
 
         function OpenConsultaPersonaPuestos() {
@@ -112,7 +112,7 @@
             };
             if (idCandidato != "")
                 openChildDialog("ConsultasComparativas.aspx?pIdCandidato=" + idCandidato + "&pClTipoConsulta=PVPS", "winConsultas", "Consulta comparativa Personas vs N. Puestos", windowProperties);
-            else { radalert("Selecciona un candidato.", 400, 150, ""); }
+            else { radalert("Selecciona un candidato.", 400, 150, "Aviso"); }
         }
 
         function OpenEvaluacionIntegral() {
@@ -138,7 +138,9 @@
                 windowProperties.height = document.documentElement.clientHeight - 20;
                 openChildDialog(vURL, "winConsultas", vTitulo, windowProperties);
             }
-            else { radalert("Selecciona un candidato.", 400, 150, ""); }
+            else {
+                radalert("Selecciona un candidato.", 400, 150, "Aviso");
+            }
         }
 
         function RowSelecting(sender, eventArgs) {

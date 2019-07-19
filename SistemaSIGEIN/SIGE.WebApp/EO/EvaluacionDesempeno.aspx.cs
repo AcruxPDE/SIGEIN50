@@ -142,6 +142,7 @@ namespace SIGE.WebApp.EO
             string vIdPeriodoSeleccionado = rlvPeriodos.Items[0].GetDataKeyValue("ID_PERIODO").ToString();
             if (vIdPeriodoSeleccionado != null)
             {
+                vIdPeriodo = int.Parse(vIdPeriodoSeleccionado);
                 PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
                 var vFgConfigurado = nPeriodo.VerificaConfiguracion(int.Parse(vIdPeriodoSeleccionado)).FirstOrDefault();
                 EstatusBotonesPeriodos(true, vFgConfigurado.FG_ESTATUS);
@@ -413,8 +414,8 @@ namespace SIGE.WebApp.EO
             else if (vSeleccion.clTipo == "CONFIGURACION")
             {
                 PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
-                var vFgConfigurado = nPeriodo.VerificaConfiguracion(vIdPeriodo).FirstOrDefault();
-                EstatusBotonesPeriodos( true, vFgConfigurado.FG_ESTATUS);
+                var vFgConfigurado = nPeriodo.VerificaConfiguracion(vIdPeriodo);
+                EstatusBotonesPeriodos( true, vFgConfigurado[0].FG_ESTATUS);
             }
             else
             {

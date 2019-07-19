@@ -66,11 +66,11 @@
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                 { if (shouldSubmit) { this.click(); } });
 
-                radconfirm('¿Deseas cerrar el tablero ' + vNombrePeriodo + ' ?, una vez cerrado ya no será posible configurarlo.', callBackFunction, 400, 170, null, "Cerrar tablero");
+                radconfirm('¿Deseas cerrar el tablero ' + vNombrePeriodo + ' ?, una vez cerrado ya no será posible configurarlo.', callBackFunction, 400, 170, null, "Aviso");
                 args.set_cancel(true);
             }
             else {
-                radalert("Seleccione un tablero de control.", 400, 150, "");
+                radalert("Seleccione un tablero de control.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -105,7 +105,7 @@
                 openChildDialog("VentanaConsultaTablero.aspx?pIdTablero=" + vIdPeriodo, "winConsultatablero", "Consultar tablero", vWindowProperties)
             }
             else {
-                radalert("Selecciona un tablero de control.", 400, 150);
+                radalert("Selecciona un tablero de control.", 400, 150, "Aviso");
             }
         }
 
@@ -117,7 +117,7 @@
                 openChildDialog("VentanaConfiguracionTablero.aspx?pIdPeriodo=" + vIdPeriodo, "WinTableroControl", "Configuración de tablero", vWindowProperties)
             }
             else {
-                radalert("Selecciona un tablero de control.", 400, 150);
+                radalert("Selecciona un tablero de control.", 400, 150, "Aviso");
             }
         }
 
@@ -125,13 +125,13 @@
             var vNombrePeriodo = GetPeriodoNombre();
             var vIdPeriodo = GetPeriodoId();
             if (vIdPeriodo != null) {
-                var vWindowPropierties = {
-                    height: 200
-                };
-                confirmAction(sender, args, "Deseas eliminar el tablero " + vNombrePeriodo + "?, Este proceso no podra revertirse.");
+                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                radconfirm("Deseas eliminar el tablero " + vNombrePeriodo + "?, Este proceso no podra revertirse.", callBackFunction, 400, 170, null, "Aviso");
+                args.set_cancel(true);
             }
             else {
-                radalert("Selecciona un tablero de control.", 400, 150);
+                radalert("Selecciona un tablero de control.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -140,13 +140,13 @@
             var vNombrePeriodo = GetPeriodoNombre();
             var vIdPeriodo = GetPeriodoId();
             if (vIdPeriodo != null) {
-                var vWindowPropierties = {
-                    height: 200
-                };
-                confirmAction(sender, args, "Deseas copiar el tablero " + vNombrePeriodo + "?, Este proceso no podra revertirse.");
+                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                radconfirm("Deseas copiar el tablero " + vNombrePeriodo + "?, Este proceso no podra revertirse.", callBackFunction, 400, 170, null, "Aviso");
+                args.set_cancel(true);
             }
             else {
-                radalert("Selecciona un tablero de control.", 400, 150);
+                radalert("Selecciona un tablero de control.", 400, 150, "Aviso");
                 args.set_cancel(true);
             }
         }
@@ -415,6 +415,7 @@
             <telerik:RadWindow ID="WinTableroControl" runat="server" Width="750px" Height="580px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" ReloadOnShow="false"></telerik:RadWindow>
             <telerik:RadWindow ID="winConsultatablero" runat="server" Width="760px" Height="590px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" ReloadOnShow="false"></telerik:RadWindow>
             <telerik:RadWindow ID="winSeleccion" runat="server" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" ReloadOnShow="false" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
+            <telerik:RadWindow ID="rwReporteComparativo" runat="server" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" ReloadOnShow="false"></telerik:RadWindow>
         </Windows>
     </telerik:RadWindowManager>
 </asp:Content>

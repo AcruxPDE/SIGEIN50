@@ -41,5 +41,7 @@ namespace SIGE.Entidades.Administracion
         public string CL_ACTIVO { get; set; }
         public Nullable<System.DateTime> FE_MODIFICACION { get; set; }
         public string CL_USUARIO_MODIFICA { get; set; }
+
+       
     }
 }

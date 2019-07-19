@@ -239,6 +239,11 @@ namespace SIGE.Negocio.Administracion
                     var vResultado = vListaDetallada.Where(t => t.ID_COMPETENCIA == vCom.ID_COMPETENCIA & t.ID_FACTOR == vFac.ID_FACTOR).FirstOrDefault();
                     if (vResultado != null)
                     {
+                        if (vResultado.CL_VARIABLE == "L1-INFLUENCIA")
+                        {
+                            string aaaaaaa = "L1-INFLUENCIA";
+                        }
+
                         if (vFac.DS_FACTOR == "TIVA")
                         {
                             decimal vTvTotal = Math.Round(vListaDetallada.Where(w => w.CL_VARIABLE == "TV-TOTAL").Select(s => s.NO_VALOR).FirstOrDefault(), 0);

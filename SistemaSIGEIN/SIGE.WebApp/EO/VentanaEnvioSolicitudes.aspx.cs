@@ -1,4 +1,5 @@
 ﻿using SIGE.Entidades;
+using SIGE.Entidades;
 using SIGE.Entidades.EvaluacionOrganizacional;
 using SIGE.Entidades.Externas;
 using SIGE.Negocio.EvaluacionOrganizacional;
@@ -121,7 +122,7 @@ namespace SIGE.WebApp.EO
             if (oPeriodo != null)
             {
                 txtClPeriodo.InnerText = oPeriodo.CL_PERIODO;
-               // txtNbPeriodo.InnerText = oPeriodo.NB_PERIODO;
+                // txtNbPeriodo.InnerText = oPeriodo.NB_PERIODO;
                 txtPeriodos.InnerText = oPeriodo.DS_PERIODO;
                 txtFechas.InnerText = oPeriodo.FE_INICIO.ToString("d") + " a " + oPeriodo.FE_TERMINO.Value.ToShortDateString();
                 txtTipoMetas.InnerText = oPeriodo.CL_TIPO_PERIODO;
@@ -140,7 +141,7 @@ namespace SIGE.WebApp.EO
                 if (oPeriodo.CL_TIPO_CAPTURISTA == "Coordinador de evaluación")
                 {
                     btnEnviar.Enabled = false;
-                  //  btnEnviarTodos.Enabled = false;
+                    //  btnEnviarTodos.Enabled = false;
                     btnCancelar.Enabled = false;
                     lbMensaje2.Visible = true;
                 }
@@ -158,7 +159,8 @@ namespace SIGE.WebApp.EO
         private void EnviarCorreo(bool pFgEnviarTodos)
         {
             ProcesoExterno pe = new ProcesoExterno();
-
+            bool vEstatusCorreo = false;
+            bool vAlertaBaja = false;
             int vNoCorreosEnviados = 0;
             int vNoTotalCorreos = 0;
             int vIdEvaluador;
@@ -168,6 +170,7 @@ namespace SIGE.WebApp.EO
             string vUrl = ContextoUsuario.nbHost + myUrl;
             GridItemCollection oListaEvaluadores = new GridItemCollection();
             XElement vXmlEvaluados = new XElement("EVALUADORES");
+            List<int> ListaBaja = new List<int>();
 
             if (vFgMasiva)
             {
@@ -193,6 +196,7 @@ namespace SIGE.WebApp.EO
             foreach (GridDataItem item in oListaEvaluadores)
             {
                 string vMensaje = vDsMensaje;
+
                 vClCorreo = (item.FindControl("txtCorreo") as RadTextBox).Text;
                 vNbEvaluador = item["NB_EVALUADOR"].Text;
                 vIdEvaluador = int.Parse(item.GetDataKeyValue("ID_EVALUADOR").ToString());
@@ -205,11 +209,37 @@ namespace SIGE.WebApp.EO
                         if (item.GetDataKeyValue("CL_TOKEN") != null)
                         {
                             vMensaje = vMensaje.Replace("[NB_EVALUADOR]", vNbEvaluador);
+
                             vMensaje = vMensaje.Replace("[URL]", vUrl + "&FlProceso=" + item.GetDataKeyValue("FL_EVALUADOR").ToString());
                             vMensaje = vMensaje.Replace("[CONTRASENA]", item.GetDataKeyValue("CL_TOKEN").ToString());
 
                             //Envío de correo
-                            bool vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbEvaluador, "Solicitud para calificar metas", vMensaje);
+
+
+                            PeriodoDesempenoNegocio nPeriodoE = new PeriodoDesempenoNegocio();
+
+                            var Evaluado_baja = nPeriodoE.ObtenerEvaluadoresPeriodo(vIdPeriodo, vIdRol).Where(w => w.ID_EVALUADOR == vIdEvaluador).FirstOrDefault();
+                            if (Evaluado_baja.CL_ESTADO_EMPLEADO == "BAJA")
+                            {
+                                if (oListaEvaluadores.Count == 1)
+                                {
+                                    vAlertaBaja = true;
+                                    vEstatusCorreo = false;
+                                    UtilMensajes.MensajeResultadoDB(rwmMensaje, "El evaluador es un empelado dado de baja, por lo que no podrá recibir el correo.", E_TIPO_RESPUESTA_DB.WARNING, 400, 200, pCallBackFunction: "");
+                                }
+                                else
+                                {
+                                    ListaBaja.Add(vIdEvaluador);
+                                    vAlertaBaja = false;
+                                    vEstatusCorreo = false;
+                                }
+
+                            }
+                            else
+                            {
+                                vAlertaBaja = false;
+                                vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbEvaluador, "Solicitud para calificar metas", vMensaje);
+                            }
 
                             if (vEstatusCorreo)
                             {
@@ -246,17 +276,26 @@ namespace SIGE.WebApp.EO
                 }
             }
 
-            if (vNoTotalCorreos == vNoCorreosEnviados)
+            if (vNoTotalCorreos == vNoCorreosEnviados && ListaBaja.Count() == 0)
             {
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, "Los correos han sido enviados con éxito.", E_TIPO_RESPUESTA_DB.SUCCESSFUL);
             }
             else
             {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, "Se enviaron " + vNoCorreosEnviados.ToString() + " correos de " + vNoTotalCorreos.ToString() + " en total.", E_TIPO_RESPUESTA_DB.SUCCESSFUL, pCallBackFunction: "");
+                if (vAlertaBaja == false && ListaBaja.Count() > 0)
+                {
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, "Se enviaron " + vNoCorreosEnviados.ToString() + " correos de " + vNoTotalCorreos.ToString() + " en total." + " Los correos en amarrillo no serán enviados por que son empleados dados de baja.", E_TIPO_RESPUESTA_DB.SUCCESSFUL, pAlto: 200, pCallBackFunction: "");
+                }
+                else if (vAlertaBaja == false)
+                {
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, "Se enviaron " + vNoCorreosEnviados.ToString() + " correos de " + vNoTotalCorreos.ToString() + " en total.", E_TIPO_RESPUESTA_DB.SUCCESSFUL, pCallBackFunction: "");
+
+
+                }
             }
         }
 
-        private void EnviarCorreosFallo(string validacion, string correo, string evaluador)
+        private void EnviarCorreosFallo(string validacion, string correo, string evaluador, int idempleado)
         {
             ProcesoExterno pe = new ProcesoExterno();
             string vClCorreo;
@@ -297,8 +336,8 @@ namespace SIGE.WebApp.EO
 
                 //Envío de correo
                 bool vEstatusCorreo = pe.EnvioCorreo(vClCorreo, vNbEvaluador, "Período de desempeño " + vDatosPeriodo.NB_PERIODO, vMensaje);
-                if(vEstatusCorreo)
-                    UtilMensajes.MensajeResultadoDB(rwmMensaje, "Ha ocurrido un problema en el período. Se ha enviado un correo a la persona que recibe las notificaciones", E_TIPO_RESPUESTA_DB.WARNING,400,200, pCallBackFunction: "");
+                if (vEstatusCorreo)
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, "Ha ocurrido un problema en el período. Se ha enviado un correo a la persona que recibe las notificaciones", E_TIPO_RESPUESTA_DB.WARNING, 400, 200, pCallBackFunction: "");
             }
         }
 
@@ -328,7 +367,7 @@ namespace SIGE.WebApp.EO
                     {
                         dvCapturaMasiva.Visible = true;
                         btnCapturaMasivaFalse.Checked = true;
-                        UtilMensajes.MensajeResultadoDB(rwmMensaje, "Este período tiene metas idénticas para todos los participantes, si se trata de una meta compartida es posible que realices la captura de todo el grupo, el resultado que captures se aplicara a cada uno de los participantes. Selecciona la opción de captura masiva antes de enviar los correos.", E_TIPO_RESPUESTA_DB.SUCCESSFUL, pAlto: 250, pCallBackFunction:"");
+                        UtilMensajes.MensajeResultadoDB(rwmMensaje, "Este período tiene metas idénticas para todos los participantes, si se trata de una meta compartida es posible que realices la captura de todo el grupo, el resultado que captures se aplicara a cada uno de los participantes. Selecciona la opción de captura masiva antes de enviar los correos.", E_TIPO_RESPUESTA_DB.SUCCESSFUL, pAlto: 250, pCallBackFunction: "");
                     }
                 }
 
@@ -358,7 +397,7 @@ namespace SIGE.WebApp.EO
 
         protected void rgCorreos_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            List<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result> vEvaluadores = new List<SPE_OBTIENE_EO_EVALUADORES_TOKEN_Result>();
+            List<SPE_OBTIENE_EO_EVALUADORES_TOKEN> vEvaluadores = new List<SPE_OBTIENE_EO_EVALUADORES_TOKEN>();
             PeriodoDesempenoNegocio eoNegocio = new PeriodoDesempenoNegocio();
             vEvaluadores = eoNegocio.ObtenerEvaluadoresPeriodo(vIdPeriodo, vIdRol);
             rgCorreos.DataSource = vEvaluadores;
@@ -380,10 +419,10 @@ namespace SIGE.WebApp.EO
                 {
                     EnviarCorreo(false);
                 }
-                else
-                {
-                    EnviarCorreosFallo(validarProceso.VALIDACION, validarProceso.CL_CORREO_ELECTRONICO, validarProceso.NB_EMPLEADO_COMPLETO);
-                }
+                //else
+                //{
+                //    EnviarCorreosFallo(validarProceso.VALIDACION, validarProceso.CL_CORREO_ELECTRONICO, validarProceso.NB_EMPLEADO_COMPLETO, validarProceso.ID_EMPLEADO);
+                //}
 
             }
         }
@@ -392,18 +431,18 @@ namespace SIGE.WebApp.EO
         {
             PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
             var validarProceso = nPeriodo.ValidaPeriodoDesempeno(vIdPeriodo).FirstOrDefault();
-            if (validarProceso.VALIDACION == "COMPLETO")
+            if (validarProceso.VALIDACION == "COMPLETO" || validarProceso.VALIDACION == "SI_HAY_IMPORTANTE_EVALUADOr" || validarProceso.VALIDACION == "SI_HAY_IMPORTANTE_EVALUADO")
             {
                 EnviarCorreo(true);
             }
-            else
-            {
-                EnviarCorreosFallo(validarProceso.VALIDACION, validarProceso.CL_CORREO_ELECTRONICO, validarProceso.NB_EMPLEADO_COMPLETO);
-            }
+            //else
+            //{
+            //    EnviarCorreosFallo(validarProceso.VALIDACION, validarProceso.CL_CORREO_ELECTRONICO, validarProceso.NB_EMPLEADO_COMPLETO, validarProceso.ID_EMPLEADO);
+            //}
         }
 
         protected void rgCorreos_ItemDataBound(object sender, GridItemEventArgs e)
-         {
+        {
             if (e.Item is GridDataItem)
             {
                 GridDataItem item = (GridDataItem)e.Item;
@@ -412,13 +451,13 @@ namespace SIGE.WebApp.EO
                 PeriodoDesempenoNegocio nPeriodo = new PeriodoDesempenoNegocio();
                 var vEvaluacionEvaluado = nPeriodo.ObtenerPeriodoEvaluadorDesempeno(vIdEvaluador);
                 if (vEvaluacionEvaluado != null)
-                if (vEvaluacionEvaluado.CL_ESTATUS_CAPTURA == "TERMINADO")
-                {
-                    item.Enabled = false;
-                    item.SelectableMode = GridItemSelectableMode.None;
-                    //btnEnviarTodos.Enabled = false;
-                    lbMensaje.Visible = true;
-                }
+                    if (vEvaluacionEvaluado.CL_ESTATUS_CAPTURA == "TERMINADO")
+                    {
+                        item.Enabled = false;
+                        item.SelectableMode = GridItemSelectableMode.None;
+                        //btnEnviarTodos.Enabled = false;
+                        lbMensaje.Visible = true;
+                    }
             }
         }
     }

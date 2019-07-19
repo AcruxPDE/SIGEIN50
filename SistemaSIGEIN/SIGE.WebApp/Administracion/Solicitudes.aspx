@@ -48,12 +48,12 @@
             function openResultadoPruebas() {
 
                 if (idBateria == null & clToken == null) {
-                    radalert("El candidato no tiene bateria de pruebas.", 400, 150, "");
+                    radalert("El candidato no tiene bateria de pruebas.", 400, 150, "Aviso");
                     return;
                 }
 
                 if (idBateria == "" & clToken == "") {
-                    radalert("El candidato no tiene bateria de pruebas.", 400, 150, "");
+                    radalert("El candidato no tiene bateria de pruebas.", 400, 150, "Aviso");
                     return;
                 }
 
@@ -74,7 +74,7 @@
                 }
                 else
                 {
-                    radalert("El candidato no tiene bateria de pruebas.", 400, 150, "");
+                    radalert("El candidato no tiene bateria de pruebas.", 400, 150, "Aviso");
                     return;
                 }
             }
@@ -84,13 +84,13 @@
                 obtenerIdFila();
 
                 if (idBateria == "" & idSolicitud == "") {
-                    radalert("No has seleccionado un registro.", 400, 150, "");
+                    radalert("No has seleccionado un registro.", 400, 150, "Aviso");
                 }
                 else if (idBateria != "" & idSolicitud != "") {
                     openConsultas();
                 }
                 else if (idBateria == "" & idSolicitud != "") {
-                    radalert("Las pruebas del candidato no han sido contestadas.", 400, 150, "");
+                    radalert("Las pruebas del candidato no han sido contestadas.", 400, 150, "Aviso");
                 }
             }
 
@@ -101,10 +101,10 @@
                 if ((idBateria != "" & clToken != "")) {
                     openResultadoPruebas();
                 } else if (idBateria == "" && idSolicitud != "") {
-                    radalert("Las pruebas del candidato no han sido contestadas.", 400, 150, "");
+                    radalert("Las pruebas del candidato no han sido contestadas.", 400, 150, "Aviso");
                 }
                 else {
-                    radalert("No has seleccionado un registro.", 400, 150, "");
+                    radalert("No has seleccionado un registro.", 400, 150, "Aviso");
                 }
             }
 
@@ -124,7 +124,7 @@
                 if (selectedItem != undefined)
                     OpenWindow(selectedItem.getDataKeyValue("ID_SOLICITUD"));
                 else
-                    radalert("Selecciona una solicitud.", 400, 150);
+                    radalert("Selecciona una solicitud.", 400, 150, "Aviso");
             }
 
             function ShowInsertForm() {
@@ -137,7 +137,7 @@
                 if (idSolicitud != null && idSolicitud != "") {
                     openChildDialog("../IDP/VentanaImprimirSolicitud.aspx?SolicitudId=" + idSolicitud , "winImprimir", "Imprimir solicitud candidato");
                 }
-                else radalert("Selecciona una solicitud.", 400, 150);
+                else radalert("Selecciona una solicitud.", 400, 150, "Aviso");
                 //var myWindow = window.open("../VentanaImprimirSolicitud.aspx?SolicitudId=" + '<= vIdSolicitudVS >', "MsgWindow", "width=650,height=650");
              }
 
@@ -161,9 +161,14 @@
                     //var vClSolicitud = masterTable.getCellByColumnUniqueName(selectedItem, "K_SOLICITUD_CL_SOLICITUD").innerHTML;
                     //vClSolicitud = ((vClSolicitud == "&nbsp;") ? "" : " " + vClSolicitud);
                     //confirmAction(sender, args, '¿Deseas eliminar la solicitud' + vClSolicitud + '?, este proceso no podrá revertirse.');
-                    confirmAction(sender, args, '¿Deseas eliminar las solicitudes seleccionadas?, este proceso no podrá revertirse.');
+
+                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                    radconfirm("¿Deseas eliminar las solicitudes seleccionadas?, este proceso no podrá revertirse.", callBackFunction, 400, 170, null, "Aviso");
+                    args.set_cancel(true);
+
                 } else {
-                    radalert("Seleccione una solicitud.", 400, 200);
+                    radalert("Seleccione una solicitud.", 400, 200, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -191,7 +196,7 @@
                     var browserWnd = window;
                     if (currentWnd)
                         browserWnd = currentWnd.BrowserWindow;
-                    browserWnd.radalert("Selecciona un empleado.", 400, 150);
+                    browserWnd.radalert("Selecciona un empleado.", 400, 150, "Aviso");
                 }
             }
 
@@ -207,9 +212,13 @@
                 var masterTable = $find("<%=grdSolicitudes.ClientID %>").get_masterTableView();
                 var selectedItem = masterTable.get_selectedItems()[0];
                 if (selectedItem != undefined) {
-                    confirmAction(sender, args, '¿Deseas actualizar las solicitudes seleccionadas?');
+                   var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                    radconfirm("¿Deseas actualizar las solicitudes seleccionadas?", callBackFunction, 400, 170, null, "Aviso");
+                    args.set_cancel(true);
+
                 } else {
-                    radalert("Seleccione una solicitud.", 400, 200);
+                    radalert("Seleccione una solicitud.", 400, 200, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -224,12 +233,12 @@
                 obtenerIdFila();
 
                 if (idSolicitud == "") {
-                    radalert("Selecciona una solicitud.", 400, 150);
+                    radalert("Selecciona una solicitud.", 400, 150, "Aviso");
                     return;
                 }
 
                 if (clEstatus == "Contratado") {
-                    radalert("El candidato de la solicitud ya está contratado. Selecciona otra solicitud.", 400, 150);
+                    radalert("El candidato de la solicitud ya está contratado. Selecciona otra solicitud.", 400, 150, "Aviso");
                     return;
                 }
 
@@ -285,7 +294,7 @@
                 obtenerIdFila();
 
                 if (idSolicitud == "") {
-                    radalert("Selecciona una solicitud.", 400, 150);
+                    radalert("Selecciona una solicitud.", 400, 150, "Aviso");
                     return;
                 }
 

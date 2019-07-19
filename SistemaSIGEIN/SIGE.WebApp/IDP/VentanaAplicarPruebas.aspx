@@ -22,7 +22,7 @@
                  var arrUrl = window.location.href.split('/');
                 //var vUrl = '<= ResolveClientUrl("~/IDP/Pruebas/AplicacionBateriasMasiva.aspx")%>';
                 var vUrl = arrUrl[0] + '//' + arrUrl[2] + "/SIGEIN50/IDP/Pruebas/AplicacionBateriasMasiva.aspx";
-                radalert("Copia y pega la siguiente URL en un navegador: <br><br>" + vUrl + "<br><br> No olvides que necesitaras el folio de solicitud para ingresar.", 650, 200, "Liga aplicación masiva");
+                radalert("Copia y pega la siguiente URL en un navegador: <br><br>" + vUrl + "<br><br> No olvides que necesitaras el folio de solicitud para ingresar.", 650, 200, "Aviso");
             }
 
 
@@ -31,7 +31,13 @@
                 var selectedRows = MasterTable.get_selectedItems();
                 var row = selectedRows[0];
                 if (row == null) {
-                    radalert("Selecciona a un candidato", 400, 150, "Warning");
+                    radalert("Selecciona a un candidato", 400, 150, "Aviso");
+                    args.set_cancel(true);
+                }
+                else {
+                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                    radconfirm('¿Seguro que deseas eliminar el candidato?', callBackFunction, 400, 170, null, "Aviso");
                     args.set_cancel(true);
                 }
             }
@@ -69,7 +75,7 @@
                 openChildDialog("EnvioCorreosPruebas.aspx?candidatos=" + vCandidatosJson, "winSeleccionCandidato", "Envío de pruebas", windowProperties);
             }
             else {
-                radalert("Selecciona un empleado.", 400, 150, "Error");
+                radalert("Selecciona un empleado.", 400, 150, "Aviso");
             }
             
             }
@@ -86,7 +92,7 @@
                     window.parent.location = "Pruebas/PruebaBienvenida.aspx?ID=" + pFlBateria + "&T=" + pClToken + "&idCandidato=" + pIdCandidato;
                 }
                 else
-                    radalert("Selecciona a un candidato", 400, 150, "Warning");
+                    radalert("Selecciona a un candidato", 400, 150, "Aviso");
             }
 
         </script>

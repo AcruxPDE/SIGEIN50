@@ -43,7 +43,7 @@
                 //    radalert("Periodo cerrado.", 400, 150);
                 //}
             } else {
-                radalert("Selecciona un evaluado.", 400, 150);
+                radalert("Selecciona un evaluado.", 400, 150, "Aviso");
             }
         }
 
@@ -89,7 +89,7 @@
         </AjaxSettings>
     </telerik:RadAjaxManager>
 
-    <div style="height: calc(100% - 35px);">
+    <div style="height: calc(100% - 35px); padding: 15px">
         <telerik:RadSplitter ID="rsPlantilla" Width="100%" Height="100%" BorderSize="0" runat="server">
 
             <telerik:RadPane ID="rpGridEvaluados" runat="server" Height="100%" ShowContentDuringLoad="false">
@@ -173,7 +173,7 @@
             </telerik:RadPane>
         </telerik:RadSplitter>
     </div>
-    <div>
+    <div style=" margin-top: -10px; padding: 15px;">
         <telerik:RadButton ID="btnEvaluar" runat="server" Text="Evaluar" AutoPostBack="false" OnClientClicked="OpenMatrizEvaluadoresWindow"></telerik:RadButton>
         <telerik:RadButton ID="btnSalir" runat="server" Text="Salir" AutoPostBack="true" Visible="false" OnClick="btnSalir_Click"></telerik:RadButton>
         <asp:HiddenField ID="total" runat="server"></asp:HiddenField>

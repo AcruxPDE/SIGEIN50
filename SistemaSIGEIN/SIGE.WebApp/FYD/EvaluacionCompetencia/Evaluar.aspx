@@ -55,23 +55,17 @@
         }
 
         function confirmarGuardar(sender, args) {
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
 
-            var windowProperties = {
-                width: 400,
-                height: 200
-            };
-
-            confirmAction(sender, args, "¿Deseas guardar el cuestionario? Esta opción solo guarda los datos y cierra la pantalla para poder terminarlo posteriormente.", windowProperties);
+            radconfirm("¿Deseas guardar el cuestionario? Esta opción solo guarda los datos y cierra la pantalla para poder terminarlo posteriormente.", callBackFunction, 400, 200, null, "Aviso");
+            args.set_cancel(true);
         }
 
         function confirmarTerminar(sender, args) {
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
 
-            var windowProperties = {
-                width: 400,
-                height: 200
-            };
-
-            confirmAction(sender, args, "¿Deseas terminar el cuestionario? Esta opción guarda y marca como contestado el cuestionario.", windowProperties);
+            radconfirm("¿Deseas terminar el cuestionario? Esta opción guarda y marca como contestado el cuestionario.", callBackFunction, 400, 200, null, "Aviso");
+            args.set_cancel(true);
         }
     </script>
 
