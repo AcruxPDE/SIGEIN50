@@ -230,7 +230,7 @@ namespace SIGE.WebApp.Administracion
             {
                 int vNivelDiferencia = ((E_ORGANIGRAMA_NODO)e.Node.DataItem).noNivelPuesto - ((E_ORGANIGRAMA_NODO)e.Node.DataItem).noNivel;
 
-                e.Node.CssClass = ObtieneCssClass(chkMostrarEmpleados.Checked == null ? false : (bool)chkMostrarEmpleados.Checked, vNivelDiferencia);
+                e.Node.CssClass = ObtieneCssClass(chkMostrarEmpleados.Checked == null ? false : (bool)chkMostrarEmpleados.Checked, vNivelDiferencia, vClCss);
             }
 
             e.Node.CssClass = vClCss;

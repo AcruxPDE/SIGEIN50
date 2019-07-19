@@ -678,7 +678,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
         //}
         public List<E_BAJAS_PERIODO_EDD> ObtenerBajasEDD(int? pIdEmpleado = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
 
                 return contexto.Database.SqlQuery<E_BAJAS_PERIODO_EDD>("EXEC " +
