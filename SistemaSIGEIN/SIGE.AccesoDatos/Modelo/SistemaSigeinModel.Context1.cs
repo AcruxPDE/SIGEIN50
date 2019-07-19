@@ -11116,7 +11116,7 @@ namespace SIGE.Entidades
             var pIN_TIPO_TRANSACCIONParameter = pIN_TIPO_TRANSACCION != null ?
                 new ObjectParameter("PIN_TIPO_TRANSACCION", pIN_TIPO_TRANSACCION) :
                 new ObjectParameter("PIN_TIPO_TRANSACCION", typeof(string));
-            
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_INSERTA_ACTUALIZA_PERIODO", xML_RESULTADO, iD_PERIODOParameter, cL_PERIODOParameter, nB_PERIODOParameter, dS_PERIODOParameter, fE_INICIOParameter, fE_TERMINOParameter, cL_ESTADO_PERIODOParameter, dS_NOTASParameter, iD_BITACORAParameter, xML_CAMPOS_ADICIONALESParameter, iD_PERIODO_EVALUACIONParameter, fG_AUTOEVALUACIONParameter, fG_SUPERVISORParameter, fG_SUBORDINADOSParameter, fG_INTERRELACIONADOSParameter, fG_OTROSParameter, fG_CREADO_POR_PVCParameter, cL_USUARIOParameter, nB_PROGRAMAParameter, pIN_TIPO_TRANSACCIONParameter);
         }
     
@@ -17894,15 +17894,6 @@ namespace SIGE.Entidades
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_EO_METAS_CAPTURA_MASIVA_Result>("SPE_OBTIENE_EO_METAS_CAPTURA_MASIVA", pIN_ID_PERIODOParameter, pIN_ID_EVALUADORParameter, pIN_FL_EVALUADORParameter);
         }
     
-        public virtual int SPE_ELIMINA_EO_METAS_INACTIVAS(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO)
-        {
-            var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
-                new ObjectParameter("PIN_ID_PERIODO", pIN_ID_PERIODO) :
-                new ObjectParameter("PIN_ID_PERIODO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_EO_METAS_INACTIVAS", xML_RESULTADO, pIN_ID_PERIODOParameter);
-        }
-    
         public virtual int SPE_INSERTA_PERIODOS_DESEMPENO_REPLICA(ObjectParameter xML_RESULTADO, Nullable<int> pIN_ID_PERIODO, string pIN_XML_REPLICAS, string pIN_CL_USUARIO, string pIN_NB_PROGRAMA, string pIN_TIPO_TRANSACCION)
         {
             var pIN_ID_PERIODOParameter = pIN_ID_PERIODO.HasValue ?
@@ -19776,15 +19767,6 @@ namespace SIGE.Entidades
                 new ObjectParameter("PIN_NB_PROGRAMA", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_PRUEBA_RESPUESTAS", xML_RESULTADO, pIN_XML_PRUEBASParameter, pIN_ID_BATERIAParameter, pIN_CL_USUARIO_APPParameter, pIN_NB_PROGRAMAParameter);
-        }
-    
-        public virtual ObjectResult<SPE_OBTIENE_ADSCRIPCIONES_Result> SPE_OBTIENE_ADSCRIPCIONES(Nullable<int> pIN_ID_CATALOGO_LISTA)
-        {
-            var pIN_ID_CATALOGO_LISTAParameter = pIN_ID_CATALOGO_LISTA.HasValue ?
-                new ObjectParameter("PIN_ID_CATALOGO_LISTA", pIN_ID_CATALOGO_LISTA) :
-                new ObjectParameter("PIN_ID_CATALOGO_LISTA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_ADSCRIPCIONES_Result>("SPE_OBTIENE_ADSCRIPCIONES", pIN_ID_CATALOGO_LISTAParameter);
         }
     
         public virtual ObjectResult<SPE_OBTIENE_EMPLEADOS_Result> SPE_OBTIENE_EMPLEADOS(string pIN_XML_SELECCION, string pIN_CL_USUARIO, Nullable<bool> pIN_FG_ACTIVO, Nullable<bool> pIN_FG_FOTO, Nullable<int> pIN_ID_EMPRESA, Nullable<int> pIN_ID_ROL)

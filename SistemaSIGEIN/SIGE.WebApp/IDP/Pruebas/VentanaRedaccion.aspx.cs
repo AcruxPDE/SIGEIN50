@@ -124,32 +124,47 @@ namespace SIGE.WebApp.IDP
                     }
                     else
                     {
-                    var vObjetoPrueba = nPrueba.INICIAR_K_PRUEBA(pIdPrueba: vIdPrueba, pFeInicio: vNow.Value, pClTokenExterno: vClToken, usuario: vClUsuario, programa: vNbPrograma);
+                        var lstPrueba = nPrueba.Obtener_K_PRUEBA(pIdPrueba: vIdPrueba, pClTokenExterno: vClToken);
+                        if (lstPrueba.Count == 1)
+                        {
+                            var vPruebaObj = lstPrueba[0];
+                            var tiempoTotal = vPruebaObj.NO_TIEMPO * 60;
+                            if (vPruebaObj.FE_INICIO.HasValue)
+                            {
+                                var tiempoTranscurrido = DateTime.Now.Subtract(vPruebaObj.FE_INICIO.Value);
+                                vTiempoRedaccion = tiempoTotal - (int)tiempoTranscurrido.TotalSeconds;
+                            }
+                            else
+                                vTiempoRedaccion = tiempoTotal;
+                        }
+                        else
+                            vTiempoRedaccion = 0;
+                        /*var vObjetoPrueba = nPrueba.INICIAR_K_PRUEBA(pIdPrueba: vIdPrueba, pFeInicio: vNow.Value, pClTokenExterno: vClToken, usuario: vClUsuario, programa: vNbPrograma);
 
-                    if (vObjetoPrueba != null)
-                    {
-                        //       //Si el modo de revision esta activado
-                        //if (vTipoRevision == "REV")
-                        //{
-                        //    cronometro.Visible = false;
-                        //    vTiempoRedaccion = 0;
-                        //    btnTerminar.Enabled = false;
-                        //    //obtener respuestas
-                        //    var respuestas = nPrueba.Obtener_RESULTADO_PRUEBA(vIdPrueba, vClToken);
-                        //    asignarValores(respuestas);
-                        //}
-                        //else if (vTipoRevision == "EDIT")
-                        //{
-                        //    cronometro.Visible = false;
-                        //    vTiempoRedaccion = 0;
-                        //    btnTerminar.Visible = false;
-                        //    btnCorregir.Visible = true;
-                        //    //obtener respuestas
-                        //    var respuestas = nPrueba.Obtener_RESULTADO_PRUEBA(vIdPrueba, vClToken);
-                        //    asignarValores(respuestas);
-                        //}
-                        //else
-                        //{
+                        if (vObjetoPrueba != null)
+                        {
+                            //       //Si el modo de revision esta activado
+                            //if (vTipoRevision == "REV")
+                            //{
+                            //    cronometro.Visible = false;
+                            //    vTiempoRedaccion = 0;
+                            //    btnTerminar.Enabled = false;
+                            //    //obtener respuestas
+                            //    var respuestas = nPrueba.Obtener_RESULTADO_PRUEBA(vIdPrueba, vClToken);
+                            //    asignarValores(respuestas);
+                            //}
+                            //else if (vTipoRevision == "EDIT")
+                            //{
+                            //    cronometro.Visible = false;
+                            //    vTiempoRedaccion = 0;
+                            //    btnTerminar.Visible = false;
+                            //    btnCorregir.Visible = true;
+                            //    //obtener respuestas
+                            //    var respuestas = nPrueba.Obtener_RESULTADO_PRUEBA(vIdPrueba, vClToken);
+                            //    asignarValores(respuestas);
+                            //}
+                            //else
+                            //{
                             if (vObjetoPrueba.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.ERROR)
                             {
                                 vTiempoRedaccion = 0;
@@ -163,7 +178,7 @@ namespace SIGE.WebApp.IDP
                                     //btnTerminar.Enabled = false;
                                 }
                             }
-                        }
+                        }*/
                     }
                 }
                 else
@@ -347,6 +362,12 @@ namespace SIGE.WebApp.IDP
                     UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
             }
 
+        }
+
+        protected void RadAjaxManager1_AjaxRequest(object sender, Telerik.Web.UI.AjaxRequestEventArgs e)
+        {
+            PruebasNegocio nKprueba = new PruebasNegocio();
+            E_RESULTADO vObjetoPrueba = nKprueba.INICIAR_K_PRUEBA(pIdPrueba: vIdPrueba, pFeInicio: DateTime.Now, pClTokenExterno: vClToken, usuario: vClUsuario, programa: vNbPrograma);
         }
     }
 }

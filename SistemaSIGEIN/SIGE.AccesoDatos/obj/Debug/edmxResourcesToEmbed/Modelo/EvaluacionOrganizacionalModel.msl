@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EvaluacionOrganizacionalModelStoreContainer" CdmEntityContainer="EvaluacionOrganizacionalEntities">
+    <FunctionImportMapping FunctionImportName="SPE_ELIMINA_EO_METAS_INACTIVAS" FunctionName="EvaluacionOrganizacionalModel.Store.SPE_ELIMINA_EO_METAS_INACTIVAS" />
+    <FunctionImportMapping FunctionImportName="SPE_OBTIENE_ADSCRIPCIONES" FunctionName="EvaluacionOrganizacionalModel.Store.SPE_OBTIENE_ADSCRIPCIONES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionOrganizacionalModel.SPE_OBTIENE_ADSCRIPCIONES_Result">
+          <ScalarProperty Name="ID_CAMPO" ColumnName="ID_CAMPO" />
+          <ScalarProperty Name="CL_CAMPO" ColumnName="CL_CAMPO" />
+          <ScalarProperty Name="CL_CAMPO_CATALOGO" ColumnName="CL_CAMPO_CATALOGO" />
+          <ScalarProperty Name="NB_CAMPO" ColumnName="NB_CAMPO" />
+          <ScalarProperty Name="NB_CATALOGO_VALOR" ColumnName="NB_CATALOGO_VALOR" />
+          <ScalarProperty Name="DS_CAMPO" ColumnName="DS_CAMPO" />
+          <ScalarProperty Name="CL_TABLA_REFERENCIA" ColumnName="CL_TABLA_REFERENCIA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

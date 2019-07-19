@@ -225,6 +225,7 @@
             HeaderStyle-Font-Bold="true"
             ClientSettings-EnablePostBackOnRowClick="false"
             OnItemDataBound="grdRequisicion_ItemDataBound"
+            OnItemCommand="grdRequisicion_ItemCommand"
             OnNeedDataSource="grdRequisicion_NeedDataSource" OnDetailTableDataBind="grdRequisicion_DetailTableDataBind">
             <GroupingSettings CaseSensitive="False" />
             <ClientSettings AllowKeyboardNavigation="true" EnableAlternatingItems="false">
@@ -235,7 +236,7 @@
             <MasterTableView ClientDataKeyNames="ID_REQUISICION, ID_AUTORIZA, ID_PUESTO, CL_ESTATUS_PUESTO, NB_PUESTO, FL_REQUISICION, CL_TOKEN, CL_ESTATUS_REQUISICION, CL_CAUSA" DataKeyNames="ID_REQUISICION, ID_AUTORIZA, ID_PUESTO, CL_ESTATUS_PUESTO, NB_PUESTO, FL_REQUISICION, CL_TOKEN, CL_ESTATUS_REQUISICION, CL_CAUSA" ShowHeadersWhenNoRecords="true" AutoGenerateColumns="false" PageSize="10"
                 NoDetailRecordsText="No existen candidatos asociados a esta requisición.">
                 <DetailTables >
-                    <telerik:GridTableView DataKeyNames="ID_REQUISICION" ClientDataKeyNames="ID_REQUISICION" AllowFilteringByColumn="false" AutoGenerateColumns="false" AllowPaging="false" NoMasterRecordsText="No existen candidatos asociados a esta requisición." NoDetailRecordsText="No existen candidatos asociados a esta requisición." Name="CandidatosAsociados" AlternatingItemStyle-CssClass="Detalle">
+                    <telerik:GridTableView DataKeyNames="ID_REQUISICION,ID_CANDIDATO" ClientDataKeyNames="ID_REQUISICION" AllowFilteringByColumn="false" AutoGenerateColumns="false" AllowPaging="false" NoMasterRecordsText="No existen candidatos asociados a esta requisición." NoDetailRecordsText="No existen candidatos asociados a esta requisición." Name="CandidatosAsociados" AlternatingItemStyle-CssClass="Detalle">
                         <Columns>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="100" HeaderText="Folio de solicitud" DataField="CL_SOLICITUD" UniqueName="CL_SOLICITUD"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="200" HeaderText="Candidato" DataField="NB_CANDIDATO" UniqueName="NB_CANDIDATO"></telerik:GridBoundColumn>
@@ -243,6 +244,7 @@
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="150" HeaderText="Estatus requisición" DataField="CL_ESTATUS_CANDIDATO_REQUISICION" UniqueName="CL_ESTATUS_CANDIDATO_REQUISICION"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="150" HeaderText="F. Inicio proceso" DataField="FE_INICIO_PROCESO" UniqueName="FE_INICIO_PROCESO" DataFormatString="{0:d}"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" HeaderStyle-Width="150" HeaderText="F. Fin proceso" DataField="FE_TERMINO_PROCESO" UniqueName="FE_TERMINO_PROCESO" DataFormatString="{0:d}"></telerik:GridBoundColumn>
+                            <telerik:GridButtonColumn HeaderStyle-Width="20" CommandName="Delete" UniqueName="btnBorrarCandidatoRequisicion" ConfirmDialogType="RadWindow" ConfirmText="¿Deseas eliminar a este candidato de la requisición?" ConfirmDialogWidth="300" ConfirmDialogHeight="160" ButtonType="ImageButton"></telerik:GridButtonColumn>
                         </Columns>
                     </telerik:GridTableView>
                 </DetailTables>

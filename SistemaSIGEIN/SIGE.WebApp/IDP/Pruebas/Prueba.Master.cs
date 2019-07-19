@@ -29,7 +29,7 @@ namespace SIGE.WebApp.IDP.Pruebas
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Obtener la bateria 
+            /*//Obtener la bateria 
             if (vsPruebas.Count() == 0)
             {
                 PruebasNegocio pruebas = new PruebasNegocio();
@@ -92,12 +92,12 @@ namespace SIGE.WebApp.IDP.Pruebas
                             case "APTITUD-2":
                                 pagina = "VentanaAptitudMentalII.aspx?ID=" + itemPrueba.ID_PRUEBA + "&T=" + itemPrueba.CL_TOKEN_EXTERNO;
                                 itemPrueba.CL_ESTADO = "INICIADA";
-                                break;
+                                break;*/
                             /*  case "ADAPTACION":
                                   pagina = "AdaptacionMedio.aspx?ID=" + itemPrueba.ID_PRUEBA + "&T=" + itemPrueba.CL_TOKEN_EXTERNO;
                                   itemPrueba.CL_PRUEBA = "INICIADA";
                                   break;*/
-                            case "TIVA":
+                            /*case "TIVA":
                                 pagina = "VentanaTIVA.aspx?ID=" + itemPrueba.ID_PRUEBA + "&T=" + itemPrueba.CL_TOKEN_EXTERNO;
                                 itemPrueba.CL_ESTADO = "INICIADA";
                                 break;
@@ -146,7 +146,7 @@ namespace SIGE.WebApp.IDP.Pruebas
                     pagina = "Default.aspx?F=1";
                 }
                 Response.Redirect(pagina);
-            }
+            }*/
         }
     }
 }

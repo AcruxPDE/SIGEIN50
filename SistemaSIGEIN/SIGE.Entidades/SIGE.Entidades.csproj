@@ -42,11 +42,16 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -109,6 +114,11 @@
     <Compile Include="Administracion\E_SELECCION_PUESTOS.cs" />
     <Compile Include="Administracion\E_SISTEMA.cs" />
     <Compile Include="Administracion\E_USUARIO.cs" />
+    <Compile Include="EvaluacionOrganizacionalModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EvaluacionOrganizacionalModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EvaluacionOrganizacional\E_ADICIONALES_SELECCIONADOS.cs" />
     <Compile Include="EvaluacionOrganizacional\E_BAJAS_PENDIENTES.cs" />
     <Compile Include="EvaluacionOrganizacional\E_BAJAS_PERIODO_EDD.cs" />
@@ -234,6 +244,11 @@
     <Compile Include="FormacionDesarrollo\E_REPORTE_COMPARATIVO_INDIVIDUAL.cs" />
     <Compile Include="FormacionDesarrollo\E_RESPUESTAS_PREGUNTAS_ADICIONALES.cs" />
     <Compile Include="FormacionDesarrollo\E_EVALUADOS_REPORTE_GLOBAL.cs" />
+    <Compile Include="IntegracionDePersonalModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IntegracionDePersonalModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="IntegracionDePersonal\E_BAREMOS_PRUEBAS_RESPORTE.cs" />
     <Compile Include="IntegracionDePersonal\E_CANDIDATOS_BATERIA.cs" />
     <Compile Include="IntegracionDePersonal\E_CANDIDATO_IDONEO.cs" />
@@ -249,7 +264,7 @@
     <Compile Include="PuntoDeEncuentro\E_OBTIENE_EMPLEADOS_GENERA_CONTRASENA.cs" />
     <Compile Include="PuntoDeEncuentro\E_USUARIO_CORREO.cs" />
     <Compile Include="SPE_OBTIENE_ADSCRIPCIONES_Result.cs">
-      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+      <DependentUpon>EvaluacionOrganizacionalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_BONOS_EVALUADOS_DESEMPENO_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
@@ -273,6 +288,9 @@
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_CANDIDATO_IDONEO_PERFIL_Result.cs">
+      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SPE_OBTIENE_CARTERA_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_CENTROS_ADMINISTRATIVOS_Result.cs">
@@ -795,9 +813,6 @@
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_CARTERA_A_ELIMINAR_Result.cs">
-      <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SPE_OBTIENE_CARTERA_Result.cs">
       <DependentUpon>SistemaSigeinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SPE_OBTIENE_CENTROS_ADMVOS_Result.cs">
@@ -1562,6 +1577,7 @@
     <Compile Include="Utilerias\PasswordHash.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -1573,7 +1589,16 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="EvaluacionOrganizacionalModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EvaluacionOrganizacionalModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="IntegracionDePersonalModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IntegracionDePersonalModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

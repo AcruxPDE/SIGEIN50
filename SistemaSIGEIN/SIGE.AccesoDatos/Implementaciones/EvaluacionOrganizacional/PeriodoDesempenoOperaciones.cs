@@ -16,18 +16,16 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 {
     public class PeriodoDesempenoOperaciones
     {
-        SistemaSigeinEntities contexto;
-
         public List<SPE_OBTIENE_EO_PERIODOS_DESEMPENO_Result> ObtenerPeriodosDesempeno(int? pIdPeriodo = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_EO_PERIODOS_DESEMPENO(pIdPeriodo).ToList();
             }
         }
         public List<SPE_OBTIENE_EO_PERIODOS_DESEMPENO_CUESTIONARIO_Result> ObtienePeriodosDesempenoCuestionario(int? pIdPeriodo = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_EO_PERIODOS_DESEMPENO_CUESTIONARIO(pIdPeriodo).ToList();
             }
@@ -35,7 +33,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_PERIODOS_DESEMPENO_COMPARACION_Result> ObtenerPeriodosComparacion(int? pIdPeriodo = null, int? pIdEvaluado = null, string pClTipoSeleccion = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_PERIODOS_DESEMPENO_COMPARACION(pIdPeriodo, pIdEvaluado, pClTipoSeleccion).ToList();
             }
@@ -43,7 +41,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_DESEMPENO_Result> ObtenerCumplimientoGlobal(int? pIdPeriodo = null, int? pIdRol = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_DESEMPENO(pIdPeriodo, pIdRol).ToList();
             }
@@ -51,7 +49,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_GRAFICA_Result> ObtenerCumplimientoGlobalGrafica(string pXmlPeriodos = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_EO_CUMPLIMIENTO_GLOBAL_GRAFICA(pXmlPeriodos).ToList();
             }
@@ -59,7 +57,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_VERIFICA_CONFIGURACION_METAS_Result> VerificaConfiguracion(int? pIdPeriodo = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_VERIFICA_CONFIGURACION_METAS(pIdPeriodo).ToList();
             }
@@ -67,7 +65,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public SPE_OBTIENE_EO_PERIODOS_DESEMPENO_Result ObtenerPeriodoDesempeno(int pIdPeriodo)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_EO_PERIODOS_DESEMPENO(pIdPeriodo).FirstOrDefault();
             }
@@ -76,7 +74,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_EO_EVALUADORES_REPLICAS_Result> ObtenerEvaluadoresReplicas(int pIdPeriodo)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_EO_EVALUADORES_REPLICAS(pIdPeriodo).ToList();
             }
@@ -84,7 +82,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_SOLICITUDES_ENVIAR_Result> ObtenerSolicitudesEnviar()
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_SOLICITUDES_ENVIAR().ToList();
             }
@@ -92,7 +90,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_PERIODOS_SOLICITUDES_ENVIAR_Result> ObtenerPeriodosEnviar()
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_PERIODOS_SOLICITUDES_ENVIAR().ToList();
             }
@@ -101,7 +99,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_EO_PERIODOS_CONSECUTIVOS_Result> ObtenerPeriodoConsecutivo(int? pIdPeriodo = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_EO_PERIODOS_CONSECUTIVOS(pIdPeriodo).ToList();
             }
@@ -109,7 +107,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_EO_METAS_EVALUADOS_CONSECUENTES_Result> ObtenerMetasConsecuentes(int? pIdPeriodoOriginal = null, int? pIdPeriodoConsecuente = null, int? pIdEvaOriginal = null, int? pIdEvaConsecuente = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_EO_METAS_EVALUADOS_CONSECUENTES(pIdPeriodoOriginal, pIdPeriodoConsecuente, pIdEvaOriginal, pIdEvaConsecuente).ToList();
             }
@@ -117,7 +115,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_METAS_COMPARACION_GRAFICA_Result> ObtenerMetasGrafica(string pXmlPeriodos = null, int? pIdEmpleado = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_METAS_COMPARACION_GRAFICA(pXmlPeriodos, pIdEmpleado).ToList();
             }
@@ -125,7 +123,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_EVALUADOS_PERIODOS_DESEMPENO_Result> ObtenerEvaluadosDesempeno(string pXmlPeriodos = null, int? pIdRol = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_EVALUADOS_PERIODOS_DESEMPENO(pXmlPeriodos, pIdRol).ToList();
             }
@@ -133,7 +131,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_BONOS_EVALUADOS_DESEMPENO_Result> ObtenerBonosDesempeno(int? pIdEmpledo = null, string pXmlPeriodos = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_BONOS_EVALUADOS_DESEMPENO(pXmlPeriodos, pIdEmpledo).ToList();
             }
@@ -142,7 +140,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_PERIODO_REPLICAS_Result> ObtenerPeriodos(int? pIdPeriodo = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_PERIODO_REPLICAS(pIdPeriodo).ToList();
             }
@@ -150,14 +148,14 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public SPE_OBTIENE_EO_CONTEXTO_METAS_Result ObtenerPeriodoDesempenoContexto(int pIdPeriodo, int? idEvaluado)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_EO_CONTEXTO_METAS(pIdPeriodo, idEvaluado).FirstOrDefault();
             }
         }
         public XElement InsertaActualiza_PERIODO_DESEMPENO(int? pIdPeriodoDesempeno, string pClPeriodoDesempeno, string pNbPeriodoDesempeno, string pDsPeriodoDesempeno, string pClEstadoPeriodoDesempeno, string pDsNotas, DateTime pFeInicio, DateTime pFeTermino, string pClTipoCapturista, string CL_TIPO_META, string pClUsuario, string pNbPrograma, string pTipoTransaccion, bool? pFgCapturaMasiva)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 // Declaramos el objeto de valor de retorno
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
@@ -170,7 +168,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement InsertaFeEnvioSolicitud(string pXmlFechas, string pClUsuario, string pNbPrograma, string pTipoTransaccion)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_INSERTA_FECHA_ENVIA_SOLICITUD(pOutClRetorno, pXmlFechas, pClUsuario, pNbPrograma, pTipoTransaccion);
@@ -181,7 +179,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement EliminarPeriodosDesempeno(int pIdPeriodo)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_ELIMINA_PERIODO_DESEMPENO(pOutClRetorno, pIdPeriodo);
@@ -191,7 +189,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement InsertaPeriodosReplica(int? pIdPeriodo, string pXmlPeriodos, string pClUsuario, string pNbPrograma, string ClTipoTransaccion)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_INSERTA_PERIODOS_DESEMPENO_REPLICA(pOutClRetorno, pIdPeriodo, pXmlPeriodos, pClUsuario, pNbPrograma, ClTipoTransaccion);
@@ -201,7 +199,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO_Result> ObtenerEvaluados(int? pIdPeriodo = null, int? pIdEvaluado = null, int? pIdEvaluador = null, string pClUsuario = null, string pNbPrograma = null, int? pIdRol = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_EO_EVALUADOS_CONFIGURACION_DESEMPENO(pIdPeriodo, pIdEvaluado, pIdEvaluador, pClUsuario, pNbPrograma, pIdRol).ToList();
             }
@@ -209,7 +207,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_PERIODOS_DESEMPENO_COMPARAR_Result> ObtenerDesempenoComparacion(string vXmlPeriodos = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_PERIODOS_DESEMPENO_COMPARAR(vXmlPeriodos).ToList();
             }
@@ -217,7 +215,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement EliminarEvaluados(int pIdPeriodo, XElement pXmlEvaluados, string pClUsuario, string pNbPrograma)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_ELIMINA_EO_EVALUADOS_DESEMPENO(pOutClRetorno, pIdPeriodo, pXmlEvaluados.ToString(), pClUsuario, pNbPrograma);
@@ -227,7 +225,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement InsertarEvaluados(int pIdPeriodo, XElement pXmlEvaluados, string pClUsuario, string pNbPrograma)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_INSERTA_ACTUALIZA_EVALUADOS_DESEMPENO(pOutClRetorno, pIdPeriodo, pXmlEvaluados.ToString(), pClUsuario, pNbPrograma, "I");
@@ -237,7 +235,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement ActualizarConfiguracionDesempeno(int pIdPeriodoDesempeno, int pFgBono, decimal pPrBono, decimal pMnBono, string pClTipoBono, string pClUsuario, string pNbPrograma)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClretorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_ACTUALIZA_CONFIGURACION_PERIODO_DESEMPENO(pOutClretorno, pIdPeriodoDesempeno, pFgBono, pPrBono, pMnBono, pClTipoBono, pClUsuario, pNbPrograma);
@@ -248,7 +246,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_BONO_EVALUADOS_Result> ObtenerBonoEvaluados(int pIdPeriodo, int? pIdRol)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_BONO_EVALUADOS(pIdPeriodo, pIdRol).ToList();
             }
@@ -256,7 +254,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement ActualizarEvaluadoTopeBono(int pIdPeriodo, decimal pPrBono, string pClTipoBono, string pXmlEvaluado, string pNbPrograma, string pClUsuario)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_ACTUALIZA_EVALUADO_TOPE_BONO(pOutClRetorno, pIdPeriodo, pPrBono, pClTipoBono, pXmlEvaluado, pNbPrograma, pClUsuario);
@@ -266,7 +264,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<E_META> ObtenerMetas(int? pIdPeriodo = null, int? pIdEvaluado = null, int? pIdEvaluadoMeta = null, int? pNoMeta = null, bool? pFgEvaluar = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 var oLista = contexto.SPE_OBTIENE_METAS(pIdPeriodo, pIdEvaluado, pIdEvaluadoMeta, pNoMeta, pFgEvaluar).ToList();
 
@@ -297,7 +295,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement ActualizarMetasEvaluado(string pClTipoMetas, int pIdPeriodo, string xmlEmpleados, string pClUsuario, string pNbPrograma)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutclretorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_ACTUALIZA_EO_METAS_EVALUADO(pOutclretorno, pClTipoMetas, xmlEmpleados, pIdPeriodo, pClUsuario, pNbPrograma);
@@ -307,7 +305,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_EO_FUNCIONES_METAS_Result> ObtenerFuncionesMetas(int? pIdEvaluado = null, int? pIdPeriodo = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_EO_FUNCIONES_METAS(pIdEvaluado, pIdPeriodo).ToList();
             }
@@ -315,7 +313,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
         //**************************************************************************************
         public List<SPE_OBTIENE_IDICADORES_METAS_Result> ObtenerIndicadoresMetas(int? pIdPeriodo = null, int? pIdEvaluado = null, string pDsFuncion = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_IDICADORES_METAS(pIdPeriodo, pIdEvaluado, pDsFuncion).ToList();
             }
@@ -323,7 +321,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
         //*******************************************************************************************
         public XElement InsetarActualizarMetasEvaluados(int? pIdMetaEvaluado = null, int? pIdPeriodo = null, int? pIdEvaluado = null, string pDsFuncion = null, int? pNoMeta = null, string pNbIndicador = null, string pDsMeta = null, string pClTipoMeta = null, bool? pFgValidaCumplimiento = null, bool? pFgEvaluar = null, string pNbCumplimientoActual = null, string pNbCumplimientoMinimo = null, string pNbCumplimientoSatisfactorio = null, string pNbCumplimientoSobresaliente = null, decimal? pPrMeta = null, decimal? pPrResultado = null, int? pClNivel = null, decimal? pPrCumplimientoMeta = null, string pClUsuario = null, string pNbPrograma = null, string pTipoTransaccion = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_INSERTA_ACTUALIZA_META_EVALUADO(pOutClRetorno, pIdMetaEvaluado, pIdPeriodo, pIdEvaluado, pDsFuncion, pNoMeta, pNbIndicador, pDsMeta, pClTipoMeta, pFgValidaCumplimiento, pFgEvaluar, pNbCumplimientoActual, pNbCumplimientoMinimo, pNbCumplimientoSatisfactorio, pNbCumplimientoSobresaliente, pPrMeta, pPrResultado, pClNivel, pPrCumplimientoMeta, pClUsuario, pNbPrograma, pTipoTransaccion);
@@ -333,7 +331,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement ActualizaPonderacionPuesto(decimal? PrEvaluado, int? pIdPeriodoDesempeno, int? pIdEvaluado, string pClUsuario, string pNbPrograma)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 // Declaramos el objeto de valor de retorno
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
@@ -346,7 +344,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_EO_EVALUADORES_TOKEN> ObtenerEvaluadores(int pIdPeriodo, int? pIdRol)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.Database.SqlQuery<SPE_OBTIENE_EO_EVALUADORES_TOKEN>("EXEC " +
                 "EO.SPE_OBTIENE_EO_EVALUADORES_TOKEN " +
@@ -364,7 +362,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_EO_METAS_EVALUADOS_Result> ObtenerMetasEvaluados(int? idEvaluadoMeta = null, int? pIdPeriodo = null, int? idEvaluado = null, int? no_Meta = null, string cl_nivel = null, bool? FgEvaluar = null, int? pIdEmpleado = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 //return contexto.SPE_OBTIENE_EO_METAS_EVALUADOS(idEvaluadoMeta, pIdPeriodo, idEvaluado, no_Meta, cl_nivel).ToList();
                 return contexto.SPE_OBTIENE_EO_METAS_EVALUADOS(idEvaluadoMeta, pIdPeriodo, idEvaluado, no_Meta, cl_nivel, FgEvaluar, pIdEmpleado).ToList();
@@ -374,7 +372,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_EO_METAS_CAPTURA_MASIVA_Result> ObtieneMetasCapturaMasiva(int? pIdPeriodo = null, int? idEvaluador = null, System.Guid? pFlEvaluador = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_EO_METAS_CAPTURA_MASIVA(pIdPeriodo, idEvaluador, pFlEvaluador).ToList();
             }
@@ -382,7 +380,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_METAS_PERIODOS_COMPARACION_Result> ObtieneMetasComparacion(int? idEvaluadoMeta = null, int? pIdPeriodo = null, int? idEvaluado = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_METAS_PERIODOS_COMPARACION(idEvaluadoMeta, pIdPeriodo, idEvaluado).ToList();
             }
@@ -390,7 +388,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_METAS_COMPARAR_DESEMPENO_Result> ObtieneMetasPeriodoComparar(string pXmlPeriodos = null, int? idEvaluado = null, int? pIdPeriodo = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_METAS_COMPARAR_DESEMPENO(pXmlPeriodos, idEvaluado, pIdPeriodo).ToList();
             }
@@ -398,7 +396,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_CONFIGURACION_PERIODO_REPLICAS_Result> ObtieneConfiguracionEnvio(int? pIdPeriodo = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_CONFIGURACION_PERIODO_REPLICAS(pIdPeriodo).ToList();
             }
@@ -407,7 +405,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public SPE_OBTIENE_EO_PERIODO_EVALUADOR_DESEMPENO_Result ObtenerPeriodoEvaluadorDesempeno(int? pID_EVALUADOR = null, Guid? pFL_EVALUADOR = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_EO_PERIODO_EVALUADOR_DESEMPENO(pID_EVALUADOR, pFL_EVALUADOR).FirstOrDefault();
             }
@@ -415,7 +413,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement ActualizarResultadosMetas(int pIdPeriodo, int pIdEvaluado, XElement xmlResultados, string pClUsuario, string pNbPrograma, decimal pSuma)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_ACTUALIZA_RESULTADO_METAS(pOutClRetorno, pIdPeriodo, pIdEvaluado, xmlResultados.ToString(), pClUsuario, pNbPrograma, pSuma);
@@ -425,7 +423,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement ActualizarResultadosMetasMasiva(int pIdPeriodo, int pIdEvaluador, XElement xmlResultados, string pClUsuario, string pNbPrograma, decimal pSuma)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_ACTUALIZA_RESULTADO_METAS_MASIVA(pOutClRetorno, pIdPeriodo, pIdEvaluador, xmlResultados.ToString(), pClUsuario, pNbPrograma, pSuma);
@@ -435,7 +433,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public SPE_OBTIENE_EVIDENCIAS_METAS_Result ObtenerEvidenciasMetasEvaluados(int? idEvaluadoMeta = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_EVIDENCIAS_METAS(idEvaluadoMeta).FirstOrDefault();
             }
@@ -443,7 +441,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement InsertarActualizarEvidenciasMetas(int? pIsEvaluadoMeta, List<UDTT_ARCHIVO> pLstArchivosTemporales, List<E_DOCUMENTO> pLstDocumentos, string pClUsuario, string pNbPrograma, int? pIdEvaluador)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
 
                 var pXmlResultado = new SqlParameter("@XML_RESULTADO", SqlDbType.Xml)
@@ -502,7 +500,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement ActualizaPonderacionEvaluados(int? pIdPeriodoDesempeno, string pXmlEvaluados, string tipoActualizacion, string pClUsuario, string pNbPrograma)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 // Declaramos el objeto de valor de retorno
                 ObjectParameter pout_clave_retorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
@@ -515,7 +513,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_PONDERACION_METAS_DESEMPENO_Result> ObtenerPonderacionMetas(int pIdPeriodo)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_PONDERACION_METAS_DESEMPENO(pIdPeriodo).ToList();
             }
@@ -523,7 +521,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement InsertarEvaluadorOtro(int pIdPeriodo, XElement pXmlEvaluados, XElement pXmlEvaluadores, string pClUsuario, string pNbPrograma)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_INSERTA_EVALUADOR_OTRO(pOutClRetorno, pIdPeriodo, pXmlEvaluados.ToString(), pXmlEvaluadores.ToString(), pClUsuario, pNbPrograma);
@@ -533,7 +531,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_EVALUADOR_POR_EVALUADO_Result> ObtenerEvaludoresPorEvaluador(int? pIdPeriodo = null, int? pId_Evaluado = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_EVALUADOR_POR_EVALUADO(pIdPeriodo, pId_Evaluado).ToList();
             }
@@ -541,7 +539,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement EliminarEvaluadoresPorEvaluadorEvaluado(int pIdPeriodo, XElement pXmlEvaluadorEvaluador, string pClUsuario, string pNbPrograma)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_ELIMINA_EO_EVALUADOR_EVALUADO(pOutClRetorno, pIdPeriodo, pXmlEvaluadorEvaluador.ToString(), pClUsuario, pNbPrograma);
@@ -551,7 +549,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement EliminarMetaEvaluado(int pIdPeriodo, int pIdMetaEvaluado, int pIdEvaluado, string pClUsuario, string pNbPrograma)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_ELIMINA_EO_METAS_EVALUADO(pOutClRetorno, pIdPeriodo, pIdMetaEvaluado, pIdEvaluado, pClUsuario, pNbPrograma);
@@ -559,19 +557,19 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
-        public XElement EliminarMetasInactivas(int pIdPeriodo)
+        public XElement EliminarMetasInactivas(int pIdPeriodo, string pClUsuario, string pNbPrograma)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (EvaluacionOrganizacionalEntities contexto = new EvaluacionOrganizacionalEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
-                contexto.SPE_ELIMINA_EO_METAS_INACTIVAS(pOutClRetorno, pIdPeriodo);
+                contexto.SPE_ELIMINA_EO_METAS_INACTIVAS(pOutClRetorno, pIdPeriodo, pClUsuario, pNbPrograma);
                 return XElement.Parse(pOutClRetorno.Value.ToString());
             }
         }
 
         public XElement InsertarPeriodoDesempenoCopia(E_PERIODO_DESEMPENO pPeriodo, string pCL_USUARIO, string pNB_PROGRAMA)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter poutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_INSERTA_PERIODO_DESEMPENO_COPIA(poutClaveRetorno, pPeriodo.ID_PERIODO, pPeriodo.CL_TIPO_PERIODO, pPeriodo.NB_PERIODO, pPeriodo.DS_PERIODO, pPeriodo.CL_ESTADO, pPeriodo.XML_DS_NOTAS, pPeriodo.FE_INICIO_PERIODO, pPeriodo.FE_TERMINO_PERIODO, pPeriodo.CL_TIPO_CAPTURISTA, pPeriodo.CL_TIPO_COPIA, pCL_USUARIO, pNB_PROGRAMA);
@@ -581,7 +579,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement InsertarPeriodoDesempenoReplica(int? pIdPeriodo = null, DateTime? pFeInicio = null, DateTime? pFeFin = null, string pCL_USUARIO = null, string pNB_PROGRAMA = null, string pTipoTransaccion = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter poutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_INSERTA_PERIODO_DESEMPENO_REPLICA(poutClaveRetorno, pIdPeriodo, pFeInicio, pFeFin, pCL_USUARIO, pNB_PROGRAMA, pTipoTransaccion);
@@ -591,7 +589,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_PERIODOS_DESEMPENO_REPLICA_Result> ObtenerPeriodosReplicados(int? pIdPeriodo = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_PERIODOS_DESEMPENO_REPLICA(pIdPeriodo).ToList();
             }
@@ -599,7 +597,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_VALIDA_PERIODO_DESEMPENO_Result> ValidarPeriodoDesempeno(int? pIdPeriodo = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_VALIDA_PERIODO_DESEMPENO(pIdPeriodo).ToList();
             }
@@ -607,7 +605,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO_Result> ObtenerControlAvanceDesempeno(int pIdPeriodoDesempeno, int? pIdRol)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_CONTROL_AVANCE_DESEMPENO(pIdPeriodoDesempeno, pIdRol).ToList();
             }
@@ -615,7 +613,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement InsertarActualizarBono(int? pIdPeriodo = null, string pCL_USUARIO = null, string pNB_PROGRAMA = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter poutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_INSERTA_ACTUALIZA_BONO(poutClaveRetorno, pIdPeriodo, pCL_USUARIO, pNB_PROGRAMA);
@@ -625,19 +623,19 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
 
 
-        public XElement ActualizarEvaluadoMetas(string METAS_EVALUADO_XML = null, string NB_USUARIO = null, string PROGRAMA_APP = null)
+        public XElement ActualizarEvaluadoMetas(string pXmlMetasEvaluado = null, string pClUsuario = null, string pNbPrograma = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter poutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
-                contexto.SPE_ACTUALIZA_ESTATUS_EVALUADO_METAS(poutClaveRetorno, METAS_EVALUADO_XML, NB_USUARIO, PROGRAMA_APP);
+                contexto.SPE_ACTUALIZA_ESTATUS_EVALUADO_METAS(poutClaveRetorno, pXmlMetasEvaluado, pClUsuario, pNbPrograma);
                 return XElement.Parse(poutClaveRetorno.Value.ToString());
             }
         }
 
         public XElement InsertaCopiaMetas(string METAS_COPIAS_XML = null, int? ID_PERIODO = null, string NB_USUARIO = null, string PROGRAMA_APP = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter poutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_INSERTA_METAS_EVALUADO(poutClaveRetorno, METAS_COPIAS_XML, ID_PERIODO, NB_USUARIO, PROGRAMA_APP);
@@ -647,7 +645,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public XElement InsertaEstatusEnvioSolicitudes(int? pIdPeriodo = null, bool? pFgEstatus = null, string pClUsuario = null, string pNbPrograma = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter poutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 contexto.SPE_INSERTA_ESTATUS_ENVIO_SOLICITUD(poutClaveRetorno, pIdPeriodo, pFgEstatus, pClUsuario, pNbPrograma);
@@ -657,7 +655,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_EO_EVALUADORES_Result> ObtieneEvaluadoresEvaluacionOrganizacional(int? pIdPeriodo, string pClTipoEvaluador = null, int? pID_EMPRESA = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_EO_EVALUADORES(pIdPeriodo, pClTipoEvaluador, pID_EMPRESA).ToList();
             }
@@ -665,7 +663,7 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         public List<SPE_OBTIENE_EO_EVALUADOS_Result> ObtenerEvaluadosEvaluacionOrganizacional(int? pIdCurso)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_EO_EVALUADOS(pIdCurso).ToList();
             }
@@ -673,14 +671,14 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
 
         //public List<SPE_OBTIENE_EO_RESULTADO_JERARQUICO_Result> ObtenerResultadoJerarquico(int pIdEvaluador)
         //{
-        //    using (contexto = new SistemaSigeinEntities())
+        //    using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
         //    {
         //        return contexto.SPE_OBTIENE_EO_RESULTADO_JERARQUICO(pIdEvaluador).ToList();
         //    }
         //}
         public List<E_BAJAS_PERIODO_EDD> ObtenerBajasEDD(int? pIdEmpleado = null)
         {
-            using (contexto = new SistemaSigeinEntities())
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
 
                 return contexto.Database.SqlQuery<E_BAJAS_PERIODO_EDD>("EXEC " +

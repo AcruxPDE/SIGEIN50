@@ -41,7 +41,7 @@ namespace SIGE.WebApp.IDP.Pruebas
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
-        {            
+        { 
             if (ContextoUsuario.idBateriaPruebas == 0 && ContextoUsuario.clTokenPruebas == Guid.Empty)
             {
                 if (Request.QueryString["ID"] != null && Request.QueryString["T"] != null)
@@ -58,13 +58,108 @@ namespace SIGE.WebApp.IDP.Pruebas
                 }
             }
 
+            bool finalizarBateria = false;
+
             if (Request.QueryString["ty"] != null)
             {
                 vClEstadoPrueba = Request.QueryString["ty"].ToString();
                 ContextoUsuario.clEstadoPruebas = vClEstadoPrueba;
+                string pagina = String.Empty;
+                if (vClEstadoPrueba == "sig")
+                {
+                    PruebasNegocio pruebas = new PruebasNegocio();
+                    var vPruebas = pruebas.Obtener_K_PRUEBA(pIdBateria: ContextoUsuario.idBateriaPruebas, pClTokenBateria: ContextoUsuario.clTokenPruebas, pFgAsignada: true);
+                    var vsPruebas = from c in vPruebas
+                                    where c.CL_ESTADO == "CREADA" || c.CL_ESTADO == "INICIADA"
+                                    orderby c.NO_ORDEN
+                                    select c;                    
+                    foreach (var itemPrueba in vsPruebas)
+                    {
+                        switch (itemPrueba.CL_PRUEBA)
+                        {
+                            case "LABORAL-1":
+                                pagina = "VentanaPersonalidadLaboralI.aspx?ID=" + itemPrueba.ID_PRUEBA + "&T=" + itemPrueba.CL_TOKEN_EXTERNO;
+                                itemPrueba.CL_ESTADO = "INICIADA";
+                                break;
+                            case "LABORAL-2":
+                                pagina = "VentanaPersonalidadLaboralII.aspx?ID=" + itemPrueba.ID_PRUEBA + "&T=" + itemPrueba.CL_TOKEN_EXTERNO;
+                                itemPrueba.CL_ESTADO = "INICIADA";
+                                break;
+                            case "INTERES":
+                                pagina = "VentanaInteresesPersonales.aspx?ID=" + itemPrueba.ID_PRUEBA + "&T=" + itemPrueba.CL_TOKEN_EXTERNO;
+                                itemPrueba.CL_ESTADO = "INICIADA";
+                                break;
+                            case "PENSAMIENTO":
+                                pagina = "VentanaEstiloDePensamiento.aspx?ID=" + itemPrueba.ID_PRUEBA + "&T=" + itemPrueba.CL_TOKEN_EXTERNO;
+                                itemPrueba.CL_ESTADO = "INICIADA";
+                                break;
+                            case "APTITUD-1":
+                                pagina = "VentanaAptitudMentalI.aspx?ID=" + itemPrueba.ID_PRUEBA + "&T=" + itemPrueba.CL_TOKEN_EXTERNO;
+                                itemPrueba.CL_ESTADO = "INICIADA";
+                                break;
+                            case "APTITUD-2":
+                                pagina = "VentanaAptitudMentalII.aspx?ID=" + itemPrueba.ID_PRUEBA + "&T=" + itemPrueba.CL_TOKEN_EXTERNO;
+                                itemPrueba.CL_ESTADO = "INICIADA";
+                                break;
+                            /*  case "ADAPTACION":
+                                  pagina = "AdaptacionMedio.aspx?ID=" + itemPrueba.ID_PRUEBA + "&T=" + itemPrueba.CL_TOKEN_EXTERNO;
+                                  itemPrueba.CL_PRUEBA = "INICIADA";
+                                  break;*/
+                            case "TIVA":
+                                pagina = "VentanaTIVA.aspx?ID=" + itemPrueba.ID_PRUEBA + "&T=" + itemPrueba.CL_TOKEN_EXTERNO;
+                                itemPrueba.CL_ESTADO = "INICIADA";
+                                break;
+                            case "ORTOGRAFIA-1":
+                                pagina = "VentanaOrtografiaI.aspx?ID=" + itemPrueba.ID_PRUEBA + "&T=" + itemPrueba.CL_TOKEN_EXTERNO;
+                                itemPrueba.CL_ESTADO = "INICIADA";
+                                break;
+                            case "ORTOGRAFIA-2":
+                                pagina = "VentanaOrtografiaII.aspx?ID=" + itemPrueba.ID_PRUEBA + "&T=" + itemPrueba.CL_TOKEN_EXTERNO;
+                                itemPrueba.CL_ESTADO = "INICIADA";
+                                break;
+                            case "ORTOGRAFIA-3":
+                                pagina = "VentanaOrtografiaIII.aspx?ID=" + itemPrueba.ID_PRUEBA + "&T=" + itemPrueba.CL_TOKEN_EXTERNO;
+                                itemPrueba.CL_ESTADO = "INICIADA";
+                                break;
+                            case "TECNICAPC":
+                                pagina = "VentanaTecnicaPC.aspx?ID=" + itemPrueba.ID_PRUEBA + "&T=" + itemPrueba.CL_TOKEN_EXTERNO;
+                                itemPrueba.CL_ESTADO = "INICIADA";
+                                break;
+                            case "REDACCION":
+                                pagina = "VentanaRedaccion.aspx?ID=" + itemPrueba.ID_PRUEBA + "&T=" + itemPrueba.CL_TOKEN_EXTERNO;
+                                itemPrueba.CL_ESTADO = "INICIADA";
+                                break;
+                            case "INGLES":
+                                pagina = "VentanaIngles.aspx?ID=" + itemPrueba.ID_PRUEBA + "&T=" + itemPrueba.CL_TOKEN_EXTERNO;
+                                itemPrueba.CL_ESTADO = "INICIADA";
+                                break;
+                            case "ADAPTACION":
+                                break;
+                            default:
+                                pagina = "Default.aspx?F=1";
+                                break;
+                        };
+                        if (itemPrueba.CL_PRUEBA != "ADAPTACION" && itemPrueba.CL_PRUEBA != "ENTREVISTA")
+                        {
+                            break;
+                        }
+                    }
+                    if (!String.IsNullOrEmpty(pagina))
+                        Response.Redirect(pagina);
+                    else
+                        finalizarBateria = true;
+                }
+                else if (vClEstadoPrueba == "Ini")
+                {
+                    PruebasNegocio pruebas = new PruebasNegocio();
+                    var vPruebas = pruebas.Obtener_K_PRUEBA(pIdBateria: ContextoUsuario.idBateriaPruebas, pClTokenBateria: ContextoUsuario.clTokenPruebas, pFgAsignada: true).FirstOrDefault();
+                    int? vIdCandidato = vPruebas.ID_CANDIDATO;
+                    pagina = "PruebaBienvenida.aspx?ID=" + ContextoUsuario.idBateriaPruebas + "&T=" + ContextoUsuario.clTokenPruebas + "&idCandidato=" + vIdCandidato;
+                    Response.Redirect(pagina);
+                }
             }
 
-            if (Request.QueryString["F"] != null)
+            if (Request.QueryString["F"] != null || finalizarBateria)
             {
                 vClUsuario = (ContextoUsuario.oUsuario != null ? ContextoUsuario.oUsuario.CL_USUARIO : "INVITADO");
                 vNbPrograma = ContextoUsuario.nbPrograma;

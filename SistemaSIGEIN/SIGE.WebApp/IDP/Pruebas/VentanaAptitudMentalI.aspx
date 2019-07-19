@@ -116,6 +116,9 @@
                 if ('<%=this.vTipoRevision%>' != "REV" && '<%=this.vTipoRevision%>' != "EDIT") {
                     var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
                         if (shouldSubmit) {
+                            var ajaxManager = $find("<%=RadAjaxManager1.ClientID%>");
+                            ajaxManager.ajaxRequest(null);
+                            vPruebaEstatus = "Carga inicial";
                             var segundos = "";
                                 segundos = setInitTime(multiPage.get_selectedIndex() + "");
                                 if (segundos <= 0) {
@@ -136,6 +139,9 @@
                                     }
 
                                     c = Cronometro(segundos, display);
+
+                                    var pane = $find("<%= radPanelPreguntas.ClientID%>");
+                                    pane.collapse();
                                 }
                         }
                         else {
@@ -147,6 +153,7 @@
                         var multiPage = $find("<%=mpgActitudMentalI.ClientID %>");
                         text = prueba(multiPage.get_selectedIndex());
                         radconfirm(JustificarTexto(text), callBackFunction, 950, 600, null, "Aptitud mental I");
+
                 }
                 else {
                     llenar_GruposContestados();
@@ -154,12 +161,29 @@
                 }
             };
 
-            function llamaAjaxRequest() {
-               clearInterval(c); //Se agrega para detener el tiempo del reloj antes de guardar resultados 12/04/2018
-                var ajaxManager = $find('<%= RadAjaxManager1.ClientID %>');
-                if (ajaxManager) {
-                    ajaxManager.ajaxRequest();
+            function ConfirmarPaseSeccion(sender, args) {
+                var multiPage = $find("<%=mpgActitudMentalI.ClientID %>");
+                var seccion = multiPage.get_selectedIndex();
+                if (seccion == 4 || seccion == 8) {
+                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+                        if (shouldSubmit) {
+                            this.click();
+                        }
+                    });
+                    radconfirm("¿Estás seguro que deseas continuar a la siguiente sección?", callBackFunction, 400, 180, null, "Eliminar respuestas prueba");
+                    args.set_cancel(true);
                 }
+                else {
+                    args.set_cancel(false);
+                }
+            }
+
+            function llamaAjaxRequest() {
+                    clearInterval(c); //Se agrega para detener el tiempo del reloj antes de guardar resultados 12/04/2018
+                    var ajaxManager = $find('<%= RadAjaxManager1.ClientID %>');
+                    if (ajaxManager) {
+                        ajaxManager.ajaxRequest();
+                    }                
             }
 
             var actualizarTiempo = function () {
@@ -177,6 +201,12 @@
                 var vBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
                     if (shouldSubmit) {
                         actualizarTiempo();
+                        var pane = $find("<%= radPanelPreguntas.ClientID%>");
+                        pane.collapse();
+                        var ajaxManager = $find('<%= RadAjaxManager1.ClientID %>');
+                        if (ajaxManager) {
+                            ajaxManager.ajaxRequest();
+                        }  
                     }
                     else
                     {           
@@ -187,13 +217,27 @@
                 var seccion = multiPage.get_selectedIndex();
                 console.info(seccion);
                 clearInterval(c);
+                var display = document.querySelector('#time');
+                display.textContent = "";
                 if (seccion == -1) {
                     mensajePruebaTerminada2();
                 }
                 else {
                     var vMOD = "<%= vMOD %>";
                     if (vMOD != "REV" && vMOD != "EDIT") {
-                    radconfirm(JustificarTexto(text), vBackFunction, 950, 600, null, "Aptitud mental I");
+                        if (vPruebaEstatus != "Carga inicial" && vPruebaEstatus != "Seccion iniciada") {
+                            vPruebaEstatus = "Seccion iniciada";
+                            radconfirm(JustificarTexto(text), vBackFunction, 950, 600, null, "Aptitud mental I");
+                        }
+                        else {
+                            vPruebaEstatus = "";
+                            actualizarTiempo();
+                            setTimeout(function () {
+                                 var pane = $find("<%= radPanelPreguntas.ClientID%>");
+                                pane.expand();
+                            }, 1000);
+                           
+                        }
                    }
                 }
                 //radconfirm("En el retorno del ajax request", actualizarTiempo, 400, 300, null, "Aptitud mental I");                
@@ -221,7 +265,7 @@
                     }
                 }
 
-                function WinClose(sender, args) {
+            function WinClose(sender, args) {                
                     vPruebaEstatus = "Terminado";
                     var btn = $find("<%=btnSiguiente.ClientID%>");
                         btn.click();
@@ -260,6 +304,22 @@
                     //console.info(position);
 
                     switch (position) {
+                        case "0":
+                            var segundos = '<%=this.vSeccionAtime%>';
+                            console.info(segundos);
+                            prueba(seccion);
+                            if (segundos <= 0) {
+                                mensajePruebaTerminada();
+                            }
+                            else {
+                                var display = document.querySelector('#time');
+                                c = Cronometro(segundos, display);
+                                //multiPage.set_selectedIndex(parseInt(position));
+                                console.info("Seccion 0");
+                                SetScroll(seccion);
+
+                            }
+                            break;
                         case "1":
                             var segundos = '<%=this.vSeccionBtime%>';
                             console.info(segundos);
@@ -8928,14 +8988,14 @@
     <div style="clear: both; height: 10px;"></div>
 
     <div class="DivMoveLeft" id="cronometro" runat="server">
-        <div class="Cronometro" id="ContentTime">Tiempo restante <span id="time">15:00</span></div>
+        <div class="Cronometro" id="ContentTime">Tiempo restante <span id="time"></span></div>
     </div>
 
     <div class="divControlDerecha">
 
         <div class="ctrlBasico">
             <%--<telerik:RadButton ID="btnTerminar" runat="server" OnClientClicking="close_window" OnClick="btnTerminar_Click" Text="Siguiente" AutoPostBack="true" Visible="false"></telerik:RadButton>--%>
-            <telerik:RadButton ID="btnSiguiente" runat="server" OnClientClicked="llamaAjaxRequest" Text="Siguiente" AutoPostBack="false"></telerik:RadButton>
+            <telerik:RadButton ID="btnSiguiente" runat="server" OnClientClicked="llamaAjaxRequest" OnClientClicking="ConfirmarPaseSeccion" Text="Siguiente" AutoPostBack="false"></telerik:RadButton>
 		</div> 
             <div class="ctrlBasico">
             <telerik:RadButton ID="btnImpresionPrueba" runat="server" OnClientClicked="OpenReport" Text="Imprimir" AutoPostBack="false" Visible = "false"></telerik:RadButton>

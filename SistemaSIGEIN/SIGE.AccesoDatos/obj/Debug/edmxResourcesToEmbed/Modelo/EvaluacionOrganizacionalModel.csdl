@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EvaluacionOrganizacionalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="EvaluacionOrganizacionalEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="SPE_ELIMINA_EO_METAS_INACTIVAS">
+      <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
+      <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="PIN_CL_USUARIO_APP" Mode="In" Type="String" />
+      <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPE_OBTIENE_ADSCRIPCIONES" ReturnType="Collection(EvaluacionOrganizacionalModel.SPE_OBTIENE_ADSCRIPCIONES_Result)">
+      <Parameter Name="PIN_ID_CATALOGO_LISTA" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SPE_OBTIENE_ADSCRIPCIONES_Result">
+    <Property Type="Int32" Name="ID_CAMPO" Nullable="false" />
+    <Property Type="String" Name="CL_CAMPO" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="CL_CAMPO_CATALOGO" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="NB_CAMPO" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="NB_CATALOGO_VALOR" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DS_CAMPO" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="CL_TABLA_REFERENCIA" Nullable="false" MaxLength="50" />
+  </ComplexType>
+</Schema>

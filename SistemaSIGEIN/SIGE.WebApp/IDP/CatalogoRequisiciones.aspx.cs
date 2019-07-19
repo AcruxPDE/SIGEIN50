@@ -75,20 +75,11 @@ namespace SIGE.WebApp.Administracion
             RequisicionNegocio negocio = new RequisicionNegocio();
             foreach (GridDataItem item in grdRequisicion.SelectedItems)
             {
-                //vEstatus = item.GetDataKeyValue("CL_ESTATUS_REQUISICION").ToString();
-                //if (vEstatus == "CREADA")
-                //{
                 vIdRequisicion = (int.Parse(item.GetDataKeyValue("ID_REQUISICION").ToString()));
-                //  var vObtenerKrequisicion = negocio.ObtieneRequisicion(pIdRequisicion: vIdRequisicion).FirstOrDefault();
+
                 E_RESULTADO vResultado = negocio.Elimina_K_REQUISICION(ID_REQUISICION: vIdRequisicion, programa: vNbPrograma, usuario: vClUsuario);
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
                 UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindow");
-                //}
-                //else
-                //{
-                //    UtilMensajes.MensajeResultadoDB(rnMensaje, "Esta requisición no se puede eliminar por que está: " + vEstatus, E_TIPO_RESPUESTA_DB.WARNING, 400, 200);
-
-                //}
             }
         }
 
@@ -148,125 +139,22 @@ namespace SIGE.WebApp.Administracion
             }
         }
 
-        //private string clToken
-        //{
-        //    get { return (string)ViewState["clToken"]; }
-        //    set { ViewState["clToken"] = value; }
-        //}
+        protected void grdRequisicion_ItemCommand(object sender, GridCommandEventArgs e)
+        {
+            string vClCommandName = e.CommandName;
+            if (vClCommandName == "Delete")
+            {
+                int vIdRequisicion;
+                int vIdCandidato;
 
-        //private Guid flRequisicion
-        //{
-        //    get { return (Guid)ViewState["flRequisicion"]; }
-        //    set { ViewState["flRequisicion"] = value; }
-        //}
+                int.TryParse(e.Item.OwnerTableView.DataKeyValues[e.Item.ItemIndex]["ID_REQUISICION"].ToString(), out vIdRequisicion);
+                int.TryParse(e.Item.OwnerTableView.DataKeyValues[e.Item.ItemIndex]["ID_CANDIDATO"].ToString(), out vIdCandidato);
 
-        //private int vIdAutoriza
-        //{
-        //    get { return (int)ViewState["vIdAutoriza"]; }
-        //    set { ViewState["vIdAutoriza"] = value; }
-        //}
+                E_RESULTADO vResultado = new RequisicionNegocio().EliminarCandidatoRequisicion(vIdRequisicion, vIdCandidato, vClUsuario, vNbPrograma);
+                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "onCloseWindow");
+            }
+        }
 
-        //private string vNbPuesto
-        //{
-        //    get { return (string)ViewState["vNbPuesto"]; }
-        //    set { ViewState["vNbPuesto"] = value; }
-        //}
-
-        //private string  vEstatusPuesto
-        //{
-        //    get { return (string )ViewState["vEstatusPuesto"]; }
-        //    set { ViewState["vEstatusPuesto"] = value; }
-        //}
-        //private string vCausa
-        //{
-        //    get { return (string)ViewState["vCausa"]; }
-        //    set { ViewState["vCausa"] = value; }
-        //}
-
-
-        //protected void btnNotificar_Click(object sender, EventArgs e)
-        //{
-        //    //vIdAutoriza = 0;
-        //    //Mail mail = new Mail(ContextoApp.mailConfiguration);    
-        //    //EmpleadoNegocio nEmpleado = new EmpleadoNegocio();
-
-        //    //foreach (GridDataItem item in grdRequisicion.SelectedItems)
-        //    //{
-
-        //    //    if (item.GetDataKeyValue("ID_AUTORIZA") != null)
-        //    //    {
-        //    //        vIdAutoriza = (int)item.GetDataKeyValue("ID_AUTORIZA");
-
-        //    //        vEstatus = item.GetDataKeyValue("CL_ESTADO").ToString();
-        //    //        vNbPuesto = item.GetDataKeyValue("NB_PUESTO").ToString();
-        //    //        flRequisicion = (Guid)item.GetDataKeyValue("FL_REQUISICION");
-        //    //        clToken = item.GetDataKeyValue("CL_TOKEN").ToString();
-        //    //        vID_RQUISICION = (int)item.GetDataKeyValue("ID_REQUISICION");
-        //    //        vEstatusPuesto = item.GetDataKeyValue("CL_ESTATUS").ToString();
-        //    //        vCausa =item.GetDataKeyValue("CL_CAUSA").ToString();
-
-        //    //        var vUsuarioInfo = nEmpleado.Obtener_M_EMPLEADO(ID_EMPLEADO: vIdAutoriza).FirstOrDefault();
-        //    //        if (vUsuarioInfo != null)
-        //    //        {
-        //    //            string Asunto = "Notificación de requisición.";
-
-        //    //            if (vEstatus == "CREADA" )
-        //    //            {
-        //    //                if (vEstatusPuesto != "AUTORIZADO")
-        //    //                {
-        //    //                    UtilMensajes.MensajeResultadoDB(rnMensaje, "Este puesto aún no ha sido autorizado", E_TIPO_RESPUESTA_DB.WARNING);
-
-        //    //                }
-        //    //                else
-        //    //                {
-        //    //                    try
-        //    //                    {
-        //    //                        string vUrl = ContextoUsuario.nbHost + "/Logon.aspx?FlProceso=" + flRequisicion.ToString() + "&ClProceso=" + "AUTORIZAREQUISICION";
-        //    //                        string vMensajeCorreo = ContextoApp.IDP.NotificacionRrhh.dsAutorizadorRequisicion.dsMensaje;
-        //    //                        vMensajeCorreo = vMensajeCorreo.Replace("[NB_NOTIFICAR]", vUsuarioInfo.NB_EMPLEADO_COMPLETO);
-        //    //                        vMensajeCorreo = vMensajeCorreo.Replace("[NB_CREA_REQUISICION]", ContextoUsuario.oUsuario.NB_USUARIO);
-        //    //                        vMensajeCorreo = vMensajeCorreo.Replace("[NB_PUESTO]", vNbPuesto);
-        //    //                        vMensajeCorreo = vMensajeCorreo.Replace("[URL]", vUrl);
-        //    //                        vMensajeCorreo = vMensajeCorreo.Replace("[CONTRASENA]", clToken);
-        //    //                        builder.Append(vUsuarioInfo.CL_CORREO_ELECTRONICO + ";");
-        //    //                        EnvioCorreo(builder.ToString(), vMensajeCorreo, Asunto);
-        //    //                        RequisicionNegocio Rnegocio = new RequisicionNegocio();
-        //    //                        E_RESULTADO vResultado = Rnegocio.ActualizaEstatusRequisicion(vID_RQUISICION, vClUsuario, vNbPrograma, "");
-        //    //                        UtilMensajes.MensajeResultadoDB(rnMensaje, "Envío procesado", E_TIPO_RESPUESTA_DB.SUCCESSFUL);
-        //    //                    }
-        //    //                    catch (Exception)
-        //    //                    {
-        //    //                        UtilMensajes.MensajeResultadoDB(rnMensaje, "Envío no procesado", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "onCloseWindow");
-        //    //                    }
-        //    //                }
-        //    //            }
-        //    //            else
-        //    //                if (vEstatus == "AUTORIZADO")
-        //    //                {
-        //    //                    UtilMensajes.MensajeResultadoDB(rnMensaje, "Esta requisición ya está autorizada.", E_TIPO_RESPUESTA_DB.WARNING);
-        //    //                }
-        //    //                else if (vEstatus == "RECHAZADO")
-        //    //                {
-        //    //                    UtilMensajes.MensajeResultadoDB(rnMensaje, "Esta requisición ya está rechazada.", E_TIPO_RESPUESTA_DB.WARNING);
-        //    //                }
-        //    //                else if (vEstatus == "POR AUTORIZAR")
-        //    //                {
-        //    //                    UtilMensajes.MensajeResultadoDB(rnMensaje, "Esta requisición está por autorizarse.", E_TIPO_RESPUESTA_DB.WARNING);
-        //    //                }
-        //    //        }
-        //    //    }
-        //    //    else
-        //    //    {
-        //    //        UtilMensajes.MensajeResultadoDB(rnMensaje, "Esta requisición no cuenta con una persona asignada para autorizar, puedes editar la requisisción para agregarla.", E_TIPO_RESPUESTA_DB.ERROR, 400, 180);
-        //    //    }
-        //    //}
-        //}
-        //public void EnvioCorreo(string Email, string Mensaje, string Asunto)
-        //{
-        //    Mail mail = new Mail(ContextoApp.mailConfiguration);
-        //    mail.addToAddress(Email, Mensaje);
-        //    RadProgressContext progress = RadProgressContext.Current;
-        //    mail.Send(Asunto, Mensaje);
-        //}
     }
 }

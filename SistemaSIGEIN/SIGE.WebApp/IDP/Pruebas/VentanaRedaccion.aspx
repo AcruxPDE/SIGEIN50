@@ -60,7 +60,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPruebas" runat="server">
 
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
-    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest" ClientEvents-OnResponseEnd="retorno">
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="btnTerminar">
                 <UpdatedControls>
@@ -80,7 +80,9 @@
             window.onload = function (sender, args) {
                 if ('<%=this.vTipoRevision%>' != "REV" && '<%=this.vTipoRevision%>' != "EDIT") {
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
-                        if (shouldSubmit) {
+                    if (shouldSubmit) {
+                            var ajaxManager = $find("<%=RadAjaxManager1.ClientID%>");
+                            ajaxManager.ajaxRequest(null);
                             var segundos = '<%=this.vTiempoRedaccion%>';
                             if (segundos <= 0) {
                                 //var oWnd = radalert("Usted ha terminado su prueba exitosamente o el tiempo de aplicación de la prueba ha concluido. <br> Recuerde que no es posible volver a ingresar la prueba previa; si intenta hacerlo por medio del botón del navegador, la aplicación no se lo permitirá: se generará un error y el intento quedará registrado", 400, 300, "");
@@ -99,7 +101,10 @@
                                     contenedor.style.display = 'none';
                                 }
 
-                               c = Cronometro(segundos, display);
+                                c = Cronometro(segundos, display);
+
+                                var pane = $find("<%= radPanelPreguntas.ClientID %>");
+                                pane.collapse();
                             }
                         }
                         else {
@@ -109,7 +114,30 @@
                     var text = "<label><b>Instrucciones:</b><br/>En el siguiente espacio deberás redactar una carta dirigida a alguna persona particularmente admirada o apreciada por ti. Esta persona puede ser alguien que tú conoces o no y que admiras por su obra o sus ideas; incluso puede ser una persona que haya fallecido o que sea producto de la imaginación. Escríbele lo que desees, el tema de la carta es libre. Únicamente considera que el tamaño de la carta deberá ser de media cuartilla al menos.</label>";
                     radconfirm(JustificarTexto(text), callBackFunction, 950, 600, null, "Redacción");
                 }
-                  };
+            };
+
+            function retorno(sender, args) {
+                var segundos = '<%=this.vTiempoRedaccion%>';
+                var display = document.querySelector('#time');
+                var contenedor = document.querySelector('.Cronometro');
+
+
+                var vFgCronometro = '<%=MostrarCronometro %>';
+                if (vFgCronometro == "True") {
+                    contenedor.style.display = 'block';
+                }
+                else {
+                    contenedor.style.display = 'none';
+                }
+
+
+                c = Cronometro(segundos, display);
+
+                setTimeout(function () {
+                    var pane = $find("<%= radPanelPreguntas.ClientID %>");
+                    pane.expand();
+                }, 1000);                
+            }
 
 
             function close_window(sender, args) {
@@ -240,7 +268,7 @@
     <div style="clear: both; height: 10px;"></div>
 
     <div class="DivMoveLeft" id="cronometro" runat="server">
-        <div class="Cronometro">Tiempo restante <span id="time">15:00</span></div>
+        <div class="Cronometro">Tiempo restante <span id="time"></span></div>
     </div>
 
     <div class="divControlDerecha">

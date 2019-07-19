@@ -2576,10 +2576,6 @@
           <Parameter Name="PIN_CL_USUARIO_APP_CREA" Type="nvarchar" Mode="In" />
           <Parameter Name="PIN_NB_PROGRAMA_CREA" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="SPE_ELIMINA_EO_METAS_INACTIVAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
-          <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
-          <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
-        </Function>
         <Function Name="SPE_ELIMINA_EO_PREGUNTAS_ABIERTAS_PERIODO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
           <Parameter Name="XML_RESULTADO" Type="xml" Mode="InOut" />
           <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
@@ -2887,9 +2883,6 @@
           <Parameter Name="PIN_CL_USUARIO" Type="nvarchar" Mode="In" />
           <Parameter Name="PIN_NB_PROGRAMA" Type="nvarchar" Mode="In" />
           <Parameter Name="PIN_TIPO_TRANSACCION" Type="char" Mode="In" />
-        </Function>
-        <Function Name="SPE_OBTIENE_ADSCRIPCIONES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
-          <Parameter Name="PIN_ID_CATALOGO_LISTA" Type="int" Mode="In" />
         </Function>
         <Function Name="SPE_OBTIENE_BONO_EVALUADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="EO">
           <Parameter Name="PIN_ID_PERIODO" Type="int" Mode="In" />
@@ -11398,10 +11391,6 @@
             <Parameter Name="PIN_ID_EVALUADOR" Mode="In" Type="Int32" />
             <Parameter Name="PIN_FL_EVALUADOR" Mode="In" Type="Guid" />
           </FunctionImport>
-          <FunctionImport Name="SPE_ELIMINA_EO_METAS_INACTIVAS">
-            <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
-            <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SPE_INSERTA_PERIODOS_DESEMPENO_REPLICA">
             <Parameter Name="XML_RESULTADO" Mode="InOut" Type="String" />
             <Parameter Name="PIN_ID_PERIODO" Mode="In" Type="Int32" />
@@ -11941,9 +11930,6 @@
             <Parameter Name="PIN_ID_BATERIA" Mode="In" Type="Int32" />
             <Parameter Name="PIN_CL_USUARIO_APP" Mode="In" Type="String" />
             <Parameter Name="PIN_NB_PROGRAMA" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SPE_OBTIENE_ADSCRIPCIONES" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_ADSCRIPCIONES_Result)">
-          <Parameter Name="PIN_ID_CATALOGO_LISTA" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SPE_OBTIENE_EMPLEADOS" ReturnType="Collection(SistemaSigeinModel.SPE_OBTIENE_EMPLEADOS_Result)">
             <Parameter Name="PIN_XML_SELECCION" Mode="In" Type="String" />
@@ -17640,15 +17626,6 @@
           <Property Type="Int16" Name="NO_TIEMPO_PRUEBA" Nullable="false" />
           <Property Type="Int32" Name="NO_ORDEN" Nullable="true" />
           <Property Type="String" Name="DS_PRUEBA_FACTOR" Nullable="false" MaxLength="297" />
-        </ComplexType>
-        <ComplexType Name="SPE_OBTIENE_ADSCRIPCIONES_Result">
-          <Property Type="Int32" Name="ID_CAMPO" Nullable="false" />
-          <Property Type="String" Name="CL_CAMPO" Nullable="false" MaxLength="32" />
-          <Property Type="String" Name="CL_CAMPO_CATALOGO" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="NB_CAMPO" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="NB_CATALOGO_VALOR" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="DS_CAMPO" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="CL_TABLA_REFERENCIA" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="SPE_OBTIENE_EMPLEADOS_Result">
           <Property Type="Int32" Name="M_EMPLEADO_ID_EMPLEADO" Nullable="false" />
@@ -23751,7 +23728,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SPE_ELIMINA_EO_METAS_INACTIVAS" FunctionName="SistemaSigeinModel.Store.SPE_ELIMINA_EO_METAS_INACTIVAS" />
           <FunctionImportMapping FunctionImportName="SPE_INSERTA_PERIODOS_DESEMPENO_REPLICA" FunctionName="SistemaSigeinModel.Store.SPE_INSERTA_PERIODOS_DESEMPENO_REPLICA" />
           <FunctionImportMapping FunctionImportName="SPE_OBTIENE_PERIODOS_SOLICITUDES_ENVIAR" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_PERIODOS_SOLICITUDES_ENVIAR">
             <ResultMapping>
@@ -25452,19 +25428,6 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPE_ELIMINA_PRUEBA_RESPUESTAS" FunctionName="SistemaSigeinModel.Store.SPE_ELIMINA_PRUEBA_RESPUESTAS" />
-          <FunctionImportMapping FunctionImportName="SPE_OBTIENE_ADSCRIPCIONES" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_ADSCRIPCIONES">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_ADSCRIPCIONES_Result">
-                <ScalarProperty Name="ID_CAMPO" ColumnName="ID_CAMPO" />
-                <ScalarProperty Name="CL_CAMPO" ColumnName="CL_CAMPO" />
-                <ScalarProperty Name="CL_CAMPO_CATALOGO" ColumnName="CL_CAMPO_CATALOGO" />
-                <ScalarProperty Name="NB_CAMPO" ColumnName="NB_CAMPO" />
-                <ScalarProperty Name="NB_CATALOGO_VALOR" ColumnName="NB_CATALOGO_VALOR" />
-                <ScalarProperty Name="DS_CAMPO" ColumnName="DS_CAMPO" />
-                <ScalarProperty Name="CL_TABLA_REFERENCIA" ColumnName="CL_TABLA_REFERENCIA" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPE_OBTIENE_EMPLEADOS" FunctionName="SistemaSigeinModel.Store.SPE_OBTIENE_EMPLEADOS">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SistemaSigeinModel.SPE_OBTIENE_EMPLEADOS_Result">

@@ -175,6 +175,12 @@ namespace SIGE.WebApp.IDP
             get { return (int)ViewState["vsIdBateria"]; }
             set { ViewState["vsIdBateria"] = value; }
         }
+
+        public bool vIniciarSeccion
+        {
+            get { return (bool)ViewState["vsIniciarSeccion"]; }
+            set { ViewState["vsIniciarSeccion"] = value; }
+        }
         
         #endregion
 
@@ -191,7 +197,33 @@ namespace SIGE.WebApp.IDP
 
             if (VPosicionPrueba < 10)
             {
-                E_RESULTADO vObjetoPrueba = nKprueba.INICIAR_K_PRUEBA_SECCION(pIdPrueba: vSeccionesPrueba.ElementAt(VPosicionPrueba).ID_PRUEBA_SECCION, pFeInicio: DateTime.Now, usuario: "ANONIMO", programa: vNbPrograma);
+                var vSeccionObj = vSeccionesPrueba[VPosicionPrueba];
+                var tiempoTotal = vSeccionObj.NO_TIEMPO * 60;
+                if (vSeccionObj.FE_INICIO.HasValue)
+                {
+                    var tiempoTranscurrido = DateTime.Now.Subtract(vSeccionObj.FE_INICIO.Value);
+                    vTiempoInicio = tiempoTotal - (int)tiempoTranscurrido.TotalSeconds;
+                }
+                else
+                    vTiempoInicio = tiempoTotal;
+                if (vTiempoInicio > 0) //Se agrega condición para verificar que el tiempo sea mayor a cero, si no es asi pasa a la siguiente sección.13/04/2018
+                {
+                    controltime(VPosicionPrueba, vTiempoInicio);
+                    vIniciarSeccion = true;
+                }
+                else
+                {
+                    //Como en la sección el tiempo se ha agotado, se guarda como terminada para avanzar a la siguiente
+                    var vSeccionTermina = new E_PRUEBA_TIEMPO();
+                    vSeccionTermina = vSeccionesPrueba.ElementAt(VPosicionPrueba);
+                    vSeccionTermina.CL_ESTADO = E_ESTADO_PRUEBA.TERMINADA.ToString();
+                    vSeccionTermina.FE_TERMINO = DateTime.Now;
+                    E_RESULTADO vResultadoSeccion = nKprueba.InsertaActualiza_K_PRUEBA_SECCION(tipo_transaccion: E_TIPO_OPERACION_DB.A.ToString(), v_k_prueba: vSeccionTermina, usuario: vClUsuario, programa: vNbPrograma);
+                    //En esta parte se vuelve a mandar llamar al método SeleccionaSeccionPrueba para incrementar la sección de la prueba.
+                    mpgActitudMentalI.SelectedIndex = VPosicionPrueba + 1;
+                    SeleccionaSeccionPrueba();
+                }
+                /*E_RESULTADO vObjetoPrueba = nKprueba.INICIAR_K_PRUEBA_SECCION(pIdPrueba: vSeccionesPrueba.ElementAt(VPosicionPrueba).ID_PRUEBA_SECCION, pFeInicio: DateTime.Now, usuario: "ANONIMO", programa: vNbPrograma);
                 E_RESULTADO vPrueba = nKprueba.INICIAR_K_PRUEBA(pIdPrueba: vIdPrueba, pFeInicio: DateTime.Now, pClTokenExterno: vClToken, usuario: "ANONIMO", programa: vNbPrograma);
                 if (vObjetoPrueba != null)
                 {
@@ -219,7 +251,7 @@ namespace SIGE.WebApp.IDP
                         mpgActitudMentalI.SelectedIndex = VPosicionPrueba + 1;
                         SeleccionaSeccionPrueba();
                     }
-                }
+                }*/
             }
         }
 
@@ -1115,12 +1147,13 @@ namespace SIGE.WebApp.IDP
                     else
                     {
                         E_RESULTADO vResultado = nCustionarioPregunta.InsertaActualiza_K_CUESTIONARIO_PREGUNTA(tipo_transaccion: E_TIPO_OPERACION_DB.A.ToString(), pIdEvaluado: vObjetoPrueba.ID_CANDIDATO, pIdEvaluador: null, pIdCuestionarioPregunta: 0, pIdCuestionario: 0, XML_CUESTIONARIO: RESPUESTAS.ToString(), pNbPrueba: vPrueba, usuario: vClUsuario, programa: vNbPrograma);
-                      //  string vMensaje = instrucciones(vseccion + 1);
+                        //  string vMensaje = instrucciones(vseccion + 1);
                         //int vHeight = HeightRadAlert(vseccion + 1);
-                      //  vRadAlertAltura = HeightRadAlert(vseccion + 1);
+                        //  vRadAlertAltura = HeightRadAlert(vseccion + 1);
 
                         //UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, vHeight, CallBackFunction);
-                        E_RESULTADO vResultadoSeccion = nKprueba.InsertaActualiza_K_PRUEBA_SECCION(tipo_transaccion: E_TIPO_OPERACION_DB.A.ToString(), v_k_prueba: vSeccionInicia, usuario: vClUsuario, programa: vNbPrograma);
+                        //E_RESULTADO vResultadoSeccion = nKprueba.InsertaActualiza_K_PRUEBA_SECCION(tipo_transaccion: E_TIPO_OPERACION_DB.A.ToString(), v_k_prueba: vSeccionInicia, usuario: vClUsuario, programa: vNbPrograma);
+                        vIniciarSeccion = true;
                         mpgActitudMentalI.SelectedIndex = vseccion + 1;
                         //ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "MyScript", CallBackFunction, true);
 
@@ -2617,26 +2650,35 @@ namespace SIGE.WebApp.IDP
         {
             PruebasNegocio nKprueba = new PruebasNegocio();
             var vSeccionTermina = vSeccionesPrueba.ElementAt(mpgActitudMentalI.SelectedIndex);
-            if (vTipoRevision == "REV")
+            if (!vIniciarSeccion)
             {
+                if (vTipoRevision == "REV")
+                {
 
+                }
+                else
+                {
+                    vSeccionTermina.CL_ESTADO = E_ESTADO_PRUEBA.TERMINADA.ToString();
+                    vSeccionTermina.FE_TERMINO = DateTime.Now;
+                }
+                E_RESULTADO vResultadoSeccion = nKprueba.InsertaActualiza_K_PRUEBA_SECCION(tipo_transaccion: E_TIPO_OPERACION_DB.A.ToString(), v_k_prueba: vSeccionTermina, usuario: vClUsuario, programa: vNbPrograma);
+                //    if (vResultadoSeccion.CL_TIPO_ERROR != E_TIPO_RESPUESTA_DB.WARNING)
+                if (vTipoRevision == "EDIT")
+                    EditTest(mpgActitudMentalI.SelectedIndex);
+                else
+                    SaveTest(mpgActitudMentalI.SelectedIndex);
+                //    else
+                //    {
+                //        string vMensaje = vResultadoSeccion.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                //        UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultadoSeccion.CL_TIPO_ERROR, 400, 150, "");
+                //    }
             }
             else
             {
-                vSeccionTermina.CL_ESTADO = E_ESTADO_PRUEBA.TERMINADA.ToString();
-                vSeccionTermina.FE_TERMINO = DateTime.Now;
+                E_RESULTADO vObjetoPrueba = nKprueba.INICIAR_K_PRUEBA_SECCION(pIdPrueba: vSeccionTermina.ID_PRUEBA_SECCION, pFeInicio: DateTime.Now, usuario: "ANONIMO", programa: vNbPrograma);
+                E_RESULTADO vPrueba = nKprueba.INICIAR_K_PRUEBA(pIdPrueba: vIdPrueba, pFeInicio: DateTime.Now, pClTokenExterno: vClToken, usuario: "ANONIMO", programa: vNbPrograma);
+                vIniciarSeccion = false;
             }
-            E_RESULTADO vResultadoSeccion = nKprueba.InsertaActualiza_K_PRUEBA_SECCION(tipo_transaccion: E_TIPO_OPERACION_DB.A.ToString(), v_k_prueba: vSeccionTermina, usuario: vClUsuario, programa: vNbPrograma);
-            //    if (vResultadoSeccion.CL_TIPO_ERROR != E_TIPO_RESPUESTA_DB.WARNING)
-            if (vTipoRevision == "EDIT")
-                EditTest(mpgActitudMentalI.SelectedIndex);
-            else
-                SaveTest(mpgActitudMentalI.SelectedIndex);
-            //    else
-            //    {
-            //        string vMensaje = vResultadoSeccion.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-            //        UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultadoSeccion.CL_TIPO_ERROR, 400, 150, "");
-            //    }
         }
 
       protected void btnEliminar_Click(object sender, EventArgs e)

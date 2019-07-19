@@ -71,7 +71,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPruebas" runat="server">
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
-    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest" ClientEvents-OnResponseEnd="retorno">
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="btnTerminar">
                 <UpdatedControls>
@@ -107,6 +107,8 @@
                             btn.disabled = true;
                         }
                         else {
+                            var ajaxManager = $find("<%=RadAjaxManager1.ClientID%>");
+                            ajaxManager.ajaxRequest(null);
                             var display = document.querySelector('#time');
                             var contenedor = document.querySelector('.Cronometro');
 
@@ -119,7 +121,12 @@
                                 contenedor.style.display = 'none';
                             }
 
-                          c =  Cronometro(segundos, display);
+                            c = Cronometro(segundos, display);
+
+                            var sec1 = document.querySelector('#seccion1');
+                            sec1.style.display = 'none';
+                            var sec2 = document.querySelector('#seccion2');
+                            sec2.style.display = 'none';
                         }
             }
             else {
@@ -131,6 +138,31 @@
                     radconfirm(JustificarTexto(text), callBackFunction, 950, 600, null, "Ortografía I");
                 }
             };
+
+            function retorno(sender, args) {
+                var segundos = '<%=this.vOrtografia1Seconds%>';
+                var display = document.querySelector('#time');
+                var contenedor = document.querySelector('.Cronometro');
+
+
+                var vFgCronometro = '<%=MostrarCronometro %>';
+                if (vFgCronometro == "True") {
+                    contenedor.style.display = 'block';
+                }
+                else {
+                    contenedor.style.display = 'none';
+                }
+
+
+                c = Cronometro(segundos, display);
+
+                setTimeout(function () {
+                    var sec1 = document.querySelector('#seccion1');
+                    sec1.style.display = 'block';
+                    var sec2 = document.querySelector('#seccion2');
+                    sec2.style.display = 'block';
+                }, 1000);                
+            }
 
     function mensajePruebaTerminada() {
         var btn = $find("<%=btnTerminar.ClientID%>");
@@ -535,7 +567,7 @@
     <div style="clear: both; height: 10px;"></div>
 
     <div class="DivMoveLeft" id="cronometro" runat="server">
-        <div class="Cronometro">Tiempo restante <span id="time">15:00</span></div>
+        <div class="Cronometro">Tiempo restante <span id="time"></span></div>
     </div>
     <div class="divControlDerecha" style="margin: 2px;">
             <telerik:RadButton ID="btnEliminarBateria" runat="server" Text="Eliminar batería" AutoPostBack="true" OnClientClicking="ConfirmarEliminarRespuestas" OnClick="btnEliminarBateria_Click"></telerik:RadButton>
