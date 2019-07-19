@@ -89,5 +89,5 @@
         </MasterTableView>
     </telerik:RadGrid>
 
-    <label id="lblMensaje" runat="server" style="font-weight:bold; color:red;">Es momento de programar un curso para desarrollar el puesto</label>
+    <label id="lblMensaje" runat="server" style="font-weight:bold; color:red;" visible="false"></label>
 </asp:Content>
