@@ -88,7 +88,7 @@ namespace SIGE.WebApp.Administracion
 
         public string vUrlNomina
         {
-            get { return (string)ViewState["vs_vUrlNomina"];}
+            get { return (string)ViewState["vs_vUrlNomina"]; }
             set { ViewState["vs_vUrlNomina"] = value; }
         }
 
@@ -128,7 +128,7 @@ namespace SIGE.WebApp.Administracion
 
         public string vClEstadoEmpleado
         {
-            get { return (string)ViewState["vs_vClEstadoEmpleado"];}
+            get { return (string)ViewState["vs_vClEstadoEmpleado"]; }
             set { ViewState["vs_vClEstadoEmpleado"] = value; }
         }
 
@@ -350,7 +350,7 @@ namespace SIGE.WebApp.Administracion
                 {
                     UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
                     grdCompensacion.Rebind();
-                    Response.Redirect(Request.RawUrl); 
+                    Response.Redirect(Request.RawUrl);
                 }
 
             }
@@ -371,7 +371,7 @@ namespace SIGE.WebApp.Administracion
         {
             foreach (XElement vXmlContenedor in XElement.Parse(vXmlPlantilla).Element("CONTENEDORES").Elements("CONTENEDOR"))
             {
-                string vNbContenedor = UtilXML.ValorAtributo<string>(vXmlContenedor.Attribute("ID_CONTENEDOR"));                
+                string vNbContenedor = UtilXML.ValorAtributo<string>(vXmlContenedor.Attribute("ID_CONTENEDOR"));
                 Contenedor vContenedor = ObtenerContenedores().Where(t => t.NbContenedor.Equals(vNbContenedor)).FirstOrDefault();
 
                 if (vContenedor != null)
@@ -420,7 +420,7 @@ namespace SIGE.WebApp.Administracion
                                         ramInventario.AjaxSettings.AddAjaxSetting(vBotonCancelar, vControlFormulario, ralpInventario, UpdatePanelRenderMode.Inline);
                                         ramInventario.AjaxSettings.AddAjaxSetting(vBotonEditar, vControlFormulario, ralpInventario, UpdatePanelRenderMode.Inline);
                                         */
-                                        
+
                                         if (vClTipoControl.Equals("COMBOBOX"))
                                         {
                                             vControlFormulario = ObtenerControl(vPageView, vIdCampoFormulario);
@@ -440,7 +440,7 @@ namespace SIGE.WebApp.Administracion
                                                     ramInventario.AjaxSettings.AddAjaxSetting(vControlFormulario, vControlDependiente);
                                                 }
                                             }
-                                        } 
+                                        }
                                         else if (vClTipoControl.Equals("DATEAGE"))
                                         {
                                             vControlFormulario = ObtenerControl(vPageView, vIdCampoFormulario);
@@ -448,7 +448,7 @@ namespace SIGE.WebApp.Administracion
                                             ramInventario.AjaxSettings.AddAjaxSetting(vBotonCancelar, vControlFormulario, ralpInventario, UpdatePanelRenderMode.Inline);
                                             ramInventario.AjaxSettings.AddAjaxSetting(vBotonEditar, vControlFormulario, ralpInventario, UpdatePanelRenderMode.Inline);
 
-                                            Control txtFormularioEdad = ObtenerControl(vPageView,String.Format("txt{0}", vIdCampoFormulario));
+                                            Control txtFormularioEdad = ObtenerControl(vPageView, String.Format("txt{0}", vIdCampoFormulario));
                                             ramInventario.AjaxSettings.AddAjaxSetting(vControlFormulario, txtFormularioEdad, ralpInventario, UpdatePanelRenderMode.Inline);
                                             ramInventario.AjaxSettings.AddAjaxSetting(vBotonCancelar, txtFormularioEdad, ralpInventario, UpdatePanelRenderMode.Inline);
                                             ramInventario.AjaxSettings.AddAjaxSetting(vBotonAgregar, txtFormularioEdad, ralpInventario, UpdatePanelRenderMode.Inline);
@@ -469,7 +469,7 @@ namespace SIGE.WebApp.Administracion
                                             ramInventario.AjaxSettings.AddAjaxSetting(vBotonEditar, vControlFormulario2, ralpInventario, UpdatePanelRenderMode.Inline);
                                             */
                                         }
-                                        
+
                                         else
                                         {
 
@@ -537,37 +537,41 @@ namespace SIGE.WebApp.Administracion
                 if (vIdEmpleadoNominaDo != null)
                 {
                     CamposNominaNegocio oNegocio = new CamposNominaNegocio();
-                    SPE_OBTIENE_EMPLEADOS_NOMINA_DO_Result vEmpleado = oNegocio.ObtieneEmpleadosNominaDo(pID_EMPLEADO_NOMINA_DO: vIdEmpleadoNominaDo).FirstOrDefault();
+                    E_EMPLEADO_NOMINA_DO vEmpleado = oNegocio.ObtienePersonalNominaDo(pID_EMPLEADO: vIdEmpleadoNominaDo).FirstOrDefault();
                     if (vEmpleado != null)
                     {
                         if (vEmpleado.FG_NOMINA == true && ContextoApp.ANOM.LicenciaAccesoModulo.MsgActivo == "1")
                         {
                             //Session["__clUsuario__"] = vClUsuario;
                             tabSolicitud.Tabs[8].Visible = true;
-                            ifNomina.Attributes.Add("src", "/NOMINA/InventarioPersonal/PopupInventarioPersonalNuevoEditar.aspx?clOrigen=DO&clUsuario=" + vClUsuario + "&ID=" + vEmpleado.ID_EMPLEADO_NOMINA + "&FgReactiva=1");
-                        }
-
-                        if (vEmpleado.FG_DO == true)
-                        {
-                            vIdEmpleado = vEmpleado.ID_EMPLEADO_DO;
+                            //ifNomina.Attributes.Add("src", "/NOMINA/InventarioPersonal/PopupInventarioPersonalNuevoEditar.aspx?clOrigen=DO&clUsuario=" + vClUsuario + "&ID=" + vEmpleado.ID_EMPLEADO + "&FgReactiva=1");
                         }
                         else
                         {
-                            tabSolicitud.Tabs[0].Visible = false;
-                            tabSolicitud.Tabs[1].Visible = false;
-                            tabSolicitud.Tabs[2].Visible = false;
-                            tabSolicitud.Tabs[3].Visible = false;
-                            tabSolicitud.Tabs[4].Visible = false;
-                            tabSolicitud.Tabs[5].Visible = false;
-                            tabSolicitud.Tabs[6].Visible = false;
-                            tabSolicitud.Tabs[7].Visible = false;
-                            pvwNomina.Selected = true;
-                            tabSolicitud.Tabs[8].Selected = true;
+                            tabSolicitud.Tabs[8].Visible = false;
                         }
-                       
+
+                        //if (vEmpleado.FG_DO == true)
+                        //{
+                            vIdEmpleado = vEmpleado.ID_EMPLEADO;
+                        //}
+                        //else
+                        //{
+                        //    tabSolicitud.Tabs[0].Visible = false;
+                        //    tabSolicitud.Tabs[1].Visible = false;
+                        //    tabSolicitud.Tabs[2].Visible = false;
+                        //    tabSolicitud.Tabs[3].Visible = false;
+                        //    tabSolicitud.Tabs[4].Visible = false;
+                        //    tabSolicitud.Tabs[5].Visible = false;
+                        //    tabSolicitud.Tabs[6].Visible = false;
+                        //    tabSolicitud.Tabs[7].Visible = false;
+                        //    pvwNomina.Selected = true;
+                        //    tabSolicitud.Tabs[8].Selected = true;
+                        //}
+
                     }
 
-                                   }
+                }
 
                 if (Request.QueryString["pFgHabilitaBotones"] == "False")
                 {
@@ -575,7 +579,7 @@ namespace SIGE.WebApp.Administracion
                     btnGuardarSalir.Visible = false;
                     btnCancelar.Visible = false;
                 }
-                
+
             }
 
             if (vDatosModificar == null)
@@ -626,7 +630,7 @@ namespace SIGE.WebApp.Administracion
             };
 
             vPlantilla.CrearFormulario(!Page.IsPostBack);
-        
+
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -744,7 +748,7 @@ namespace SIGE.WebApp.Administracion
         {
             //if (vClEstadoEmpleado == "ALTA")
             //{
-                Guardar(true);
+            Guardar(true);
             //}
             //else
             //{
@@ -768,9 +772,9 @@ namespace SIGE.WebApp.Administracion
                     E_PROGRAMAS vItemPrograma = vDatosReporteModular.DatosFyd.vLstProgramas.Where(w => w.ID_PROGRAMA == vIdPrograma).FirstOrDefault();
                     vDatosReporteModular.DatosFyd.vLstProgramas.Remove(vItemPrograma);
                     grdProgramas.Rebind();
-                 }
                 }
-
             }
+
+        }
     }
 }

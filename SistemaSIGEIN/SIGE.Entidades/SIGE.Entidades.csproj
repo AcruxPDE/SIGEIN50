@@ -62,6 +62,7 @@
     <Compile Include="Administracion\COMPETENCIAS_LABORALES.cs" />
     <Compile Include="Administracion\E_CAMPO_NOMINA_DO.cs" />
     <Compile Include="Administracion\E_CLIENTE.cs" />
+    <Compile Include="Administracion\E_EMPLEADO_NOMINA_DO.cs" />
     <Compile Include="Administracion\E_EMPLEADO_RPT.cs" />
     <Compile Include="Administracion\E_GRUPOS.cs" />
     <Compile Include="Administracion\E_LICENCIA.cs" />

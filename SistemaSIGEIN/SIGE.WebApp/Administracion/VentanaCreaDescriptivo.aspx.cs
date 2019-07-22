@@ -46,13 +46,8 @@ namespace SIGE.WebApp.Administracion
 
             txtClave.Text = vPuestoNominaDo.CL_PUESTO;
             txtNombre.Text = vPuestoNominaDo.NB_PUESTO;
-            btnDOTrue.Checked = vPuestoNominaDo.FG_DO;
-            btnDOFalse.Checked = !vPuestoNominaDo.FG_DO;
-            btnNOTrue.Checked = vPuestoNominaDo.FG_NOMINA;
-            btnNOFalse.Checked = !vPuestoNominaDo.FG_NOMINA;
-
-            if (vPuestoNominaDo.FG_DO == false)
-                btnMasDatos.Enabled = false;
+            txtClave.Enabled = false;
+            //txtNombre.Enabled = false;
         }
 
         #endregion
@@ -61,20 +56,18 @@ namespace SIGE.WebApp.Administracion
         {
             if (!IsPostBack)
             {
-                btnNOFalse.Checked = true;
-                btnDOTrue.Checked = true;
 
                 int vIdPuestoRq = 0;
                 if (int.TryParse(Request.Params["pIdPuesto"], out vIdPuestoRq))
                 {
                     vIdPuesto = vIdPuestoRq;
                     CargarDatos();
+                    btnMasDatos.Enabled = true;
                 }
 
                 if (ContextoApp.ANOM.LicenciaAccesoModulo.MsgActivo != "1")
                 {
-                    btnNOFalse.Enabled = false;
-                    btnNOTrue.Enabled = false;
+                    btnMasDatos.Enabled = false;
                 }
 
             }
@@ -87,24 +80,16 @@ namespace SIGE.WebApp.Administracion
         {
             if (ValidarControles())
             {
-                if (btnDOTrue.Checked != true && btnNOTrue.Checked != true)
-                {
-                    UtilMensajes.MensajeResultadoDB(rwmAlertas, "El puesto debe de estar disponible en Nómina o/y DO.", E_TIPO_RESPUESTA_DB.ERROR, 400,150, pCallBackFunction: "");
-                    return;
-                }
-                else
-                {
-                    string vClPuesto = txtClave.Text;
-                    string vNbPuesto = txtNombre.Text;
-                    bool vFgNomina = btnNOTrue.Checked ? true : false;
-                    bool vFgDO = btnDOTrue.Checked ? true : false;
-                    string vClTipoTransaccion = vIdPuesto != null ? "A" : "I";
+                //string vClPuesto = txtClave.Text;
+                //string vNbPuesto = txtNombre.Text;
+                //bool vFgNomina = btnNOTrue.Checked ? true : false;
+                //bool vFgDO = btnDOTrue.Checked ? true : false;
+                //string vClTipoTransaccion = vIdPuesto != null ? "A" : "I";
 
-                    CamposNominaNegocio nNomina = new CamposNominaNegocio();
-                    E_RESULTADO vResultado = nNomina.InsertaActualizaPuesto(pID_PUESTO: vIdPuesto, pCL_PUESTO: vClPuesto, pNB_PUESTO: vNbPuesto, pFG_NOMINA: vFgNomina, pFG_DO: vFgDO, pClUsuario: vClUsuario, pNbPrograma: vNbPrograma, pClTipoTransaccion: vClTipoTransaccion);
-                    string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                    UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "OnCloseWindows");
-                }
+                //CamposNominaNegocio nNomina = new CamposNominaNegocio();
+                //E_RESULTADO vResultado = nNomina.InsertaActualizaPuesto(pID_PUESTO: vIdPuesto, pCL_PUESTO: vClPuesto, pNB_PUESTO: vNbPuesto, pFG_NOMINA: vFgNomina, pFG_DO: vFgDO, pClUsuario: vClUsuario, pNbPrograma: vNbPrograma, pClTipoTransaccion: vClTipoTransaccion);
+                //string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                //UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "OnCloseWindows");
             }
             else
             {
@@ -116,36 +101,35 @@ namespace SIGE.WebApp.Administracion
         {
             if (ValidarControles())
             {
-                if (btnDOTrue.Checked != true && btnNOTrue.Checked != true)
-                {
-                    UtilMensajes.MensajeResultadoDB(rwmAlertas, "El puesto debe de estar disponible en Nómina o/y DO.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, pCallBackFunction: "");
-                    return;
-                }
-                else
-                {
-                    string vClPuesto = txtClave.Text;
-                    string vNbPuesto = txtNombre.Text;
-                    bool vFgNomina = btnNOTrue.Checked ? true : false;
-                    bool vFgDO = btnDOTrue.Checked ? true : false;
-                    string vClTipoTransaccion = vIdPuesto != null ? "A" : "I";
+                //if (btnDOTrue.Checked != true && btnNOTrue.Checked != true)
+                //{
+                //    UtilMensajes.MensajeResultadoDB(rwmAlertas, "El puesto debe de estar disponible en Nómina o/y DO.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, pCallBackFunction: "");
+                //    return;
+                //}
 
-                    CamposNominaNegocio nNomina = new CamposNominaNegocio();
-                    E_RESULTADO vResultado = nNomina.InsertaActualizaPuesto(pID_PUESTO: vIdPuesto, pCL_PUESTO: vClPuesto, pNB_PUESTO: vNbPuesto, pFG_NOMINA: vFgNomina, pFG_DO: vFgDO, pClUsuario: vClUsuario, pNbPrograma: vNbPrograma, pClTipoTransaccion: vClTipoTransaccion);
-                    string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                    if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL && vFgDO == true)
-                    {
-                        var idPuesto = 0;
-                        var esNumero = int.TryParse(vResultado.MENSAJE.Where(x => x.CL_IDIOMA == "ID_PUESTO").FirstOrDefault().DS_MENSAJE, out idPuesto);
-                        vIdPuesto = idPuesto;
+                //string vClPuesto = txtClave.Text;
+                //string vNbPuesto = txtNombre.Text;
+                //bool vFgNomina = true;
+                //bool vFgDO = true;
+                //string vClTipoTransaccion = vIdPuesto != null ? "A" : "I";
 
-                        ClientScript.RegisterStartupScript(GetType(), "script", "AbrirDescriptivo(" + vIdPuesto + ");", true);
-                    }
-                    else
-                    {
+                //CamposNominaNegocio nNomina = new CamposNominaNegocio();
+                //E_RESULTADO vResultado = nNomina.InsertaActualizaPuesto(pID_PUESTO: vIdPuesto, pCL_PUESTO: vClPuesto, pNB_PUESTO: vNbPuesto, pFG_NOMINA: vFgNomina, pFG_DO: vFgDO, pClUsuario: vClUsuario, pNbPrograma: vNbPrograma, pClTipoTransaccion: vClTipoTransaccion);
+                //string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                //if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL && vFgDO == true)
+                //{
+                //    var idPuesto = 0;
+                //    var esNumero = int.TryParse(vResultado.MENSAJE.Where(x => x.CL_IDIOMA == "ID_PUESTO").FirstOrDefault().DS_MENSAJE, out idPuesto);
+                //    vIdPuesto = idPuesto;
 
-                        UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "OnCloseWindows");
-                    }
-                }
+                    ClientScript.RegisterStartupScript(GetType(), "script", "AbrirDescriptivo(" + vIdPuesto + ");", true);
+                //}
+                //else
+                //{
+
+                //    UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "OnCloseWindows");
+                //}
+
             }
             else
             {

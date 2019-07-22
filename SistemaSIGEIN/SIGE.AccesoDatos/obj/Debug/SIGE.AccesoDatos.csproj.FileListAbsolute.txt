@@ -79,3 +79,4 @@ C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Debu
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Debug\SIGE.AccesoDatos.csproj.CopyComplete
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Debug\SIGE.AccesoDatos.dll
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\obj\Debug\SIGE.AccesoDatos.pdb
+C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.AccesoDatos\bin\Debug\SIGE.Entidades.dll.config

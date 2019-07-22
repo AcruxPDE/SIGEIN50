@@ -2,6 +2,7 @@
 using SIGE.Entidades.Administracion;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Objects;
 using System.Data.SqlClient;
 using System.Linq;
@@ -77,21 +78,77 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
             }
         }
 
-        public XElement InsertaActualizaEmpleado(int? pID_EMPLEADO = null, SPE_OBTIENE_EMPLEADOS_NOMINA_DO_Result pEmpleado = null, string pClUsuario = null, string pNbPrograma = null, string pClTipoTransaccion = null)
+        public XElement InsertaActualizaEmpleado(int? pID_EMPLEADO = null, E_EMPLEADO_NOMINA_DO pEmpleado = null, string pClUsuario = null, string pNbPrograma = null, string pClTipoTransaccion = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
-                contexto.SPE_INSERTA_ACTUALIZA_EMPLEADO_NOMINA_DO(pOutClRetorno, pID_EMPLEADO, pEmpleado.M_EMPLEADO_CL_EMPLEADO, pEmpleado.NB_EMPLEADO, pEmpleado.NB_APELLIDO_PATERNO, pEmpleado.NB_APELLIDO_MATERNO, pEmpleado.FG_DO, pEmpleado.FG_NOMINA, pEmpleado.FG_NOMINA_DO, pEmpleado.ID_PLAZA, pEmpleado.ID_PUESTO_NOMINA, pEmpleado.CL_EMPLEADO_NOMINA, pEmpleado.ID_RAZON_SOCIAL, pEmpleado.SUELDO_MENSUAL, pEmpleado.SUELDO_DIARIO, pEmpleado.BASE_COTIZACION, pEmpleado.SUELDO_DO, pEmpleado.FG_SUELDO_VISIBLE_INVENTARIO, pEmpleado.FG_SUELDO_VISIBLE_TABULADOR, pEmpleado.FG_SUELDO_VISIBLE_BONO, pClUsuario, pNbPrograma, pClTipoTransaccion);
-                return XElement.Parse(pOutClRetorno.Value.ToString());
+                var pXmlResultado = new SqlParameter("@XML_RESULTADO", SqlDbType.Xml)
+                {
+                    Direction = ParameterDirection.Output
+                };
+
+                contexto.Database.ExecuteSqlCommand("EXEC " +
+                    "ADM.SPE_INSERTA_ACTUALIZA_EMPLEADO_NOMINA_DO " +
+                    "@XML_RESULTADO OUTPUT, " +
+                    "@PIN_ID_EMPLEADO, " +
+                    "@PIN_CL_EMPLEADO, " +
+                    "@PIN_NB_EMPLEADO, " +
+                    "@PIN_NB_APELLIDO_PATERNO, " +
+                    "@PIN_NB_APELLIDO_MATERNO, " +
+                    "@PIN_FG_NOMINA, " +
+                    "@PIN_FG_DO, " +
+                    "@PIN_FG_NOMINA_DO, " +
+                    "@PIN_ID_PUESTO, " +
+                    "@PIN_ID_PLAZA, " +
+                    "@PIN_FG_SUELDO_NOMINA_DO, " +
+                    "@PIN_CL_USUARIO, " +
+                    "@PIN_NB_PROGRAMA, " +
+                    "@PIN_TIPO_TRANSACCION "
+                    , pXmlResultado
+                    , new SqlParameter("@PIN_ID_EMPLEADO", (object)pID_EMPLEADO ?? DBNull.Value)
+                    , new SqlParameter("@PIN_CL_EMPLEADO", (object)pEmpleado.CL_EMPLEADO ?? DBNull.Value)
+                    , new SqlParameter("@PIN_NB_EMPLEADO", (object)pEmpleado.NB_EMPLEADO ?? DBNull.Value)
+                    , new SqlParameter("@PIN_NB_APELLIDO_PATERNO", (object)pEmpleado.NB_APELLIDO_PATERNO ?? DBNull.Value)
+                    , new SqlParameter("@PIN_NB_APELLIDO_MATERNO", (object)pEmpleado.NB_APELLIDO_MATERNO ?? DBNull.Value)
+                    , new SqlParameter("@PIN_FG_NOMINA", (object)pEmpleado.FG_NOMINA ?? DBNull.Value)
+                    , new SqlParameter("@PIN_FG_DO", (object)pEmpleado.FG_DO ?? DBNull.Value)
+                    , new SqlParameter("@PIN_FG_NOMINA_DO", (object)pEmpleado.FG_NOMINA_DO ?? DBNull.Value)
+                    , new SqlParameter("@PIN_ID_PUESTO", (object)pEmpleado.ID_PUESTO ?? DBNull.Value)
+                    , new SqlParameter("@PIN_ID_PLAZA", (object)pEmpleado.ID_PLAZA ?? DBNull.Value)
+                    , new SqlParameter("@PIN_FG_SUELDO_NOMINA_DO", (object)pEmpleado.FG_SUELDO_NOMINA_DO ?? DBNull.Value)
+                    , new SqlParameter("@PIN_CL_USUARIO", (object)pClUsuario ?? DBNull.Value)
+                    , new SqlParameter("@PIN_NB_PROGRAMA", (object)pNbPrograma ?? DBNull.Value)
+                    , new SqlParameter("@PIN_TIPO_TRANSACCION", (object)pClTipoTransaccion ?? DBNull.Value)
+                );
+                return XElement.Parse(pXmlResultado.Value.ToString());
+
+                //ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                //contexto.SPE_INSERTA_ACTUALIZA_EMPLEADO_NOMINA_DO(pOutClRetorno, pID_EMPLEADO, pEmpleado.M_EMPLEADO_CL_EMPLEADO, pEmpleado.NB_EMPLEADO, pEmpleado.NB_APELLIDO_PATERNO, pEmpleado.NB_APELLIDO_MATERNO, pEmpleado.FG_DO, pEmpleado.FG_NOMINA, pEmpleado.FG_NOMINA_DO, pEmpleado.ID_PLAZA, pEmpleado.ID_PUESTO_NOMINA, pEmpleado.CL_EMPLEADO_NOMINA, pEmpleado.ID_RAZON_SOCIAL, pEmpleado.SUELDO_MENSUAL, pEmpleado.SUELDO_DIARIO, pEmpleado.BASE_COTIZACION, pEmpleado.SUELDO_DO, pEmpleado.FG_SUELDO_VISIBLE_INVENTARIO, pEmpleado.FG_SUELDO_VISIBLE_TABULADOR, pEmpleado.FG_SUELDO_VISIBLE_BONO, pClUsuario, pNbPrograma, pClTipoTransaccion);
+                //return XElement.Parse(pOutClRetorno.Value.ToString());
             }
         }
 
-        public List<SPE_OBTIENE_EMPLEADOS_NOMINA_DO_Result> ObtieneEmpleadosNominaDo(int? pID_EMPLEADO_NOMINA_DO = null, string pCL_EMPLEADO = null, System.Guid? pID_EMPLEADO_NOMINA = null)
+        public List<E_EMPLEADO_NOMINA_DO> ObtienePersonalNominaDo(int? pID_EMPLEADO = null, string pCL_EMPLEADO = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_EMPLEADOS_NOMINA_DO(pID_EMPLEADO_NOMINA_DO, pCL_EMPLEADO, pID_EMPLEADO_NOMINA).ToList();
+                return contexto.Database.SqlQuery<E_EMPLEADO_NOMINA_DO>("EXEC " +
+                    "ADM.SPE_OBTIENE_PERSONAL_NOMINA_DO " +
+                    "@PIN_ID_EMPLEADO, " +
+                    "@PIN_CL_EMPLEADO ",
+                    new SqlParameter("@PIN_ID_EMPLEADO", (object)pID_EMPLEADO ?? DBNull.Value),
+                    new SqlParameter("@PIN_CL_EMPLEADO", (object)pCL_EMPLEADO ?? DBNull.Value)
+                ).ToList();
+
+                //return contexto.SPE_OBTIENE_EMPLEADOS_NOMINA_DO(pID_EMPLEADO_NOMINA_DO, pCL_EMPLEADO, pID_EMPLEADO_NOMINA).ToList();
+            }
+        }
+
+        public List<SPE_OBTIENE_EMPLEADOS_NOMINA_DO_Result> ObtieneEmpleadosNominaDo(int? pID_EMPLEADO_NOMINA_DO = null, string pCL_EMPLEADO = null, System.Guid? pID_EMPLEADO = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.SPE_OBTIENE_EMPLEADOS_NOMINA_DO(pID_EMPLEADO_NOMINA_DO, pCL_EMPLEADO, pID_EMPLEADO).ToList();
             }
         }
 

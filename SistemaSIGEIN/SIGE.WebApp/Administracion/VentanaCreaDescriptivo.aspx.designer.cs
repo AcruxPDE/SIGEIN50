@@ -31,42 +31,6 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadTextBox txtNombre;
         
         /// <summary>
-        /// btnDOTrue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnDOTrue;
-        
-        /// <summary>
-        /// btnDOFalse control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnDOFalse;
-        
-        /// <summary>
-        /// btnNOTrue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnNOTrue;
-        
-        /// <summary>
-        /// btnNOFalse control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnNOFalse;
-        
-        /// <summary>
         /// btnMasDatos control.
         /// </summary>
         /// <remarks>

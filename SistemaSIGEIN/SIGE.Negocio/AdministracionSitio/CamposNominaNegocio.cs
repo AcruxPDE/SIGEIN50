@@ -65,13 +65,19 @@ namespace SIGE.Negocio.AdministracionSitio
             return UtilRespuesta.EnvioRespuesta(oCampo.EliminaPuestoNominaDO(pID_PUESTO, pCL_PUESTO));
         }
 
-        public E_RESULTADO InsertaActualizaEmpleado(int? pIdEmpleado = null, SPE_OBTIENE_EMPLEADOS_NOMINA_DO_Result pEmpleado = null, string pClUsuario = null, string pNbPrograma = null, string pClTipoTransaccion = null)
+        public E_RESULTADO InsertaActualizaEmpleado(int? pIdEmpleado = null, E_EMPLEADO_NOMINA_DO pEmpleado = null, string pClUsuario = null, string pNbPrograma = null, string pClTipoTransaccion = null)
         {
             CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
             return UtilRespuesta.EnvioRespuesta(oCampo.InsertaActualizaEmpleado(pIdEmpleado, pEmpleado, pClUsuario, pNbPrograma, pClTipoTransaccion));
         }
 
-        public List<SPE_OBTIENE_EMPLEADOS_NOMINA_DO_Result> ObtieneEmpleadosNominaDo(int? pID_EMPLEADO_NOMINA_DO = null, string pCL_EMPLEADO = null, System.Guid? pID_EMPLEADO_NOMINA= null)
+        public List<E_EMPLEADO_NOMINA_DO> ObtienePersonalNominaDo(int? pID_EMPLEADO = null, string pCL_EMPLEADO = null)
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtienePersonalNominaDo(pID_EMPLEADO, pCL_EMPLEADO);
+        }
+
+        public List<SPE_OBTIENE_EMPLEADOS_NOMINA_DO_Result> ObtieneEmpleadosNominaDo(int? pID_EMPLEADO_NOMINA_DO = null, string pCL_EMPLEADO = null, System.Guid? pID_EMPLEADO_NOMINA = null)
         {
             CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
             return oCampo.ObtieneEmpleadosNominaDo(pID_EMPLEADO_NOMINA_DO, pCL_EMPLEADO, pID_EMPLEADO_NOMINA);

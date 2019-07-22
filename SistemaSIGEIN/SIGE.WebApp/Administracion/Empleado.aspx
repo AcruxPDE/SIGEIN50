@@ -558,7 +558,7 @@
                                     <label>Folio de solicitud</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadTextBox runat="server" ID="txtFolioSolicitud" Width="200px" Enabled="false"></telerik:RadTextBox>
+                                    <telerik:RadTextBox runat="server" ID="txtFolioSolicitud" Width="220px" Enabled="false"></telerik:RadTextBox>
                                 </div>
                             </div>
 
@@ -577,7 +577,7 @@
                                     <label>Ultima bateria de pruebas:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadTextBox runat="server" ID="txtBateriaPruebas" Width="200px" Enabled="false"></telerik:RadTextBox>
+                                    <telerik:RadTextBox runat="server" ID="txtBateriaPruebas" Width="220px" Enabled="false"></telerik:RadTextBox>
                                 </div>
                             </div>
 
@@ -705,7 +705,350 @@
                             </telerik:RadGrid>
                         </telerik:RadPageView>
                         <telerik:RadPageView ID="pvwNomina" runat="server">
-                            <iframe id="ifNomina" runat="server" frameborder="1"></iframe>
+                            <div style="clear: both; height: 20px;"></div>
+                            <label class="labelTitulo">Información nómina</label>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Razón Social:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbRazonSocial" Width="300px" ></telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Registo patronal:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbRegistroPatronal" Width="300px" ></telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Tipo de trabajo SUA:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbTipoTrabajoSUA" Width="300px" ></telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Tipo de jornada SUA:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbTipoJornadaSUA" Width="300px" ></telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Tipo de contrato SAT:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbTipoContratoSAT" Width="300px" ></telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Tipo de jornada SAT:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbTipoJornadaSAT" Width="300px" ></telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Regimen de contratación:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbRegimenContratacion" Width="300px" ></telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Ubicación:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                   <telerik:RadTextBox runat ="server" ID="txtUbicacionNO" Width="300px"></telerik:RadTextBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Tipo de salario:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbTipoSalario" Width="300px" ></telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Unidad Médico-Familiar(UMF):</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                   <telerik:RadTextBox runat ="server" ID="txtUMFNO" Width="300px"></telerik:RadTextBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Riesgo puesto:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbRiesgoPuesto" Width="300px" ></telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Horario:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbHorarioNO" Width="300px" ></telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Paquete de prestaciones:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbPaquetePrestacionesNO" Width="300px" ></telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Formato de dispersión:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbFormatoDispersionNO" Width="300px" ></telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Formato de vales de gasolina:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbFormatoValesGasolinaNO" Width="300px" ></telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Formato de vales de despensa:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbFormatoValesDespensaNO" Width="300px" ></telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Tipo de nómina:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbTipoNomina" Width="300px" ></telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Forma de pago:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbFormaPago" Width="300px" ></telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                             <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Banco:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbBanco" Width="300px" ></telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Cotiza en el IMSS:</label>
+                                </div>
+                                <div class="divControlDerecha" >
+                                    <telerik:RadComboBox runat="server" ID="cmbCotizaIMSS" Width="300px" ></telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div style="clear: both; height: 20px;"></div>
+                            <label class="labelTitulo">Sueldo nominal</label>
+
+                            <div class="ctrlBasico">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Sueldo diario:</label>
+                                </div>
+                                <div class="divControlDerecha"  >
+                                    <telerik:RadTextBox runat="server" ID="txtSueldoDiario" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="margin-left: 20px">
+                                <div class="divControlDerecha" >
+                                    <telerik:RadButton runat="server" ID="btnCalcularSueldo" Text="Calcular" ></telerik:RadButton>
+                                    <%--<telerik:RadTextBox runat="server" ID="RadTextBox1" InputType="Number" MaxLength="999999"></telerik:RadTextBox>--%>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Sueldo mensual:</label>
+                                </div>
+                                <div class="divControlDerecha" >
+                                    <telerik:RadTextBox runat="server" ID="txtSueldoMensual" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
+                                 </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Factor salario base de cotización:</label>
+                                </div>
+                                <div class="divControlDerecha" >
+                                    <telerik:RadTextBox runat="server" ID="txtFactorBaseCotizacion" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Salario base de cotización fijo:</label>
+                                </div>
+                                <div class="divControlDerecha" >
+                                    <telerik:RadTextBox runat="server" ID="txtBaseCotizacionFijo" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Salario base de cotización variable:</label>
+                                </div>
+                                <div class="divControlDerecha" >
+                                    <telerik:RadTextBox runat="server" ID="txtBaseCotizacionVariable" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Salario base de cotización determinado:</label>
+                                </div>
+                                <div class="divControlDerecha" >
+                                    <telerik:RadTextBox runat="server" ID="txtBaseCotizacionDeterminado" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Salario base de cotización máximo:</label>
+                                </div>
+                                <div class="divControlDerecha" >
+                                    <telerik:RadTextBox runat="server" ID="txtBaseCotizacionMaximo" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Salario base de cotización:</label>
+                                </div>
+                                <div class="divControlDerecha" >
+                                    <telerik:RadTextBox runat="server" ID="txtSalarioBaseCotizacion" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
+                                </div>
+                            </div>
+
+                            <div style="clear: both; height: 20px;"></div>
+                            <label class="labelTitulo">Cuentas</label>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Cuenta de pago:</label>
+                                </div>
+                                <div class="divControlDerecha" >
+                                    <telerik:RadTextBox runat="server" ID="txtCuentaPago"></telerik:RadTextBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Clave de pago:</label>
+                                </div>
+                                <div class="divControlDerecha" >
+                                    <telerik:RadTextBox runat="server" ID="txtClavePago"></telerik:RadTextBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Cuenta de vales de despensa:</label>
+                                </div>
+                                <div class="divControlDerecha" >
+                                    <telerik:RadTextBox runat="server" ID="txtCuentaValesDespensa"></telerik:RadTextBox>
+                                </div>
+                            </div>
+
+                            <div style="clear: both; height: 20px;"></div>
+                            <label class="labelTitulo">FILLERS</label>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>FILLER01:</label>
+                                </div>
+                                <div class="divControlDerecha" >
+                                    <telerik:RadTextBox runat="server" ID="txtFILLER01"></telerik:RadTextBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>FILLER02:</label>
+                                </div>
+                                <div class="divControlDerecha" >
+                                    <telerik:RadTextBox runat="server" ID="txtFILLER02"></telerik:RadTextBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>FILLER03:</label>
+                                </div>
+                                <div class="divControlDerecha" >
+                                    <telerik:RadTextBox runat="server" ID="txtFILLER03"></telerik:RadTextBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>FILLER04:</label>
+                                </div>
+                                <div class="divControlDerecha" >
+                                    <telerik:RadTextBox runat="server" ID="txtFILLER04"></telerik:RadTextBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>FILLER05:</label>
+                                </div>
+                                <div class="divControlDerecha" >
+                                    <telerik:RadTextBox runat="server" ID="txtFILLER05"></telerik:RadTextBox>
+                                </div>
+                            </div>
+
+                            <%--<iframe id="ifNomina" runat="server" frameborder="1"></iframe>--%>
                         </telerik:RadPageView>
                     </telerik:RadMultiPage>
                 </div>

@@ -106,7 +106,7 @@
             </div>
         </div>
         <div style="clear: both;"></div>
-        <div class="ctrlBasico">
+        <%--<div class="ctrlBasico">
             <div class="divControlIzquierda">
                 <label name="lblDisponibleDO">Disponible para DO:</label>
             </div>
@@ -148,11 +148,11 @@
                     </telerik:RadButton>
                 </div>
             </div>
-        </div>
+        </div>--%>
     </div>
     <div style="height: 10px; clear: both;"></div>
     <div class="divControlDerecha">
-        <telerik:RadButton ID="btnMasDatos" runat="server" Text="Más datos" Width="100" AutoPostBack="true" OnClick="btnMasDatos_Click"></telerik:RadButton>
+        <telerik:RadButton ID="btnMasDatos" runat="server" Enabled="false" Text="Más datos" Width="100" AutoPostBack="true" OnClick="btnMasDatos_Click"></telerik:RadButton>
         <telerik:RadButton ID="btnAceptar" runat="server" Text="Guardar y cerrar" AutoPostBack="true" OnClick="btnAceptar_Click"></telerik:RadButton>
         <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" Width="100" OnClientClicked="OnCloseWindows"></telerik:RadButton>
     </div>

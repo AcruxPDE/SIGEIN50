@@ -10,22 +10,40 @@
                 return false;
             }
 
-            function ShowInsertNomina() {
-                var vURL = "VentanaCreaDescriptivo.aspx";
-                var vTitulo = "Agregar descriptivo de puesto";
+            function GetWindowProperties() {
+                return {
+                    width: document.documentElement.clientWidth - 20,//750,
+                    height: document.documentElement.clientHeight - 20//15
+                };
+            }
 
-                openChildDialog(vURL, "winNuevoDescriptivo", vTitulo);
+            function ShowInsertNomina() {
+
+                var wnd = GetWindowProperties();
+                wnd.vTitulo = "Agregar descriptivo de puesto";
+                wnd.vURL = "VentanaDescriptivoPuesto.aspx";
+                wnd.vRadWindowId = "winNuevoDescriptivo";
+                
+                OpenNewWindow(wnd);
+            }
+
+            function OpenNewWindow(pWindowProperties) {
+                openChildDialog(pWindowProperties.vURL, pWindowProperties.vRadWindowId, pWindowProperties.vTitulo, pWindowProperties);
             }
 
             function ShowEditNomina() {
 
                 var selectedItem = $find("<%=grdDescriptivo.ClientID %>").get_masterTableView().get_selectedItems()[0];
                 if (selectedItem != undefined) {
+                    var IdPuesto = selectedItem.getDataKeyValue("ID_PUESTO_DO")
 
-                    var IdPuesto = selectedItem.getDataKeyValue("ID_PUESTO")
-                    var vURL = "VentanaCreaDescriptivo.aspx?pIdPuesto=" + IdPuesto;
-                    var vTitulo = "Editar descriptivo de puesto";
-                    openChildDialog(vURL, "winNuevoDescriptivo", vTitulo);
+                    var wnd = GetWindowProperties();
+                    wnd.vTitulo = "Editar descriptivo de puesto";
+                    wnd.vURL = "VentanaDescriptivoPuesto.aspx?PuestoId=" + IdPuesto;
+                    wnd.vRadWindowId = "winNuevoDescriptivo";
+
+                    OpenNewWindow(wnd);
+
                 }
                 else
                     radalert("Selecciona un puesto.", 400, 150, "Aviso");
@@ -282,7 +300,7 @@
                 <Columns>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Clave" DataField="CL_PUESTO" UniqueName="CL_PUESTO" HeaderStyle-Width="250" FilterControlWidth="180"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Descripción" DataField="NB_PUESTO" UniqueName="NB_PUESTO" HeaderStyle-Width="300" FilterControlWidth="230"></telerik:GridBoundColumn>
-                      <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Disponible" DataField="NB_ACTIVO_NOMINA" UniqueName="NB_ACTIVO_NOMINA" HeaderStyle-Width="80" FilterControlWidth="20"></telerik:GridBoundColumn>
+                      <%--<telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Disponible" DataField="NB_ACTIVO_NOMINA" UniqueName="NB_ACTIVO_NOMINA" HeaderStyle-Width="80" FilterControlWidth="20"></telerik:GridBoundColumn>--%>
                     <%-- <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO" HeaderStyle-Width="300" FilterControlWidth="230"></telerik:GridBoundColumn>--%>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="120" FilterControlWidth="60" HeaderText="Último usuario que modifica" DataField="CL_USUARIO_MODIFICA" UniqueName="CL_USUARIO_MODIFICA"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataFormatString="{0:d}" AutoPostBackOnFilter="true" HeaderText="Última fecha de modificación" DataField="FE_MODIFICACION_PUESTO" UniqueName="FE_MODIFICACION_PUESTO" HeaderStyle-Width="150" FilterControlWidth="80" DataType="System.DateTime"></telerik:GridBoundColumn>
