@@ -1983,15 +1983,21 @@ namespace SIGE.WebApp.Administracion
 
                     if (vCompetencia == null)
                     {
-                        vLstFuncionCompetenciaABC.Add(new E_FUNCION_COMPETENCIA()
-                        {
-                            ID_PARENT_ITEM = vFuncionGenericaABC.ID_ITEM,
-                            NB_COMPETENCIA = cmbCompetenciaEspecifica.SelectedItem.Text,
-                            ID_COMPETENCIA = int.Parse(cmbCompetenciaEspecifica.SelectedItem.Value),
-                            NO_NIVEL = vNoNivel,
-                            NB_NIVEL = item["NB_NIVEL"].Text,
-                            DS_INDICADORES = "<ul>" + "<li>" + txtIndicadorDesempeno.Text + "</ul>" + "</li>"
-                        });
+                        vCompetencia = new E_FUNCION_COMPETENCIA();
+
+                        vCompetencia.ID_PARENT_ITEM = vFuncionGenericaABC.ID_ITEM;
+                        vCompetencia.NB_COMPETENCIA = cmbCompetenciaEspecifica.SelectedItem.Text;
+                        vCompetencia.ID_COMPETENCIA = int.Parse(cmbCompetenciaEspecifica.SelectedItem.Value);
+                        vCompetencia.NO_NIVEL = vNoNivel;
+                        vCompetencia.NB_NIVEL = item["NB_NIVEL"].Text;
+
+                        if (txtIndicadorDesempeno.Text != "")
+                            vCompetencia.DS_INDICADORES = "<ul>" + "<li>" + txtIndicadorDesempeno.Text + "</ul>" + "</li>";
+
+                        vLstFuncionCompetenciaABC.Add(vCompetencia);
+
+                        if(txtIndicadorDesempeno.Text != "")
+                            btnAgregarIndicadorDesempeno_Click(sender, e, vCompetencia);
                     }
                     else
                     {
@@ -1999,7 +2005,12 @@ namespace SIGE.WebApp.Administracion
                         vCompetencia.ID_COMPETENCIA = int.Parse(cmbCompetenciaEspecifica.SelectedItem.Value);
                         vCompetencia.NO_NIVEL = vNoNivel;
                         vCompetencia.NB_NIVEL = item["NB_NIVEL"].Text;
-                        vCompetencia.DS_INDICADORES = txtIndicadorDesempeno.Text;
+
+                        if (txtIndicadorDesempeno.Text != "")
+                            vCompetencia.DS_INDICADORES = "<ul>" + "<li>" + txtIndicadorDesempeno.Text + "</ul>" + "</li>";
+
+                        if (txtIndicadorDesempeno.Text != "")
+                            btnEditarIndicador_Click(sender, e, vCompetencia);
                     }
 
                     vFgRebindGrid = true | vFgRebindGrid;
@@ -2012,31 +2023,34 @@ namespace SIGE.WebApp.Administracion
 
         }
 
-        protected void btnAgregarIndicadorDesempeno_Click(object sender, EventArgs e)
+        protected void btnAgregarIndicadorDesempeno_Click(object sender, EventArgs e, E_FUNCION_COMPETENCIA vCompetencia)
         {
             bool vFgRebindGrid = false;
-            foreach (GridDataItem item in grdFuncionCompetencias.SelectedItems)
+            foreach (E_FUNCION_COMPETENCIA item in vLstFuncionCompetenciaABC)
             {
-                E_FUNCION_INDICADOR vIndicador = vLstFuncionCompetenciaIndicadorABC.FirstOrDefault(f => f.ID_ITEM == (vIdEditingItem ?? Guid.NewGuid()));
-
-                Guid vIdCompetencia = new Guid(item.GetDataKeyValue("ID_ITEM").ToString());
-
-                if (vIndicador == null)
+                if (item == vCompetencia)
                 {
-                    vLstFuncionCompetenciaIndicadorABC.Add(new E_FUNCION_INDICADOR()
+                    E_FUNCION_INDICADOR vIndicador = vLstFuncionCompetenciaIndicadorABC.FirstOrDefault(f => f.ID_ITEM == (vIdEditingItem ?? Guid.NewGuid()));
+
+                    Guid vIdCompetencia = new Guid(item.ID_ITEM.ToString());
+
+                    if (vIndicador == null)
                     {
-                        ID_PARENT_ITEM = vIdCompetencia,
-                        NB_INDICADOR_DESEMPENO = txtIndicadorDesempeno.Text
-                    });
-                }
-                else
-                {
-                    vIdCompetencia = vIndicador.ID_PARENT_ITEM;
-                    vIndicador.NB_INDICADOR_DESEMPENO = txtIndicadorDesempeno.Text;
-                }
+                        vLstFuncionCompetenciaIndicadorABC.Add(new E_FUNCION_INDICADOR()
+                        {
+                            ID_PARENT_ITEM = vIdCompetencia,
+                            NB_INDICADOR_DESEMPENO = txtIndicadorDesempeno.Text
+                        });
+                    }
+                    else
+                    {
+                        vIdCompetencia = vIndicador.ID_PARENT_ITEM;
+                        vIndicador.NB_INDICADOR_DESEMPENO = txtIndicadorDesempeno.Text;
+                    }
 
-                CrearDsIndicadores(vLstFuncionCompetenciaABC.FirstOrDefault(f => f.ID_ITEM.Equals(vIdCompetencia)), vLstFuncionCompetenciaIndicadorABC);
-                vFgRebindGrid = true | vFgRebindGrid;
+                    CrearDsIndicadores(vLstFuncionCompetenciaABC.FirstOrDefault(f => f.ID_ITEM.Equals(vIdCompetencia)), vLstFuncionCompetenciaIndicadorABC);
+                    vFgRebindGrid = true | vFgRebindGrid;
+                }
             }
 
             if (vFgRebindGrid)
@@ -2173,16 +2187,23 @@ namespace SIGE.WebApp.Administracion
             }
         }
 
-        protected void btnEditarIndicador_Click(object sender, EventArgs e)
+        protected void btnEditarIndicador_Click(object sender, EventArgs e, E_FUNCION_COMPETENCIA vCompetencia)
         {
             foreach (GridDataItem item in grdFuncionCompetencias.SelectedItems)
             {
                 vIdEditingItem = Guid.Parse(item.GetDataKeyValue("ID_ITEM").ToString());
-                E_FUNCION_INDICADOR indicador = vLstFuncionCompetenciaIndicadorABC.FirstOrDefault(f => f.ID_ITEM.Equals(vIdEditingItem));
-                if (indicador == null)
-                    indicador = new E_FUNCION_INDICADOR();
+                E_FUNCION_INDICADOR indicador = vLstFuncionCompetenciaIndicadorABC.FirstOrDefault(f => f.ID_FUNCION_COMPETENCIA.Equals(vCompetencia.ID_FUNCION_COMPETENCIA));
+                Guid vIdCompetencia = new Guid(item.GetDataKeyValue("ID_ITEM").ToString());
 
-                txtIndicadorDesempeno.Text = indicador.NB_INDICADOR_DESEMPENO;
+                if (indicador == null)
+                {
+                    btnAgregarIndicadorDesempeno_Click(sender, e, vCompetencia);
+                }
+                else
+                {
+                    vIdCompetencia = indicador.ID_PARENT_ITEM;
+                    indicador.NB_INDICADOR_DESEMPENO = txtIndicadorDesempeno.Text;
+                }
             }
         }
 

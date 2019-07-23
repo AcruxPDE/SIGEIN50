@@ -214,3 +214,4 @@ C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SI
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.Negocio.csproj.CopyComplete
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.Negocio.dll
 C:\Users\tisig\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.Negocio.pdb
+C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\SIGE.Entidades.dll.config
