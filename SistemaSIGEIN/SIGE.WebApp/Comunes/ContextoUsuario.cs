@@ -71,5 +71,17 @@ namespace SIGE.WebApp.Comunes
                 Utileria.SetSessionValue<string>("__clEstadoPruebas__", value);
             }
         }
+
+        public static string clCliente
+        {
+            get
+            {
+                return Utileria.GetSessionValue<string>("__clCliente__");
+            }
+            set
+            {
+                Utileria.SetSessionValue<string>("__clCliente__", value);
+            }
+        }
     }
 }

@@ -1,41 +1,38 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ContextHTML.master" AutoEventWireup="true" CodeBehind="Empleado.aspx.cs" Inherits="SIGE.WebApp.Administracion.Empleado" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
-<style type="text/css">
-       .ruBrowse
-       {
-           
-           width: 150px !important;
-       }
-
-    html {
-        overflow-y: hidden;
+    <style type="text/css">
+        .ruBrowse {
+            width: 150px !important;
         }
 
-       .DivFotoCss {
-           background: #fafafa; 
-           position: absolute; 
-           right: 0px; 
-           margin-right: 50px; 
-           border: 1px solid lightgray; 
-           border-radius: 10px; 
-           padding: 5px;
+        html {
+            overflow-y: hidden;
         }
 
-         @media only screen and (max-width: 700px) {
+        .DivFotoCss {
+            background: #fafafa;
+            position: absolute;
+            right: 0px;
+            margin-right: 50px;
+            border: 1px solid lightgray;
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        @media only screen and (max-width: 700px) {
             .DivFotoCss {
-               background: #fafafa; 
-               position: relative;
-               right: 0px; 
-               margin-right: 50px; 
-               border: 1px solid lightgray; 
-               border-radius: 10px; 
-               padding: 5px;
-               width:170px;
+                background: #fafafa;
+                position: relative;
+                right: 0px;
+                margin-right: 50px;
+                border: 1px solid lightgray;
+                border-radius: 10px;
+                padding: 5px;
+                width: 170px;
             }
         }
-
-   </style>
+    </style>
 
     <script id="MyScript" type="text/javascript">
 
@@ -85,7 +82,7 @@
             if (vIdSolicitud != null && vIdSolicitud != "0") {
                 var vURL = "../IDP/Solicitud/Solicitud.aspx";
                 var vTitulo = "Ver solicitud";
-                vURL = vURL + "?SolicitudId=" + vIdSolicitud +"&FG_HABILITADO=False";
+                vURL = vURL + "?SolicitudId=" + vIdSolicitud + "&FG_HABILITADO=False";
                 var currentWnd = GetRadWindow();
                 var browserWnd = window;
                 if (currentWnd)
@@ -159,7 +156,7 @@
             }
         }
 
-       
+
 
         function openAvanceProgramaCapacitacion(pIdPrograma) {
 
@@ -259,12 +256,12 @@
             } else if (sender == vBtnPlaza) {
                 windowProperties.width = document.documentElement.clientWidth - 20;
                 windowProperties.height = document.documentElement.clientHeight - 20;
-                openChildDialog("../Comunes/SeleccionPlaza.aspx?TipoSeleccionCl=VACANTES", "winSeleccion", "Selección de la plaza a ocupar", windowProperties);        
+                openChildDialog("../Comunes/SeleccionPlaza.aspx?TipoSeleccionCl=VACANTES", "winSeleccion", "Selección de la plaza a ocupar", windowProperties);
                 //} else if (sender == vBtnPlazaJefe) {
-            //    var idPlaza = vLstPlaza.get_selectedItem().get_value();
-            //    windowProperties.width = document.documentElement.clientWidth - 20;
-            //    windowProperties.height = document.documentElement.clientHeight - 20;
-            //    openChildDialog("../Comunes/SeleccionPlaza.aspx?CatalogoCl=PLAZAJEFE&TipoSeleccionCl=JEFE&PlazaId=" + idPlaza, "winSeleccion", "Selección del jefe inmediato", windowProperties);
+                //    var idPlaza = vLstPlaza.get_selectedItem().get_value();
+                //    windowProperties.width = document.documentElement.clientWidth - 20;
+                //    windowProperties.height = document.documentElement.clientHeight - 20;
+                //    openChildDialog("../Comunes/SeleccionPlaza.aspx?CatalogoCl=PLAZAJEFE&TipoSeleccionCl=JEFE&PlazaId=" + idPlaza, "winSeleccion", "Selección del jefe inmediato", windowProperties);
             } else if (sender == vBtnCP) {
                 windowProperties.width = document.documentElement.clientWidth - 100;
                 windowProperties.height = document.documentElement.clientHeight - 20;
@@ -297,7 +294,7 @@
 
         function LoadValue(sender, args) {
             var items = sender.get_items();
-            for (var i = 0; i < items.get_count() ; i++) {
+            for (var i = 0; i < items.get_count(); i++) {
                 var item = items.getItem(i);
                 var valor = item.get_value();
                 var texto = item.get_text();
@@ -395,7 +392,7 @@
                         break;
                     case "ESTADONACIMIENTO":
                         list = $find("<%= ObtenerClientId(mpgPlantilla, "NB_ESTADO_NACIMIENTO") %>");
-                         break;
+                        break;
                 }
 
                 SetListBoxItem(list, oData.nbDato, oData.clDato);
@@ -404,16 +401,16 @@
     </script>
 
     <style>
-            .RadButton.rbSkinnedButton.uncheckedYes > .rbDecorated {
-                color: #000 !important;
-            }
+        .RadButton.rbSkinnedButton.uncheckedYes > .rbDecorated {
+            color: #000 !important;
+        }
 
-            .RadButton.rbSkinnedButton.uncheckedYes {
-                background-color: #eee !important;
-            }
+        .RadButton.rbSkinnedButton.uncheckedYes {
+            background-color: #eee !important;
+        }
 
 
-            /*
+        /*
                 .RadButton.rbSkinnedButton.checkedNo {
                     background-color: #eee !important;
                 }
@@ -423,14 +420,13 @@
                 }
             */
 
-            .RadButton.rbSkinnedButton.uncheckedNo {
-                background-color: #eee !important;
-            }
+        .RadButton.rbSkinnedButton.uncheckedNo {
+            background-color: #eee !important;
+        }
 
             .RadButton.rbSkinnedButton.uncheckedNo > .rbDecorated {
                 color: #000 !important;
             }
-
     </style>
 
 </asp:Content>
@@ -452,6 +448,22 @@
                     <telerik:AjaxUpdatedControl ControlID="rbiFotoEmpleado" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="grdDocumentos" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="btnEliminarFotoEmpleado" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="cmbRazonSocial">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="cmbRegistroPatronal" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnCalcularSueldo">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="txtSueldoMensual" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="txtFactorBaseCotizacion" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="txtBaseCotizacionFijo" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="txtBaseCotizacionVariable" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="txtBaseCotizacionDeterminado" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="txtBaseCotizacionMaximo" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="txtSalarioBaseCotizacion" UpdatePanelHeight="100%" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -484,7 +496,9 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align: center;">
-                                            <telerik:RadAsyncUpload ID="rauFotoEmpleado" runat="server" MaxFileInputsCount="1" HideFileInput="true" MultipleFileSelection="Disabled" AllowedFileExtensions=".jpeg,.jpg,.png" PostbackTriggers="btnActualizarFotoEmpleado" OnFileUploaded="rauFotoEmpleado_FileUploaded" Width="150" CssClass="CssBoton"> <Localization Select="Seleccionar" /></telerik:RadAsyncUpload>
+                                            <telerik:RadAsyncUpload ID="rauFotoEmpleado" runat="server" MaxFileInputsCount="1" HideFileInput="true" MultipleFileSelection="Disabled" AllowedFileExtensions=".jpeg,.jpg,.png" PostbackTriggers="btnActualizarFotoEmpleado" OnFileUploaded="rauFotoEmpleado_FileUploaded" Width="150" CssClass="CssBoton">
+                                                <Localization Select="Seleccionar" />
+                                            </telerik:RadAsyncUpload>
                                         </td>
                                     </tr>
                                     <tr>
@@ -522,7 +536,9 @@
                             </div>
                             <div class="ctrlBasico">
                                 Subir documento:<br />
-                                <telerik:RadAsyncUpload ID="rauDocumento" runat="server" MultipleFileSelection="Disabled"><Localization Select="Seleccionar" /></telerik:RadAsyncUpload>
+                                <telerik:RadAsyncUpload ID="rauDocumento" runat="server" MultipleFileSelection="Disabled">
+                                    <Localization Select="Seleccionar" />
+                                </telerik:RadAsyncUpload>
                             </div>
                             <div class="ctrlBasico">
                                 <telerik:RadButton ID="btnAgregarDocumento" runat="server" Text="Agregar" OnClick="btnAddDocumento_Click"></telerik:RadButton>
@@ -562,7 +578,7 @@
                                 </div>
                             </div>
 
-                             <div class="ctrlBasico">
+                            <div class="ctrlBasico">
                                 <telerik:RadButton runat="server" ID="btnSolicitud" Enabled="false" Width="120" Text="Ver solicitud" AutoPostBack="false" OnClientClicked="OpenSolicitud"></telerik:RadButton>
                             </div>
 
@@ -672,7 +688,7 @@
                                 <MasterTableView ClientDataKeyNames="ID_BAJA_EMPLEADO" EnableColumnsViewState="false" DataKeyNames="ID_BAJA_EMPLEADO" AllowPaging="false" AllowFilteringByColumn="false" ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true" NoMasterRecordsText="No existen bajas asociadas al empleado">
                                     <CommandItemSettings ShowExportToExcelButton="true" ShowAddNewRecordButton="false" />
                                     <Columns>
-                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" HeaderText="Fecha ingreso" DataField="FE_INGRESO" UniqueName="FE_INGRESO" DataFormatString="{0:d}"></telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" HeaderText="Fecha ingreso" DataField="FE_INGRESO" UniqueName="FE_INGRESO" DataFormatString="{0:d}"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" HeaderText="Fecha baja" DataField="FE_BAJA_EFECTIVA" UniqueName="FE_BAJA_EFECTIVA" DataFormatString="{0:d}"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="100" HeaderText="Causa" DataField="NB_MOTIVO" UniqueName="NB_MOTIVO"></telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" HeaderStyle-Width="300" FilterControlWidth="25" HeaderText="Comentario" DataField="DS_MOTIVO" UniqueName="DS_MOTIVO"></telerik:GridBoundColumn>
@@ -713,16 +729,67 @@
                                     <label>Razón Social:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox runat="server" ID="cmbRazonSocial" Width="300px" ></telerik:RadComboBox>
+                                    <telerik:RadComboBox runat="server" ID="cmbRazonSocial" Width="300px" Filter="Contains" MarkFirstMatch="true" EnableLoadOnDemand="true" AutoPostBack="true" HighlightTemplatedItems="true" OnSelectedIndexChanged="cmbRazonSocial_SelectedIndexChanged" EmptyMessage="Seleccione..." DropDownWidth="530">
+                                        <HeaderTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text="Clave" runat="server" Width="100"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label3" Text="Razón Social" runat="server" Width="390"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text='<%# DataBinder.Eval(Container.DataItem, "CL_RAZON_SOCIAL") %>' runat="server" Width="100"></asp:Label>
+
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label4" Text='<%# DataBinder.Eval(Container.DataItem, "NB_RAZON_SOCIAL") %>' runat="server" Width="390"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ItemTemplate>
+                                    </telerik:RadComboBox>
                                 </div>
                             </div>
 
                             <div class="ctrlBasico" style="clear: both;">
                                 <div class="divControlIzquierda" style="width: 250px !important">
-                                    <label>Registo patronal:</label>
+                                    <label>Registro patronal:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox runat="server" ID="cmbRegistroPatronal" Width="300px" ></telerik:RadComboBox>
+                                    <telerik:RadComboBox runat="server" ID="cmbRegistroPatronal" Width="300px" Filter="Contains" MarkFirstMatch="true" AutoPostBack="false" EnableLoadOnDemand="false" HighlightTemplatedItems="true" EmptyMessage="Seleccione..." DropDownWidth="380">
+                                        <HeaderTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text="Clave" runat="server" Width="80"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label3" Text="Número" runat="server" Width="250"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text='<%# DataBinder.Eval(Container.DataItem, "CL_REGISTRO_PATRONAL") %>' runat="server" Width="80"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label4" Text='<%# DataBinder.Eval(Container.DataItem, "NO_REGISTRO_PATRONAL") %>' runat="server" Width="250"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ItemTemplate>
+                                    </telerik:RadComboBox>
                                 </div>
                             </div>
 
@@ -731,7 +798,32 @@
                                     <label>Tipo de trabajo SUA:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox runat="server" ID="cmbTipoTrabajoSUA" Width="300px" ></telerik:RadComboBox>
+                                    <telerik:RadComboBox runat="server" ID="cmbTipoTrabajoSUA" Width="300px" Filter="Contains" MarkFirstMatch="true" AutoPostBack="false" EnableLoadOnDemand="false" HighlightTemplatedItems="true" EmptyMessage="Seleccione..." DropDownWidth="380">
+                                        <HeaderTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text="Clave" runat="server" Width="80"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label3" Text="Descripción" runat="server" Width="250"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text='<%# DataBinder.Eval(Container.DataItem, "CL_TIPO_TRAB_SUA") %>' runat="server" Width="80"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label4" Text='<%# DataBinder.Eval(Container.DataItem, "DS_TIPO_TRAB_SUA") %>' runat="server" Width="250"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ItemTemplate>
+                                    </telerik:RadComboBox>
                                 </div>
                             </div>
 
@@ -740,7 +832,32 @@
                                     <label>Tipo de jornada SUA:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox runat="server" ID="cmbTipoJornadaSUA" Width="300px" ></telerik:RadComboBox>
+                                    <telerik:RadComboBox runat="server" ID="cmbTipoJornadaSUA" Width="300px" Filter="Contains" MarkFirstMatch="true" AutoPostBack="false" EnableLoadOnDemand="false" HighlightTemplatedItems="true" EmptyMessage="Seleccione..." DropDownWidth="380">
+                                        <HeaderTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text="Clave" runat="server" Width="80"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label3" Text="Descripción" runat="server" Width="250"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text='<%# DataBinder.Eval(Container.DataItem, "CL_JORNADA_SUA") %>' runat="server" Width="80"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label4" Text='<%# DataBinder.Eval(Container.DataItem, "DS_JORNADA_SUA") %>' runat="server" Width="250"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ItemTemplate>
+                                    </telerik:RadComboBox>
                                 </div>
                             </div>
 
@@ -749,7 +866,32 @@
                                     <label>Tipo de contrato SAT:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox runat="server" ID="cmbTipoContratoSAT" Width="300px" ></telerik:RadComboBox>
+                                    <telerik:RadComboBox runat="server" ID="cmbTipoContratoSAT" Width="300px" Filter="Contains" MarkFirstMatch="true" AutoPostBack="false" EnableLoadOnDemand="false" HighlightTemplatedItems="true" EmptyMessage="Seleccione..." DropDownWidth="380">
+                                        <HeaderTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text="Clave" runat="server" Width="80"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label3" Text="Descripción" runat="server" Width="250"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text='<%# DataBinder.Eval(Container.DataItem, "CL_TIPO_CONTRATO") %>' runat="server" Width="80"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label4" Text='<%# DataBinder.Eval(Container.DataItem, "DS_TIPO_CONTRATO") %>' runat="server" Width="250"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ItemTemplate>
+                                    </telerik:RadComboBox>
                                 </div>
                             </div>
 
@@ -758,7 +900,33 @@
                                     <label>Tipo de jornada SAT:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox runat="server" ID="cmbTipoJornadaSAT" Width="300px" ></telerik:RadComboBox>
+                                    <telerik:RadComboBox runat="server" ID="cmbTipoJornadaSAT" Width="300px" Filter="Contains" MarkFirstMatch="true" AutoPostBack="false" EnableLoadOnDemand="false" HighlightTemplatedItems="true" EmptyMessage="Seleccione..." DropDownWidth="380">
+                                        <HeaderTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text="Clave" runat="server" Width="80"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label3" Text="Descripción" runat="server" Width="250"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text='<%# DataBinder.Eval(Container.DataItem, "CL_TIPO_JORNADA") %>' runat="server" Width="80"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label4" Text='<%# DataBinder.Eval(Container.DataItem, "DS_TIPO_JORNADA") %>' runat="server" Width="250"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ItemTemplate>
+
+                                    </telerik:RadComboBox>
                                 </div>
                             </div>
 
@@ -767,7 +935,32 @@
                                     <label>Regimen de contratación:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox runat="server" ID="cmbRegimenContratacion" Width="300px" ></telerik:RadComboBox>
+                                    <telerik:RadComboBox runat="server" ID="cmbRegimenContratacion" Width="300px" Filter="Contains" MarkFirstMatch="true" AutoPostBack="false" EnableLoadOnDemand="false" HighlightTemplatedItems="true" EmptyMessage="Seleccione..." DropDownWidth="380">
+                                        <HeaderTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text="Clave" runat="server" Width="80"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label3" Text="Descripción" runat="server" Width="250"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text='<%# DataBinder.Eval(Container.DataItem, "CL_REGIMEN") %>' runat="server" Width="80"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label4" Text='<%# DataBinder.Eval(Container.DataItem, "NB_REGIMEN") %>' runat="server" Width="250"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ItemTemplate>
+                                    </telerik:RadComboBox>
                                 </div>
                             </div>
 
@@ -776,7 +969,7 @@
                                     <label>Ubicación:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                   <telerik:RadTextBox runat ="server" ID="txtUbicacionNO" Width="300px"></telerik:RadTextBox>
+                                    <telerik:RadTextBox runat="server" ID="txtUbicacionNO" Width="300px"></telerik:RadTextBox>
                                 </div>
                             </div>
 
@@ -785,7 +978,33 @@
                                     <label>Tipo de salario:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox runat="server" ID="cmbTipoSalario" Width="300px" ></telerik:RadComboBox>
+                                    <telerik:RadComboBox runat="server" ID="cmbTipoSalario" Width="300px" Filter="Contains" MarkFirstMatch="true" AutoPostBack="false" EnableLoadOnDemand="false" HighlightTemplatedItems="true" EmptyMessage="Seleccione..." DropDownWidth="380">
+                                        <HeaderTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text="Clave" runat="server" Width="80"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label3" Text="Descripción" runat="server" Width="250"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text='<%# DataBinder.Eval(Container.DataItem, "CL_TIPO_SALARIO_SUA") %>' runat="server" Width="80"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label4" Text='<%# DataBinder.Eval(Container.DataItem, "DS_TIPO_SALARIO_SUA") %>' runat="server" Width="250"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ItemTemplate>
+
+                                    </telerik:RadComboBox>
                                 </div>
                             </div>
 
@@ -794,7 +1013,7 @@
                                     <label>Unidad Médico-Familiar(UMF):</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                   <telerik:RadTextBox runat ="server" ID="txtUMFNO" Width="300px"></telerik:RadTextBox>
+                                    <telerik:RadTextBox runat="server" ID="txtUMFNO" Width="300px"></telerik:RadTextBox>
                                 </div>
                             </div>
 
@@ -803,7 +1022,34 @@
                                     <label>Riesgo puesto:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox runat="server" ID="cmbRiesgoPuesto" Width="300px" ></telerik:RadComboBox>
+                                    <telerik:RadComboBox runat="server" ID="cmbRiesgoPuesto" Width="300px" EmptyMessage="Seleccione..." HighlightTemplatedItems="true" DropDownWidth="500" EnableLoadOnDemand="false" Filter="Contains">
+                                        <HeaderTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text="Clave" runat="server" Width="100"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label3" Text="Descripcion" runat="server" Width="360"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text='<%# DataBinder.Eval(Container.DataItem, "CL_RIESGO_PUESTO") %>' runat="server" Width="100"></asp:Label>
+
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label4" Text='<%# DataBinder.Eval(Container.DataItem, "NB_RIESGO_PUESTO") %>' runat="server" Width="360"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ItemTemplate>
+
+                                    </telerik:RadComboBox>
                                 </div>
                             </div>
 
@@ -812,7 +1058,34 @@
                                     <label>Horario:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox runat="server" ID="cmbHorarioNO" Width="300px" ></telerik:RadComboBox>
+                                    <telerik:RadComboBox runat="server" ID="cmbHorarioNO" Width="300px" EmptyMessage="Seleccione..." HighlightTemplatedItems="true" DropDownWidth="500" EnableLoadOnDemand="false" Filter="Contains">
+                                        <HeaderTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text="Clave" runat="server" Width="100"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label3" Text="Nombre" runat="server" Width="360"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text='<%# DataBinder.Eval(Container.DataItem, "CL_HORARIO_SEMANA") %>' runat="server" Width="100"></asp:Label>
+
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label4" Text='<%# DataBinder.Eval(Container.DataItem, "NB_HORARIO_SEMANA") %>' runat="server" Width="360"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ItemTemplate>
+
+                                    </telerik:RadComboBox>
                                 </div>
                             </div>
 
@@ -821,7 +1094,33 @@
                                     <label>Paquete de prestaciones:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox runat="server" ID="cmbPaquetePrestacionesNO" Width="300px" ></telerik:RadComboBox>
+                                    <telerik:RadComboBox runat="server" ID="cmbPaquetePrestacionesNO" Width="300px" EmptyMessage="Seleccione..." HighlightTemplatedItems="true" DropDownWidth="500" EnableLoadOnDemand="false" Filter="Contains">
+                                        <HeaderTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text="Clave" runat="server" Width="100"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label3" Text="Nombre" runat="server" Width="360"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text='<%# DataBinder.Eval(Container.DataItem, "CL_PAQUETE") %>' runat="server" Width="100"></asp:Label>
+
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label4" Text='<%# DataBinder.Eval(Container.DataItem, "DS_PAQUETE") %>' runat="server" Width="360"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ItemTemplate>
+                                    </telerik:RadComboBox>
                                 </div>
                             </div>
 
@@ -830,7 +1129,32 @@
                                     <label>Formato de dispersión:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox runat="server" ID="cmbFormatoDispersionNO" Width="300px" ></telerik:RadComboBox>
+                                    <telerik:RadComboBox runat="server" ID="cmbFormatoDispersionNO" Width="300px" EmptyMessage="Seleccione..." HighlightTemplatedItems="true" DropDownWidth="500" EnableLoadOnDemand="false" Filter="Contains" AllowCustomText="true">
+                                        <HeaderTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text="Clave" runat="server" Width="100"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label3" Text="Nombre" runat="server" Width="360"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text='<%# DataBinder.Eval(Container.DataItem, "CL_FORMATO") %>' runat="server" Width="100"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label4" Text='<%# DataBinder.Eval(Container.DataItem, "NB_FORMATO") %>' runat="server" Width="360"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ItemTemplate>
+                                    </telerik:RadComboBox>
                                 </div>
                             </div>
 
@@ -839,7 +1163,32 @@
                                     <label>Formato de vales de gasolina:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox runat="server" ID="cmbFormatoValesGasolinaNO" Width="300px" ></telerik:RadComboBox>
+                                    <telerik:RadComboBox runat="server" ID="cmbFormatoValesGasolinaNO" Width="300px" EmptyMessage="Seleccione.." HighlightTemplatedItems="true" DropDownWidth="500" EnableLoadOnDemand="false" Filter="Contains">
+                                        <HeaderTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <telerik:RadLabel runat="server" ID="lblClave" Width="100" Text="Clave"></telerik:RadLabel>
+                                                    </td>
+                                                    <td>
+                                                        <telerik:RadLabel runat="server" ID="lblNombre" Width="360" Text="Nombre"></telerik:RadLabel>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <telerik:RadLabel runat="server" ID="lbl1Clave" Width="100" Text='<%# DataBinder.Eval(Container.DataItem, "CL_FORMATO") %>'></telerik:RadLabel>
+                                                    </td>
+                                                    <td>
+                                                        <telerik:RadLabel runat="server" ID="lbl2Nombre" Width="360" Text='<%# DataBinder.Eval(Container.DataItem, "NB_FORMATO") %>'></telerik:RadLabel>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ItemTemplate>
+                                    </telerik:RadComboBox>
                                 </div>
                             </div>
 
@@ -848,7 +1197,32 @@
                                     <label>Formato de vales de despensa:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox runat="server" ID="cmbFormatoValesDespensaNO" Width="300px" ></telerik:RadComboBox>
+                                    <telerik:RadComboBox runat="server" ID="cmbFormatoValesDespensaNO" Width="300px" EmptyMessage="Seleccione.." HighlightTemplatedItems="true" DropDownWidth="500" EnableLoadOnDemand="false" Filter="Contains">
+                                        <HeaderTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <telerik:RadLabel runat="server" ID="lblClave" Width="100" Text="Clave"></telerik:RadLabel>
+                                                    </td>
+                                                    <td>
+                                                        <telerik:RadLabel runat="server" ID="lblNombre" Width="360" Text="Nombre"></telerik:RadLabel>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <telerik:RadLabel runat="server" ID="lbl1Clave" Width="100" Text='<%# DataBinder.Eval(Container.DataItem, "CL_FORMATO") %>'></telerik:RadLabel>
+                                                    </td>
+                                                    <td>
+                                                        <telerik:RadLabel runat="server" ID="lbl2Nombre" Width="360" Text='<%# DataBinder.Eval(Container.DataItem, "NB_FORMATO") %>'></telerik:RadLabel>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ItemTemplate>
+                                    </telerik:RadComboBox>
                                 </div>
                             </div>
 
@@ -857,7 +1231,33 @@
                                     <label>Tipo de nómina:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox runat="server" ID="cmbTipoNomina" Width="300px" ></telerik:RadComboBox>
+                                    <telerik:RadComboBox runat="server" ID="cmbTipoNomina" Width="300px" EmptyMessage="Seleccione.." HighlightTemplatedItems="true" DropDownWidth="500" EnableLoadOnDemand="false" Filter="Contains">
+                                        <HeaderTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <telerik:RadLabel runat="server" ID="lblClave" Width="100" Text="Clave"></telerik:RadLabel>
+                                                    </td>
+                                                    <td>
+                                                        <telerik:RadLabel runat="server" ID="lblNombre" Width="360" Text="Nombre"></telerik:RadLabel>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text='<%# DataBinder.Eval(Container.DataItem, "CL_TIPO_NOMINA") %>' runat="server" Width="100"></asp:Label>
+
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label4" Text='<%# DataBinder.Eval(Container.DataItem, "DS_TIPO_NOMINA") %>' runat="server" Width="360"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ItemTemplate>
+                                    </telerik:RadComboBox>
                                 </div>
                             </div>
 
@@ -866,16 +1266,61 @@
                                     <label>Forma de pago:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox runat="server" ID="cmbFormaPago" Width="300px" ></telerik:RadComboBox>
+                                    <telerik:RadComboBox runat="server" ID="cmbFormaPago" Width="300px" EmptyMessage="Seleccione.." HighlightTemplatedItems="true" DropDownWidth="500" EnableLoadOnDemand="false" Filter="Contains">
+                                        <HeaderTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <telerik:RadLabel runat="server" ID="lbl3Nombre" Width="360" Text="Nombre"></telerik:RadLabel>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl3Nombre" Text='<%# DataBinder.Eval(Container.DataItem, "NB_FORMA_PAGO") %>' runat="server" Width="360"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ItemTemplate>
+                                    </telerik:RadComboBox>
                                 </div>
                             </div>
 
-                             <div class="ctrlBasico" style="clear: both;">
+                            <div class="ctrlBasico" style="clear: both;">
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>Banco:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox runat="server" ID="cmbBanco" Width="300px" ></telerik:RadComboBox>
+                                    <telerik:RadComboBox runat="server" ID="cmbBanco" Width="300px" EmptyMessage="Seleccione.." HighlightTemplatedItems="true" DropDownWidth="500" EnableLoadOnDemand="false" Filter="Contains">
+                                        <HeaderTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <telerik:RadLabel runat="server" ID="lblClave" Width="100" Text="Clave"></telerik:RadLabel>
+                                                    </td>
+                                                    <td>
+                                                        <telerik:RadLabel runat="server" ID="lblNombre" Width="360" Text="Nombre"></telerik:RadLabel>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl1" Text='<%# DataBinder.Eval(Container.DataItem, "CL_BANCO") %>' runat="server" Width="100"></asp:Label>
+
+                                                    </td>
+                                                    <td>
+                                                        <asp:Label ID="Label4" Text='<%# DataBinder.Eval(Container.DataItem, "NB_BANCO") %>' runat="server" Width="360"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </ItemTemplate>
+                                    </telerik:RadComboBox>
                                 </div>
                             </div>
 
@@ -883,8 +1328,13 @@
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>Cotiza en el IMSS:</label>
                                 </div>
-                                <div class="divControlDerecha" >
-                                    <telerik:RadComboBox runat="server" ID="cmbCotizaIMSS" Width="300px" ></telerik:RadComboBox>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbCotizaIMSS" Width="300px" EmptyMessage="Seleccione.." HighlightTemplatedItems="true" DropDownWidth="500" EnableLoadOnDemand="false" Filter="Contains">
+                                        <Items>
+                                            <telerik:RadComboBoxItem Value="1" Text="SÍ" />
+                                            <telerik:RadComboBoxItem Value="0" Text="NO" />
+                                        </Items>
+                                    </telerik:RadComboBox>
                                 </div>
                             </div>
 
@@ -895,14 +1345,14 @@
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>Sueldo diario:</label>
                                 </div>
-                                <div class="divControlDerecha"  >
+                                <div class="divControlDerecha">
                                     <telerik:RadTextBox runat="server" ID="txtSueldoDiario" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
                                 </div>
                             </div>
 
                             <div class="ctrlBasico" style="margin-left: 20px">
-                                <div class="divControlDerecha" >
-                                    <telerik:RadButton runat="server" ID="btnCalcularSueldo" Text="Calcular" ></telerik:RadButton>
+                                <div class="divControlDerecha">
+                                    <telerik:RadButton runat="server" ID="btnCalcularSueldo" Text="Calcular"></telerik:RadButton>
                                     <%--<telerik:RadTextBox runat="server" ID="RadTextBox1" InputType="Number" MaxLength="999999"></telerik:RadTextBox>--%>
                                 </div>
                             </div>
@@ -911,17 +1361,17 @@
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>Sueldo mensual:</label>
                                 </div>
-                                <div class="divControlDerecha" >
-                                    <telerik:RadTextBox runat="server" ID="txtSueldoMensual" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
-                                 </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadTextBox runat="server" ID="txtSueldoMensual" Enabled="false" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
+                                </div>
                             </div>
 
                             <div class="ctrlBasico" style="clear: both;">
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>Factor salario base de cotización:</label>
                                 </div>
-                                <div class="divControlDerecha" >
-                                    <telerik:RadTextBox runat="server" ID="txtFactorBaseCotizacion" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
+                                <div class="divControlDerecha">
+                                    <telerik:RadTextBox runat="server" ID="txtFactorBaseCotizacion" Enabled="false" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
                                 </div>
                             </div>
 
@@ -929,8 +1379,8 @@
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>Salario base de cotización fijo:</label>
                                 </div>
-                                <div class="divControlDerecha" >
-                                    <telerik:RadTextBox runat="server" ID="txtBaseCotizacionFijo" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
+                                <div class="divControlDerecha">
+                                    <telerik:RadTextBox runat="server" ID="txtBaseCotizacionFijo" Enabled="false" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
                                 </div>
                             </div>
 
@@ -938,8 +1388,8 @@
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>Salario base de cotización variable:</label>
                                 </div>
-                                <div class="divControlDerecha" >
-                                    <telerik:RadTextBox runat="server" ID="txtBaseCotizacionVariable" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
+                                <div class="divControlDerecha">
+                                    <telerik:RadTextBox runat="server" ID="txtBaseCotizacionVariable" Enabled="false" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
                                 </div>
                             </div>
 
@@ -947,8 +1397,8 @@
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>Salario base de cotización determinado:</label>
                                 </div>
-                                <div class="divControlDerecha" >
-                                    <telerik:RadTextBox runat="server" ID="txtBaseCotizacionDeterminado" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
+                                <div class="divControlDerecha">
+                                    <telerik:RadTextBox runat="server" ID="txtBaseCotizacionDeterminado" Enabled="false" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
                                 </div>
                             </div>
 
@@ -956,8 +1406,8 @@
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>Salario base de cotización máximo:</label>
                                 </div>
-                                <div class="divControlDerecha" >
-                                    <telerik:RadTextBox runat="server" ID="txtBaseCotizacionMaximo" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
+                                <div class="divControlDerecha">
+                                    <telerik:RadTextBox runat="server" ID="txtBaseCotizacionMaximo" Enabled="false" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
                                 </div>
                             </div>
 
@@ -965,8 +1415,8 @@
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>Salario base de cotización:</label>
                                 </div>
-                                <div class="divControlDerecha" >
-                                    <telerik:RadTextBox runat="server" ID="txtSalarioBaseCotizacion" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
+                                <div class="divControlDerecha">
+                                    <telerik:RadTextBox runat="server" ID="txtSalarioBaseCotizacion" Enabled="false" InputType="Number" MaxLength="999999"></telerik:RadTextBox>
                                 </div>
                             </div>
 
@@ -977,7 +1427,7 @@
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>Cuenta de pago:</label>
                                 </div>
-                                <div class="divControlDerecha" >
+                                <div class="divControlDerecha">
                                     <telerik:RadTextBox runat="server" ID="txtCuentaPago"></telerik:RadTextBox>
                                 </div>
                             </div>
@@ -986,7 +1436,7 @@
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>Clave de pago:</label>
                                 </div>
-                                <div class="divControlDerecha" >
+                                <div class="divControlDerecha">
                                     <telerik:RadTextBox runat="server" ID="txtClavePago"></telerik:RadTextBox>
                                 </div>
                             </div>
@@ -995,7 +1445,7 @@
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>Cuenta de vales de despensa:</label>
                                 </div>
-                                <div class="divControlDerecha" >
+                                <div class="divControlDerecha">
                                     <telerik:RadTextBox runat="server" ID="txtCuentaValesDespensa"></telerik:RadTextBox>
                                 </div>
                             </div>
@@ -1007,7 +1457,7 @@
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>FILLER01:</label>
                                 </div>
-                                <div class="divControlDerecha" >
+                                <div class="divControlDerecha">
                                     <telerik:RadTextBox runat="server" ID="txtFILLER01"></telerik:RadTextBox>
                                 </div>
                             </div>
@@ -1016,7 +1466,7 @@
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>FILLER02:</label>
                                 </div>
-                                <div class="divControlDerecha" >
+                                <div class="divControlDerecha">
                                     <telerik:RadTextBox runat="server" ID="txtFILLER02"></telerik:RadTextBox>
                                 </div>
                             </div>
@@ -1025,7 +1475,7 @@
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>FILLER03:</label>
                                 </div>
-                                <div class="divControlDerecha" >
+                                <div class="divControlDerecha">
                                     <telerik:RadTextBox runat="server" ID="txtFILLER03"></telerik:RadTextBox>
                                 </div>
                             </div>
@@ -1034,7 +1484,7 @@
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>FILLER04:</label>
                                 </div>
-                                <div class="divControlDerecha" >
+                                <div class="divControlDerecha">
                                     <telerik:RadTextBox runat="server" ID="txtFILLER04"></telerik:RadTextBox>
                                 </div>
                             </div>
@@ -1043,7 +1493,7 @@
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>FILLER05:</label>
                                 </div>
-                                <div class="divControlDerecha" >
+                                <div class="divControlDerecha">
                                     <telerik:RadTextBox runat="server" ID="txtFILLER05"></telerik:RadTextBox>
                                 </div>
                             </div>
@@ -1065,7 +1515,7 @@
                     <telerik:RadSlidingPane ID="rspAyudaFoto" runat="server" Title="Ayuda" Width="240px" RenderMode="Mobile" Height="200">
                         <div style="padding: 10px; text-align: justify;">
                             <p>
-                                 Para agregar la fotografía de perfil sigue los siguientes pasos:<br />
+                                Para agregar la fotografía de perfil sigue los siguientes pasos:<br />
                                 1.- Presiona el botón "Seleccionar" para seleccionar la fotografía desde tu ordenador.
                                 <br />
                                 2.- Al seleccionar la imágen, ésta se cargará. Para ponerla como foto de perfil presiona el botón "Adjuntar". Podrás eliminar la fotografía cargada, seleccionando "Remove".<br />
@@ -1080,8 +1530,8 @@
     </div>
     <div style="clear: both; height: 5px;"></div>
     <div class="divControlDerecha">
-        <telerik:RadButton ID="btnGuardar" runat="server" Text="Guardar"  OnClick="btnGuardar_Click"></telerik:RadButton>
-        <telerik:RadButton ID="btnGuardarSalir" runat="server" Text="Guardar y cerrar"  OnClick="btnGuardarSalir_Click"></telerik:RadButton>
+        <telerik:RadButton ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click"></telerik:RadButton>
+        <telerik:RadButton ID="btnGuardarSalir" runat="server" Text="Guardar y cerrar" OnClick="btnGuardarSalir_Click"></telerik:RadButton>
         <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" OnClientClicked="OnClientBeforeClose" AutoPostBack="false"></telerik:RadButton>
     </div>
     <telerik:RadWindowManager ID="rwmAlertas" runat="server">

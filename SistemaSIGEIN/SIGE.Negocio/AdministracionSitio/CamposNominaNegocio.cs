@@ -21,11 +21,11 @@ namespace SIGE.Negocio.AdministracionSitio
             return (from x in vConfiguracionCampos
                     select new E_CAMPO_NOMINA_DO
                     {
-                      CL_CAMPO = x.CL_CAMPO,
-                      FG_EDITABLE_NOMINA = (bool)x.FG_EDITABLE_NOMINA,
-                      FG_EDITABLE_DO = (bool)x.FG_EDITABLE_DO,
-                      FE_MODIFICACION = x.FE_MODIFICACION,
-                      CL_ULTIMO_USUARIO_MODIFICA = x.CL_ULTIMO_USUARIO_MODIFICA
+                        CL_CAMPO = x.CL_CAMPO,
+                        FG_EDITABLE_NOMINA = (bool)x.FG_EDITABLE_NOMINA,
+                        FG_EDITABLE_DO = (bool)x.FG_EDITABLE_DO,
+                        FE_MODIFICACION = x.FE_MODIFICACION,
+                        CL_ULTIMO_USUARIO_MODIFICA = x.CL_ULTIMO_USUARIO_MODIFICA
                     }).ToList();
         }
 
@@ -100,5 +100,95 @@ namespace SIGE.Negocio.AdministracionSitio
             CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
             return oCampo.ObtieneEmpleadosGenerales(pCL_EMPLEADO, pFG_ACTIVO, pID_EMPRESA, pID_ROL);
         }
+
+        public List<E_RAZON_SOCIAL> ObtieneRazonSocial(string CL_CLIENTE = null, bool? FG_ACTIVO = null)
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtieneRazonSocial(CL_CLIENTE, FG_ACTIVO);
+        }
+
+        public List<E_REGISTRO_PATRONAL> ObtieneRegistroPatronal(Guid? ID_RAZON_SOCIAL = null, bool? FG_ACTIVO = null)
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtieneRegistroPatronal(ID_RAZON_SOCIAL, FG_ACTIVO);
+        }
+
+        public List<E_TIPO_TRABAJO_SUA> ObtieneTipoTrabajoSUA(double? CL_TIPO_TRAB_SUA = null, string DS_TIPO_TRAB_SUA = null)
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtieneTipoTrabajoSUA(CL_TIPO_TRAB_SUA, DS_TIPO_TRAB_SUA);
+        }
+        public List<E_TIPO_JORNADA_SUA> ObtieneTipoJornadaSUA(double? CL_JORNADA_SUA = null, string DS_JORNADA_SUA = null)
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtieneTipoJornadaSUA(CL_JORNADA_SUA, DS_JORNADA_SUA);
+        }
+        public List<E_TIPO_CONTRATO_SAT> ObtieneTipoContratoSAT(string CL_TIPO_CONTRATO = null, string DS_TIPO_CONTRATO = null)
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtieneTipoContratoSAT(CL_TIPO_CONTRATO, DS_TIPO_CONTRATO);
+        }
+
+        public List<E_TIPO_JORNADA_SAT> ObtieneTipoJornadaSAT(string CL_TIPO_JORNADA = null, string DS_TIPO_JORNADA = null)
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtieneTipoJornadaSAT(CL_TIPO_JORNADA, DS_TIPO_JORNADA);
+        }
+
+        public List<E_REGIMEN_SAT> ObtieneRegimenSAT()
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtieneRegimenSAT();
+        }
+
+        public List<E_TIPO_SALARIO_SUA> ObtieneTipoSalarioSUA()
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtieneTipoSalarioSUA();
+        }
+
+        public List<E_RIESGO_PUESTO> ObtieneRiesgoPuesto()
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtieneRiesgoPuesto();
+        }
+
+        public List<E_HORARIO_SEMANA> ObtieneHorarioSemana()
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtieneHorarioSemana();
+        }
+
+        public List<E_PAQUETE_PRESTACIONES> ObtienePaquetePrestaciones()
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtienePaquetePrestaciones();
+        }
+
+        public List<E_FORMATO_DISPERSION> ObtieneFormatoDispersion(E_FORMATO_DISPERSION formatoDispersion = null)
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtieneFormatoDispersion(formatoDispersion.CL_FORMATO, formatoDispersion.CL_TIPO_FORMATO, formatoDispersion.NB_FORMATO);
+
+        }
+
+        public List<E_TIPO_NOMINA> ObtieneTipoNomina(E_TIPO_NOMINA tipoNomina = null)
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtieneTipoNomina(tipoNomina.ID_TIPO_NOMINA, tipoNomina.CL_CLIENTE, tipoNomina.CL_TIPO_NOMINA, tipoNomina.NB_PERIODICIDAD, tipoNomina.CL_PERIODICIDAD, tipoNomina.DS_TIPO_NOMINA, tipoNomina.FG_ACTIVO);
+        }
+
+        public List <E_FORMA_PAGO> ObtieneFormaPago(E_FORMA_PAGO formaPago = null)
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtieneFormaPago(formaPago.CL_FORMA_PAGO, formaPago.NB_FORMA_PAGO, formaPago.FG_ACTIVO);
+        }
+
+        public List<E_BANCO> ObtieneBancosNomina(E_BANCO banco = null)
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtieneBancosNomina(banco.CL_BANCO, banco.NB_BANCO, banco.FG_ACTIVO);
+        }
+
     }
 }

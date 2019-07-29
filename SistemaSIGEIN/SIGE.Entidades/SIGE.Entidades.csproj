@@ -60,11 +60,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administracion\COMPETENCIAS_LABORALES.cs" />
+    <Compile Include="Administracion\E_BANCO.cs" />
     <Compile Include="Administracion\E_CAMPO_NOMINA_DO.cs" />
     <Compile Include="Administracion\E_CLIENTE.cs" />
     <Compile Include="Administracion\E_EMPLEADO_NOMINA_DO.cs" />
     <Compile Include="Administracion\E_EMPLEADO_RPT.cs" />
+    <Compile Include="Administracion\E_FORMATO_DISPERSION.cs" />
+    <Compile Include="Administracion\E_FORMA_PAGO.cs" />
     <Compile Include="Administracion\E_GRUPOS.cs" />
+    <Compile Include="Administracion\E_HORARIO_SEMANA.cs" />
     <Compile Include="Administracion\E_LICENCIA.cs" />
     <Compile Include="Administracion\E_MODULO.cs" />
     <Compile Include="Administracion\E_OBTIENE_COMPETENCIAS_LABORALES.cs" />
@@ -98,6 +102,7 @@
     <Compile Include="Administracion\E_NIVEL_ESCOLARIDAD.cs" />
     <Compile Include="Administracion\E_ORGANIGRAMA.cs" />
     <Compile Include="Administracion\E_ORGANIGRAMA_PUESTO.cs" />
+    <Compile Include="Administracion\E_PAQUETE_PRESTACIONES.cs" />
     <Compile Include="Administracion\E_PERIODO.cs" />
     <Compile Include="Administracion\E_PERSONAL.cs" />
     <Compile Include="Administracion\E_PLAZA.cs" />
@@ -106,14 +111,24 @@
     <Compile Include="Administracion\E_PUESTOS_CONSULTA.cs" />
     <Compile Include="Administracion\E_PUESTOS_CONSULTA_GLOBAL.cs" />
     <Compile Include="Administracion\E_PUESTO_INTERRELACIONADO.cs" />
+    <Compile Include="Administracion\E_RAZON_SOCIAL.cs" />
+    <Compile Include="Administracion\E_REGIMEN_SAT.cs" />
+    <Compile Include="Administracion\E_REGISTRO_PATRONAL.cs" />
     <Compile Include="Administracion\E_REPORTE_EMPLEADO.cs" />
     <Compile Include="Administracion\E_REQUISICION.cs" />
+    <Compile Include="Administracion\E_RIESGO_PUESTO.cs" />
     <Compile Include="Administracion\E_ROL.cs" />
     <Compile Include="Administracion\E_ROL_FUNCION.cs" />
     <Compile Include="Administracion\E_SECUENCIA.cs" />
     <Compile Include="Administracion\E_SELECCION_PLAZA.cs" />
     <Compile Include="Administracion\E_SELECCION_PUESTOS.cs" />
     <Compile Include="Administracion\E_SISTEMA.cs" />
+    <Compile Include="Administracion\E_TIPO_CONTRATO_SAT.cs" />
+    <Compile Include="Administracion\E_TIPO_JORNADA_SAT.cs" />
+    <Compile Include="Administracion\E_TIPO_JORNADA_SUA.cs" />
+    <Compile Include="Administracion\E_TIPO_NOMINA.cs" />
+    <Compile Include="Administracion\E_TIPO_SALARIO_SUA.cs" />
+    <Compile Include="Administracion\E_TIPO_TRABAJO_SUA.cs" />
     <Compile Include="Administracion\E_USUARIO.cs" />
     <Compile Include="EvaluacionOrganizacionalModel.cs">
       <AutoGen>True</AutoGen>

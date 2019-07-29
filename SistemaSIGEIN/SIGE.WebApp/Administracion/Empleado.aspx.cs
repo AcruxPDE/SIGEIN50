@@ -23,6 +23,35 @@ namespace SIGE.WebApp.Administracion
     {
 
         #region Variables
+        private List<E_RAZON_SOCIAL> listRazonSocial = new List<E_RAZON_SOCIAL>();
+        private List<E_REGISTRO_PATRONAL> listRegistrosPatronales = new List<E_REGISTRO_PATRONAL>();
+        private List<E_TIPO_TRABAJO_SUA> listTipoTrabajoSUA = new List<E_TIPO_TRABAJO_SUA>();
+        private List<E_TIPO_JORNADA_SUA> listTipoJornadaSUA = new List<E_TIPO_JORNADA_SUA>();
+        private List<E_TIPO_CONTRATO_SAT> listTipoContratoSAT = new List<E_TIPO_CONTRATO_SAT>();
+        private List<E_TIPO_JORNADA_SAT> listTipoJornadaSAT = new List<E_TIPO_JORNADA_SAT>();
+        private List<E_REGIMEN_SAT> listRegimenSAT = new List<E_REGIMEN_SAT>();
+        private List<E_TIPO_SALARIO_SUA> listTipoSalarioSUA = new List<E_TIPO_SALARIO_SUA>();
+        private List<E_RIESGO_PUESTO> listRiesgoPuesto = new List<E_RIESGO_PUESTO>();
+        private List<E_HORARIO_SEMANA> listHorarioSemana = new List<E_HORARIO_SEMANA>();
+        private List<E_PAQUETE_PRESTACIONES> listPaquetePrestaciones = new List<E_PAQUETE_PRESTACIONES>();
+        private List<E_FORMATO_DISPERSION> listFormatoDispersion = new List<E_FORMATO_DISPERSION>();
+        private List<E_TIPO_NOMINA> listTipoNomina = new List<E_TIPO_NOMINA>();
+        private List<E_FORMA_PAGO> listFormaPago = new List<E_FORMA_PAGO>();
+        private List<E_BANCO> listBancoNomina = new List<E_BANCO>();
+
+        Plantilla vPlantilla;
+        string vXmlPlantilla;
+        int? vIdEmpleado;
+        int? vIdEmpleadoNominaDo;
+        string vClCliente;
+        string vClUsuario;
+        string vNbPrograma;
+        string vXmlDocumentos;
+        Guid? vIdItemFoto;
+        string vClRutaArchivosTemporales;
+        private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private bool vGuardar;
+        private int? vIdEmpresa;
 
         public int? vIdSolicitud
         {
@@ -72,13 +101,7 @@ namespace SIGE.WebApp.Administracion
             set { ViewState["vs_vIdItemFotografia"] = value; }
         }
 
-        Plantilla vPlantilla;
-
-        string vXmlPlantilla;
-
-        int? vIdEmpleado;
-
-        int? vIdEmpleadoNominaDo;
+        
 
         public int? vIdCandidato
         {
@@ -91,22 +114,6 @@ namespace SIGE.WebApp.Administracion
             get { return (string)ViewState["vs_vUrlNomina"]; }
             set { ViewState["vs_vUrlNomina"] = value; }
         }
-
-        string vClUsuario;
-
-        string vNbPrograma;
-
-        string vXmlDocumentos;
-
-        Guid? vIdItemFoto;
-
-        string vClRutaArchivosTemporales;
-
-        private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
-
-        private bool vGuardar;
-
-        private int? vIdEmpresa;
 
         public List<KeyValuePair<string, string>> vDatosModificar
         {
@@ -494,16 +501,148 @@ namespace SIGE.WebApp.Administracion
             }
         }
 
+        protected void CargarDatos()
+        {
+            CamposNominaNegocio oNegocio = new CamposNominaNegocio();
+
+            //Get the razon social combo
+            listRazonSocial = oNegocio.ObtieneRazonSocial(vClCliente , true);
+            cmbRazonSocial.DataSource = listRazonSocial;
+            cmbRazonSocial.DataValueField = "ID_RAZON_SOCIAL";
+            cmbRazonSocial.DataTextField = "CL_RAZON_SOCIAL";
+            cmbRazonSocial.DataBind();
+
+            //Get the tipo de trabajo SUA combo
+            listTipoTrabajoSUA = oNegocio.ObtieneTipoTrabajoSUA(null, null);
+            cmbTipoTrabajoSUA.DataSource = listTipoTrabajoSUA;
+            cmbTipoTrabajoSUA.DataValueField = "CL_TIPO_TRAB_SUA";
+            cmbTipoTrabajoSUA.DataTextField = "DS_TIPO_TRAB_SUA";
+            cmbTipoTrabajoSUA.DataBind();
+
+            //Get the tipo de jornada SUA combo
+            listTipoJornadaSUA = oNegocio.ObtieneTipoJornadaSUA(null, null);
+            cmbTipoJornadaSUA.DataSource = listTipoJornadaSUA;
+            cmbTipoJornadaSUA.DataValueField = "CL_JORNADA_SUA";
+            cmbTipoJornadaSUA.DataTextField = "DS_JORNADA_SUA";
+            cmbTipoJornadaSUA.DataBind();
+
+            //Get the tipo de contrato SAT combo
+            listTipoContratoSAT = oNegocio.ObtieneTipoContratoSAT(null, null);
+            cmbTipoContratoSAT.DataSource = listTipoContratoSAT;
+            cmbTipoContratoSAT.DataValueField = "CL_TIPO_CONTRATO";
+            cmbTipoContratoSAT.DataTextField = "DS_TIPO_CONTRATO";
+            cmbTipoContratoSAT.DataBind();
+
+            //Get the tipo de jornada SAT combo
+            listTipoJornadaSAT = oNegocio.ObtieneTipoJornadaSAT(null, null);
+            cmbTipoJornadaSAT.DataSource = listTipoJornadaSAT;
+            cmbTipoJornadaSAT.DataValueField = "CL_TIPO_JORNADA";
+            cmbTipoJornadaSAT.DataTextField = "DS_TIPO_JORNADA";
+            cmbTipoJornadaSAT.DataBind();
+
+            //Get the tipo de regimen SAT combo
+            listRegimenSAT = oNegocio.ObtieneRegimenSAT();
+            cmbRegimenContratacion.DataSource = listRegimenSAT;
+            cmbRegimenContratacion.DataValueField = "CL_REGIMEN";
+            cmbRegimenContratacion.DataTextField = "NB_REGIMEN";
+            cmbRegimenContratacion.DataBind();
+
+            //Get the tipo salario SUA combo
+            listTipoSalarioSUA = oNegocio.ObtieneTipoSalarioSUA();
+            cmbTipoSalario.DataSource = listTipoSalarioSUA;
+            cmbTipoSalario.DataValueField = "CL_TIPO_SALARIO_SUA";
+            cmbTipoSalario.DataTextField = "DS_TIPO_SALARIO_SUA";
+            cmbTipoSalario.DataBind();
+
+            //Get the riesgo puesto combo
+            listRiesgoPuesto = oNegocio.ObtieneRiesgoPuesto();
+            cmbRiesgoPuesto.DataSource = listRiesgoPuesto;
+            cmbRiesgoPuesto.DataValueField = "CL_RIESGO_PUESTO";
+            cmbRiesgoPuesto.DataTextField = "NB_RIESGO_PUESTO";
+            cmbRiesgoPuesto.DataBind();
+
+            //Get the horario semana combo
+            listHorarioSemana = oNegocio.ObtieneHorarioSemana();
+            cmbHorarioNO.DataSource = listHorarioSemana;
+            cmbHorarioNO.DataValueField = "CL_HORARIO_SEMANA";
+            cmbHorarioNO.DataTextField = "NB_HORARIO_SEMANA";
+            cmbHorarioNO.DataBind();
+
+            //Get the paquete de prestaciones combo
+            listPaquetePrestaciones = oNegocio.ObtienePaquetePrestaciones();
+            cmbPaquetePrestacionesNO.DataSource = listPaquetePrestaciones;
+            cmbPaquetePrestacionesNO.DataValueField = "ID_PAQUETE_PRESTACIONES";
+            cmbPaquetePrestacionesNO.DataTextField = "DS_PAQUETE";
+            cmbPaquetePrestacionesNO.DataBind();
+
+            //Get the formato dispersion
+            E_FORMATO_DISPERSION formatoDispersion = new E_FORMATO_DISPERSION();
+            listFormatoDispersion = oNegocio.ObtieneFormatoDispersion(formatoDispersion);
+
+            //Get the formato dispersion combo
+            cmbFormatoDispersionNO.DataSource = listFormatoDispersion.Where(x => x.CL_TIPO_FORMATO.Equals("D"));
+            cmbFormatoDispersionNO.DataValueField = "CL_FORMATO";
+            cmbFormatoDispersionNO.DataTextField = "NB_FORMATO";
+            cmbFormatoDispersionNO.DataBind();
+
+            //Get the formato vales gasolina combo
+            cmbFormatoValesGasolinaNO.DataSource = listFormatoDispersion.Where(x => x.CL_TIPO_FORMATO.Equals("V"));
+            cmbFormatoValesGasolinaNO.DataValueField = "CL_FORMATO";
+            cmbFormatoValesGasolinaNO.DataTextField = "NB_FORMATO";
+            cmbFormatoValesGasolinaNO.DataBind();
+
+            //Get the formato vales despensa combo
+            cmbFormatoValesDespensaNO.DataSource = listFormatoDispersion.Where(x => x.CL_TIPO_FORMATO.Equals("V"));
+            cmbFormatoValesDespensaNO.DataValueField = "CL_FORMATO";
+            cmbFormatoValesDespensaNO.DataTextField = "NB_FORMATO";
+            cmbFormatoValesDespensaNO.DataBind();
+
+            E_TIPO_NOMINA tipoNomina = new E_TIPO_NOMINA();
+            tipoNomina.FG_ACTIVO = true;
+
+            listTipoNomina = oNegocio.ObtieneTipoNomina(tipoNomina);
+            cmbTipoNomina.DataSource = listTipoNomina;
+            cmbTipoNomina.DataValueField = "CL_TIPO_NOMINA";
+            cmbTipoNomina.DataTextField = "DS_TIPO_NOMINA";
+            cmbTipoNomina.DataBind();
+
+            E_FORMA_PAGO formaPago =new E_FORMA_PAGO();
+            formaPago.FG_ACTIVO = true;
+
+            listFormaPago = oNegocio.ObtieneFormaPago(formaPago);
+            cmbFormaPago.DataSource = listFormaPago;
+            cmbFormaPago.DataValueField = "CL_FORMA_PAGO";
+            cmbFormaPago.DataTextField = "NB_FORMA_PAGO";
+            cmbFormaPago.DataBind();
+
+            E_BANCO banco = new E_BANCO();
+            banco.FG_ACTIVO = true;
+
+            listBancoNomina = oNegocio.ObtieneBancosNomina(banco);
+            cmbBanco.DataSource = listBancoNomina;
+            cmbBanco.DataValueField = "CL_BANCO";
+            cmbBanco.DataTextField = "NB_BANCO";
+            cmbBanco.DataBind();
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            vNbPrograma = ContextoUsuario.nbPrograma;
+            vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
+            vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+            vClCliente = ContextoUsuario.clCliente;
+
             if (!Page.IsPostBack)
             {
+                CargarDatos();
                 vIdEmpleadoVS = vIdEmpleado;
                 vXmlEmpleadoPlantilla = vXmlPlantilla;
                 vIdItemFotografia = vIdItemFoto;
                 CargarDocumentos();
+                
+
                 if (vIdEmpleado != null)
                 {
                     pvwReportes.Visible = true;
@@ -519,9 +658,7 @@ namespace SIGE.WebApp.Administracion
             AsignarAjax();
             vPlantilla.xmlPlantilla = vXmlEmpleadoPlantilla;
             vClRutaArchivosTemporales = Server.MapPath(ContextoApp.ClRutaArchivosTemporales);
-            vNbPrograma = ContextoUsuario.nbPrograma;
-            vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
-            vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
+            
         }
 
         protected void Page_Init(object sender, EventArgs e)
@@ -776,5 +913,22 @@ namespace SIGE.WebApp.Administracion
             }
 
         }
+
+        protected void cmbRazonSocial_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+        {
+            if (cmbRazonSocial.Text != String.Empty)
+            {
+                CamposNominaNegocio oNegocio = new CamposNominaNegocio();
+
+                cmbRegistroPatronal.DataSource = null;
+                listRegistrosPatronales = oNegocio.ObtieneRegistroPatronal(Guid.Parse(cmbRazonSocial.SelectedValue), true);
+                cmbRegistroPatronal.DataSource = listRegistrosPatronales;
+                cmbRegistroPatronal.DataTextField = "CL_REGISTRO_PATRONAL";
+                cmbRegistroPatronal.DataValueField = "ID_REGISTRO_PATRONAL";
+                cmbRegistroPatronal.DataBind();
+            }
+        }
+
+
     }
 }

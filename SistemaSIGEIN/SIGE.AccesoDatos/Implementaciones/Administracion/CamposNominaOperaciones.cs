@@ -190,5 +190,208 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
             }
         }
 
+        public List<E_RAZON_SOCIAL> ObtieneRazonSocial(string CL_CLIENTE = null, bool? FG_ACTIVO = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_RAZON_SOCIAL>("EXEC " +
+                    "ADM.SPE_OBTIENE_C_RAZON_SOCIAL " +
+                    "@PIN_CL_CLIENTE, " +
+                    "@PIN_FG_ACTIVO ",
+                    new SqlParameter("@PIN_CL_CLIENTE", (object)CL_CLIENTE ?? DBNull.Value),
+                    new SqlParameter("@PIN_FG_ACTIVO", (object)FG_ACTIVO ?? DBNull.Value)
+                ).ToList();
+            }
+        }
+
+        public List<E_REGISTRO_PATRONAL> ObtieneRegistroPatronal(Guid? ID_RAZON_SOCIAL = null, bool? FG_ACTIVO = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_REGISTRO_PATRONAL>("EXEC " +
+                    "ADM.SPE_OBTIENE_C_REGISTRO_PATRONAL " +
+                    "@PIN_ID_REGISTRO_PATRONAL, " +
+                    "@PIN_FG_ACTIVO ",
+                    new SqlParameter("@PIN_ID_REGISTRO_PATRONAL", (object)ID_RAZON_SOCIAL ?? DBNull.Value),
+                    new SqlParameter("@PIN_FG_ACTIVO", (object)FG_ACTIVO ?? DBNull.Value)
+                ).ToList();
+            }
+        }
+
+        public List<E_TIPO_TRABAJO_SUA> ObtieneTipoTrabajoSUA(double? CL_TIPO_TRAB_SUA = null, string DS_TIPO_TRAB_SUA = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_TIPO_TRABAJO_SUA>("EXEC " +
+                    "Nomina.SPE_OBTIENE_VW_TIPO_TRAB_SUA " +
+                    "@PIN_CL_TIPO_TRAB_SUA, " +
+                    "@PIN_DS_TIPO_TRAB_SUA ",
+                    new SqlParameter("@PIN_CL_TIPO_TRAB_SUA", (object)CL_TIPO_TRAB_SUA ?? DBNull.Value),
+                    new SqlParameter("@PIN_DS_TIPO_TRAB_SUA", (object)DS_TIPO_TRAB_SUA ?? DBNull.Value)
+                ).ToList();
+            }
+        }
+
+        public List<E_TIPO_JORNADA_SUA> ObtieneTipoJornadaSUA(double? CL_JORNADA_SUA = null, string DS_JORNADA_SUA = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_TIPO_JORNADA_SUA>("EXEC " +
+                    "Nomina.SPE_OBTIENE_VW_TIPO_TRAB_SUA " +
+                    "@PIN_CL_JORNADA_SUA, " +
+                    "@PIN_DS_JORNADA_SUA ",
+                    new SqlParameter("@PIN_CL_JORNADA_SUA", (object)CL_JORNADA_SUA ?? DBNull.Value),
+                    new SqlParameter("@PIN_DS_JORNADA_SUA", (object)DS_JORNADA_SUA ?? DBNull.Value)
+                ).ToList();
+            }
+        }
+
+        public List<E_TIPO_CONTRATO_SAT> ObtieneTipoContratoSAT(string CL_TIPO_CONTRATO = null, string DS_TIPO_CONTRATO = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_TIPO_CONTRATO_SAT>("EXEC " +
+                    "Nomina.SPE_OBTIENE_S_TIPO_CONTRATO_SAT " +
+                    "@PIN_CL_TIPO_CONTRATO, " +
+                    "@PIN_DS_TIPO_CONTRATO ",
+                    new SqlParameter("@PIN_CL_TIPO_CONTRATO", (object)CL_TIPO_CONTRATO ?? DBNull.Value),
+                    new SqlParameter("@PIN_DS_TIPO_CONTRATO", (object)DS_TIPO_CONTRATO ?? DBNull.Value)
+                ).ToList();
+            }
+        }
+
+        public List<E_TIPO_JORNADA_SAT> ObtieneTipoJornadaSAT(string CL_TIPO_JORNADA = null, string DS_TIPO_JORNADA = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_TIPO_JORNADA_SAT>("EXEC " +
+                    "Nomina.SPE_OBTIENE_S_TIPO_JORNADA_SAT " +
+                    "@PIN_CL_TIPO_JORNADA, " +
+                    "@PIN_DS_TIPO_JORNADA ",
+                    new SqlParameter("@PIN_CL_TIPO_JORNADA", (object)CL_TIPO_JORNADA ?? DBNull.Value),
+                    new SqlParameter("@PIN_DS_TIPO_JORNADA", (object)DS_TIPO_JORNADA ?? DBNull.Value)
+                ).ToList();
+            }
+        }
+
+        public List<E_REGIMEN_SAT> ObtieneRegimenSAT()
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_REGIMEN_SAT>("EXEC " +
+                    "Nomina.SPE_OBTIENE_S_REGIMEN_SAT "
+                ).ToList();
+            }
+        }
+
+        public List<E_TIPO_SALARIO_SUA> ObtieneTipoSalarioSUA()
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_TIPO_SALARIO_SUA>("EXEC " +
+                    "Nomina.SPE_OBTIENE_VW_TIPO_SALARIO_SUA "
+                ).ToList();
+            }
+        }
+
+        public List<E_RIESGO_PUESTO> ObtieneRiesgoPuesto()
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_RIESGO_PUESTO>("EXEC " +
+                    "Nomina.SPE_OBTIENE_S_RIESGO_PUESTO_SAT "
+                ).ToList();
+            }
+        }
+
+        public List<E_HORARIO_SEMANA> ObtieneHorarioSemana()
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_HORARIO_SEMANA>("EXEC " +
+                    "Nomina.SPE_OBTIENE_C_HORARIO_SEMANA "
+                ).ToList();
+            }
+        }
+
+        public List<E_PAQUETE_PRESTACIONES> ObtienePaquetePrestaciones()
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_PAQUETE_PRESTACIONES>("EXEC " +
+                    "Nomina.SPE_OBTIENE_C_PAQUETE_PRESTACIONES "
+                ).ToList();
+            }
+        }
+
+        public List<E_FORMATO_DISPERSION> ObtieneFormatoDispersion(string CL_FORMATO = null, string CL_TIPO_FORMATO = null, string NB_FORMATO = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_FORMATO_DISPERSION>("EXEC " +
+                    "Nomina.SPE_OBTIENE_S_FORMATO " +
+                    "@PIN_CL_FORMATO, " +
+                    "@PIN_CL_TIPO_FORMATO, " +
+                    "@PIN_NB_FORMATO ",
+                    new SqlParameter("@PIN_CL_FORMATO", (object)CL_FORMATO ?? DBNull.Value),
+                    new SqlParameter("@PIN_CL_TIPO_FORMATO", (object)CL_TIPO_FORMATO ?? DBNull.Value),
+                    new SqlParameter("@PIN_NB_FORMATO", (object)NB_FORMATO ?? DBNull.Value)
+                ).ToList();
+            }
+        }
+
+        public List<E_TIPO_NOMINA> ObtieneTipoNomina(Guid? ID_TIPO_NOMINA = null, string CL_CLIENTE = null, string CL_TIPO_NOMINA = null, string NB_PERIODICIDAD = null, string CL_PERIODICIDAD = null, string DS_TIPO_NOMINA = null, bool? FG_ACTIVO = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_TIPO_NOMINA>("EXEC " +
+                    "Nomina.SPE_OBTIENE_C_TIPO_NOMINA " +
+                    "@PIN_ID_TIPO_NOMINA, " +
+                    "@PIN_CL_CLIENTE, " +
+                    "@PIN_CL_TIPO_NOMINA, " +
+                    "@PIN_CL_PERIODICIDAD, " +
+                    "@PIN_DS_TIPO_NOMINA, " +
+                    "@PIN_FG_ACTIVO ",
+                    new SqlParameter("@PIN_ID_TIPO_NOMINA", (object)ID_TIPO_NOMINA ?? DBNull.Value),
+                    new SqlParameter("@PIN_CL_CLIENTE", (object)CL_CLIENTE ?? DBNull.Value),
+                    new SqlParameter("@PIN_CL_TIPO_NOMINA", (object)CL_TIPO_NOMINA ?? DBNull.Value),
+                    new SqlParameter("@PIN_CL_PERIODICIDAD", (object)CL_PERIODICIDAD ?? DBNull.Value),
+                    new SqlParameter("@PIN_DS_TIPO_NOMINA", (object)DS_TIPO_NOMINA ?? DBNull.Value),
+                    new SqlParameter("@PIN_FG_ACTIVO", (object)FG_ACTIVO ?? DBNull.Value)
+                ).ToList();
+            }
+        }
+
+        public List<E_FORMA_PAGO> ObtieneFormaPago(string CL_FORMA_PAGO = null, string NB_FORMA_PAGO = null, bool? FG_ACTIVO = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_FORMA_PAGO>("EXEC " +
+                    "Nomina.SPE_OBTIENE_S_FORMA_PAGO_SAT " +
+                    "@PIN_CL_FORMA_PAGO, " +
+                    "@PIN_NB_FORMA_PAGO, " +
+                    "@PIN_FG_ACTIVO",
+                    new SqlParameter("@PIN_CL_FORMA_PAGO", (object)CL_FORMA_PAGO ?? DBNull.Value),
+                    new SqlParameter("@PIN_NB_FORMA_PAGO", (object)NB_FORMA_PAGO ?? DBNull.Value),
+                    new SqlParameter("@PIN_FG_ACTIVO", (object)FG_ACTIVO ?? DBNull.Value)
+                ).ToList();
+            }
+        }
+
+        public List<E_BANCO> ObtieneBancosNomina(string CL_BANCO = null, string NB_BANCO = null, bool? FG_ACTIVO = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_BANCO>("EXEC " +
+                    "Nomina.SPE_OBTIENE_S_BANCO_SAT " +
+                    "@PIN_CL_BANCO, " +
+                    "@PIN_NB_BANCO, " +
+                    "@PIN_FG_ACTIVO ",
+                    new SqlParameter("@PIN_CL_BANCO", (object)CL_BANCO ?? DBNull.Value),
+                    new SqlParameter("@PIN_NB_BANCO", (object)NB_BANCO ?? DBNull.Value),
+                    new SqlParameter("@PIN_FG_ACTIVO", (object)FG_ACTIVO ?? DBNull.Value)
+                ).ToList();
+            }
+        }
     }
 }
