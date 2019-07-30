@@ -464,6 +464,7 @@
                     <telerik:AjaxUpdatedControl ControlID="txtBaseCotizacionDeterminado" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="txtBaseCotizacionMaximo" UpdatePanelHeight="100%" />
                     <telerik:AjaxUpdatedControl ControlID="txtSalarioBaseCotizacion" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="btnCalcularSueldo" UpdatePanelHeight="100%" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -1225,7 +1226,7 @@
                                     </telerik:RadComboBox>
                                 </div>
                             </div>
-
+                            
                             <div class="ctrlBasico" style="clear: both;">
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>Tipo de nómina:</label>
@@ -1339,6 +1340,40 @@
                             </div>
 
                             <div style="clear: both; height: 20px;"></div>
+                            <label class="labelTitulo">Fechas</label>
+
+                            <div class="ctrlBasico">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Fecha de reingreso:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadDatePicker runat="server" ID="txtFeReingreso" MinDate="01/01/1900" Width="300px" DateInput-EmptyMessage="Fecha de reingreso"></telerik:RadDatePicker>
+                                </div>
+                            </div>
+
+                            <div style="clear: both;"></div>
+
+                            <div class="ctrlBasico">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Fecha de antigüedad:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadDatePicker runat="server" ID="txtFeAntiguedad" MinDate="01/01/1900" Width="300px" DateInput-EmptyMessage="Fecha de antigüedad"></telerik:RadDatePicker>
+                                </div>
+                            </div>
+
+                            <div style="clear: both;"></div>
+
+                            <div class="ctrlBasico">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Fecha de planta:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadDatePicker runat="server" ID="txtFePlanta" MinDate="01/01/1900" Width="300px" DateInput-EmptyMessage="Fecha de planta"></telerik:RadDatePicker>
+                                </div>
+                            </div>
+
+                            <div style="clear: both; height: 20px;"></div>
                             <label class="labelTitulo">Sueldo nominal</label>
 
                             <div class="ctrlBasico">
@@ -1352,7 +1387,7 @@
 
                             <div class="ctrlBasico" style="margin-left: 20px">
                                 <div class="divControlDerecha">
-                                    <telerik:RadButton runat="server" ID="btnCalcularSueldo" Text="Calcular"></telerik:RadButton>
+                                    <telerik:RadButton runat="server" ID="btnCalcularSueldo" Text="Calcular" OnClick="btnCalcularSueldo_Click"></telerik:RadButton>
                                     <%--<telerik:RadTextBox runat="server" ID="RadTextBox1" InputType="Number" MaxLength="999999"></telerik:RadTextBox>--%>
                                 </div>
                             </div>
@@ -1549,4 +1584,5 @@
             </div>
         </ConfirmTemplate>
     </telerik:RadWindowManager>
+    <asp:HiddenField ID="salarioMinDF" Value="" runat="server"/>
 </asp:Content>

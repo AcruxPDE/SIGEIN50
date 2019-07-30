@@ -60,9 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administracion\COMPETENCIAS_LABORALES.cs" />
+    <Compile Include="Administracion\E_ANTIGUEDAD.cs" />
     <Compile Include="Administracion\E_BANCO.cs" />
     <Compile Include="Administracion\E_CAMPO_NOMINA_DO.cs" />
     <Compile Include="Administracion\E_CLIENTE.cs" />
+    <Compile Include="Administracion\E_CONFIGURACION.cs" />
     <Compile Include="Administracion\E_EMPLEADO_NOMINA_DO.cs" />
     <Compile Include="Administracion\E_EMPLEADO_RPT.cs" />
     <Compile Include="Administracion\E_FORMATO_DISPERSION.cs" />
@@ -129,6 +131,7 @@
     <Compile Include="Administracion\E_TIPO_NOMINA.cs" />
     <Compile Include="Administracion\E_TIPO_SALARIO_SUA.cs" />
     <Compile Include="Administracion\E_TIPO_TRABAJO_SUA.cs" />
+    <Compile Include="Administracion\E_UMA.cs" />
     <Compile Include="Administracion\E_USUARIO.cs" />
     <Compile Include="EvaluacionOrganizacionalModel.cs">
       <AutoGen>True</AutoGen>

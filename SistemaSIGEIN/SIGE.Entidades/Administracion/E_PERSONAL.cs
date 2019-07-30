@@ -9,8 +9,8 @@ namespace SIGE.Entidades.Administracion
     [Serializable]
     public partial class E_PERSONAL
     {
-        public int ID_EMPLEADO_NOMINA_DO { get; set; }
-        public int ID_EMPLEADO { get; set; }
+        public Nullable<int> ID_EMPLEADO_NOMINA_DO { get; set; }
+        public Nullable<int> ID_EMPLEADO { get; set; }
         public string CL_EMPLEADO { get; set; }
         public Nullable<System.Guid> ID_PLANTILLA { get; set; }
         public string NB_EMPLEADO_COMPLETO { get; set; }

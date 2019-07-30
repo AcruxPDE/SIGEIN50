@@ -38,7 +38,7 @@ namespace SIGE.WebApp.Administracion
         private List<E_TIPO_NOMINA> listTipoNomina = new List<E_TIPO_NOMINA>();
         private List<E_FORMA_PAGO> listFormaPago = new List<E_FORMA_PAGO>();
         private List<E_BANCO> listBancoNomina = new List<E_BANCO>();
-
+        
         Plantilla vPlantilla;
         string vXmlPlantilla;
         int? vIdEmpleado;
@@ -623,6 +623,121 @@ namespace SIGE.WebApp.Administracion
             cmbBanco.DataValueField = "CL_BANCO";
             cmbBanco.DataTextField = "NB_BANCO";
             cmbBanco.DataBind();
+
+            //OBTENER UMA
+            DateTime FE_HOY = System.DateTime.Now;           
+            var vUma = oNegocio.ObtenerUMA().Where(x => x.FE_INICIAL <= FE_HOY && x.FE_FINAL >= FE_HOY).FirstOrDefault();
+            salarioMinDF.Value = (vUma != null ? vUma.MN_UMA.ToString() : "0");
+
+            if (salarioMinDF.Value == "0")
+            {
+                //Mensaje de que no se encontro una UMA vigente
+                //Utileria.DisplayMessageRadNotification(-1, "No existe una UMA vigente para este día, favor de agregar el registro correspondiente.", rnMensaje);
+            }
+
+        }
+
+        private void CalcularSBC()
+        {
+            bool bandera = true;
+            string mensaje = "Debes completar los siguientes campos: ";
+
+            if (cmbPaquetePrestacionesNO.SelectedValue == "")
+            {
+                mensaje = mensaje + "paquete de prestaciones,";
+                bandera = false;
+            }
+
+            if (txtFeAntiguedad.SelectedDate == null)
+            {
+                mensaje = mensaje + "fecha de antigüedad,";
+                bandera = false;
+            }
+
+            if (txtFeReingreso.SelectedDate == null)
+            {
+                mensaje = mensaje + "fecha de reingreso,";
+                bandera = false;
+            }
+
+            if (bandera)
+            {
+                decimal vSBCFijo;
+                decimal vSueldoMensual;
+                decimal vSueldoMaximo;
+                decimal vSalarioMinimo;
+                decimal vSalarioBase;
+
+                TimeSpan dif;
+                double no_antiguedad = 1;
+                int antiguedad = 0;
+
+                E_ANTIGUEDAD vFactor = new E_ANTIGUEDAD();
+                CamposNominaNegocio oNegocio = new CamposNominaNegocio();
+
+                dif = DateTime.Today - txtFeAntiguedad.SelectedDate.Value;
+                no_antiguedad = dif.TotalDays / double.Parse("365");
+
+                antiguedad = Convert.ToInt32(no_antiguedad);
+                if (antiguedad == 0) antiguedad = 1;
+
+                vFactor = oNegocio.ObtenerTablaAntiguedad(CL_CLIENTE: vClCliente, ID_PAQUETE_PRESTACIONES: Guid.Parse(cmbPaquetePrestacionesNO.SelectedValue.ToString()), NO_ANTIGUEDAD: short.Parse(antiguedad.ToString())).FirstOrDefault();
+
+                if (vFactor != null)
+                {
+
+                    decimal vSueldoDiario = decimal.Parse(txtSueldoDiario.Text);
+                    decimal vFactorSBC = vFactor.NO_FACTOR_SBC;
+
+                    List<E_CONFIGURACION> vConfiguracion = new List<E_CONFIGURACION>();
+                    E_CONFIGURACION sConfiguracion = new E_CONFIGURACION();
+
+                    sConfiguracion.CL_CLIENTE = vClCliente;
+                    sConfiguracion.CL_CONFIGURACION = "NO_DIAS_CALCULO";
+
+                    vConfiguracion = oNegocio.ObtenerConfiguracion(sConfiguracion);
+
+
+                    vSalarioMinimo = decimal.Parse(salarioMinDF.Value);
+
+                    if (vConfiguracion != null && vConfiguracion.Count > 0)
+                    {
+                        vSueldoMensual = (vSueldoDiario * (vConfiguracion == null ? 30 : Decimal.Parse(vConfiguracion.FirstOrDefault().NO_CONFIGURACION.ToString())));
+                    }
+                    else
+                    {
+                        vSueldoMensual = (vSueldoDiario * 30);
+                    }
+
+                    vSBCFijo = (vSueldoDiario * vFactorSBC);
+                    vSueldoMaximo = vSalarioMinimo * 25;
+
+                    if (vSueldoMaximo < vSBCFijo)
+                    {
+                        vSalarioBase = vSueldoMaximo;
+                    }
+                    else
+                    {
+                        vSalarioBase = vSBCFijo;
+                    }
+
+                    txtBaseCotizacionFijo.Text = vSBCFijo.ToString();
+                    txtSueldoMensual.Text = vSueldoMensual.ToString();
+                    txtBaseCotizacionDeterminado.Text = vSBCFijo.ToString();
+                    txtBaseCotizacionMaximo.Text = vSueldoMaximo.ToString();
+                    txtSalarioBaseCotizacion.Text = vSalarioBase.ToString();
+                    txtFactorBaseCotizacion.Text = vFactorSBC.ToString();
+
+                    if (vSalarioBase == 0)
+                    {
+                        UtilMensajes.MensajeResultadoDB(rwmAlertas, "El salario base de cotizacion es cero.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+                    }
+                }                
+            }
+            else
+                UtilMensajes.MensajeResultadoDB(rwmAlertas, mensaje, E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+
+
         }
 
         #endregion
@@ -929,6 +1044,9 @@ namespace SIGE.WebApp.Administracion
             }
         }
 
-
+        protected void btnCalcularSueldo_Click(object sender, EventArgs e)
+        {
+            CalcularSBC();
+        }
     }
 }

@@ -517,6 +517,33 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadComboBox cmbCotizaIMSS;
         
         /// <summary>
+        /// txtFeReingreso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadDatePicker txtFeReingreso;
+        
+        /// <summary>
+        /// txtFeAntiguedad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadDatePicker txtFeAntiguedad;
+        
+        /// <summary>
+        /// txtFePlanta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadDatePicker txtFePlanta;
+        
+        /// <summary>
         /// txtSueldoDiario control.
         /// </summary>
         /// <remarks>
@@ -740,5 +767,14 @@ namespace SIGE.WebApp.Administracion {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadWindowManager rwmAlertas;
+        
+        /// <summary>
+        /// salarioMinDF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField salarioMinDF;
     }
 }

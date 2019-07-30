@@ -393,5 +393,80 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
                 ).ToList();
             }
         }
+
+        public List<E_ANTIGUEDAD> ObtenerTablaAntiguedad(Guid? ID_TABLA_ANTIGUEDAD = null, String CL_CLIENTE = null, Guid? ID_PAQUETE_PRESTACIONES = null, short? NO_ANTIGUEDAD = null, short? NO_DIAS_VACACIONES = null, short? NO_DIAS_PRIMA_VAC = null, Decimal? NO_FACTOR_SBC = null, Decimal? NO_CAMPO01 = null, Decimal? NO_CAMPO02 = null, Decimal? NO_CAMPO03 = null, Decimal? NO_CAMPO04 = null, Decimal? NO_CAMPO05 = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_ANTIGUEDAD>("EXEC " +
+                    "Nomina.SPE_OBTIENE_K_TABLA_ANTIGUEDAD " +
+                    "@PIN_ID_TABLA_ANTIGUEDAD, " +
+                    "@PIN_CL_CLIENTE, " +
+                    "@PIN_ID_PAQUETE_PRESTACIONES, " +
+                    "@PIN_NO_ANTIGUEDAD, " +
+                    "@PIN_NO_DIAS_VACACIONES, " +
+                    "@PIN_NO_DIAS_PRIMA_VAC, " +
+                    "@PIN_NO_FACTOR_SBC, " +
+                    "@PIN_NO_CAMPO01, " +
+                    "@PIN_NO_CAMPO02, " +
+                    "@PIN_NO_CAMPO03, " +
+                    "@PIN_NO_CAMPO04, " +
+                    "@PIN_NO_CAMPO05 ",
+                    new SqlParameter("@PIN_ID_TABLA_ANTIGUEDAD", (object)ID_TABLA_ANTIGUEDAD ?? DBNull.Value),
+                    new SqlParameter("@PIN_CL_CLIENTE", (object)CL_CLIENTE ?? DBNull.Value),
+                    new SqlParameter("@PIN_ID_PAQUETE_PRESTACIONES", (object)ID_PAQUETE_PRESTACIONES ?? DBNull.Value),
+                    new SqlParameter("@PIN_NO_ANTIGUEDAD", (object)NO_ANTIGUEDAD ?? DBNull.Value),
+                    new SqlParameter("@PIN_NO_DIAS_VACACIONES", (object)NO_DIAS_VACACIONES ?? DBNull.Value),
+                    new SqlParameter("@PIN_NO_DIAS_PRIMA_VAC", (object)NO_DIAS_PRIMA_VAC ?? DBNull.Value),
+                    new SqlParameter("@PIN_NO_FACTOR_SBC", (object)NO_FACTOR_SBC ?? DBNull.Value),
+                    new SqlParameter("@PIN_NO_CAMPO01", (object)NO_CAMPO01 ?? DBNull.Value),
+                    new SqlParameter("@PIN_NO_CAMPO02", (object)NO_CAMPO02 ?? DBNull.Value),
+                    new SqlParameter("@PIN_NO_CAMPO03", (object)NO_CAMPO03 ?? DBNull.Value),
+                    new SqlParameter("@PIN_NO_CAMPO04", (object)NO_CAMPO04 ?? DBNull.Value),
+                    new SqlParameter("@PIN_NO_CAMPO05", (object)NO_CAMPO05 ?? DBNull.Value)
+                ).ToList();
+            }
+        }
+
+        public List<E_CONFIGURACION> ObtenerConfiguracion(String CL_CLIENTE = null, String CL_CONFIGURACION = null, String NB_CONFIGURACION = null, String NO_CONFIGURACION = null, String DS_CONFIGURACION = null)
+        {
+            using(contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_CONFIGURACION>("EXEC " +
+                    "Nomina.SPE_OBTIENE_S_CONFIGURACION " +
+                    "@PIN_CL_CLIENTE, " +
+                    "@PIN_CL_CONFIGURACION, " +
+                    "@PIN_NB_CONFIGURACION, " +
+                    "@PIN_NO_CONFIGURACION, " +
+                    "@PIN_DS_CONFIGURACION, " +
+                    "@PIN_TIPO_CONTROL ",
+                    new SqlParameter("@PIN_CL_CLIENTE", (object)CL_CLIENTE ?? DBNull.Value),
+                    new SqlParameter("@PIN_CL_CONFIGURACION", (object)CL_CONFIGURACION ?? DBNull.Value),
+                    new SqlParameter("@PIN_NB_CONFIGURACION", (object)NB_CONFIGURACION ?? DBNull.Value),
+                    new SqlParameter("@PIN_NO_CONFIGURACION", (object)NO_CONFIGURACION ?? DBNull.Value),
+                    new SqlParameter("@PIN_DS_CONFIGURACION", (object)DS_CONFIGURACION ?? DBNull.Value),
+                    new SqlParameter("@PIN_TIPO_CONTROL", DBNull.Value)
+                ).ToList();
+            }
+        }
+
+        public List<E_UMA> ObtenerUMA(Guid? ID_UMA = null, DateTime? FE_INICIAL = null, DateTime? FE_FINAL = null, Decimal? MN_UMA = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_UMA>("EXEC " +
+                    "Nomina.SPE_OBTIENE_UMA " +
+                    "@PIN_ID_UMA, " +
+                    "@PIN_FE_INICIAL, " +
+                    "@PIN_FE_FINAL, " +
+                    "@PIN_MN_UMA ",
+                    new SqlParameter("@PIN_ID_UMA", (object)ID_UMA ?? DBNull.Value),
+                    new SqlParameter("@PIN_FE_INICIAL", (object)FE_INICIAL ?? DBNull.Value),
+                    new SqlParameter("@PIN_FE_FINAL", (object)FE_FINAL ?? DBNull.Value),
+                    new SqlParameter("@PIN_MN_UMA", (object)MN_UMA ?? DBNull.Value)
+                ).ToList();
+            }
+        }
+
     }
 }

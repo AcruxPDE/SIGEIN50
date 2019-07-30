@@ -190,5 +190,22 @@ namespace SIGE.Negocio.AdministracionSitio
             return oCampo.ObtieneBancosNomina(banco.CL_BANCO, banco.NB_BANCO, banco.FG_ACTIVO);
         }
 
+        public List<E_ANTIGUEDAD> ObtenerTablaAntiguedad(Guid? ID_TABLA_ANTIGUEDAD = null, String CL_CLIENTE = null, Guid? ID_PAQUETE_PRESTACIONES = null, short? NO_ANTIGUEDAD = null, short? NO_DIAS_VACACIONES = null, short? NO_DIAS_PRIMA_VAC = null, Decimal? NO_FACTOR_SBC = null, Decimal? NO_CAMPO01 = null, Decimal? NO_CAMPO02 = null, Decimal? NO_CAMPO03 = null, Decimal? NO_CAMPO04 = null, Decimal? NO_CAMPO05 = null)
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtenerTablaAntiguedad(ID_TABLA_ANTIGUEDAD, CL_CLIENTE, ID_PAQUETE_PRESTACIONES, NO_ANTIGUEDAD, NO_DIAS_VACACIONES, NO_DIAS_PRIMA_VAC, NO_FACTOR_SBC, NO_CAMPO01, NO_CAMPO02, NO_CAMPO03, NO_CAMPO04, NO_CAMPO05);
+        }
+
+        public List<E_CONFIGURACION> ObtenerConfiguracion(E_CONFIGURACION pConfiguracion = null)
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtenerConfiguracion(pConfiguracion.CL_CLIENTE, pConfiguracion.CL_CONFIGURACION, pConfiguracion.NB_CONFIGURACION, pConfiguracion.NO_CONFIGURACION, pConfiguracion.DS_CONFIGURACION);
+        }
+
+        public List<E_UMA> ObtenerUMA(Guid? ID_UMA = null, DateTime? FE_INICIAL = null, DateTime? FE_FINAL = null, Decimal? MN_UMA = null)
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtenerUMA(ID_UMA, FE_INICIAL, FE_FINAL, MN_UMA);
+        }
     }
 }
