@@ -168,19 +168,27 @@
 
             function close_window(sender, args) {
                 if (vPruebaEstatus != "Terminado") {
-                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
-                        if (shouldSubmit) {
-                            if (ValidarContendorPreguntas()) {
-                                a = [];
-                                clearInterval(c);//Se agrega para detener el tiempo del reloj antes de guardar resultados 12/04/2018
-                                var btn = $find("<%=btnTerminar.ClientID%>");
-                                btn.click();
-                            }
-                        }
-                    });
-                    var text = "¿Estás seguro que deseas terminar tu prueba?";
-                    radconfirm(text, callBackFunction, 450, 150, null, "");
-                    args.set_cancel(true);
+                    //var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+                    //    if (shouldSubmit) {
+                    //        if (ValidarContendorPreguntas()) {
+                    //            a = [];
+                    //            clearInterval(c);//Se agrega para detener el tiempo del reloj antes de guardar resultados 12/04/2018
+                    //            var btn = $find("<%=btnTerminar.ClientID%>");
+                    //            btn.click();
+                    //        }
+                    //    }
+                    //});
+                    //var text = "¿Estás seguro que deseas terminar tu prueba?";
+                    //radconfirm(text, callBackFunction, 450, 150, null, "Aviso");
+                    //args.set_cancel(true);
+                    if (ValidarContendorPreguntas()) {
+                        a = [];
+                        clearInterval(c);
+                        args.set_cancel(false);
+                    }
+                    else {
+                        args.set_cancel(true);
+                    }
                 }
                 else {
                     window.close();
