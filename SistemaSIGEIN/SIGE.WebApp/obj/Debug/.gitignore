@@ -1,0 +1,4 @@
+*.cache
+*.dll
+*.WebApp.csproj.FileListAbsolute.txt
+*.pdb

@@ -1,0 +1,5 @@
+*.dll
+*.AccesoDatos.pdb
+/SIGE.AccesoDatos.csproj.CoreCompileInputs.cache
+/SIGE.AccesoDatos.csproj.FileListAbsolute.txt
+/SIGE.AccesoDatos.csprojAssemblyReference.cache
