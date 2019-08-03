@@ -249,6 +249,11 @@
                     <telerik:AjaxUpdatedControl ControlID="rgBajasPendientes" UpdatePanelHeight="100%" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
+             <telerik:AjaxSetting AjaxControlID="grdHistorialBaja">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="grdHistorialBaja" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
     <div style="height: calc(100% - 10px);">

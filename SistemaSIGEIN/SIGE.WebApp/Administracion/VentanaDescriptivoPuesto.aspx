@@ -1509,7 +1509,7 @@
 
                                                     <div style="clear: both;"></div>
                                                     <div class="ctrlBasico">
-                                                        <telerik:RadButton ID="btnAgregarIndicadorDesempeno" runat="server" Text="Aceptar" OnClick="btnAgregarIndicadorDesempeno_Click" OnClientClicking="HideForms"></telerik:RadButton>
+                                                        <telerik:RadButton ID="btnAgregarIndicadorDesempeno" runat="server" Text="Aceptar"  OnClientClicking="HideForms"></telerik:RadButton>
                                                     </div>
                                                     <div class="ctrlBasico">
                                                         <telerik:RadButton ID="btnCancelarAgregarIndicadorDesempeno" runat="server" Text="Cancelar" AutoPostBack="false" OnClientClicked="HideForms"></telerik:RadButton>
@@ -1555,7 +1555,7 @@
                                                     <telerik:RadButton ID="btnAgregarIndicador" Visible="false" runat="server" Text="Agregar indicador" AutoPostBack="false" OnClientClicked="ShowIndicadorDesempenoInsertForm" ToolTip="Aquí puedes agregar uno o más indicadores de acuerdo a la función genérica seleccionada."></telerik:RadButton>
                                                 </div>
                                                 <div class="ctrlBasico" style="margin-top: 20px;">
-                                                    <telerik:RadButton ID="btnEditarIndicador" Visible="false" runat="server" Text="Editar indicador" OnClientClicking="ShowIndicadorDesempenoEditForm" OnClick="btnEditarIndicador_Click"></telerik:RadButton>
+                                                    <telerik:RadButton ID="btnEditarIndicador" Visible="false" runat="server" Text="Editar indicador" OnClientClicking="ShowIndicadorDesempenoEditForm"></telerik:RadButton>
                                                 </div>
                                                 <div class="ctrlBasico" style="margin-top: 20px;">
                                                     <telerik:RadButton ID="btnEliminarIndicador" Visible="false" runat="server" Text="Eliminar indicador" OnClick="btnEliminarIndicador_Click"></telerik:RadButton>
