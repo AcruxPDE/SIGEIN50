@@ -94,18 +94,59 @@ namespace SIGE.WebApp.Comunes
             switch (ClTipoControl)
             {
                 case "TEXTBOX":
-                    vControl = new RadTextBox()
+
+                    if(IdControl == "CL_EMPLEADO")
                     {
-                        ID = IdControl,
-                        ToolTip = NbTooltip,
-                        Text = NbValor != null ? NbValor : NbValorDefecto,
-                        Width = DefaultControlUnitWidth,
-                        Height = DefaultControlUnitHeight,
-                        ReadOnly = !ObtieneEstado(FgHabilitado, IdControl), //Se cambia el Enable por ReadOnly para que no se pierdan los valores del control deshabilitado al guardar
-                        MaxLength = NoLongitud,
-                        Rows = FgMultiLinea ? 4 : 1,
-                        TextMode = FgMultiLinea ? InputMode.MultiLine : InputMode.SingleLine
-                    };
+                        vControl = new RadTextBox()
+                        {
+                            ID = IdControl,
+                            ToolTip = NbTooltip,
+                            Text = NbValor != null ? NbValor : NbValorDefecto,
+                            Width = DefaultControlUnitWidth,
+                            Height = DefaultControlUnitHeight,
+                            ReadOnly = !ObtieneEstado(FgHabilitado, IdControl), //Se cambia el Enable por ReadOnly para que no se pierdan los valores del control deshabilitado al guardar
+                            MaxLength = NoLongitud,
+                            Rows = FgMultiLinea ? 4 : 1,
+                            Enabled = false,
+                            TextMode = FgMultiLinea ? InputMode.MultiLine : InputMode.SingleLine
+                        };
+                    }
+
+                    else if (IdControl == "CL_NSS" || IdControl == "CL_RFC" || IdControl == "CL_CURP")
+                    {
+                        vControl = new RadTextBox()
+                        {
+                            ID = IdControl,
+                            ToolTip = NbTooltip,
+                            Text = NbValor != null ? NbValor : NbValorDefecto,
+                            Width = DefaultControlUnitWidth,
+                            Height = DefaultControlUnitHeight,
+                            //ReadOnly = !ObtieneEstado(FgHabilitado, IdControl), //Se cambia el Enable por ReadOnly para que no se pierdan los valores del control deshabilitado al guardar
+                            MaxLength = NoLongitud,
+                            Rows = FgMultiLinea ? 4 : 1,
+                            Enabled = true,
+                            TextMode = FgMultiLinea ? InputMode.MultiLine : InputMode.SingleLine
+                        };
+                    }
+
+                    else
+                    {
+                        vControl = new RadTextBox()
+                        {
+                            ID = IdControl,
+                            ToolTip = NbTooltip,
+                            Text = NbValor != null ? NbValor : NbValorDefecto,
+                            Width = DefaultControlUnitWidth,
+                            Height = DefaultControlUnitHeight,
+                            ReadOnly = !ObtieneEstado(FgHabilitado, IdControl), //Se cambia el Enable por ReadOnly para que no se pierdan los valores del control deshabilitado al guardar
+                            MaxLength = NoLongitud,
+                            Rows = FgMultiLinea ? 4 : 1,
+                            Enabled = true,
+                            TextMode = FgMultiLinea ? InputMode.MultiLine : InputMode.SingleLine
+                        };
+                    }
+
+                    
                     break;
                 case "LABEL":
                     vControl = new RadLabel()
@@ -382,14 +423,43 @@ namespace SIGE.WebApp.Comunes
                         vCtrlListBox.Items.Add(vListBoxItem);
                     }
 
-                    RadButton vCtrlBtnSearch = new RadButton()
+                    RadButton vCtrlBtnSearch;
+
+                    if (IdControl == "ID_PUESTO")
                     {
-                        ID = String.Format("{1}{0}", IdControl, NbBoton),
-                        Text = "B",
-                        AutoPostBack = false,
-                        OnClientClicked = "OpenSelectionWindow",
-                        Enabled = ObtieneEstado(FgHabilitado, IdControl)
-                    };
+                        vCtrlBtnSearch = new RadButton()
+                        {
+                            ID = String.Format("{1}{0}", IdControl, NbBoton),
+                            Text = "B",
+                            AutoPostBack = false,
+                            OnClientClicked = "OpenSelectionWindow",
+                            Enabled = false
+                        };
+                    }
+                    else if(IdControl == "CL_CENTRO_OPERATIVO" || IdControl == "CL_CENTRO_ADMINISTRATIVO")
+                    {
+                        vCtrlBtnSearch = new RadButton()
+                        {
+                            ID = String.Format("{1}{0}", IdControl, NbBoton),
+                            Text = "B",
+                            AutoPostBack = false,
+                            OnClientClicked = "OpenSelectionWindow",
+                            Enabled = true
+                            //Enabled = ObtieneEstado(FgHabilitado, IdControl)
+                        };
+                    }
+
+                    else{
+                        vCtrlBtnSearch = new RadButton()
+                        {
+                            ID = String.Format("{1}{0}", IdControl, NbBoton),
+                            Text = "B",
+                            AutoPostBack = false,
+                            OnClientClicked = "OpenSelectionWindow",
+                            Enabled = ObtieneEstado(FgHabilitado, IdControl)
+                        };
+                    }
+                    
 
                     HtmlGenericControl vListBox = new HtmlGenericControl("span");
                     vListBox.Controls.Add(vCtrlListBox);

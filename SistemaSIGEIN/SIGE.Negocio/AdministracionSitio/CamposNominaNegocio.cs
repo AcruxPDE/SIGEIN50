@@ -107,10 +107,10 @@ namespace SIGE.Negocio.AdministracionSitio
             return oCampo.ObtieneRazonSocial(CL_CLIENTE, FG_ACTIVO);
         }
 
-        public List<E_REGISTRO_PATRONAL> ObtieneRegistroPatronal(Guid? ID_RAZON_SOCIAL = null, bool? FG_ACTIVO = null)
+        public List<E_REGISTRO_PATRONAL> ObtieneRegistroPatronal(Guid? ID_RAZON_SOCIAL = null, Guid? ID_REGISTRO_PATRONAL = null, bool? FG_ACTIVO = null)
         {
             CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
-            return oCampo.ObtieneRegistroPatronal(ID_RAZON_SOCIAL, FG_ACTIVO);
+            return oCampo.ObtieneRegistroPatronal(ID_RAZON_SOCIAL, ID_REGISTRO_PATRONAL, FG_ACTIVO);
         }
 
         public List<E_TIPO_TRABAJO_SUA> ObtieneTipoTrabajoSUA(double? CL_TIPO_TRAB_SUA = null, string DS_TIPO_TRAB_SUA = null)

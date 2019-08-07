@@ -90,10 +90,10 @@ namespace SIGE.Negocio.Administracion
             return vEmpleadoPlantilla;
         }
 
-        public E_RESULTADO InsertaActualizaEmpleado(XElement pXmlEmpleado, int? pIdEmpleado, List<UDTT_ARCHIVO> pLstArchivoTemporales, List<E_DOCUMENTO> pLstDocumentos, string pClUsuario, string pNbPrograma, string vTipoTransaccion)
+        public E_RESULTADO InsertaActualizaEmpleado(XElement pXmlEmpleado, XElement vPlantillaNomina, int? pIdEmpleado, List<UDTT_ARCHIVO> pLstArchivoTemporales, List<E_DOCUMENTO> pLstDocumentos, string pClUsuario, string pNbPrograma, string vTipoTransaccion)
         {
             EmpleadoOperaciones oEmpleado = new EmpleadoOperaciones();
-            return UtilRespuesta.EnvioRespuesta(oEmpleado.InsertarActualizarEmpleado(pXmlEmpleado, pIdEmpleado, pLstArchivoTemporales, pLstDocumentos, pClUsuario, pNbPrograma, vTipoTransaccion));
+            return UtilRespuesta.EnvioRespuesta(oEmpleado.InsertarActualizarEmpleado(pXmlEmpleado, vPlantillaNomina, pIdEmpleado, pLstArchivoTemporales, pLstDocumentos, pClUsuario, pNbPrograma, vTipoTransaccion));
         }
 
         public E_RESULTADO InsertaActualizaEmpleadoPDE(XElement pXmlEmpleado, string pIdEmpleado, List<UDTT_ARCHIVO> pLstArchivoTemporales, List<E_DOCUMENTO> pLstDocumentos, string pClUsuario, string pNbPrograma, XElement xmlNuevaPlantilla)

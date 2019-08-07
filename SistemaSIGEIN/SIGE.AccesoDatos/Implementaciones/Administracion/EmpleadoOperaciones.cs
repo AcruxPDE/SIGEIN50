@@ -108,7 +108,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar
             return pParameter;
         }
 
-        public XElement InsertarActualizarEmpleado(XElement pXmlEmpleado, int? pIdEmpleado, List<UDTT_ARCHIVO> pLstArchivosTemporales, List<E_DOCUMENTO> pLstDocumentos, string pClUsuario, string pNbPrograma, string vTipoTransaccion)
+        public XElement InsertarActualizarEmpleado(XElement pXmlEmpleado, XElement vPlantillaNomina, int? pIdEmpleado, List<UDTT_ARCHIVO> pLstArchivosTemporales, List<E_DOCUMENTO> pLstDocumentos, string pClUsuario, string pNbPrograma, string vTipoTransaccion)
         {
             using (context = new SistemaSigeinEntities())
             {
@@ -144,6 +144,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar
                     "ADM.SPE_INSERTA_ACTUALIZA_EMPLEADO " +
                     "@XML_RESULTADO OUTPUT, " +
                     "@PIN_XML_PLANTILLA, " +
+                    "@PIN_XML_NOMINA, " +
                     "@PIN_ID_EMPLEADO, " +
                     "@PIN_XML_DOCUMENTOS, " +
                     "@PIN_ARCHIVOS, " +
@@ -152,6 +153,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar
                     "@PIN_TIPO_TRANSACCION"
                     , pXmlResultado
                     , new SqlParameter("@PIN_XML_PLANTILLA", SqlDbType.Xml) { Value = new SqlXml(pXmlEmpleado.CreateReader()) }
+                    , new SqlParameter("PIN_XML_NOMINA", SqlDbType.Xml) { Value = new SqlXml(vPlantillaNomina.CreateReader()) }
                     , new SqlParameter("@PIN_ID_EMPLEADO", (object)pIdEmpleado ?? DBNull.Value)
                     , new SqlParameter("@PIN_XML_DOCUMENTOS", SqlDbType.Xml) { Value = new SqlXml(vXmlDocumentos.CreateReader()) }
                     , pArchivos

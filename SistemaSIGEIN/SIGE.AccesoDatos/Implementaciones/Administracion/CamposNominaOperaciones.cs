@@ -204,15 +204,17 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
             }
         }
 
-        public List<E_REGISTRO_PATRONAL> ObtieneRegistroPatronal(Guid? ID_RAZON_SOCIAL = null, bool? FG_ACTIVO = null)
+        public List<E_REGISTRO_PATRONAL> ObtieneRegistroPatronal(Guid? ID_RAZON_SOCIAL = null, Guid? ID_REGISTRO_PATRONAL = null, bool? FG_ACTIVO = null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
                 return contexto.Database.SqlQuery<E_REGISTRO_PATRONAL>("EXEC " +
                     "ADM.SPE_OBTIENE_C_REGISTRO_PATRONAL " +
+                    "@PIN_ID_RAZON_SOCIAL, " +
                     "@PIN_ID_REGISTRO_PATRONAL, " +
                     "@PIN_FG_ACTIVO ",
-                    new SqlParameter("@PIN_ID_REGISTRO_PATRONAL", (object)ID_RAZON_SOCIAL ?? DBNull.Value),
+                    new SqlParameter("@PIN_ID_RAZON_SOCIAL", (object)ID_RAZON_SOCIAL ?? DBNull.Value),
+                    new SqlParameter("@PIN_ID_REGISTRO_PATRONAL", (object)ID_REGISTRO_PATRONAL ?? DBNull.Value),
                     new SqlParameter("@PIN_FG_ACTIVO", (object)FG_ACTIVO ?? DBNull.Value)
                 ).ToList();
             }
@@ -237,7 +239,7 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
             using (contexto = new SistemaSigeinEntities())
             {
                 return contexto.Database.SqlQuery<E_TIPO_JORNADA_SUA>("EXEC " +
-                    "Nomina.SPE_OBTIENE_VW_TIPO_TRAB_SUA " +
+                    "Nomina.SPE_OBTIENE_VW_JORNADA_SUA " +
                     "@PIN_CL_JORNADA_SUA, " +
                     "@PIN_DS_JORNADA_SUA ",
                     new SqlParameter("@PIN_CL_JORNADA_SUA", (object)CL_JORNADA_SUA ?? DBNull.Value),

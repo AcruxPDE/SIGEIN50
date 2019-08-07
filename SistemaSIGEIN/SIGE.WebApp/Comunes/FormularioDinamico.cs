@@ -52,7 +52,7 @@ namespace SIGE.WebApp.Comunes
                     foreach (XElement vXmlControl in vXmlContenedor.Elements("CAMPO"))
                     {
                         HtmlGenericControl vControlHTML;
-                        ControlDinamico vControl = new ControlDinamico(vXmlControl, pFgAddValue, pPageView:vPageView);
+                        ControlDinamico vControl = new ControlDinamico(vXmlControl, pFgAddValue, pPageView: vPageView);
 
                         if (vControl.CtrlControl != null)
                         {
@@ -65,7 +65,7 @@ namespace SIGE.WebApp.Comunes
                                 ((HtmlGenericControl)vControl.CtrlLabel).Style.Add("padding-right", "10px");
                                 ((HtmlGenericControl)vControl.CtrlLabel).Style.Add("text-align", "right");
 
-                                if(vControl.IdControl == "DS_COMPETENCIAS_ADICIONALES")
+                                if (vControl.IdControl == "DS_COMPETENCIAS_ADICIONALES")
                                     ((HtmlGenericControl)vControl.CtrlLabel).Style.Add("width", "670px");
                                 else
                                     ((HtmlGenericControl)vControl.CtrlLabel).Style.Add("width", "200px");
@@ -140,6 +140,7 @@ namespace SIGE.WebApp.Comunes
                                     }
 
                                     break;
+                                
                             }
                         }
                     }
@@ -219,12 +220,12 @@ namespace SIGE.WebApp.Comunes
                                             Selected = UtilXML.ValorAtributo<string>(item.Attribute("NB_VALOR")).Equals(vValorSeleccionado) ? true : false
                                         });
 
-                                if(vNbValor == "PRIMARIA" || vNbValor == "SECUNDARIA")
+                                if (vNbValor == "PRIMARIA" || vNbValor == "SECUNDARIA")
                                 {
                                     vCtrlControlDependiente.SelectedIndex = 0;
                                     vCtrlControlDependiente.Enabled = true;
                                 }
-                                    
+
                                 else if (vNbValor == "SINESTUDIOS")
                                 {
                                     vCtrlControlDependiente.SelectedIndex = 0;
@@ -233,7 +234,7 @@ namespace SIGE.WebApp.Comunes
 
                                 else
                                     vCtrlControlDependiente.Enabled = true;
-                                
+
                                 break;
                         }
                     }
@@ -295,7 +296,7 @@ namespace SIGE.WebApp.Comunes
             XElement vXmlPlantilla = XElement.Parse(xmlPlantilla);
             XElement vXmlGrid = null;
             RadPageView vPageView = null;
-            
+
 
             foreach (XElement vXmlContenedor in vXmlPlantilla.Element("CONTENEDORES").Elements("CONTENEDOR"))
             {
@@ -308,7 +309,7 @@ namespace SIGE.WebApp.Comunes
             bool vFgRequerido = false;
             string vNbControl = string.Empty;
             string vValorControl = string.Empty;
-         
+
 
             if (vXmlGrid != null)
             {
@@ -350,19 +351,19 @@ namespace SIGE.WebApp.Comunes
                             RadTextBox vRadTextBox = (RadTextBox)vPageView.FindControl(vIdControl);
                             vItem.Add(new XAttribute(vIdColumnaValor, vRadTextBox.Text));
                             vValorControl = vRadTextBox.Text;
-                           // vRadTextBox.Text = String.Empty;
+                            // vRadTextBox.Text = String.Empty;
                             break;
                         case "MASKBOX":
                             RadMaskedTextBox vRadMaskedTextBox = (RadMaskedTextBox)vPageView.FindControl(vIdControl);
                             vItem.Add(new XAttribute(vIdColumnaValor, vRadMaskedTextBox.Text));
                             vValorControl = vRadMaskedTextBox.Text;
-                          //  vRadMaskedTextBox.Text = String.Empty;
+                            //  vRadMaskedTextBox.Text = String.Empty;
                             break;
                         case "NUMERICBOX":
                             RadNumericTextBox vRadNumericTextBox = (RadNumericTextBox)vPageView.FindControl(vIdControl);
                             vItem.Add(new XAttribute(vIdColumnaValor, vRadNumericTextBox.Value ?? 0));
                             vValorControl = (vRadNumericTextBox.Value).ToString();
-                          //  vRadNumericTextBox.Value = 0;
+                            //  vRadNumericTextBox.Value = 0;
                             break;
                         case "COMBOBOX":
                             RadComboBox vRadComboBox = (RadComboBox)vPageView.FindControl(vIdControl);
@@ -370,11 +371,11 @@ namespace SIGE.WebApp.Comunes
                             vItem.Add(new XAttribute(vIdColumnaValor, (vRadComboBoxItem != null) ? vRadComboBoxItem.Value : string.Empty));
                             vItem.Add(new XAttribute(vIdColumnaTexto, (vRadComboBoxItem != null) ? vRadComboBoxItem.Text : string.Empty));
                             vValorControl = vRadComboBoxItem != null ? vRadComboBoxItem.Text : string.Empty;
-                          //  vRadComboBox.ClearSelection();
+                            //  vRadComboBox.ClearSelection();
                             break;
                         case "DATEPICKER":
                             RadDatePicker vRadDatePicker = (RadDatePicker)vPageView.FindControl(vIdControl);
-                           // DateTime vFecha = vRadDatePicker.SelectedDate ?? DateTime.Now;
+                            // DateTime vFecha = vRadDatePicker.SelectedDate ?? DateTime.Now;
                             if (vRadDatePicker.SelectedDate != null)
                             {
                                 DateTime vFecha = vRadDatePicker.SelectedDate.Value;
@@ -383,9 +384,9 @@ namespace SIGE.WebApp.Comunes
                             }
                             else
                             {
-                                vValorControl= "";
+                                vValorControl = "";
                             }
-                           // vRadDatePicker.SelectedDate = null;
+                            // vRadDatePicker.SelectedDate = null;
                             break;
                         case "DATEAGE":
                             RadDatePicker vRadDateAgePicker = (RadDatePicker)vPageView.FindControl(vIdControl);
@@ -394,7 +395,7 @@ namespace SIGE.WebApp.Comunes
                             vValorControl = vFechaNacimiento.ToString("dd/MM/yyyy");
                             vRadDateAgePicker.SelectedDate = null;
                             RadTextBox vTxtEdad = (RadTextBox)vPageView.FindControl(string.Format("txt{0}", vIdControl));
-                          //  vTxtEdad.Text = string.Empty;
+                            //  vTxtEdad.Text = string.Empty;
                             break;
                         case "CHECKBOX":
                             RadButton vRadCheckBox = (RadButton)vPageView.FindControl(vIdControl);
@@ -442,31 +443,31 @@ namespace SIGE.WebApp.Comunes
                 //}
                 //else
                 //{
-                    if (string.IsNullOrEmpty(vMensajes))
+                if (string.IsNullOrEmpty(vMensajes))
+                {
+                    vXmlGrid.Element("GRID").Element("DATOS").Add(vItem);
+                    LimpiarControles(vIdControlGrid);
+                }
+                else
+                {
+                    if (vPageView.Page is Empleado)
                     {
-                        vXmlGrid.Element("GRID").Element("DATOS").Add(vItem);
-                        LimpiarControles(vIdControlGrid);
+                        RadWindowManager rwmAlertas = (RadWindowManager)(((Empleado)vPageView.Page).FindControl("rwmAlertas"));
+                        RadWindowManager vRw = (RadWindowManager)vPageView.FindControl("rwmAlertas");
+                        if (vRw != null)
+                            vRw.RadAlert(vMensajes, 350, 150, "Mensaje", null);
                     }
-                    else
+                    if (vPageView.Page is Solicitud)
                     {
-                        if (vPageView.Page is Empleado)
-                        {
-                            RadWindowManager rwmAlertas = (RadWindowManager)(((Empleado)vPageView.Page).FindControl("rwmAlertas"));
-                            RadWindowManager vRw = (RadWindowManager)vPageView.FindControl("rwmAlertas");
-                            if (vRw != null)
-                                vRw.RadAlert(vMensajes, 350, 150, "Mensaje", null);
-                        }
-                        if(vPageView.Page is Solicitud)
-                        {
-                            RadWindowManager rwmAlertas = (RadWindowManager)(((Solicitud)vPageView.Page).FindControl("rwmAlertas"));
-                            RadWindowManager vRw = (RadWindowManager)vPageView.FindControl("rwmAlertas");
-                            if (vRw != null)
-                                vRw.RadAlert(vMensajes, 350, 150, "Mensaje", null);
-                        }
+                        RadWindowManager rwmAlertas = (RadWindowManager)(((Solicitud)vPageView.Page).FindControl("rwmAlertas"));
+                        RadWindowManager vRw = (RadWindowManager)vPageView.FindControl("rwmAlertas");
+                        if (vRw != null)
+                            vRw.RadAlert(vMensajes, 350, 150, "Mensaje", null);
+                    }
 
-                    }
-    
-              //  }
+                }
+
+                //  }
 
                 xmlPlantilla = vXmlPlantilla.ToString();
 
@@ -1169,29 +1170,29 @@ namespace SIGE.WebApp.Comunes
                     {
                         case "TEXTBOX":
                             RadTextBox vRadTextBox = (RadTextBox)vPageView.FindControl(vIdControl);
-                             vRadTextBox.Text = String.Empty;
+                            vRadTextBox.Text = String.Empty;
                             break;
                         case "MASKBOX":
                             RadMaskedTextBox vRadMaskedTextBox = (RadMaskedTextBox)vPageView.FindControl(vIdControl);
-                              vRadMaskedTextBox.Text = String.Empty;
+                            vRadMaskedTextBox.Text = String.Empty;
                             break;
                         case "NUMERICBOX":
                             RadNumericTextBox vRadNumericTextBox = (RadNumericTextBox)vPageView.FindControl(vIdControl);
-                             vRadNumericTextBox.Value = 0;
+                            vRadNumericTextBox.Value = 0;
                             break;
                         case "COMBOBOX":
                             RadComboBox vRadComboBox = (RadComboBox)vPageView.FindControl(vIdControl);
                             RadComboBoxItem vRadComboBoxItem = vRadComboBox.SelectedItem;
-                              vRadComboBox.ClearSelection();
+                            vRadComboBox.ClearSelection();
                             break;
                         case "DATEPICKER":
                             RadDatePicker vRadDatePicker = (RadDatePicker)vPageView.FindControl(vIdControl);
-                             vRadDatePicker.SelectedDate = null;
+                            vRadDatePicker.SelectedDate = null;
                             break;
                         case "DATEAGE":
                             RadDatePicker vRadDateAgePicker = (RadDatePicker)vPageView.FindControl(vIdControl);
                             RadTextBox vTxtEdad = (RadTextBox)vPageView.FindControl(string.Format("txt{0}", vIdControl));
-                              vTxtEdad.Text = string.Empty;
+                            vTxtEdad.Text = string.Empty;
                             break;
                         case "CHECKBOX":
                             RadButton vRadCheckBox = (RadButton)vPageView.FindControl(vIdControl);
