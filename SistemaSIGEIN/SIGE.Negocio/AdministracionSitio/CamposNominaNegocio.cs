@@ -207,5 +207,12 @@ namespace SIGE.Negocio.AdministracionSitio
             CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
             return oCampo.ObtenerUMA(ID_UMA, FE_INICIAL, FE_FINAL, MN_UMA);
         }
+
+        public List<E_EMPLEADO_NOMINA> ObtieneDatosPersonaNO(int? pID_EMPLEADO)
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtieneDatosPersonaNO(pID_EMPLEADO);
+        }
+
     }
 }

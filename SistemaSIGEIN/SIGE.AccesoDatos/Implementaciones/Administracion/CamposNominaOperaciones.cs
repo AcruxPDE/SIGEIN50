@@ -470,5 +470,17 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
             }
         }
 
+        public List<E_EMPLEADO_NOMINA> ObtieneDatosPersonaNO(int? pID_EMPLEADO)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_EMPLEADO_NOMINA>("EXEC " +
+                    "ADM.SPE_OBTIENE_PERSONA_NOMINA " +
+                    "@PIN_ID_EMPLEADO ",
+                    new SqlParameter("@PIN_ID_EMPLEADO", (object)pID_EMPLEADO)
+                ).ToList();
+            }
+        }
+
     }
 }

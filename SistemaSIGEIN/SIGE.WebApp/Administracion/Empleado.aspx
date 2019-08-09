@@ -1332,8 +1332,8 @@
                                 <div class="divControlDerecha">
                                     <telerik:RadComboBox runat="server" ID="cmbCotizaIMSS" Width="300px" EmptyMessage="Seleccione.." HighlightTemplatedItems="true" DropDownWidth="500" EnableLoadOnDemand="false" Filter="Contains">
                                         <Items>
-                                            <telerik:RadComboBoxItem Value="1" Text="SÍ" />
-                                            <telerik:RadComboBoxItem Value="0" Text="NO" />
+                                            <telerik:RadComboBoxItem Value="1" Text="Sí" />
+                                            <telerik:RadComboBoxItem Value="0" Text="No" />
                                         </Items>
                                     </telerik:RadComboBox>
                                 </div>
@@ -1419,7 +1419,7 @@
                                 </div>
                             </div>
 
-                            <div class="ctrlBasico" style="clear: both;">
+                            <div class="ctrlBasico" style="clear: both; display: none;">
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>Salario base de cotización variable:</label>
                                 </div>

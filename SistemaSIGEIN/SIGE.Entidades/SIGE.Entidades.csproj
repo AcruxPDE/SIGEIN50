@@ -65,6 +65,7 @@
     <Compile Include="Administracion\E_CAMPO_NOMINA_DO.cs" />
     <Compile Include="Administracion\E_CLIENTE.cs" />
     <Compile Include="Administracion\E_CONFIGURACION.cs" />
+    <Compile Include="Administracion\E_EMPLEADO_NOMINA.cs" />
     <Compile Include="Administracion\E_EMPLEADO_NOMINA_DO.cs" />
     <Compile Include="Administracion\E_EMPLEADO_RPT.cs" />
     <Compile Include="Administracion\E_FORMATO_DISPERSION.cs" />

@@ -942,6 +942,82 @@ namespace SIGE.WebApp.Administracion
 
         }
 
+        protected void CargarDatosNomina(int? vIdEmpleadoNominaDo)
+        {
+            CamposNominaNegocio oNegocio = new CamposNominaNegocio();
+            List<E_EMPLEADO_NOMINA> vEmpleadoNO = new List<E_EMPLEADO_NOMINA>();
+
+            vEmpleadoNO = oNegocio.ObtieneDatosPersonaNO(pID_EMPLEADO: vIdEmpleadoNominaDo);
+
+            foreach (E_EMPLEADO_NOMINA item in vEmpleadoNO)
+            {
+                cmbRazonSocial.SelectedValue = item.CL_RAZON_SOCIAL.ToString();
+                cmbRegistroPatronal.SelectedValue = item.CL_REGISTRO_PATRONAL;
+                cmbTipoTrabajoSUA.SelectedValue = item.CL_TIPO_TRAB_SUA;
+                cmbTipoJornadaSUA.SelectedValue = item.CL_JORNADA_SUA;
+                cmbTipoContratoSAT.SelectedValue = item.CL_TIPO_CONTRATO_SAT;
+                cmbTipoJornadaSAT.SelectedValue = item.CL_TIPO_JORNADA_SAT;
+                cmbRegimenContratacion.SelectedValue = item.CL_REGIMEN_CONTRATACION;
+                txtUbicacionNO.Text = item.CL_UBICACION_SUA;
+                //cmbTipoSalario.SelectedValue = item.CL_TIPO_SALARIO_SUA;
+                //txtUMFNO.Text = item.NO_UMF;
+                //cmbRiesgoPuesto.SelectedValue = item.CL_RIESGO_PUESTO;
+                //cmbHorarioNO.SelectedValue = item.CL_HORARIO;
+                //cmbPaquetePrestacionesNO.SelectedValue = item.CL_PAQUETE;
+                //cmbFormatoDispersionNO.SelectedValue = item.CL_FORMATO_DISPERSION;
+                //cmbFormatoValesGasolinaNO.SelectedValue = item.CL_FORMATO_VALES_G;
+                //cmbFormatoValesDespensaNO.SelectedValue = item.CL_FORMATO_VALES_D;
+                //cmbTipoNomina.SelectedValue = item.CL_TIPO_NOMINA;
+                //cmbFormaPago.SelectedValue = item.CL_FORMA_PAGO;
+                //cmbBanco.SelectedValue = item.CL_BANCO_SAT;                
+                //txtCuentaPago.Text = item.NO_CUENTA_PAGO;
+                //txtClavePago.Text = item.NO_CLABE_PAGO;
+                //txtCuentaValesDespensa.Text = item.NO_CUENTA_DESPENSA;
+                //txtFILLER01.Text = item.FILLER01;
+                //txtFILLER02.Text = item.FILLER02;
+                //txtFILLER03.Text = item.FILLER03;
+                //txtFILLER04.Text = item.FILLER04;
+                //txtFILLER05.Text = item.FILLER05;
+
+                //if(item.MN_SNOMINAL.ToString() != "0.0")
+                //    txtSueldoDiario.Text = item.MN_SNOMINAL.ToString();
+
+                //if (item.MN_SNOMINAL_MENSUAL.ToString() != "0.0")
+                //    txtSueldoMensual.Text = item.MN_SNOMINAL_MENSUAL.ToString();
+
+                //if (item.NO_FACTOR_SBC.ToString() != "0.0")
+                //    txtFactorBaseCotizacion.Text = item.NO_FACTOR_SBC.ToString();
+
+                //if (item.MN_SBC_FIJO.ToString() != "0.0")
+                //    txtBaseCotizacionFijo.Text = item.MN_SBC_FIJO.ToString();
+
+                //if (item.MN_SBC_DETERMINADO.ToString() != "0.0")
+                //    txtBaseCotizacionDeterminado.Text = item.MN_SBC_DETERMINADO.ToString();
+
+                //if (item.MN_SBC_MAXIMO.ToString() != "0.0")
+                //    txtBaseCotizacionMaximo.Text = item.MN_SBC_MAXIMO.ToString();
+
+                //if (item.MN_SBC.ToString() != "0.0")
+                //    txtSalarioBaseCotizacion.Text = item.MN_SBC.ToString();
+
+                //if (item.FE_REINGRESO != null)
+                //    txtFeReingreso.SelectedDate = DateTime.Parse(item.FE_REINGRESO);
+
+                //if (item.FE_ANTIGUEDAD != null)
+                //    txtFeAntiguedad.SelectedDate = DateTime.Parse(item.FE_ANTIGUEDAD);
+
+                //if (item.FE_PLANTA != null)
+                //    txtFePlanta.SelectedDate = DateTime.Parse(item.FE_PLANTA);
+
+
+                //if (item.FG_COTIZA_IMSS == true)
+                //    cmbCotizaIMSS.SelectedValue = "Sí";
+                //else
+                //    cmbCotizaIMSS.SelectedValue = "No";
+            }
+
+        }
+
         private void CalcularSBC()
         {
             bool bandera = true;
@@ -1062,7 +1138,7 @@ namespace SIGE.WebApp.Administracion
 
             if (!Page.IsPostBack)
             {
-                CargarDatos();
+                
                 vIdEmpleadoVS = vIdEmpleado;
                 vXmlEmpleadoPlantilla = vXmlPlantilla;
                 vIdItemFotografia = vIdItemFoto;
@@ -1105,7 +1181,9 @@ namespace SIGE.WebApp.Administracion
                     {
                         if (vEmpleado.FG_NOMINA == true && ContextoApp.ANOM.LicenciaAccesoModulo.MsgActivo == "1")
                         {
+                            CargarDatos();
                             tabSolicitud.Tabs[8].Visible = true;
+                            CargarDatosNomina(vIdEmpleadoNominaDo);
                         }
                         else
                         {
