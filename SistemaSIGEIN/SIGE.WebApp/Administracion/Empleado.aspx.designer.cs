@@ -508,13 +508,22 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadComboBox cmbBanco;
         
         /// <summary>
-        /// cmbCotizaIMSS control.
+        /// btnCotizaIMSSTrue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox cmbCotizaIMSS;
+        protected global::Telerik.Web.UI.RadButton btnCotizaIMSSTrue;
+        
+        /// <summary>
+        /// btnCotizaIMSSFalse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnCotizaIMSSFalse;
         
         /// <summary>
         /// txtFeReingreso control.
@@ -733,13 +742,13 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadSlidingPane rspAyudaFoto;
         
         /// <summary>
-        /// btnGuardar control.
+        /// btnCancelar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnGuardar;
+        protected global::Telerik.Web.UI.RadButton btnCancelar;
         
         /// <summary>
         /// btnGuardarSalir control.
@@ -751,13 +760,13 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadButton btnGuardarSalir;
         
         /// <summary>
-        /// btnCancelar control.
+        /// btnGuardar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnCancelar;
+        protected global::Telerik.Web.UI.RadButton btnGuardar;
         
         /// <summary>
         /// rwmAlertas control.

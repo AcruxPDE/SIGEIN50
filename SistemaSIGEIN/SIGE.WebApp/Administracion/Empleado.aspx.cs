@@ -543,7 +543,7 @@ namespace SIGE.WebApp.Administracion
             vXmlPlantillaNO.Add(NOMINA);
             
             CL_CAMPO = new XAttribute("CL_CAMPO", "COTIZA_IMSS");
-            NB_CAMPO = new XAttribute("NB_CAMPO", cmbCotizaIMSS.SelectedValue);
+            NB_CAMPO = new XAttribute("NB_CAMPO", btnCotizaIMSSTrue.Checked);
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
@@ -951,69 +951,82 @@ namespace SIGE.WebApp.Administracion
 
             foreach (E_EMPLEADO_NOMINA item in vEmpleadoNO)
             {
-                cmbRazonSocial.SelectedValue = item.CL_RAZON_SOCIAL.ToString();
-                cmbRegistroPatronal.SelectedValue = item.CL_REGISTRO_PATRONAL;
+                cmbRazonSocial.SelectedValue = item.ID_RAZON_SOCIAL.ToString();
+                
+                cmbRegistroPatronal.DataSource = null;
+                listRegistrosPatronales = oNegocio.ObtieneRegistroPatronal(Guid.Parse(cmbRazonSocial.SelectedValue), null, true);
+                cmbRegistroPatronal.DataSource = listRegistrosPatronales;
+                cmbRegistroPatronal.DataTextField = "CL_REGISTRO_PATRONAL";
+                cmbRegistroPatronal.DataValueField = "ID_REGISTRO_PATRONAL";
+                cmbRegistroPatronal.DataBind();
+
+                cmbRegistroPatronal.SelectedValue = item.ID_REGISTRO_PATRONAL.ToString();
                 cmbTipoTrabajoSUA.SelectedValue = item.CL_TIPO_TRAB_SUA;
                 cmbTipoJornadaSUA.SelectedValue = item.CL_JORNADA_SUA;
                 cmbTipoContratoSAT.SelectedValue = item.CL_TIPO_CONTRATO_SAT;
                 cmbTipoJornadaSAT.SelectedValue = item.CL_TIPO_JORNADA_SAT;
                 cmbRegimenContratacion.SelectedValue = item.CL_REGIMEN_CONTRATACION;
                 txtUbicacionNO.Text = item.CL_UBICACION_SUA;
-                //cmbTipoSalario.SelectedValue = item.CL_TIPO_SALARIO_SUA;
-                //txtUMFNO.Text = item.NO_UMF;
-                //cmbRiesgoPuesto.SelectedValue = item.CL_RIESGO_PUESTO;
-                //cmbHorarioNO.SelectedValue = item.CL_HORARIO;
-                //cmbPaquetePrestacionesNO.SelectedValue = item.CL_PAQUETE;
-                //cmbFormatoDispersionNO.SelectedValue = item.CL_FORMATO_DISPERSION;
-                //cmbFormatoValesGasolinaNO.SelectedValue = item.CL_FORMATO_VALES_G;
-                //cmbFormatoValesDespensaNO.SelectedValue = item.CL_FORMATO_VALES_D;
-                //cmbTipoNomina.SelectedValue = item.CL_TIPO_NOMINA;
-                //cmbFormaPago.SelectedValue = item.CL_FORMA_PAGO;
-                //cmbBanco.SelectedValue = item.CL_BANCO_SAT;                
-                //txtCuentaPago.Text = item.NO_CUENTA_PAGO;
-                //txtClavePago.Text = item.NO_CLABE_PAGO;
-                //txtCuentaValesDespensa.Text = item.NO_CUENTA_DESPENSA;
-                //txtFILLER01.Text = item.FILLER01;
-                //txtFILLER02.Text = item.FILLER02;
-                //txtFILLER03.Text = item.FILLER03;
-                //txtFILLER04.Text = item.FILLER04;
-                //txtFILLER05.Text = item.FILLER05;
+                cmbTipoSalario.SelectedValue = item.CL_TIPO_SALARIO_SUA.ToString();
+                txtUMFNO.Text = item.NO_UMF;
+                cmbRiesgoPuesto.SelectedValue = item.CL_RIESGO_PUESTO;
+                cmbHorarioNO.SelectedValue = item.CL_HORARIO;
+                cmbPaquetePrestacionesNO.SelectedValue = item.ID_PAQUETE_PRESTACIONES.ToString();
+                cmbFormatoDispersionNO.SelectedValue = item.CL_FORMATO_DISPERSION;
+                cmbFormatoValesGasolinaNO.SelectedValue = item.CL_FORMATO_VALES_G;
+                cmbFormatoValesDespensaNO.SelectedValue = item.CL_FORMATO_VALES_D;
+                cmbTipoNomina.SelectedValue = item.ID_TIPO_NOMINA.ToString();
+                cmbFormaPago.SelectedValue = item.CL_FORMA_PAGO;
+                cmbBanco.SelectedValue = item.CL_BANCO_SAT;
+                txtCuentaPago.Text = item.NO_CUENTA_PAGO;
+                txtClavePago.Text = item.NO_CLABE_PAGO;
+                txtCuentaValesDespensa.Text = item.NO_CUENTA_DESPENSA;
+                txtFILLER01.Text = item.FILLER01;
+                txtFILLER02.Text = item.FILLER02;
+                txtFILLER03.Text = item.FILLER03;
+                txtFILLER04.Text = item.FILLER04;
+                txtFILLER05.Text = item.FILLER05;
 
-                //if(item.MN_SNOMINAL.ToString() != "0.0")
-                //    txtSueldoDiario.Text = item.MN_SNOMINAL.ToString();
+                if (item.MN_SNOMINAL.ToString() != "0.0")
+                    txtSueldoDiario.Text = item.MN_SNOMINAL.ToString();
 
-                //if (item.MN_SNOMINAL_MENSUAL.ToString() != "0.0")
-                //    txtSueldoMensual.Text = item.MN_SNOMINAL_MENSUAL.ToString();
+                if (item.MN_SNOMINAL_MENSUAL.ToString() != "0.0")
+                    txtSueldoMensual.Text = item.MN_SNOMINAL_MENSUAL.ToString();
 
-                //if (item.NO_FACTOR_SBC.ToString() != "0.0")
-                //    txtFactorBaseCotizacion.Text = item.NO_FACTOR_SBC.ToString();
+                if (item.NO_FACTOR_SBC.ToString() != "0.0")
+                    txtFactorBaseCotizacion.Text = item.NO_FACTOR_SBC.ToString();
 
-                //if (item.MN_SBC_FIJO.ToString() != "0.0")
-                //    txtBaseCotizacionFijo.Text = item.MN_SBC_FIJO.ToString();
+                if (item.MN_SBC_FIJO.ToString() != "0.0")
+                    txtBaseCotizacionFijo.Text = item.MN_SBC_FIJO.ToString();
 
-                //if (item.MN_SBC_DETERMINADO.ToString() != "0.0")
-                //    txtBaseCotizacionDeterminado.Text = item.MN_SBC_DETERMINADO.ToString();
+                if (item.MN_SBC_DETERMINADO.ToString() != "0.0")
+                    txtBaseCotizacionDeterminado.Text = item.MN_SBC_DETERMINADO.ToString();
 
-                //if (item.MN_SBC_MAXIMO.ToString() != "0.0")
-                //    txtBaseCotizacionMaximo.Text = item.MN_SBC_MAXIMO.ToString();
+                if (item.MN_SBC_MAXIMO.ToString() != "0.0")
+                    txtBaseCotizacionMaximo.Text = item.MN_SBC_MAXIMO.ToString();
 
-                //if (item.MN_SBC.ToString() != "0.0")
-                //    txtSalarioBaseCotizacion.Text = item.MN_SBC.ToString();
+                if (item.MN_SBC.ToString() != "0.0")
+                    txtSalarioBaseCotizacion.Text = item.MN_SBC.ToString();
 
-                //if (item.FE_REINGRESO != null)
-                //    txtFeReingreso.SelectedDate = DateTime.Parse(item.FE_REINGRESO);
+                if (item.FE_REINGRESO != null)
+                    txtFeReingreso.SelectedDate = DateTime.Parse(item.FE_REINGRESO);
 
-                //if (item.FE_ANTIGUEDAD != null)
-                //    txtFeAntiguedad.SelectedDate = DateTime.Parse(item.FE_ANTIGUEDAD);
+                if (item.FE_ANTIGUEDAD != null)
+                    txtFeAntiguedad.SelectedDate = DateTime.Parse(item.FE_ANTIGUEDAD);
 
-                //if (item.FE_PLANTA != null)
-                //    txtFePlanta.SelectedDate = DateTime.Parse(item.FE_PLANTA);
+                if (item.FE_PLANTA != null)
+                    txtFePlanta.SelectedDate = DateTime.Parse(item.FE_PLANTA);
 
-
-                //if (item.FG_COTIZA_IMSS == true)
-                //    cmbCotizaIMSS.SelectedValue = "Sí";
-                //else
-                //    cmbCotizaIMSS.SelectedValue = "No";
+                if (item.FG_COTIZA_IMSS == true)
+                {
+                    btnCotizaIMSSTrue.Checked = true;
+                    btnCotizaIMSSFalse.Checked = false;
+                }
+                else
+                {
+                    btnCotizaIMSSTrue.Checked = false;
+                    btnCotizaIMSSFalse.Checked = true;
+                }
             }
 
         }

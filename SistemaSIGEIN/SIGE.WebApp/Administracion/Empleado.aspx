@@ -467,6 +467,16 @@
                     <telerik:AjaxUpdatedControl ControlID="btnCalcularSueldo" UpdatePanelHeight="100%" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnGuardar">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnGuardar" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnGuardarSalir">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnGuardarSalir" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
     <div style="height: calc(100% - 50px); padding: 10px 0px 0px 0px;">
@@ -1054,7 +1064,7 @@
                                 </div>
                             </div>
 
-                            <div class="ctrlBasico" style="clear: both;">
+                            <div class="ctrlBasico" style="clear: both; display: none">
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>Horario:</label>
                                 </div>
@@ -1226,7 +1236,7 @@
                                     </telerik:RadComboBox>
                                 </div>
                             </div>
-                            
+
                             <div class="ctrlBasico" style="clear: both;">
                                 <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>Tipo de nómina:</label>
@@ -1330,12 +1340,25 @@
                                     <label>Cotiza en el IMSS:</label>
                                 </div>
                                 <div class="divControlDerecha">
-                                    <telerik:RadComboBox runat="server" ID="cmbCotizaIMSS" Width="300px" EmptyMessage="Seleccione.." HighlightTemplatedItems="true" DropDownWidth="500" EnableLoadOnDemand="false" Filter="Contains">
+                                    <telerik:RadButton ID="btnCotizaIMSSTrue" Checked="false" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpNO" AutoPostBack="false">
+                                        <ToggleStates>
+                                            <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
+                                            <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
+                                        </ToggleStates>
+                                    </telerik:RadButton>
+                                    <telerik:RadButton ID="btnCotizaIMSSFalse" Checked="true" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpNO" AutoPostBack="false">
+                                        <ToggleStates>
+                                            <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
+                                            <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
+                                        </ToggleStates>
+                                    </telerik:RadButton>
+
+                                    <%--<telerik:RadComboBox runat="server" ID="cmbCotizaIMSS" Width="300px" EmptyMessage="Seleccione.." HighlightTemplatedItems="true" DropDownWidth="500" EnableLoadOnDemand="false" Filter="Contains">
                                         <Items>
                                             <telerik:RadComboBoxItem Value="1" Text="Sí" />
                                             <telerik:RadComboBoxItem Value="0" Text="No" />
                                         </Items>
-                                    </telerik:RadComboBox>
+                                    </telerik:RadComboBox>--%>
                                 </div>
                             </div>
 
@@ -1565,10 +1588,17 @@
     </div>
     <div style="clear: both; height: 5px;"></div>
     <div class="divControlDerecha">
-        <telerik:RadButton ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click"></telerik:RadButton>
-        <telerik:RadButton ID="btnGuardarSalir" runat="server" Text="Guardar y cerrar" OnClick="btnGuardarSalir_Click"></telerik:RadButton>
         <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" OnClientClicked="OnClientBeforeClose" AutoPostBack="false"></telerik:RadButton>
     </div>
+    
+    <div class="divControlDerecha">
+        <telerik:RadButton ID="btnGuardarSalir" runat="server" Text="Guardar y cerrar" OnClick="btnGuardarSalir_Click"></telerik:RadButton>
+    </div>
+
+    <div class="divControlDerecha">
+        <telerik:RadButton ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click"></telerik:RadButton>
+    </div>
+    
     <telerik:RadWindowManager ID="rwmAlertas" runat="server">
         <ConfirmTemplate>
             <div class="rwDialogPopup radconfirm">
@@ -1584,5 +1614,5 @@
             </div>
         </ConfirmTemplate>
     </telerik:RadWindowManager>
-    <asp:HiddenField ID="salarioMinDF" Value="" runat="server"/>
+    <asp:HiddenField ID="salarioMinDF" Value="" runat="server" />
 </asp:Content>
