@@ -1581,7 +1581,7 @@ namespace SIGE.WebApp.Administracion
                 {
                     string vClTipoControl = vXmlControl.Attribute("CL_TIPO").Value;
                     string vIdControl = vXmlControl.Attribute("ID_CAMPO").Value;
-                    string vNbValor = null;
+                    string vNbValor = vXmlControl.Attribute("CL_VALOR_DEFECTO").Value;
                     Control vControl = pvwCamposExtras.FindControl(vIdControl);
 
                     if (pXmlValoresAdicionales.Elements("CAMPO").Where(n => n.Attribute("ID_CAMPO").Value.ToString() == vIdControl).FirstOrDefault() != null)
