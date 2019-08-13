@@ -230,7 +230,7 @@ namespace SIGE.WebApp.Administracion
             vListaEscoloridad = vDescriptivo.LST_ESCOLARIDADES;
             vListaGenero = vDescriptivo.LST_CATALOGO_GENERO;
             vListaEdoCivil = vDescriptivo.LST_CATALOGO_EDOCIVIL;
-            vListaCompetencias = vDescriptivo.LST_CATALOGO_COMPETENCIAS_ESP;
+            vListaCompetencias = vDescriptivo.LST_CATALOGO_COMPETENCIAS_ESP.OrderBy(x => x.CL_COMPETENCIA).ToList();
             vListaCatalogoCompetencias = vDescriptivo.LST_CATALOGO_COMPETENCIAS;
             vListaAreasInteres = vDescriptivo.LST_AREAS_INTERES;
             vListaAreas = vDescriptivo.LST_AREAS;
@@ -1581,7 +1581,7 @@ namespace SIGE.WebApp.Administracion
                 {
                     string vClTipoControl = vXmlControl.Attribute("CL_TIPO").Value;
                     string vIdControl = vXmlControl.Attribute("ID_CAMPO").Value;
-                    string vNbValor = null;
+                    string vNbValor = vXmlControl.Attribute("CL_VALOR_DEFECTO").Value;
                     Control vControl = pvwCamposExtras.FindControl(vIdControl);
 
                     if (pXmlValoresAdicionales.Elements("CAMPO").Where(n => n.Attribute("ID_CAMPO").Value.ToString() == vIdControl).FirstOrDefault() != null)
@@ -1706,7 +1706,7 @@ namespace SIGE.WebApp.Administracion
 
         protected void dgvCompetencias_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
-            dgvCompetencias.DataSource = vListaCompetencias.Where(n => n.CL_TIPO_COMPETENCIA != "ESP");
+            dgvCompetencias.DataSource = vListaCompetencias.Where(n => n.CL_TIPO_COMPETENCIA != "ESP").OrderBy(x => x.CL_TIPO_COMPETENCIA).ToList();
         }
 
         protected void dgvCompetencias_DataBound(object sender, EventArgs e)
