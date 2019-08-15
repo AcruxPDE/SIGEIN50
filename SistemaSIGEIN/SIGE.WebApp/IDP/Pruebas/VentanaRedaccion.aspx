@@ -152,14 +152,9 @@
 
                     //var text = "¿Estás seguro que deseas terminar tu prueba?";
                     //radconfirm(text, callBackFunction, 400, 160, null, "Aviso");
-                    //args.set_cancel(true);
-                    if (ValidarContendorPreguntas()) {
-                        clearInterval(c);
-                        args.set_cancel(false);
-                    }
-                    else {
-                        args.set_cancel(true);
-                    }
+                    //args.set_cancel(true);                   
+                    clearInterval(c);
+                    args.set_cancel(false);                   
                 }
                 else {
                     //window.close();
