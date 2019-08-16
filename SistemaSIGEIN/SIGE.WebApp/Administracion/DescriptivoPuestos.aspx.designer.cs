@@ -112,6 +112,15 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadButton btnVistaPrevia;
         
         /// <summary>
+        /// btnConsultar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnConsultar;
+        
+        /// <summary>
         /// btnReporte control.
         /// </summary>
         /// <remarks>

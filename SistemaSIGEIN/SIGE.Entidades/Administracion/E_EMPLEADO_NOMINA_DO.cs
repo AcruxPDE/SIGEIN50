@@ -32,6 +32,7 @@ namespace SIGE.Entidades.Administracion
         public string NB_PROGRAMA_MODIFICA { get; set; }
         public string NB_PUESTO { get; set; }
         public string NB_PLAZA { get; set; }
+        public string FG_COMPLETO { get; set; }
 
     }
 }

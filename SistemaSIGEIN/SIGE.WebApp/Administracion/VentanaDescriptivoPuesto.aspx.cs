@@ -1652,6 +1652,19 @@ namespace SIGE.WebApp.Administracion
                 if (int.TryParse((string)Request.QueryString["PuestoId"], out idDescriptivo))
                 {
                     vIdDescriptivo = idDescriptivo;
+                    txtNombreCorto.Enabled = false;
+                    txtDescripcionPuesto.Enabled = false;
+                }
+
+                if(Request.QueryString["Ventana"] != null)
+                {
+                    if (Request.QueryString["Ventana"].ToString() == "CONSULTA")
+                    {
+                        btnGuardar.Enabled = false;
+                        btnGuardar.Visible = false;
+                        btnGuardarCerrar.Enabled = false;
+                        btnGuardarCerrar.Visible = false;
+                    }                        
                 }
 
                 vIsCopy = (Request.QueryString["pIsCopy"] != null);

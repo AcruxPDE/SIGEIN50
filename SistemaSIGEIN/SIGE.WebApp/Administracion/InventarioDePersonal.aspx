@@ -59,6 +59,13 @@
                 };
             }
 
+            function GetWindowPropertiesNominaConsulta() {
+                return {
+                    width: document.documentElement.clientWidth - 20, //750,
+                    height: document.documentElement.clientHeight - 20 //15
+                };
+            }
+
             function ShowInsertInventario() {
                 OpenNewWindow(GetInventarioWindowProperties());
             }
@@ -95,10 +102,28 @@
                     radalert("Selecciona un empleado.", 400, 150, "Aviso");
             }
 
+            function ShowConsultarEmpleado() {
+                obtenerFilaNominaDo();
+                if (vIdEmpleado != "")
+                    OpenNewWindow(GetInventarioConsultaWindowProperties());
+                else
+                    radalert("Selecciona un empleado.", 400, 150, "Aviso");
+            }
+
             function GetInventarioEditWindowProperties() {
                 var wnd = GetWindowPropertiesNomina();
                 wnd.vTitulo = "Editar empleado";
                 wnd.vURL = "VentanaInventarioPersonalNomina.aspx?pIdEmpleado=" + vIdEmpleado;
+                wnd.vRadWindowId = "winEmpleadoInventario";
+
+                return wnd;
+            }
+
+            function GetInventarioConsultaWindowProperties() {
+                var wnd = GetWindowPropertiesNominaConsulta();
+                var vConsulta = 'CONSULTA';
+                wnd.vTitulo = "Consulta empleado";
+                wnd.vURL = "Empleado.aspx?EmpleadoId=" + vIdEmpleado + "&" + "Ventana=" + vConsulta;
                 wnd.vRadWindowId = "winEmpleadoInventario";
 
                 return wnd;
@@ -125,8 +150,7 @@
                 obtenerFila();
                 if (vIdEmpleado != "") {
 
-                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
-                    { if (shouldSubmit) { this.click(); } });
+                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
 
                     radconfirm('¿Deseas eliminar el empleado ' + vNbEmpleado + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                     args.set_cancel(true);
@@ -141,8 +165,7 @@
                 obtenerFila();
                 if (vIdEmpleado != "") {
 
-                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
-                    { if (shouldSubmit) { this.click(); } });
+                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
 
                     radconfirm('¿Deseas eliminar el empleado ' + vNbEmpleado + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Eliminar Registro");
                     args.set_cancel(true);
@@ -225,7 +248,7 @@
             }
 
             function OpenWindowReingreso() {
-                
+
                 obtenerFila();
 
                 if (vIdEmpleado != "" & vClEstatus != "ALTA") {
@@ -320,7 +343,7 @@
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
-                <AjaxSettings>
+        <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="ramInventario">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="grdEmpleados" UpdatePanelHeight="100%" />
@@ -341,8 +364,33 @@
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
+        <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="btnImportarEmpleados">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnImportarEmpleados" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="grdEmpleados" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+        </AjaxSettings>
+        <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="btnModificacionLayout">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnModificacionLayout" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="grdEmpleados" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+        </AjaxSettings>
+        <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="btnConsultar">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnConsultar" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+        </AjaxSettings>
     </telerik:RadAjaxManager>
+
     <label class="labelTitulo">Inventario de personal</label>
+    
     <div style="height: calc(100% - 100px);">
         <telerik:RadSplitter ID="splEmpleados" runat="server" Width="100%" Height="100%" BorderSize="0">
             <telerik:RadPane ID="rpnGridEmpleados" runat="server">
@@ -377,7 +425,7 @@
             </telerik:RadPane>
             <telerik:RadPane ID="rpnOpciones" runat="server" Width="30">
                 <telerik:RadSlidingZone ID="slzOpciones" runat="server" Width="30" ClickToOpen="true" SlideDirection="Left">
-                    <telerik:RadSlidingPane ID="RSPAdvSearch"  runat="server" Title="Búsqueda avanzada" Width="500" MinWidth="500" Height="100%">
+                    <telerik:RadSlidingPane ID="RSPAdvSearch" runat="server" Title="Búsqueda avanzada" Width="500" MinWidth="500" Height="100%">
                         <div style="padding: 20px;">
                             <telerik:RadFilter runat="server" ID="ftGrdEmpleados" FilterContainerID="grdEmpleados" ShowApplyButton="true" Height="100">
                                 <ContextMenu Height="100" EnableAutoScroll="false">
@@ -390,31 +438,43 @@
             </telerik:RadPane>
         </telerik:RadSplitter>
     </div>
+
     <div style="clear: both; height: 10px;"></div>
+
     <div class="ctrlBasico">
         <telerik:RadButton ID="btnAgregarInventario" Visible="true" runat="server" Text="Agregar" OnClientClicked="ShowInsertInventario" AutoPostBack="false"></telerik:RadButton>
-         <%-- <telerik:RadButton ID="btnAgregar" Visible="true" runat="server" Text="Agregar" OnClientClicked="ShowInsertForm" AutoPostBack="false"></telerik:RadButton>--%>
     </div>
+
     <div class="ctrlBasico">
         <telerik:RadButton ID="btnEditarInventario" Visible="true" runat="server" Text="Editar" OnClientClicked="ShowEditInventario" AutoPostBack="false"></telerik:RadButton>
-        <%--<telerik:RadButton ID="btnEditar" Visible="true" runat="server" Text="Editar" OnClientClicked="ShowEditForm" AutoPostBack="false"></telerik:RadButton>--%>
     </div>
+
     <div class="ctrlBasico">
-        <%-- <telerik:RadButton ID="btnEliminarInventario" Visible="false" runat="server" Text="Eliminar" OnClick="btnEliminarInventario_Click" OnClientClicking="ConfirmarEliminarInventario"></telerik:RadButton>--%>
         <telerik:RadButton ID="btnEliminar" Visible="true" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" OnClientClicking="ConfirmarEliminar"></telerik:RadButton>
     </div>
+
+    <div class="ctrlBasico">
+        <telerik:RadButton ID="btnConsultar" Visible="true" runat="server" Text="Consultar" OnClientClicked="ShowConsultarEmpleado"></telerik:RadButton>
+    </div>
+
     <div class="ctrlBasico">
         <telerik:RadButton ID="btnDarDeBaja" Visible="true" runat="server" Text="Dar de baja" AutoPostBack="false" OnClientClicked="OpenWindowDarBaja"></telerik:RadButton>
     </div>
-       <div class="ctrlBasico">
+
+    <div class="ctrlBasico">
         <telerik:RadButton ID="btnDarAlta" Visible="true" runat="server" Text="Dar de alta" AutoPostBack="true" OnClick="btnDarAlta_Click"></telerik:RadButton>
     </div>
-    <%--<div class="ctrlBasico">
-        <telerik:RadButton ID="btnCancelarBaja" Visible="true" runat="server" Text="Cancelar baja" AutoPostBack="true" OnClientClicking="ConfirmarCancelar" OnClick="btnCancelarBaja_Click"></telerik:RadButton>
+
+    <div class=" divControlDerecha"  style="margin-right: 20px">
+        <div class="ctrlBasico">
+            <telerik:RadButton ID="btnImportarEmpleados" Visible="true" runat="server" Text="Importar empleados" AutoPostBack="true" ></telerik:RadButton>
+        </div>
+
+        <div class="ctrlBasico" >
+            <telerik:RadButton ID="btnModificacionLayout" Visible="true" runat="server" Text="Modificación por layout" AutoPostBack="true" ></telerik:RadButton>
+        </div>
     </div>
-    <div class="ctrlBasico">
-        <telerik:RadButton ID="btnReingresoEmpleado" Visible="true" runat="server" Text="Reingreso" AutoPostBack="false" OnClientClicking="OpenWindowReingreso"></telerik:RadButton>
-    </div>--%>
+       
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true" OnClientClose="returnDataToParentPopup" Animation="Fade">
         <Windows>
             <telerik:RadWindow ID="rwComentarios" runat="server" Title="Comentarios de entrevistas" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
@@ -425,7 +485,7 @@
             <telerik:RadWindow ID="winSolicitud" runat="server" Title="Solicitud" Behaviors="None" Modal="true" VisibleStatusbar="false"></telerik:RadWindow>
             <telerik:RadWindow ID="winEmpleado" runat="server" Title="Empleado" Behaviors="None" Modal="true" VisibleStatusbar="false" OnClientClose="onCloseWindow"></telerik:RadWindow>
             <telerik:RadWindow ID="winSeleccion" runat="server" Title="Seleccionar" Height="600px" Width="600px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
-            <telerik:RadWindow ID="winEmpleadoGeneral" runat="server" Title="Empleado" Behaviors="None" Modal="true" VisibleStatusbar="false" ></telerik:RadWindow>
+            <telerik:RadWindow ID="winEmpleadoGeneral" runat="server" Title="Empleado" Behaviors="None" Modal="true" VisibleStatusbar="false"></telerik:RadWindow>
             <telerik:RadWindow ID="WinDarBaja" runat="server" Width="900px" Height="400px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" OnClientClose="onCloseWindow"></telerik:RadWindow>
             <telerik:RadWindow ID="WinSeleccionCausa" runat="server" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade"></telerik:RadWindow>
             <telerik:RadWindow ID="rwConsultas" runat="server" Title="Consultas Personales" Height="600px" Width="1100px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
@@ -434,19 +494,19 @@
             <telerik:RadWindow ID="winReporteCumplimientoPersonal" runat="server" Animation="Fade" VisibleStatusbar="false" Behaviors="Close" Modal="true"></telerik:RadWindow>
             <telerik:RadWindow ID="winReingreso" runat="server" Width="900px" Height="400px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" OnClientClose="onCloseWindow"></telerik:RadWindow>
             <telerik:RadWindow ID="winEmpleadoInventario" runat="server" Title="Empleado" Behaviors="Close" Modal="true" VisibleStatusbar="false" OnClientClose="onCloseWindow"></telerik:RadWindow>
-        </Windows>  
+        </Windows>
     </telerik:RadWindowManager>
+
     <telerik:RadWindowManager ID="rnTemplate" runat="server">
-          <AlertTemplate>    
-             <div style="height:10px;"></div>
-            <div class="rwDialogButtons" style="text-align:center;">
-                 <img  src="../Assets/images/Exito.png" />
+        <AlertTemplate>
+            <div style="height: 10px;"></div>
+            <div class="rwDialogButtons" style="text-align: center;">
+                <img src="../Assets/images/Exito.png" />
                 <label>¿Qué tipo de alta es?:</label>
-                 <div style="height:20px;"></div>
-                <%--<input type="button" value="Cancelar baja" style="width: 120px;" class="rwOkBtn" onclick="__doPostBack('btnSubmit', 'cancelarBaja');" />--%>
+                <div style="height: 20px;"></div>
                 <input type="button" value="Cancelar baja" style="width: 120px;" class="rwOkBtn" onclick="CancelarBaja(); $find('{0}').close(true);" />
-                <input type="button" value="Reingreso" style="width: 80px" class="rwCancelBtn" onclick="OpenWindowReingreso(); $find('{0}').close(true);"  />
-                <input type="button" value="Cancelar" style="width: 80px" class="rwCancelBtn"  onclick="$find('{0}').close(true);" />
+                <input type="button" value="Reingreso" style="width: 80px" class="rwCancelBtn" onclick="OpenWindowReingreso(); $find('{0}').close(true);" />
+                <input type="button" value="Cancelar" style="width: 80px" class="rwCancelBtn" onclick="$find('{0}').close(true);" />
             </div>
         </AlertTemplate>
     </telerik:RadWindowManager>

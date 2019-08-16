@@ -50,6 +50,24 @@
 
             }
 
+            function ShowConsultar() {
+                var selectedItem = $find("<%=grdDescriptivo.ClientID %>").get_masterTableView().get_selectedItems()[0];
+                if (selectedItem != undefined) {
+                    var IdPuesto = selectedItem.getDataKeyValue("ID_PUESTO_DO")
+                    var Ventana = 'CONSULTA';
+
+                    var wnd = GetWindowProperties();
+                    wnd.vTitulo = "Consultar descriptivo de puesto";
+                    wnd.vURL = "VentanaDescriptivoPuesto.aspx?PuestoId=" + IdPuesto + "&" + "Ventana=" + Ventana;
+                    wnd.vRadWindowId = "winNuevoDescriptivo";
+
+                    OpenNewWindow(wnd);
+
+                }
+                else
+                    radalert("Selecciona un puesto.", 400, 150, "Aviso");
+            }
+
             function ConfirmarEliminarNomina(sender, args) {
                 var MasterTable = $find("<%=grdDescriptivo.ClientID %>").get_masterTableView();
                 var selectedRows = MasterTable.get_selectedItems();
@@ -312,15 +330,12 @@
     </div>
     <div style="clear: both; height: 10px;"></div>
     <div class="ctrlBasico">
-      <%--  <telerik:RadButton ID="btnAgregar"  runat="server" Text="Agregar" Width="100px" OnClientClicked="ShowInsertForm" AutoPostBack="false"></telerik:RadButton>--%>
         <telerik:RadButton ID="btnAgregarNomina"  runat="server" Text="Agregar"  OnClientClicked="ShowInsertNomina" AutoPostBack="false"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-       <%-- <telerik:RadButton ID="btnEditar"  OnClientClicked="ShowEditForm" AutoPostBack="false" runat="server" Text="Editar" Width="100px"></telerik:RadButton>--%>
         <telerik:RadButton ID="btnEditarNomina"  OnClientClicked="ShowEditNomina" AutoPostBack="false" runat="server" Text="Editar" ></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
-        <%--<telerik:RadButton ID="btnEliminar"  runat="server" Text="Eliminar" Width="100px" AutoPostBack="true" OnClick="btnEliminar_click" OnClientClicking="ConfirmarEliminar"></telerik:RadButton>--%>
         <telerik:RadButton ID="btnEliminarNomina"  runat="server" Text="Eliminar"  AutoPostBack="true" OnClick="btnEliminarNomina_Click" OnClientClicking="ConfirmarEliminarNomina"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
@@ -330,11 +345,12 @@
         <telerik:RadButton ID="btnVistaPrevia"  OnClientClicked="ShowPreviewForm" AutoPostBack="false" runat="server" Text="Vista previa" ></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
+        <telerik:RadButton ID="btnConsultar"  OnClientClicked="ShowConsultar" AutoPostBack="false" runat="server" Text="Consultar" ></telerik:RadButton>
+    </div>
+    <div class="ctrlBasico">
         <telerik:RadButton ID="btnReporte"  OnClientClicked="ShowReporteDescriptivoPuesto" AutoPostBack="false" runat="server" Text="Imprimir"></telerik:RadButton>
     </div>
-    <%--<div class="ctrlBasico">
-        <telerik:RadButton ID="RadButton1" Visible="false" OnClientClicked="pruebatabla" AutoPostBack="false" runat="server" Text="Prueba tabla" Width="100px"></telerik:RadButton>
-    </div>--%>
+
     <telerik:RadWindowManager ID="rwmAlertas" runat="server" Animation="Fade" >
         <Windows>
             <telerik:RadWindow ID="winDescriptivo" runat="server" Title="Agregar/Editar Puestos" Height="600px" Width="500px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="None" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>

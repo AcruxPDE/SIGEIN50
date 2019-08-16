@@ -1184,19 +1184,34 @@ namespace SIGE.WebApp.Administracion
                 if (int.TryParse(Request.QueryString["EmpleadoId"], out vIdEmpleadoQS))
                     vIdEmpleado = vIdEmpleadoQS;
                 else if (int.TryParse(Request.QueryString["EmpleadoNoDoId"], out vIdEmpleadoQS))
-                    vIdEmpleadoNominaDo = vIdEmpleadoQS;
+                    vIdEmpleado = vIdEmpleadoQS;
 
-                if (vIdEmpleadoNominaDo != null)
+                if (Request.QueryString["Ventana"] != null)
+                {
+                    if (Request.QueryString["Ventana"].ToString() == "CONSULTA")
+                    {
+                        btnGuardar.Enabled = false;
+                        btnGuardarSalir.Enabled = false;
+                        btnGuardar.Visible = false;
+                        btnGuardarSalir.Visible = false;
+                        btnCancelar.Enabled = false;
+                        btnCancelar.Visible = false;
+                        btnCerrar.Visible = true;
+                    }
+                }
+                    
+
+                if (vIdEmpleadoQS != null)
                 {
                     CamposNominaNegocio oNegocio = new CamposNominaNegocio();
-                    E_EMPLEADO_NOMINA_DO vEmpleado = oNegocio.ObtienePersonalNominaDo(pID_EMPLEADO: vIdEmpleadoNominaDo).FirstOrDefault();
+                    E_EMPLEADO_NOMINA_DO vEmpleado = oNegocio.ObtienePersonalNominaDo(pID_EMPLEADO: vIdEmpleadoQS).FirstOrDefault();
                     if (vEmpleado != null)
                     {
                         if (vEmpleado.FG_NOMINA == true && ContextoApp.ANOM.LicenciaAccesoModulo.MsgActivo == "1")
                         {
                             CargarDatos();
                             tabSolicitud.Tabs[8].Visible = true;
-                            CargarDatosNomina(vIdEmpleadoNominaDo);
+                            CargarDatosNomina(vIdEmpleadoQS);
                         }
                         else
                         {

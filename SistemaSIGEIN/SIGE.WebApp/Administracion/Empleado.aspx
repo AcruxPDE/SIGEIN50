@@ -214,6 +214,17 @@
             radconfirm("¿Estás seguro que quieres salir de la pantalla? Si no has guardado los cambios se perderán", confirmCallback, 400, 170, null, "Aviso");
         }
 
+        function OnClientBeforeCloseConsulta(sender, args) {
+
+            function confirmCallback(arg) {
+                if (arg) {
+                    OnCloseUpdate();
+                }
+            }
+
+            radconfirm("¿Estás seguro que quieres salir de la pantalla?", confirmCallback, 400, 170, null, "Aviso");
+        }
+
         function OpenSelectionWindow(sender, args) {
             var vLstEstados = $find("<%= ObtenerClientId(mpgPlantilla, "NB_ESTADO") %>");
             var vBtnEstados = $find("<%= ObtenerClientId(mpgPlantilla, "btnNB_ESTADO") %>");
@@ -1589,6 +1600,7 @@
     <div style="clear: both; height: 5px;"></div>
     <div class="divControlDerecha">
         <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" OnClientClicked="OnClientBeforeClose" AutoPostBack="false"></telerik:RadButton>
+        <telerik:RadButton ID="btnCerrar" runat="server" Visible="false" Text="Cerrar" OnClientClicked="OnClientBeforeCloseConsulta" AutoPostBack="false"></telerik:RadButton>
     </div>
     
     <div class="divControlDerecha">

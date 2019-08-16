@@ -9,23 +9,23 @@ namespace SIGE.Entidades.Administracion
     [Serializable]
     public class E_EMPLEADO_NOMINA
     {
-        public System.Guid ID_RAZON_SOCIAL { get; set; }
-        public System.Guid ID_REGISTRO_PATRONAL { get; set; }
+        public System.Guid? ID_RAZON_SOCIAL { get; set; }
+        public System.Guid? ID_REGISTRO_PATRONAL { get; set; }
         public string CL_TIPO_TRAB_SUA { get; set; }
         public string CL_JORNADA_SUA { get; set; }
         public string CL_TIPO_CONTRATO_SAT { get; set; }
         public string CL_TIPO_JORNADA_SAT { get; set; }
         public string CL_REGIMEN_CONTRATACION { get; set; }
         public string CL_UBICACION_SUA { get; set; }
-        public decimal CL_TIPO_SALARIO_SUA { get; set; }
+        public decimal? CL_TIPO_SALARIO_SUA { get; set; }
         public string NO_UMF { get; set; }
         public string CL_RIESGO_PUESTO { get; set; }
         public string CL_HORARIO { get; set; }
-        public System.Guid ID_PAQUETE_PRESTACIONES { get; set; }
+        public System.Guid? ID_PAQUETE_PRESTACIONES { get; set; }
         public string CL_FORMATO_DISPERSION { get; set; }
         public string CL_FORMATO_VALES_G { get; set; }
         public string CL_FORMATO_VALES_D { get; set; }
-        public System.Guid ID_TIPO_NOMINA { get; set; }
+        public System.Guid? ID_TIPO_NOMINA { get; set; }
         public string CL_FORMA_PAGO { get; set; }
         public string CL_BANCO_SAT { get; set; }
         public bool FG_COTIZA_IMSS { get; set; }
