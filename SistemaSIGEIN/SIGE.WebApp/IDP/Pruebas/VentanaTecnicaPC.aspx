@@ -115,7 +115,9 @@
                         }
                         else {
                             //window.close();
-                            window.location = "Default.aspx?ty=Ini";
+                            var idBateria = '<%= vIdBateria%>';
+                            var clToken = '<%= vClTokenBateria%>';
+                            window.location = "Default.aspx?ty=Ini&ID=" + idBateria + "&T=" + clToken;
                         }
                     });
                     var text = "<label><b>Instrucciones:</b><br/>Contesta SI o NO, en cada una de las opciones A, B, C y D (por favor contesta todas las opciones).</label>";
@@ -191,7 +193,9 @@
                 }
                 else {
                     //window.close();
-                    window.location = "Default.aspx?ty=sig";
+                    var idBateria = '<%= vIdBateria%>';
+                    var clToken = '<%= vClTokenBateria%>';
+                    window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
                 }
             }
 
@@ -209,7 +213,9 @@
 
             function CloseTest() {
                 //window.close();
-                window.location = "Default.aspx?ty=sig";
+                var idBateria = '<%= vIdBateria%>';
+                var clToken = '<%= vClTokenBateria%>';
+                window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
             }
 
             function Close() {

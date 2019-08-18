@@ -94,6 +94,12 @@ namespace SIGE.WebApp.IDP
             set { ViewState["vsIdBateria"] = value; }
         }
 
+        public Guid vClTokenBateria
+        {
+            get { return (Guid)ViewState["vsClTokenBateria"]; }
+            set { ViewState["vsClTokenBateria"] = value; }
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -128,6 +134,8 @@ namespace SIGE.WebApp.IDP
                     }
                     else
                     {
+                        vIdBateria = int.Parse(Request.QueryString["IDB"]);
+                        vClTokenBateria = new Guid(Request.QueryString["TB"]);
                         btnEliminar.Visible = false;
                         btnEliminarBateria.Visible = false;
                     }

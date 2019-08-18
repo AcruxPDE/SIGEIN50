@@ -113,7 +113,9 @@
                             }
                         }
                         else {
-                            window.location = "Default.aspx?ty=Ini";
+                            var idBateria = '<%= vIdBateria%>';
+                            var clToken = '<%= vClTokenBateria%>';
+                            window.location = "Default.aspx?ty=Ini&ID=" + idBateria + "&T=" + clToken;
                         }
                     });
                     var text = "<label><b>Instrucciones:</b><br/>Esta prueba  se  compone de diversas preguntas y problemas que tendrás que resolver. Revisa este ejemplo para  contestar el siguiente cuestionario. <br /><br />" +
@@ -214,7 +216,9 @@
                 }
 
                 function CloseTest() {
-                    window.location = "Default.aspx?ty=sig";
+                    var idBateria = '<%= vIdBateria%>';
+                    var clToken = '<%= vClTokenBateria%>';
+                    window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
                 }
 
                 function Close() {

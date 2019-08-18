@@ -119,7 +119,9 @@
                         else {
 
                             // window.close();
-                            window.location = "Default.aspx?ty=Ini";
+                            var idBateria = '<%= vIdBateria%>';
+                            var clToken = '<%= vClTokenBateria%>';
+                            window.location = "Default.aspx?ty=Ini&ID=" + idBateria + "&T=" + clToken;
                         }
                     });
                     var text = "<label><b>Instrucciones:</b><br />Este no es un test con respuestas correctas o incorrectas. Es un cuestionario que te permite describir tu estilo de vida principal y secundario, con el fin de identificar los modos productivos y antiproductivos, en que utilizas tus fuerzas. Encontraras en el cuestionario enunciados descriptivos cada uno seguido por cuatro terminaciones posibles.  En los espacios en blanco a la derecha de cada terminación, coloca los números 4, 3, 2 y 1 de acuerdo a cuál es la terminación que <u>más se te asemeja</u> (4) y cuál es la que sientes que <u>se te asemeja menos</u> (1).<br /><br />" +
@@ -183,7 +185,9 @@
                 }
                 else {
                     // window.close();
-                    window.location = "Default.aspx?ty=sig";
+                    var idBateria = '<%= vIdBateria%>';
+                    var clToken = '<%= vClTokenBateria%>';
+                    window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
                 }
             }
 
@@ -220,7 +224,9 @@
 
             function CloseTest() {
                 // window.close();
-                window.location = "Default.aspx?ty=sig";
+                var idBateria = '<%= vIdBateria%>';
+                var clToken = '<%= vClTokenBateria%>';
+                window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
             }
 
             function Close() {

@@ -111,7 +111,9 @@
                 }
                 else {
                     //window.close();
-                    window.location = "Default.aspx?ty=sig";
+                    var idBateria = '<%= vIdBateria%>';
+                    var clToken = '<%= vClTokenBateria%>';
+                    window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
                 }
             }
             //FUNCION PARA VALIDAR LA PALABRA INGRESADA
@@ -158,7 +160,9 @@
                         else {
 
                             // window.close();
-                            window.location = "Default.aspx?ty=Ini";
+                            var idBateria = '<%= vIdBateria%>';
+                            var clToken = '<%= vClTokenBateria%>';
+                            window.location = "Default.aspx?ty=Ini&ID=" + idBateria + "&T=" + clToken;
                         }
                     });
                     var text = "<label><b>Instrucciones:</b><br/>Lee con atención el siguiente párrafo y escribe correctamente las palabras que deban ser acentuadas.<br/><br/> Añade las palabras con errores a la lista que aparece debajo del párrafo escribiendo la palabra correcta en el cuadro de texto y haciendo clic en el botón ' + '; si deseas eliminar una palabra de la lista haz clic en el botón ' X ' que aparece en la parte derecha del contenedor.</label>";
@@ -223,7 +227,9 @@
 
             function CloseTest() {
                 //window.close();
-                window.location = "Default.aspx?ty=sig";
+                var idBateria = '<%= vIdBateria%>';
+                var clToken = '<%= vClTokenBateria%>';
+                window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
             }
 
             function Close() {

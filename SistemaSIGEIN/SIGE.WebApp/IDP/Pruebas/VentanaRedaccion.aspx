@@ -108,7 +108,9 @@
                             }
                         }
                         else {
-                            window.location = "Default.aspx?ty=Ini";
+                            var idBateria = '<%= vIdBateria%>';
+                            var clToken = '<%= vClTokenBateria%>';
+                            window.location = "Default.aspx?ty=Ini&ID=" + idBateria + "&T=" + clToken;
                         }
                     });
                     var text = "<label><b>Instrucciones:</b><br/>En el siguiente espacio deberás redactar una carta dirigida a alguna persona particularmente admirada o apreciada por ti. Esta persona puede ser alguien que tú conoces o no y que admiras por su obra o sus ideas; incluso puede ser una persona que haya fallecido o que sea producto de la imaginación. Escríbele lo que desees, el tema de la carta es libre. Únicamente considera que el tamaño de la carta deberá ser de media cuartilla al menos.</label>";
@@ -158,7 +160,9 @@
                 }
                 else {
                     //window.close();
-                    window.location = "Default.aspx?ty=sig";
+                    var idBateria = '<%= vIdBateria%>';
+                    var clToken = '<%= vClTokenBateria%>';
+                    window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
                 }
             }
 
@@ -175,7 +179,9 @@
             }
 
             function CloseTest() {
-                window.location = "Default.aspx?ty=sig";
+                var idBateria = '<%= vIdBateria%>';
+                var clToken = '<%= vClTokenBateria%>';
+                window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
             }
 
             function Close() {

@@ -78,7 +78,7 @@ namespace SIGE.WebApp.IDP.Pruebas
                 if (Request.Params["T"] != null)
                 {
                     vClTokenExterno = Guid.Parse(Request.Params["T"].ToString());
-                    ContextoUsuario.clTokenPruebas = vClTokenExterno;
+                    //ContextoUsuario.clTokenPruebas = vClTokenExterno;
                 }
 
                 if (Request.Params["idCandidato"] != null)
@@ -90,7 +90,7 @@ namespace SIGE.WebApp.IDP.Pruebas
                 if (Request.Params["ID"] != null)
                 {
                     vFlBateria = int.Parse(Request.Params["ID"].ToString());
-                    ContextoUsuario.idBateriaPruebas = vFlBateria;
+                    //ContextoUsuario.idBateriaPruebas = vFlBateria;
                     CargarBateria();
                 }
             }

@@ -110,7 +110,9 @@
                         else {
 
                             //window.close();
-                            window.location = "Default.aspx?ty=Ini";
+                            var idBateria = '<%= vIdBateria%>';
+                            var clToken = '<%= vClTokenBateria%>';
+                            window.location = "Default.aspx?ty=Ini&ID=" + idBateria + "&T=" + clToken;
                         }
                     });
                     var text = "<label><b>Instrucciones:</b><br/>Lee con atención las siguientes preguntas, elige entre las posibles respuestas aquella que más se aplica a tu forma de actuar. Cada pregunta cuenta con un tiempo límite para ser contestada, por lo que te sugerimos no detenerte demasiado y seleccionar tu respuesta con rapidez. <br /><br /> Este test no tiene preguntas correctas o incorrectas, por lo que puedes sentirte libre de contestar de manera totalmente honesta y objetiva. Sin embargo, este test cuenta con un sistema para invalidarlo si no está de acuerdo a los demás resultados de tu batería, te suplicamos ser honesto en tus respuestas.</label>";
@@ -164,7 +166,9 @@
                 }
                 else {
                     // window.close();
-                    window.location = "Default.aspx?ty=sig";
+                    var idBateria = '<%= vIdBateria%>';
+                    var clToken = '<%= vClTokenBateria%>';
+                    window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
                 }
             }
 
@@ -181,7 +185,9 @@
             }
 
             function CloseTest() {
-                window.location = "Default.aspx?ty=sig";
+                var idBateria = '<%= vIdBateria%>';
+                var clToken = '<%= vClTokenBateria%>';
+                window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
             }
 
             function Close() {

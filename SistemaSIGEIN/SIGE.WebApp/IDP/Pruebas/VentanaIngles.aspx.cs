@@ -125,6 +125,12 @@ namespace SIGE.WebApp.IDP.Pruebas
             get { return (int)ViewState["vsIdBateria"]; }
             set { ViewState["vsIdBateria"] = value; }
         }
+
+        public Guid vClTokenBateria
+        {
+            get { return (Guid)ViewState["vsClTokenBateria"]; }
+            set { ViewState["vsClTokenBateria"] = value; }
+        }
         #endregion
 
         public void initRespuestasIngles()
@@ -207,6 +213,8 @@ namespace SIGE.WebApp.IDP.Pruebas
                     }
                     else
                     {
+                        vIdBateria = int.Parse(Request.QueryString["IDB"]);
+                        vClTokenBateria = new Guid(Request.QueryString["TB"]);
                         btnEliminar.Visible = false;
                         btnEliminarBateria.Visible = false;
                     }
@@ -770,7 +778,7 @@ namespace SIGE.WebApp.IDP.Pruebas
                         {
                             E_RESULTADO vResultadoSeccion = nKprueba.InsertaActualiza_K_PRUEBA_SECCION(tipo_transaccion: E_TIPO_OPERACION_DB.A.ToString(), v_k_prueba: vSeccionInicia, usuario: vClUsuario, programa: vNbPrograma);
                             E_RESULTADO vResultado = nCustionarioPregunta.InsertaActualiza_K_CUESTIONARIO_PREGUNTA(tipo_transaccion: E_TIPO_OPERACION_DB.A.ToString(), pIdEvaluado: vObjetoPrueba.ID_CANDIDATO, pIdEvaluador: null, pIdCuestionarioPregunta: 0, pIdCuestionario: 0, XML_CUESTIONARIO: RESPUESTAS.ToString(), pNbPrueba: "INGLES-" + (vseccion + 1), usuario: vClUsuario, programa: vNbPrograma);
-                            Response.Redirect("Default.aspx?ty=sig", true);
+                            Response.Redirect(String.Format("Default.aspx?ty=sig&ID={0}&T={1}", vIdBateria, vClTokenBateria), true);
                             //CallBackFunction = "updateTimer('" + (-1) + "')";
                         }
                         vSeccionInicia = vSeccionesPrueba.ElementAt(vseccion + 1);

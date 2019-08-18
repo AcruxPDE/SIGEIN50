@@ -96,7 +96,9 @@
                             $("#seccion1").hide();
                             $("#seccion2").hide();
                             //window.close();                            
-                            window.location = "Default.aspx?ty=sig";
+                            var idBateria = '<%= vIdBateria%>';
+                            var clToken = '<%= vClTokenBateria%>';
+                            window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
                         }
                         else if (tipo == "REV") {
                             var btn = $find("<%=btnTerminar.ClientID%>");
@@ -130,7 +132,9 @@
                         }
             }
             else {
-                window.location = "Default.aspx?ty=Ini";
+                var idBateria = '<%= vIdBateria%>';
+                var clToken = '<%= vClTokenBateria%>';
+                window.location = "Default.aspx?ty=Ini&ID=" + idBateria + "&T=" + clToken;
             }
                 });
                 if (tipo != "REV" && tipo != "EDIT") {
@@ -196,11 +200,15 @@
 
     function WinClose() {
         //window.close();
-        window.location = "Default.aspx?ty=sig";
+        var idBateria = '<%= vIdBateria%>';
+        var clToken = '<%= vClTokenBateria%>';
+        window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
     }
     function CloseTest() {
         //window.close();
-        window.location = "Default.aspx?ty=sig";
+        var idBateria = '<%= vIdBateria%>';
+        var clToken = '<%= vClTokenBateria%>';
+        window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
     }
 
     function Close() {
