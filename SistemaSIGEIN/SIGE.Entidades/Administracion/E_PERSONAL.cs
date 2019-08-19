@@ -68,5 +68,6 @@ namespace SIGE.Entidades.Administracion
         public Nullable<bool> FG_NOMINA_DO { get; set; }
         public string NB_NOMINA_DO { get; set; }
         public Nullable<bool> FG_SUELDO_NOMINA_DO { get; set; }
+        public Nullable<bool> FG_ACTIVO { get; set; }
     }
 }

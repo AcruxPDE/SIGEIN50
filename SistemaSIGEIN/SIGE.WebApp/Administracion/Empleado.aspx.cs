@@ -1211,7 +1211,9 @@ namespace SIGE.WebApp.Administracion
                         {
                             CargarDatos();
                             tabSolicitud.Tabs[8].Visible = true;
-                            CargarDatosNomina(vIdEmpleadoQS);
+
+                            if(vEmpleado.FG_COMPLETO == "SI")
+                                CargarDatosNomina(vIdEmpleadoQS);
                         }
                         else
                         {

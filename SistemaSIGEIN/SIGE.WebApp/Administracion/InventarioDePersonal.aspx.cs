@@ -70,7 +70,7 @@ namespace SIGE.WebApp.Administracion
         {
             EmpleadoNegocio nEmpleados = new EmpleadoNegocio();
             GridDataItem itemId = (GridDataItem)grdEmpleados.SelectedItems[0];
-            int vIdEmpleado = (int.Parse(itemId.GetDataKeyValue("ID_EMPLEADO_DO").ToString()));
+            int vIdEmpleado = (int.Parse(itemId.GetDataKeyValue("ID_EMPLEADO").ToString()));
 
 
                 LicenciaNegocio oNegocio = new LicenciaNegocio();
@@ -245,7 +245,7 @@ namespace SIGE.WebApp.Administracion
             if (pParameter != null)
             {
                 vLstDatos = JsonConvert.DeserializeObject<E_SELECTOR>(pParameter);
-
+                
                 if (vLstDatos.clTipo == "CANCELARBAJA")
                 {
                     CancelarBaja();

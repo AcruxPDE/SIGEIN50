@@ -339,7 +339,7 @@
                     <telerik:RadLabel ID="lblPuestoNomina" runat="server" Text="* Puesto:"></telerik:RadLabel>
                 </div>
                 <div class="divControlDerecha">
-                    <telerik:RadListBox ID="lstPuestoNomina" Width="250" runat="server">
+                    <telerik:RadListBox ID="lstPuestoNomina" OnCallingDataMethods="lstPuestoNomina_CallingDataMethods" Width="250" runat="server">
                         <Items>
                             <telerik:RadListBoxItem Text="No seleccionado" Value="" />
                         </Items>

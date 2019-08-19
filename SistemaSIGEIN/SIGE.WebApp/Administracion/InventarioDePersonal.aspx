@@ -7,19 +7,21 @@
             var vIdEmpleado = "";
             var vNbEmpleado = "";
             var vClEstatus = "";
-
+            var vClDisponibiliada = "";
 
             function obtenerFila() {
                 var selectedItem = $find("<%=grdEmpleados.ClientID %>").get_masterTableView().get_selectedItems()[0];
                 if (selectedItem != undefined) {
-                    vIdEmpleado = selectedItem.getDataKeyValue("ID_EMPLEADO_DO");
+                    vIdEmpleado = selectedItem.getDataKeyValue("ID_EMPLEADO");
                     vNbEmpleado = selectedItem.getDataKeyValue("NB_EMPLEADO_COMPLETO");
                     vClEstatus = selectedItem.getDataKeyValue("CL_ESTADO_EMPLEADO");
+                    vClDisponibiliada = selectedItem.getDataKeyValue("NB_NOMINA_DO");
                 }
                 else {
                     vIdEmpleado = "";
                     vNbEmpleado = "";
                     vClEstatus = "";
+                    vClDisponibiliada = "";
                 }
             }
 
@@ -30,11 +32,13 @@
                     vIdEmpleado = selectedItem.getDataKeyValue("ID_EMPLEADO");
                     vNbEmpleado = selectedItem.getDataKeyValue("NB_EMPLEADO_COMPLETO");
                     vClEstatus = selectedItem.getDataKeyValue("CL_ESTADO_EMPLEADO");
+                    vClDisponibiliada = selectedItem.getDataKeyValue("NB_NOMINA_DO");
                 }
                 else {
                     vIdEmpleado = "";
                     vNbEmpleado = "";
                     vClEstatus = "";
+                    vClDisponibiliada = "";
                 }
             }
 
@@ -283,11 +287,11 @@
                     }
                     else {
 
-                        if ('<%= vDarBaja %>' == "True" && vClEstatus == "ALTA")
+                        if ('<%= vDarBaja %>' == "True" && vClEstatus == "ALTA" && vClDisponibiliada != "NOM")
                             btnDarBaja.set_enabled(true);
                         else
                             btnDarBaja.set_enabled(false);
-                        if ('<%= vDarAlta %>' == "True" && vClEstatus == "BAJA")
+                        if ('<%= vDarAlta %>' == "True" && vClEstatus == "BAJA" && vClDisponibiliada != "NOM")
                             btnDarAlta.set_enabled(true);
                         else
                             btnDarAlta.set_enabled(false);
@@ -405,7 +409,7 @@
                     <ExportSettings ExportOnlyData="true" FileName="InventarioDePersonal" Excel-Format="Xlsx" IgnorePaging="true">
                     </ExportSettings>
                     <PagerStyle AlwaysVisible="true" />
-                    <MasterTableView ClientDataKeyNames="ID_EMPLEADO_NOMINA_DO, ID_EMPLEADO, CL_EMPLEADO, NB_EMPLEADO_COMPLETO, CL_ESTADO_EMPLEADO, FG_DO"
+                    <MasterTableView ClientDataKeyNames="ID_EMPLEADO_NOMINA_DO, ID_EMPLEADO, CL_EMPLEADO, NB_EMPLEADO_COMPLETO, CL_ESTADO_EMPLEADO, FG_DO, NB_NOMINA_DO"
                         EnableColumnsViewState="false" DataKeyNames="ID_EMPLEADO, CL_EMPLEADO, CL_ESTADO_EMPLEADO" AllowPaging="true" AllowFilteringByColumn="true"
                         ShowHeadersWhenNoRecords="true" EnableHeaderContextFilterMenu="true" CommandItemDisplay="Top">
                         <CommandItemSettings ShowExportToExcelButton="true" ShowAddNewRecordButton="false" />

@@ -167,6 +167,21 @@
                     <telerik:AjaxUpdatedControl ControlID="txtIndicadorDesempeno" LoadingPanelID="RadAjaxLoadingPanel2"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnGuardar">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnGuardar" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnGuardarCerrar">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnGuardarCerrar" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnCancelar">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnCancelar" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
 
             <%--            <telerik:AjaxSetting AjaxControlID="radBtnAgregarPuestoSubordinado">
                 <UpdatedControls>

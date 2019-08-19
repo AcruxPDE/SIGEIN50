@@ -324,5 +324,9 @@ namespace SIGE.WebApp.Administracion
             GuardarDatos(true);
         }
 
+        protected void lstPuestoNomina_CallingDataMethods(object sender, CallingDataMethodsEventArgs e)
+        {
+
+        }
     }
 }

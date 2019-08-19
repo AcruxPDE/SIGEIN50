@@ -19,8 +19,8 @@ namespace SIGE.Entidades.Administracion
         public bool FG_NOMINA { get; set; }
         public bool FG_DO { get; set; }
         public bool FG_NOMINA_DO { get; set; }
-        public int ID_PUESTO { get; set; }
-        public int ID_PLAZA { get; set; }        
+        public int? ID_PUESTO { get; set; }
+        public int? ID_PLAZA { get; set; }        
         public Nullable<bool> FG_SUELDO_NOMINA_DO { get; set; }
         public Nullable<System.DateTime> FE_BAJA_NOMINA { get; set; }
         public string DS_CAUSA_BAJA_NOMINA { get; set; }
