@@ -678,7 +678,27 @@ namespace SIGE.WebApp.FYD
                     ContextoCurso.oCursos.Add(new E_CURSO { ID_ITEM = vIdListaCurso });
                 }
 
-                SeguridadProcesos();
+                if(Request.QueryString["Action"] != null)
+                {
+                    if (Request.QueryString["Action"].ToString() == "Consult")
+                    {
+                        radBtnGuardar.Visible = false;
+                        btnAgregarDocumento.Visible = false;
+                        radBtnGuardarCompetencia.Visible = false;
+                        btnEliminarAreaTCurso.Visible = false;
+                        radBtnEliminaCompetencia.Visible = false;
+                        btnEliminarPuestoObjetivo.Visible = false;
+                        radBtnEliminarInstructor.Visible = false;
+                        radBtnEliminaTema.Visible = false;
+                        btnDelDocumentos.Visible = false;
+                        radBtnEditarTema.Visible = false;
+                        radBtnGuardarTema.Visible = false;
+                        radBtnGuardarInstructor.Visible = false;
+                        radBtnBuscarPuesto.Visible = false;
+                        rauDocumento.Enabled = false;
+                    }
+                }
+                    SeguridadProcesos();
             }
             LlenaComboAreas();
             DespacharEventos(Request.Params.Get("__EVENTTARGET"), Request.Params.Get("__EVENTARGUMENT"));

@@ -281,6 +281,7 @@
     <Content Include="Administracion\VentanaDescriptivoFactores.aspx" />
     <Content Include="Administracion\VentanaEnvioSolicitud.aspx" />
     <Content Include="Administracion\VentanaGrupos.aspx" />
+    <Content Include="Administracion\VentanaImportarEmpleados.aspx" />
     <Content Include="Administracion\VentanaInventarioPersonalNomina.aspx" />
     <Content Include="Administracion\VentanaOrganigramaPlazas.aspx" />
     <Content Include="Administracion\VentanaOrganigramaPuesto.aspx" />
@@ -1221,6 +1222,13 @@
     </Compile>
     <Compile Include="Administracion\VentanaGrupos.aspx.designer.cs">
       <DependentUpon>VentanaGrupos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\VentanaImportarEmpleados.aspx.cs">
+      <DependentUpon>VentanaImportarEmpleados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administracion\VentanaImportarEmpleados.aspx.designer.cs">
+      <DependentUpon>VentanaImportarEmpleados.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administracion\VentanaInventarioPersonalNomina.aspx.cs">
       <DependentUpon>VentanaInventarioPersonalNomina.aspx</DependentUpon>

@@ -127,6 +127,14 @@
                     radalert("Selecciona una solicitud.", 400, 150, "Aviso");
             }
 
+            function ShowConsultForm() {
+                var selectedItem = $find("<%=grdSolicitudes.ClientID %>").get_masterTableView().get_selectedItems()[0];
+                if (selectedItem != undefined)
+                    OpenWindowConsult(selectedItem.getDataKeyValue("ID_SOLICITUD"));
+                else
+                    radalert("Selecciona una solicitud.", 400, 150, "Aviso");
+            }
+
             function ShowInsertForm() {
                 OpenWindow(null);
             }
@@ -149,6 +157,16 @@
                     vTitulo = "Editar solicitud";
                 }
                 var windowProperties = {};
+                windowProperties.width = document.documentElement.clientWidth - 20;
+                windowProperties.height = document.documentElement.clientHeight - 20;
+                openChildDialog(vURL, "winSolicitud", vTitulo, windowProperties);
+            }
+
+            function OpenWindowConsult(pIdSolicitud) {
+                var vURL = "../IDP/Solicitud/Solicitud.aspx" + "?SolicitudId=" + pIdSolicitud + "&" + "Action=" + "Consult";
+                var vTitulo = "Consultar solicitud";
+                var windowProperties = {};
+
                 windowProperties.width = document.documentElement.clientWidth - 20;
                 windowProperties.height = document.documentElement.clientHeight - 20;
                 openChildDialog(vURL, "winSolicitud", vTitulo, windowProperties);
@@ -338,6 +356,11 @@
                     <telerik:AjaxUpdatedControl ControlID="grdSolicitudes" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnConsultar">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnConsultar" UpdatePanelHeight="100%"></telerik:AjaxUpdatedControl>
+                </UpdatedControls>
+            </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
 
@@ -447,6 +470,9 @@
     </div>
     <div class="ctrlBasico">
         <telerik:RadButton ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_click" OnClientClicking="ConfirmarEliminar" AutoPostBack="true"></telerik:RadButton>
+    </div>
+    <div class="ctrlBasico">
+        <telerik:RadButton ID="btnConsultar" OnClientClicked="ShowConsultForm" runat="server" Text="Consultar" AutoPostBack="true"></telerik:RadButton>
     </div>
      <div class="ctrlBasico">
          <telerik:RadButton ID="btnActualizarCartera" runat="server" Text="Actualizar solicitud" OnClientClicking="ConfirmarActualizar" OnClick="btnActualizarCartera_Click" AutoPostBack="true"></telerik:RadButton>

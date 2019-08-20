@@ -40,6 +40,17 @@
                 }
             }
 
+            function ShowConsultForm() {
+                obtenerIdFila()
+
+                if (idCompetencia != "") {
+                    var oWnd = radopen("VentanaRadDock.aspx?&ID=" + idCompetencia + "&TIPO=Consult", "rwCompetenciaNuevo");
+                    oWnd.set_title("Consultar competencia");
+                } else {
+                    radalert("Selecciona un registro.", 900, 150, " ");
+                }
+            }
+
 
             function ShowPopupmodalClasificacionCompetenciaNuevo(sender, args) {
 
@@ -227,7 +238,9 @@
     <div class="ctrlBasico">
         <telerik:RadButton ID="btnEliminar" ToolTip="Selecciona la competencia que deseas eliminar de tu catálogo y enseguida da clic en esta opción." runat="server" Text="Eliminar" OnClientClicking="ConfirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
     </div>
-  
+    <div class="ctrlBasico">
+        <telerik:RadButton ID="btnConsultar" ToolTip="Selecciona esta opción si deseas consultar el contenido de alguna de las competencias." OnClientClicked="ShowConsultForm" AutoPostBack="false" runat="server" Text="Consultar"></telerik:RadButton>
+    </div>
     <div class="ctrlBasico">
         <telerik:RadButton ID="buttonDock" runat="server" ToolTip="Selecciona esta opción si deseas utilizar el contenido de los niveles de alguna de las competencias que tienes integrada en tu catálogo." Text="Copiar" OnClientClicking="ConfirmarCopiar" AutoPostBack="false"></telerik:RadButton>
     </div>

@@ -13,6 +13,14 @@
             else
                 radalert("Selecciona un curso.", 400, 150, "Aviso");
         }
+        
+        function ShowConsultForm() {
+            var selectedItem = $find("<%=grdCursos.ClientID %>").get_masterTableView().get_selectedItems()[0];
+            if (selectedItem != undefined)
+                OpenWindowConsult(selectedItem.getDataKeyValue("ID_CURSO"));
+            else
+                radalert("Selecciona un curso.", 400, 150, "Aviso");
+        }
 
         function OpenWindow(pIdCurso) {
             var vURL = "VentanaCursos.aspx";
@@ -22,6 +30,16 @@
                 vTitulo = "Editar Curso";
             }
             var windowProperties = {};
+            windowProperties.width = document.documentElement.clientWidth - 400;
+            windowProperties.height = document.documentElement.clientHeight - 40;
+            openChildDialog(vURL, "winCurso", vTitulo, windowProperties);
+        }
+
+        function OpenWindowConsult(pIdCurso) {
+            var vURL = "VentanaCursos.aspx" + "?CursoId=" + pIdCurso + "&" + "Action=Consult";
+            var vTitulo = "Consultar curso";
+            var windowProperties = {};
+
             windowProperties.width = document.documentElement.clientWidth - 400;
             windowProperties.height = document.documentElement.clientHeight - 40;
             openChildDialog(vURL, "winCurso", vTitulo, windowProperties);
@@ -142,6 +160,9 @@
     </div>
     <div class="ctrlBasico">
         <telerik:RadButton ID="btnEditar" OnClientClicked="ShowEditForm" AutoPostBack="false" runat="server" Text="Editar"></telerik:RadButton>
+    </div>
+    <div class="ctrlBasico">
+        <telerik:RadButton ID="btnConsultar" OnClientClicked="ShowConsultForm" AutoPostBack="false" runat="server" Text="Consultar"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
         <telerik:RadButton ID="btnEliminar" OnClientClicking="confirmarEliminar" AutoPostBack="true" OnClick="btnEliminar_Click" runat="server" Text="Eliminar"></telerik:RadButton>

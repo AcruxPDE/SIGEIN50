@@ -56,6 +56,20 @@
                 };
             }
 
+            function GetWindowImportarEmpleadosProperties() {
+                return {
+                    width: document.documentElement.clientWidth - 400,
+                    height: document.documentElement.clientHeight - 70
+                };
+            }
+
+            function GetWindowModificacionLayoutProperties() {
+                return {
+                    width: document.documentElement.clientWidth - 400,
+                    height: document.documentElement.clientHeight - 70
+                };
+            }
+
             function GetWindowPropertiesNomina() {
                 return {
                     width: document.documentElement.clientWidth - 580,//750,
@@ -213,6 +227,24 @@
                 return wnd;
             }
 
+            function GetImportarEmpleadosWindowProperties() {
+                var wnd = GetWindowImportarEmpleadosProperties();
+
+                wnd.vURL = "VentanaImportarEmpleados.aspx?";
+                wnd.vTitulo = "Importar empleados";
+                wnd.vRadWindowId = "WinImportarEmpleados";
+                return wnd;
+            }
+
+            function GetModificacionLayoutWindowProperties() {
+                var wnd = GetWindowModificacionLayoutProperties();
+
+                wnd.vURL = "VentanaImportarEmpleados.aspx?";
+                wnd.vTitulo = "Modificación por layout";
+                wnd.vRadWindowId = "WinImportarEmpleados";
+                return wnd;
+            }
+
             function GetEmpleadoWindowProperties() {
                 var wnd = GetWindowProperties();
                 wnd.vTitulo = "Agregar empleado";
@@ -238,6 +270,14 @@
                 else if (vClEstatus == "BAJA") {
                     radalert("El empleado ya está dado de baja.", 400, 150, "Aviso");
                 }
+            }
+
+            function OpenImportarEmpleados() {
+                OpenNewWindow(GetImportarEmpleadosWindowProperties());
+            }
+
+            function OpenModificacionLayout() {
+                OpenNewWindow(GetModificacionLayoutWindowProperties());
             }
 
             function GetReingresoWindowProperties() {
@@ -471,11 +511,11 @@
 
     <div class=" divControlDerecha"  style="margin-right: 20px">
         <div class="ctrlBasico">
-            <telerik:RadButton ID="btnImportarEmpleados" Visible="true" runat="server" Text="Importar empleados" AutoPostBack="true" ></telerik:RadButton>
+            <telerik:RadButton ID="btnImportarEmpleados" Visible="true" runat="server" Text="Importar empleados" OnClientClicked="OpenImportarEmpleados" AutoPostBack="true" ></telerik:RadButton>
         </div>
 
         <div class="ctrlBasico" >
-            <telerik:RadButton ID="btnModificacionLayout" Visible="true" runat="server" Text="Modificación por layout" AutoPostBack="true" ></telerik:RadButton>
+            <telerik:RadButton ID="btnModificacionLayout" Visible="true" runat="server" Text="Modificación por layout" OnClientClicked="OpenModificacionLayout" AutoPostBack="true" ></telerik:RadButton>
         </div>
     </div>
        
@@ -491,6 +531,7 @@
             <telerik:RadWindow ID="winSeleccion" runat="server" Title="Seleccionar" Height="600px" Width="600px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
             <telerik:RadWindow ID="winEmpleadoGeneral" runat="server" Title="Empleado" Behaviors="None" Modal="true" VisibleStatusbar="false"></telerik:RadWindow>
             <telerik:RadWindow ID="WinDarBaja" runat="server" Width="900px" Height="400px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" OnClientClose="onCloseWindow"></telerik:RadWindow>
+            <telerik:RadWindow ID="WinImportarEmpleados" runat="server" Width="900px" Height="400px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" OnClientClose="onCloseWindow"></telerik:RadWindow>
             <telerik:RadWindow ID="WinSeleccionCausa" runat="server" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade"></telerik:RadWindow>
             <telerik:RadWindow ID="rwConsultas" runat="server" Title="Consultas Personales" Height="600px" Width="1100px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
             <telerik:RadWindow ID="winPrograma" runat="server" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="onCloseWindow"></telerik:RadWindow>

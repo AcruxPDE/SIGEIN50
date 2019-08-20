@@ -274,6 +274,15 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadWindow WinDarBaja;
         
         /// <summary>
+        /// WinImportarEmpleados control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadWindow WinImportarEmpleados;
+        
+        /// <summary>
         /// WinSeleccionCausa control.
         /// </summary>
         /// <remarks>

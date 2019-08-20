@@ -344,6 +344,18 @@ namespace SIGE.WebApp.Administracion
                 if (!ptipo.Equals("Agregar"))
                 {
                     CargarDatos();
+                    txtClave.Enabled = false;
+                }
+
+                if (ptipo.Equals("Consult"))
+                {
+                    btnGuardarCatalogo.Enabled = false;
+                    cmbCategoria.Enabled = false;
+                    cmbClasificaciones.Enabled = false;
+                    txtClave.Enabled = false;
+                    txtNbCompetencia.Enabled = false;
+                    txtDescripcion.Enabled = false;
+                    chkActivo.Enabled = false;
                 }
 
                 SeguridadProcesos();

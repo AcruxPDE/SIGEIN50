@@ -73,6 +73,7 @@
     <Compile Include="Administracion\E_GRUPOS.cs" />
     <Compile Include="Administracion\E_HORARIO_SEMANA.cs" />
     <Compile Include="Administracion\E_LICENCIA.cs" />
+    <Compile Include="Administracion\E_MENSAJES.cs" />
     <Compile Include="Administracion\E_MODULO.cs" />
     <Compile Include="Administracion\E_OBTIENE_COMPETENCIAS_LABORALES.cs" />
     <Compile Include="Administracion\E_AREA_INTERES.cs" />

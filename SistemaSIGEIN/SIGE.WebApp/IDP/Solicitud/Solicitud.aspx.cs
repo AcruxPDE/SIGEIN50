@@ -414,6 +414,15 @@ namespace SIGE.WebApp.IDP.Solicitud
                 if (int.TryParse(Request.QueryString["SolicitudId"], out vIdSolicitudQS))
                     vIdSolicitud = vIdSolicitudQS;
 
+                if (Request.QueryString["Action"] != null)
+                {
+                    if(Request.QueryString["Action"].ToString() == "Consult")
+                    {
+                        btnGuardar.Visible = false;
+                        btnGuardarSalir.Visible = false;
+                    }
+                }
+
                 if (Request.QueryString["FG_HABILITADO"] != null)
                 {
                     if (Request.QueryString["FG_HABILITADO"] == "False")

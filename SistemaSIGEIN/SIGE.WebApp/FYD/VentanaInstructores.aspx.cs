@@ -641,7 +641,8 @@ namespace SIGE.WebApp.FYD
                     CargarDatos(vInstructorId);
                     CargarDocumentos();
 
-                    
+                    rbInstInterno.Enabled = false;
+                    rbInstExterno.Enabled = false;
                 }
                 else
                 {
@@ -676,6 +677,30 @@ namespace SIGE.WebApp.FYD
                     cmbIdTipoTelefono.DataTextField = "NB_TEXTO";
                     cmbIdTipoTelefono.DataValueField = "NB_VALOR";
                     cmbIdTipoTelefono.DataBind();
+                }
+
+                if (Request.QueryString["Action"] != null)
+                {
+                    if (Request.QueryString["Action"] == "Consult")
+                    {
+                        radBtnGuardar.Visible = false;
+                        radBtnGuardarCompetencia.Visible = false;
+                        radBtnGuardarCurso.Visible = false;
+                        radBtnEliminarCompetencia.Visible = false;
+                        radBtnEliminarCurso.Visible = false;
+                        radBtnEliminarTelefono.Visible = false;
+                        btnDelDocumentos.Visible = false;
+                        rbInstInterno.Enabled = false;
+                        rbInstExterno.Enabled = false;
+                        radBtnBuscaCP.Visible = false;
+                        radBtnBuscarclave.Visible = false;
+                        radBtnBuscarcolonia.Visible = false;
+                        radBtnBuscarestado.Visible = false;
+                        radBtnBuscarmunicipio.Visible = false;
+                        btnAgregarDocumento.Visible = false;
+                        radBtnAgregarTelefono.Visible = false;
+                        rauDocumento.Enabled = false;
+                    }
                 }
 
                 SeguridadProcesos();

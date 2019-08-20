@@ -139,6 +139,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadButton btnEditar;
         
         /// <summary>
+        /// btnConsultar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnConsultar;
+        
+        /// <summary>
         /// btnEliminar control.
         /// </summary>
         /// <remarks>

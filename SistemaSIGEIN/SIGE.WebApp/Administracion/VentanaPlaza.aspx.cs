@@ -218,9 +218,20 @@ namespace SIGE.WebApp.Administracion
                     vIdPlaza = vIdPlazaQS;
                     vClOperacion = E_TIPO_OPERACION_DB.A;
                     btnBuscarPuesto.Enabled = false;
-                    
+                    txtClPlaza.Enabled = false;
+                    txtNbPlaza.Enabled = false;
                 }
-     
+
+                if (Request.QueryString["Action"] != null)
+                {
+                    if (Request.QueryString["Action"] == "Consult")
+                    {
+                        btnGuardar.Visible = false;
+                        txtClPlaza.Enabled = false;
+                        txtNbPlaza.Enabled = false;
+                    }
+                }
+
                 vLstGruposPlaza = new List<E_GRUPOS>();
                 vLstPlazasInterrelacionadas = new List<E_PLAZA>();
                 CargarDatos(vIdPlaza ?? 0);

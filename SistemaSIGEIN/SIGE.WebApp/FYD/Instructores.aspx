@@ -14,6 +14,14 @@
                 radalert("Selecciona un instructor.", 400, 150, "Aviso");
         }
 
+        function ShowConsult() {
+            var selectedItem = $find("<%=grdInstructores.ClientID %>").get_masterTableView().get_selectedItems()[0];
+            if (selectedItem != undefined)
+                OpenWindowConsult(selectedItem.getDataKeyValue("ID_INSTRUCTOR"));
+            else
+                radalert("Selecciona un instructor.", 400, 150, "Aviso");
+        }
+
         function OpenWindow(pIdInstructor) {
             var vURL = "VentanaInstructores.aspx";
             var vTitulo = "Agregar Instructor";
@@ -22,6 +30,16 @@
                 vTitulo = "Editar Instructor";
             }
             var windowProperties = {};
+            windowProperties.width = 900;
+            windowProperties.height = document.documentElement.clientHeight - 40;
+            openChildDialog(vURL, "winInstructor", vTitulo, windowProperties);
+        }
+
+        function OpenWindowConsult(pIdInstructor) {
+            var vURL = "VentanaInstructores.aspx" + "?InstructorId=" + pIdInstructor + "&" + "Action=Consult";
+            var vTitulo = "Consultar Instructor";
+            var windowProperties = {};
+
             windowProperties.width = 900;
             windowProperties.height = document.documentElement.clientHeight - 40;
             openChildDialog(vURL, "winInstructor", vTitulo, windowProperties);
@@ -144,7 +162,7 @@
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Tipo" DataField="CL_TIPO_INSTRUCTOR" UniqueName="CL_TIPO_INSTRUCTOR" HeaderStyle-Width="100" FilterControlWidth="40"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="120" FilterControlWidth="60" HeaderText="Puesto" DataField="NB_PUESTO" UniqueName="DS_PUESTO"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="120" FilterControlWidth="60" HeaderText="Último usuario que modifica" DataField="CL_USUARIO_APP_MODIFICA" UniqueName="CL_USUARIO_APP_MODIFICA"></telerik:GridBoundColumn>
-                            <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Última fecha de modificación" DataField="FE_MODIFICA" UniqueName="FE_MODIFICA" DataFormatString="{0:d}"  HeaderStyle-Width="120" FilterControlWidth="60" DataType="System.DateTime"></telerik:GridDateTimeColumn>
+                            <telerik:GridDateTimeColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderText="Última fecha de modificación" DataField="FE_MODIFICA" UniqueName="FE_MODIFICA" DataFormatString="{0:d}" HeaderStyle-Width="120" FilterControlWidth="60" DataType="System.DateTime"></telerik:GridDateTimeColumn>
                         </Columns>
                     </MasterTableView>
                 </telerik:RadGrid>
@@ -184,11 +202,14 @@
     <div style="clear: both; height: 10px;"></div>
     <div class="ctrlBasico">
         <telerik:RadButton ID="btnGuardar" OnClientClicked="ShowInsertForm" AutoPostBack="false" runat="server" Text="Agregar"></telerik:RadButton>
-        </div>
-       <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowEditForm" AutoPostBack="false" runat="server" Text="Editar" ></telerik:RadButton>
-                   </div>
-       <div class="ctrlBasico">
+    </div>
+    <div class="ctrlBasico">
+        <telerik:RadButton ID="btnEditar" OnClientClicked="ShowEditForm" AutoPostBack="false" runat="server" Text="Editar"></telerik:RadButton>
+    </div>
+    <div class="ctrlBasico">
+        <telerik:RadButton ID="btnConsultar" OnClientClicked="ShowConsult" AutoPostBack="false" runat="server" Text="Consultar"></telerik:RadButton>
+    </div>
+    <div class="ctrlBasico">
         <telerik:RadButton ID="btnEliminar" OnClientClicking="confirmarEliminar" AutoPostBack="true" OnClick="btnEliminar_Click" runat="server" Text="Eliminar"></telerik:RadButton>
     </div>
 

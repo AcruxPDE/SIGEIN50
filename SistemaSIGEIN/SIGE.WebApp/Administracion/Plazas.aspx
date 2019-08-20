@@ -15,6 +15,14 @@
                     radalert("Selecciona una plaza.", 400, 150, "Aviso");
             }
 
+            function ShowConsultForm() {
+                var selectedItem = $find("<%=grdPlazas.ClientID %>").get_masterTableView().get_selectedItems()[0];
+                if (selectedItem != undefined)
+                    OpenWindow(GetPlazasConsultaWindowsPropierties(selectedItem.getDataKeyValue("ID_PLAZA")));
+                else
+                    radalert("Selecciona una plaza.", 400, 150, "Aviso");
+            }
+
             function GetPlazasWindowsPropierties(pIdPlaza) {
                 var currentWnd = GetRadWindow();
                 var browserWnd = window;
@@ -36,6 +44,23 @@
                     windowProperties.vURL = "VentanaPlaza.aspx";
                     windowProperties.vRadWindowId = "winPlazas";
                 }
+                return windowProperties;
+            }
+
+            function GetPlazasConsultaWindowsPropierties(pIdPlaza) {
+                var currentWnd = GetRadWindow();
+                var browserWnd = window;
+                if (currentWnd)
+                    browserWnd = currentWnd.BrowserWindow;
+
+                var windowProperties = {
+                    width: browserWnd.innerWidth - 700,
+                    height: browserWnd.innerHeight - 40
+                };
+
+                windowProperties.vTitulo = "Consultar plaza";
+                windowProperties.vURL = "VentanaPlaza.aspx?PlazaId=" + pIdPlaza + "&" + "Action=Consult";
+                windowProperties.vRadWindowId = "winPlazas";
                 return windowProperties;
             }
 
@@ -128,6 +153,9 @@
     </div>
     <div class="ctrlBasico">
         <telerik:RadButton ID="btnEditar" runat="server" name="btnEditar" AutoPostBack="false" Text="Editar" OnClientClicked="ShowEditForm" ></telerik:RadButton>
+    </div>
+    <div class="ctrlBasico">
+        <telerik:RadButton ID="btnConsultar" runat="server" name="btnConsultar" AutoPostBack="false" Text="Consultar" OnClientClicked="ShowConsultForm" ></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
         <telerik:RadButton ID="btnEliminar" runat="server" name="btnEliminar" AutoPostBack="true" Text="Eliminar" OnClientClicking="confirmarEliminar" OnClick="btnEliminar_Click"></telerik:RadButton>
