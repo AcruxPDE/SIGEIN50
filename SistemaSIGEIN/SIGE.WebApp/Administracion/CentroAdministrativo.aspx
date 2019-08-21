@@ -203,7 +203,7 @@
                 ID="winCentroAdministrativo" 
                 runat="server" 
                 Title=" Nuevo/Editar Centro Administrativo" 
-                Height="530px" 
+                Height="580px" 
                 Width="660px" 
                 VisibleStatusbar="false" 
                 VisibleTitlebar="true" 

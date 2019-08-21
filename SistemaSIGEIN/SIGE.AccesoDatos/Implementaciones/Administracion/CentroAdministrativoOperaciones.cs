@@ -8,6 +8,7 @@ using SIGE.Entidades;
 using System.Data.Objects;
 using System.Xml.Linq;
 using SIGE.Entidades.Externas;
+using System.Data.SqlClient;
 
 namespace SIGE.AccesoDatos.Implementaciones.Administracion
 {
@@ -27,6 +28,7 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
             }
         }
         #endregion
+
         #region INSERTA ACTUALIZA DATOS  C_CENTRO_ADMVO
         public XElement InsertarActualizarCCentroAdmvo(String pClTipoOperacion, E_CENTROS_ADMVOS vCCentroAdmvo, string usuario, string programa)
         {
@@ -47,6 +49,24 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
                 ObjectParameter poutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 context.SPE_ELIMINA_CENTRO_ADMVO(poutClaveRetorno, pIdCentroAdmvo, usuario, programa);
                 return XElement.Parse(poutClaveRetorno.Value.ToString());
+            }
+        }
+        #endregion
+
+        #region OBTIENE TODOS LOS REGISTROS PATRONALES
+        public List<E_REGISTRO_PATRONAL> ObtieneRegistroPatronal(Guid? ID_RAZON_SOCIAL = null, Guid? ID_REGISTRO_PATRONAL = null, bool? FG_ACTIVO = null)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                return context.Database.SqlQuery<E_REGISTRO_PATRONAL>("EXEC " +
+                    "ADM.SPE_OBTIENE_C_REGISTRO_PATRONAL " +
+                    "@PIN_ID_RAZON_SOCIAL, " +
+                    "@PIN_ID_REGISTRO_PATRONAL, " +
+                    "@PIN_FG_ACTIVO ",
+                    new SqlParameter("@PIN_ID_RAZON_SOCIAL", (object)ID_RAZON_SOCIAL ?? DBNull.Value),
+                    new SqlParameter("@PIN_ID_REGISTRO_PATRONAL", (object)ID_REGISTRO_PATRONAL ?? DBNull.Value),
+                    new SqlParameter("@PIN_FG_ACTIVO", (object)FG_ACTIVO ?? DBNull.Value)
+                ).ToList();
             }
         }
         #endregion

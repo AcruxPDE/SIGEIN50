@@ -29,6 +29,17 @@ namespace SIGE.Negocio.Administracion
             return UtilRespuesta.EnvioRespuesta(operaciones.InsertarActualizarCCentroAdmvo(pClTipoOperacion, vCCentroAdmvo, usuario, programa));
         }
         #endregion
+            
+        #region OBTIENE TODOS LOS REGISTROS PATRONALES
+        public List<E_REGISTRO_PATRONAL> ObtieneRegistroPatronal()
+        {
+            CentroAdministrativoOperaciones operaciones = new CentroAdministrativoOperaciones();
+            return operaciones.ObtieneRegistroPatronal();
+        }
+        #endregion
+
+
+
 
         #region ELIMINA DATOS  C_CENTRO_ADMVO
         public E_RESULTADO EliminarCCentroAdmvo(Guid pIdCentroAdmvo, string usuario, string programa)

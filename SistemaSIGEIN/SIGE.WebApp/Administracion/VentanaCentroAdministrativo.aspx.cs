@@ -18,36 +18,44 @@ namespace SIGE.WebApp.Administracion
         private string usuario;
         private string programa;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private List<E_REGISTRO_PATRONAL> listRegistrosPatronales = new List<E_REGISTRO_PATRONAL>();
 
         private Guid vIdCentroAdmvo
         {
             get { return (Guid)ViewState["vsIdCentroAdmvo"]; }
             set { ViewState["vsIdCentroAdmvo"] = value; }
         }
-        
+
         private string vTipoTransaccion = "";
         //String consulta =
 
         RadListBoxItem vNoSeleccionadoEstado = new RadListBoxItem("No seleccionado", String.Empty);
         RadListBoxItem vNoSeleccionadoMunicipio = new RadListBoxItem("No seleccionado", String.Empty);
         RadListBoxItem vNoSeleccionadoColonia = new RadListBoxItem("No seleccionado", String.Empty);
-                    
+
         protected void Page_Load(object sender, EventArgs e)
         {
             usuario = ContextoUsuario.oUsuario.CL_USUARIO;
             programa = ContextoUsuario.nbPrograma;
+            CentroAdministrativoNegocio nCentroAdministrativo = new CentroAdministrativoNegocio();
 
             if (!IsPostBack)
             {
                 vNoSeleccionadoEstado.Selected = true;
                 vNoSeleccionadoMunicipio.Selected = true;
                 vNoSeleccionadoColonia.Selected = true;
-    
+
+                cmbRegistroPatronal.DataSource = null;
+                listRegistrosPatronales = nCentroAdministrativo.ObtieneRegistroPatronal();
+                cmbRegistroPatronal.DataSource = listRegistrosPatronales;
+                cmbRegistroPatronal.DataTextField = "CL_REGISTRO_PATRONAL";
+                cmbRegistroPatronal.DataValueField = "ID_REGISTRO_PATRONAL";
+                cmbRegistroPatronal.DataBind();
+
                 if (Request.QueryString["ID"] != null)
                 {
                     vIdCentroAdmvo = new Guid(Request.QueryString["ID"]);
-                    CentroAdministrativoNegocio nCentroAdministrativo = new CentroAdministrativoNegocio();
-
+                    
                     var vCentroAdmvo = nCentroAdministrativo.Obtener_C_CENTRO_ADMVO(ID_CENTRO_ADMVO: vIdCentroAdmvo).FirstOrDefault();
                     txtClave.Text = vCentroAdmvo.CL_CENTRO_ADMVO;
                     txtNombre.Text = vCentroAdmvo.NB_CENTRO_ADMVO;
@@ -67,19 +75,22 @@ namespace SIGE.WebApp.Administracion
 
                     lstColonia.Items.Add((vnColonia != null) ? new RadListBoxItem(vnColonia) : vNoSeleccionadoColonia);
                     lstColonia.Items.FirstOrDefault().Selected = true;
-            }
+
+
+
+                }
                 else
                 {
                     vIdCentroAdmvo = new Guid();
                     lstEstado.Items.Add(vNoSeleccionadoEstado);
                     lstMunicipio.Items.Add(vNoSeleccionadoMunicipio);
-                    lstColonia.Items.Add(vNoSeleccionadoColonia);                  
+                    lstColonia.Items.Add(vNoSeleccionadoColonia);
                 }
-               
+
             }
 
         }
-       
+
         protected void btnGuardarCentroAdmvo_Click(object sender, EventArgs e)
         {
             if (Request.QueryString["ID"] != null)
@@ -97,7 +108,7 @@ namespace SIGE.WebApp.Administracion
             String vNbColonia = "";
 
             E_CENTROS_ADMVOS vCentrosAdmvo = new E_CENTROS_ADMVOS();
-            
+
             vCentrosAdmvo.ID_CENTRO_ADMVO = vIdCentroAdmvo;
             vCentrosAdmvo.CL_CENTRO_ADMVO = txtClave.Text;
             vCentrosAdmvo.NB_CENTRO_ADMVO = txtNombre.Text;

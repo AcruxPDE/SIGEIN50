@@ -126,6 +126,8 @@ namespace SIGE.WebApp.Administracion
                 vCentroOptvo.NB_COLONIA = vNbColonia;
             }
 
+            vCentroOptvo.CL_CLIENTE = ContextoUsuario.clCliente;
+
             CentroOperativoNegocio nCentroOptvo = new CentroOperativoNegocio();
             E_RESULTADO vResultado = nCentroOptvo.InsertaActualizaCCentroAdmvo(usuario: usuario, programa: programa, pClTipoOperacion: vTipoTransaccion, vCCentroOptvo: vCentroOptvo);
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;

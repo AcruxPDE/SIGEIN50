@@ -265,6 +265,15 @@ namespace SIGE.WebApp.Administracion {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
         
         /// <summary>
+        /// cmbRegistroPatronal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox cmbRegistroPatronal;
+        
+        /// <summary>
         /// btnGuardarCentroAdmvo control.
         /// </summary>
         /// <remarks>

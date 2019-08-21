@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ContextHTML.master" AutoEventWireup="true" CodeBehind="VentanaCentroAdministrativo.aspx.cs" Inherits="SIGE.WebApp.Administracion.VentanaCentroAdministrativo" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
-    
+
     <script id="modal" type="text/javascript">
 
         function GetRadWindow() {
@@ -24,7 +25,7 @@
         function OpenSelectionWindow1() {
             var listEstado = $find("<%=lstEstado.ClientID %>");
             var clEstado = listEstado.get_selectedItem().get_value();
-                openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionMunicipio.aspx?CLEstado=" + clEstado, "winSeleccion", "Selección de municipio");
+            openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionMunicipio.aspx?CLEstado=" + clEstado, "winSeleccion", "Selección de municipio");
         }
 
         function OpenSelectionWindow2() {
@@ -32,10 +33,10 @@
             var clEstado = listEstado.get_selectedItem().get_value();
             var listMunicipio = $find("<%=lstMunicipio.ClientID %>");
             var clMunicipio = listMunicipio.get_selectedItem().get_value();
-            openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionColonia.aspx?CLEstado"+ clEstado + "&ClMunicipio=" + clMunicipio, "winSeleccion", "Selección de Colonia")
+            openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionColonia.aspx?CLEstado" + clEstado + "&ClMunicipio=" + clMunicipio, "winSeleccion", "Selección de Colonia")
         }
 
-   function useDataFromChild(pData) {
+        function useDataFromChild(pData) {
             if (pData != null) {
                 var vSelectedData = pData[0];
                 var list;
@@ -100,20 +101,20 @@
                 }
             }
         }
-       
-    
-     </script>
+
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
-    
+
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
     <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
 
-       
+
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="cmbEstados">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="txtNBEstado" UpdatePanelHeight="100%"  LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
+                    <telerik:AjaxUpdatedControl ControlID="txtNBEstado" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel1"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -121,210 +122,251 @@
     </telerik:RadAjaxManager>
 
 
-    <div style="clear:both; height:10px;"/> 
+    <div style="clear: both; height: 10px; margin-top: 15px;" />
     <div class="ctrlBasico">
         <div class="divControlIzquierda">
-            <label id="lbClave" 
-                name="lbClave" 
-                runat="server">Clave:</label>
+            <label id="lbClave"
+                name="lbClave"
+                runat="server">
+                Clave:</label>
         </div>
         <div class="divControlDerecha">
-                <telerik:RadTextBox ID="txtClave"  
-                    runat="server" 
-                    Width="100px" 
-                    MaxLength="800">
-                </telerik:RadTextBox>
-             <asp:RequiredFieldValidator      
-                 Display="Dynamic"  
-                 CssClass="validacion"    
-                 ID="RequiredFieldValidator2" 
-                 runat="server"  
-                 Font-Names="Arial" 
-                 Font-Size="Small" 
-                 ControlToValidate="txtClave" 
-                 ErrorMessage="Campo Obligatorio">
-             </asp:RequiredFieldValidator>
+            <telerik:RadTextBox ID="txtClave"
+                runat="server"
+                Width="100px"
+                MaxLength="800">
+            </telerik:RadTextBox>
+            <asp:RequiredFieldValidator
+                Display="Dynamic"
+                CssClass="validacion"
+                ID="RequiredFieldValidator2"
+                runat="server"
+                Font-Names="Arial"
+                Font-Size="Small"
+                ControlToValidate="txtClave"
+                ErrorMessage="Campo Obligatorio">
+            </asp:RequiredFieldValidator>
         </div>
     </div>
 
-    <div style="clear:both;"/>
+    <div style="clear: both;" />
     <div class="ctrlBasico">
         <div class="divControlIzquierda">
             <label id="lblNombre"
-                 name="lbNombre" 
-                runat="server">Nombre:</label>
+                name="lbNombre"
+                runat="server">
+                Nombre:</label>
         </div>
         <div class="divControlDerecha">
-                <telerik:RadTextBox ID="txtNombre"
-                     runat="server" 
-                    Width="250px" 
-                    MaxLength="1000">
-                </telerik:RadTextBox>
-            <asp:RequiredFieldValidator      
-                 Display="Dynamic"  
-                 CssClass="validacion"    
-                 ID="RequiredFieldValidator1" 
-                 runat="server"  
-                 Font-Names="Arial" 
-                 Font-Size="Small" 
-                 ControlToValidate="txtNombre" 
-                 ErrorMessage="Campo Obligatorio">
-             </asp:RequiredFieldValidator>
+            <telerik:RadTextBox ID="txtNombre"
+                runat="server"
+                Width="250px"
+                MaxLength="1000">
+            </telerik:RadTextBox>
+            <asp:RequiredFieldValidator
+                Display="Dynamic"
+                CssClass="validacion"
+                ID="RequiredFieldValidator1"
+                runat="server"
+                Font-Names="Arial"
+                Font-Size="Small"
+                ControlToValidate="txtNombre"
+                ErrorMessage="Campo Obligatorio">
+            </asp:RequiredFieldValidator>
         </div>
     </div>
 
     <div class="ctrlBasico">
-    <div class="divControlIzquierda">
+        <div class="divControlIzquierda">
             <label id="lbEstado" name="lblEstado" runat="server">Estado:</label>
         </div>
-     <div class="divControlDerecha">
-                                          
-                                                    
-            <telerik:RadListBox ID="lstEstado" Width="300" runat ="server" OnClientItemDoubleClicking="OpenSelectionWindow" ValidationGroup="vgEstado"  ></telerik:RadListBox>
+        <div class="divControlDerecha">
+
+
+            <telerik:RadListBox ID="lstEstado" Width="300" runat="server" OnClientItemDoubleClicking="OpenSelectionWindow" ValidationGroup="vgEstado"></telerik:RadListBox>
             <telerik:RadButton ID="btnBuscarEstado" runat="server" Text="B" OnClientClicked="OpenSelectionWindow" AutoPostBack="false" ValidationGroup="vgEstado"></telerik:RadButton>
-      
+
         </div>
     </div>
 
-     <div class="ctrlBasico">
-    <div class="divControlIzquierda">
+    <div class="ctrlBasico">
+        <div class="divControlIzquierda">
             <label id="lbMunicipio" name="lbMunicipio" runat="server">Municipio:</label>
         </div>
-     <div class="divControlDerecha">
-            <telerik:RadListBox ID="lstMunicipio" Width="300" runat="server" OnClientItemDoubleClicking="OpenSelectionWindow1" ValidationGroup="vgMunicipio" ></telerik:RadListBox>
+        <div class="divControlDerecha">
+            <telerik:RadListBox ID="lstMunicipio" Width="300" runat="server" OnClientItemDoubleClicking="OpenSelectionWindow1" ValidationGroup="vgMunicipio"></telerik:RadListBox>
             <telerik:RadButton ID="btnBuscarMunicipio" runat="server" Text="B" OnClientClicked="OpenSelectionWindow1" AutoPostBack="false" ValidationGroup="vgMunicipio"></telerik:RadButton>
-      
+
         </div>
     </div>
 
-     <div class="ctrlBasico">
-    <div class="divControlIzquierda">
+    <div class="ctrlBasico">
+        <div class="divControlIzquierda">
             <label id="lbColonia" name="lbColonia" runat="server">Colonia:</label>
         </div>
-     <div class="divControlDerecha">
-            <telerik:RadListBox ID="lstColonia" Width="300" runat="server" OnClientItemDoubleClicking="OpenSelectionWindow2" ValidationGroup="vgColonia" ></telerik:RadListBox>
+        <div class="divControlDerecha">
+            <telerik:RadListBox ID="lstColonia" Width="300" runat="server" OnClientItemDoubleClicking="OpenSelectionWindow2" ValidationGroup="vgColonia"></telerik:RadListBox>
             <telerik:RadButton ID="btnBuscarColonia" runat="server" Text="B" OnClientClicked="OpenSelectionWindow2" AutoPostBack="false" ValidationGroup="vgColonia"></telerik:RadButton>
-       
+
         </div>
     </div>
 
-    
-      <div style="clear:both;"/>
+
+    <div style="clear: both;" />
     <div class="ctrlBasico">
         <div class="divControlIzquierda">
-            <label id="lblCalle" 
-                name="lblCalle" 
-                runat="server">Calle:</label>
+            <label id="lblCalle"
+                name="lblCalle"
+                runat="server">
+                Calle:</label>
         </div>
         <div class="divControlDerecha">
-                <telerik:RadTextBox ID="txtCalle" 
-                    runat="server" 
-                    Width="335px" 
-                    MaxLength="1000">
-                </telerik:RadTextBox>
-            <asp:RequiredFieldValidator      
-                 Display="Dynamic"  
-                 CssClass="validacion"    
-                 ID="RequiredFieldValidator3" 
-                 runat="server"  
-                 Font-Names="Arial" 
-                 Font-Size="Small" 
-                 ControlToValidate="txtCalle" 
-                 ErrorMessage="Campo Obligatorio">
-             </asp:RequiredFieldValidator>
+            <telerik:RadTextBox ID="txtCalle"
+                runat="server"
+                Width="335px"
+                MaxLength="1000">
+            </telerik:RadTextBox>
+            <asp:RequiredFieldValidator
+                Display="Dynamic"
+                CssClass="validacion"
+                ID="RequiredFieldValidator3"
+                runat="server"
+                Font-Names="Arial"
+                Font-Size="Small"
+                ControlToValidate="txtCalle"
+                ErrorMessage="Campo Obligatorio">
+            </asp:RequiredFieldValidator>
         </div>
     </div>
 
 
-    <div style="clear:both;"/>
+    <div style="clear: both;" />
     <div class="ctrlBasico">
         <div class="divControlIzquierda">
-            <label id="lblNoExt" 
+            <label id="lblNoExt"
                 name="lblNoExt"
-                 runat="server">No. Exterior:</label>
+                runat="server">
+                No. Exterior:</label>
         </div>
         <div class="divControlDerecha">
-                <telerik:RadTextBox ID="txtNoExt" 
-                    runat="server" 
-                    Width="100px" 
-                    MaxLength="1000">
-                </telerik:RadTextBox>
-            <asp:RequiredFieldValidator      
-                 Display="Dynamic"  
-                 CssClass="validacion"    
-                 ID="RequiredFieldValidator4" 
-                 runat="server"  
-                 Font-Names="Arial" 
-                 Font-Size="Small" 
-                 ControlToValidate="txtNoExt" 
-                 ErrorMessage="Campo Obligatorio">
-             </asp:RequiredFieldValidator>
+            <telerik:RadTextBox ID="txtNoExt"
+                runat="server"
+                Width="100px"
+                MaxLength="1000">
+            </telerik:RadTextBox>
+            <asp:RequiredFieldValidator
+                Display="Dynamic"
+                CssClass="validacion"
+                ID="RequiredFieldValidator4"
+                runat="server"
+                Font-Names="Arial"
+                Font-Size="Small"
+                ControlToValidate="txtNoExt"
+                ErrorMessage="Campo Obligatorio">
+            </asp:RequiredFieldValidator>
         </div>
     </div>
 
 
-     <div style="clear:both;"/>
+    <div style="clear: both;" />
     <div class="ctrlBasico">
         <div class="divControlIzquierda">
-            <label id="lblNoInt" 
+            <label id="lblNoInt"
                 name="lbNoInt"
-                 runat="server">No. Interior:</label>
+                runat="server">
+                No. Interior:</label>
         </div>
         <div class="divControlDerecha">
-                <telerik:RadTextBox ID="txtNoInt" 
-                    runat="server"
-                     Width="100px" 
-                    MaxLength="1000">
-                </telerik:RadTextBox>
+            <telerik:RadTextBox ID="txtNoInt"
+                runat="server"
+                Width="100px"
+                MaxLength="1000">
+            </telerik:RadTextBox>
         </div>
     </div>
 
-  
-     <div style="clear:both;"/>
+
+    <div style="clear: both;" />
     <div class="ctrlBasico">
         <div class="divControlIzquierda">
-            <label id="lblCP" 
-                name="lblCP" 
-                runat="server">Código Postal:</label>
+            <label id="lblCP"
+                name="lblCP"
+                runat="server">
+                Código Postal:</label>
         </div>
-        
+
         <div class="divControlDerecha">
-                <telerik:RadTextBox 
-                    ID="txtCP" 
-                    runat="server" 
-                    Width="130px" 
-                    MaxLength="1000">
-                </telerik:RadTextBox>
-            <asp:RequiredFieldValidator      
-                 Display="Dynamic"  
-                 CssClass="validacion"    
-                 ID="RequiredFieldValidator8" 
-                 runat="server"  
-                 Font-Names="Arial" 
-                 Font-Size="Small" 
-                 ControlToValidate="txtCP" 
-                 ErrorMessage="Campo Obligatorio">
-             </asp:RequiredFieldValidator>
+            <telerik:RadTextBox
+                ID="txtCP"
+                runat="server"
+                Width="130px"
+                MaxLength="1000">
+            </telerik:RadTextBox>
+            <asp:RequiredFieldValidator
+                Display="Dynamic"
+                CssClass="validacion"
+                ID="RequiredFieldValidator8"
+                runat="server"
+                Font-Names="Arial"
+                Font-Size="Small"
+                ControlToValidate="txtCP"
+                ErrorMessage="Campo Obligatorio">
+            </asp:RequiredFieldValidator>
         </div>
     </div>
-     
-    <div style="clear:both;">
-        <div class="divControlesBoton">    
+
+    <div class="ctrlBasico" style="clear: both;">
+        <div class="divControlIzquierda" style="width: 250px !important">
+            <label>Registro patronal:</label>
+        </div>
+        <div class="divControlDerecha">
+            <telerik:RadComboBox runat="server" ID="cmbRegistroPatronal" Width="300px" Filter="Contains" MarkFirstMatch="true" AutoPostBack="false" EnableLoadOnDemand="false" HighlightTemplatedItems="true" EmptyMessage="Seleccione..." DropDownWidth="380">
+                <HeaderTemplate>
+                    <table>
+                        <tr>
+                            <td>
+                                <asp:Label ID="lbl1" Text="Clave" runat="server" Width="80"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:Label ID="Label3" Text="Número" runat="server" Width="250"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                </HeaderTemplate>
+                <ItemTemplate>
+                    <table>
+                        <tr>
+                            <td>
+                                <asp:Label ID="lbl1" Text='<%# DataBinder.Eval(Container.DataItem, "CL_REGISTRO_PATRONAL") %>' runat="server" Width="80"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:Label ID="Label4" Text='<%# DataBinder.Eval(Container.DataItem, "NO_REGISTRO_PATRONAL") %>' runat="server" Width="250"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                </ItemTemplate>
+            </telerik:RadComboBox>
+        </div>
+    </div>
+
+    <div style="clear: both;">
+        <div class="divControlesBoton">
             <telerik:RadButton ID="btnGuardarCentroAdmvo"
-                 runat="server" 
-                Width="100px" 
-                Text="Guardar"  
-                AutoPostBack="true" 
-                OnClick="btnGuardarCentroAdmvo_Click"
-                ></telerik:RadButton>
-                
-            <telerik:RadButton ID="btnCancelarCentroAdmvo" 
-                runat="server" 
-                Width="100px" 
-                Text="Cancelar" 
-                AutoPostBack="true"  
-                OnClientClicking="closeWindow" 
-                OnClick="btnCancelarCentroAdmvo_Click" ></telerik:RadButton>
+                runat="server"
+                Width="100px"
+                Text="Guardar"
+                AutoPostBack="true"
+                OnClick="btnGuardarCentroAdmvo_Click">
+            </telerik:RadButton>
+
+            <telerik:RadButton ID="btnCancelarCentroAdmvo"
+                runat="server"
+                Width="100px"
+                Text="Cancelar"
+                AutoPostBack="true"
+                OnClientClicking="closeWindow"
+                OnClick="btnCancelarCentroAdmvo_Click">
+            </telerik:RadButton>
         </div>
     </div>
     <telerik:RadWindowManager ID="rwmMensaje" runat="server"></telerik:RadWindowManager>
