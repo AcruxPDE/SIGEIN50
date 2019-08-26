@@ -516,7 +516,9 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
             using (contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)contexto).ObjectContext.CommandTimeout = 6000;
                 contexto.SPE_INSERTA_ACTUALIZA_EVALUADOR_MATRIZ(pOutClaveRetorno, pIdPeriodo, pXmlMatriz, pFgCrearCuestionarios, pClUsuario, pNbPrograma);
+                ((IObjectContextAdapter)contexto).ObjectContext.CommandTimeout = 50;
                 return XElement.Parse(pOutClaveRetorno.Value.ToString());
             }
         }

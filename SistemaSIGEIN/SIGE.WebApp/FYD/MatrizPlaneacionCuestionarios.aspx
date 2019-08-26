@@ -297,6 +297,12 @@
                     <telerik:AjaxUpdatedControl ControlID="btnCrearCuestionarios" UpdatePanelHeight="100%" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnCrearCuestionarios">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="grdCuestionarios" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="btnCrearCuestionarios" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
 
         </AjaxSettings>
     </telerik:RadAjaxManager>
