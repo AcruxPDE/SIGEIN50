@@ -498,7 +498,9 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
             using (contexto = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                ((IObjectContextAdapter)contexto).ObjectContext.CommandTimeout = 6000;
                 contexto.SPE_ELIMINA_PERIODO_EVALUACION(pOutClaveRetorno, pIdPeriodo);
+                ((IObjectContextAdapter)contexto).ObjectContext.CommandTimeout = 60;
                 return XElement.Parse(pOutClaveRetorno.Value.ToString());
             }
         }
