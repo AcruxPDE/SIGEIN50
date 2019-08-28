@@ -136,7 +136,7 @@ namespace SIGE.WebApp.IDP.Pruebas
                             case "ADAPTACION":
                                 break;
                             default:
-                                pagina = "Default.aspx?F=1";
+                                pagina = "Default.aspx?F=1&ID=" + vIdBateria + "&T=" + vClToken;
                                 break;
                         };
                         if (itemPrueba.CL_PRUEBA != "ADAPTACION" && itemPrueba.CL_PRUEBA != "ENTREVISTA")
