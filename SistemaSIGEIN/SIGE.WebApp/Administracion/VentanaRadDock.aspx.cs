@@ -349,7 +349,8 @@ namespace SIGE.WebApp.Administracion
 
                 if (ptipo.Equals("Consult"))
                 {
-                    btnGuardarCatalogo.Enabled = false;
+                    btnGuardarCatalogo.Visible = false;
+                    btnCancelarCatalogo.Visible = false;
                     cmbCategoria.Enabled = false;
                     cmbClasificaciones.Enabled = false;
                     txtClave.Enabled = false;

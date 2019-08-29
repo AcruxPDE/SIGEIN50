@@ -683,6 +683,7 @@ namespace SIGE.WebApp.FYD
                     if (Request.QueryString["Action"].ToString() == "Consult")
                     {
                         radBtnGuardar.Visible = false;
+                        radBtnCancelar.Visible = false;
                         btnAgregarDocumento.Visible = false;
                         radBtnGuardarCompetencia.Visible = false;
                         btnEliminarAreaTCurso.Visible = false;

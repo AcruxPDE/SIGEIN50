@@ -43,6 +43,10 @@
             GetRadWindow().close();
         }
 
+        function UpdateId(pIdEmp) {
+            pIdEmpleado = "<%=vIdEmpleado%>";
+        }
+
         function onWindowsPlazas() {
             OpenSelectionWindow("../Comunes/SeleccionPlaza.aspx?TipoSeleccionCl=VACANTES&mulSel=1", "winSeleccion", "Selección de plazas")
         }
@@ -116,10 +120,14 @@
             args.set_cancel(true);
         }
 
-        function abrirInventario(sender, args) {
-            var vUrl = "Empleado.aspx?EmpleadoNoDoID=" + pIdEmpleado;
+        function abrirInventario(pID) {
+            var vUrl = "Empleado.aspx?";
             var vTitulo = "Agregar Empleado";
             var vVentana = "winEmpleadoGeneral";
+
+            pIdEmpleado = pID;
+            vUrl = vUrl + "EmpleadoId=" + pIdEmpleado;
+            
             OpenSelectionWindow(vUrl, vVentana, vTitulo);
         }
 
@@ -180,6 +188,11 @@
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnGuardar">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnMasDatos" UpdatePanelRenderMode="Inline" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnMasDatos">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="btnMasDatos" UpdatePanelRenderMode="Inline" />
                 </UpdatedControls>
@@ -374,11 +387,11 @@
         </telerik:RadAjaxPanel>
 
         <div style="height: 10px; clear: both;"></div>
-        
+
         <div class="divControlDerecha" style="padding-right: 30px;">
             <telerik:RadButton ID="btnGuardar" runat="server" name="btnGuardar" AutoPostBack="true" Text="Guardar" Width="100" OnClientClicking="confirmarGuardar" OnClick="btnGuardar_Click"></telerik:RadButton>
             <telerik:RadButton ID="btnGuardarCerrar" runat="server" name="btnGuardarCerrar" AutoPostBack="true" Text="Guardar y Cerrar" UseSubmitBehavior="false" OnClientClicking="confirmarGuardar" OnClick="btnGuardarCerrar_Click" ></telerik:RadButton>
-            <telerik:RadButton ID="btnMasDatos" runat="server" name="btnMasDatos" AutoPostBack="true" Text="Más datos" Width="100" Enabled="false" OnClientClicking="abrirInventario" ></telerik:RadButton>
+            <telerik:RadButton ID="btnMasDatos" runat="server" name="btnMasDatos" AutoPostBack="true" Text="Más datos" Width="100" Enabled="false" OnClick="btnMasDatos_Click" ></telerik:RadButton>
             <telerik:RadButton ID="btnCancelar" runat="server" name="btnCancelar" AutoPostBack="true" Text="Cancelar" Width="100" OnClientClicking="confirmarCancelar" ></telerik:RadButton>
         </div>
 

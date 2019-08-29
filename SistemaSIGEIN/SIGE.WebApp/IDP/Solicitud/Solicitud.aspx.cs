@@ -420,6 +420,7 @@ namespace SIGE.WebApp.IDP.Solicitud
                     {
                         btnGuardar.Visible = false;
                         btnGuardarSalir.Visible = false;
+                        btnCancelar.Visible = false;
                     }
                 }
 

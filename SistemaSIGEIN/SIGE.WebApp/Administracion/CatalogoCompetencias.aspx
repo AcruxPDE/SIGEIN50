@@ -36,7 +36,7 @@
                     var oWnd = radopen("VentanaRadDock.aspx?&ID=" + idCompetencia + "&TIPO=Editar", "rwCompetenciaNuevo");
                     oWnd.set_title("Editar competencia");
                 } else {
-                    radalert("Selecciona un registro.", 400, 150, " ");
+                    radalert("Selecciona un registro.", 400, 150, "Aviso");
                 }
             }
 
@@ -47,7 +47,7 @@
                     var oWnd = radopen("VentanaRadDock.aspx?&ID=" + idCompetencia + "&TIPO=Consult", "rwCompetenciaNuevo");
                     oWnd.set_title("Consultar competencia");
                 } else {
-                    radalert("Selecciona un registro.", 900, 150, " ");
+                    radalert("Selecciona un registro.", 400, 150, "Aviso");
                 }
             }
 
@@ -120,7 +120,7 @@
                     oWnd.set_title("Agregar competencia");
                 }
                 else {
-                    radalert("Selecciona un registro.", 400, 150, " ");
+                    radalert("Selecciona un registro.", 400, 150, "Aviso");
                 }
             }
 

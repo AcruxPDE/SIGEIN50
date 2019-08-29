@@ -94,15 +94,6 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadButton btnEliminarNomina;
         
         /// <summary>
-        /// btnCopiarde control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnCopiarde;
-        
-        /// <summary>
         /// btnVistaPrevia control.
         /// </summary>
         /// <remarks>
@@ -112,13 +103,13 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadButton btnVistaPrevia;
         
         /// <summary>
-        /// btnConsultar control.
+        /// btnCopiarde control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnConsultar;
+        protected global::Telerik.Web.UI.RadButton btnCopiarde;
         
         /// <summary>
         /// btnReporte control.

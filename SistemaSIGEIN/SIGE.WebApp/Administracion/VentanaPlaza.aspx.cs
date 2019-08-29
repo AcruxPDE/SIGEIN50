@@ -227,6 +227,16 @@ namespace SIGE.WebApp.Administracion
                     if (Request.QueryString["Action"] == "Consult")
                     {
                         btnGuardar.Visible = false;
+                        btnCancelar.Visible = false;
+                        btnArea.Visible = false;
+                        btnAgregar.Visible = false;
+                        btnBuscarEmpleado.Visible = false;
+                        btnBuscarPlazaInter.Visible = false;
+                        btnBuscarPuesto.Visible = false;
+                        btnEliminar.Visible = false;
+                        btnEliminarPlazaInter.Visible = false;
+                        btnLimpiarEmpleado.Visible = false;
+                        btnlstPlazaJefe.Visible = false;
                         txtClPlaza.Enabled = false;
                         txtNbPlaza.Enabled = false;
                     }

@@ -160,13 +160,14 @@
     </div>
     <div class="ctrlBasico">
         <telerik:RadButton ID="btnEditar" OnClientClicked="ShowEditForm" AutoPostBack="false" runat="server" Text="Editar"></telerik:RadButton>
+    </div>    
+    <div class="ctrlBasico">
+        <telerik:RadButton ID="btnEliminar" OnClientClicking="confirmarEliminar" AutoPostBack="true" OnClick="btnEliminar_Click" runat="server" Text="Eliminar"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
         <telerik:RadButton ID="btnConsultar" OnClientClicked="ShowConsultForm" AutoPostBack="false" runat="server" Text="Consultar"></telerik:RadButton>
     </div>
-    <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEliminar" OnClientClicking="confirmarEliminar" AutoPostBack="true" OnClick="btnEliminar_Click" runat="server" Text="Eliminar"></telerik:RadButton>
-    </div>
+
     <telerik:RadWindowManager ID="RadWindowManager1" runat="server" EnableShadow="true">
         <Windows>
             <telerik:RadWindow ID="winCurso" runat="server" Title="Agregar/Editar Curso" Behaviors="Close" Modal="true" VisibleStatusbar="false" OnClientClose="onCloseWindow"></telerik:RadWindow>

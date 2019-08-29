@@ -138,7 +138,7 @@
 
             function OpenPreview(pIdPuesto) {
                 var vURL = "VentanaVistaDescriptivo.aspx";
-                var vTitulo = "Vista previa descriptivo";
+                var vTitulo = "Consulta descriptivo de puesto";
 
                 var windowProperties = {
                     width: document.documentElement.clientWidth - 20,
@@ -226,7 +226,7 @@
 
             function OpenReport(pIdPuesto) {
                 var vURL = "VentanaVistaPreviaDescriptivo.aspx";
-                var vTitulo = "Vista previa descriptivo";
+                var vTitulo = "Consulta descriptivo de puesto";
 
                 var windowProperties = {
                     width: document.documentElement.clientWidth - 20,
@@ -339,14 +339,11 @@
         <telerik:RadButton ID="btnEliminarNomina"  runat="server" Text="Eliminar"  AutoPostBack="true" OnClick="btnEliminarNomina_Click" OnClientClicking="ConfirmarEliminarNomina"></telerik:RadButton>
     </div>
     <div class="ctrlBasico">
+        <telerik:RadButton ID="btnVistaPrevia"  OnClientClicked="ShowPreviewForm" AutoPostBack="false" runat="server" Text="Consultar" ></telerik:RadButton>
+    </div>
+    <div class="ctrlBasico">
         <telerik:RadButton ID="btnCopiarde"  OnClientClicked="ShowCopyForm" AutoPostBack="false" runat="server" Text="Copiar" ToolTip="Este botón te permite copiar la información de un descriptivo de puesto seleccionado para crear uno nuevo. Sólo debes indicar una nueva clave para el nuevo descriptivo de puesto." ></telerik:RadButton>
-    </div>
-    <div class="ctrlBasico">
-        <telerik:RadButton ID="btnVistaPrevia"  OnClientClicked="ShowPreviewForm" AutoPostBack="false" runat="server" Text="Vista previa" ></telerik:RadButton>
-    </div>
-    <div class="ctrlBasico">
-        <telerik:RadButton ID="btnConsultar"  OnClientClicked="ShowConsultar" AutoPostBack="false" runat="server" Text="Consultar" ></telerik:RadButton>
-    </div>
+    </div>    
     <div class="ctrlBasico">
         <telerik:RadButton ID="btnReporte"  OnClientClicked="ShowReporteDescriptivoPuesto" AutoPostBack="false" runat="server" Text="Imprimir"></telerik:RadButton>
     </div>
@@ -354,7 +351,7 @@
     <telerik:RadWindowManager ID="rwmAlertas" runat="server" Animation="Fade" >
         <Windows>
             <telerik:RadWindow ID="winDescriptivo" runat="server" Title="Agregar/Editar Puestos" Height="600px" Width="500px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="None" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
-            <telerik:RadWindow ID="winVistaPrevia" runat="server" Title="Vista previa" Height="800px" Width="800px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
+            <telerik:RadWindow ID="winVistaPrevia" runat="server" Title="Consulta puesto" Height="800px" Width="800px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
             <telerik:RadWindow ID="winSeleccionPuestos" runat="server" Title="Seleccionar Jefe inmediato" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
             <telerik:RadWindow ID="winOrganigrama" runat="server" Title="Organigrama Puesto" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
             <telerik:RadWindow ID="winNuevoDescriptivo" runat="server" Behaviors="Close" Modal="true" Width="490" Height="350" VisibleStatusbar="false" OnClientClose="onCloseWindow"></telerik:RadWindow>

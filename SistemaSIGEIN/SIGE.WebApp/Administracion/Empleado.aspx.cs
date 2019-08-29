@@ -1196,7 +1196,7 @@ namespace SIGE.WebApp.Administracion
                         btnGuardarSalir.Visible = false;
                         btnCancelar.Enabled = false;
                         btnCancelar.Visible = false;
-                        btnCerrar.Visible = true;
+                        btnCerrar.Visible = false;
                     }
                 }
                     
