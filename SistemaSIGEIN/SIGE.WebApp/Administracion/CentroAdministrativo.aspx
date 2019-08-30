@@ -130,7 +130,7 @@
         <telerik:RadGrid ID="grdCentroAdministrativo" 
             runat="server"  
             Height="100%" 
-            Width="680" 
+            Width="100%" 
             OnNeedDataSource="grdCentroAdministrativo_NeedDataSource"
             AllowSorting ="true"  
             GroupPanelPosition="Top"

@@ -126,7 +126,7 @@
         <telerik:RadGrid ID="grdCentroOperativo" 
             runat="server"  
             Height="100%" 
-            Width="680" 
+            Width="100%" 
             OnNeedDataSource="grdCentroOperativo_NeedDataSource"
             AllowSorting ="true"  
             GroupPanelPosition="Top"

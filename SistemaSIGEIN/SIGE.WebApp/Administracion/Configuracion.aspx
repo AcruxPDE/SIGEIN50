@@ -281,7 +281,7 @@
 
                     radconfirm("¿Deseas eliminar el campo " + vNombre + "?, este proceso no podrá revertirse", callBackFunction, 400, 170, null, "Aviso");
                     args.set_cancel(true);
-                    
+
                 } else
                     vDsMensajeAdvertencia = "Los campos de sistema no pueden se eliminados.";
             }
@@ -309,7 +309,7 @@
                             radconfirm("¿Deseas eliminar la plantilla " + vNombre + "?, este proceso no podrá revertirse", callBackFunction, 400, 170, null, "Aviso");
                             args.set_cancel(true);
 
-                        }else {
+                        } else {
                             radalert("No se puede eliminar una plantilla establecida por defecto.", 400, 150, "Aviso");
                             args.set_cancel(true);
                         }
@@ -390,7 +390,7 @@
             <telerik:RadTab Text="Control de documentos"></telerik:RadTab>
             <telerik:RadTab Text="Plantillas"></telerik:RadTab>
             <telerik:RadTab Text="Campos"></telerik:RadTab>
-            <telerik:RadTab Text="Integración con nómina"></telerik:RadTab>
+            <telerik:RadTab Text="Nómina"></telerik:RadTab>
             <%-- <telerik:RadTab Text="Grupos"></telerik:RadTab>--%>
             <telerik:RadTab Text="Mensajes"></telerik:RadTab>
         </Tabs>
@@ -420,10 +420,10 @@
                                         PostbackTriggers="btnActualizarLogoOrganizacion" OnFileUploaded="rauLogoOrganizacion_FileUploaded" Width="300" ToolTip="Haz clic en este botón para seleccionar el logotipo de tu empresa">
                                         <Localization Select="Seleccionar imagen" />
                                     </telerik:RadAsyncUpload>
-                                    <div style="height:10px; clear:both;"></div>
-                                    <telerik:RadButton ID="btnActualizarLogoOrganizacion" runat="server" Text="Cambiar logotipo"  ToolTip="Haz clic en este botón para cambiar la imagen que hayas seleccionado"></telerik:RadButton>
-                                   <div style="height:10px; clear:both;"></div>
-                                    <telerik:RadButton ID="btnEliminarLogoOrganizacion" runat="server" Text="Eliminar logotipo"  OnClick="btnEliminarLogoOrganizacion_Click" ToolTip="Elimina el logotipo que esta establecido actualmente"></telerik:RadButton>
+                                    <div style="height: 10px; clear: both;"></div>
+                                    <telerik:RadButton ID="btnActualizarLogoOrganizacion" runat="server" Text="Cambiar logotipo" ToolTip="Haz clic en este botón para cambiar la imagen que hayas seleccionado"></telerik:RadButton>
+                                    <div style="height: 10px; clear: both;"></div>
+                                    <telerik:RadButton ID="btnEliminarLogoOrganizacion" runat="server" Text="Eliminar logotipo" OnClick="btnEliminarLogoOrganizacion_Click" ToolTip="Elimina el logotipo que esta establecido actualmente"></telerik:RadButton>
                                 </td>
                                 <td>
                                     <telerik:RadBinaryImage ID="rbiLogoOrganizacion" runat="server" />
@@ -513,11 +513,11 @@
                             <div class="divControlIzquierda">
                                 <label name="lblCatalogoCausaRequisicion">Causa de requisiciones</label>
                             </div>
-       
-                                <div class="divControlDerecha">
-                                    <telerik:RadComboBox ID="cmbCatalogoCausasRequisicion" runat="server" DataTextField="NB_CATALOGO_LISTA" DataValueField="ID_CATALOGO_LISTA" Width="250"></telerik:RadComboBox>
-                                </div>
-                 
+
+                            <div class="divControlDerecha">
+                                <telerik:RadComboBox ID="cmbCatalogoCausasRequisicion" runat="server" DataTextField="NB_CATALOGO_LISTA" DataValueField="ID_CATALOGO_LISTA" Width="250"></telerik:RadComboBox>
+                            </div>
+
                         </div>
                     </telerik:RadPane>
                     <telerik:RadPane ID="rpAyuda" runat="server" Scrolling="None" Width="22px">
@@ -549,117 +549,117 @@
                 </telerik:RadSplitter>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvCorreoElectronico" runat="server">
-                   <telerik:RadSplitter ID="RadSplitter1" Width="100%" Height="100%" BorderSize="0" runat="server">
+                <telerik:RadSplitter ID="RadSplitter1" Width="100%" Height="100%" BorderSize="0" runat="server">
                     <telerik:RadPane ID="RadPane1" runat="server">
-                <div class="ctrlBasico">
-                    <div class="divControlIzquierda">
-                        <label name="lblCatalogoGenero">Servidor</label>
-                    </div>
-                    <div class="divControlDerecha">
-                        <telerik:RadTextBox ID="txtMailServer" runat="server" Width="300"></telerik:RadTextBox>
-                    </div>
-                </div>
-                <div style="clear: both;"></div>
-                <div class="ctrlBasico">
-                    <div class="divControlIzquierda">
-                        <label name="lblCatalogoGenero">Puerto</label>
-                    </div>
-                    <div class="divControlDerecha">
-                        <telerik:RadNumericTextBox ID="txtMailServerPort" runat="server" Width="55" MinValue="1" MaxValue="65535" NumberFormat-DecimalDigits="0" IncrementSettings-Step="1" NumberFormat-GroupSeparator=""></telerik:RadNumericTextBox>
-                    </div>
-                </div>
-                <div style="clear: both;"></div>
-                <div class="ctrlBasico">
-                    <div class="divControlIzquierda">
-                        <label name="lblCatalogoGenero">Usar SSL</label>
-                    </div>
-                    <div class="divControlDerecha">
-                        <telerik:RadButton ID="chkUseSSL" runat="server" ToggleType="CheckBox" name="chkUseSSL" AutoPostBack="false">
-                            <ToggleStates>
-                                <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
-                                <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
-                            </ToggleStates>
-                        </telerik:RadButton>
-                    </div>
-                </div>
-                <div style="clear: both;"></div>
-                <div class="ctrlBasico">
-                    <div class="divControlIzquierda">
-                        <label name="lblCatalogoGenero">Autenticar</label>
-                    </div>
-                    <div class="divControlDerecha">
-                        <telerik:RadButton ID="chkAutenticar" runat="server" ToggleType="CheckBox" name="chkAutenticar" AutoPostBack="false">
-                            <ToggleStates>
-                                <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
-                                <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
-                            </ToggleStates>
-                        </telerik:RadButton>
-                    </div>
-                </div>
-                <div style="clear: both;"></div>
-                <div class="ctrlBasico">
-                    <div class="divControlIzquierda">
-                        <label name="lblCatalogoGenero">Nombre remitente</label>
-                    </div>
-                    <div class="divControlDerecha">
-                        <telerik:RadTextBox ID="txtSenderName" runat="server" Width="300"></telerik:RadTextBox>
-                    </div>
-                </div>
-                <div style="clear: both;"></div>
-                <div class="ctrlBasico">
-                    <div class="divControlIzquierda">
-                        <label name="lblCatalogoGenero">Dirección de correo electrónico del remitente</label>
-                    </div>
-                    <div class="divControlDerecha">
-                        <telerik:RadTextBox ID="txtSenderMail" runat="server" Width="300"></telerik:RadTextBox>
-                    </div>
-                </div>
-                <div style="clear: both;"></div>
-                <div class="ctrlBasico">
-                    <div class="divControlIzquierda">
-                        <label name="lblCatalogoGenero">Usuario</label>
-                    </div>
-                    <div class="divControlDerecha">
-                        <telerik:RadTextBox ID="txtUser" runat="server" Width="300"></telerik:RadTextBox>
-                    </div>
-                </div>
-                <div style="clear: both;"></div>
-                <div class="ctrlBasico" id="ctrlPasswordChange" runat="server">
-                    <div class="divControlIzquierda">
-                        <label name="lblPasswordChange">Cambiar password:</label>
-                    </div>
-                    <div class="divControlDerecha">
-                        <telerik:RadButton ID="chkPasswordChange" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false" OnClientCheckedChanged="enableCtrlPassword">
-                            <ToggleStates>
-                                <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
-                                <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
-                            </ToggleStates>
-                        </telerik:RadButton>
-                    </div>
-                </div>
-                <div style="clear: both;"></div>
-                <div id="ctrlPassword" runat="server" style="display: none;">
-                    <div class="ctrlBasico">
-                        <div class="divControlIzquierda">
-                            <label name="lblPassword">Contraseña:</label>
+                        <div class="ctrlBasico">
+                            <div class="divControlIzquierda">
+                                <label name="lblCatalogoGenero">Servidor</label>
+                            </div>
+                            <div class="divControlDerecha">
+                                <telerik:RadTextBox ID="txtMailServer" runat="server" Width="300"></telerik:RadTextBox>
+                            </div>
                         </div>
-                        <div class="divControlDerecha">
-                            <telerik:RadTextBox ID="txtNbPassword" runat="server" TextMode="Password" onkeyup="checkPasswordMatch();"></telerik:RadTextBox>
+                        <div style="clear: both;"></div>
+                        <div class="ctrlBasico">
+                            <div class="divControlIzquierda">
+                                <label name="lblCatalogoGenero">Puerto</label>
+                            </div>
+                            <div class="divControlDerecha">
+                                <telerik:RadNumericTextBox ID="txtMailServerPort" runat="server" Width="55" MinValue="1" MaxValue="65535" NumberFormat-DecimalDigits="0" IncrementSettings-Step="1" NumberFormat-GroupSeparator=""></telerik:RadNumericTextBox>
+                            </div>
                         </div>
-                    </div>
-                    <div style="clear: both;"></div>
-                    <div class="ctrlBasico">
-                        <div class="divControlIzquierda">
-                            <label name="lblPasswordConfirm">Confirmación:</label>
+                        <div style="clear: both;"></div>
+                        <div class="ctrlBasico">
+                            <div class="divControlIzquierda">
+                                <label name="lblCatalogoGenero">Usar SSL</label>
+                            </div>
+                            <div class="divControlDerecha">
+                                <telerik:RadButton ID="chkUseSSL" runat="server" ToggleType="CheckBox" name="chkUseSSL" AutoPostBack="false">
+                                    <ToggleStates>
+                                        <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
+                                        <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
+                                    </ToggleStates>
+                                </telerik:RadButton>
+                            </div>
                         </div>
-                        <div class="divControlDerecha">
-                            <telerik:RadTextBox ID="txtNbPasswordConfirm" runat="server" TextMode="Password" PasswordStrengthSettings-ShowIndicator="false" onkeyup="checkPasswordMatch();"></telerik:RadTextBox>
-                            <span id="PasswordRepeatedIndicator" class="Base L0">&nbsp;</span>
+                        <div style="clear: both;"></div>
+                        <div class="ctrlBasico">
+                            <div class="divControlIzquierda">
+                                <label name="lblCatalogoGenero">Autenticar</label>
+                            </div>
+                            <div class="divControlDerecha">
+                                <telerik:RadButton ID="chkAutenticar" runat="server" ToggleType="CheckBox" name="chkAutenticar" AutoPostBack="false">
+                                    <ToggleStates>
+                                        <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
+                                        <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
+                                    </ToggleStates>
+                                </telerik:RadButton>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                        </telerik:RadPane>
-                       </telerik:RadSplitter>
+                        <div style="clear: both;"></div>
+                        <div class="ctrlBasico">
+                            <div class="divControlIzquierda">
+                                <label name="lblCatalogoGenero">Nombre remitente</label>
+                            </div>
+                            <div class="divControlDerecha">
+                                <telerik:RadTextBox ID="txtSenderName" runat="server" Width="300"></telerik:RadTextBox>
+                            </div>
+                        </div>
+                        <div style="clear: both;"></div>
+                        <div class="ctrlBasico">
+                            <div class="divControlIzquierda">
+                                <label name="lblCatalogoGenero">Dirección de correo electrónico del remitente</label>
+                            </div>
+                            <div class="divControlDerecha">
+                                <telerik:RadTextBox ID="txtSenderMail" runat="server" Width="300"></telerik:RadTextBox>
+                            </div>
+                        </div>
+                        <div style="clear: both;"></div>
+                        <div class="ctrlBasico">
+                            <div class="divControlIzquierda">
+                                <label name="lblCatalogoGenero">Usuario</label>
+                            </div>
+                            <div class="divControlDerecha">
+                                <telerik:RadTextBox ID="txtUser" runat="server" Width="300"></telerik:RadTextBox>
+                            </div>
+                        </div>
+                        <div style="clear: both;"></div>
+                        <div class="ctrlBasico" id="ctrlPasswordChange" runat="server">
+                            <div class="divControlIzquierda">
+                                <label name="lblPasswordChange">Cambiar password:</label>
+                            </div>
+                            <div class="divControlDerecha">
+                                <telerik:RadButton ID="chkPasswordChange" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false" OnClientCheckedChanged="enableCtrlPassword">
+                                    <ToggleStates>
+                                        <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
+                                        <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
+                                    </ToggleStates>
+                                </telerik:RadButton>
+                            </div>
+                        </div>
+                        <div style="clear: both;"></div>
+                        <div id="ctrlPassword" runat="server" style="display: none;">
+                            <div class="ctrlBasico">
+                                <div class="divControlIzquierda">
+                                    <label name="lblPassword">Contraseña:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadTextBox ID="txtNbPassword" runat="server" TextMode="Password" onkeyup="checkPasswordMatch();"></telerik:RadTextBox>
+                                </div>
+                            </div>
+                            <div style="clear: both;"></div>
+                            <div class="ctrlBasico">
+                                <div class="divControlIzquierda">
+                                    <label name="lblPasswordConfirm">Confirmación:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadTextBox ID="txtNbPasswordConfirm" runat="server" TextMode="Password" PasswordStrengthSettings-ShowIndicator="false" onkeyup="checkPasswordMatch();"></telerik:RadTextBox>
+                                    <span id="PasswordRepeatedIndicator" class="Base L0">&nbsp;</span>
+                                </div>
+                            </div>
+                        </div>
+                    </telerik:RadPane>
+                </telerik:RadSplitter>
             </telerik:RadPageView>
             <telerik:RadPageView ID="rpvControlDocumentos" runat="server">
                 <div class="ctrlBasico">
@@ -800,8 +800,13 @@
                     <telerik:RadButton ID="btnCopiarCampo" runat="server" Text="Copiar" AutoPostBack="false" OnClientClicked="ShowCopyFieldForm"></telerik:RadButton>
                 </div>
             </telerik:RadPageView>
+
             <telerik:RadPageView ID="rpvIntegracionNomina" runat="server">
+
+                <div style="height: 10px; clear: both;"></div>
                 <div style="height: calc(100% - 70px);">
+
+
                     <div class="ctrlBasico">
                         <table class="ctrlTableForm" style="width: 400px;">
                             <tr>
@@ -822,12 +827,12 @@
                         </table>
                         <div style="height: calc(100% - 150px); width: 400px; overflow: auto; float: left;">
                             <table class="ctrlTableForm" style="width: 100%;">
-                                <tr style="padding-bottom:10px;">
-                                    <td style="text-align: left; width: 200px; padding-bottom:10px;">
+                                <tr style="padding-bottom: 10px;">
+                                    <td style="text-align: left; width: 200px; padding-bottom: 10px;">
                                         <label name="lblRFC">RFC</label>
                                     </td>
                                     <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px; ">
+                                        <div class="checkContainer" style="width: 82px;">
                                             <telerik:RadButton ID="btnRFCNOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpRFCNO" AutoPostBack="false">
                                                 <ToggleStates>
                                                     <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
@@ -933,7 +938,8 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
+
+                                <%--<tr>
                                     <td style="text-align: left; width: 200px;">
                                         <label name="lblRFC">Lugar de nacimiento</label>
                                     </td>
@@ -969,7 +975,8 @@
                                             </telerik:RadButton>
                                         </div>
                                     </td>
-                                </tr>
+                                </tr>--%>
+
                                 <tr>
                                     <td style="text-align: left; width: 200px;">
                                         <label name="lblEstadoNacimiento">Estado de nacimiento</label>
@@ -1007,7 +1014,120 @@
                                         </div>
                                     </td>
                                 </tr>
+
                                 <tr>
+                                    <td style="text-align: left; width: 200px;">
+                                        <label name="lblRFC">Correo electrónico</label>
+                                    </td>
+                                    <td style="width: 100px;">
+                                        <div class="checkContainer" style="width: 82px;">
+                                            <telerik:RadButton ID="btnEmailNOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpEmailNO" AutoPostBack="false">
+                                                <ToggleStates>
+                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
+                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
+                                                </ToggleStates>
+                                            </telerik:RadButton>
+                                            <telerik:RadButton ID="btnEmailNOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpEmailNO" AutoPostBack="false">
+                                                <ToggleStates>
+                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
+                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
+                                                </ToggleStates>
+                                            </telerik:RadButton>
+                                        </div>
+                                    </td>
+                                    <td style="width: 100px;">
+                                        <div class="checkContainer" style="width: 82px;">
+                                            <telerik:RadButton ID="btnEmailDOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpEmailDO" AutoPostBack="false">
+                                                <ToggleStates>
+                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
+                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
+                                                </ToggleStates>
+                                            </telerik:RadButton>
+                                            <telerik:RadButton ID="btnEmailDOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpEmailDO" AutoPostBack="false">
+                                                <ToggleStates>
+                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
+                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
+                                                </ToggleStates>
+                                            </telerik:RadButton>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left; width: 200px;">
+                                        <label name="lblRFC">Centro operativo</label>
+                                    </td>
+                                    <td style="width: 100px;">
+                                        <div class="checkContainer" style="width: 82px;">
+                                            <telerik:RadButton ID="btnCONOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCONO" AutoPostBack="false">
+                                                <ToggleStates>
+                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
+                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
+                                                </ToggleStates>
+                                            </telerik:RadButton>
+                                            <telerik:RadButton ID="btnCONOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCONO" AutoPostBack="false">
+                                                <ToggleStates>
+                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
+                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
+                                                </ToggleStates>
+                                            </telerik:RadButton>
+                                        </div>
+                                    </td>
+                                    <td style="width: 100px;">
+                                        <div class="checkContainer" style="width: 82px;">
+                                            <telerik:RadButton ID="btnCODOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCODO" AutoPostBack="false">
+                                                <ToggleStates>
+                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
+                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
+                                                </ToggleStates>
+                                            </telerik:RadButton>
+                                            <telerik:RadButton ID="btnCODOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCODO" AutoPostBack="false">
+                                                <ToggleStates>
+                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
+                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
+                                                </ToggleStates>
+                                            </telerik:RadButton>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left; width: 200px;">
+                                        <label name="lblRFC">Centro administrativo</label>
+                                    </td>
+                                    <td style="width: 100px;">
+                                        <div class="checkContainer" style="width: 82px;">
+                                            <telerik:RadButton ID="btnCANOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCANO" AutoPostBack="false">
+                                                <ToggleStates>
+                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
+                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
+                                                </ToggleStates>
+                                            </telerik:RadButton>
+                                            <telerik:RadButton ID="btnCANOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCANO" AutoPostBack="false">
+                                                <ToggleStates>
+                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
+                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
+                                                </ToggleStates>
+                                            </telerik:RadButton>
+                                        </div>
+                                    </td>
+                                    <td style="width: 100px;">
+                                        <div class="checkContainer" style="width: 82px;">
+                                            <telerik:RadButton ID="btnCADOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCADO" AutoPostBack="false">
+                                                <ToggleStates>
+                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
+                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
+                                                </ToggleStates>
+                                            </telerik:RadButton>
+                                            <telerik:RadButton ID="btnCADOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCADO" AutoPostBack="false">
+                                                <ToggleStates>
+                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
+                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
+                                                </ToggleStates>
+                                            </telerik:RadButton>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <%--<tr>
                                     <td style="text-align: left; width: 200px;">
                                         <label name="lblRFC">Nacionalidad</label>
                                     </td>
@@ -1080,293 +1200,12 @@
                                             </telerik:RadButton>
                                         </div>
                                     </td>
-                                </tr>
+                                </tr>--%>
                             </table>
                         </div>
                     </div>
-                    <div class="ctrlBasico">
-                        <table class="ctrlTableForm" style="width: 400px;">
-                            <tr>
-                                <td></td>
-                                <td style="align-content: center;" colspan="2">
-                                    <label name="lblEditable">Editable desde</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 200px;"></td>
-                                <td style="text-align: left; width: 82px;">
-                                    <label name="lblRFC">Nómina</label>
-                                </td>
-                                <td style="text-align: left; width: 82px;">
-                                    <label name="lblRFC">DO</label>
-                                </td>
-                            </tr>
-                        </table>
-                        <div style="height: calc(100% - 150px); width: 400px; float: left; padding-left: 30px;">
-                            <table class="ctrlTableForm" style="width: 100%;">
-                                <tr>
-                                    <td style="text-align: left; width: 200px;">
-                                        <label name="lblRFC">Género</label>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnGeneroNOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpGeneroNO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnGeneroNOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpGeneroNO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnGeneroDOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpGeneroDO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnGeneroDoFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpGeneroDO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left; width: 200px;">
-                                        <label name="lblRFC">Estado civil</label>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnCivilNOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCivilNO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnCivilNOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCivilNO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnCivilDOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCivilDO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnCivilDOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCivilDO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left; width: 200px;">
-                                        <label name="lblRFC">C.P.</label>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnCPNOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCPNO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnCPNOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCPNO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnCPDOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCPDO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnCPDOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCPDO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left; width: 200px;">
-                                        <label name="lblRFC">Estado</label>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnEstadoNOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpEstadoNO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnEstadoNOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpEstadoNO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnEstadoDOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpEstadoDO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnEstadoDOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpEstadoDO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left; width: 200px;">
-                                        <label name="lblRFC">Municipio</label>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnMunicipioNOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpMunicipioNO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnMunicipioNOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpMunicipioNO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnMunicipioDOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpMunicipioDO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnMunicipioDOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpMunicipioDO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left; width: 200px;">
-                                        <label name="lblRFC">Colonia</label>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnColoniaNOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpColoniaNO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnColoniaNOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpColoniaNO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnColoniaDOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpColoniaDO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnColoniaDOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpColoniaDO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left; width: 200px;">
-                                        <label name="lblRFC">Calle</label>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnCalleNOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCalleNO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnCalleNOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCalleNO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnCalleDOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCalleDO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnCalleDOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCalleDO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="ctrlBasico">
+
+                    <%--<div class="ctrlBasico">
                         <table class="ctrlTableForm" style="width: 400px;">
                             <tr>
                                 <td></td>
@@ -1497,126 +1336,20 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td style="text-align: left; width: 200px;">
-                                        <label name="lblRFC">Correo electrónico</label>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnEmailNOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpEmailNO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnEmailNOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpEmailNO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnEmailDOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpEmailDO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnEmailDOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpEmailDO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left; width: 200px;">
-                                        <label name="lblRFC">Centro operativo</label>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnCONOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCONO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnCONOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCONO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnCODOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCODO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnCODOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCODO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left; width: 200px;">
-                                        <label name="lblRFC">Centro administrativo</label>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnCANOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCANO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnCANOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCANO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                    <td style="width: 100px;">
-                                        <div class="checkContainer" style="width: 82px;">
-                                            <telerik:RadButton ID="btnCADOTrue" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCADO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                            <telerik:RadButton ID="btnCADOFalse" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpCADO" AutoPostBack="false">
-                                                <ToggleStates>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                                    <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                                                </ToggleStates>
-                                            </telerik:RadButton>
-                                        </div>
-                                    </td>
-                                </tr>
+                                
                             </table>
+
                         </div>
-                    </div>
-                    </div>
-             <div style="height: 10px; clear: both;"></div>
-                    <%--<div class="ctrlBasico">
+                    </div>--%>
+                </div>
+
+                <div style="height: 10px; clear: both;"></div>
+
+
+                <%--<div class="ctrlBasico">
         <telerik:RadButton ID="RadButton1" runat="server" Text="Guardar" Width="100" ></telerik:RadButton>--%>
-                    <%-- <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" Width="100" OnClientClicked="onCloseWindows"></telerik:RadButton>--%>
-                    <%-- </div>--%>
+                <%-- <telerik:RadButton ID="btnCancelar" runat="server" Text="Cancelar" Width="100" OnClientClicked="onCloseWindows"></telerik:RadButton>--%>
+                <%-- </div>--%>
             </telerik:RadPageView>
             <%-- <telerik:RadPageView ID="rpvGrupos" runat="server">
                 <div style="clear: both;"></div>
@@ -1675,7 +1408,7 @@
                     </telerik:RadButton>
                 </div>
                 <div style="clear: both"></div>
-                    <telerik:RadEditor Width="700px" Height="250PX" EditModes="Design" ID="txbMensaje" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/AdvancedTools.xml"></telerik:RadEditor>
+                <telerik:RadEditor Width="700px" Height="250PX" EditModes="Design" ID="txbMensaje" runat="server" ToolbarMode="Default" ToolsFile="~/Assets/AdvancedTools.xml"></telerik:RadEditor>
             </telerik:RadPageView>
         </telerik:RadMultiPage>
     </div>
