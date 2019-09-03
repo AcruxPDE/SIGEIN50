@@ -690,7 +690,7 @@
                         <label id="lblTxtNoPlazas">No. de plazas:</label>
                     </div>
                     <div class="divControlDerecha">
-                        <telerik:RadNumericTextBox ID="txtNoPlazas" runat="server" Width="40" NumberFormat-DecimalDigits="0"></telerik:RadNumericTextBox>
+                        <telerik:RadNumericTextBox ID="txtNoPlazas" runat="server" MinValue="0" Width="40" NumberFormat-DecimalDigits="0"></telerik:RadNumericTextBox>
                     </div>
                 </div>
                 <div style="clear: both;"></div>

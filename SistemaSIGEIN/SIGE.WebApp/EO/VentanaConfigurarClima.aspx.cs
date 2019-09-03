@@ -545,6 +545,8 @@ namespace SIGE.WebApp.EO
                     {
                         rtsConfiguracionClima.Tabs[1].Visible = false;
                         rtsConfiguracionClima.Tabs[6].Visible = false;
+                        btnGuardarEnvioCuestionariosCerrar.Visible = true;
+                        btnGuardarEnvioCuestionarios.Visible = false;
                         //btnGuardar.Enabled = false;
                     }
 
@@ -970,6 +972,11 @@ namespace SIGE.WebApp.EO
                 GuardarDatos(false);
             else
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, "Seleccione por lo menos un evaluado para guardar la configuración.", E_TIPO_RESPUESTA_DB.WARNING, pCallBackFunction: "");
+        }
+
+        protected void btnGuardarEnvioCuestionariosCerrar_Click(object sender, EventArgs e)
+        {
+            GuardarDatos(true);
         }
     }
 }
