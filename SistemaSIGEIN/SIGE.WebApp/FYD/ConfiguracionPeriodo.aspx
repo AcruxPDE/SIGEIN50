@@ -203,8 +203,7 @@
         }
 
         function ConfirmarEliminarPregunta(sender, args) {
-            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
-            { if (shouldSubmit) { this.click(); } });
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
 
             radconfirm(vConfirmarEliminarPregunta, callBackFunction, 400, 170, null, "Aviso");
             args.set_cancel(true);
@@ -400,7 +399,7 @@
 
             var items = vListBox.get_items();
 
-            for (var i = 0; i < items.get_count() ; i++) {
+            for (var i = 0; i < items.get_count(); i++) {
                 var item = items.getItem(i);
                 var itemValue = item.get_value();
                 var itemText = item.get_text();
@@ -468,7 +467,7 @@
             OrdenarSeleccion(arrSeleccion, '<%=lstCamposInterrelacionados.ClientID %>');
 
             var ajaxManager = $find('<%= ramConfiguracionPeriodo.ClientID%>');
-            ajaxManager.ajaxRequest(JSON.stringify({ clTipo: "INSERTARCAMPOINTERRRELACIONADO"}));
+            ajaxManager.ajaxRequest(JSON.stringify({ clTipo: "INSERTARCAMPOINTERRRELACIONADO" }));
         }
 
         function InsertCampoAdicionalItem(pItem, pListBox) {
@@ -506,10 +505,10 @@
 
         function DeleteCompetencia() {
             DeleteListItems($find("<%=lstCompetenciasEspecificas.ClientID %>"));
-       }
+        }
 
-       function DeleteCampoInterrelacionado() {
-           DeleteListItems($find("<%=lstCamposInterrelacionados.ClientID %>"));
+        function DeleteCampoInterrelacionado() {
+            DeleteListItems($find("<%=lstCamposInterrelacionados.ClientID %>"));
         }
 
         function ChangeControlState(pCtrlCheckbox, pFgEnabled, pClTipoControl) {
@@ -953,75 +952,9 @@
         </AjaxSettings>
     </telerik:RadAjaxManager>
 
- <%--   <div style="padding-top: 10px;">--%>
-        <%-- <div class="ctrlBasico">
-            <label name="lblIdPeriodo">Periodo:</label>
-            <telerik:RadTextBox ID="txtIdPeriodo" runat="server" Enabled="false" Width="50"></telerik:RadTextBox>
-        </div>
-        <div class="ctrlBasico">
-            <telerik:RadTextBox ID="txtNbPeriodo" runat="server" Enabled="false" Width="500"></telerik:RadTextBox>
-        </div>--%>
-<%--        <div class="ctrlBasico">
-            <table class="ctrlTableForm">
-                <tr>
-                    <td class="ctrlTableDataContext">
-                        <label>Período:</label></td>
-                    <td colspan="2" class="ctrlTableDataBorderContext">
-                        <div id="txtIdPeriodo" runat="server" style="min-width: 100px;"></div>
-                    </td>
-                    <td class="ctrlTableDataBorderContext">
-                        <div id="txtNbPeriodo" runat="server" width="170" maxlength="1000" enabled="false"></div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="ctrlBasico">
-            <telerik:RadButton ID="chkFgEvaluadorAutoevaluacion" runat="server" ToggleType="CheckBox" AutoPostBack="false" ReadOnly="true" Text="Autoevaluación">
-                <ToggleStates>
-                    <telerik:RadButtonToggleState></telerik:RadButtonToggleState>
-                    <telerik:RadButtonToggleState CssClass="unchecked"></telerik:RadButtonToggleState>
-                </ToggleStates>
-            </telerik:RadButton>
-        </div>
-        <div class="ctrlBasico">
-            <telerik:RadButton ID="chkFgEvaluadorSupervisor" runat="server" ToggleType="CheckBox" AutoPostBack="false" ReadOnly="true" Text="Superior">
-                <ToggleStates>
-                    <telerik:RadButtonToggleState></telerik:RadButtonToggleState>
-                    <telerik:RadButtonToggleState CssClass="unchecked"></telerik:RadButtonToggleState>
-                </ToggleStates>
-            </telerik:RadButton>
-        </div>
-        <div class="ctrlBasico">
-            <telerik:RadButton ID="chkFgEvaluadorSubordinados" runat="server" ToggleType="CheckBox" AutoPostBack="false" ReadOnly="true" Text="Subordinados">
-                <ToggleStates>
-                    <telerik:RadButtonToggleState></telerik:RadButtonToggleState>
-                    <telerik:RadButtonToggleState CssClass="unchecked"></telerik:RadButtonToggleState>
-                </ToggleStates>
-            </telerik:RadButton>
-        </div>
-        <div class="ctrlBasico">
-            <telerik:RadButton ID="chkFgEvaluadorInterrelacionados" runat="server" ToggleType="CheckBox" AutoPostBack="false" Checked="true" ReadOnly="true" Text="Interrelacionados">
-                <ToggleStates>
-                    <telerik:RadButtonToggleState></telerik:RadButtonToggleState>
-                    <telerik:RadButtonToggleState CssClass="unchecked"></telerik:RadButtonToggleState>
-                </ToggleStates>
-            </telerik:RadButton>
-        </div>
-        <div class="ctrlBasico">
-            <telerik:RadButton ID="chkFgEvaluadorOtros" runat="server" ToggleType="CheckBox" AutoPostBack="false" ReadOnly="true" Text="Otros">
-                <ToggleStates>
-                    <telerik:RadButtonToggleState></telerik:RadButtonToggleState>
-                    <telerik:RadButtonToggleState CssClass="unchecked"></telerik:RadButtonToggleState>
-                </ToggleStates>
-            </telerik:RadButton>
-        </div>
-    </div>--%>
-
-    <div style="clear: both;"><span id="InsertEvaluados" runat="server"></span></div>
     <telerik:RadTabStrip ID="rtsConfiguracionPeriodo" runat="server" SelectedIndex="0" MultiPageID="rmpConfiguracionPeriodo" OnClientTabSelected="OpenPlaneacionMatrizWindow">
         <Tabs>
-             <telerik:RadTab Text="Contexto" Value="0"></telerik:RadTab>
+            <telerik:RadTab Text="Contexto" Value="0" Enabled="true" Visible="true"></telerik:RadTab>
             <telerik:RadTab Text="Tipo de evaluación" Value="1"></telerik:RadTab>
             <telerik:RadTab Text="Mensaje inicial y Preguntas abiertas" Value="2"></telerik:RadTab>
             <telerik:RadTab Text="Ponderación" Value="3"></telerik:RadTab>

@@ -444,7 +444,8 @@ namespace SIGE.WebApp.FYD
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
             vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
-          //  vClCultureIdioma = ContextoApp.clCultureIdioma;
+            //  vClCultureIdioma = ContextoApp.clCultureIdioma;
+            txtClPeriodo.InnerText = "ENTRA";
 
             if (!Page.IsPostBack)
             {
@@ -466,6 +467,9 @@ namespace SIGE.WebApp.FYD
                 {
                     TraducirTextos();
                 }
+
+                rtsConfiguracionPeriodo.SelectedIndex = 0;
+                rpvContexto.Selected = true;
 
             }
 

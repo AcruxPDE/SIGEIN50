@@ -388,6 +388,12 @@
                     <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnConfigurar">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" />
+                    <telerik:AjaxUpdatedControl ControlID="btnConfigurar" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnCerrar">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" />
@@ -431,6 +437,7 @@
             <telerik:AjaxSetting AjaxControlID="btnEliminar">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="rlvPeriodos" />
+                    <telerik:AjaxUpdatedControl ControlID="btnEliminar" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnCopiar">
@@ -594,7 +601,7 @@
                                 <telerik:RadButton ID="btnAgregar" runat="server" Text="Agregar" AutoPostBack="false" OnClientClicked="OpenInsertPeriodoWindow"></telerik:RadButton>
                             </div>
                             <div class="ctrlBasico">
-                                <telerik:RadButton ID="btnConfigurar" runat="server" Text="Configurar" AutoPostBack="false" OnClientClicked="OpenConfiguracionWindow"></telerik:RadButton>
+                                <telerik:RadButton ID="btnConfigurar" runat="server" Text="Configurar" AutoPostBack="true" OnClientClicked="OpenConfiguracionWindow"></telerik:RadButton>
                             </div>
                             <div class="ctrlBasico">
                                 <telerik:RadButton ID="btnCerrar" runat="server" Text="Cerrar" OnClientClicking="ConfirmarCerrar" OnClick="btnCerrar_Click"></telerik:RadButton>
