@@ -181,7 +181,7 @@
             obtenerIdFila();
             if (idPregunta != "") {
                 openChildDialog("VentanaCuestionario.aspx?&ID_PREGUNTA=" + idPregunta + "&ID_PERIODO=" + <%=vIdPeriodo%> + "", "WinCuestionario",
-                       "Nuevo/Editar pregunta cuestionario")
+                    "Nuevo/Editar pregunta cuestionario")
             } else {
                 radalert("Selecciona una pregunta.", 400, 150, "Aviso");
                 args.set_cancel(true);
@@ -189,8 +189,7 @@
         }
 
         function ConfirmValidez(sender, args) {
-            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
-            { if (shouldSubmit) { this.click(); } });
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
 
             radconfirm('¿Estás seguro de eliminar la validez del cuestionario? Una vez realizado ya no podrá revertirse. ', callBackFunction, 400, 170, null, "Aviso");
             args.set_cancel(true);
@@ -200,38 +199,38 @@
             obtenerFilaPrAbiertas();
             if (idPregunta != "") {
                 openChildDialog("VentanaPreguntaAbierta.aspx?ID_PREGUNTA=" + idPregunta + "&ID_PERIODO=" + <%=vIdPeriodo%> + "", "WinPreguntas", "Editar pregunta abierta")
-        } else {
-            radalert("Selecciona una pregunta.", 400, 150, "Aviso");
-            args.set_cancel(true);
+            } else {
+                radalert("Selecciona una pregunta.", 400, 150, "Aviso");
+                args.set_cancel(true);
+            }
         }
-    }
 
-    function OpenSelectionDepartamento() {
-        openChildDialog("../Comunes/SeleccionArea.aspx?CatalogoCl=INDICE_DEPARTAMENTO", "WinCuestionario", "Selección de área/departamento");
-    }
-    function OpenSelectionGenero() {
-        openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=INDICE_GENERO", "WinCuestionario", "Selección de género");
-    }
+        function OpenSelectionDepartamento() {
+            openChildDialog("../Comunes/SeleccionArea.aspx?CatalogoCl=INDICE_DEPARTAMENTO", "WinCuestionario", "Selección de área/departamento");
+        }
+        function OpenSelectionGenero() {
+            openChildDialog("../Comunes/SeleccionCatalogos.aspx?ID_CATALOGO=2" + "&CatalogoCl=INDICE_GENERO", "WinCuestionario", "Selección de género");
+        }
 
-    function OpenSelectionAdicionales() {
-        openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1" + "&ClLista=IS", "WinConsultaPersonal", "Selección de campos adicionales");
-    }
+        function OpenSelectionAdicionales() {
+            openChildDialog("../Comunes/SeleccionAdscripciones.aspx?MultiSeleccion=1" + "&ClLista=IS", "WinConsultaPersonal", "Selección de campos adicionales");
+        }
 
 
-    function DeleteDepartamento() {
-        var vListBox = $find("<%=rlbDepartamento.ClientID %>");
+        function DeleteDepartamento() {
+            var vListBox = $find("<%=rlbDepartamento.ClientID %>");
             Delete(vListBox);
         }
 
         function DeleteAdicionales() {
             var vListAdscripcion = $find("<%= rlbAdicionales.ClientID %>");
-        Delete(vListAdscripcion);
-    }
+            Delete(vListAdscripcion);
+        }
 
-    function DeleteGenero() {
-        var vListBox = $find("<%=rlbGenero.ClientID %>");
-        Delete(vListBox);
-    }
+        function DeleteGenero() {
+            var vListBox = $find("<%=rlbGenero.ClientID %>");
+            Delete(vListBox);
+        }
 
         function InsertGenero(vSelectedData, list) {
             var arrSeleccion = [];
@@ -242,153 +241,150 @@
                 });
 
             OrdenarSeleccion(arrSeleccion, list);
-        //if (list != undefined) {
-        //    list.trackChanges();
-        //    var items = list.get_items();
-        //    items.clear();
-        //    var item = new Telerik.Web.UI.RadListBoxItem();
-        //    item.set_text(vSelectedData.nbCatalogoValor);
-        //    item.set_value(vSelectedData.clCatalogoValor);
-        //    item.set_selected(true);
-        //    items.add(item);
-        //    list.commitChanges();
-        //}
-    }
+            //if (list != undefined) {
+            //    list.trackChanges();
+            //    var items = list.get_items();
+            //    items.clear();
+            //    var item = new Telerik.Web.UI.RadListBoxItem();
+            //    item.set_text(vSelectedData.nbCatalogoValor);
+            //    item.set_value(vSelectedData.clCatalogoValor);
+            //    item.set_selected(true);
+            //    items.add(item);
+            //    list.commitChanges();
+            //}
+        }
 
-    function InsertDepartamentos(pDato, pListBox) {
-        var arrSeleccion = [];
-        for (var i = 0; i < pDato.length; i++)
-            arrSeleccion.push({
-                idItem: pDato[i].idArea,
-                nbItem: pDato[i].nbArea
-            });
+        function InsertDepartamentos(pDato, pListBox) {
+            var arrSeleccion = [];
+            for (var i = 0; i < pDato.length; i++)
+                arrSeleccion.push({
+                    idItem: pDato[i].idArea,
+                    nbItem: pDato[i].nbArea
+                });
 
-        OrdenarSeleccion(arrSeleccion, pListBox);
-    }
+            OrdenarSeleccion(arrSeleccion, pListBox);
+        }
 
-    function InsertAdicionales(pDato, pListBox) {
-        var arrSeleccion = [];
-        for (var i = 0; i < pDato.length; i++)
-            arrSeleccion.push({
-                idItem: pDato[i].idCampo,
-                nbItem: pDato[i].nbValor
-            });
-        OrdenarSeleccion(arrSeleccion, pListBox);
-    }
+        function InsertAdicionales(pDato, pListBox) {
+            var arrSeleccion = [];
+            for (var i = 0; i < pDato.length; i++)
+                arrSeleccion.push({
+                    idItem: pDato[i].idCampo,
+                    nbItem: pDato[i].nbValor
+                });
+            OrdenarSeleccion(arrSeleccion, pListBox);
+        }
 
-    function OrdenarSeleccion(pSeleccion, vListBox) {
-        vListBox.trackChanges();
+        function OrdenarSeleccion(pSeleccion, vListBox) {
+            vListBox.trackChanges();
 
-        var items = vListBox.get_items();
+            var items = vListBox.get_items();
 
-        for (var i = 0; i < items.get_count() ; i++) {
-            var item = items.getItem(i);
-            var itemValue = item.get_value();
-            var itemText = item.get_text();
-            if (itemValue != "0") {
-                var vFgItemEncontrado = false;
-                for (var j = 0; j < pSeleccion.length; j++)
-                    vFgItemEncontrado = vFgItemEncontrado || (pSeleccion[j].idItem == itemValue);
-                if (!vFgItemEncontrado)
-                    pSeleccion.push({
-                        idItem: itemValue,
-                        nbItem: itemText
-                    });
+            for (var i = 0; i < items.get_count(); i++) {
+                var item = items.getItem(i);
+                var itemValue = item.get_value();
+                var itemText = item.get_text();
+                if (itemValue != "0") {
+                    var vFgItemEncontrado = false;
+                    for (var j = 0; j < pSeleccion.length; j++)
+                        vFgItemEncontrado = vFgItemEncontrado || (pSeleccion[j].idItem == itemValue);
+                    if (!vFgItemEncontrado)
+                        pSeleccion.push({
+                            idItem: itemValue,
+                            nbItem: itemText
+                        });
+                }
+            }
+            var arrOriginal = [];
+            for (var i = 0; i < pSeleccion.length; i++)
+                arrOriginal.push(pSeleccion[i].nbItem);
+
+            var arrOrdenados = arrOriginal.slice();
+
+            arrOrdenados.sort();
+
+            var arrItemsOrdenados = [];
+
+            for (var i = 0; i < arrOrdenados.length; i++)
+                arrItemsOrdenados.push(pSeleccion[arrOriginal.indexOf(arrOrdenados[i])]);
+
+            items.clear();
+
+            for (var i = 0, len = arrItemsOrdenados.length; i < len; i++)
+                ChangeListItem(arrItemsOrdenados[i].idItem, arrItemsOrdenados[i].nbItem, vListBox);
+
+            vListBox.commitChanges();
+        }
+
+        function ChangeListItem(pIdItem, pNbItem, pListBox) {
+            var items = pListBox.get_items();
+            var item = new Telerik.Web.UI.RadListBoxItem();
+            item.set_text(pNbItem);
+            item.set_value(pIdItem);
+            items.add(item);
+            item.set_selected(true);
+        }
+
+        function Delete(vListBox) {
+            var vSelectedItems = vListBox.get_selectedItems();
+            vListBox.trackChanges();
+            if (vSelectedItems)
+                vSelectedItems.forEach(function (item) {
+                    vListBox.get_items().remove(item);
+                });
+            vListBox.commitChanges();
+        }
+
+        function ConfirmarAsignar(sender, args) {
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+            radconfirm('¿Deseas asignar los cuestionarios a los evaluadores?, este proceso no te permitirá rediseñar el cuestionario.', callBackFunction, 400, 170, null, "Aviso");
+            args.set_cancel(true);
+        }
+
+        function ConfirmarAsignarPreguntas(sender, args) {
+            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+            radconfirm('¿Deseas asignar las preguntas al cuestionario?, este proceso no te permitirá rediseñar las preguntas.', callBackFunction, 400, 170, null, "Aviso");
+            args.set_cancel(true);
+        }
+
+
+        function ConfirmaElimina(sender, args) {
+            obtenerFilaPrAbiertas();
+            if (idPregunta != "") {
+                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
+
+                radconfirm('¿Estás seguro de eliminar esta pregunta?, este proceso no podrá revertirse. ', callBackFunction, 400, 170, null, "Aviso");
+                args.set_cancel(true);
+            }
+            else {
+                radalert("Selecciona la pregunta a eliminar.", 400, 150, "Aviso");
+                args.set_cancel(true);
             }
         }
-        var arrOriginal = [];
-        for (var i = 0; i < pSeleccion.length; i++)
-            arrOriginal.push(pSeleccion[i].nbItem);
 
-        var arrOrdenados = arrOriginal.slice();
+        function ConfirmEliminaPregunta(sender, args) {
+            if (idPregunta != "") {
+                var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
 
-        arrOrdenados.sort();
+                radconfirm('¿Estás seguro de eliminar esta pregunta?, este proceso no podrá revertirse. ', callBackFunction, 400, 170, null, "Aviso");
+                args.set_cancel(true);
+            }
+            else {
+                radalert("Selecciona la pregunta a eliminar.", 400, 150, "Aviso");
+                args.set_cancel(true);
+            }
 
-        var arrItemsOrdenados = [];
-
-        for (var i = 0; i < arrOrdenados.length; i++)
-            arrItemsOrdenados.push(pSeleccion[arrOriginal.indexOf(arrOrdenados[i])]);
-
-        items.clear();
-
-        for (var i = 0, len = arrItemsOrdenados.length; i < len; i++)
-            ChangeListItem(arrItemsOrdenados[i].idItem, arrItemsOrdenados[i].nbItem, vListBox);
-
-        vListBox.commitChanges();
-    }
-
-    function ChangeListItem(pIdItem, pNbItem, pListBox) {
-        var items = pListBox.get_items();
-        var item = new Telerik.Web.UI.RadListBoxItem();
-        item.set_text(pNbItem);
-        item.set_value(pIdItem);
-        items.add(item);
-        item.set_selected(true);
-    }
-
-    function Delete(vListBox) {
-        var vSelectedItems = vListBox.get_selectedItems();
-        vListBox.trackChanges();
-        if (vSelectedItems)
-            vSelectedItems.forEach(function (item) {
-                vListBox.get_items().remove(item);
-            });
-        vListBox.commitChanges();
-    }
-
-    function ConfirmarAsignar(sender, args) {
-        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
-        { if (shouldSubmit) { this.click(); } });
-
-        radconfirm('¿Deseas asignar los cuestionarios a los evaluadores?, este proceso no te permitirá rediseñar el cuestionario.', callBackFunction, 400, 170, null, "Aviso");
-        args.set_cancel(true);
-    }
-
-    function ConfirmarAsignarPreguntas(sender, args) {
-        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
-        { if (shouldSubmit) { this.click(); } });
-
-        radconfirm('¿Deseas asignar las preguntas al cuestionario?, este proceso no te permitirá rediseñar las preguntas.', callBackFunction, 400, 170, null, "Aviso");
-        args.set_cancel(true);
-    }
+        }
 
 
-    function ConfirmaElimina(sender, args) {
-        obtenerFilaPrAbiertas();
-        if (idPregunta != "") {
+        function ConfirmActualizaMnesaje(sender, args) {
             var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
 
-            radconfirm('¿Estás seguro de eliminar esta pregunta?, este proceso no podrá revertirse. ', callBackFunction, 400, 170, null, "Aviso");
+            radconfirm('¿Estás seguro de actualizar el mensaje envío cuestionarios?, Recuerda que este mensaje es único para todos los períodos. Para más información ve a la sección de ayuda.', callBackFunction, 460, 180, null, "Aviso");
             args.set_cancel(true);
         }
-        else {
-            radalert("Selecciona la pregunta a eliminar.", 400, 150, "Aviso");
-            args.set_cancel(true);
-        }
-    }
-
-    function ConfirmEliminaPregunta(sender, args) {
-        if (idPregunta != "") {
-            var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
-
-            radconfirm('¿Estás seguro de eliminar esta pregunta?, este proceso no podrá revertirse. ', callBackFunction, 400, 170, null, "Aviso");
-            args.set_cancel(true);
-        }
-        else {
-            radalert("Selecciona la pregunta a eliminar.", 400, 150, "Aviso");
-            args.set_cancel(true);
-        }
-        
-    }
-
-
-    function ConfirmActualizaMnesaje(sender, args) {
-        var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
-        { if (shouldSubmit) { this.click(); } });
-
-        radconfirm('¿Estás seguro de actualizar el mensaje envío cuestionarios?, Recuerda que este mensaje es único para todos los períodos. Para más información ve a la sección de ayuda.', callBackFunction, 460, 180, null, "Aviso");
-        args.set_cancel(true);
-    }
 
     </script>
 </asp:Content>
@@ -412,11 +408,41 @@
                     <telerik:AjaxUpdatedControl ControlID="grdEmpleadosContrasenias" UpdatePanelHeight="100%" />
                 </UpdatedControls>               
             </telerik:AjaxSetting>
-               <telerik:AjaxSetting AjaxControlID="btnGuardar">
+            <telerik:AjaxSetting AjaxControlID="btnGuardar">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="btnGuardar" UpdatePanelHeight="100%" />
                 </UpdatedControls>
-                               </telerik:AjaxSetting>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnGuardarSeleccion">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnGuardarSeleccion" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnAplicar">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnAplicar" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnGuardarPreguntasAbiertas">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnGuardarPreguntasAbiertas" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnGuardarCuestionario">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnGuardarCuestionario" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnGuardarEnvioCuestionarios">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnGuardarEnvioCuestionarios" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="btnGuardarEnvioCuestionariosCerrar">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnGuardarEnvioCuestionariosCerrar" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnSeleccionar">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="grdEmpleadosSeleccionados" UpdatePanelHeight="100%" />
@@ -894,6 +920,9 @@
                             <div style="height: 10px; clear: both;"></div>
                             <div class="divControlDerecha" style="padding-right: 30px;">
                                 <telerik:RadButton ID="btnGuardarEnvioCuestionarios" Visible="true" runat="server" name="btnGuardarEnvioCuestionarios" AutoPostBack="true" Text="Guardar" Width="100" OnClick="btnGuardar_Click"></telerik:RadButton>
+                            </div>
+                            <div class="divControlDerecha" style="padding-right: 30px;">
+                                <telerik:RadButton ID="btnGuardarEnvioCuestionariosCerrar" Visible="false" runat="server" name="btnGuardarEnvioCuestionariosCerrar" AutoPostBack="true" Text="Guardar y Cerrar" OnClick="btnGuardarEnvioCuestionariosCerrar_Click"></telerik:RadButton>
                             </div>
                         </telerik:RadPageView>
                         <telerik:RadPageView ID="rpvEmpleadoContrasenia" runat="server">
