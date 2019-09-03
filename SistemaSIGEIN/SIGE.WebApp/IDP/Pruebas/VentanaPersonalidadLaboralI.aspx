@@ -113,7 +113,9 @@
                         else {
 
                             // window.close();
-                            window.location = "Default.aspx?ty=Ini";
+                            var idBateria = '<%= vIdBateria%>';
+                            var clToken = '<%= vClTokenBateria%>';
+                            window.location = "Default.aspx?ty=Ini&ID=" + idBateria + "&T=" + clToken;
                         }
                     });
                     var text = "<label><b>Instrucciones:</b><br/>Las palabras descriptivas siguientes se encuentran agrupadas en series de cuatro.</br>" +
@@ -150,23 +152,32 @@
 
             function close_window(sender, args) {
                 if (vPruebaEstatus != "TERMINADA") {
-                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
-                        if (shouldSubmit) {
+                    //var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+                    //    if (shouldSubmit) {
 
-                            if (ValidarContendorPreguntas()) {
-                                clearInterval(c);//Se agrega para detener el tiempo del reloj antes de guardar resultados 12/04/2018
-                                var btn = $find("<%=btnTerminar.ClientID%>");
-                                btn.click();
-                            }
-                        }
-                    });
-                    var text = "¿Estás seguro que deseas terminar tu prueba?";
-                    radconfirm(text, callBackFunction, 400, 150, null, "");
-                    args.set_cancel(true);
+                    //        if (ValidarContendorPreguntas()) {
+                    //            clearInterval(c);//Se agrega para detener el tiempo del reloj antes de guardar resultados 12/04/2018
+                    //            var btn = $find("<%=btnTerminar.ClientID%>");
+                    //            btn.click();
+                    //        }
+                    //    }
+                    //});
+                    //var text = "¿Estás seguro que deseas terminar tu prueba?";
+                    //radconfirm(text, callBackFunction, 400, 150, null, "Aviso");
+                    //args.set_cancel(true);
+                    if (ValidarContendorPreguntas()) {
+                        clearInterval(c);
+                        args.set_cancel(false);
+                    }
+                    else {
+                        args.set_cancel(true);
+                    }
                 }
                 else {
                     // window.close();
-                    window.location = "Default.aspx?ty=sig";
+                    var idBateria = '<%= vIdBateria%>';
+                    var clToken = '<%= vClTokenBateria%>';
+                    window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
                 }
             }
 
@@ -180,7 +191,7 @@
                         }
                     });
                     var text = "¿Estás seguro que deseas editar los resultados de esta prueba?";
-                    radconfirm(text, callBackFunction, 400, 150, null, "");
+                    radconfirm(text, callBackFunction, 400, 150, null, "Aviso");
                     args.set_cancel(true);
                 }
             
@@ -199,7 +210,9 @@
 
             function CloseTest() {
                 //window.close();
-                window.location = "Default.aspx?ty=sig";
+                var idBateria = '<%= vIdBateria%>';
+                var clToken = '<%= vClTokenBateria%>';
+                window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
             }
 
             function Close() {
