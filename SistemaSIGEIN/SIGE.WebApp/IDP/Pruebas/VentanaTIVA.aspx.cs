@@ -103,6 +103,7 @@ namespace SIGE.WebApp.IDP
                     if (Request.QueryString["vIdBateria"] != null)
                     {
                         vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+                        vClTokenBateria = new Guid();
                         btnEliminar.Visible = true;
                         btnEliminarBateria.Visible = true;
                     }

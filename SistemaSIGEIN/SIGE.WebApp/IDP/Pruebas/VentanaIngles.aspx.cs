@@ -208,6 +208,7 @@ namespace SIGE.WebApp.IDP.Pruebas
                     if (Request.QueryString["vIdBateria"] != null)
                     {
                         vIdBateria = int.Parse(Request.QueryString["vIdBateria"]);
+                        vClTokenBateria = new Guid();
                         btnEliminar.Visible = true;
                         btnEliminarBateria.Visible = true;
                     }
@@ -249,6 +250,7 @@ namespace SIGE.WebApp.IDP.Pruebas
                 }
                 else 
                 {
+                    vClTokenBateria = new Guid();
                     initRespuestasIngles();
                     mpgIngles.RenderSelectedPageOnly = true;
                 }
