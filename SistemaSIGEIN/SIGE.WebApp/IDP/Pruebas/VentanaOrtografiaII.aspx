@@ -105,7 +105,9 @@
                         else {
 
                             // window.close();
-                            window.location = "Default.aspx?ty=Ini";
+                            var idBateria = '<%= vIdBateria%>';
+                            var clToken = '<%= vClTokenBateria%>';
+                            window.location = "Default.aspx?ty=Ini&ID=" + idBateria + "&T=" + clToken;
                         }
                     });
                     var text = "<label><b>Instrucciones:</b><br/>Algunas de las palabras listadas están escritas con falta de ortografía, señala cuáles son y escríbelas en forma correcta en el espacio en blanco.</label>";
@@ -139,24 +141,33 @@
 
             function close_window(sender, args) {
                 if (vPruebaEstatus != "Terminado") {
-                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
-                        if (shouldSubmit) {
+                    //var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+                    //    if (shouldSubmit) {
 
-                            if (ValidarContendorPreguntas()) {
-                                clearInterval(c);//Se agrega para detener el tiempo del reloj antes de guardar resultados 12/04/2018
-                                var btn = $find("<%=btnTerminar.ClientID%>");
-                                btn.click();
-                            }
-                        }
-                    });
+                    //        if (ValidarContendorPreguntas()) {
+                    //            clearInterval(c);//Se agrega para detener el tiempo del reloj antes de guardar resultados 12/04/2018
+                    //            var btn = $find("<%=btnTerminar.ClientID%>");
+                    //            btn.click();
+                    //        }
+                    //    }
+                    //});
 
-                    var text = "¿Estás seguro que deseas terminar tu prueba?";
-                    radconfirm(text, callBackFunction, 400, 150, null, "");
-                    args.set_cancel(true);
+                    //var text = "¿Estás seguro que deseas terminar tu prueba?";
+                    //radconfirm(text, callBackFunction, 400, 150, null, "Aviso");
+                    //args.set_cancel(true);
+                    if (ValidarContendorPreguntas()) {
+                        clearInterval(c);
+                        args.set_cancel(false);
+                    }
+                    else {
+                        args.set_cancel(true);
+                    }
                 }
                 else {
                     //window.close();
-                    window.location = "Default.aspx?ty=sig";
+                    var idBateria = '<%= vIdBateria%>';
+                    var clToken = '<%= vClTokenBateria%>';
+                    window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
                 }
             }
 
@@ -174,7 +185,9 @@
 
             function CloseTest() {
                 //window.close();
-                window.location = "Default.aspx?ty=sig";
+                var idBateria = '<%= vIdBateria%>';
+                var clToken = '<%= vClTokenBateria%>';
+                window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
             }
 
             function Close() {

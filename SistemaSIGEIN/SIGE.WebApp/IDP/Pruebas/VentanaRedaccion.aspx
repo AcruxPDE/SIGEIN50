@@ -108,7 +108,9 @@
                             }
                         }
                         else {
-                            window.location = "Default.aspx?ty=Ini";
+                            var idBateria = '<%= vIdBateria%>';
+                            var clToken = '<%= vClTokenBateria%>';
+                            window.location = "Default.aspx?ty=Ini&ID=" + idBateria + "&T=" + clToken;
                         }
                     });
                     var text = "<label><b>Instrucciones:</b><br/>En el siguiente espacio deberás redactar una carta dirigida a alguna persona particularmente admirada o apreciada por ti. Esta persona puede ser alguien que tú conoces o no y que admiras por su obra o sus ideas; incluso puede ser una persona que haya fallecido o que sea producto de la imaginación. Escríbele lo que desees, el tema de la carta es libre. Únicamente considera que el tamaño de la carta deberá ser de media cuartilla al menos.</label>";
@@ -142,21 +144,25 @@
 
             function close_window(sender, args) {
                 if (vPruebaEstatus != "Terminado") {
-                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
-                        if (shouldSubmit) {
-                                clearInterval(c);//Se agrega para detener el tiempo del reloj antes de guardar resultados 12/04/2018
-                                var btn = $find("<%=btnTerminar.ClientID%>");
-                                btn.click();
-                        }
-                    });
+                    //var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+                    //    if (shouldSubmit) {
+                    //            clearInterval(c);//Se agrega para detener el tiempo del reloj antes de guardar resultados 12/04/2018
+                    //            var btn = $find("<%=btnTerminar.ClientID%>");
+                    //            btn.click();
+                    //    }
+                    //});
 
-                    var text = "¿Estás seguro que deseas terminar tu prueba?";
-                    radconfirm(text, callBackFunction, 400, 160, null, "");
-                    args.set_cancel(true);
+                    //var text = "¿Estás seguro que deseas terminar tu prueba?";
+                    //radconfirm(text, callBackFunction, 400, 160, null, "Aviso");
+                    //args.set_cancel(true);                   
+                    clearInterval(c);
+                    args.set_cancel(false);                   
                 }
                 else {
                     //window.close();
-                    window.location = "Default.aspx?ty=sig";
+                    var idBateria = '<%= vIdBateria%>';
+                    var clToken = '<%= vClTokenBateria%>';
+                    window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
                 }
             }
 
@@ -173,7 +179,9 @@
             }
 
             function CloseTest() {
-                window.location = "Default.aspx?ty=sig";
+                var idBateria = '<%= vIdBateria%>';
+                var clToken = '<%= vClTokenBateria%>';
+                window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
             }
 
             function Close() {

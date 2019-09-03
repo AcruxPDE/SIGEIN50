@@ -88,23 +88,32 @@
             var input = null;
             function close_window(sender, args) {
                 if (vPruebaEstatus != "Terminado") {
-                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
-                        if (shouldSubmit) {
-                            if (ValidarContendorPreguntas()) {
-                                clearInterval(c);//Se agrega para detener el tiempo del reloj antes de guardar resultados 12/04/2018
-                                var btn = $find("<%=btnTerminar.ClientID%>");
-                                btn.click();
-                            }
-                        }
-                    });
+                    //var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+                    //    if (shouldSubmit) {
+                    //        if (ValidarContendorPreguntas()) {
+                    //            clearInterval(c);//Se agrega para detener el tiempo del reloj antes de guardar resultados 12/04/2018
+                    //            var btn = $find("<%=btnTerminar.ClientID%>");
+                    //            btn.click();
+                    //        }
+                    //    }
+                    //});
 
-                    var text = "¿Estás seguro que deseas terminar tu prueba?";
-                    radconfirm(text, callBackFunction, 400, 200, null, "");
-                    args.set_cancel(true);
+                    //var text = "¿Estás seguro que deseas terminar tu prueba?";
+                    //radconfirm(text, callBackFunction, 400, 200, null, "Aviso");
+                    //args.set_cancel(true);
+                    if (ValidarContendorPreguntas()) {
+                        clearInterval(c);
+                        args.set_cancel(false);
+                    }
+                    else {
+                        args.set_cancel(true);
+                    }
                 }
                 else {
                     //window.close();
-                    window.location = "Default.aspx?ty=sig";
+                    var idBateria = '<%= vIdBateria%>';
+                    var clToken = '<%= vClTokenBateria%>';
+                    window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
                 }
             }
             //FUNCION PARA VALIDAR LA PALABRA INGRESADA
@@ -151,7 +160,9 @@
                         else {
 
                             // window.close();
-                            window.location = "Default.aspx?ty=Ini";
+                            var idBateria = '<%= vIdBateria%>';
+                            var clToken = '<%= vClTokenBateria%>';
+                            window.location = "Default.aspx?ty=Ini&ID=" + idBateria + "&T=" + clToken;
                         }
                     });
                     var text = "<label><b>Instrucciones:</b><br/>Lee con atención el siguiente párrafo y escribe correctamente las palabras que deban ser acentuadas.<br/><br/> Añade las palabras con errores a la lista que aparece debajo del párrafo escribiendo la palabra correcta en el cuadro de texto y haciendo clic en el botón ' + '; si deseas eliminar una palabra de la lista haz clic en el botón ' X ' que aparece en la parte derecha del contenedor.</label>";
@@ -160,21 +171,21 @@
             };
 
             function retorno(sender, args) {
-                var segundos = '<%=this.vTiempoPrueba%>';
-                var display = document.querySelector('#time');
-                var contenedor = document.querySelector('.Cronometro');
+                //var segundos = '<%=this.vTiempoPrueba%>';
+                //var display = document.querySelector('#time');
+                //var contenedor = document.querySelector('.Cronometro');
 
 
-                var vFgCronometro = '<%=MostrarCronometro %>';
-                if (vFgCronometro == "True") {
-                    contenedor.style.display = 'block';
-                }
-                else {
-                    contenedor.style.display = 'none';
-                }
+                //var vFgCronometro = '<%=MostrarCronometro %>';
+                //if (vFgCronometro == "True") {
+                //    contenedor.style.display = 'block';
+                //}
+                //else {
+                //    contenedor.style.display = 'none';
+                //}
 
 
-                c = Cronometro(segundos, display);
+                //c = Cronometro(segundos, display);
 
                 setTimeout(function () {
                     var pane = $find("<%= radPanelPreguntas.ClientID %>");
@@ -216,7 +227,9 @@
 
             function CloseTest() {
                 //window.close();
-                window.location = "Default.aspx?ty=sig";
+                var idBateria = '<%= vIdBateria%>';
+                var clToken = '<%= vClTokenBateria%>';
+                window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
             }
 
             function Close() {
@@ -232,6 +245,7 @@
                     var vPalabra = $find("<%=txtPalabra.ClientID%>");
                     input = vPalabra;
                     var oWind = radalert("Capture una palabra.", 400, 150, "", SetFocusControles);
+                    flag = false;
                 }
                 return flag;
             }

@@ -1,0 +1,5 @@
+*.cache
+*.dll
+*.WebApp.csproj.FileListAbsolute.txt
+*.pdb
+/DesignTimeResolveAssemblyReferencesInput.cache

@@ -146,7 +146,9 @@
                         }
                         else {
                             //window.close();
-                            window.location = "Default.aspx?ty=Ini";
+                            var idBateria = '<%= vIdBateria%>';
+                            var clToken = '<%= vClTokenBateria%>';
+                            window.location = "Default.aspx?ty=Ini&ID=" + idBateria + "&T=" + clToken;
                         }
                     });
                         var text = "";
@@ -162,19 +164,50 @@
             };
 
             function ConfirmarPaseSeccion(sender, args) {
-                var multiPage = $find("<%=mpgActitudMentalI.ClientID %>");
-                var seccion = multiPage.get_selectedIndex();
+                //var multiPage = $find("<%=mpgActitudMentalI.ClientID %>");
+                /*var seccion = multiPage.get_selectedIndex();
                 if (seccion == 4 || seccion == 8) {
                     var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
                         if (shouldSubmit) {
                             this.click();
                         }
                     });
-                    radconfirm("¿Estás seguro que deseas continuar a la siguiente sección?", callBackFunction, 400, 180, null, "Eliminar respuestas prueba");
+                    radconfirm("¿Estás seguro que deseas continuar a la siguiente sección?", callBackFunction, 400, 180, null, "Aviso");
+                    args.set_cancel(true);
+                }
+                else if (seccion == 9) {
+                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+                        if (shouldSubmit) {
+                            this.click();
+                        }
+                    });
+                    radconfirm("¿Estás seguro que deseas terminar tu prueba?", callBackFunction, 400, 180, null, "Aviso");
                     args.set_cancel(true);
                 }
                 else {
                     args.set_cancel(false);
+                }*/
+                var contestado = ValidarContendorPreguntas();
+                if (contestado) {
+                     a = [];
+                    //clearInterval(c);//Se agrega para detener el tiempo del reloj antes de guardar resultados 12/04/2018
+                    //var btn = $find("<%=btnSiguiente.ClientID%>");
+                    //btn.click();
+                    args.set_cancel(false);
+                }
+                else {
+                    var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) {
+                        if (shouldSubmit) {
+                            //if (ValidarContendorPreguntas()) {
+                                a = [];
+                                var btn = $find("<%=btnSiguiente.ClientID%>");
+                                        btn.click();
+                                  //  }
+                            }
+                        });
+                    var text = "¿Estás seguro que deseas terminar tu prueba?";
+                    radconfirm(text, callBackFunction, 400, 160, null, "Aviso");
+                    args.set_cancel(true);
                 }
             }
 
@@ -210,7 +243,9 @@
                     }
                     else
                     {           
-                        window.location = "Default.aspx?ty=Ini";
+                        var idBateria = '<%= vIdBateria%>';
+                        var clToken = '<%= vClTokenBateria%>';
+                        window.location = "Default.aspx?ty=Ini&ID=" + idBateria + "&T=" + clToken;
                     }
                 });
 
@@ -220,7 +255,7 @@
                 var display = document.querySelector('#time');
                 display.textContent = "";
                 if (seccion == -1) {
-                    mensajePruebaTerminada2();
+                    CloseTest();
                 }
                 else {
                     var vMOD = "<%= vMOD %>";
@@ -235,6 +270,45 @@
                             setTimeout(function () {
                                  var pane = $find("<%= radPanelPreguntas.ClientID%>");
                                 pane.expand();
+                                switch(seccion)
+                                {
+                                    case 1:
+                                        var control = $find("<%= BPregunta1Resp1.ClientID%>");
+                                        control.focus();
+                                        break;
+                                    case 2:
+                                        var control = $find("<%= CPregunta1Resp1.ClientID%>");
+                                        control.focus();
+                                        break;
+                                    case 3:
+                                        var control = $find("<%= DPregunta1Resp1.ClientID%>");
+                                        control.focus();
+                                        break;
+                                    case 4:
+                                        var control = $find("<%= EtxtPreg1Resp1.ClientID%>");
+                                        control.focus();
+                                        break;
+                                    case 5:
+                                        var control = $find("<%= FtxtPreg1Resp1.ClientID%>");
+                                        control.focus();
+                                        break;
+                                    case 6:
+                                        var control = $find("<%= GbtnPreg1Resp1.ClientID%>");
+                                        control.focus();
+                                        break;
+                                    case 7:
+                                        var control = $find("<%= HbtnPreg1Resp1.ClientID%>");
+                                        control.focus();
+                                        break;
+                                    case 8:
+                                        var control = $find("<%= IbtnPreg1Resp1.ClientID%>");
+                                        control.focus();
+                                        break;
+                                    case 9:
+                                        var control = $find("<%= JbtnPreg1Resp1.ClientID%>");
+                                        control.focus();
+                                        break;
+                                }
                             }, 1000);
                            
                         }
@@ -255,10 +329,22 @@
                             }
                         });
 
+                        //var text = "¿Estás seguro que deseas terminar tu prueba?";
+                        //radconfirm(text, callBackFunction, 400, 160, null, "Aviso");
+                        //args.set_cancel(true);
+                    var contestado = ValidarContendorPreguntas();
+                    if (contestado) {
+                        clearInterval(c);//Se agrega para detener el tiempo del reloj antes de guardar resultados 12/04/2018
+                        //var btn = $find("<%=btnSiguiente.ClientID%>");
+                        //btn.click();
+                        args.set_cancel(false);
+                    }
+                    else {
                         var text = "¿Estás seguro que deseas terminar tu prueba?";
-                        radconfirm(text, callBackFunction, 400, 160, null, "");
+                        radconfirm(text, callBackFunction, 400, 160, null, "Aviso");
                         args.set_cancel(true);
                     }
+                }
                 else {
                     var multiPage = $find("<%=mpgActitudMentalI.ClientID %>");
                     updateTimer(multiPage.get_selectedIndex() + 1,"close_window");
@@ -277,15 +363,34 @@
                 oWnd.add_close(WinClose);
             }
 
+            function mensajePruebaTerminadaCallback(shouldSubmit) {
+                if (shouldSubmit) {
+                    CloseTest();
+                }
+                else {
+                    var multiPage = $find("<%=mpgActitudMentalI.ClientID %>");
+                    multiPage.set_selectedIndex(9);
+                    actualizarTiempo();
+                            setTimeout(function () {
+                                var pane = $find("<%= radPanelPreguntas.ClientID%>");
+                                pane.expand();
+                                var control = $find("<%= JbtnPreg1Resp1.ClientID%>");
+                                control.focus();
+                            }, 1000);
+                }
+            }
+
             function mensajePruebaTerminada2() {
                 //var oWnd = radalert("Usted ha terminado su prueba exitosamente o el tiempo de aplicación de la prueba ha concluido. <br> Cuando esté listo para pasar a la siguiente prueba, por favor haga clic en el botón 'Siguiente' más abajo <br>Recuerde que no es posible volver a ingresar la prueba previa; si intenta hacerlo por medio del botón del navegador, la aplicación no te lo permitirá: se generará un error y el intento quedará registrado", 400, 300, "");
                 var text = "¿Estás seguro que deseas terminar tu prueba?";
-                radconfirm(text, CloseTest, 400, 160, null, "");
+                radconfirm(text, mensajePruebaTerminadaCallback, 400, 160, null, "Aviso");
                 
             }
 
             function CloseTest() {
-                window.location = "Default.aspx?ty=sig";
+                var idBateria = '<%= vIdBateria%>';
+                var clToken = '<%= vClTokenBateria%>';
+                window.location = "Default.aspx?ty=sig&ID=" + idBateria + "&T=" + clToken;
             }
 
             function Close() {
