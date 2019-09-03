@@ -112,7 +112,7 @@
                                        <HeaderStyle Width="100" />
                                             <ItemTemplate>
                                                 <div style="width: 80%; text-align: center;">
-                                                    <img src='<%# Eval("FG_ENVIO").ToString().Equals("True") ? "../Assets/images/Aceptar.png" : "../Assets/images/Cancelar.png"  %>' />
+                                                   <%-- <img src='<%# Eval("FG_ENVIO").ToString().Equals("True") ? "../Assets/images/Aceptar.png" : "../Assets/images/Cancelar.png"  %>' />--%>
                                                 </div>
                                             </ItemTemplate>
                                         </telerik:GridTemplateColumn>

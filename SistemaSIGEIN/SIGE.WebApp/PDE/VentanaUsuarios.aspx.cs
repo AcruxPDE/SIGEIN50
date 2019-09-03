@@ -16,6 +16,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using Telerik.Web.UI;
+using System.Text.RegularExpressions;
 
 namespace SIGE.WebApp.PDE
 {
@@ -62,9 +63,9 @@ namespace SIGE.WebApp.PDE
             set { ViewState["vs_vIdEmpleado"] = value; }
         }
 
-        private List<SPE_OBTIENE_EMPLEADOS_GENERA_CONTRASENA_Result> vListaEmpleados
+        private List<E_EMPLEADOS_GENERA_CONTRASENA> vListaEmpleados
         {
-            get { return (List<SPE_OBTIENE_EMPLEADOS_GENERA_CONTRASENA_Result>)ViewState["vs_vListaEmpleados"]; }
+            get { return (List<E_EMPLEADOS_GENERA_CONTRASENA>)ViewState["vs_vListaEmpleados"]; }
             set { ViewState["vs_vListaEmpleados"] = value; }
         }
 
@@ -73,6 +74,18 @@ namespace SIGE.WebApp.PDE
             get { return (List<E_OBTIENE_EMPLEADOS_GENERA_CONTRASENA>)ViewState["vs_vListaEUsuarios"]; }
             set { ViewState["vs_vListaEUsuarios"] = value; }
         }
+
+        private string contrasenaAleatoria
+        {
+            get { return (ViewState["vs_contrasenaAleatoria"] != null) ? ViewState["vs_contrasenaAleatoria"].ToString() : String.Empty; }
+            set { ViewState["vs_contrasenaAleatoria"] = value; }
+        }
+
+        //public List<SPE_OBTIENE_EMPLEADOS_GENERA_CONTRASENA_Result> vUListaEmpleados
+        //{
+        //    get { return (List<SPE_OBTIENE_EMPLEADOS_GENERA_CONTRASENA_Result>)ViewState["vUListaEmpleados"]; }
+        //    set { ViewState["vUListaEmpleados"] = value; }
+        //}
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -96,44 +109,44 @@ namespace SIGE.WebApp.PDE
 
             }
 
-            if (vEditar == "true")
-            {
-                cmbUsuarios.Visible = false;
-                cmbUsuariosNl.Visible = false;
-                txtClUsuario.Visible = true;
-                rbLigado.Visible = false;
-                rbNoLigado.Visible = false;
+            //if (vEditar == "true")
+            //{
+            //    cmbUsuarios.Visible = false;
+            //    cmbUsuariosNl.Visible = false;
+            //    txtClUsuario.Visible = true;
+            //    //rbLigado.Visible = false;
+            //    //rbNoLigado.Visible = false;
 
-            }
-            else
-            {
-                if (rbLigado.Checked == true)
-                {
-                    cmbUsuarios.Visible = true;
-                    cmbUsuariosNl.Visible = false;
-                }
-                else
-                {
-                    cmbUsuariosNl.Visible = true;
-                    cmbUsuarios.Visible = false;
-                }
+            //}
+            //else
+            //{
+            //    if (rbLigado.Checked == true)
+            //    {
+            //        cmbUsuarios.Visible = true;
+            //        cmbUsuariosNl.Visible = false;
+            //    }
+            //    else
+            //    {
+            //        cmbUsuariosNl.Visible = true;
+            //        cmbUsuarios.Visible = false;
+            //    }
 
-                txtClUsuario.Visible = false;
-                rbLigado.Visible = true;
-                rbNoLigado.Visible = true;
-            }
+            //    txtClUsuario.Visible = false;
+            //    rbLigado.Visible = true;
+            //    rbNoLigado.Visible = true;
+            //}
 
-            if (vActivo == "No")
-            {
-                chkActivo.Enabled = false;
-                btnGuardar.Enabled = false;
+            //if (vActivo == "No")
+            //{
+            //    chkActivo.Enabled = false;
+            //    btnGuardar.Enabled = false;
 
-            }
-            else
-            {
-                chkActivo.Enabled = true;
-                btnGuardar.Enabled = true;
-            }
+            //}
+            //else
+            //{
+            //    chkActivo.Enabled = true;
+            //    btnGuardar.Enabled = true;
+            //}
 
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
@@ -141,28 +154,28 @@ namespace SIGE.WebApp.PDE
         public void ObtenerUsuarios()
         {
             bool vLigado;
-            if (rbLigado.Checked == true)
-            {
+            //if (rbLigado.Checked == true)
+            //{
                 vLigado = true;
-            }
-            else { vLigado = false; }
+            //}
+            //else { vLigado = false; }
             UsuarioNegocio nUsuarios = new UsuarioNegocio();
             List<SPE_OBTIENE_USUARIOS_EMPLEADOS_Result> vListaUsuarios = new List<SPE_OBTIENE_USUARIOS_EMPLEADOS_Result>();
             vListaUsuarios = nUsuarios.ObtieneUsuariosActivos(null, vLigado);
-            if (rbLigado.Checked == true)
-            {
-                cmbUsuarios.DataSource = vListaUsuarios.ToList();
-                cmbUsuarios.DataTextField = "CL_USUARIO";
-                cmbUsuarios.DataValueField = "CL_USUARIO";
-                cmbUsuarios.DataBind();
-            }
-            else
-            {
-                cmbUsuariosNl.DataSource = vListaUsuarios.ToList();
-                cmbUsuariosNl.DataTextField = "CL_USUARIO";
-                cmbUsuariosNl.DataValueField = "CL_USUARIO";
-                cmbUsuariosNl.DataBind();
-            }
+            //if (rbLigado.Checked == true)
+            //{
+            //    cmbUsuarios.DataSource = vListaUsuarios.ToList();
+            //    cmbUsuarios.DataTextField = "CL_USUARIO";
+            //    cmbUsuarios.DataValueField = "CL_USUARIO";
+            //    cmbUsuarios.DataBind();
+            //}
+            //else
+            //{
+            //    cmbUsuariosNl.DataSource = vListaUsuarios.ToList();
+            //    cmbUsuariosNl.DataTextField = "CL_USUARIO";
+            //    cmbUsuariosNl.DataValueField = "CL_USUARIO";
+            //    cmbUsuariosNl.DataBind();
+            //}
         }
 
         protected void CargarDatos(string pIdUsuario)
@@ -207,7 +220,7 @@ namespace SIGE.WebApp.PDE
             }
             if (vEditar == "true")
             {
-
+                btnBuscar.Enabled = false;
                 txtClUsuario.ReadOnly = !vEsInsercion;
                 txtClUsuario.Text = vUsuario.CL_USUARIO;
                 txtContrasena.Text = vUsuario.CONTRASENA;
@@ -228,34 +241,16 @@ namespace SIGE.WebApp.PDE
 
             E_USUARIO vUsuario = new E_USUARIO();
             bool vEsInsercion = vClOperacion == E_TIPO_OPERACION_DB.I;
+            GenerarContrasena();
 
-            if (vEditar == "false")
-            {
-                vClaveUsuario = cmbUsuarios.SelectedValue.ToString();
-                vUsuario.CL_USUARIO = vClaveUsuario;
-                vClaveUsuario = cmbUsuariosNl.SelectedValue.ToString();
-                vUsuario.CL_USUARIO = vClaveUsuario;
-            }
-            else
-            {
-                vUsuario.NB_PASSWORD = txtContrasena.Text;
-                vUsuario.CL_USUARIO = txtClUsuario.Text;
-            }
-            if (cmbUsuarios.Visible == true && cmbUsuarios.SelectedValue != "") 
-          
-            {
-                vUsuario.CL_USUARIO = cmbUsuarios.SelectedItem.Text;
-            }
-            if 
-               (cmbUsuariosNl.Visible == true && cmbUsuariosNl.SelectedValue != "")
-            {
-                vUsuario.CL_USUARIO = cmbUsuariosNl.SelectedItem.Text;
-            }
+            vUsuario.CL_USUARIO = txtClUsuario.Text;
             vUsuario.NB_USUARIO = txtNbUsuario.Text;
             vUsuario.NB_CORREO_ELECTRONICO = txtNbCorreoElectronico.Text;
             vUsuario.FG_ACTIVO = chkActivo.Checked;
             vUsuario.ID_EMPLEADO_PDE = vIdEmpleado;
-            vUsuario.CONTRASENA = txtContrasena.Text;
+            vUsuario.CONTRASENA = contrasenaAleatoria;
+            vUsuario.NB_PASSWORD = contrasenaAleatoria;
+            vUsuario.CL_TIPO_MULTIEMPRESA = "";
             string correo = txtNbCorreoElectronico.Text;
             string vUrl = ContextoUsuario.nbHost + "/InicioApp.aspx";
 
@@ -281,13 +276,14 @@ namespace SIGE.WebApp.PDE
                                 SPE_OBTIENE_PDE_CONFIGURACION_URL_Result vConfiguracion;
                                 vConfiguracion = negocio.ObtenerConfiguracionPDE().FirstOrDefault();
                                 string url = vConfiguracion.URL != null ?  vConfiguracion.URL : "";
-                                string bd = vConfiguracion.BASEDATOS != null ? vConfiguracion.BASEDATOS : "";
-                                string vUrls = WebUtility.HtmlEncode("Estimado(a):    " +
-                                "El usuario y contraseña para ingresar a Punto de Encuentro (PDE) son los siguientes:  " +
-                                "*  Usuario: " + vUsuario.CL_USUARIO + " *  Contraseña: " + vUsuario.CONTRASENA +
-                                "*  Base de datos: " + bd + ". Liga de acceso: " + url + "    Gracias por tu apoyo!");
-                             
-                                   bool vEstatusCorreo = EnvioCorreo(correo, vUrls, "Usuario y contraseña para acceder a Punto de encuentro");
+                                //string bd = vConfiguracion.BASEDATOS != null ? vConfiguracion.BASEDATOS : "";
+                                string vUrls = WebUtility.HtmlEncode("Estimado(a): Colaborador." +
+                                " Las credenciales para ingresar a Punto de Encuentro (PDE) son las siguientes:  " +
+                                " Usuario: " + vUsuario.CL_USUARIO +" Contraseña: " + vUsuario.CONTRASENA +
+                                " URL: http://" + url + " Saludos");
+                                //var CUERPO6 = Regex.Replace(vUrls, "&ntilde;","ñ").ToString();
+
+                                bool vEstatusCorreo = EnvioCorreo(correo, vUrls, "Usuario y contraseña para acceder a Punto de encuentro");
                                 E_RESULTADO vResultadoCorreo;
                                 string vMensajeCorreo;
                                 bool fgEnviado;
@@ -316,6 +312,7 @@ namespace SIGE.WebApp.PDE
                                 vResultadoCorreo = nUsuario.InsertarUsuarioCorreo(SELECCIONUSUARIOS.ToString(), vClUsuario, vNbPrograma, vTransaccion);
                                 vMensajeCorreo = vResultadoCorreo.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
                                 UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensajeCorreo, vResultadoCorreo.CL_TIPO_ERROR);
+                                
 
                             }
                             else
@@ -334,14 +331,7 @@ namespace SIGE.WebApp.PDE
                 {
 
                     var VLigado = "";
-                    if (rbNoLigado.Checked == true)
-                    {
-                        VLigado = "Ingresa un correo electrónico.";
-                    }
-                    else
-                    {
                         VLigado = "El usuario no  cuenta con correo electrónico, agrégalo en inventario de personal.";
-                    }
                     UtilMensajes.MensajeResultadoDB(rwmAlertas, VLigado , E_TIPO_RESPUESTA_DB.WARNING);
 
                 }
@@ -349,17 +339,12 @@ namespace SIGE.WebApp.PDE
             else
             {
                 var VLigado = "";
-                if (rbNoLigado.Checked == true)
-                {
-                    VLigado = "Ingresa el nombre completo del usuario";
-                }
-                else
-                {
-                    VLigado = "Debes seleccionar a un usuario";
-                }
+                   VLigado = "Debes seleccionar a un usuario";
+
                 UtilMensajes.MensajeResultadoDB(rwmAlertas, VLigado , E_TIPO_RESPUESTA_DB.WARNING);
 
             }
+           // ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "closeWindow();", true);
 
         }
 
@@ -394,8 +379,8 @@ namespace SIGE.WebApp.PDE
         protected void grdEmpleados_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             ContextoPDENegocio negocio = new ContextoPDENegocio();
-            List<SPE_OBTIENE_EMPLEADOS_GENERA_CONTRASENA_Result> vListaEmpleados = new List<SPE_OBTIENE_EMPLEADOS_GENERA_CONTRASENA_Result>();
-            vListaEmpleados = negocio.ObtenerEmpleados_Pde();
+            vListaEmpleados = new List<E_EMPLEADOS_GENERA_CONTRASENA>();
+            vListaEmpleados = negocio.ObtenerEmpleados_Pde2();
             grdEmpleados.DataSource = vListaEmpleados;
         }
 
@@ -542,7 +527,7 @@ namespace SIGE.WebApp.PDE
         protected void Tipo_Click(object sender, EventArgs e)
         {
             ObtenerUsuarios();
-            cmbUsuarios.Text = "Selecciona un usuario";
+            //cmbUsuarios.Text = "Selecciona un usuario";
             txtNbUsuario.ReadOnly = true;
             txtNbCorreoElectronico.ReadOnly = true;
             txtNbUsuario.Text = "";
@@ -552,7 +537,7 @@ namespace SIGE.WebApp.PDE
         protected void TipoNl_Click(object sender, EventArgs e)
         {
             ObtenerUsuarios();
-            cmbUsuariosNl.Text = "Selecciona un usuario";
+            //cmbUsuariosNl.Text = "Selecciona un usuario";
             txtNbUsuario.ReadOnly = false;
             txtNbCorreoElectronico.ReadOnly = false;
             txtNbUsuario.Text = "";
@@ -560,5 +545,20 @@ namespace SIGE.WebApp.PDE
             txtContrasena.Text = "";
         }
 
+
+        public void GenerarContrasena()
+        {
+            Random rdn = new Random();
+            string caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            int longitud = caracteres.Length;
+            char letra;
+            int longitudContrasenia = 10;
+            contrasenaAleatoria = string.Empty;
+            for (int i = 0; i < longitudContrasenia; i++)
+            {
+                letra = caracteres[rdn.Next(longitud)];
+                contrasenaAleatoria += letra.ToString();
+            }
+        }
     }
 }

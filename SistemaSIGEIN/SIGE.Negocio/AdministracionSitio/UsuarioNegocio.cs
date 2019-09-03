@@ -48,9 +48,29 @@ namespace SIGE.Negocio.Administracion
                 NB_CORREO_ELECTRONICO = vUsuario.NB_CORREO_ELECTRONICO,
                 NB_USUARIO = vUsuario.NB_USUARIO,
                 ID_EMPLEADO_PDE = vUsuario.ID_EMPLEADO_PDE,
-                XML_CATALOGOS = XElement.Parse(vUsuario.XML_CATALOGOS)
+                XML_CATALOGOS = XElement.Parse(vUsuario.XML_CATALOGOS),
+                
             };
         }
+
+        public E_USUARIO ObtieneUsuarioCambioPassword(string pClUsuario)
+        {
+            UsuarioOperaciones oUsuario = new UsuarioOperaciones();
+            E_USUARIO vUsuario =  oUsuario.ObtieneUsuarioCambioPassword(pClUsuario);
+
+            return new E_USUARIO
+            {
+                CL_USUARIO = vUsuario.CL_USUARIO,
+                FG_ACTIVO = vUsuario.FG_ACTIVO,
+                NB_CORREO_ELECTRONICO = vUsuario.NB_CORREO_ELECTRONICO,
+                NB_USUARIO = vUsuario.NB_USUARIO,
+                ID_EMPLEADO_PDE = vUsuario.ID_EMPLEADO_PDE,
+                XML_CATALOGOS = vUsuario.XML_CATALOGOS,
+                FG_CAMBIAR_PASSWORD = vUsuario.FG_CAMBIAR_PASSWORD,
+
+            };
+        }
+
         public E_USUARIO ObtieneUsuarioPde(string pClUsuario)
         {
             UsuarioOperaciones oUsuario = new UsuarioOperaciones();
@@ -115,6 +135,7 @@ namespace SIGE.Negocio.Administracion
                 vUsuario.oRol = new E_ROL() { ID_ROL = vAutenticacion.ID_ROL, NB_ROL = vAutenticacion.NB_ROL };
                 vUsuario.ID_PLANTILLA = vAutenticacion.ID_PLANTILLA; // SE AGREGA EL ID DE LA PLANTILLA LIGADA AL ROL
                 vUsuario.ID_EMPRESA = vAutenticacion.ID_EMPRESA;
+               // vUsuario.FG_CAMBIAR_PASSWORD = 
                 if (vAutenticacion.XML_DATA!=null)
                     vUsuario.oFunciones = XElement.Parse(vAutenticacion.XML_DATA).Elements("FUNCION").Select(f => new E_FUNCION()
                     {
@@ -175,7 +196,13 @@ namespace SIGE.Negocio.Administracion
             UsuarioOperaciones oUsuario = new UsuarioOperaciones();
             return new E_RESULTADO(oUsuario.InsertarActualizarUsuario(pClTipoOperacion, pUsuario, pClUsuario, pNbPrograma));
         }
-     
+
+        public E_RESULTADO ActualizaUsuarioPDE(E_TIPO_OPERACION_DB pClTipoOperacion, E_USUARIO pUsuario, string pClUsuario, string pNbPrograma)
+        {
+            UsuarioOperaciones oUsuario = new UsuarioOperaciones();
+            return new E_RESULTADO(oUsuario.ActualizarUsuarioPDE(pClTipoOperacion, pUsuario, pClUsuario, pNbPrograma));
+        }
+
         public E_RESULTADO InsertaActualizaUsuario_pde(E_TIPO_OPERACION_DB pClTipoOperacion, E_USUARIO pUsuario, string pClUsuario, string pNbPrograma)
         {
             UsuarioOperaciones oUsuario = new UsuarioOperaciones();

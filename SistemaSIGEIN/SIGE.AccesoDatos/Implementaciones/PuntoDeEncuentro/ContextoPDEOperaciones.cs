@@ -39,6 +39,28 @@ namespace SIGE.AccesoDatos.Implementaciones.PuntoDeEncuentro
                 return context.SPE_OBTIENE_EMPLEADOS_GENERA_CONTRASENA(IdEmpleado).ToList();
             }
         }
+
+        public List<E_EMPLEADOS_GENERA_CONTRASENA> ObtieneEmpleados2(string IdEmpleado = null)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                var q = from e in context.SPE_OBTIENE_EMPLEADOS_GENERA_CONTRASENA(IdEmpleado)
+                        select new E_EMPLEADOS_GENERA_CONTRASENA
+                        {
+                            ID_EMPLEADO = e.ID_EMPLEADO,
+                            NB_EMPLEADO = e.NB_EMPLEADO,
+                            NB_PATERNO = e.NB_PATERNO,
+                            CORREO_ELECTRONICO = e.CORREO_ELECTRONICO,
+                            ID_ROL = e.ID_ROL,
+                            ID_Grupo = e.ID_Grupo,
+                            ID_USUARIO = e.ID_USUARIO,
+                            CONTRASENA = e.CONTRASENA
+                        };
+                return q.ToList();
+            }
+
+            
+         }
         #endregion
 
     }

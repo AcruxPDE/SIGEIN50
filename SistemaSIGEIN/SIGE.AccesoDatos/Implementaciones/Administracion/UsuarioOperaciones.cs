@@ -8,6 +8,9 @@ using SIGE.Entidades;
 using System.Data.Objects;
 using System.Xml.Linq;
 using SIGE.Entidades.Externas;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
+using System.Data;
 
 namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar por la carpeta correspondiente
 {
@@ -54,6 +57,20 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar
             using (context = new SistemaSigeinEntities())
             {
                 return context.SPE_OBTIENE_USUARIO(pClUsuario).FirstOrDefault();
+            }
+        }
+
+        public E_USUARIO ObtieneUsuarioCambioPassword(string pClUsuario)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                return context.Database.SqlQuery<E_USUARIO>("EXEC " +
+                    "ADM.SPE_OBTIENE_USUARIO_PDE_CAMBIO_PASSWORD " +
+                    "@PIN_CL_USUARIO ",
+                    new SqlParameter("@PIN_CL_USUARIO", (Object)pClUsuario ?? DBNull.Value)
+                ).FirstOrDefault();
+
+                //return contexto.SPE_OBTIENE_INSTRUCTORES(pIdInstructor, pIdCompetencia, pIdCurso, pXmlCompetencias,pID_EMPRESA).ToList();
             }
         }
         public SPE_OBTIENE_USUARIOPDE_Result ObtenerUsuarioPde(string pClUsuario)
@@ -119,12 +136,51 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar
                 return XElement.Parse(pOutClRetorno.Value.ToString());
             }
         }
+
+        public XElement ActualizarUsuarioPDE(E_TIPO_OPERACION_DB pClTipoOperacion, E_USUARIO pUsuario, string pClUsuario, string pNbPrograma)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                var pXmlResultado = new SqlParameter("@XML_RESULTADO", SqlDbType.Xml)
+                {
+                    Direction = ParameterDirection.Output
+                };
+
+                //ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
+                context.Database.ExecuteSqlCommand("EXEC " +
+                    "ADM.SPE_ACTUALIZA_PASSWORD_USUARIO_PDE " +
+                    "@XML_RESULTADO OUTPUT," +
+                    "@PIN_CL_USER, " +
+                    "@PIN_NB_PASSWORD, " +
+                    "@PIN_NB_CORREO_ELECTRONICO, " +
+                    "@PIN_FG_ACTIVO, "+
+                    "@PIN_FG_CAMBIAR_PASSWORD, " +
+                    "@PIN_CL_USUARIO, " +
+                    "@PIN_NB_PROGRAMA, " +
+                    "@PIN_TIPO_TRANSACCION",
+                    pXmlResultado,
+                    new SqlParameter("@PIN_CL_USER",pUsuario.CL_USUARIO),
+                    new SqlParameter("@PIN_NB_PASSWORD", pUsuario.NB_PASSWORD),
+                    new SqlParameter("@PIN_NB_CORREO_ELECTRONICO",pUsuario.NB_CORREO_ELECTRONICO),
+                    new SqlParameter("@PIN_FG_ACTIVO", pUsuario.FG_ACTIVO),
+                    new SqlParameter("@PIN_FG_CAMBIAR_PASSWORD",pUsuario.FG_CAMBIAR_PASSWORD),
+                    new SqlParameter("@PIN_CL_USUARIO", pClUsuario),
+                    new SqlParameter("@PIN_NB_PROGRAMA", pNbPrograma),
+                    new SqlParameter("@PIN_TIPO_TRANSACCION", pClTipoOperacion.ToString())
+                );
+
+                return XElement.Parse(pXmlResultado.Value.ToString());
+
+              
+            }
+        }
+
         public XElement InsertarActualizarUsuario_pde(E_TIPO_OPERACION_DB pClTipoOperacion, E_USUARIO pUsuario, string pClUsuario, string pNbUsuario)
         {
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
-                context.SPE_INSERTA_ACTUALIZA_USUARIO_PDE(pOutClRetorno, pUsuario.CL_USUARIO, pUsuario.NB_USUARIO, pUsuario.CONTRASENA, pUsuario.NB_CORREO_ELECTRONICO, pUsuario.FG_ACTIVO, pUsuario.FG_CAMBIAR_PASSWORD, pUsuario.ID_ROL, pUsuario.ID_EMPLEADO_PDE, pClUsuario, pNbUsuario, pUsuario.CL_TIPO_MULTIEMPRESA, pClTipoOperacion.ToString());
+                context.SPE_INSERTA_ACTUALIZA_USUARIO_PDE(pOutClRetorno, pUsuario.CL_USUARIO, pUsuario.NB_USUARIO, pUsuario.NB_PASSWORD, pUsuario.NB_CORREO_ELECTRONICO, pUsuario.FG_ACTIVO, pUsuario.FG_CAMBIAR_PASSWORD, pUsuario.ID_ROL, pUsuario.ID_EMPLEADO_PDE, pClUsuario, pNbUsuario, pUsuario.CL_TIPO_MULTIEMPRESA, pClTipoOperacion.ToString());
                 return XElement.Parse(pOutClRetorno.Value.ToString());
             }
         }

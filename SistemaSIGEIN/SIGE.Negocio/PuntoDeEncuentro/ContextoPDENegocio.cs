@@ -60,6 +60,12 @@ namespace SIGE.Negocio.PuntoDeEncuentro
             return Operaciones.ObtieneEmpleados(ID_EMPLEADO).ToList();
         }
 
+        public List<E_EMPLEADOS_GENERA_CONTRASENA> ObtenerEmpleados_Pde2(string ID_EMPLEADO = null)
+        {
+            ContextoPDEOperaciones Operaciones = new ContextoPDEOperaciones();
+            return Operaciones.ObtieneEmpleados2(ID_EMPLEADO).ToList();
+        }
+
         #endregion
 
     }

@@ -421,6 +421,13 @@
                     var oWin = window.radopen(vURL, vRadWindow, document.documentElement.clientWidth - 70, document.documentElement.clientHeight - 40);
                     oWin.set_title(vTitulo);
                     args.set_cancel(true);
+                } else if (itemValue == "Administración de usuarios") {
+                    getRadWindow(getUrl);
+                    var vURL = "Usuarios.aspx"//"VentanaAdministracionPDE.aspx";
+                    var vTitulo = "Administración de usuarios";
+                    var oWin = window.radopen(vURL, vRadWindow, document.documentElement.clientWidth - 70, document.documentElement.clientHeight - 40);
+                    oWin.set_title(vTitulo);
+                    args.set_cancel(true);
                 } else if (itemValue == "Editar trámites") {
                     getRadWindow(getUrl);
                     var vURL = "VentanaEdicionDeTramites.aspx";
@@ -453,10 +460,18 @@
                     oWin.set_title(vTitulo);
                     args.set_cancel(true);
                 }
-                else if (itemValue == "Administrar usuarios") {
+                else if (itemValue == "Notificaciones de RRHH") {
                     getRadWindow(getUrl);
-                    var vURL = "Usuarios.aspx";
-                    var vTitulo = "Administración de usuarios";
+                    var vURL = "VentanaNotificacionesRRHH.aspx";
+                    var vTitulo = "Notificaciones de RRHH";
+                    var oWin = window.radopen(vURL, vRadWindow, document.documentElement.clientWidth - 50, document.documentElement.clientHeight - 40);
+                    oWin.set_title(vTitulo);
+                    args.set_cancel(true);
+                }
+                else if (itemValue == "Perfil") {
+                    getRadWindow(getUrl);
+                    var vURL = "VentanaPerfilPuesto.aspx";
+                    var vTitulo = "Perfil";
                     var oWin = window.radopen(vURL, vRadWindow, document.documentElement.clientWidth - 50, document.documentElement.clientHeight - 40);
                     oWin.set_title(vTitulo);
                     args.set_cancel(true);

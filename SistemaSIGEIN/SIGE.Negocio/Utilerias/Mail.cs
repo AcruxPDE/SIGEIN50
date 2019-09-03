@@ -421,6 +421,7 @@ namespace SIGE.Negocio.Utilerias
             }
         }
 
+        
 
         public string SendCopia(String subject, String message)
         {

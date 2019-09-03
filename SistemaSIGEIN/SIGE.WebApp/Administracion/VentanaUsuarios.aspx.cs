@@ -11,6 +11,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using Telerik.Web.UI;
+using System.Net;
 
 namespace SIGE.WebApp.Administracion
 {
@@ -19,6 +20,7 @@ namespace SIGE.WebApp.Administracion
         private string vClUsuario;
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
+        private XElement SELECCIONUSUARIOS { get; set; }
 
         private string vClUser
         {
@@ -136,6 +138,65 @@ namespace SIGE.WebApp.Administracion
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
 
             UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR, 400, 180);
+
+
+            //AGREGAR INSERCION A CORREO_PDE
+            string correo = vUsuario.NB_CORREO_ELECTRONICO;
+            string vUrls = WebUtility.HtmlEncode("<p>Estimado(a): Colaborador." +
+                                "El usuario y contraseña para ingresar aL sistema SIGEIN son los siguientes:" +
+                                "  Usuario: " + vUsuario.CL_USUARIO + " Contraseña: " + vUsuario.CONTRASENA+ 
+                               "Saludos.<p>");
+
+            bool vEstatusCorreo = EnvioCorreo(correo, vUrls, "Usuario y contraseña para acceder a Punto de encuentro");
+            E_RESULTADO vResultadoCorreo;
+            string vMensajeCorreo;
+            bool fgEnviado;
+
+            if (vEstatusCorreo)
+            {
+                fgEnviado = true;
+            }
+            else
+            {
+
+                fgEnviado = false;
+            }
+
+            var vXelements =
+                   new XElement("USUARIO",
+                    new XAttribute("CL_USUARIO", vUsuario.CL_USUARIO),
+                    new XAttribute("FE_ENVIO", DateTime.Now),
+                    new XAttribute("FG_ENVIO", fgEnviado)
+                            );
+
+           SELECCIONUSUARIOS =
+                                new XElement("SELECCION", vXelements
+                                );
+                                vResultadoCorreo = nUsuario.InsertarUsuarioCorreo(SELECCIONUSUARIOS.ToString(), vClUsuario, vNbPrograma,vClOperacion.ToString());
+                                vMensajeCorreo = vResultadoCorreo.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+                                UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensajeCorreo, vResultadoCorreo.CL_TIPO_ERROR);
+
+        }
+
+        public bool EnvioCorreo(string Email, string Mensaje, string Asunto)
+        {
+            Mail mail = new Mail(ContextoApp.mailConfiguration);
+            bool resultado;
+
+            try
+            {
+                mail.addToAddress(Email, Mensaje);
+                mail.Send(Asunto, Mensaje);
+                resultado = true;
+            }
+            catch (Exception)
+            {
+                resultado = false;
+            }
+
+            return resultado;
+
+
         }
     }
 }

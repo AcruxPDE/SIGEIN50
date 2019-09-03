@@ -927,7 +927,9 @@
     <Content Include="MPC\VentanaPlaneacionIncrementos.aspx" />
     <Content Include="MPC\VentanaTabuladorCompetencia.aspx" />
     <Content Include="MPC\VentanaVistaNivelacion.aspx" />
+    <Content Include="PDE\CambiarPassword.aspx" />
     <Content Include="PDE\Configuracion.aspx" />
+    <Content Include="PDE\Default.aspx" />
     <Content Include="PDE\InsertLink.aspx" />
     <Content Include="PDE\Usuarios.aspx" />
     <Content Include="PDE\VentanaComentariosComunicado.aspx" />
@@ -3700,6 +3702,13 @@
     <Compile Include="MPC\VentanaVistaNivelacion.aspx.designer.cs">
       <DependentUpon>VentanaVistaNivelacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PDE\CambiarPassword.aspx.cs">
+      <DependentUpon>CambiarPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PDE\CambiarPassword.aspx.designer.cs">
+      <DependentUpon>CambiarPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PDE\Configuracion.aspx.cs">
       <DependentUpon>Configuracion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3715,6 +3724,13 @@
       <DependentUpon>ContextPDE.master</DependentUpon>
     </Compile>
     <Compile Include="PDE\ConvierteArchivo.cs" />
+    <Compile Include="PDE\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PDE\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PDE\HandlerPDE.ashx.cs">
       <DependentUpon>HandlerPDE.ashx</DependentUpon>
     </Compile>

@@ -10,79 +10,61 @@
 namespace SIGE.WebApp.PDE {
     
     
-    public partial class VentanaPerfilPuesto {
+    public partial class CambiarPassword {
         
         /// <summary>
-        /// Control txtClUsuario.
+        /// Control RadAjaxLoadingPanel1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtClUsuario;
+        protected global::Telerik.Web.UI.RadAjaxLoadingPanel RadAjaxLoadingPanel1;
         
         /// <summary>
-        /// Control reqtxtClUsuario.
+        /// Control ralpNomina.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqtxtClUsuario;
+        protected global::Telerik.Web.UI.RadAjaxLoadingPanel ralpNomina;
         
         /// <summary>
-        /// Control txtNbUsuario.
+        /// Control ramNomina.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtNbUsuario;
+        protected global::Telerik.Web.UI.RadAjaxManager ramNomina;
         
         /// <summary>
-        /// Control reqTxtNbUsuario.
+        /// Control rplIDP.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqTxtNbUsuario;
+        protected global::Telerik.Web.UI.RadPageLayout rplIDP;
         
         /// <summary>
-        /// Control txtNbCorreoElectronico.
+        /// Control dvLogo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtNbCorreoElectronico;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvLogo;
         
         /// <summary>
-        /// Control reqTxtNbCorreoElectronico.
+        /// Control rbiLogoOrganizacion1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqTxtNbCorreoElectronico;
-        
-        /// <summary>
-        /// Control ctrlPasswordChange.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ctrlPasswordChange;
-        
-        /// <summary>
-        /// Control chkPasswordChange.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton chkPasswordChange;
+        protected global::Telerik.Web.UI.RadBinaryImage rbiLogoOrganizacion1;
         
         /// <summary>
         /// Control ctrlPassword.
@@ -112,33 +94,6 @@ namespace SIGE.WebApp.PDE {
         protected global::Telerik.Web.UI.RadTextBox txtNbPasswordConfirm;
         
         /// <summary>
-        /// Control cmbRol.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox cmbRol;
-        
-        /// <summary>
-        /// Control cmbTipoMultiempresa.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox cmbTipoMultiempresa;
-        
-        /// <summary>
-        /// Control chkActivo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton chkActivo;
-        
-        /// <summary>
         /// Control btnGuardar.
         /// </summary>
         /// <remarks>
@@ -146,15 +101,6 @@ namespace SIGE.WebApp.PDE {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnGuardar;
-        
-        /// <summary>
-        /// Control btnCancelar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnCancelar;
         
         /// <summary>
         /// Control rwmAlertas.

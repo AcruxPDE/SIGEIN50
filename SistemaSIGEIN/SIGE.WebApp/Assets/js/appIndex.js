@@ -58,7 +58,7 @@ NavegacionMenu = function (modulo, fgActivo, clUsuario) {
             break;
         case 6:
             if (fgActivo == "1")
-                navigateURL = 'PDE/VentanaInicioPDE.aspx';
+                navigateURL = 'PDE/Default.aspx';//'PDE/VentanaInicioPDE.aspx';
             else {
                 alert(fgActivo)
                 navigateURL = '';

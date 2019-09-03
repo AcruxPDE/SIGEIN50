@@ -584,8 +584,9 @@ namespace SIGE.WebApp
             if (ContextoApp.InfoEmpresa.MsgSistema == "1")
             {
                 UsuarioNegocio nUsuario = new UsuarioNegocio();
+                
                 E_USUARIO vUsuario = nUsuario.AutenticaUsuario(txtUsuario.Value, txtPassword.Value);
-
+                E_USUARIO UsuarioSys = nUsuario.ObtieneUsuarioCambioPassword(txtUsuario.Value);
                 if (vUsuario.FG_ACTIVO)
                 {
                     if (vUsuario.oFunciones != null)
@@ -598,9 +599,14 @@ namespace SIGE.WebApp
                         ContextoUsuario.oUsuario = vUsuario;
                         var rol = ContextoUsuario.oUsuario.oRol.NB_ROL;
                         //Determinar si solo tiene la funcion de PDE enviar a PDE                    
-                        if (vUsuario.oFunciones.Where(x => x.CL_FUNCION.Substring(0, 1) != "P" && x.CL_FUNCION != "Q" && x.CL_FUNCION != "E").Count() == 0)
+                        if (vUsuario.oFunciones.Where(x => x.CL_FUNCION.Substring(0, 1) != "R" && x.CL_FUNCION != "I").Count() == 0)
+                        //x.CL_FUNCION.Substring(0, 1) != "P" && x.CL_FUNCION != "Q" && x.CL_FUNCION != "E" && x.CL_FUNCION.Substring(0,1) != "R").Count() == 0)
                         {
-                            Response.Redirect("/PDE/VentanaInicioPDE.aspx");
+                            if(UsuarioSys.FG_CAMBIAR_PASSWORD != true)
+                            {
+                                Response.Redirect("/PDE/CambiarPassword.aspx");
+                            }
+                            Response.Redirect("/PDE/Default.aspx");
                         }
                         else
                         {
