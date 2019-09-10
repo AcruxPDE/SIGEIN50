@@ -98,19 +98,19 @@
                                 oWnd.add_close(CloseTest);
                             }
                             else {
-                                var display = document.querySelector('#time');
-                                var contenedor = document.querySelector('.Cronometro');
+                                //var display = document.querySelector('#time');
+                                //var contenedor = document.querySelector('.Cronometro');
 
 
-                                var vFgCronometro = '<%=MostrarCronometro %>';
-                                if (vFgCronometro == "True") {
-                                    contenedor.style.display = 'block';
-                                }
-                                else {
-                                    contenedor.style.display = 'none';
-                                }
+                                //var vFgCronometro = '<%=MostrarCronometro %>';
+                                //if (vFgCronometro == "True") {
+                                //    contenedor.style.display = 'block';
+                               // }
+                                //else {
+                               //     contenedor.style.display = 'none';
+                                //}
 
-                                c = Cronometro(segundos, display);
+                                //c = Cronometro(segundos, display);
 
                                 var pane = $find("<%= radPanelPreguntas.ClientID %>");
                                 pane.collapse();
