@@ -41,7 +41,7 @@
                     <telerik:AjaxUpdatedControl ControlID="rocPlazas" LoadingPanelID="ralpOrganigrama"></telerik:AjaxUpdatedControl>
                     <telerik:AjaxUpdatedControl ControlID="lstAscendencia" LoadingPanelID="ralpOrganigrama"></telerik:AjaxUpdatedControl>
                     <telerik:AjaxUpdatedControl ControlID="lblMensaje" LoadingPanelID="ralpOrganigrama" />
-                </UpdatedControls>
+                </UpdatedControls> 
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="chkMostrarEmpleados">
                 <UpdatedControls>

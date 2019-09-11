@@ -952,8 +952,9 @@
                             <telerik:RadButton ID="btnReasignarContrasena" runat="server" Text="Reasignar contraseña al evaluador seleccionado" OnClick="btnReasignarContrasena_Click"></telerik:RadButton>
                              <telerik:RadButton ID="btnEnvioCuestionarios" runat="server" Text="Enviar cuestionarios" Enabled="false" OnClientClicking="OpenEnvioSolicitudesWindow"></telerik:RadButton>
                             <div class="divControlDerecha" style="padding-right:30px;">
-                                <telerik:RadButton ID="btnGuardarCerrar" runat="server" Text="Guardar y cerrar" UseSubmitBehavior="false" AutoPostBack="true" OnClick="btnGuardarCerrar_Click" ></telerik:RadButton>
-                                <telerik:RadButton ID="btnCerrar" runat="server" Visible ="false" Text="Guardar y cerrar" UseSubmitBehavior="false" AutoPostBack="true" OnClientClicked="closeWindow" ></telerik:RadButton>
+                                <telerik:RadButton ID="btnGuardarCerrar" Visible="true" runat="server" name="btnGuardarEnvioCuestionariosCerrar" AutoPostBack="true" Text="Guardar y Cerrar" OnClick="btnGuardarEnvioCuestionariosCerrar_Click"></telerik:RadButton>
+                                <%--<telerik:RadButton ID="btnGuardarCerrar" runat="server" Text="Guardar y cerrar"  AutoPostBack="true" OnClick="btnGuardarEnvioCuestionariosCerrar_Click" ></telerik:RadButton>
+                                <telerik:RadButton ID="btnCerrar" runat="server" Visible ="false" Text="Guardar y cerrar" AutoPostBack="true" OnClientClicked="closeWindow" ></telerik:RadButton>--%>
                             </div>
                         </telerik:RadPageView>
                     </telerik:RadMultiPage>

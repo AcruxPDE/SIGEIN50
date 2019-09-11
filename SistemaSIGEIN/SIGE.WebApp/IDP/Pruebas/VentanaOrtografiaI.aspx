@@ -111,19 +111,19 @@
                         else {
                             var ajaxManager = $find("<%=RadAjaxManager1.ClientID%>");
                             ajaxManager.ajaxRequest(null);
-                            var display = document.querySelector('#time');
-                            var contenedor = document.querySelector('.Cronometro');
+                            //var display = document.querySelector('#time');
+                            //var contenedor = document.querySelector('.Cronometro');
 
 
-                            var vFgCronometro = '<%=MostrarCronometro %>';
-                            if (vFgCronometro == "True") {
-                                contenedor.style.display = 'block';
-                            }
-                            else {
-                                contenedor.style.display = 'none';
-                            }
+                            //var vFgCronometro = '<%=MostrarCronometro %>';
+                            //if (vFgCronometro == "True") {
+                            //    contenedor.style.display = 'block';
+                            //}
+                            //else {
+                            //    contenedor.style.display = 'none';
+                            //}
 
-                            c = Cronometro(segundos, display);
+                            //c = Cronometro(segundos, display);
 
                             var sec1 = document.querySelector('#seccion1');
                             sec1.style.display = 'none';
