@@ -177,17 +177,17 @@
                    <telerik:RadGrid ID="grdEmpleados" ShowHeader="true" runat="server"
             AllowPaging="true" AllowSorting="true" GroupPanelPosition="Top" Width="99%" Height="100%"
             ClientSettings-EnablePostBackOnRowClick="false" AllowFilteringByColumn="true"
-            OnNeedDataSource="grdEmpleados_NeedDataSource">
+            OnNeedDataSource="grdEmpleados_NeedDataSource" AllowMultiRowSelection="true">
                        
-                           <ClientSettings>
-                               <Scrolling UseStaticHeaders="true" AllowScroll="true" />
-                               <Selecting AllowRowSelect="true" />
-                           </ClientSettings>
+                           <ClientSettings AllowKeyboardNavigation="true">
+                                <Selecting AllowRowSelect="true" UseClientSelectColumnOnly="true" />
+                                <Scrolling AllowScroll="true" UseStaticHeaders="true" SaveScrollPosition="true"></Scrolling>
+                            </ClientSettings>
                            <PagerStyle AlwaysVisible="true" />
                            <GroupingSettings CaseSensitive="false" />
                            <MasterTableView ClientDataKeyNames="ID_EMPLEADO, NB_EMPLEADO, NB_PATERNO, CORREO_ELECTRONICO, ID_USUARIO, CONTRASENA, ID_Grupo, ID_ROL" DataKeyNames="ID_EMPLEADO, NB_EMPLEADO, NB_PATERNO, CORREO_ELECTRONICO, ID_USUARIO, CONTRASENA, ID_Grupo, ID_ROL" EnableColumnsViewState="false" AllowPaging="false" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true"  EnableHeaderContextFilterMenu="true">
                                <Columns>
-                                  <%-- <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>--%>
+                                   <telerik:GridClientSelectColumn HeaderStyle-Width="35" ></telerik:GridClientSelectColumn>
                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="190" FilterControlWidth="130" HeaderText="Nombre" DataField="NB_EMPLEADO" UniqueName="NB_EMPLEADO"></telerik:GridBoundColumn>
                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="190" FilterControlWidth="130" HeaderText="Apellidos" DataField="NB_PATERNO" UniqueName="NB_PATERNO"></telerik:GridBoundColumn>
                                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" Visible="true" Display="true" HeaderStyle-Width="250" FilterControlWidth="170" HeaderText="Correo" DataField="CORREO_ELECTRONICO" UniqueName="CORREO_ELECTRONICO"></telerik:GridBoundColumn>

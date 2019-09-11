@@ -599,14 +599,17 @@ namespace SIGE.WebApp
                         ContextoUsuario.oUsuario = vUsuario;
                         var rol = ContextoUsuario.oUsuario.oRol.NB_ROL;
                         //Determinar si solo tiene la funcion de PDE enviar a PDE                    
-                        if (vUsuario.oFunciones.Where(x => x.CL_FUNCION.Substring(0, 1) != "R" && x.CL_FUNCION != "I").Count() == 0)
+                        if (vUsuario.oFunciones.Where(x => x.CL_FUNCION.Substring(0, 1) != "R" && x.CL_FUNCION != "I" && x.CL_FUNCION != "H" && x.CL_FUNCION.Substring(0, 1) != "S").Count() == 0)
                         //x.CL_FUNCION.Substring(0, 1) != "P" && x.CL_FUNCION != "Q" && x.CL_FUNCION != "E" && x.CL_FUNCION.Substring(0,1) != "R").Count() == 0)
                         {
-                            if(UsuarioSys.FG_CAMBIAR_PASSWORD != true)
+                            if (UsuarioSys.FG_CAMBIAR_PASSWORD != true)
                             {
-                                Response.Redirect("/PDE/CambiarPassword.aspx");
+                                Response.Redirect("~/PDE/CambiarPassword.aspx");
                             }
-                            Response.Redirect("/PDE/Default.aspx");
+                            else
+                            {
+                                Response.Redirect("~/PDE/Default.aspx");
+                            }
                         }
                         else
                         {

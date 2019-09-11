@@ -147,7 +147,7 @@ namespace SIGE.WebApp.PDE
         public void redireccionar()
         {
 
-            Response.Redirect("/PDE/Default.aspx");
+            Response.Redirect("~/PDE/Default.aspx");
         }
     }
 }

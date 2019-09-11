@@ -475,6 +475,15 @@
                     var oWin = window.radopen(vURL, vRadWindow, document.documentElement.clientWidth - 50, document.documentElement.clientHeight - 40);
                     oWin.set_title(vTitulo);
                     args.set_cancel(true);
+
+                }
+                else if (itemValue == "Mis datos Nómina") {
+                    getRadWindow(getUrl);
+                    var vURL = "/NOMINA/Menu.aspx";
+                    var vTitulo = "Mis datos Nómina";
+                    var oWin = window.radopen(vURL, vRadWindow, document.documentElement.clientWidth - 50, document.documentElement.clientHeight - 40);
+                    oWin.set_title(vTitulo);
+                    args.set_cancel(true);
                 }
                 function getRadWindow(url) {
                     console.info(url);

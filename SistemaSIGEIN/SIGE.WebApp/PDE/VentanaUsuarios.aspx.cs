@@ -26,6 +26,8 @@ namespace SIGE.WebApp.PDE
         private string vNbPrograma;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
         private XElement SELECCIONEMPLEADOS { get; set; }
+
+        private XElement SELECCIONEMPLEADOS2 { get; set; }
         private XElement SELECCIONUSUARIOS { get; set; }
         StringBuilder builder = new StringBuilder();
         string Email { set; get; }
@@ -46,6 +48,11 @@ namespace SIGE.WebApp.PDE
             set { ViewState["vs_vClaveUsuario"] = value; }
         }
 
+        private string vPassword
+        {
+            get { return (string)ViewState["vPassword"]; }
+            set { ViewState["vPassword"] = value; }
+        }
         private string vEditar
         {
             get { return (ViewState["vs_vEditar"] != null) ? ViewState["vs_vEditar"].ToString() : String.Empty; }
@@ -280,7 +287,7 @@ namespace SIGE.WebApp.PDE
                                 string vUrls = WebUtility.HtmlEncode("Estimado(a): Colaborador." +
                                 " Las credenciales para ingresar a Punto de Encuentro (PDE) son las siguientes:  " +
                                 " Usuario: " + vUsuario.CL_USUARIO +" Contraseña: " + vUsuario.CONTRASENA +
-                                " URL: http://" + url + " Saludos");
+                                " Saludos");
                                 //var CUERPO6 = Regex.Replace(vUrls, "&ntilde;","ñ").ToString();
 
                                 bool vEstatusCorreo = EnvioCorreo(correo, vUrls, "Usuario y contraseña para acceder a Punto de encuentro");
@@ -399,6 +406,7 @@ namespace SIGE.WebApp.PDE
                 string vIdGrupo = item.GetDataKeyValue("ID_Grupo").ToString();
                 string vIdEmpleado = item.GetDataKeyValue("ID_EMPLEADO").ToString();
                 int vIdRol = (int)item.GetDataKeyValue("ID_ROL");
+                
 
                 vListaEUsuarios.Add(new E_OBTIENE_EMPLEADOS_GENERA_CONTRASENA
                 {
@@ -407,6 +415,7 @@ namespace SIGE.WebApp.PDE
                     NB_COMPLETO = vNbCompleto,
                     ID_USUARIO = vUsuario,
                     CONTRASENA = vContrasena,
+                    NB_PASSWORD = vContrasena,
                     CORREO_ELECTRONICO = vCorreo,
                     ID_Grupo = vIdGrupo,
                     ID_EMPLEADO = vIdEmpleado,
@@ -419,16 +428,33 @@ namespace SIGE.WebApp.PDE
                                           new XAttribute("NOMBRE", x.NB_EMPLEADO),
                                            new XAttribute("APELLIDO", x.NB_PATERNO),
                                             new XAttribute("USUARIO", x.ID_USUARIO),
-                                             new XAttribute("CONTRASENA", x.CONTRASENA),
+                                             new XAttribute("CONTRASENA", x.NB_PASSWORD),
                                               new XAttribute("CORREO", x.CORREO_ELECTRONICO),
                                               new XAttribute("ID_GRUPO", x.ID_Grupo),
                                               new XAttribute("ID_EMPLEADO", x.ID_EMPLEADO),
-                                         new XAttribute("ID_ROL", x.ID_ROL)
-                              ));
+                                         new XAttribute("ID_ROL", x.ID_ROL),
+                                         new XAttribute("PWD", x.CONTRASENA)
 
+
+                              ));
                 SELECCIONEMPLEADOS =
                 new XElement("SELECCION", vXelements
                 );
+
+                //var vXelements2 = vListaEUsuarios.Select(x =>
+                //                         new XElement("EMPLEADO",
+                //                         new XAttribute("DESCRIPCION", x.NB_COMPLETO),
+                //                          new XAttribute("NOMBRE", x.NB_EMPLEADO),
+                //                           new XAttribute("APELLIDO", x.NB_PATERNO),
+                //                            new XAttribute("USUARIO", x.ID_USUARIO),
+                //                             new XAttribute("CONTRASENA", x.CONTRASENA)
+
+
+                //              ));
+
+                //SELECCIONEMPLEADOS2 =
+                //new XElement("SELECCION", vXelements2
+                //);
 
             }
 
@@ -440,6 +466,7 @@ namespace SIGE.WebApp.PDE
                 var correos = "";
                 var Usuario = "";
                 var Contrasena = "";
+                var Contrasena2 = "";
                 var Nombre = "";
                 E_RESULTADO vResultadoCorreo;
                 string vMensajeCorreo;
@@ -449,7 +476,7 @@ namespace SIGE.WebApp.PDE
                 {
                     correos = name.Attribute("CORREO").Value;
                     Usuario = name.Attribute("USUARIO").Value;
-                    Contrasena = name.Attribute("CONTRASENA").Value;
+                    Contrasena = name.Attribute("PWD").Value;
                     Nombre = name.Attribute("DESCRIPCION").Value;
                     if (correos != "" && correos != null)
                     {
@@ -463,8 +490,8 @@ namespace SIGE.WebApp.PDE
                                
                             string vUrls = WebUtility.HtmlEncode("Estimado(a):    " +
                               "El usuario y contraseña para ingresar a Punto de Encuentro (PDE) son los siguientes:  " +
-                              "*  Usuario: " + Usuario + " *  Contraseña: " + Contrasena +
-                              "*  Base de datos: " + bd + ". Liga de acceso: " + url + "    Gracias por tu apoyo!");
+                              "*  Usuario: '" + Usuario + "' *  Contraseña: '" + Contrasena +
+                              "'  . Liga de acceso: " + url + "    Gracias por tu apoyo!");
                             bool vEstatusCorreo = EnvioCorreo(correos, vUrls, "Usuario y contraseña para acceder a  Punto de encuentro");
 
                             usuarioCorreo.CL_USUARIO = Usuario;
@@ -508,7 +535,7 @@ namespace SIGE.WebApp.PDE
 
 
                 }
-                //UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR);
+                UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR);
 
             }
             else
