@@ -90,6 +90,11 @@ namespace SIGE.Negocio.EvaluacionOrganizacional
             return UtilRespuesta.EnvioRespuesta(oPeriodo.EliminarConfiguracionNotificado(pXmlEmpleados));
         }
 
-      
+        public SPE_OBTIENE_S_CONFIGURACION_Result obtieneConfiguracionGeneral(String XML_CONFIGURACION = null, DateTime? FE_MODIFICACION = null, String CL_USUARIO_MODIFICA = null, String NB_PROGRAMA_MODIFICA = null)
+        {
+            ConfiguracionOperaciones operaciones = new ConfiguracionOperaciones();
+            return operaciones.ObtenerConfiguracion(XML_CONFIGURACION, FE_MODIFICACION, CL_USUARIO_MODIFICA, NB_PROGRAMA_MODIFICA);
+        }
+
     }
 }
