@@ -127,6 +127,7 @@
     <Compile Include="Administracion\E_SELECCION_PLAZA.cs" />
     <Compile Include="Administracion\E_SELECCION_PUESTOS.cs" />
     <Compile Include="Administracion\E_SISTEMA.cs" />
+    <Compile Include="Administracion\E_SOLICITUD.cs" />
     <Compile Include="Administracion\E_TIPO_CONTRATO_SAT.cs" />
     <Compile Include="Administracion\E_TIPO_JORNADA_SAT.cs" />
     <Compile Include="Administracion\E_TIPO_JORNADA_SUA.cs" />

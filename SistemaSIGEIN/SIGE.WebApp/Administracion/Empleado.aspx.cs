@@ -294,9 +294,13 @@ namespace SIGE.WebApp.Administracion
         private bool ValidarInformacion()
         {
             int vIdEmpleadoQS = -1;
-            
+            int vIdEmpleadoID = -1;
+
             if (int.TryParse(Request.QueryString["EmpleadoNoDoID"], out vIdEmpleadoQS))
                 vIdEmpleado = vIdEmpleadoQS;
+
+            if (int.TryParse(Request.QueryString["EmpleadoId"], out vIdEmpleadoID))
+                vIdEmpleado = vIdEmpleadoID;
 
             CamposNominaNegocio oNegocio = new CamposNominaNegocio();
             E_EMPLEADO_NOMINA_DO vEmpleado = oNegocio.ObtienePersonalNominaDo(pID_EMPLEADO: vIdEmpleado).FirstOrDefault();

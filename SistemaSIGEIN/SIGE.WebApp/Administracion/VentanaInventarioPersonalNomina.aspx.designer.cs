@@ -31,6 +31,42 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadAjaxManager ramInventarioPersonalNomina;
         
         /// <summary>
+        /// lblRequisicion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadLabel lblRequisicion;
+        
+        /// <summary>
+        /// rlbRequicion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadListBox rlbRequicion;
+        
+        /// <summary>
+        /// btnSeleccionaRequisicion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnSeleccionaRequisicion;
+        
+        /// <summary>
+        /// BtnEliminaRequicion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton BtnEliminaRequicion;
+        
+        /// <summary>
         /// lblClEmpleado control.
         /// </summary>
         /// <remarks>
@@ -317,6 +353,15 @@ namespace SIGE.WebApp.Administracion {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnCancelar;
+        
+        /// <summary>
+        /// txtAccion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox txtAccion;
         
         /// <summary>
         /// rwMensaje control.

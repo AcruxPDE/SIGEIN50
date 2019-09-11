@@ -166,6 +166,15 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadButton btnImpresion2;
         
         /// <summary>
+        /// btnContratar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnContratar;
+        
+        /// <summary>
         /// rnMensaje control.
         /// </summary>
         /// <remarks>
@@ -272,6 +281,15 @@ namespace SIGE.WebApp.Administracion {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadWindow rwComentarios;
+        
+        /// <summary>
+        /// winEmpleadoGeneral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadWindow winEmpleadoGeneral;
         
         /// <summary>
         /// rnTemplate control.

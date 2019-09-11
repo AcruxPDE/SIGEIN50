@@ -55,6 +55,10 @@
             OpenSelectionWindow("../Comunes/SeleccionPuestoNominaDo.aspx?TipoSeleccionCl=NOMINA&mulSel=1", "winSeleccion", "Selección de puesto")
         }
 
+        function OpenRequisicionForm() {
+            OpenSelectionWindow("../Comunes/SelectorRequisiciones.aspx?mulSel=0", "winSeleccion", "Selección de la requisición")
+        }
+
         function OpenSelectionWindow(pURL, pIdWindow, pTitle) {
             var currentWnd = GetRadWindow();
             var browserWnd = window;
@@ -80,6 +84,10 @@
                         var vListPuestoNomina = $find("<%=lstPuestoNomina.ClientID %>");
                         SetListBoxItem(vListPuestoNomina, pDato[0].nbPuesto, pDato[0].idPuesto);
                         break;
+                    case "REQUISICION":
+                        var vListaRequicion = $find("<%=rlbRequicion.ClientID %>");
+                        SetListBoxItem(vListaRequicion, pDato[0].nbRequicision, pDato[0].idRequisicion);
+                        break;
                     case "CLOSE":
                         onCloseWindows();
                         break;
@@ -90,7 +98,7 @@
         }
 
         function SetListBoxItem(list, text, value) {
-            if (list != undefined) {
+            if (list != undefined & text != undefined & text != "&nbsp;") {
                 list.trackChanges();
 
                 var items = list.get_items();
@@ -127,8 +135,24 @@
 
             pIdEmpleado = pID;
             vUrl = vUrl + "EmpleadoId=" + pIdEmpleado;
-            
+
             OpenSelectionWindow(vUrl, vVentana, vTitulo);
+        }
+
+        function abrirInventarioContratado(pID) {
+            var vUrl = "../Administracion/Empleado.aspx?";
+            var vTitulo = "Agregar Empleado";
+            var vVentana = "winEmpleadoGeneral";
+
+            pIdEmpleado = pID;
+            vUrl = vUrl + "EmpleadoId=" + pIdEmpleado;
+
+            OpenSelectionWindow(vUrl, vVentana, vTitulo);
+        }
+
+        function CleanRequicionSelection() {
+            var list = $find("<%=rlbRequicion.ClientID %>");
+            SetListBoxItem(list, "No seleccionado", "0");
         }
 
     </script>
@@ -190,6 +214,8 @@
             <telerik:AjaxSetting AjaxControlID="btnGuardar">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="btnMasDatos" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="txtClEmpleado" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="txtAccion" UpdatePanelRenderMode="Inline" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnMasDatos">
@@ -230,6 +256,24 @@
 
     <div style="height: calc(100% - 60px); overflow: auto;">
         <div style="height: 10px; clear: both;"></div>
+
+        <div class="ctrlBasico">
+            <div class="divControlIzquierda" style="text-align: right; width: 180px; margin-top: 6px;">
+                <telerik:RadLabel ID="lblRequisicion" Visible="false" runat="server" Text="No. de requisición:"></telerik:RadLabel>
+            </div>
+            <div class="divControlDerecha">
+                <telerik:RadListBox runat="server" ID="rlbRequicion" Visible="false" ReadOnly="false" Width="250px" MaxLength="300" >
+                    <Items>
+                        <telerik:RadListBoxItem Text="Ninguna" Value="0" />
+                    </Items>
+                </telerik:RadListBox>
+                <telerik:RadButton ID="btnSeleccionaRequisicion" Visible="false"  AutoPostBack="false" runat="server" Text="B" OnClientClicked="OpenRequisicionForm"></telerik:RadButton>
+                <telerik:RadButton ID="BtnEliminaRequicion" Visible="false" runat="server" Text="X" AutoPostBack="false" OnClientClicked="CleanRequicionSelection" ></telerik:RadButton>
+            </div>
+        </div>
+
+        <div style="clear: both;"></div>
+
         <div class="ctrlBasico">
             <div class="divControlIzquierda" style="text-align: right; width: 180px; margin-top: 6px;">
                 <telerik:RadLabel ID="lblClEmpleado" runat="server" Text="*No. de empleado:"></telerik:RadLabel>
@@ -330,7 +374,7 @@
             <div class="ctrlBasico">
                 <div class="divControlIzquierda" style="text-align: right; width: 180px;">
                     <telerik:RadLabel ID="lblPuestoDO" Visible="true" runat="server" Text="* Puesto:"></telerik:RadLabel>
-               </div>
+                </div>
                 <div class="divControlDerecha">
                     <div class="divControlDerecha">
                         <telerik:RadListBox ID="lstPuesto" Width="250" runat="server">
@@ -390,9 +434,13 @@
 
         <div class="divControlDerecha" style="padding-right: 30px;">
             <telerik:RadButton ID="btnGuardar" runat="server" name="btnGuardar" AutoPostBack="true" Text="Guardar" Width="100" OnClientClicking="confirmarGuardar" OnClick="btnGuardar_Click"></telerik:RadButton>
-            <telerik:RadButton ID="btnGuardarCerrar" runat="server" name="btnGuardarCerrar" AutoPostBack="true" Text="Guardar y Cerrar" UseSubmitBehavior="false" OnClientClicking="confirmarGuardar" OnClick="btnGuardarCerrar_Click" ></telerik:RadButton>
-            <telerik:RadButton ID="btnMasDatos" runat="server" name="btnMasDatos" AutoPostBack="true" Text="Más datos" Width="100" Enabled="false" OnClick="btnMasDatos_Click" ></telerik:RadButton>
-            <telerik:RadButton ID="btnCancelar" runat="server" name="btnCancelar" AutoPostBack="true" Text="Cancelar" Width="100" OnClientClicking="confirmarCancelar" ></telerik:RadButton>
+            <telerik:RadButton ID="btnGuardarCerrar" runat="server" name="btnGuardarCerrar" AutoPostBack="true" Text="Guardar y Cerrar" UseSubmitBehavior="false" OnClientClicking="confirmarGuardar" OnClick="btnGuardarCerrar_Click"></telerik:RadButton>
+            <telerik:RadButton ID="btnMasDatos" runat="server" name="btnMasDatos" AutoPostBack="true" Text="Más datos" Width="100" Enabled="false" OnClick="btnMasDatos_Click"></telerik:RadButton>
+            <telerik:RadButton ID="btnCancelar" runat="server" name="btnCancelar" AutoPostBack="true" Text="Cancelar" Width="100" OnClientClicking="confirmarCancelar"></telerik:RadButton>
+        </div>
+
+        <div class="divControlDerecha">
+            <telerik:RadTextBox ID="txtAccion" Text="Accion" Visible="false" runat="server" Width="250"></telerik:RadTextBox>
         </div>
 
     </div>

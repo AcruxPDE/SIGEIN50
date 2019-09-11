@@ -30,6 +30,12 @@ namespace SIGE.WebApp.Administracion
             set { ViewState["vs_vIdEmpleado"] = value; }
         }
 
+        protected int? vIdSolicitud
+        {
+            get { return (int?)ViewState["vs_vIdSolicitud"]; }
+            set { ViewState["vs_vIdSolicitud"] = value; }
+        }
+
         protected string vClEstadoEmpleado
         {
             get { return (string)ViewState["vs_vClEstadoEmpleado"]; }
@@ -65,7 +71,7 @@ namespace SIGE.WebApp.Administracion
                 btnSueldoTrue.Checked = false;
                 btnSueldoFalse.Checked = true;
             }
-            
+
 
             if (btnNOTrue.Checked && btnDOTrue.Checked == false)
             {
@@ -74,7 +80,7 @@ namespace SIGE.WebApp.Administracion
                     lstPuestoNomina.Items.Clear();
                     lstPuestoNomina.Items.Add(new RadListBoxItem(vEmpleado.NB_PUESTO, vEmpleado.ID_PUESTO.ToString()));
                     lstPuestoNomina.SelectedValue = vEmpleado.ID_PUESTO.ToString();
-                    lstPuestoNomina.Enabled = false;                 
+                    lstPuestoNomina.Enabled = false;
                 }
             }
             else if (btnNOTrue.Checked == false && btnDOTrue.Checked)
@@ -92,9 +98,19 @@ namespace SIGE.WebApp.Administracion
                 {
                     lstPuesto.Items.Clear();
                     lstPuesto.Items.Add(new RadListBoxItem(vEmpleado.NB_PLAZA, vEmpleado.ID_PLAZA.ToString()));
-                    lstPuesto.SelectedValue = vEmpleado.ID_PLAZA.ToString();                    
+                    lstPuesto.SelectedValue = vEmpleado.ID_PLAZA.ToString();
                 }
             }
+        }
+
+        protected void CargaDatosSolicitud()
+        {
+            CamposNominaNegocio oNegocio = new CamposNominaNegocio();
+            E_SOLICITUD vSolicitud = oNegocio.ObtieneCandidatoSolicitud(pID_SOLICITUD: vIdSolicitud).FirstOrDefault();
+
+            txtNombre.Text = vSolicitud.NB_CANDIDATO;
+            txtPaterno.Text = vSolicitud.NB_APELLIDO_PATERNO;
+            txtMaterno.Text = vSolicitud.NB_APELLIDO_MATERNO;
         }
 
         protected void VerificarLicencias()
@@ -143,7 +159,7 @@ namespace SIGE.WebApp.Administracion
         //    lstPuesto.Items[0].Text = "No seleccionado";
         //    lstPuestoNomina.Items[0].Text = "No seleccionado";
         //}
-        
+
         protected bool verificarCampos()
         {
             if (txtClEmpleado.Text == "")
@@ -190,8 +206,13 @@ namespace SIGE.WebApp.Administracion
             if (!IsPostBack)
             {
                 int vIdEmpleadoRq = 0;
+                int vIdSolicitudRq = 0;
+
                 if (int.TryParse(Request.Params["pIdEmpleado"], out vIdEmpleadoRq))
                     vIdEmpleado = vIdEmpleadoRq;
+
+                if (int.TryParse(Request.Params["SolicitudId"], out vIdSolicitudRq))
+                    vIdSolicitud = vIdSolicitudRq;
 
                 if (vIdEmpleado != null)
                 {
@@ -201,6 +222,20 @@ namespace SIGE.WebApp.Administracion
                     txtNombre.Enabled = false;
                     txtPaterno.Enabled = false;
                     txtMaterno.Enabled = false;
+                }
+                else if (vIdSolicitud != null)
+                {
+                    CargaDatosSolicitud();
+
+                    txtNombre.Enabled = false;
+                    txtPaterno.Enabled = false;
+                    txtMaterno.Enabled = false;
+                    txtAccion.Text = "SOLICITUD";
+                    txtAccion.Visible = false;
+                    lblRequisicion.Visible = true;
+                    rlbRequicion.Visible = true;
+                    btnSeleccionaRequisicion.Visible = true;
+                    BtnEliminaRequicion.Visible = true;
                 }
 
                 VerificarLicencias();
@@ -245,7 +280,22 @@ namespace SIGE.WebApp.Administracion
                     if (verificaPuesto())
                     {
                         CamposNominaNegocio cNegocio = new CamposNominaNegocio();
+                        string vClTipoTransaccion = vIdEmpleado != null ? "U" : "I";
                         E_EMPLEADO_NOMINA_DO vEmpleadoNominaDo = new E_EMPLEADO_NOMINA_DO();
+
+                        if (vClTipoTransaccion == "I")
+                        {
+                            LicenciaNegocio oNegocio = new LicenciaNegocio();
+                            var vEmpleados = oNegocio.ObtenerLicenciaVolumen(pFG_ACTIVO: true).FirstOrDefault();
+                            if (vEmpleados != null)
+                            {
+                                if (vEmpleados.NO_EMPLEADOS_DO >= ContextoApp.InfoEmpresa.Volumen)
+                                {
+                                    UtilMensajes.MensajeResultadoDB(rwMensaje, "Se ha alcanzado el máximo número de empleados para la licencia y no es posible agregar más.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
+                                    return;
+                                }
+                            }
+                        }
 
                         vEmpleadoNominaDo.CL_EMPLEADO = txtClEmpleado.Text;
                         vEmpleadoNominaDo.NB_EMPLEADO = txtNombre.Text;
@@ -270,36 +320,63 @@ namespace SIGE.WebApp.Administracion
                             vEmpleadoNominaDo.FG_NOMINA_DO = false;
                         }
 
-
                         vEmpleadoNominaDo.FG_SUELDO_NOMINA_DO = btnSueldoTrue.Checked ? true : false;
-                        string vClTipoTransaccion = vIdEmpleado != null ? "U" : "I";
 
-                        if (vClTipoTransaccion == "I")
+                        if (txtAccion.Text != "SOLICITUD")
                         {
-                            LicenciaNegocio oNegocio = new LicenciaNegocio();
-                            var vEmpleados = oNegocio.ObtenerLicenciaVolumen(pFG_ACTIVO: true).FirstOrDefault();
-                            if (vEmpleados != null)
+                            E_RESULTADO vResultado = cNegocio.InsertaActualizaEmpleado(pIdEmpleado: vIdEmpleado, pEmpleado: vEmpleadoNominaDo, pClUsuario: vClUsuario, pNbPrograma: vNbPrograma, pClTipoTransaccion: vClTipoTransaccion);
+                            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+
+                            if (vClTipoTransaccion == "I" && vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals("ID_EMPLEADO")).FirstOrDefault().DS_MENSAJE.ToString() != "0")
+                                vIdEmpleado = int.Parse(vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals("ID_EMPLEADO")).FirstOrDefault().DS_MENSAJE.ToString());
+
+                            if (closeWindows)
+                                UtilMensajes.MensajeResultadoDB(rwMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "CloseWindowConfig");
+                            else
                             {
-                                if (vEmpleados.NO_EMPLEADOS_DO >= ContextoApp.InfoEmpresa.Volumen)
-                                {
-                                    UtilMensajes.MensajeResultadoDB(rwMensaje, "Se ha alcanzado el máximo número de empleados para la licencia y no es posible agregar más.", E_TIPO_RESPUESTA_DB.ERROR, 400, 150, "");
-                                    return;
-                                }
+                                UtilMensajes.MensajeResultadoDB(rwMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "UpdateId(" + vIdEmpleado.ToString() + ")");
+                                btnMasDatos.Enabled = true;
                             }
                         }
-
-                        E_RESULTADO vResultado = cNegocio.InsertaActualizaEmpleado(pIdEmpleado: vIdEmpleado, pEmpleado: vEmpleadoNominaDo, pClUsuario: vClUsuario, pNbPrograma: vNbPrograma, pClTipoTransaccion: vClTipoTransaccion);
-                        string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-                        
-                        if (vClTipoTransaccion == "I")
-                            vIdEmpleado = int.Parse(vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals("ID_EMPLEADO")).FirstOrDefault().DS_MENSAJE.ToString());
-
-                        if (closeWindows)                            
-                            UtilMensajes.MensajeResultadoDB(rwMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "CloseWindowConfig");
                         else
                         {
-                            UtilMensajes.MensajeResultadoDB(rwMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "UpdateId("+ vIdEmpleado.ToString() +")");
-                            btnMasDatos.Enabled = true;
+                            XElement vXmlDatos = new XElement("CANDIDATO");
+
+                            vXmlDatos.Add(new XAttribute("ID_SOLICITUD", vIdSolicitud));
+                            vXmlDatos.Add(new XAttribute("ID_EMPLEADO", vIdEmpleado ?? 0));
+                            vXmlDatos.Add(new XAttribute("CL_EMPLEADO", vEmpleadoNominaDo.CL_EMPLEADO));
+                            vXmlDatos.Add(new XAttribute("NB_EMPLEADO", vEmpleadoNominaDo.NB_EMPLEADO));
+                            vXmlDatos.Add(new XAttribute("NB_APELLIDO_PATERNO", vEmpleadoNominaDo.NB_APELLIDO_PATERNO));
+                            vXmlDatos.Add(new XAttribute("NB_APELLIDO_MATERNO", vEmpleadoNominaDo.NB_APELLIDO_MATERNO));
+                            vXmlDatos.Add(new XAttribute("FG_NOMINA", vEmpleadoNominaDo.FG_NOMINA));
+                            vXmlDatos.Add(new XAttribute("FG_DO", vEmpleadoNominaDo.FG_DO));
+                            vXmlDatos.Add(new XAttribute("FG_NOMINA_DO", vEmpleadoNominaDo.FG_NOMINA_DO));                            
+                            vXmlDatos.Add(new XAttribute("FG_SUELDO_NOMINA_DO", vEmpleadoNominaDo.FG_SUELDO_NOMINA_DO));
+                            vXmlDatos.Add(new XAttribute("CL_TIPO_TRANSACCION", vClTipoTransaccion));
+                            vXmlDatos.Add(new XAttribute("ID_REQUISICION", rlbRequicion.SelectedValue));
+
+                            if (vEmpleadoNominaDo.ID_PUESTO != null)
+                                vXmlDatos.Add(new XAttribute("ID_PUESTO", int.Parse(lstPuestoNomina.SelectedValue)));
+        
+                            if (vEmpleadoNominaDo.ID_PLAZA != null)
+                                vXmlDatos.Add(new XAttribute("ID_PLAZA", int.Parse(lstPuesto.SelectedValue)));
+
+                            E_RESULTADO vResultado = cNegocio.InsertaActualizaEmpleadoCandidato(vXmlDatos.ToString(), vClUsuario, vNbPrograma);
+                            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+
+                            if(vClTipoTransaccion == "I" && vResultado.CL_TIPO_ERROR.ToString() != "ERROR")
+                                if(vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals("ID_EMPLEADO")).FirstOrDefault().DS_MENSAJE.ToString() != "0")
+                                {
+                                    vIdEmpleado = int.Parse(vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals("ID_EMPLEADO")).FirstOrDefault().DS_MENSAJE.ToString());
+                                    txtAccion.Text = "CONTRATADO";
+                                    btnMasDatos.Enabled = true;
+                                    txtClEmpleado.Enabled = false;
+                                }
+
+                            if (closeWindows)
+                                UtilMensajes.MensajeResultadoDB(rwMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "CloseWindowConfig");
+                            else                         
+                                UtilMensajes.MensajeResultadoDB(rwMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "UpdateId(" + vIdEmpleado.ToString() + ")");
                         }
                     }
                     else
@@ -320,6 +397,7 @@ namespace SIGE.WebApp.Administracion
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             GuardarDatos(false);
+            
         }
 
         protected void btnGuardarCerrar_Click(object sender, EventArgs e)
@@ -334,7 +412,11 @@ namespace SIGE.WebApp.Administracion
 
         protected void btnMasDatos_Click(object sender, EventArgs e)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirInventario", "abrirInventario(" + vIdEmpleado.ToString() + ")", true); ;
+            if(txtAccion.Text != "SOLICITUD")
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirInventario", "abrirInventario(" + vIdEmpleado.ToString() + ")", true); 
+            else
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirInventarioContratado", "abrirInventarioContratado(" + vIdEmpleado.ToString() + ")", true);
+            
         }
     }
 }

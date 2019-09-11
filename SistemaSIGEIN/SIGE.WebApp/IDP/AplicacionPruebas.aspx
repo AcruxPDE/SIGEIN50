@@ -441,13 +441,13 @@
         }
 
         function OpenContratarWindow(pIdSolicitud) {
-            var vURL = "VentanaContratarCandidato.aspx";
+            var vURL = "../Administracion/VentanaInventarioPersonalNomina.aspx";
             var vTitulo = "Contratar candidato";
             vURL = vURL + "?SolicitudId=" + pIdSolicitud;
 
             var windowProperties = {};
-            windowProperties.width = 900;
-            windowProperties.height = 420;
+            windowProperties.width = 800;
+            windowProperties.height = 580;
             openChildDialog(vURL, "winContratar", vTitulo, windowProperties);
         }
 
@@ -871,7 +871,8 @@
             <telerik:RadWindow ID="rwListaProcesoSeleccionEmp" runat="server" Behaviors="Close" Modal="true" VisibleStatusbar="false" ReloadOnShow="true" OnClientClose="returnDataToParentPopupEmp"></telerik:RadWindow>
             <telerik:RadWindow ID="rwComentarios" runat="server" Behaviors="Close" Modal="true" VisibleStatusbar="false" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>
             <telerik:RadWindow ID="winPruebasSolicitud" runat="server" ReloadOnShow="true" ShowContentDuringLoad="false" VisibleStatusbar="false" VisibleTitlebar="true" Behaviors="Close" Modal="true" OnClientClose="returnDataToParentPopup"></telerik:RadWindow>           
-             </Windows>
+            <telerik:RadWindow ID="winEmpleadoGeneral" runat="server" Title="Empleado" Behaviors="None" Modal="true" VisibleStatusbar="false"></telerik:RadWindow>
+            </Windows>
     </telerik:RadWindowManager>
     <telerik:RadWindowManager ID="rnMensaje" runat="server" EnableShadow="true" Height="100%">
     </telerik:RadWindowManager>

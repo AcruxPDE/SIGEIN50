@@ -70,11 +70,22 @@ namespace SIGE.Negocio.AdministracionSitio
             CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
             return UtilRespuesta.EnvioRespuesta(oCampo.InsertaActualizaEmpleado(pIdEmpleado, pEmpleado, pClUsuario, pNbPrograma, pClTipoTransaccion));
         }
+        public E_RESULTADO InsertaActualizaEmpleadoCandidato(string pXmlDatosCandidato, string pClUsuario = null, string pNbPrograma = null)
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return UtilRespuesta.EnvioRespuesta(oCampo.InsertaActualizaEmpleadoCandidato(pXmlDatosCandidato, pClUsuario, pNbPrograma));
+        }
 
         public List<E_EMPLEADO_NOMINA_DO> ObtienePersonalNominaDo(int? pID_EMPLEADO = null, string pCL_EMPLEADO = null)
         {
             CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
             return oCampo.ObtienePersonalNominaDo(pID_EMPLEADO, pCL_EMPLEADO);
+        }
+
+        public List<E_SOLICITUD> ObtieneCandidatoSolicitud(int? pID_SOLICITUD)
+        {
+            CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
+            return oCampo.ObtieneCandidatoSolicitud(pID_SOLICITUD);
         }
 
         public List<SPE_OBTIENE_EMPLEADOS_NOMINA_DO_Result> ObtieneEmpleadosNominaDo(int? pID_EMPLEADO_NOMINA_DO = null, string pCL_EMPLEADO = null, System.Guid? pID_EMPLEADO_NOMINA = null)

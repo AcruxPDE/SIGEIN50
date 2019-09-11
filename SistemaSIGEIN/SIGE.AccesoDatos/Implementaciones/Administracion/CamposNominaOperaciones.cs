@@ -127,6 +127,31 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
                 //return XElement.Parse(pOutClRetorno.Value.ToString());
             }
         }
+        
+        public XElement InsertaActualizaEmpleadoCandidato(string pXmlDatosCandidato, string pClUsuario = null, string pNbPrograma = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                var pXmlResultado = new SqlParameter("@XML_RESULTADO", SqlDbType.Xml)
+                {
+                    Direction = ParameterDirection.Output
+                };
+
+                contexto.Database.ExecuteSqlCommand("EXEC " +
+                    "ADM.SPE_INSERTA_EMPLEADO_CONTRATADO_SOLICITUD " +
+                    "@XML_RESULTADO OUTPUT, " +
+                    "@PIN_XML_DATOS_CANDIDATO, " +
+                    "@PIN_CL_USUARIO, " +
+                    "@PIN_NB_PROGRAMA " 
+                    , pXmlResultado
+                    , new SqlParameter("@PIN_XML_DATOS_CANDIDATO", (object)pXmlDatosCandidato ?? DBNull.Value)
+                    , new SqlParameter("@PIN_CL_USUARIO", (object)pClUsuario ?? DBNull.Value)
+                    , new SqlParameter("@PIN_NB_PROGRAMA", (object)pNbPrograma ?? DBNull.Value)
+                );
+
+                return XElement.Parse(pXmlResultado.Value.ToString());
+            }
+        }
 
         public List<E_EMPLEADO_NOMINA_DO> ObtienePersonalNominaDo(int? pID_EMPLEADO = null, string pCL_EMPLEADO = null)
         {
@@ -141,6 +166,18 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
                 ).ToList();
 
                 //return contexto.SPE_OBTIENE_EMPLEADOS_NOMINA_DO(pID_EMPLEADO_NOMINA_DO, pCL_EMPLEADO, pID_EMPLEADO_NOMINA).ToList();
+            }
+        }
+
+        public List<E_SOLICITUD> ObtieneCandidatoSolicitud(int? pID_SOLICITUD = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_SOLICITUD>("EXEC " +
+                    "ADM.SPE_OBTIENE_CANDIDATO_SOLICITUD " +
+                    "@PIN_ID_SOLICITUD ",
+                    new SqlParameter("@PIN_ID_SOLICITUD", (object)pID_SOLICITUD ?? DBNull.Value)
+                ).ToList();
             }
         }
 
