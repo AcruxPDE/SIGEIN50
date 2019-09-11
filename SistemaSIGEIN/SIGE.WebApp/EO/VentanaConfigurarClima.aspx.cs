@@ -513,10 +513,8 @@ namespace SIGE.WebApp.EO
                         btnAplicar.Enabled = false;
                         btnGuardarPreguntasAbiertas.Enabled = false;
                         btnGuardarCuestionario.Enabled = false;
-                        btnGuardarCerrar.Visible = false;
                         btnGuardarEnvioCuestionarios.Enabled = false;
                         btnGuardarSeleccion.Enabled = false;
-                        btnCerrar.Visible = true;
                     }
                     else
                     {
@@ -624,10 +622,9 @@ namespace SIGE.WebApp.EO
                         btnAplicar.Enabled = false;
                         btnGuardarPreguntasAbiertas.Enabled = false;
                         btnGuardarCuestionario.Enabled = false;
-                        btnGuardarCerrar.Visible = false;
                         btnGuardarEnvioCuestionarios.Enabled = false;
                         btnGuardarSeleccion.Enabled = false;
-                        btnCerrar.Visible = true;
+                        //btnCerrar.Visible = true;
 
                         btnSeleccionar.Enabled = false;
                         btnSeleccionarPuesto.Enabled = false;

@@ -550,6 +550,11 @@ namespace SIGE.WebApp.Administracion
                 foreach (XElement item in XElement.Parse(vDescriptivo.XML_PUESTO_FUNCION).Elements("PUESTO_FUNCION"))
                 {
                     E_FUNCION_GENERICA fg = new E_FUNCION_GENERICA();
+
+                    fg.ID_FUNCION_GENERICA = int.Parse(item.Attribute("ID_PUESTO_FUNCION").Value);
+                    fg.NB_FUNCION_GENERICA = item.Attribute("NB_PUESTO_FUNCION").Value;
+                    
+
                     if (item.Element("XML_DETALLE") != null)
                     {
 
@@ -563,13 +568,11 @@ namespace SIGE.WebApp.Administracion
                             fg.DS_NOTAS = dsNotas.ToString();
                         }
 
-                        fg.ID_FUNCION_GENERICA = int.Parse(item.Attribute("ID_PUESTO_FUNCION").Value);
-                        fg.NB_FUNCION_GENERICA = item.Attribute("NB_PUESTO_FUNCION").Value;
                         fg.DS_DETALLE = dsDetalle.ToString();
-
-
-                        vFuncionesGenericas.Add(fg);
                     }
+
+                    vFuncionesGenericas.Add(fg);
+
                 }
 
                 foreach (E_COMPETENCIAS item in vListaCompetencias.Where(n => n.ID_PUESTO_FUNCION != 0))
@@ -607,6 +610,7 @@ namespace SIGE.WebApp.Administracion
 
                 vLstFuncionCompetencia.ForEach(f => CrearDsIndicadores(f, vLstFuncionCompetenciaIndicador));
                 cmbTipoPrestaciones.SelectedValue = vDescriptivo.CL_TIPO_PRESTACIONES;
+                vLstFuncionCompetenciaABC = vLstFuncionCompetencia;
 
                 if (vDescriptivo.XML_PRESTACIONES != null && vDescriptivo.XML_PRESTACIONES != "")
                 {
