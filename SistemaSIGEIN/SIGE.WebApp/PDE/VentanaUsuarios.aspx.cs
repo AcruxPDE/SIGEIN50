@@ -240,6 +240,20 @@ namespace SIGE.WebApp.PDE
 
         }
 
+        protected void ConsultaEmpleado(string pClUsuario)
+        {
+
+            EmpleadoNegocio nUsuario = new EmpleadoNegocio();
+            List <SPE_OBTIENE_M_EMPLEADO_Result> vUsuario = nUsuario.ObtenerEmpleado(null, pClUsuario, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+            
+            foreach (SPE_OBTIENE_M_EMPLEADO_Result usuario in vUsuario)
+            {
+                vIdEmpleado = usuario.ID_EMPLEADO.ToString();
+            }
+           
+
+        }
+
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -249,6 +263,7 @@ namespace SIGE.WebApp.PDE
             E_USUARIO vUsuario = new E_USUARIO();
             bool vEsInsercion = vClOperacion == E_TIPO_OPERACION_DB.I;
             GenerarContrasena();
+            ConsultaEmpleado(txtClUsuario.Text);
 
             vUsuario.CL_USUARIO = txtClUsuario.Text;
             vUsuario.NB_USUARIO = txtNbUsuario.Text;
