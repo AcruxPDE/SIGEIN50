@@ -212,11 +212,16 @@ namespace SIGE.WebApp.FYD
                 //txtNotas.InnerHtml = "";
                 rlvProgramas.Rebind();
 
-                string vIdPeriodoSeleccionado = rlvProgramas.SelectedItems[0].GetDataKeyValue("ID_PROGRAMA").ToString();
-                if (vIdPeriodoSeleccionado != null)
+                if(rlvProgramas.Items.Count != 0)
                 {
-                    CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
-                }
+                    string vIdPeriodoSeleccionado = rlvProgramas.SelectedItems[0].GetDataKeyValue("ID_PROGRAMA").ToString();
+
+                    if (vIdPeriodoSeleccionado != null)
+                    {
+                        CargarDatosDetalle(int.Parse(vIdPeriodoSeleccionado));
+                    }
+                }                   
+                
             }
         }
 

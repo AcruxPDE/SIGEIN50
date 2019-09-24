@@ -55,5 +55,13 @@ namespace SIGE.AccesoDatos.Implementaciones.EvaluacionOrganizacional
             }
         }
 
+        public SPE_OBTIENE_S_CONFIGURACION_Result ObtenerConfiguracion(String XML_CONFIGURACION = null, DateTime? FE_MODIFICACION = null, String CL_USUARIO_MODIFICA = null, String NB_PROGRAMA_MODIFICA = null)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                return context.SPE_OBTIENE_S_CONFIGURACION(XML_CONFIGURACION, CL_USUARIO_MODIFICA).FirstOrDefault();
+            }
+        }
+
     }
 }

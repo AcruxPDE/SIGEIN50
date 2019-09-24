@@ -561,6 +561,7 @@ namespace SIGE.WebApp.FYD
                                 }
                                 else if (vTipo == "Programa Capacitacion")
                                 {
+
                                     vResultadoEnvio = mail.Send(vTitulo, String.Format(" <html>" +
                                         " <head>" +
                                         " <title>Solicitud</title>" +
@@ -568,7 +569,7 @@ namespace SIGE.WebApp.FYD
                                         " </head>" +
                                         " <body>" +
                                         " <p>Estimado(a):  <b> " + nbEmpleado + " </b></p>" +
-                                        " <p> Por medio de la presente te informamos que has recibido una solicitud para autorizar el programa de capacitación <b>" + vPeriodo.NB_PERIODO + " </b></p> " +
+                                        " <p> Por medio de la presente te informamos que has recibido una solicitud para autorizar el programa de capacitación <b>" + vPrograma.NB_PROGRAMA + " </b></p> " +
                                         " <p> Para autorizar, da clik <a href=\"{1}\" >aquí</a> </p>" +
                                         " <p> La contraseña de acceso es <b>{0}</b></p>" +
                                         " <p>¡Gracias por tu apoyo! </p>" +
@@ -577,9 +578,11 @@ namespace SIGE.WebApp.FYD
                                         vDocumento.CL_TOKEN.ToString(),
                                         vUrl
                                        ));
+
+
                                 }
-                                
-                            break;
+
+                                break;
                         }
                         if (vResultadoEnvio == "0")
                         {

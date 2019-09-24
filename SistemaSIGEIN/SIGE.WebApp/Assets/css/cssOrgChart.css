@@ -10,10 +10,16 @@
     background-color: #d1fd91 !important;
 }
 
+
 .cssStaff .rocGroup {
     background-color: #d2e9ff !important;
     height: initial !important;
 }*/
+
+/*
+    
+
+*/
 
 /*Se comenta el estilo css anterior para dar paso al estilo para los diferentes niveles del organigrama. Configurado desde el descriptivo*/
 
@@ -28,9 +34,14 @@
 }
 
 .cssStaff .rocGroup {
-    background-color: #d2e9ff !important;
-    height: initial !important;
+    background-color: #d2e9ff !important ;
 }
+
+.cssLinea .rocGroup {
+    background-color: #f5f5f5 !important ;
+}
+
+
 
 .cssVacante .rocItemContent {
     background-color: #d1fd91 !important;
@@ -223,7 +234,12 @@
     margin-top: 740px !important;
 }
 
-.cssNivel4True > .rocNodeLines > .rocLineUp {
+.cssNivel4True > .roc
+
+
+
+
+Lines > .rocLineUp {
     height: 840px !important;
 }
 

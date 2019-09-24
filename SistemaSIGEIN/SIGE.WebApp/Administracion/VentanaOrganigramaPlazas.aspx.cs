@@ -122,7 +122,7 @@ namespace SIGE.WebApp.Administracion
         //    cmbEmpresas.DataValueField = "ID_EMPRESA";
         //    cmbEmpresas.DataSource = vLstEmpresas;
         //    cmbEmpresas.DataBind();
-        //    cmbEmpresas.SelectedIndex = 0;
+        //    cmbEmpresas.SelectedIndex = 0; fffffffffffff
         //}
 
         protected void CargarDatosOrganigrama(int? pIdEmpresa = null, bool? pFgMostrarEmpleados = false, int? pIdPlaza = null, int? pIdDepartamento = null, string pClCampo = null, int? pNoNiveles = null)
@@ -132,8 +132,10 @@ namespace SIGE.WebApp.Administracion
 
             lstAscendencia.DataTextField = "nbNodo";
             lstAscendencia.DataValueField = "idNodo";
-            lstAscendencia.DataSource = vOrganigrama.lstNodoAscendencia.OrderByDescending(o => o.noNivel);
+            lstAscendencia.DataSource = vOrganigrama.lstNodoAscendencia.OrderByDescending(o => o.noNivel);//aqui modifique
             lstAscendencia.DataBind();
+
+
 
             if (vOrganigrama.lstNodoDescendencia.Count == 0)
                 vOrganigrama.lstNodoDescendencia.Add(new E_ORGANIGRAMA_NODO() { nbNodo = "No hay datos" });
@@ -162,7 +164,10 @@ namespace SIGE.WebApp.Administracion
                     rocPlazas.GroupEnabledBinding.GroupItemBindingSettings.DataFieldID = "idItem";
                     rocPlazas.GroupEnabledBinding.GroupItemBindingSettings.DataFieldNodeID = "idNodo";
                     rocPlazas.GroupEnabledBinding.GroupItemBindingSettings.DataSource = vOrganigrama.lstGrupo;
+
+
                 }
+
                 rocPlazas.DataBind();
                 lblMensaje.Style.Add("display", "none");
             }
@@ -215,25 +220,40 @@ namespace SIGE.WebApp.Administracion
 
         protected void rocPlazas_NodeDataBound(object sender, OrgChartNodeDataBoundEventArguments e)
         {
-            string vClCss = String.Empty;
+            //string vClCss = String.Empty;
 
-            if (((E_ORGANIGRAMA_NODO)e.Node.DataItem).clTipoNodo == "STAFF")
-                vClCss = "cssStaff";
-
-            foreach (OrgChartGroupItem groupItem in e.Node.GroupItems)
-                if (!String.IsNullOrWhiteSpace(((E_ORGANIGRAMA_GRUPO)groupItem.DataItem).cssItem))
-                    groupItem.CssClass = ((E_ORGANIGRAMA_GRUPO)groupItem.DataItem).cssItem; // "cssVacante";
+            //if (((E_ORGANIGRAMA_NODO)e.Node.DataItem).clTipoNodo == "LINEA")
+            //    vClCss = "cssLinea";
 
 
-            //CssNivelDentroDeOrganigrama
-            if (((E_ORGANIGRAMA_NODO)e.Node.DataItem).noNivelPuesto > ((E_ORGANIGRAMA_NODO)e.Node.DataItem).noNivel)
-            {
-                int vNivelDiferencia = ((E_ORGANIGRAMA_NODO)e.Node.DataItem).noNivelPuesto - ((E_ORGANIGRAMA_NODO)e.Node.DataItem).noNivel;
+            //if (((E_ORGANIGRAMA_NODO)e.Node.DataItem).clTipoNodo == "STAFF")
+            //{
 
-                e.Node.CssClass = ObtieneCssClass(chkMostrarEmpleados.Checked == null ? false : (bool)chkMostrarEmpleados.Checked, vNivelDiferencia, vClCss);
-            }
+            //    vClCss = "cssStaff";
+            //}
 
-            e.Node.CssClass = vClCss;
+
+            //foreach (OrgChartGroupItem groupItem in e.Node.GroupItems)
+            //    if (!String.IsNullOrWhiteSpace(((E_ORGANIGRAMA_GRUPO)groupItem.DataItem).cssItem))
+            //        groupItem.CssClass = ((E_ORGANIGRAMA_GRUPO)groupItem.DataItem).cssItem; // "cssVacante";
+
+
+            ////CssNivelDentroDeOrganigrama
+            //if (((E_ORGANIGRAMA_NODO)e.Node.DataItem).noNivelPuesto > ((E_ORGANIGRAMA_NODO)e.Node.DataItem).noNivel)
+            //{
+            //    int vNivelDiferencia = ((E_ORGANIGRAMA_NODO)e.Node.DataItem).noNivelPuesto - ((E_ORGANIGRAMA_NODO)e.Node.DataItem).noNivel;
+
+            //    e.Node.CssClass=ObtieneCssClass(chkMostrarEmpleados.Checked == null ? false : (bool)chkMostrarEmpleados.Checked, vNivelDiferencia, vClCss);
+            //}
+
+            //
+            //
+            
+          
+            // 
+        
+            
+            e.Node.CssClass = ((E_ORGANIGRAMA_NODO)e.Node.DataItem).cssNodo;
         }
 
         //protected void cmbEmpresas_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)

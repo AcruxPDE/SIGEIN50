@@ -107,6 +107,7 @@
     <Compile Include="Administracion\E_PUESTO_INTERRELACIONADO.cs" />
     <Compile Include="Administracion\E_REPORTE_EMPLEADO.cs" />
     <Compile Include="Administracion\E_REQUISICION.cs" />
+    <Compile Include="Administracion\E_RESPONSABILIDAD.cs" />
     <Compile Include="Administracion\E_ROL.cs" />
     <Compile Include="Administracion\E_ROL_FUNCION.cs" />
     <Compile Include="Administracion\E_SECUENCIA.cs" />
