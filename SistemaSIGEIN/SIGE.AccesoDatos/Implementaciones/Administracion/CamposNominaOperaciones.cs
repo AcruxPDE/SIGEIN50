@@ -152,6 +152,30 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
                 return XElement.Parse(pXmlResultado.Value.ToString());
             }
         }
+        public XElement InsertaActualizaEmpleadoReingreso(string pXmlDatosEmpleado, string pClUsuario = null, string pNbPrograma = null)
+        {
+            using (contexto = new SistemaSigeinEntities())
+            {
+                var pXmlResultado = new SqlParameter("@XML_RESULTADO", SqlDbType.Xml)
+                {
+                    Direction = ParameterDirection.Output
+                };
+
+                contexto.Database.ExecuteSqlCommand("EXEC " +
+                    "ADM.SPE_ACTUALIZA_EMPLEADO_REINGRESO " +
+                    "@XML_RESULTADO OUTPUT, " +
+                    "@PIN_XML_DATOS_EMPLEADO, " +
+                    "@PIN_CL_USUARIO, " +
+                    "@PIN_NB_PROGRAMA "
+                    , pXmlResultado
+                    , new SqlParameter("@PIN_XML_DATOS_EMPLEADO", (object)pXmlDatosEmpleado ?? DBNull.Value)
+                    , new SqlParameter("@PIN_CL_USUARIO", (object)pClUsuario ?? DBNull.Value)
+                    , new SqlParameter("@PIN_NB_PROGRAMA", (object)pNbPrograma ?? DBNull.Value)
+                );
+
+                return XElement.Parse(pXmlResultado.Value.ToString());
+            }
+        }
 
         public List<E_EMPLEADO_NOMINA_DO> ObtienePersonalNominaDo(int? pID_EMPLEADO = null, string pCL_EMPLEADO = null)
         {

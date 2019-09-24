@@ -161,7 +161,7 @@ namespace SIGE.WebApp.Administracion
             foreach (GridDataItem item in grdEmpleados.SelectedItems)
             {
                 valida_eliminacion = true;
-                int vIdEmpleadoElimina = (int.Parse(item.GetDataKeyValue("M_EMPLEADO_ID_EMPLEADO").ToString()));
+                int vIdEmpleadoElimina = (int.Parse(item.GetDataKeyValue("ID_EMPLEADO_NOMINA_DO").ToString()));
                 E_RESULTADO vResultado = cNegocio.EliminaEmpleadoNominaDO(pID_EMPLEADO: vIdEmpleadoElimina);
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
                 UtilMensajes.MensajeResultadoDB(rnMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, "onCloseWindow");

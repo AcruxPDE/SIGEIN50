@@ -261,7 +261,11 @@
 
             function OpenWindowDarBaja() {
                 obtenerFila();
-                if (vIdEmpleado != "" & vClEstatus != "BAJA") {
+
+                if (vClDisponibiliada == "NOM") {
+                    radalert("El empleado solo se puede dar de baja desde el nómina.", 400, 150, "Aviso");
+                }
+                else if (vIdEmpleado != "" & vClEstatus != "BAJA") {
                     OpenNewWindow(GetDarBajaWindowProperties());
                 }
                 else if (vIdEmpleado == "") {
@@ -283,9 +287,9 @@
             function GetReingresoWindowProperties() {
                 var wnd = GetWindowBajaProperties();
 
-                wnd.width = 650;
-                wnd.height = 380;
-                wnd.vURL = "VentanaReingresoEmpleado.aspx?EmpleadoID=" + vIdEmpleado + "&m=General";
+                wnd.width = 1000;
+                wnd.height = 580;
+                wnd.vURL = "VentanaInventarioPersonalNomina.aspx?EmpleadoID=" + vIdEmpleado + "&Accion=1&m=General";
                 wnd.vTitulo = "Reingreso de empleado";
                 wnd.vRadWindowId = "winReingreso";
                 return wnd;
@@ -317,24 +321,42 @@
                     var vFgActivoDo = selectedItem.getDataKeyValue("FG_ACTIVO_DO");
                     var btnDarBaja = $find("<%= btnDarDeBaja.ClientID %>");
                     var btnDarAlta = $find("<%= btnDarAlta.ClientID %>");
-                    //var btnReingreso = $find("<= btnReingresoEmpleado.ClientID %>");
+                    var btnEditarInventario = $find("<%= btnEditarInventario.ClientID %>");
 
+                    //var btnReingreso = $find("<= btnReingresoEmpleado.ClientID %>");
+                    
                     if (vFgActivoDo == "False") {
                         btnDarBaja.set_enabled(false);
                         btnDarAlta.set_enabled(false);
+                        btnEditarInventario.set_enabled(false);
                         //btnCancelarBaja.set_enabled(false);
                         //btnReingreso.set_enabled(false);
                     }
                     else {
 
-                        if ('<%= vDarBaja %>' == "True" && vClEstatus == "ALTA" && vClDisponibiliada != "NOM")
+                        
+                        if ('<%= vDarBaja %>' == "True" && vClEstatus == "ALTA") {
                             btnDarBaja.set_enabled(true);
-                        else
+                            btnEditarInventario.set_enabled(true);
+                        }
+
+                        else if (vClEstatus == "BAJA") {
                             btnDarBaja.set_enabled(false);
-                        if ('<%= vDarAlta %>' == "True" && vClEstatus == "BAJA" && vClDisponibiliada != "NOM")
+                            btnEditarInventario.set_enabled(false);
+                        }
+
+                        else {
+                            btnDarBaja.set_enabled(true);
+                            btnEditarInventario.set_enabled(true);
+                        }
+
+                        if ('<%= vDarAlta %>' == "True" && vClEstatus == "BAJA") {
                             btnDarAlta.set_enabled(true);
-                        else
+                        }
+
+                        else {
                             btnDarAlta.set_enabled(false);
+                        }
                         //if ('<= vReingreso %>' == "True")
                         //btnReingreso.set_enabled(true);
                     }
@@ -537,7 +559,7 @@
             <telerik:RadWindow ID="winPrograma" runat="server" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="onCloseWindow"></telerik:RadWindow>
             <telerik:RadWindow ID="WinCuestionario" runat="server" Width="1050px" Height="580px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" ReloadOnShow="false" OnClientClose="onCloseWindow"></telerik:RadWindow>
             <telerik:RadWindow ID="winReporteCumplimientoPersonal" runat="server" Animation="Fade" VisibleStatusbar="false" Behaviors="Close" Modal="true"></telerik:RadWindow>
-            <telerik:RadWindow ID="winReingreso" runat="server" Width="900px" Height="400px" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" OnClientClose="onCloseWindow"></telerik:RadWindow>
+            <telerik:RadWindow ID="winReingreso" runat="server" VisibleStatusbar="false" ShowContentDuringLoad="false" Behaviors="Close" Modal="true" Animation="Fade" OnClientClose="onCloseWindow"></telerik:RadWindow>
             <telerik:RadWindow ID="winEmpleadoInventario" runat="server" Title="Empleado" Behaviors="Close" Modal="true" VisibleStatusbar="false" OnClientClose="onCloseWindow"></telerik:RadWindow>
         </Windows>
     </telerik:RadWindowManager>

@@ -312,8 +312,8 @@ namespace SIGE.WebApp.Administracion
                 if (cmbPaquetePrestacionesNO.Text == string.Empty) { PrintMensaje("Paquete de prestaciones"); return false; }
                 if (txtFeReingreso.SelectedDate == null) { PrintMensaje("Fecha de reingreso"); return false; }
                 if (txtFeAntiguedad.SelectedDate == null) { PrintMensaje("Fecha de antigüedad"); return false; }
-                if (txtSueldoDiario.Text == string.Empty) { PrintMensaje("Sueldo diario"); return false; }
-                if (txtSueldoMensual.Text == string.Empty) { PrintMensaje("Sueldo mensual"); return false; }
+                if (txtSueldoDiario.Value.ToString() == string.Empty) { PrintMensaje("Sueldo diario"); return false; }
+                if (txtSueldoMensual.Value.ToString() == string.Empty) { PrintMensaje("Sueldo mensual"); return false; }
 
                 vPlantillaNomina =  GuardarFormularioNomina();
             }
@@ -490,12 +490,12 @@ namespace SIGE.WebApp.Administracion
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
             
-            CL_CAMPO = new XAttribute("CL_CAMPO", "HORARIO");
-            NB_CAMPO = new XAttribute("NB_CAMPO", cmbHorarioNO.SelectedValue.ToString());
-            NOMINA = new XElement("CAMPO_NOMINA");
-            NOMINA.Add(CL_CAMPO);
-            NOMINA.Add(NB_CAMPO);
-            vXmlPlantillaNO.Add(NOMINA);
+            //CL_CAMPO = new XAttribute("CL_CAMPO", "HORARIO");
+            //NB_CAMPO = new XAttribute("NB_CAMPO", cmbHorarioNO.SelectedValue.ToString());
+            //NOMINA = new XElement("CAMPO_NOMINA");
+            //NOMINA.Add(CL_CAMPO);
+            //NOMINA.Add(NB_CAMPO);
+            //vXmlPlantillaNO.Add(NOMINA);
             
             CL_CAMPO = new XAttribute("CL_CAMPO", "PAQUETE_PRESTACIONES");
             NB_CAMPO = new XAttribute("NB_CAMPO", cmbPaquetePrestacionesNO.SelectedValue.ToString());
@@ -567,57 +567,61 @@ namespace SIGE.WebApp.Administracion
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
             
-            CL_CAMPO = new XAttribute("CL_CAMPO", "FECHA_PLANTA");
-            NB_CAMPO = new XAttribute("NB_CAMPO", txtFePlanta.SelectedDate);
-            NOMINA = new XElement("CAMPO_NOMINA");
-            NOMINA.Add(CL_CAMPO);
-            NOMINA.Add(NB_CAMPO);
-            vXmlPlantillaNO.Add(NOMINA);
+            if(txtFePlanta.SelectedDate != null)
+            {
+                CL_CAMPO = new XAttribute("CL_CAMPO", "FECHA_PLANTA");
+                NB_CAMPO = new XAttribute("NB_CAMPO", txtFePlanta.SelectedDate);
+                NOMINA = new XElement("CAMPO_NOMINA");
+                NOMINA.Add(CL_CAMPO);
+                NOMINA.Add(NB_CAMPO);
+                vXmlPlantillaNO.Add(NOMINA);
+            }
+            
             
             CL_CAMPO = new XAttribute("CL_CAMPO", "SUELDO_DIARIO");
-            NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtSueldoDiario.Text.ToString()));
+            NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtSueldoDiario.Value.ToString()));
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
             
             CL_CAMPO = new XAttribute("CL_CAMPO", "SUELDO_MENSUAL");
-            NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtSueldoMensual.Text.ToString()));
+            NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtSueldoMensual.Value.ToString()));
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
             
             CL_CAMPO = new XAttribute("CL_CAMPO", "FACTOR_SALARIO_BASE_COTIZACION");
-            NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtFactorBaseCotizacion.Text.ToString()));
+            NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtFactorBaseCotizacion.Value.ToString()));
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
             
             CL_CAMPO = new XAttribute("CL_CAMPO", "SALARIO_BASE_COTIZACION_FIJO");
-            NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtBaseCotizacionFijo.Text.ToString()));
+            NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtBaseCotizacionFijo.Value.ToString()));
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
             
             CL_CAMPO = new XAttribute("CL_CAMPO", "SALARIO_BASE_COTIZACION_DETERMINADO");
-            NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtBaseCotizacionDeterminado.Text.ToString()));
+            NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtBaseCotizacionDeterminado.Value.ToString()));
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
             
             CL_CAMPO = new XAttribute("CL_CAMPO", "SALARIO_BASE_COTIZACION_MAXIMO");
-            NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtBaseCotizacionMaximo.Text.ToString()));
+            NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtBaseCotizacionMaximo.Value.ToString()));
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
             
             CL_CAMPO = new XAttribute("CL_CAMPO", "SALARIO_BASE_COTIZACION");
-            NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtSalarioBaseCotizacion.Text.ToString()));
+            NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtSalarioBaseCotizacion.Value.ToString()));
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
@@ -870,11 +874,11 @@ namespace SIGE.WebApp.Administracion
             cmbRiesgoPuesto.DataBind();
 
             //Get the horario semana combo
-            listHorarioSemana = oNegocio.ObtieneHorarioSemana();
-            cmbHorarioNO.DataSource = listHorarioSemana;
-            cmbHorarioNO.DataValueField = "CL_HORARIO_SEMANA";
-            cmbHorarioNO.DataTextField = "NB_HORARIO_SEMANA";
-            cmbHorarioNO.DataBind();
+            //listHorarioSemana = oNegocio.ObtieneHorarioSemana();
+            //cmbHorarioNO.DataSource = listHorarioSemana;
+            //cmbHorarioNO.DataValueField = "CL_HORARIO_SEMANA";
+            //cmbHorarioNO.DataTextField = "NB_HORARIO_SEMANA";
+            //cmbHorarioNO.DataBind();
 
             //Get the paquete de prestaciones combo
             listPaquetePrestaciones = oNegocio.ObtienePaquetePrestaciones();
@@ -974,7 +978,7 @@ namespace SIGE.WebApp.Administracion
                 cmbTipoSalario.SelectedValue = item.CL_TIPO_SALARIO_SUA.ToString();
                 txtUMFNO.Text = item.NO_UMF;
                 cmbRiesgoPuesto.SelectedValue = item.CL_RIESGO_PUESTO;
-                cmbHorarioNO.SelectedValue = item.CL_HORARIO;
+                //cmbHorarioNO.SelectedValue = item.CL_HORARIO;
                 cmbPaquetePrestacionesNO.SelectedValue = item.ID_PAQUETE_PRESTACIONES.ToString();
                 cmbFormatoDispersionNO.SelectedValue = item.CL_FORMATO_DISPERSION;
                 cmbFormatoValesGasolinaNO.SelectedValue = item.CL_FORMATO_VALES_G;
@@ -992,25 +996,25 @@ namespace SIGE.WebApp.Administracion
                 txtFILLER05.Text = item.FILLER05;
 
                 if (item.MN_SNOMINAL.ToString() != "0.0")
-                    txtSueldoDiario.Text = item.MN_SNOMINAL.ToString();
+                    txtSueldoDiario.Value = double.Parse(item.MN_SNOMINAL.ToString());
 
                 if (item.MN_SNOMINAL_MENSUAL.ToString() != "0.0")
-                    txtSueldoMensual.Text = item.MN_SNOMINAL_MENSUAL.ToString();
+                    txtSueldoMensual.Value = double.Parse(item.MN_SNOMINAL_MENSUAL.ToString());
 
                 if (item.NO_FACTOR_SBC.ToString() != "0.0")
-                    txtFactorBaseCotizacion.Text = item.NO_FACTOR_SBC.ToString();
+                    txtFactorBaseCotizacion.Value = double.Parse(item.NO_FACTOR_SBC.ToString());
 
                 if (item.MN_SBC_FIJO.ToString() != "0.0")
-                    txtBaseCotizacionFijo.Text = item.MN_SBC_FIJO.ToString();
+                    txtBaseCotizacionFijo.Value = double.Parse(item.MN_SBC_FIJO.ToString());
 
                 if (item.MN_SBC_DETERMINADO.ToString() != "0.0")
-                    txtBaseCotizacionDeterminado.Text = item.MN_SBC_DETERMINADO.ToString();
+                    txtBaseCotizacionDeterminado.Value = double.Parse(item.MN_SBC_DETERMINADO.ToString());
 
                 if (item.MN_SBC_MAXIMO.ToString() != "0.0")
-                    txtBaseCotizacionMaximo.Text = item.MN_SBC_MAXIMO.ToString();
+                    txtBaseCotizacionMaximo.Value = double.Parse(item.MN_SBC_MAXIMO.ToString());
 
                 if (item.MN_SBC.ToString() != "0.0")
-                    txtSalarioBaseCotizacion.Text = item.MN_SBC.ToString();
+                    txtSalarioBaseCotizacion.Value = double.Parse(item.MN_SBC.ToString());
 
                 if (item.FE_REINGRESO != null)
                     txtFeReingreso.SelectedDate = DateTime.Parse(item.FE_REINGRESO);
@@ -1058,7 +1062,7 @@ namespace SIGE.WebApp.Administracion
                 bandera = false;
             }
 
-            if (txtSueldoDiario.Text == "")
+            if (txtSueldoDiario.Value == null)
             {
                 mensaje = mensaje + "sueldo diario,";
                 bandera = false;
@@ -1090,7 +1094,7 @@ namespace SIGE.WebApp.Administracion
                 if (vFactor != null)
                 {
 
-                    decimal vSueldoDiario = decimal.Parse(txtSueldoDiario.Text);
+                    decimal vSueldoDiario = decimal.Parse(txtSueldoDiario.Value.ToString());
                     decimal vFactorSBC = vFactor.NO_FACTOR_SBC;
 
                     List<E_CONFIGURACION> vConfiguracion = new List<E_CONFIGURACION>();
@@ -1125,12 +1129,13 @@ namespace SIGE.WebApp.Administracion
                         vSalarioBase = vSBCFijo;
                     }
 
-                    txtBaseCotizacionFijo.Text = vSBCFijo.ToString();
-                    txtSueldoMensual.Text = vSueldoMensual.ToString();
-                    txtBaseCotizacionDeterminado.Text = vSBCFijo.ToString();
-                    txtBaseCotizacionMaximo.Text = vSueldoMaximo.ToString();
-                    txtSalarioBaseCotizacion.Text = vSalarioBase.ToString();
-                    txtFactorBaseCotizacion.Text = vFactorSBC.ToString();
+                    txtBaseCotizacionFijo.Value = double.Parse(vSBCFijo.ToString());
+                    txtSueldoMensual.Value = double.Parse(vSueldoMensual.ToString());
+                    txtBaseCotizacionDeterminado.Value = double.Parse(vSBCFijo.ToString());
+                    txtBaseCotizacionMaximo.Value = double.Parse(vSueldoMaximo.ToString());
+                    txtSalarioBaseCotizacion.Value = double.Parse(vSalarioBase.ToString());
+                    txtFactorBaseCotizacion.Value = double.Parse(vFactorSBC.ToString());
+                    txtBaseCotizacionVariable.Value = double.Parse("0.00");
 
                     if (vSalarioBase == 0)
                     {

@@ -355,6 +355,42 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadComboBox cmbRegistroPatronal;
         
         /// <summary>
+        /// cmbPaquetePrestacionesNO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox cmbPaquetePrestacionesNO;
+        
+        /// <summary>
+        /// cmbTipoNomina control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox cmbTipoNomina;
+        
+        /// <summary>
+        /// btnCotizaIMSSTrue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnCotizaIMSSTrue;
+        
+        /// <summary>
+        /// btnCotizaIMSSFalse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnCotizaIMSSFalse;
+        
+        /// <summary>
         /// cmbTipoTrabajoSUA control.
         /// </summary>
         /// <remarks>
@@ -371,33 +407,6 @@ namespace SIGE.WebApp.Administracion {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadComboBox cmbTipoJornadaSUA;
-        
-        /// <summary>
-        /// cmbTipoContratoSAT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox cmbTipoContratoSAT;
-        
-        /// <summary>
-        /// cmbTipoJornadaSAT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox cmbTipoJornadaSAT;
-        
-        /// <summary>
-        /// cmbRegimenContratacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox cmbRegimenContratacion;
         
         /// <summary>
         /// txtUbicacionNO control.
@@ -436,22 +445,31 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadComboBox cmbRiesgoPuesto;
         
         /// <summary>
-        /// cmbHorarioNO control.
+        /// cmbTipoContratoSAT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox cmbHorarioNO;
+        protected global::Telerik.Web.UI.RadComboBox cmbTipoContratoSAT;
         
         /// <summary>
-        /// cmbPaquetePrestacionesNO control.
+        /// cmbTipoJornadaSAT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox cmbPaquetePrestacionesNO;
+        protected global::Telerik.Web.UI.RadComboBox cmbTipoJornadaSAT;
+        
+        /// <summary>
+        /// cmbRegimenContratacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox cmbRegimenContratacion;
         
         /// <summary>
         /// cmbFormatoDispersionNO control.
@@ -481,15 +499,6 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadComboBox cmbFormatoValesDespensaNO;
         
         /// <summary>
-        /// cmbTipoNomina control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox cmbTipoNomina;
-        
-        /// <summary>
         /// cmbFormaPago control.
         /// </summary>
         /// <remarks>
@@ -506,24 +515,6 @@ namespace SIGE.WebApp.Administracion {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadComboBox cmbBanco;
-        
-        /// <summary>
-        /// btnCotizaIMSSTrue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnCotizaIMSSTrue;
-        
-        /// <summary>
-        /// btnCotizaIMSSFalse control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnCotizaIMSSFalse;
         
         /// <summary>
         /// txtFeReingreso control.
@@ -559,7 +550,7 @@ namespace SIGE.WebApp.Administracion {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtSueldoDiario;
+        protected global::Telerik.Web.UI.RadNumericTextBox txtSueldoDiario;
         
         /// <summary>
         /// btnCalcularSueldo control.
@@ -577,7 +568,7 @@ namespace SIGE.WebApp.Administracion {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtSueldoMensual;
+        protected global::Telerik.Web.UI.RadNumericTextBox txtSueldoMensual;
         
         /// <summary>
         /// txtFactorBaseCotizacion control.
@@ -586,7 +577,7 @@ namespace SIGE.WebApp.Administracion {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtFactorBaseCotizacion;
+        protected global::Telerik.Web.UI.RadNumericTextBox txtFactorBaseCotizacion;
         
         /// <summary>
         /// txtBaseCotizacionFijo control.
@@ -595,7 +586,7 @@ namespace SIGE.WebApp.Administracion {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtBaseCotizacionFijo;
+        protected global::Telerik.Web.UI.RadNumericTextBox txtBaseCotizacionFijo;
         
         /// <summary>
         /// txtBaseCotizacionVariable control.
@@ -604,7 +595,7 @@ namespace SIGE.WebApp.Administracion {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtBaseCotizacionVariable;
+        protected global::Telerik.Web.UI.RadNumericTextBox txtBaseCotizacionVariable;
         
         /// <summary>
         /// txtBaseCotizacionDeterminado control.
@@ -613,7 +604,7 @@ namespace SIGE.WebApp.Administracion {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtBaseCotizacionDeterminado;
+        protected global::Telerik.Web.UI.RadNumericTextBox txtBaseCotizacionDeterminado;
         
         /// <summary>
         /// txtBaseCotizacionMaximo control.
@@ -622,7 +613,7 @@ namespace SIGE.WebApp.Administracion {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtBaseCotizacionMaximo;
+        protected global::Telerik.Web.UI.RadNumericTextBox txtBaseCotizacionMaximo;
         
         /// <summary>
         /// txtSalarioBaseCotizacion control.
@@ -631,7 +622,7 @@ namespace SIGE.WebApp.Administracion {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtSalarioBaseCotizacion;
+        protected global::Telerik.Web.UI.RadNumericTextBox txtSalarioBaseCotizacion;
         
         /// <summary>
         /// txtCuentaPago control.

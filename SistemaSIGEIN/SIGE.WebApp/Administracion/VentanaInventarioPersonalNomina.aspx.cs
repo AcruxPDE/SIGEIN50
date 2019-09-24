@@ -46,7 +46,7 @@ namespace SIGE.WebApp.Administracion
 
         #region Metodos
 
-        protected void CargarDatos()
+        protected void CargarDatos(int pAccion)
         {
             CamposNominaNegocio oNegocio = new CamposNominaNegocio();
             E_EMPLEADO_NOMINA_DO vEmpleado = oNegocio.ObtienePersonalNominaDo(pID_EMPLEADO: vIdEmpleado).FirstOrDefault();
@@ -94,7 +94,7 @@ namespace SIGE.WebApp.Administracion
             }
             else
             {
-                if (vEmpleado.ID_PLAZA != null)
+                if (vEmpleado.ID_PLAZA != null && pAccion != 1)
                 {
                     lstPuesto.Items.Clear();
                     lstPuesto.Items.Add(new RadListBoxItem(vEmpleado.NB_PLAZA, vEmpleado.ID_PLAZA.ToString()));
@@ -207,17 +207,30 @@ namespace SIGE.WebApp.Administracion
             {
                 int vIdEmpleadoRq = 0;
                 int vIdSolicitudRq = 0;
+                int vAccionRq = 0;
+                int vAccion = 0;
 
                 if (int.TryParse(Request.Params["pIdEmpleado"], out vIdEmpleadoRq))
+                    vIdEmpleado = vIdEmpleadoRq;
+
+                if (int.TryParse(Request.Params["EmpleadoID"], out vIdEmpleadoRq))
                     vIdEmpleado = vIdEmpleadoRq;
 
                 if (int.TryParse(Request.Params["SolicitudId"], out vIdSolicitudRq))
                     vIdSolicitud = vIdSolicitudRq;
 
+                if (int.TryParse(Request.Params["Accion"], out vAccionRq))
+                    vAccion = vAccionRq;
+
                 if (vIdEmpleado != null)
                 {
-                    CargarDatos();
-                    btnMasDatos.Enabled = true;
+                    CargarDatos(vAccion);
+
+                    if (vAccion != 1)
+                        btnMasDatos.Enabled = true;
+                    else
+                        txtAccion.Text = "REINGRESO";
+
                     txtClEmpleado.Enabled = false;
                     txtNombre.Enabled = false;
                     txtPaterno.Enabled = false;
@@ -322,7 +335,78 @@ namespace SIGE.WebApp.Administracion
 
                         vEmpleadoNominaDo.FG_SUELDO_NOMINA_DO = btnSueldoTrue.Checked ? true : false;
 
-                        if (txtAccion.Text != "SOLICITUD")
+                        if (txtAccion.Text == "SOLICITUD")
+                        {
+                            XElement vXmlDatos = new XElement("CANDIDATO");
+
+                            vXmlDatos.Add(new XAttribute("ID_SOLICITUD", vIdSolicitud));
+                            vXmlDatos.Add(new XAttribute("ID_EMPLEADO", vIdEmpleado ?? 0));
+                            vXmlDatos.Add(new XAttribute("CL_EMPLEADO", vEmpleadoNominaDo.CL_EMPLEADO));
+                            vXmlDatos.Add(new XAttribute("NB_EMPLEADO", vEmpleadoNominaDo.NB_EMPLEADO));
+                            vXmlDatos.Add(new XAttribute("NB_APELLIDO_PATERNO", vEmpleadoNominaDo.NB_APELLIDO_PATERNO));
+                            vXmlDatos.Add(new XAttribute("NB_APELLIDO_MATERNO", vEmpleadoNominaDo.NB_APELLIDO_MATERNO));
+                            vXmlDatos.Add(new XAttribute("FG_NOMINA", vEmpleadoNominaDo.FG_NOMINA));
+                            vXmlDatos.Add(new XAttribute("FG_DO", vEmpleadoNominaDo.FG_DO));
+                            vXmlDatos.Add(new XAttribute("FG_NOMINA_DO", vEmpleadoNominaDo.FG_NOMINA_DO));
+                            vXmlDatos.Add(new XAttribute("FG_SUELDO_NOMINA_DO", vEmpleadoNominaDo.FG_SUELDO_NOMINA_DO));
+                            vXmlDatos.Add(new XAttribute("CL_TIPO_TRANSACCION", vClTipoTransaccion));
+                            vXmlDatos.Add(new XAttribute("ID_REQUISICION", rlbRequicion.SelectedValue));
+
+                            E_RESULTADO vResultado = cNegocio.InsertaActualizaEmpleadoCandidato(vXmlDatos.ToString(), vClUsuario, vNbPrograma);
+                            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+
+                            if (vClTipoTransaccion == "I" && vResultado.CL_TIPO_ERROR.ToString() != "ERROR")
+                                if (vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals("ID_EMPLEADO")).FirstOrDefault().DS_MENSAJE.ToString() != "0")
+                                {
+                                    vIdEmpleado = int.Parse(vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals("ID_EMPLEADO")).FirstOrDefault().DS_MENSAJE.ToString());
+                                    txtAccion.Text = "CONTRATADO";
+                                    btnMasDatos.Enabled = true;
+                                    txtClEmpleado.Enabled = false;
+                                }
+
+                            if (closeWindows)
+                                UtilMensajes.MensajeResultadoDB(rwMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "CloseWindowConfig");
+                            else
+                                UtilMensajes.MensajeResultadoDB(rwMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "UpdateId(" + vIdEmpleado.ToString() + ")");                            
+                        }
+
+                        else if (txtAccion.Text == "REINGRESO")
+                        {
+                            string vAlta = DateTime.Now.ToString("MM/dd/yyyy");
+
+                            XElement vXmlDatos = new XElement("EMPLEADO");
+
+                            vXmlDatos.Add(new XAttribute("ID_EMPLEADO", vIdEmpleado));
+                            vXmlDatos.Add(new XAttribute("FE_ALTA", vAlta));
+                            vXmlDatos.Add(new XAttribute("FG_NOMINA", vEmpleadoNominaDo.FG_NOMINA));
+                            vXmlDatos.Add(new XAttribute("FG_DO", vEmpleadoNominaDo.FG_DO));
+                            vXmlDatos.Add(new XAttribute("FG_NOMINA_DO", vEmpleadoNominaDo.FG_SUELDO_NOMINA_DO));
+                            vXmlDatos.Add(new XAttribute("FG_SUELDO_NOMINA_DO", vEmpleadoNominaDo.FG_SUELDO_NOMINA_DO));
+
+                            if (vEmpleadoNominaDo.ID_PUESTO != null)
+                                vXmlDatos.Add(new XAttribute("ID_PUESTO", int.Parse(lstPuestoNomina.SelectedValue)));
+
+                            if (vEmpleadoNominaDo.ID_PLAZA != null)
+                                vXmlDatos.Add(new XAttribute("ID_PLAZA", int.Parse(lstPuesto.SelectedValue)));
+
+                            E_RESULTADO vResultado = cNegocio.InsertaActualizaEmpleadoReingreso(vXmlDatos.ToString(), vClUsuario, vNbPrograma);
+                            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+
+                            if (vResultado.CL_TIPO_ERROR.ToString() != "ERROR")
+                            {
+                                txtAccion.Text = "CONTRATADO";
+                                btnMasDatos.Enabled = true;
+                                txtClEmpleado.Enabled = false;
+                            }
+
+                            if (closeWindows)
+                                UtilMensajes.MensajeResultadoDB(rwMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "CloseWindowConfig");
+                            else
+                                UtilMensajes.MensajeResultadoDB(rwMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "UpdateId(" + vIdEmpleado.ToString() + ")");
+
+                        }
+
+                        else
                         {
                             E_RESULTADO vResultado = cNegocio.InsertaActualizaEmpleado(pIdEmpleado: vIdEmpleado, pEmpleado: vEmpleadoNominaDo, pClUsuario: vClUsuario, pNbPrograma: vNbPrograma, pClTipoTransaccion: vClTipoTransaccion);
                             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
@@ -338,46 +422,7 @@ namespace SIGE.WebApp.Administracion
                                 btnMasDatos.Enabled = true;
                             }
                         }
-                        else
-                        {
-                            XElement vXmlDatos = new XElement("CANDIDATO");
 
-                            vXmlDatos.Add(new XAttribute("ID_SOLICITUD", vIdSolicitud));
-                            vXmlDatos.Add(new XAttribute("ID_EMPLEADO", vIdEmpleado ?? 0));
-                            vXmlDatos.Add(new XAttribute("CL_EMPLEADO", vEmpleadoNominaDo.CL_EMPLEADO));
-                            vXmlDatos.Add(new XAttribute("NB_EMPLEADO", vEmpleadoNominaDo.NB_EMPLEADO));
-                            vXmlDatos.Add(new XAttribute("NB_APELLIDO_PATERNO", vEmpleadoNominaDo.NB_APELLIDO_PATERNO));
-                            vXmlDatos.Add(new XAttribute("NB_APELLIDO_MATERNO", vEmpleadoNominaDo.NB_APELLIDO_MATERNO));
-                            vXmlDatos.Add(new XAttribute("FG_NOMINA", vEmpleadoNominaDo.FG_NOMINA));
-                            vXmlDatos.Add(new XAttribute("FG_DO", vEmpleadoNominaDo.FG_DO));
-                            vXmlDatos.Add(new XAttribute("FG_NOMINA_DO", vEmpleadoNominaDo.FG_NOMINA_DO));                            
-                            vXmlDatos.Add(new XAttribute("FG_SUELDO_NOMINA_DO", vEmpleadoNominaDo.FG_SUELDO_NOMINA_DO));
-                            vXmlDatos.Add(new XAttribute("CL_TIPO_TRANSACCION", vClTipoTransaccion));
-                            vXmlDatos.Add(new XAttribute("ID_REQUISICION", rlbRequicion.SelectedValue));
-
-                            if (vEmpleadoNominaDo.ID_PUESTO != null)
-                                vXmlDatos.Add(new XAttribute("ID_PUESTO", int.Parse(lstPuestoNomina.SelectedValue)));
-        
-                            if (vEmpleadoNominaDo.ID_PLAZA != null)
-                                vXmlDatos.Add(new XAttribute("ID_PLAZA", int.Parse(lstPuesto.SelectedValue)));
-
-                            E_RESULTADO vResultado = cNegocio.InsertaActualizaEmpleadoCandidato(vXmlDatos.ToString(), vClUsuario, vNbPrograma);
-                            string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-
-                            if(vClTipoTransaccion == "I" && vResultado.CL_TIPO_ERROR.ToString() != "ERROR")
-                                if(vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals("ID_EMPLEADO")).FirstOrDefault().DS_MENSAJE.ToString() != "0")
-                                {
-                                    vIdEmpleado = int.Parse(vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals("ID_EMPLEADO")).FirstOrDefault().DS_MENSAJE.ToString());
-                                    txtAccion.Text = "CONTRATADO";
-                                    btnMasDatos.Enabled = true;
-                                    txtClEmpleado.Enabled = false;
-                                }
-
-                            if (closeWindows)
-                                UtilMensajes.MensajeResultadoDB(rwMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "CloseWindowConfig");
-                            else                         
-                                UtilMensajes.MensajeResultadoDB(rwMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "UpdateId(" + vIdEmpleado.ToString() + ")");
-                        }
                     }
                     else
                     {
