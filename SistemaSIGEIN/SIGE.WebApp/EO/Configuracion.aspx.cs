@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using SIGE.Entidades;
+using SIGE.Entidades.Administracion;
 using SIGE.Entidades.EvaluacionOrganizacional;
 using SIGE.Entidades.Externas;
 using SIGE.Entidades.FormacionDesarrollo;
@@ -256,6 +258,84 @@ namespace SIGE.WebApp.EO
             ContextoApp.EO = EO;
             ContextoApp.SaveConfiguration(vClUsuario, "Configuracion.aspx");
             UtilMensajes.MensajeResultadoDB(rwmMensaje, "Proceso exitoso.", E_TIPO_RESPUESTA_DB.SUCCESSFUL, pCallBackFunction: "");
+
+            ActualizarLicencia();
+
+        }
+
+        protected void ActualizarLicencia()
+        {
+            UtilLicencias nLicencia = new UtilLicencias();
+            E_RESULTADO vResultado = nLicencia.generaClaves(ContextoApp.Licencia.clCliente, vClUsuario, vNbPrograma);
+            string vMensaje = vResultado.MENSAJE.FirstOrDefault().DS_MENSAJE;
+
+            SPE_OBTIENE_S_CONFIGURACION_Result vConfiguracionLicencia = new SPE_OBTIENE_S_CONFIGURACION_Result();
+            ConfiguracionNegocio oConfiguracion = new ConfiguracionNegocio();
+
+            vConfiguracionLicencia = oConfiguracion.obtieneConfiguracionGeneral();
+
+            if (vConfiguracionLicencia.CL_LICENCIAMIENTO == null)
+            {
+                nLicencia.generaXmlLicencias(vConfiguracionLicencia.CL_CLIENTE, vConfiguracionLicencia.CL_PASS_WS, "Web Service", "Web Service");
+                nLicencia.insertaXmlIdentificacion(vConfiguracionLicencia.CL_CLIENTE, vConfiguracionLicencia.CL_PASS_WS, "Web Service", "Web Service");
+
+                vConfiguracionLicencia = oConfiguracion.obtieneConfiguracionGeneral();
+            }
+
+            ContextoApp.Licencia.clCliente = vConfiguracionLicencia.CL_CLIENTE;
+            ContextoApp.Licencia.clEmpresa = vConfiguracionLicencia.CL_EMPRESA;
+            ContextoApp.Licencia.clLicencia = vConfiguracionLicencia.CL_LICENCIAMIENTO;
+            ContextoApp.Licencia.clPassWs = vConfiguracionLicencia.CL_PASS_WS;
+            ContextoApp.Licencia.feCreacion = vConfiguracionLicencia.FE_CREACION;
+            ContextoApp.Licencia.objAdicional = vConfiguracionLicencia.OBJ_ADICIONAL;
+
+            Crypto desencripta = new Crypto();
+            string keyPassword = vConfiguracionLicencia.CL_PASS_WS.Substring(0, 16);
+            string cadenaDesencriptadaLic = desencripta.descifrarTextoAES(vConfiguracionLicencia.CL_LICENCIAMIENTO, vConfiguracionLicencia.CL_CLIENTE, vConfiguracionLicencia.FE_CREACION, "SHA1", 22, keyPassword, 256);
+            string cadenaDesencriptadaObj = desencripta.descifrarTextoAES(vConfiguracionLicencia.OBJ_ADICIONAL, vConfiguracionLicencia.CL_CLIENTE, vConfiguracionLicencia.FE_CREACION, "SHA1", 22, keyPassword, 256);
+            XElement XmlConfiguracionLicencia = XElement.Parse(cadenaDesencriptadaLic);
+            XElement XmlConfiguracionCliente = XElement.Parse(cadenaDesencriptadaObj);
+
+            List<E_LICENCIA> lstLicencia = XmlConfiguracionCliente.Descendants("LICENCIA").Select(x => new E_LICENCIA
+            {
+                CL_CLIENTE = UtilXML.ValorAtributo<string>(x.Attribute("CL_CLIENTE")),
+                CL_SISTEMA = UtilXML.ValorAtributo<string>(x.Attribute("CL_SISTEMA")),
+                CL_EMPRESA = UtilXML.ValorAtributo<string>(x.Attribute("CL_EMPRESA")),
+                CL_MODULO = UtilXML.ValorAtributo<string>(x.Attribute("CL_MODULO")),
+                NO_RELEASE = UtilXML.ValorAtributo<string>(x.Attribute("NO_RELEASE")),
+                FE_INICIO = UtilXML.ValorAtributo<string>(x.Attribute("FE_INICIO")),
+                FE_FIN = UtilXML.ValorAtributo<string>(x.Attribute("FE_FIN")),
+                NO_VOLUMEN = UtilXML.ValorAtributo<string>(x.Attribute("NO_VOLUMEN"))
+            }).ToList();
+
+            ContextoApp.IDP.LicenciaIntegracion.MsgActivo = (nLicencia.validaLicencia(vConfiguracionLicencia.CL_CLIENTE, "SIGEIN", vConfiguracionLicencia.CL_EMPRESA, "IDP", "5.00", "Sistema", "Web Service", XmlConfiguracionLicencia, XmlConfiguracionCliente).MENSAJE.FirstOrDefault().DS_MENSAJE);
+            ContextoApp.FYD.LicenciaFormacion.MsgActivo = (nLicencia.validaLicencia(vConfiguracionLicencia.CL_CLIENTE, "SIGEIN", vConfiguracionLicencia.CL_EMPRESA, "FYD", "5.00", "Sistema", "Web Service", XmlConfiguracionLicencia, XmlConfiguracionCliente).MENSAJE.FirstOrDefault().DS_MENSAJE);
+            ContextoApp.EO.LicenciaED.MsgActivo = (nLicencia.validaLicencia(vConfiguracionLicencia.CL_CLIENTE, "SIGEIN", vConfiguracionLicencia.CL_EMPRESA, "ED", "5.00", "Sistema", "Web Service", XmlConfiguracionLicencia, XmlConfiguracionCliente).MENSAJE.FirstOrDefault().DS_MENSAJE);
+            ContextoApp.EO.LicenciaCL.MsgActivo = (nLicencia.validaLicencia(vConfiguracionLicencia.CL_CLIENTE, "SIGEIN", vConfiguracionLicencia.CL_EMPRESA, "CL", "5.00", "Sistema", "Web Service", XmlConfiguracionLicencia, XmlConfiguracionCliente).MENSAJE.FirstOrDefault().DS_MENSAJE);
+            ContextoApp.EO.LicenciaRDP.MsgActivo = (nLicencia.validaLicencia(vConfiguracionLicencia.CL_CLIENTE, "SIGEIN", vConfiguracionLicencia.CL_EMPRESA, "RDP", "5.00", "Sistema", "Web Service", XmlConfiguracionLicencia, XmlConfiguracionCliente).MENSAJE.FirstOrDefault().DS_MENSAJE);
+            ContextoApp.MPC.LicenciaMetodologia.MsgActivo = (nLicencia.validaLicencia(vConfiguracionLicencia.CL_CLIENTE, "SIGEIN", vConfiguracionLicencia.CL_EMPRESA, "MPC", "5.00", "Sistema", "Web Service", XmlConfiguracionLicencia, XmlConfiguracionCliente).MENSAJE.FirstOrDefault().DS_MENSAJE);
+            ContextoApp.RP.LicenciaReportes.MsgActivo = (nLicencia.validaLicencia(vConfiguracionLicencia.CL_CLIENTE, "SIGEIN", vConfiguracionLicencia.CL_EMPRESA, "RP", "5.00", "Sistema", "Web Service", XmlConfiguracionLicencia, XmlConfiguracionCliente).MENSAJE.FirstOrDefault().DS_MENSAJE);
+            ContextoApp.CI.LicenciaConsultasInteligentes.MsgActivo = (nLicencia.validaLicencia(vConfiguracionLicencia.CL_CLIENTE, "SIGEIN", vConfiguracionLicencia.CL_EMPRESA, "CI", "5.00", "Sistema", "Web Service", XmlConfiguracionLicencia, XmlConfiguracionCliente).MENSAJE.FirstOrDefault().DS_MENSAJE);
+            ContextoApp.PDE.LicenciaPuntoEncuentro.MsgActivo = (nLicencia.validaLicencia(vConfiguracionLicencia.CL_CLIENTE, "SIGEIN", vConfiguracionLicencia.CL_EMPRESA, "PDE", "5.00", "Sistema", "Web Service", XmlConfiguracionLicencia, XmlConfiguracionCliente).MENSAJE.FirstOrDefault().DS_MENSAJE);
+            ContextoApp.ANOM.LicenciaAccesoModulo.MsgActivo = (nLicencia.validaLicencia(vConfiguracionLicencia.CL_CLIENTE, "SIGEIN", vConfiguracionLicencia.CL_EMPRESA, "NOMINA", "5.00", "Sistema", "Web Service", XmlConfiguracionLicencia, XmlConfiguracionCliente).MENSAJE.FirstOrDefault().DS_MENSAJE);
+
+            if (lstLicencia.Count > 0)
+            {
+                ContextoApp.InfoEmpresa.Volumen = int.Parse(lstLicencia.FirstOrDefault().NO_VOLUMEN);
+
+                if (ContextoApp.IDP.LicenciaIntegracion.MsgActivo == "1" || ContextoApp.FYD.LicenciaFormacion.MsgActivo == "1" || ContextoApp.EO.LicenciaED.MsgActivo == "1"
+         || ContextoApp.EO.LicenciaCL.MsgActivo == "1" || ContextoApp.EO.LicenciaRDP.MsgActivo == "1"
+           || ContextoApp.MPC.LicenciaMetodologia.MsgActivo == "1" || ContextoApp.RP.LicenciaReportes.MsgActivo == "1" || ContextoApp.CI.LicenciaConsultasInteligentes.MsgActivo == "1"
+           || ContextoApp.PDE.LicenciaPuntoEncuentro.MsgActivo == "1" || ContextoApp.ANOM.LicenciaAccesoModulo.MsgActivo == "1")
+                {
+                    ContextoApp.InfoEmpresa.MsgSistema = "1";
+                }
+                else
+                {
+                    ContextoApp.InfoEmpresa.MsgSistema = "El cliente actual no cuenta con licencias.";
+                }
+            }
+
         }
 
         //protected void grdCapturaResultados_ItemDataBound(object sender, GridItemEventArgs e)

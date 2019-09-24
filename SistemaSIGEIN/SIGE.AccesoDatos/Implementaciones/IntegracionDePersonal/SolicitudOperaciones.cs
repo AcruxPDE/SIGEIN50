@@ -209,8 +209,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
         public List<E_EMPLEADO_RPT> ObtenerDatosEmpleados(int? pIdEmpresa = null, int? pIdRol = null)
         {
             using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
-            {
-              
+            {              
                 return contexto.Database.SqlQuery<E_EMPLEADO_RPT>("EXEC " +
                     "ADM.SPE_OBTIENE_DATOS_EMPLEADOS " +
                     "@PIN_ID_EMPRESA, " +
@@ -227,6 +226,16 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
             using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
             {
                 return contexto.SPE_OBTIENE_ENTREVISTAS_SELECCIONADOS().ToList();
+            }
+        }
+
+        public List<E_RESPONSABILIDAD> ObtieneResponsabilidadPuesto()
+        {
+            using (SistemaSigeinEntities contexto = new SistemaSigeinEntities())
+            {
+                return contexto.Database.SqlQuery<E_RESPONSABILIDAD>("EXEC " +
+                    "ADM.SPE_OBTIENE_RESPONSABILIDA_PUESTO_PERSONA "
+                    ).ToList();
             }
         }
     }

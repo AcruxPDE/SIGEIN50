@@ -10,7 +10,7 @@
 namespace SIGE.WebApp.Administracion {
     
     
-    public partial class ReporteDatosEmpleados {
+    public partial class ReporteResponsabilidadPuesto {
         
         /// <summary>
         /// grdEmpleados control.

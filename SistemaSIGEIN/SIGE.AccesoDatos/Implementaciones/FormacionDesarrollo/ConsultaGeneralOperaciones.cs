@@ -2,6 +2,7 @@
 using SIGE.Entidades.FormacionDesarrollo;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -85,7 +86,10 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO(ID_PERIODO, XML_PERIODOS, FG_FOTO, vIdRol).ToList();
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 6000;
+                var retorno = context.SPE_OBTIENE_FYD_EVALUADOS_COMPARATIVO(ID_PERIODO, XML_PERIODOS, FG_FOTO, vIdRol).ToList();
+                ((IObjectContextAdapter)context).ObjectContext.CommandTimeout = 80;
+                return retorno;
             }
         }
 

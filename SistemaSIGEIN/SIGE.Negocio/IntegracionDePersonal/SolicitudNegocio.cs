@@ -148,7 +148,13 @@ namespace SIGE.Negocio.Administracion
             SolicitudOperaciones operaciones = new SolicitudOperaciones();
             return operaciones.ObtenerEntrevistasSeleccionados();
         }
-        
+
+        public List<E_RESPONSABILIDAD> ObtieneResponsabilidadPuesto()
+        {
+            SolicitudOperaciones operaciones = new SolicitudOperaciones();
+            return operaciones.ObtieneResponsabilidadPuesto();
+        }
+
 
     }
 }

@@ -393,7 +393,8 @@ namespace SIGE.WebApp.Administracion
                     if (vResponsabilidad != null)
                     {
                         //vResponsabilidad.Name = vNbFirstRadEditorTagName;
-                        txtResponsable.InnerHtml = validarDsNotas( vResponsabilidad.ToString());
+                        txtResponsable.InnerHtml = vResponsabilidad.ToString();
+                            //validarDsNotas( vResponsabilidad.ToString());
                     }
                 }
 
@@ -403,7 +404,8 @@ namespace SIGE.WebApp.Administracion
                     if (vAutoridad != null)
                     {
                         //vAutoridad.Name = vNbFirstRadEditorTagName;
-                        txtAutoridad.InnerHtml = validarDsNotas(vAutoridad.ToString());
+                        txtAutoridad.InnerHtml = vAutoridad.ToString();
+                            //validarDsNotas(vAutoridad.ToString());
                     }
                 }
 
@@ -423,13 +425,15 @@ namespace SIGE.WebApp.Administracion
                             fg.DS_NOTAS = dsNotas.ToString();
                         }
 
-                        fg.ID_FUNCION_GENERICA = int.Parse(item.Attribute("ID_PUESTO_FUNCION").Value);
-                        fg.NB_FUNCION_GENERICA = item.Attribute("NB_PUESTO_FUNCION").Value;
                         fg.DS_DETALLE = dsDetalle.ToString();
 
-
-                        vFuncionesGenericas.Add(fg);
                     }
+
+                    fg.ID_FUNCION_GENERICA = int.Parse(item.Attribute("ID_PUESTO_FUNCION").Value);
+                    fg.NB_FUNCION_GENERICA = item.Attribute("NB_PUESTO_FUNCION").Value;
+
+                    vFuncionesGenericas.Add(fg);
+
                 }
 
                 foreach (E_COMPETENCIAS item in vListaCompetencias.Where(n => n.ID_PUESTO_FUNCION != 0))

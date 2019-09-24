@@ -269,6 +269,7 @@
     <Content Include="Administracion\ReporteEmpleadoCamposExtra.aspx" />
     <Content Include="Administracion\ReporteEntrevistasSeleccionados.aspx" />
     <Content Include="Administracion\ReportePerfilEmpleado.aspx" />
+    <Content Include="Administracion\ReporteResponsabilidadPuesto.aspx" />
     <Content Include="Administracion\ReportesCompetenciasLaborales.aspx" />
     <Content Include="Administracion\ReporteSolicitudEmpleo.aspx" />
     <Content Include="Administracion\ReportesSueldoEmpleado.aspx" />
@@ -1138,6 +1139,13 @@
     </Compile>
     <Compile Include="Administracion\ReportePerfilEmpleado.aspx.designer.cs">
       <DependentUpon>ReportePerfilEmpleado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\ReporteResponsabilidadPuesto.aspx.cs">
+      <DependentUpon>ReporteResponsabilidadPuesto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administracion\ReporteResponsabilidadPuesto.aspx.designer.cs">
+      <DependentUpon>ReporteResponsabilidadPuesto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administracion\ReportesCompetenciasLaborales.aspx.cs">
       <DependentUpon>ReportesCompetenciasLaborales.aspx</DependentUpon>
