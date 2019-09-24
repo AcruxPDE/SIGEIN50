@@ -18,6 +18,10 @@
             GetRadWindow().close();
         }
 
+        function OpenSelectionWindowCP() {
+            openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionCP.aspx", "winSeleccion", "Selección de Código Postal")
+        }
+
         function OpenSelectionWindow() {
             openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionEstado.aspx", "winSeleccion", "Selección de Estado")
         }
@@ -38,15 +42,84 @@
 
         function useDataFromChild(pData) {
             if (pData != null) {
+
                 var vSelectedData = pData[0];
                 var list;
+
+                console.log(vSelectedData);
+
                 switch (vSelectedData.clTipoCatalogo) {
+
+                    case "CODIGOPOSTAL":
+                        
+                        //ACTUALIZA CODIGO POSTAL
+                        listCP = $find("<%=lstCodigoPostal.ClientID %>");
+                        listCP.trackChanges();
+                        var items = listCP.get_items();
+                        items.clear();
+                      
+                        var item = new Telerik.Web.UI.RadListBoxItem();
+                        item.set_text(vSelectedData.nbCP);
+                        item.set_value(vSelectedData.clColonia);
+                        item.set_selected(true);
+                        items.add(item);
+                        
+                        listCP.commitChanges();
+
+                        //ACTUALIZA ESTADO
+                        listEstado = $find("<%=lstEstado.ClientID %>");
+                        listEstado.trackChanges();
+                        var items = listEstado.get_items();
+                        items.clear();
+
+                        var item = new Telerik.Web.UI.RadListBoxItem();
+                        item.set_text(vSelectedData.nbEstado);
+                        item.set_value(vSelectedData.clEstado);
+                        item.set_selected(true);
+                        items.add(item);
+
+                        listEstado.commitChanges();
+
+                        //ACTUALIZA MUNICIPIO
+                        listMunicipio = $find("<%=lstMunicipio.ClientID %>");
+                        listMunicipio.trackChanges();
+                        var items = listMunicipio.get_items();
+                        items.clear();
+
+                        var item = new Telerik.Web.UI.RadListBoxItem();
+                        item.set_text(vSelectedData.nbMunicipio);
+                        item.set_value(vSelectedData.clMunicipio);
+                        item.set_selected(true);
+                        items.add(item);
+
+                        listMunicipio.commitChanges();
+
+                        //ACTUALIZA COLONIA
+ 
+                        listColonia = $find("<%=lstColonia.ClientID %>");
+                        listColonia.trackChanges();
+                        var items = listColonia.get_items();
+                        items.clear();
+
+                        var item = new Telerik.Web.UI.RadListBoxItem();
+                        item.set_text(vSelectedData.nbColonia);
+                        item.set_value(vSelectedData.clColonia);
+                        item.set_selected(true);
+                        items.add(item);
+
+                        listColonia.commitChanges();
+
+                        break;
+
                     case "ESTADO":
                         list = $find("<%=lstEstado.ClientID %>");
                         listMunicipio = $find("<%=lstMunicipio.ClientID %>");
                         listColonia = $find("<%=lstColonia.ClientID %>");
 
                         var itemEstado = list.getItem(0);
+
+                        console.log(list.getItem(0));
+                        console.log(vSelectedData.nbDato);
 
                         if (vSelectedData.nbDato != itemEstado.get_text()) {
                             var item = listMunicipio.getItem(0);
@@ -86,10 +159,12 @@
                 }
 
                 if (list != undefined) {
+                    
                     list.trackChanges();
 
                     var items = list.get_items();
                     items.clear();
+
 
                     var item = new Telerik.Web.UI.RadListBoxItem();
                     item.set_text(vSelectedData.nbDato);
@@ -108,9 +183,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
 
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
-    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
-
-
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest" DefaultLoadingPanelID="RadAjaxLoadingPanel1">
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="cmbEstados">
                 <UpdatedControls>
@@ -173,6 +246,18 @@
                 ControlToValidate="txtNombre"
                 ErrorMessage="Campo Obligatorio">
             </asp:RequiredFieldValidator>
+        </div>
+    </div> 
+    
+    <div class="ctrlBasico">
+        <div class="divControlIzquierda">
+            <label id="Label1" name="lblEstado" runat="server">Código Postal:</label>
+        </div>
+        <div class="divControlDerecha">
+
+            <telerik:RadListBox ID="lstCodigoPostal" Width="300" runat="server" OnClientItemDoubleClicking="OpenSelectionWindowCP" ValidationGroup="vgCodigoPostal"></telerik:RadListBox>
+            <telerik:RadButton ID="btnBuscarCodigoPostal" runat="server" Text="B" OnClientClicked="OpenSelectionWindowCP" AutoPostBack="false" ValidationGroup="vgCodigoPostal"></telerik:RadButton>
+
         </div>
     </div>
 
@@ -285,35 +370,6 @@
         </div>
     </div>
 
-
-    <div style="clear: both;" />
-    <div class="ctrlBasico">
-        <div class="divControlIzquierda">
-            <label id="lblCP"
-                name="lblCP"
-                runat="server">
-                Código Postal:</label>
-        </div>
-
-        <div class="divControlDerecha">
-            <telerik:RadTextBox
-                ID="txtCP"
-                runat="server"
-                Width="130px"
-                MaxLength="1000">
-            </telerik:RadTextBox>
-            <asp:RequiredFieldValidator
-                Display="Dynamic"
-                CssClass="validacion"
-                ID="RequiredFieldValidator8"
-                runat="server"
-                Font-Names="Arial"
-                Font-Size="Small"
-                ControlToValidate="txtCP"
-                ErrorMessage="Campo Obligatorio">
-            </asp:RequiredFieldValidator>
-        </div>
-    </div>
 
     <div class="ctrlBasico" style="clear: both;">
         <div class="divControlIzquierda" style="width: 250px !important">

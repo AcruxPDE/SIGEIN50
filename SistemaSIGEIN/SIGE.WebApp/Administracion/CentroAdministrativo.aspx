@@ -6,7 +6,7 @@
             function AbrirVentana()
             {
                 var oWnd = radopen("VentanaCentroAdministrativo.aspx", "winCentroAdministrativo");
-                oWnd.set_title("Nuevo Centro administrativo de trabajo");
+                oWnd.set_title("Agregar centro administrativo de trabajo");
             }
 
             var idCentroAdmvo = "";
@@ -28,7 +28,7 @@
                 obtenerIdFila();
                 if (idCentroAdmvo != "") {
                     var oWnd = radopen("VentanaCentroAdministrativo.aspx?&ID=" + idCentroAdmvo , "winCentroAdministrativo");
-                    oWnd.set_title("Editar Centro administrativo de trabajo");
+                    oWnd.set_title("Editar centro administrativo de trabajo");
                 } else {
                     radalert("No has seleccionado un registro.", 350, 148, "Aviso");
                 }
@@ -70,7 +70,7 @@
                           var callBackFunction = Function.createDelegate(sender, function (shouldSubmit)
                           { if (shouldSubmit) { this.click(); } });
 
-                          radconfirm('¿Deseas eliminar el centro administrativo' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
+                          radconfirm('¿Deseas eliminar el centro administrativo ' + CELL_NOMBRE.innerHTML + '?, este proceso no podrá revertirse.', callBackFunction, 400, 170, null, "Aviso");
                           args.set_cancel(true);
                       }
                   } else {
@@ -168,7 +168,7 @@
             runat="server" 
             name="btnNuevo" 
             AutoPostBack="false" 
-            Text="Nuevo" 
+            Text="Agregar" 
             OnClientClicked="AbrirVentana"
             ></telerik:RadButton>
     </div>
@@ -220,8 +220,8 @@
                 ID="winSeleccion" 
                 runat="server" 
                 Title="Seleccion" 
-                Height="620px" 
-                Width="480px" 
+                Height="800px" 
+                Width="1200px" 
                 VisibleStatusbar="false" 
                 VisibleTitlebar="true" 
                 ShowContentDuringLoad="false" 

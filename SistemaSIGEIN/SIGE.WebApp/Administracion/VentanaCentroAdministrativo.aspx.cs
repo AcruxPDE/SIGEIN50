@@ -32,6 +32,7 @@ namespace SIGE.WebApp.Administracion
         RadListBoxItem vNoSeleccionadoEstado = new RadListBoxItem("No seleccionado", String.Empty);
         RadListBoxItem vNoSeleccionadoMunicipio = new RadListBoxItem("No seleccionado", String.Empty);
         RadListBoxItem vNoSeleccionadoColonia = new RadListBoxItem("No seleccionado", String.Empty);
+        RadListBoxItem vNoSeleccionadoCodigoPostal = new RadListBoxItem("No seleccionado", String.Empty);
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -44,6 +45,7 @@ namespace SIGE.WebApp.Administracion
                 vNoSeleccionadoEstado.Selected = true;
                 vNoSeleccionadoMunicipio.Selected = true;
                 vNoSeleccionadoColonia.Selected = true;
+                vNoSeleccionadoCodigoPostal.Selected = true;
 
                 cmbRegistroPatronal.DataSource = null;
                 listRegistrosPatronales = nCentroAdministrativo.ObtieneRegistroPatronal();
@@ -62,10 +64,14 @@ namespace SIGE.WebApp.Administracion
                     txtCalle.Text = vCentroAdmvo.NB_CALLE;
                     txtNoExt.Text = vCentroAdmvo.NB_NO_EXTERIOR;
                     txtNoInt.Text = vCentroAdmvo.NB_NO_INTERIOR;
-                    txtCP.Text = vCentroAdmvo.CL_CODIGO_POSTAL;
+                    String vnCP = vCentroAdmvo.CL_CODIGO_POSTAL;
                     String vnEstado = vCentroAdmvo.NB_ESTADO;
                     String vnMunicipio = vCentroAdmvo.NB_MUNICIPIO;
                     String vnColonia = vCentroAdmvo.NB_COLONIA;
+                    cmbRegistroPatronal.SelectedValue = vCentroAdmvo.ID_REGISTRO_PATRONAL.ToString();
+
+                    lstCodigoPostal.Items.Add((vnCP != null) ? new RadListBoxItem(vCentroAdmvo.CL_CODIGO_POSTAL, vCentroAdmvo.CL_CODIGO_POSTAL) : vNoSeleccionadoCodigoPostal);
+                    lstCodigoPostal.Items.FirstOrDefault().Selected = true;
 
                     lstEstado.Items.Add((vnEstado != null) ? new RadListBoxItem(vCentroAdmvo.NB_ESTADO, vCentroAdmvo.CL_ESTADO) : vNoSeleccionadoEstado);
                     lstEstado.Items.FirstOrDefault().Selected = true;
@@ -85,6 +91,7 @@ namespace SIGE.WebApp.Administracion
                     lstEstado.Items.Add(vNoSeleccionadoEstado);
                     lstMunicipio.Items.Add(vNoSeleccionadoMunicipio);
                     lstColonia.Items.Add(vNoSeleccionadoColonia);
+                    lstCodigoPostal.Items.Add(vNoSeleccionadoCodigoPostal);
                 }
 
             }
@@ -107,6 +114,7 @@ namespace SIGE.WebApp.Administracion
             String vNbMunicipio = "";
             String vNbColonia = "";
 
+
             E_CENTROS_ADMVOS vCentrosAdmvo = new E_CENTROS_ADMVOS();
 
             vCentrosAdmvo.ID_CENTRO_ADMVO = vIdCentroAdmvo;
@@ -115,7 +123,15 @@ namespace SIGE.WebApp.Administracion
             vCentrosAdmvo.NB_CALLE = txtCalle.Text;
             vCentrosAdmvo.NB_NO_EXTERIOR = txtNoExt.Text;
             vCentrosAdmvo.NB_NO_INTERIOR = txtNoInt.Text;
-            vCentrosAdmvo.CL_CODIGO_POSTAL = txtCP.Text;
+            vCentrosAdmvo.ID_REGISTRO_PATRONAL = Guid.Parse(cmbRegistroPatronal.SelectedValue.ToString());
+
+             cmbRegistroPatronal.Text.ToString();
+
+
+            foreach (RadListBoxItem item in lstCodigoPostal.Items)
+            {
+                vCentrosAdmvo.CL_CODIGO_POSTAL = item.Text; 
+            }
 
             foreach (RadListBoxItem item in lstEstado.Items)
             {
@@ -124,7 +140,7 @@ namespace SIGE.WebApp.Administracion
                 vCentrosAdmvo.CL_ESTADO = vClEstado;
                 vCentrosAdmvo.NB_ESTADO = vNbEstado;
             }
-
+            
             foreach (RadListBoxItem item in lstMunicipio.Items)
             {
                 vNbMunicipio = item.Text;
@@ -138,6 +154,7 @@ namespace SIGE.WebApp.Administracion
                 vNbColonia = item.Text;
                 vCentrosAdmvo.NB_COLONIA = vNbColonia;
             }
+
             CentroAdministrativoNegocio nCentroAdministrativo = new CentroAdministrativoNegocio();
             E_RESULTADO vResultado = nCentroAdministrativo.InsertaActualizaCCentroAdmvo(usuario: usuario, programa: programa, pClTipoOperacion: vTipoTransaccion, vCCentroAdmvo: vCentrosAdmvo);
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
@@ -147,6 +164,11 @@ namespace SIGE.WebApp.Administracion
         protected void btnCancelarCentroAdmvo_Click(object sender, EventArgs e)
         {
             Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "closeWindow(0);", true);
+        }
+
+        protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
+        {
+
         }
     }
 }

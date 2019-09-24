@@ -4266,7 +4266,8 @@ namespace SIGE.Entidades
             var pIN_NB_PROGRAMA_CREAParameter = pIN_NB_PROGRAMA_CREA != null ?
                 new ObjectParameter("PIN_NB_PROGRAMA_CREA", pIN_NB_PROGRAMA_CREA) :
                 new ObjectParameter("PIN_NB_PROGRAMA_CREA", typeof(string));
-    
+
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPE_ELIMINA_CENTRO_ADMVO", xML_RESULTADO, pIN_ID_CENTRO_ADMVOParameter, pIN_CL_USUARIO_APP_CREAParameter, pIN_NB_PROGRAMA_CREAParameter);
         }
     
