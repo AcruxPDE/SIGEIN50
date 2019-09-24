@@ -277,9 +277,10 @@ namespace SIGE.WebApp.Administracion
         protected void CargaItemsCatalogoValor()
         {
             CatalogoValorNegocio nCatalogoValor = new CatalogoValorNegocio();
-            List<SPE_OBTIENE_C_CATALOGO_VALOR_Result> vCatalogoValor = nCatalogoValor.Obtener_C_CATALOGO_VALOR();
+            List<SPE_OBTIENE_C_CATALOGO_VALOR_Result> vCatalogoValor = nCatalogoValor.Obtener_C_CATALOGO_VALOR(ID_CATALOGO_LISTA: int.Parse(cmbComboboxCatalogo.SelectedValue));
 
-            cmbComboboxDefault.DataSource = vCatalogoValor.Where(w => w.ID_CATALOGO_LISTA.Equals(int.Parse(cmbComboboxCatalogo.SelectedValue)));
+            cmbComboboxDefault.ClearSelection();
+            cmbComboboxDefault.DataSource = vCatalogoValor;
             cmbComboboxDefault.DataTextField = "NB_CATALOGO_VALOR";
             cmbComboboxDefault.DataValueField = "CL_CATALOGO_VALOR";
             cmbComboboxDefault.DataBind();
