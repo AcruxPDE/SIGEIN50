@@ -120,6 +120,7 @@
     <Compile Include="Administracion\E_REGISTRO_PATRONAL.cs" />
     <Compile Include="Administracion\E_REPORTE_EMPLEADO.cs" />
     <Compile Include="Administracion\E_REQUISICION.cs" />
+    <Compile Include="Administracion\E_RESPONSABILIDAD.cs" />
     <Compile Include="Administracion\E_RIESGO_PUESTO.cs" />
     <Compile Include="Administracion\E_ROL.cs" />
     <Compile Include="Administracion\E_ROL_FUNCION.cs" />
