@@ -841,7 +841,7 @@
                         </div>
                         <div style="clear: both; height: 10px;"></div>
                         <div class="ctrlBasico">
-                            <telerik:RadButton ID="btnAgregarMeta" runat="server" name="btnAgregarMeta" AutoPostBack="false" Text="Agregar meta" OnClientClicked="OpenAgregarMetasWindow" Enabled="false" ToolTip="Selecciona esta opción si lo que deseas es dar de alta una meta."></telerik:RadButton>
+                            <telerik:RadButton ID="btnAgregarMeta" runat="server" name="btnAgregarMeta" AutoPostBack="false" Text="Agregar" OnClientClicked="OpenAgregarMetasWindow" Enabled="false" ToolTip="Selecciona esta opción si lo que deseas es dar de alta una meta."></telerik:RadButton>
                         </div>
                         <div class="ctrlBasico">
                             <telerik:RadButton ID="btnActivarMetas" runat="server" AutoPostBack="true" Text="Activar" OnClick="btnActivarMetas_Click"></telerik:RadButton>

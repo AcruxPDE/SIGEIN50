@@ -71,7 +71,7 @@
                 <Columns>
                     <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="130" FilterControlWidth="60" HeaderText="Clave" DataField="CL_INTRUCTOR" UniqueName="CL_INTRUCTOR"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" FilterControlWidth="320" HeaderText="Nombre" DataField="NB_INSTRUCTOR" UniqueName="NB_INSTRUCTOR"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" FilterControlWidth="320" HeaderText="Nombre" DataField="NB_NOMBRE_INSTRUCTOR" UniqueName="NB_NOMBRE_INSTRUCTOR"></telerik:GridBoundColumn>
                 </Columns>
             </MasterTableView>
         </telerik:RadGrid>
