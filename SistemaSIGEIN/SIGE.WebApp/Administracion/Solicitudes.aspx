@@ -356,7 +356,7 @@
                     AllowSorting="true"
                     HeaderStyle-Font-Bold="true"
                     AllowMultiRowSelection="true"
-                    OnItemDataBound="grdSolicitudes_ItemDataBound">
+                    OnItemDataBound="grdSolicitudes_ItemDataBound" Width="6378px">
                     <ClientSettings>
                         <Scrolling UseStaticHeaders="true" AllowScroll="true" />
                         <Selecting AllowRowSelect="true" />

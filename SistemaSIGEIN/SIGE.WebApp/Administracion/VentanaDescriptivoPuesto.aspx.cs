@@ -294,7 +294,8 @@ namespace SIGE.WebApp.Administracion
             {
                 txtNombreCorto.Text = vDescriptivo.CL_PUESTO;
                 txtDescripcionPuesto.Text = vDescriptivo.NB_PUESTO;
-                txtNoPlazas.Value = (double?)vDescriptivo.NO_PLAZAS;
+                //txtNoPlazas.Value = (double?)vDescriptivo.NO_PLAZAS;
+                txtNoPlazas.Text = vDescriptivo.NO_PLAZAS.ToString();
 
                 txtRangoEdadMin.Value = vDescriptivo.NO_EDAD_MINIMA;
                 txtRangoEdadMax.Value = vDescriptivo.NO_EDAD_MAXIMA;

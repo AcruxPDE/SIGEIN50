@@ -567,7 +567,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
-<%--    <telerik:RadToolTipManager ID="rtmEvaluacion" runat="server" AutoTooltipify="true" BackColor="WhiteSmoke" RelativeTo="Element"
+    <%--    <telerik:RadToolTipManager ID="rtmEvaluacion" runat="server" AutoTooltipify="true" BackColor="WhiteSmoke" RelativeTo="Element"
         AutoCloseDelay="60000" Position="TopCenter" Width="300" HideEvent="LeaveTargetAndToolTip">
     </telerik:RadToolTipManager>--%>
     <telerik:RadAjaxLoadingPanel ID="ralpEntrevista" runat="server"></telerik:RadAjaxLoadingPanel>
@@ -783,7 +783,7 @@
             <telerik:RadPane ID="rpBotones" runat="server" Width="220px" Height="100%">
                 <telerik:RadTabStrip ID="tbProcesoSeleccion" runat="server" Align="Right" SelectedIndex="0" OnClientTabSelected="TabSelected" Width="100%" MultiPageID="mpgProcesoSeleccion" Orientation="VerticalLeft" CssClass="divControlDerecha">
                     <Tabs>
-                        <telerik:RadTab runat="server" Text="Estatus del participante"></telerik:RadTab>
+                        <telerik:RadTab runat="server" Text="Estatus del participante" Selected="True"></telerik:RadTab>
                         <telerik:RadTab runat="server" Text="Registro de entrevistas"></telerik:RadTab>
                         <telerik:RadTab runat="server" Text="Referencias"></telerik:RadTab>
                         <telerik:RadTab runat="server" Text="Competencias del puesto" Visible="false"></telerik:RadTab>
@@ -2161,7 +2161,7 @@
                                                                         <Items>
                                                                             <telerik:RadComboBoxItem Text="Institución gubernamental" Value="GOBIERNO" />
                                                                             <telerik:RadComboBoxItem Text="Iniciativa privada" Value="PRIVADA" />
-                                                                            <telerik:RadComboBoxItem Text="Por su cuenta" Value="PROPRIO" />
+                                                                            <%--<telerik:RadComboBoxItem Text="Por su cuenta" Value="PROPRIO" />--%>
                                                                             <telerik:RadComboBoxItem Text="Otros" Value="OTRO" />
                                                                         </Items>
                                                                     </telerik:RadComboBox>
