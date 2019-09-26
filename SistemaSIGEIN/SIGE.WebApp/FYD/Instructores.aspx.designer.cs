@@ -22,6 +22,15 @@ namespace SIGE.WebApp.FYD {
         protected global::Telerik.Web.UI.RadAjaxLoadingPanel RadAjaxLoadingPanel2;
         
         /// <summary>
+        /// RamAjaxLoadingPanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadAjaxManager RamAjaxLoadingPanel2;
+        
+        /// <summary>
         /// splInstructores control.
         /// </summary>
         /// <remarks>
