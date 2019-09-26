@@ -271,7 +271,7 @@
             <telerik:RadPane ID="rpSolicitud" runat="server">
                 <telerik:RadTabStrip ID="tabSolicitud" runat="server" SelectedIndex="0" MultiPageID="mpgSolicitud">
                     <Tabs>
-                        <telerik:RadTab Text="Personal"></telerik:RadTab>
+                        <telerik:RadTab Text="Personal" Selected="True"></telerik:RadTab>
                         <telerik:RadTab Text="Familiar"></telerik:RadTab>
                         <telerik:RadTab Text="Académica"></telerik:RadTab>
                         <telerik:RadTab Text="Laboral"></telerik:RadTab>
