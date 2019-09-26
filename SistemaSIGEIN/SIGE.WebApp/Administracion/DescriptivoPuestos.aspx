@@ -251,6 +251,7 @@
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnEliminar">
                 <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="btnEliminar" UpdatePanelHeight="100%"></telerik:AjaxUpdatedControl>
                     <telerik:AjaxUpdatedControl ControlID="grdDescriptivo" UpdatePanelHeight="100%" LoadingPanelID="RadAjaxLoadingPanel2"></telerik:AjaxUpdatedControl>
                 </UpdatedControls>
             </telerik:AjaxSetting>
