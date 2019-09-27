@@ -370,6 +370,14 @@ namespace SIGE.Negocio.MetodologiaCompensacion
        }
         #endregion
 
+        #region OBTIENE EL NIVEL MAXIMO QUE SE PUEDE GENERAR DE ACUERDO A LOS PUESTOS
+        public int ObtieneMaximoNivel(int? ID_TABULADOR = null)
+        {
+            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
+            return operaciones.ObtieneMaximoNivel(ID_TABULADOR, ID_TABULADOR_NIVEL);
+        }
+        #endregion
+
         #region OBTIENE EL TOTAL DE NIVELES DE K_TABULADOR_NIVEL
         public int ObtieneTotalTabuladorNivel(int? ID_TABULADOR)
         {

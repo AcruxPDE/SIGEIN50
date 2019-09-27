@@ -362,6 +362,16 @@ namespace SIGE.AccesoDatos.Implementaciones.MetodologiaCompensacion
         }
         #endregion
 
+        #region OBTIENE EL NIVEL MAXIMO QUE SE PUEDE GENERAR DE ACUERDO A LOS PUESTOS
+        public int ObtieneMaximoNivel(int? ID_TABULADOR = null)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                return 1;
+            }
+        }
+        #endregion
+
         #region OBTIENE EL TOTAL DE NIVELES DE K_TABULADOR_NIVEL
         public int ObtieneTotalTabuladorNivel(int? ID_TABULADOR)
         {

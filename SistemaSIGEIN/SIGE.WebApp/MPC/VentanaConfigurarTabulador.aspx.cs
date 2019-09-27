@@ -685,7 +685,12 @@ namespace SIGE.WebApp.MPC
         protected void btnGuardarEmpleados_Click(object sender, EventArgs e)
         {
             if(grdEmpleadosSeleccionados.Items.Count != 0)
+            {
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, "Proceso Exitoso", E_TIPO_RESPUESTA_DB.SUCCESSFUL, 400, 150, pCallBackFunction: "onCloseWindowE");
+                TabuladoresNegocio nTabulador = new TabuladoresNegocio();
+                rntNivelesACrear = nTabulador.ObtieneMaximoNivel(ID_TABULADOR: vIdTabulador);
+            }
+                
             else
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, "Debes seleccionar por lo menos un empleado", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
         }
