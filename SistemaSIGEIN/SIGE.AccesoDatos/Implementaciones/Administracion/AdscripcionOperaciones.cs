@@ -5,14 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using SIGE.Entidades;
-//using SIGE.Entidades.Administracion;
-using System.Data;
-using System.Data.Objects;
-using System.Xml.Linq;
-using SIGE.Entidades.Administracion;
-using SIGE.Entidades.Externas;
-
 namespace SIGE.AccesoDatos.Implementaciones.Administracion
 {
     public class AdscripcionOperaciones
