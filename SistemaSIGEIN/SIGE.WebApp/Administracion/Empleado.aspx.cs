@@ -310,7 +310,7 @@ namespace SIGE.WebApp.Administracion
                 if (cmbRazonSocial.Text == string.Empty) { PrintMensaje("Razon social"); return false; }
                 if (cmbRegistroPatronal.Text == string.Empty) { PrintMensaje("Registro patronal"); return false; }
                 if (cmbPaquetePrestacionesNO.Text == string.Empty) { PrintMensaje("Paquete de prestaciones"); return false; }
-                if (txtFeReingreso.SelectedDate == null) { PrintMensaje("Fecha de reingreso"); return false; }
+                if (txtFeReingreso.SelectedDate == null) { PrintMensaje("Fecha de ingreso"); return false; }
                 if (txtFeAntiguedad.SelectedDate == null) { PrintMensaje("Fecha de antigüedad"); return false; }
                 if (txtSueldoDiario.Value.ToString() == string.Empty) { PrintMensaje("Sueldo diario"); return false; }
                 if (txtSueldoMensual.Value.ToString() == string.Empty) { PrintMensaje("Sueldo mensual"); return false; }
@@ -1058,7 +1058,7 @@ namespace SIGE.WebApp.Administracion
 
             if (txtFeReingreso.SelectedDate == null)
             {
-                mensaje = mensaje + "fecha de reingreso,";
+                mensaje = mensaje + "fecha de ingreso,";
                 bandera = false;
             }
 

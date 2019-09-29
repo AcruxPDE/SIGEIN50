@@ -411,16 +411,23 @@ namespace SIGE.WebApp.Administracion
                             E_RESULTADO vResultado = cNegocio.InsertaActualizaEmpleado(pIdEmpleado: vIdEmpleado, pEmpleado: vEmpleadoNominaDo, pClUsuario: vClUsuario, pNbPrograma: vNbPrograma, pClTipoTransaccion: vClTipoTransaccion);
                             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
 
-                            if (vClTipoTransaccion == "I" && vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals("ID_EMPLEADO")).FirstOrDefault().DS_MENSAJE.ToString() != "0")
+                            if (vClTipoTransaccion == "I" && vMensaje == "Proceso exitoso")
                                 vIdEmpleado = int.Parse(vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals("ID_EMPLEADO")).FirstOrDefault().DS_MENSAJE.ToString());
+
+                            if (vMensaje == "Proceso exitoso")
+                            {
+                                txtClEmpleado.Enabled = false;
+                                txtNombre.Enabled = false;
+                                txtPaterno.Enabled = false;
+                                txtMaterno.Enabled = false;
+                                btnMasDatos.Enabled = true;
+                            }
 
                             if (closeWindows)
                                 UtilMensajes.MensajeResultadoDB(rwMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "CloseWindowConfig");
                             else
-                            {
                                 UtilMensajes.MensajeResultadoDB(rwMensaje, vMensaje, vResultado.CL_TIPO_ERROR, 400, 150, pCallBackFunction: "UpdateId(" + vIdEmpleado.ToString() + ")");
-                                btnMasDatos.Enabled = true;
-                            }
+                                
                         }
 
                     }

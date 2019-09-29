@@ -139,42 +139,6 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadTextBox txtMaterno;
         
         /// <summary>
-        /// dvDispNO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadAjaxPanel dvDispNO;
-        
-        /// <summary>
-        /// RadLabel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadLabel RadLabel1;
-        
-        /// <summary>
-        /// btnNOTrue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnNOTrue;
-        
-        /// <summary>
-        /// btnNOFalse control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton btnNOFalse;
-        
-        /// <summary>
         /// dvDispDO control.
         /// </summary>
         /// <remarks>
@@ -209,6 +173,42 @@ namespace SIGE.WebApp.Administracion {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnDOFalse;
+        
+        /// <summary>
+        /// dvDispNO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadAjaxPanel dvDispNO;
+        
+        /// <summary>
+        /// RadLabel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadLabel RadLabel1;
+        
+        /// <summary>
+        /// btnNOTrue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnNOTrue;
+        
+        /// <summary>
+        /// btnNOFalse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton btnNOFalse;
         
         /// <summary>
         /// rapPuestoDO control.
