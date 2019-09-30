@@ -260,6 +260,7 @@
     <Compile Include="IntegracionDePersonal\E_REPORTE_RESULTADO_BAREMOS.cs" />
     <Compile Include="IntegracionDePersonal\E_RESULTADOS_PRUEBAS_REPORTE.cs" />
     <Compile Include="MetodologiaCompensacion\E_CONSULTA_SUELDOS.cs" />
+    <Compile Include="MetodologiaCompensacion\E_NIVEL.cs" />
     <Compile Include="MetodologiaCompensacion\E_REPORTE_TABULADOR_SUELDOS.cs" />
     <Compile Include="Modulos de apoyo\E_OBTIENE_C_CONSULTA_INTELIGENTE.cs" />
     <Compile Include="PuntoDeEncuentro\E_OBTIENE_EMPLEADOS_GENERA_CONTRASENA.cs" />

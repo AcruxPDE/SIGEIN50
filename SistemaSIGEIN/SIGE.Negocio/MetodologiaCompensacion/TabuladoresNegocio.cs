@@ -371,10 +371,10 @@ namespace SIGE.Negocio.MetodologiaCompensacion
         #endregion
 
         #region OBTIENE EL NIVEL MAXIMO QUE SE PUEDE GENERAR DE ACUERDO A LOS PUESTOS
-        public int ObtieneMaximoNivel(int? ID_TABULADOR = null)
+        public List<int> ObtieneMaximoNivel(int? ID_TABULADOR = null)
         {
             TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
-            return operaciones.ObtieneMaximoNivel(ID_TABULADOR, ID_TABULADOR_NIVEL);
+            return operaciones.ObtieneMaximoNivel(ID_TABULADOR);
         }
         #endregion
 
@@ -457,100 +457,109 @@ namespace SIGE.Negocio.MetodologiaCompensacion
            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
            return operaciones.ObtenerEmpleadosPlaneacionIncrementos(ID_TABULADOR, pID_ROL, pFG_PLANECAION);
        }
-       #endregion
+        #endregion
 
-       //#region OBTIENE CONSULTA TABULADOR SUELDOS
-       //public List<SPE_OBTIENE_PLANEACION_INCREMENTOS_Result> ObtieneTabuladorSueldos(int? ID_TABULADOR = null, ref List<E_PLANEACION_INCREMENTOS> vLstTabuladorSueldos)
-       //{
-       //    TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
-       //    //return operaciones.ObtenerPlaneacionIncrementos(ID_TABULADOR);
+        #region OBTIENE LOS VALORES DE VALUACION
+        public List<decimal> ObtieneValoresValuacion(int? ID_TABULADOR = null)
+        {
+            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
+            return operaciones.ObtieneValoresValuacion(ID_TABULADOR);
+        }       
 
-       //    List<SPE_OBTIENE_PLANEACION_INCREMENTOS_Result> vListaTabuladorSueldos = new List<SPE_OBTIENE_PLANEACION_INCREMENTOS_Result>();
-       //    //string vDivsCeldasChk = "<div class=\"divCheckbox\"> <input type=\"checkbox\" runat=\"server\" class=\"{4}\" id=\"{2}\" value=\"{2}\" {3}> </div>  <div class=\"divPorcentaje\">{0:N2}</div><div class=\"{1}\">&nbsp;</div>";
-       //    string vNbPorcentaje = "";
-       //    string vDivsCeldasPo = "<table class=\"tablaColor\"> " +
-       //        "<tr> " +
-       //        "<td class=\"porcentaje\"> " +
-       //        "<div class=\"divPorcentaje\">{0}</div> " +
-       //        "</td> " +
-       //        "<td class=\"color\"> " +
-       //        "<div class=\"{1}\">&nbsp;</div> " +
-       //        "</td> </tr> </table>";
-       //    string vClaseDivs = "";
-       //    string vClaseColor = "";
+        #endregion
 
-       //    DataTable vDtPivot = new DataTable();
+        //#region OBTIENE CONSULTA TABULADOR SUELDOS
+        //public List<SPE_OBTIENE_PLANEACION_INCREMENTOS_Result> ObtieneTabuladorSueldos(int? ID_TABULADOR = null, ref List<E_PLANEACION_INCREMENTOS> vLstTabuladorSueldos)
+        //{
+        //    TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
+        //    //return operaciones.ObtenerPlaneacionIncrementos(ID_TABULADOR);
 
-       //    vListaTabuladorSueldos = operaciones.ObtenerPlaneacionIncrementos(ID_TABULADOR);
-       //    vLstTabuladorSueldos = vListaTabuladorSueldos.Select(s => new E_PLANEACION_INCREMENTOS
-       //    {
-       //        ID_TABULADOR_EMPLEADO = s.ID_TABULADOR_EMPLEADO,
-       //        NB_TABULADOR_NIVEL = s.NB_TABULADOR_NIVEL,
-       //        CL_PUESTO = s.CL_PUESTO,
-       //        NB_PUESTO = s.NB_PUESTO,
-       //        CL_EMPLEADO = s.CL_EMPLEADO,
-       //        NB_EMPLEADO = s.NOMBRE,
-       //        MN_MINIMO_MINIMO = s.MN_MINIMO_MINIMO,
-       //        MN_MAXIMO_MINIMO = s.MN_MAXIMO_MINIMO,
-       //        MN_MINIMO_PRIMER_CUARTIL = s.MN_MINIMO_PRIMER_CUARTIL,
-       //        MN_MAXIMO_PRIMER_CUARTIL = s.MN_MAXIMO_PRIMER_CUARTIL,
-       //        MN_MINIMO_MEDIO = s.MN_MINIMO_MEDIO,
-       //        MN_MAXIMO_MEDIO = s.MN_MAXIMO_MEDIO,
-       //        MN_MINIMO_SEGUNDO_CUARTIL = s.MN_MINIMO_SEGUNDO_CUARTIL,
-       //        MN_MAXIMO_SEGUNDO_CUARTIL = s.MN_MAXIMO_SEGUNDO_CUARTIL,
-       //        MN_MAXIMO_MAXIMO = s.MN_MAXIMO_MAXIMO,
-       //        MN_MINIMO_MAXIMO = s.MN_MINIMO_MAXIMO,
-       //        MN_SUELDO_ORIGINAL = s.MN_SUELDO_ORIGINAL,
-       //        MN_SUELDO_NUEVO = s.MN_SUELDO_NUEVO,
-       //        MN_MINIMO = s.MN_MINIMO,
-       //        MN_MAXIMO = s.MN_MAXIMO,
-       //        INCREMENTO = Math.Abs(s.MN_SUELDO_NUEVO - s.MN_SUELDO_ORIGINAL),
-       //        NO_NIVEL = s.NO_NIVEL,
-       //        XML_CATEGORIAS = s.XML_CATEGORIA,
-       //        //CUARTIL_SELECCIONADO = vCuartilComparativo
-       //    }).ToList();
+        //    List<SPE_OBTIENE_PLANEACION_INCREMENTOS_Result> vListaTabuladorSueldos = new List<SPE_OBTIENE_PLANEACION_INCREMENTOS_Result>();
+        //    //string vDivsCeldasChk = "<div class=\"divCheckbox\"> <input type=\"checkbox\" runat=\"server\" class=\"{4}\" id=\"{2}\" value=\"{2}\" {3}> </div>  <div class=\"divPorcentaje\">{0:N2}</div><div class=\"{1}\">&nbsp;</div>";
+        //    string vNbPorcentaje = "";
+        //    string vDivsCeldasPo = "<table class=\"tablaColor\"> " +
+        //        "<tr> " +
+        //        "<td class=\"porcentaje\"> " +
+        //        "<div class=\"divPorcentaje\">{0}</div> " +
+        //        "</td> " +
+        //        "<td class=\"color\"> " +
+        //        "<div class=\"{1}\">&nbsp;</div> " +
+        //        "</td> </tr> </table>";
+        //    string vClaseDivs = "";
+        //    string vClaseColor = "";
 
-           
-       //    foreach (XElement vXmlSecuencia in .Elements("ITEM")){
-       //         lstCategoria.Add(new E_CATEGORIA
-       //         {
-       //             NO_CATEGORIA = UtilXML.ValorAtributo<int>(vXmlSecuencia.Attribute("NO_CATEGORIA")),
-       //             MN_MINIMO = UtilXML.ValorAtributo<decimal>(vXmlSecuencia.Attribute("MN_MINIMO")),
-       //             MN_PRIMER_CUARTIL = UtilXML.ValorAtributo<decimal>(vXmlSecuencia.Attribute("MN_PRIMER_CUARTIL")),
-       //             MN_MEDIO = UtilXML.ValorAtributo<decimal>(vXmlSecuencia.Attribute("MN_MEDIO")),
-       //             MN_SEGUNDO_CUARTIL = UtilXML.ValorAtributo<decimal>(vXmlSecuencia.Attribute("MN_SEGUNDO_CUARTIL")),
-       //             MN_MAXIMO = UtilXML.ValorAtributo<decimal>(vXmlSecuencia.Attribute("MN_MAXIMO"))
-       //         });
-       //     }
+        //    DataTable vDtPivot = new DataTable();
+
+        //    vListaTabuladorSueldos = operaciones.ObtenerPlaneacionIncrementos(ID_TABULADOR);
+        //    vLstTabuladorSueldos = vListaTabuladorSueldos.Select(s => new E_PLANEACION_INCREMENTOS
+        //    {
+        //        ID_TABULADOR_EMPLEADO = s.ID_TABULADOR_EMPLEADO,
+        //        NB_TABULADOR_NIVEL = s.NB_TABULADOR_NIVEL,
+        //        CL_PUESTO = s.CL_PUESTO,
+        //        NB_PUESTO = s.NB_PUESTO,
+        //        CL_EMPLEADO = s.CL_EMPLEADO,
+        //        NB_EMPLEADO = s.NOMBRE,
+        //        MN_MINIMO_MINIMO = s.MN_MINIMO_MINIMO,
+        //        MN_MAXIMO_MINIMO = s.MN_MAXIMO_MINIMO,
+        //        MN_MINIMO_PRIMER_CUARTIL = s.MN_MINIMO_PRIMER_CUARTIL,
+        //        MN_MAXIMO_PRIMER_CUARTIL = s.MN_MAXIMO_PRIMER_CUARTIL,
+        //        MN_MINIMO_MEDIO = s.MN_MINIMO_MEDIO,
+        //        MN_MAXIMO_MEDIO = s.MN_MAXIMO_MEDIO,
+        //        MN_MINIMO_SEGUNDO_CUARTIL = s.MN_MINIMO_SEGUNDO_CUARTIL,
+        //        MN_MAXIMO_SEGUNDO_CUARTIL = s.MN_MAXIMO_SEGUNDO_CUARTIL,
+        //        MN_MAXIMO_MAXIMO = s.MN_MAXIMO_MAXIMO,
+        //        MN_MINIMO_MAXIMO = s.MN_MINIMO_MAXIMO,
+        //        MN_SUELDO_ORIGINAL = s.MN_SUELDO_ORIGINAL,
+        //        MN_SUELDO_NUEVO = s.MN_SUELDO_NUEVO,
+        //        MN_MINIMO = s.MN_MINIMO,
+        //        MN_MAXIMO = s.MN_MAXIMO,
+        //        INCREMENTO = Math.Abs(s.MN_SUELDO_NUEVO - s.MN_SUELDO_ORIGINAL),
+        //        NO_NIVEL = s.NO_NIVEL,
+        //        XML_CATEGORIAS = s.XML_CATEGORIA,
+        //        //CUARTIL_SELECCIONADO = vCuartilComparativo
+        //    }).ToList();
 
 
-       //    vDtPivot.Columns.Add("ID_COMPETENCIA", typeof(int));
-       //    vDtPivot.Columns.Add("CL_COLOR", typeof(string));
-       //    vDtPivot.Columns.Add("NB_COMPETENCIA", typeof(string));
-       //    vDtPivot.Columns.Add("DS_COMPETENCIA", typeof(string));
-
-       //    var vLstEmpleados = (from a in vListaTabuladorSueldos select new { a.ID_TABULADOR_EMPLEADO}).Distinct().OrderBy(t => t.);
-       //    var vLstCompetencias = (from a in vListaTabuladorSueldos
-       //                            select new
-       //                            {
-       //                                a.ID_COMPETENCIA,
-       //                                a.CL_COLOR,
-       //                                a.NB_COMPETENCIA,
-       //                                a.DS_COMPETENCIA
-       //                            }).Distinct().OrderBy(t => t.ID_COMPETENCIA);
+        //    foreach (XElement vXmlSecuencia in .Elements("ITEM")){
+        //         lstCategoria.Add(new E_CATEGORIA
+        //         {
+        //             NO_CATEGORIA = UtilXML.ValorAtributo<int>(vXmlSecuencia.Attribute("NO_CATEGORIA")),
+        //             MN_MINIMO = UtilXML.ValorAtributo<decimal>(vXmlSecuencia.Attribute("MN_MINIMO")),
+        //             MN_PRIMER_CUARTIL = UtilXML.ValorAtributo<decimal>(vXmlSecuencia.Attribute("MN_PRIMER_CUARTIL")),
+        //             MN_MEDIO = UtilXML.ValorAtributo<decimal>(vXmlSecuencia.Attribute("MN_MEDIO")),
+        //             MN_SEGUNDO_CUARTIL = UtilXML.ValorAtributo<decimal>(vXmlSecuencia.Attribute("MN_SEGUNDO_CUARTIL")),
+        //             MN_MAXIMO = UtilXML.ValorAtributo<decimal>(vXmlSecuencia.Attribute("MN_MAXIMO"))
+        //         });
+        //     }
 
 
+        //    vDtPivot.Columns.Add("ID_COMPETENCIA", typeof(int));
+        //    vDtPivot.Columns.Add("CL_COLOR", typeof(string));
+        //    vDtPivot.Columns.Add("NB_COMPETENCIA", typeof(string));
+        //    vDtPivot.Columns.Add("DS_COMPETENCIA", typeof(string));
+
+        //    var vLstEmpleados = (from a in vListaTabuladorSueldos select new { a.ID_TABULADOR_EMPLEADO}).Distinct().OrderBy(t => t.);
+        //    var vLstCompetencias = (from a in vListaTabuladorSueldos
+        //                            select new
+        //                            {
+        //                                a.ID_COMPETENCIA,
+        //                                a.CL_COLOR,
+        //                                a.NB_COMPETENCIA,
+        //                                a.DS_COMPETENCIA
+        //                            }).Distinct().OrderBy(t => t.ID_COMPETENCIA);
 
 
 
 
 
 
-       //}
-       //#endregion
 
-       #region INSERTA ACTUALIZA NUEVO SUELDO
-       public E_RESULTADO InsertaActualizaNuevoSueldo(int ID_TABULADOR, string XML_CAMBIO_SUELDO,bool FG_CAMBIO_SUELDO, string CL_USUARIO, string NB_PROGRAMA)
+
+        //}
+        //#endregion
+
+        #region INSERTA ACTUALIZA NUEVO SUELDO
+        public E_RESULTADO InsertaActualizaNuevoSueldo(int ID_TABULADOR, string XML_CAMBIO_SUELDO,bool FG_CAMBIO_SUELDO, string CL_USUARIO, string NB_PROGRAMA)
        {
            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
            return UtilRespuesta.EnvioRespuesta(operaciones.InsertarActualizarNuevoSueldo(ID_TABULADOR, XML_CAMBIO_SUELDO,FG_CAMBIO_SUELDO, CL_USUARIO, NB_PROGRAMA));

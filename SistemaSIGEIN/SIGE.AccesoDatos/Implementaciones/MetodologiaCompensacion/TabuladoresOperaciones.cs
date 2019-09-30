@@ -363,11 +363,15 @@ namespace SIGE.AccesoDatos.Implementaciones.MetodologiaCompensacion
         #endregion
 
         #region OBTIENE EL NIVEL MAXIMO QUE SE PUEDE GENERAR DE ACUERDO A LOS PUESTOS
-        public int ObtieneMaximoNivel(int? ID_TABULADOR = null)
+        public List<int> ObtieneMaximoNivel(int? ID_TABULADOR = null)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return 1;
+                return context.Database.SqlQuery<int>("EXEC " +
+                    "MC.SPE_OBTIENE_TABLUADOR_MAXIMO_NIVEL " +
+                    "@PIN_ID_TABULADOR ",
+                    new SqlParameter("@PIN_ID_TABULADOR", (object)ID_TABULADOR ?? null)
+                ).ToList();
             }
         }
         #endregion
@@ -518,6 +522,20 @@ namespace SIGE.AccesoDatos.Implementaciones.MetodologiaCompensacion
                 ObjectParameter poutClaveRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
                 context.SPE_ACTUALIZA_NIVEL_PUESTO(poutClaveRetorno, ID_TABULADOR, CL_USUARIO, NB_PROGRAMA);
                 return XElement.Parse(poutClaveRetorno.Value.ToString());
+            }
+        }
+        #endregion
+
+        #region OBTIENE LOS VALORES DE VALUACION
+        public List<decimal> ObtieneValoresValuacion(int? ID_TABULADOR)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                return context.Database.SqlQuery<decimal>("EXEC " +
+                    "MC.SPE_OBTIENE_VALORES_VALUACION " +
+                    "@PIN_ID_TABULADOR ",
+                    new SqlParameter("@PIN_ID_TABULADOR", (object)ID_TABULADOR ?? DBNull.Value)
+                ).ToList();
             }
         }
         #endregion
