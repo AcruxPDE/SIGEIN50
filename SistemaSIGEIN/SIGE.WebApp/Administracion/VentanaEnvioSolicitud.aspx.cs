@@ -118,7 +118,7 @@ namespace SIGE.WebApp.Administracion
                     string vRespuesta = EnvioCorreo(builder.ToString(), vMensaje, "Solicitud empleo");
                     if (vRespuesta == "0")
                     {
-                        UtilMensajes.MensajeResultadoDB(rnMensaje, "Envio exitoso.", E_TIPO_RESPUESTA_DB.SUCCESSFUL, pCallBackFunction: "CloseWindow");
+                        UtilMensajes.MensajeResultadoDB(rnMensaje, "Proceso exitoso.", E_TIPO_RESPUESTA_DB.SUCCESSFUL, pCallBackFunction: "CloseWindow");
                     }
                     else
                     {

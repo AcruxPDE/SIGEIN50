@@ -116,7 +116,8 @@ namespace SIGE.WebApp.EO
 
             foreach (var item in oLstPeriodos)
             {
-                vDtPivot.Columns.Add(item.CL_TIPO_PERIODO, typeof(string));
+                if (!vDtPivot.Columns.Contains(item.CL_TIPO_PERIODO))
+                    vDtPivot.Columns.Add(item.CL_TIPO_PERIODO, typeof(string));
             }
 
             vDtPivot.Columns.Add("PR_CUMPLIMIENTO_EVALUADO", typeof(string));
