@@ -28,6 +28,7 @@ namespace SIGE.WebApp.Administracion
         RadListBoxItem vNoSeleccionadoEstado = new RadListBoxItem("No seleccionado", String.Empty);
         RadListBoxItem vNoSeleccionadoMunicipio = new RadListBoxItem("No seleccionado", String.Empty);
         RadListBoxItem vNoSeleccionadoColonia= new RadListBoxItem("No seleccionado", String.Empty);
+        RadListBoxItem vNoSeleccionadoCodigoPostal = new RadListBoxItem("No seleccionado", String.Empty);
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,7 +40,8 @@ namespace SIGE.WebApp.Administracion
                 vNoSeleccionadoEstado.Selected = true;
                 vNoSeleccionadoMunicipio.Selected = true;
                 vNoSeleccionadoColonia.Selected = true;
-     
+                vNoSeleccionadoCodigoPostal.Selected = true;
+
                 if (Request.QueryString["ID"] != null)
                 {
                     vIdCentroOptvo = new Guid(Request.QueryString["ID"]);
@@ -52,10 +54,14 @@ namespace SIGE.WebApp.Administracion
                     txtCalle.Text = vCentroOperativo.NB_CALLE;
                     txtNoExt.Text = vCentroOperativo.NB_NO_EXTERIOR;
                     txtNoInt.Text = vCentroOperativo.NB_NO_INTERIOR;
-                    txtCP.Text = vCentroOperativo.CL_CODIGO_POSTAL;
+                    //txtCP.Text = vCentroOperativo.CL_CODIGO_POSTAL;
+                    String vnCP = vCentroOperativo.CL_CODIGO_POSTAL;
                     String vnEstado = vCentroOperativo.NB_ESTADO;
                     String vnMunicipio = vCentroOperativo.NB_MUNICIPIO;
                     String vnColonia = vCentroOperativo.NB_COLONIA;
+
+                    lstCodigoPostal.Items.Add((vnCP != null) ? new RadListBoxItem(vCentroOperativo.CL_CODIGO_POSTAL, vCentroOperativo.CL_CODIGO_POSTAL) : vNoSeleccionadoCodigoPostal);
+                    lstCodigoPostal.Items.FirstOrDefault().Selected = true;
 
                     lstEstado.Items.Add((vnEstado != null) ? new RadListBoxItem(vCentroOperativo.NB_ESTADO, vCentroOperativo.CL_ESTADO) : vNoSeleccionadoEstado);
                     lstEstado.Items.FirstOrDefault().Selected = true;
@@ -73,6 +79,7 @@ namespace SIGE.WebApp.Administracion
                     lstEstado.Items.Add(vNoSeleccionadoEstado);
                     lstMunicipio.Items.Add(vNoSeleccionadoMunicipio);
                     lstColonia.Items.Add(vNoSeleccionadoColonia);
+                    lstCodigoPostal.Items.Add(vNoSeleccionadoCodigoPostal);
                 }
             }
         }
@@ -102,7 +109,13 @@ namespace SIGE.WebApp.Administracion
             vCentroOptvo.NB_CALLE = txtCalle.Text;
             vCentroOptvo.NB_NO_EXTERIOR = txtNoExt.Text;
             vCentroOptvo.NB_NO_INTERIOR = txtNoInt.Text;
-            vCentroOptvo.CL_CODIGO_POSTAL = txtCP.Text;
+            //vCentroOptvo.CL_CODIGO_POSTAL = txtCP.Text;
+
+
+            foreach (RadListBoxItem item in lstCodigoPostal.Items)
+            {
+                vCentroOptvo.CL_CODIGO_POSTAL = item.Text;
+            }
 
             foreach (RadListBoxItem item in lstEstado.Items)
             {

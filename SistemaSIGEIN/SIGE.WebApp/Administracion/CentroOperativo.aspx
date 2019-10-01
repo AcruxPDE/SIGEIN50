@@ -5,7 +5,7 @@
 
             function AbrirVentana() {
                  var oWnd = radopen("VentanaCentroOperativo.aspx", "winCentroOperativo");
-                oWnd.set_title("Nuevo Centro operativo de trabajo");
+                oWnd.set_title("Agregar centro operativo de trabajo");
             }
 
             function onCloseWindow(oWnd, args) {
@@ -31,7 +31,7 @@
                 obtenerIdFila();
                 if (idCentroOptvo != "") {
                     var oWnd = radopen("VentanaCentroOperativo.aspx?&ID=" + idCentroOptvo, "winCentroOperativo");
-                    oWnd.set_title("Editar Centro operativo de trabajo");
+                    oWnd.set_title("Editar centro operativo de trabajo");
                 } else {
                     radalert("No has seleccionado un registro.", 350, 148, "Aviso");
                 }
@@ -165,7 +165,7 @@
             runat="server" 
             name="btnNuevo" 
             AutoPostBack="false" 
-            Text="Nuevo" 
+            Text="Agregar" 
              Width="100" 
              OnClientClicked="AbrirVentana">
         </telerik:RadButton>
@@ -219,8 +219,8 @@
                 ID="winSeleccion" 
                 runat="server" 
                 Title="Estados" 
-                Height="620px" 
-                Width="480px" 
+                Height="600px" 
+                Width="1200px" 
                 VisibleStatusbar="false" 
                 VisibleTitlebar="true" 
                 ShowContentDuringLoad="false" 
