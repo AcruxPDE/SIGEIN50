@@ -24,6 +24,7 @@ namespace SIGE.WebApp.PDE
     {
         private string vClUsuario;
         private string vNbPrograma;
+        private string vClCliente;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
         private XElement SELECCIONEMPLEADOS { get; set; }
 
@@ -157,6 +158,7 @@ namespace SIGE.WebApp.PDE
 
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vClCliente = ContextoApp.Licencia.clCliente;
         }
         public void ObtenerUsuarios()
         {
@@ -265,7 +267,7 @@ namespace SIGE.WebApp.PDE
             GenerarContrasena();
             ConsultaEmpleado(txtClUsuario.Text);
 
-            vUsuario.CL_USUARIO = txtClUsuario.Text;
+            vUsuario.CL_USUARIO = vClCliente+""+txtClUsuario.Text;
             vUsuario.NB_USUARIO = txtNbUsuario.Text;
             vUsuario.NB_CORREO_ELECTRONICO = txtNbCorreoElectronico.Text;
             vUsuario.FG_ACTIVO = chkActivo.Checked;
