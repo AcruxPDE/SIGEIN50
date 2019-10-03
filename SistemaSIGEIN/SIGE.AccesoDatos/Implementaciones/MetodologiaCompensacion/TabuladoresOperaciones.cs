@@ -9,7 +9,7 @@ using System.Data.Objects;
 using System.Xml.Linq;
 using SIGE.Entidades.MetodologiaCompensacion;
 using System.Data.SqlClient;
-
+using System.Data;
 
 namespace SIGE.AccesoDatos.Implementaciones.MetodologiaCompensacion
 {
@@ -527,15 +527,44 @@ namespace SIGE.AccesoDatos.Implementaciones.MetodologiaCompensacion
         #endregion
 
         #region OBTIENE LOS VALORES DE VALUACION
-        public List<decimal> ObtieneValoresValuacion(int? ID_TABULADOR)
+        public List<E_NIVEL> ObtieneValoresValuacion(int? ID_TABULADOR)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.Database.SqlQuery<decimal>("EXEC " +
+                return context.Database.SqlQuery<E_NIVEL>("EXEC " +
                     "MC.SPE_OBTIENE_VALORES_VALUACION " +
                     "@PIN_ID_TABULADOR ",
                     new SqlParameter("@PIN_ID_TABULADOR", (object)ID_TABULADOR ?? DBNull.Value)
                 ).ToList();
+            }
+        }
+        #endregion
+
+        #region  INSERTA ACTUALIZA NIVELES TABULADOR
+        public XElement InsertarActualizarNivelesTabulador(int ID_TABULADOR, string XML_VALUACION, string CL_USUARIO, string NB_PROGRAMA)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                var pXmlResultado = new SqlParameter("@XML_RESULTADO", SqlDbType.Xml)
+                {
+                    Direction = ParameterDirection.Output
+                };
+
+                context.Database.ExecuteSqlCommand("EXEC " +
+                    "MC.SPE_INSERTA_ACTUALIZA_NIVELES_TABULADOR " +
+                    "@XML_RESULTADO OUTPUT, " +
+                    "@PIN_ID_TABULADOR, " +
+                    "@PIN_XML_VALUACION, " +
+                    "@PIN_CL_USUARIO, " +
+                    "@PIN_NB_PROGRAMA ",
+                    pXmlResultado,
+                    new SqlParameter("@PIN_ID_TABULADOR", (object)ID_TABULADOR ?? DBNull.Value),
+                    new SqlParameter("@PIN_XML_VALUACION", (object)XML_VALUACION ?? DBNull.Value),
+                    new SqlParameter("@PIN_CL_USUARIO", (object)CL_USUARIO ?? DBNull.Value),
+                    new SqlParameter("@PIN_NB_PROGRAMA", (object)NB_PROGRAMA ?? DBNull.Value)
+                );
+
+                return XElement.Parse(pXmlResultado.Value.ToString());
             }
         }
         #endregion

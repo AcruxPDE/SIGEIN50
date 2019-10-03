@@ -736,7 +736,7 @@ namespace SIGE.WebApp.MPC
                 rtsConfiguracion.Tabs[4].Selected = true;
                 vNivelesTabulador = int.Parse(rntNivelesACrear.Text);
                 grdNiveles.Rebind();
-                CalculaNiveles();
+                //CalculaNiveles();
             }
             else
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
@@ -765,7 +765,7 @@ namespace SIGE.WebApp.MPC
                 
             }
             else
-                GuardarConfiguracion();
+                CalculaNiveles();
 
         }
 
@@ -773,19 +773,20 @@ namespace SIGE.WebApp.MPC
         {
             int vNiveles = int.Parse(rntNivelesACrear.Text);
             int count = 0;
-            decimal[] vValuacion = new decimal[vNiveles];
             decimal vMinError;
 
             TabuladoresNegocio nTabulador = new TabuladoresNegocio();
             LevelCalculator calculator = new LevelCalculator(vNiveles, 10);
-            List<decimal> vPromedioValuacion = new List<decimal>();
+            List<E_NIVEL> vPromedioValuacion = new List<E_NIVEL>();
             List<E_NIVEL> vNivelesValuacion = new List<E_NIVEL>();
 
             vPromedioValuacion = nTabulador.ObtieneValoresValuacion(vIdTabulador);
 
-            foreach(decimal item in vPromedioValuacion)
+            decimal[] vValuacion = new decimal[vPromedioValuacion.Count];
+
+            foreach (E_NIVEL item in vPromedioValuacion)
             {
-                vValuacion[count] = item;
+                vValuacion[count] = decimal.Parse(item.NO_VALOR.ToString());
                 count++;
             }
 
@@ -795,15 +796,26 @@ namespace SIGE.WebApp.MPC
             //Asignación de niveles
             for (int index = 0; index < clusterAssigments.Length; index++)
             {
-                E_NIVEL nivel = new E_NIVEL();
-
-                nivel.NO_NIVEL = (vNiveles - clusterAssigments[index]);
-                nivel.NO_VALOR = vValuacion[index];
-
-                vNivelesValuacion.Add(nivel);
+                vPromedioValuacion[index].NO_NIVEL = (vNiveles - clusterAssigments[index]);
             }
 
+            GuardarConfiguracion();
+
+            XElement xValuaciones = new XElement("VALUACIONES");
             
+            foreach(E_NIVEL item in vPromedioValuacion)
+            {
+                XElement xValuacion = new XElement("VALUACION");
+
+                xValuacion.Add(new XAttribute("ID_PUESTO", item.ID_PUESTO));
+                xValuacion.Add(new XAttribute("NO_NIVEL", item.NO_NIVEL));
+                xValuacion.Add(new XAttribute("NO_VALOR", item.NO_VALOR));
+
+                xValuaciones.Add(xValuacion);
+            }
+
+            nTabulador.InsertarActualizarNivelesTabulador(ID_TABULADOR: vIdTabulador, XML_VALUACION: xValuaciones.ToString(), CL_USUARIO: vClUsuario, NB_PROGRAMA: vNbPrograma);
+
         }
 
         //private void GuardarCerrar()

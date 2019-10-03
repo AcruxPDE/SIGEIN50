@@ -460,7 +460,7 @@ namespace SIGE.Negocio.MetodologiaCompensacion
         #endregion
 
         #region OBTIENE LOS VALORES DE VALUACION
-        public List<decimal> ObtieneValoresValuacion(int? ID_TABULADOR = null)
+        public List<E_NIVEL> ObtieneValoresValuacion(int? ID_TABULADOR = null)
         {
             TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
             return operaciones.ObtieneValoresValuacion(ID_TABULADOR);
@@ -572,6 +572,14 @@ namespace SIGE.Negocio.MetodologiaCompensacion
            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
            return UtilRespuesta.EnvioRespuesta(operaciones.ActualizarNivelPuesto(ID_TABULADOR, CL_USUARIO, NB_PROGRAMA));
        }
-       #endregion
+        #endregion
+
+        #region INSERTA ACTUALIZA NIVELES TABULADOR
+        public E_RESULTADO InsertarActualizarNivelesTabulador(int ID_TABULADOR, string XML_VALUACION, string CL_USUARIO, string NB_PROGRAMA)
+        {
+            TabuladoresOperaciones operaciones = new TabuladoresOperaciones();
+            return UtilRespuesta.EnvioRespuesta(operaciones.InsertarActualizarNivelesTabulador(ID_TABULADOR, XML_VALUACION, CL_USUARIO, NB_PROGRAMA));
+        }
+        #endregion
     }
 }
