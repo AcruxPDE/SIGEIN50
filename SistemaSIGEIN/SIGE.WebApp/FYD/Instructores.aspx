@@ -32,14 +32,15 @@
         }
 
         function confirmarEliminar(sender, args) {
+            
             var masterTable = $find("<%= grdInstructores.ClientID %>").get_masterTableView();
             var selectedItem = masterTable.get_selectedItems()[0];
             if (selectedItem != undefined) {
 
-                //var vNombre = masterTable.getCellByColumnUniqueName(selectedItem, "NB_INSTRUCTOR").innerHTML;
+                var vNombre = masterTable.getCellByColumnUniqueName(selectedItem, "NB_NOMBRE_INSTRUCTOR").innerHTML;
                 var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
 
-                radconfirm("¿Deseas eliminar al instructor?, este proceso no podrá revertirse", callBackFunction, 400, 170, null, "Aviso");
+                radconfirm("¿Deseas eliminar al instructor " + vNombre + " ?, este proceso no podrá revertirse", callBackFunction, 400, 170, null, "Aviso");
                 args.set_cancel(true);
             }
             else {
@@ -47,6 +48,7 @@
                 args.set_cancel(true);
             }
         }
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -75,7 +77,7 @@
                         <Scrolling AllowScroll="true" UseStaticHeaders="true"></Scrolling>
                     </ClientSettings>
                     <PagerStyle AlwaysVisible="true" />
-                    <MasterTableView ClientDataKeyNames="ID_INSTRUCTOR,CL_INTRUCTOR" DataKeyNames="ID_INSTRUCTOR" ShowHeadersWhenNoRecords="true" AutoGenerateColumns="false" PageSize="10">
+                    <MasterTableView ClientDataKeyNames="ID_INSTRUCTOR,CL_INTRUCTOR,NB_NOMBRE_INSTRUCTOR" DataKeyNames="ID_INSTRUCTOR,NB_NOMBRE_INSTRUCTOR" ShowHeadersWhenNoRecords="true" AutoGenerateColumns="false" PageSize="10">
                         <NestedViewTemplate>
                             <div style="clear: both; height: 10px;"></div>
                             <telerik:RadTabStrip ID="RadTabStrip1" runat="server" MultiPageID="rmpInstructor" SelectedIndex="0">
