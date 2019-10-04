@@ -22,7 +22,7 @@
                     var vDato = {
                         idInstructor: selectedItem.getDataKeyValue("ID_INSTRUCTOR"),
                         clInstructor: masterTable.getCellByColumnUniqueName(selectedItem, "CL_INTRUCTOR").innerHTML,
-                        nbInstructor: masterTable.getCellByColumnUniqueName(selectedItem, "NB_INSTRUCTOR").innerHTML,
+                        nbInstructor: masterTable.getCellByColumnUniqueName(selectedItem, "NB_NOMBRE_INSTRUCTOR").innerHTML,
                         clTipoCatalogo: "INSTRUCTOR"
                     };
                     if (!existeElemento(vDato)) {
@@ -67,7 +67,7 @@
             </ClientSettings>
             <PagerStyle AlwaysVisible="true" />
             <GroupingSettings CaseSensitive="false" />
-            <MasterTableView ClientDataKeyNames="ID_INSTRUCTOR" DataKeyNames="ID_INSTRUCTOR" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true">
+            <MasterTableView ClientDataKeyNames="ID_INSTRUCTOR, CL_INTRUCTOR, NB_NOMBRE_INSTRUCTOR" DataKeyNames="ID_INSTRUCTOR, CL_INTRUCTOR, NB_NOMBRE_INSTRUCTOR" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true">
                 <Columns>
                     <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
                     <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="130" FilterControlWidth="60" HeaderText="Clave" DataField="CL_INTRUCTOR" UniqueName="CL_INTRUCTOR"></telerik:GridBoundColumn>
