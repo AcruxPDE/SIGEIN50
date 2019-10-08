@@ -39,10 +39,10 @@ namespace SIGE.Negocio.Administracion
             return oEmpleados.ObtenerEmpleadosSelector(pXmlSeleccion, pFgFoto, pClUsuario, pFgActivo, pID_EMPRESA);
         }
 
-        public SPE_OBTIENE_EMPLEADO_PLANTILLA_Result ObtenerPlantilla(int? pIdPlantilla, int? pIdEmpleado, int? pidEmpresa)
+        public SPE_OBTIENE_EMPLEADO_PLANTILLA_Result ObtenerPlantilla(int? pIdPlantilla, int? pIdEmpleado, int? pidEmpresa,int? pidRol=null)
         {
             EmpleadoOperaciones oEmpleado = new EmpleadoOperaciones();
-            SPE_OBTIENE_EMPLEADO_PLANTILLA_Result vEmpleadoPlantilla = oEmpleado.ObtenerPlantilla(pIdPlantilla, pIdEmpleado, pidEmpresa);
+            SPE_OBTIENE_EMPLEADO_PLANTILLA_Result vEmpleadoPlantilla = oEmpleado.ObtenerPlantilla(pIdPlantilla, pIdEmpleado, pidEmpresa,pidRol);
 
             XElement vEmpleado = XElement.Parse(vEmpleadoPlantilla.XML_SOLICITUD_PLANTILLA);
             XElement vValores = XElement.Parse(vEmpleadoPlantilla.XML_VALORES);

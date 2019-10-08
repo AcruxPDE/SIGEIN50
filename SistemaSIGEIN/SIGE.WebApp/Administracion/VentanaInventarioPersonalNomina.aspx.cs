@@ -339,6 +339,8 @@ namespace SIGE.WebApp.Administracion
                         {
                             XElement vXmlDatos = new XElement("CANDIDATO");
 
+
+
                             vXmlDatos.Add(new XAttribute("ID_SOLICITUD", vIdSolicitud));
                             vXmlDatos.Add(new XAttribute("ID_EMPLEADO", vIdEmpleado ?? 0));
                             vXmlDatos.Add(new XAttribute("CL_EMPLEADO", vEmpleadoNominaDo.CL_EMPLEADO));

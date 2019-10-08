@@ -53,6 +53,7 @@ namespace SIGE.WebApp.Administracion
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
         private bool vGuardar;
         private int? vIdEmpresa;
+        private int? vIdRol;
         public string xmlPlantillaNO { get; set; }
 
         public int? vIdSolicitud
@@ -305,19 +306,20 @@ namespace SIGE.WebApp.Administracion
             CamposNominaNegocio oNegocio = new CamposNominaNegocio();
             E_EMPLEADO_NOMINA_DO vEmpleado = oNegocio.ObtienePersonalNominaDo(pID_EMPLEADO: vIdEmpleado).FirstOrDefault();
 
-            if(vEmpleado.FG_NOMINA == true)
+            if (vEmpleado.FG_NOMINA == true)
             {
-                if (cmbRazonSocial.Text == string.Empty) { PrintMensaje("Razon social"); return false; }
-                if (cmbRegistroPatronal.Text == string.Empty) { PrintMensaje("Registro patronal"); return false; }
-                if (cmbPaquetePrestacionesNO.Text == string.Empty) { PrintMensaje("Paquete de prestaciones"); return false; }
-                if (txtFeReingreso.SelectedDate == null) { PrintMensaje("Fecha de ingreso"); return false; }
-                if (txtFeAntiguedad.SelectedDate == null) { PrintMensaje("Fecha de antigüedad"); return false; }
-                if (txtSueldoDiario.Value.ToString() == string.Empty) { PrintMensaje("Sueldo diario"); return false; }
-                if (txtSueldoMensual.Value.ToString() == string.Empty) { PrintMensaje("Sueldo mensual"); return false; }
+                if (cmbRazonSocial.Text == string.Empty) { PrintMensaje("razon social"); return false; }
+                if (cmbRegistroPatronal.Text == string.Empty) { PrintMensaje("registro patronal"); return false; }
+                if (cmbPaquetePrestacionesNO.Text == string.Empty) { PrintMensaje("paquete de prestaciones"); return false; }
+                if (cmbTipoNomina.Text == string.Empty) { PrintMensaje("tipo nomina");return false; }
+                if (txtFeReingreso.SelectedDate == null) { PrintMensaje("fecha de ingreso"); return false; }
+                if (txtFeAntiguedad.SelectedDate == null) { PrintMensaje("fecha de antigüedad"); return false; }
+                if (txtSueldoDiario.Value.ToString() == string.Empty) { PrintMensaje("sueldo diario"); return false; }
+                if (txtSueldoMensual.Value.ToString() == string.Empty) { PrintMensaje("sueldo mensual"); return false; }
 
-                vPlantillaNomina =  GuardarFormularioNomina();
+                vPlantillaNomina = GuardarFormularioNomina();
             }
-            
+
             return true;
         }
 
@@ -373,7 +375,7 @@ namespace SIGE.WebApp.Administracion
 
                 vXmlEmpleadoPlantilla = vXmlRespuesta.Element("PLANTILLA").ToString();
                 EmpleadoNegocio nEmpleado = new EmpleadoNegocio();
-                E_RESULTADO vResultado = nEmpleado.InsertaActualizaEmpleado(vXmlRespuesta.Element("PLANTILLA"), vPlantillaNomina, vIdEmpleadoVS,  vLstArchivos, vLstDocumentos, vClUsuario, vNbPrograma, vTipoTransaccion);
+                E_RESULTADO vResultado = nEmpleado.InsertaActualizaEmpleado(vXmlRespuesta.Element("PLANTILLA"), vPlantillaNomina, vIdEmpleadoVS, vLstArchivos, vLstDocumentos, vClUsuario, vNbPrograma, vTipoTransaccion);
                 string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
 
                 //resultado obtener el idEmpleado
@@ -469,12 +471,15 @@ namespace SIGE.WebApp.Administracion
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
 
-            CL_CAMPO = new XAttribute("CL_CAMPO", "TIPO_SALARIO");
-            NB_CAMPO = new XAttribute("NB_CAMPO", cmbTipoSalario.SelectedValue.ToString());
-            NOMINA = new XElement("CAMPO_NOMINA");
-            NOMINA.Add(CL_CAMPO);
-            NOMINA.Add(NB_CAMPO);
-            vXmlPlantillaNO.Add(NOMINA);
+            //if (cmbTipoSalario.SelectedValue != "")
+            //{
+                CL_CAMPO = new XAttribute("CL_CAMPO", "TIPO_SALARIO");
+                NB_CAMPO = new XAttribute("NB_CAMPO", cmbTipoSalario.SelectedValue.ToString());
+                NOMINA = new XElement("CAMPO_NOMINA");
+                NOMINA.Add(CL_CAMPO);
+                NOMINA.Add(NB_CAMPO);
+                vXmlPlantillaNO.Add(NOMINA);
+            //}
 
             CL_CAMPO = new XAttribute("CL_CAMPO", "UMF");
             NB_CAMPO = new XAttribute("NB_CAMPO", txtUMFNO.Text);
@@ -489,28 +494,28 @@ namespace SIGE.WebApp.Administracion
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             //CL_CAMPO = new XAttribute("CL_CAMPO", "HORARIO");
             //NB_CAMPO = new XAttribute("NB_CAMPO", cmbHorarioNO.SelectedValue.ToString());
             //NOMINA = new XElement("CAMPO_NOMINA");
             //NOMINA.Add(CL_CAMPO);
             //NOMINA.Add(NB_CAMPO);
             //vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "PAQUETE_PRESTACIONES");
             NB_CAMPO = new XAttribute("NB_CAMPO", cmbPaquetePrestacionesNO.SelectedValue.ToString());
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "FORMATO_DISPERSION");
             NB_CAMPO = new XAttribute("NB_CAMPO", cmbFormatoDispersionNO.SelectedValue.ToString());
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "FORMATO_VALES_GASOLINA");
             NB_CAMPO = new XAttribute("NB_CAMPO", cmbFormatoValesGasolinaNO.SelectedValue.ToString());
             NOMINA = new XElement("CAMPO_NOMINA");
@@ -524,50 +529,50 @@ namespace SIGE.WebApp.Administracion
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "TIPO_NOMINA");
             NB_CAMPO = new XAttribute("NB_CAMPO", cmbTipoNomina.SelectedValue.ToString());
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "FORMA_PAGO");
             NB_CAMPO = new XAttribute("NB_CAMPO", cmbFormaPago.SelectedValue.ToString());
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "BANCO");
             NB_CAMPO = new XAttribute("NB_CAMPO", cmbBanco.SelectedValue.ToString());
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "COTIZA_IMSS");
             NB_CAMPO = new XAttribute("NB_CAMPO", btnCotizaIMSSTrue.Checked);
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "FECHA_REINGRESO");
             NB_CAMPO = new XAttribute("NB_CAMPO", txtFeReingreso.SelectedDate);
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "FECHA_ANTIGUEDAD");
             NB_CAMPO = new XAttribute("NB_CAMPO", txtFeAntiguedad.SelectedDate);
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
-            if(txtFePlanta.SelectedDate != null)
+
+            if (txtFePlanta.SelectedDate != null)
             {
                 CL_CAMPO = new XAttribute("CL_CAMPO", "FECHA_PLANTA");
                 NB_CAMPO = new XAttribute("NB_CAMPO", txtFePlanta.SelectedDate);
@@ -576,50 +581,50 @@ namespace SIGE.WebApp.Administracion
                 NOMINA.Add(NB_CAMPO);
                 vXmlPlantillaNO.Add(NOMINA);
             }
-            
-            
+
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "SUELDO_DIARIO");
             NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtSueldoDiario.Value.ToString()));
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "SUELDO_MENSUAL");
             NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtSueldoMensual.Value.ToString()));
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "FACTOR_SALARIO_BASE_COTIZACION");
             NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtFactorBaseCotizacion.Value.ToString()));
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "SALARIO_BASE_COTIZACION_FIJO");
             NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtBaseCotizacionFijo.Value.ToString()));
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "SALARIO_BASE_COTIZACION_DETERMINADO");
             NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtBaseCotizacionDeterminado.Value.ToString()));
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "SALARIO_BASE_COTIZACION_MAXIMO");
             NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtBaseCotizacionMaximo.Value.ToString()));
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "SALARIO_BASE_COTIZACION");
             NB_CAMPO = new XAttribute("NB_CAMPO", double.Parse(txtSalarioBaseCotizacion.Value.ToString()));
             NOMINA = new XElement("CAMPO_NOMINA");
@@ -633,14 +638,14 @@ namespace SIGE.WebApp.Administracion
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "CLAVE_PAGO");
             NB_CAMPO = new XAttribute("NB_CAMPO", txtClavePago.Text);
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "CUENTA_VALES_DESPENSA");
             NB_CAMPO = new XAttribute("NB_CAMPO", txtCuentaValesDespensa.Text);
             NOMINA = new XElement("CAMPO_NOMINA");
@@ -654,28 +659,28 @@ namespace SIGE.WebApp.Administracion
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "FILLER02");
             NB_CAMPO = new XAttribute("NB_CAMPO", txtFILLER02.Text);
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "FILLER03");
             NB_CAMPO = new XAttribute("NB_CAMPO", txtFILLER03.Text);
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "FILLER04");
             NB_CAMPO = new XAttribute("NB_CAMPO", txtFILLER04.Text);
             NOMINA = new XElement("CAMPO_NOMINA");
             NOMINA.Add(CL_CAMPO);
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
-            
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "FILLER05");
             NB_CAMPO = new XAttribute("NB_CAMPO", txtFILLER05.Text);
             NOMINA = new XElement("CAMPO_NOMINA");
@@ -954,13 +959,14 @@ namespace SIGE.WebApp.Administracion
         {
             CamposNominaNegocio oNegocio = new CamposNominaNegocio();
             List<E_EMPLEADO_NOMINA> vEmpleadoNO = new List<E_EMPLEADO_NOMINA>();
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
-            vEmpleadoNO = oNegocio.ObtieneDatosPersonaNO(pID_EMPLEADO: vIdEmpleadoNominaDo);
+            vEmpleadoNO = oNegocio.ObtieneDatosPersonaNO(pID_EMPLEADO: vIdEmpleadoNominaDo, pID_ROL: vIdRol);
 
             foreach (E_EMPLEADO_NOMINA item in vEmpleadoNO)
             {
                 cmbRazonSocial.SelectedValue = item.ID_RAZON_SOCIAL.ToString();
-                
+
                 cmbRegistroPatronal.DataSource = null;
                 listRegistrosPatronales = oNegocio.ObtieneRegistroPatronal(Guid.Parse(cmbRazonSocial.SelectedValue), null, true);
                 cmbRegistroPatronal.DataSource = listRegistrosPatronales;
@@ -1157,10 +1163,11 @@ namespace SIGE.WebApp.Administracion
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vIdEmpresa = ContextoUsuario.oUsuario.ID_EMPRESA;
             vClCliente = ContextoUsuario.clCliente;
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
 
             if (!Page.IsPostBack)
             {
-                
+
                 vIdEmpleadoVS = vIdEmpleado;
                 vXmlEmpleadoPlantilla = vXmlPlantilla;
                 vIdItemFotografia = vIdItemFoto;
@@ -1188,7 +1195,8 @@ namespace SIGE.WebApp.Administracion
         protected void Page_Init(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
-            {
+            { 
+                vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
                 int vIdEmpleadoQS = -1;
                 if (int.TryParse(Request.QueryString["EmpleadoId"], out vIdEmpleadoQS))
                     vIdEmpleado = vIdEmpleadoQS;
@@ -1208,7 +1216,7 @@ namespace SIGE.WebApp.Administracion
                         btnCerrar.Visible = false;
                     }
                 }
-                    
+
 
                 if (vIdEmpleadoQS != null)
                 {
@@ -1221,7 +1229,7 @@ namespace SIGE.WebApp.Administracion
                             CargarDatos();
                             tabSolicitud.Tabs[8].Visible = true;
 
-                            if(vEmpleado.FG_COMPLETO == "SI")
+                            if (vEmpleado.FG_COMPLETO == "SI")
                                 CargarDatosNomina(vIdEmpleadoQS);
                         }
                         else
@@ -1229,7 +1237,7 @@ namespace SIGE.WebApp.Administracion
                             tabSolicitud.Tabs[8].Visible = false;
                         }
 
-                        vIdEmpleado = vEmpleado.ID_EMPLEADO;                        
+                        vIdEmpleado = vEmpleado.ID_EMPLEADO;
                     }
                 }
 
@@ -1253,7 +1261,7 @@ namespace SIGE.WebApp.Administracion
 
             EmpleadoNegocio nEmpleado = new EmpleadoNegocio();
             // Se agrega ContextoUsuario.oUsuario.ID_PLANTILLA como parametro al spe que obtiene la plantilla.
-            SPE_OBTIENE_EMPLEADO_PLANTILLA_Result vSolicitud = nEmpleado.ObtenerPlantilla(ContextoUsuario.oUsuario.ID_PLANTILLA, vIdEmpleado, ContextoUsuario.oUsuario.ID_EMPRESA);
+            SPE_OBTIENE_EMPLEADO_PLANTILLA_Result vSolicitud = nEmpleado.ObtenerPlantilla(pIdPlantilla: ContextoUsuario.oUsuario.ID_PLANTILLA, pIdEmpleado: vIdEmpleado,pidEmpresa: ContextoUsuario.oUsuario.ID_EMPRESA, pidRol: vIdRol);
             vXmlPlantilla = vSolicitud.XML_SOLICITUD_PLANTILLA;
             vXmlDocumentos = vSolicitud.XML_VALORES;
             vIdItemFoto = vSolicitud.ID_ITEM_FOTOGRAFIA;
@@ -1294,8 +1302,8 @@ namespace SIGE.WebApp.Administracion
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            if(ValidarInformacion())
-                Guardar(false);            
+            if (ValidarInformacion())
+                Guardar(false);
         }
 
         protected void btnGuardarSalir_Click(object sender, EventArgs e)
@@ -1403,7 +1411,7 @@ namespace SIGE.WebApp.Administracion
             }
         }
 
-        
+
 
         protected void grdProgramas_DeleteCommand(object sender, GridCommandEventArgs e)
         {

@@ -127,7 +127,7 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
                 //return XElement.Parse(pOutClRetorno.Value.ToString());
             }
         }
-        
+
         public XElement InsertaActualizaEmpleadoCandidato(string pXmlDatosCandidato, string pClUsuario = null, string pNbPrograma = null)
         {
             using (contexto = new SistemaSigeinEntities())
@@ -142,7 +142,7 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
                     "@XML_RESULTADO OUTPUT, " +
                     "@PIN_XML_DATOS_CANDIDATO, " +
                     "@PIN_CL_USUARIO, " +
-                    "@PIN_NB_PROGRAMA " 
+                    "@PIN_NB_PROGRAMA "
                     , pXmlResultado
                     , new SqlParameter("@PIN_XML_DATOS_CANDIDATO", (object)pXmlDatosCandidato ?? DBNull.Value)
                     , new SqlParameter("@PIN_CL_USUARIO", (object)pClUsuario ?? DBNull.Value)
@@ -493,7 +493,7 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
 
         public List<E_CONFIGURACION> ObtenerConfiguracion(String CL_CLIENTE = null, String CL_CONFIGURACION = null, String NB_CONFIGURACION = null, String NO_CONFIGURACION = null, String DS_CONFIGURACION = null)
         {
-            using(contexto = new SistemaSigeinEntities())
+            using (contexto = new SistemaSigeinEntities())
             {
                 return contexto.Database.SqlQuery<E_CONFIGURACION>("EXEC " +
                     "Nomina.SPE_OBTIENE_S_CONFIGURACION " +
@@ -531,14 +531,16 @@ namespace SIGE.AccesoDatos.Implementaciones.Administracion
             }
         }
 
-        public List<E_EMPLEADO_NOMINA> ObtieneDatosPersonaNO(int? pID_EMPLEADO)
+        public List<E_EMPLEADO_NOMINA> ObtieneDatosPersonaNO(int? pID_EMPLEADO, int? pId_ROL)
         {
             using (contexto = new SistemaSigeinEntities())
             {
                 return contexto.Database.SqlQuery<E_EMPLEADO_NOMINA>("EXEC " +
                     "ADM.SPE_OBTIENE_PERSONA_NOMINA " +
-                    "@PIN_ID_EMPLEADO ",
-                    new SqlParameter("@PIN_ID_EMPLEADO", (object)pID_EMPLEADO)
+                    "@PIN_ID_EMPLEADO, " +
+                    "@PIN_ID_ROL",
+                    new SqlParameter("@PIN_ID_EMPLEADO", (object)pID_EMPLEADO ?? DBNull.Value),
+                    new SqlParameter("@PIN_ID_ROL", (object)pId_ROL ?? DBNull.Value)
                 ).ToList();
             }
         }

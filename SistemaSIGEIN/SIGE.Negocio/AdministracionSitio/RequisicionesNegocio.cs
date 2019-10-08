@@ -17,9 +17,9 @@ namespace SIGE.Negocio.Administracion
     public class RequisicionNegocio
     {
 
-        public List<SPE_OBTIENE_K_REQUISICION_Result> ObtieneRequisicion(int? pIdRequisicion = null, String pNoRequisicion = null, DateTime? pFeSolicitud = null, DateTime? pFeRequisicion = null, int? pIdPuesto = null, String pClEstado = null, String pClCausa = null, String pDsCausa = null, int? pIdNotificacion = null, int? pIdSolicitante = null, int? pIdAutoriza = null, int? pIdVistoBueno = null, int? pIdEmpresa = null, Guid? flRequisicion=null, Guid? flNotificacion = null, int? pIdCandidato = null)
+        public List<SPE_OBTIENE_K_REQUISICION_Result> ObtieneRequisicion(int? pIdRequisicion = null, String pNoRequisicion = null, DateTime? pFeSolicitud = null, DateTime? pFeRequisicion = null, int? pIdPuesto = null, String pClEstado = null, String pClCausa = null, String pDsCausa = null, int? pIdNotificacion = null, int? pIdSolicitante = null, int? pIdAutoriza = null, int? pIdVistoBueno = null, int? pIdEmpresa = null, Guid? flRequisicion=null, Guid? flNotificacion = null, int? pIdCandidato = null,int? pIdRol=null)
 		{
-            return new RequisicionOperaciones().ObtenerRequisicion(pIdRequisicion, pNoRequisicion, pFeSolicitud, pFeRequisicion, pIdPuesto, pClEstado, pClCausa, pDsCausa, pIdNotificacion, pIdSolicitante, pIdAutoriza, pIdVistoBueno, pIdEmpresa,flRequisicion, flNotificacion, pIdCandidato);
+            return new RequisicionOperaciones().ObtenerRequisicion(pIdRequisicion, pNoRequisicion, pFeSolicitud, pFeRequisicion, pIdPuesto, pClEstado, pClCausa, pDsCausa, pIdNotificacion, pIdSolicitante, pIdAutoriza, pIdVistoBueno, pIdEmpresa,flRequisicion, flNotificacion, pIdCandidato,pIdRol);
 		}     
 
         public List<SPE_OBTIENE_K_AUTORIZA_REQUISICION_Result> ObtenerAutorizarRequisicion(int? ID_REQUISICION = null, string NO_REQUISICION = null, DateTime? FE_SOLICITUD = null, DateTime? FE_REQUERIMIENTO = null, int? ID_PUESTO = null, string CL_ESTADO = null, string CL_CAUSA = null, string DS_CAUSA = null, int? ID_NOTIFICACION = null, int? ID_SOLICITANTE = null, int? ID_AUTORIZA = null, int? ID_VISTO_BUENO = null, int? ID_EMPRESA = null, string NB_EMPRESA = null, string NB_PUESTO = null, string SOLICITANTE = null, Guid? FL_REQUISICION = null, string CL_TOKEN = null)

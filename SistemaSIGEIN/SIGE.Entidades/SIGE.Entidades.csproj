@@ -208,6 +208,7 @@
     <Compile Include="Externas\E_ES_DATOS_VIVIENDA.cs" />
     <Compile Include="Externas\E_FORMATO_FECHA.cs" />
     <Compile Include="Externas\E_GENERICA.cs" />
+    <Compile Include="Externas\E_OBTENE_ROL.cs" />
     <Compile Include="Externas\E_OBTIENE_PUESTO_EMPLEADOS.cs" />
     <Compile Include="Externas\E_PREGUNTAS.cs" />
     <Compile Include="Externas\E_REFERENCIA_CANDIDATO.cs" />

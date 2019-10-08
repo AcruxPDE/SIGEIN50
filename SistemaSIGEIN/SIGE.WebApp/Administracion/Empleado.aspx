@@ -852,7 +852,7 @@
 
                             <div class="ctrlBasico" style="clear: both;">
                                 <div class="divControlIzquierda" style="width: 250px !important">
-                                    <label>Tipo de nómina:</label>
+                                    <label>*Tipo de nómina:</label>
                                 </div>
                                 <div class="divControlDerecha">
                                     <telerik:RadComboBox runat="server" ID="cmbTipoNomina" Width="300px" EmptyMessage="Seleccione.." HighlightTemplatedItems="true" DropDownWidth="500" EnableLoadOnDemand="false" Filter="Contains">

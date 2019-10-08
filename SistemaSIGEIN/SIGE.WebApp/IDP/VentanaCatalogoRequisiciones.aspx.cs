@@ -31,7 +31,7 @@ namespace SIGE.WebApp.Administracion
         private string vNbPrograma;
         private int? vIdEmpresa;
         private string vNbUsuario;
-
+        private int? vIdRol;
 
         StringBuilder builder = new StringBuilder();
         string Email { set; get; }
@@ -146,8 +146,9 @@ namespace SIGE.WebApp.Administracion
 
         public void CargarDatos()
         {
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
             RequisicionNegocio nRequisicion = new RequisicionNegocio();
-            var vRequisicion = nRequisicion.ObtieneRequisicion(pIdRequisicion: vIdRequisicion).FirstOrDefault();
+            var vRequisicion = nRequisicion.ObtieneRequisicion(pIdRequisicion: vIdRequisicion,pIdRol:vIdRol).FirstOrDefault();
 
             txtNo_requisicion.Text = vRequisicion.NO_REQUISICION;
             Fe_solicitud.SelectedDate = vRequisicion.FE_SOLICITUD;

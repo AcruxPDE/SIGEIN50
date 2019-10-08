@@ -21,12 +21,12 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
 
         }
 
-        public List<E_COMPARACION_COMPETENCIA> obtieneComparacionCompetenciasPlanSucesion(string XML_EMPLEADOS, int? ID_PUESTO)
+        public List<E_COMPARACION_COMPETENCIA> obtieneComparacionCompetenciasPlanSucesion(string XML_EMPLEADOS, int? ID_PUESTO, int? ID_ROL)
         {
             using (contexto = new SistemaSigeinEntities())
             {
                 var listaCompetencias = contexto.SPE_OBTIENE_COMPARACION_COMPETENCIAS_PLAN_SUCESION(XML_EMPLEADOS, ID_PUESTO).ToList();
-                var listaPuestos = contexto.SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_SUCESION(ID_PUESTO, XML_EMPLEADOS).ToList();
+                var listaPuestos = contexto.SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_SUCESION(ID_PUESTO, XML_EMPLEADOS,ID_ROL).ToList();
                 int maximo;
 
                 if (listaCompetencias.Count() > 0)
@@ -130,11 +130,11 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
             }
         }
 
-        public List<SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_SUCESION_Result> obtieneComparacionPuestosPlanSucesion(int ID_PUESTO, string XML_EMPLEADOS)
+        public List<SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_SUCESION_Result> obtieneComparacionPuestosPlanSucesion(int ID_PUESTO, string XML_EMPLEADOS,int? ID_ROL)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_SUCESION(ID_PUESTO, XML_EMPLEADOS).ToList();
+                return contexto.SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_SUCESION(ID_PUESTO, XML_EMPLEADOS,ID_ROL).ToList();
             }
         }
 

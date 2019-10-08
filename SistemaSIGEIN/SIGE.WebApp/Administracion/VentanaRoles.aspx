@@ -141,6 +141,20 @@
                         </telerik:RadButton>
                     </div>
                 </div>
+                <div style="clear: both;"></div>
+                <div class="ctrlBasico">
+                    <div class="divControlIzquierda">
+                        <label name="lblNombre">Sueldo visible:</label>
+                    </div>
+                    <div class="divControlDerecha">
+                        <telerik:RadButton ID="chkSueldo" runat="server" ToggleType="CheckBox" name="chkSueldo" Checked="true" AutoPostBack="false" CausesValidation="false">
+                            <ToggleStates>
+                                <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
+                                <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
+                            </ToggleStates>
+                        </telerik:RadButton>
+                    </div>
+                </div>
                 <div style="clear: both;"></div>  
                 <div class="divControlDerecha">
                     <div class="ctrlBasico">

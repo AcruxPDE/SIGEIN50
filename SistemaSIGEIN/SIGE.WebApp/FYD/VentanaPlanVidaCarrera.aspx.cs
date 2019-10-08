@@ -14,12 +14,13 @@ using System.Xml.Linq;
 using Telerik.Web.UI;
 using Telerik.Web.UI.PivotGrid.Core;
 using Telerik.Web.UI.PivotGrid.Core.Aggregates;
+using SIGE.WebApp.Comunes;
 
 namespace SIGE.WebApp.FYD
 {
     public partial class VentanaPlanVidaCarrera : System.Web.UI.Page
     {
-
+        private int? vIdRol;
         #region Variables
 
         public int vIdEmpleado
@@ -248,8 +249,9 @@ namespace SIGE.WebApp.FYD
 
         protected void grdpuestos_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
+            vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
             PlanVidaCarreraNegocio neg = new PlanVidaCarreraNegocio();
-            grdpuestos.DataSource = neg.obtenerComparacionPuestos(PuestosComparacion, vIdEmpleado);
+            grdpuestos.DataSource = neg.obtenerComparacionPuestos(PuestosComparacion, vIdEmpleado,vIdRol);
         }
 
         protected void grdpuestos_ColumnCreated(object sender, GridColumnCreatedEventArgs e)
