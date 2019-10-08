@@ -537,6 +537,13 @@ namespace SIGE.WebApp.Administracion
             NOMINA.Add(NB_CAMPO);
             vXmlPlantillaNO.Add(NOMINA);
 
+            CL_CAMPO = new XAttribute("CL_CAMPO", "TIPO_PENSIONADO");
+            NB_CAMPO = new XAttribute("NB_CAMPO", cmbTipoPensionado.SelectedValue.ToString());
+            NOMINA = new XElement("CAMPO_NOMINA");
+            NOMINA.Add(CL_CAMPO);
+            NOMINA.Add(NB_CAMPO);
+            vXmlPlantillaNO.Add(NOMINA);
+
             CL_CAMPO = new XAttribute("CL_CAMPO", "FORMA_PAGO");
             NB_CAMPO = new XAttribute("NB_CAMPO", cmbFormaPago.SelectedValue.ToString());
             NOMINA = new XElement("CAMPO_NOMINA");

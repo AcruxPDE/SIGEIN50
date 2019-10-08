@@ -887,6 +887,21 @@
 
                             <div class="ctrlBasico" style="clear: both;">
                                 <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Tipo de pensionado:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbTipoPensionado" Width="300px" EmptyMessage="Seleccione.." HighlightTemplatedItems="true" DropDownWidth="500" EnableLoadOnDemand="false" Filter="Contains"> 
+                                        <Items>
+                                            <telerik:RadComboBoxItem Value="0" Text="No pensionado" />
+                                            <telerik:RadComboBoxItem Value="1" Text="Pensión invalidez y vida" />
+                                            <telerik:RadComboBoxItem Value="2" Text="Pensión censatoria y vejez" />
+                                        </Items>
+                                    </telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
                                     <label>Cotiza en el IMSS:</label>
                                 </div>
                                 <div class="divControlDerecha">
