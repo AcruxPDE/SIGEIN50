@@ -560,16 +560,20 @@ namespace SIGE.WebApp.Administracion
                     {
 
                         XElement dsDetalle = item.Element("XML_DETALLE").Element("DS_DETALLE");
-                        dsDetalle.Name = vNbFirstRadEditorTagName;
 
-                        if (item.Element("XML_NOTAS") != null)
+                        if(dsDetalle != null)
                         {
-                            XElement dsNotas = item.Element("XML_NOTAS").Element("DS_NOTAS");
-                            dsNotas.Name = vNbFirstRadEditorTagName;
-                            fg.DS_NOTAS = dsNotas.ToString();
-                        }
+                            dsDetalle.Name = vNbFirstRadEditorTagName;
 
-                        fg.DS_DETALLE = dsDetalle.ToString();
+                            if (item.Element("XML_NOTAS") != null)
+                            {
+                                XElement dsNotas = item.Element("XML_NOTAS").Element("DS_NOTAS");
+                                dsNotas.Name = vNbFirstRadEditorTagName;
+                                fg.DS_NOTAS = dsNotas.ToString();
+                            }
+
+                            fg.DS_DETALLE = dsDetalle.ToString();
+                        }
                     }
 
                     vFuncionesGenericas.Add(fg);
@@ -1270,6 +1274,9 @@ namespace SIGE.WebApp.Administracion
 
         private XElement EditorContentToXml(string pNbNodoRaiz, string pDsContenido, string pNbTag)
         {
+            if (pDsContenido == null)
+                pDsContenido = "";
+
             var vDsContenido = HttpUtility.HtmlDecode(HttpUtility.UrlDecode(pDsContenido)).Replace("&", "");
             return XElement.Parse(EncapsularRadEditorContent(XElement.Parse(String.Format("<{1}>{0}</{1}>", vDsContenido, pNbNodoRaiz)), pNbNodoRaiz));
         }
