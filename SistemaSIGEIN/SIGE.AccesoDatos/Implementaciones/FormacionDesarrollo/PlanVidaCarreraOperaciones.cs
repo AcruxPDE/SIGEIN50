@@ -53,11 +53,11 @@ namespace SIGE.AccesoDatos.Implementaciones.FormacionDesarrollo
             }
         }
 
-        public List<SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_VIDA_CARRERA_Result> obtenerComparacionPuestos(string XML_PUESTOS = null, int? ID_EMPLEADO = null)
+        public List<SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_VIDA_CARRERA_Result> obtenerComparacionPuestos(string XML_PUESTOS = null, int? ID_EMPLEADO = null,int? ID_ROL=null)
         {
             using (contexto = new SistemaSigeinEntities())
             {
-                return contexto.SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_VIDA_CARRERA(XML_PUESTOS, ID_EMPLEADO).ToList();
+                return contexto.SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_VIDA_CARRERA(XML_PUESTOS, ID_EMPLEADO, ID_ROL).ToList();
             }
         }
 

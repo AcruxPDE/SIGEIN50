@@ -12,11 +12,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using Telerik.Web.UI;
+using SIGE.WebApp.Comunes;
 
 namespace SIGE.WebApp.FYD
 {
     public partial class VentanaPlanSucesion : System.Web.UI.Page
     {
+        private int? vIdRol;
+
         #region Propiedades
 
         public int vIdEmpleado
@@ -97,8 +100,9 @@ namespace SIGE.WebApp.FYD
 
         private void CargarDatos()
         {
+            
             PlanSucesionNegocio neg = new PlanSucesionNegocio();
-            ComparacionCompetencias = neg.obtieneComparacionCompetenciasPlanSucesion(vXmlSucesores, vIdPuesto);
+            ComparacionCompetencias = neg.obtieneComparacionCompetenciasPlanSucesion(vXmlSucesores, vIdPuesto, vIdRol);
 
             vNoEmpleados = (from a in ComparacionCompetencias select new { a.ID_EMPLEADO }).Distinct().Count();
 
@@ -112,6 +116,7 @@ namespace SIGE.WebApp.FYD
         {
             if (!Page.IsPostBack)
             {
+                vIdRol = ContextoUsuario.oUsuario.oRol.ID_ROL;
                 oListaEmpleados = new List<string>();
                 PlanSucesionNegocio neg = new PlanSucesionNegocio();
 

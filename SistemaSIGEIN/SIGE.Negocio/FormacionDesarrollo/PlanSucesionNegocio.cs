@@ -45,16 +45,16 @@ namespace SIGE.Negocio.FormacionDesarrollo
 
         }
 
-        public List<E_COMPARACION_COMPETENCIA> obtieneComparacionCompetenciasPlanSucesion(string XML_EMPLEADOS, int? ID_PUESTO)
+        public List<E_COMPARACION_COMPETENCIA> obtieneComparacionCompetenciasPlanSucesion(string XML_EMPLEADOS, int? ID_PUESTO, int? pID_ROL)
         {
             PlanSucesionOperaciones op = new PlanSucesionOperaciones();
-            return op.obtieneComparacionCompetenciasPlanSucesion(XML_EMPLEADOS, ID_PUESTO);
+            return op.obtieneComparacionCompetenciasPlanSucesion(XML_EMPLEADOS, ID_PUESTO, pID_ROL);
         }
 
-        public List<SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_SUCESION_Result> obtieneComparacionPuestosPlanSucesion(int ID_PUESTO, string XML_EMPLEADOS)
+        public List<SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_SUCESION_Result> obtieneComparacionPuestosPlanSucesion(int ID_PUESTO, string XML_EMPLEADOS, int? pID_ROL )
         {
             PlanSucesionOperaciones op = new PlanSucesionOperaciones();
-            return op.obtieneComparacionPuestosPlanSucesion(ID_PUESTO, XML_EMPLEADOS);
+            return op.obtieneComparacionPuestosPlanSucesion(ID_PUESTO, XML_EMPLEADOS,pID_ROL);
         }
     }
 }

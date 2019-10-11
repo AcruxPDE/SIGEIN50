@@ -16,6 +16,9 @@
         function closeWindow() {
             GetRadWindow().close();
         }
+        function OpenSelectionWindowCP() {
+            openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionCP.aspx", "winSeleccion", "Selección de Código Postal");
+        }
 
         function OpenSelectionWindow() {
             openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionEstado.aspx", "winSeleccion", "Selección de Estado");
@@ -40,6 +43,66 @@
                 var vSelectedData = pData[0];
                 var list;
                 switch (vSelectedData.clTipoCatalogo) {
+
+                    case "CODIGOPOSTAL":
+                        //ACTUALIZA CODIGO POSTAL
+                        listCP = $find("<%=lstCodigoPostal.ClientID %>");
+                        listCP.trackChanges();
+                        var items = listCP.get_items();
+                        items.clear();
+
+                        var item = new Telerik.Web.UI.RadListBoxItem();
+                        item.set_text(vSelectedData.nbCP);
+                        item.set_value(vSelectedData.clColonia);
+                        item.set_selected(true);
+                        items.add(item);
+
+                        listCP.commitChanges();
+
+                        //ACTUALIZA ESTADO
+                        listEstado = $find("<%=lstEstado.ClientID %>");
+                        listEstado.trackChanges();
+                        var items = listEstado.get_items();
+                        items.clear();
+
+                        var item = new Telerik.Web.UI.RadListBoxItem();
+                        item.set_text(vSelectedData.nbEstado);
+                        item.set_value(vSelectedData.clEstado);
+                        item.set_selected(true);
+                        items.add(item);
+
+                        listEstado.commitChanges();
+
+                        //ACTUALIZA MUNICIPIO
+                        listMunicipio = $find("<%=lstMunicipio.ClientID %>");
+                        listMunicipio.trackChanges();
+                        var items = listMunicipio.get_items();
+                        items.clear();
+
+                        var item = new Telerik.Web.UI.RadListBoxItem();
+                        item.set_text(vSelectedData.nbMunicipio);
+                        item.set_value(vSelectedData.clMunicipio);
+                        item.set_selected(true);
+                        items.add(item);
+
+                        listMunicipio.commitChanges();
+
+                        //ACTUALIZA COLONIA
+
+                        listColonia = $find("<%=lstColonia.ClientID %>");
+                        listColonia.trackChanges();
+                        var items = listColonia.get_items();
+                        items.clear();
+
+                        var item = new Telerik.Web.UI.RadListBoxItem();
+                        item.set_text(vSelectedData.nbColonia);
+                        item.set_value(vSelectedData.clColonia);
+                        item.set_selected(true);
+                        items.add(item);
+
+                        listColonia.commitChanges();
+                        break;
+
                     case "ESTADO":
 
                         list = $find("<%=lstEstado.ClientID %>");
@@ -171,7 +234,17 @@
              </asp:RequiredFieldValidator>
         </div>
     </div>
+        <div class="ctrlBasico">
+        <div class="divControlIzquierda">
+            <label id="Label1" name="lblEstado" runat="server">Código Postal:</label>
+        </div>
+        <div class="divControlDerecha">
 
+            <telerik:RadListBox ID="lstCodigoPostal" Width="300" runat="server" OnClientItemDoubleClicking="OpenSelectionWindowCP" ValidationGroup="vgCodigoPostal"></telerik:RadListBox>
+            <telerik:RadButton ID="btnBuscarCodigoPostal" runat="server" Text="B" OnClientClicked="OpenSelectionWindowCP" AutoPostBack="false" ValidationGroup="vgCodigoPostal"></telerik:RadButton>
+
+        </div>
+    </div>
     <div class="ctrlBasico">
     <div class="divControlIzquierda">
             <label id="lbEstado" name="lblEstado" runat="server">Estado:</label>
@@ -270,7 +343,7 @@
         </div>
     </div>
   
-     <div style="clear:both;"/>
+<%--     <div style="clear:both;"/>
     <div class="ctrlBasico">
         <div class="divControlIzquierda">
             <label id="lblCP" 
@@ -296,7 +369,7 @@
                  ErrorMessage="Campo Obligatorio">
              </asp:RequiredFieldValidator>
         </div>
-    </div>
+    </div>--%>
      
     <div style="clear:both;">
         <div class="divControlesBoton">    

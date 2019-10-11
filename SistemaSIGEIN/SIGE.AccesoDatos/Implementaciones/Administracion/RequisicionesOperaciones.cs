@@ -14,11 +14,11 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal
     public class RequisicionOperaciones
     {
 
-        public List<SPE_OBTIENE_K_REQUISICION_Result> ObtenerRequisicion(int? pIdRequisicion = null, String pNoRequisicion = null, DateTime? pFeSolicitud = null, DateTime? pFeRequisicion = null, int? pIdPuesto = null, String pClEstado = null, String pClCausa = null, String pDsCausa = null, int? pIdNotificacion = null, int? pIdSolicitante = null, int? pIdAutoriza = null, int? pIdVistoBueno = null, int? pIdEmpresa = null, Guid? flRequisicion = null, Guid? flNotificacion = null, int? pIdCandidato = null)
+        public List<SPE_OBTIENE_K_REQUISICION_Result> ObtenerRequisicion(int? pIdRequisicion = null, String pNoRequisicion = null, DateTime? pFeSolicitud = null, DateTime? pFeRequisicion = null, int? pIdPuesto = null, String pClEstado = null, String pClCausa = null, String pDsCausa = null, int? pIdNotificacion = null, int? pIdSolicitante = null, int? pIdAutoriza = null, int? pIdVistoBueno = null, int? pIdEmpresa = null, Guid? flRequisicion = null, Guid? flNotificacion = null, int? pIdCandidato = null,int? pIdRol=null)
         {
             using (SistemaSigeinEntities context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_K_REQUISICION(pIdRequisicion, pNoRequisicion, pFeSolicitud, pFeRequisicion, pIdPuesto, pClEstado, pClCausa, pDsCausa, pIdNotificacion, pIdSolicitante, pIdAutoriza, pIdVistoBueno, pIdEmpresa, flRequisicion, flNotificacion, pIdCandidato).ToList();
+                return context.SPE_OBTIENE_K_REQUISICION(pIdRequisicion, pNoRequisicion, pFeSolicitud, pFeRequisicion, pIdPuesto, pClEstado, pClCausa, pDsCausa, pIdNotificacion, pIdSolicitante, pIdAutoriza, pIdVistoBueno, pIdEmpresa, flRequisicion, flNotificacion, pIdCandidato,pIdRol).ToList();
             }
         }
 

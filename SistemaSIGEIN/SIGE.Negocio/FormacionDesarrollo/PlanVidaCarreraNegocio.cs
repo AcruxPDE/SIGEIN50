@@ -104,14 +104,14 @@ namespace SIGE.Negocio.FormacionDesarrollo
             return vDtPivot;
         }
 
-        public DataTable obtenerComparacionPuestos(string XML_PUESTOS = null, int? ID_EMPLEADO = null)
+        public DataTable obtenerComparacionPuestos(string XML_PUESTOS = null, int? ID_EMPLEADO = null,int? ID_ROL=null)
         {
             PlanVidaCarreraOperaciones op = new PlanVidaCarreraOperaciones();
 
             List<SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_VIDA_CARRERA_Result> lista = new List<SPE_OBTIENE_COMPARACION_PUESTOS_PLAN_VIDA_CARRERA_Result>();
 
 
-            lista = op.obtenerComparacionPuestos(XML_PUESTOS, ID_EMPLEADO);
+            lista = op.obtenerComparacionPuestos(XML_PUESTOS, ID_EMPLEADO,ID_ROL);
 
             Utilerias.Utilerias aux = new Utilerias.Utilerias();
 

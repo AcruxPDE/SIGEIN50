@@ -8,6 +8,8 @@ using SIGE.Entidades;
 using System.Data.Objects;
 using System.Xml.Linq;
 using SIGE.Entidades.Externas;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar por la carpeta correspondiente
 {
@@ -36,11 +38,15 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar
             }
         }
 
-        public SPE_OBTIENE_ROL_Result ObtieneRol(int? pIdRol)
+        public E_OBTENE_ROL ObtieneRol(int? pIdRol)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_ROL(pIdRol).FirstOrDefault();
+                return context.Database.SqlQuery<E_OBTENE_ROL>("EXEC " +
+                    "ADM.SPE_OBTIENE_ROL " +
+                    "@PIN_ID_ROL"
+                    , new SqlParameter("@PIN_ID_ROL", (object)pIdRol ?? DBNull.Value)).FirstOrDefault();
+                    //SPE_OBTIENE_ROL(pIdRol).FirstOrDefault();
             }
         }
            
@@ -61,7 +67,7 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar
             using (context = new SistemaSigeinEntities())
             {
                 ObjectParameter pOutClRetorno = new ObjectParameter("XML_RESULTADO", typeof(XElement));
-                context.SPE_INSERTA_ACTUALIZA_ROLES(pOutClRetorno, pRol.ID_ROL, pRol.CL_ROL, pRol.NB_ROL,pRol.ID_PLANTILLA, pRol.FG_ACTIVO, pXmlFunciones.ToString(),pRol.XML_GRUPOS, pClUsuario, pNbPrograma, pClTipoOperacion.ToString());
+                context.SPE_INSERTA_ACTUALIZA_ROLES(pOutClRetorno, pRol.ID_ROL, pRol.CL_ROL, pRol.NB_ROL,pRol.ID_PLANTILLA, pRol.FG_ACTIVO,pRol.FG_SUELDO_VISIBLE, pXmlFunciones.ToString(),pRol.XML_GRUPOS, pClUsuario, pNbPrograma, pClTipoOperacion.ToString());
                 return XElement.Parse(pOutClRetorno.Value.ToString());
             }
         }

@@ -19,11 +19,11 @@
         }
 
         function OpenSelectionWindowCP() {
-            openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionCP.aspx", "winSeleccion", "Selección de Código Postal")
+            openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionCP.aspx", "winSeleccion", "Selección de Código Postal");
         }
 
         function OpenSelectionWindow() {
-            openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionEstado.aspx", "winSeleccion", "Selección de Estado")
+            openChildDialog("../Comunes/SeleccionLocalizacion/SeleccionEstado.aspx", "winSeleccion", "Selección de Estado");
         }
 
         function OpenSelectionWindow1() {

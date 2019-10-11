@@ -27,7 +27,7 @@ namespace SIGE.Negocio.Administracion
         public E_ROL ObtieneFuncionesRol(int? pIdRol)
         {
             RolOperaciones nRol = new RolOperaciones();
-            SPE_OBTIENE_ROL_Result vRol = nRol.ObtieneRol(pIdRol);
+            E_OBTENE_ROL vRol = nRol.ObtieneRol(pIdRol);
 
             List<E_FUNCION> vFunciones = XElement.Parse(vRol.XML_AUTORIZACION).Elements("FUNCION").Select(el => new E_FUNCION
             {
@@ -45,6 +45,7 @@ namespace SIGE.Negocio.Administracion
                 CL_ROL = vRol.CL_ROL,
                 ID_PLANTILLA = vRol.ID_PLANTILLA,
                 FG_ACTIVO = vRol.FG_ACTIVO,
+                FG_SUELDO_VISIBLE= vRol.FG_SUELDO_VISIBLE,
                 NB_ROL = vRol.NB_ROL,
                 LST_FUNCIONES = vFunciones,
                 XML_GRUPOS = vRol.XML_GRUPOS

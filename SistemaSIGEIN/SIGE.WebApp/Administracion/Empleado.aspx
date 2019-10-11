@@ -748,7 +748,7 @@
 
                             <div class="ctrlBasico" style="clear: both;">
                                 <div class="divControlIzquierda" style="width: 250px !important">
-                                    <label>* Razón Social:</label>
+                                    <label>* Razón social:</label>
                                 </div>
                                 <div class="divControlDerecha">
                                     <telerik:RadComboBox runat="server" ID="cmbRazonSocial" Width="300px" Filter="Contains" MarkFirstMatch="true" EnableLoadOnDemand="true" AutoPostBack="true" HighlightTemplatedItems="true" OnSelectedIndexChanged="cmbRazonSocial_SelectedIndexChanged" EmptyMessage="Seleccione..." DropDownWidth="530">
@@ -759,7 +759,7 @@
                                                         <asp:Label ID="lbl1" Text="Clave" runat="server" Width="100"></asp:Label>
                                                     </td>
                                                     <td>
-                                                        <asp:Label ID="Label3" Text="Razón Social" runat="server" Width="390"></asp:Label>
+                                                        <asp:Label ID="Label3" Text="Razón social" runat="server" Width="390"></asp:Label>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -852,7 +852,7 @@
 
                             <div class="ctrlBasico" style="clear: both;">
                                 <div class="divControlIzquierda" style="width: 250px !important">
-                                    <label>Tipo de nómina:</label>
+                                    <label>*Tipo de nómina:</label>
                                 </div>
                                 <div class="divControlDerecha">
                                     <telerik:RadComboBox runat="server" ID="cmbTipoNomina" Width="300px" EmptyMessage="Seleccione.." HighlightTemplatedItems="true" DropDownWidth="500" EnableLoadOnDemand="false" Filter="Contains">
@@ -881,6 +881,21 @@
                                                 </tr>
                                             </table>
                                         </ItemTemplate>
+                                    </telerik:RadComboBox>
+                                </div>
+                            </div>
+
+                            <div class="ctrlBasico" style="clear: both;">
+                                <div class="divControlIzquierda" style="width: 250px !important">
+                                    <label>Tipo de pensionado:</label>
+                                </div>
+                                <div class="divControlDerecha">
+                                    <telerik:RadComboBox runat="server" ID="cmbTipoPensionado" Width="300px" EmptyMessage="Seleccione.." HighlightTemplatedItems="true" DropDownWidth="500" EnableLoadOnDemand="false" Filter="Contains"> 
+                                        <Items>
+                                            <telerik:RadComboBoxItem Value="0" Text="No pensionado" />
+                                            <telerik:RadComboBoxItem Value="1" Text="Pensión invalidez y vida" />
+                                            <telerik:RadComboBoxItem Value="2" Text="Pensión censatoria y vejez" />
+                                        </Items>
                                     </telerik:RadComboBox>
                                 </div>
                             </div>

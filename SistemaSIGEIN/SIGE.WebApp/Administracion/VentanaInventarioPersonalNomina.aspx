@@ -215,6 +215,9 @@
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="btnMasDatos" UpdatePanelRenderMode="Inline" />
                     <telerik:AjaxUpdatedControl ControlID="txtClEmpleado" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="txtNombre" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="txtPaterno" UpdatePanelRenderMode="Inline" />
+                    <telerik:AjaxUpdatedControl ControlID="txtMaterno" UpdatePanelRenderMode="Inline" />
                     <telerik:AjaxUpdatedControl ControlID="txtAccion" UpdatePanelRenderMode="Inline" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
@@ -318,32 +321,6 @@
 
         <div style="clear: both;"></div>
 
-        <telerik:RadAjaxPanel runat="server" ID="dvDispNO">
-            <div class="ctrlBasico">
-                <div class="divControlIzquierda" style="text-align: right; width: 180px; margin-top: 6px;">
-                    <telerik:RadLabel ID="RadLabel1" runat="server" Text="Disponible en nómina:"></telerik:RadLabel>
-                </div>
-                <div class="divControlDerecha">
-                    <div class="checkContainer">
-                        <telerik:RadButton ID="btnNOTrue" Checked="false" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpNO" AutoPostBack="true" OnClick="btnNOTrue_Click">
-                            <ToggleStates>
-                                <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
-                                <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
-                            </ToggleStates>
-                        </telerik:RadButton>
-                        <telerik:RadButton ID="btnNOFalse" Checked="true" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpNO" AutoPostBack="true" OnClick="btnNOFalse_Click">
-                            <ToggleStates>
-                                <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
-                                <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
-                            </ToggleStates>
-                        </telerik:RadButton>
-                    </div>
-                </div>
-            </div>
-        </telerik:RadAjaxPanel>
-
-        <div style="clear: both;"></div>
-
         <telerik:RadAjaxPanel ID="dvDispDO" runat="server">
             <div class="ctrlBasico">
                 <div class="divControlIzquierda" style="text-align: right; width: 180px; margin-top: 6px;">
@@ -358,6 +335,32 @@
                             </ToggleStates>
                         </telerik:RadButton>
                         <telerik:RadButton ID="btnDOFalse" Checked="true" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpDO" AutoPostBack="true" OnClick="btnDOFalse_Click">
+                            <ToggleStates>
+                                <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
+                                <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
+                            </ToggleStates>
+                        </telerik:RadButton>
+                    </div>
+                </div>
+            </div>
+        </telerik:RadAjaxPanel>
+
+        <div style="clear: both;"></div>
+
+        <telerik:RadAjaxPanel runat="server" ID="dvDispNO">
+            <div class="ctrlBasico">
+                <div class="divControlIzquierda" style="text-align: right; width: 180px; margin-top: 6px;">
+                    <telerik:RadLabel ID="RadLabel1" runat="server" Text="Disponible en nómina:"></telerik:RadLabel>
+                </div>
+                <div class="divControlDerecha">
+                    <div class="checkContainer">
+                        <telerik:RadButton ID="btnNOTrue" Checked="false" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpNO" AutoPostBack="true" OnClick="btnNOTrue_Click">
+                            <ToggleStates>
+                                <telerik:RadButtonToggleState Text="Sí" CssClass="checkedYes"></telerik:RadButtonToggleState>
+                                <telerik:RadButtonToggleState Text="Sí" CssClass="uncheckedYes"></telerik:RadButtonToggleState>
+                            </ToggleStates>
+                        </telerik:RadButton>
+                        <telerik:RadButton ID="btnNOFalse" Checked="true" runat="server" ToggleType="Radio" ButtonType="StandardButton" GroupName="grpNO" AutoPostBack="true" OnClick="btnNOFalse_Click">
                             <ToggleStates>
                                 <telerik:RadButtonToggleState Text="No" CssClass="checkedNo"></telerik:RadButtonToggleState>
                                 <telerik:RadButtonToggleState Text="No" CssClass="uncheckedNo"></telerik:RadButtonToggleState>
@@ -434,7 +437,7 @@
 
         <div class="divControlDerecha" style="padding-right: 30px;">
             <telerik:RadButton ID="btnGuardar" runat="server" name="btnGuardar" AutoPostBack="true" Text="Guardar" Width="100" OnClientClicking="confirmarGuardar" OnClick="btnGuardar_Click"></telerik:RadButton>
-            <telerik:RadButton ID="btnGuardarCerrar" runat="server" name="btnGuardarCerrar" AutoPostBack="true" Text="Guardar y Cerrar" UseSubmitBehavior="false" OnClientClicking="confirmarGuardar" OnClick="btnGuardarCerrar_Click"></telerik:RadButton>
+            <telerik:RadButton ID="btnGuardarCerrar" runat="server" name="btnGuardarCerrar" AutoPostBack="true" Text="Guardar y cerrar" UseSubmitBehavior="false" OnClientClicking="confirmarGuardar" OnClick="btnGuardarCerrar_Click"></telerik:RadButton>
             <telerik:RadButton ID="btnMasDatos" runat="server" name="btnMasDatos" AutoPostBack="true" Text="Más datos" Width="100" Enabled="false" OnClick="btnMasDatos_Click"></telerik:RadButton>
             <telerik:RadButton ID="btnCancelar" runat="server" name="btnCancelar" AutoPostBack="true" Text="Cancelar" Width="100" OnClientClicking="confirmarCancelar"></telerik:RadButton>
         </div>

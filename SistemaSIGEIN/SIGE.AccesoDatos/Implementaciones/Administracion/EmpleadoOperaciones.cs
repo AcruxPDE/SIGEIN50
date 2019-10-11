@@ -75,11 +75,11 @@ namespace SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal  // reemplazar
             }
         }
      
-        public SPE_OBTIENE_EMPLEADO_PLANTILLA_Result ObtenerPlantilla(int? pIdPlantilla, int? pIdEmpleado, int? pidEmpresa)
+        public SPE_OBTIENE_EMPLEADO_PLANTILLA_Result ObtenerPlantilla(int? pIdPlantilla, int? pIdEmpleado, int? pidEmpresa, int? pidRol)
         {
             using (context = new SistemaSigeinEntities())
             {
-                return context.SPE_OBTIENE_EMPLEADO_PLANTILLA(pIdPlantilla, pIdEmpleado, pidEmpresa).FirstOrDefault();
+                return context.SPE_OBTIENE_EMPLEADO_PLANTILLA(pIdPlantilla, pIdEmpleado, pidEmpresa, pidRol).FirstOrDefault();
             }
         }
 

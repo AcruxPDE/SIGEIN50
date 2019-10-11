@@ -196,7 +196,7 @@ namespace SIGE.Negocio.AdministracionSitio
             return oCampo.ObtieneTipoNomina(tipoNomina.ID_TIPO_NOMINA, tipoNomina.CL_CLIENTE, tipoNomina.CL_TIPO_NOMINA, tipoNomina.NB_PERIODICIDAD, tipoNomina.CL_PERIODICIDAD, tipoNomina.DS_TIPO_NOMINA, tipoNomina.FG_ACTIVO);
         }
 
-        public List <E_FORMA_PAGO> ObtieneFormaPago(E_FORMA_PAGO formaPago = null)
+        public List<E_FORMA_PAGO> ObtieneFormaPago(E_FORMA_PAGO formaPago = null)
         {
             CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
             return oCampo.ObtieneFormaPago(formaPago.CL_FORMA_PAGO, formaPago.NB_FORMA_PAGO, formaPago.FG_ACTIVO);
@@ -226,10 +226,10 @@ namespace SIGE.Negocio.AdministracionSitio
             return oCampo.ObtenerUMA(ID_UMA, FE_INICIAL, FE_FINAL, MN_UMA);
         }
 
-        public List<E_EMPLEADO_NOMINA> ObtieneDatosPersonaNO(int? pID_EMPLEADO)
+        public List<E_EMPLEADO_NOMINA> ObtieneDatosPersonaNO(int? pID_EMPLEADO, int? pID_ROL)
         {
             CamposNominaOperaciones oCampo = new CamposNominaOperaciones();
-            return oCampo.ObtieneDatosPersonaNO(pID_EMPLEADO);
+            return oCampo.ObtieneDatosPersonaNO(pID_EMPLEADO, pID_ROL);
         }
 
         /////////////////////////////////////////// STORE PROCEDURE OBTIENE   /////////////////////////////////////////////////////////////////////

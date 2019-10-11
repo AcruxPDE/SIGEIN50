@@ -122,6 +122,7 @@ namespace SIGE.WebApp.Administracion
             txtClRol.Text = vRol.CL_ROL;
             txtNbRol.Text = vRol.NB_ROL;
             chkActivo.Checked = vRol.FG_ACTIVO;
+            chkSueldo.Checked = vRol.FG_SUELDO_VISIBLE;
             vLstFunciones = vRol.LST_FUNCIONES;
 
             PlantillaFormularioNegocio nPlantilla = new PlantillaFormularioNegocio();
@@ -224,6 +225,7 @@ namespace SIGE.WebApp.Administracion
                 CL_ROL = txtClRol.Text,
                 ID_PLANTILLA = vIdPlantilla,
                 FG_ACTIVO = chkActivo.Checked,
+                FG_SUELDO_VISIBLE=chkSueldo.Checked,
                 NB_ROL = txtNbRol.Text,
                 XML_AUTORIZACION = vFunciones.ToString()
             };

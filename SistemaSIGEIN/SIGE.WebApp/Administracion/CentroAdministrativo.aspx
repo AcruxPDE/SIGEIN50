@@ -125,7 +125,7 @@
                 </AjaxSettings>
     </telerik:RadAjaxManager>
 
-    <label class="labelTitulo">Centro Administrativo</label>
+    <label class="labelTitulo">Centros administrativos</label>
     <div style="height: calc(100% - 100px);">
         <telerik:RadGrid ID="grdCentroAdministrativo" 
             runat="server"  
@@ -202,8 +202,8 @@
             <telerik:RadWindow 
                 ID="winCentroAdministrativo" 
                 runat="server" 
-                Title=" Nuevo/Editar Centro Administrativo" 
-                Height="580px" 
+                Title=" Agregar/editar centro administrativo" 
+                Height="600px" 
                 Width="660px" 
                 VisibleStatusbar="false" 
                 VisibleTitlebar="true" 
@@ -220,7 +220,7 @@
                 ID="winSeleccion" 
                 runat="server" 
                 Title="Seleccion" 
-                Height="800px" 
+                Height="600px" 
                 Width="1200px" 
                 VisibleStatusbar="false" 
                 VisibleTitlebar="true" 
