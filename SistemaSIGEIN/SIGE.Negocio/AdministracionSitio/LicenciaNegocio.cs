@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using SIGE.Entidades;
 using SIGE.AccesoDatos.Implementaciones.IntegracionDePersonal;
 using SIGE.Entidades.Externas;
+using SIGE.Entidades.Administracion;
 using SIGE.Negocio.Utilerias;
 using System.Xml.Linq;
 
@@ -35,11 +36,33 @@ namespace SIGE.Negocio.Administracion
             return UtilRespuesta.EnvioRespuesta(operaciones.InsertaActualiza_S_CONFIGURACION(CL_CONFIGURACION, NO_CONFIGURACION, CL_USUARIO, NB_PROGRAMA, TIPO_TRANSACCION));
         }
 
+        public E_MENSAJES InsertaActualiza_S_CONFIGURACION2(string CL_CONFIGURACION = null, string NO_CONFIGURACION = null, string CL_USUARIO = null, string NB_PROGRAMA = null, string TIPO_TRANSACCION = null)
+        {
+            LicenciaOperaciones operaciones = new LicenciaOperaciones();
+            E_MENSAJES vMensaje = operaciones.InsertaActualiza_S_CONFIGURACION_NOMINA(CL_CONFIGURACION, NO_CONFIGURACION, CL_USUARIO, NB_PROGRAMA, TIPO_TRANSACCION);
+            return vMensaje;
+        }
+
+        public E_MENSAJES InsertaActualiza_S_CONFIGURACION_NOMINA(string CL_CONFIGURACION = null, string NO_CONFIGURACION = null, string XML_CONFIGURACION = null, string USUARIO = null, string PROGRAMA = null, string TIPO_TRANSACCION = null)
+        {
+            LicenciaOperaciones operaciones = new LicenciaOperaciones();
+            E_MENSAJES vMensaje = operaciones.InsertaActualiza_S_CONFIGURACION_NOMINA(CL_CONFIGURACION, NO_CONFIGURACION, XML_CONFIGURACION, USUARIO, PROGRAMA, TIPO_TRANSACCION);
+            return vMensaje;
+        }
+
+
         public List<SPE_OBTIENE_LICENCIA_VOLUMEN_Result> ObtenerLicenciaVolumen(bool? pFG_ACTIVO = null, int? pID_EMPRESA = null)
         {
             LicenciaOperaciones operaciones = new LicenciaOperaciones();
             return operaciones.ObtenerLicenciaVolumen(pFG_ACTIVO, pID_EMPRESA);
         }
-             
+
+        public List<E_OBTIENE_S_CONFIGURACION> obtieneConfiguracionContexto(string CL_CLIENTE = null, string CL_CONFIGURACION = null, string NB_CONFIGURACION = null, string NO_CONFIGURACION = null, string DS_CONFIGURACION = null)
+        {
+            LicenciaOperaciones operaciones = new LicenciaOperaciones();
+            return operaciones.obtieneConfiguracionContexto(CL_CLIENTE, CL_CONFIGURACION, NB_CONFIGURACION, NO_CONFIGURACION, DS_CONFIGURACION);
+        }
+
+
     }
 }

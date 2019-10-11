@@ -232,5 +232,25 @@ namespace SIGE.Negocio.AdministracionSitio
             return oCampo.ObtieneDatosPersonaNO(pID_EMPLEADO);
         }
 
+        /////////////////////////////////////////// STORE PROCEDURE OBTIENE   /////////////////////////////////////////////////////////////////////
+        public List<E_OBTIENE_S_CONFIGURACION> Obtener_S_CONFIGURACION(String CL_CLIENTE = null, String CL_CONFIGURACION = null, String NB_CONFIGURACION = null, String NO_CONFIGURACION = null, String DS_CONFIGURACION = null)
+        {
+            CamposNominaOperaciones operaciones = new CamposNominaOperaciones();
+            return operaciones.Obtener_S_CONFIGURACION(CL_CLIENTE, CL_CONFIGURACION, NB_CONFIGURACION, NO_CONFIGURACION, DS_CONFIGURACION);
+        }
+
+        public List<E_MENSAJES> InsertaLayoutempleados(bool FG_VALIDAR, int NO_LINEA, E_PLANTILLA_NOMINA emp, string CL_USUARIO, string NB_PROGRAMA)
+        {
+            CamposNominaOperaciones op = new CamposNominaOperaciones();
+            return op.insertaLayoutempleados(FG_VALIDAR, NO_LINEA, emp, CL_USUARIO, NB_PROGRAMA);
+
+        }
+
+        public List<E_PLANTILLA_LAYOUT> Actualiza_K_PLANTILLA_layout(string xmlDatos, bool? esValidacion, string usuario, string programa)
+        {
+            CamposNominaOperaciones operaciones = new CamposNominaOperaciones();
+            return operaciones.Actualiza_K_PLANTILLA_layout(xmlDatos, esValidacion, usuario, programa);
+        }
+
     }
 }

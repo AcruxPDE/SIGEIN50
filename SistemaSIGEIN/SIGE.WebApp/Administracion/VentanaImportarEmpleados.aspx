@@ -86,7 +86,7 @@
         </div>
 
         <div id="divValidar" style="margin-top: 15px;">
-            <telerik:RadButton CssClass="btnMediano" ID="btnValidar" runat="server" Text="Validar archivo">
+            <telerik:RadButton CssClass="btnMediano" ID="btnValidar" runat="server" Text="Validar archivo" OnClick="btnValidar_Click">
                 <Icon PrimaryIconCssClass="rbOk" />
             </telerik:RadButton>
 

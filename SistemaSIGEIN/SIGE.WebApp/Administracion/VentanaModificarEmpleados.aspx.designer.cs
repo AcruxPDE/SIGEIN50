@@ -10,7 +10,7 @@
 namespace SIGE.WebApp.Administracion {
     
     
-    public partial class VentanaImportarEmpleados {
+    public partial class VentanaModificarEmpleados {
         
         /// <summary>
         /// Control RadAsyncUpload1.
@@ -20,15 +20,6 @@ namespace SIGE.WebApp.Administracion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Telerik.Web.UI.RadAsyncUpload RadAsyncUpload1;
-        
-        /// <summary>
-        /// Control cmbVersion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox cmbVersion;
         
         /// <summary>
         /// Control btnValidar.
@@ -94,12 +85,12 @@ namespace SIGE.WebApp.Administracion {
         protected global::Telerik.Web.UI.RadProgressArea RadProgressArea2;
         
         /// <summary>
-        /// Control rwMensaje.
+        /// Control rnMensaje.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadWindowManager rwMensaje;
+        protected global::Telerik.Web.UI.RadWindowManager rnMensaje;
     }
 }

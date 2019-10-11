@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using WebApp.Comunes;
+using System.Xml.Linq;
 
 namespace SIGE.WebApp.Comunes
 {
@@ -27,6 +28,53 @@ namespace SIGE.WebApp.Comunes
                 return string.Format("{0}://{1}", HttpContext.Current.Request.Url.Scheme, HttpContext.Current.Request.Url.Authority);
             }
         }
+        public static string clUsuario
+        {
+            get
+            {
+                return Utileria.GetSessionValue<string>("__clUsuario__");
+            }
+            set
+            {
+                Utileria.SetSessionValue<string>("__clUsuario__", value);
+            }
+        }
+
+        public static string nbUsuario
+        {
+            get
+            {
+                return Utileria.GetSessionValue<string>("__nbUsuario__");
+            }
+            set
+            {
+                Utileria.SetSessionValue<string>("__nbUsuario__", value);
+            }
+        }
+
+        public static string clEmpresa
+        {
+            get
+            {
+                return Utileria.GetSessionValue<string>("__clEmpresa__");
+            }
+            set
+            {
+                Utileria.SetSessionValue<string>("__clEmpresa__", value);
+            }
+        }
+
+        public static XElement clienteLicencias
+        {
+            get
+            {
+                return Utileria.GetSessionValue<XElement>("__clienteLicencias__");
+            }
+            set
+            {
+                Utileria.SetSessionValue<XElement>("__clienteLicencias__", value);
+            }
+        }
 
         public static string nbPrograma
         {
@@ -45,6 +93,18 @@ namespace SIGE.WebApp.Comunes
             set
             {
                 Utileria.SetSessionValue<int>("__idBateriaPrueba__", value);
+            }
+        }
+
+        public static XElement confCliente
+        {
+            get
+            {
+                return Utileria.GetSessionValue<XElement>("__confCliente__");
+            }
+            set
+            {
+                Utileria.SetSessionValue<XElement>("__confCliente__", value);
             }
         }
 

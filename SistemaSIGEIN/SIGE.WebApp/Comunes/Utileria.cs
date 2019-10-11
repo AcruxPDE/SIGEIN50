@@ -9,9 +9,11 @@ using System.Web.UI;
 using SIGE.Negocio.Utilerias;
 using Telerik.Web.UI;
 using System.Web.UI.WebControls;
+using SIGE.WebApp.Comunes;
 using System.Web.UI.HtmlControls;
 using System.Text.RegularExpressions;
 using SIGE.Entidades.FormacionDesarrollo;
+using SIGE.Negocio.Administracion;
 
 
 namespace WebApp.Comunes
@@ -329,6 +331,140 @@ namespace WebApp.Comunes
             return new string(array);
         }
 
+        public static void actualizaContextoConf(List<E_OBTIENE_S_CONFIGURACION> resultado)
+        {
+
+            UtilLicencias lic = new UtilLicencias();
+            LicenciaNegocio licNeg = new LicenciaNegocio();
+
+            string infoCliente = resultado.Where(w => w.CL_CONFIGURACION == "CL_LICENCIAMIENTO").FirstOrDefault().NO_CONFIGURACION.ToString();
+            string infoLicencias = resultado.Where(w => w.CL_CONFIGURACION == "OBJ_ADICIONAL").FirstOrDefault().NO_CONFIGURACION.ToString();
+            string password = resultado.Where(w => w.CL_CONFIGURACION == "CL_PASS_WS").FirstOrDefault().NO_CONFIGURACION.ToString();
+            string keyPass = password.Substring(0, 16);
+            string keyFeCreacion = resultado.Where(w => w.CL_CONFIGURACION == "FE_CREACION").FirstOrDefault().NO_CONFIGURACION.ToString();
+            string clEmpresa = resultado.Where(w => w.CL_CONFIGURACION == "CL_EMPRESA").FirstOrDefault().NO_CONFIGURACION.ToString();
+            Crypto desencripta = new Crypto();
+
+            if (!string.IsNullOrEmpty(clEmpresa))
+            {
+                ContextoUsuario.clEmpresa = clEmpresa;
+            }
+
+            if (!string.IsNullOrEmpty(infoCliente))
+            {
+                ContextoUsuario.confCliente = XElement.Parse(desencripta.descifrarTextoAES(infoCliente, ContextoUsuario.clCliente, keyFeCreacion, "SHA1", 22, keyPass, 256));
+            }
+
+            if (!string.IsNullOrEmpty(infoLicencias))
+            {
+                ContextoUsuario.clienteLicencias = XElement.Parse(desencripta.descifrarTextoAES(infoLicencias, ContextoUsuario.clCliente, keyFeCreacion, "SHA1", 22, keyPass, 256));
+            }
+        }
+
+        public static E_MENSAJES verificaLicencia(string clCliente, string clSistema, string clEmpresa, string clModulo, string noversion, string clUsuario, string nbPrograma)
+        {
+            E_MENSAJES vMensaje = new E_MENSAJES();
+            LicenciaNegocio licNeg = new LicenciaNegocio();
+            List<E_OBTIENE_S_CONFIGURACION> resultado = licNeg.obtieneConfiguracionContexto(ContextoUsuario.clCliente);
+
+            vMensaje = verificaCampos2(resultado);
+            if (vMensaje.CL_CLAVE_RETORNO == "-1000")
+            {
+                UtilLicencias lic = new UtilLicencias();
+                vMensaje = lic.validaLicencia2(clCliente, clSistema, clEmpresa, clModulo, noversion, clUsuario, nbPrograma, ContextoUsuario.confCliente, ContextoUsuario.clienteLicencias);
+                if (vMensaje.CL_CLAVE_RETORNO != "-1000")
+                {
+                    resultado = licNeg.obtieneConfiguracionContexto(clCliente);
+                    actualizaContextoConf(resultado);
+                    return vMensaje = lic.validaLicencia2(clCliente, clSistema, ContextoUsuario.clEmpresa, clModulo, noversion, clUsuario, nbPrograma, ContextoUsuario.confCliente, ContextoUsuario.clienteLicencias);
+                }
+                else
+                {
+                    return vMensaje;
+                }
+            }
+            else
+            {
+                return vMensaje;
+            }
+        }
+
+        public static E_MENSAJES verificaCampos(List<E_OBTIENE_S_CONFIGURACION> resultado)
+        {
+            E_MENSAJES vMensaje = new E_MENSAJES();
+            if (resultado != null)
+            {
+                vMensaje.CL_CLAVE_RETORNO = "-1000";
+                if (!resultado.Exists(w => w.CL_CONFIGURACION == "CL_LICENCIAMIENTO"))
+                {
+                    vMensaje.CL_CLAVE_RETORNO = "01";
+                    vMensaje.NB_MENSAJE_RETORNO = "Ocurrio un error 01. Contacte al administrador.";
+                }
+                if (!resultado.Exists(w => w.CL_CONFIGURACION == "OBJ_ADICIONAL"))
+                {
+                    vMensaje.CL_CLAVE_RETORNO = "02";
+                    vMensaje.NB_MENSAJE_RETORNO = "Ocurrio un error 02. Contacte al administrador.";
+                }
+                if (!resultado.Exists(w => w.CL_CONFIGURACION == "CL_PASS_WS"))
+                {
+                    vMensaje.CL_CLAVE_RETORNO = "03";
+                    vMensaje.NB_MENSAJE_RETORNO = "Ocurrio un error 03. Contacte al administrador.";
+                }
+                if (!resultado.Exists(w => w.CL_CONFIGURACION == "FE_CREACION"))
+                {
+                    vMensaje.CL_CLAVE_RETORNO = "04";
+                    vMensaje.NB_MENSAJE_RETORNO = "Ocurrio un error 04. Contacte al administrador.";
+                }
+                if (!resultado.Exists(w => w.CL_CONFIGURACION == "CL_EMPRESA"))
+                {
+                    vMensaje.CL_CLAVE_RETORNO = "05";
+                    vMensaje.NB_MENSAJE_RETORNO = "Ocurrio un error 05. Contacte al administrador.";
+                }
+            }
+            else
+            {
+                vMensaje.CL_CLAVE_RETORNO = "06";
+                vMensaje.NB_MENSAJE_RETORNO = "No se encontraron datos del cliente";
+            }
+
+            return vMensaje;
+        }
+
+        public static E_MENSAJES verificaCampos2(List<E_OBTIENE_S_CONFIGURACION> resultado)
+        {
+            E_MENSAJES vMensaje = new E_MENSAJES();
+            if (resultado != null)
+            {
+                vMensaje.CL_CLAVE_RETORNO = "-1000";
+                if (!resultado.Exists(w => w.CL_CONFIGURACION == "OBJ_ADICIONAL"))
+                {
+                    vMensaje.CL_CLAVE_RETORNO = "02";
+                    vMensaje.NB_MENSAJE_RETORNO = "Ocurrio un error 02. Contacte al administrador.";
+                }
+                if (!resultado.Exists(w => w.CL_CONFIGURACION == "CL_PASS_WS"))
+                {
+                    vMensaje.CL_CLAVE_RETORNO = "03";
+                    vMensaje.NB_MENSAJE_RETORNO = "Ocurrio un error 03. Contacte al administrador.";
+                }
+                if (!resultado.Exists(w => w.CL_CONFIGURACION == "FE_CREACION"))
+                {
+                    vMensaje.CL_CLAVE_RETORNO = "04";
+                    vMensaje.NB_MENSAJE_RETORNO = "Ocurrio un error 04. Contacte al administrador.";
+                }
+                if (!resultado.Exists(w => w.CL_CONFIGURACION == "CL_EMPRESA"))
+                {
+                    vMensaje.CL_CLAVE_RETORNO = "05";
+                    vMensaje.NB_MENSAJE_RETORNO = "Ocurrio un error 05. Contacte al administrador.";
+                }
+            }
+            else
+            {
+                vMensaje.CL_CLAVE_RETORNO = "06";
+                vMensaje.NB_MENSAJE_RETORNO = "No se encontraron datos del cliente";
+            }
+
+            return vMensaje;
+        }
         //public static void SelectIndexChangeComboboxGrid(object sender, RadGrid Grid_parametro, string UniqueName_textbox)
         //{
         //    if (Grid_parametro.MasterTableView.IsItemInserted)
@@ -423,8 +559,8 @@ namespace WebApp.Comunes
 
         //public static bool MuestraMensajeEstandar(dynamic mensajes, RadWindowManager rnMensaje, bool muestramsjAlGuardarCorrectamente = false, string msjAMostrarAlguardarCorrectamente = "")
         //{
-        //    string claveError = mensajes.clave_retorno.ToString();
-        //    string mensajeError = mensajes.mensaje_retorno.ToString();
+        //    string claveError = mensajes.CL_CL_CLAVE_RETORNO.ToString();
+        //    string mensajeError = mensajes.NB_NB_MENSAJE_RETORNO.ToString();
         //    if (claveError == "-1000")
         //    {
         //        if (muestramsjAlGuardarCorrectamente)

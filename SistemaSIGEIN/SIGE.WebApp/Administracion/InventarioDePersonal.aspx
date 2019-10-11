@@ -239,7 +239,7 @@
             function GetModificacionLayoutWindowProperties() {
                 var wnd = GetWindowModificacionLayoutProperties();
 
-                wnd.vURL = "VentanaImportarEmpleados.aspx?";
+                wnd.vURL = "VentanaModificarEmpleados.aspx?";
                 wnd.vTitulo = "Modificación por layout";
                 wnd.vRadWindowId = "WinImportarEmpleados";
                 return wnd;
