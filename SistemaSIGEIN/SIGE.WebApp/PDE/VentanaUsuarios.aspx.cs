@@ -23,6 +23,7 @@ namespace SIGE.WebApp.PDE
     {
         private string vClUsuario;
         private string vNbPrograma;
+        private string vClCliente;
         private E_IDIOMA_ENUM vClIdioma = E_IDIOMA_ENUM.ES;
         private XElement SELECCIONEMPLEADOS { get; set; }
         private XElement SELECCIONUSUARIOS { get; set; }
@@ -137,6 +138,7 @@ namespace SIGE.WebApp.PDE
 
             vClUsuario = ContextoUsuario.oUsuario.CL_USUARIO;
             vNbPrograma = ContextoUsuario.nbPrograma;
+            vClCliente = ContextoApp.Licencia.clCliente;
         }
         public void ObtenerUsuarios()
         {

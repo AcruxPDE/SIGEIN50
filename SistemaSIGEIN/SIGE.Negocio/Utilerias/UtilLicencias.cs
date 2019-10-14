@@ -17,8 +17,10 @@ namespace SIGE.Negocio.Utilerias
         string clConfiguracion = "CL_LICENCIAMIENTO";
         string keyFeCreacion;
         string clPassword;
+        string msjRespuesta;
         string cadenaDesencriptada;
         E_RESULTADO vMensaje = new E_RESULTADO();
+        E_MENSAJES vMensajes = new E_MENSAJES();
         List<E_LICENCIA> lstLicencia = new List<E_LICENCIA>();
         E_LICENCIA vLic = new E_LICENCIA();
 
@@ -461,6 +463,231 @@ namespace SIGE.Negocio.Utilerias
                 }
             }
         }
+
+        public E_MENSAJES validaLicencia2(string clCliente = null, string clSistema = null, string clEmpresa = null, string clModulo = null, string noVersion = null, string usuario = null, string programa = null, XElement confCliente = null, XElement clienteLicencias = null)
+        {
+            if (confCliente != null && clienteLicencias != null)
+            {
+                LicenciaNegocio licNeg = new LicenciaNegocio();
+                SPE_OBTIENE_CONFIGURACION_LICENCIA_Result resultPass = licNeg.obtieneConfiguracion(clCliente, "CL_PASS_WS");
+                if (resultPass != null)
+                {
+                    clPassword = resultPass.NO_CONFIGURACION;
+                    string keyPassword = clPassword.Substring(0, 16);
+
+                    if (!existeCliente(confCliente, clCliente) || !ExisteSistema(confCliente, clSistema) || !ExisteModulo(confCliente, clModulo))
+                    {
+                        generaXmlIdentificacion(clCliente, clPassword);
+                        generaXmlLicencias(clCliente, clPassword);
+                    }
+
+                    if (existeCliente(confCliente, clCliente) && ExisteSistema(confCliente, clSistema) && ExisteModulo(confCliente, clModulo))
+                    {
+                        if (!ExisteLicencia(clienteLicencias, clCliente, clSistema, clEmpresa, clModulo, noVersion))
+                        {
+                            generaXmlLicencias(clCliente, clPassword);
+                        }
+
+                        if (ExisteLicencia(clienteLicencias, clCliente, clSistema, clEmpresa, clModulo, noVersion))
+                        {
+
+                            if (!validaLicencia(vLic))
+                            {
+                                generaXmlLicencias(clCliente, clPassword);
+                                ExisteLicencia(clienteLicencias, clCliente, clSistema, clEmpresa, clModulo, noVersion);
+                            }
+
+                            if (validaLicencia(vLic))
+                            {
+                                vMensajes.CL_CLAVE_RETORNO = "-1000";
+                                vMensajes.NB_MENSAJE_RETORNO = "Licencia activa";
+                                return vMensajes;
+                            }
+                            else
+                            {
+                                return vMensajes;
+                            }
+                        }
+                        else
+                        {
+                            return vMensajes;
+                        }
+                    }
+                    else
+                    {
+                        vMensajes.CL_CLAVE_RETORNO = "12";
+                        vMensajes.NB_MENSAJE_RETORNO = "El modulo o sistema no existen";
+                        return vMensajes;
+                    }
+                }
+                else
+                {
+                    vMensajes.CL_CLAVE_RETORNO = "11";
+                    vMensajes.NB_MENSAJE_RETORNO = "No se encontro la contraseña del web service";
+                    return vMensajes;
+                }
+            }
+            else
+            {
+                generaDatosContexto(clCliente, clSistema, clModulo);
+                return vMensajes;
+            }
+        }
+
+        public bool generaXmlIdentificacion(string clCliente, string clPassword)
+        {
+            try
+            {
+                Licencia lic = new Licencia();
+                string vXmlIdentifi = lic.generaXmlIdentificacion(clCliente, clPassword);
+                LicenciaNegocio licNeg = new LicenciaNegocio();
+                E_MENSAJES resultado = licNeg.InsertaActualiza_S_CONFIGURACION2(NO_CONFIGURACION: vXmlIdentifi, CL_CONFIGURACION: clConfiguracion, CL_USUARIO: "admin", NB_PROGRAMA: "webservice", TIPO_TRANSACCION: "A");
+                if (resultado.CL_CLAVE_RETORNO != "-1000")
+                {
+                    vMensajes.CL_CLAVE_RETORNO = "01";
+                    vMensajes.NB_MENSAJE_RETORNO = "No existen datos para el cliente actual";
+                    msjRespuesta = resultado.NB_MENSAJE_RETORNO;
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                vMensajes.CL_CLAVE_RETORNO = "08";
+                vMensajes.NB_MENSAJE_RETORNO = "No es posible conectarse con el servidor";
+                return false;
+            }
+        }
+
+        public bool generaXmlLicencias(string clCliente, string clPassword)
+        {
+            try
+            {
+                Licencia lic = new Licencia();
+                string vXmlLicencia = lic.generaXmlLicencia(clCliente, clPassword);
+                LicenciaNegocio licNeg = new LicenciaNegocio();
+                E_MENSAJES resultado = licNeg.InsertaActualiza_S_CONFIGURACION2(NO_CONFIGURACION: vXmlLicencia, CL_CONFIGURACION: "OBJ_ADICIONAL", CL_USUARIO: "admin", NB_PROGRAMA: "webservice", TIPO_TRANSACCION: "A");
+                if (resultado.CL_CLAVE_RETORNO != "-1000")
+                {
+                    vMensajes.CL_CLAVE_RETORNO = "07";
+                    vMensajes.NB_MENSAJE_RETORNO = "El cliente actual no cuenta con licencias";
+                    msjRespuesta = resultado.NB_MENSAJE_RETORNO;
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                vMensajes.CL_CLAVE_RETORNO = "08";
+                vMensajes.NB_MENSAJE_RETORNO = "No es posible conectarse con el servidor";
+                return false;
+            }
+        }
+
+        public void generaDatosContexto(string clCliente, string clSistema, string clModulo)
+        {
+            LicenciaNegocio licNeg = new LicenciaNegocio();
+            Crypto desencripta = new Crypto();
+
+            SPE_OBTIENE_CONFIGURACION_LICENCIA_Result resultado = licNeg.obtieneConfiguracion(clCliente, clConfiguracion);
+            SPE_OBTIENE_CONFIGURACION_LICENCIA_Result resultPass = licNeg.obtieneConfiguracion(clCliente, "CL_PASS_WS");
+
+            if (resultPass != null && resultado != null)
+            {
+                clPassword = resultPass.NO_CONFIGURACION;
+                generaXmlIdentificacion(clCliente, clPassword);
+                resultado = licNeg.obtieneConfiguracion(clCliente, clConfiguracion);
+
+                if (!string.IsNullOrEmpty(resultado.NO_CONFIGURACION))
+                {
+                    keyFeCreacion = licNeg.obtieneConfiguracion(clCliente, "FE_CREACION").NO_CONFIGURACION;
+                    string keyPassword = clPassword.Substring(0, 16);
+                    cadenaDesencriptada = desencripta.descifrarTextoAES(resultado.NO_CONFIGURACION, clCliente, keyFeCreacion, "SHA1", 22, keyPassword, 256);
+                    XElement vXmlConfiguracion = XElement.Parse(cadenaDesencriptada);
+
+                    if (existeCliente(vXmlConfiguracion, clCliente) && ExisteSistema(vXmlConfiguracion, clSistema) && ExisteModulo(vXmlConfiguracion, clModulo))
+                    {
+                        generaXmlLicencias(clCliente, clPassword);
+                        vMensajes.CL_CLAVE_RETORNO = "10";
+                        vMensajes.NB_MENSAJE_RETORNO = "No existen datos en el contexto";
+                    }
+                    else
+                    {
+                        vMensajes.CL_CLAVE_RETORNO = "02";
+                        vMensajes.NB_MENSAJE_RETORNO = "No existe licencia para el módulo actual";
+                    }
+                }
+                else
+                {
+                    if (vMensajes.CL_CLAVE_RETORNO != "08")
+                    {
+                        vMensajes.CL_CLAVE_RETORNO = "07";
+                        vMensajes.NB_MENSAJE_RETORNO = "El cliente actual no cuenta con licencias";
+                    }
+                }
+            }
+            else
+            {//ir al web service
+                //actualizar bd
+                //set valores contexto
+                //validar licencia
+
+                if (resultado == null)
+                {
+                    clPassword = resultPass.NO_CONFIGURACION;
+                    if (insertaXmlIdentificacion(clCliente, clPassword) && generaXmlLicencias(clCliente, clPassword))
+                    {
+                        vMensajes.CL_CLAVE_RETORNO = "10";
+                        vMensajes.NB_MENSAJE_RETORNO = "No existen datos en el contexto";
+                    }
+                    else
+                    {
+                        vMensajes.CL_CLAVE_RETORNO = "07";
+                        vMensajes.NB_MENSAJE_RETORNO = "El cliente actual no cuenta con licencias";
+                    }
+                }
+                else
+                {
+                    vMensajes.CL_CLAVE_RETORNO = "11";
+                    vMensajes.NB_MENSAJE_RETORNO = "No se encontro la contraseña del web service";
+                }
+            }
+        }
+
+        public bool insertaXmlIdentificacion(string clCliente, string clPassword)
+        {
+            try
+            {
+                Licencia lic = new Licencia();
+                string vXmlIdentifi = lic.generaXmlIdentificacion(clCliente, clPassword);
+                LicenciaNegocio licNeg = new LicenciaNegocio();
+                E_MENSAJES resultado = licNeg.InsertaActualiza_S_CONFIGURACION_NOMINA(clCliente, clConfiguracion, "XML de identificacion", vXmlIdentifi, "XML de identificacion", "I");
+                if (resultado.CL_CLAVE_RETORNO != "-1000")
+                {
+                    vMensajes.CL_CLAVE_RETORNO = "01";
+                    vMensajes.NB_MENSAJE_RETORNO = "No existen datos para el cliente actual";
+                    msjRespuesta = resultado.NB_MENSAJE_RETORNO;
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                vMensajes.CL_CLAVE_RETORNO = "08";
+                vMensajes.NB_MENSAJE_RETORNO = "No es posible conectarse con el servidor";
+                return false;
+            }
+        }
+
 
     }
 }
