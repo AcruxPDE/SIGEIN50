@@ -210,6 +210,9 @@
     <Compile Include="Externas\E_GENERICA.cs" />
     <Compile Include="Externas\E_OBTENE_ROL.cs" />
     <Compile Include="Externas\E_OBTIENE_PUESTO_EMPLEADOS.cs" />
+    <Compile Include="Externas\E_OBTIENE_S_CONFIGURACION.cs" />
+    <Compile Include="Externas\E_PLANTILLA_LAYOUT.cs" />
+    <Compile Include="Externas\E_PLANTILLA_NOMINA.cs" />
     <Compile Include="Externas\E_PREGUNTAS.cs" />
     <Compile Include="Externas\E_REFERENCIA_CANDIDATO.cs" />
     <Compile Include="Externas\E_RESULTADO_MEDICO.cs" />
