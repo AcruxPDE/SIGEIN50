@@ -52,6 +52,24 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <telerik:RadAjaxLoadingPanel runat="server" ID="ralpCapturarBaja"></telerik:RadAjaxLoadingPanel>
+    <telerik:RadAjaxManager ID="ramCapturarBaja" runat="server" DefaultLoadingPanelID="ralpCapturarBaja" >
+        <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="rgBajasPendientes">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="rgBajasPendientes" UpdatePanelRenderMode="Inline" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+        </AjaxSettings>
+        <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="ramCapturarBaja">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="rgBajasPendientes" UpdatePanelHeight="100%" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+        </AjaxSettings>
+    </telerik:RadAjaxManager>
+
         <label class="labelTitulo">Bajas Pendientes</label>
         <div style="height: calc(100% - 100px);">
             <telerik:RadMultiPage ID="rmpBajasPendientes" runat="server" SelectedIndex="0" Height="100%">
