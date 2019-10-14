@@ -708,7 +708,7 @@ namespace SIGE.WebApp.MPC
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, "Debes seleccionar por lo menos un elemento para guardar", E_TIPO_RESPUESTA_DB.ERROR, pCallBackFunction: "");
         }
 
-        protected void GuardarConfiguracion()
+        protected bool GuardarConfiguracion()
         {
             E_TABULADOR vTabulador = new E_TABULADOR();
 
@@ -728,18 +728,12 @@ namespace SIGE.WebApp.MPC
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
 
             if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
-            {
-                UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
-                lblAdvertencia.Visible = false;
-                rtsConfiguracion.Tabs[4].Enabled = true;
-                rpvNiveles.Selected = true;
-                rtsConfiguracion.Tabs[4].Selected = true;
-                vNivelesTabulador = int.Parse(rntNivelesACrear.Text);
-                grdNiveles.Rebind();
-                //CalculaNiveles();
-            }
+                return true;
             else
+            {
                 UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
+                return false;
+            }
 
         }
 
@@ -799,8 +793,6 @@ namespace SIGE.WebApp.MPC
                 vPromedioValuacion[index].NO_NIVEL = (vNiveles - clusterAssigments[index]);
             }
 
-            GuardarConfiguracion();
-
             XElement xValuaciones = new XElement("VALUACIONES");
             
             foreach(E_NIVEL item in vPromedioValuacion)
@@ -814,7 +806,26 @@ namespace SIGE.WebApp.MPC
                 xValuaciones.Add(xValuacion);
             }
 
-            nTabulador.InsertarActualizarNivelesTabulador(ID_TABULADOR: vIdTabulador, XML_VALUACION: xValuaciones.ToString(), CL_USUARIO: vClUsuario, NB_PROGRAMA: vNbPrograma);
+            if (GuardarConfiguracion())
+            {
+                E_RESULTADO vResultado = nTabulador.InsertarActualizarNivelesTabulador(ID_TABULADOR: vIdTabulador, XML_VALUACION: xValuaciones.ToString(), CL_USUARIO: vClUsuario, NB_PROGRAMA: vNbPrograma);
+                string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+
+                if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
+                {
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR, pCallBackFunction: "");
+                    lblAdvertencia.Visible = false;
+                    rtsConfiguracion.Tabs[4].Enabled = true;
+                    rpvNiveles.Selected = true;
+                    rtsConfiguracion.Tabs[4].Selected = true;
+                    vNivelesTabulador = int.Parse(rntNivelesACrear.Text);
+                    grdNiveles.Rebind();
+                }
+                else
+                {
+                    UtilMensajes.MensajeResultadoDB(rwmMensaje, vMensaje, vResultado.CL_TIPO_ERROR);
+                }
+            }
 
         }
 
