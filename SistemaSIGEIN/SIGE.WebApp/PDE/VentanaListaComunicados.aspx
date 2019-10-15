@@ -13,7 +13,7 @@
                 //openChildDialog("VentanaAgregarComunicado.aspx", "winAgregarComunicado", "Nuevo Comunicado")
             }
 
-
+            // 
             function AbrirVentanaEditar() {
                 var idComunicado = "";
                 var vTipoComunicado = "";

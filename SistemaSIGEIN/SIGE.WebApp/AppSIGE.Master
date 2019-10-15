@@ -16,7 +16,7 @@
             $find("mpeTimeout").show();
         }, timeout - 20 * 1000);
         setTimeout(function () {
-            window.location = "Expired.aspx";
+            window.location = "Expired.aspx"; 
         }, timeout);
     };
     function ResetSession() {
@@ -206,6 +206,11 @@
             float: right;
             padding-right: 10px;
             padding-bottom: 10px;
+        }
+        .pos{
+            float: left;
+            padding-right: 0;
+            padding-bottom: 0;
         }
 
         .RadMenu {
@@ -479,9 +484,25 @@
                 }
                 else if (itemValue == "Mis datos Nómina") {
                     getRadWindow(getUrl);
-                    var vURL = "/NOMINA/Menu.aspx";
-                    var vTitulo = "Mis datos Nómina";
+                    var vURL = "/NOMINA/Menu.aspx";  
+                    var vTitulo = "Mis datos Nómina"; 
                     var oWin = window.radopen(vURL, vRadWindow, document.documentElement.clientWidth - 50, document.documentElement.clientHeight - 40);
+                    oWin.set_title(vTitulo); 
+                    args.set_cancel(true); 
+                }
+                else if (itemValue == "Visualizar Comunicados") {
+                    getRadWindow(getUrl);
+                    var vURL = "VisorDeComunicados.aspx";
+                    var vTitulo = "Visualizar Comunicados";
+                    var oWin = window.radopen(vURL, vRadWindow, document.documentElement.clientWidth - 50, document.documentElement.clientHeight - 40);
+                    oWin.set_title(vTitulo);
+                    args.set_cancel(true);
+                }
+                else if (itemValue == "Administrar Compromisos") {
+                    getRadWindow(getUrl);
+                    var vURL = "VentanaDeCompromisos.aspx";
+                    var vTitulo = "Administrar Compromisos";
+                    var oWin = window.radopen(vURL, vRadWindow, document.documentElement.clientWidth, document.documentElement.clientHeight);
                     oWin.set_title(vTitulo);
                     args.set_cancel(true);
                 }
@@ -492,7 +513,7 @@
                         //  case "/PDE/VentanaInicioPDE.aspx": vRadWindow = "rwVentanaEditarNotificaciones"; break;
                         //  case "/PDE/VentanaNotificacionesYTramites.aspx": vRadWindow = "rwVentanaEditarNotificaciones2"; break;
                         //  case "/PDE/VentanaMenuInformacion.aspx": vRadWindow = "rwVentanaEditarNotificaciones3"; break;
-                        ////case "/PDE/VentanaListaComunicados.aspx": vRadWindow = "rwVentanaEditarNotificaciones4"; break;
+                        //  case "/PDE/VentanaListaComunicados.aspx": vRadWindow = "rwVentanaEditarNotificaciones4"; break;
                         default: vRadWindow = "rwVentanaEditarNotificaciones"; break;
                     }
                 }

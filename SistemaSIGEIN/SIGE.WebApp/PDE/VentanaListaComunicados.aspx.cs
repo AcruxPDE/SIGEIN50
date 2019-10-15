@@ -66,7 +66,8 @@ namespace SIGE.WebApp.PDE
 
         protected void rbEliminar_Click1(object sender, EventArgs e)
         {
-
+          
+            
         }
 
     }

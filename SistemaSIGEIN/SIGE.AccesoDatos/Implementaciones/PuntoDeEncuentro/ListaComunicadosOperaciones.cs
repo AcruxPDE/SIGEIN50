@@ -1,4 +1,6 @@
 ﻿using SIGE.Entidades;
+using SIGE.Entidades.FormacionDesarrollo;
+using SIGE.Entidades.PuntoDeEncuentro;
 using System;
 using System.Collections.Generic;
 using System.Data.Objects;
@@ -6,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using E_PRIORIDAD = SIGE.Entidades.PuntoDeEncuentro.E_PRIORIDAD;
 
 namespace SIGE.AccesoDatos.Implementaciones.PuntoDeEncuentro
 {
@@ -108,8 +111,6 @@ namespace SIGE.AccesoDatos.Implementaciones.PuntoDeEncuentro
         }
         #endregion
 
-
-
-
+        
     }
 }

@@ -1,6 +1,7 @@
 ﻿using SIGE.AccesoDatos.Implementaciones.PuntoDeEncuentro;
 using SIGE.Entidades;
 using SIGE.Entidades.Externas;
+using SIGE.Entidades.FormacionDesarrollo;
 using SIGE.Entidades.PuntoDeEncuentro;
 using SIGE.Negocio.Utilerias;
 using System;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using E_PRIORIDAD = SIGE.Entidades.PuntoDeEncuentro.E_PRIORIDAD;
 
 namespace SIGE.Negocio.PuntoDeEncuentro
 {
@@ -42,7 +44,7 @@ namespace SIGE.Negocio.PuntoDeEncuentro
         #endregion
 
 
-               public List<SPE_OBTIENE_K_COMUNICADO_LEIDO_Result> ObtenerEmpleadosComunicadosLeidos(int idComunicado)
+        public List<SPE_OBTIENE_K_COMUNICADO_LEIDO_Result> ObtenerEmpleadosComunicadosLeidos(int idComunicado)
         {
             ListaComunicadosOperaciones operaciones = new ListaComunicadosOperaciones();
             return operaciones.ObtenerEmpleadosComunicadosLeidos(idComunicado).ToList();
@@ -106,5 +108,8 @@ namespace SIGE.Negocio.PuntoDeEncuentro
             return UtilRespuesta.EnvioRespuesta(operaciones.EliminaComunicado(ID_COMUNICADO, pCLusuario, pNBprograma));
         }
         #endregion
+
+        
+        
     }
 }

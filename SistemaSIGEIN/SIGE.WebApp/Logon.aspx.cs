@@ -586,9 +586,10 @@ namespace SIGE.WebApp
                 UsuarioNegocio nUsuario = new UsuarioNegocio();
                 
                 E_USUARIO vUsuario = nUsuario.AutenticaUsuario(txtUsuario.Value, txtPassword.Value);
-                E_USUARIO UsuarioSys = nUsuario.ObtieneUsuarioCambioPassword(txtUsuario.Value);
+                
                 if (vUsuario.FG_ACTIVO)
                 {
+                    E_USUARIO UsuarioSys = nUsuario.ObtieneUsuarioCambioPassword(txtUsuario.Value);
                     if (vUsuario.oFunciones != null)
                     {
                         //Se agrega la clave del usuario al FormsAuthenticationTicket como user data, este dato se usara en nómina en el global.asax

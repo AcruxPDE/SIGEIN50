@@ -71,3 +71,7 @@ span.RadButton.rbSkinnedButton, span.RadButton.rbLinkButton, span.RadButton.rbVe
     color: #333 !important;
 }
 
+.pisition {
+    position: absolute;
+    left: 25%;
+}

@@ -87,7 +87,6 @@ NavegacionMenu = function (modulo, fgActivo, clUsuario) {
         Navegacion(2, navigateURL);
 }
 
-
 //FUNCIÓN NAVEGACIÓN DEL SUBMENU EO
 //Encuentra la posición X absoluta de un objeto (Imagen EO)
 function findPosX(obj) {

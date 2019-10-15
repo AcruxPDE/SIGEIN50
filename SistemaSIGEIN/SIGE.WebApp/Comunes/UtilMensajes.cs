@@ -39,6 +39,10 @@ namespace SIGE.WebApp.Comunes
                     break;
             }
 
+            //if (pMensaje == null)
+            //    pMensaje = "Debe seleccionar un rol" ;
+
+
             pWindow.RadAlert(pMensaje.Replace("'", "\""), pAncho, pAlto, vMensaje, pCallBackFunction, vUrlImage);
         }
 

@@ -68,7 +68,7 @@ namespace SIGE.WebApp.Comunes
         protected void grdUsuario_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             UsuarioNegocio nUsuarios = new UsuarioNegocio();
-            grdUsuario.DataSource = nUsuarios.ObtieneUsuariosNoLigados(null);
+            grdUsuario.DataSource = nUsuarios.ObtieneUsuarios(null);
         }
 
         protected void grdUsuario_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)

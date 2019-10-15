@@ -243,7 +243,8 @@
                                             <div style="position: relative; cursor: pointer; overflow: hidden;">
                                                 <img id="imgPuntoDeEncuentro" src="Assets/images/menu/PuntodeEncuentro600x344.png" class="img-responsive" onclick="NavegacionMenu(6, '<%= vFgModuloPDE %>')" />
                                             </div>
-                                            <div style="background: red; width: 100%; text-align: center; color: #FFF;">Punto de encuentro</div>
+                                            <div style="background: red; width: 100%; text-align: center; color: #FFF;">Punto de encuentro
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

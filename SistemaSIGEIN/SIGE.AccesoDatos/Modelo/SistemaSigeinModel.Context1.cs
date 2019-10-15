@@ -61,7 +61,12 @@ namespace SIGE.Entidades
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPE_OBTIENE_C_CALLE_Result>("SPE_OBTIENE_C_CALLE", pIN_ID_CALLEParameter, pIN_CL_PAISParameter, pIN_CL_ESTADOParameter, pIN_CL_MUNICIPIOParameter, pIN_CL_COLONIAParameter, pIN_CL_CALLEParameter, pIN_NB_CALLEParameter);
         }
-    
+
+        internal void SPE_INSERTA_ACTUALIZA_COMPROMISO(ObjectParameter pOutClRetorno, Guid iD_COMPROMISO, string cL_COMPROMISO, string nB_COMPROMISO, int iD_TIPO_COMPROMISO, Guid iD_ESTATUS_COMPROMISO, Guid iD_PRIORIDAD, Guid iD_CALIFICACION, DateTime fE_ENTREGA, DateTime fE_NEGOCIABLE, bool fG_ACTIVO, string pCLusuario, string pNBprograma, string tIPO_TRANSACCION)
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual ObjectResult<SPE_OBTIENE_C_DEPENDIENTE_ECONOMICO_Result> SPE_OBTIENE_C_DEPENDIENTE_ECONOMICO(Nullable<int> pIN_ID_DEPENDIENTE_ECONOMICO, string pIN_NB_DEPENDIENTE_ECONOMICO, string pIN_CL_PARENTEZCO, string pIN_CL_GENERO, Nullable<System.DateTime> pIN_FE_NACIMIENTO, Nullable<int> pIN_ID_BITACORA, Nullable<bool> pIN_CL_OCUPACION, Nullable<bool> pIN_FG_ACTIVO)
         {
             var pIN_ID_DEPENDIENTE_ECONOMICOParameter = pIN_ID_DEPENDIENTE_ECONOMICO.HasValue ?
@@ -262,7 +267,7 @@ namespace SIGE.Entidades
             var pIN_ID_PUESTO_FUNCIONParameter = pIN_ID_PUESTO_FUNCION.HasValue ?
                 new ObjectParameter("PIN_ID_PUESTO_FUNCION", pIN_ID_PUESTO_FUNCION) :
                 new ObjectParameter("PIN_ID_PUESTO_FUNCION", typeof(int));
-    
+
             var pIN_CL_PUESTO_FUNCIONParameter = pIN_CL_PUESTO_FUNCION != null ?
                 new ObjectParameter("PIN_CL_PUESTO_FUNCION", pIN_CL_PUESTO_FUNCION) :
                 new ObjectParameter("PIN_CL_PUESTO_FUNCION", typeof(string));
