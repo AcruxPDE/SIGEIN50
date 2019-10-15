@@ -69,6 +69,11 @@
             }
         }
 
+        function CleanPlazaSelection(sender, args) {
+
+            ChangeListItem("", "No seleccionado", $find("<%=lstPlazaJefe.ClientID%>"));
+        }
+
         function useDataFromChild(pDato) {
             if (pDato != null) {
                 console.info(pDato);
@@ -231,6 +236,7 @@
                     </Items>
                 </telerik:RadListBox>
                 <telerik:RadButton ID="btnlstPlazaJefe" runat="server" Text="B" OnClientClicked="OpenPlazaSelectionWindow" AutoPostBack="false"></telerik:RadButton>
+                <telerik:RadButton ID="btnLimpiarPlaza" runat="server" Text="X" OnClientClicked="CleanPlazaSelection" AutoPostBack="false" Enabled="true"></telerik:RadButton>
             </div>
         </div>
         <div class="ctrlBasico">
