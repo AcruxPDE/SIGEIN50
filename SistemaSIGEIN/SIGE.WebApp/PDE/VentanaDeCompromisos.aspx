@@ -1,5 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PDE/ContextPDE.master" AutoEventWireup="true" CodeBehind="VentanaDeCompromisos.aspx.cs" Inherits="SIGE.WebApp.PDE.VentanaDeCompromisos" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PDE/MenuPDE.master" AutoEventWireup="true" CodeBehind="VentanaDeCompromisos.aspx.cs" Inherits="SIGE.WebApp.PDE.VentanaDeCompromisos" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript" id="5">
 
         var idEvaluadoMeta = "";
@@ -431,7 +432,7 @@
 
     </script>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <telerik:RadAjaxLoadingPanel ID="ralpConfiguracionPeriodo" runat="server"></telerik:RadAjaxLoadingPanel>
     <telerik:RadAjaxManager ID="ramConfiguracionPeriodo" runat="server" DefaultLoadingPanelID="ralpConfiguracionPeriodo" OnAjaxRequest="ramConfiguracionPeriodo_AjaxRequest">
         <AjaxSettings>

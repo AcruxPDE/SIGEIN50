@@ -1,6 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PDE/ContextPDE.master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="SIGE.WebApp.PDE.Usuarios" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
-        <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PDE/MenuPDE.master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="SIGE.WebApp.PDE.Usuarios" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
         <script type="text/javascript">
             function ShowInsertForm() {
                 OpenWindow(null);
@@ -17,7 +18,7 @@
 
 
             function OpenWindow(pClUsuario, pActivo) {
-               
+
                 var vTitulo = "Agregar Usuario";
                 var vEditar = "false";
                 var vURL = "VentanaUsuarios.aspx?Editar=" + vEditar;
@@ -25,11 +26,11 @@
                     vEditar = "true";
                     vURL = "VentanaUsuarios.aspx?UsuarioId=" + pClUsuario + "&Activo=" + pActivo + "&Editar=" + vEditar;
                     vTitulo = "Editar Usuario"
-                   
+
                 }
                 var oWin = window.radopen(vURL, "winUsuarios2");
                 oWin.set_title(vTitulo);
-               
+
             }
 
             function onCloseWindow(oWnd, args) {
@@ -68,12 +69,12 @@
                 $find("<%= grdUsuarios.ClientID%>").get_masterTableView().rebind();
             }
 
-          
+
         </script>
     </telerik:RadCodeBlock>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
-      <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="btnAgregar">
                 <UpdatedControls>
@@ -88,54 +89,97 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <label class="labelTitulo">Usuarios</label>
-    <div style="height: calc(100% - 100px);">
-        <telerik:RadGrid ID="grdUsuarios" runat="server" OnNeedDataSource="grdUsuarios_NeedDataSource" 
-            Height="100%"   AutoGenerateColumns="false" ShowGroupPanel="True" AllowPaging="true"
-             AllowSorting="true" HeaderStyle-Font-Bold="true">
-            <ClientSettings>
-                <Scrolling UseStaticHeaders="true" AllowScroll="true" />
-                <Selecting AllowRowSelect="true" />
-            </ClientSettings>
-            <PagerStyle AlwaysVisible="true" />
-            <GroupingSettings CaseSensitive="false" />
-            <MasterTableView ClientDataKeyNames="CL_USUARIO, FG_ACTIVO,FG_ENVIO" DataKeyNames="CL_USUARIO, FG_ACTIVO,FG_ENVIO" AutoGenerateColumns="false" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true">
-                <Columns>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Usuario" DataField="CL_USUARIO" UniqueName="CL_USUARIO"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="160" FilterControlWidth="120" HeaderText="Nombre" DataField="NB_USUARIO" UniqueName="NB_USUARIO"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains"  HeaderStyle-Width="170" FilterControlWidth="100" HeaderText="Correo electrónico" DataField="NB_CORREO_ELECTRONICO" UniqueName="NB_CORREO_ELECTRONICO"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains"  HeaderStyle-Width="150" FilterControlWidth="100" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" FilterControlWidth="60" HeaderStyle-Width="120"  HeaderText="Rol" DataField="NB_ROL" UniqueName="NB_ROL"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" FilterControlWidth="20" HeaderStyle-Width="70 " HeaderText="Activo" DataField="FG_ACTIVO" UniqueName="FG_ACTIVO"></telerik:GridBoundColumn>
-                    <telerik:GridDateTimeColumn DataFormatString="{0:d}" AutoPostBackOnFilter="true"  HeaderText="Fecha de envío " DataField="FE_ENVIO" UniqueName="FE_ENVIO" HeaderStyle-Width="100" FilterControlWidth="80" DataType="System.DateTime"></telerik:GridDateTimeColumn>
-                    <telerik:GridTemplateColumn HeaderText="Correo enviado" DataField="FG_ENVIO" UniqueName="FG_ENVIO" AllowFiltering="false">
-                                       <HeaderStyle Width="100" />
-                                            <ItemTemplate>
-                                                <div style="width: 80%; text-align: center;">
-                                                   <%-- <img src='<%# Eval("FG_ENVIO").ToString().Equals("True") ? "../Assets/images/Aceptar.png" : "../Assets/images/Cancelar.png"  %>' />--%>
-                                                </div>
-                                            </ItemTemplate>
-                                        </telerik:GridTemplateColumn>
-                </Columns>
-            </MasterTableView>
-        </telerik:RadGrid>
-    </div>
-    <div style="clear: both; height: 10px;"></div>
-    <div class="ctrlBasico">
-        <telerik:RadButton ID="btnAgregar" runat="server" name="btnAgregar" AutoPostBack="false" Text="Agregar" OnClientClicked="ShowInsertForm" Width="100"></telerik:RadButton>
-    </div>
-    <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEditar" runat="server" name="btnEditar" AutoPostBack="false" Text="Editar" OnClientClicked="ShowEditForm" Width="100"></telerik:RadButton>
-    </div>
-    <div class="ctrlBasico">
-        <telerik:RadButton ID="btnEliminar" runat="server" name="btnEliminar" AutoPostBack="true" Text="Eliminar" OnClientClicking="confirmarEliminar" Width="100" OnClick="btnEliminar_Click"></telerik:RadButton>
-    </div>
+
+    <telerik:RadTabStrip runat="server" ID="rtsUsuarios" MultiPageID="rmpUsuarios" SelectedIndex="0">
+        <Tabs>
+            <telerik:RadTab runat="server" Text="Usuarios"></telerik:RadTab>
+            <telerik:RadTab runat="server" Text="Procesos"></telerik:RadTab>
+            <telerik:RadTab runat="server" Text="Contraseñas"></telerik:RadTab>
+        </Tabs>
+    </telerik:RadTabStrip>
+
+    <div style="height: 10px;"></div>
+
+    <telerik:RadMultiPage runat="server" ID="rmpUsuarios" SelectedIndex="0" Height="100%" Width="100%">
+        <telerik:RadPageView ID="rpvUsuarios" runat="server">
+
+            <div style="height: calc(100% - 100px);">
+
+                <telerik:RadGrid ID="grdUsuarios" runat="server" OnNeedDataSource="grdUsuarios_NeedDataSource"
+                    Height="100%" AutoGenerateColumns="false" ShowGroupPanel="True" AllowPaging="true"
+                    AllowSorting="true" HeaderStyle-Font-Bold="true">
+                    <ClientSettings>
+                        <Scrolling UseStaticHeaders="true" AllowScroll="true" />
+                        <Selecting AllowRowSelect="true" />
+                    </ClientSettings>
+                    <PagerStyle AlwaysVisible="true" />
+                    <GroupingSettings CaseSensitive="false" />
+                    <MasterTableView ClientDataKeyNames="CL_USUARIO, FG_ACTIVO,FG_ENVIO" DataKeyNames="CL_USUARIO, FG_ACTIVO,FG_ENVIO" AutoGenerateColumns="false" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true">
+                        <Columns>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Usuario" DataField="CL_USUARIO" UniqueName="CL_USUARIO"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="160" FilterControlWidth="120" HeaderText="Nombre" DataField="NB_USUARIO" UniqueName="NB_USUARIO"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="170" FilterControlWidth="100" HeaderText="Correo electrónico" DataField="NB_CORREO_ELECTRONICO" UniqueName="NB_CORREO_ELECTRONICO"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="150" FilterControlWidth="100" HeaderText="Área" DataField="NB_DEPARTAMENTO" UniqueName="NB_DEPARTAMENTO"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" FilterControlWidth="60" HeaderStyle-Width="120" HeaderText="Rol" DataField="NB_ROL" UniqueName="NB_ROL"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" FilterControlWidth="20" HeaderStyle-Width="70 " HeaderText="Activo" DataField="FG_ACTIVO" UniqueName="FG_ACTIVO"></telerik:GridBoundColumn>
+                            <telerik:GridDateTimeColumn DataFormatString="{0:d}" AutoPostBackOnFilter="true" HeaderText="Fecha de envío " DataField="FE_ENVIO" UniqueName="FE_ENVIO" HeaderStyle-Width="100" FilterControlWidth="80" DataType="System.DateTime"></telerik:GridDateTimeColumn>
+                            <telerik:GridTemplateColumn HeaderText="Correo enviado" DataField="FG_ENVIO" UniqueName="FG_ENVIO" AllowFiltering="false">
+                                <HeaderStyle Width="100" />
+                                <ItemTemplate>
+                                    <div style="width: 80%; text-align: center;">
+                                        <%-- <img src='<%# Eval("FG_ENVIO").ToString().Equals("True") ? "../Assets/images/Aceptar.png" : "../Assets/images/Cancelar.png"  %>' />--%>
+                                    </div>
+                                </ItemTemplate>
+                            </telerik:GridTemplateColumn>
+                        </Columns>
+                    </MasterTableView>
+                </telerik:RadGrid>
+            </div>
+            <div style="clear: both; height: 10px;"></div>
+            <div class="ctrlBasico">
+                <telerik:RadButton ID="btnAgregar" runat="server" name="btnAgregar" AutoPostBack="false" Text="Agregar" OnClientClicked="ShowInsertForm" Width="100"></telerik:RadButton>
+            </div>
+            <div class="ctrlBasico">
+                <telerik:RadButton ID="btnEditar" runat="server" name="btnEditar" AutoPostBack="false" Text="Editar" OnClientClicked="ShowEditForm" Width="100"></telerik:RadButton>
+            </div>
+            <div class="ctrlBasico">
+                <telerik:RadButton ID="btnEliminar" runat="server" name="btnEliminar" AutoPostBack="true" Text="Eliminar" OnClientClicking="confirmarEliminar" Width="100" OnClick="btnEliminar_Click"></telerik:RadButton>
+            </div>
+        </telerik:RadPageView>
+
+        <telerik:RadPageView ID="rpvProcesos" runat="server">
+
+            <label id="lbPeriodo" name="lbTabulador" runat="server">Acceso a:</label>
+            <div class="ctrlBasico" id="ctrlPasswordChange" runat="server">
+                <div class="divControlIzquierda">
+                    <label name="lblPasswordChange">Cambiar password:</label>
+                </div>
+                <div class="divControlDerecha">
+                    <telerik:RadButton ID="chkPasswordChange" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false">
+                        <ToggleStates>
+                            <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
+                            <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
+                        </ToggleStates>
+                    </telerik:RadButton>
+                </div>
+            </div>
+
+
+        </telerik:RadPageView>
+
+        <telerik:RadPageView ID="rpvContraseñas" runat="server">
+        </telerik:RadPageView>
+
+    </telerik:RadMultiPage>
+
+
     <telerik:RadWindowManager ID="rwmAlertas" runat="server" OnClientClose="returnDataToParentPopup">
         <Windows>
             <telerik:RadWindow ID="winSeleccionEmpleados" runat="server" Title="Seleccionar empleado" Height="500px" Width="1000px" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Modal="true" Behaviors="Close"></telerik:RadWindow>
-            
-            <telerik:RadWindow ID="winUsuarios2" runat="server" Title="Agregar/Editar Usuarios" Height="500px" Width="1000px"  ReloadOnShow="true" VisibleStatusbar="false" 
-                ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="onCloseWindow" ></telerik:RadWindow>
+
+            <telerik:RadWindow ID="winUsuarios2" runat="server" Title="Agregar/Editar Usuarios" Height="500px" Width="1000px" ReloadOnShow="true" VisibleStatusbar="false"
+                ShowContentDuringLoad="false" Modal="true" Behaviors="Close" OnClientClose="onCloseWindow">
+            </telerik:RadWindow>
         </Windows>
     </telerik:RadWindowManager>
 </asp:Content>
