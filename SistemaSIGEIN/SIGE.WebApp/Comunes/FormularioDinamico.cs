@@ -1101,6 +1101,16 @@ namespace SIGE.WebApp.Comunes
                                 vLstAtributos.Add(new KeyValuePair<string, string>("NB_TEXTO", vNbTexto));
                                 vFgTieneValor = !String.IsNullOrWhiteSpace(vClValor) && vClValor != "NA";
                                 break;
+                            case "GRID":
+
+                                RadGrid vRadGrid = ((RadGrid)vControl);
+
+                                if (vRadGrid.Items.Count == 0)
+                                    vFgTieneValor = false;
+                                else
+                                    vFgTieneValor = true;
+
+                                break;
                             default:
                                 vFgAsignarValor = false;
                                 break;

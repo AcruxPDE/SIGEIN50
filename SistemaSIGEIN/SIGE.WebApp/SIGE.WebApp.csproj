@@ -747,6 +747,7 @@
     <Content Include="Global.asax" />
     <Content Include="IDP\Pruebas\PruebaBienvenida.aspx" />
     <Content Include="IDP\Requisicion\VentanaVistaDescriptivo.aspx" />
+    <Content Include="IDP\Solicitud\SolicitudExterna.aspx" />
     <Content Include="IDP\VentanaAgregarPruebas.aspx" />
     <Content Include="IDP\VentanaAplicarPruebas.aspx" />
     <Content Include="IDP\VentanaAsignarRequisicion.aspx" />
@@ -2330,6 +2331,13 @@
     </Compile>
     <Compile Include="IDP\Requisicion\VentanaVistaDescriptivo.aspx.designer.cs">
       <DependentUpon>VentanaVistaDescriptivo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IDP\Solicitud\SolicitudExterna.aspx.cs">
+      <DependentUpon>SolicitudExterna.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IDP\Solicitud\SolicitudExterna.aspx.designer.cs">
+      <DependentUpon>SolicitudExterna.aspx</DependentUpon>
     </Compile>
     <Compile Include="IDP\VentanaAgregarPruebas.aspx.cs">
       <DependentUpon>VentanaAgregarPruebas.aspx</DependentUpon>

@@ -10,7 +10,7 @@
 namespace SIGE.WebApp.IDP.Solicitud {
     
     
-    public partial class Solicitud {
+    public partial class SolicitudExterna {
         
         /// <summary>
         /// ralpInventario control.
@@ -317,6 +317,15 @@ namespace SIGE.WebApp.IDP.Solicitud {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadWindow winAvisoPrivacidad;
+        
+        /// <summary>
+        /// winSeleccion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadWindow winSeleccion;
         
         /// <summary>
         /// RadCodeBlock1 control.
