@@ -10,7 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using E_PRIORIDAD = SIGE.Entidades.PuntoDeEncuentro.E_PRIORIDAD;
 
 namespace SIGE.AccesoDatos.Implementaciones.PuntoDeEncuentro
 {

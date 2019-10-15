@@ -19,7 +19,6 @@ using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using Telerik.Web.UI;
 using SIGE.Negocio.Utilerias;
-using E_PRIORIDAD = SIGE.Entidades.PuntoDeEncuentro.E_PRIORIDAD;
 
 namespace SIGE.WebApp.PDE
 {

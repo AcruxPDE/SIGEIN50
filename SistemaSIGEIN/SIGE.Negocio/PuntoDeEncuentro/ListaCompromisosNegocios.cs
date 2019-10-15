@@ -1,16 +1,10 @@
 ﻿using SIGE.AccesoDatos.Implementaciones.PuntoDeEncuentro;
-using SIGE.Entidades;
 using SIGE.Entidades.Externas;
 using SIGE.Entidades.FormacionDesarrollo;
 using SIGE.Entidades.PuntoDeEncuentro;
 using SIGE.Negocio.Utilerias;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using E_PRIORIDAD = SIGE.Entidades.PuntoDeEncuentro.E_PRIORIDAD;
 
 
 namespace SIGE.Negocio.PuntoDeEncuentro

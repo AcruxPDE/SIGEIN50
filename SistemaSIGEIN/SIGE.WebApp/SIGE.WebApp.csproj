@@ -933,8 +933,10 @@
     <Content Include="PDE\Default.aspx" />
     <Content Include="PDE\InsertLink.aspx" />
     <Content Include="PDE\Usuarios.aspx" />
+    <Content Include="PDE\VentanaAgregarCompromiso.aspx" />
     <Content Include="PDE\VentanaComentariosComunicado.aspx" />
     <Content Include="PDE\VentanaComunicadosLeidos.aspx" />
+    <Content Include="PDE\VentanaDeCompromisos.aspx" />
     <Content Include="PDE\VentanaListaPorRevisarInformacion.aspx" />
     <Content Include="PDE\VentanaRoles_PDE.aspx" />
     <Content Include="PDE\VentanaAdministracionPDE.aspx" />
@@ -3763,6 +3765,13 @@
     <Compile Include="PDE\Usuarios.aspx.designer.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PDE\VentanaAgregarCompromiso.aspx.cs">
+      <DependentUpon>VentanaAgregarCompromiso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PDE\VentanaAgregarCompromiso.aspx.designer.cs">
+      <DependentUpon>VentanaAgregarCompromiso.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PDE\VentanaComentariosComunicado.aspx.cs">
       <DependentUpon>VentanaComentariosComunicado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3776,6 +3785,13 @@
     </Compile>
     <Compile Include="PDE\VentanaComunicadosLeidos.aspx.designer.cs">
       <DependentUpon>VentanaComunicadosLeidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PDE\VentanaDeCompromisos.aspx.cs">
+      <DependentUpon>VentanaDeCompromisos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PDE\VentanaDeCompromisos.aspx.designer.cs">
+      <DependentUpon>VentanaDeCompromisos.aspx</DependentUpon>
     </Compile>
     <Compile Include="PDE\VentanaListaPorRevisarInformacion.aspx.cs">
       <DependentUpon>VentanaListaPorRevisarInformacion.aspx</DependentUpon>

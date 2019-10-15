@@ -139,6 +139,7 @@
     <Compile Include="Implementaciones\PuntoDeEncuentro\ContextoPDEOperaciones.cs" />
     <Compile Include="Implementaciones\PuntoDeEncuentro\DescriptivoPuestoOperaciones.cs" />
     <Compile Include="Implementaciones\PuntoDeEncuentro\FormatosYTramitesOperaciones.cs" />
+    <Compile Include="Implementaciones\PuntoDeEncuentro\ListaCompromisosOperaciones.cs" />
     <Compile Include="Implementaciones\PuntoDeEncuentro\NotificacionesOperaciones.cs" />
     <Compile Include="Implementaciones\PuntoDeEncuentro\InventarioPersonalOperaciones.cs" />
     <Compile Include="Implementaciones\PuntoDeEncuentro\ListaComunicadosOperaciones.cs" />

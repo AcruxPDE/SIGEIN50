@@ -262,8 +262,15 @@
     <Compile Include="MetodologiaCompensacion\E_CONSULTA_SUELDOS.cs" />
     <Compile Include="MetodologiaCompensacion\E_REPORTE_TABULADOR_SUELDOS.cs" />
     <Compile Include="Modulos de apoyo\E_OBTIENE_C_CONSULTA_INTELIGENTE.cs" />
+    <Compile Include="PuntoDeEncuentro\E_CALIFICACION.cs" />
+    <Compile Include="PuntoDeEncuentro\E_COMPROMISO.cs" />
     <Compile Include="PuntoDeEncuentro\E_EMPLEADOS_GENERA_CONTRASENA.cs" />
     <Compile Include="PuntoDeEncuentro\E_OBTIENE_EMPLEADOS_GENERA_CONTRASENA.cs" />
+    <Compile Include="PuntoDeEncuentro\E_OBTIENE_MIS_COMPROMISOS.cs" />
+    <Compile Include="PuntoDeEncuentro\E_OBTIENE_MIS_COMPROMISOS_SOLICITADOS.cs" />
+    <Compile Include="PuntoDeEncuentro\E_OBTIENE_MIS_REPORTES.cs" />
+    <Compile Include="PuntoDeEncuentro\E_OBTIENE_MIS_TAREAS.cs" />
+    <Compile Include="PuntoDeEncuentro\E_TIPOCOMPROMISO.cs" />
     <Compile Include="PuntoDeEncuentro\E_USUARIO_CORREO.cs" />
     <Compile Include="SPE_OBTIENE_ADSCRIPCIONES_Result.cs">
       <DependentUpon>EvaluacionOrganizacionalModel.tt</DependentUpon>
