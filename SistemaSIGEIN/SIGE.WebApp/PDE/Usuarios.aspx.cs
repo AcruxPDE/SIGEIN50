@@ -27,11 +27,7 @@ namespace SIGE.WebApp.PDE
             UsuarioNegocio nUsuarios = new UsuarioNegocio();
             grdUsuarios.DataSource = nUsuarios.ObtieneUsuarios(null);
         }
-        protected void grdContrasenas_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
-        {
-            UsuarioNegocio nUsuarios = new UsuarioNegocio();
-            grdContrasenas.DataSource = nUsuarios.ObtieneUsuarios(null);
-        }
+
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
