@@ -1,5 +1,4 @@
 ﻿using SIGE.Entidades;
-using SIGE.Entidades.FormacionDesarrollo;
 using SIGE.Entidades.PuntoDeEncuentro;
 using System;
 using System.Collections.Generic;

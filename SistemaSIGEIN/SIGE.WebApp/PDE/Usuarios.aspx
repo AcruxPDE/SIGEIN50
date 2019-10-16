@@ -35,6 +35,7 @@
 
             function onCloseWindow(oWnd, args) {
                 $find("<%= grdUsuarios.ClientID%>").get_masterTableView().rebind();
+                $find("<%= grdContrasenas.ClientID%>").get_masterTableView().rebind();
             }
 
             function confirmarEliminar(sender, args) {
@@ -67,6 +68,7 @@
 
             function useDataFromChild(pEmpleados) {
                 $find("<%= grdUsuarios.ClientID%>").get_masterTableView().rebind();
+                $find("<%= grdContrasenas.ClientID%>").get_masterTableView().rebind();
             }
 
 
@@ -79,12 +81,14 @@
             <telerik:AjaxSetting AjaxControlID="btnAgregar">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="grdUsuarios" UpdatePanelHeight="100%" />
+                    <telerik:AjaxUpdatedControl ControlID="grdContrasenas" UpdatePanelHeight="100%" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnEliminar">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="rwmAlertas" />
                     <telerik:AjaxUpdatedControl ControlID="grdUsuarios" />
+                     <telerik:AjaxUpdatedControl ControlID="grdContrasenas" />                    
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -150,7 +154,7 @@
         <telerik:RadPageView ID="rpvProcesos" runat="server">
 
             <label id="lbPeriodo" name="lbTabulador" runat="server">Acceso a:</label>
-            <div class="ctrlBasico" id="ctrlPasswordChange" runat="server">
+          <%--  <div class="ctrlBasico" id="ctrlPasswordChange" runat="server">
                 <div class="divControlIzquierda">
                     <label name="lblPasswordChange">Cambiar password:</label>
                 </div>
@@ -162,12 +166,93 @@
                         </ToggleStates>
                     </telerik:RadButton>
                 </div>
+            </div>--%>
+            <div style="clear: both; height: 20px;"></div>
+            <div class="ctrlBasico" id="Div1" runat="server">
+               <div class="divControlDerecha">               
+                   <telerik:RadButton ID="RadButton1" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false">
+                       <ToggleStates>
+                           <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
+                           <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
+                       </ToggleStates>
+                   </telerik:RadButton>                  
+                   <label name="lblMisComunicados">Mis comunicados.</label>
+                </div>
+            </div>
+            <div style="clear: both; height: 20px;"></div>
+            <div class="ctrlBasico" id="Div2" runat="server">
+               <div class="divControDerecha">                  
+                   <telerik:RadButton ID="RadButton2" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false">
+                       <ToggleStates>
+                           <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
+                           <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
+                       </ToggleStates>
+                   </telerik:RadButton>
+                   <label name="lblMisTramites">Mis Trámites.</label>
+               </div> 
+            </div>
+            <div style="clear: both; height: 20px;"></div>
+            <div class="ctrlBasico" id="Div3" runat="server">
+               <div class="divControDerecha">                 
+                   <telerik:RadButton ID="RadButton3" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false">
+                       <ToggleStates>
+                           <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
+                           <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
+                       </ToggleStates>
+                   </telerik:RadButton>
+                    <label name="lblMisCompromisos">Mis Compromisos.</label>
+                </div>
+            </div>
+            <div style="clear: both; height: 20px;"></div>
+            <div class="ctrlBasico" id="Div4" runat="server">
+               <div class="divControDerecha">
+                   <telerik:RadButton ID="RadButton4" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false">
+                       <ToggleStates>
+                           <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
+                           <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
+                       </ToggleStates>
+                   </telerik:RadButton>
+                   <label name="lblMisNomina">Mi Nómina.</label>
+                </div>
             </div>
 
 
         </telerik:RadPageView>
 
         <telerik:RadPageView ID="rpvContraseñas" runat="server">
+
+              <div style="height: calc(100% - 100px);">
+
+                <telerik:RadGrid ID="grdContrasenas" runat="server" OnNeedDataSource="grdContrasenas_NeedDataSource"
+                    Height="100%" AutoGenerateColumns="false" ShowGroupPanel="True" AllowPaging="true"
+                    AllowSorting="true" HeaderStyle-Font-Bold="true">
+                    <ClientSettings>
+                        <Scrolling UseStaticHeaders="true" AllowScroll="true" />
+                        <Selecting AllowRowSelect="true" />
+                    </ClientSettings>
+                    <PagerStyle AlwaysVisible="true" />
+                    <GroupingSettings CaseSensitive="false" />
+                    <MasterTableView ClientDataKeyNames="CL_USUARIO, FG_ACTIVO,FG_ENVIO" DataKeyNames="CL_USUARIO, FG_ACTIVO,FG_ENVIO" AutoGenerateColumns="false" AllowPaging="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true">
+                        <Columns>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="Usuario" DataField="CL_USUARIO" UniqueName="CL_USUARIO"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="160" FilterControlWidth="120" HeaderText="Nombre" DataField="NB_USUARIO" UniqueName="NB_USUARIO"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" FilterControlWidth="60" HeaderStyle-Width="120" HeaderText="Rol" DataField="NB_ROL" UniqueName="NB_ROL"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" FilterControlWidth="20" HeaderStyle-Width="70 " HeaderText="Contraseña" DataField="" UniqueName=""></telerik:GridBoundColumn>                         
+                        </Columns>
+                    </MasterTableView>
+                </telerik:RadGrid>
+            </div>
+            <div style="clear: both; height: 10px;"></div>
+            <div class="ctrlBasico">
+                <telerik:RadButton ID="RadButton5" runat="server" name="btnAgregar" AutoPostBack="false" Text="Agregar" OnClientClicked="ShowInsertForm" Width="100"></telerik:RadButton>
+            </div>
+            <div class="ctrlBasico">
+                <telerik:RadButton ID="RadButton6" runat="server" name="btnEditar" AutoPostBack="false" Text="Editar" OnClientClicked="ShowEditForm" Width="100"></telerik:RadButton>
+            </div>
+            <div class="ctrlBasico">
+                <telerik:RadButton ID="RadButton7" runat="server" name="btnEliminar" AutoPostBack="true" Text="Eliminar" OnClientClicking="confirmarEliminar" Width="100" OnClick="btnEliminar_Click"></telerik:RadButton>
+            </div>
+
         </telerik:RadPageView>
 
     </telerik:RadMultiPage>

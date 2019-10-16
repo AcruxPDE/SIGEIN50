@@ -1,6 +1,5 @@
 ﻿using SIGE.AccesoDatos.Implementaciones.PuntoDeEncuentro;
 using SIGE.Entidades.Externas;
-using SIGE.Entidades.FormacionDesarrollo;
 using SIGE.Entidades.PuntoDeEncuentro;
 using SIGE.Negocio.Utilerias;
 using System;

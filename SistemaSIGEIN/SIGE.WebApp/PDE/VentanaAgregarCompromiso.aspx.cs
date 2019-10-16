@@ -2,7 +2,6 @@
 using SIGE.Entidades;
 using SIGE.Entidades.Administracion;
 using SIGE.Entidades.Externas;
-using SIGE.Entidades.FormacionDesarrollo;
 using SIGE.Entidades.PuntoDeEncuentro;
 using SIGE.Negocio.Administracion;
 using SIGE.Negocio.AdministracionSitio;
