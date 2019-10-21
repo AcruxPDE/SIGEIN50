@@ -119,51 +119,88 @@ namespace SIGE.WebApp.PDE
 
         protected void CargarDatos(string pIdUsuario)
         {
-            UsuarioNegocio nUsuario = new UsuarioNegocio();
-            E_USUARIO vUsuario = nUsuario.ObtieneUsuario(pIdUsuario);
+            //UsuarioNegocio nUsuario = new UsuarioNegocio();
+            //E_USUARIO vUsuario = nUsuario.ObtieneUsuario(pIdUsuario);
 
-            cmbRol.Items.AddRange(vUsuario.XML_CATALOGOS.Element("ROLES").Elements("ROL").Select(s => new RadComboBoxItem(s.Attribute("NB_ROL").Value, s.Attribute("ID_ROL").Value)
-            {
-                Selected = UtilXML.ValorAtributo<bool>(s.Attribute("FG_SELECCIONADO"))
-            }));
+            //cmbRol.Items.AddRange(vUsuario.XML_CATALOGOS.Element("ROLES").Elements("ROL").Select(s => new RadComboBoxItem(s.Attribute("NB_ROL").Value, s.Attribute("ID_ROL").Value)
+            //{
+            //    Selected = UtilXML.ValorAtributo<bool>(s.Attribute("FG_SELECCIONADO"))
+            //}));
 
-            RadListBoxItem vItmEmpleado = new RadListBoxItem("No seleccionado", String.Empty);
-            lstEmpleado.Items.Add(vItmEmpleado);
+            //RadListBoxItem vItmEmpleado = new RadListBoxItem("No seleccionado", String.Empty);
+            //lstEmpleado.Items.Add(vItmEmpleado);
         }
 
         protected void btnGuardarInformacionGeneral_Click(object sender, EventArgs e)
         {
-            int vIdRol = 0;
-            int vIdEmpleado = 0;
-            E_USUARIO vUsuario = new E_USUARIO();
+            //int vIdRol = 0;
+            //int vIdEmpleado = 0;
+            //E_USUARIO vUsuario = new E_USUARIO();
 
-            vUsuario.CL_USUARIO = txtClUsuario.Text;
-            vUsuario.NB_USUARIO = txtNbUsuario.Text;
-            vUsuario.FG_CAMBIAR_PASSWORD = true;
-            vUsuario.NB_CORREO_ELECTRONICO = txtNbCorreoElectronico.Text;
-            vUsuario.FG_ACTIVO = chkActivo.Checked;
-            vUsuario.NB_PASSWORD = GenerarContrasena();
-            vUsuario.CL_TIPO_MULTIEMPRESA = "Corporativo ";
+            //vUsuario.CL_USUARIO = txtClUsuario.Text;
+            //vUsuario.NB_USUARIO = txtNbUsuario.Text;
+            //vUsuario.FG_CAMBIAR_PASSWORD = true;
+            //vUsuario.NB_CORREO_ELECTRONICO = txtNbCorreoElectronico.Text;
+            //vUsuario.FG_ACTIVO = chkActivo.Checked;
+            //vUsuario.NB_PASSWORD = GenerarContrasena();
+            //vUsuario.CL_TIPO_MULTIEMPRESA = "Corporativo";
 
-            foreach (RadListBoxItem item in lstEmpleado.Items)
-                if (int.TryParse(item.Value, out vIdEmpleado))
-                    vUsuario.ID_EMPLEADO = vIdEmpleado;
+            //foreach (RadListBoxItem item in lstEmpleado.Items)
+            //    if (int.TryParse(item.Value, out vIdEmpleado))
+            //        vUsuario.ID_EMPLEADO = vIdEmpleado;
 
-            if (int.TryParse(cmbRol.SelectedValue, out vIdRol))
-                vUsuario.ID_ROL = vIdRol;
-            else
-                UtilMensajes.MensajeResultadoDB(rwmAlertas, "Debes selecionar un rol.", E_TIPO_RESPUESTA_DB.WARNING);
+            //if (int.TryParse(cmbRol.SelectedValue, out vIdRol))
+            //    vUsuario.ID_ROL = vIdRol;
+            //else
+            //    UtilMensajes.MensajeResultadoDB(rwmAlertas, "Debes selecionar un rol.", E_TIPO_RESPUESTA_DB.WARNING);
 
-            UsuarioNegocio nUsuario = new UsuarioNegocio();
+            //UsuarioNegocio nUsuario = new UsuarioNegocio();
 
-            E_RESULTADO vResultado = nUsuario.InsertaActualizaUsuario(vClOperacion, vUsuario, vClUsuario, vNbPrograma);
+            //E_RESULTADO vResultado = nUsuario.InsertaActualizaUsuario(vClOperacion, vUsuario, vClUsuario, vNbPrograma);
+            //string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
+
+            //if(vResultado.CL_TIPO_ERROR.ToString() == "SUCCESSFUL")
+            //    UtilMensajes.MensajeResultadoDB(rwmAlertas, "Proceso exitoso", E_TIPO_RESPUESTA_DB.SUCCESSFUL);
+            //else
+            //    UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR);
+
+
+        }
+
+        protected void btnGuardarProcesos_Click(object sender, EventArgs e)
+        {
+            bool comunicado = false;
+            bool tramites = false;
+            bool nomina = false;
+            bool compromiso = false;
+
+            if(rdComunicados.Checked)
+            { comunicado = true; }
+
+            if(rdTramites.Checked)
+            { tramites = true; }
+
+            if(rdNomina.Checked)
+            { nomina = true; }
+
+            if(rdCompromisos.Checked)
+            { compromiso = true; }
+
+
+            
+
+            E_PROCESOS vProcesos = new E_PROCESOS();
+            ListaUsuariosNegocio vNegocio = new ListaUsuariosNegocio();
+            //vProcesos.CL_USUARIO_PROCESO = txtClUsuario.Text;
+            vProcesos.FG_COMUNICADOS = comunicado;
+            vProcesos.FG_TRAMITES = tramites;
+            vProcesos.FG_NOMINA = nomina;
+            vProcesos.FG_COMPROMISOS = compromiso;
+            
+
+            E_RESULTADO vResultado = vNegocio.InsertaProcesos(PROCESOS: vProcesos, pCLusuario: vClUsuario, pNBprograma: vNbPrograma, TIPO_TRANSACCION: "I");
             string vMensaje = vResultado.MENSAJE.Where(w => w.CL_IDIOMA.Equals(vClIdioma.ToString())).FirstOrDefault().DS_MENSAJE;
-
-            if(vResultado.CL_TIPO_ERROR.ToString() == "SUCCESSFUL")
-                UtilMensajes.MensajeResultadoDB(rwmAlertas, "Proceso exitoso", E_TIPO_RESPUESTA_DB.SUCCESSFUL);
-            else
-                UtilMensajes.MensajeResultadoDB(rwmAlertas, vMensaje, vResultado.CL_TIPO_ERROR);
-
+            UtilMensajes.MensajeResultadoDB(rnExito, vMensaje, vResultado.CL_TIPO_ERROR);
 
         }
 

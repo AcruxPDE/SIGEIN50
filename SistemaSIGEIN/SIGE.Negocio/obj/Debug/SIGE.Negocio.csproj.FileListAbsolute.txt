@@ -215,6 +215,7 @@ C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.Negocio.csproj.CopyComplete
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.Negocio.dll
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\obj\Debug\SIGE.Negocio.pdb
+C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\Telerik.Web.UI.dll
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\SIGE.Negocio.dll.config
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\SIGE.Negocio.dll
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\SIGE.Negocio.pdb
@@ -223,7 +224,6 @@ C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\N
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\SIGE.AccesoDatos.dll
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\SIGE.Entidades.dll
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\Telerik.Web.Spreadsheet.dll
-C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\Telerik.Web.UI.dll
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\Telerik.Windows.Documents.Core.dll
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\Telerik.Windows.Documents.Flow.dll
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Negocio\bin\Debug\Telerik.Windows.Documents.Spreadsheet.dll

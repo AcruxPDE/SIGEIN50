@@ -235,14 +235,14 @@ namespace SIGE.WebApp.PDE
             if (vResultado.CL_TIPO_ERROR == E_TIPO_RESPUESTA_DB.SUCCESSFUL)
             {
                 grdMisCompromisos.Rebind();
-               // grdMisCompromisoSolicitados.Rebind();
+                // grdMisCompromisoSolicitados.Rebind();
                 //rgMisTareas.Rebind();
                 // grdMisReportes.Rebind();
 
                 //if (vFgCordinador)
-                    //GenerarContrasena(vResultado);
+                //GenerarContrasena(vResultado);
                 //else
-                    //grdMisReportes.Rebind();
+                //grdMisReportes.Rebind();
 
             }
             else
@@ -274,7 +274,7 @@ namespace SIGE.WebApp.PDE
             var oPeriodo = periodo.ObtienePeriodoDesempenoContexto(vIdPeriodo, null);
             if (oPeriodo != null)
             {
-              
+
             }
         }
 
@@ -297,7 +297,7 @@ namespace SIGE.WebApp.PDE
             vClTipoMetas = vPeriodoDesempeno.CL_TIPO_METAS;
             vNoReplica = vPeriodoDesempeno.NO_REPLICA;
 
-            
+
             //if (vPeriodoDesempeno.CL_TIPO_CAPTURISTA == "COORDINADOR_EVAL")
             //    vFgCordinador = false;
             //else
@@ -305,7 +305,7 @@ namespace SIGE.WebApp.PDE
 
 
 
-            
+
 
         }
 
@@ -317,7 +317,7 @@ namespace SIGE.WebApp.PDE
             string vTipoMisTareas = "N/A";
 
 
-            
+
         }
 
         protected void SeguridadProcesos(bool? pFgConfiguracionCompleta)
@@ -406,23 +406,23 @@ namespace SIGE.WebApp.PDE
 
         protected void btnCalcularTodos_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         protected void btnCalcularSeleccion_Click(object sender, EventArgs e)
         {
-           
+
 
         }
 
         protected void rbNo_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void rbSi_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void btnGuardarCerrar_Click(object sender, EventArgs e)
@@ -449,13 +449,13 @@ namespace SIGE.WebApp.PDE
 
         protected void grdMisCompromisoSolicitados_DetailTableDataBind(object sender, GridDetailTableDataBindEventArgs e)
         {
-             GridDataItem vDataItem = (GridDataItem)e.DetailTableView.ParentItem;
+            GridDataItem vDataItem = (GridDataItem)e.DetailTableView.ParentItem;
 
             if (e.DetailTableView.Name == "gtvMisCompromisosSolicitados")
             {
                 int vIdMisComprimosos;
                 vIdMisComprimosos = int.Parse(vDataItem.GetDataKeyValue("ID_COMPROMISO").ToString());
-               
+
             }
         }
 
@@ -492,7 +492,7 @@ namespace SIGE.WebApp.PDE
         {
             if (e.Item is GridDataItem && e.Item.OwnerTableView.Name != "grdMisCompromisos")
             {
-                
+
 
 
                 GridDataItem item = (GridDataItem)e.Item;
@@ -794,7 +794,7 @@ namespace SIGE.WebApp.PDE
             {
                 int vIdMisComprimosos;
                 vIdMisComprimosos = int.Parse(vDataItem.GetDataKeyValue("ID_COMPROMISO").ToString());
-               
+
             }
         }
 
@@ -836,7 +836,7 @@ namespace SIGE.WebApp.PDE
                 grdMisCompromisos.Rebind();
                 //grdMisCompromisoSolicitados.Rebind();
                 grdMisReportes.Rebind();
-               // rgMisTareas.Rebind();
+                // rgMisTareas.Rebind();
             }
         }
 
@@ -1002,24 +1002,24 @@ namespace SIGE.WebApp.PDE
                 GridDataItem item = (GridDataItem)e.Item;
             }
 
-                //if (e.Item is GridPagerItem)
-                //{
-                //    RadComboBox PageSizeCombo = (RadComboBox)e.Item.FindControl("PageSizeComboBox");
+            //if (e.Item is GridPagerItem)
+            //{
+            //    RadComboBox PageSizeCombo = (RadComboBox)e.Item.FindControl("PageSizeComboBox");
 
-                //    PageSizeCombo.Items.Clear();
-                //    PageSizeCombo.Items.Add(new RadComboBoxItem("10"));
-                //    PageSizeCombo.FindItemByText("10").Attributes.Add("ownerTableViewId", rgMisTareas.MasterTableView.ClientID);
-                //    PageSizeCombo.Items.Add(new RadComboBoxItem("50"));
-                //    PageSizeCombo.FindItemByText("50").Attributes.Add("ownerTableViewId", rgMisTareas.MasterTableView.ClientID);
-                //    PageSizeCombo.Items.Add(new RadComboBoxItem("100"));
-                //    PageSizeCombo.FindItemByText("100").Attributes.Add("ownerTableViewId", rgMisTareas.MasterTableView.ClientID);
-                //    PageSizeCombo.Items.Add(new RadComboBoxItem("500"));
-                //    PageSizeCombo.FindItemByText("500").Attributes.Add("ownerTableViewId", rgMisTareas.MasterTableView.ClientID);
-                //    PageSizeCombo.Items.Add(new RadComboBoxItem("1000"));
-                //    PageSizeCombo.FindItemByText("1000").Attributes.Add("ownerTableViewId", rgMisTareas.MasterTableView.ClientID);
-                //    PageSizeCombo.FindItemByText(e.Item.OwnerTableView.PageSize.ToString()).Selected = true;
-                //}
-            }
+            //    PageSizeCombo.Items.Clear();
+            //    PageSizeCombo.Items.Add(new RadComboBoxItem("10"));
+            //    PageSizeCombo.FindItemByText("10").Attributes.Add("ownerTableViewId", rgMisTareas.MasterTableView.ClientID);
+            //    PageSizeCombo.Items.Add(new RadComboBoxItem("50"));
+            //    PageSizeCombo.FindItemByText("50").Attributes.Add("ownerTableViewId", rgMisTareas.MasterTableView.ClientID);
+            //    PageSizeCombo.Items.Add(new RadComboBoxItem("100"));
+            //    PageSizeCombo.FindItemByText("100").Attributes.Add("ownerTableViewId", rgMisTareas.MasterTableView.ClientID);
+            //    PageSizeCombo.Items.Add(new RadComboBoxItem("500"));
+            //    PageSizeCombo.FindItemByText("500").Attributes.Add("ownerTableViewId", rgMisTareas.MasterTableView.ClientID);
+            //    PageSizeCombo.Items.Add(new RadComboBoxItem("1000"));
+            //    PageSizeCombo.FindItemByText("1000").Attributes.Add("ownerTableViewId", rgMisTareas.MasterTableView.ClientID);
+            //    PageSizeCombo.FindItemByText(e.Item.OwnerTableView.PageSize.ToString()).Selected = true;
+            //}
+        }
 
         protected void grdMisReportes_ItemDataBound(object sender, GridItemEventArgs e)
         {
@@ -1073,4 +1073,3 @@ namespace SIGE.WebApp.PDE
 
     }
 }
-

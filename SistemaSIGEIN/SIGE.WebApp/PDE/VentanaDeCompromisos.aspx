@@ -56,7 +56,7 @@
         }
 
         function ConfirmarEliminarInactivas(sender, args) {
-            if ('<%= vClTipoMetas %>' == "DESCRIPTIVO")
+            <%--if ('<%= vClTipoMetas %>' == "DESCRIPTIVO")
                 vMensaje = "¿Los indicadores inactivos serán eliminados, estas seguro que deseas continuar?, este proceso no podrá revertirse";
             else
                 vMensaje = "¿Las metas inactivas serán eliminadas, estas seguro que deseas continuar?, este proceso no podrá revertirse";
@@ -64,14 +64,14 @@
             var callBackFunction = Function.createDelegate(sender, function (shouldSubmit) { if (shouldSubmit) { this.click(); } });
 
             radconfirm(vMensaje, callBackFunction, 400, 170, null, "Aviso");
-            args.set_cancel(true);
+            args.set_cancel(true);--%>
 
             //var vWindowsProperties = { height: 200 };
             //confirmAction(sender, args, vMensaje, vWindowsProperties);
         }
 
         function OpenEnvioSolicitudes() {
-            var vIdPeriodo = '<%= vIdPeriodo %>';
+         <%--   var vIdPeriodo = '<%= vIdPeriodo %>';
             var vClOrigen = '<%= vClOrigenPeriodo %>';
             var vNoReplica = '<%= vNoReplica %>';
             if (vIdPeriodo != null) {
@@ -81,7 +81,7 @@
                 else {
                     OpenWindow(GetEnvioSolicitudesReplicas(vIdPeriodo));
                 }
-            }
+            }--%>
         }
 
         function OpenWindow(pWindowProperties) {
@@ -149,10 +149,10 @@
 
         function OpenAgregarMetasWindow() {
             GetIdEvaluado();
-            var vIdPeriodo = '<%= vIdPeriodo %>';
+            <%--var vIdPeriodo = '<%= vIdPeriodo %>';
             var vTextoVentana = "Agregar";
             if ('<%= vClTipoMetas %>' == "DESCRIPTIVO")
-                vTextoVentana = "Agregar";
+                vTextoVentana = "Agregar";--%>
 
             if (vIdEvaluado != null) {
                 OpenSelectionWindowC("VentanaMetasDesempeno.aspx?IdEvaluado=" + vIdEvaluado + "&IdPeriodo=" + vIdPeriodo + "&Accion=Agregar", "WinMetas", vTextoVentana);
@@ -222,7 +222,7 @@
             vFgEvaluar = false;
             GetIdEvaluado();
             obtenerIdMeta();
-            var vIdPeriodo = '<%= vIdPeriodo %>';
+          <%--  var vIdPeriodo = '<%= vIdPeriodo %>';
             var vTextoVentana = "Editar";
             if ('<%= vClTipoMetas %>' == "DESCRIPTIVO")
                 vTextoVentana = "Editar";
@@ -242,7 +242,7 @@
                     radalert("Selecciona un indicador.", 400, 150, "Aviso");
                 else
                     radalert("Selecciona una meta.", 400, 150, "Aviso");
-            }
+            }--%>
         }
 
         function OpenSelectionWindow(pURL, pIdWindow, pTitle) {

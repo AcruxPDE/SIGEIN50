@@ -271,6 +271,7 @@
     <Compile Include="PuntoDeEncuentro\E_OBTIENE_MIS_REPORTES.cs" />
     <Compile Include="PuntoDeEncuentro\E_OBTIENE_MIS_TAREAS.cs" />
     <Compile Include="PuntoDeEncuentro\E_PRIORIDAD.cs" />
+    <Compile Include="PuntoDeEncuentro\E_PROCESOS.cs" />
     <Compile Include="PuntoDeEncuentro\E_TIPOCOMPROMISO.cs" />
     <Compile Include="PuntoDeEncuentro\E_USUARIO_CORREO.cs" />
     <Compile Include="SPE_OBTIENE_ADSCRIPCIONES_Result.cs">

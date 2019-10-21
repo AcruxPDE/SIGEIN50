@@ -192,6 +192,8 @@ C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\obj\Debug\SIGE.
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\obj\Debug\SIGE.Cartera.csproj.CopyComplete
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\obj\Debug\SIGE.Cartera.exe
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\obj\Debug\SIGE.Cartera.pdb
+C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\Telerik.Web.Spreadsheet.dll
+C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\Telerik.Web.UI.xml
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\SIGE.Cartera.exe.config
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\SIGE.Cartera.exe
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\SIGE.Cartera.pdb
@@ -204,7 +206,6 @@ C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\E
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\Telerik.Windows.Documents.Flow.dll
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\Telerik.Windows.Documents.Core.dll
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\Telerik.Windows.Documents.Spreadsheet.dll
-C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\Telerik.Web.Spreadsheet.dll
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\Telerik.Windows.Zip.dll
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\Newtonsoft.Json.dll
@@ -214,7 +215,6 @@ C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\S
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\SIGE.Negocio.dll.config
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\SIGE.AccesoDatos.pdb
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\SIGE.AccesoDatos.dll.config
-C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\Telerik.Web.UI.xml
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\EntityFramework.xml
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\Telerik.Windows.Documents.Flow.xml
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.Cartera\bin\Debug\Telerik.Windows.Documents.Spreadsheet.xml

@@ -192,6 +192,7 @@ C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\obj\Debug\
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\obj\Debug\SIGE.BajaEmpleado.csproj.CopyComplete
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\obj\Debug\SIGE.BajaEmpleado.exe
 C:\Users\TI\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\obj\Debug\SIGE.BajaEmpleado.pdb
+C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\Telerik.Web.UI.xml
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\SIGE.BajaEmpleado.exe.config
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\SIGE.BajaEmpleado.exe
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\SIGE.BajaEmpleado.pdb
@@ -214,7 +215,6 @@ C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\De
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\SIGE.Negocio.dll.config
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\SIGE.AccesoDatos.pdb
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\SIGE.AccesoDatos.dll.config
-C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\Telerik.Web.UI.xml
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\EntityFramework.xml
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\Telerik.Windows.Documents.Flow.xml
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.BajaEmpleado\bin\Debug\Telerik.Windows.Documents.Spreadsheet.xml

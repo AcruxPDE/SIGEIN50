@@ -13,7 +13,7 @@
 
         function useDataFromChild(pEmpleados) {
 
-            if (pEmpleados != null) {
+           <%-- if (pEmpleados != null) {
                 var vEmpleadoSeleccionado = pEmpleados[0];
                 console.info(vEmpleadoSeleccionado);
                 var list = $find("<%=lstEmpleado.ClientID %>");
@@ -30,7 +30,7 @@
                 list.commitChanges();
 
                 $find("<%= txtNbUsuario.ClientID %>").set_value(vEmpleadoSeleccionado.nbEmpleado);
-                $find("<%= txtNbCorreoElectronico.ClientID %>").set_value(vEmpleadoSeleccionado.nbCorreoElectronico);
+                $find("<%= txtNbCorreoElectronico.ClientID %>").set_value(vEmpleadoSeleccionado.nbCorreoElectronico);--%>
             }
         }
     </script>
@@ -162,10 +162,10 @@
 
                     <div class="ctrlBasico" id="Div1" runat="server">
                         <div class="divControlDerecha">
-                            <telerik:RadButton ID="RadButton1" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false">
+                            <telerik:RadButton ID="rdComunicados" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false" >
                                 <ToggleStates>
                                     <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
-                                    <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
+                                    <telerik:RadButtonToggleState Text="No"  PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
                                 </ToggleStates>
                             </telerik:RadButton>
                             <label id="lblMisComunicados">Mis comunicados.</label>
@@ -176,10 +176,10 @@
 
                     <div class="ctrlBasico" id="Div2" runat="server">
                         <div class="divControDerecha">
-                            <telerik:RadButton ID="RadButton2" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false">
+                            <telerik:RadButton ID="rdTramites" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false" >
                                 <ToggleStates>
-                                    <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
-                                    <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
+                                    <telerik:RadButtonToggleState Text="Sí"  PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
+                                    <telerik:RadButtonToggleState Text="No"  PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
                                 </ToggleStates>
                             </telerik:RadButton>
                             <label id="lblMisTramites">Mis Trámites.</label>
@@ -190,10 +190,10 @@
 
                     <div class="ctrlBasico" id="Div3" runat="server">
                         <div class="divControDerecha">
-                            <telerik:RadButton ID="RadButton3" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false">
+                            <telerik:RadButton ID="rdCompromisos" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false" >
                                 <ToggleStates>
-                                    <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
-                                    <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
+                                    <telerik:RadButtonToggleState Text="Sí"  PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
+                                    <telerik:RadButtonToggleState Text="No"  PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
                                 </ToggleStates>
                             </telerik:RadButton>
                             <label id="lblMisCompromisos">Mis Compromisos.</label>
@@ -204,10 +204,10 @@
 
                     <div class="ctrlBasico" id="Div4" runat="server">
                         <div class="divControDerecha">
-                            <telerik:RadButton ID="RadButton4" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false">
+                            <telerik:RadButton ID="rdNomina" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false" >
                                 <ToggleStates>
-                                    <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
-                                    <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
+                                    <telerik:RadButtonToggleState Text="Sí"  PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
+                                    <telerik:RadButtonToggleState Text="No"  PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
                                 </ToggleStates>
                             </telerik:RadButton>
                             <label id="lblMisNomina">Mi Nómina.</label>
@@ -219,7 +219,7 @@
 
                 <div class="divControlDerecha">
                     <div class="ctrlBasico">
-                        <telerik:RadButton ID="btnGuardarProcesos" runat="server" name="btnGuardarProcesos" AutoPostBack="true" Text="Guardar"></telerik:RadButton>
+                        <telerik:RadButton ID="btnGuardarProcesos" runat="server" name="btnGuardarProcesos" AutoPostBack="true" Text="Guardar" OnClick="btnGuardarProcesos_Click"></telerik:RadButton>
                     </div>
                 </div>
 
@@ -255,4 +255,5 @@
     </div>
 
     <telerik:RadWindowManager ID="rwmAlertas" runat="server"></telerik:RadWindowManager>
+    <telerik:RadWindowManager ID="rnExito" runat="server"></telerik:RadWindowManager>
 </asp:Content>
