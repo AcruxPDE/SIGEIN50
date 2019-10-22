@@ -412,6 +412,7 @@
                 var itemValue = "";
 
                 itemValue = args.get_item()._text;
+                
                 if (itemValue == "Instrucciones para módulos de PDE") {
                     getRadWindow(getUrl);
                     var vURL = "VentanaEditarNotificacionesRRHH.aspx";
@@ -466,6 +467,7 @@
                     args.set_cancel(true);
                 }
                 else if (itemValue == "Notificaciones de RRHH") {
+                    
                     getRadWindow(getUrl);
                     var vURL = "VentanaNotificacionesRRHH.aspx";
                     var vTitulo = "Notificaciones de RRHH";
@@ -506,6 +508,16 @@
                     oWin.set_title(vTitulo);
                     args.set_cancel(true);
                 }
+
+                else if (itemValue == "Usuarios") {
+                    getRadWindow(getUrl);
+                    var vURL = "Usuarios.aspx";
+                    var vTitulo = "Usuarios";
+                    var oWin = window.radopen(vURL, vRadWindow, document.documentElement.clientWidth - 50, document.documentElement.clientHeight - 40);
+                    oWin.set_title(vTitulo);
+                    args.set_cancel(true);
+                }
+
                 function getRadWindow(url) {
                     console.info(url);
                     switch (url) {

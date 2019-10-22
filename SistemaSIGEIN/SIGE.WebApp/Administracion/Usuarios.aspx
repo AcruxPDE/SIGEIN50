@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menu.master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="SIGE.WebApp.Administracion.Usuarios" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PDE/MenuPDE.master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="SIGE.WebApp.Administracion.Usuarios" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">

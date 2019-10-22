@@ -1,7 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PDE/ContextPDE.master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="SIGE.WebApp.PDE.Usuarios" %>
 
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="headContexto" runat="server">
     <script id="5" type="text/javascript">
         var idEvaluadoMeta = "";
@@ -338,15 +336,15 @@
 </asp:Content>
 
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server" >
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderContexto" runat="server">
 
-   
+
     <telerik:RadAjaxLoadingPanel ID="ralpUsuarios" runat="server"></telerik:RadAjaxLoadingPanel>
     <telerik:RadAjaxManager ID="ramUsuarios" runat="server" DefaultLoadingPanelID="ralpUsuarios" OnAjaxRequest="ramConfiguracionPeriodo_AjaxRequest">
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="ramUsuarios">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="grdEvaluados" UpdatePanelHeight="100%" />                
+                    <telerik:AjaxUpdatedControl ControlID="grdEvaluados" UpdatePanelHeight="100%" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="btnGuardarInformacionGeneral">
@@ -399,7 +397,7 @@
                     <telerik:RadGrid ID="grdEvaluados" runat="server" OnNeedDataSource="grdUsuarios_NeedDataSource" OnItemCommand="grdEvaluados_ItemCommand"
                         AllowMultiRowSelection="true"
                         OnItemDataBound="grdEvaluados_ItemDataBound"
-                                OnDetailTableDataBind="grdEvaluados_DetailTableDataBind" ShowFooter="true"
+                        OnDetailTableDataBind="grdEvaluados_DetailTableDataBind" ShowFooter="true"
                         Height="100%" AutoGenerateColumns="false" EnableHeaderContextMenu="true" ShowGroupPanel="True" AllowPaging="true"
                         AllowSorting="true" HeaderStyle-Font-Bold="true">
                         <ClientSettings>
@@ -409,8 +407,8 @@
                         <PagerStyle AlwaysVisible="true" />
                         <GroupingSettings CaseSensitive="false" />
                         <MasterTableView DataKeyNames="ID_EMPLEADO,ID_EVALUADO,CL_EMPLEADO,NB_EMPLEADO_COMPLETO,NB_PUESTO,NB_DEPARTAMENTO,PR_EVALUADO, CL_ESTADO_EMPLEADO"
-                                    AllowPaging="false" AllowSorting="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true"
-                                    EnableHeaderContextFilterMenu="true" ClientDataKeyNames="ID_EVALUADO" EnableHierarchyExpandAll="true" HierarchyDefaultExpanded="false">
+                            AllowPaging="false" AllowSorting="true" AllowFilteringByColumn="true" ShowHeadersWhenNoRecords="true"
+                            EnableHeaderContextFilterMenu="true" ClientDataKeyNames="ID_EVALUADO" EnableHierarchyExpandAll="true" HierarchyDefaultExpanded="false">
                             <Columns>
                                 <telerik:GridClientSelectColumn Exportable="false" HeaderStyle-Width="35"></telerik:GridClientSelectColumn>
                                 <telerik:GridBoundColumn AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" HeaderStyle-Width="150" FilterControlWidth="80" HeaderText="No. Empleado" DataField="CL_EMPLEADO" UniqueName="CL_EMPLEADO"></telerik:GridBoundColumn>
@@ -435,7 +433,7 @@
                     <telerik:RadButton ID="btnSeleccionPorArea" runat="server" Text="Seleccionar por área/departamento" AutoPostBack="false" OnClientClicked="OpenAreaSelectionWindow"></telerik:RadButton>
                 </div>
                 <div class="ctrlBasico">
-                    <telerik:RadButton ID="RadButton1" runat="server" Text="Eliminar" AutoPostBack="false" ></telerik:RadButton>
+                    <telerik:RadButton ID="RadButton1" runat="server" Text="Eliminar" AutoPostBack="false"></telerik:RadButton>
                 </div>
                 <div class="divControlesBoton">
                     <div class="ctrlBasico">
@@ -444,7 +442,7 @@
                 </div>
 
 
-                
+
 
             </telerik:RadPageView>
 
@@ -458,10 +456,10 @@
 
                     <div class="ctrlBasico" id="Div1" runat="server">
                         <div class="divControlDerecha">
-                            <telerik:RadButton ID="rdComunicados" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false" >
+                            <telerik:RadButton ID="rdComunicados" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false">
                                 <ToggleStates>
                                     <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
-                                    <telerik:RadButtonToggleState Text="No"  PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
+                                    <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
                                 </ToggleStates>
                             </telerik:RadButton>
                             <label id="lblMisComunicados">Mis comunicados.</label>
@@ -472,10 +470,10 @@
 
                     <div class="ctrlBasico" id="Div2" runat="server">
                         <div class="divControDerecha">
-                            <telerik:RadButton ID="rdTramites" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false" >
+                            <telerik:RadButton ID="rdTramites" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false">
                                 <ToggleStates>
-                                    <telerik:RadButtonToggleState Text="Sí"  PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
-                                    <telerik:RadButtonToggleState Text="No"  PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
+                                    <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
+                                    <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
                                 </ToggleStates>
                             </telerik:RadButton>
                             <label id="lblMisTramites">Mis Trámites.</label>
@@ -486,10 +484,10 @@
 
                     <div class="ctrlBasico" id="Div3" runat="server">
                         <div class="divControDerecha">
-                            <telerik:RadButton ID="rdCompromisos" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false" >
+                            <telerik:RadButton ID="rdCompromisos" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false">
                                 <ToggleStates>
-                                    <telerik:RadButtonToggleState Text="Sí"  PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
-                                    <telerik:RadButtonToggleState Text="No"  PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
+                                    <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
+                                    <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
                                 </ToggleStates>
                             </telerik:RadButton>
                             <label id="lblMisCompromisos">Mis Compromisos.</label>
@@ -500,10 +498,10 @@
 
                     <div class="ctrlBasico" id="Div4" runat="server">
                         <div class="divControDerecha">
-                            <telerik:RadButton ID="rdNomina" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false" >
+                            <telerik:RadButton ID="rdNomina" runat="server" ToggleType="CheckBox" name="chkActivo" AutoPostBack="false">
                                 <ToggleStates>
-                                    <telerik:RadButtonToggleState Text="Sí"  PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
-                                    <telerik:RadButtonToggleState Text="No"  PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
+                                    <telerik:RadButtonToggleState Text="Sí" PrimaryIconCssClass="rbToggleCheckboxChecked"></telerik:RadButtonToggleState>
+                                    <telerik:RadButtonToggleState Text="No" PrimaryIconCssClass="rbToggleCheckbox"></telerik:RadButtonToggleState>
                                 </ToggleStates>
                             </telerik:RadButton>
                             <label id="lblMisNomina">Mi Nómina.</label>
@@ -518,7 +516,6 @@
                         <telerik:RadButton ID="btnGuardarProcesos" runat="server" name="btnGuardarProcesos" AutoPostBack="true" Text="Guardar" OnClick="btnGuardarProcesos_Click"></telerik:RadButton>
                     </div>
                 </div>--%>
-
             </telerik:RadPageView>
 
             <telerik:RadPageView ID="rpvContraseña" runat="server">
@@ -526,7 +523,7 @@
 
                 <div style="height: calc(100% - 100px);">
 
-                    <telerik:RadGrid ID="grdContrasenas" runat="server" 
+                    <telerik:RadGrid ID="grdContrasenas" runat="server"
                         Height="100%" AutoGenerateColumns="false" ShowGroupPanel="True" AllowPaging="true"
                         AllowSorting="true" HeaderStyle-Font-Bold="true">
                         <ClientSettings>
@@ -547,7 +544,7 @@
 
             </telerik:RadPageView>
 
-           
+
         </telerik:RadMultiPage>
     </div>
 
@@ -563,6 +560,7 @@
                 Modal="true"
                 OnClientClose="onCloseWindow">
             </telerik:RadWindow>
+            
         </Windows>
     </telerik:RadWindowManager>
 </asp:Content>
