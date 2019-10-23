@@ -40,7 +40,7 @@
                 <label name="lblClEvento">Evento:</label>
             </div>
             <div class="divControlDerecha">
-                <telerik:RadTextBox ID="txtClEvento" name="txtNbPeriodo" runat="server" MaxLength="100" Width="300"></telerik:RadTextBox><br />
+                <telerik:RadTextBox ID="txtClEvento"  name="txtNbPeriodo" runat="server" MaxLength="50" Width="300" ></telerik:RadTextBox><br />
             </div>
         </div>
         <div style="clear: both;"></div>
@@ -49,7 +49,7 @@
                 <label name="lblDsEvento">Descripción:</label>
             </div>
             <div class="divControlDerecha">
-                <telerik:RadTextBox ID="txtDsEvento" name="txtDsEvento" runat="server" MaxLength="200" Width="500"></telerik:RadTextBox><br />
+                <telerik:RadTextBox ID="txtDsEvento" name="txtDsEvento" runat="server" MaxLength="2000" Width="500"></telerik:RadTextBox><br />
             </div>
         </div>
             <div style="clear: both;"></div>

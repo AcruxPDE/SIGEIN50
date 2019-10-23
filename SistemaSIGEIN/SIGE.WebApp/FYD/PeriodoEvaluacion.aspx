@@ -85,7 +85,7 @@
                     </div>
                     <div class="divControlDerecha">
                         <telerik:RadTextBox ID="txtNbPeriodo" name="txtNbPeriodo" runat="server" MaxLength="100" Width="300"></telerik:RadTextBox><br />
-                        <asp:RequiredFieldValidator ID="reqtxtNbPeriodo" runat="server" Display="Dynamic" ControlToValidate="txtNbPeriodo" ErrorMessage="Campo obligatorio" CssClass="validacion"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="reqtxtNbPeriodo" runat="server" Display="Dynamic" ControlToValidate="txtNbPeriodo" ErrorMessage="Campo obligatorio" CssClass="validacion"  ></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <div style="clear: both;"></div>
@@ -104,7 +104,7 @@
                         <label name="lblClEstado">Estado:</label>
                     </div>
                     <div class="divControlDerecha">
-                        <telerik:RadTextBox ID="txtClEstado" name="txtNbPeriodo" runat="server" Enabled="false" Width="100"></telerik:RadTextBox><br />
+                        <telerik:RadTextBox ID="txtClEstado" name="txtNbPeriodo" MaxLength="100" runat="server" Enabled="false" Width="100"></telerik:RadTextBox><br />
                     </div>
                 </div>
                 <div style="clear: both;"></div>

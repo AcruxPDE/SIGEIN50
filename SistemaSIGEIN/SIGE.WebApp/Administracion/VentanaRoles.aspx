@@ -159,7 +159,7 @@
                             <telerik:RadTab Text="Menú general"></telerik:RadTab>
                             <telerik:RadTab Text="Menú módulos"></telerik:RadTab>
                             <telerik:RadTab Text="Menú adicionales"></telerik:RadTab>
-                            <telerik:RadTab Text="Visión de grupos"></telerik:RadTab>
+                            <telerik:RadTab Text="Grupos"></telerik:RadTab>
                         </Tabs>
                     </telerik:RadTabStrip>
                     <div style="height: calc(100% - 45px);">

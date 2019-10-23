@@ -278,6 +278,8 @@ namespace SIGE.WebApp.EO
                     UtilMensajes.MensajeResultadoDB(rwmMensaje, resultado.MENSAJE[0].DS_MENSAJE.ToString(), resultado.CL_TIPO_ERROR, 400, 150, "cerrarVentanaActualiza");
                 }
             }
+
+            
         }
 
         private XElement EditorContentToXml(string pNbNodoRaiz, string pDsContenido, string pNbTag)

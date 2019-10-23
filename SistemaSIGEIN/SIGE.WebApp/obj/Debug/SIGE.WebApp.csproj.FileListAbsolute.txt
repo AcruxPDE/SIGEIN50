@@ -696,14 +696,9 @@ C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Telerik.
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Telerik.Windows.Zip.dll
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.AccesoDatos.dll
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\ADODB.dll
-C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.Mvc.dll
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\EnvDTE.dll
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\EntityFramework.dll
-C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.Razor.dll
-C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.Razor.dll
-C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.dll
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\stdole.dll
-C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.Deployment.dll
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Entidades.pdb
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Entidades.dll.config
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.Negocio.pdb
@@ -731,12 +726,7 @@ C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Telerik.
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\Telerik.Windows.Zip.xml
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.AccesoDatos.pdb
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\SIGE.AccesoDatos.dll.config
-C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.Mvc.xml
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\EntityFramework.xml
-C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.Razor.xml
-C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.Razor.xml
-C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.xml
-C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.csprojAssemblyReference.cache
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.dll.licenses
 C:\Users\Lenovo\Documents\GitHub\SIGEIN50\SistemaSIGEIN\SIGE.WebApp\obj\Debug\SIGE.WebApp.csproj.CoreCompileInputs.cache

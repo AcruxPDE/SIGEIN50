@@ -161,6 +161,7 @@ namespace SIGE.WebApp.EO
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+            
 
             if (Request.QueryString["TIPO"] == "COPIA" && vIdPeriodoCopia != 0)
             {

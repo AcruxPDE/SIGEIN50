@@ -86,7 +86,7 @@
                 <label id="lblClavePrograma" name="lblClavePrograma" runat="server">Programa:</label>
             </div>
             <div class="divControlDerecha">
-                <telerik:RadTextBox ID="txtClProgCapacitacion" runat="server" Width="200px" MaxLength="1000"></telerik:RadTextBox>
+                <telerik:RadTextBox ID="txtClProgCapacitacion" runat="server" Width="200px" MaxLength="50"></telerik:RadTextBox>
                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="validacion" ID="RequiredFieldValidator2" runat="server" Font-Names="Arial" Font-Size="Small" ControlToValidate="txtClProgCapacitacion" ErrorMessage="Campo Obligatorio"></asp:RequiredFieldValidator>
             </div>
         </div>
@@ -96,7 +96,7 @@
                 <label id="lblNombrePrograma" name="lblNombrePrograma" runat="server">Descripción:</label>
             </div>
             <div class="divControlDerecha">
-                <telerik:RadTextBox ID="txtNbProgCapacitacion" runat="server" Width="400px" MaxLength="1000"></telerik:RadTextBox>
+                <telerik:RadTextBox ID="txtNbProgCapacitacion" runat="server" Width="400px" MaxLength="200"></telerik:RadTextBox>
                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="validacion" ID="RequiredFieldValidator1" runat="server" Font-Names="Arial" Font-Size="Small" ControlToValidate="txtNbProgCapacitacion" ErrorMessage="Campo Obligatorio"></asp:RequiredFieldValidator>
             </div>
         </div>
@@ -134,11 +134,11 @@
                 </ToggleStates>
             </telerik:RadButton>
              <div style="clear:both; height:10px;"></div>
-            <div id="desdeDNC" runat="server" style="display: none">
-                <telerik:RadListBox ID="lstPeriodo" Width="200" runat="server" ValidationGroup="vgPeriodo"></telerik:RadListBox>
-                <telerik:RadButton ID="btnBuscarPeriodo" runat="server" Text="B" AutoPostBack="false" OnClientClicked="OpenSelectionWindow" ValidationGroup="vgPeriodo"></telerik:RadButton>
-                <telerik:RadButton ID="btnEliminarPeriodo" runat="server" Text="X" AutoPostBack="false" ValidationGroup="vgPeriodo" OnClientClicked="DeletePeriodo"></telerik:RadButton>
-        </div>
+                <div id="desdeDNC" runat="server" style="display: none">
+                    <telerik:RadListBox ID="lstPeriodo" Width="200" runat="server" ValidationGroup="vgPeriodo"></telerik:RadListBox>
+                    <telerik:RadButton ID="btnBuscarPeriodo" runat="server" Text="B" AutoPostBack="false" OnClientClicked="OpenSelectionWindow" ValidationGroup="vgPeriodo"></telerik:RadButton>
+                    <telerik:RadButton ID="btnEliminarPeriodo" runat="server" Text="X" AutoPostBack="false" ValidationGroup="vgPeriodo" OnClientClicked="DeletePeriodo"></telerik:RadButton>
+                </div>
              <div style="clear:both; height:10px;"></div>
             <telerik:RadButton ID="rbCopia" runat="server" ToggleType="Radio"
                 GroupName="grbConfiguracion" AutoPostBack="false" Text="Copia" Visible="false">

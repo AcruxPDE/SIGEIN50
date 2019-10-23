@@ -75,7 +75,7 @@
                         <label id="lblDsPeriodo">Clave de período:</label>
                     </div>
                     <div class="divControlDerecha">
-                        <telerik:RadTextBox ID="txtDsPeriodo" InputType="Text" Width="200" Height="30" runat="server"></telerik:RadTextBox>
+                        <telerik:RadTextBox ID="txtDsPeriodo" InputType="Text" Width="200" Height="30" runat="server" MaxLength="32"></telerik:RadTextBox>
                     </div>
                 </div>
                 <div style="height: 40px;"></div>
@@ -85,7 +85,7 @@
                         <label id="lblDsDescripción">Descripción:</label>
                     </div>
                     <div class="divControlDerecha">
-                        <telerik:RadTextBox ID="txtDsDescripcion" InputType="Text" Width="400" Height="30" runat="server"></telerik:RadTextBox>
+                        <telerik:RadTextBox ID="txtDsDescripcion" InputType="Text" Width="400" Height="30" runat="server" MaxLength="200"></telerik:RadTextBox>
                     </div>
                 </div>
                 <div style="height: 10px;"></div>
@@ -110,7 +110,7 @@
                         </telerik:RadDatePicker>
                     </div>
                 </div>
-                <div class="ctrlBasico">
+                <div class="ctrlBasico">           
                     <div class="divControlIzquierda" style="width: 150px;">
                         <label id="lblFechaTerminacion">Fecha de término:</label>
                     </div>
