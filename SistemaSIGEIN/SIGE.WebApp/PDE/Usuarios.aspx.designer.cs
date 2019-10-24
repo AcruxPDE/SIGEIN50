@@ -58,13 +58,13 @@ namespace SIGE.WebApp.PDE {
         protected global::Telerik.Web.UI.RadPageView rpvSeleccionUsuarios;
         
         /// <summary>
-        /// grdEvaluados control.
+        /// grdUsuarios control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid grdEvaluados;
+        protected global::Telerik.Web.UI.RadGrid grdUsuarios;
         
         /// <summary>
         /// btnSeleccionPorPersona control.
@@ -220,24 +220,6 @@ namespace SIGE.WebApp.PDE {
         protected global::Telerik.Web.UI.RadGrid grdContrasenas;
         
         /// <summary>
-        /// rwmAlertas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadWindowManager rwmAlertas;
-        
-        /// <summary>
-        /// rnExito control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadWindowManager rnExito;
-        
-        /// <summary>
         /// rwmMensaje control.
         /// </summary>
         /// <remarks>
@@ -245,14 +227,5 @@ namespace SIGE.WebApp.PDE {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadWindowManager rwmMensaje;
-        
-        /// <summary>
-        /// WinMetas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadWindow WinMetas;
     }
 }

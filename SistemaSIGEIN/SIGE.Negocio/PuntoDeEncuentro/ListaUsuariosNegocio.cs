@@ -13,7 +13,13 @@ namespace SIGE.Negocio.PuntoDeEncuentro
         {
             ListaUsuariosOperaciones operaciones = new ListaUsuariosOperaciones();
             return UtilRespuesta.EnvioRespuesta(operaciones.InsertaProcesos(PROCESOS.ID_USUARIO_FUNCION, PROCESOS.CL_USUARIO_PROCESO, PROCESOS.FG_COMUNICADOS, PROCESOS.FG_TRAMITES, PROCESOS.FG_COMPROMISOS, PROCESOS.FG_NOMINA, pCLusuario, pNBprograma, TIPO_TRANSACCION));
-
         }
+
+        public List<E_USUARIO_PDE> ObtieneEmpleadosSelector(string pSelector, string pTipoSeleccion)
+        {
+            ListaUsuariosOperaciones operaciones = new ListaUsuariosOperaciones();
+            return operaciones.ObtieneEmpleadosSelector(pSelector, pTipoSeleccion);
+        }
+
     }
 }

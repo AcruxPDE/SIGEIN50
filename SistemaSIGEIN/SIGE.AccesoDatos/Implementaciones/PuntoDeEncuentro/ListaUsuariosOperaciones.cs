@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using SIGE.Entidades.PuntoDeEncuentro;
 
 namespace SIGE.AccesoDatos.Implementaciones.PuntoDeEncuentro
 {
@@ -15,7 +16,7 @@ namespace SIGE.AccesoDatos.Implementaciones.PuntoDeEncuentro
     {
         private SistemaSigeinEntities context;
         #region INSERTA PROCESOS
-        public XElement InsertaProcesos(Guid ID_USUARIO_FUNCION, string CL_USUARIO_PROCESO, bool FG_COMUNICADOS , bool FG_TRAMITES, bool FG_COMPROMISOS, bool FG_NOMINA, string pCLusuario, string pNBprograma, string TIPO_TRANSACCION)
+        public XElement InsertaProcesos(Guid ID_USUARIO_FUNCION, string CL_USUARIO_PROCESO, bool FG_COMUNICADOS, bool FG_TRAMITES, bool FG_COMPROMISOS, bool FG_NOMINA, string pCLusuario, string pNBprograma, string TIPO_TRANSACCION)
         {
             using (context = new SistemaSigeinEntities())
             {
@@ -51,13 +52,21 @@ namespace SIGE.AccesoDatos.Implementaciones.PuntoDeEncuentro
 
                 return XElement.Parse(pXmlResultado.Value.ToString());
 
-
-
             }
+        }
 
-
-
-
+        public List<E_USUARIO_PDE> ObtieneEmpleadosSelector(string pSelector, string pTipoSeleccion)
+        {
+            using (context = new SistemaSigeinEntities())
+            {
+                return context.Database.SqlQuery<E_USUARIO_PDE>("EXEC " +
+                    "PDE.SPE_OBTIENE_EMPLEADOS_SELECTOR " +
+                    "@PIN_XML_SELECTOR, " +
+                    "@PIN_TIPO_SELECCION "
+                    , new SqlParameter("@PIN_XML_SELECTOR", (object)pSelector ?? DBNull.Value)
+                    , new SqlParameter("@PIN_TIPO_SELECCION", (object)pTipoSeleccion ?? DBNull.Value)
+                ).ToList();
+            }
         }
 
         #endregion

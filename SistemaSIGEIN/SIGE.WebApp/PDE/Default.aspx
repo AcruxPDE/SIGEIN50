@@ -40,4 +40,24 @@
             </Rows>
         </telerik:LayoutRow>
     </telerik:RadPageLayout>
+
+    <telerik:RadWindowManager ID="rwmMensaje" runat="server" EnableShadow="true">
+        <Windows>
+
+            <telerik:RadWindow
+                ID="rwVentanaEditarNotificaciones"
+                runat="server"
+                VisibleStatusbar="false"
+                ShowContentDuringLoad="true"
+                Behaviors="Close"
+                Modal="true"
+                ReloadOnShow="false"
+                AutoSize="false">
+            </telerik:RadWindow>
+
+            <telerik:RadWindow ID="winSeleccion" runat="server" Title="Seleccionar" ReloadOnShow="true" VisibleStatusbar="false" ShowContentDuringLoad="false" Animation="Fade" OnClientClose="returnDataToParentPopup" Modal="true" Behaviors="Close"></telerik:RadWindow>
+
+        </Windows>
+    </telerik:RadWindowManager>
+
 </asp:Content>
